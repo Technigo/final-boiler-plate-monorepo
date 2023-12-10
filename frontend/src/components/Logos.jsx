@@ -1,3 +1,4 @@
+//from boilerplate
 // Import image assets for logos.
 import reactLogo from "../assets/react.svg";
 import technigoLogo from "../assets/technigo-logo.svg";
