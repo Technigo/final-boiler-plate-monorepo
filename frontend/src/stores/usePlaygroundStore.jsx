@@ -56,6 +56,9 @@ const usePlaygroundStore = create((set) => ({
       // You might want to set an error state or handle this in your component
     }
   },
+  likePlayground: () => {
+    set((state) => ({ isLiked: !state.isLiked }));
+  },
 }));
 
 export default usePlaygroundStore;

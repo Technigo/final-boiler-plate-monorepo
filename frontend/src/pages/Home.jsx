@@ -1,5 +1,3 @@
-//ALLA LEKPLATSER SKA FETCHAS HÄR
-
 import { Link } from "react-router-dom";
 import { Button } from "../components/Button"
 import "./home.css";

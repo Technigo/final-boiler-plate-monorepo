@@ -3,10 +3,11 @@ import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import usePlaygroundStore from "../stores/usePlaygroundStore";
 import { BackBtn } from "../components/BackBtn";
+import Like from "../components/Like";
 
 const PlaygroundDetails = () => {
   const { id } = useParams(); // Get the 'id' parameter from the route
-  const { getPlaygroundDetails, playgroundDetails } = usePlaygroundStore();
+  const { getPlaygroundDetails, playgroundDetails, isLiked, likePlayground } = usePlaygroundStore();
 
   useEffect(() => {
     getPlaygroundDetails(id);
@@ -33,6 +34,12 @@ const PlaygroundDetails = () => {
       <p>Basketswing:{playgroundDetails.basketswing}</p>
       <p>Sandpit:{playgroundDetails.sandpit}</p>
       {/* Add other details you want to display */}
+
+      {/* Like button, no function in this yet only visual if you press it */}
+      <div>
+          <Like />
+          <span>{isLiked ? 'Liked!' : 'Not liked yet'}</span>
+        </div>
     </div>
     </div>
   );
