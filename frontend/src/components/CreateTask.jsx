@@ -11,7 +11,7 @@ export const CreateTask = () => {
 
   // Function to update the 'task' state with the value entered in the input field.
   const taskInput = (e) => {
-    setTask(e.target.value);
+    setTask(e.target.value); // Update the 'task' state with the value entered in the input field.
   };
 
   // Function to add a new task both locally and to the server.

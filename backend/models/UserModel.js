@@ -22,11 +22,6 @@ const userSchema = new Schema(
       required: true, // Indicates that 'password' is a required field
       minlength: 6, // Sets a minimum length of 6 characters for 'password'
     },
-    email: {
-      type: String,
-      required: true,
-      unique: true,
-    },
     //Define the 'accessToken' field with a String data type
     accessToken: {
       type: String, // Specifies that 'accessToken' should be a string

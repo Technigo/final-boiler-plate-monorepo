@@ -4,42 +4,33 @@ import asyncHandler from "express-async-handler";
 // bcrypt: We use bcrypt to securely hash and store passwords in our database. Storing plain-text passwords is a security risk, as it exposes user credentials in case of a data breach. bcrypt helps us hash passwords in a way that is computationally expensive and time-consuming for potential attackers, making it difficult to crack passwords even if the database is compromised. It enhances the overall security of user authentication in our application.
 import bcrypt from "bcrypt";
 // jwt (JSON Web Tokens): We use jwt for authentication and authorization. It allows us to create and verify tokens that contain user identity information, such as user IDs or roles. These tokens are often sent with requests to secure routes and verify that a user has the necessary permissions to access certain resources. JWTs are stateless and efficient, making them a popular choice for secure communication between the client and server.
-import jwt from "jsonwebtoken";
-
-// Actual Functions here
-
-// -----------------------
-// -----------------------
-
-// @desc    Register new user
-// @route   POST api/register
-// @access  Public
+//import jwt from "jsonwebtoken";
 
 export const registerUserController = asyncHandler(async (req, res) => {
-  // Extract email, username and password from the request body
-  const { username, password, email } = req.body;
+  // Extract username and password from the request body
+  const { username, password } = req.body;
   // In this try section of the try catch we will first do some conditional logic and then generate the newUser with a crypted password within the DB.
   try {
     // 1st Condition
-    // Check wether all fields of registration logic are NOT [!email] inputted from the request.body object
-    if (!username || !email || !password) {
+    // Check whether all fields of registration logic are NOT [!username] inputted from the request.body object
+    if (!username || !password) {
       // if so, set http status to a 400code
-      res.status(400);
+      res.status(401).json({ error: "Missing username or password" }); // 401 is unauthorized
       // and throw new error with some info
-      throw new Error("Please add all fields");
+      // throw new Error("Please add all fields"); TECHNIGOS ORIGINALKOD
     }
     // 2nd Condition
     // Check if the current user trying to register is using an usernam or email that matches with the same username or email in the database, so they would have to choose something diferent
-    const existingUser = await UserModel.findOne({
-      $or: [{ username }, { email }],
-    });
+    const existingUser = await UserModel.findOne({ username });
     if (existingUser) {
-      res.status(400);
-      throw new Error(
-        `User with ${
-          existingUser.username === username ? "username" : "email"
-        } already exists`
-      );
+      res
+        .status(409)
+        .json({ error: `User with username '${username}' already exists` }); // 409 is conflict, a user with the same username already exists.
+      // throw new Error(
+      //   `User with ${
+      //     existingUser.username === username ? "username" : "email"
+      //   } already exists`
+      // ); DETTA ÄR TECHNIGOS ORIGINALKOD
     }
 
     // Generate a salt and hash the user's password
@@ -51,7 +42,6 @@ export const registerUserController = asyncHandler(async (req, res) => {
     // Create a new user instance with the hashed password
     const newUser = new UserModel({
       username,
-      email,
       password: hashedPassword,
     });
 
@@ -64,26 +54,15 @@ export const registerUserController = asyncHandler(async (req, res) => {
       success: true,
       response: {
         username: newUser.username,
-        email: newUser.email,
         id: newUser._id,
         accessToken: newUser.accessToken,
       },
     });
-  } catch (e) {
+  } catch (error) {
     // Handle any errors that occur during the registration process
-    res.status(500).json({ success: false, response: e.message });
+    res.status(500).json({ success: false, response: error.message });
   }
 });
-
-// -----------------------
-// -----------------------
-// -----------------------
-// -----------------------
-// -----------------------
-
-// @desc    Login Existing User
-// @route   POST api/login
-// @access  Public
 
 export const loginUserController = asyncHandler(async (req, res) => {
   // Extract username and password from the request body
@@ -116,9 +95,9 @@ export const loginUserController = asyncHandler(async (req, res) => {
         accessToken: user.accessToken, //  token for the user using the acessToken generated from the model, // Use the generated token here
       },
     });
-  } catch (e) {
+  } catch (error) {
     // Handle any errors that occur during the login process
-    res.status(500).json({ success: false, response: e.message });
+    res.status(500).json({ success: false, response: error.message });
   }
 });
 

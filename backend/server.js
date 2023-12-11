@@ -8,7 +8,7 @@ import userRoutes from "./routes/userRoutes"; // Import custom user routes
 import { connectDB } from "./config/db"; // Import database connection function (not used here)
 
 // Defines the port the app will run on. Defaults to 8080, but can be overridden
-const port = process.env.PORT; // Set the port number for the server
+const port = process.env.PORT || 8080; // Set the port number for the server
 const app = express(); // Create an instance of the Express application
 
 // Add middlewares to enable cors and json body parsing

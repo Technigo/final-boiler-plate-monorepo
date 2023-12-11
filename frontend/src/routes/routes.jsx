@@ -25,6 +25,7 @@ const routes = (
 
 // Export the 'routes' variable as the default export of this module.
 export default routes;
+//export { routes };
 
 // SUMMARY
 

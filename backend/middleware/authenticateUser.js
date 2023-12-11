@@ -17,9 +17,9 @@ export const authenticateUser = async (req, res, next) => {
       // If no user is found, send a 401 Unauthorized response
       res.status(401).json({ success: false, response: "Please log in" });
     }
-  } catch (e) {
+  } catch (error) {
     // Handle any errors that occur during the database query or user authentication
-    res.status(500).json({ success: false, response: e.message });
+    res.status(500).json({ success: false, response: error.message });
   }
 };
 

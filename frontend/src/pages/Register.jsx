@@ -7,9 +7,9 @@ import { Link } from "react-router-dom";
 
 // Define the 'Register' functional component.
 export const Register = () => {
-  // Initialize state variables for 'username', 'email', and 'password' using 'useState'.
+  // Initialize state variables for 'username', and 'password' using 'useState'.
   const [username, setUsername] = useState("");
-  const [email, setEmail] = useState("");
+
   const [password, setPassword] = useState("");
   // Initialize the 'navigate' function from React Router.
   const navigate = useNavigate();
@@ -19,14 +19,14 @@ export const Register = () => {
 
   // Function to handle the click event of the signup button.
   const onSignupClick = async () => {
-    if (!username || !password || !email) {
+    if (!username || !password) {
       // Display an alert if any of the required fields are empty.
-      alert("Please enter email, username, and password");
+      alert("Please enter username and password");
       return;
     }
     try {
-      // Call the 'handleSignup' function from 'userStore' with 'username', 'password', and 'email' parameters.
-      await storeHandleSignup(username, password, email);
+      // Call the 'handleSignup' function from 'userStore' with 'username' and 'password' parameters.
+      await storeHandleSignup(username, password);
       if (username && password) {
         // If the signup is successful, navigate to the login route ("/").
         navigate("/"); // Replace with your desired path
@@ -68,13 +68,7 @@ export const Register = () => {
         <p>{text.intro}</p>
         <p>{text.loremIpsum}</p>
         <div className="user-registration">
-          {/* Create input fields for 'email', 'username', and 'password' and associate them with state variables. */}
-          <input
-            type="text"
-            placeholder="Email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
+          {/* Create input fields for 'username' and 'password' and associate them with state variables. */}
           <input
             type="text"
             placeholder="Username"
