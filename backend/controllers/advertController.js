@@ -1,6 +1,6 @@
 // ADAPT THIS FILE FOR OUR ADVERTS
 
-import { TaskModel } from "../models/TaskModel";
+import { TaskModel } from "../models/AdvertModel";
 //asyncHandler: We use asyncHandler to simplify error handling in asynchronous code. It helps us avoid writing repetitive try-catch blocks by automatically catching errors and passing them to our error handling middleware. This makes our code cleaner and more readable, reducing the risk of unhandled exceptions that could crash the server.
 import asyncHandler from "express-async-handler";
 // We need to import the userModel to check for the famous accesstoken
