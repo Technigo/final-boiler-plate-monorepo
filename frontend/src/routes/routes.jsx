@@ -1,9 +1,11 @@
+// DOUBLE-CHECK AND UPDATE
+
 // Import the 'Route' component from the 'react-router-dom' library.
 import { Route } from "react-router-dom";
 // Import various page components used as route elements.
 import { Home } from "../pages/Home";
 import { Register } from "../pages/Register";
-import { Tasks } from "../pages/Tasks";
+import { Adverts } from "../pages/Adverts";
 import { Login } from "../pages/Login";
 import { NotFound } from "../pages/NotFound";
 
@@ -14,8 +16,8 @@ const routes = (
     <Route path="/" element={<Login />} />
     {/* Define a route for the '/home' path that renders the 'Home' component. */}
     <Route path="/home" element={<Home />} />
-    {/* Define a route for the '/tasks' path that renders the 'Tasks' component. */}
-    <Route path="/tasks" element={<Tasks />} />
+    {/* Define a route for the '/tasks' path that renders the 'Adverts' component. */}
+    <Route path="/tasks" element={<Adverts />} />
     {/* Define a route for the '/register' path that renders the 'Register' component. */}
     <Route path="/register" element={<Register />} />
     {/* Define a catch-all route that matches any other path ('*') and renders the 'NotFound' component. */}

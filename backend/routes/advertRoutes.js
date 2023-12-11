@@ -1,3 +1,5 @@
+// ADAPT THIS FILE FOR OUR ADVERTS
+
 // Import the necessary modules and functions
 import express from "express";
 import { authenticateUser } from "../middleware/authenticateUser"; // Import middleware for user authentication

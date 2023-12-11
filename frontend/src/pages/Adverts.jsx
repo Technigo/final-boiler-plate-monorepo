@@ -1,8 +1,11 @@
+// ADAPT THIS FILE FOR DISPLAYING, CREATING, EDITING, DELETING ADVERTS
+
+
 // Import necessary dependencies, components, and stores.
 import { useEffect } from "react";
 import Logos from "../components/Logos";
-import { CreateTask } from "../components/CreateTask";
-import { taskStore } from "../stores/taskStore";
+import { CreateAd } from "../components/CreateAd";
+import { advertStore } from "../stores/advertStore";
 import { userStore } from "../stores/userStore";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
@@ -17,8 +20,8 @@ export const Tasks = () => {
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore, vitae fugit ipsam quo accusantium autem officia necessitatibus ullam voluptati",
   };
 
-  // Access the 'tasks', 'fetchTasks', 'handleEdit', and 'deleteTaskById' functions from the 'taskStore'.
-  const { tasks, fetchTasks, handleEdit, deleteTaskById } = taskStore();
+  // Access the 'tasks', 'fetchTasks', 'handleEdit', and 'deleteTaskById' functions from the 'advertStore'.
+  const { tasks, fetchTasks, handleEdit, deleteTaskById } = advertStore();
   // Access the 'accessToken' from the 'userStore'.
   const { accessToken } = userStore();
 
@@ -64,8 +67,8 @@ export const Tasks = () => {
         <h2>{text.heading}</h2>
         <p>{text.intro}</p>
         <p>{text.loremIpsum}</p>
-        {/* Render the 'CreateTask' component to add new tasks. */}
-        <CreateTask />
+        {/* Render the 'CreateAd' component to add new tasks. */}
+        <CreateAd />
         {/* Conditional rendering based on the number of tasks. */}
         {tasks.length === 0 ? (
           <>

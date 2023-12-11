@@ -1,3 +1,5 @@
+// ADAPT THIS FILE FOR OUR ADVERTS
+
 import mongoose from "mongoose";
 
 // Import the Schema class from the Mongoose library
