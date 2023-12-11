@@ -1,47 +1,41 @@
-//Detaljerad sida för varje lekplats
-
-// PlaygroundDetails.jsx
-
-// PlaygroundDetails.jsx
-
-import React, { useEffect, useState } from "react";
+import "./playgrounddetails.css"
+import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
+import usePlaygroundStore from "../stores/usePlaygroundStore";
+import { BackBtn } from "../components/BackBtn";
 
 const PlaygroundDetails = () => {
-  const { id } = useParams();
-  const [playgroundDetails, setPlaygroundDetails] = useState(null);
+  const { id } = useParams(); // Get the 'id' parameter from the route
+  const { getPlaygroundDetails, playgroundDetails } = usePlaygroundStore();
 
   useEffect(() => {
-    // Log the URL before making the fetch request
-    console.log("Fetching details for playground with ID:", id);
-
-    // Fetch detailed information for the specific playground using the id
-    const fetchPlaygroundDetails = async () => {
-      try {
-        const response = await fetch(`https://your-api-endpoint/playground/${id}`);
-        const data = await response.json();
-        setPlaygroundDetails(data); // Assuming your API returns detailed playground information
-      } catch (error) {
-        console.error("Error fetching playground details:", error);
-      }
-    };
-
-    fetchPlaygroundDetails();
-  }, [id]); // Fetch playground details whenever the id parameter changes
+    getPlaygroundDetails(id);
+  }, [id, getPlaygroundDetails]); // Fetch playground details when the 'id' changes or when the getPlaygroundDetails function changes
 
   if (!playgroundDetails) {
-    // Optional: Show a loading spinner or message while fetching data
+    // You might want to handle the case when details are still loading
     return <div>Loading...</div>;
   }
 
   return (
     <div>
+        <BackBtn />
+    <div className="playground-details-container">
       <h2>{playgroundDetails.name}</h2>
+      <h3>{playgroundDetails.city}, {playgroundDetails.postcode}, {playgroundDetails.street}</h3>
       <p>{playgroundDetails.description}</p>
-      {/* Add more details here based on your API response */}
+
+      <h2>Vad finns på lekplatsen:</h2>
+      <p>Wheelchair: {playgroundDetails.wheelchair}</p>
+      <p>Roundabout:{playgroundDetails.roundabout}</p>
+      <p>Zipwire:{playgroundDetails.zipwire}</p>
+      <p>Swing:{playgroundDetails.swing}</p>
+      <p>Basketswing:{playgroundDetails.basketswing}</p>
+      <p>Sandpit:{playgroundDetails.sandpit}</p>
+      {/* Add other details you want to display */}
+    </div>
     </div>
   );
 };
 
 export default PlaygroundDetails;
-

@@ -1,0 +1,15 @@
+.back-link {
+    position: absolute;
+    display: inline-flex;
+    color: #fff;
+    align-items: center;
+    font-weight: 700;
+    text-decoration: none;
+    left: 3rem;
+    top: 0.6rem;
+    filter: drop-shadow(2px 3px 4px rgb(0 0 0/0.5));
+  }
+
+.playground-details-container {
+    border: 1px solid black;
+  }

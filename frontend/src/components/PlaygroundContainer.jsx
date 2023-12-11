@@ -13,23 +13,23 @@ const PlaygroundContainer = () => {
     return (
       <div className="flex-container">
         {playgrounds.map((playground, index) => {
-          // Ensure that playground.name is defined
-          if (playground.name) {
-            // Use encodeURIComponent to handle spaces and special characters in the name
-            const encodedName = encodeURIComponent(playground.name);
+          // Ensure that playground.id is defined
+          if (playground.id) {
+            // Use encodeURIComponent to handle spaces and special characters in the ID
+            const encodedId = encodeURIComponent(playground.id);
   
             return (
               <div className="playground" key={index}>
                 <h2>{playground.name}</h2>
                 <p>{playground.description}</p>
-                <Link to={`/playground/${encodedName}`}>
+                <Link key={playground.id} to={`/playground/${playground.id}`}>
                   <button>More Details</button>
-                </Link>
+                  </Link>
               </div>
             );
           } else {
-            // Handle the case where playground.name is undefined
-            console.error("Invalid playground name format (undefined):", playground.name);
+            // Handle the case where playground.id is undefined
+            console.error("Invalid playground ID format (undefined):", playground.id);
             return null;
           }
         })}
@@ -38,4 +38,3 @@ const PlaygroundContainer = () => {
   };
   
   export default PlaygroundContainer;
-  
