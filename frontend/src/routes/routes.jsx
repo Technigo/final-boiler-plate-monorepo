@@ -3,23 +3,26 @@ import { Route } from "react-router-dom";
 // Import various page components used as route elements.
 import { Home } from "../pages/Home";
 import { Register } from "../pages/Register";
-import { Tasks } from "../pages/Tasks";
 import { Login } from "../pages/Login";
-import { NotFound } from "../pages/NotFound";
+import { ErrorPage } from "../pages/ErrorPage";
+import { SecretPage } from "../pages/SecretPage";
+import  PlaygroundDetails  from "../pages/PlaygroundDetails";
 
 // Define the 'routes' variable as a JSX expression.
 const routes = (
   <>
     {/* Define a route for the root path ('/') that renders the 'Login' component. */}
-    <Route path="/" element={<Login />} />
+    <Route path="/" element={<Home />} />
+    {/* Define a route for the ('/playground') path that renders the 'Playground' component. */}
+    <Route path="/playground/:id" element={<PlaygroundDetails />} />
     {/* Define a route for the '/home' path that renders the 'Home' component. */}
-    <Route path="/home" element={<Home />} />
-    {/* Define a route for the '/tasks' path that renders the 'Tasks' component. */}
-    <Route path="/tasks" element={<Tasks />} />
+    <Route path="/login" element={<Login />} />
+    {/* Define a route for the '/secretpage' path that renders the 'SecretPage' component, aka the user's favorited playgrounds. */}
+    <Route path="/secretpage" element={<SecretPage />} />
     {/* Define a route for the '/register' path that renders the 'Register' component. */}
     <Route path="/register" element={<Register />} />
     {/* Define a catch-all route that matches any other path ('*') and renders the 'NotFound' component. */}
-    <Route path="*" element={<NotFound />} />
+    <Route path="*" element={<ErrorPage />} />
   </>
 );
 

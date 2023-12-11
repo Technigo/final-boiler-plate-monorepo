@@ -1,0 +1,39 @@
+/* styles.css */
+
+/* Add your styling here */
+.playground {
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin: 10px;
+  text-align: center;
+  width: 200px; /* Set a fixed width for each box */
+}
+
+.flex-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  max-height: 500px; /* Set a fixed height for the container */
+  overflow-y: auto; /* Enable vertical scrolling */
+}
+
+.playground a {
+  color: #007bff;
+  text-decoration: none;
+  display: block; /* Ensure the anchor takes full width within the box */
+  margin-top: 10px; /* Add some spacing between the content and the link */
+}
+
+/* Allow content to determine the height */
+.playground h2,
+.playground p {
+  margin: 0;
+}
+
+/* Ensure flexibility for content */
+.playground p {
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

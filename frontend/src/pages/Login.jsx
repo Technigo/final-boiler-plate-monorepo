@@ -1,98 +1,68 @@
-// Import the 'Logos' component and the 'Link' component from 'react-router-dom'.
-import Logos from "../components/Logos";
-import { Link } from "react-router-dom";
-// Import the 'userStore' from the 'userStore' module.
-import { userStore } from "../stores/userStore"; // Make sure this is correctly imported
-// Import the 'useState' and 'useNavigate' hooks from 'react'.
 import { useState } from "react";
-import { useNavigate } from "react-router-dom"; // Import useNavigate
+import { useNavigate, Link } from "react-router-dom";
+import { useUserStore } from "../stores/useUserStore";
+import { Button } from "../components/Button";
+import { Loader } from "../components/Loader";
+import "./form.css";
 
-// Define the 'Login' functional component.
 export const Login = () => {
-  // Create state variables for 'username' and 'password' using 'useState'.
+  const navigate = useNavigate();
+  const { loginUser } = useUserStore();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  // Use the 'useNavigate' hook to programmatically navigate between routes.
-  const navigate = useNavigate();
+  const [loading, setLoading] = useState(false); // New state for loading indicator
 
-  // Access the 'handleLogin' function from the 'userStore'.
-  const storeHandleLogin = userStore((state) => state.handleLogin);
-
-  // Function to handle the click event of the login button.
-  const onLoginClick = async () => {
-    if (!username || !password) {
-      // Display an alert if either 'username' or 'password' is empty.
-      alert("Please enter both username and password");
-      return;
-    }
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    setLoading(true); // Set loading to true when login starts
     try {
-      // Call the 'handleLogin' function from 'userStore' with 'username' and 'password' parameters.
-      await storeHandleLogin(username, password);
-      // Get the 'isLoggedIn' state from 'userStore'.
-      const isLoggedIn = userStore.getState().isLoggedIn;
-      if (isLoggedIn) {
-        // If the user is logged in, navigate to the "/home" route.
-        navigate("/home");
+      await loginUser(username, password);
+      if (useUserStore.getState().isLoggedIn) {
+        navigate("/secretpage");
       }
-      // Additional logic after successful login can be added here.
-    } catch (error) {
-      // Handle any errors that occur during login and display an alert.
-      console.error("Login error:", error);
-      alert("An error occurred during login");
+    } finally {
+      setLoading(false); // Set loading to false when login completes (success or failure)
     }
   };
 
-  // Text content for the heading and paragraphs.
-  const text = {
-    heading: "Login Page",
-    intro: "login here...",
-    loremIpsum:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore, vitae fugit ipsam quo accusantium autem officia necessitatibus ullam voluptati",
-  };
-
-  // Render the component content.
   return (
-    <>
-      <nav>
-        {/* Create a navigation menu with links to the login and sign-up routes. */}
-        <ul className="app-ul">
-          <li className="app-li">
-            <Link to="/">Login</Link>
-          </li>
-          <li className="app-li">
-            <Link to="/register">Sign Up</Link>
-          </li>
-        </ul>
-      </nav>
-      {/* Render the 'Logos' component. */}
-      <Logos />
-      <div>
-        {/* Display the heading and paragraphs. */}
-        <h2>{text.heading}</h2>
-        <p>{text.intro}</p>
-        <p>{text.loremIpsum}</p>
-        <div className="user-login">
-          {/* Create input fields for 'username' and 'password' and associate them with state variables. */}
+    <div className="form-container">
+      <form onSubmit={handleLogin} className="form">
+        <div className="form-group">
+        <h1>Sign in</h1>
+          <label htmlFor="username">Username:</label>
           <input
+            className="input-field"
             type="text"
-            placeholder="Username"
+            id="username"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
+            required
           />
+        </div>
+        <div className="form-group">
+          <label htmlFor="password">Password:</label>
           <input
+            className="input-field"
             type="password"
-            placeholder="Password"
+            id="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
+            required
           />
-          {/* Create a button for logging in and attach the 'onLoginClick' event handler. */}
-          <button onClick={onLoginClick}>Login</button>
         </div>
-      </div>
-    </>
+        <div className="loginAndRegisterBtns">
+          <Button
+            className={"button"}
+            handleOnClick={handleLogin}
+            btnText={"Login"}
+          />
+          <Link to="/register">
+            <Button className={"button"} btnText={"Register"} />
+          </Link>
+        </div>
+      </form>
+      {loading && <Loader />} {/* Display loader when loading is true */}
+    </div>
   );
 };
-
-// SUMMARY
-
-// This code defines the Login component, which handles user login functionality. It imports necessary components, hooks, and the user store, and it defines state variables for username and password. The component also provides a form for entering login credentials, handles the login button click event, and uses React Router to navigate between login and sign-up routes. Additionally, it renders text content and the 'Logos' component.

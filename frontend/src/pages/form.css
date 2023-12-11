@@ -1,0 +1,42 @@
+.form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    flex-direction: column;
+}
+
+.form {
+    background: #F2FFE9;
+    margin-bottom: 20px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-group {
+    margin-bottom: 20px;
+    /* Adjust the margin-bottom as needed */
+}
+
+.button {
+    border-radius: 8px;
+    border: none;
+    height: 25px;
+    width: fit-content;
+    min-width: 25px;
+    margin: 10px;
+    background-color: #557C55;
+    color: #F2FFE9;
+}
+
+h1 {
+    color: #557C55;
+}
+
+.input-field {
+    border-radius: 8px;
+    border: none;
+}

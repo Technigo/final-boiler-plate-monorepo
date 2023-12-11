@@ -6,5 +6,4 @@ node_modules
 .env.production.local
 
 
-# Comment out later ;) 
-# .env
+.env
