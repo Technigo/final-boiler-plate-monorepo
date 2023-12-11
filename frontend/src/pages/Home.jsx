@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import Logos from "../components/Logos";
 import { Link } from "react-router-dom";
 
+
 // Define the 'Home' functional component.
 export const Home = () => {
   // Define text content for the heading and subheading.
@@ -45,6 +46,7 @@ export const Home = () => {
   // Render the component content.
   return (
     <>
+
       <nav>
         {/* Create a navigation menu with links to various routes. */}
         <ul className="app-ul">
@@ -62,12 +64,14 @@ export const Home = () => {
       </nav>
       {/* Render the 'Logos' component. */}
       <Logos />
+
       {/* Display the heading and subheading. */}
       <h1 className="heading">{text.heading}</h1>
       <h2>{text.subheading}</h2>
       {/* (Note: 'text.intro' is not defined in the code.) */}
       {/* Display additional content (text.intro is missing). */}
       <p>{text.intro}</p>
+
     </>
   );
 };
