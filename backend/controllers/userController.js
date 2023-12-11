@@ -1,3 +1,4 @@
+//Diego//
 import { UserModel } from "../models/UserModel";
 //asyncHandler: We use asyncHandler to simplify error handling in asynchronous code. It helps us avoid writing repetitive try-catch blocks by automatically catching errors and passing them to our error handling middleware. This makes our code cleaner and more readable, reducing the risk of unhandled exceptions that could crash the server.
 import asyncHandler from "express-async-handler";
