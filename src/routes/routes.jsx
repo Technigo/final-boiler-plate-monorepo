@@ -1,7 +1,6 @@
 import { Route } from "react-router-dom";
 import { Home } from "../pages/Home";
 import { Register } from "../pages/Register";
-import { Tasks } from "../pages/Tasks";
 import { Login } from "../pages/Login";
 import { NotFound } from "../pages/NotFound";
 
