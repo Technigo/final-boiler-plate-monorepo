@@ -19,7 +19,9 @@ export const CollectionRecipes = () => {
             }
 
             const data = await response.json();
-            console.log(data)
+            setRecipes(data.recipes)
+            console.log(recipes)
+            // setRecipes(data.recipes)
         } catch (error) {
             console.error(error);
         }
@@ -27,10 +29,22 @@ export const CollectionRecipes = () => {
 
     useEffect(() => {
         fetchCollectionRecipes()
+        console.log(recipes)
     }, [])
 
     return (
-        <div>CollectionRecipes</div>
+        <div>
+        <h2>Recipes:</h2>
+        <ul>
+          {recipes.map((recipe, index) => (
+            <li key={index}>
+              {/* Render your recipe details here */}
+              <div>{recipe.ingredients}</div>
+              <div>{recipe.instructions}</div>
+            </li>
+          ))}
+        </ul>
+      </div>
     )
 }
 

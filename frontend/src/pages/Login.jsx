@@ -10,24 +10,10 @@ import { PromptForm } from '../components/PromptForm';
 import { CollectionRecipes } from "../components/collectionRecipes/CollectionRecipes"
 
 export const Login = () => {
-  const { recipes, setRecipes } = recipeStore()
-
 
   return (
     <>
       <PromptForm />
-      <div>
-        <h2>Recipes:</h2>
-        <ul>
-          {recipes.map((recipe, index) => (
-            <li key={index}>
-              {/* Render your recipe details here */}
-              <div>{recipe.ingredients}</div>
-              <div>{recipe.instructions}</div>
-            </li>
-          ))}
-        </ul>
-      </div>
       <CollectionRecipes />
     </>
   );
