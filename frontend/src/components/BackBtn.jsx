@@ -10,7 +10,6 @@ export const BackBtn = () => (
         className="back-icon"
         ariaLabel="Go Back to all playgrounds"
       />
-      {/* Display "Movies" next to the arrow for the link text */}
       Tillbaka
     </Link>
   </>

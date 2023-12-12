@@ -1,12 +1,12 @@
-import React, { useEffect } from "react";
+import React, { useLayoutEffect } from "react";
 import usePlaygroundStore from "../stores/usePlaygroundStore";
-import "./playgroundcontainer.css"
+import "../pages/Home/home.css"
 import { Link } from "react-router-dom";
 
 const PlaygroundContainer = () => {
     const { playgrounds, fetchPlaygrounds } = usePlaygroundStore();
   
-    useEffect(() => {
+    useLayoutEffect(() => {
       fetchPlaygrounds();
     }, []); // Fetch playgrounds on component mount
   

@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
-import { useUserStore } from "../stores/useUserStore";
-import { Button } from "../components/Button";
-import { Loader } from "../components/Loader";
-import "./form.css";
+import { useUserStore } from "../../stores/useUserStore";
+import { Button } from "../../components/Button";
+import { Loader } from "../../components/Loader";
+import "../../pages/form.css";
 
 export const Login = () => {
   const navigate = useNavigate();

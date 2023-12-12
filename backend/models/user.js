@@ -18,6 +18,10 @@ const userSchema = new Schema({
     required: true,
     minlength: 6 //Not included in project-auth
   },
+  createdAt: {
+    type: Date,
+    default: () => new Date()
+  }
 });
 
 const User = model('User', userSchema);

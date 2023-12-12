@@ -1,8 +1,8 @@
-import { useUserStore } from "../stores/useUserStore";
+import { useUserStore } from "../../stores/useUserStore";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
-import { Button } from "../components/Button";
-import "./form.css";
+import { Button } from "../../components/Button";
+import "../../pages/form.css";
 
 export const Register = () => {
     const navigate = useNavigate();
