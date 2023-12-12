@@ -1,7 +1,8 @@
 // Import the necessary modules and functions
 import express from "express";
-import Stories from "../stories.json";
+//import Stories from "../stories.json";
 import listEndpoints from "express-list-endpoints";
+import { StoryModel } from "../models/StoryModel";
 
 // Create an instance of the Express router
 const router = express.Router();
@@ -10,22 +11,57 @@ router.get("/", (req, res) => {
   res.send(listEndpoints(router));
 });
 
-//routes for all stories
+//route to see all stories
 router.get("/stories", async (req, res) => {
-  const stories = await Stories.find().sort({ createdAt: "desc" }).exec();
-  res.json(stories);
+  try {
+    const stories = await StoryModel.find().sort({ createdAt: -1 }); // Fetch all stories and sort them by creation date
+    res.json(stories);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
 });
-// Define a route for handling PUT requests to update a specific task by ID
-//router.put("/update/:id", updateTaskController); // When a PUT request is made to /update/:id, execute the updateTaskController function
 
-// Define a route for handling DELETE requests to delete all tasks
-//router.delete("/deleteAll", deleteAllTasksController); // When a DELETE request is made to /deleteAll, execute the deleteAllTasksController function
+//route for post a story
+router.post("/stories", async (req, res) => {
+  const newStory = new StoryModel({
+    heading: req.body.heading,
+    content: req.body.content,
+    ranking: req.body.ranking, // This can be optional as it has a default value
+  });
 
-//// Define a route for handling DELETE requests to delete a specific task by ID
-//router.delete("/delete/:id", deleteSpecificTaskController); // When a DELETE request is made to /delete/:id, execute the deleteSpecificTaskController function
+  try {
+    const savedStory = await newStory.save();
+    res.status(201).json(savedStory);
+  } catch (error) {
+    res.status(400).json({ message: error.message });
+  }
+});
 
-// Define a route for handling POST requests to add a new task
-//router.post("/add", authenticateUser, addTaskController); // When a POST request is made to /add, authenticate the user using middleware and then execute the addTaskController function
+//route for rank/like
+router.put("/stories/:id/rank", async (req, res) => {
+  const storyId = req.params.id;
+  const newRanking = req.body.ranking;
+
+  if (newRanking === undefined) {
+    return res.status(400).json({ message: "Ranking not provided" });
+  }
+
+  try {
+    const updatedStory = await StoryModel.findByIdAndUpdate(
+      storyId,
+      { ranking: newRanking },
+      { new: true } // Returns the updated document
+    );
+
+    if (!updatedStory) {
+      return res.status(404).json({ message: "Story not found" });
+    }
+
+    res.json(updatedStory);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+});
 
 // Export the router for use in the main application
 export default router;
