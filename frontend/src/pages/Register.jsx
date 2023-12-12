@@ -1,4 +1,4 @@
-// Import necessary components, hooks, and stores.
+//Diego//// Import necessary components, hooks, and stores.
 import Logos from "../components/Logos";
 import { userStore } from "../stores/userStore";
 import { useState } from "react";

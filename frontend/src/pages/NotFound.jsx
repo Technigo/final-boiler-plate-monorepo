@@ -1,4 +1,4 @@
-// Import the 'React' library.
+//Diego//// Import the 'React' library.
 import React from "react";
 
 // Define the 'NotFound' functional component.

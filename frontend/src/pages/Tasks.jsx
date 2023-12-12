@@ -35,7 +35,7 @@ export const Tasks = () => {
   // Function to handle the click event of the logout button.
   const onLogoutClick = () => {
     storeHandleLogout();
-    // Additional logic after logout can be added here.
+    //Diego//// Additional logic after logout can be added here.
     alert("Log out successful");
     navigate("/"); // You can change this to the login route
   };

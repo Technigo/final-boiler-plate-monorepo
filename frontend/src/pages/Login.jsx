@@ -1,4 +1,4 @@
-// Import the 'Logos' component and the 'Link' component from 'react-router-dom'.
+//Diego//// Import the 'Logos' component and the 'Link' component from 'react-router-dom'.
 import Logos from "../components/Logos";
 import { Link } from "react-router-dom";
 // Import the 'userStore' from the 'userStore' module.
