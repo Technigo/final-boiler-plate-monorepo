@@ -4,7 +4,7 @@ import { Route } from "react-router-dom";
 import { Home } from "../pages/Home/Home";
 import { Register } from "../pages/Register/Register";
 import { Login } from "../pages/Login/Login";
-import { ErrorPage } from "../pages/Errorpage/ErrorPage";
+// import { ErrorPage } from "../pages/Errorpage/ErrorPage";
 import  PlaygroundDetails  from "../pages/Playgrounddetails/PlaygroundDetails";
 import { MyFavorites } from "../pages/MyFavorites/MyFavorites";
 
@@ -22,7 +22,7 @@ const routes = (
     {/* Define a route for the '/register' path that renders the 'Register' component. */}
     <Route path="/register" element={<Register />} />
     {/* Define a catch-all route that matches any other path ('*') and renders the 'NotFound' component. */}
-    <Route path="*" element={<ErrorPage />} />
+    {/* <Route path="*" element={<ErrorPage />} /> */}
   </>
 );
 
