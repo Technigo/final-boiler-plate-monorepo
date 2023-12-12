@@ -1,8 +1,10 @@
 
 import React, { useState } from 'react';
 import './promptform.css';
+import { recipeStore } from '../stores/recipeStore';
 
-export const PromptForm = ({ addNewRecipe }) => {
+export const PromptForm = () => {
+    const { addNewRecipe } = recipeStore()
     const [errorMessage, setErrorMessage] = useState('');
     const [inputRecipe, setInputRecipe] = useState('');
 
@@ -38,7 +40,7 @@ export const PromptForm = ({ addNewRecipe }) => {
 
     return (
         <div className="promptform-wrapper">
-            <h1>OpenAIrFeasts</h1>
+            <h1>OpenAIrFeast</h1>
             <form onSubmit={handleFormSubmit}>
                 <textarea
                     placeholder="Your ingredients"

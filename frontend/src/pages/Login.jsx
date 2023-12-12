@@ -4,18 +4,18 @@ import { Link } from 'react-router-dom';
 import Logos from '../components/Logos';
 import { userStore } from '../stores/userStore';
 import { useNavigate } from 'react-router-dom';
+
+import { recipeStore } from "../stores/recipeStore"
 import { PromptForm } from '../components/PromptForm';
+import { CollectionRecipes } from '../components/collectionRecipes/CollectionRecipes';
 
 export const Login = () => {
-  const [recipes, setRecipes] = useState([]);
+  const { recipes, setRecipes } = recipeStore()
 
-  const addNewRecipe = (newRecipe) => {
-    setRecipes((prevRecipes) => [...prevRecipes, newRecipe]);
-  };
 
   return (
     <>
-      <PromptForm addNewRecipe={addNewRecipe} />
+      <PromptForm />
       <div>
         <h2>Recipes:</h2>
         <ul>
@@ -28,6 +28,7 @@ export const Login = () => {
           ))}
         </ul>
       </div>
+      <CollectionRecipes />
     </>
   );
 };
