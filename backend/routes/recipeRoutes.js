@@ -1,7 +1,8 @@
+// Defines an Express router for handling and listing the available endpoints
+
 import express from "express";
 import asyncHandler from "express-async-handler";
 import {
-    // getListEndController,
     getRecipeController,
     postGenerateRecipeController,
 } from "../controllers/recipeController";
@@ -11,10 +12,12 @@ const router = express.Router()
 
 const listEndpoints = require("express-list-endpoints")
 
+// Route to list available endpoints
 router.get("/", asyncHandler(async (req, res) => {
     const endpoints = {
         endpoints: listEndpoints(router),
     };
+    // Respond with the list of endpoints
     res.json(endpoints);
 }));
 

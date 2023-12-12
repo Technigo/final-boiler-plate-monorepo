@@ -1,36 +1,45 @@
+// Mounted in page: Login. Represents a form where users can input a list of ingredients, submit the form, and receive a generated recipe. 
 
 import React, { useState } from 'react';
 import './promptform.css';
 import { recipeStore } from '../stores/recipeStore';
 
+// Define the PromptForm component
 export const PromptForm = () => {
+    // Destructure the addNewRecipe function from the recipeStore
     const { addNewRecipe } = recipeStore()
+    // Initialize state variables using the useState hook
     const [errorMessage, setErrorMessage] = useState('');
     const [inputRecipe, setInputRecipe] = useState('');
 
+    // Define the form submission handler function
     const handleFormSubmit = async (event) => {
         try {
             event.preventDefault();
 
+            // Define the API endpoint for posting new recipes
             const postAPI = 'http://localhost:3001/generate-recipe';
 
+            // Create an object with the input recipe data
             const newRecipeData = {
                 ingredients: inputRecipe,
                 instructions: "Your instructions here",
             };
 
+            // Make a POST request to the API with the input data
             const response = await fetch(postAPI, {
                 method: 'POST',
                 body: JSON.stringify(newRecipeData),
                 headers: { 'Content-Type': 'application/json' },
             });
 
+            // Check if the response is not okay
             if (!response.ok) {
                 throw new Error(`Oh no, error, HTTP! ${response.status}`);
             }
 
+            // Parse the JSON response and add the new recipe to the state
             const data = await response.json();
-
             addNewRecipe(data);
             setInputRecipe('');
         } catch (error) {
@@ -38,6 +47,7 @@ export const PromptForm = () => {
         }
     };
 
+    // Render the component. Form element
     return (
         <div className="promptform-wrapper">
             <h1>OpenAIrFeast</h1>

@@ -1,3 +1,5 @@
+// Entry point of the React application using React Router for navigation
+
 import { BrowserRouter, Routes, Link } from "react-router-dom";
 import routes from "./routes/routes";
 import "./App.css";

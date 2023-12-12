@@ -1,3 +1,5 @@
+// Defines a Mongoose schema for recipes and creates a Mongoose model based on that schema. Exports the model for use in other parts of the application
+
 import mongoose from "mongoose";
 
 const { Schema } = mongoose;
