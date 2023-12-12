@@ -3,14 +3,38 @@ const autoIncrement = require('mongoose-auto-increment');
 
 const restaurantSchema = new mongoose.Schema({
   restaurantID: Number, // This will be auto-generated
-  restaurantName: String,
-  address: String,
-  zipcode: String,
-  city: String,
-  country: String,
-  borough: String,
-  cuisine: String,
-  occasion: {
+  restaurantName: {
+    type: String,
+    required: true,
+    minlength: 5, // Minimum length of 5 characters
+  },
+  address: {
+    type: String,
+    minlength: 5, // Minimum length of 5 characters
+  },
+  zipcode: {
+    type: String,
+    minlength: 5, // Minimum length of 5 characters
+  },
+  city: {
+    type: String,
+    required: true,
+    minlength: 5, // Minimum length of 5 characters
+  },
+  country: {
+    type: String,
+    minlength: 5, // Minimum length of 5 characters
+  },
+  borough: {
+    type: String,
+    minlength: 5, // Minimum length of 5 characters
+  },
+  cuisine: {
+    type: String,
+    required: true,
+    minlength: 5, // Minimum length of 5 characters
+  },
+  occasion: [{
     type: String,
     enum: [
       "Have dinner with the in-laws",
@@ -30,8 +54,9 @@ const restaurantSchema = new mongoose.Schema({
       "Have a meparty aka dinner for one",
       "Go on a nice date with that special someone"
     ],
-  },
-  mood: {
+    required: true, // Make it required
+  }],
+  mood: [{
     type: String,
     enum: [
       "Cozy",
@@ -50,19 +75,26 @@ const restaurantSchema = new mongoose.Schema({
       "Extended dining hours",
       "Romantic"
     ],
+    required: true, // Make it required
+  }],
+  description: {
+    type: String,
+    required: true,
+    minlength: 5, // Minimum length of 5 characters
   },
-  description: String,
-  url: String,
+  url: {
+    type: String,
+    minlength: 5, // Minimum length of 5 characters
+  },
 });
 
 restaurantSchema.plugin(autoIncrement.plugin, {
   model: 'Restaurant',
   field: 'restaurantID',
-  startAt: 1, // The initial value for restaurantID
-  incrementBy: 1, // Increment by 1 each time a new restaurant is added
+  startAt: 1,
+  incrementBy: 1,
 });
 
 const Restaurant = mongoose.model('Restaurant', restaurantSchema);
 
 module.exports = Restaurant;
-
