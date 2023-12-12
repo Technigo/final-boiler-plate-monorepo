@@ -14,6 +14,10 @@ router.post("/register", registerUserController); // When a POST request is made
 // LOGIN ROUTE: Handle user login
 router.post("/login", loginUserController); // When a POST request is made to /login, execute the loginUserController function
 
+// UPDATE ROUTE: Handle user profile update
+
+// DELETE ROUTE: Hander user removal
+
 // Export the router for use in the main application
 export default router;
 
