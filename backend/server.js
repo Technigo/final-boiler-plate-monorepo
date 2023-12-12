@@ -10,7 +10,7 @@ const dotenv = require('dotenv').config();
 const app = express();
 const PORT = 3002;
 
-const mongoUrl = process.env.MONGO_URL || "mongodb://localhost/project-auth";
+const mongoUrl = process.env.MONGO_URL || "mongodb://localhost/project-playground";
 connect(mongoUrl, { useNewUrlParser: true, useUnifiedTopology: true });
 
 app.use(cors());  // Use cors middleware here
