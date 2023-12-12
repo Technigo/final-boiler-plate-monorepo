@@ -21,7 +21,7 @@ router.get("/stories", async (req, res) => {
 // Define a route for handling DELETE requests to delete all tasks
 //router.delete("/deleteAll", deleteAllTasksController); // When a DELETE request is made to /deleteAll, execute the deleteAllTasksController function
 
-// Define a route for handling DELETE requests to delete a specific task by ID
+//// Define a route for handling DELETE requests to delete a specific task by ID
 //router.delete("/delete/:id", deleteSpecificTaskController); // When a DELETE request is made to /delete/:id, execute the deleteSpecificTaskController function
 
 // Define a route for handling POST requests to add a new task
