@@ -1,10 +1,11 @@
 import { useEffect } from "react";
+import { recipeStore } from "../../stores/recipeStore";
 import "./collectionRecipes.css"
 
 const getAPI = 'http://localhost:3001/recipes';
 
 export const CollectionRecipes = () => {
-
+    const { recipes, setRecipes } = recipeStore()
     const fetchCollectionRecipes = async () => {
         try {
 
