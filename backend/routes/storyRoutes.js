@@ -1,20 +1,20 @@
 // Import the necessary modules and functions
 import express from "express";
-
-// import {
-//   getTasksController,
-//   updateTaskController,
-//   deleteAllTasksController,
-//   deleteSpecificTaskController,
-//   addTaskController,
-// } from "../controllers/taskController"; // Import controller functions for tasks
+import Stories from "../stories.json";
+import listEndpoints from "express-list-endpoints";
 
 // Create an instance of the Express router
 const router = express.Router();
 
-// Define a route for handling GET requests to retrieve all tasks
-//router.get("/get", authenticateUser, getTasksController); // When a GET request is made to /get, authenticate the user using middleware and then execute the getTasksController function
+router.get("/", (req, res) => {
+  res.send(listEndpoints(router));
+});
 
+//routes for all stories
+router.get("/stories", async (req, res) => {
+  const stories = await Stories.find().sort({ createdAt: "desc" }).exec();
+  res.json(stories);
+});
 // Define a route for handling PUT requests to update a specific task by ID
 //router.put("/update/:id", updateTaskController); // When a PUT request is made to /update/:id, execute the updateTaskController function
 
