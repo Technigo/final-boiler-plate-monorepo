@@ -3,6 +3,8 @@ import express from "express";
 import {
   registerUserController,
   loginUserController,
+  updateUserController,
+  deleteUserController
 } from "../controllers/userController"; // Import controller functions for user registration and login
 
 // Create an instance of the Express router
@@ -15,8 +17,10 @@ router.post("/register", registerUserController); // When a POST request is made
 router.post("/login", loginUserController); // When a POST request is made to /login, execute the loginUserController function
 
 // UPDATE ROUTE: Handle user profile update
+router.put("/update/:userId", updateUserController);
 
 // DELETE ROUTE: Hander user removal
+router.delete("/delete/:userId", deleteUserController);
 
 // Export the router for use in the main application
 export default router;

@@ -117,8 +117,7 @@ export const updateUserController = asyncHandler(async (req, res) => {
 
   try {
     // Find a user in the database with the same ID and update the details
-    const userToBeUpdated = await UserModel.findByIdAndUpdate({ 
-      userId,
+    const userToBeUpdated = await UserModel.findByIdAndUpdate(userId, {
       password: password,
       email: email,
       region: region,
@@ -150,7 +149,7 @@ export const deleteUserController = asyncHandler(async (req, res) => {
 
   try {
     // Find a user in the database with the same ID and delele
-    const userToBeDeleted = await UserModel.findByIdAndDelete({ userId });
+    const userToBeDeleted = await UserModel.findByIdAndDelete(userId);
 
     if (userToBeDeleted) {
       res.status(200).json({
