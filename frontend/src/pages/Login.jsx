@@ -32,7 +32,7 @@ export const Login = () => {
       const isLoggedIn = userStore.getState().isLoggedIn;
       if (isLoggedIn) {
         // If the user is logged in, navigate to the "/home" route.
-        navigate("/home");
+        navigate("/tasks");
       }
       // Additional logic after successful login can be added here.
     } catch (error) {

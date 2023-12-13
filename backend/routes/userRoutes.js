@@ -16,8 +16,8 @@ router.post("/register", registerUserController); // When a POST request is made
 router.post("/login", loginUserController); // When a POST request is made to /login, execute the loginUserController function
 
 // Add the authenticateUser middleware to the route to protect it
-router.get("/secrets", authenticateUser);
-router.get("/secrets", async (req, res) => {
+router.get("/tasks", authenticateUser);
+router.get("/tasks", async (req, res) => {
   res.json({ secret: "This is top secret" });
 });
 

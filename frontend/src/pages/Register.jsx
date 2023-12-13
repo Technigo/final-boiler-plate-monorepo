@@ -29,7 +29,7 @@ export const Register = () => {
       await storeHandleSignup(username, password);
       if (username && password) {
         // If the signup is successful, navigate to the login route ("/").
-        navigate("/"); // Replace with your desired path
+        navigate("/tasks"); // Replace with your desired path
       }
     } catch (error) {
       // Handle any errors that occur during signup and display an alert.

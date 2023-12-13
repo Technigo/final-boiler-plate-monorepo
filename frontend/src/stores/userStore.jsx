@@ -12,9 +12,9 @@ export const userStore = create((set, get) => ({
   setUsername: (username) => set({ username }),
 
   // Initialize email state.
-  email: "",
+  //email: "",
   // Define a function to set the email state.
-  setEmail: (email) => set({ email }),
+  //setEmail: (email) => set({ email }),
 
   // Initialize password state.
   password: "",
@@ -26,16 +26,16 @@ export const userStore = create((set, get) => ({
   // Define a function to set the accessToken state.
   setAccessToken: (token) => set({ accessToken: token }),
 
-  // Initialize isLoggedIn state with false.
+  // Initialize isLoggedIn state with false..
   isLoggedIn: false,
   // Define a function to set the isLoggedIn state.
   setIsLoggedIn: (isLoggedIn) => set({ isLoggedIn }),
 
   // FUNCTION TO REGISTER USERS
-  handleSignup: async (username, password, email) => {
+  handleSignup: async (username, password) => {
     // Check if required fields are provided and display an alert if not.
-    if (!username || !password || !email) {
-      alert("Please enter username, email, and password");
+    if (!username || !password) {
+      alert("Please enter username and password");
       return;
     }
 
@@ -46,7 +46,7 @@ export const userStore = create((set, get) => ({
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ email, username, password }),
+        body: JSON.stringify({ username, password }),
       });
 
       // Parse the response data as JSON.
