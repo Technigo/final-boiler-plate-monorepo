@@ -31,7 +31,7 @@ export const Login = () => {
       // Get the 'isLoggedIn' state from 'userStore'.
       const isLoggedIn = userStore.getState().isLoggedIn;
       if (isLoggedIn) {
-        // If the user is logged in, navigate to the "/home" route.
+        // If the user is logged in, navigate to the "/tasks" route.
         navigate("/tasks");
       }
       // Additional logic after successful login can be added here.
@@ -57,7 +57,7 @@ export const Login = () => {
         {/* Create a navigation menu with links to the login and sign-up routes. */}
         <ul className="app-ul">
           <li className="app-li">
-            <Link to="/">Login</Link>
+            <Link to="/login">Login</Link>
           </li>
           <li className="app-li">
             <Link to="/register">Sign Up</Link>

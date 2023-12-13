@@ -10,10 +10,12 @@ import { NotFound } from "../pages/NotFound";
 // Define the 'routes' variable as a JSX expression.
 const routes = (
   <>
-    {/* Define a route for the root path ('/') that renders the 'Login' component. */}
-    <Route path="/" element={<Login />} />
-    {/* Define a route for the '/home' path that renders the 'Home' component. */}
-    <Route path="/home" element={<Home />} />
+    {/* Define a route for the root path ('/') that renders the 'Home' component. */}
+    <Route path="/" element={<Home />} />
+    {/* Define a route for the '/login' path that renders the 'Login' component. */}
+    <Route path="/login" element={<Login />} />
+    {/* Define a route for the '/home' path that renders the 'Home' component.
+    <Route path="/home" element={<Home />} /> */}
     {/* Define a route for the '/tasks' path that renders the 'Tasks' component. */}
     <Route path="/tasks" element={<Tasks />} />
     {/* Define a route for the '/register' path that renders the 'Register' component. */}

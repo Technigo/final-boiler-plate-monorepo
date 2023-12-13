@@ -28,7 +28,7 @@ export const Register = () => {
       // Call the 'handleSignup' function from 'userStore' with 'username' and 'password' parameters.
       await storeHandleSignup(username, password);
       if (username && password) {
-        // If the signup is successful, navigate to the login route ("/").
+        // If the signup is successful, navigate to the task route ("/tasks").
         navigate("/tasks"); // Replace with your desired path
       }
     } catch (error) {
@@ -53,7 +53,7 @@ export const Register = () => {
         {/* Create a navigation menu with links to the login and sign-up routes. */}
         <ul className="app-ul">
           <li className="app-li">
-            <Link to="/">Login</Link>
+            <Link to="/login">Login</Link>
           </li>
           <li className="app-li">
             <Link to="/register">Sign Up</Link>

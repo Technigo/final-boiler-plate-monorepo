@@ -25,12 +25,26 @@ export const Tasks = () => {
   // Use the 'useEffect' hook to fetch tasks when 'tasks' or 'accessToken' change.
   useEffect(() => {
     fetchTasks();
-  }, [tasks, accessToken]);
+  }, [fetchTasks, accessToken]);
 
   // Initialize the 'navigate' function from React Router.
   const navigate = useNavigate();
   // Access the 'handleLogout' function from the 'userStore'.
   const storeHandleLogout = userStore((state) => state.handleLogout);
+
+  // Get 'isLoggedIn' and 'accessToken' from the 'userStore'.
+  const { isLoggedIn } = userStore();
+  console.log(isLoggedIn);
+  console.log(accessToken);
+
+  // useEffect hook to check user authentication status.
+  useEffect(() => {
+    if (!isLoggedIn) {
+      // If the user is not logged in, show an alert and navigate to the login route.
+      alert("no permission - here");
+      navigate("/"); // You can change this to the login route
+    }
+  }, [isLoggedIn, navigate]);
 
   // Function to handle the click event of the logout button.
   const onLogoutClick = () => {
@@ -47,7 +61,7 @@ export const Tasks = () => {
         {/* Create a navigation menu with links to the home, tasks, and sign-out routes. */}
         <ul className="app-ul">
           <li className="app-li">
-            <Link to="/home">Home</Link>
+            <Link to="/">Home</Link>
           </li>
           <li className="app-li">
             <Link to="/tasks">Tasks</Link>
