@@ -1,37 +1,47 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
-const navbarContainer = styled.navbar`
-  background-color: #B6244F; 
-  color: #504746; 
-  padding: 10px; 
-  text-align: center; 
-`;
-
-const navbarNav = styled.nav`
+const NavbarContainer = styled.nav`
+  background: #333;
+  color: white;
   display: flex;
-  justify-content: space-around;
-  margin-top: 10px;
+  justify-content: space-between;
+  padding: 1rem;
 `;
 
-const navbarLink = styled.a`
-  font-size: 16px;
-  font-family: Arial, sans-serif;
+const NavbarNav = styled.ul`
+  list-style: none;
+  display: flex;
+  margin: 0;
+  padding: 0;
+`;
+
+const NavItem = styled.li`
+  margin: 0 1rem;
+`;
+
+const NavbarLink = styled(Link)`
+  color: white;
   text-decoration: none;
-  color: #504746;
   &:hover {
     text-decoration: underline;
   }
 `;
 
-const navbar = () => {
+const Navbar = () => {
   return (
-    <navbarContainer>
-      <navbarNav>
-   //Add routes here!!//
-      </navbarNav>
-    </navbarContainer>
+    <NavbarContainer>
+      <NavbarNav>
+        <NavItem>
+          <NavbarLink to="/">Home</NavbarLink>
+        </NavItem>
+        <NavItem>
+          <NavbarLink to="/about">About</NavbarLink>
+        </NavItem>
+      </NavbarNav>
+    </NavbarContainer>
   );
 };
 
-export default navbar;
+export default Navbar;

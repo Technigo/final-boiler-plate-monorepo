@@ -1,7 +1,7 @@
 // Import necessary dependencies, components, and stores.
 import { useEffect } from "react";
 import Logos from "../components/Logos";
-import { CreateTask } from "../components/CreateTask";
+import { CreateTask } from "./CreateTask";
 import { taskStore } from "../stores/taskStore";
 import { userStore } from "../stores/userStore";
 import { useNavigate } from "react-router-dom";

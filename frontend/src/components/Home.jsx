@@ -1,20 +1,48 @@
-//Diego// Import necessary dependencies and components.
-import { useEffect } from "react";
-import { userStore } from "../stores/userStore";
-import { useNavigate } from "react-router-dom";
-import Logos from "../components/Logos";
+import React from 'react';
+import Navbar from './navbar';
+import Footer from './footer';
+import styled from 'styled-components';
 import { Link } from "react-router-dom";
 
+
+// Define any styled components here
+const Heading = styled.h1`
+  /* Your styles for heading */
+`;
+
+const Subheading = styled.h2`
+  /* Your styles for subheading */
+`;
+
+const Intro = styled.p`
+  /* Your styles for intro paragraph */
+`;
+
 // Define the 'Home' functional component.
-export const Home = () => {
+const Home = () => {
   // Define text content for the heading and subheading.
   const text = {
-    heading: "Vite + React + React Router + Minimal CSS",
-    subheading: "Home Page",
-    intro: "text here...",
+    heading: "Welcome to the home of Foodie Moodie- insert logo here",
+    subheading: "Find your perfect dining spot",
   };
 
-  // Access the 'handleLogout' function from the 'userStore'.
+  return (
+    <>
+      <Navbar />
+      <main>
+        <Heading>{text.heading}</Heading> {/* Iinsert logo here when we have it*/}
+        <Subheading>{text.subheading}</Subheading>
+        <Intro>
+          Start your journey to finding your perfect spot <Link to="/occasion">here</Link>.
+        </Intro>
+      </main>
+      <Footer />
+    </>
+  );
+};
+export default Home;
+
+  /*// Access the 'handleLogout' function from the 'userStore'.
   const storeHandleLogout = userStore((state) => state.handleLogout);
 
   // Use the 'useNavigate' hook to programmatically navigate between routes.
@@ -46,7 +74,7 @@ export const Home = () => {
   return (
     <>
       <nav>
-        {/* Create a navigation menu with links to various routes. */}
+        { Create a navigation menu with links to various routes. }
         <ul className="app-ul">
           <li className="app-li">
             <Link to="/home">Home</Link>
@@ -55,19 +83,17 @@ export const Home = () => {
             <Link to="/tasks">Tasks</Link>
           </li>
           <li className="app-li">
-            {/* Create a button for logging out and attach the 'onLogoutClick' event handler. */}
+            {Create a button for logging out and attach the 'onLogoutClick' event handler. }
             <button onClick={onLogoutClick}>Sign Out</button>
           </li>
         </ul>
       </nav>
-      {/* Render the 'Logos' component. */}
+      {Render the 'Logos' component. }
       <Logos />
-      {/* Display the heading and subheading. */}
+      { Display the heading and subheading. }
       <h1 className="heading">{text.heading}</h1>
       <h2>{text.subheading}</h2>
-      {/* (Note: 'text.intro' is not defined in the code.) */}
-      {/* Display additional content (text.intro is missing). */}
+      { (Note: 'text.intro' is not defined in the code.) }
+      { Display additional content (text.intro is missing). }
       <p>{text.intro}</p>
-    </>
-  );
-};
+    </>*/
