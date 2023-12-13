@@ -95,6 +95,6 @@ restaurantSchema.plugin(autoIncrement.plugin, {
   incrementBy: 1,
 });
 
-const Restaurant = mongoose.model('Restaurant', restaurantSchema);
+const Restaurant = connection.model('Restaurant', restaurantSchema);
 
 module.exports = Restaurant;

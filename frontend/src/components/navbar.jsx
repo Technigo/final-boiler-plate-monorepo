@@ -23,6 +23,8 @@ const NavItem = styled.li`
 
 const NavbarLink = styled(Link)`
   color: #504746;
+  font-size: 16px; 
+  font-family: Arial, sans-serif; 
   text-decoration: none;
   &:hover {
     text-decoration: underline;

@@ -1,8 +1,13 @@
+
 const mongoose = require('mongoose');
 const Restaurant = require('./models/restaurantModel'); 
 const restaurantData = require('./seeds/databaseRestaurants.json'); 
 
-mongoose.connect('mongodb_connection_uri', { useNewUrlParser: true, useUnifiedTopology: true })
+require('dotenv').config();
+
+const connectionURI = process.env.MONGO_URL;
+
+mongoose.connect(connectionURI, { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true })
   .then(() => {
     console.log('MongoDB connected...');
     

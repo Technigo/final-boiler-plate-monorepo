@@ -6,9 +6,10 @@ import { Link } from "react-router-dom";
 
 
 const PageContainer = styled.div`
-  background-color: #FBB7C0; /* Your chosen color */
-  min-height: 100vh; /* Make sure it covers the full height of the viewport */
-  /* Add any other styles you want for this container */
+margin: 0 auto;
+padding: 20px;
+background-color: #FBB7C0; /* Your chosen color */
+min-height: 100vh; /* Make sure it covers the full height of the viewport */
 `;
 
 const Heading = styled.h1`
