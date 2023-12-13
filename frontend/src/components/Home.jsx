@@ -5,16 +5,27 @@ import styled from 'styled-components';
 import { Link } from "react-router-dom";
 
 
-// Define any styled components here
+const PageContainer = styled.div`
+  background-color: #FBB7C0; /* Your chosen color */
+  min-height: 100vh; /* Make sure it covers the full height of the viewport */
+  /* Add any other styles you want for this container */
+`;
+
 const Heading = styled.h1`
+font-size: 24px;
+font-family: Arial, sans-serif; 
   /* Your styles for heading */
 `;
 
 const Subheading = styled.h2`
+font-size: 20px;
+font-family: Arial, sans-serif; 
   /* Your styles for subheading */
 `;
 
 const Intro = styled.p`
+font-size: 16px;
+font-family: Arial, sans-serif; 
   /* Your styles for intro paragraph */
 `;
 
@@ -27,17 +38,17 @@ const Home = () => {
   };
 
   return (
-    <>
+    <PageContainer>
       <Navbar />
       <main>
-        <Heading>{text.heading}</Heading> {/* Iinsert logo here when we have it*/}
+        <Heading>{text.heading}</Heading> {/* Insert logo here when we have it */}
         <Subheading>{text.subheading}</Subheading>
         <Intro>
           Start your journey to finding your perfect spot <Link to="/occasion">here</Link>.
         </Intro>
       </main>
       <Footer />
-    </>
+    </PageContainer>
   );
 };
 export default Home;

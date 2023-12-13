@@ -3,8 +3,8 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
 const NavbarContainer = styled.nav`
-  background: #333;
-  color: white;
+  background: #B6244F;
+  color: #504746;
   display: flex;
   justify-content: space-between;
   padding: 1rem;
@@ -22,7 +22,7 @@ const NavItem = styled.li`
 `;
 
 const NavbarLink = styled(Link)`
-  color: white;
+  color: #504746;
   text-decoration: none;
   &:hover {
     text-decoration: underline;
