@@ -9,11 +9,7 @@ export const postGenerateRecipeController = asyncHandler(async (req, res) => {
         // Destructure the "ingredients" from the request body
         const { ingredients } = req.body
 
-        // Check if ingredients are provided and have at least 3 items
-        if (!ingredients || ingredients.length < 3) {
-            return res.status(400).json({ error: "Please provide at least 3 ingredients" })
-        }
-        // ***** FOR DEMONSTRATION PURPOSES, a placeholder generated recipe is provided for now***
+        // ***** IN PURPOSE OF DEMONSTRATION, a placeholder generated recipe is provided for now***
         const generatedRecipe = "Tänd gasen och hacka löken."
 
         // Create a new RecipeModel with the provided ingredients and generatedRecipe

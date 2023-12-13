@@ -8,12 +8,19 @@ export const recipeStore = create((set) => ({
     // Function to set the recipes in the state
     setRecipes: (recipes) => set({ recipes }),
     // Function to add a new recipe to the state
+    newRecipe: {},
+    // Function to set the recipes in the state
+    setNewRecipe: (newRecipe) => set({ newRecipe }),
+    // Function to add a new recipe to the state
+    inputRecipe: "",
+    setInputRecipe: (inputRecipe) => set ({inputRecipe}),
     addNewRecipe: (newRecipe) => {
         // Update the state by creating a new array with existing recipes and new recipe
         set((state) => ({
             recipes: [...state.recipes, newRecipe],
         }));
     }
+    
 
 }))
 

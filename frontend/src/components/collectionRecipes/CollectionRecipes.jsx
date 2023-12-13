@@ -10,7 +10,7 @@ const getAPI = 'http://localhost:3001/recipes';
 // Define the CollectionRecipes component
 export const CollectionRecipes = () => {
   // Destructure recipes and setRecipes from the recipeStore
-  const { recipes, setRecipes } = recipeStore()
+  const { recipes, setRecipes, newRecipe, setNewRecipe } = recipeStore()
   // Define a function to fetch recipes from the API
   const fetchCollectionRecipes = async () => {
     try {
@@ -25,8 +25,12 @@ export const CollectionRecipes = () => {
       }
       // Parse the JSON response and set the recipes in the state
       const data = await response.json();
-      setRecipes(data.recipes)
+      const recipes = data.recipes
+      setRecipes(recipes)
       console.log(recipes)
+      console.log(recipes[recipes.length-1])
+      setNewRecipe(recipes[recipes.length-1])
+      
       // setRecipes(data.recipes)
     } catch (error) {
       console.error(error);

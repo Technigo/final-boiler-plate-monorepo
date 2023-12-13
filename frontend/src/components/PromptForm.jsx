@@ -7,23 +7,19 @@ import { recipeStore } from '../stores/recipeStore';
 // Define the PromptForm component
 export const PromptForm = () => {
     // Destructure the addNewRecipe function from the recipeStore
-    const { addNewRecipe } = recipeStore()
-    // Initialize state variables using the useState hook
-    const [errorMessage, setErrorMessage] = useState('');
-    const [inputRecipe, setInputRecipe] = useState('');
+    const { addNewRecipe, inputRecipe, setInputRecipe } = recipeStore()
 
     // Define the form submission handler function
     const handleFormSubmit = async (event) => {
+        event.preventDefault();
+        
         try {
-            event.preventDefault();
-
             // Define the API endpoint for posting new recipes
             const postAPI = 'http://localhost:3001/generate-recipe';
 
             // Create an object with the input recipe data
             const newRecipeData = {
-                ingredients: inputRecipe,
-                instructions: "Your instructions here",
+                ingredients: inputRecipe
             };
 
             // Make a POST request to the API with the input data
@@ -47,6 +43,8 @@ export const PromptForm = () => {
         }
     };
 
+    
+
     // Render the component. Form element
     return (
         <div className="promptform-wrapper">
@@ -58,7 +56,6 @@ export const PromptForm = () => {
                     onChange={(e) => setInputRecipe(e.target.value)}
                     required
                 ></textarea>
-                <p>{errorMessage}</p>
                 <button type="submit">Create recipe 🥘</button>
             </form>
         </div>
