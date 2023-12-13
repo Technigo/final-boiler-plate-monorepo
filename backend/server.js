@@ -3,7 +3,8 @@ import express from "express"; // Import the Express.js framework
 import cors from "cors"; // Import the CORS middleware
 import dotenv from "dotenv"; // Import dotenv for environment variables
 dotenv.config(); // Load environment variables from the .env file
-import storyRoutes from "./routes/storyRoutes"; // Import custom task controlled-routes
+import storyRoutes from "./routes/storyRoutes"; // Import custom story controlled-routes
+import mapRoutes from "./routes/mapRoutes";
 
 import { connectDB } from "./config/db"; // Import database connection function (not used here)
 
@@ -19,6 +20,7 @@ app.use(express.urlencoded({ extended: false })); // Parse URL-encoded data
 // Use the routes for handling API requests
 // ROUTES - These routes USE controller functions ;)
 app.use(storyRoutes); // Use the task-controlled routes for task-related requests
+app.use(mapRoutes);
 
 // Connection to the database through Mongoose
 connectDB();
