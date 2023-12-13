@@ -7,7 +7,9 @@ const occasionRoutes = require('./routes/occasionRoutes');
 const app = express();
 const port = process.env.PORT || 8080;
 
-app.use(cors());
+app.use(cors({
+  origin: 'http://yourfrontenddomain.com' // Replace with your actual frontend domain
+}));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
