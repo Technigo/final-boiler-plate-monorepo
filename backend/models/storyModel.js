@@ -16,6 +16,12 @@ export const storySchema = new Schema({
     minlength: 10,
   },
 
+  category: {
+    type: String,
+    required: true,
+    enum: ["historical", "hearsay", "anecdote"],
+  },
+
   ranking: {
     type: Number,
     default: 0,

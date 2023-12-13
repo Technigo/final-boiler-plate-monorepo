@@ -1,6 +1,6 @@
 // Import the necessary modules and functions
 import express from "express";
-//import Stories from "../stories.json";
+
 import listEndpoints from "express-list-endpoints";
 import { StoryModel } from "../models/StoryModel";
 
@@ -11,10 +11,24 @@ router.get("/", (req, res) => {
   res.send(listEndpoints(router));
 });
 
-//route to see all stories
+//route to see all stories with optional sorting
 router.get("/stories", async (req, res) => {
+  const { category, sortBy } = req.query;
+  let query = {};
+  let sortOption = { createdAt: -1 }; // Default sorting
+
+  // Filter by category if it's provided
+  if (category) {
+    query.category = category;
+  }
+
+  // Change sorting based on the query parameter
+  if (sortBy === "ranking") {
+    sortOption = { ranking: -1 }; // Sort by ranking in descending order
+  }
+
   try {
-    const stories = await StoryModel.find().sort({ createdAt: -1 }); // Fetch all stories and sort them by creation date
+    const stories = await StoryModel.find(query).sort(sortOption);
     res.json(stories);
   } catch (error) {
     res.status(500).json({ message: error.message });
@@ -27,6 +41,7 @@ router.post("/stories", async (req, res) => {
     heading: req.body.heading,
     content: req.body.content,
     ranking: req.body.ranking, // This can be optional as it has a default value
+    category: req.body.category,
   });
 
   try {
@@ -63,7 +78,4 @@ router.put("/stories/:id/rank", async (req, res) => {
   }
 });
 
-// Export the router for use in the main application
 export default router;
-
-// In summary, this file sets up routes using the Express router for various CRUD operations on tasks. It includes middleware for user authentication and associates each route with the corresponding controller function. These routes define the API endpoints for managing tasks within the application.
