@@ -3,22 +3,32 @@ import express from 'express'; // Import the Express.js framework
 import cors from 'cors'; // Import the CORS middleware
 import dotenv from 'dotenv'; // Import dotenv for environment variables
 dotenv.config(); // Load environment variables from the .env file
-
-import userRoutes from './routes/userRoutes'; // Import custom user routes
+import mongoose from 'mongoose';
+// import userRoutes from './routes/userRoutes'; // Import custom user routes
+import bookingRoutes from './routes/bookingRoutes';
 
 // Defines the port the app will run on. Defaults to 8080, but can be overridden
-const port = process.env.PORT; // Set the port number for the server
+const port = process.env.PORT || 8080; // Set the port number for the server
 const app = express(); // Create an instance of the Express application
-
+const listEndpoints = require('express-list-endpoints');
 // Add middlewares to enable cors and json body parsing
 app.use(cors()); // Enable CORS (Cross-Origin Resource Sharing)
 app.use(express.json()); // Parse incoming JSON data
 app.use(express.urlencoded({ extended: false })); // Parse URL-encoded data
 
+app.use((req, res, next) => {
+  if (mongoose.connection.readyState === 1) {
+    next();
+  } else {
+    res.status(503).json({ error: 'Database is not responding' });
+  }
+});
+
 // Use the routes for handling API requests
 // ROUTES - These routes USE controller functions ;)
 
-app.use(userRoutes); // Use the user-controlled routes for user-related requests
+// app.use('/', userRoutes); // Use the user-controlled routes for user-related requests
+app.use('/', bookingRoutes);
 
 const connectDB = async () => {
   try {
@@ -37,8 +47,12 @@ const connectDB = async () => {
     process.exit(1);
   }
 };
+connectDB();
+app.get('/', (req, res) => {
+  res.send(listEndpoints(app));
+});
 
-// Start the server and listen for incoming requests on the specified port
+// Start the server
 app.listen(port, () => {
-  console.log(`Server running on http://localhost:${port}`); // Display a message when the server is successfully started
+  console.log(`Server running on http://localhost:${port}`);
 });
