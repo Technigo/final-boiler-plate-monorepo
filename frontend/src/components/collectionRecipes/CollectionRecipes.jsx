@@ -26,10 +26,9 @@ export const CollectionRecipes = () => {
       // Parse the JSON response and set the recipes in the state
       const data = await response.json();
       const recipes = data.recipes
-      setRecipes(recipes)
-      console.log(recipes)
-      console.log(recipes[recipes.length-1])
-      setNewRecipe(recipes[recipes.length-1])
+      const reversedRecipes = recipes.reverse()
+      //Update the Recipes state with the fetched recipes
+      setRecipes(reversedRecipes)
       
       // setRecipes(data.recipes)
     } catch (error) {

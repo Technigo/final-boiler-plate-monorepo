@@ -7,7 +7,7 @@ import { recipeStore } from '../stores/recipeStore';
 // Define the PromptForm component
 export const PromptForm = () => {
     // Destructure the addNewRecipe function from the recipeStore
-    const { addNewRecipe, inputRecipe, setInputRecipe } = recipeStore()
+    const { addNewRecipe, inputRecipe, setInputRecipe, fetchNewRecipe } = recipeStore()
 
     // Define the form submission handler function
     const handleFormSubmit = async (event) => {
@@ -38,6 +38,7 @@ export const PromptForm = () => {
             const data = await response.json();
             addNewRecipe(data);
             setInputRecipe('');
+            fetchNewRecipe()
         } catch (error) {
             console.error('Error in handleFormSubmit:', error);
         }
