@@ -17,10 +17,10 @@ import jwt from "jsonwebtoken"
 //SHOULD WE??
 
 
+// // @desc    Register new user
+// // @route   POST api/register
+// // @access  Public
 
-// @desc    Register new user
-// @route   POST api/register
-// @access  Public
 
 // registerUserController: This controller handles user registration. It extracts the user's username, password, and email from the request body. It performs several checks, such as ensuring that all required fields are provided and that the chosen username or email is not already in use by another user. It securely hashes the user's password using the bcrypt library and stores the hashed password in the database. After successfully registering the user, it responds with a success message, user details, and a JSON Web Token (JWT) for authentication.
 export const registerUserController = asyncHandler(async (req, res) => {
@@ -75,9 +75,10 @@ export const registerUserController = asyncHandler(async (req, res) => {
 })
 
 
-// @desc    Login Existing User
-// @route   POST api/login
-// @access  Public
+// // @desc    Login Existing User
+// // @route   POST api/login
+// // @access  Public
+
 
 // loginUserController: This controller manages user login. It extracts the username and password from the request body, then attempts to find a user with the provided username in the database. If the user is found, it compares the provided password with the hashed password stored in the database using bcrypt. If the credentials match, it generates a JWT token for the user and responds with a success message, user details, and the JWT token. In case of authentication failure (wrong password or non-existent user), it responds with appropriate error messages.
 export const loginUserController = asyncHandler(async (req, res) => {

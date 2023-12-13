@@ -19,12 +19,12 @@ const bookingSchema = new Schema({
   },
   price: {
     type: Number,
-    require: true,
+    required: true,
   },
   showtimeId: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'ShowTime',
-    require: true,
+    required: true,
   },
 });
 
