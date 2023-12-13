@@ -1,9 +1,8 @@
-
-const mongoose = require('mongoose');
-const Restaurant = require('./models/restaurantModel'); 
-const restaurantData = require('./seeds/databaseRestaurants.json'); 
-
 require('dotenv').config();
+const mongoose = require('mongoose');
+const autoIncrement = require('mongoose-auto-increment');
+const Restaurant = require('./models/restaurantModel');
+const restaurantData = require('./seeds/databaseRestaurants.json');
 
 const connectionURI = process.env.MONGO_URL;
 

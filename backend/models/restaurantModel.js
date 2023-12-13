@@ -1,5 +1,7 @@
 const mongoose = require('mongoose');
 const autoIncrement = require('mongoose-auto-increment');
+const db = require('../database');
+
 
 const restaurantSchema = new mongoose.Schema({
   restaurantID: Number, // This will be auto-generated
@@ -95,6 +97,6 @@ restaurantSchema.plugin(autoIncrement.plugin, {
   incrementBy: 1,
 });
 
-const Restaurant = connection.model('Restaurant', restaurantSchema);
+const Restaurant = db.model('Restaurant', restaurantSchema);
 
 module.exports = Restaurant;
