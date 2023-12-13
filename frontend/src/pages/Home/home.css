@@ -6,7 +6,7 @@
         height: 100vh;
 }
 
-/* Add your styling here */
+/* Playgrounds */
 .playground {
     border: 1px solid #ccc;
     padding: 10px;
@@ -36,7 +36,6 @@
     margin: 0;
   }
   
-  /* Ensure flexibility for content */
   .playground p {
     flex: 1;
     overflow: hidden;
@@ -44,4 +43,46 @@
     white-space: nowrap;
   }
   
+  /* Navbar */
+  .navbar {
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+  }
 
+  .navbar a {
+    color: white;
+    text-decoration: none;
+    margin: 0 10px;
+  }
+
+ /* Hero */
+.hero {
+  position: relative;
+  text-align: center;
+}
+
+.hero-image {
+  width: 100%; 
+  height: auto;
+}
+
+.hero-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+}
+
+.hero-content h1 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+}
+
+.hero-content p {
+  font-size: 1.2rem;
+  margin: 0;
+}
