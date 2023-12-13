@@ -1,8 +1,8 @@
 const express = require('express');
 const cors = require('cors');
 const db = require('./database'); 
-const moodRoutes = require('./routes/moodRoutes'); 
-const occasionRoutes = require('./routes/occasionRoutes');
+//const moodRoutes = require('./routes/moodRoutes');  Duplicate
+//const occasionRoutes = require('./routes/occasionRoutes'); Duplicate
 
 const app = express();
 const port = process.env.PORT || 8080;
