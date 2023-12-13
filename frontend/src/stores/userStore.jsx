@@ -68,7 +68,7 @@ export const userStore = create((set, get) => ({
     }
   },
 
-  // LOGIN
+  // FUNCTION TO HANDLE USER LOGIN
   handleLogin: async (username, password) => {
     // Check if both username and password are provided and display an alert if not.
     if (!username || !password) {
@@ -111,7 +111,10 @@ export const userStore = create((set, get) => ({
     }
   },
 
-  // Function to handle user logout.
+  // FUNCTION TO HANDLE USER UPDATE
+
+
+  // FUNCTION TO HANDLE USER LOGOUT
   handleLogout: () => {
     // Clear user information and set isLoggedIn to false.
     set({ username: "", accessToken: null, isLoggedIn: false });
@@ -119,6 +122,10 @@ export const userStore = create((set, get) => ({
     localStorage.removeItem("accessToken");
     // Additional logout logic can be added here if needed.
   },
+
+  // FUNCTION TO HANDLE USER ACCOUNT REMOVAL
+
+  
 }));
 
 // SUMMARY

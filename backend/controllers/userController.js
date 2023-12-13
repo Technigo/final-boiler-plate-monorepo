@@ -116,18 +116,60 @@ export const updateUserController = asyncHandler(async (req, res) => {
   const { password, email, region, introduction, products } = req.body;
 
   try {
-    // Find a user in the database with the same ID
-    const userToBeUpdated = await UserModel.findById({ userId });
+    // Find a user in the database with the same ID and update the details
+    const userToBeUpdated = await UserModel.findByIdAndUpdate({ 
+      userId,
+      password: password,
+      email: email,
+      region: region,
+      introduction: introduction,
+      products: products
+    });
+
+    if (userToBeUpdated) {
+      res.status(200).json({
+        success: true,
+        response: userToBeUpdated});
+    } else {
+      res.status(400).json({
+        success: false,
+        response: "User not found"
+      });
+    }
     
   } catch (e) {
     res.status(500).json({ success: false, response: e.message });
-  }
-})
+  };
+});
 
 // @desc    Delete Existing User - if the user wish to delete their account
-// @route   POST api/update
+// @route   POST api/delete/:userId
 // @access  Public
+export const deleteUserController = asyncHandler(async (req, res) => {
+  const userId = req.params.userId;
 
+  try {
+    // Find a user in the database with the same ID and delele
+    const userToBeDeleted = await UserModel.findByIdAndDelete({ userId });
+
+    if (userToBeDeleted) {
+      res.status(200).json({
+        success: true,
+        response: {
+          message: `User with ID ${userId} deleted successfully`,
+          deletedUser: userToBeDeleted        
+        }});
+    } else {
+      res.status(400).json({
+        success: false,
+        response: "User not found"
+      });
+    }
+    
+  } catch (e) {
+    res.status(500).json({ success: false, response: e.message });
+  };
+});
 
 
 // SUMMARY

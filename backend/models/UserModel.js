@@ -25,7 +25,7 @@ const userSchema = new Schema(
       required: true,
       unique: true,
     },
-    region: {
+    location: {
       type: String,
       minlength: 5
     },
