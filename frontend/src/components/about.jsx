@@ -3,11 +3,13 @@ import Navbar from './navbar';
 import Footer from './footer';
 import styled from 'styled-components';
 
-// Styled-components definitions
+
 const AboutWrapper = styled.div`
   max-width: 1200px;
   margin: 0 auto;
   padding: 20px;
+  background-color: #FBB7C0; /* Your chosen color */
+  min-height: 100vh; /* Make sure it covers the full height of the viewport */
 `;
 
 const IntroParagraph = styled.p`
