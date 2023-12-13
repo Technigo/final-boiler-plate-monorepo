@@ -1,6 +1,5 @@
 // Import necessary dependencies, components, and stores.
 import { useEffect } from "react";
-import Logos from "../components/Logos";
 import { CreateTask } from "../components/CreateTask";
 import { taskStore } from "../stores/taskStore";
 import { userStore } from "../stores/userStore";
@@ -76,9 +75,8 @@ export const Tasks = () => {
           tasks.map((task) => (
             <div key={task._id} className="card-wrapper">
               <div
-                className={`card-container ${
-                  task.done ? "green-border" : "red-border"
-                }`}
+                className={`card-container ${task.done ? "green-border" : "red-border"
+                  }`}
                 onClick={() => handleEdit(task._id)}
               >
                 <p>{task.task}</p>

@@ -1,5 +1,4 @@
-// Import necessary components, hooks, and stores.
-import Logos from "../components/Logos";
+
 import { userStore } from "../stores/userStore";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";

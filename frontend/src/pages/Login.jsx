@@ -1,5 +1,4 @@
-// Import the 'Logos' component and the 'Link' component from 'react-router-dom'.
-import Logos from "../components/Logos";
+
 import { Link } from "react-router-dom";
 // Import the 'userStore' from the 'userStore' module.
 import { userStore } from "../stores/userStore"; // Make sure this is correctly imported
@@ -32,7 +31,7 @@ export const Login = () => {
       const isLoggedIn = userStore.getState().isLoggedIn;
       if (isLoggedIn) {
         // If the user is logged in, navigate to the "/home" route.
-        navigate("/home");
+        navigate("/Admin");
       }
       // Additional logic after successful login can be added here.
     } catch (error) {
@@ -53,14 +52,21 @@ export const Login = () => {
   // Render the component content.
   return (
     <>
+      <h1 className="text-3xl font-bold underline">
+        Hello world!
+      </h1>
       <nav>
         {/* Create a navigation menu with links to the login and sign-up routes. */}
         <ul className="app-ul">
-          <li className="app-li">
-            <Link to="/">Login</Link>
+
+          <li className="">
+            <Link to="/ContactUs">Contact Us</Link>
           </li>
           <li className="app-li">
             <Link to="/register">Sign Up</Link>
+            <li className="app-li">
+              <Link to="/">Login</Link>
+            </li>
           </li>
         </ul>
       </nav>

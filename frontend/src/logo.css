@@ -1,0 +1,29 @@
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes spin-reverse {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(-360deg);
+    }
+}
+
+.spin {
+    animation: spin 2s linear infinite;
+    /* Adjust the duration and timing function as needed */
+}
+
+.spin-reverse {
+    animation: spin-reverse 2s linear infinite;
+    /* Adjust the duration and timing function as needed */
+}
