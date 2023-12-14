@@ -21,10 +21,10 @@ router.post("/login", loginUserController); // When a POST request is made to /l
 router.get("/users/:userId", getUserProfileController);
 
 // UPDATE ROUTE: Handle user profile update
-router.put("/update/:userId", updateUserController);
+router.put("/users/:userId", updateUserController);
 
 // DELETE ROUTE: Hander user removal
-router.delete("/delete/:userId", deleteUserController);
+router.delete("/users/:userId", deleteUserController);
 
 // Export the router for use in the main application
 export default router;

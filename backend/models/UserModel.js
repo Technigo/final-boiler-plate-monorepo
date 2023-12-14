@@ -7,14 +7,12 @@ const { Schema } = mongoose;
 // Create a new Mongoose schema named userSchema that defines the structure of a user document in the MongoDB collection. It includes fields like username, password, email and accessToken, specifying their data types, validation rules, and default values.
 const userSchema = new Schema(
   {
-    // Define the 'username' field with a String data type
     username: {
       type: String, 
       required: true, 
       unique: true, 
       minlength: 5, 
     },
-    // Define the 'password' field with a String data type
     password: {
       type: String, 
       required: true, 
@@ -38,7 +36,6 @@ const userSchema = new Schema(
       type: Array,
       minlength: 0
     },
-    //Define the 'accessToken' field with a String data type
     accessToken: {
       type: String, 
       default: () => crypto.randomBytes(128).toString("hex"), // Sets a default value using a cryptographic random string

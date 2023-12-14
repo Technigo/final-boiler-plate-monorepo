@@ -120,8 +120,15 @@ export const getUserProfileController = asyncHandler(async (req, res) => {
     if (userToBeDisplayed) {
       res.status(200).json({
         success: true,
-        response: userToBeDisplayed
-      })
+        response: {
+          username: userToBeDisplayed.username,
+          password: userToBeDisplayed.password,
+          email: userToBeDisplayed.email,
+          location: userToBeDisplayed.location,
+          introduction: userToBeDisplayed.introduction,
+          products: userToBeDisplayed.products
+        }
+      });
     } else {
       res.status(400).json({
         success: false,
@@ -135,27 +142,41 @@ export const getUserProfileController = asyncHandler(async (req, res) => {
 
 
 // @desc    Update Existing User Profile - update existing info (except for username) or add new info such as self-introduction, location, profile picture
-// @route   PUT api/update/:userId
+// @route   PUT api/users/:userId
 // @access  Private
 export const updateUserController = asyncHandler(async (req, res) => {
   const userId = req.params.userId;
 
-  const { password, email, region, introduction, products } = req.body;
+  const { password, email, location, introduction, products } = req.body;
 
   try {
+    // Ensure that the username is not included in the update
+    if ("username" in req.body) {
+      res.status(400).json({
+        success: false,
+        response: "Username cannot be updated",
+      });
+      return;
+    }
+
     // Find a user in the database with the same ID and update the details
     const userToBeUpdated = await UserModel.findByIdAndUpdate(userId, {
-      password: password,
-      email: email,
-      region: region,
-      introduction: introduction,
-      products: products
+      $set: {
+        password: password, // doublecheck how to display password in frontend
+        email: email,
+        location: location,
+        introduction: introduction,
+        products: products
+      }
+    }, {
+      new: true // add this to return the updated
     });
 
     if (userToBeUpdated) {
       res.status(200).json({
         success: true,
-        response: userToBeUpdated});
+        response: userToBeUpdated
+      });
     } else {
       res.status(400).json({
         success: false,
@@ -168,7 +189,7 @@ export const updateUserController = asyncHandler(async (req, res) => {
 });
 
 // @desc    Delete Existing User - if the user wish to delete their account
-// @route   POST api/delete/:userId
+// @route   DELETE api/users/:userId
 // @access  Private
 export const deleteUserController = asyncHandler(async (req, res) => {
   const userId = req.params.userId;
