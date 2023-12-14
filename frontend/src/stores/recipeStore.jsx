@@ -31,11 +31,38 @@ export const recipeStore = create((set) => ({
       });
       const data = await response.json();
       const recipes = data.recipes;
-      const newRecipe = recipes[recipes.length - 1];
+      const newRecipeVar = recipes[recipes.length - 1];
       //Update the newRecipe state with the fetched newRecipe:
-      set(() => ({ newRecipe }));
+      set(() => ({ newRecipe: newRecipeVar }));
     } catch (error) {
       //*****Write error message!!********
     }
   },
+
+   fetchCollectionRecipes: async () => {
+    try {
+      // Make a GET request to the API endpoint
+      const response = await fetch(`${api}/recipes`, {
+        method: "GET",
+        headers: { "Content-Type": "application/json" },
+      });
+      // Check if the response is not okay 
+      //***Use same error message in other places??*** */
+      if (!response.ok) {
+        throw new Error(`Oh no, error, HTTP! ${response.status}`);
+      }
+      // Parse the JSON response and set the recipes in the state
+      const data = await response.json();
+      const recipes = data.recipes
+      const reversedRecipes = recipes.reverse()
+      //Update the Recipes state with the fetched recipes
+      set(() => ({ recipes: reversedRecipes }));
+      
+      // setRecipes(data.recipes)
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+
 }));

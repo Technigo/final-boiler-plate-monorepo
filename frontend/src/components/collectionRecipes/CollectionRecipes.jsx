@@ -4,42 +4,15 @@ import { useEffect } from "react";
 import { recipeStore } from "../../stores/recipeStore";
 import "./collectionRecipes.css"
 
-// Define the API endpoint to fetch recipes
-const getAPI = 'http://localhost:3001/recipes';
 
 // Define the CollectionRecipes component
 export const CollectionRecipes = () => {
   // Destructure recipes and setRecipes from the recipeStore
-  const { recipes, setRecipes, newRecipe, setNewRecipe } = recipeStore()
-  // Define a function to fetch recipes from the API
-  const fetchCollectionRecipes = async () => {
-    try {
-      // Make a GET request to the API endpoint
-      const response = await fetch(getAPI, {
-        method: "GET",
-        headers: { "Content-Type": "application/json" },
-      });
-      // Check if the response is not okay 
-      if (!response.ok) {
-        throw new Error(`Oh no, error, HTTP! ${response.status}`);
-      }
-      // Parse the JSON response and set the recipes in the state
-      const data = await response.json();
-      const recipes = data.recipes
-      const reversedRecipes = recipes.reverse()
-      //Update the Recipes state with the fetched recipes
-      setRecipes(reversedRecipes)
-      
-      // setRecipes(data.recipes)
-    } catch (error) {
-      console.error(error);
-    }
-  }
-
+  const { recipes, fetchCollectionRecipes } = recipeStore()
+  
   // Use the useEffect hook to fetch recipes when the component mounts
   useEffect(() => {
     fetchCollectionRecipes()
-    console.log(recipes)
   }, [])
 
   // Render the component with a list of recipes (map over the recipes and render each recipe's ingredients and instructions)
