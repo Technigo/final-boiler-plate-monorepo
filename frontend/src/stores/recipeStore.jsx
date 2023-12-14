@@ -62,7 +62,34 @@ export const recipeStore = create((set) => ({
     } catch (error) {
       console.error(error);
     }
-  }
+  }, 
+
+  generateRecipe: async (ingredients) => {
+    try{
+      const newRecipeData = {
+        ingredients,
+      }
+
+      const response = await fetch(`${api}/generate-recipe`, {
+        method: 'POST',
+                body: JSON.stringify(newRecipeData),
+                headers: { 'Content-Type': 'application/json' },
+      })
+
+      // Check if the response is not okay
+      if (!response.ok) {
+        throw new Error(`Oh no, error, HTTP! ${response.status}`);
+    }
+    const data = await response.json()
+    //Update the state with the new recipe
+    set((state) => ({
+      recipes: [...state.recipes, data], 
+      newRecipe: data, 
+    }))
+    } catch(error){
+      console.error("Error in createRecipe:", error)
+    }
+  },
 
 
 }));
