@@ -13,7 +13,7 @@ export const BookingListComponent = ({ handleLike }) => {
     };
 
     const fetchBookings = () => {
-        fetch("https://mono-repo-yz5y.onrender.com/booking")
+        fetch(`${import.meta.env.VITE_API_URL}/booking`)
             .then((response) => response.json())
             .then((data) => {
                 setBookings(data);
@@ -30,7 +30,7 @@ export const BookingListComponent = ({ handleLike }) => {
     const handleLikeClick = async (bookingId) => {
         try {
             await fetch(
-                `https://mono-repo-yz5y.onrender.com/booking/${bookingId}/like`,
+                `${import.meta.env.VITE_API_URL}/booking/${bookingId}/like`,
                 {
                     method: "POST",
                 }

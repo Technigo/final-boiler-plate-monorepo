@@ -44,7 +44,7 @@ export const PostBookingComponent = () => {
 
             try {
                 // If the message is correct, then send it
-                const response = await fetch("https://mono-repo-yz5y.onrender.com/booking", {
+                const response = await fetch(`${import.meta.env.VITE_API_URL}/booking`, {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json",
