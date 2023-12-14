@@ -1,5 +1,5 @@
 // Import necessary components, hooks, and stores.
-import Logos from "../components/Logos";
+// import Logos from "../components/Logos";
 import { userStore } from "../stores/userStore";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -61,7 +61,7 @@ export const Register = () => {
         </ul>
       </nav>
       {/* Render the 'Logos' component. */}
-      <Logos />
+      {/* <Logos /> */}
       <div>
         {/* Display the heading and paragraphs. */}
         <h2>{text.heading}</h2>

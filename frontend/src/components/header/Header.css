@@ -1,0 +1,16 @@
+header {
+    background-color: var(--forrest);
+}
+
+.header-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* For large devices */
+@media (min-width: 1024px) {
+    .header-wrapper {
+        padding: 1.3rem 5rem;
+    }
+}

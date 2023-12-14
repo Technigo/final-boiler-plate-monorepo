@@ -1,13 +1,15 @@
 import { BrowserRouter, Routes, Link } from "react-router-dom";
 import routes from "./routes/routes";
+import { Header } from "./components/header/Header";
 
 export const App = () => {
   return (
     <>
       <BrowserRouter>
+      <Header />
         <main>
           {/* <Routes>{routes}</Routes> */}
-          <Routes>{routes}</Routes>
+          {/* <Routes>{routes}</Routes> */}
         </main>
       </BrowserRouter>
     </>

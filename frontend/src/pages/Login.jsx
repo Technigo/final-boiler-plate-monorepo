@@ -1,5 +1,5 @@
 // Import the 'Logos' component and the 'Link' component from 'react-router-dom'.
-import Logos from "../components/Logos";
+// import Logos from "../components/Logos";
 import { Link } from "react-router-dom";
 // Import the 'userStore' from the 'userStore' module.
 import { userStore } from "../stores/userStore"; // Make sure this is correctly imported
@@ -65,7 +65,7 @@ export const Login = () => {
         </ul>
       </nav>
       {/* Render the 'Logos' component. */}
-      <Logos />
+      {/* <Logos /> */}
       <div>
         {/* Display the heading and paragraphs. */}
         <h2>{text.heading}</h2>
