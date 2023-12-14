@@ -97,4 +97,6 @@ export const recipeStore = create((set) => ({
       console.error("Error when generating new recipe:", error);
     }
   },
+
+  
 }));
