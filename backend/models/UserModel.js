@@ -25,12 +25,14 @@ const userSchema = new Schema(
     },
     location: {
       type: String,
-      minlength: 5
+      minlength: 5,
+      default: ""
     },
     introduction: {
       type: String,
       minlength: 5,
-      maxlength: 200
+      maxlength: 200,
+      default: "Hello!"
     },
     products: {
       type: Array,
