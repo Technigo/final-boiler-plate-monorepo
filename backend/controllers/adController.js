@@ -33,7 +33,8 @@ export const addAdController = asyncHandler(async (req, res) => {
     const userFromStorage = await UserModel.findOne({accessToken: accessToken});
    
     // Define var to pass new AD
-    const newAd = new AdModel({
+    //wait for the save() operation to complete before sending back the response
+    const newAd = await new AdModel({
       title: title,
       description: description, 
       product: product,
