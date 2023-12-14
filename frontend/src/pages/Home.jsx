@@ -10,7 +10,7 @@ export const Home = () => {
   return (
     <>
       {/* <OpenAiAssistant /> */}
-      <ChatbotApp />
+       <ChatbotApp /> 
       <PromptForm />
       {newRecipe && <NewRecipe />} {/* Conditionally render NewRecipe only when newRecipe is truthy */}
       <CollectionRecipes />

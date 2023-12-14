@@ -3,9 +3,9 @@
 import { BrowserRouter, Routes } from "react-router-dom";
 import routes from "./routes/routes";
 import "./App.css";
-import dotenv from "dotenv";
+// import dotenv from "dotenv";
 
-dotenv.config();
+// dotenv.config();
 
 export const App = () => {
   return (
