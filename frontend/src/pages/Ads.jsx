@@ -11,7 +11,7 @@ import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 
 // Define the 'Tasks' functional component.
-export const Tasks = () => {
+export const Ads = () => {
   // Text content for the heading and paragraphs.
   const text = {
     heading: "Tasks Page",

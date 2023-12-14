@@ -2,14 +2,14 @@
 
 // Import necessary dependencies and the 'advertStore' from the store.
 import { useState } from "react";
-import { advertStore } from "../stores/advertStore";
+import { adStore } from "../stores/adStore";
 
 // Define the 'CreateTask' functional component.
-export const CreateTask = () => {
+export const CreateAd = () => {
   // Initialize state variable 'task' using 'useState' to store the task input.
   const [task, setTask] = useState("");
   // Access the 'addTaskToServer' and 'deleteAllTasks' functions from the 'advertStore'.
-  const { addTaskToServer, deleteAllTasks } = advertStore();
+  const { addTaskToServer, deleteAllTasks } = adStore();
 
   // Function to update the 'task' state with the value entered in the input field.
   const taskInput = (e) => {
