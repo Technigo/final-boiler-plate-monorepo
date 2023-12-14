@@ -1,6 +1,5 @@
 // Import the 'create' function from the 'zustand' library.
 import { create } from "zustand";
-import { UserModel } from "../../../backend/models/UserModel";
 
 // Get the backend API endpoint from the environment variables.
 const apiEnv = import.meta.env.VITE_BACKEND_API;
@@ -58,15 +57,15 @@ export const userStore = create((set) => ({
         // Update the username state
         set({ username });
         // Display a success alert
-        alert("Signup successful!");
-        console.log("Signing up with:", username);
+        alert("Signup successful");
+        console.log("Signing up with: ", username);
       } else {
         // Display an error message from the server or a generic message
         alert(data.response || "Signup failed");
       }
     } catch (error) {
       // Handle and log any signup errors
-      console.error("Signup error:", error);
+      console.error("Signup error: ", error);
       alert("An error occurred during signup");
     }
   },
@@ -101,15 +100,15 @@ export const userStore = create((set) => ({
         // Store the accessToken in the browser's localStorage.
         localStorage.setItem("accessToken", data.response.accessToken);
         // Display a success alert.
-        alert("Login successful!");
-        console.log("Logging in with:", username, password);
+        alert("Login successful");
+        console.log("Logging in with: ", username, password);
       } else {
         // Display an error message from the server or a generic message.
         alert(data.response || "Login failed");
       }
     } catch (error) {
       // Handle and log any login errors.
-      console.error("Login error:", error);
+      console.error("Login error: ", error);
       alert("An error occurred during login");
     }
   },
@@ -122,14 +121,25 @@ export const userStore = create((set) => ({
     } else {
       try {
         // If they are logged in, send GET request to the user endpoint to retrieve user data
-        const userToBeDisplayed = await UserModel.findById(userId);
-
-        
+        const response = await fetch(`${apiEnv}/users/${userId}`, {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
+  
+        // Parse the response data as JSON.
+        const data = await response.json();
+        if (data.success) {
+          // Update the state with the response data
+          set({ data });
+        }
       } catch (error) {
-
-      };
+        // Handle and log any login errors.
+        console.error("Profile display error: ", error);
+        alert("User profile display failed");
+      }
     }
-    
   },
 
   // FUNCTION TO HANDLE USER UPDATE
@@ -160,14 +170,14 @@ export const userStore = create((set) => ({
             products 
           });
           // Display a success alert
-          alert("User profile update successful!");
+          alert("User profile update successful");
         } else {
           // Display an error message from the server or a generic message
           alert(data.response || "User profile update failed");
         }
       } catch (error) {
         // Handle and log any login errors
-        console.error("Update error:", error);
+        console.error("Profile update error: ", error);
         alert("An error occurred during profile update");
       }
     }
@@ -184,7 +194,7 @@ export const userStore = create((set) => ({
 
   // FUNCTION TO HANDLE USER ACCOUNT DELETION
   handleAccountDeletion: () => {
-    // Clear user information
+    // Clear user information - to be doublechecked if this is deletion or just deactivation
     set({ 
       username: "", 
       email: "",
