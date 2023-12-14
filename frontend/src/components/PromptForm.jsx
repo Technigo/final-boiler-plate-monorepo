@@ -10,15 +10,16 @@ export const PromptForm = () => {
     // Define the form submission handler function
     const handleFormSubmit = async (event) => {
         event.preventDefault();
-        
-        try{
-            //Use the generateRecipe function from the store
+
+        try {
+            //Use the generateRecipe function from the recipeStore
             await generateRecipe(inputRecipe)
 
             //Clear inputRecipe and fetch new recipe data
             setInputRecipe("")
             fetchNewRecipe()
-        } catch(error) {
+
+        } catch (error) {
             console.error("Error in handleFormSubmit", error)
         }
     };
@@ -30,7 +31,7 @@ export const PromptForm = () => {
             <form onSubmit={handleFormSubmit}>
                 <textarea
                     placeholder="Your ingredients"
-                    value={inputRecipe} 
+                    value={inputRecipe}
                     onChange={(e) => setInputRecipe(e.target.value)}
                     required
                 ></textarea>

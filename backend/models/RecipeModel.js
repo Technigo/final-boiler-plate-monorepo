@@ -13,7 +13,7 @@ export const recipeSchema = new Schema(
 
         instructions: {
             type: String,
-            reqiured: true
+            required: true
         },
 
         createdAt: {

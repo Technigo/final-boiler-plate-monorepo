@@ -9,6 +9,11 @@ export const postGenerateRecipeController = asyncHandler(async (req, res) => {
         // Destructure the "ingredients" from the request body
         const { ingredients } = req.body
 
+        //If no ingredients (falsy) or if ingredients (inputRecipe) is empty string:
+        if (!ingredients || ingredients.trim().length === 0) {
+            return res.status(400).json({ error: 'Ingredients are required.' });
+        }
+
         // ***** IN PURPOSE OF DEMONSTRATION, a placeholder generated recipe is provided for now***
         const generatedRecipe = "Tänd gasen och hacka löken."
 
@@ -20,7 +25,8 @@ export const postGenerateRecipeController = asyncHandler(async (req, res) => {
         res.status(201).json({ recipe: newRecipe })
 
     } catch (error) {
-        res.status(500).json(error);
+        console.error(error)
+        res.status(500).json({ error: "Failed to create a new recipe." });
     }
 })
 
@@ -32,6 +38,7 @@ export const getRecipeController = asyncHandler(async (req, res) => {
         // Respond with the array of recipes
         res.status(200).json({ recipes })
     } catch (error) {
-        res.status(500).json({ error: 'Internal Server Error' });
+        console.error(error)
+        res.status(500).json({ error: 'Failed to retrieve recipes.' });
     }
 })

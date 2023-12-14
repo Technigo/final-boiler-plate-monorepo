@@ -9,9 +9,10 @@ import "./collectionRecipes.css"
 export const CollectionRecipes = () => {
   // Destructure recipes and setRecipes from the recipeStore
   const { recipes, fetchCollectionRecipes } = recipeStore()
-  
+
   // Use the useEffect hook to fetch recipes when the component mounts
   useEffect(() => {
+    //FOR LATER: UPDATE LOADING STATE TO SHOW LOADING? 
     fetchCollectionRecipes()
   }, [])
 

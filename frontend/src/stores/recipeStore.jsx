@@ -9,13 +9,13 @@ export const recipeStore = create((set) => ({
   recipes: [],
   // Function to set the recipes in the state
   setRecipes: (recipes) => set({ recipes }),
-  // Function to add a new recipe to the state
+  // Initialize the newRecipe state with null
   newRecipe: null,
-  // Function to set the recipes in the state
+  // Function to set the new recipe in the state
   setNewRecipe: (newRecipe) => set({ newRecipe }),
-  // Function to add a new recipe to the state
   inputRecipe: "",
   setInputRecipe: (inputRecipe) => set({ inputRecipe }),
+  // Function to add a new recipe to the state
   addNewRecipe: (newRecipe) => {
     // Update the state by creating a new array with existing recipes and new recipe
     set((state) => ({
@@ -29,17 +29,23 @@ export const recipeStore = create((set) => ({
         method: "GET",
         headers: { "Content-Type": "application/json" },
       });
+
+      if (!response.ok) {
+        // Handle non-successful response (e.g., 404 Not Found, 500 Internal Server Error)
+        throw new Error(`Failed to fetch recipes. Status: ${response.status}`);
+      }
       const data = await response.json();
       const recipes = data.recipes;
       const newRecipeVar = recipes[recipes.length - 1];
+
       //Update the newRecipe state with the fetched newRecipe:
       set(() => ({ newRecipe: newRecipeVar }));
     } catch (error) {
-      //*****Write error message!!********
+      console.error("Error fetching new recipe:", error);
     }
   },
 
-   fetchCollectionRecipes: async () => {
+  fetchCollectionRecipes: async () => {
     try {
       // Make a GET request to the API endpoint
       const response = await fetch(`${api}/recipes`, {
@@ -47,9 +53,8 @@ export const recipeStore = create((set) => ({
         headers: { "Content-Type": "application/json" },
       });
       // Check if the response is not okay 
-      //***Use same error message in other places??*** */
       if (!response.ok) {
-        throw new Error(`Oh no, error, HTTP! ${response.status}`);
+        throw new Error(`Failed to fetch collection of recipes! ${response.status}`);
       }
       // Parse the JSON response and set the recipes in the state
       const data = await response.json();
@@ -57,39 +62,39 @@ export const recipeStore = create((set) => ({
       const reversedRecipes = recipes.reverse()
       //Update the Recipes state with the fetched recipes
       set(() => ({ recipes: reversedRecipes }));
-      
+
       // setRecipes(data.recipes)
     } catch (error) {
-      console.error(error);
+      console.error("Error fetching collection of recipes:", error);
     }
-  }, 
+  },
 
+  // From PromptForm.jsx
   generateRecipe: async (ingredients) => {
-    try{
+    try {
       const newRecipeData = {
         ingredients,
       }
 
       const response = await fetch(`${api}/generate-recipe`, {
         method: 'POST',
-                body: JSON.stringify(newRecipeData),
-                headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(newRecipeData),
+        headers: { 'Content-Type': 'application/json' },
       })
 
       // Check if the response is not okay
       if (!response.ok) {
-        throw new Error(`Oh no, error, HTTP! ${response.status}`);
-    }
-    const data = await response.json()
-    //Update the state with the new recipe
-    set((state) => ({
-      recipes: [...state.recipes, data], 
-      newRecipe: data, 
-    }))
-    } catch(error){
-      console.error("Error in createRecipe:", error)
+        throw new Error(`Couldn't generate new recipe! ${response.status}`);
+      }
+      const data = await response.json()
+      //Update the state with the new recipe
+      set((state) => ({
+        recipes: [...state.recipes, data],
+        newRecipe: data,
+      }))
+
+    } catch (error) {
+      console.error("Error when generating new recipe:", error);
     }
   },
-
-
 }));
