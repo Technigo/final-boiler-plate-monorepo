@@ -13,8 +13,6 @@ export const Home = () => {
         <NavBar />
         <Hero />
         <div className="home-container">
-            <h1>Welcome</h1>
-            <Link to="/login"><Button className={"button"} btnText={"Get started"} /></Link>
             <PlaygroundContainer />
         </div>
         </>
