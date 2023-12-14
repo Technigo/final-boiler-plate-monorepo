@@ -1,0 +1,24 @@
+.story-card {
+   background-color: blueviolet;
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin: 10px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+   position: relative;
+  
+  }
+  
+  .story-card.full-view {
+    max-width: 80%;
+    padding: 20px;
+  }
+  
+  .carousel-wrapper div.story-card.active {
+    transform: scale(1.3); /* Makes the card slightly larger */
+    z-index: 4 ; /* Ensures it's above other elements */
+    width: 50%;
+    margin-top: -20px; /* Pulls the card up to overlap the component above */
+  }
+
+  

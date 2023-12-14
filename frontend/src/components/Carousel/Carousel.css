@@ -1,0 +1,5 @@
+.carousel-wrapper {
+  position: relative;
+  z-index: 10 !important;
+}
+  

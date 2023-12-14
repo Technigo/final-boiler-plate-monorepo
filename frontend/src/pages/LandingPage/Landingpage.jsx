@@ -9,7 +9,7 @@ export const LandingPage = () => {
     <div>
       <NavBar />
       <Hero />
-      <div>
+      <div className='outlet-wrapper'>
         <Outlet /> {/* This is where the content will change */}
       </div>
       <Footer />
