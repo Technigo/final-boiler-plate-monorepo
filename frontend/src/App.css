@@ -1,10 +1,10 @@
 /* Apply styles to the root element of the application */
 #root {
-  max-width: 1280px; /* Set maximum width for the content */
-  margin: 0 auto; /* Center align the content horizontally */
-  /*padding: 2rem; /* Add padding around the content */
-  min-height: 100vh; /* Ensure a minimum height to cover the viewport */
-  text-align: center; /* Center-align text within the root element */
+  max-width: 1350px;
+  margin: 0 auto;
+
+  min-height: 100vh;
+  text-align: center;
 }
 
 :root {
@@ -23,24 +23,37 @@
   -webkit-text-size-adjust: 100%;
 }
 
-html, body {
+/* html, body {
   margin: 0;
   padding: 0;
   height: 100%;
+} */
+
+*,
+*:after,
+*:before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
 /* Original Colors */
 .color-1 {
-  background-color: #026C7C; /* Teal */
+  background-color: #026c7c; /* Teal */
 }
 
 .color-2 {
-  background-color: #C98686; /* Rosy */
+  background-color: #c98686; /* Rosy */
 }
 
 .color-3 {
-  background-color: #6C757D; /* Gray */
+  background-color: #6c757d; /* Gray */
 }
 
 .color-1-light {
