@@ -83,7 +83,7 @@ const AboutPage = () => {
           <TeamMemberPhoto src="placeholder3.jpg" alt="Team Member 3" />
           <TeamMemberName>Alexandra Meija</TeamMemberName>
           <TeamMemberDescription>
-            Brief description of Team Member 3 goes here.
+         For me a foodie is someone who really loves food, and not just the high- end fancy pants restaurants, but just plain good food, either it is an amazing fishcake you buy for 10 bahts from a street vendor or having a seven course meal at Ekstedt. And for me the experience is enhanced when you find that perfect spot that suits you and the people you are with, that you can hold a conversation and that it's cozy. I always look for dogfriendly places so I can take with me my furrycompanion. I have a lot of favorites, but if I had to pick one place it's Bar Doma, it works for everything, and yes, it's dog friendly. An extra neat feature is the dessertcart which gets rolled out after every meal.
           </TeamMemberDescription>
           <PortfolioLink href="portfolio3-link">Portfolio</PortfolioLink>
         </TeamMember>
