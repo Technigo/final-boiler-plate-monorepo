@@ -1,33 +1,81 @@
 // Import the necessary modules and functions
 import express from "express";
 
-// import {
-//   getTasksController,
-//   updateTaskController,
-//   deleteAllTasksController,
-//   deleteSpecificTaskController,
-//   addTaskController,
-// } from "../controllers/taskController"; // Import controller functions for tasks
+import listEndpoints from "express-list-endpoints";
+import { StoryModel } from "../models/StoryModel";
 
 // Create an instance of the Express router
 const router = express.Router();
 
-// Define a route for handling GET requests to retrieve all tasks
-//router.get("/get", authenticateUser, getTasksController); // When a GET request is made to /get, authenticate the user using middleware and then execute the getTasksController function
+router.get("/", (req, res) => {
+  res.send(listEndpoints(router));
+});
 
-// Define a route for handling PUT requests to update a specific task by ID
-//router.put("/update/:id", updateTaskController); // When a PUT request is made to /update/:id, execute the updateTaskController function
+//route to see all stories with optional sorting
+router.get("/stories", async (req, res) => {
+  const { category, sortBy } = req.query;
+  let query = {};
+  let sortOption = { createdAt: -1 }; // Default sorting
 
-// Define a route for handling DELETE requests to delete all tasks
-//router.delete("/deleteAll", deleteAllTasksController); // When a DELETE request is made to /deleteAll, execute the deleteAllTasksController function
+  // Filter by category if it's provided
+  if (category) {
+    query.category = category;
+  }
 
-// Define a route for handling DELETE requests to delete a specific task by ID
-//router.delete("/delete/:id", deleteSpecificTaskController); // When a DELETE request is made to /delete/:id, execute the deleteSpecificTaskController function
+  // Change sorting based on the query parameter
+  if (sortBy === "ranking") {
+    sortOption = { ranking: -1 }; // Sort by ranking in descending order
+  }
 
-// Define a route for handling POST requests to add a new task
-//router.post("/add", authenticateUser, addTaskController); // When a POST request is made to /add, authenticate the user using middleware and then execute the addTaskController function
+  try {
+    const stories = await StoryModel.find(query).sort(sortOption);
+    res.json(stories);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+});
 
-// Export the router for use in the main application
+//route for post a story
+router.post("/stories", async (req, res) => {
+  const newStory = new StoryModel({
+    heading: req.body.heading,
+    content: req.body.content,
+    ranking: req.body.ranking, // This can be optional as it has a default value
+    category: req.body.category,
+  });
+
+  try {
+    const savedStory = await newStory.save();
+    res.status(201).json(savedStory);
+  } catch (error) {
+    res.status(400).json({ message: error.message });
+  }
+});
+
+//route for rank/like
+router.put("/stories/:id/rank", async (req, res) => {
+  const storyId = req.params.id;
+  const newRanking = req.body.ranking;
+
+  if (newRanking === undefined) {
+    return res.status(400).json({ message: "Ranking not provided" });
+  }
+
+  try {
+    const updatedStory = await StoryModel.findByIdAndUpdate(
+      storyId,
+      { ranking: newRanking },
+      { new: true } // Returns the updated document
+    );
+
+    if (!updatedStory) {
+      return res.status(404).json({ message: "Story not found" });
+    }
+
+    res.json(updatedStory);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+});
+
 export default router;
-
-// In summary, this file sets up routes using the Express router for various CRUD operations on tasks. It includes middleware for user authentication and associates each route with the corresponding controller function. These routes define the API endpoints for managing tasks within the application.

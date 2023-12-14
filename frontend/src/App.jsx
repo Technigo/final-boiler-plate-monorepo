@@ -1,12 +1,19 @@
-import { BrowserRouter, Routes } from "react-router-dom";
-// import routes from "./routes/routes";
+
+
+import { BrowserRouter } from "react-router-dom";
+import routes from "./routes/routes";
+
 import "./App.css";
 
 export const App = () => {
   return (
     <>
       <BrowserRouter>
-        <main>{/* <Routes>{routes}</Routes> */}</main>
+
+        <main>
+          {routes}
+        </main>
+
       </BrowserRouter>
     </>
   );
