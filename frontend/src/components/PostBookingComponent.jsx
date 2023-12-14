@@ -44,7 +44,7 @@ export const PostBookingComponent = () => {
 
             try {
                 // If the message is correct, then send it
-                const response = await fetch("http://localhost:3000/booking", {
+                const response = await fetch("https://mono-repo-yz5y.onrender.com/booking", {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json",

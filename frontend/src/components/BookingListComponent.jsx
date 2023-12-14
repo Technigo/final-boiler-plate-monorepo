@@ -13,7 +13,7 @@ export const BookingListComponent = ({ handleLike }) => {
     };
 
     const fetchBookings = () => {
-        fetch("http://localhost:3000/booking")
+        fetch("https://mono-repo-yz5y.onrender.com/booking")
             .then((response) => response.json())
             .then((data) => {
                 setBookings(data);
@@ -30,7 +30,7 @@ export const BookingListComponent = ({ handleLike }) => {
     const handleLikeClick = async (bookingId) => {
         try {
             await fetch(
-                `http://localhost:3000/booking/${bookingId}/like`,
+                `https://mono-repo-yz5y.onrender.com/booking/${bookingId}/like`,
                 {
                     method: "POST",
                 }
