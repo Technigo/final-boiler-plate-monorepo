@@ -14,7 +14,7 @@ const userSchema = new Schema(
       type: String, // Specifies that 'username' should be a string
       required: true, // Indicates that 'username' is a required field
       unique: true, // Ensures that 'username' values are unique
-      minlength: 2, // Sets a minimum length of 2 characters for 'username'
+      minlength: 3, // Sets a minimum length of 3 characters for 'username'
     },
     // Define the 'password' field with a String data type
     password: {
