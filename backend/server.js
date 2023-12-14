@@ -4,6 +4,7 @@ import cors from "cors"; // Import the CORS middleware
 import dotenv from "dotenv"; // Import dotenv for environment variables
 dotenv.config(); // Load environment variables from the .env file
 import userRoutes from "./routes/userRoutes"; // Import custom user routes
+import adRoutes from "./routes/adRoutes"; // Import custom user routes
 import { connectDB } from "./config/db"; // Import database connection function (not used here)
 
 // Defines the port the app will run on. Defaults to 8080, but can be overridden
@@ -18,6 +19,7 @@ app.use(express.urlencoded({ extended: false })); // Parse URL-encoded data
 // Use the routes for handling API requests
 // ROUTES - These routes USE controller functions ;)
 app.use(userRoutes); // Use the user-controlled routes for user-related requests
+app.use(adRoutes); // Use the ad-controlled routes for ad-related requests
 
 // Connection to the database through Mongoose
 connectDB();
