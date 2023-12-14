@@ -1,38 +1,24 @@
+import { Link } from "react-router-dom"; // Ensure the correct import for Link
 // Import image assets for logos.
-import reactLogo from "../assets/react.svg";
-import technigoLogo from "../assets/technigo-logo.svg";
-import viteLogo from "/vite.svg";
+import aHelpingHandLogo from "/a-helping-hand-logo.png";
 
 // Define the 'Logos' functional component.
 function Logos() {
   return (
     <div>
-      <div>
-        {/* Create a link to the Vite website that opens in a new tab. */}
-        <a href="https://vitejs.dev" target="_blank">
-          {/* Display the Vite logo image with a CSS class 'logo'. */}
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        {/* Create a link to the React website that opens in a new tab. */}
-        <a href="https://react.dev" target="_blank">
-          {/* Display the React logo image with CSS classes 'logo' and 'react'. */}
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-        {/* Create a link to the Technigo website that opens in a new tab. */}
-        <a href="https://www.technigo.io/" target="_blank">
-          {/* Display the Technigo logo image with CSS classes 'logo' and 'technigo'. */}
-          <img
-            src={technigoLogo}
-            className="logo technigo"
-            alt="Technigo logo"
-          />
-        </a>
-      </div>
+      {/* Create a link to the A Helping Hand website that opens in a new tab. */}
+      <Link to="/">
+        {/* Display the A Helping Hand logo image with CSS classes 'logo'. */}
+        <img
+          src={aHelpingHandLogo}
+          className="logo"
+          alt="A Helping Hand logo"
+        />
+      </Link>
     </div>
   );
 }
 
-// Export the 'Logos' component as the default export.
 export default Logos;
 
 // SUMMARY

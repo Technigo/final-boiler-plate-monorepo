@@ -15,10 +15,19 @@ router.post("/register", registerUserController); // When a POST request is made
 // LOGIN ROUTE: Handle user login
 router.post("/login", loginUserController); // When a POST request is made to /login, execute the loginUserController function
 
+// ABOUT US ROUTE: Handle about us
+router.get("/about", (req, res) => {
+  res.json({ about: "This is about us" });
+});
+
+// PROFILE ROUTE: Handle profile page and add the authenticateUser middleware to the route to protect it
+router.get("/profile", authenticateUser, (req, res) => {
+  res.json({ profile: "This is your profile" });
+});
+
 // Add the authenticateUser middleware to the route to protect it
-router.get("/tasks", authenticateUser);
-router.get("/tasks", async (req, res) => {
-  res.json({ secret: "This is top secret" });
+router.get("/tasks", authenticateUser, (req, res) => {
+  res.json({ tasks: "This is all tasks" });
 });
 
 // Export the router for use in the main application
