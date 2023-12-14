@@ -5,7 +5,7 @@
 import { useEffect } from "react";
 import Logos from "../components/Logos";
 import { CreateAd } from "../components/CreateAd";
-import { advertStore } from "../stores/advertStore";
+import { adStore } from "../stores/adStore";
 import { userStore } from "../stores/userStore";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
@@ -21,7 +21,7 @@ export const Tasks = () => {
   };
 
   // Access the 'tasks', 'fetchTasks', 'handleEdit', and 'deleteTaskById' functions from the 'advertStore'.
-  const { tasks, fetchTasks, handleEdit, deleteTaskById } = advertStore();
+  const { tasks, fetchTasks, handleEdit, deleteTaskById } = adStore();
   // Access the 'accessToken' from the 'userStore'.
   const { accessToken } = userStore();
 

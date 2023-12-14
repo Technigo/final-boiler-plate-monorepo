@@ -142,7 +142,7 @@ export const userStore = create((set) => ({
     }
   },
 
-  // FUNCTION TO HANDLE USER UPDATE
+  // FUNCTION TO HANDLE USER PROFILE UPDATE
   handleProfileUpdate: async (isLoggedIn, userId, email, password, location, introduction, products) => {
     // Check if the user is logged in and display message if they are not
     if (!isLoggedIn) {
@@ -209,7 +209,7 @@ export const userStore = create((set) => ({
     // Remove the accessToken from localStorage.
     localStorage.removeItem("accessToken");
     // Show an alert that the account has been deleted
-    alert("Your account has been deleted. Feel free to create a new account anytime!")
+    alert("Your account has been deleted. Feel free to create a new account anytime!");
   }
 }));
 
