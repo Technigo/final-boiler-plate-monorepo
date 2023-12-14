@@ -1,12 +1,25 @@
 .hero-wrapper {
-    background-image: url('/public/hero2.png');
-    width: 100vw;
-    height: 80vh;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+  background-image: url("/public/hero2.png");
+  width: 100vw;
+  height: 27vh;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  max-width: 1350px;
 }
 
 .hero-image {
-    width: 100vw;
+  width: 100vw;
+}
+
+@media (min-width: 768px) {
+  .hero-wrapper {
+    height: 44vh;
+  }
+}
+
+@media (min-width: 1280px) {
+  .hero-wrapper {
+    height: 71vh;
+  }
 }
