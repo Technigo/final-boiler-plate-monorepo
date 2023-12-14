@@ -1,15 +1,6 @@
 import { UserModel } from "../models/UserModel";
-//asyncHandler: We use asyncHandler to simplify error handling in asynchronous code. It helps us avoid writing repetitive try-catch blocks by automatically catching errors and passing them to our error handling middleware. This makes our code cleaner and more readable, reducing the risk of unhandled exceptions that could crash the server.
 import asyncHandler from "express-async-handler";
-// bcrypt: We use bcrypt to securely hash and store passwords in our database. Storing plain-text passwords is a security risk, as it exposes user credentials in case of a data breach. bcrypt helps us hash passwords in a way that is computationally expensive and time-consuming for potential attackers, making it difficult to crack passwords even if the database is compromised. It enhances the overall security of user authentication in our application.
 import bcrypt from "bcrypt";
-// jwt (JSON Web Tokens): We use jwt for authentication and authorization. It allows us to create and verify tokens that contain user identity information, such as user IDs or roles. These tokens are often sent with requests to secure routes and verify that a user has the necessary permissions to access certain resources. JWTs are stateless and efficient, making them a popular choice for secure communication between the client and server.
-import jwt from "jsonwebtoken";
-
-// Actual Functions here
-
-// -----------------------
-// -----------------------
 
 // @desc    Register new user
 // @route   POST api/register
@@ -28,6 +19,7 @@ export const registerUserController = asyncHandler(async (req, res) => {
       // and throw new error with some info
       throw new Error("Please add all fields");
     }
+
     // 2nd Condition
     // Check if the current user trying to register is using an usernam or email that matches with the same username or email in the database, so they would have to choose something diferent
     const existingUser = await UserModel.findOne({
@@ -55,7 +47,6 @@ export const registerUserController = asyncHandler(async (req, res) => {
       password: hashedPassword,
     });
 
-    // Mongoose Method: newUser.save()
     // Description: Save the new user instance to the database
     await newUser.save();
 
@@ -74,12 +65,6 @@ export const registerUserController = asyncHandler(async (req, res) => {
     res.status(500).json({ success: false, response: e.message });
   }
 });
-
-// -----------------------
-// -----------------------
-// -----------------------
-// -----------------------
-// -----------------------
 
 // @desc    Login Existing User
 // @route   POST api/login
@@ -122,14 +107,123 @@ export const loginUserController = asyncHandler(async (req, res) => {
   }
 });
 
+// @desc    Display Existing User Profile
+// @route   GET api/users/:userId
+// @access  Private
+export const getUserProfileController = asyncHandler(async (req, res) => {
+  const userId = req.params.userId;
+
+  try {
+    // Find a user in the database with the same ID and get the details
+    const userToBeDisplayed = await UserModel.findById(userId);
+
+    if (userToBeDisplayed) {
+      res.status(200).json({
+        success: true,
+        response: {
+          username: userToBeDisplayed.username,
+          password: userToBeDisplayed.password,
+          email: userToBeDisplayed.email,
+          location: userToBeDisplayed.location,
+          introduction: userToBeDisplayed.introduction,
+          products: userToBeDisplayed.products
+        }
+      });
+    } else {
+      res.status(400).json({
+        success: false,
+        response: "User not found"
+      });
+    }
+  } catch (e) {
+    res.status(500).json({ success: false, response: e.message });
+  }
+});
+
+
+// @desc    Update Existing User Profile - update existing info (except for username) or add new info such as self-introduction, location, profile picture
+// @route   PUT api/users/:userId
+// @access  Private
+export const updateUserController = asyncHandler(async (req, res) => {
+  const userId = req.params.userId;
+
+  const { password, email, location, introduction, products } = req.body;
+
+  try {
+    // Ensure that the username is not included in the update
+    if ("username" in req.body) {
+      res.status(400).json({
+        success: false,
+        response: "Username cannot be updated",
+      });
+      return;
+    }
+
+    // Find a user in the database with the same ID and update the details
+    const userToBeUpdated = await UserModel.findByIdAndUpdate(userId, {
+      $set: {
+        password: password, // doublecheck how to display password in frontend
+        email: email,
+        location: location,
+        introduction: introduction,
+        products: products
+      }
+    }, {
+      new: true // add this to return the updated
+    });
+
+    if (userToBeUpdated) {
+      res.status(200).json({
+        success: true,
+        response: userToBeUpdated
+      });
+    } else {
+      res.status(400).json({
+        success: false,
+        response: "User not found"
+      });
+    } 
+  } catch (e) {
+    res.status(500).json({ success: false, response: e.message });
+  };
+});
+
+// @desc    Delete Existing User - if the user wish to delete their account
+// @route   DELETE api/users/:userId
+// @access  Private
+export const deleteUserController = asyncHandler(async (req, res) => {
+  const userId = req.params.userId;
+
+  try {
+    // Find a user in the database with the same ID and delele
+    const userToBeDeleted = await UserModel.findByIdAndDelete(userId);
+
+    if (userToBeDeleted) {
+      res.status(200).json({
+        success: true,
+        response: {
+          message: `User with ID ${userId} deleted successfully`,
+          deletedUser: userToBeDeleted        
+        }});
+    } else {
+      res.status(400).json({
+        success: false,
+        response: "User not found"
+      });
+    }
+    
+  } catch (e) {
+    res.status(500).json({ success: false, response: e.message });
+  };
+});
+
+
 // SUMMARY
 
 // This file contains controller functions for user-related operations within an Express.js application. Let's provide a summary with additional context:
 
-// registerUserController: This controller handles user registration. It extracts the user's username, password, and email from the request body. It performs several checks, such as ensuring that all required fields are provided and that the chosen username or email is not already in use by another user. It securely hashes the user's password using the bcrypt library and stores the hashed password in the database. After successfully registering the user, it responds with a success message, user details, and a JSON Web Token (JWT) for authentication.
+// registerUserController: This controller handles user registration. It extracts the user's username, password, and email from the request body. It performs several checks, such as ensuring that all required fields are provided and that the chosen username or email is not already in use by another user. It securely hashes the user's password using the bcrypt library and stores the hashed password in the database. After successfully registering the user, it responds with a success message, user details, including access token.
 
-// generateToken: This is a utility function used to generate JWT tokens for user authentication. It takes a user object and creates a token containing the user's access token, with an optional secret key and a 24-hour expiration time.
-
-// loginUserController: This controller manages user login. It extracts the username and password from the request body, then attempts to find a user with the provided username in the database. If the user is found, it compares the provided password with the hashed password stored in the database using bcrypt. If the credentials match, it generates a JWT token for the user and responds with a success message, user details, and the JWT token. In case of authentication failure (wrong password or non-existent user), it responds with appropriate error messages.
+// loginUserController: This controller manages user login. It extracts the username and password from the request body, then attempts to find a user with the provided username in the database. If the user is found, it compares the provided password with the hashed password stored in the database using bcrypt. If the credentials match, it generates a JWT token for the user and responds with a success message, user details including access token. In case of authentication failure (wrong password or non-existent user), it responds with appropriate error messages.
 
 // In summary, this file provides controllers for user registration and login, ensuring that user credentials are securely handled and authenticated using JWT tokens. It also uses bcrypt to hash and store passwords securely in the database, enhancing the overall security of user authentication in the application.

@@ -1,35 +1,43 @@
 import mongoose from "mongoose";
 import crypto from "crypto"; //  Imports the Node.js crypto library for generating secure random strings.
 
-// Import the Schema class from the Mongoose library
-// Destructures the Schema class from the Mongoose library, allowing us to create a schema.
+// Destructure the Schema class from the Mongoose library
 const { Schema } = mongoose;
 
-// Create a new Mongoose schema named 'userSchema'
-// Creates a new Mongoose schema named userSchema that defines the structure of a user document in the MongoDB collection. It includes fields like username, password, and accessToken, specifying their data types, validation rules, and default values.
+// Create a new Mongoose schema named userSchema that defines the structure of a user document in the MongoDB collection. It includes fields like username, password, email and accessToken, specifying their data types, validation rules, and default values.
 const userSchema = new Schema(
   {
-    // Define the 'username' field with a String data type
     username: {
-      type: String, // Specifies that 'username' should be a string
-      required: true, // Indicates that 'username' is a required field
-      unique: true, // Ensures that 'username' values are unique
-      minlength: 2, // Sets a minimum length of 2 characters for 'username'
+      type: String, 
+      required: true, 
+      unique: true, 
+      minlength: 5, 
     },
-    // Define the 'password' field with a String data type
     password: {
-      type: String, // Specifies that 'password' should be a string
-      required: true, // Indicates that 'password' is a required field
-      minlength: 6, // Sets a minimum length of 6 characters for 'password'
+      type: String, 
+      required: true, 
+      minlength: 6, 
     },
     email: {
       type: String,
       required: true,
       unique: true,
     },
-    //Define the 'accessToken' field with a String data type
+    location: {
+      type: String,
+      minlength: 5
+    },
+    introduction: {
+      type: String,
+      minlength: 5,
+      maxlength: 200
+    },
+    products: {
+      type: Array,
+      minlength: 0
+    },
     accessToken: {
-      type: String, // Specifies that 'accessToken' should be a string
+      type: String, 
       default: () => crypto.randomBytes(128).toString("hex"), // Sets a default value using a cryptographic random string
     },
   },
