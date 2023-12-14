@@ -107,9 +107,36 @@ export const loginUserController = asyncHandler(async (req, res) => {
   }
 });
 
+// @desc    Display Existing User Profile
+// @route   GET api/users/:userId
+// @access  Private
+export const getUserProfileController = asyncHandler(async (req, res) => {
+  const userId = req.params.userId;
+
+  try {
+    // Find a user in the database with the same ID and get the details
+    const userToBeDisplayed = await UserModel.findById(userId);
+
+    if (userToBeDisplayed) {
+      res.status(200).json({
+        success: true,
+        response: userToBeDisplayed
+      })
+    } else {
+      res.status(400).json({
+        success: false,
+        response: "User not found"
+      });
+    }
+  } catch (e) {
+    res.status(500).json({ success: false, response: e.message });
+  }
+});
+
+
 // @desc    Update Existing User Profile - update existing info (except for username) or add new info such as self-introduction, location, profile picture
 // @route   PUT api/update/:userId
-// @access  Public
+// @access  Private
 export const updateUserController = asyncHandler(async (req, res) => {
   const userId = req.params.userId;
 
@@ -134,8 +161,7 @@ export const updateUserController = asyncHandler(async (req, res) => {
         success: false,
         response: "User not found"
       });
-    }
-    
+    } 
   } catch (e) {
     res.status(500).json({ success: false, response: e.message });
   };
@@ -143,7 +169,7 @@ export const updateUserController = asyncHandler(async (req, res) => {
 
 // @desc    Delete Existing User - if the user wish to delete their account
 // @route   POST api/delete/:userId
-// @access  Public
+// @access  Private
 export const deleteUserController = asyncHandler(async (req, res) => {
   const userId = req.params.userId;
 

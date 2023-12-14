@@ -3,6 +3,7 @@ import express from "express";
 import {
   registerUserController,
   loginUserController,
+  getUserProfileController,
   updateUserController,
   deleteUserController
 } from "../controllers/userController"; // Import controller functions for user registration and login
@@ -15,6 +16,9 @@ router.post("/register", registerUserController); // When a POST request is made
 
 // LOGIN ROUTE: Handle user login
 router.post("/login", loginUserController); // When a POST request is made to /login, execute the loginUserController function
+
+// DISPLAY PROFILE ROUTE: Handle user profile display
+router.get("/users/:userId", getUserProfileController);
 
 // UPDATE ROUTE: Handle user profile update
 router.put("/update/:userId", updateUserController);
