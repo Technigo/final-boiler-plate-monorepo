@@ -16,7 +16,7 @@ app.use(cors()); // Enable CORS (Cross-Origin Resource Sharing)
 app.use(express.json()); // Parse incoming JSON data
 app.use(express.urlencoded({ extended: false })); // Parse URL-encoded data
 
-app.use("/", userRoutes)
+app.use(userRoutes)
 
 
 // Use the routes for handling API requests

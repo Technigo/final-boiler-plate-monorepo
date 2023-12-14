@@ -25,5 +25,5 @@ package-lock.json
 *.sw?
 
 
-# Comment out later ;) 
-# .env
+Comment out later ;) 
+.env

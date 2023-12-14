@@ -42,6 +42,7 @@ export const registerUserController = asyncHandler(async (req, res) => {
       );
     }
 
+    
     // Generate a salt and hash the user's password
     //In this line below, we're using the bcrypt library to create a random value called "salt." The salt is added to the password before hashing it. It adds an extra layer of security by making it more difficult for attackers to use precomputed tables (rainbow tables) to crack passwords. The 10 in genSaltSync(10) represents the cost factor, which determines how computationally intensive the hashing process will be.
     const salt = bcrypt.genSaltSync(10);
