@@ -36,7 +36,7 @@ export const SurfLessons = () => {
         <>
             <div className="">
                 <NavigationMenu />
-                <div className="h-3/6 md:h-5/6 lg:h-screen" style={backgroundImageStyle}>
+                <div className="h-96 lg:h-screen" style={backgroundImageStyle}>
                     {/* Any content you want on top of the background image */}
                     <HeadingComponent text="Our Surf Lessons" level={1} style={{}} />
                 </div>
@@ -67,17 +67,18 @@ export const SurfLessons = () => {
                     <PhotoComponent img={SL3} />
 
                     <div className="p-12 grid gap-8 md:grid-cols-3 lg:grid-cols-3">
-                        <div>
-                            <SubHeadingComponent className="pb-5" text="Pricing for our lessons:" />
-                            <SubHeadingComponent text="SurGroup Lesson: $55 (a minimum of 2 people) Private Lesson: $75f-board" />
+
+                        <div className="">
+                            <SubHeadingComponent className="bg-customPink p-10 rounded-t-lg" text="Pricing for our lessons:" />
+                            <SubHeadingComponent className="bg-customPink p-10 rounded-b-lg" text="SurGroup Lesson: $55 (a minimum of 2 people) Private Lesson: $75f-board" />
                         </div>
                         <div>
-                            <SubHeadingComponent className="pb-5" text="Book a package of 3 lessons:" />
-                            <SubHeadingComponent text="3 Group Lessons: $45x3 = $135 in total 3 Private Lessons: $65x3 = $195 in total" />
+                            <SubHeadingComponent className="bg-customPink p-10 rounded-t-lg" text="Book a package of 3 lessons:" />
+                            <SubHeadingComponent className="bg-customPink p-10 rounded-b-lg" text="3 Group Lessons: $45x3 = $135 in total 3 Private Lessons: $65x3 = $195 in total" />
                         </div>
                         <div>
-                            <SubHeadingComponent className="pb-5" text="Book a package of 6 lessons:" />
-                            <SubHeadingComponent text="6 Group Lessons: $35x6 = $210 in total 6 Private Lessons: $55x6 = $330 in total" />
+                            <SubHeadingComponent className="bg-customPink p-10 rounded-t-lg" text="Book a package of 6 lessons:" />
+                            <SubHeadingComponent className="bg-customPink p-10 rounded-b-lg" text="6 Group Lessons: $35x6 = $210 in total 6 Private Lessons: $55x6 = $330 in total" />
                         </div>
 
                     </div>

@@ -2,6 +2,7 @@
 import { useEffect } from "react";
 import { userStore } from "../stores/userStore";
 import { useNavigate } from "react-router-dom";
+
 import { Link } from "react-router-dom";
 
 // Define the 'Home' functional component.
@@ -48,13 +49,10 @@ export const Admin = () => {
         {/* Create a navigation menu with links to various routes. */}
         <ul className="app-ul">
           <li className="app-li">
-            <Link to="/Admin">Admin</Link>
+            <Link to="/home">Home</Link>
           </li>
           <li className="app-li">
             <Link to="/tasks">Tasks</Link>
-          </li>
-          <li className="">
-            <Link to="/ContactUs">Contact Us</Link>
           </li>
           <li className="app-li">
             {/* Create a button for logging out and attach the 'onLogoutClick' event handler. */}
@@ -63,7 +61,7 @@ export const Admin = () => {
         </ul>
       </nav>
       {/* Render the 'Logos' component. */}
-      <Logos />
+
       {/* Display the heading and subheading. */}
       <h1 className="heading">{text.heading}</h1>
       <h2>{text.subheading}</h2>

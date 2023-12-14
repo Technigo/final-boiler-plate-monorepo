@@ -1,3 +1,4 @@
+// Import the 'Logos' component and the 'Link' component from 'react-router-dom'.
 
 import { Link } from "react-router-dom";
 // Import the 'userStore' from the 'userStore' module.
@@ -52,26 +53,18 @@ export const Login = () => {
   // Render the component content.
   return (
     <>
-      <h1 className="text-3xl font-bold underline">
-        Hello world!
-      </h1>
       <nav>
         {/* Create a navigation menu with links to the login and sign-up routes. */}
         <ul className="app-ul">
-
-          <li className="">
-            <Link to="/ContactUs">Contact Us</Link>
+          <li className="app-li">
+            <Link to="/">Login</Link>
           </li>
           <li className="app-li">
             <Link to="/register">Sign Up</Link>
-            <li className="app-li">
-              <Link to="/">Login</Link>
-            </li>
           </li>
         </ul>
       </nav>
-      {/* Render the 'Logos' component. */}
-      <Logos />
+
       <div>
         {/* Display the heading and paragraphs. */}
         <h2>{text.heading}</h2>

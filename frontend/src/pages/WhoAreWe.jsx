@@ -18,13 +18,12 @@ export const WhoAreWe = () => {
 
     return (
         <>
-            <div className="">
+            <div className="bg-backgroundPink">
                 <NavigationMenu />
-                <div className="h-3/6 md:h-5/6 lg:h-screen" style={backgroundImageStyle}>
+                <div className="h-96 lg:h-screen" style={backgroundImageStyle}>
                     {/* Any content you want on top of the background image */}
                     <HeadingComponent text="Who are we?" level={1} style={{}} />
                 </div>
-
                 <div className="bg-backgroundPink">
                     <ParagraphComponent text="Tuanis Surf School is a small family and friend owned business in Samara created by a group of awesome people that love the sport of surfing. We are all about the good life and we think that you are too. We are lucky to get guests from all over the world who come together to surf and enjoy our little piece of paradise. At Tuanis Surf School we have a great family vibe where you will instantly feel a sense of belonging. Surf with us to enjoy a social atmosphere and have a great time while making memories for life." />
 

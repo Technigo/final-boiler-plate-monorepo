@@ -1,4 +1,3 @@
-// Import the necessary module for state management
 import { create } from "zustand";
 // Import the userStore to access user-related data
 import { userStore } from "./userStore";

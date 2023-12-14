@@ -36,8 +36,7 @@ export const registerUserController = asyncHandler(async (req, res) => {
     if (existingUser) {
       res.status(400);
       throw new Error(
-        `User with ${
-          existingUser.username === username ? "username" : "email"
+        `User with ${existingUser.username === username ? "username" : "email"
         } already exists`
       );
     }
