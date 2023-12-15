@@ -59,6 +59,7 @@ export const Tasks = () => {
       {/* Render the 'Logos' component. */}
 
       <div>
+
         {/* Display the heading and paragraphs. */}
         <h2>{text.heading}</h2>
         <p>{text.intro}</p>

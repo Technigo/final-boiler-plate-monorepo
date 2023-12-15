@@ -1,8 +1,10 @@
-
 import { userStore } from "../stores/userStore";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
+//Import components
+import { SubHeadingComponent } from "../components/SubHeadingComponent";
+import { BtnComponent } from "../components/BtnComonent";
 
 // Define the 'Register' functional component.
 export const Register = () => {
@@ -36,64 +38,55 @@ export const Register = () => {
       alert("An error occurred during signup");
     }
   };
-
-  // Text content for the heading and paragraphs.
-  const text = {
-    heading: "SignUp Page",
-    intro: "signup here...",
-    loremIpsum:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore, vitae fugit ipsam quo accusantium autem officia necessitatibus ullam voluptati",
-  };
+  // Function to handle the click event of the signup button.
+  const onNavigateToLoginClick = async () => {
+    navigate("/login")
+    return;
+  }
 
   // Render the component content.
   return (
     <>
-      <nav>
-        {/* Create a navigation menu with links to the login and sign-up routes. */}
-        <ul className="app-ul">
-          <li className="app-li">
-            <Link to="/">Login</Link>
-          </li>
-          <li className="app-li">
-            <Link to="/register">Sign Up</Link>
-          </li>
-        </ul>
-      </nav>
-      {/* Render the 'Logos' component. */}
-      <Logos />
-      <div>
-        {/* Display the heading and paragraphs. */}
-        <h2>{text.heading}</h2>
-        <p>{text.intro}</p>
-        <p>{text.loremIpsum}</p>
-        <div className="user-registration">
+      <div className="items-center justify-center h-screen bg-backgroundPink">
+        <div className="pt-20">
+
+          <SubHeadingComponent className="pb-12 text-center" text="Register Tuanis Surf School" />
+          <SubHeadingComponent className="pb-12 text-center" text="In order to retrive booking" />
           {/* Create input fields for 'email', 'username', and 'password' and associate them with state variables. */}
-          <input
-            type="text"
-            placeholder="Email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-          <input
-            type="text"
-            placeholder="Username"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-          />
-          <input
-            type="password"
-            placeholder="Password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
+          <div className="flex flex-col items-center">
+            <input
+              type="text"
+              placeholder="Email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+            <input
+              type="text"
+              placeholder="Username"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+              className="block mt-5"
+            />
+            <input
+              type="password"
+              placeholder="Password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              className="block mt-5"
+            />
+          </div>
           {/* Create a button for signing up and attach the 'onSignupClick' event handler. */}
-          <button onClick={onSignupClick}>Sign Up</button>
+
+          <div className="flex items-center justify-center p-4">
+            <BtnComponent label="Sign Up" onClick={onSignupClick} />
+          </div>
+
+          <div className="flex items-center justify-center p-4">
+            <BtnComponent label="Login" onClick={onNavigateToLoginClick} />
+          </div>
         </div>
       </div>
     </>
   );
 };
 
-// SUMMARY
-
-// This code defines the Register component, which handles user registration functionality. It imports necessary components, hooks, and the user store, and it defines state variables for email, username, and password. The component provides a form for entering registration details, handles the signup button click event, and uses React Router to navigate between login and sign-up routes. Additionally, it renders text content and the 'Logos' component.

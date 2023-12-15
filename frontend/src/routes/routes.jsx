@@ -11,7 +11,7 @@ import { Home } from "../pages/Home";
 import { WhoAreWe } from "../pages/WhoAreWe";
 import { SurfLessons } from "../pages/SurfLessons";
 import { BookNow } from "../pages/BookNow";
-import { Bookings } from "../pages/Bookings";
+
 // Define the 'routes' variable as a JSX expression.
 const routes = (
   <>
@@ -22,7 +22,6 @@ const routes = (
     <Route path="/WhoAreWe" element={<WhoAreWe />} />
     <Route path="/SurfLessons" element={<SurfLessons />} />
     <Route path="/BookNow" element={<BookNow />} />
-    <Route path="/Bookings" element={<Bookings />} />
     {/* for surfschool to log in */}
     <Route path="/Admin" element={<Admin />} />
 

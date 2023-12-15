@@ -22,7 +22,7 @@ export const BookingListComponent = ({ handleLike }) => {
                 console.error("Error fetching bookings:", error);
             });
     };
-
+    //fetch(`${import.meta.env.VITE_API_URL}/booking`)
     useEffect(() => {
         fetchBookings();
     }, []);
@@ -30,12 +30,12 @@ export const BookingListComponent = ({ handleLike }) => {
     const handleLikeClick = async (bookingId) => {
         try {
             await fetch(
-                `${import.meta.env.VITE_API_URL}/booking/${bookingId}/like`,
+                '`${import.meta.env.VITE_API_URL}/booking/${bookingId}/like`',
                 {
                     method: "POST",
                 }
             );
-
+            //`${import.meta.env.VITE_API_URL}/booking/${bookingId}/like`,
             const updatedBookings = bookings.map((booking) => {
                 if (booking._id === bookingId) {
                     return {
@@ -55,13 +55,7 @@ export const BookingListComponent = ({ handleLike }) => {
 
     return (
         <div>
-            {/* Logout button */}
-            < div className="w-full flex items-center justify-center p-4" >
-                <BtnComponent label="Log out" />
-            </div >
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
-
-
 
                 {/* Displaying bookings */}
                 {bookings.map((booking, index) => (
@@ -71,12 +65,18 @@ export const BookingListComponent = ({ handleLike }) => {
                             {/* Booking details */}
                             <div>
                                 <ParagraphComponent text={`${booking.name}, ${booking.age} years old`} category="Name" />
-                                <ParagraphComponent text={`Weight: ${booking.weight || "N/A"}`} category="Weight" />
-                                <ParagraphComponent text={`Height: ${booking.height || "N/A"}`} category="Height" />
-                                <ParagraphComponent text={`Video: ${booking.video ? "Yes" : "No"}`} category="Video" />
-                                <ParagraphComponent text={`Film: ${booking.film ? "Yes" : "No"}`} category="Film" />
-                                <ParagraphComponent text={`Drone Videos: ${booking.droneVideos ? "Yes" : "No"}`} category="Drone Videos" />
-                                <ParagraphComponent text={booking.message} />
+
+                                <ParagraphComponent text={`${booking.weight || "N/A"}`} category="Weight" />
+                                <ParagraphComponent text={`${booking.height || "N/A"}`} category="Height" />
+
+                                <ParagraphComponent text={`${booking.film ? "Yes" : "No"}`} category="Film" />
+                                <ParagraphComponent text={`${booking.droneVideos ? "Yes" : "No"}`} category="Drone Videos" />
+                                <ParagraphComponent text={`${booking.photo ? "Yes" : "No"}`} category="Photo" />
+
+                                <ParagraphComponent text={`${booking.email}`} category="Email" />
+                                <ParagraphComponent text={`${booking.phonenumber}`} category="Phone number" />
+
+                                <ParagraphComponent text={`Other message: ${booking.message}`} />
                             </div>
 
                             {/* Like button */}
