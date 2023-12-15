@@ -4,7 +4,7 @@ import asyncHandler from "express-async-handler";
 // bcrypt: We use bcrypt to securely hash and store passwords in our database. Storing plain-text passwords is a security risk, as it exposes user credentials in case of a data breach. bcrypt helps us hash passwords in a way that is computationally expensive and time-consuming for potential attackers, making it difficult to crack passwords even if the database is compromised. It enhances the overall security of user authentication in our application.
 import bcrypt from "bcrypt";
 // jwt (JSON Web Tokens): We use jwt for authentication and authorization. It allows us to create and verify tokens that contain user identity information, such as user IDs or roles. These tokens are often sent with requests to secure routes and verify that a user has the necessary permissions to access certain resources. JWTs are stateless and efficient, making them a popular choice for secure communication between the client and server.
-import jwt from "jsonwebtoken";
+//import jwt from "jsonwebtoken";
 
 // Actual Functions here
 
@@ -42,6 +42,7 @@ export const registerUserController = asyncHandler(async (req, res) => {
       );
     }
 
+    
     // Generate a salt and hash the user's password
     //In this line below, we're using the bcrypt library to create a random value called "salt." The salt is added to the password before hashing it. It adds an extra layer of security by making it more difficult for attackers to use precomputed tables (rainbow tables) to crack passwords. The 10 in genSaltSync(10) represents the cost factor, which determines how computationally intensive the hashing process will be.
     const salt = bcrypt.genSaltSync(10);
@@ -121,6 +122,17 @@ export const loginUserController = asyncHandler(async (req, res) => {
     res.status(500).json({ success: false, response: e.message });
   }
 });
+
+export const usersController = asyncHandler(async (req, res) => {
+  try {
+    const users = await UserModel.find({}, { password: 0, accessToken: 0})
+    res.status(200).json({ success: true, response: users })
+  } catch (e) {
+    res.status(500).json({ success: false, response: e.message})
+  }
+
+})
+
 
 // SUMMARY
 
