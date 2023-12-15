@@ -9,6 +9,7 @@ import { useNavigate } from "react-router-dom"; // Import useNavigate
 import Header from "../components/Header";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import ArticlesFront from "../components/ArticlesFront";
 
 // Define the 'Login' functional component.
 export const Login = () => {
@@ -92,6 +93,7 @@ export const Login = () => {
           <button onClick={onLoginClick}>Login</button>
         </div>
       </div>
+      <ArticlesFront />
       <Footer />
     </>
   );

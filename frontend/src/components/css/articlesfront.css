@@ -1,0 +1,13 @@
+.articles-front {
+    display: flex;
+    flex-direction: row;
+}
+
+.articles-display {
+    display: flex;
+    flex-direction: column;
+}
+
+.articles-front img {
+    width: 300px;
+}
