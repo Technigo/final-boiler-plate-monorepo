@@ -1,5 +1,4 @@
 
-
 import { BrowserRouter } from "react-router-dom";
 import routes from "./routes/routes";
 
@@ -10,9 +9,11 @@ export const App = () => {
     <>
       <BrowserRouter>
 
+
         <main>
           {routes}
         </main>
+
 
       </BrowserRouter>
     </>

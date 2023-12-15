@@ -1,4 +1,5 @@
 .hero-wrapper {
+
   background-image: url("/public/hero2.png");
   width: 100vw;
   height: 27vh;
@@ -23,3 +24,4 @@
     height: 71vh;
   }
 }
+

@@ -1,4 +1,5 @@
 .Navbar-wrapper {
+
   position: relative;
   display: flex;
   justify-content: space-between;
@@ -81,10 +82,12 @@
     transition: transform 0.3s ease;
   }
 
+
   .nav-item:hover {
     transform: scale(1.3); /* Slightly enlarge the item on hover */
     /* You can adjust the scale value as needed */
   }
+
 }
 
 @media (min-width: 1280px) {
@@ -101,3 +104,4 @@
     font-size: 30px;
   }
 }
+
