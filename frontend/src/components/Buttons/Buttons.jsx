@@ -1,5 +1,16 @@
-import React from "react";
+import "./Buttons.css";
 
-export const Buttons = () => {
-  return <div>Buttons</div>;
+export const Buttons = ({ buttonText, url, onClick }) => {
+  const handleClick = () => {
+    console.log(`Clicked ${buttonText}`);
+    if (onClick) {
+      onClick();
+    }
+  };
+
+  return (
+    <button onClick={handleClick} className="buttons">
+      {buttonText}
+    </button>
+  );
 };

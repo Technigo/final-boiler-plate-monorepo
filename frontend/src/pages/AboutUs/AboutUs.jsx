@@ -1,6 +1,4 @@
-
 import lottie from "lottie-react";
-import Animation from "./src/assets/AnimationAboutUs.json";
 import "./AboutUs.css";
 
 export const AboutUs = () => {
@@ -29,10 +27,6 @@ export const AboutUs = () => {
         And please, if you have a story to tell -
         <i>share it with the rest of us!</i>
       </p>
-      <Lottie Animation={AnimationAboutUs} />
     </div>
   );
 };
-
-
-
