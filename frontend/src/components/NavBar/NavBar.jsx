@@ -1,3 +1,4 @@
+
 import "./NavBar.css";
 import Hamburger from "../../assets/hamburger-black.svg";
 import Logo from "../../assets/logo2.svg";
@@ -7,12 +8,14 @@ import { useState } from "react";
 export const NavBar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
+
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
   };
 
   return (
     <div className="Navbar-wrapper">
+
       <img src={Logo} alt="Menu" className="logo" />
       <div className="nav-links">
         <Link to="/" className="nav-item">
@@ -53,3 +56,4 @@ export const NavBar = () => {
     </div>
   );
 };
+
