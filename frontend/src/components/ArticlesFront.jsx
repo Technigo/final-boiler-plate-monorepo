@@ -6,10 +6,10 @@ const ArticlesFront = () => {
     return (
         <div className='articles-front'>
             <div className='articles-display'>
-                {articlesData.articles.map((article, index) => (
+                {data.articles.map((article, index) => (
                     <div key={index}>
                         <img src={article.imageM} alt={article.name} />
-                        <h2>{article.name}</h2>
+                        <h3>{article.name}</h3>
                     </div>
                 ))}
             </div>

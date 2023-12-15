@@ -1,0 +1,30 @@
+.loginform {
+    background-color: #f0e9dc;
+    overflow: hidden;
+    padding: 30px;
+}
+
+.loginform h2 {
+    font-size: 30px;
+    font-weight: 300;
+}
+
+/* Apply styles to elements with either 'user-login' or 'user-registration' class */
+.user-login,
+.user-registration {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 200px;
+    margin-left: 400px;
+    border-radius: 20px;
+}
+
+/* Apply styles to input elements within 'user-login' or 'user-registration' class */
+.user-login>input,
+.user-registration>input {
+    margin-bottom: 1em;
+    /* Add space below input elements */
+    height: 2em;
+    /* Set height for input elements */
+}

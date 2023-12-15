@@ -169,25 +169,6 @@ li {
   /* Set text color to gray */
 }
 
-/* Apply styles to elements with either 'user-login' or 'user-registration' class */
-.user-login,
-.user-registration {
-  display: flex;
-  /* Display elements as flex containers */
-  flex-direction: column;
-  /* Stack child elements vertically */
-  justify-content: center;
-  /* Center-align content vertically */
-}
-
-/* Apply styles to input elements within 'user-login' or 'user-registration' class */
-.user-login>input,
-.user-registration>input {
-  margin-bottom: 1em;
-  /* Add space below input elements */
-  height: 2em;
-  /* Set height for input elements */
-}
 
 /* Apply styles to elements with the 'card-wrapper' class */
 .card-wrapper {
