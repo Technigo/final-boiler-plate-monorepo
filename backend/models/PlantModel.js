@@ -27,7 +27,7 @@ const plantSchema = new Schema(
             type: String, 
         },
         height: {
-            type: Number,
+            type: String,
         },
         poisonous_pets: {
             type: Boolean,
