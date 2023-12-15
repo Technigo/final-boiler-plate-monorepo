@@ -1,8 +1,29 @@
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+}
+
+li {
+  list-style: none;
+}
+
+img,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
 /* Apply styles to the root element of the application */
 #root {
   max-width: 1280px; /* Set maximum width for the content */
   margin: 0 auto; /* Center align the content horizontally */
-  padding: 2rem; /* Add padding around the content */
+  /*padding: 2rem; /* Add padding around the content */
   min-height: 100vh; /* Ensure a minimum height to cover the viewport */
   text-align: center; /* Center-align text within the root element */
 }

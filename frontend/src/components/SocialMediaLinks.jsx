@@ -42,84 +42,87 @@ const SrOnly = styled.span`
   border: 0;
 `;
 
-export const SocialMediaLinks = () => {
+{
+  /* Anna's contact Links */
+}
+const annaLinks = [
   {
-    /* Anna's contact Links */
-  }
-  const annaLinks = [
-    {
-      label: "LinkedIn",
-      url: "https://www.linkedin.com/in/anna-robertsson-829967272/",
-      icon: <FaLinkedin aria-hidden="true" />,
-    },
-    {
-      label: "GitHub",
-      url: "https://github.com/AnnaRobertsson",
-      icon: <FaGithub aria-hidden="true" />,
-    },
-    {
-      label: "Slack",
-      url: "https://technigo.slack.com/team/U055LN8GBQA",
-      icon: <FaSlack aria-hidden="true" />,
-    },
-  ];
+    label: "LinkedIn",
+    url: "https://www.linkedin.com/in/anna-robertsson-829967272/",
+    icon: <FaLinkedin aria-hidden="true" />,
+  },
+  {
+    label: "GitHub",
+    url: "https://github.com/AnnaRobertsson",
+    icon: <FaGithub aria-hidden="true" />,
+  },
+  {
+    label: "Slack",
+    url: "https://technigo.slack.com/team/U055LN8GBQA",
+    icon: <FaSlack aria-hidden="true" />,
+  },
+];
 
+{
+  /* Susanne's contact Links */
+}
+const susanneLinks = [
   {
-    /* Susanne's contact Links */
-  }
-  const susanneLinks = [
-    {
-      label: "LinkedIn",
-      url: "https://www.linkedin.com/in/susanne-e-6915a087/",
-      icon: <FaLinkedin aria-hidden="true" />,
-    },
-    {
-      label: "GitHub",
-      url: "https://github.com/smExlex",
-      icon: <FaGithub aria-hidden="true" />,
-    },
-    {
-      label: "Slack",
-      url: "https://technigo.slack.com/team/U04RPTCAB7B",
-      icon: <FaSlack aria-hidden="true" />,
-    },
-  ];
+    label: "LinkedIn",
+    url: "https://www.linkedin.com/in/susanne-e-6915a087/",
+    icon: <FaLinkedin aria-hidden="true" />,
+  },
+  {
+    label: "GitHub",
+    url: "https://github.com/smExlex",
+    icon: <FaGithub aria-hidden="true" />,
+  },
+  {
+    label: "Slack",
+    url: "https://technigo.slack.com/team/U04RPTCAB7B",
+    icon: <FaSlack aria-hidden="true" />,
+  },
+];
+
+export const SocialMediaLinks = ({ person }) => {
+  const linksToDisplay = person === "Anna" ? annaLinks : susanneLinks;
+
   return (
-    <>
-      <SocialButtonWrapper>
-        {annaLinks.map((link, index) => (
-          <SocialButton
-            key={index}
-            href={link.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label={`Link to ${link.label}`}
-            className={"social-link-${link.label.toLowerCase()}"}
-          >
-            {link.icon}
-            <SrOnly>{link.label}</SrOnly>
-          </SocialButton>
-        ))}
-      </SocialButtonWrapper>
-
-      <SocialButtonWrapper>
-        {susanneLinks.map((link, index) => (
-          <SocialButton
-            key={index}
-            href={link.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label={`Link to ${link.label}`}
-            className={`social-link-${link.label.toLowerCase()}`}
-          >
-            {link.icon}
-            <SrOnly>{link.label}</SrOnly>
-          </SocialButton>
-        ))}
-      </SocialButtonWrapper>
-    </>
+    <SocialButtonWrapper>
+      {linksToDisplay.map((link, index) => (
+        <SocialButton
+          key={index}
+          href={link.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label={`Link to ${link.label}`}
+          className={"social-link-${link.label.toLowerCase()}"}
+        >
+          {link.icon}
+          <SrOnly>{link.label}</SrOnly>
+        </SocialButton>
+      ))}
+    </SocialButtonWrapper>
   );
 };
+
+{
+  /* <SocialButtonWrapper>
+  {susanneLinks.map((link, index) => (
+    <SocialButton
+      key={index}
+      href={link.url}
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label={`Link to ${link.label}`}
+      className={`social-link-${link.label.toLowerCase()}`}
+    >
+      {link.icon}
+      <SrOnly>{link.label}</SrOnly>
+    </SocialButton>
+  ))}
+</SocialButtonWrapper>; */
+}
 
 //   <SocialButton
 //     href={annaLinks.github}
