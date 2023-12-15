@@ -1,5 +1,5 @@
 // playgroundStore.js
-import create from "zustand";
+import {create} from "zustand";
 
 const playgroundAPI = `https://catalog.eslov.se/rowstore/dataset/08b5e92d-7bc7-41de-aa56-f67f6662e919`;
 

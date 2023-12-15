@@ -74,9 +74,14 @@ export const Register = () => {
                         required />
                 </div>
 
-                <div className="loginAndRegisterBtns">
-                    <Button className={"form-button"} handleOnClick={handleRegister} btnText={t("Form.register")} />
-                    {/* <Link to="/"><Button className={"button"} btnText={"Start over"} /></Link> */}
+                <div> 
+                {loading ? (
+                <Loader />
+                ) : ( 
+                <Button 
+                className={"form-button"} handleOnClick={handleRegister} btnText={t("Form.register")} 
+                />
+                )}
                 </div>
                 <div>
           <h2 className="form-header">{t("Form.notnew")}</h2>
@@ -87,8 +92,6 @@ export const Register = () => {
              </form>
               
             </div>
-
-            {loading && <Loader />} {/* Display loader when loading is true */}
         </>
     )
 }

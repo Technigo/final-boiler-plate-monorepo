@@ -44,7 +44,7 @@ import "./navbar.css";
 
 export const NavBar = () => {
   const { t } = useTranslation();
-  const { isLoggedIn } = useUserStore(); // Assuming your user store has a state for login status
+  const { isLoggedIn } = useUserStore(); 
 
   return (
     <div className="navbar">
@@ -64,7 +64,7 @@ export const NavBar = () => {
         ) : (
           // If user is not logged in, show "Log In"
           <Link to="/login">
-            <Button className={"my-favorites"} btnText={t("Navbar.logIn")} />
+            <Button className={"my-favorites"} btnText={t("Form.login")} />
           </Link>
         )}
       </div>

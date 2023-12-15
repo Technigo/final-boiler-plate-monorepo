@@ -3,11 +3,11 @@ import { useNavigate, Link } from "react-router-dom";
 import { useUserStore } from "../../stores/useUserStore";
 import { Button } from "../../components/Button";
 import { Loader } from "../../components/Loader";
-import { useTranslation } from "react-i18next"
+import { useTranslation } from "react-i18next";
 import "../../pages/form.css";
 
 export const Login = () => {
-  const { t } = useTranslation()
+  const { t } = useTranslation();
   const navigate = useNavigate();
 
   const { loginUser } = useUserStore();
@@ -31,7 +31,7 @@ export const Login = () => {
   return (
     <div className="form-container">
       <form onSubmit={handleLogin} className="form">
-         <h1 className="form-header">{t("Form.greeting")}</h1>
+        <h1 className="form-header">{t("Form.greeting")}</h1>
         <div className="form-group">
           <label htmlFor="username"></label>
           <input
@@ -57,22 +57,23 @@ export const Login = () => {
           />
         </div>
         <div>
-          <Button
-            className={"form-button"}
-            handleOnClick={handleLogin}
-            btnText={t("Form.login")}
-          />
+          {loading ? (
+            <Loader />
+          ) : (
+            <Button
+              className={"form-button"}
+              handleOnClick={handleLogin}
+              btnText={t("Form.login")}
+            />
+          )}
         </div>
-         <div>
+        <div>
           <h2 className="form-header">{t("Form.new")}</h2>
           <Link to="/register">
             <Button className={"form-button"} btnText={t("Form.newregister")} />
           </Link>
         </div>
-        </form>
-       
-      
-      {loading && <Loader />} {/* Display loader when loading is true */}
+      </form>
     </div>
   );
 };

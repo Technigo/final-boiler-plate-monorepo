@@ -112,7 +112,7 @@ export const useUserStore = create((set, get) => ({
             isLoggedIn: true,
           });
           localStorage.setItem("token", data.token);
-          alert("Login successful!");
+          // alert("Login successful!");
         } else {
           alert("Login failed. Invalid username or password.");
         }
