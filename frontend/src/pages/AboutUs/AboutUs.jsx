@@ -1,3 +1,4 @@
+
 import lottie from "lottie-react";
 import Animation from "./src/assets/AnimationAboutUs.json";
 import "./AboutUs.css";
@@ -32,3 +33,6 @@ export const AboutUs = () => {
     </div>
   );
 };
+
+
+
