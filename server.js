@@ -7,6 +7,7 @@ dotenv.config(); // Loads environment variables from the .env file
 //import userRoutes from './routes/userRoutes'
 import bookingRoutes from './routes/bookingRoutes';
 import cinemaHallRoutes from './routes/cinemaHallRoutes';
+import showtimeRoutes from './routes/showtimeRoutes';
 //import { connectDB } from './config/db' // Import database connection function (not used here)???
 
 // Defines the port the app will run on. Defaults to 8080, but can be overridden
@@ -32,6 +33,7 @@ app.use((req, res, next) => {
 // app.use('/' userRoutes) // Use the user-controlled routes for user-related requests
 app.use('/', bookingRoutes);
 app.use('/', cinemaHallRoutes);
+app.use('/', showtimeRoutes);
 // This asynchronous function connects to the MongoDB database. It uses the MONGO_URL (connection url) stored in the .env-file.
 const connectDB = async () => {
   try {
