@@ -6,6 +6,9 @@ import { userStore } from "../stores/userStore"; // Make sure this is correctly 
 // Import the 'useState' and 'useNavigate' hooks from 'react'.
 import { useState } from "react";
 import { useNavigate } from "react-router-dom"; // Import useNavigate
+import Header from "../components/Header";
+import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
 
 // Define the 'Login' functional component.
 export const Login = () => {
@@ -54,7 +57,7 @@ export const Login = () => {
   return (
     <>
       <nav>
-        {/* Create a navigation menu with links to the login and sign-up routes. */}
+        {/* Create a navigation menu with links to the login and sign-up routes. 
         <ul className="app-ul">
           <li className="app-li">
             <Link to="/">Login</Link>
@@ -62,10 +65,10 @@ export const Login = () => {
           <li className="app-li">
             <Link to="/register">Sign Up</Link>
           </li>
-        </ul>
+        </ul>*/}
       </nav>
-      {/* Render the 'Logos' component. */}
-      <Logos />
+      <Navbar />
+      <Header />
       <div>
         {/* Display the heading and paragraphs. */}
         <h2>{text.heading}</h2>
@@ -89,6 +92,7 @@ export const Login = () => {
           <button onClick={onLoginClick}>Login</button>
         </div>
       </div>
+      <Footer />
     </>
   );
 };

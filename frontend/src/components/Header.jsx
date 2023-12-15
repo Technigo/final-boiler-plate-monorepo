@@ -1,5 +1,6 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
+import "./css/header.css";
 
 const Header = () => {
 
@@ -7,11 +8,12 @@ const Header = () => {
 
     return (
         <div className="header">
-            <h3>t{('Welcome to')}</h3>
             <div className="header-info">
-                <img src="/wave.png" alt="wave" />
-                <h1>t{('HabitFlow')}</h1>
-                <img src="/wave.png" alt="wave" />
+                <h1>HabitFlow</h1>
+                <img className="img-header" src="/heartwave.png" alt="wave" />
+            </div>
+            <div className="header-quote">
+                <h2>{t('Navigate your Goals with HabitFlow: Daily Progress, Lifetime Glow!')}</h2>
             </div>
         </div>
     );

@@ -1,0 +1,39 @@
+.navbar {
+    background-color: #f0e9dc;
+    overflow: hidden;
+}
+
+.nav-links {
+    display: flex;
+    flex-direction: row;
+    gap: 40px;
+    margin: 30px;
+}
+
+.member {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    color: #3EC3CE;
+    justify-self: flex-end;
+}
+
+
+/* LanguageSwitcher */
+.globe {
+    width: 24px;
+    height: 24px;
+    padding: 10px;
+    padding-left: 40px;
+    padding-top: 13px;
+    margin: 0 auto;
+}
+
+
+.globe-button {
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+    cursor: pointer;
+    margin-top: 10px;
+}

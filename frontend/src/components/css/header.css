@@ -1,0 +1,32 @@
+.header {
+    padding: 30px;
+    background-color: white;
+}
+
+.header-info {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.img-header {
+    width: auto;
+    height: 150px;
+    margin-top: 30px;
+    padding: 10px;
+}
+
+.header h1 {
+    color: #3EC3CE;
+    font-size: 100px;
+}
+
+.header h2 {
+    font-family: 'Bad Script', sans-serif;
+}
+
+.header-quote {
+    text-align: center;
+    margin-top: -80px;
+    margin-left: -190px;
+}

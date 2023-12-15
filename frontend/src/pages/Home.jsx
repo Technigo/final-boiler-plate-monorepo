@@ -4,7 +4,6 @@ import { userStore } from "../stores/userStore";
 import { useNavigate } from "react-router-dom";
 import Logos from "../components/Logos";
 import { Link } from "react-router-dom";
-import Header from "../components/Header";
 
 // Define the 'Home' functional component.
 export const Home = () => {
@@ -62,7 +61,6 @@ export const Home = () => {
         </ul>
       </nav>
       {/* Render the 'Logos' component. */}
-      <Header />
       <Logos />
       {/* Display the heading and subheading. */}
       <h1 className="heading">{text.heading}</h1>

@@ -1,0 +1,28 @@
+.footer {
+    background-color: #f0e9dc;
+    overflow: hidden;
+    padding: 10px;
+}
+
+.footer img {
+    width: 197px;
+}
+
+.footer-content {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-left: 30px;
+}
+
+.footer h3 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    color: #3EC3CE;
+    margin-left: 1000px;
+}
+
+.footer p {
+    font-size: 8px;
+    padding-top: 10px;
+}
