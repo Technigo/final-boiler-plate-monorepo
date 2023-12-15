@@ -31,8 +31,8 @@ export const Login = () => {
   return (
     <div className="form-container">
       <form onSubmit={handleLogin} className="form">
+         <h1 className="form-header">{t("Form.greeting")}</h1>
         <div className="form-group">
-        <h1 className="form-header">{t("Form.greeting")}</h1>
           <label htmlFor="username"></label>
           <input
             className="input-field"
@@ -56,19 +56,22 @@ export const Login = () => {
             required
           />
         </div>
-        <div className="loginAndRegisterBtns">
+        <div>
           <Button
-            className={"button"}
+            className={"form-button"}
             handleOnClick={handleLogin}
             btnText={t("Form.login")}
           />
-
-          <h1 className="form-header">{t("Form.new")}</h1>
+        </div>
+         <div>
+          <h2 className="form-header">{t("Form.new")}</h2>
           <Link to="/register">
-            <Button className={"button"} btnText={t("Form.newregister")} />
+            <Button className={"form-button"} btnText={t("Form.newregister")} />
           </Link>
         </div>
-      </form>
+        </form>
+       
+      
       {loading && <Loader />} {/* Display loader when loading is true */}
     </div>
   );

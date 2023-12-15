@@ -2,5 +2,18 @@
     "Navbar": {
         "home": "HOME",
         "myPages": "My Pages"
+    },
+    "Form": {
+        "greeting": "Welcome back",
+        "headerRegister": "Register",
+        "login": "Log in",
+        "register": "Register",
+        "newregister": "Register here",
+        "new": "No account?",
+        "notnew": "Already have an account?",
+        "username": "Username",
+        "password": "Password",
+        "email": "Email"
     }
+
 }

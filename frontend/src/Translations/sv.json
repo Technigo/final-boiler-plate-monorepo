@@ -6,9 +6,12 @@
 
     "Form" : {
         "greeting": "Välkommen tillbaka",
+        "headerRegister": "Registrera dig",
         "login": "Logga in",
+        "register": "Registrera",
         "newregister": "Registrera dig här",
-        "new": "Jag är ny här",
+        "new": "Inget konto?",
+        "notnew": "Har du redan ett konto?",
         "username": "Användarnamn",
         "password": "Lösenord",
         "email": "Epost"
