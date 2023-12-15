@@ -40,7 +40,7 @@ router.post("/stories", async (req, res) => {
   const newStory = new StoryModel({
     heading: req.body.heading,
     content: req.body.content,
-    ranking: req.body.ranking, // This can be optional as it has a default value
+    ranking: req.body.ranking,
     category: req.body.category,
   });
 
@@ -65,7 +65,7 @@ router.put("/stories/:id/rank", async (req, res) => {
     const updatedStory = await StoryModel.findByIdAndUpdate(
       storyId,
       { ranking: newRanking },
-      { new: true } // Returns the updated document
+      { new: true }
     );
 
     if (!updatedStory) {
