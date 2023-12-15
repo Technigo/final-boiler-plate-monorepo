@@ -3,6 +3,7 @@ import express from "express";
 import {
   registerUserController,
   loginUserController,
+  getAllUsersController,
   getUserProfileController,
   updateUserController,
   deleteUserController
@@ -16,6 +17,9 @@ router.post("/register", registerUserController); // When a POST request is made
 
 // LOGIN ROUTE: Handle user login
 router.post("/login", loginUserController); // When a POST request is made to /login, execute the loginUserController function
+
+// RETRIEVE ALL USERS ROUTE: Retrieve all users
+router.get("/users", getAllUsersController);
 
 // DISPLAY PROFILE ROUTE: Handle user profile display
 router.get("/users/:userId", getUserProfileController);
