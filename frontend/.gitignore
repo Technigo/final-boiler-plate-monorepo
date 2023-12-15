@@ -24,6 +24,4 @@ package-lock.json
 *.sln
 *.sw?
 
-
-# Comment out later ;) 
-# .env
+.env

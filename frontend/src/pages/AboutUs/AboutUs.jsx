@@ -28,7 +28,7 @@ export const AboutUs = () => {
         And please, if you have a story to tell -
         <i>share it with the rest of us!</i>
       </p>
-      <lottie animationData={AnimationAboutUs} />
+      <Lottie Animation={AnimationAboutUs} />
     </div>
   );
 };
