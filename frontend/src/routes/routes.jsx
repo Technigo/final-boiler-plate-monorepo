@@ -5,11 +5,7 @@ import { Route } from "react-router-dom";
 import { NotFound } from "../pages/NotFound";
 
 // Define the 'routes' variable as a JSX expression.
-const routes = (
-  <>
-    <Route path="*" element={<NotFound />} />
-  </>
-);
+const routes = <>{/* <Route path="*" element={<NotFound />} /> */}</>;
 
 // Export the 'routes' variable as the default export of this module.
 export default routes;
