@@ -15,7 +15,7 @@ const generateText = async (req, res) => {
         ],
         model: "gpt-3.5-turbo-1106",
         response_format: { type: "json_object" },
-        temperature: 0.5, // Adjust this value based on your preference. Lower values (e.g., 0.2) will make the output more deterministic and focused, potentially reducing token usage.
+        temperature: 1, // Adjust this value based on your preference. Lower values (e.g., 0.2) will make the output more deterministic and focused, potentially reducing token usage.
       });
     const answerText = response.choices[0].message.content
     console.log(answerText)

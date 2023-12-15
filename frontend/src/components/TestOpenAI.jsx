@@ -10,7 +10,7 @@ export const TestOpenAI = () => {
     e.preventDefault();
     console.log(userInput)
 
-    await generateOpenAiCompletion(userInput);
+    generateOpenAiCompletion(userInput);
   };
 
   return (
