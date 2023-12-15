@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Link } from "react-router-dom";
-// import routes from "./routes/routes";
+import routes from "./routes/routes";
 import { PostStory } from "./components/PostStory/PostStory.jsx";
 import { AboutUs } from "./pages/AboutUs/AboutUs.jsx";
 import { Footer } from "./components/Footer/Footer.jsx";
@@ -10,10 +10,9 @@ export const App = () => {
     <>
       <BrowserRouter>
         <main>
-          {/* <Routes>{routes}</Routes> */}
+          <Routes>{routes}</Routes>
 
-          {/* KOMMENTERA IN ROUTES OCH ÄVEN IMPORTEN */}
-          {/* <Routes>{routes}</Routes> */}
+          <Routes>{routes}</Routes>
         </main>
         <PostStory />
         <AboutUs />
