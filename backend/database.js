@@ -1,6 +1,6 @@
-const mongoose = require('mongoose');
-const autoIncrement = require('mongoose-auto-increment');
-require('dotenv').config();
+import mongoose from 'mongoose';
+import dotenv from 'dotenv';
+dotenv.config();
 
 const connectionURI = process.env.MONGO_URL;
 
@@ -11,13 +11,12 @@ const databaseOptions = {
 
 const db = mongoose.createConnection(connectionURI, databaseOptions);
 
-autoIncrement.initialize(db);
-
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 db.once('open', () => {
   console.log('Connected to MongoDB');
 });
 
-module.exports = db;
+export default db;
+
 
 

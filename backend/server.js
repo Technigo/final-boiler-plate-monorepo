@@ -1,8 +1,10 @@
-const express = require('express');
-const cors = require('cors');
-const db = require('./database'); 
-//const moodRoutes = require('./routes/moodRoutes');  Duplicate
-//const occasionRoutes = require('./routes/occasionRoutes'); Duplicate
+import express from 'express';
+import cors from 'cors';
+import db from './database.js'; 
+
+// Import your routes (make sure these are also converted to ES Modules)
+import moodRoutes from './routes/moodRoutes.js';
+import occasionRoutes from './routes/occasionRoutes.js';
 
 const app = express();
 const port = process.env.PORT || 8080;
@@ -13,12 +15,10 @@ app.use(cors({
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-// Import the routes using CommonJS syntax
-const moodRoutes = require('./routes/moodRoutes'); 
-const occasionRoutes = require('./routes/occasionRoutes'); 
+// Use the routes
+app.use('/moods', moodRoutes); 
+app.use('/occasions', occasionRoutes); 
 
-app.use('/tasks', taskRoutes); // Use task routes
-app.use('/users', userRoutes); // Use user routes
 
 // The server starts listening only after the database connection is established
 db.once('open', () => {
@@ -26,3 +26,6 @@ db.once('open', () => {
     console.log(`Server running on http://localhost:${port}`);
   });
 });
+
+// If you have any specific functions to export, add them here
+// export { someFunction };

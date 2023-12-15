@@ -1,6 +1,7 @@
 {
   "name": "technigo-final-boiler-backend",
   "version": "1.0.0",
+  "type": "module",
   "description": "Starter project to get up and running with your final quickly",
   "scripts": {
     "start": "babel-node server.js",
@@ -28,7 +29,6 @@
     "passport-google-oauth20": "^2.0.0",
     "react-router-dom": "^6.20.1",
     "styled-components": "^6.1.1",
-    "zustand": "^4.4.7",
-    "type": "module"
+    "zustand": "^4.4.7"
   }
 }

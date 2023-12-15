@@ -1,25 +1,26 @@
-require('dotenv').config();
-const mongoose = require('mongoose');
-const autoIncrement = require('mongoose-auto-increment');
-const Restaurant = require('./models/restaurantModel');
-const restaurantData = require('./seeds/databaseRestaurants.json');
+import dotenv from 'dotenv';
+dotenv.config();
 
-const connectionURI = process.env.MONGO_URL;
+// Import the database connection from Database.js
+import db from './database'; // Update the path as necessary
 
-mongoose.connect(connectionURI, { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true })
-  .then(() => {
-    console.log('MongoDB connected...');
-    
-    Restaurant.insertMany(restaurantData)
-      .then(() => {
-        console.log('Data seeded successfully');
-        mongoose.connection.close();
-      })
-      .catch((error) => {
-        console.error('Error seeding data:', error);
-        mongoose.connection.close();
-      });
-  })
-  .catch((error) => console.error('MongoDB connection error:', error));
+// Import the seeding model
+import Restaurant from './models/seedingRestaurant'; // Update the path if necessary
+import restaurantData from './seeds/databaseRestaurants.json';
 
-  //replace 'mongodb_connection_uri' with actual MongoDB connection string.
+// Listen to the connection event
+db.once('open', () => {
+  console.log('Using established MongoDB connection...');
+
+  // Insert data
+  Restaurant.insertMany(restaurantData)
+    .then(() => {
+      console.log('Data seeded successfully');
+      db.close(); // Close the connection
+    })
+    .catch((error) => {
+      console.error('Error seeding data:', error);
+      db.close(); // Close the connection in case of error
+    });
+})
+.catch((error) => console.error('Error using MongoDB connection:', error));

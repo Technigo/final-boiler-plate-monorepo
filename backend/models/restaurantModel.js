@@ -1,10 +1,8 @@
-const mongoose = require('mongoose');
-const autoIncrement = require('mongoose-auto-increment');
-const db = require('../database');
+import mongoose from 'mongoose';
+import db from '../database.js';
 
 
 const restaurantSchema = new mongoose.Schema({
-  restaurantID: Number, // This will be auto-generated
   restaurantName: {
     type: String,
     required: true,
@@ -90,13 +88,6 @@ const restaurantSchema = new mongoose.Schema({
   },
 });
 
-restaurantSchema.plugin(autoIncrement.plugin, {
-  model: 'Restaurant',
-  field: 'restaurantID',
-  startAt: 1,
-  incrementBy: 1,
-});
-
 const Restaurant = db.model('Restaurant', restaurantSchema);
 
-module.exports = Restaurant;
+export default Restaurant;
