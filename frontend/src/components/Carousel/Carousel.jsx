@@ -19,7 +19,10 @@ export const Carousel = () => {
 
   const settings = {
     dots: true, // Shows dot indicators at the bottom of the carousel
-    infinite: false, // Infinite looping or not
+    initialSlide: 2, // Add this line to start with the third slide
+    centerMode: true, // Enables center mode
+  centerPadding: '40px', // Adjust as needed for your design
+    infinite: true, // Infinite looping or not
     speed: 500, // Transition speed
     slidesToShow: 3, // Number of slides to show at once
     slidesToScroll: 1, // Number of slides to scroll
@@ -28,7 +31,7 @@ export const Carousel = () => {
       {
         breakpoint: 768, // Adjust the number for your breakpoint
         settings: {
-          slidesToShow: 1,
+          slidesToShow: 1.5,
           slidesToScroll: 1,
         },
       },
