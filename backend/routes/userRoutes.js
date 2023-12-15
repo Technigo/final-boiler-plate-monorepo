@@ -5,7 +5,8 @@ import {
   loginUserController,
   getUserProfileController,
   updateUserController,
-  deleteUserController
+  deleteUserController,
+  getAllUsersController
 } from "../controllers/userController"; // Import controller functions for user registration and login
 
 // Create an instance of the Express router
@@ -16,6 +17,9 @@ router.post("/register", registerUserController); // When a POST request is made
 
 // LOGIN ROUTE: Handle user login
 router.post("/login", loginUserController); // When a POST request is made to /login, execute the loginUserController function
+
+// RETRIEVE ALL USERS ROUTE: Retrieve all users
+router.get("/users", getAllUsersController);
 
 // DISPLAY PROFILE ROUTE: Handle user profile display
 router.get("/users/:userId", getUserProfileController);
