@@ -20,10 +20,37 @@ const bookingSchema = new mongoose.Schema({
         type: Number,
         min: 0,
     },
-    message: {
+    film: {
+        type: Boolean,
+        default: false,
+    },
+    droneVideos: {
+        type: Boolean,
+        default: false,
+    },
+    photo: {
+        type: Boolean,
+        default: false,
+    },
+    phonenumber: {
         type: String,
         required: true,
-        minlength: 5,
+        validate: {
+            validator: (value) => /^\+?\d+$/.test(value), // Validate that the input is a valid phone number
+            message: "Invalid phone number format",
+        }
+    },
+    email: {
+        type: String,
+        required: true,
+        trim: true,
+        validate: {
+            validator: (value) => /^[\w\.-]+@[a-zA-Z\d\.-]+\.[a-zA-Z]{2,}$/.test(value), // Basic email validation
+            message: "Invalid email format",
+        },
+    },
+    message: {
+        type: String,
         maxlength: 140,
         trim: true,
     },
@@ -40,6 +67,7 @@ const bookingSchema = new mongoose.Schema({
         default: 0,
     },
 });
+
 
 const Booking = mongoose.model('Booking', bookingSchema);
 

@@ -16,11 +16,11 @@ router.get('/', async (req, res) => {
 
 // Post a new booking
 router.post('/', async (req, res) => {
-    const { name, age, weight, height, video, film, droneVideos, message } = req.body;
+    const { name, age, weight, height, film, droneVideos, photo, phonenumber, email, message } = req.body;
 
     try {
         // Validate the length of the message
-        if (message.length < 5 || message.length > 140) {
+        if (message.length > 140) {
             throw new Error('Invalid message length');
         }
 
@@ -30,9 +30,11 @@ router.post('/', async (req, res) => {
             age,
             weight,
             height,
-            video,
             film,
             droneVideos,
+            photo,
+            email,
+            phonenumber,
             message,
             complete: true,
         });
