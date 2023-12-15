@@ -1,0 +1,19 @@
+.new-story-container {
+  border: solid 1px red;
+  padding: 3%;
+  padding-bottom: 5%;
+}
+
+.input-field {
+  font-size: 18px;
+  padding: 4%;
+  border: 1px solid grey;
+  margin: 3%;
+}
+
+@media screen and (min-width: 769px) and (max-width: 1000px) {
+  .newStoryContainer {
+    display: flex;
+    flex-direction: column;
+  }
+}
