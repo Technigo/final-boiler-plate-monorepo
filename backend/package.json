@@ -1,7 +1,7 @@
 {
-  "name": "technigo-final-boiler-backend",
+  "name": "final-project-technigo",
   "version": "1.0.0",
-  "description": "Starter project to get up and running with your final quickly",
+  "description": "Final Project for the Technigo Web Development Bootcamp",
   "scripts": {
     "start": "babel-node server.js",
     "dev": "nodemon server.js --exec babel-node"
@@ -14,7 +14,6 @@
     "@babel/preset-env": "^7.16.11",
     "bcrypt": "^5.1.0",
     "cors": "^2.8.5",
-    "crypto": "^1.0.1",
     "dotenv": "^16.3.1",
     "express": "^4.17.3",
     "express-async-handler": "^1.2.0",

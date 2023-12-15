@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import crypto from "crypto"; //  Imports the Node.js crypto library for generating secure random strings.
+const crypto = require("crypto"); //  Imports the Node.js crypto library for generating secure random strings.
 
 // Import the Schema class from the Mongoose library
 // Destructures the Schema class from the Mongoose library, allowing us to create a schema.
