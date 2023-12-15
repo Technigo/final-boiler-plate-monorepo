@@ -30,7 +30,7 @@ export const BookingListComponent = ({ handleLike }) => {
     const handleLikeClick = async (bookingId) => {
         try {
             await fetch(
-                '`${import.meta.env.VITE_API_URL}/booking/${bookingId}/like`',
+                `${import.meta.env.VITE_API_URL}/booking/${bookingId}/like`,
                 {
                     method: "POST",
                 }
