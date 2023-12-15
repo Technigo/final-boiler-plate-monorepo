@@ -20,6 +20,8 @@ app.use(express.urlencoded({ extended: false })); // Parse URL-encoded data
 // Use the recipeRoutes (in "routes" -> "recipeRoutes")
 app.use(recipeRoutes)
 
+app.use("/openai", require("./routes/openaiRoutes"))
+
 // Connection to the database through Mongoose
 connectDB();
 
