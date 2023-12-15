@@ -1,8 +1,8 @@
-import { Link } from "react-router-dom";
-import { Button } from "../../components/Button"
+// import { Link } from "react-router-dom";
+// import { Button } from "../../components/Button"
 import "./home.css";
 import PlaygroundContainer from "../../components/PlaygroundContainer";
-import { NavBar } from "../../components/NavBar";
+// import { NavBar } from "../../components/NavBar";
 import { Hero } from "../../components/Hero"
 
 export const Home = () => {
@@ -10,7 +10,7 @@ export const Home = () => {
 
     return (
         <>
-        <NavBar />
+        {/* <NavBar /> */}
         <Hero />
         <div className="home-container">
             <PlaygroundContainer />

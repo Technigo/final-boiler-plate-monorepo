@@ -2,5 +2,15 @@
     "Navbar": {
         "home": "HEM",
         "myPages": "Mina Sidor"
+    },
+
+    "Form" : {
+        "greeting": "Välkommen tillbaka",
+        "login": "Logga in",
+        "newregister": "Registrera dig här",
+        "new": "Jag är ny här",
+        "username": "Användarnamn",
+        "password": "Lösenord",
+        "email": "Epost"
     }
 }

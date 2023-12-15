@@ -30,7 +30,7 @@ export const Register = () => {
             <div className="form-container">
 
                 <form className="form">
-                    <h1>Register</h1>
+                    <h1 className="form-header">Register</h1>
                 <div className="form-group">
                     <label htmlFor="email">Email</label>
                     <input

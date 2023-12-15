@@ -3,10 +3,13 @@ import { useNavigate, Link } from "react-router-dom";
 import { useUserStore } from "../../stores/useUserStore";
 import { Button } from "../../components/Button";
 import { Loader } from "../../components/Loader";
+import { useTranslation } from "react-i18next"
 import "../../pages/form.css";
 
 export const Login = () => {
+  const { t } = useTranslation()
   const navigate = useNavigate();
+
   const { loginUser } = useUserStore();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -29,23 +32,25 @@ export const Login = () => {
     <div className="form-container">
       <form onSubmit={handleLogin} className="form">
         <div className="form-group">
-        <h1>Sign in</h1>
-          <label htmlFor="username">Username:</label>
+        <h1 className="form-header">{t("Form.greeting")}</h1>
+          <label htmlFor="username"></label>
           <input
             className="input-field"
             type="text"
             id="username"
+            placeholder={t("Form.username")}
             value={username}
             onChange={(e) => setUsername(e.target.value)}
             required
           />
         </div>
         <div className="form-group">
-          <label htmlFor="password">Password:</label>
+          <label htmlFor="password"></label>
           <input
             className="input-field"
             type="password"
             id="password"
+            placeholder={t("Form.password")}
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
@@ -55,10 +60,12 @@ export const Login = () => {
           <Button
             className={"button"}
             handleOnClick={handleLogin}
-            btnText={"Login"}
+            btnText={t("Form.login")}
           />
+
+          <h1 className="form-header">{t("Form.new")}</h1>
           <Link to="/register">
-            <Button className={"button"} btnText={"Register"} />
+            <Button className={"button"} btnText={t("Form.newregister")} />
           </Link>
         </div>
       </form>

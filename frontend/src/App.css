@@ -1,8 +1,8 @@
 /* Apply styles to the root element of the application */
 #root {
   max-width: 1280px; /* Set maximum width for the content */
-  margin: 0 auto; /* Center align the content horizontally */
-  padding: 2rem; /* Add padding around the content */
+  margin: 0px; /* Center align the content horizontally */
+  padding: 0px; /* Add padding around the content */
   min-height: 100vh; /* Ensure a minimum height to cover the viewport */
   text-align: center; /* Center-align text within the root element */
 }
@@ -11,7 +11,6 @@
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
-
   
   background-color: #A6CF98;
 
@@ -20,4 +19,9 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
+}
+
+.site-logo {
+  width: 35px;
+  height: 35px;
 }
