@@ -39,7 +39,6 @@ const restaurantSchema = new mongoose.Schema({
     enum: [
       "Have dinner with the in-laws",
       "Have a sunday funday aka brunch",
-      "Breakup with someone aka 'the Diego'",
       "Have dinner with kids present",
       "Have dinner with your bestie",
       "Have dinner with friends to catch up",
