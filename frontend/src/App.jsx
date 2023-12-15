@@ -10,6 +10,7 @@ export const App = () => {
       <BrowserRouter>
         <main>
           <Navbar />
+          <h1>Hej</h1>
           <Routes>{routes}</Routes>
           <Footer />
         </main>
