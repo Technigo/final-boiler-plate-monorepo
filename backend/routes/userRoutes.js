@@ -3,10 +3,10 @@ import express from "express";
 import {
   registerUserController,
   loginUserController,
+  getAllUsersController,
   getUserProfileController,
   updateUserController,
-  deleteUserController,
-  getAllUsersController
+  deleteUserController
 } from "../controllers/userController"; // Import controller functions for user registration and login
 
 // Create an instance of the Express router
