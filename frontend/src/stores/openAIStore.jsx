@@ -3,17 +3,15 @@ import { create } from "zustand";
 export const openAIStore = create((set) => ({
   openAiResponse: null,
 
-  generateOpenAiCompletion: async (messages) => {
+  generateOpenAiCompletion: async (ingredients) => {
     try {
-      const response = await fetch("https://api.openai.com/v1/completions", {
+      const response = await fetch("http://localhost:3001/openai/generateText", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          "Authorization": "", // Replace with your actual OpenAI API key
         },
         body: JSON.stringify({
-          model: "text-davinci-003",
-          messages,
+          prompt: ingredients, 
         }),
       });
 
@@ -22,6 +20,7 @@ export const openAIStore = create((set) => ({
       }
 
       const data = await response.json();
+      console.log(data.answer)
       set({ openAiResponse: data });
 
     } catch (error) {

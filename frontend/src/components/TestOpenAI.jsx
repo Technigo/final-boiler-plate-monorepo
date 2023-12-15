@@ -4,17 +4,13 @@ import { openAIStore } from "../stores/openAIStore";
 
 export const TestOpenAI = () => {
   const [userInput, setUserInput] = useState("");
-  const openAiStore = openAIStore();
+  const {generateOpenAiCompletion} = openAIStore();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    console.log(userInput)
 
-    const messages = [
-      { role: "system", content: "You are a helpful assistant." },
-      { role: "user", content: userInput },
-    ];
-
-    await openAiStore.generateOpenAiCompletion(messages);
+    await generateOpenAiCompletion(userInput);
   };
 
   return (
@@ -27,13 +23,6 @@ export const TestOpenAI = () => {
         />
         <button type="submit">Generate OpenAI Completion</button>
       </form>
-
-      {openAiStore.openAiResponse && (
-        <div>
-          <strong>OpenAI Response:</strong>
-          <pre>{JSON.stringify(openAiStore.openAiResponse, null, 2)}</pre>
-        </div>
-      )}
     </div>
   );
 };
