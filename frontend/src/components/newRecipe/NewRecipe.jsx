@@ -6,7 +6,7 @@ export const NewRecipe = () => {
 
   return (
     <div>
-      <h3>Ditt recept:</h3>
+      <h3>Your recipe:</h3>
       <div>{newRecipe.ingredients}</div>
       <div>{newRecipe.instructions}</div>
     </div>
