@@ -12,9 +12,10 @@ export const Tasks = () => {
   // Text content for the heading and paragraphs.
   const text = {
     heading: "Tasks Page",
-    intro: "Tasks Here",
+    intro:
+      "Are you facing a challenge or have a task that could use an extra hand?",
     loremIpsum:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore, vitae fugit ipsam quo accusantium autem officia necessitatibus ullam voluptati",
+      "Share it with the community and get the assistance you need! Remember, clear and detailed descriptions increase the chances of finding the perfect helper for your task.",
   };
 
   // Access the 'tasks', 'fetchTasks', 'handleEdit', and 'deleteTaskById' functions from the 'taskStore'.
@@ -96,6 +97,9 @@ export const Tasks = () => {
                 onClick={() => handleEdit(task._id)}
               >
                 <p>{task.task}</p>
+                <p>{task.category}</p>
+                <p>{task.area}</p>
+                <p>{task.description}</p>
                 <p>{task.done ? "Task is Completed" : "Not Completed"}</p>
                 <button onClick={() => deleteTaskById(task._id)}>Delete</button>
               </div>

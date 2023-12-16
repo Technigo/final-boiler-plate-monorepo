@@ -78,6 +78,7 @@ export const userStore = create((set, get) => ({
 
     try {
       // Send a POST request to the login endpoint with user data.
+
       const response = await fetch(`${apiEnv}/login`, {
         method: "POST",
         headers: {

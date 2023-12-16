@@ -75,7 +75,12 @@ export const taskStore = create((set) => ({
           Authorization: localStorage.getItem("accessToken"),
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ task: task }),
+        body: JSON.stringify({
+          task: task.task,
+          category: task.category,
+          area: task.area,
+          description: task.description,
+        }),
       });
       // Parse the response data
       const data = await response.json();

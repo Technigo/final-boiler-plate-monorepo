@@ -16,7 +16,7 @@ export const connectDB = async () => {
     // const conn = await mongoose.connect(process.env.MONGO_URL); // DETTA ÄR TECHNIGOS ORIGINAL KOD
 
     const mongoUrl =
-      process.env.MONGO_URL || "mongodb://127.0.0.1/final-project"; // Get the connection string from the environment variable, or use the default value
+      process.env.MONGO_URL || "mongodb://127.0.0.1:27017/final-project"; // Get the connection string from the environment variable, or use the default value
     const connection = await mongoose.connect(mongoUrl); // Connect to the database
 
     // If the connection is successful, log a message indicating that the MongoDB is connected

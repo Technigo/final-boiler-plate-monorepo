@@ -23,7 +23,7 @@ export const getTasksController = asyncHandler(async (req, res) => {
 export const addTaskController = asyncHandler(async (req, res) => {
   try {
     // Extract the task data from the request body
-    const { task } = req.body;
+    // const { task } = req.body;
     // Extract the accessToken from the request object, but it is not going to be from the req.body but, its going to be from the req.header
     const accessToken = req.header("Authorization"); // we are requesting the Authorization key from the headerObject
     // get the user and matchIt with the user from the db - remmeber that we are using the accessToken to do so :)
@@ -32,10 +32,15 @@ export const addTaskController = asyncHandler(async (req, res) => {
     });
     // Define var to pass new task
     const newTask = new TaskModel({
-      task: task,
+      task: req.body.task, // Assuming your task object has a 'taskTitle' property
+      category: req.body.category,
+      area: req.body.area,
+      description: req.body.description,
       user: userFromStorage,
-    }).save();
-    res.json(newTask);
+    });
+
+    const savedTask = await newTask.save();
+    res.json(savedTask);
   } catch (error) {
     res.status(500).json(error);
   }
