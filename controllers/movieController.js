@@ -48,7 +48,8 @@ export const getMovies = asyncHandler(async (req, res) => {
 // @route /:movieID
 // @access public
 export const getMovie = asyncHandler(async (req, res) => {
-	let aMovie = await Movie.findById(req.params.movieID)
+	const theMovieID = req.params.movieID
+	let aMovie = await Movie.findById(theMovieID)
 
 	if (aMovie) {
 		res.status(200).json(aMovie)
@@ -63,18 +64,52 @@ export const getMovie = asyncHandler(async (req, res) => {
 // @route /
 // @access public
 export const postMovie = asyncHandler(async (req, res) => {
-	let newMovie = new Movie({
-		title: req.body.title,
-		director: req.body.director,
-		duration: req.body.duration,
-		description: req.body.description,
-		genre: req.body.genre,
-		releaseDate: req.body.releaseDate,
-		posterUrl: req.body.posterUrl,
-		backdropUrl: req.body.backdropUrl,
-		rating: req.body.rating,
-		IMDBRating: req.body.IMDBRating,
-	})
-	newMovie.save()
-	res.status(201).json(newMovie)
+	try {
+		const {
+			title,
+			director,
+			duration,
+			description,
+			genre,
+			releaseDate,
+			posterUrl,
+			backdropUrl,
+			rating,
+			IMDBRating,
+		} = req.body
+		if (
+			!title ||
+			!duration ||
+			!director ||
+			!description ||
+			!genre ||
+			!releaseDate ||
+			!posterUrl
+			// !backdropUrl ||
+			// !rating ||
+			// !IMDBRating
+		) {
+			return res
+				.status(400)
+				.json({ message: 'Missing required information' })
+		}
+
+		let newMovie = new Movie({
+			title: title,
+			director: director,
+			duration: duration,
+			description: description,
+			genre: genre,
+			releaseDate: releaseDate,
+			posterUrl: posterUrl,
+			backdropUrl: backdropUrl,
+			rating: rating,
+			IMDBRating: IMDBRating,
+		})
+
+		newMovie.save()
+		res.status(201).json(newMovie)
+	} catch (error) {
+		res.status(500).json({ message: error.message })
+	}
 })
