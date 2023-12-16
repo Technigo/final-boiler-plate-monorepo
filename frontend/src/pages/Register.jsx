@@ -1,5 +1,5 @@
 // Import necessary components, hooks, and stores.
-import Logos from "../components/Logos";
+import LogoText from "../components/LogoText";
 import { userStore } from "../stores/userStore";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -60,8 +60,8 @@ export const Register = () => {
           </li>
         </ul>
       </nav>
-      {/* Render the 'Logos' component. */}
-      <Logos />
+      {/* Render the 'LogoText' component. */}
+      <LogoText />
       <div>
         {/* Display the heading and paragraphs. */}
         <h2>{text.heading}</h2>
@@ -91,4 +91,4 @@ export const Register = () => {
 
 // SUMMARY
 
-// This code defines the Register component, which handles user registration functionality. It imports necessary components, hooks, and the user store, and it defines state variables for email, username, and password. The component provides a form for entering registration details, handles the signup button click event, and uses React Router to navigate between login and sign-up routes. Additionally, it renders text content and the 'Logos' component.
+// This code defines the Register component, which handles user registration functionality. It imports necessary components, hooks, and the user store, and it defines state variables for email, username, and password. The component provides a form for entering registration details, handles the signup button click event, and uses React Router to navigate between login and sign-up routes. Additionally, it renders text content and the 'LogoText' component.

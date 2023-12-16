@@ -1,6 +1,7 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
-const StyledIconButton = styled.div`
+const StyledButton = styled(Link)`
   background-color: #eeb885;
   color: #000;
   padding: 10px 20px;
@@ -14,18 +15,17 @@ const StyledIconButton = styled.div`
 `;
 
 // Mounta knappen enligt nedan där den behövs!
-// <Button
+// <LinkButton
+//   to = "/YourRoute";
 //   className="YourClassName"
 //   buttonName="YourButtonText"
-//   iconAlt="YourAltText"
 // />;
 
 // Radera bilddelen om det aldrig kommer till användning!
-export const Button = ({ buttonName, iconAlt, className }) => {
+export const LinkButton = ({ to, buttonName, className }) => {
   return (
-    <StyledIconButton>
-      <div className={className} alt={iconAlt} />
+    <StyledButton to={to} className={className}>
       {buttonName}
-    </StyledIconButton>
+    </StyledButton>
   );
 };

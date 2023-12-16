@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 const StyledButton = styled.div`
   background-color: #eeb885;
-  color: #fff;
+  color: #000;
   padding: 10px 20px;
   border-radius: 20px;
   font-size: 20px;
@@ -20,10 +20,6 @@ const StyledButton = styled.div`
 // />;
 
 // Radera bilddelen om det aldrig kommer till användning!
-export const Button = ({ to, buttonName, className }) => {
-  return (
-    <StyledButton to={to} className={className}>
-      {buttonName}
-    </StyledButton>
-  );
+export const Button = ({ buttonName, className }) => {
+  return <StyledButton className={className}>{buttonName}</StyledButton>;
 };

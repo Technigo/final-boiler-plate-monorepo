@@ -4,7 +4,15 @@ import asyncHandler from "express-async-handler";
 // bcrypt: We use bcrypt to securely hash and store passwords in our database. Storing plain-text passwords is a security risk, as it exposes user credentials in case of a data breach. bcrypt helps us hash passwords in a way that is computationally expensive and time-consuming for potential attackers, making it difficult to crack passwords even if the database is compromised. It enhances the overall security of user authentication in our application.
 import bcrypt from "bcrypt";
 // jwt (JSON Web Tokens): We use jwt for authentication and authorization. It allows us to create and verify tokens that contain user identity information, such as user IDs or roles. These tokens are often sent with requests to secure routes and verify that a user has the necessary permissions to access certain resources. JWTs are stateless and efficient, making them a popular choice for secure communication between the client and server.
-//import jwt from "jsonwebtoken";
+import jwt from "jsonwebtoken";
+
+// generateToken: This is a utility function used to generate JWT tokens for user authentication. It takes a user object and creates a token containing the user's access token, with an optional secret key and a 24-hour expiration time.
+const generateToken = (user) => {
+  const jwtSecret = process.env.JWT_SECRET || "default_secret";
+  return jwt.sign({ id: user._id }, jwtSecret, {
+    expiresIn: "24h",
+  });
+};
 
 export const registerUserController = asyncHandler(async (req, res) => {
   // Extract username and password from the request body
@@ -55,7 +63,8 @@ export const registerUserController = asyncHandler(async (req, res) => {
       response: {
         username: newUser.username,
         id: newUser._id,
-        accessToken: newUser.accessToken,
+        accessToken: generateToken(newUser._id),
+        // accessToken: newUser.accessToken, (diegos kod)
       },
     });
   } catch (error) {
@@ -92,7 +101,8 @@ export const loginUserController = asyncHandler(async (req, res) => {
       response: {
         username: user.username,
         id: user._id,
-        accessToken: user.accessToken, //  token for the user using the acessToken generated from the model, // Use the generated token here
+        accessToken: generateToken(user._id),
+        // accessToken: user.accessToken, //  token for the user using the acessToken generated from the model, // Use the generated token here
       },
     });
   } catch (error) {

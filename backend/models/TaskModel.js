@@ -13,6 +13,23 @@ export const taskSchema = new Schema(
       type: String, // Specifies that 'task' should be a string
       required: true, // Indicates that 'task' is a required field
       minlength: 5, // Sets a minimum length of 5 characters for 'task'
+      maxlength: 30,
+    },
+    category: {
+      type: String,
+      enum: ["Garden", "Pets", "Shopping", "Repairs", "Other"],
+      required: true,
+    },
+    area: {
+      type: String,
+      enum: ["Varberg City Center", "Himle", "Tvååker", "Veddige"],
+      required: true,
+    },
+    description: {
+      type: String,
+      required: true,
+      minlength: 10,
+      maxlength: 300,
     },
     // Define the 'done' field with a Boolean data type
     done: {

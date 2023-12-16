@@ -100,9 +100,9 @@ button:focus-visible {
 /* Apply styles to elements with the 'logo' class */
 .logo {
   width: 300px;
-  height: 200px; /* Set height for logo images */
+  height: 200px; /* Set height for logo image */
   object-fit: cover;
-  padding: 1.5em; /* Add padding around logo images */
+  padding: 1.5em; /* Add padding around logo image */
   will-change: filter; /* Specify a CSS property that may change */
   transition: filter 300ms; /* Apply a transition effect to the 'filter' property */
 }

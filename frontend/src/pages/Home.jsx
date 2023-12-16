@@ -2,9 +2,9 @@
 //import { useEffect } from "react";
 //import { userStore } from "../stores/userStore";
 //import { useNavigate } from "react-router-dom";
-import Logos from "../components/Logos";
-import { Button } from "../components/Buttons/Button";
-import { Link } from "react-router-dom";
+//import { LogoText } from "../components/LogoText";
+import { LinkButton } from "../components/Buttons/LinkButton";
+// import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 const StyledButtonWrapper = styled.div`
@@ -54,13 +54,13 @@ export const Home = () => {
   // Render the component content.
   return (
     <>
-      <Logos />
+      {/*<LogoText />*/}
       <h1 className="heading">{text.heading}</h1>
       <h2>{text.subheading}</h2>
       <p>{text.intro}</p>
       <StyledButtonWrapper>
-        <Button to="/login" className="login-button" buttonName="Log in" />
-        <Button
+        <LinkButton to="/login" className="login-button" buttonName="Log in" />
+        <LinkButton
           to="/register"
           className="register-button"
           buttonName="Join the community"

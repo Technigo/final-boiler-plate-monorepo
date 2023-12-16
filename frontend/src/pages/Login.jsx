@@ -1,5 +1,5 @@
-// Import the 'Logos' component and the 'Link' component from 'react-router-dom'.
-import Logos from "../components/Logos";
+// Import the 'LogoText' component and the 'Link' component from 'react-router-dom'.
+import LogoText from "../components/LogoText";
 import { Link } from "react-router-dom";
 // Import the 'userStore' from the 'userStore' module.
 import { userStore } from "../stores/userStore"; // Make sure this is correctly imported
@@ -64,8 +64,8 @@ export const Login = () => {
           </li>
         </ul>
       </nav>
-      {/* Render the 'Logos' component. */}
-      <Logos />
+      {/* Render the 'LogoText' component. */}
+      <LogoText />
       <div>
         {/* Display the heading and paragraphs. */}
         <h2>{text.heading}</h2>
@@ -95,4 +95,4 @@ export const Login = () => {
 
 // SUMMARY
 
-// This code defines the Login component, which handles user login functionality. It imports necessary components, hooks, and the user store, and it defines state variables for username and password. The component also provides a form for entering login credentials, handles the login button click event, and uses React Router to navigate between login and sign-up routes. Additionally, it renders text content and the 'Logos' component.
+// This code defines the Login component, which handles user login functionality. It imports necessary components, hooks, and the user store, and it defines state variables for username and password. The component also provides a form for entering login credentials, handles the login button click event, and uses React Router to navigate between login and sign-up routes. Additionally, it renders text content and the 'LogoText' component.

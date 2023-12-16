@@ -1,6 +1,6 @@
 // Import necessary dependencies, components, and stores.
 import { useEffect } from "react";
-import Logos from "../components/Logos";
+//import { LogoText } from "../components/LogoText";
 import { CreateTask } from "../components/CreateTask";
 import { taskStore } from "../stores/taskStore";
 import { userStore } from "../stores/userStore";
@@ -71,8 +71,8 @@ export const Tasks = () => {
           </li>
         </ul>
       </nav>
-      {/* Render the 'Logos' component. */}
-      <Logos />
+      {/* Render the 'LogoText' component. */}
+      {/* <LogoText /> */}
       <div>
         {/* Display the heading and paragraphs. */}
         <h2>{text.heading}</h2>
