@@ -5,6 +5,7 @@ import "./css/articlesfront.css";
 const ArticlesFront = () => {
     return (
         <div className='articles-front'>
+            <h2>Articles</h2>
             <div className='articles-display'>
                 {data.articles.map((article, index) => (
                     <div key={index}>

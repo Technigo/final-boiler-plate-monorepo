@@ -15,16 +15,45 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    width: 200px;
-    margin-left: 400px;
-    border-radius: 20px;
+    align-items: center;
 }
 
 /* Apply styles to input elements within 'user-login' or 'user-registration' class */
 .user-login>input,
 .user-registration>input {
     margin-bottom: 1em;
-    /* Add space below input elements */
-    height: 2em;
-    /* Set height for input elements */
+    padding-left: 10px;
+    height: 3em;
+    width: 400px;
+    background-color: #EEE0C9;
+    border-radius: 25px;
+    border: 1px solid grey;
+    font-family: 'Poppins', sans-serif;
+    font-style: italic;
+    text-transform: lowercase;
+}
+
+/* Login-button */
+.login {
+    color: black;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
+    border-radius: 25px;
+    background-color: #3EC3CE;
+    width: 250px;
+    margin-bottom: 40px;
+    border: none;
+}
+
+.login:hover {
+    color: black;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
+    border-radius: 25px;
+    background-color: #E7FDFF;
+    width: 250px;
+    margin-bottom: 40px;
+    border: none;
 }

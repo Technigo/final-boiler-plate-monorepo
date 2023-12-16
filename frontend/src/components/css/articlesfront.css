@@ -1,6 +1,6 @@
 .articles-front {
     margin: 30px;
-
+    padding-bottom: 70px;
     overflow: hidden;
 }
 
@@ -13,6 +13,13 @@
 
 .articles-front img {
     width: 300px;
+}
+
+.articles-front h2 {
+    font-weight: 200;
+    font-size: 30px;
+    text-align: left;
+    margin-left: 190px;
 }
 
 .articles-front h3 {
