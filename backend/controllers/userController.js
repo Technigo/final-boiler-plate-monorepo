@@ -1,7 +1,6 @@
 import asyncHandler from "express-async-handler";
 import bcrypt from "bcrypt";
-import { validationResult } from "express-validator";
-import { registrationValidation } from "../middleware/registrationValidation";
+import { validateRegistration } from "../middleware/registrationValidation";
 import { UserModel } from "../models/UserModel";
 
 
@@ -11,13 +10,7 @@ import { UserModel } from "../models/UserModel";
 
 export const registerUserController = asyncHandler(async (req, res) => {
   // Run validation middleware
-  registrationValidation.forEach((middleware) => middleware(req, res, () => {}));
-
-  // Check for validation errors
-  const validationErrors = validationResult(req);
-  if (!validationErrors.isEmpty()) {
-    return res.status(400).json({ errors: validationErrors.array() });
-  };
+  validateRegistration(req, res, () => {});
 
   // Extract email, username and password from the request body
   const { username, password, email } = req.body;

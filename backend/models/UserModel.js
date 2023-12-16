@@ -25,7 +25,6 @@ const userSchema = new Schema(
     },
     location: {
       type: String,
-      minlength: 5,
       default: ""
     },
     introduction: {
