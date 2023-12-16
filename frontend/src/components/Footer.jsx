@@ -6,7 +6,7 @@ import styled from "styled-components";
 const StyledFooter = styled.div`
   display: flex;
   flex-direction: column;
-  padding: 20px 0 10px;
+  padding: 20px 0;
   width: 100%;
   text-align: center;
   position: fixed;
@@ -31,6 +31,12 @@ const FooterText = styled.div`
   align-items: center;
   color: #f8f8f8;
   font-size: 18px;
+`;
+
+const Contact = styled.div`
+  display: flex;
+  gap: 20px;
+  margin: 10px 0;
 `;
 
 // const Copyright = styled.div`
@@ -63,32 +69,11 @@ const FooterText = styled.div`
 //   }
 // `;
 
-const Links = styled.div`
-  display: flex;
-  align-items: center;
-  color: #f8f8f8;
-  margin-top: 15px;
-`;
-
-const Contact = styled.div`
-  display: flex;
-  gap: 20px;
-  margin: 10px 0;
-`;
-
-// const FooterLinks = styled.div`
-//   display: flex;
-//   justify-content: center;
-//   gap: 32px;
-//   margin-bottom: 32px;
-// `;
-
 // Define the Footer component as a functional component.
 export const Footer = () => {
   return (
     <StyledFooter>
       <FooterText>
-        {/* <Copyright> */}
         <Contact>
           <p>Anna Robertsson</p>
           <SocialMediaLinks person="Anna" />
@@ -97,8 +82,8 @@ export const Footer = () => {
           <p>Susanne Ekenheim</p>
           <SocialMediaLinks person="Susanne" />
         </Contact>
-
-        <p>January 2024 | Web Development students at Technigo</p>
+        {/* <Copyright> */}
+        <p>Web Development students at Technigo | January 2024</p>
         {/* <p className="separator"> | </p> */}
         {/* <a
             href="https://www.technigo.io"
@@ -109,11 +94,6 @@ export const Footer = () => {
         {/* <img className="logo-small" src={logo} alt="Technigo logo" /> */}
         {/* </a> */}
         {/* </Copyright> */}
-        <Links>
-          {/* <FooterLinks> */}
-
-          {/* </FooterLinks> */}
-        </Links>
       </FooterText>
     </StyledFooter>
   );
