@@ -1,12 +1,9 @@
 import { UserModel } from "../models/UserModel";
-//asyncHandler: We use asyncHandler to simplify error handling in asynchronous code. It helps us avoid writing repetitive try-catch blocks by automatically catching errors and passing them to our error handling middleware. This makes our code cleaner and more readable, reducing the risk of unhandled exceptions that could crash the server.
 import asyncHandler from "express-async-handler";
-// bcrypt: We use bcrypt to securely hash and store passwords in our database. Storing plain-text passwords is a security risk, as it exposes user credentials in case of a data breach. bcrypt helps us hash passwords in a way that is computationally expensive and time-consuming for potential attackers, making it difficult to crack passwords even if the database is compromised. It enhances the overall security of user authentication in our application.
 import bcrypt from "bcrypt";
-// jwt (JSON Web Tokens): We use jwt for authentication and authorization. It allows us to create and verify tokens that contain user identity information, such as user IDs or roles. These tokens are often sent with requests to secure routes and verify that a user has the necessary permissions to access certain resources. JWTs are stateless and efficient, making them a popular choice for secure communication between the client and server.
 import jwt from "jsonwebtoken";
 
-// generateToken: This is a utility function used to generate JWT tokens for user authentication. It takes a user object and creates a token containing the user's access token, with an optional secret key and a 24-hour expiration time.
+// Genetares a token for the user. The token is generated using the user's id and a secret key. The secret key is stored in the .env file and is used to sign the token. The token is set to expire in 24 hours.
 const generateToken = (user) => {
   const jwtSecret = process.env.JWT_SECRET || "default_secret";
   return jwt.sign({ id: user._id }, jwtSecret, {
@@ -14,21 +11,18 @@ const generateToken = (user) => {
   });
 };
 
+// Register a new user in the database
 export const registerUserController = asyncHandler(async (req, res) => {
-  // Extract username and password from the request body
   const { username, password } = req.body;
-  // In this try section of the try catch we will first do some conditional logic and then generate the newUser with a crypted password within the DB.
+
   try {
-    // 1st Condition
-    // Check whether all fields of registration logic are NOT [!username] inputted from the request.body object
+    // Check if the username or password is missing
     if (!username || !password) {
-      // if so, set http status to a 400code
+      // if so, set http status to a 401 code
       res.status(401).json({ error: "Missing username or password" }); // 401 is unauthorized
-      // and throw new error with some info
-      // throw new Error("Please add all fields"); TECHNIGOS ORIGINALKOD
     }
-    // 2nd Condition
-    // Check if the current user trying to register is using an usernam or email that matches with the same username or email in the database, so they would have to choose something diferent
+
+    // Check if the username already exists in the database
     const existingUser = await UserModel.findOne({ username });
     if (existingUser) {
       res
@@ -41,30 +35,26 @@ export const registerUserController = asyncHandler(async (req, res) => {
       // ); DETTA ÄR TECHNIGOS ORIGINALKOD
     }
 
-    // Generate a salt and hash the user's password
-    //In this line below, we're using the bcrypt library to create a random value called "salt." The salt is added to the password before hashing it. It adds an extra layer of security by making it more difficult for attackers to use precomputed tables (rainbow tables) to crack passwords. The 10 in genSaltSync(10) represents the cost factor, which determines how computationally intensive the hashing process will be.
+    // Hash the user's password using bcrypt. GensaltSync generates a salt, which is a random string of characters that is used to hash the password. The salt is then used to hash the password using the hashSync method. The salt is stored in the database along with the hashed password.
     const salt = bcrypt.genSaltSync(10);
-
     const hashedPassword = bcrypt.hashSync(password, salt);
-    // In this line below, we're using the generated salt to hash the user's password. Hashing transforms the password into a secure and irreversible string of characters. The bcrypt library handles the entire process for us, ensuring that the password is securely hashed. The resulting hashedPassword is what we store in the database to keep the user's password safe.
-    // Create a new user instance with the hashed password
+
+    // Create a new user using the UserModel. The new user is passed the username and hashed password.
     const newUser = new UserModel({
       username,
       password: hashedPassword,
     });
-
-    // Mongoose Method: newUser.save()
-    // Description: Save the new user instance to the database
+    console.log("New User Object:", newUser);
+    // Save the new user in the database
     await newUser.save();
 
-    // Respond with a success message, user details, and the JWT token
+    // Respond with a success message, user details, and the JWT token for authentication
     res.status(201).json({
       success: true,
       response: {
-        username: newUser.username,
-        id: newUser._id,
-        accessToken: generateToken(newUser._id),
-        //accessToken: newUser.accessToken,
+        username: newUser.username, // The username is sent back to the client
+        id: newUser._id, // The user's id is sent back to the client
+        accessToken: generateToken(newUser._id), // A JWT token is generated and sent back to the client
       },
     });
   } catch (error) {
@@ -73,8 +63,8 @@ export const registerUserController = asyncHandler(async (req, res) => {
   }
 });
 
+// Login a user and generate a JWT token for authentication
 export const loginUserController = asyncHandler(async (req, res) => {
-  // Extract username and password from the request body
   const { username, password } = req.body;
 
   try {
@@ -101,8 +91,7 @@ export const loginUserController = asyncHandler(async (req, res) => {
       response: {
         username: user.username,
         id: user._id,
-        accessToken: generateToken(user._id),
-        //accessToken: user.accessToken, //  token for the user using the acessToken generated from the model, // Use the generated token here
+        accessToken: generateToken(user._id), // A JWT token is generated and sent back to the client
       },
     });
   } catch (error) {

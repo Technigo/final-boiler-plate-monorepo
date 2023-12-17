@@ -1,6 +1,4 @@
-// Import the necessary module for state management
 import { create } from "zustand";
-// Import the userStore to access user-related data
 import { userStore } from "./userStore";
 
 // Get the backend API URL from the environment variable
@@ -45,6 +43,7 @@ export const taskStore = create((set) => ({
   // New action to fetch tasks
   fetchTasks: async () => {
     try {
+      console.log("Before fetching tasks...");
       // Send a GET request to the backend API to fetch tasks
       const response = await fetch(`${apiEnv}/get`, {
         method: "GET",
@@ -52,16 +51,18 @@ export const taskStore = create((set) => ({
           Authorization: localStorage.getItem("accessToken"),
         },
       });
+
       // Check if the request was successful
       if (response.ok) {
         // Parse the response data and set it as the tasks state
         const data = await response.json();
+        console.log("Fetched tasks successfully:", data);
         set({ tasks: data });
       } else {
-        console.error("Failed to fetch tasks");
+        console.error("Failed to fetch tasks. Response:", response);
       }
     } catch (error) {
-      console.error(error);
+      console.error("Error during fetchTasks:", error);
     }
   },
 
@@ -75,13 +76,17 @@ export const taskStore = create((set) => ({
           Authorization: localStorage.getItem("accessToken"),
           "Content-Type": "application/json",
         },
+
         body: JSON.stringify({
+          // Convert JS object to JSON string
           task: task.task,
           category: task.category,
           area: task.area,
           description: task.description,
         }),
       });
+      console.log("Authorization Header:", localStorage.getItem("accessToken"));
+
       // Parse the response data
       const data = await response.json();
       // Check if the request was successful

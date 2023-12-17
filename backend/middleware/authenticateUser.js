@@ -1,34 +1,35 @@
-// Import the UserModel from the User model file
 import { UserModel } from "../models/UserModel";
-
 import jwt from "jsonwebtoken";
 
 export const authenticateUser = async (req, res, next) => {
-  const accessToken = req.header("Authorization");
+  const accessToken = req.header("Authorization"); // Retrieve the access token from the request header
   try {
     if (!accessToken) {
-      return res.status(401).json({ success: false, response: "Unauthized" });
+      // If no access token is found, send a 401 Unauthorized response
+      return res.status(401).json({ success: false, response: "Unauthorized" });
     }
     console.log("accessToken", accessToken);
     const decoded = jwt.verify(
-      accessToken,
-      process.env.JWT_SECRET || "default_secret"
+      // Verify the access token against the JWT_SECRET
+      accessToken, // 1st argument: The access token to verify
+      process.env.JWT_SECRET || "default_secret" // 2nd argument: The JWT_SECRET used to sign the access token
     );
 
-    const user = await UserModel.findById(decoded.id);
+    const user = await UserModel.findById(decoded.id); // Find a user in the database using the decoded access token
     if (!user) {
+      // If no user is found, send a 401 Unauthorized response
       return res
         .status(401)
         .json({ success: false, response: "User not found" });
     }
-    req.user = user;
-    next();
+    req.user = user; // If a user is found, add the user object to the request object
+    next(); // Continue to the next middleware or route
   } catch (error) {
+    // Handle any errors that occur during the process
     res.status(401).json({ success: false, response: error.message });
   }
 };
 
-// Define a function called authenticateUser that takes a request (req), response (res), and a next function as parameters
 // export const authenticateUser = async (req, res, next) => {
 //   // Retrieve the access token from the request header
 //   const accessToken = req.header("Authorization");
@@ -50,7 +51,3 @@ export const authenticateUser = async (req, res, next) => {
 //     res.status(500).json({ success: false, response: error.message });
 //   }
 // };
-
-// SUMMARY
-
-// In this code, we have a function called authenticateUser that is used as middleware in a Node.js application. This middleware is responsible for checking the authorization header of an incoming request, searching for a user with the provided access token in the database using the UserModel, and adding the user object to the request if found. If no user is found or if there are any errors during the process, appropriate responses are sent back to the client. In summary, this code is handling user authentication by checking the access token in the request header and verifying it against the database to grant access to protected routes or endpoints.

@@ -15,6 +15,8 @@ const router = express.Router();
 // Define a route for handling GET requests to retrieve all tasks
 router.get("/get", authenticateUser, getTasksController); // When a GET request is made to /get, authenticate the user using middleware and then execute the getTasksController function
 
+router.get("/get/:id", authenticateUser, getTasksController); // KAN DENNA ANVÄNDAS PÅ PROFILE PAGE? Nej, den är för att hämta en specifik task så ändra till att den hämtar alla tasks för en specifik user
+
 // Define a route for handling PUT requests to update a specific task by ID
 router.put("/update/:id", updateTaskController); // When a PUT request is made to /update/:id, execute the updateTaskController function
 

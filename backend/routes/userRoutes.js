@@ -1,4 +1,3 @@
-// Import the necessary modules and functions
 import express from "express";
 import { authenticateUser } from "../middleware/authenticateUser.js";
 import {
@@ -26,12 +25,19 @@ router.get("/profile", authenticateUser, (req, res) => {
 });
 
 // Add the authenticateUser middleware to the route to protect it
-router.get("/tasks", authenticateUser, (req, res) => {
+// router.get("/tasks", authenticateUser, (req, res) => {
+//   res.json({ tasks: "This is all (private) tasks" });
+// });
+
+// removed the authenticateUser middleware to be able to see all tasks
+router.get("/tasks", (req, res) => {
   res.json({ tasks: "This is all tasks" });
+});
+
+router.get("/tasks/:id", authenticateUser, (req, res) => {
+  res.json({ tasks: "This is a (private) task" });
 });
 
 // Export the router for use in the main application
 // export { router }; DETTA FANNS I VÅR KOD
 export default router;
-
-// In summary, this file sets up routes using the Express router for user registration and login operations. It associates each route with the corresponding controller function. These routes define the API endpoints for handling user registration and login within the application.
