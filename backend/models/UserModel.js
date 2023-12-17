@@ -23,6 +23,10 @@ const userSchema = new Schema(
       required: true,
       unique: true,
     },
+    consent: { // whether the user agrees to the terms and conditions when signing up
+      type: Boolean,
+      required: true
+    },
     location: {
       type: String,
       default: ""

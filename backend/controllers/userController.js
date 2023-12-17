@@ -12,13 +12,13 @@ export const registerUserController = asyncHandler(async (req, res) => {
   // Run validation middleware
   validateRegistration(req, res, () => {});
 
-  // Extract email, username and password from the request body
-  const { username, password, email } = req.body;
+  // Extract email, username, password and consent from the request body
+  const { username, password, email, consent } = req.body;
   // In this try section of the try catch we will first do some conditional logic and then generate the newUser with a crypted password within the DB.
   try {
     // 1st Condition
     // Check whether all fields of registration logic are NOT [!email] inputted from the request.body object
-    if (!username || !email || !password) {
+    if (!username || !email || !password || !consent) {
       // if so, set http status to a 400code
       res.status(400);
       // and throw new error with some info
@@ -50,12 +50,13 @@ export const registerUserController = asyncHandler(async (req, res) => {
       username,
       email,
       password: hashedPassword,
+      consent
     });
 
     // Description: Save the new user instance to the database
     await newUser.save();
 
-    // Respond with a success message, user details, and the JWT token
+    // Respond with a success message, user details, and the access token
     res.status(201).json({
       success: true,
       response: {
@@ -158,6 +159,7 @@ export const getUserProfileController = asyncHandler(async (req, res) => {
           username: userToBeDisplayed.username,
           password: userToBeDisplayed.password,
           email: userToBeDisplayed.email,
+          consent: userToBeDisplayed.consent,
           location: userToBeDisplayed.location,
           introduction: userToBeDisplayed.introduction,
           products: userToBeDisplayed.products
