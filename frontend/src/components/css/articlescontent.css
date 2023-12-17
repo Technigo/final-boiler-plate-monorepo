@@ -12,10 +12,46 @@
     padding: 0 auto;
 }
 
+
 .articles-container p {
     width: 800px;
     text-align: left;
     padding: 0 auto;
+}
+
+p articles-info {
+    width: 100px;
+}
+
+.date {
+    color: #3EC3CE;
+    font-weight: 700;
+    font-size: 10px;
+    width: 40px;
+    background-color: #E7FDFF;
+}
+
+.readmore {
+    color: #3EC3CE;
+    font-style: italic;
+}
+
+.article-summary {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.article-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.article-text {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
 }
 
 /* Dotted line */
