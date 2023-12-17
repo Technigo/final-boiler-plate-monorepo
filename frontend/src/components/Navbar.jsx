@@ -19,16 +19,16 @@ console.log('Current language in Navbar:', currentLanguage); */}
     return (
         <div className="navbar">
             <div className="nav-links">
-                <a href="#">{t('HOME')}</a>
+                <Link to="/">{t('HOME')}</Link>
                 <Link to="/aboutus">{t('ABOUT US')}</Link>
-                <a href="#">{t('MY PAGE')}</a>
+                <Link to="/articles">{t('MY PAGE')}</Link>
                 <a href="#">{t('ARTICLES')}</a>
 
-                <a href="#" className="member">{t('BECOME A MEMBER')}</a>
+                <Link to="/register" className="member">{t('BECOME A MEMBER')}</Link>
                 <LanguageSwitcher />
 
             </div>
-        </div>
+        </div >
     );
 }
 

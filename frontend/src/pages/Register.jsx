@@ -1,5 +1,6 @@
 // Import necessary components, hooks, and stores.
-import Logos from "../components/Logos";
+import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
 import { userStore } from "../stores/userStore";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -49,19 +50,7 @@ export const Register = () => {
   // Render the component content.
   return (
     <>
-      <nav>
-        {/* Create a navigation menu with links to the login and sign-up routes. */}
-        <ul className="app-ul">
-          <li className="app-li">
-            <Link to="/">Login</Link>
-          </li>
-          <li className="app-li">
-            <Link to="/register">Sign Up</Link>
-          </li>
-        </ul>
-      </nav>
-      {/* Render the 'Logos' component. */}
-      <Logos />
+      <Navbar />
       <div>
         {/* Display the heading and paragraphs. */}
         <h2>{text.heading}</h2>
@@ -88,9 +77,11 @@ export const Register = () => {
             onChange={(e) => setPassword(e.target.value)}
           />
           {/* Create a button for signing up and attach the 'onSignupClick' event handler. */}
-          <button onClick={onSignupClick}>Sign Up</button>
+          <button className="login" onClick={onSignupClick}>Sign Up</button>
+
         </div>
       </div>
+      <Footer />
     </>
   );
 };
