@@ -47,6 +47,8 @@ export const CreateTask = () => {
       setCategory("");
       setArea("");
       setDescription("");
+    } else {
+      alert("Please fill in all fields"); // Alert the user if any of the fields are empty.
     }
   };
 
@@ -58,7 +60,7 @@ export const CreateTask = () => {
         <input
           className="task-input"
           type="text"
-          placeholder="Enter task"
+          placeholder="Enter task title"
           onChange={taskTitle}
           value={task}
         />

@@ -56,7 +56,7 @@ export const userStore = create((set, get) => ({
         set({ username });
         // Display a success alert.
         alert("Signup successful!");
-        console.log("Signing up with:", username);
+        //console.log("Signing up with:", username);
       } else {
         // Display an error message from the server or a generic message.
         alert(data.response || "Signup failed");
@@ -100,7 +100,7 @@ export const userStore = create((set, get) => ({
         localStorage.setItem("accessToken", data.response.accessToken);
         // Display a success alert.
         alert("Login successful!");
-        console.log("Logging in with:", username, password);
+        //console.log("Logging in with:", username, password);
       } else {
         // Display an error message from the server or a generic message.
         alert(data.response || "Login failed");

@@ -7,29 +7,43 @@ import { UserModel } from "../models/UserModel";
 // desciption: Get Tasks
 // route: /get
 // access: Private
+// export const getTasksController = asyncHandler(async (req, res) => {
+//   // get the user and matchIt with the user from the db - remmeber that we are using the accessToken to do so :)
+//   const userStorage = req.user;
+//   // Use the TaskModel to find all tasks associated with the logged-in user
+//   await TaskModel.find({ user: userStorage })
+//     .sort("-createdAt")
+//     .then((result) => res.json(result)) // Respond with the found tasks in JSON format
+//     .catch((err) => res.json(err)); // Handle any errors that occur during the operation
+// });
+
 export const getTasksController = asyncHandler(async (req, res) => {
-  // get the user and matchIt with the user from the db - remmeber that we are using the accessToken to do so :)
-  const userStorage = req.user;
-  // Use the TaskModel to find all tasks associated with the logged-in user
-  await TaskModel.find({ user: userStorage })
-    .sort("-createdAt")
-    .then((result) => res.json(result)) // Respond with the found tasks in JSON format
-    .catch((err) => res.json(err)); // Handle any errors that occur during the operation
+  try {
+    const tasks = await TaskModel.find().sort("-createdAt");
+    res.json(tasks);
+  } catch (error) {
+    res.status(500).json(error);
+  }
 });
 
 // desciption: POST Tasks
 // route: /add
-// access: Private
+// access: not Private, public
 export const addTaskController = asyncHandler(async (req, res) => {
   try {
     // Extract the task data from the request body
     // const { task } = req.body;
     // Extract the accessToken from the request object, but it is not going to be from the req.body but, its going to be from the req.header
     const accessToken = req.header("Authorization"); // we are requesting the Authorization key from the headerObject
-    // get the user and matchIt with the user from the db - remmeber that we are using the accessToken to do so :)
+    // // get the user and matchIt with the user from the db - remmeber that we are using the accessToken to do so :)
     const userFromStorage = await UserModel.findOne({
       accessToken: accessToken,
     });
+    console.log("userFromStorage", userFromStorage);
+
+    // if (!userFromStorage) {
+    //   return res.status(401).json({ message: "Unauthorized" });
+    // }
     // Define var to pass new task
     const newTask = new TaskModel({
       task: req.body.task, // Assuming your task object has a 'taskTitle' property
@@ -42,6 +56,7 @@ export const addTaskController = asyncHandler(async (req, res) => {
     const savedTask = await newTask.save();
     res.json(savedTask);
   } catch (error) {
+    console.error("Error in addTaskController:", error);
     res.status(500).json(error);
   }
 });
@@ -49,25 +64,39 @@ export const addTaskController = asyncHandler(async (req, res) => {
 // desciption: PUT/PATCH a specific task to mark it complete
 // route: /update/:id"
 // access: Private
+// export const updateTaskController = asyncHandler(async (req, res) => {
+//   // Extract the task ID from the request parameters
+//   const { id } = req.params;
+//   console.log(id); // Log the ID to the console
+//   // Use TaskModel to find and update a task by its ID, marking it as done
+//   // Use TaskModel to delete all tasks in the database
+//   // Extract the accessToken from the request object, but it is not going to be from the req.body but, its going to be from the req.header
+//   const accessToken = req.header("Authorization"); // we are requesting the Authorization key from the headerObject
+//   // get the user and matchIt with the user from the db - remmeber that we are using the accessToken to do so :)
+//   const userFromStorage = await UserModel.findOne({
+//     accessToken: accessToken,
+//   });
+//   await TaskModel.findByIdAndUpdate(
+//     { _id: id },
+//     { done: true },
+//     { user: userFromStorage }
+//   )
+//     .then((result) => res.json(result)) // Respond with the updated task in JSON format
+//     .catch((err) => res.json(err)); // Handle any errors that occur during the operation
+// });
+
 export const updateTaskController = asyncHandler(async (req, res) => {
-  // Extract the task ID from the request parameters
   const { id } = req.params;
-  console.log(id); // Log the ID to the console
-  // Use TaskModel to find and update a task by its ID, marking it as done
-  // Use TaskModel to delete all tasks in the database
-  // Extract the accessToken from the request object, but it is not going to be from the req.body but, its going to be from the req.header
-  const accessToken = req.header("Authorization"); // we are requesting the Authorization key from the headerObject
-  // get the user and matchIt with the user from the db - remmeber that we are using the accessToken to do so :)
-  const userFromStorage = await UserModel.findOne({
-    accessToken: accessToken,
-  });
-  await TaskModel.findByIdAndUpdate(
-    { _id: id },
-    { done: true },
-    { user: userFromStorage }
-  )
-    .then((result) => res.json(result)) // Respond with the updated task in JSON format
-    .catch((err) => res.json(err)); // Handle any errors that occur during the operation
+  try {
+    const updatedTask = await TaskModel.findByIdAndUpdate(
+      { _id: id },
+      { done: true },
+      { new: true }
+    );
+    res.json(updatedTask);
+  } catch (error) {
+    res.status(500).json(error);
+  }
 });
 
 // desciption: DELETE all tasks
@@ -90,6 +119,42 @@ export const deleteAllTasksController = asyncHandler(async (req, res) => {
     ) // Respond with a success message and the count of deleted tasks
     .catch((err) => res.status(500).json(err)); // Handle any errors that occur during the operation
 });
+
+//FÖRSÖKTE SKAPA EN CONFIRMATION-FUNKTION
+// export const deleteAllTasksController = asyncHandler(async (req, res) => {
+//   try {
+//     // Extract the accessToken from the request object, obtained from the req.header
+//     const accessToken = req.header("Authorization");
+
+//     // Get the user from the database using the accessToken
+//     const userFromStorage = await UserModel.findOne({
+//       accessToken: accessToken,
+//     });
+
+//     if (!userFromStorage) {
+//       return res.status(401).json({ message: "Unauthorized" });
+//     }
+
+//     // Confirm with the client before proceeding
+//     const confirmation = req.body.confirmation;
+
+//     if (confirmation !== "yes") {
+//       return res.status(400).json({ message: "Deletion aborted by user" });
+//     }
+
+//     // Delete all tasks associated with the user
+//     const result = await TaskModel.deleteMany({ user: userFromStorage });
+
+//     res.json({
+//       message: "All tasks deleted",
+//       deletedCount: result.deletedCount,
+//     });
+//   } catch (err) {
+//     res
+//       .status(500)
+//       .json({ message: "Internal Server Error", error: err.message });
+//   }
+// });
 
 // desciption: DELETE task by its ID
 // route: /delete/:id

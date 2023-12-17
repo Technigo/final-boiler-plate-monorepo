@@ -35,7 +35,7 @@ export const Tasks = () => {
 
   // Get 'isLoggedIn' and 'accessToken' from the 'userStore'.
   const { isLoggedIn } = userStore();
-  console.log(isLoggedIn);
+  //console.log(isLoggedIn);
   console.log(accessToken);
 
   // useEffect hook to check user authentication status.
@@ -84,7 +84,7 @@ export const Tasks = () => {
         {/* Conditional rendering based on the number of tasks. */}
         {tasks.length === 0 ? (
           <>
-            <p>No tasks yet, go ahead and get moving!!...</p>
+            <p>Nothing to volunteer to yet, create your own ad!</p>
           </>
         ) : (
           // Map through 'tasks' and render task items.
@@ -100,8 +100,8 @@ export const Tasks = () => {
                 <p>{task.category}</p>
                 <p>{task.area}</p>
                 <p>{task.description}</p>
-                <p>{task.done ? "Task is Completed" : "Not Completed"}</p>
-                <button onClick={() => deleteTaskById(task._id)}>Delete</button>
+                {/* <p>{task.done ? "Task is Completed" : "Not Completed"}</p>
+                <button onClick={() => deleteTaskById(task._id)}>Delete</button> */}
               </div>
             </div>
           ))

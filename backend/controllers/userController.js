@@ -64,7 +64,7 @@ export const registerUserController = asyncHandler(async (req, res) => {
         username: newUser.username,
         id: newUser._id,
         accessToken: generateToken(newUser._id),
-        // accessToken: newUser.accessToken, (diegos kod)
+        //accessToken: newUser.accessToken,
       },
     });
   } catch (error) {
@@ -102,7 +102,7 @@ export const loginUserController = asyncHandler(async (req, res) => {
         username: user.username,
         id: user._id,
         accessToken: generateToken(user._id),
-        // accessToken: user.accessToken, //  token for the user using the acessToken generated from the model, // Use the generated token here
+        //accessToken: user.accessToken, //  token for the user using the acessToken generated from the model, // Use the generated token here
       },
     });
   } catch (error) {
