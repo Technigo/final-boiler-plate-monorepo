@@ -21,8 +21,9 @@ console.log('Current language in Navbar:', currentLanguage); */}
             <div className="nav-links">
                 <Link to="/">{t('HOME')}</Link>
                 <Link to="/aboutus">{t('ABOUT US')}</Link>
-                <Link to="/articles">{t('MY PAGE')}</Link>
-                <a href="#">{t('ARTICLES')}</a>
+                <a href="#">{t('MY PAGE')}</a>
+                <Link to="/articles">{t('ARTICLES')}</Link>
+
 
                 <Link to="/register" className="member">{t('BECOME A MEMBER')}</Link>
                 <LanguageSwitcher />

@@ -5,6 +5,7 @@ import { Register } from "../pages/Register";
 import { Tasks } from "../pages/Tasks";
 import { Login } from "../pages/Login";
 import { AboutUs } from "../pages/AboutUs";
+import { Articles } from "../pages/Articles";
 import { NotFound } from "../pages/NotFound";
 
 
@@ -16,6 +17,7 @@ const routes = (
     <Route path="/register" element={<Register />} />
     <Route path="*" element={<NotFound />} />
     <Route path="/aboutus" element={<AboutUs />} />
+    <Route path="/articles" element={<Articles />} />
   </>
 );
 

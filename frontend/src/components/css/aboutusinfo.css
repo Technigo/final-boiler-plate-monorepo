@@ -19,6 +19,7 @@
     width: 800px;
 }
 
+/* Dotted line */
 hr {
     border: none;
     border-top: 8px dotted #3EC3CE;

@@ -1,0 +1,32 @@
+.articles-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: 240px;
+}
+
+.articles-container h2 {
+    font-weight: 700;
+    font-size: 30px;
+    text-align: left;
+    padding: 0 auto;
+}
+
+.articles-container p {
+    width: 800px;
+    text-align: left;
+    padding: 0 auto;
+}
+
+/* Dotted line */
+.articles-container hr {
+    border: none;
+    border-top: 8px dotted #3EC3CE;
+    color: #fff;
+    background-color: none;
+    height: 1px;
+    width: 70%;
+    margin-left: 0px;
+    padding-bottom: 40px;
+    position: relative;
+}
