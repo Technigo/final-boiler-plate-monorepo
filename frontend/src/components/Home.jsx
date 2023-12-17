@@ -29,23 +29,41 @@ font-size: 16px;
 font-family: Arial, sans-serif; 
   /* Your styles for intro paragraph */
 `;
+const StyledButton = styled.button`
+background-color: #B6244F;
+  color: #504746;
+  padding: 10px 20px; /* Some padding */
+  border: none; /* No border */
+  border-radius: 5px; /* Rounded corners */
+  cursor: pointer; /* Pointer/hand icon */
+  text-align: center; /* Center the text */
+  text-decoration: none; /* No underline */
+  display: inline-block; /* Inline block element */
+  font-size: 16px; /* Font size */
+  margin: 4px 2px; /* Margin around the button */
+  transition-duration: 0.4s; /* Transition for hover effect */
 
+  &:hover {
+    background-color: #B89685;
+    color: #FBB7C0;
+  }
+`;
 // Define the 'Home' functional component.
 const Home = () => {
   // Define text content for the heading and subheading.
   const text = {
     heading: "Welcome to the home of Foodie Moodie- insert logo here",
-    subheading: "Find your perfect dining spot",
+    subheading: "Start your quest for the perfect diningspot below",
   };
 
   return (
     <PageContainer>
       <Navbar />
       <main>
-        <Heading>{text.heading}</Heading> {/* Insert logo here when we have it */}
+        <Heading>{text.heading}</Heading>
         <Subheading>{text.subheading}</Subheading>
         <Intro>
-          Start your journey to finding your perfect spot <Link to="/occasion">here</Link>.
+       <StyledButton as={Link} to="/occasion">Start</StyledButton>
         </Intro>
       </main>
       <Footer />
@@ -53,7 +71,6 @@ const Home = () => {
   );
 };
 export default Home;
-
   /*// Access the 'handleLogout' function from the 'userStore'.
   const storeHandleLogout = userStore((state) => state.handleLogout);
 

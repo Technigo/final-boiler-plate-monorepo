@@ -2859,5 +2859,40 @@
    "Romantic"],
   "description": "Garaget Restaurang offers a unique Scandinavian dining experience in an intimate and cozy setting. This hidden gem, located in the garage of the owners, adds an exclusive touch to your dining plans. However, securing a table at Garaget Restaurang can be a bit of a challenge, as reservations are made through a Facebook group, and the spots fill up quickly. For those looking to have a special dinner with the in-laws, celebrate a relationship anniversary, or enjoy a romantic evening with that special someone, Garaget Restaurang's ambiance is perfect. The soft-spoken atmosphere, good lighting, and calm surroundings create an intimate and homely feel.",
   "url": "https://sv-se.facebook.com/garagetrestaurang/"
+},
+
+{ 
+  "restaurantID": "93",
+  "restaurantName": "Bistro Leoparden",
+  "address": "Tegnérgatan 16",
+  "zipcode": "11358",
+  "city": "Stockholm",
+  "country": "Sweden",
+  "borough": "Norrmalm",
+  "cuisine": "Scandinavian and Italian",
+  "occasion": [
+    "Have dinner with the in-laws",
+    "Have dinner with kids present",
+    "Have dinner with your bestie",
+    "Have dinner with friends to catch up",
+    "Say Cheers- a classic Swedish after work",
+    "Have dinner with colleagues",
+    "Have dinner with the whole family",
+    "Have dinner with your parents",
+    "Celebrate you turning 28 again (honey, you ain't fooling anyone)",
+    "Have a meparty aka dinner for one",
+    "Go on a nice date with that special someone"
+  ],
+  "mood": [
+    "Good lighting",
+    "Bustling",
+    "Casual",
+    "Family friendly",
+    "Homely",
+    "Kid friendly",
+    "Dog friendly"
+  ],
+  "description": "The restaurant's atmosphere is characterized by good lighting and a bustling yet casual vibe, making it suitable for a wide range of occasions. It's a family-friendly establishment, so you can bring the whole family along, including the kids and even your furry friends, as it's dog-friendly. One of the standout features of Bistro Leoparden is its great pizzas. Whether you're craving a classic Margherita or something more adventurous, you'll find delicious pizza options to satisfy your taste buds. So, whether you're having dinner with friends, colleagues, or enjoying a romantic date night, you can enjoy some fantastic pizzas at Bistro Leoparden. And don't forget, you can also visit for a classic Swedish after-work gathering or even have a solo dinner party.",
+  "url": "https://bistroleoparden.se/"
 }
 ]
