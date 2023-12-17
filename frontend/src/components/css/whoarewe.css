@@ -41,21 +41,26 @@
     border-left: 10px solid #3EC3CE;
 }
 
-.github img {
+.icons {
+    display: flex;
+    flex-direction: row;
+}
+
+.icon img {
     border: none;
     width: 30px;
     padding: 0 auto;
     margin: 0 auto;
 }
 
-.github {
+.icon {
     border: none;
     margin-left: 20px;
     width: 40px;
-    border-radius: 40%;
 }
 
-.github:hover {
+.icon:hover {
     background-color: #3EC3CE;
     border: none;
+    border-radius: 5px;
 }
