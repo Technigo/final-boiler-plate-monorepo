@@ -1,9 +1,7 @@
-import express from 'express'
 import CinemaHallModel from '../models/CinemaHallModel'
 
-const cinemaHallRouter = express.Router()
-
-cinemaHallRouter.get('/cinema-halls', async (req, res) => {
+// get all cinemaHall
+export const getAllCinemaHall = async (req, res) => {
 	try {
 		const cinemaHalls = await CinemaHallModel.find()
 		if (cinemaHalls.length > 0) {
@@ -14,9 +12,11 @@ cinemaHallRouter.get('/cinema-halls', async (req, res) => {
 	} catch (error) {
 		res.status(500).json({ message: error.message })
 	}
-})
+}
 
-cinemaHallRouter.get('/cinema-halls/:id', async (req, res) => {
+//get cinemaHall by ID
+
+export const getCinemaHallByID = async (req, res) => {
 	try {
 		const cinemaHallsId = parseInt.req.params.id
 		const cinemaHall = await CinemaHallModel.findById(cinemaHallsId)
@@ -28,9 +28,10 @@ cinemaHallRouter.get('/cinema-halls/:id', async (req, res) => {
 	} catch (error) {
 		res.status(500).json({ error: 'Something went wrong, please try again.' })
 	}
-})
+}
 
-cinemaHallRouter.post('/cinema-halls/add', async (req, res) => {
+//add a new cinemaHall
+export const addCinemaHall = async (req, res) => {
 	try {
 		const { name, capacity, rows } = req.body
 		if (!name || !capacity || !rows)
@@ -46,6 +47,4 @@ cinemaHallRouter.post('/cinema-halls/add', async (req, res) => {
 	} catch (error) {
 		res.status(500).json({ message: error.message })
 	}
-})
-
-export default cinemaHallRouter
+}
