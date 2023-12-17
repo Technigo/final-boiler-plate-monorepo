@@ -14,20 +14,19 @@ const listEndpoints = require('express-list-endpoints')
 import userRoutes from './routes/userRoutes'
 import bookingRoutes from './routes/bookingRoutes'
 import movieRoutes from './routes/MovieRoutes'
-import cinemaHallRoutes from './routes/cinemaHallRoutes';
-import showtimeRoutes from './routes/showtimeRoutes';
-
+import cinemaHallRoutes from './routes/cinemaHallRoutes'
+import showtimeRoutes from './routes/showtimeRoutes'
 
 // Add middlewares to enable cors and json body parsing
-app.use(cors()); // CORS = Cross-Origin Resource Sharing
-app.use(express.json()); // Parse incoming data in JSON-format
-app.use(express.urlencoded({ extended: false })); // Parse URL-encoded data using the querystring library. Parses simple objects and arrays
+app.use(cors()) // CORS = Cross-Origin Resource Sharing
+app.use(express.json()) // Parse incoming data in JSON-format
+app.use(express.urlencoded({ extended: false })) // Parse URL-encoded data using the querystring library. Parses simple objects and arrays
 
 // ROUTES - These routes USE controller functions ;)
 // app.use('/', userRoutes) // Use the user-controlled routes for user-related requests
-app.use('/', bookingRoutes);
-app.use('/', cinemaHallRoutes);
-app.use('/', showtimeRoutes);
+app.use('/bookings', bookingRoutes)
+app.use('/cinema-halls', cinemaHallRoutes)
+app.use('/showtimes', showtimeRoutes)
 app.use('/movies', movieRoutes)
 
 // This asynchronous function connects to the MongoDB database. It uses the MONGO_URL (connection url) stored in the .env-file.

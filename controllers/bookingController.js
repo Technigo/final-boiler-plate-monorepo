@@ -1,8 +1,9 @@
-// controllers/bookingController.js
-
 import BookingModel from '../models/BookingModel'
 
-// Get all bookings
+// @desc get  all bookings
+// @route /
+// @access public
+
 export const getAllBookings = async (req, res) => {
 	try {
 		const bookings = await BookingModel.find()
@@ -15,8 +16,9 @@ export const getAllBookings = async (req, res) => {
 		res.status(500).json({ message: error.message })
 	}
 }
-
-// Get booking by ID
+// @desc get booking by ID
+// @route /:id
+// @access public
 export const getBookingById = async (req, res) => {
 	try {
 		const bookingId = +req.params.id
@@ -30,8 +32,10 @@ export const getBookingById = async (req, res) => {
 		res.status(500).json({ error: 'Something went wrong, please try again.' })
 	}
 }
-
-// Add a new booking
+// @desc add a new booking
+// @route /add
+// @access public
+//
 export const addBooking = async (req, res) => {
 	try {
 		const { userId, movieId, price, showtimeId } = req.body

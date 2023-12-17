@@ -1,6 +1,8 @@
 import CinemaHallModel from '../models/CinemaHallModel'
 
-// get all cinemaHall
+// @desc get all cinemaHall
+// @route /
+// @access public
 export const getAllCinemaHall = async (req, res) => {
 	try {
 		const cinemaHalls = await CinemaHallModel.find()
@@ -14,9 +16,10 @@ export const getAllCinemaHall = async (req, res) => {
 	}
 }
 
-//get cinemaHall by ID
-
-export const getCinemaHallByID = async (req, res) => {
+// @desc get cinemaHall by ID
+// @route /:id
+// @access public
+export const getCinemaHallById = async (req, res) => {
 	try {
 		const cinemaHallsId = parseInt.req.params.id
 		const cinemaHall = await CinemaHallModel.findById(cinemaHallsId)
@@ -30,7 +33,9 @@ export const getCinemaHallByID = async (req, res) => {
 	}
 }
 
-//add a new cinemaHall
+// @desc  add a new cinemaHall
+// @route /add
+// @access public
 export const addCinemaHall = async (req, res) => {
 	try {
 		const { name, capacity, rows } = req.body

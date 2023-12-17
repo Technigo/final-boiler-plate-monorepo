@@ -1,11 +1,6 @@
 import express from 'express'
 const router = express.Router()
-import {
-	getComingMovies,
-	getMovies,
-	getMovie,
-	postMovie,
-} from '../controllers/movieController'
+import { getComingMovies, getMovies, getMovie, postMovie } from '../controllers/movieController'
 import 'dotenv/config'
 
 router.route('/').get(getMovies).post(postMovie)
