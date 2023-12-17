@@ -45,9 +45,9 @@ export const Navbar = () => {
         {/* Add a responsive menu button for smaller screens */}
         <div className="md:hidden">
           <LoginBtn />
-          <button className="text-white pl-4" onClick={onMobileNavClick}>
+          <button className="text-white pl-5" onClick={onMobileNavClick}>
             {/* Add a responsive menu icon, e.g., a hamburger icon */}
-            &#9776;
+            {openMobileNav ? <>&#x2715;</> : <>&#9776; </>}
           </button>
           {/* Display the menu if openMobileNav is true */}
           {openMobileNav && renderMenuItems()}
