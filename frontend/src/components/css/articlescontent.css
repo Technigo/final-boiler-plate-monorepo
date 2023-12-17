@@ -27,14 +27,23 @@ p articles-info {
     color: #3EC3CE;
     font-weight: 700;
     font-size: 10px;
-    width: 40px;
+    max-width: 80px;
+    overflow: hidden;
+    white-space: nowrap;
     background-color: #E7FDFF;
+    padding: 5px;
+    border-radius: 3px;
 }
 
 .readmore {
     color: #3EC3CE;
     font-style: italic;
 }
+
+.reverse {
+    flex-direction: row-reverse;
+}
+
 
 .article-summary {
     display: flex;
