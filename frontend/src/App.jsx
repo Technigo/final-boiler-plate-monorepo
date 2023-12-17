@@ -1,6 +1,7 @@
-import { BrowserRouter, Routes, Link } from "react-router-dom";
+import { BrowserRouter, Routes } from "react-router-dom";
 import routes from "./routes/routes";
 import { TripGenerator } from "./components/TripGenerator";
+import { Navbar } from "./components/Navbar";
 
 export const App = () => {
   return (
@@ -8,6 +9,7 @@ export const App = () => {
       <BrowserRouter>
         <main>
           {/* <Routes>{routes}</Routes> */}
+          <Navbar />
           <Routes>{routes}</Routes>
           <TripGenerator />
         </main>
