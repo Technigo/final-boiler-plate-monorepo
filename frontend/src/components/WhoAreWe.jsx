@@ -1,0 +1,29 @@
+import React from "react";
+import "./css/whoarewe.css";
+
+const WhoAreWe = () => {
+
+    return (
+        <div className="whoarewe-container">
+            <h2>Who are we?</h2>
+            <div className="whoarewe-info">
+                <img src="/lisa.JPG" alt="picture of lisa" />
+                <div className="whoarewe-text">
+                    <h3>I'm Lisa Dahlkar</h3>
+                    <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web</p>
+                    <a href="http://github.com/lisawh0/" className="github" target="_blanc"><img className="github" src="/github.png" alt="github" /></a>
+                </div>
+            </div>
+            <div className="whoarewe-info">
+                <img src="/lisa.JPG" alt="picture of lisa" />
+                <div className="whoarewe-text">
+                    <h3>I'm Linnea Johansson</h3>
+                    <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web</p>
+                    <a href="http://github.com/lisawh0/" className="github" target="_blanc"><img className="github" src="/github.png" alt="github" /></a>
+                </div>
+            </div>
+        </div>
+    );
+};
+
+export default WhoAreWe; 

@@ -1,6 +1,7 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import LanguageSwitcher from './LanguageSwitcher';
+import { Link } from 'react-router-dom';
 import "./css/navbar.css";
 
 const Navbar = () => {
@@ -19,7 +20,7 @@ console.log('Current language in Navbar:', currentLanguage); */}
         <div className="navbar">
             <div className="nav-links">
                 <a href="#">{t('HOME')}</a>
-                <a href="#">{t('ABOUT US')}</a>
+                <Link to="/aboutus">{t('ABOUT US')}</Link>
                 <a href="#">{t('MY PAGE')}</a>
                 <a href="#">{t('ARTICLES')}</a>
 

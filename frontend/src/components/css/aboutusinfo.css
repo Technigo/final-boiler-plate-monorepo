@@ -1,0 +1,31 @@
+.aboutus-container {
+    background-color: #F0E9DC;
+    padding: 50px;
+    padding-left: 300px;
+}
+
+.aboutus-container h2 {
+    font-weight: 400;
+    font-style: italic;
+    font-size: 30px;
+    text-align: left;
+    margin-top: 50px;
+}
+
+.aboutus-text {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    width: 800px;
+}
+
+hr {
+    border: none;
+    border-top: 8px dotted #3EC3CE;
+    color: #fff;
+    background-color: none;
+    height: 1px;
+    width: 30%;
+    position: absolute;
+    margin-left: 200px;
+}
