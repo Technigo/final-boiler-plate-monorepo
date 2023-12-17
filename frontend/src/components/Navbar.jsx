@@ -22,7 +22,7 @@ console.log('Current language in Navbar:', currentLanguage); */}
                 <div className="nav-links1">
                     <Link to="/">{t('HOME')}</Link>
                     <Link to="/aboutus">{t('ABOUT US')}</Link>
-                    <a href="#">{t('MY PAGE')}</a>
+                    <Link to="/home">{t('MY PAGE')}</Link>
                     <Link to="/articles">{t('ARTICLES')}</Link>
                 </div>
                 <div className="nav-links2">

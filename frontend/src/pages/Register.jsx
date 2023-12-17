@@ -4,7 +4,6 @@ import Footer from "../components/Footer";
 import { userStore } from "../stores/userStore";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Link } from "react-router-dom";
 
 // Define the 'Register' functional component.
 export const Register = () => {
@@ -25,12 +24,29 @@ export const Register = () => {
       alert("Please enter email, username, and password");
       return;
     }
+
     try {
-      // Call the 'handleSignup' function from 'userStore' with 'username', 'password', and 'email' parameters.
-      await storeHandleSignup(username, password, email);
-      if (username && password) {
+      // Make a POST request to the API endpoint
+      const response = await fetch("https://authentication-j1oa.onrender.com/users", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          username,
+          password,
+          email,
+        }),
+      });
+
+      if (response.ok) {
         // If the signup is successful, navigate to the login route ("/").
-        navigate("/"); // Replace with your desired path
+        navigate("/");
+      } else {
+        // If the response is not okay, handle the error and display an alert.
+        const errorData = await response.json();
+        console.error("Signup error:", errorData);
+        alert(`An error occurred during signup: ${errorData.message}`);
       }
     } catch (error) {
       // Handle any errors that occur during signup and display an alert.
@@ -78,14 +94,9 @@ export const Register = () => {
           />
           {/* Create a button for signing up and attach the 'onSignupClick' event handler. */}
           <button className="login" onClick={onSignupClick}>Sign Up</button>
-
         </div>
       </div>
       <Footer />
     </>
   );
 };
-
-// SUMMARY
-
-// This code defines the Register component, which handles user registration functionality. It imports necessary components, hooks, and the user store, and it defines state variables for email, username, and password. The component provides a form for entering registration details, handles the signup button click event, and uses React Router to navigate between login and sign-up routes. Additionally, it renders text content and the 'Logos' component.

@@ -2,18 +2,12 @@
 import { useEffect } from "react";
 import { userStore } from "../stores/userStore";
 import { useNavigate } from "react-router-dom";
-import Logos from "../components/Logos";
 import { Link } from "react-router-dom";
+import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
 
 // Define the 'Home' functional component.
-export const Home = () => {
-  // Define text content for the heading and subheading.
-  const text = {
-    heading: "Vite + React + React Router + Minimal CSS",
-    subheading: "Home Page",
-    intro: "text here...",
-  };
-
+export const MyPage = () => {
   // Access the 'handleLogout' function from the 'userStore'.
   const storeHandleLogout = userStore((state) => state.handleLogout);
 
@@ -21,9 +15,7 @@ export const Home = () => {
   const navigate = useNavigate();
 
   // Get 'isLoggedIn' and 'accessToken' from the 'userStore'.
-  const { isLoggedIn, accessToken } = userStore();
-  console.log(isLoggedIn);
-  console.log(accessToken);
+  const { isLoggedIn, accessToken, username } = userStore();
 
   // useEffect hook to check user authentication status.
   useEffect(() => {
@@ -60,14 +52,13 @@ export const Home = () => {
           </li>
         </ul>
       </nav>
-      {/* Render the 'Logos' component. */}
-      <Logos />
-      {/* Display the heading and subheading. */}
-      <h1 className="heading">{text.heading}</h1>
-      <h2>{text.subheading}</h2>
-      {/* (Note: 'text.intro' is not defined in the code.) */}
+      {/* Display the personalized greeting. */}
+      <Navbar />
+      <h1 className="heading">Hi, {username}</h1>
       {/* Display additional content (text.intro is missing). */}
-      <p>{text.intro}</p>
+      {/* (Note: 'text.intro' is not defined in the code.) */}
+      <p>{/* Add content here */}</p>
+      <Footer />
     </>
   );
 };
