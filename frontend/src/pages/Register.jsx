@@ -21,17 +21,12 @@ export const Register = () => {
 
   // Function to handle the click event of the signup button.
   const onSignupClick = async () => {
-    if (!username || !password || !email) {
-      // Display an alert if any of the required fields are empty.
-      alert("Please enter email, username, and password");
-      return;
-    }
     try {
-      // Call the 'handleSignup' function from 'userStore' with 'username', 'password', and 'email' parameters.
-      await storeHandleSignup(username, password, email);
-      if (username && password && email) {
+      // Call the 'handleSignup' function from 'userStore' with 'username', 'password', 'email' and 'consent' parameters.
+      await storeHandleSignup(username, password, email, consent);
+      if (username && password && email && (consent===true)) {
         // If the signup is successful, navigate to the login route.
-        navigate("/login"); // Replace with your desired path
+        navigate("/login");
       }
     } catch (error) {
       // Handle any errors that occur during signup and display an alert.
@@ -45,15 +40,16 @@ export const Register = () => {
     <div>
       <h1>Sign up</h1>
       <div className="user-registration">
-        {/* Create input fields for 'email', 'username', and 'password' and associate them with state variables. */}
+        {/* Create input fields for 'email', 'username', 'password', 'consent' and associate them with state variables. */}
         <label htmlFor="username">Username</label>
         <input
           type="text"
           name="username"
           id="username"
-          placeholder="Username"
+          placeholder="johndoe"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
+          required
         />
 
         <label htmlFor="email">Email address</label>
@@ -61,9 +57,10 @@ export const Register = () => {
           type="text"
           name="email"
           id="email"
-          placeholder="Email"
+          placeholder="john@email.com"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
+          required
         />
 
         <label htmlFor="password">Password</label>
@@ -71,9 +68,10 @@ export const Register = () => {
           type="password"
           name="password"
           id="password"
-          placeholder="Password"
+          placeholder="*******"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
+          required
         />
         
         <input 
@@ -82,6 +80,7 @@ export const Register = () => {
           id="consent"
           value={consent} 
           onChange={(e) => setConsent(!e.target.value)}
+          required
         />
         <label htmlFor="consent">I agree to terms and policy</label>
 

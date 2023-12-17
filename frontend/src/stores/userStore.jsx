@@ -39,7 +39,7 @@ export const userStore = create((set) => ({
   // FUNCTION TO REGISTER USERS
   handleSignup: async (username, password, email, consent) => {
     // Check if required fields are provided and display an alert if not.
-    if (!username || !password || !email || !consent) {
+    if (!username || !password || !email || (consent===false)) {
       alert("Please fill in all the fields");
       return;
     }
