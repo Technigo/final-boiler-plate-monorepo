@@ -3,11 +3,26 @@
     overflow: hidden;
 }
 
-.nav-links {
+.navlinks {
     display: flex;
     flex-direction: row;
     gap: 40px;
     margin: 30px;
+    padding-left: 40px;
+}
+
+.nav-links1 {
+    display: flex;
+    flex-direction: row;
+    gap: 40px;
+
+}
+
+.nav-links2 {
+    display: flex;
+    flex-direction: row;
+    gap: 40px;
+    margin-left: 500px;
 }
 
 .member {
