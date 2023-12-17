@@ -1,5 +1,5 @@
 // Import necessary components, hooks, and stores.
-import Logos from "../components/Logos";
+//import Logos from "../components/Logos";
 import { userStore } from "../stores/userStore";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -11,6 +11,8 @@ export const Register = () => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [consent, setConsent] = useState(false);
+
   // Initialize the 'navigate' function from React Router.
   const navigate = useNavigate();
 
@@ -27,9 +29,9 @@ export const Register = () => {
     try {
       // Call the 'handleSignup' function from 'userStore' with 'username', 'password', and 'email' parameters.
       await storeHandleSignup(username, password, email);
-      if (username && password) {
-        // If the signup is successful, navigate to the login route ("/").
-        navigate("/"); // Replace with your desired path
+      if (username && password && email) {
+        // If the signup is successful, navigate to the login route.
+        navigate("/login"); // Replace with your desired path
       }
     } catch (error) {
       // Handle any errors that occur during signup and display an alert.
@@ -38,60 +40,58 @@ export const Register = () => {
     }
   };
 
-  // Text content for the heading and paragraphs.
-  const text = {
-    heading: "SignUp Page",
-    intro: "signup here...",
-    loremIpsum:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore, vitae fugit ipsam quo accusantium autem officia necessitatibus ullam voluptati",
-  };
-
   // Render the component content.
   return (
-    <>
-      <nav>
-        {/* Create a navigation menu with links to the login and sign-up routes. */}
-        <ul className="app-ul">
-          <li className="app-li">
-            <Link to="/">Login</Link>
-          </li>
-          <li className="app-li">
-            <Link to="/register">Sign Up</Link>
-          </li>
-        </ul>
-      </nav>
-      {/* Render the 'Logos' component. */}
-      <Logos />
-      <div>
-        {/* Display the heading and paragraphs. */}
-        <h2>{text.heading}</h2>
-        <p>{text.intro}</p>
-        <p>{text.loremIpsum}</p>
-        <div className="user-registration">
-          {/* Create input fields for 'email', 'username', and 'password' and associate them with state variables. */}
-          <input
-            type="text"
-            placeholder="Email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-          <input
-            type="text"
-            placeholder="Username"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-          />
-          <input
-            type="password"
-            placeholder="Password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-          {/* Create a button for signing up and attach the 'onSignupClick' event handler. */}
-          <button onClick={onSignupClick}>Sign Up</button>
-        </div>
+    <div>
+      <h1>Sign up</h1>
+      <div className="user-registration">
+        {/* Create input fields for 'email', 'username', and 'password' and associate them with state variables. */}
+        <label htmlFor="username">Username</label>
+        <input
+          type="text"
+          name="username"
+          id="username"
+          placeholder="Username"
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
+        />
+
+        <label htmlFor="email">Email address</label>
+        <input
+          type="text"
+          name="email"
+          id="email"
+          placeholder="Email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
+
+        <label htmlFor="password">Password</label>
+        <input
+          type="password"
+          name="password"
+          id="password"
+          placeholder="Password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        />
+        
+        <input 
+          type="checkbox" 
+          name="consent"
+          id="consent"
+          value={consent} 
+          onChange={(e) => setConsent(!e.target.value)}
+        />
+        <label htmlFor="consent">I agree to terms and policy</label>
+
+        {/* Create a button for signing up and attach the 'onSignupClick' event handler. */}
+        <button onClick={onSignupClick}>Sign Up</button>
+
+        <p>Have an account?</p>
+        <Link to="/login">Log In</Link>
       </div>
-    </>
+    </div>
   );
 };
 

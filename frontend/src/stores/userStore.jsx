@@ -15,6 +15,9 @@ export const userStore = create((set) => ({
   password: "",
   setPassword: (password) => set({ password }),
 
+  consent: false,
+  setConsent: (consent) => set({ consent }),
+
   location: "",
   setLocation: (location) => set({ location }),
 
@@ -34,10 +37,10 @@ export const userStore = create((set) => ({
   setIsLoggedIn: (isLoggedIn) => set({ isLoggedIn }),
 
   // FUNCTION TO REGISTER USERS
-  handleSignup: async (username, password, email) => {
+  handleSignup: async (username, password, email, consent) => {
     // Check if required fields are provided and display an alert if not.
-    if (!username || !password || !email) {
-      alert("Please enter username, email, and password");
+    if (!username || !password || !email || !consent) {
+      alert("Please fill in all the fields");
       return;
     }
 
@@ -48,7 +51,7 @@ export const userStore = create((set) => ({
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ email, username, password }),
+        body: JSON.stringify({ email, username, password, consent }),
       });
 
       // Parse the response data as JSON
@@ -199,6 +202,7 @@ export const userStore = create((set) => ({
       username: "", 
       email: "",
       password: "",
+      consent: false,
       location: "",
       introduction: "",
       products: [],
