@@ -5,7 +5,7 @@ import { CreateTask } from "../components/CreateTask";
 import { taskStore } from "../stores/taskStore";
 import { userStore } from "../stores/userStore";
 import { useNavigate } from "react-router-dom";
-import { Link } from "react-router-dom";
+//import { Link } from "react-router-dom";
 
 // Define the 'Tasks' functional component.
 export const Tasks = () => {
@@ -31,7 +31,7 @@ export const Tasks = () => {
   // Initialize the 'navigate' function from React Router.
   const navigate = useNavigate();
   // Access the 'handleLogout' function from the 'userStore'.
-  const storeHandleLogout = userStore((state) => state.handleLogout);
+  // const storeHandleLogout = userStore((state) => state.handleLogout);
 
   // Get 'isLoggedIn' and 'accessToken' from the 'userStore'.
   const { isLoggedIn } = userStore();
@@ -48,19 +48,19 @@ export const Tasks = () => {
   }, [isLoggedIn, navigate]);
 
   // Function to handle the click event of the logout button.
-  const onLogoutClick = () => {
-    storeHandleLogout();
-    // Additional logic after logout can be added here.
-    alert("Log out successful");
-    navigate("/"); // You can change this to the login route
-  };
+  // const onLogoutClick = () => {
+  //   storeHandleLogout();
+  //   // Additional logic after logout can be added here.
+  //   alert("Log out successful");
+  //   navigate("/"); // You can change this to the login route
+  // };
 
   // Render the component content.
   return (
     <>
-      <nav>
+      {/* <nav>
         {/* Create a navigation menu with links to the home, tasks, and sign-out routes. */}
-        <ul className="app-ul">
+      {/* <ul className="app-ul">
           <li className="app-li">
             <Link to="/">Home</Link>
           </li>
@@ -70,8 +70,8 @@ export const Tasks = () => {
           <li className="app-li">
             <button onClick={onLogoutClick}>Sign Out</button>
           </li>
-        </ul>
-      </nav>
+        </ul> */}
+      {/*</nav> */}
       {/* Render the 'LogoText' component. */}
       {/* <LogoText /> */}
       <div>
