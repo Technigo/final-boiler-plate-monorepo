@@ -7,7 +7,7 @@ i {
   color: #c98686;
 }
 
-@media screen and (min-width: 769px) {
+@media screen and (min-width: 1000px) {
   .about-us {
     font-size: 25px;
   }
