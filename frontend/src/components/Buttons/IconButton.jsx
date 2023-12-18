@@ -21,10 +21,10 @@ const StyledIconButton = styled.div`
 // />;
 
 // Radera bilddelen om det aldrig kommer till användning!
-export const Button = ({ buttonName, iconAlt, className }) => {
+export const IconButton = ({ buttonName, iconAlt, imgSrc, className }) => {
   return (
     <StyledIconButton>
-      <div className={className} alt={iconAlt} />
+      <div className={className} alt={iconAlt} src={imgSrc} />
       {buttonName}
     </StyledIconButton>
   );

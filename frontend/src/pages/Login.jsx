@@ -1,6 +1,6 @@
 // Import the 'LogoText' component and the 'Link' component from 'react-router-dom'.
 import LogoText from "../components/LogoText";
-import { Link } from "react-router-dom";
+//import { Link } from "react-router-dom";
 // Import the 'userStore' from the 'userStore' module.
 import { userStore } from "../stores/userStore"; // Make sure this is correctly imported
 // Import the 'useState' and 'useNavigate' hooks from 'react'.
@@ -44,33 +44,33 @@ export const Login = () => {
 
   // Text content for the heading and paragraphs.
   const text = {
-    heading: "Login Page",
-    intro: "login here...",
-    loremIpsum:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore, vitae fugit ipsam quo accusantium autem officia necessitatibus ullam voluptati",
+    heading: "Welcome!",
+    intro:
+      "Thank you for joining us in our mission to create a world where kindness thrives. Your presence is invaluable in building a more empathetic society.",
+    p: "Log in to explore requests!",
   };
 
   // Render the component content.
   return (
     <>
-      <nav>
+      {/* <nav>
         {/* Create a navigation menu with links to the login and sign-up routes. */}
-        <ul className="app-ul">
+      {/* <ul className="app-ul">
           <li className="app-li">
             <Link to="/login">Login</Link>
           </li>
           <li className="app-li">
             <Link to="/register">Sign Up</Link>
           </li>
-        </ul>
-      </nav>
+        </ul> */}
+      {/*</nav> */}
       {/* Render the 'LogoText' component. */}
       <LogoText />
       <div>
         {/* Display the heading and paragraphs. */}
         <h2>{text.heading}</h2>
         <p>{text.intro}</p>
-        <p>{text.loremIpsum}</p>
+        <p>{text.p}</p>
         <div className="user-login">
           {/* Create input fields for 'username' and 'password' and associate them with state variables. */}
           <input

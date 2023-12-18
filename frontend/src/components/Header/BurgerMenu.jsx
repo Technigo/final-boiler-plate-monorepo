@@ -4,7 +4,7 @@ import { IoCloseOutline } from "react-icons/io5";
 //import { BurgerMenuAnimation } from "./Animations/BurgerMenuAnimation.jsx";
 import { useNavStore } from "../../stores/NavStore";
 import { userStore } from "../../stores/userStore";
-import { LinkButton } from "../Buttons/LinkButton";
+import { Button } from "../Buttons/Button";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
@@ -37,11 +37,14 @@ const StyledBurgerLinks = styled.div`
 export const BurgerMenu = () => {
   const { activePage, setActivePage, burgerMenuOpen, setBurgerMenuOpen } =
     useNavStore();
-  const { isLoggedIn } = userStore();
 
   // const toggleBurgerMenu = () => {
   //   setIsBurgerMenuOpen((prev) => !prev);
   // };
+
+  const closeBurgerMenu = () => {
+    setBurgerMenuOpen(false);
+  };
 
   // Initialize the 'navigate' function from React Router.
   const navigate = useNavigate();
@@ -49,12 +52,11 @@ export const BurgerMenu = () => {
   // Access the 'handleLogout' function from the 'userStore'.
   const storeHandleLogout = userStore((state) => state.handleLogout);
 
-  const closeBurgerMenu = () => {
-    setBurgerMenuOpen(false);
-  };
+  const { isLoggedIn } = userStore();
 
   // Function to handle the click event of the logout button.
   const onLogoutClick = () => {
+    console.log("Logout button clicked"); // For debugging
     storeHandleLogout();
     // Additional logic after logout can be added here.
     alert("Log out successful");
@@ -139,12 +141,10 @@ export const BurgerMenu = () => {
               About
             </Link>
           </li>
-
           {/* Logout button based on user login status */}
           {isLoggedIn ? (
             <li>
-              <LinkButton
-                to="/"
+              <Button
                 className="logout-button"
                 buttonName="Log out"
                 onClick={onLogoutClick}

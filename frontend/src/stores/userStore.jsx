@@ -114,6 +114,7 @@ export const userStore = create((set, get) => ({
 
   // Function to handle user logout.
   handleLogout: () => {
+    console.log("Logging out..."); // Log statement to check if this function is invoked
     // Clear user information and set isLoggedIn to false.
     set({ username: "", accessToken: null, isLoggedIn: false });
     // Remove the accessToken from localStorage.

@@ -3,7 +3,8 @@ import { useNavStore } from "../../stores/NavStore";
 import { useEffect } from "react";
 import { userStore } from "../../stores/userStore";
 import { Link } from "react-router-dom";
-import { LinkButton } from "../Buttons/LinkButton";
+import { Button } from "../Buttons/Button";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
 const StyledNav = styled.nav`
@@ -60,6 +61,21 @@ export const Navbar = () => {
       window.removeEventListener("resize", handleResize);
     };
   }, [setBurgerMenuVisible, setBurgerMenuOpen]);
+
+  // Initialize the 'navigate' function from React Router.
+  const navigate = useNavigate();
+
+  // Access the 'handleLogout' function from the 'userStore'.
+  const storeHandleLogout = userStore((state) => state.handleLogout);
+
+  // Function to handle the click event of the logout button.
+  const onLogoutClick = () => {
+    console.log("Logout button clicked"); // For debugging
+    storeHandleLogout();
+    // Additional logic after logout can be added here.
+    alert("Log out successful");
+    navigate("/"); // You can change this to the login route
+  };
 
   return (
     <StyledNav>
@@ -130,10 +146,10 @@ export const Navbar = () => {
           {/* Logout button based on user login status */}
           {isLoggedIn ? (
             <li>
-              <LinkButton
-                to="/"
+              <Button
                 className="logout-button"
                 buttonName="Log out"
+                onClick={onLogoutClick}
               />
             </li>
           ) : null}
