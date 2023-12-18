@@ -1,14 +1,19 @@
 import { useState, useEffect } from 'react';
-import { StoryCard } from '../Storycard/Storycard';
-import Slider from 'react-slick';
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { EffectCoverflow, Pagination } from 'swiper/modules';
 import './Carousel.css';
+import { StoryCard } from '../Storycard/Storycard';
+
+// Import Swiper styles
+import 'swiper/css';
+import 'swiper/css/effect-coverflow';
+import 'swiper/css/pagination';
+
 
 
 export const Carousel = () => {
   const [stories, setStories] = useState([]);
-  const [activeSlide, setActiveSlide] = useState(0);
+  const [activeSlide, setActiveSlide] = useState(0); 
 
   useEffect(() => {
     fetch('stories.json') // The URL is relative to the public directory
@@ -17,37 +22,47 @@ export const Carousel = () => {
       .catch(error => console.error('Error fetching stories:', error));
   }, []);
 
-  const settings = {
-    dots: true, // Shows dot indicators at the bottom of the carousel
-    initialSlide: 2, // Add this line to start with the third slide
-    centerMode: true, // Enables center mode
-  centerPadding: '40px', // Adjust as needed for your design
-    infinite: true, // Infinite looping or not
-    speed: 500, // Transition speed
-    slidesToShow: 3, // Number of slides to show at once
-    slidesToScroll: 1, // Number of slides to scroll
-    swipeToSlide: true, // Allows swiping to the next/prev slide
-    responsive: [
-      {
-        breakpoint: 768, // Adjust the number for your breakpoint
-        settings: {
-          slidesToShow: 1.5,
-          slidesToScroll: 1,
-        },
-      },
-      // You can add more breakpoints here
-    ],
-    beforeChange: (current, next) => setActiveSlide(next),
+  const onSlideChange = (swiper) => {
+    setActiveSlide(swiper.realIndex); // Update active slide index
+
+    // Reset z-index for all slides
+    swiper.slides.forEach((slide) => {
+      slide.style.zIndex = 1;
+    });
+
+    // Increase z-index for the active slide
+    const activeSlideElement = swiper.slides[swiper.activeIndex];
+    if (activeSlideElement) {
+      activeSlideElement.style.zIndex = 100;
+    }
   };
 
+
   return (
-    <div className='carousel-wrapper'>
-      <Slider {...settings}>
+    <Swiper
+      modules={[EffectCoverflow, Pagination]}
+      effect="coverflow"
+      centeredSlides={true}
+      slidesPerView={2}
+      loop={true}
+      initialSlide={0}
+      coverflowEffect={{
+        rotate: 0,
+        stretch: 20,
+        depth: 100,
+        modifier: 1,
+        slideShadows: true,
+      }}
+      pagination={{ clickable: true }}
+      onSlideChange={onSlideChange}
+    >
       {stories.map((story, index) => (
-        <StoryCard key={story.id} story={story} isActive={index === activeSlide} />
+        <SwiperSlide key={story.id}>
+          <StoryCard story={story} isActive={index === activeSlide} />
+        </SwiperSlide>
       ))}
-    </Slider>
-    </div>
+    </Swiper>
   );
 };
 
+export default Carousel;
