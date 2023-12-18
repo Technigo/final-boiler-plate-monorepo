@@ -7,6 +7,15 @@ i {
   color: #c98686;
 }
 
+.about-img {
+  margin-top: 10%;
+  display: flex;
+  justify-content: center;
+}
+.about-img img {
+  width: 100%;
+}
+
 @media screen and (min-width: 1000px) {
   .about-us {
     font-size: 25px;
