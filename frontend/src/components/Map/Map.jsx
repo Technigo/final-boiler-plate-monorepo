@@ -1,7 +1,7 @@
 /* eslint-disable react-refresh/only-export-components */
 /* eslint-disable no-undef */
-import { GoogleMap, LoadScript } from "@react-google-maps/api";
-import { useEffect, useRef } from "react";
+import { LoadScript } from "@react-google-maps/api";
+import { useEffect, useRef, useState } from "react";
 import { memo } from "react";
 import "./Map.css";
 
@@ -126,15 +126,16 @@ const styles = {
   ],
 };
 
-window.initMap = initMap;
+// window.initMap = initMap;
 
 export const Map = () => {
   const mapRef = useRef(null);
+  const [mapLoaded, setMapLoaded] = useState(false);
 
   useEffect(() => {
-    if (!mapRef.current) return;
+    if (!mapRef.current || !mapLoaded) return;
 
-    const map = new window.google.maps.Map(mapRef.current, {
+    new window.google.maps.Map(mapRef.current, {
       center,
       zoom: 4,
       mapTypeControl: false,
@@ -142,10 +143,12 @@ export const Map = () => {
     });
 
     // Add any other map logic here if needed
-  }, []);
+  }, [mapLoaded]);
 
   return (
-    <LoadScript googleMapsApiKey={import.meta.env.VITE_GOOGLE_MAPS_API_KEY}>
+    <LoadScript
+      googleMapsApiKey={import.meta.env.VITE_GOOGLE_MAPS_API_KEY}
+      onLoad={() => setMapLoaded(true)}>
       <div ref={mapRef} className="my-map-container">
         {/* Child components, like markers, info windows, etc., can go here */}
       </div>
