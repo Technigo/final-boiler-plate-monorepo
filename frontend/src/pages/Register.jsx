@@ -1,5 +1,4 @@
 // Import necessary components, hooks, and stores.
-//import Logos from "../components/Logos";
 import { userStore } from "../stores/userStore";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -20,7 +19,9 @@ export const Register = () => {
   const storeHandleSignup = userStore((state) => state.handleSignup);
 
   // Function to handle the click event of the signup button.
-  const onSignupClick = async () => {
+  const onSignupClick = async (e) => {
+    e.preventDefault();
+
     try {
       // Call the 'handleSignup' function from 'userStore' with 'username', 'password', 'email' and 'consent' parameters.
       await storeHandleSignup(username, password, email, consent);
@@ -54,7 +55,7 @@ export const Register = () => {
 
         <label htmlFor="email">Email address</label>
         <input
-          type="text"
+          type="email"
           name="email"
           id="email"
           placeholder="john@email.com"
@@ -65,10 +66,10 @@ export const Register = () => {
 
         <label htmlFor="password">Password</label>
         <input
-          type="password"
+          type="text"
           name="password"
           id="password"
-          placeholder="*******"
+          placeholder="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           required

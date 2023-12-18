@@ -1,5 +1,6 @@
 // Import the 'create' function from the 'zustand' library.
 import { create } from "zustand";
+import validator from "validator";
 
 // Get the backend API endpoint from the environment variables.
 const apiEnv = import.meta.env.VITE_BACKEND_API;
@@ -39,9 +40,14 @@ export const userStore = create((set) => ({
   // FUNCTION TO REGISTER USERS
   handleSignup: async (username, password, email, consent) => {
     // Check if required fields are provided and display an alert if not.
-    if (!username || !password || !email || (consent===false)) {
+    if (username.length < 5) {
+      alert("Your username should have at least 5 characters");
+    } else if (!validator.isEmail(email)) {
+      alert("Please enter a valid email address");
+    } else if (password.length < 5) {
+      alert("Your password should have at least 5 characters");
+    } else if (!username || !password || !email || (consent===false)) {
       alert("Please fill in all the fields");
-      return;
     }
 
     try {
@@ -51,20 +57,17 @@ export const userStore = create((set) => ({
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ email, username, password, consent }),
+        body: JSON.stringify({ username, email, password, consent }),
       });
 
       // Parse the response data as JSON
       const data = await response.json();
       if (data.success) {
         // Update the username state
-        set({ username });
+        set({ username, email, password, consent });
         // Display a success alert
         alert("Signup successful");
         console.log("Signing up with: ", username);
-      } else {
-        // Display an error message from the server or a generic message
-        alert(data.response || "Signup failed");
       }
     } catch (error) {
       // Handle and log any signup errors
