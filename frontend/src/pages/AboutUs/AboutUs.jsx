@@ -1,4 +1,3 @@
-import lottie from "lottie-react";
 import "./AboutUs.css";
 
 export const AboutUs = () => {
