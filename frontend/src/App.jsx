@@ -8,10 +8,8 @@ export const App = () => {
     <>
       <BrowserRouter>
         <main>
-          {/* <Routes>{routes}</Routes> */}
           <Navbar />
           <Routes>{routes}</Routes>
-          <TripGenerator />
         </main>
       </BrowserRouter>
     </>

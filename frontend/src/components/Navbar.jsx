@@ -1,8 +1,9 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { LoginBtn } from "./LoginBtn";
 
 export const Navbar = () => {
+  const navigate = useNavigate();
   const [openMobileNav, setOpenMobileNav] = useState(false);
 
   const onMobileNavClick = () => {
@@ -10,11 +11,18 @@ export const Navbar = () => {
   };
 
   const navlinks = [
-    { linkName: "Carpool", linkRoute: "/carpool" },
-    { linkName: "Long Distance", linkRoute: "/longdistance" },
+    { linkName: "About", linkRoute: "/about" },
+    { linkName: "Search", linkRoute: "/search" },
     { linkName: "Post Trip", linkRoute: "/posttrip" },
     { linkName: "Register", linkRoute: "/register" },
-    // { linkName: "Log in", linkRoute: "/login" },
+  ];
+
+  const navlinksLoggedIn = [
+    { linkName: "About", linkRoute: "/about" },
+    { linkName: "Search", linkRoute: "/search" },
+    { linkName: "Messages", linkRoute: "/messages" },
+    { linkName: "Post Trip", linkRoute: "/posttrip" },
+    { linkName: "My Account", linkRoute: "/account" },
   ];
 
   const renderMenuItems = () => (
@@ -30,7 +38,12 @@ export const Navbar = () => {
   return (
     <nav className="bg-gray-800 p-4">
       <div className="container mx-auto flex items-center justify-between">
-        <div className="text-white font-bold text-xl">Piggyback</div>
+        <div
+          onClick={() => navigate("/")}
+          className="text-white font-bold text-xl cursor-pointer"
+        >
+          Piggyback
+        </div>
         <ul className="hidden md:flex space-x-4">
           {navlinks.map((link) => (
             <li className="text-white pt-2" key={link.linkName}>
