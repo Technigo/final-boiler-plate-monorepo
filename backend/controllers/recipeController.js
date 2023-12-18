@@ -18,11 +18,11 @@ export const postGenerateRecipeController = asyncHandler(async (req, res) => {
         const generatedRecipe = "Tänd gasen och hacka löken."
 
         // Create a new RecipeModel with the provided ingredients and generatedRecipe
-        const newRecipe = new RecipeModel({ ingredients, instructions: generatedRecipe })
-        // Save the new recipe to the database
-        await newRecipe.save()
-        // Respond with the created recipe
-        res.status(201).json({ recipe: newRecipe })
+        // const newRecipe = new RecipeModel({ ingredients, instructions: generatedRecipe })
+        // // Save the new recipe to the database
+        // await newRecipe.save()
+        // // Respond with the created recipe
+        // res.status(201).json({ recipe: newRecipe })
 
     } catch (error) {
         console.error(error)

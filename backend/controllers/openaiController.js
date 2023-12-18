@@ -1,6 +1,7 @@
 // This controller defines a function that uses the OpenAI API to generate text based on a user-provided prompt. It includes error handling and sends a JSON response with the generated text or an error message
 
 import OpenAI from "openai";
+import { RecipeModel } from "../models/RecipeModel";
 
 // Create an instance of the OpenAI class with provided API key (in .env-file)
 const openai = new OpenAI({ key: process.env.OPENAI_API_KEY });
@@ -28,17 +29,27 @@ const generateText = async (req, res) => {
     });
 
     // Extract the generated text from the API response
-    const answerText = response.choices[0].message.content
+    const generatedInstructions = response.choices[0].message.content
+    // Create a new RecipeModel with the provided ingredients and generatedRecipe
+    const newRecipe = new RecipeModel({
+      ingredients: prompt, 
+      instructions: generatedInstructions
+    })
+    // Save the new recipe to the database
+    await newRecipe.save()
+
+    // Respond with the created recipe
+    res.status(201).json({ recipe: newRecipe })
 
     // Log the generated text to the console
-    console.log(answerText)
+    console.log(generatedInstructions)
 
     // Send a JSON response with success status, API response data, and the generated answer
-    res.status(200).json({
-      success: true,
-      data: response,
-      answer: answerText
-    })
+    // res.status(200).json({
+    //   success: true,
+    //   data: response,
+    //   answer: generatedInstructions, 
+    // })
 
   } catch (error) {
     // Handle errors that may occur during the API request
@@ -54,7 +65,7 @@ const generateText = async (req, res) => {
     // Send a JSON response with error status and message
     res.status(400).json({
       success: false,
-      error: "The text could not be generated",
+      error: "The recipe could not be generated",
     });
   }
 };

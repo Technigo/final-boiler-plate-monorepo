@@ -72,21 +72,23 @@ export const recipeStore = create((set) => ({
   // From PromptForm.jsx
   generateRecipe: async (ingredients) => {
     try {
-      const newRecipeData = {
-        ingredients,
-      }
+      // const newRecipeData = {
+      //   ingredients,
+      // }
 
-      const response = await fetch(`${api}/generate-recipe`, {
+      const response = await fetch("http://localhost:3001/openai/generateText", {
         method: 'POST',
-        body: JSON.stringify(newRecipeData),
+        body: JSON.stringify({prompt: ingredients}),
         headers: { 'Content-Type': 'application/json' },
       })
 
       // Check if the response is not okay
       if (!response.ok) {
-        throw new Error(`Couldn't generate new recipe! ${response.status}`);
+        throw new Error(`Error generating OpenAI completion. Status: ${response.status}`);
       }
       const data = await response.json()
+
+      console.log(data.recipe)
       //Update the state with the new recipe
       set((state) => ({
         recipes: [...state.recipes, data],
@@ -94,7 +96,7 @@ export const recipeStore = create((set) => ({
       }))
 
     } catch (error) {
-      console.error("Error when generating new recipe:", error);
+      console.error("Error generating OpenAI completion:", error);
     }
   },
 
