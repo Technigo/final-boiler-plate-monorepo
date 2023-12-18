@@ -1,9 +1,14 @@
 import express from 'express'
 const router = express.Router()
-import { getComingMovies, getMovies, getMovie, postMovie } from '../controllers/movieController'
-import 'dotenv/config'
+import {
+	getComingMovies,
+	getMovies,
+	getMovie,
+	postMovie,
+} from '../controllers/movieController'
+import { authenticateUser } from '../middleware/authenticateUser'
 
-router.route('/').get(getMovies).post(postMovie)
+router.route('/').get(authenticateUser, getMovies).post(postMovie)
 router.route('/:movieID').get(getMovie)
 router.route('/coming').get(getComingMovies)
 

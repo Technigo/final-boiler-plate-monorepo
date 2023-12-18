@@ -1,9 +1,8 @@
 import BookingModel from '../models/BookingModel'
 
-// @desc get  all bookings
+// @desc get all bookings
 // @route /
 // @access public
-
 export const getAllBookings = async (req, res) => {
 	try {
 		const bookings = await BookingModel.find()
@@ -16,6 +15,7 @@ export const getAllBookings = async (req, res) => {
 		res.status(500).json({ message: error.message })
 	}
 }
+
 // @desc get booking by ID
 // @route /:id
 // @access public
@@ -26,21 +26,27 @@ export const getBookingById = async (req, res) => {
 		if (booking) {
 			res.json(booking)
 		} else {
-			res.status(404).json({ error: `Booking with id ${bookingId} not found.` })
+			res.status(404).json({
+				error: `Booking with id ${bookingId} not found.`,
+			})
 		}
 	} catch (error) {
-		res.status(500).json({ error: 'Something went wrong, please try again.' })
+		res.status(500).json({
+			error: 'Something went wrong, please try again.',
+		})
 	}
 }
+
 // @desc add a new booking
 // @route /add
 // @access public
-//
 export const addBooking = async (req, res) => {
 	try {
 		const { userId, movieId, price, showtimeId } = req.body
 		if (!userId || !movieId || !price || !showtimeId)
-			return res.status(400).json({ error: 'Missing required information' })
+			return res
+				.status(400)
+				.json({ error: 'Missing required information' })
 
 		const newBooking = new BookingModel({
 			userId: userId,
