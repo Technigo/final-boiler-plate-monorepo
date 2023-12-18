@@ -12,7 +12,11 @@
   },
   "dependencies": {
     "@react-google-maps/api": "^2.19.2",
+    "date-fns": "^3.0.0",
+    "js-datepicker": "^5.18.2",
     "react": "^18.2.0",
+    "react-calendar": "^4.7.0",
+    "react-datepicker": "^4.24.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.15.0",
     "zustand": "^4.4.6"

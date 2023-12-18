@@ -1,11 +1,16 @@
 import { useState } from "react";
 import { Buttons } from "../Buttons/Buttons";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+import { enGB } from "date-fns/locale";
+
 import "./PostStory.css";
 
 export const PostStory = () => {
   const [newStory, setNewStory] = useState("");
   const [newWhere, setNewWhere] = useState("");
-  const [newWhen, setNewWhen] = useState("");
+  const [selectedDate, setSelectedDate] = useState(new Date());
+  const [isCalendarVisible, setIsCalendarVisible] = useState(false);
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
@@ -19,18 +24,26 @@ export const PostStory = () => {
 
     fetch("", {
       method: "POST",
-
-      body: JSON.stringify({ message: newStory }),
+      body: JSON.stringify({ message: newStory, date: selectedDate }),
     })
       .then((res) => res.json())
       .then((newStory) => {
         console.log("New story posted:", newStory);
+        console.log("Date:", selectedDate);
         // Reload the page after successful post
         window.location.reload();
       })
       .catch((error) => {
         console.error("Error posting the story", error);
       });
+  };
+
+  const handleDateChange = (date) => {
+    setSelectedDate(date);
+  };
+
+  const handleCalendarClick = () => {
+    setIsCalendarVisible(!isCalendarVisible);
   };
 
   const handleButtonClick = () => {
@@ -57,13 +70,27 @@ export const PostStory = () => {
           placeholder="🌍 Where did this happen?"
           className="input-field"
         />
-        <textarea
-          type="date"
-          value={newWhen}
-          onChange={(e) => setNewWhen(e.target.value)}
-          placeholder="🕘 When did this happen?"
-          className="input-field"
-        />
+        <div className="date-input-container">
+          <input
+            type="text"
+            value={selectedDate.toLocaleDateString()}
+            onClick={handleCalendarClick}
+            readOnly
+            placeholder="🕘 When did this happen?"
+            className="input-field"
+          />
+          {isCalendarVisible && (
+            <DatePicker
+              selected={selectedDate}
+              onChange={handleDateChange}
+              onClick={() => setIsCalendarVisible(false)}
+              locale={enGB}
+              dateFormat="MMMM d, yyyy"
+              placeholderText="🕘 When did this happen?"
+              className="input-field"
+            />
+          )}
+        </div>
         <div>
           <Buttons buttonText="Send Story" onClick={handleButtonClick} />
         </div>

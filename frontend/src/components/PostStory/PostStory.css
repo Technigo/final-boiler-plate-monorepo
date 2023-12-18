@@ -14,6 +14,14 @@
   width: 70%;
 }
 
+.calendar {
+  width: 70%;
+  background-color: rgba(2, 108, 124, 0.7);
+  border: 2px solid rgba(2, 108, 124, 0.7);
+  border-radius: 10px;
+  padding: 0.3%;
+}
+
 @media screen and (min-width: 1000px) {
   .input-field {
     width: 90%;
