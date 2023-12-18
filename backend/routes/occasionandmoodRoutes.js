@@ -39,6 +39,7 @@ router.get('/restaurants/search', asyncHandler(async (req, res) => {
 }));
 
 router.get('/api/occasions', asyncHandler(async (req, res) => {
+  console.log('Request object:', req);
   try {
     const occasions = await Restaurant.distinct('occasion');
     res.json(occasions);
