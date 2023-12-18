@@ -19,8 +19,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 // Use the routes
-app.use('/api/moods', moodRoutes); 
-app.use('/api/occasions', occasionRoutes); 
+app.use(moodRoutes); 
+app.use(occasionRoutes); 
 
 // Endpoint to display the list of endpoints
 app.get('/', (req, res) => {
