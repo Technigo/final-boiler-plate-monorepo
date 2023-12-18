@@ -3,8 +3,8 @@ import cors from 'cors';
 import db from './database.js'; 
 
 // Import your routes (make sure these are also converted to ES Modules)
-import moodRoutes from './routes/moodRoutes.js';
-import occasionRoutes from './routes/occasionRoutes.js';
+import moodRoutes from './routes/occasionandmoodRoutes.js';
+
 
 const app = express();
 const port = process.env.PORT || 8080;
