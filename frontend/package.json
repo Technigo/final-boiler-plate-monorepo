@@ -13,6 +13,7 @@
   "dependencies": {
     "i18n": "^0.15.1",
     "i18next": "^23.7.8",
+    "lottie-web": "^5.12.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-i18next": "^13.5.0",
