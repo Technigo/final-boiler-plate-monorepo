@@ -1,12 +1,12 @@
 import express from 'express';
 import cors from 'cors';
-import occasionRoutes from "./routes/occasionandmoodRoutes.js";
-import db from './config/db.js';
+import occasionRoutes from "./backend/routes/occasionandmoodRoutes.js";
+import db from './backend/config/db.js';
 import listEndpoints from 'express-list-endpoints';
 
 
 // Import your routes (make sure these are also converted to ES Modules)
-import moodRoutes from './routes/occasionandmoodRoutes.js';
+import moodRoutes from './backend/routes/occasionandmoodRoutes.js';
 
 
 const app = express();
