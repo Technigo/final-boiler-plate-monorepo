@@ -1,5 +1,5 @@
 import mongoose from 'mongoose';
-import db from '../database.js';
+import db from './config//db.js';
 
 
 const restaurantSchema = new mongoose.Schema({

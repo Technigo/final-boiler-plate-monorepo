@@ -1,5 +1,5 @@
 import mongoose from 'mongoose';
-import db from '../database'; //
+import db from './config//db.js';
 
 const seedingRestaurantSchema = new mongoose.Schema({
   restaurantID: {

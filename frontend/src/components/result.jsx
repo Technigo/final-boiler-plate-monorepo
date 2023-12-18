@@ -40,14 +40,14 @@ const ResultsComponent = () => {
               <p>{restaurant.address}</p>
               <p>{restaurant.zipcode}</p>
               <p>{restaurant.city}</p>
-              <p>{restaurant.country}</p>
               <p>{restaurant.borough}</p>
               <p>{restaurant.cuisine}</p>
               <p>{`Occasion: ${restaurant.occasion.join(', ')}`}</p>
               <p>{`Mood: ${restaurant.mood.join(', ')}`}</p>
+              <p>{restaurant.description}</p>
               <a href={restaurant.url}>Visit Website</a>
             </ResultCard>
-          ))
+          )) //click more to get more text//
         ) : (
           <p>No results to display. Please select an occasion and mood(s).</p>
         )}
