@@ -70,7 +70,7 @@ export const CreateTask = () => {
           onChange={taskCategory}
           value={category}
         >
-          <option disabled selected value="">
+          <option disabled default value="">
             Choose a category
           </option>
           <option value="Garden">Garden</option>
@@ -85,7 +85,7 @@ export const CreateTask = () => {
           onChange={taskArea}
           value={area}
         >
-          <option disabled selected value="">
+          <option disabled default value="">
             Choose an area
           </option>
           <option value="Varberg City Center">Varberg City Center</option>

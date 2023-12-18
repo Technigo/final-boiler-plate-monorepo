@@ -1,7 +1,7 @@
 import { IconButton } from "../Buttons/IconButton";
 import { IoCloseOutline } from "react-icons/io5";
-import { MdPets } from "react-icons/md";
 import { GiGardeningShears } from "react-icons/gi";
+import { MdPets } from "react-icons/md";
 import { TiShoppingCart } from "react-icons/ti";
 import { GiHammerNails } from "react-icons/gi";
 import { MdMiscellaneousServices } from "react-icons/md";
@@ -41,6 +41,7 @@ const categoryStyle = {
 export const ModalTaskCard = ({ task }) => {
   const { _id, category, area, description } = task;
 
+  //Ska vi ta bort efter || då alla fält i createTask är tvingande?
   const { icon: CategoryIcon, backgroundColor } = categoryStyle[category] || {
     icon: null,
     backgroundColor: "#ffffff",
@@ -51,12 +52,12 @@ export const ModalTaskCard = ({ task }) => {
       <li key={_id}>
         <IoCloseOutline style={{ width: "32px", height: "32px" }} />
         {CategoryIcon && <CategoryIcon size={iconSize} />}
-        <p>{task.task}</p>
+        <h3>{task.task}</h3>
         <p>{category}</p>
         <p>{area}</p>
         <p>{description}</p>
         <IconButton
-          className="Offer-help-button"
+          className="offer-help-button"
           buttonName="Lend a helping hand"
           iconAlt="YourAltText"
           src="/Logo-black.png"

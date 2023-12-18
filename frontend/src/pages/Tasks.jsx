@@ -5,7 +5,7 @@ import { CreateTask } from "../components/CreateTask";
 import { taskStore } from "../stores/taskStore";
 import { userStore } from "../stores/userStore";
 import { useNavigate } from "react-router-dom";
-import { ModalTaskCard } from "../components/TaskCards/ModalTaskCard";
+import { FeedTaskCard } from "../components/TaskCards/FeedTaskCard";
 //import { Link } from "react-router-dom";
 
 // Define the 'Tasks' functional component.
@@ -90,7 +90,7 @@ export const Tasks = () => {
         ) : (
           // Map through 'tasks' and render task items.
           tasks.map((task) => (
-            <ModalTaskCard key={task._id} task={task} />
+            <FeedTaskCard key={task._id} task={task} />
             // <div key={task._id} className="card-wrapper">
             //   <div
             //     className={`card-container ${
