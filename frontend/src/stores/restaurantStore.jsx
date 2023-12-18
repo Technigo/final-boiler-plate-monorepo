@@ -9,12 +9,24 @@ export const useRestaurantStore = create((set) => ({
   
   // Fetch occasions from the backend
   fetchOccasions: async () => {
-    // Fetch logic here
+    try {
+      const response = await fetch('/api/occasions');
+      const occasions = await response.json();
+      set({ occasions });
+    } catch (error) {
+      console.error('Error fetching occasions:', error);
+    }
   },
 
   // Fetch moods from the backend
   fetchMoods: async () => {
-    // Fetch logic here
+    try {
+      const response = await fetch('/api/moods');
+      const moods = await response.json();
+      set({ moods });
+    } catch (error) {
+      console.error('Error fetching moods:', error);
+    }
   },
 
   // Update the selected occasion
@@ -25,7 +37,7 @@ export const useRestaurantStore = create((set) => ({
 
   // Fetch results based on selected occasion and moods
   fetchResults: async () => {
-    const { selectedOccasion, selectedMoods } = useStore.getState();
+    const { selectedOccasion, selectedMoods } = useRestaurantStore.getState();
     const queryParams = new URLSearchParams({ occasion: selectedOccasion });
     selectedMoods.forEach((mood) => queryParams.append('mood', mood));
 
@@ -61,5 +73,12 @@ export const useRestaurantStore = create((set) => ({
     }
   },
 }));
+
+
+
+
+
+
+
 
 //Make sure your backend endpoint /api/results is capable of handling multiple mood query parameters and filtering the results accordingly. This approach allows the user to select one occasion and up to three moods, and the results will be fetched based on these selectio

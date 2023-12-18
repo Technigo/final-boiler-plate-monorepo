@@ -3,7 +3,7 @@ import Restaurant from '../models/restaurantModel.js';
 
 const router = express.Router();
 
-router.get('/results', async (req, res) => {
+router.get('/api/results', async (req, res) => {
   const { occasion, moods } = req.query; // Expect moods to be an array
 
   try {
