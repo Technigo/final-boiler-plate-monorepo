@@ -3,6 +3,10 @@
   margin: 15%;
 }
 
+i {
+  color: #c98686;
+}
+
 @media screen and (min-width: 769px) {
   .about-us {
     font-size: 25px;

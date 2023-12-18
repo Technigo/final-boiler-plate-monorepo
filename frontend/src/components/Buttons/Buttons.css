@@ -1,0 +1,14 @@
+.buttons {
+  margin-top: 3%;
+  font-size: 15px;
+  padding: 1%;
+  border-radius: 15px;
+  border: 2px solid #026c7c;
+  background-color: white;
+  color: #026c7c;
+}
+
+.buttons:hover {
+  background-color: #026c7c;
+  color: white;
+}

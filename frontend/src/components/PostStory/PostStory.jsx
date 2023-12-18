@@ -1,5 +1,5 @@
-
 import { useState } from "react";
+import { Buttons } from "../Buttons/Buttons";
 import "./PostStory.css";
 
 export const PostStory = () => {
@@ -33,6 +33,10 @@ export const PostStory = () => {
       });
   };
 
+  const handleButtonClick = () => {
+    console.log("Button clicked within PostStory component", newStory);
+  };
+
   return (
     <div className="new-story-container">
       <h2>Share your story</h2>
@@ -60,9 +64,8 @@ export const PostStory = () => {
           placeholder="🕘 When did this happen?"
           className="input-field"
         />
-        <button>Send Story</button>
+        <Buttons buttonText="Send Story" onClick={handleButtonClick} />
       </form>
     </div>
   );
 };
-
