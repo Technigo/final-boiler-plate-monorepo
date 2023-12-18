@@ -1,5 +1,6 @@
 
 
+
 import { Route, Routes } from "react-router-dom";
 import { NotFound } from "../pages/NotFound/NotFound";
 import { LandingPage } from '../pages/LandingPage/LandingPage';
