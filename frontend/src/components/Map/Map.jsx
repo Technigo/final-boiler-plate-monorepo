@@ -1,6 +1,6 @@
 /* eslint-disable react-refresh/only-export-components */
 /* eslint-disable no-undef */
-import { GoogleMap, LoadScript } from "@react-google-maps/api";
+import { LoadScript } from "@react-google-maps/api";
 import { useEffect, useRef } from "react";
 import { memo } from "react";
 import "./Map.css";
@@ -126,7 +126,7 @@ const styles = {
   ],
 };
 
-window.initMap = initMap;
+// window.initMap = initMap;
 
 export const Map = () => {
   const mapRef = useRef(null);
