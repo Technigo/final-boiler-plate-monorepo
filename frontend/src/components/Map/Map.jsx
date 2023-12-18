@@ -1,7 +1,9 @@
 /* eslint-disable react-refresh/only-export-components */
 /* eslint-disable no-undef */
 import { LoadScript } from "@react-google-maps/api";
+
 import { useEffect, useRef, useState } from "react";
+
 import { memo } from "react";
 import "./Map.css";
 
