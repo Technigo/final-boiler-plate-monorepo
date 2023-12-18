@@ -1,25 +1,44 @@
 import mongoose from "mongoose";
 
-// Define the Mongoose model for thoughts
+// Define the Mongoose model for thoughts and its properties
 const bookingSchema = new mongoose.Schema({
     name: {
         type: String,
         required: true,
         trim: true,
     },
+
     age: {
         type: Number,
         required: true,
         min: 0,
     },
+
     weight: {
         type: Number,
         min: 0,
     },
+
     height: {
         type: Number,
         min: 0,
     },
+
+    beginner: {
+        type: Boolean,
+        default: false,
+    },
+
+    intermediate: {
+        type: Boolean,
+        default: false,
+    },
+
+    advanced: {
+        type: Boolean,
+        default: false,
+    },
+
     film: {
         type: Boolean,
         default: false,
@@ -54,6 +73,11 @@ const bookingSchema = new mongoose.Schema({
         maxlength: 140,
         trim: true,
     },
+
+    date: {
+        type: Date,
+        required: true,
+    },
     complete: {
         type: Boolean,
         default: false,
@@ -62,13 +86,20 @@ const bookingSchema = new mongoose.Schema({
         type: Date,
         default: Date.now,
     },
-    hearts: {
-        type: Number,
-        default: 0,
+    bookingIsHandled: {
+        type: Boolean,
+        default: false,
     },
 });
 
-
+bookingSchema.statics.getBookings = async function () {
+    try {
+        const bookings = await this.find().exec();
+        return bookings;
+    } catch (error) {
+        throw new Error(`Error fetching bookings: ${error.message}`);
+    }
+};
 const Booking = mongoose.model('Booking', bookingSchema);
 
 export default Booking; 

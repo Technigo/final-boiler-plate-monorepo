@@ -1,3 +1,4 @@
+// bookingRoute.js
 import express from 'express';
 import Booking from '../models/BookingModel';
 
@@ -6,7 +7,8 @@ const router = express.Router();
 // Get all bookings
 router.get('/', async (req, res) => {
     try {
-        const bookings = await Booking.find().sort({ createdAt: 'desc' }).limit(20).exec();
+        // Use the find method and add sorting by createdAt in descending order
+        const bookings = await Booking.find().sort({ createdAt: 'desc' }).exec();
         res.json(bookings);
     } catch (error) {
         // Use the handleErrors function for consistent error handling
@@ -16,7 +18,8 @@ router.get('/', async (req, res) => {
 
 // Post a new booking
 router.post('/', async (req, res) => {
-    const { name, age, weight, height, film, droneVideos, photo, phonenumber, email, message } = req.body;
+    console.log(req.body);
+    const { name, age, weight, height, film, droneVideos, photo, phonenumber, email, message, date, beginner, intermediate, advanced, bookingIsHandled } = req.body;
 
     try {
         // Validate the length of the message
@@ -36,7 +39,12 @@ router.post('/', async (req, res) => {
             email,
             phonenumber,
             message,
-            complete: true,
+            date,
+            beginner,
+            intermediate,
+            advanced,
+            bookingIsHandled,
+            complete: false, // Set complete to false by default
         });
 
         // Save it to the database
@@ -50,8 +58,8 @@ router.post('/', async (req, res) => {
     }
 });
 
-// Post a like for a specific booking
-router.post('/:bookingId/like', async (req, res) => {
+// Your existing code
+router.post('/:bookingId/handled', async (req, res) => {
     const { bookingId } = req.params;
 
     try {
@@ -63,16 +71,43 @@ router.post('/:bookingId/like', async (req, res) => {
             return res.status(404).json({ message: 'Booking not found' });
         }
 
-        // Increment the hearts count and save the updated booking
-        booking.hearts += 1;
+        // Update the property to indicate the booking has been handled
+        booking.bookingIsHandled = true;
+
+        // Save the updated booking
         const savedBooking = await booking.save();
 
         // Respond with the updated booking
         res.status(201).json(savedBooking);
     } catch (error) {
         // Use the handleErrors function for consistent error handling
-        handleErrors(res, error, 400, 'Booking not found. Could not add a like!');
+        handleErrors(res, error, 400, 'Booking not found. Could not mark as handled!');
+    }
+});
+
+// DELETE a specific booking by ID
+router.delete("/deleteBooking/:id", async (req, res) => {
+    const { id } = req.params;
+
+    try {
+        // Find the booking by its ID and delete it
+        const deletedBooking = await Booking.findByIdAndDelete(id);
+
+        if (deletedBooking) {
+            // Respond with the deleted booking
+            res.json({
+                message: "Booking deleted successfully",
+                deletedBooking,
+            });
+        } else {
+            // Respond with a 404 status if the booking was not found
+            res.status(404).json({ message: "Booking not found" });
+        }
+    } catch (error) {
+        // Use the handleErrors function for consistent error handling
+        handleErrors(res, error);
     }
 });
 
 export default router;
+
