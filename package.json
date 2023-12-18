@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "@react-google-maps/api": "^2.19.2",
+    "lottie": "^0.0.1",
+    "lottie-react": "^2.4.0",
+    "lottie-web": "^5.12.2"
+  }
+}
