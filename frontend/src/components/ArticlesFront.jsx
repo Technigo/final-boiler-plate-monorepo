@@ -1,11 +1,15 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import data from "../data/articles.json";
 import "./css/articlesfront.css";
 
 const ArticlesFront = () => {
+
+    const { t } = useTranslation();
+
     return (
         <div className='articles-front'>
-            <h2>Articles</h2>
+            <h2>{t("Articles")}</h2>
             <div className='articles-display'>
                 {data.articles.map((article, index) => (
                     <div key={index}>

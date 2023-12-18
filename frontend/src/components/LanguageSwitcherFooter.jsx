@@ -17,9 +17,9 @@ const LanguageSwitcherFooter = () => {
 
 
     return (
-        <button onClick={toggleLanguage} className="footer-link">
+        <div onClick={toggleLanguage} className="footer-link">
             {i18n.language === 'en' ? 'Change Language' : 'Byt Språk'}
-        </button>
+        </div>
     );
 };
 

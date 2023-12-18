@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useTranslation } from 'react-i18next';
 import { useNavigate } from "react-router-dom";
 import { userStore } from "../stores/userStore";
 import "./css/loginform.css";
@@ -26,23 +27,25 @@ const LoginForm = () => {
         }
     };
 
+    const { t } = useTranslation();
+
     return (
         <div className="loginform">
-            <h2>MY PAGE</h2>
+            <h2>{t("My page")}</h2>
             <div className="user-login">
                 <input
                     type="text"
-                    placeholder="Username"
+                    placeholder={t("Username")}
                     value={username}
                     onChange={(e) => setUsername(e.target.value)}
                 />
                 <input
                     type="password"
-                    placeholder="Password"
+                    placeholder={t("Password")}
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                 />
-                <button className="login" onClick={onLoginClick}>Login</button>
+                <button className="login" onClick={onLoginClick}>{t("Login")}</button>
             </div>
         </div>
     );

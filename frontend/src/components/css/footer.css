@@ -28,11 +28,12 @@
 }
 
 .footer-link {
+    padding: 10px;
     font-family: 'Poppins', sans-serif;
-    font-weight: 200;
     text-transform: uppercase;
     border: none;
     background-color: none;
+    cursor: pointer;
 }
 
 .footer-link:hover {

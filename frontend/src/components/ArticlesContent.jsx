@@ -1,5 +1,6 @@
 // ArticlesContent.jsx
 import React, { useState } from "react";
+import { useTranslation } from 'react-i18next';
 import data from "../data/articles.json";
 import "./css/articlescontent.css";
 
@@ -15,13 +16,13 @@ const ArticlesContent = () => {
         setExpandedArticle((prev) => (prev === articleId ? null : articleId));
     };
 
+    const { t } = useTranslation();
+
     return (
         <div className="articles-container">
-            <h2>Articles</h2>
+            <h2>{t("Articles")}</h2>
             <p>
-                Discover a variety of articles about habits. From understanding the science behind habit
-                formation to practical tips for positive changes, our collection offers valuable insights for
-                cultivating a healthier and more productive lifestyle.
+                {t("Discover a variety of articles about habits. From understanding the science behind habit formation to practical tips for positive changes, our collection offers valuable insights for cultivating a healthier and more productive lifestyle.")}
             </p>
             <hr />
 

@@ -7,6 +7,7 @@
 .loginform h2 {
     font-size: 30px;
     font-weight: 300;
+    text-transform: uppercase;
 }
 
 /* Apply styles to elements with either 'user-login' or 'user-registration' class */
