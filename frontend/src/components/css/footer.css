@@ -26,3 +26,16 @@
     font-size: 8px;
     padding-top: 10px;
 }
+
+.footer-link {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 200;
+    text-transform: uppercase;
+    border: none;
+    background-color: none;
+}
+
+.footer-link:hover {
+    border: none;
+    background-color: none;
+}

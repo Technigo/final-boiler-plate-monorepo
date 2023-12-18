@@ -5,14 +5,16 @@ import "./css/navbar.css";
 const LanguageSwitcher = () => {
     const { i18n } = useTranslation();
 
-    const toggleLanguage = () => {
+    const toggleLanguage = async () => {
         if (i18n.language === 'en') {
-            i18n.changeLanguage('sv');
+            await i18n.changeLanguage('sv');
         } else {
-            i18n.changeLanguage('en');
+            await i18n.changeLanguage('en');
         }
+
         console.log('Current language:', i18n.language);
     };
+
 
     return (
         <div>

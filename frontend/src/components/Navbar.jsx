@@ -7,26 +7,19 @@ import "./css/navbar.css";
 const Navbar = () => {
 
     const { t } = useTranslation();
-    {/*
-    const [currentLanguage, setCurrentLanguage] = useState(i18n.language);
 
-    useEffect(() => {
-        setCurrentLanguage(i18n.language);
-    }, [i18n.language]);
-
-console.log('Current language in Navbar:', currentLanguage); */}
 
     return (
         <div className="navbar">
             <div className="navlinks">
                 <div className="nav-links1">
-                    <Link to="/">{t('HOME')}</Link>
-                    <Link to="/aboutus">{t('ABOUT US')}</Link>
-                    <Link to="/home">{t('MY PAGE')}</Link>
-                    <Link to="/articles">{t('ARTICLES')}</Link>
+                    <Link to="/">{t('Home')}</Link>
+                    <Link to="/aboutus">{t('About us')}</Link>
+                    <Link to="/home">{t('My page')}</Link>
+                    <Link to="/articles">{t('Articles')}</Link>
                 </div>
                 <div className="nav-links2">
-                    <Link to="/register" className="member">{t('BECOME A MEMBER')}</Link>
+                    <Link to="/register" className="member">{t('Become a member')}</Link>
                     <LanguageSwitcher />
                 </div>
             </div>

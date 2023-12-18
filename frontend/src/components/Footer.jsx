@@ -1,5 +1,6 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
+import LanguageSwitcherFooter from "./LanguageSwitcherFooter";
 import "./css/footer.css";
 
 const Footer = () => {
@@ -9,7 +10,7 @@ const Footer = () => {
     return (
         <div className="footer">
             <div className='footer-content'>
-                <a href="#">CHANGE LANGUAGE</a>
+                <LanguageSwitcherFooter />
                 <p>Copyright | All rights reserved | 2023</p>
                 <img src="/HabitFlow.png" />
             </div>
