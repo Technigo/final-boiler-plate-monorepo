@@ -64,7 +64,9 @@ export const PostStory = () => {
           placeholder="🕘 When did this happen?"
           className="input-field"
         />
-        <Buttons buttonText="Send Story" onClick={handleButtonClick} />
+        <div>
+          <Buttons buttonText="Send Story" onClick={handleButtonClick} />
+        </div>
       </form>
     </div>
   );

@@ -14,15 +14,8 @@
   width: 70%;
 }
 
-.button {
-  font-size: 18px;
-  padding: 2%;
-  margin: 3%;
-}
-
-@media screen and (min-width: 769px) and (max-width: 1000px) {
-  .newStoryContainer {
-    display: flex;
-    flex-direction: column;
+@media screen and (min-width: 1000px) {
+  .input-field {
+    width: 90%;
   }
 }
