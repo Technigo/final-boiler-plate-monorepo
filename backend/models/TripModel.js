@@ -25,6 +25,12 @@ export const tripSchema = new Schema(
       type: String,
       required: true,
     },
+    dateOfDeparture: {
+      type: Date,
+    },
+    timeOfDeparture: {
+      type: Date,
+    },
   },
   {
     timestamps: true,
