@@ -1,6 +1,8 @@
 import express from 'express';
 import cors from 'cors';
-import db from './database.js'; 
+import occasionRoutes from "./routes/occasionandmoodRoutes.js";
+import db from './config/db.js';
+
 
 // Import your routes (make sure these are also converted to ES Modules)
 import moodRoutes from './routes/occasionandmoodRoutes.js';
