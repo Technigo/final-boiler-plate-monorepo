@@ -5,14 +5,13 @@ import { HeadingComponent } from "../components/HeadingComponent";
 import { FooterComponent } from '../components/FooterComponent';
 import { SubHeadingComponent } from '../components/SubHeadingComponent';
 import { ParagraphComponent } from "../components/ParagraphComponent";
-import { PhotoComponent } from "../components/PhotoComponent";
-import { BtnComponent } from "../components/BtnComonent";
 
+import { BtnComponent } from "../components/BtnComonent";
+import { OurSurfLessonSlider } from "../components/OurSurfLessonSlider"
 //Hero img
-import WhoAreWePhoto from "../assets/WhoAreWePhoto.jpg";
+import OurSurfLessonPhoto from "../assets/OurSurfLessonPhoto.jpeg";
 //other img
-import SL2 from "../assets/SL2.jpg"
-import SL3 from "../assets/SL3.jpg"
+
 
 export const SurfLessons = () => {
 
@@ -25,7 +24,7 @@ export const SurfLessons = () => {
 
     //set default bg-style
     const backgroundImageStyle = {
-        backgroundImage: `url(${WhoAreWePhoto})`,
+        backgroundImage: `url(${OurSurfLessonPhoto})`,
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat',
         backgroundSize: 'cover',
@@ -47,7 +46,7 @@ export const SurfLessons = () => {
                     <SubHeadingComponent className="p-12" text="Our group-lessons are 2 hours long. 
                     Our private lessons are 1,5 hours long" />
 
-                    <PhotoComponent img={SL2} />
+                    <OurSurfLessonSlider />
 
                     <ParagraphComponent text="Each lesson starts with 20-30 minute theory and warm-up on land. Here we will also talk oceansafety, conditions, technique, etiquette and practice our movements on land before heading out in the water. We then spend the rest of our time in the water catching and riding waves and improving your skills." />
 
@@ -63,8 +62,6 @@ export const SurfLessons = () => {
                     <SubHeadingComponent text="Surfing is an activity for the whole family!" />
 
                     <ParagraphComponent text="All ages are welcomed! We have a lot of experience working with children of all ages: from as young as 3 years of age to our oldest surfer so far that was 78 years old. Our surf school welcomes everyone, from first timers to seasoned surfers, no matter what age you are. Surfing is also a great family activity, our expert instructors are great with kids and adults. Discover the passion of surfing together and create unforgettable memories in Costa Rica’s surfing paradise. Come and enjoy Playa Samara, our very family-friendly surf spot." />
-
-                    <PhotoComponent img={SL3} />
 
                     <div className="p-12 grid gap-8 md:grid-cols-3 lg:grid-cols-3">
 

@@ -51,7 +51,7 @@ export const NavigationMenu = () => {
                     </div>
                     <div className={`menu-nav ${isNavOpen ? 'show-menu' : 'hide-menu'}`}>
                         <div
-                            className="absolute top-0 right-0 px-8 py-8"
+                            className="bg-customPink absolute top-0 right-0 px-8 py-8"
                             onClick={() => setIsNavOpen(false)}
                         >
                             <svg
@@ -68,22 +68,22 @@ export const NavigationMenu = () => {
                             </svg>
                         </div>
                         <ul className="flex flex-col items-center justify-between min-h-[250px]">
-                            <li className="border-gray-400 my-8">
-                                <Link to="/">Home</Link>
+                            <li className="my-8">
+                                <Link className="" to="/">Home</Link>
                             </li>
-                            <li className="border-gray-400 my-8">
+                            <li className="my-8">
                                 <Link to="/WhoAreWe">Who Are We?</Link>
                             </li>
 
-                            <li className="border-gray-400 my-8">
+                            <li className="my-8">
                                 <Link to="/SurfLessons">Surf lessons</Link>
                             </li>
 
-                            <li className="border-gray-400 my-8">
+                            <li className="my-8">
                                 <Link to="/BookNow">Book Now</Link>
                             </li>
 
-                            <li className="border-gray-400 my-8">
+                            <li className="my-8">
                                 <Link to="/ContactUs">Contact Us</Link>
                             </li>
                         </ul>

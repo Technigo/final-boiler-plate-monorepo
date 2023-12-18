@@ -1,52 +1,52 @@
 import React, { useState } from "react";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 import { BtnComponent } from "./BtnComonent";
 import { ParagraphComponent } from "./ParagraphComponent";
 import { SubHeadingComponent } from "./SubHeadingComponent";
 
 export const PostBookingComponent = () => {
-    // State variables to manage the form data and error messages
     const [numberOfPeople, setNumberOfPeople] = useState(1);
-    const [errorMessage, setErrorMessage] = useState(""); // shows errors that might happen
-    const [forms, setForms] = useState([
+    const [errorMessage, setErrorMessage] = useState("");
+    const [forms, setForms] = useState(Array.from({ length: numberOfPeople }, () => ({
+        name: "",
+        age: "",
+        weight: "",
+        height: "",
+        film: false,
+        droneVideos: false,
+        photo: false,
+        email: "",
+        phonenumber: "",
+        newPost: "",
+        date: null,
+        beginner: false,
+        intermediate: false,
+        advanced: false,
+        errorMessage: "",
+    })));
 
-        {
-            name: "",
-            age: "",
-            weight: "",
-            height: "",
-            film: false,
-            droneVideos: false,
-            photo: false,
-            email: "",
-            phonenumber: "",
-            newPost: "",
-            errorMessage: "",
-        },
-    ]);
-
-    // Function to handle new messages
     const newMessage = (message) => {
-        // Handle the new message here
         console.log("New message:", message);
     };
 
-    // Function to handle form submission
     const handleSubmit = async () => {
-        console.log("Submit button clicked");
-        // Clear any previous error messages
         setErrorMessage("");
-
-        // Iterate over each form
         for (const form of forms) {
-            // Check if the message is too short
             if (form.newPost.length > 140) {
                 setErrorMessage("Your message is too long, use a maximum of 140 characters!");
-                return; // Exit the function to prevent further execution
+                return;
             }
 
-            //${import.meta.env.VITE_API_URL}/booking
+            // Validate the date - you may want to add additional date validation logic
+            if (!form.date) {
+                setErrorMessage("Please select a date for the booking.");
+                return;
+            }
+
+            // Add more validation logic if needed
+
             try {
-                // If the message is correct, then send it
                 const response = await fetch(`${import.meta.env.VITE_API_URL}/booking`, {
                     method: "POST",
                     headers: {
@@ -63,6 +63,10 @@ export const PostBookingComponent = () => {
                         email: form.email,
                         phonenumber: form.phonenumber,
                         message: form.newPost,
+                        date: form.date.toISOString(),
+                        beginner: form.beginner,
+                        intermediate: form.intermediate,
+                        advanced: form.advanced,
                     }),
                 });
 
@@ -77,7 +81,6 @@ export const PostBookingComponent = () => {
             }
         }
 
-        // Clear the input fields after successful submission
         setForms((prevForms) =>
             prevForms.map((form) => ({
                 ...form,
@@ -91,55 +94,35 @@ export const PostBookingComponent = () => {
                 email: "",
                 phonenumber: "",
                 newPost: "",
+                date: null,
+                beginner: false,
+                intermediate: false,
+                advanced: false,
             }))
         );
     };
 
-    // Function to validate each form field
-    const validateForm = (form) => {
-        if (!form.name.trim()) {
-            setForms((prevForms) =>
-                prevForms.map((f) =>
-                    f === form
-                        ? { ...f, errorMessage: "Name cannot be empty" }
-                        : { ...f, errorMessage: "" }
-                )
-            );
-            return false;
-        }
-
-        // Add more validation logic here, dont forget!
-
-        return true;
-    };
-
-    // Function to handle the change in the number of people
     const handleChangeNumberOfPeople = (e) => {
         const number = parseInt(e.target.value, 10);
         setNumberOfPeople(number);
-
-        // Adjust the forms array based on the selected number
-        setForms((prevForms) => {
-            const newForms = [];
-            for (let i = 0; i < number; i++) {
-                newForms.push({
-                    name: "",
-                    age: "",
-                    weight: "",
-                    height: "",
-                    film: false,
-                    droneVideos: false,
-                    photo: false,
-                    email: "",
-                    phonenumber: "",
-                    newPost: "",
-                    errorMessage: "",
-                });
-            }
-            return newForms;
-        });
+        setForms(Array.from({ length: number }, () => ({
+            name: "",
+            age: "",
+            weight: "",
+            height: "",
+            film: false,
+            droneVideos: false,
+            photo: false,
+            email: "",
+            phonenumber: "",
+            newPost: "",
+            date: null,
+            beginner: false,
+            intermediate: false,
+            advanced: false,
+            errorMessage: "",
+        })));
     };
-
     return (
         <div className="flex justify-center items-center h-auto m-10">
             <div className="w-full max-w-md p-4 bg-gray-200 rounded">
@@ -317,11 +300,69 @@ export const PostBookingComponent = () => {
                             {form.newPost.length}/140
                         </p>
 
+                        {/* Form Date */}
+                        <div className="mb-2">
+                            <label className="mr-2">Select Date</label>
+                            <DatePicker
+                                selected={form.date}
+                                onChange={(date) =>
+                                    setForms((prevForms) =>
+                                        prevForms.map((f, i) => (i === index ? { ...f, date: date || null } : f))
+                                    )
+                                }
+                                dateFormat="yyyy-MM-dd"
+                                className="border rounded p-2"
+                            />
+                        </div>
+                        {/* Checkbox Surf Level 1 */}
+                        <div className="mb-2">
+                            <label className="mr-2">Beginner</label>
+                            <input
+                                type="checkbox"
+                                checked={form.beginner}
+                                onChange={() =>
+                                    setForms((prevForms) =>
+                                        prevForms.map((f, i) =>
+                                            i === index ? { ...f, beginner: !f.beginner } : f
+                                        )
+                                    )
+                                }
+                            />
+                        </div>
 
+                        {/* Checkbox Surf Level 2 */}
+                        <div className="mb-2">
+                            <label className="mr-2">Intermediate</label>
+                            <input
+                                type="checkbox"
+                                checked={form.intermediate}
+                                onChange={() =>
+                                    setForms((prevForms) =>
+                                        prevForms.map((f, i) =>
+                                            i === index ? { ...f, intermediate: !f.intermediate } : f
+                                        )
+                                    )
+                                }
+                            />
+                        </div>
+
+                        {/* Checkbox Surf Level 3 */}
+                        <div className="mb-2">
+                            <label className="mr-2">Advanced</label>
+                            <input
+                                type="checkbox"
+                                checked={form.advanced}
+                                onChange={() =>
+                                    setForms((prevForms) =>
+                                        prevForms.map((f, i) =>
+                                            i === index ? { ...f, advanced: !f.advanced } : f
+                                        )
+                                    )
+                                }
+                            />
+                        </div>
                     </div>
-
                 ))}
-
 
                 <div className="flex items-center justify-center p-4">
                     <BtnComponent label="Send request" onClick={handleSubmit} />

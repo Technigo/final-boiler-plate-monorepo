@@ -2,7 +2,6 @@
 import { useEffect } from "react";
 import { userStore } from "../stores/userStore";
 import { useNavigate } from "react-router-dom";
-
 import { Link } from "react-router-dom";
 import { BookingListComponent } from "../components/BookingListComponent"
 import { BtnComponent } from "../components/BtnComonent";
@@ -10,11 +9,6 @@ import { BtnComponent } from "../components/BtnComonent";
 // Define the 'Home' functional component.
 export const Admin = () => {
   // Define text content for the heading and subheading.
-  const text = {
-    heading: "Vite + React + React Router + Minimal CSS",
-    subheading: "Home Page",
-    intro: "text here...",
-  };
 
   // Access the 'handleLogout' function from the 'userStore'.
   const storeHandleLogout = userStore((state) => state.handleLogout);
@@ -50,27 +44,17 @@ export const Admin = () => {
       <nav>
         {/* Create a navigation menu with links to various routes. */}
         <ul className="app-ul">
-
           <li className="app-li">
             <Link to="/tasks">Tasks</Link>
-          </li>
-          <li className="app-li">
-
-            {/* Logout button */}
-            <div className="flex items-center justify-center p-4">
-              <BtnComponent label="Logout" onClick={onLogoutClick} />
-            </div>
-            <BookingListComponent />
           </li>
         </ul>
       </nav>
 
-      {/* Display the heading and subheading. */}
-      <h1 className="heading">{text.heading}</h1>
-      <h2>{text.subheading}</h2>
-      {/* (Note: 'text.intro' is not defined in the code.) */}
-      {/* Display additional content (text.intro is missing). */}
-      <p>{text.intro}</p>
+      {/* Logout button */}
+      <div className="flex items-center justify-center p-4">
+        <BtnComponent label="Logout" onClick={onLogoutClick} />
+      </div>
+      <BookingListComponent />
     </>
   );
 };

@@ -1,57 +1,35 @@
-import React, { useState, useEffect } from "react";
+// BookingListComponent.jsx
+import React, { useEffect } from "react";
 import { formatDistanceToNow } from "date-fns";
 import { BtnComponent } from "./BtnComonent";
 import { ParagraphComponent } from "./ParagraphComponent";
+import { format, isValid } from 'date-fns';
+import useBookingStore from '../stores/bookingStore';
 
-export const BookingListComponent = ({ handleLike }) => {
-    const [bookings, setBookings] = useState([]);
+export const BookingListComponent = () => {
+    const { bookings, bookingIsHandledClick, handleDeleteBooking, fetchBookings } = useBookingStore();
 
     const formatTimeDifference = (timestamp) => {
         const currentTime = new Date();
         const bookingTime = new Date(timestamp);
         return formatDistanceToNow(bookingTime, { addSuffix: true });
     };
-
-    const fetchBookings = () => {
-        fetch(`${import.meta.env.VITE_API_URL}/booking`)
-            .then((response) => response.json())
-            .then((data) => {
-                setBookings(data);
-            })
-            .catch((error) => {
-                console.error("Error fetching bookings:", error);
-            });
-    };
-    //fetch(`${import.meta.env.VITE_API_URL}/booking`)
-    useEffect(() => {
-        fetchBookings();
-    }, []);
-
-    const handleLikeClick = async (bookingId) => {
-        try {
-            await fetch(
-                `${import.meta.env.VITE_API_URL}/booking/${bookingId}/like`,
-                {
-                    method: "POST",
-                }
-            );
-            //`${import.meta.env.VITE_API_URL}/booking/${bookingId}/like`,
-            const updatedBookings = bookings.map((booking) => {
-                if (booking._id === bookingId) {
-                    return {
-                        ...booking,
-                        hearts: booking.hearts + 1,
-                    };
-                }
-                return booking;
-            });
-
-            setBookings(updatedBookings);
-
-        } catch (error) {
-            console.error("Error:", error);
+    const showDeleteConfirmation = (bookingId) => {
+        const userConfirmed = window.confirm("Are you sure you want to delete this booking?");
+        if (userConfirmed) {
+            // User clicked OK, proceed with the deletion
+            handleDeleteBooking(bookingId);
+        } else {
+            // User clicked Cancel, do nothing
+            // You can handle additional logic or UI changes here if needed
         }
     };
+
+    useEffect(() => {
+        // Call the fetchBookings function from your store
+        fetchBookings();
+    }, [fetchBookings]);
+
 
     return (
         <div>
@@ -77,18 +55,29 @@ export const BookingListComponent = ({ handleLike }) => {
                                 <ParagraphComponent text={`${booking.phonenumber}`} category="Phone number" />
 
                                 <ParagraphComponent text={`Other message: ${booking.message}`} />
+
+                                <ParagraphComponent
+                                    text={`Selected Date: ${isValid(new Date(booking.date)) ? format(new Date(booking.date), 'yyyy-MM-dd') : 'Not specified'}`}
+                                />
+                                <ParagraphComponent text={`Beginner: ${booking.beginner ? "Yes" : "No"}`} category="Surf level" />
+                                <ParagraphComponent text={`Intermediate: ${booking.intermediate ? "Yes" : "No"}`} category="Surf Level" />
+                                <ParagraphComponent text={`Advanced: ${booking.advanced ? "Yes" : "No"}`} category="Surf Level" />
                             </div>
 
                             {/* Like button */}
                             <div className="flex items-center justify-center p-4">
-                                <BtnComponent className="heartButton" onClick={() => handleLikeClick(booking._id)} label="Read Booking" />
-                                <BtnComponent className="heartButton" onClick={() => handleLikeClick(booking._id)} label="Delete Booking" />
+                                <BtnComponent onClick={() => bookingIsHandledClick(booking._id)} label="Read Booking" />
+                                <BtnComponent onClick={() => showDeleteConfirmation(booking?._id)} label="Delete" />
                             </div>
 
                             {/* Booking information */}
-                            <div className="infoText">
-                                <p className="likeCount">x{booking.hearts}</p>
+                            <div className="">
+                                <p className="likeCount">
+                                    {booking.isHandled ? 'Handled' : ''}
+                                </p>
                                 <p className="bookingTime">{formatTimeDifference(booking.createdAt)}</p>
+
+                                <BtnComponent />
                             </div>
 
                         </div>
@@ -97,4 +86,4 @@ export const BookingListComponent = ({ handleLike }) => {
             </div>
         </div>
     );
-}      
+};
