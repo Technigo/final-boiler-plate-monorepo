@@ -1,6 +1,9 @@
 // Import the 'create' function from the 'zustand' library.
 import { create } from "zustand";
 import validator from "validator";
+// Uncomment if decide to use sweetalert2 for success/error messages
+// import Swal from "sweetalert2"; 
+
 
 // Get the backend API endpoint from the environment variables.
 const apiEnv = import.meta.env.VITE_BACKEND_API;
@@ -34,21 +37,55 @@ export const userStore = create((set) => ({
   accessToken: null,
   setAccessToken: (token) => set({ accessToken: token }),
 
-  isLoggedIn: false,
-  setIsLoggedIn: (isLoggedIn) => set({ isLoggedIn }),
+  isSignedup: false,
+  setIsSignedup: (isSignedup) => set({ isSignedup }),
+
+  isLoggedin: false,
+  setIsLoggedin: (isLoggedin) => set({ isLoggedin }),
 
   // FUNCTION TO REGISTER USERS
   handleSignup: async (username, password, email, consent) => {
-    // Check if required fields are provided and display an alert if not.
+    // Check if required fields are provided, display an alert if not and exit the function immediately
     if (username.length < 5) {
       alert("Your username should have at least 5 characters");
+      return;
     } else if (!validator.isEmail(email)) {
       alert("Please enter a valid email address");
+      return;
     } else if (password.length < 5) {
       alert("Your password should have at least 5 characters");
-    } else if (!username || !password || !email || (consent===false)) {
-      alert("Please fill in all the fields");
+      return;
+    } else if (!username || !password || !email || !consent) {
+      alert("Please fill in all the fields and agree to the terms and conditions"); 
+      return;
     }
+
+    // Implement sweetalert2
+    // if (username.length < 5) {
+    //   Swal.fire({
+    //     title: "Error!",
+    //     text: "Your username should have at least 5 characters",
+    //     icon: "error"
+    //   })
+    // } else if (!validator.isEmail(email)) {
+    //   Swal.fire({
+    //     title: "Error!",
+    //     text: "Please enter a valid email address",
+    //     icon: "error"
+    //   });
+    // } else if (password.length < 5) {
+    //   Swal.fire({
+    //     title: "Error!",
+    //     text: "Your password should have at least 5 characters",
+    //     icon: "error"
+    //   });
+    // } else if (!username || !password || !email || (!document.getElementById("consent").checked)) {
+    //   Swal.fire({
+    //     title: "Error!",
+    //     text: "Please fill in all the fields",
+    //     icon: "error"
+    //   });
+    // } 
 
     try {
       // Send a POST request to the registration endpoint with user data.
@@ -64,14 +101,23 @@ export const userStore = create((set) => ({
       const data = await response.json();
       if (data.success) {
         // Update the username state
-        set({ username, email, password, consent });
+        set({
+          username, 
+          email,
+          password, 
+          consent,
+          isSignedup: true
+        });
         // Display a success alert
-        alert("Signup successful");
+        alert("Sign up successful");
         console.log("Signing up with: ", username);
+      } else {
+        // Handle the case where the server responds with an error or user exists
+        alert(data.response || "Sign up failed");
       }
     } catch (error) {
       // Handle and log any signup errors
-      console.error("Signup error: ", error);
+      console.error("Sign up error: ", error);
       alert("An error occurred during signup");
     }
   },
@@ -97,32 +143,32 @@ export const userStore = create((set) => ({
       // Parse the response data as JSON.
       const data = await response.json();
       if (data.success) {
-        // Update the state with username, accessToken, and set isLoggedIn to true.
+        // Update the state with username, accessToken, and set isLoggedin to true.
         set({
           username,
           accessToken: data.response.accessToken,
-          isLoggedIn: true,
+          isLoggedin: true,
         });
         // Store the accessToken in the browser's localStorage.
         localStorage.setItem("accessToken", data.response.accessToken);
         // Display a success alert.
-        alert("Login successful");
+        alert("Log in successful");
         console.log("Logging in with: ", username, password);
       } else {
         // Display an error message from the server or a generic message.
-        alert(data.response || "Login failed");
+        alert(data.response || "Log in failed");
       }
     } catch (error) {
       // Handle and log any login errors.
-      console.error("Login error: ", error);
-      alert("An error occurred during login");
+      console.error("Log in error: ", error);
+      alert("An error occurred during log in");
     }
   },
 
   // FUNCTION TO DISPLAY USER PROFILE
-  handleProfileDisplay: async (isLoggedIn, userId) => {
+  handleProfileDisplay: async (isLoggedin, userId) => {
     // Check if the user is logged in and display message if they are not
-    if (!isLoggedIn) {
+    if (!isLoggedin) {
       alert("Please log in to see your profile");
     } else {
       try {
@@ -139,6 +185,9 @@ export const userStore = create((set) => ({
         if (data.success) {
           // Update the state with the response data
           set({ data });
+        } else {
+          // Display an error message from the server or a generic message.
+          alert(data.response || "User profile display failed");
         }
       } catch (error) {
         // Handle and log any login errors.
@@ -149,9 +198,9 @@ export const userStore = create((set) => ({
   },
 
   // FUNCTION TO HANDLE USER PROFILE UPDATE
-  handleProfileUpdate: async (isLoggedIn, userId, email, password, location, introduction, products) => {
+  handleProfileUpdate: async (isLoggedin, userId, email, password, location, introduction, products) => {
     // Check if the user is logged in and display message if they are not
-    if (!isLoggedIn) {
+    if (!isLoggedin) {
       alert("Please log in to update your profile");
     } else {
       // If they are logged in, send a POST request to the update endpoint with user data. 
@@ -191,8 +240,8 @@ export const userStore = create((set) => ({
 
   // FUNCTION TO HANDLE USER LOGOUT
   handleLogout: () => {
-    // Clear user information and set isLoggedIn to false.
-    set({ username: "", accessToken: null, isLoggedIn: false });
+    // Clear user information and set isLoggedin to false.
+    set({ username: "", accessToken: null, isLoggedin: false });
     // Remove the accessToken from localStorage.
     localStorage.removeItem("accessToken");
     // Additional logout logic can be added here if needed.
@@ -211,7 +260,7 @@ export const userStore = create((set) => ({
       products: [],
       userId: null,
       accessToken: null, 
-      isLoggedIn: false 
+      isLoggedin: false 
     });
     // Remove the accessToken from localStorage.
     localStorage.removeItem("accessToken");
@@ -221,4 +270,4 @@ export const userStore = create((set) => ({
 }));
 
 // SUMMARY
-// This file serves as the core of a React application's user authentication and state management system. It utilizes the Zustand library to create a centralized store that handles user-related data and actions. The store includes state variables such as username, email, password, accessToken, and isLoggedIn, each with corresponding functions to modify their values. The handleSignup function allows users to register by sending their information to a server-side registration endpoint, displaying alerts for success or failure. Similarly, the handleLogin function facilitates user login, updating the state with the user's credentials and access token upon success, and storing the token in the browser's local storage. Additionally, it handles the user's logout by clearing user information and local storage data. Overall, this file provides a robust framework for user authentication and state management in the React application, enhancing user registration, login, and logout processes.
+// This file serves as the core of a React application's user authentication and state management system. It utilizes the Zustand library to create a centralized store that handles user-related data and actions. The store includes state variables such as username, email, password, accessToken, and isLoggedin, each with corresponding functions to modify their values. The handleSignup function allows users to register by sending their information to a server-side registration endpoint, displaying alerts for success or failure. Similarly, the handleLogin function facilitates user login, updating the state with the user's credentials and access token upon success, and storing the token in the browser's local storage. Additionally, it handles the user's logout by clearing user information and local storage data. Overall, this file provides a robust framework for user authentication and state management in the React application, enhancing user registration, login, and logout processes.
