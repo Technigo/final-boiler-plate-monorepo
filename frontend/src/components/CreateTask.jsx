@@ -90,6 +90,8 @@ export const CreateTask = () => {
           </option>
           <option value="Varberg City Center">Varberg City Center</option>
           <option value="Himle">Himle</option>
+          <option value="Kungsäter">Kungsäter</option>
+          <option value="Rolfstorp">Rolfstorp</option>
           <option value="Tvååker">Tvååker</option>
           <option value="Veddige">Veddige</option>
         </select>

@@ -5,6 +5,7 @@ import { CreateTask } from "../components/CreateTask";
 import { taskStore } from "../stores/taskStore";
 import { userStore } from "../stores/userStore";
 import { useNavigate } from "react-router-dom";
+import { ModalTaskCard } from "../components/TaskCards/ModalTaskCard";
 //import { Link } from "react-router-dom";
 
 // Define the 'Tasks' functional component.
@@ -73,6 +74,7 @@ export const Tasks = () => {
       {/*</nav> */}
       {/* Render the 'LogoText' component. */}
       {/* <LogoText /> */}
+
       <div>
         {/* Display the heading and paragraphs. */}
         <h2>{text.heading}</h2>
@@ -88,21 +90,22 @@ export const Tasks = () => {
         ) : (
           // Map through 'tasks' and render task items.
           tasks.map((task) => (
-            <div key={task._id} className="card-wrapper">
-              <div
-                className={`card-container ${
-                  task.done ? "green-border" : "red-border"
-                }`}
-                onClick={() => handleEdit(task._id)}
-              >
-                <p>{task.task}</p>
-                <p>{task.category}</p>
-                <p>{task.area}</p>
-                <p>{task.description}</p>
-                {/* <p>{task.done ? "Task is Completed" : "Not Completed"}</p>
-                <button onClick={() => deleteTaskById(task._id)}>Delete</button> */}
-              </div>
-            </div>
+            <ModalTaskCard key={task._id} task={task} />
+            // <div key={task._id} className="card-wrapper">
+            //   <div
+            //     className={`card-container ${
+            //       task.done ? "green-border" : "red-border"
+            //     }`}
+            //     onClick={() => handleEdit(task._id)}
+            //   >
+            //     <p>{task.task}</p>
+            //     <p>{task.category}</p>
+            //     <p>{task.area}</p>
+            //     <p>{task.description}</p>
+            //     {/* <p>{task.done ? "Task is Completed" : "Not Completed"}</p>
+            //     <button onClick={() => deleteTaskById(task._id)}>Delete</button> */}
+            //   </div>
+            // </div>
           ))
         )}
       </div>

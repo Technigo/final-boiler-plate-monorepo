@@ -1,6 +1,9 @@
 import styled from "styled-components";
 
-const StyledIconButton = styled.div`
+const StyledIconButton = styled.button`
+  display: flex;
+  gap: 10px;
+  align-items: center;
   background-color: #eeb885;
   color: #000;
   padding: 10px 20px;
@@ -13,6 +16,11 @@ const StyledIconButton = styled.div`
   }
 `;
 
+const StyledIcon = styled.img`
+  width: 25px;
+  height: 25px;
+`;
+
 // Mounta knappen enligt nedan där den behövs!
 // <Button
 //   className="YourClassName"
@@ -21,11 +29,13 @@ const StyledIconButton = styled.div`
 // />;
 
 // Radera bilddelen om det aldrig kommer till användning!
-export const IconButton = ({ buttonName, iconAlt, imgSrc, className }) => {
+export const IconButton = ({ buttonName, iconAlt, src, className }) => {
   return (
-    <StyledIconButton>
-      <div className={className} alt={iconAlt} src={imgSrc} />
-      {buttonName}
-    </StyledIconButton>
+    <>
+      <StyledIconButton>
+        <StyledIcon className={className} alt={iconAlt} src={src} />
+        {buttonName}
+      </StyledIconButton>
+    </>
   );
 };
