@@ -61,31 +61,3 @@ const generateText = async (req, res) => {
 
 // Export the generateText function to make it accessible in other parts of the application
 module.exports = { generateText };
-
-
-//******USING CHATGPT 3.5: ********
-// const response = await openai.chat.completions.create({
-//     messages: [
-//       {
-//         role: "system",
-//         content: "You are a helpful assistant designed to output JSON.",
-//       },
-//       { role: "user", content: "Who won the peace nobel prize in 2018?" },
-//     ],
-//     model: "gpt-3.5-turbo-1106",
-//     response_format: { type: "json_object" },
-//   });
-
-
-// const answerText = response.choices[0].message.content
-
-//await openai.chat.completions.create(
-
-
-// const response = await openai.completions.create({
-//     model: "text-davinci-002",
-//     prompt: ingredients,
-//     temperature: 0.5, // Adjust this value based on your preference
-//     max_tokens: 150, // Set a limit on the number of tokens in the response
-// });
-// const answerText = response.choices[0].text
