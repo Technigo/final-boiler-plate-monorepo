@@ -1,9 +1,10 @@
 import ShowtimeModel from '../models/ShowtimeModel'
+import asyncHandler from 'express-async-handler'
 
 // @desc get  all showtime
 // @route /
 // @access public
-export const getAllShowtime = async (req, res) => {
+export const getAllShowtime = asyncHandler(async (req, res) => {
 	try {
 		const showTimes = await ShowtimeModel.find()
 		if (showTimes.length > 0) {
@@ -14,12 +15,12 @@ export const getAllShowtime = async (req, res) => {
 	} catch (error) {
 		res.status(500).json({ message: error.message })
 	}
-}
+})
 
 // @desc get showtime by ID
 // @route /:id
 // @access public
-export const getShowtimeById = async (req, res) => {
+export const getShowtimeById = asyncHandler(async (req, res) => {
 	try {
 		const showtimeId = +req.params.id
 		const showtime = await ShowtimeModel.findById(showtimeId)
@@ -31,12 +32,12 @@ export const getShowtimeById = async (req, res) => {
 	} catch (error) {
 		res.status(500).json({ error: 'Something went wrong, please try again.' })
 	}
-}
+})
 
 // @desc add  a new showtime
 // @route /add
 // @access public
-export const addShowtime = async (req, res) => {
+export const addShowtime = asyncHandler(async (req, res) => {
 	try {
 		const { movieTitle, cinemaHall, date, startingTime, endTime, price, seat } = req.body
 
@@ -70,12 +71,12 @@ export const addShowtime = async (req, res) => {
 	} catch (error) {
 		res.status(500).json({ message: error.message })
 	}
-}
+})
 
 // @desc update Showtime
 // @route /update
 // @access public
-export const updateShowtime = async (req, res) => {
+export const updateShowtime = asyncHandler(async (req, res) => {
 	try {
 		// Extract the showtime ID from the request parameters
 		const showtimeId = req.params.id
@@ -108,4 +109,4 @@ export const updateShowtime = async (req, res) => {
 		// Handle errors that occurred during the request processing
 		res.status(500).json({ error: 'Something went wrong, please try again.' })
 	}
-}
+})
