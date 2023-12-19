@@ -42,6 +42,26 @@ export const adStore = create((set) => ({
     }
   },
 
+  // New action to fetch all ads in the DB
+  getAllAds: async () => {
+    try {
+      // Send a GET request to the backend API to fetch all ads
+      const response = await fetch(`${apiEnv}/getAllAds`, {
+        method: "GET",
+      });
+      // Check if the request was successful
+      if (response.ok) {
+        // Parse the response data and set it as the ads state
+        const data = await response.json();
+        set({ ads: data });
+      } else {
+        console.error("Failed to fetch ads");
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  },
+
   // New action to fetch ads
   fetchAds: async () => {
     try {
