@@ -13,11 +13,11 @@ import { NotFound } from "../pages/NotFound";
 const routes = (
   <>
     {/* Define a route for the root path ('/') that renders the 'Login' component. */}
-    <Route path="/" element={<Login />} />
+    <Route path="/login" element={<Login />} />
     {/* Define a route for the '/home' path that renders the 'Home' component. */}
     <Route path="/home" element={<Home />} />
     {/* Define a route for the '/tasks' path that renders the 'Adverts' component. */}
-    <Route path="/tasks" element={<Ads />} />
+    <Route path="/ads" element={<Ads />} />
     {/* Define a route for the '/register' path that renders the 'Register' component. */}
     <Route path="/register" element={<Register />} />
     {/* Define a catch-all route that matches any other path ('*') and renders the 'NotFound' component. */}

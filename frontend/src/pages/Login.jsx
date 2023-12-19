@@ -2,7 +2,7 @@
 import { userStore } from "../stores/userStore"; // Make sure this is correctly imported
 // Import the 'useState' and 'useNavigate' hooks from 'react'.
 import { useState } from "react";
-import { useNavigate } from "react-router-dom"; // Import useNavigate
+import { useNavigate } from "react-router-dom";
 import BackArrow from "../components/BackArrow";
 import "../pages/login.css";
 
@@ -29,7 +29,8 @@ export const Login = () => {
       // Call the 'handleLogin' function from 'userStore' with 'username' and 'password' parameters.
       await storeHandleLogin(username, password);
       // Get the 'isLoggedIn' state from 'userStore'.
-      const isLoggedIn = userStore.getState().isLoggedIn;
+      const isLoggedIn = userStore.getState((state) => state.isLoggedIn);
+
       if (isLoggedIn) {
         // If the user is logged in, navigate to the "/home" route.
         navigate("/home");
@@ -72,7 +73,7 @@ export const Login = () => {
             Login
           </button>
           <h3>
-            Don't have an account? <a href="/register">Sign up</a>
+            Don&apos;t have an account? <a href="/register">Sign up</a>
           </h3>
         </div>
       </div>
