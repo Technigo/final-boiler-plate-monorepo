@@ -7,6 +7,9 @@ export const TripGenerator = () => {
     description: "",
     date: "",
     time: "",
+    vehicle: "",
+    availableSeats: "",
+    reg: "",
   });
 
   const [trips, setTrips] = useState(() => {
@@ -36,7 +39,10 @@ export const TripGenerator = () => {
       !formData.destination ||
       !formData.description ||
       !formData.date ||
-      !formData.time
+      !formData.time ||
+      !formData.vehicle ||
+      !formData.availableSeats ||
+      !formData.reg
     ) {
       alert("Please fill out all fields");
       return;
@@ -51,6 +57,9 @@ export const TripGenerator = () => {
       description: formData.description,
       date: formData.date,
       time: formData.time,
+      vehicle: formData.vehicle,
+      availableSeats: formData.availableSeats,
+      reg: formData.reg,
     };
 
     await new Promise((resolve) => setTimeout(resolve, 1000));
@@ -63,6 +72,9 @@ export const TripGenerator = () => {
       description: "",
       date: "",
       time: "",
+      vehicle: "",
+      availableSeats: "",
+      reg: "",
     });
 
     setLoading(false);
@@ -150,6 +162,77 @@ export const TripGenerator = () => {
           />
         </div>
 
+        <div>
+          <label
+            htmlFor="vehicle"
+            className="block text-sm font-medium text-gray-700">
+            Vehicle:
+          </label>
+          <select
+            id="vehicle"
+            name="vehicle"
+            value={formData.vehicle}
+            onChange={handleChange}
+            className="mt-1 p-2 w-full border border-gray-300 rounded-md focus:outline-none focus:border-blue-500">
+            <option value="">Select...</option>
+            <option value="Audi">Audi</option>
+            <option value="BMW">BMW</option>
+            <option value="Chevrolet">Chevrolet</option>
+            <option value="Ford">Ford</option>
+            <option value="Honda">Honda</option>
+            <option value="Hyundai">Hyundai</option>
+            <option value="Jaguar">Jaguar</option>
+            <option value="Kia">Kia</option>
+            <option value="Land Rover">Land Rover</option>
+            <option value="Mazda">Mazda</option>
+            <option value="Mercedes-Benz">Mercedes-Benz</option>
+            <option value="Nissan">Nissan</option>
+            <option value="Porsche">Porsche</option>
+            <option value="Subaru">Subaru</option>
+            <option value="Tesla">Tesla</option>
+            <option value="Toyota">Toyota</option>
+            <option value="Volkswagen">Volkswagen</option>
+            <option value="Volvo">Volvo</option>
+          </select>
+        </div>
+
+        <div>
+          <label
+            htmlFor="availableSeats"
+            className="block text-sm font-medium text-gray-700">
+            Available Seats:
+          </label>
+          <select
+            id="availableSeats"
+            name="availableSeats"
+            value={formData.availableSeats}
+            onChange={handleChange}
+            className="mt-1 p-2 w-full border border-gray-300 rounded-md focus:outline-none focus:border-blue-500">
+            <option value="">Select...</option>
+            {[1, 2, 3, 4, 5, 6, 7, 8, 9].map((number) => (
+              <option key={number} value={number}>
+                {number}
+              </option>
+            ))}
+          </select>
+        </div>
+
+        <div>
+          <label
+            htmlFor="reg"
+            className="block text-sm font-medium text-gray-700">
+            Reg:
+          </label>
+          <input
+            type="text"
+            id="reg"
+            name="reg"
+            value={formData.reg}
+            onChange={handleChange}
+            className="mt-1 p-2 w-full border border-gray-300 rounded-md focus:outline-none focus:border-blue-500"
+          />
+        </div>
+
         <button
           type="submit"
           className="w-full bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-700 focus:outline-none focus:ring focus:border-blue-300"
@@ -168,8 +251,15 @@ export const TripGenerator = () => {
               </h3>
               <p className="text-gray-700 truncate">{trip.description}</p>
               <p className="text-gray-500 mt-1">Date: {trip.date}</p>
-              <p className="text-gray-500">Time: {trip.time}</p>
-              <p className="text-green-700 text-xs mt-1">ID: {trip.id}</p>
+              <p className="text-gray-500 mt-1">Time: {trip.time}</p>
+              <p className="text-gray-500 mt-1">Vehicle: {trip.vehicle}</p>
+              <p className="text-gray-900 mt-1 bg-white p-2 rounded-md text-xs font-bold border border-gray-900 inline-block w-auto">
+                {trip.reg}
+              </p>
+              <p className="text-gray-500 mt-1">
+                Available Seats: {trip.availableSeats}
+              </p>
+              <p className="text-green-700 text-xs mt-3">Trip ID: {trip.id}</p>
             </div>
           ))}
         </div>
