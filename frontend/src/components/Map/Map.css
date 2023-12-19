@@ -1,18 +1,13 @@
+/* Optional: Makes the sample page fill the window. */
+
 .my-map-container {
   width: 400px;
   height: 400px;
-}
-
-map {
-  height: 100%;
-}
-
-/* Optional: Makes the sample page fill the window. */
-html,
-body {
-  height: 100%;
-  margin: 0;
-  padding: 0;
+  display: block;
+  margin: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .map-control {
