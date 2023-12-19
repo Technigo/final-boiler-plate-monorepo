@@ -7,8 +7,10 @@ export const NewRecipe = () => {
   return (
     <div>
       <h3>Your recipe:</h3>
-      <div>{newRecipe.ingredients}</div>
-      <div>{newRecipe.instructions}</div>
+      <h2>{newRecipe.title}</h2>
+      <p>Description: {newRecipe.description}</p>
+      <p>Ingredients: {newRecipe.ingredients}</p>
+      <p>Instructions: {newRecipe.instructions}</p>
     </div>
   );
 };

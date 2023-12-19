@@ -27,8 +27,12 @@ const limitedRecipes = recipes.slice(0, 12)
         {limitedRecipes.map((recipe, index) => (
           <li key={index}>
             {/* Render your recipe details here */}
-            <div>{recipe.ingredients}</div>
-            <div>{recipe.instructions}</div>
+            <h2>{recipe.title}</h2>
+            <p>User input: {recipe.userInput}</p>
+            <p>Description: {recipe.description}</p>
+            <p>Ingredients: {recipe.ingredients}</p>
+            <p>Instructions: {recipe.instructions}</p>
+            
           </li>
         ))}
       </ul>
