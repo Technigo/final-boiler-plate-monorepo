@@ -20,7 +20,7 @@ const generateText = async (req, res) => {
           content: "You are a helpful assistant designed to output JSON.",
         },
         // User message containing the provided prompt
-        { role: "user", content: prompt },
+        { role: "user", content: `Create a short recipe that can be made on an outdoor kitchen. The recipe should include ${prompt}`},
       ],
       model: "gpt-3.5-turbo-1106",
       // Specify the response format as a JSON object
