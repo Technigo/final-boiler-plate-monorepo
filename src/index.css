@@ -1,15 +1,15 @@
-/* Apply styles to the root element of the application */
 #root {
-    max-width: 1280px; /* Set maximum width for the content */
-    margin: 0 auto; /* Center align the content horizontally */
-    padding: 2rem; /* Add padding around the content */
-    min-height: 100vh; /* Ensure a minimum height to cover the viewport */
-    text-align: center; /* Center-align text within the root element */
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 2rem;
+    min-height: 100vh;
+    text-align: center;
 
-    --background-color: #262522;
-    --font-color: #F2F2F2;
-    --primary-color: #7787A6;
-    --secondary-color: #424859;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+
   }
   
   :root {
@@ -20,12 +20,21 @@
     color-scheme: light dark;
     color: rgba(255, 255, 255, 0.87);
     background-color: #242424;
-  
+    
     font-synthesis: none;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     -webkit-text-size-adjust: 100%;
+    
+    --background-color: #262522;
+    --font-color: #F2F2F2;
+    --primary-color: #7787A6;
+    --secondary-color: #424859;
+  }
+
+  *, *::after, *::before {
+    box-sizing: border-box;
   }
   
   a {
