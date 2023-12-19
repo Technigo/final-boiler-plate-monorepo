@@ -1,6 +1,6 @@
 import React from "react";
 import { useTranslation } from 'react-i18next';
-import "./css/howitworks.css";
+import "./howitworks.css";
 
 const HowItWorks = () => {
 

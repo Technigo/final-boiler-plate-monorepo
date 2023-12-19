@@ -1,8 +1,8 @@
 // ArticlesContent.jsx
 import React, { useState } from "react";
 import { useTranslation } from 'react-i18next';
-import data from "../data/articles.json";
-import "./css/articlescontent.css";
+import data from "../../data/articles.json";
+import "./articlescontent.css";
 
 const ArticlesContent = () => {
     // State to track which article is currently expanded

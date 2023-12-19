@@ -1,7 +1,7 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import data from "../data/articles.json";
-import "./css/articlesfront.css";
+import "./articlesfront.css";
 
 const ArticlesFront = () => {
 
