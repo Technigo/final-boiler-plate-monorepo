@@ -3,7 +3,7 @@ import { Route } from "react-router-dom";
 import { MyPage } from "../pages/MyPage";
 import { Register } from "../pages/Register";
 import { Tasks } from "../pages/Tasks";
-import { Login } from "../pages/Login";
+import { Startpage } from "../pages/Startpage";
 import { AboutUs } from "../pages/AboutUs";
 import { Articles } from "../pages/Articles";
 import { NotFound } from "../pages/NotFound";
@@ -11,7 +11,7 @@ import { NotFound } from "../pages/NotFound";
 
 const routes = (
   <>
-    <Route path="/" element={<Login />} />
+    <Route path="/" element={<Startpage />} />
     <Route path="/mypage" element={<MyPage />} />
     <Route path="/tasks" element={<Tasks />} />
     <Route path="/register" element={<Register />} />

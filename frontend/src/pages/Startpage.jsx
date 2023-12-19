@@ -9,7 +9,7 @@ import ArticlesFront from "../components/ArticlesFront";
 import Footer from "../components/Footer";
 
 
-export const Login = () => {
+export const Startpage = () => {
 
   return (
     <>
