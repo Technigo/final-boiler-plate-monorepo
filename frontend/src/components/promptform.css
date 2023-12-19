@@ -1,5 +1,5 @@
-.promptform-wrapper {
-    display: flex;
-    justify-content: center;
-    margin-top: 10%;
+.ingredient-form {
+    display: flex; 
+    flex-direction: column;
 }
+

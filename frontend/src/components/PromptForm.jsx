@@ -29,10 +29,9 @@ export const PromptForm = () => {
     // Render the component. Form element
     return (
         <div className="promptform-wrapper">
-            <h1>OpenAIrFeast</h1>
-            <form onSubmit={handleFormSubmit}>
+            <form className="ingredient-form"onSubmit={handleFormSubmit}>
                 <textarea
-                    placeholder="Your ingredients"
+                    placeholder="Input 3 ingredients here"
                     value={inputRecipe}
                     onChange={(e) => setInputRecipe(e.target.value)}
                     required
