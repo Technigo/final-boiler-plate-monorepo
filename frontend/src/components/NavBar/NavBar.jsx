@@ -4,7 +4,7 @@ import Logo from "../../assets/logo2.svg";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 
-export const NavBar = () => {
+export const NavBar = ({ onLogoClick }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleDropdown = () => {
@@ -13,7 +13,9 @@ export const NavBar = () => {
 
   return (
     <div className="Navbar-wrapper">
-      <img src={Logo} alt="Menu" className="logo" />
+
+      <img src={Logo} alt="Menu" className="logo" onClick={onLogoClick} />
+
       <div className="nav-links">
         <Link to="/" className="nav-item">
           Home
