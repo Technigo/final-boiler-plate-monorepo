@@ -2,11 +2,16 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 // Import the database connection from Database.js
-import db from './database'; // Update the path as necessary
+import db from './config/db.js'; 
 
 // Import the seeding model
-import Restaurant from './models/seedingRestaurant'; // Update the path if necessary
-import restaurantData from './seeds/databaseRestaurants.json';
+import Restaurant from './models/seedingRestaurant.js';
+import restaurantData from './seeds/databaseRestaurants.json' assert { type: 'json' };
+
+// Listen to error events on the database connection
+db.on('error', (error) => {
+  console.error('MongoDB connection error:', error);
+});
 
 // Listen to the connection event
 db.once('open', () => {
@@ -22,5 +27,5 @@ db.once('open', () => {
       console.error('Error seeding data:', error);
       db.close(); // Close the connection in case of error
     });
-})
-.catch((error) => console.error('Error using MongoDB connection:', error));
+});
+
