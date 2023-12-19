@@ -7,7 +7,7 @@ const apiEnv = import.meta.env.VITE_BACKEND_API;
 export const userStore = create((set) => ({
 
   userName: '',
-  setUsername: (username) => set({ username }),
+  setuserName: (userName) => set({ userName }),
 
   email: '',
   setEmail: (email) => set({ email }),
@@ -22,9 +22,9 @@ export const userStore = create((set) => ({
   toggleLogin: () => set((state) => ({ isLoggedIn: !state.isLoggedIn })),
 
   // REGISTER USERS
-  handleRegister: async (username, email, password) => {
-    if (!username || !email || !password) {
-      alert('Please enter username, email, password.')
+  handleRegister: async (userName, email, password) => {
+    if (!userName || !email || !password) {
+      alert('Please enter userName, email, password.')
       return
     }
 
@@ -34,15 +34,15 @@ export const userStore = create((set) => ({
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ email: email, userName: username, password: password })
+        body: JSON.stringify({ email: email, userName: userName, password: password })
       })
 
       const data = await response.json()
 
       if (data.success) {
-        set({ username })
+        set({ userName })
         alert('Signup successful')
-        console.log("Signing up with:", username)
+        console.log("Signing up with:", userName)
       } else {
         alert(JSON.stringify(data.response) || 'Signup failed')
       }
@@ -56,9 +56,9 @@ export const userStore = create((set) => ({
   //LOGIN USER
 
 
-  handleLogin: async (username, password) => {
-    if (!username || !password) {
-      alert('Please enter username and password again')
+  handleLogin: async (userName, password) => {
+    if (!userName || !password) {
+      alert('Please enter userName and password again')
       return
     }
 
@@ -68,20 +68,20 @@ export const userStore = create((set) => ({
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ userName: username, password: password }),
+        body: JSON.stringify({ userName: userName, password: password }),
       })
 
       const data = await response.json()
 
       if (data.success) {
         set({
-          username,
+          userName,
           accessToken: data.response.accessToken,
           isLoggedIn: true,
         })
         localStorage.setItem('accessToken', data.response.accessToken)
         alert('Login successful');
-        console.log("Logging in with:", username, password)
+        console.log("Logging in with:", userName, password)
       } else {
         alert(JSON.stringify(data.response) || "Login failed")
       }
@@ -92,7 +92,7 @@ export const userStore = create((set) => ({
   },
 
   handleLogout: () => {
-    set({ username: '', accessToken: null, isLoggedIn: false })
+    set({ userName: '', accessToken: null, isLoggedIn: false })
     localStorage.removeItem('accessToken')
   },
 }))

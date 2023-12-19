@@ -1,65 +1,36 @@
-// // Import necessary components, hooks, and stores.
-// import Logos from "../components/Logos";
+
 import { userStore } from '../store/userStore';
-// import { useState } from "react";
+import { useState } from "react";
 // import { useNavigate } from "react-router-dom";
 // import { Link } from "react-router-dom";
 
-// // Define the 'Register' functional component.
+
 export const Register = () => {
 
-  const { userName, toggleLogin, setUserName, isLoggedIn } = userStore()
-  //   // Initialize state variables for 'username', 'email', and 'password' using 'useState'.
-  //   const [username, setUsername] = useState("");
-  //   const [email, setEmail] = useState("");
-  //   const [password, setPassword] = useState("");
-  //   // Initialize the 'navigate' function from React Router.
-  //   const navigate = useNavigate();
+  const [userName, setUserName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
-  //   // Access the 'handleSignup' function from the 'userStore'.
-  //   const storeHandleSignup = userStore((state) => state.handleSignup);
+  const handleRegister = userStore(state => state.handleRegister)
 
-  //   // Function to handle the click event of the signup button.
-  //   const onSignupClick = async () => {
-  //     if (!username || !password || !email) {
-  //       // Display an alert if any of the required fields are empty.
-  //       alert("Please enter email, username, and password");
-  //       return;
-  //     }
-  //     try {
-  //       // Call the 'handleSignup' function from 'userStore' with 'username', 'password', and 'email' parameters.
-  //       await storeHandleSignup(username, password, email);
-  //       if (username && password) {
-  //         // If the signup is successful, navigate to the login route ("/").
-  //         navigate("/"); // Replace with your desired path
-  //       }
-  //     } catch (error) {
-  //       // Handle any errors that occur during signup and display an alert.
-  //       console.error("Signup error:", error);
-  //       alert("An error occurred during signup");
-  //     }
-  //   };
+  const onRegisterClick = async () => {
+    if (!userName || !email || !password) {
+      alert('Please enter username, email, and password');
+      return
+    }
+    try {
+      await handleRegister(userName, email, password)
+      alert('Registration successful !')
+    } catch (error) {
+      console.error('Registration error:', error);
+      alert('An error occurred during registration');
 
-  //   // Text content for the heading and paragraphs.
-  //   const text = {
-  //     heading: "SignUp Page",
-  //     intro: "signup here...",
-  //     loremIpsum:
-  //       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore, vitae fugit ipsam quo accusantium autem officia necessitatibus ullam voluptati",
-  //   };
+    }
+  }
 
-  //   // Render the component content.
+  //   Render the component content.
   return (
-    <div>
-      <p> User name : {userName}</p>
-      <p> Logged in : {isLoggedIn ? 'Yes' : 'No'}</p>
-      <button onClick={toggleLogin}> Toggle Login </button>
-      <label>
-        New user:
-        <input value={userName} onChange={(event) => setUserName(event.target.value)}></input>
-      </label>
-    </div>
-    //     <>
+    // <>
     //       <nav>
     //         {/* Create a navigation menu with links to the login and sign-up routes. */}
     //         <ul className="app-ul">
@@ -73,36 +44,33 @@ export const Register = () => {
     //       </nav>
     //       {/* Render the 'Logos' component. */}
     //       <Logos />
-    //       <div>
-    //         {/* Display the heading and paragraphs. */}
-    //         <h2>{text.heading}</h2>
-    //         <p>{text.intro}</p>
-    //         <p>{text.loremIpsum}</p>
-    //         <div className="user-registration">
-    //           {/* Create input fields for 'email', 'username', and 'password' and associate them with state variables. */}
-    //           <input
-    //             type="text"
-    //             placeholder="Email"
-    //             value={email}
-    //             onChange={(e) => setEmail(e.target.value)}
-    //           />
-    //           <input
-    //             type="text"
-    //             placeholder="Username"
-    //             value={username}
-    //             onChange={(e) => setUsername(e.target.value)}
-    //           />
-    //           <input
-    //             type="password"
-    //             placeholder="Password"
-    //             value={password}
-    //             onChange={(e) => setPassword(e.target.value)}
-    //           />
-    //           {/* Create a button for signing up and attach the 'onSignupClick' event handler. */}
-    //           <button onClick={onSignupClick}>Sign Up</button>
-    //         </div>
-    //       </div>
-    //     </>
+    <div className="app-container">
+      <div className="input-container">
+        <input
+          type='text'
+          placeholder='username'
+          value={userName}
+          onChange={event => setUserName(event.target.value)}
+        />
+        <input
+          type='text'
+          placeholder='email'
+          value={email}
+          onChange={event => setEmail(event.target.value)}
+
+        />
+        <input
+          type='password'
+          placeholder='password'
+          value={password}
+          onChange={event => setPassword(event.target.value)}
+        />
+      </div>
+      <div className="button-container">
+        <button onClick={onRegisterClick}> Register</button>
+      </div>
+    </div>
+    //  </>
   );
 };
 

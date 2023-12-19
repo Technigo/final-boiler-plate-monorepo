@@ -1,47 +1,48 @@
-// // Import the 'Logos' component and the 'Link' component from 'react-router-dom'
+import { userStore } from '../store/userStore';
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 // import { Link } from "react-router-dom";
-// // Import the 'userStore' from the 'userStore' module.
-// import { userStore } from "../stores/userStore"; // Make sure this is correctly imported
-// // Import the 'useState' and 'useNavigate' hooks from 'react'.
-// import { useState } from "react";
-// import { useNavigate } from "react-router-dom"; // Import useNavigate
+
 
 // // Define the 'Login' functional component.
 export const Login = () => {
-  //   // Create state variables for 'username' and 'password' using 'useState'.
-  //   const [username, setUsername] = useState("");
-  //   const [password, setPassword] = useState("");
-  //   // Use the 'useNavigate' hook to programmatically navigate between routes.
-  //   const navigate = useNavigate();
 
-  //   // Access the 'handleLogin' function from the 'userStore'.
-  //   const storeHandleLogin = userStore((state) => state.handleLogin);
+  const [userName, setUserName] = useState("");
+  const [password, setPassword] = useState("");
+  const navigate = useNavigate();
 
-  //   // Function to handle the click event of the login button.
-  //   const onLoginClick = async () => {
-  //     if (!username || !password) {
-  //       // Display an alert if either 'username' or 'password' is empty.
-  //       alert("Please enter both username and password");
-  //       return;
-  //     }
-  //     try {
-  //       // Call the 'handleLogin' function from 'userStore' with 'username' and 'password' parameters.
-  //       await storeHandleLogin(username, password);
-  //       // Get the 'isLoggedIn' state from 'userStore'.
-  //       const isLoggedIn = userStore.getState().isLoggedIn;
-  //       if (isLoggedIn) {
-  //         // If the user is logged in, navigate to the "/home" route.
-  //         navigate("/home");
-  //       }
-  //       // Additional logic after successful login can be added here.
-  //     } catch (error) {
-  //       // Handle any errors that occur during login and display an alert.
-  //       console.error("Login error:", error);
-  //       alert("An error occurred during login");
-  //     }
-  //   };
 
-  //   // Text content for the heading and paragraphs.
+  const handleLogin = userStore((state) => state.handleLogin);
+
+
+  const onLoginClick = async () => {
+    if (!userName || !password) {
+      alert('Please enter username and password');
+      return
+    }
+    try {
+      await handleLogin(userName, password)
+      const isLoggedIn = userStore.getState().isLoggedIn
+
+      if (isLoggedIn) {
+        navigate('/')
+      }
+      alert('Login successful !')
+
+      //       const isLoggedIn = userStore.getState().isLoggedIn;
+      //       if (isLoggedIn) {
+      //         // If the user is logged in, navigate to the "/home" route.
+      //         navigate("/home");
+      //       }
+    } catch (error) {
+      console.error('Login error:', error);
+      alert('An error occurred during registration');
+
+    }
+  }
+
+
+  // Text content for the heading and paragraphs.
   //   const text = {
   //     heading: "Login Page",
   //     intro: "login here...",
@@ -51,7 +52,7 @@ export const Login = () => {
 
   //   // Render the component content.
   return (
-    <>Login page</>
+
     //     <>
     //       <nav>
     //         {/* Create a navigation menu with links to the login and sign-up routes. */}
@@ -64,29 +65,26 @@ export const Login = () => {
     //           </li>
     //         </ul>
     //       </nav>
-    //       <div>
-    //         {/* Display the heading and paragraphs. */}
-    //         <h2>{text.heading}</h2>
-    //         <p>{text.intro}</p>
-    //         <p>{text.loremIpsum}</p>
-    //         <div className="user-login">
-    //           {/* Create input fields for 'username' and 'password' and associate them with state variables. */}
-    //           <input
-    //             type="text"
-    //             placeholder="Username"
-    //             value={username}
-    //             onChange={(e) => setUsername(e.target.value)}
-    //           />
-    //           <input
-    //             type="password"
-    //             placeholder="Password"
-    //             value={password}
-    //             onChange={(e) => setPassword(e.target.value)}
-    //           />
-    //           {/* Create a button for logging in and attach the 'onLoginClick' event handler. */}
-    //           <button onClick={onLoginClick}>Login</button>
-    //         </div>
-    //       </div>
+    //      
+    <div className="app-container">
+      <div className="input-container">
+        <input
+          type='text'
+          placeholder='username'
+          value={userName}
+          onChange={event => setUserName(event.target.value)}
+        />
+        <input
+          type='password'
+          placeholder='password'
+          value={password}
+          onChange={event => setPassword(event.target.value)}
+        />
+      </div>
+      <div className="button-container">
+        <button onClick={onLoginClick}> Login </button>
+      </div>
+    </div>
     //     </>
   );
 };
