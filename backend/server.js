@@ -1,12 +1,8 @@
 import express from 'express';
 import cors from 'cors';
-<<<<<<< HEAD
-import db from './config/db.js'; 
-=======
 import db from './config/db.js';
 import listEndpoints from 'express-list-endpoints';
 
->>>>>>> 8b93d3b8d4b7e1af2e6ef2928619aa059b2c0c1b
 
 // Import your routes (make sure these are also converted to ES Modules)
 import moodRoutes from './routes/occasionandmoodRoutes.js';
