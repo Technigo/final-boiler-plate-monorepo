@@ -3,14 +3,12 @@ import { Hero } from "../../components/Hero/Hero";
 import { Footer } from "../../components/Footer/Footer";
 import { Outlet } from "react-router-dom"; // For rendering nested routes
 
-
 import {
   fluidAnimationStyle,
   animationConfig,
 } from "../../components/animationConfig";
 import ReactFluidAnimation from "@usertive/react-fluid-animation";
 import { useRef } from "react";
-
 
 export const LandingPage = () => {
   const animationRef = useRef(null);
