@@ -2,14 +2,13 @@
 import { useEffect } from "react";
 import { userStore } from "../stores/userStore";
 import { useNavigate } from "react-router-dom";
-import { Link } from "react-router-dom";
 import BackArrow from "../components/BackArrow";
+import { YourAds } from "../components/YourAds";
+import { Footer } from "../components/Footer";
+import { Navbar } from "../components/Navbar";
 
 // Define the 'Home' functional component.
 export const Home = () => {
-  // Access the 'handleLogout' function from the 'userStore'.
-  const storeHandleLogout = userStore((state) => state.handleLogout);
-
   // Use the 'useNavigate' hook to programmatically navigate between routes.
   const navigate = useNavigate();
 
@@ -25,34 +24,18 @@ export const Home = () => {
     }
   }, [isLoggedIn, navigate]);
 
-  // Function to handle the click event of the logout button.
-  const onLogoutClick = () => {
-    storeHandleLogout(); // Call the 'handleLogout' function from 'userStore'.
-    // Additional logic after logout - navigate to login
-    alert("Log out successful");
-    navigate("/login");
-  };
-
   // Render the component content.
   return (
     <>
-      <nav>
-        {/* Create a navigation menu with links to various routes. */}
-        <ul className="app-ul">
-          <li className="app-li">
-            <Link to="/home">Home</Link>
-          </li>
-          <li className="app-li">
-            <Link to="/tasks">Tasks</Link>
-          </li>
-          <li className="app-li">
-            {/* Create a button for logging out and attach the 'onLogoutClick' event handler. */}
-            <button onClick={onLogoutClick}>Sign Out</button>
-          </li>
-        </ul>
-      </nav>
-      {/* Render the 'Logos' component. */}
+      <Navbar />
       <BackArrow />
+      {/* Render the search bar */}
+
+      {/* Render the recently added ads */}
+
+      {/* Render the user's ads */}
+      <YourAds />
+      <Footer />
     </>
   );
 };

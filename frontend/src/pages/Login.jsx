@@ -20,26 +20,14 @@ export const Login = () => {
 
   // Function to handle the click event of the login button.
   const onLoginClick = async () => {
-    if (!username || !password) {
-      // Display an alert if either 'username' or 'password' is empty.
-      alert("Please enter both username and password");
-      return;
-    }
-    try {
-      // Call the 'handleLogin' function from 'userStore' with 'username' and 'password' parameters.
-      await storeHandleLogin(username, password);
-      // Get the 'isLoggedIn' state from 'userStore'.
-      const isLoggedIn = userStore.getState((state) => state.isLoggedIn);
+    // Call the 'handleLogin' function from 'userStore' with 'username' and 'password' parameters.
+    await storeHandleLogin(username, password);
+    // Get the 'isLoggedIn' state from 'userStore'.
+    const isLoggedIn = userStore.getState((state) => state.isLoggedIn);
 
-      if (isLoggedIn) {
-        // If the user is logged in, navigate to the "/home" route.
-        navigate("/home");
-      }
-      // Additional logic after successful login can be added here.
-    } catch (error) {
-      // Handle any errors that occur during login and display an alert.
-      console.error("Login error:", error);
-      alert("An error occurred during login");
+    if (isLoggedIn) {
+      // If the user is logged in, navigate to the "/home" route.
+      navigate("/home");
     }
   };
 
