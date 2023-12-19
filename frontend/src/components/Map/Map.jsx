@@ -9,6 +9,7 @@ import {
   InfoWindow,
   Autocomplete,
 } from "@react-google-maps/api";
+import { memo } from "react";
 import "./Map.css";
 
 const libraries = ["places"];
