@@ -253,7 +253,7 @@ export const TripGenerator = () => {
               <p className="text-gray-500 mt-1">Date: {trip.date}</p>
               <p className="text-gray-500 mt-1">Time: {trip.time}</p>
               <p className="text-gray-500 mt-1">Vehicle: {trip.vehicle}</p>
-              <p className="text-gray-900 mt-1 bg-white p-2 rounded-md text-xs font-bold border border-gray-900 inline-block w-auto">
+              <p className="text-gray-900 mt-1 bg-white p-1 rounded-sm text-xs font-bold border border-gray-900 inline-block w-auto">
                 {trip.reg}
               </p>
               <p className="text-gray-500 mt-1">
