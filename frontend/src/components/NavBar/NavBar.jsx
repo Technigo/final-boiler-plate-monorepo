@@ -13,7 +13,9 @@ export const NavBar = ({ onLogoClick }) => {
 
   return (
     <div className="Navbar-wrapper">
+
       <img src={Logo} alt="Menu" className="logo" onClick={onLogoClick} />
+
       <div className="nav-links">
         <Link to="/" className="nav-item">
           Home
@@ -23,6 +25,9 @@ export const NavBar = ({ onLogoClick }) => {
         </Link>
         <Link to="/story-list" className="nav-item">
           Stories
+        </Link>
+        <Link to="/map" className="nav-item">
+          Map
         </Link>
         <Link to="/about-us" className="nav-item">
           About us
@@ -44,6 +49,9 @@ export const NavBar = ({ onLogoClick }) => {
           </Link>
           <Link to="/story-list" className="dropdown-item">
             Stories
+          </Link>
+          <Link to="/map" className="dropdown-item">
+            Map
           </Link>
           <Link to="/about-us" className="dropdown-item">
             About us
