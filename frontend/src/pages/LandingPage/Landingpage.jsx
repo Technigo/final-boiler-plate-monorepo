@@ -41,5 +41,3 @@ export const LandingPage = () => {
     </div>
   );
 };
-
-//testets
