@@ -19,7 +19,7 @@ const ResultCard = styled.div`
 `;
 
 const ResultsComponent = () => {
-  const { results, fetchResults, selectedOccasion, selectedMoods } = useStore();
+  const { results, fetchResults, selectedOccasion, selectedMoods } = useRestaurantStore();
 
   useEffect(() => {
     // selectedMoods is an array, so you might need to adjust how you're fetching results
