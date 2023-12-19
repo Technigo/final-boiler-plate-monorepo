@@ -2,6 +2,7 @@
 import express from "express";
 import { authenticateUser } from "../middleware/authenticateUser"; // Import middleware for user authentication
 import {
+    getAllAdsController,
     getAdsController,
     updateAdController,
     deleteAllAdsController,
@@ -11,6 +12,9 @@ import {
 
 // Create an instance of the Express router
 const router = express.Router();
+
+// Define a route for handling GET requests to retrieve all ads
+router.get("/getAllAds", getAllAdsController);
 
 // Define a route for handling GET requests to retrieve all ads
 router.get("/get", authenticateUser, getAdsController); // When a GET request is made to /get, authenticate the user using middleware and then execute the getAdsController function

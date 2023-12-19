@@ -8,6 +8,10 @@ const { Schema } = mongoose;
 // Creates a new Mongoose schema named adSchema that defines the structure of a document in the MongoDB collection. It includes fields like brand, createdAt, and done, specifying their data types, validation rules, and default values.
 export const adSchema = new Schema(
     {
+        image: {
+            type: String, // Store the image as Base64
+            required: true
+        },
         title: {
             type: String,
             required: true,

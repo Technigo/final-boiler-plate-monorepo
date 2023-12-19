@@ -5,6 +5,14 @@ import asyncHandler from "express-async-handler";
 import { UserModel } from "../models/UserModel";
 
 // desciption: Get Ads
+// route: /getAllAds
+// access: Private
+export const getAllAdsController = asyncHandler(async (req, res) => {
+  const allAds = await AdModel.find();
+  res.status(200).json(allAds);
+});
+
+// desciption: Get Ads
 // route: /get
 // access: Private
 export const getAdsController = asyncHandler(async (req, res) => {
@@ -24,7 +32,7 @@ export const addAdController = asyncHandler(async (req, res) => {
   try {
     console.log("Request body:", req.body); // Log the entire request body
     // Extract the ad data from the request body
-    const { title, description, product, quantity, unit, address, pickupTime } = req.body;
+    const { image, title, description, product, quantity, unit, address, pickupTime } = req.body;
     
     // Extract the accessToken from the request header key "Authorization"
     const accessToken = req.header("Authorization"); // we are requesting the Authorization key from the headerObject
@@ -35,13 +43,14 @@ export const addAdController = asyncHandler(async (req, res) => {
     // Define var to pass new AD
     //wait for the save() operation to complete before sending back the response
     const newAd = await new AdModel({
-      title: title,
-      description: description, 
-      product: product,
-      quantity: quantity,
-      unit: unit,
-      address: address,
-      pickupTime: pickupTime,
+      image,
+      title,
+      description, 
+      product,
+      quantity,
+      unit,
+      address,
+      pickupTime,
       user: userFromStorage,
     }).save();
     res.status(201).json(newAd);
