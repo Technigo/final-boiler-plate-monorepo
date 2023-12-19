@@ -15,7 +15,7 @@ export const PromptForm = () => {
             //Use the generateRecipe function from the recipeStore
             console.log(inputRecipe)
             await generateRecipe(inputRecipe)
-            
+
 
             //Clear inputRecipe and fetch new recipe data
             setInputRecipe("")
@@ -29,14 +29,15 @@ export const PromptForm = () => {
     // Render the component. Form element
     return (
         <div className="promptform-wrapper">
-            <form className="ingredient-form"onSubmit={handleFormSubmit}>
+            <h2>Generate a recipe for your next outdoor adventure</h2>
+            <form className="ingredient-form" onSubmit={handleFormSubmit}>
                 <textarea
-                    placeholder="Input 3 ingredients here"
+                    placeholder="Input 3 ingredients here..."
                     value={inputRecipe}
                     onChange={(e) => setInputRecipe(e.target.value)}
                     required
                 ></textarea>
-                <button type="submit">Create recipe 🥘</button>
+                <button type="submit">Create recipe</button>
             </form>
         </div>
     );

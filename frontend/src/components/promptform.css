@@ -1,5 +1,34 @@
-.ingredient-form {
-    display: flex; 
+.promptform-wrapper {
+    display: flex;
     flex-direction: column;
 }
 
+.promptform-wrapper h2 {
+    color: white;
+    text-align: center;
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-bottom: 3%;
+}
+
+.ingredient-form {
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    width: 60%;
+}
+
+textarea {
+    margin-bottom: 3%;
+    border: 1px solid #286052;
+    border-radius: 1.6rem;
+}
+
+/* Ev flyttas. Om alla knappar ska se likadana ut så kan denna flyttas till app */
+button {
+    background-color: #286052;
+    color: white;
+    border: 1px solid white;
+    border-radius: 1.6rem;
+    padding: 0.5rem;
+}
