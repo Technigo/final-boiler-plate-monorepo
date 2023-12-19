@@ -6,11 +6,26 @@ const { Schema } = mongoose;
 
 export const recipeSchema = new Schema(
     {
-        ingredients: {
+        userInput: {
             type: String,
             required: true,
         },
 
+        title: {
+            type: String,
+            required: true,
+        },
+
+        description: {
+            type: String,
+            required: true,
+        },
+
+        ingredients: {
+            type: [String],
+            required: true,
+        },
+        
         instructions: {
             type: String,
             required: true

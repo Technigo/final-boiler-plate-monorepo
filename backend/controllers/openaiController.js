@@ -20,7 +20,7 @@ const generateText = async (req, res) => {
           content: "You are a helpful assistant designed to output JSON.",
         },
         // User message containing the provided prompt
-        { role: "user", content: `Create a short recipe that can be made on an outdoor kitchen. The recipe should include ${prompt}`},
+        { role: "user", content: `Simple recipe to cook on portable camping stove, one heater. No temperature control, consists of one frying-pan and/or one saucepan. Ingredients: ${prompt}. Keywords in object: title, description, ingredients, instructions.`},
       ],
       model: "gpt-3.5-turbo-1106",
       // Specify the response format as a JSON object
@@ -28,13 +28,28 @@ const generateText = async (req, res) => {
       temperature: 1, // Adjust this value based on your preference. Lower values (e.g., 0.2) will make the output more deterministic and focused, potentially reducing token usage.
     });
 
-    // Extract the generated text from the API response
-    const generatedInstructions = response.choices[0].message.content
+    // Extract the generated text from the API respons
+    const generatedRecipe = response.choices[0].message.content
+    const generatedRecipeObject = JSON.parse(generatedRecipe)
+    const title  = generatedRecipeObject.recipe.title
+    const description = generatedRecipeObject.recipe.description
+    const ingredients = generatedRecipeObject.recipe.ingredients
+    const instructions = generatedRecipeObject.recipe.instructions
+    console.log(title)
+    console.log(description)
+    console.log(ingredients)
+    console.log(instructions)
+   
     // Create a new RecipeModel with the provided ingredients and generatedRecipe
     const newRecipe = new RecipeModel({
-      ingredients: prompt, 
-      instructions: generatedInstructions
+      userInput: prompt,
+      title: title, 
+      description: description, 
+      ingredients: ingredients, 
+      instructions: instructions, 
     })
+
+    console.log(newRecipe)
     // Save the new recipe to the database
     await newRecipe.save()
 
@@ -42,7 +57,7 @@ const generateText = async (req, res) => {
     res.status(201).json({ recipe: newRecipe })
 
     // Log the generated text to the console
-    console.log(generatedInstructions)
+    // console.log(generatedRecipe)
 
     // Send a JSON response with success status, API response data, and the generated answer
     // res.status(200).json({

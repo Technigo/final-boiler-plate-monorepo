@@ -16,12 +16,15 @@ export const CollectionRecipes = () => {
     fetchCollectionRecipes()
   }, [])
 
+// Slice the recipes array to get only the first 12 recipes
+const limitedRecipes = recipes.slice(0, 12)
+
   // Render the component with a list of recipes (map over the recipes and render each recipe's ingredients and instructions)
   return (
     <div>
       <h2>Recipes:</h2>
       <ul>
-        {recipes.map((recipe, index) => (
+        {limitedRecipes.map((recipe, index) => (
           <li key={index}>
             {/* Render your recipe details here */}
             <div>{recipe.ingredients}</div>
