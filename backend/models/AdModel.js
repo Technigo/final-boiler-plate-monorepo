@@ -7,54 +7,59 @@ const { Schema } = mongoose;
 // Create a new Mongoose schema named 'adSchema'
 // Creates a new Mongoose schema named adSchema that defines the structure of a document in the MongoDB collection. It includes fields like brand, createdAt, and done, specifying their data types, validation rules, and default values.
 export const adSchema = new Schema(
-    {
-        image: {
-            type: String, // Store the image as Base64
-            required: true
-        },
-        title: {
-            type: String,
-            required: true,
-            minlength: 5,
-        },
-        description: {
-            type: String,
-            required: true,
-        },
-        product: {
-            type: String,
-            required: true,
-        },
-        quantity: {
-            type: Number,
-            required: true,
-            default: 0
-        },
-        unit: {
-            type: String,
-            required: true
-        },
-        address: {
-            type: String,
-            required: true
-        },
-        pickupTime: {
-            type: Date,
-            default: Date.now
-        },
-        available: {
-            type: Boolean, // Specifies that 'sold' should be a Boolean
-            default: true, // Sets a default value of 'true' for 'available'
-        },
-        // Define the relaitonship between the user and his/her ad --  1:1 relationship with the user or 1 usar can have many ads
-        user: {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: "User",
-        },
+  {
+    image: {
+      type: String, // Store the image as Base64
+      required: false,
     },
-    {
-        timestamps: true,
-    }
+    title: {
+      type: String,
+      required: true,
+      minlength: 5,
+    },
+    description: {
+      type: String,
+      required: true,
+    },
+    product: {
+      type: String,
+      required: true,
+    },
+    quantity: {
+      type: Number,
+      required: true,
+      default: 0,
+    },
+    unit: {
+      type: String,
+      required: true,
+    },
+    address: {
+      type: String,
+      required: true,
+    },
+    pickupTime: {
+      type: Date,
+      default: Date.now,
+    },
+    available: {
+      type: Boolean, // Specifies that 'sold' should be a Boolean
+      default: true, // Sets a default value of 'true' for 'available'
+    },
+    tags: [
+      {
+        type: String,
+      },
+    ],
+    // Define the relaitonship between the user and his/her ad --  1:1 relationship with the user or 1 usar can have many ads
+    user: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User",
+    },
+  },
+  {
+    timestamps: true,
+  }
 );
 
 // Create a Mongoose model named 'AdModel' based on the 'adSchema' for the 'ads' collection

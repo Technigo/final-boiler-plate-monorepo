@@ -32,25 +32,38 @@ export const addAdController = asyncHandler(async (req, res) => {
   try {
     console.log("Request body:", req.body); // Log the entire request body
     // Extract the ad data from the request body
-    const { image, title, description, product, quantity, unit, address, pickupTime } = req.body;
-    
-    // Extract the accessToken from the request header key "Authorization"
-    const accessToken = req.header("Authorization"); // we are requesting the Authorization key from the headerObject
-    
-    //Find the user that matches the accessToken stored in the db
-    const userFromStorage = await UserModel.findOne({accessToken: accessToken});
-   
-    // Define var to pass new AD
-    //wait for the save() operation to complete before sending back the response
-    const newAd = await new AdModel({
-      image,
+    const {
       title,
-      description, 
+      description,
       product,
       quantity,
       unit,
       address,
       pickupTime,
+      available,
+      tags,
+    } = req.body;
+
+    // Extract the accessToken from the request header key "Authorization"
+    const accessToken = req.header("Authorization"); // we are requesting the Authorization key from the headerObject
+
+    //Find the user that matches the accessToken stored in the db
+    const userFromStorage = await UserModel.findOne({
+      accessToken: accessToken,
+    });
+
+    // Define var to pass new AD
+    //wait for the save() operation to complete before sending back the response
+    const newAd = await new AdModel({
+      title,
+      description,
+      product,
+      quantity,
+      unit,
+      address,
+      pickupTime,
+      available,
+      tags,
       user: userFromStorage,
     }).save();
     res.status(201).json(newAd);
@@ -124,4 +137,3 @@ export const deleteSpecificAdController = asyncHandler(async (req, res) => {
     })
     .catch((err) => res.status(500).json(err)); // Handle any errors that occur during the operation
 });
-
