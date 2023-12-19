@@ -8,6 +8,7 @@ import { Register } from "../pages/Register";
 import { Ads } from "../pages/Ads";
 import { Login } from "../pages/Login";
 import { NotFound } from "../pages/NotFound";
+import { Search } from "../pages/Search";
 
 // Define the 'routes' variable as a JSX expression.
 const routes = (
@@ -20,6 +21,8 @@ const routes = (
     <Route path="/tasks" element={<Ads />} />
     {/* Define a route for the '/register' path that renders the 'Register' component. */}
     <Route path="/register" element={<Register />} />
+    {/* Define a catch-all route that matches any other path ('*') and renders the 'NotFound' component. */}
+    <Route path="/search" element={<Search />} />
     {/* Define a catch-all route that matches any other path ('*') and renders the 'NotFound' component. */}
     <Route path="*" element={<NotFound />} />
   </>
