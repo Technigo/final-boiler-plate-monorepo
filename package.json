@@ -1,9 +1,0 @@
-{
-  "dependencies": {
-    "@react-google-maps/api": "^2.19.2",
-    "@usertive/react-fluid-animation": "^1.0.5",
-    "lottie": "^0.0.1",
-    "lottie-react": "^2.4.0",
-    "lottie-web": "^5.12.2"
-  }
-}
