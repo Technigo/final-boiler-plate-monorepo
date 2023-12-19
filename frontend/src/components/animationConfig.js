@@ -19,3 +19,6 @@ export const animationConfig = {
   curl: 50,
   splatRadius: 0.003,
 };
+
+//to be able to use smoke animation install:
+// npm install @usertive/react-fluid-animation --legacy-peer-deps
