@@ -1,14 +1,13 @@
 // ADAPT THIS FILE FOR DISPLAYING, CREATING, EDITING, DELETING ADVERTS
 
-
 // Import necessary dependencies, components, and stores.
 import { useEffect } from "react";
-import Logos from "../components/Logos";
 import { CreateAd } from "../components/CreateAd";
 import { adStore } from "../stores/adStore";
 import { userStore } from "../stores/userStore";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
+import BackArrow from "../components/BackArrow";
 
 // Define the 'Tasks' functional component.
 export const Ads = () => {
@@ -61,7 +60,7 @@ export const Ads = () => {
         </ul>
       </nav>
       {/* Render the 'Logos' component. */}
-      <Logos />
+      <BackArrow />
       <div>
         {/* Display the heading and paragraphs. */}
         <h2>{text.heading}</h2>

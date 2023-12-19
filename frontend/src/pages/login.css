@@ -1,0 +1,35 @@
+nav {
+  text-align: left;
+}
+.user-login {
+  text-align: left;
+}
+
+input {
+  border-radius: 10px;
+  border-color: #c9c9c9;
+  height: 0.5rem;
+}
+
+.login-btn {
+  color: white;
+  width: 100%;
+  margin-top: 3rem;
+  border: none;
+  border-radius: 10px;
+  background: #272826;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+h2 {
+  color: #000;
+  font-family: Montserrat;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+
+.checkbox {
+  transform: "scale(2)";
+}

@@ -3,6 +3,7 @@ import { userStore } from "../stores/userStore";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
+import BackArrow from "../components/BackArrow";
 
 // Define the "Register" functional component.
 export const Register = () => {
@@ -24,7 +25,7 @@ export const Register = () => {
 
     // Call the "handleSignup" function from "userStore" with "username", "password", "email" and "consent" parameters.
     await storeHandleSignup(username, password, email, consent);
-    
+
     // When the user has signed up successfully, navigate to log in page
     const isSignedup = userStore.getState().isSignedup;
 
@@ -37,6 +38,9 @@ export const Register = () => {
   // Render the component content.
   return (
     <div>
+      <nav>
+        <BackArrow />
+      </nav>
       <h1>Sign up</h1>
       <div className="user-registration">
         {/* Create input fields for "email", "username", "password", "consent" and associate them with state variables. */}
@@ -69,12 +73,12 @@ export const Register = () => {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
-        
-        <input 
-          type="checkbox" 
+
+        <input
+          type="checkbox"
           name="consent"
           id="consent"
-          checked={consent} 
+          checked={consent}
           onChange={() => setConsent(!consent)}
         />
         <label htmlFor="consent">I agree to terms and policy</label>
