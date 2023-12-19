@@ -1,6 +1,8 @@
 
 import PropTypes from 'prop-types';
 import './Storycard.css';
+import { timeSince } from '../utils/timeUtils';
+import likeIcon from '../../assets/like.svg';
 
 
 export const StoryCard = ({ story, isActive }) => {
@@ -21,11 +23,14 @@ export const StoryCard = ({ story, isActive }) => {
     <div className="story-info">
       <h3>{story.category} {story.city}</h3>
     </div>
-
-    {/* Conditionally render full content for the active card */}
     {isActive && (
       <div className="story-overlay">
         <p>{story.content}</p>
+        <div className="overlay-date-icon">
+	          {timeSince(story.createdAt)}
+	          <img src={likeIcon} alt="Like" />
+	          <span className="like-count">{story.ranking}</span>
+	        </div>
       </div>
     )}
   </div>
@@ -37,8 +42,9 @@ StoryCard.propTypes = {
     city: PropTypes.string.isRequired,
     content: PropTypes.string.isRequired,
     category: PropTypes.string.isRequired,
+    ranking: PropTypes.number.isRequired,
+    createdAt: PropTypes.string.isRequired,
     image: PropTypes.string.isRequired
   }).isRequired,
   isActive: PropTypes.bool,
-  onClick: PropTypes.func
 };
