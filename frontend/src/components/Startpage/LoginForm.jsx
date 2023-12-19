@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from "react-router-dom";
-import { userStore } from "../stores/userStore";
+import { userStore } from "../../stores/userStore";
 import "./loginform.css";
 
 const LoginForm = () => {
