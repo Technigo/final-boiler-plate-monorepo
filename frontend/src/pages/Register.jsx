@@ -27,7 +27,7 @@ export const Register = () => {
     await storeHandleSignup(username, password, email, consent);
 
     // When the user has signed up successfully, navigate to log in page
-    const isSignedup = userStore.getState().isSignedup;
+    const isSignedup = userStore.getState((state) => state.isSignedup);
 
     if (isSignedup) {
       // If the signup is successful, navigate to the login route.
