@@ -30,7 +30,7 @@ const OccasionSelector = () => {
   const { occasions, selectedOccasion, fetchOccasions, setSelectedOccasion } = useRestaurantStore();
 
   useEffect(() => {
-    fetchOccasions(); // Fetch occasions when the component mounts
+    fetchOccasions();
   }, [fetchOccasions]);
 
   const handleOccasionSelect = (occasion) => {
@@ -42,15 +42,19 @@ const OccasionSelector = () => {
       <Navbar />
       <OccasionSelectorContainer>
         <h2>Here you decide what you have planned</h2>
-        {occasions.map((occasion, index) => (
-          <OccasionButton
-            key={index}
-            onClick={() => handleOccasionSelect(occasion)}
-            selected={selectedOccasion === occasion}
-          >
-            {occasion}
-          </OccasionButton>
-        ))}
+        {occasions && occasions.length > 0 ? (
+          occasions.map((occasion, index) => (
+            <OccasionButton
+              key={index}
+              onClick={() => handleOccasionSelect(occasion)}
+              selected={selectedOccasion === occasion}
+            >
+              {occasion}
+            </OccasionButton>
+          ))
+        ) : (
+          <p>Loading occasions...</p> // or some other placeholder
+        )}
       </OccasionSelectorContainer>
       <Footer />
     </PageContainer>

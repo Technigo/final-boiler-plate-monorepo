@@ -2,9 +2,9 @@ import express from 'express';
 import Restaurant from '../models/restaurantModel.js'; // Adjust the path as necessary
 import asyncHandler from 'express-async-handler'; // Ensure you have this package installed for handling async requests
 
-
 const router = express.Router();
 
+// Endpoint to search restaurants based on occasion and mood
 router.get('/restaurants/search', asyncHandler(async (req, res) => {
   // Extract occasion and mood query parameters from the request
   const { occasion, mood } = req.query;
@@ -15,16 +15,16 @@ router.get('/restaurants/search', asyncHandler(async (req, res) => {
   }
 
   // Ensure mood is provided and between 1 to 3 moods are selected
-  const moods = Array.isArray(mood) ? mood : [mood]; // Convert to array if not already
-  if (moods.length === 0 || moods.length > 3) {
-    return res.status(400).json({ message: 'You have to make a selection i 1 to 3 moods' });
+  const moo = Array.isArray(mood) ? mood : [mood]; // Convert to array if not already
+  if (mood.length === 0 || mood.length > 3) {
+    return res.status(400).json({ message: 'You have to make a selection of 1 to 3 moods' });
   }
 
   // Find restaurants that match the given occasion and mood
   try {
     const restaurants = await Restaurant.find({ 
       occasion: occasion, 
-      mood: { $in: moods } 
+      mood: { $in: mood } 
     });
 
     // Check if any restaurants were found
@@ -38,11 +38,21 @@ router.get('/restaurants/search', asyncHandler(async (req, res) => {
   }
 }));
 
-router.get('/api/occasions', asyncHandler(async (req, res) => {
-  console.log('Request object:', req);
+// Endpoint to get all occasions
+router.get('/api/occasion', asyncHandler(async (req, res) => {
   try {
-    const occasions = await Restaurant.distinct('occasion');
-    res.json(occasions);
+    const occasion = await Restaurant.distinct('occasion');
+    res.json(occasion);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+}));
+
+// Endpoint to get all moods
+router.get('/api/mood', asyncHandler(async (req, res) => {
+  try {
+    const mood = await Restaurant.distinct('mood');
+    res.json(mood);
   } catch (error) {
     res.status(500).json({ message: error.message });
   }

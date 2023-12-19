@@ -1,8 +1,9 @@
 import { create } from 'zustand';
 
+
 export const useRestaurantStore = create((set) => ({
-  occasions: [],
-  moods: [],
+  occasion: [],
+  mood: [],
   selectedOccasion: '',
   selectedMoods: [], // This is now an array
   results: [],
@@ -10,18 +11,17 @@ export const useRestaurantStore = create((set) => ({
   // Fetch occasions from the backend
   fetchOccasions: async () => {
     try {
-      const response = await fetch('/api/occasions');
+      const response = await fetch('/api/occasion');
       const occasions = await response.json();
       set({ occasions });
     } catch (error) {
       console.error('Error fetching occasions:', error);
     }
   },
-
-  // Fetch moods from the backend
+  
   fetchMoods: async () => {
     try {
-      const response = await fetch('/api/moods');
+      const response = await fetch('/api/mood');
       const moods = await response.json();
       set({ moods });
     } catch (error) {
@@ -33,7 +33,7 @@ export const useRestaurantStore = create((set) => ({
   setSelectedOccasion: (occasion) => set({ selectedOccasion: occasion }),
 
   // Update the selected moods
-  setSelectedMoods: (moods) => set({ selectedMoods: moods }), // Now takes an array of moods
+  setSelectedMoods: (mood) => set({ selectedMoods: mood }), // Now takes an array of moods
 
   // Fetch results based on selected occasion and moods
   fetchResults: async () => {
