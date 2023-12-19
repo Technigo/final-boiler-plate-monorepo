@@ -1,9 +1,9 @@
 // Import necessary components, hooks, and stores.
-import Logos from "../components/Logos";
 import { userStore } from "../stores/userStore";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
+import BackArrow from "../components/BackArrow";
 
 // Define the 'Register' functional component.
 export const Register = () => {
@@ -61,7 +61,7 @@ export const Register = () => {
         </ul>
       </nav>
       {/* Render the 'Logos' component. */}
-      <Logos />
+      <BackArrow />
       <div>
         {/* Display the heading and paragraphs. */}
         <h2>{text.heading}</h2>
