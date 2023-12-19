@@ -13,3 +13,7 @@
 .playground-details-container {
     border: 1px solid black;
   }
+
+  .highlight {
+    color:blue;
+  }
