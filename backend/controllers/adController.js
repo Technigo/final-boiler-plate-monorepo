@@ -28,7 +28,7 @@ export const getAdsController = asyncHandler(async (req, res) => {
 // desciption: POST Ad
 // route: /add
 // access: Private
-export const addAdController = asyncHandler(async (req, res) => {
+export const createAdController = asyncHandler(async (req, res) => {
   try {
     console.log("Request body:", req.body); // Log the entire request body
     console.log("req.file", req.file);

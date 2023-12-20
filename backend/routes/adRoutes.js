@@ -1,7 +1,7 @@
 // Import the necessary modules and functions
 import express from "express";
 import { authenticateUser } from "../middleware/authenticateUser"; // Import middleware for user authentication
-import parser from "../middlewares/imageUpload"; // Import the parser middleware for image upload
+import parser from "../middleware/imageUpload"; // Import the parser middleware for image upload
 import {
     getAllAdsController,
     getAdsController,
