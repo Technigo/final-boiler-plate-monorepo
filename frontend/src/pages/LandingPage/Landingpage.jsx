@@ -13,10 +13,9 @@ import { useRef } from "react";
 export const LandingPage = () => {
   const animationRef = useRef(null);
 
-  // adding random splats when pressing logo in navbar
   const addSplat = () => {
     if (animationRef.current) {
-      animationRef.current.addRandomSplats(10);
+      animationRef.current.addRandomSplats(10); // Adjust number of splats as needed
     }
   };
 
