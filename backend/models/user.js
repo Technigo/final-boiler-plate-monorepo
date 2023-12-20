@@ -18,6 +18,13 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  favorites: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Favorites', // Reference to the Playground model
+    },
+  ],
+
   createdAt: {
     type: Date,
     default: () => new Date()
