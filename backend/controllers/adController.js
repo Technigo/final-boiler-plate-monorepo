@@ -57,6 +57,7 @@ export const createAdController = asyncHandler(async (req, res) => {
       unit,
       address,
       pickupDate,
+      observation,
       available,
       tags,
     } = req.body;
@@ -102,6 +103,7 @@ export const createAdController = asyncHandler(async (req, res) => {
       unit,
       address,
       pickupDate,
+      observation,
       image: imageUrl,
       imageId: imageId,
       user: userFromStorage,
