@@ -8,7 +8,6 @@ export const LandingPage = () => {
     <div>
       <NavBar />
       <Hero />
-
       <div>
         <Outlet /> {/* This is where the content will change */}
       </div>

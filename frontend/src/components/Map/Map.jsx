@@ -1,7 +1,7 @@
 /* eslint-disable react-refresh/only-export-components */
 /* eslint-disable no-undef */
 
-import { useState, useCallback } from "react";
+import { useState, useCallback, memo } from "react";
 import {
   LoadScript,
   GoogleMap,
@@ -9,12 +9,128 @@ import {
   InfoWindow,
   Autocomplete,
 } from "@react-google-maps/api";
-import { memo } from "react";
 import "./Map.css";
 
 const libraries = ["places"];
 
+const styles = {
+  retro: [
+    { elementType: "geometry", stylers: [{ color: "#ebe3cd" }] },
+    { elementType: "labels.text.fill", stylers: [{ color: "#523735" }] },
+    {
+      elementType: "labels.text.stroke",
+      stylers: [{ color: "#f5f1e6" }],
+    },
+    {
+      featureType: "administrative",
+      elementType: "geometry.stroke",
+      stylers: [{ color: "#c9b2a6" }],
+    },
+    {
+      featureType: "administrative.land_parcel",
+      elementType: "geometry.stroke",
+      stylers: [{ color: "#dcd2be" }],
+    },
+    {
+      featureType: "administrative.land_parcel",
+      elementType: "labels.text.fill",
+      stylers: [{ color: "#ae9e90" }],
+    },
+    {
+      featureType: "landscape.natural",
+      elementType: "geometry",
+      stylers: [{ color: "#dfd2ae" }],
+    },
+    {
+      featureType: "poi",
+      elementType: "geometry",
+      stylers: [{ color: "#dfd2ae" }],
+    },
+    {
+      featureType: "poi",
+      elementType: "labels.text.fill",
+      stylers: [{ color: "#93817c" }],
+    },
+    {
+      featureType: "poi.park",
+      elementType: "geometry.fill",
+      stylers: [{ color: "#a5b076" }],
+    },
+    {
+      featureType: "poi.park",
+      elementType: "labels.text.fill",
+      stylers: [{ color: "#447530" }],
+    },
+    {
+      featureType: "road",
+      elementType: "geometry",
+      stylers: [{ color: "#f5f1e6" }],
+    },
+    {
+      featureType: "road.arterial",
+      elementType: "geometry",
+      stylers: [{ color: "#fdfcf8" }],
+    },
+    {
+      featureType: "road.highway",
+      elementType: "geometry",
+      stylers: [{ color: "#f8c967" }],
+    },
+    {
+      featureType: "road.highway",
+      elementType: "geometry.stroke",
+      stylers: [{ color: "#e9bc62" }],
+    },
+    {
+      featureType: "road.highway.controlled_access",
+      elementType: "geometry",
+      stylers: [{ color: "#e98d58" }],
+    },
+    {
+      featureType: "road.highway.controlled_access",
+      elementType: "geometry.stroke",
+      stylers: [{ color: "#db8555" }],
+    },
+    {
+      featureType: "road.local",
+      elementType: "labels.text.fill",
+      stylers: [{ color: "#806b63" }],
+    },
+    {
+      featureType: "transit.line",
+      elementType: "geometry",
+      stylers: [{ color: "#dfd2ae" }],
+    },
+    {
+      featureType: "transit.line",
+      elementType: "labels.text.fill",
+      stylers: [{ color: "#8f7d77" }],
+    },
+    {
+      featureType: "transit.line",
+      elementType: "labels.text.stroke",
+      stylers: [{ color: "#ebe3cd" }],
+    },
+    {
+      featureType: "transit.station",
+      elementType: "geometry",
+      stylers: [{ color: "#dfd2ae" }],
+    },
+    {
+      featureType: "water",
+      elementType: "geometry.fill",
+      stylers: [{ color: "#b9d3c2" }],
+    },
+    {
+      featureType: "water",
+      elementType: "labels.text.fill",
+      stylers: [{ color: "#92998d" }],
+    },
+  ],
+};
+
 export const Map = () => {
+  const [map, setMap] = useState(null);
   const [markers, setMarkers] = useState([]);
   const [selectedMarker, setSelectedMarker] = useState(null);
   const [mapCenter, setMapCenter] = useState({
@@ -51,13 +167,25 @@ export const Map = () => {
     setAutocomplete(autocomplete);
   };
 
+  const onMapLoad = useCallback((mapInstance) => {
+    setMap(mapInstance);
+  }, []);
+
   const onPlaceChanged = () => {
     if (autocomplete !== null) {
       const place = autocomplete.getPlace();
-      setMapCenter({
-        lat: place.geometry.location.lat(),
-        lng: place.geometry.location.lng(),
-      });
+      if (place.geometry && place.geometry.location) {
+        const newCenter = {
+          lat: place.geometry.location.lat(),
+          lng: place.geometry.location.lng(),
+        };
+        setMapCenter(newCenter); // Update the map center state
+        if (map) {
+          map.setZoom(14); // Optionally set the zoom on the map instance directly
+        }
+      } else {
+        console.error("Place has no geometry");
+      }
     }
   };
 
@@ -65,15 +193,19 @@ export const Map = () => {
     <LoadScript
       googleMapsApiKey={import.meta.env.VITE_GOOGLE_MAPS_API_KEY}
       libraries={libraries}>
-      <Autocomplete onLoad={onLoadAutocomplete} onPlaceChanged={onPlaceChanged}>
+      <Autocomplete
+        onLoad={onLoadAutocomplete}
+        onPlaceChanged={onPlaceChanged}
+        types={["address"]}>
         <input type="text" placeholder="Search location" />
       </Autocomplete>
       <GoogleMap
+        onLoad={onMapLoad}
         mapContainerClassName="my-map-container"
         center={mapCenter}
         zoom={4}
         onClick={onMapClick}
-        options={{ styles: styles.retro }}>
+        options={{ styles: styles.retro, streetViewControl: false }}>
         {markers.map((marker, index) => (
           <Marker
             key={index}
