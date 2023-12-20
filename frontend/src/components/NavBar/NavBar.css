@@ -1,5 +1,4 @@
 .Navbar-wrapper {
-
   position: relative;
   display: flex;
   justify-content: space-between;
@@ -15,6 +14,7 @@
   height: 100px;
   filter: invert(1);
   margin-bottom: -42px;
+  z-index: 10;
 }
 
 .hamburger {
@@ -64,12 +64,16 @@
     height: 140px;
     margin-bottom: -60px;
   }
+  .logo:hover {
+    transform: scale(1.1);
+  }
 
   .nav-links {
     display: flex;
     justify-content: space-evenly;
     width: 100%;
     margin-bottom: -60px;
+    z-index: 10;
   }
   .nav-links a {
     text-decoration: none;
@@ -82,12 +86,9 @@
     transition: transform 0.3s ease;
   }
 
-
   .nav-item:hover {
-    transform: scale(1.3); /* Slightly enlarge the item on hover */
-    /* You can adjust the scale value as needed */
+    transform: scale(1.3);
   }
-
 }
 
 @media (min-width: 1280px) {
@@ -104,4 +105,3 @@
     font-size: 30px;
   }
 }
-
