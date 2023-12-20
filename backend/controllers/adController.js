@@ -33,7 +33,7 @@ export const createAdController = asyncHandler(async (req, res) => {
     console.log("Request body:", req.body); // Log the entire request body
     console.log("req.file", req.file);
     // Extract the ad data from the request body
-    const { title, description, product, quantity, unit, address, pickupTime } = req.body;
+    const { title, description, product, quantity, unit, address, pickupDate } = req.body;
 
     // Extract the accessToken from the request header key "Authorization"
     const accessToken = req.header("Authorization"); // we are requesting the Authorization key from the headerObject
@@ -69,7 +69,7 @@ export const createAdController = asyncHandler(async (req, res) => {
       quantity,
       unit,
       address,
-      pickupTime,
+      pickupDate,
       image: imageUrl,
       imageId: imageId,
       user: userFromStorage,

@@ -42,7 +42,7 @@ export const adSchema = new Schema(
             type: String,
             required: true
         },
-        pickupTime: {
+        pickupDate: {
             type: Date,
             default: Date.now
         },
