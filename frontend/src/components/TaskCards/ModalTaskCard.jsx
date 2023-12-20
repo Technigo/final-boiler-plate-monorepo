@@ -39,7 +39,7 @@ const categoryStyle = {
 
 //handleEdit, deleteTaskById lägga till med task om dessa funktioner skall finnas här?
 export const ModalTaskCard = ({ task }) => {
-  const { _id, category, area, description } = task;
+  const { _id, category, area, description } = task || {};
 
   //Ska vi ta bort efter || då alla fält i createTask är tvingande?
   const { icon: CategoryIcon, backgroundColor } = categoryStyle[category] || {
@@ -52,7 +52,7 @@ export const ModalTaskCard = ({ task }) => {
       <li key={_id}>
         <IoCloseOutline style={{ width: "32px", height: "32px" }} />
         {CategoryIcon && <CategoryIcon size={iconSize} />}
-        <h3>{task.task}</h3>
+        <h3>{task}</h3>
         <p>{category}</p>
         <p>{area}</p>
         <p>{description}</p>
