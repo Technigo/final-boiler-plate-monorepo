@@ -17,12 +17,12 @@ export const CreateAd = () => {
     e.preventDefault();
 
     // Basic validation
-    if (!image || !title || !description || !product || !quantity || !unit || !address || !pickUpTime) {
+    if (!image || !title || !description || !product || !quantity || !unit || !address || !pickupDate) {
       alert("All fields are required");
       return;
     }
 
-    await createAd({ title, description, product, quantity, unit, address, pickUpTime }, image);
+    await createAd({ title, description, product, quantity, unit, address, pickupDate }, image);
 
     // Reset form fields after submission
     setImage(null);
