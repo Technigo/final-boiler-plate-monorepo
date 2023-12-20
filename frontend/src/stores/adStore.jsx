@@ -82,6 +82,7 @@ export const adStore = create((set) => ({
       formData.append('quantity', newAdData.quantity);
       formData.append('unit', newAdData.unit);
       formData.append('address', newAdData.address);
+      formData.append('observation', newAdData.observation);
       formData.append('pickupDate', newAdData.pickupDate);
       // Assuming 'available' is a boolean, it should not be set from the model but rather a static value or state.
       formData.append('available', true); // or whatever the logic is to set this

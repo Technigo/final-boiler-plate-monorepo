@@ -9,6 +9,7 @@ export const CreateAd = () => {
   const [quantity, setQuantity] = useState('');
   const [unit, setUnit] = useState('');
   const [address, setAddress] = useState('');
+  const [observation, setObservation] = useState('');
   const [pickupDate, setPickupDate] = useState('');
 
   const { createAd } = adStore();
@@ -22,17 +23,18 @@ export const CreateAd = () => {
       return;
     }
 
-    await createAd({ title, description, product, quantity, unit, address, pickupDate }, image);
+    await createAd({ title, description, product, quantity, unit, address, observation, pickupDate }, image);
 
     // Reset form fields after submission
     setImage(null);
-    setTitle('');
-    setDescription('');
-    setProduct('');
-    setQuantity('');
-    setUnit('');
-    setAddress('');
-    setPickupDate('');
+    setTitle("");
+    setDescription("");
+    setProduct("");
+    setQuantity("");
+    setUnit("");
+    setAddress("");
+    setObservation("");
+    setPickupDate("");
   };
 
   return (
@@ -64,6 +66,10 @@ export const CreateAd = () => {
       <div>
         <label>Pickup Time:</label>
         <input type="datetime-local" value={pickupDate} onChange={(e) => setPickupDate(e.target.value)} />
+      </div>
+      <div>
+        <label>Observation:</label>
+        <input type="text" value={address} onChange={(e) => setObservation(e.target.value)} />
       </div>
       <div>
         <label>Image:</label>

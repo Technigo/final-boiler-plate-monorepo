@@ -24,6 +24,7 @@ const AdDetails = ({ match }) => {
       <p>Product: {ad.product}</p>
       <p>Quantity: {ad.quantity} {ad.unit}</p>
       <p>Pickup Date: {new Date(ad.pickupDate).toLocaleDateString()}</p>
+      <p>Observation: {ad.observation}</p>
       <p>Posted by: {ad.user?.username}</p>
       <button onClick={() => {/* logic to send message */}}>
         Contact Advertiser
