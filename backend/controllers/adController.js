@@ -3,6 +3,8 @@ import { AdModel } from "../models/AdModel";
 import asyncHandler from "express-async-handler";
 // We need to import the userModel to check for the famous accesstoken
 import { UserModel } from "../models/UserModel";
+// Import cloudinary configuration
+import cloudinary from "../config/cloudinaryConfig";
 
 // desciption: Get Ads
 // route: /getAllAds
