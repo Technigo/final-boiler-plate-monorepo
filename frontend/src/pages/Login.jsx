@@ -1,11 +1,12 @@
-// Import the 'Logos' component and the 'Link' component from 'react-router-dom'.
-// import Logos from "../components/Logos";
+import "./Login.css";
 import { Link } from "react-router-dom";
 // Import the 'userStore' from the 'userStore' module.
 import { userStore } from "../stores/userStore"; // Make sure this is correctly imported
 // Import the 'useState' and 'useNavigate' hooks from 'react'.
 import { useState } from "react";
 import { useNavigate } from "react-router-dom"; // Import useNavigate
+import { Input } from "../components/Input";
+import { Button } from "../components/Button";
 
 // Define the 'Login' functional component.
 export const Login = () => {
@@ -42,54 +43,59 @@ export const Login = () => {
     }
   };
 
-  // Text content for the heading and paragraphs.
-  const text = {
-    heading: "Login Page",
-    intro: "login here...",
-    loremIpsum:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore, vitae fugit ipsam quo accusantium autem officia necessitatibus ullam voluptati",
-  };
-
-  // Render the component content.
   return (
-    <>
-      <nav>
-        {/* Create a navigation menu with links to the login and sign-up routes. */}
-        <ul className="app-ul">
-          <li className="app-li">
-            <Link to="/">Login</Link>
-          </li>
-          <li className="app-li">
-            <Link to="/register">Sign Up</Link>
-          </li>
-        </ul>
-      </nav>
-      {/* Render the 'Logos' component. */}
-      {/* <Logos /> */}
-      <div>
-        {/* Display the heading and paragraphs. */}
-        <h2>{text.heading}</h2>
-        <p>{text.intro}</p>
-        <p>{text.loremIpsum}</p>
-        <div className="user-login">
-          {/* Create input fields for 'username' and 'password' and associate them with state variables. */}
-          <input
-            type="text"
-            placeholder="Username"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-          />
-          <input
-            type="password"
-            placeholder="Password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-          {/* Create a button for logging in and attach the 'onLoginClick' event handler. */}
-          <button onClick={onLoginClick}>Login</button>
+    <div className="login-wrapper">
+      <div className="bg-wrapper">
+        <img src="./login-register-bg.png" alt="" className="bg-img" />
+        <div className="overlay">
+          {/* Display the heading and paragraphs. */}
+          <div className="big-logo">
+            <img
+              src="./big-logo-sand.svg"
+              alt="Plants by Holm and Witting logo"
+            />
+          </div>
+          <div className="user-login">
+            {/* Create input fields for 'username' and 'password' and associate them with state variables. */}
+            <div className="input-container">
+              <Input
+                type="text"
+                placeholder="Username"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
+                ariaLabel="Username input"
+              />
+              <Input
+                type="password"
+                placeholder="Password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                ariaLabel="Password input"
+              />
+            </div>
+            <a className="forgot-password">Forgot Password?</a>
+            {/* Create a button for logging in and attach the 'onLoginClick' event handler. */}
+            <Button
+              className="login-btn"
+              onClick={onLoginClick}
+              btnText="Login"
+              ariaLabel="login button"
+            />
+          </div>
+          <nav className="register-link-container">
+            {/* Create a navigation menu with links to the login and sign-up routes. */}
+            <ul className="app-ul">
+              <li className="app-li">
+                <span>Don't have an account?</span>
+                <Link to="/register">
+                  Become a <b>member</b>
+                </Link>
+              </li>
+            </ul>
+          </nav>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

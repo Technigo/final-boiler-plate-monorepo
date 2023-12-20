@@ -1,0 +1,9 @@
+.inspo-wrapper {
+   display: flex;
+}
+
+.inspo-box {
+    background-color: var(--spring);
+    width: 50%;
+    height: 100px; 
+}

@@ -22,7 +22,7 @@ JOSEFIN SANS (400, 500, 600, 700 ----------*/
 
   /*---------- Fonts ----------*/
   --title-font: "Josefin Sans", sans-serif;
-  --p-font: "Montserrat", sans-serif;
+  --montserrat: "Montserrat", sans-serif;
   --big-h-font: "Playfair Display", serif;
 }
 
@@ -47,6 +47,20 @@ h4,
 h5,
 h6 {
   overflow-wrap: break-word;
+}
+
+.section-title {
+  font-family: var(--big-h-font);
+  font-size: 3.5rem;
+  color: var(--charcoal);
+  font-weight: 900;
+  letter-spacing: 0.1375rem;
+}
+
+.card-name {
+  font-family: var(--montserrat);
+  font-size: 1.25rem;
+  color: var(--chalk);
 }
 
 a {

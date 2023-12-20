@@ -4,7 +4,12 @@ import { userStore } from "../stores/userStore";
 import { useNavigate } from "react-router-dom";
 // import Logos from "../components/Logos";
 import { Link } from "react-router-dom";
+import { Hero } from "../components/Hero"
 import { Banner } from "../components/banner/Banner";
+import { BestSellers } from "../components/BestSellers";
+import { InspoSection } from "../components/InspoSection";
+import { CharacterCard } from "../components/CharacterCard";
+import { InstagramSection } from "../components/InstagramSection"; 
 
 // Define the 'Home' functional component.
 export const Home = () => {
@@ -46,6 +51,7 @@ export const Home = () => {
   // Render the component content.
   return (
     <>
+      <Hero /> 
       {/* <nav>
         {/* Create a navigation menu with links to various routes. */}
         {/* <ul className="app-ul">
@@ -61,8 +67,6 @@ export const Home = () => {
           </li>
         </ul>
       </nav> */}
-      {/* Render the 'Logos' component. */}
-      {/* <Logos /> */}
       {/* Display the heading and subheading. */}
       {/* <h1 className="heading">{text.heading}</h1>
       <h2>{text.subheading}</h2>
@@ -70,6 +74,10 @@ export const Home = () => {
       {/* Display additional content (text.intro is missing). */}
       {/*<p>{text.intro}</p> */}
       <Banner />
+      <BestSellers />
+      <InspoSection />
+      <CharacterCard />
+      <InstagramSection />
     </>
   );
 };

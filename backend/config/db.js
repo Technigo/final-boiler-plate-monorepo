@@ -10,7 +10,7 @@ import dotenv from "dotenv";
 dotenv.config();
 
 // Define an asynchronous function 'connectDB' to connect to the MongoDB database
-export const connectDB = async () => {
+export const connectDB = asyncHandler(async () => {
   try {
     // Attempt to connect to the MongoDB database using the URL from the environment variables
     // Mongoose Method: mongoose.connect()
@@ -26,4 +26,4 @@ export const connectDB = async () => {
     // Exit the Node.js process with an exit code of 1 to indicate an error
     process.exit(1);
   }
-};
+});

@@ -1,0 +1,9 @@
+.hero-wrapper {
+    background-color: var(--chalk);
+    display: flex;
+}
+
+.hero-wrapper img {
+    width: 40%; 
+}
+

@@ -153,7 +153,7 @@
     },
     "images": {
       "preview_url": "",
-      "full_size_url": "frontend/public/plant-images/rubber-plant.jpeg"
+      "full_size_url": "/uploads/rubber-plant.jpeg"
     },
     "price": 49.95,
     "added_to_wishlist": false
@@ -177,7 +177,7 @@
     },
     "images": {
       "preview_url": "",
-      "full_size_url": "frontend/public/plant-images/raven-zz.jpeg"
+      "full_size_url": "/uploads/raven-zz.jpeg"
     },
     "price": 49,
     "added_to_wishlist": false
@@ -225,7 +225,7 @@
     },
     "images": {
       "preview_url": "",
-      "full_size_url": "frontend/public/plant-images/aloe-vera.png"
+      "full_size_url": "/uploads/aloe-vera.png"
     },
     "price": 22.95,
     "added_to_wishlist": false
@@ -249,7 +249,7 @@
     },
     "images": {
       "preview_url": "",
-      "full_size_url": "frontend/public/plant-images/snake-plant.jpeg"
+      "full_size_url": "/uploads/snake-plant.jpeg"
     },
     "price": 39,
     "added_to_whishlist": false
@@ -273,7 +273,7 @@
     },
     "images": {
       "preview_url": "",
-      "full_size_url": "frontend/public/plant-images/ficus-burgundy.jpeg"
+      "full_size_url": "/uploads/ficus-burgundy.jpeg"
     },
     "price": 69.95,
     "added_to_whishlist": false
@@ -345,7 +345,7 @@
     },
     "images": {
       "preview_url": "",
-      "full_size_url": "frontend/public/plant-images/spider.png"
+      "full_size_url": "/uploads/spider.png"
     },
     "price": 13.95,
     "added_to_whishlist": false
@@ -405,7 +405,7 @@
     },
     "images": {
       "preview_url": "",
-      "full_size_url": "frontend/public/plant-images/peperomia-hope.jpeg"
+      "full_size_url": "/uploads/peperomia-hope.jpeg"
     },
     "price": 7.95,
     "added_to_whishlist": false
@@ -466,7 +466,7 @@
     },
     "images": {
       "preview_url": "",
-      "full_size_url": "frontend/public/plant-images/philodendron-micans.jpeg"
+      "full_size_url": "/uploads/philodendron-micans.jpeg"
     },
     "price": 29,
     "added_to_whishlist": false
@@ -497,7 +497,7 @@
     },
     "images": {
       "preview_url": "",
-      "full_size_url": "frontend/public/plant-images/crete-flame.jpg"
+      "full_size_url": "/uploads/crete-flame.jpg"
     },
     "price": 11.95,
     "added_to_whishlist": false
@@ -553,7 +553,7 @@
     },
     "images": {
       "preview_url": "",
-      "full_size_url": "frontend/public/plant-images/money-tree.jpg"
+      "full_size_url": "/uploads/money-tree.jpg"
     },
     "price": 27.95,
     "added_to_whishlist": false
@@ -582,7 +582,7 @@
     },
     "images": {
       "preview_url": "",
-      "full_size_url": "frontend/public/plant-images/philodendron-lemon-lime.jpeg"
+      "full_size_url": "/uploads/philodendron-lemon-lime.jpeg"
     },
     "price": 13.95,
     "added_to_whishlist": false
@@ -630,7 +630,7 @@
     },
     "images": {
       "preview_url": "",
-      "full_size_url": "frontend/public/plant-images/philodendron-mayoi.jpg"
+      "full_size_url": "/uploads/philodendron-mayoi.jpg"
     },
     "price": 25,
     "added_to_whishlist": false

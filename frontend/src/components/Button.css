@@ -1,0 +1,9 @@
+button {
+  border-radius: 2.5rem;
+  padding: 0.75rem 0.625rem;
+  font-family: var(--title-font);
+  font-size: 1.25rem;
+  font-weight: 700;
+  height: 3rem;
+
+}

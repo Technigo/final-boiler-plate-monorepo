@@ -6,20 +6,23 @@ import { Register } from "../pages/Register";
 import { Tasks } from "../pages/Tasks";
 import { Login } from "../pages/Login";
 import { NotFound } from "../pages/NotFound";
+import { ProductPage } from "../pages/ProductPage"
 
 // Define the 'routes' variable as a JSX expression.
 const routes = (
   <>
     {/* Define a route for the root path ('/') that renders the 'Login' component. */}
-    <Route path="/" element={<Login />} />
+    <Route path="/" element={<Home />} />
     {/* Define a route for the '/home' path that renders the 'Home' component. */}
-    <Route path="/home" element={<Home />} />
+    <Route path="/login" element={<Login />} />
     {/* Define a route for the '/tasks' path that renders the 'Tasks' component. */}
-    <Route path="/tasks" element={<Tasks />} />
+    {/* <Route path="/tasks" element={<Tasks />} /> */}
     {/* Define a route for the '/register' path that renders the 'Register' component. */}
     <Route path="/register" element={<Register />} />
     {/* Define a catch-all route that matches any other path ('*') and renders the 'NotFound' component. */}
     <Route path="*" element={<NotFound />} />
+    <Route path="/plants/:is" element={ProductPage}/>
+    
   </>
 );
 
