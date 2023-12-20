@@ -1,15 +1,15 @@
 // Import necessary dependencies and components.
 import { useEffect } from "react";
-import { userStore } from "../stores/userStore";
+import { userStore } from "../../stores/userStore";
 import { useNavigate } from "react-router-dom";
 // import Logos from "../components/Logos";
 import { Link } from "react-router-dom";
-import { Hero } from "../components/Hero"
-import { Banner } from "../components/banner/Banner";
-import { BestSellers } from "../components/BestSellers";
-import { InspoSection } from "../components/InspoSection";
-import { CharacterCard } from "../components/CharacterCard";
-import { InstagramSection } from "../components/InstagramSection"; 
+import { Hero } from "../../components/homeComponents/Hero"
+import { Banner } from "../../components/banner/Banner";
+import { BestSellers } from "../../components/homeComponents/BestSellers";
+import { InspoSection } from "../../components/homeComponents/InspoSection";
+import { ByCharacteristic } from "../../components/homeComponents/ByCharacteristic";
+import { InstagramSection } from "../../components/homeComponents/InstagramSection"; 
 
 // Define the 'Home' functional component.
 export const Home = () => {
@@ -76,7 +76,7 @@ export const Home = () => {
       <Banner />
       <BestSellers />
       <InspoSection />
-      <CharacterCard />
+      <ByCharacteristic />
       <InstagramSection />
     </>
   );

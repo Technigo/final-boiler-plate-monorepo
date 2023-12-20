@@ -23,8 +23,8 @@ export const getPlantsController = asyncHandler(async (req, res) => {
 // route: /get
 // access: Public
 export const getPlantController = asyncHandler(async (req, res) => {
-    const plantId = req.params.plantId
-    await PlantModel.findOne({ _id: plantId})
+    const { id } = req.params
+    await PlantModel.findOne({ _id: id})
     .then((plant) => {
         if (plant) {
             res.json(plant)

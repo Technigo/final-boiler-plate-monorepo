@@ -1,12 +1,12 @@
 // Import the 'Route' component from the 'react-router-dom' library.
 import { Route } from "react-router-dom";
 // Import various page components used as route elements.
-import { Home } from "../pages/Home";
-import { Register } from "../pages/Register";
-import { Tasks } from "../pages/Tasks";
-import { Login } from "../pages/Login";
-import { NotFound } from "../pages/NotFound";
-import { ProductPage } from "../pages/ProductPage"
+import { Home } from "../pages/home/Home";
+import { Register } from "../pages/register/Register";
+// import { Tasks } from "../pages/Tasks";
+import { Login } from "../pages/login/Login";
+import { NotFound } from "../pages/notfound/NotFound";
+import { ProductPage } from "../pages/productPage/ProductPage"
 
 // Define the 'routes' variable as a JSX expression.
 const routes = (
@@ -21,7 +21,7 @@ const routes = (
     <Route path="/register" element={<Register />} />
     {/* Define a catch-all route that matches any other path ('*') and renders the 'NotFound' component. */}
     <Route path="*" element={<NotFound />} />
-    <Route path="/plants/:is" element={ProductPage}/>
+    <Route path="/plants/:id" element={<ProductPage />}/>
     
   </>
 );

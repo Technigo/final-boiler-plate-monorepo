@@ -1,7 +1,9 @@
 import { useState, useEffect } from "react";
-import { IoHeart } from "react-icons/io5";
+import { PiHeartStraightFill } from "react-icons/pi";
+
 import "./BestSellers.css";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 
 export const BestSellers = () => {
@@ -9,6 +11,7 @@ export const BestSellers = () => {
   const [error, setError] = useState(null);
 
   console.log("PLANTS:", plantList);
+  const navigate = useNavigate()
 
   const popularApi = "http://localhost:3000/plants";
 
@@ -38,18 +41,18 @@ export const BestSellers = () => {
         <div className="products-wrapper">
           {plantList.map((plant) => {
             return (
-              <Link to={"/plants/${plant.id}"} key={plant._id}>
+              <div onClick={() => navigate(`/plants/${plant._id}`)} key={plant._id}>
                 <div className="plant-card" >
-                  <img src={plant.images.full_size_url} alt="" />
+                  <img className="preview-plant-img" src={plant.images.full_size_url} alt="" />
                   <div className="product-overlay">
-                    <IoHeart className="like-icon" />
+                    <PiHeartStraightFill className="like-icon" />
                     <div className="title-price-container">
                       <h3 className="card-name">{plant.plant_title}</h3>
-                      <span className="card-price">{plant.price}</span>
+                      <span className="card-price">€{plant.price}</span>
                     </div>
                   </div>
                 </div>
-              </Link>
+              </div>
             );
           })}
         </div>

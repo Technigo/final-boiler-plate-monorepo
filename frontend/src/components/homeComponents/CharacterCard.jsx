@@ -11,17 +11,17 @@ export const CharacterCard = () => {
     ]
 
   return (
-    <>
+    <div className="cards-container">
         {cards.map((card) => {
             return (
                 <div className="character-card-wrapper" key={card.id}>
-                <h3>{card.heading}</h3>
-                <Link to="">SHOP NOW</Link>
-                <img src={card.image} alt={card.imgAlt} />
+                    <h3>{card.heading}</h3>
+                    <Link to="" className="shop-now-link">shop now</Link>
+                    <img src={card.image} alt={card.imgAlt} />
                 </div>
             )
         })}
     
-    </>
+    </div>
   )
 }

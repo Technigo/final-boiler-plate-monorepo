@@ -1,12 +1,12 @@
 import "./Login.css";
 import { Link } from "react-router-dom";
 // Import the 'userStore' from the 'userStore' module.
-import { userStore } from "../stores/userStore"; // Make sure this is correctly imported
+import { userStore } from "../../stores/userStore"; // Make sure this is correctly imported
 // Import the 'useState' and 'useNavigate' hooks from 'react'.
 import { useState } from "react";
 import { useNavigate } from "react-router-dom"; // Import useNavigate
-import { Input } from "../components/Input";
-import { Button } from "../components/Button";
+import { Input } from "../../components/inputs/Input";
+import { Button } from "../../components/buttons/Button";
 
 // Define the 'Login' functional component.
 export const Login = () => {

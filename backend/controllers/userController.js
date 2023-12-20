@@ -29,7 +29,7 @@ export const registerUserController = asyncHandler(async (req, res) => {
       throw new Error("Please add all fields");
     }
     // 2nd Condition
-    // Check if the current user trying to register is using an usernam or email that matches with the same username or email in the database, so they would have to choose something diferent
+    // Check if the current user trying to register is using an username or email that matches with the same username or email in the database, so they would have to choose something diferent
     const existingUser = await UserModel.findOne({
       $or: [{ username }, { email }],
     });

@@ -1,5 +1,5 @@
 import React from 'react'
-import { Button } from "../components/Button"
+import { Button } from "../../components/buttons/Button"
 
 import "./InspoSection.css"
 
@@ -13,9 +13,9 @@ export const InspoSection = () => {
 
   return (
     <section className="inspo-wrapper">
-        <div className="text-and-button-wrapper">
-        <h2>{text.heading}</h2>
-        <p>{text.text}</p>
+        <div className="text-button-wrapper">
+        <h2 className="section-title">{text.heading}</h2>
+        <p className="inspo-text">{text.text}</p>
         
         <Button
               className="inspo-btn"

@@ -9,7 +9,7 @@ export const InstagramSection = () => {
     }
   return (
     <section className="insta-section-wrapper">
-        <h2>{text.heading}</h2>
+        <h2 className="section-title">{text.heading}</h2>
         <div>instagram carousel!</div>
         <p>{text.text}</p>
     </section>
