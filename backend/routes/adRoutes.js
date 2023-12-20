@@ -5,6 +5,7 @@ import parser from "../middleware/imageUpload"; // Import the parser middleware 
 import {
     getAllAdsController,
     getAdsController,
+    getAdByIdController,
     updateAdController,
     deleteAllAdsController,
     deleteSpecificAdController,
@@ -19,6 +20,9 @@ router.get("/getAllAds", getAllAdsController);
 
 // Define a route for handling GET requests to retrieve all ads
 router.get("/get", authenticateUser, getAdsController); // When a GET request is made to /get, authenticate the user using middleware and then execute the getAdsController function
+
+// Define a route for handling GET requests to retrieve a specific ad by ID
+router.get("/getAd/:id", getAdByIdController);
 
 // Define a route for handling PUT requests to update a specific ad by ID
 router.put("/update/:id", updateAdController); // When a PUT request is made to /update/:id, execute the updateAdController function

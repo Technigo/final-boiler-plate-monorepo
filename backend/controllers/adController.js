@@ -6,7 +6,7 @@ import { UserModel } from "../models/UserModel";
 
 // desciption: Get Ads
 // route: /getAllAds
-// access: Private
+// access: Public
 export const getAllAdsController = asyncHandler(async (req, res) => {
   const userStorage = req.user;
   const allAds = await AdModel.find().populate("user", "username");
@@ -15,7 +15,7 @@ export const getAllAdsController = asyncHandler(async (req, res) => {
 
 // desciption: Get Ads
 // route: /getAds
-// access: Private
+// access: Prublic
 export const getAdsController = asyncHandler(async (req, res) => {
   const userStorage = req.user;
   const ads = await AdModel.find({ user: userStorage })
@@ -23,6 +23,22 @@ export const getAdsController = asyncHandler(async (req, res) => {
     .populate("user", "username"); // Populate the user field
 
   res.json(ads);
+});
+
+// Description: Get a specific Ad by its ID
+// Route: /getAd/:id
+// Access: Public 
+export const getAdByIdController = asyncHandler(async (req, res) => {
+  const { id } = req.params; // Extract the ID from the request parameters
+  try {
+    const ad = await AdModel.findById(id).populate("user", "username");
+    if (!ad) {
+      return res.status(404).json({ message: "Ad not found" });
+    }
+    res.json(ad);
+  } catch (error) {
+    res.status(500).json({ message: "Error fetching ad", error: error.message });
+  }
 });
 
 // desciption: POST Ad
@@ -108,7 +124,6 @@ export const updateAdController = asyncHandler(async (req, res) => {
   const { id } = req.params;
   const updateData = req.body; // This contains the fields to be updated
 
-  // Optionally, if you're updating the image, handle the image file upload and get the new image URL and ID
   if (req.file) {
     try {
       // Upload the new image file to Cloudinary
