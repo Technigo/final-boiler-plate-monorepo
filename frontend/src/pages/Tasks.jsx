@@ -25,6 +25,7 @@ export const Tasks = () => {
 
   // Use the 'useEffect' hook to fetch tasks when 'tasks' or 'accessToken' change.
   useEffect(() => {
+    //console.log("useEffect", accessToken);
     fetchTasks();
   }, [fetchTasks, accessToken]);
 
@@ -36,7 +37,7 @@ export const Tasks = () => {
   // Get 'isLoggedIn' and 'accessToken' from the 'userStore'.
   const { isLoggedIn } = userStore();
   //console.log(isLoggedIn);
-  console.log(accessToken);
+  //console.log(accessToken);
 
   // useEffect hook to check user authentication status.
   useEffect(() => {

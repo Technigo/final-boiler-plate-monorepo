@@ -18,7 +18,14 @@ export const taskSchema = new Schema(
     },
     area: {
       type: String,
-      enum: ["Varberg City Center", "Himle", "Tvååker", "Veddige"],
+      enum: [
+        "Varberg City Center",
+        "Himle",
+        "Kungsäter",
+        "Rolfstorp",
+        "Tvååker",
+        "Veddige",
+      ],
       required: true,
     },
     description: {

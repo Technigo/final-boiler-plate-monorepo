@@ -20,6 +20,12 @@ const StyledButton = styled.div`
 // />;
 
 // Radera bilddelen om det aldrig kommer till användning!
-export const Button = ({ buttonName, className }) => {
-  return <StyledButton className={className}>{buttonName}</StyledButton>;
+export const Button = ({ buttonName, className, onClick }) => {
+  return (
+    <StyledButton className={className} onClick={onClick}>
+      {buttonName}
+    </StyledButton>
+  );
 };
+
+//
