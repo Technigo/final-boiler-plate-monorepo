@@ -3,7 +3,7 @@ import { userStore } from '../store/userStore';
 import { useState } from "react";
 // import { useNavigate } from "react-router-dom";
 // import { Link } from "react-router-dom";
-
+import './Register.css'
 
 export const Register = () => {
 
