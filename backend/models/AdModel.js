@@ -9,7 +9,11 @@ const { Schema } = mongoose;
 export const adSchema = new Schema(
     {
         image: {
-            type: String, // Store the image as Base64
+            type: String, // Store URL for the image
+            required: true
+        },
+        imageId: {
+            type: String, // Store the unique identifier for the image
             required: true
         },
         title: {
