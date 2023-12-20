@@ -1,10 +1,19 @@
 import express from "express";
-import { getPlantsController, getPlantController } from "../controllers/plantController"
+import {
+  getPlantsController,
+  getPlantController,
+} from "../controllers/plantController";
 
-const router = express.Router()
+const router = express.Router();
+const listEndpoints = require("express-list-endpoints")
 
-router.get("/plants", getPlantsController)
+router.get("/", (req, res) => {
+  const endpoints = listEndpoints(router)
+  res.json({ endpoints })
+})
 
-router.get("/plants/:id", getPlantController)
+router.get("/plants", getPlantsController);
 
-module.exports = router
+router.get("/plants/:id", getPlantController);
+
+module.exports = router;
