@@ -33,13 +33,25 @@ export const createAdController = asyncHandler(async (req, res) => {
     console.log("Request body:", req.body); // Log the entire request body
     console.log("req.file", req.file);
     // Extract the ad data from the request body
-    const { title, description, product, quantity, unit, address, pickupTime } = req.body;
+    const {
+      title,
+      description,
+      product,
+      quantity,
+      unit,
+      address,
+      pickupTime,
+      available,
+      tags,
+    } = req.body;
 
     // Extract the accessToken from the request header key "Authorization"
     const accessToken = req.header("Authorization"); // we are requesting the Authorization key from the headerObject
 
     //Find the user that matches the accessToken stored in the db
-    const userFromStorage = await UserModel.findOne({ accessToken: accessToken });
+    const userFromStorage = await UserModel.findOne({
+      accessToken: accessToken,
+    });
 
     if (!userFromStorage) {
       return res.status(401).json({ message: "Unauthorized: User not found." });
@@ -55,10 +67,14 @@ export const createAdController = asyncHandler(async (req, res) => {
       const result = await cloudinary.uploader.upload(req.file.path);
       imageUrl = result.url;
       imageId = result.public_id; // or use req.file.filename for filename
-
     } catch (uploadError) {
-      console.error('Cloudinary Upload Error:', uploadError);
-      return res.status(500).json({ message: "Error uploading image to Cloudinary.", error: uploadError });
+      console.error("Cloudinary Upload Error:", uploadError);
+      return res
+        .status(500)
+        .json({
+          message: "Error uploading image to Cloudinary.",
+          error: uploadError,
+        });
     }
     // Define var to pass new AD
     //wait for the save() operation to complete before sending back the response
@@ -70,6 +86,8 @@ export const createAdController = asyncHandler(async (req, res) => {
       unit,
       address,
       pickupTime,
+      available,
+      tags,
       image: imageUrl,
       imageId: imageId,
       user: userFromStorage,
@@ -82,7 +100,6 @@ export const createAdController = asyncHandler(async (req, res) => {
     res.status(500).json({ message: "Internal server error", error });
   }
 });
-
 
 // desciption: PUT/PATCH a specific AD
 // route: /update/:id
@@ -99,13 +116,20 @@ export const updateAdController = asyncHandler(async (req, res) => {
       updateData.image = result.url;
       updateData.imageId = result.public_id;
     } catch (uploadError) {
-      console.error('Cloudinary Upload Error:', uploadError);
-      return res.status(500).json({ message: "Error uploading new image to Cloudinary.", error: uploadError });
+      console.error("Cloudinary Upload Error:", uploadError);
+      return res
+        .status(500)
+        .json({
+          message: "Error uploading new image to Cloudinary.",
+          error: uploadError,
+        });
     }
   }
 
   // Make sure to check that the user making the update is the owner of the ad
-  const userFromStorage = await UserModel.findOne({ accessToken: req.header("Authorization") });
+  const userFromStorage = await UserModel.findOne({
+    accessToken: req.header("Authorization"),
+  });
   if (!userFromStorage) {
     return res.status(401).json({ message: "Unauthorized: User not found." });
   }
@@ -118,7 +142,9 @@ export const updateAdController = asyncHandler(async (req, res) => {
       }
       res.json(updatedAd);
     })
-    .catch((err) => res.status(500).json({ message: "Error updating ad.", error: err }));
+    .catch((err) =>
+      res.status(500).json({ message: "Error updating ad.", error: err })
+    );
 });
 
 // desciption: DELETE all ads
@@ -170,7 +196,9 @@ export const deleteSpecificAdController = asyncHandler(async (req, res) => {
       deletedAd: result,
     });
   } catch (err) {
-    console.error('Error during ad deletion:', err);
-    res.status(500).json({ message: "Failed to delete ad and/or image", error: err });
+    console.error("Error during ad deletion:", err);
+    res
+      .status(500)
+      .json({ message: "Failed to delete ad and/or image", error: err });
   }
 });

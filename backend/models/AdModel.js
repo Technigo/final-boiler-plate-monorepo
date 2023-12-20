@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+/import mongoose from "mongoose";
 
 // Import the Schema class from the Mongoose library
 // Destructures the Schema class from the Mongoose library, allowing us to create a schema.
@@ -50,6 +50,12 @@ export const adSchema = new Schema(
             type: Boolean, // Specifies that 'sold' should be a Boolean
             default: true, // Sets a default value of 'true' for 'available'
         },
+        //Add "tags" in model to have the possibility to search by "tags"
+        tags: [
+          {
+            type: String,
+          },
+        ],
         // Define the relaitonship between the user and his/her ad --  1:1 relationship with the user or 1 usar can have many ads
         user: {
             type: mongoose.Schema.Types.ObjectId,
