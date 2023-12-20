@@ -13,7 +13,7 @@ export const Footer = () => {
       <div className="footer-text">
         <p>
           Final Project by Frida Lindskog, Karolina Luna, Sandra Gustafsson and
-          Emmy Jansson. Technigo Web Developer Bootcamp Fall 2023
+          Emmy Jansson. <br /> Technigo Web Developer Bootcamp Fall 2023
         </p>
         <Link to="/about-us">
           <Buttons buttonText="About Us" onClick={handleButtonClick} />

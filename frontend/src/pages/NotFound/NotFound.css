@@ -1,0 +1,12 @@
+.not-found-message {
+  padding: 20%;
+  font-size: 15px;
+}
+
+@media screen and (min-width: 1000px) {
+  .not-found-message {
+    padding: 0;
+    padding-top: 20%;
+    font-size: 25px;
+  }
+}

@@ -11,6 +11,7 @@
 
 }
 
+
 input {
   font-size: 18px;
   padding: 10px;
@@ -20,6 +21,7 @@ input {
   width: 300px;
   font-family: "Roboto", sans-serif;
 }
+
 
 .map-control {
   background-color: #fff;

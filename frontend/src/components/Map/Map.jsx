@@ -1,6 +1,11 @@
 /* eslint-disable react-refresh/only-export-components */
 /* eslint-disable no-undef */
 
+import { LoadScript } from "@react-google-maps/api";
+import { useEffect, useRef } from "react";
+import { memo } from "react";
+
+
 import { useState, useCallback, memo } from "react";
 import {
   LoadScript,
@@ -9,6 +14,7 @@ import {
   InfoWindow,
   Autocomplete,
 } from "@react-google-maps/api";
+
 import "./Map.css";
 
 const libraries = ["places"];
@@ -128,6 +134,10 @@ const styles = {
     },
   ],
 };
+
+
+// window.initMap = initMap;
+
 
 export const Map = () => {
   const [map, setMap] = useState(null);
