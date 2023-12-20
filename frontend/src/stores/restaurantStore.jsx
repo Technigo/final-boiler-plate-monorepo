@@ -1,11 +1,10 @@
 import { create } from 'zustand';
 
-
 export const useRestaurantStore = create((set) => ({
-  occasion: [],
-  mood: [],
+  occasions: [],
+  moods: [],
   selectedOccasion: '',
-  selectedMoods: [], // This is now an array
+  selectedMoods: [],
   results: [],
   
   // Fetch occasions from the backend
@@ -19,6 +18,7 @@ export const useRestaurantStore = create((set) => ({
     }
   },
   
+  // Fetch moods from the backend
   fetchMoods: async () => {
     try {
       const response = await fetch('http://localhost:3000/api/mood');
@@ -33,46 +33,28 @@ export const useRestaurantStore = create((set) => ({
   setSelectedOccasion: (occasion) => set({ selectedOccasion: occasion }),
 
   // Update the selected moods
-  setSelectedMoods: (mood) => set({ selectedMoods: mood }), // Now takes an array of moods
+  setSelectedMoods: (moods) => set({ selectedMoods: moods }), // Takes an array of moods
 
   // Fetch results based on selected occasion and moods
   fetchResults: async () => {
     const { selectedOccasion, selectedMoods } = useRestaurantStore.getState();
-    const queryParams = new URLSearchParams({ occasion: selectedOccasion });
+    const queryParams = new URLSearchParams();
+
+    if (selectedOccasion) {
+      queryParams.append('occasion', selectedOccasion);
+    }
     selectedMoods.forEach((mood) => queryParams.append('mood', mood));
 
     try {
-      const response = await fetch(`/api/results?${queryParams.toString()}`);
-      const fullResults = await response.json();
-      const results = fullResults.map(({ 
-        restaurantName, 
-        address, 
-        zipcode, 
-        city, 
-        country, 
-        borough, 
-        cuisine, 
-        occasion, 
-        mood, 
-        url 
-      }) => ({
-        restaurantName, 
-        address, 
-        zipcode, 
-        city, 
-        country, 
-        borough, 
-        cuisine, 
-        occasion, 
-        mood, 
-        url
-      }));
+      const response = await fetch(`http://localhost:3000/restaurants/search?${queryParams.toString()}`);
+      const results = await response.json();
       set({ results });
     } catch (error) {
-      console.error('Error fetching results:', error);
+      console.error('Error fetching search results:', error);
     }
   },
 }));
+
 
 
 

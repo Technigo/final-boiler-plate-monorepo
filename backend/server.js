@@ -5,7 +5,7 @@ import db from './config/db.js';
 import listEndpoints from 'express-list-endpoints';
 import restaurantRoutes from './routes/restaurantRoutes.js'; // This handles restaurant-related routes
 import occasionandmoodRoutes from './routes/occasionandmoodRoutes.js'; // This handles occasions and moods
-import endResultRoutes from './routes/endResultRoutes.js'; 
+
 
 const app = express();
 const port = process.env.PORT || 3000;

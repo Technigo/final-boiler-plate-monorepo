@@ -15,7 +15,7 @@ router.get('/restaurants/search', asyncHandler(async (req, res) => {
   }
 
   // Ensure mood is provided and between 1 to 3 moods are selected
-  const moo = Array.isArray(mood) ? mood : [mood]; // Convert to array if not already
+  const moods = Array.isArray(mood) ? mood : [mood];
   if (mood.length === 0 || mood.length > 3) {
     return res.status(400).json({ message: 'You have to make a selection of 1 to 3 moods' });
   }
