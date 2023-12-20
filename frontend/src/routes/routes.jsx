@@ -5,6 +5,7 @@ import { AboutUs } from "../pages/AboutUs/AboutUs";
 import { PostStory } from "../components/PostStory/PostStory";
 import { StoryList } from "../components/StoryList/StoryList";
 import { Carousel } from "../components/Carousel/Carousel";
+import { MapPage } from "../pages/MapPage/MapPage";
 
 const routes = (
   <Routes>
@@ -14,6 +15,7 @@ const routes = (
       <Route path="/about-us" element={<AboutUs />} />
       <Route path="/post-story" element={<PostStory />} />
       <Route path="/story-list" element={<StoryList />} />
+      <Route path="/map" element={<MapPage />} />
     </Route>
     <Route path="*" element={<NotFound />} />
   </Routes>
