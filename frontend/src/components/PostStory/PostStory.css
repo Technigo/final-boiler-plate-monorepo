@@ -14,7 +14,7 @@
   width: 70%;
 }
 
-.calendar {
+.react-datepicker_month-container {
   width: 70%;
   background-color: rgba(2, 108, 124, 0.7);
   border: 2px solid rgba(2, 108, 124, 0.7);

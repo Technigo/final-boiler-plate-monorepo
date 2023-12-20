@@ -70,26 +70,15 @@ export const PostStory = () => {
           placeholder="🌍 Where did this happen?"
           className="input-field"
         />
-        <div className="date-input-container">
-          <input
-            type="text"
-            value={selectedDate.toLocaleDateString()}
-            onClick={handleCalendarClick}
-            readOnly
-            placeholder="🕘 When did this happen?"
+        <div>
+          <DatePicker
+            selected={selectedDate}
+            onChange={handleDateChange}
+            locale={enGB}
+            dateFormat="MMMM d, yyyy h:mm aa"
+            placeholderText="🕘 When did this happen?"
             className="input-field"
           />
-          {isCalendarVisible && (
-            <DatePicker
-              selected={selectedDate}
-              onChange={handleDateChange}
-              onClick={() => setIsCalendarVisible(false)}
-              locale={enGB}
-              dateFormat="MMMM d, yyyy"
-              placeholderText="🕘 When did this happen?"
-              className="input-field"
-            />
-          )}
         </div>
         <div>
           <Buttons buttonText="Send Story" onClick={handleButtonClick} />
