@@ -43,8 +43,16 @@
 }
 
 .gallery img {
-  height: 10%;
-  width: 15%;
+  height: 100%;
+  width: 100%;
+}
+
+.image-buttons {
+  background-color: black;
+  border-color: none;
+  padding: 0;
+  width: 20%;
+  margin: 2%;
 }
 
 /* POPUPKALENDERN
