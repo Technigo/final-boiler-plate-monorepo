@@ -4,6 +4,7 @@ import mongoose from "mongoose";
 
 const { Schema } = mongoose;
 
+
 export const recipeSchema = new Schema(
     {
         userInput: {
@@ -22,12 +23,12 @@ export const recipeSchema = new Schema(
         },
 
         ingredients: {
-            type: [String],
+            type: Object,
             required: true,
         },
         
         instructions: {
-            type: String,
+            type: [String],
             required: true
         },
 

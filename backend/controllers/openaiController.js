@@ -17,10 +17,10 @@ const generateText = async (req, res) => {
         // System message to define the assistant's role and purpose 
         {
           role: "system",
-          content: "You are a helpful assistant designed to output JSON.",
+          content: "You are a helpful assistant designed to output JSON."
         },
         // User message containing the provided prompt
-        { role: "user", content: `Simple recipe to cook on portable camping stove, one heater. No temperature control, consists of one frying-pan and/or one saucepan. Ingredients: ${prompt}. Keywords in object: title, description, ingredients, instructions.`},
+        { role: "user", content: `You will be creating a recipe based on 1-3 main ingredients the user will give you. The recipe should be designed to be cooked on a portable camping stove with one heater, no temperature control, consisting of one frying-pan and/or one saucepan.  Generate a recipe for a dish with the following specifications: title: [Your Title Here] description: [Your Description Here] ingredients: [ ingredient: "amount" ] instructions: [Your Instructions Here]. All keywords must have a value. If an ingredient requires specific details like weight and amount, include that as well. Use grams and millilitres. Recipe should be designed for 2 people. These are the main ingredients: ${prompt}`},
       ],
       model: "gpt-3.5-turbo-1106",
       // Specify the response format as a JSON object
@@ -31,14 +31,15 @@ const generateText = async (req, res) => {
     // Extract the generated text from the API respons
     const generatedRecipe = response.choices[0].message.content
     const generatedRecipeObject = JSON.parse(generatedRecipe)
-    const title  = generatedRecipeObject.recipe.title
-    const description = generatedRecipeObject.recipe.description
-    const ingredients = generatedRecipeObject.recipe.ingredients
-    const instructions = generatedRecipeObject.recipe.instructions
-    console.log(title)
-    console.log(description)
-    console.log(ingredients)
-    console.log(instructions)
+    const title  = generatedRecipeObject.title
+    const description = generatedRecipeObject.description
+    const ingredients = generatedRecipeObject.ingredients
+    const instructions = generatedRecipeObject.instructions
+    console.log(generatedRecipeObject)
+    // console.log(title)
+    // console.log(description)
+    // console.log(ingredients)
+    // console.log(instructions)
    
     // Create a new RecipeModel with the provided ingredients and generatedRecipe
     const newRecipe = new RecipeModel({
