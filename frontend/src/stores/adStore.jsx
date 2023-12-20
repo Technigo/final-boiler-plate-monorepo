@@ -90,22 +90,31 @@ export const adStore = create((set) => ({
     console.log("imageFile:", imageFile); // Log the imageFile here
     try {
       const formData = new FormData();
-      formData.append('brand', newAdData.brand);
-      formData.append('model', newAdData.model);
+      formData.append('title', newAdData.title);
+      formData.append('description', newAdData.description);
+      formData.append('product', newAdData.product);
+      formData.append('quantity', newAdData.quantity);
+      formData.append('unit', newAdData.unit);
+      formData.append('address', newAdData.address);
+      formData.append('pickupTime', newAdData.pickupTime);
+      // Assuming 'available' is a boolean, it should not be set from the model but rather a static value or state.
+      formData.append('available', true); // or whatever the logic is to set this
       formData.append('image', imageFile);
-
+  
       // Send the request to create a new ad with form data
       const response = await fetch(`${apiEnv}/createAd`, {
         method: "POST",
         headers: {
           Authorization: localStorage.getItem("accessToken"),
+          // Do not set Content-Type when sending FormData
+          // 'Content-Type': 'multipart/form-data' should not be set manually
         },
         body: formData,
       });
-
+  
       const newAd = await response.json();
       console.log("Server response for new ad:", newAd);
-
+  
       if (response.ok) {
         set((state) => {
           const updatedAds = [...state.ads, newAd];
