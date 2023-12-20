@@ -15,7 +15,7 @@ export const StoryCard = ({ story, isActive }) => {
     position: 'relative', // Ensure z-index takes effect
   };
   
-
+//rbgierbvo
   return (
     <div className="story-card" style={cardStyle}>
     {/* Image and Category/City Info */}
