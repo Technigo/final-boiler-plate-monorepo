@@ -66,7 +66,7 @@ export const adStore = create((set) => ({
   fetchAds: async () => {
     try {
       // Send a GET request to the backend API to fetch ads
-      const response = await fetch(`${apiEnv}/get`, {
+      const response = await fetch(`${apiEnv}/getAds`, {
         method: "GET",
         headers: {
           Authorization: localStorage.getItem("accessToken"),
@@ -86,21 +86,35 @@ export const adStore = create((set) => ({
   },
 
   // New action to add an ad to the server and then to the store
-  createAd: async (newAdData) => {
+  createAd: async (newAdData, imageFile) => {
+    console.log("imageFile:", imageFile); // Log the imageFile here
     try {
-      // Send the request to create a new ad
-      const response = await fetch(`${apiEnv}/add`, {
+      const formData = new FormData();
+      formData.append('title', newAdData.title);
+      formData.append('description', newAdData.description);
+      formData.append('product', newAdData.product);
+      formData.append('quantity', newAdData.quantity);
+      formData.append('unit', newAdData.unit);
+      formData.append('address', newAdData.address);
+      formData.append('pickupTime', newAdData.pickupTime);
+      // Assuming 'available' is a boolean, it should not be set from the model but rather a static value or state.
+      formData.append('available', true); // or whatever the logic is to set this
+      formData.append('image', imageFile);
+  
+      // Send the request to create a new ad with form data
+      const response = await fetch(`${apiEnv}/createAd`, {
         method: "POST",
         headers: {
           Authorization: localStorage.getItem("accessToken"),
-          "Content-Type": "application/json",
+          // Do not set Content-Type when sending FormData
+          // 'Content-Type': 'multipart/form-data' should not be set manually
         },
-        body: JSON.stringify(newAdData),
+        body: formData,
       });
-
+  
       const newAd = await response.json();
       console.log("Server response for new ad:", newAd);
-
+  
       if (response.ok) {
         set((state) => {
           const updatedAds = [...state.ads, newAd];
@@ -115,16 +129,24 @@ export const adStore = create((set) => ({
     }
   },
 
+
   // New action to update the boolean isAvailable value in the store
-  handleEdit: async (id) => {
+  handleEdit: async (id, updatedAdData, imageFile) => {
     try {
-      // Send a PUT request to the backend API to update an ad by its ID
+      const formData = new FormData();
+      formData.append('brand', updatedAdData.brand);
+      formData.append('model', updatedAdData.model);
+      if (imageFile) {
+        formData.append('image', imageFile);
+      }
+
+      // Send a PUT request with form data
       const response = await fetch(`${apiEnv}/update/${id}`, {
         method: "PUT",
         headers: {
           Authorization: localStorage.getItem("accessToken"),
-          "Content-Type": "application/json",
         },
+        body: formData,
       });
       // Parse the updated ad data
       const updatedAd = await response.json();
