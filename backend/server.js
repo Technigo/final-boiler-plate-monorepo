@@ -4,6 +4,11 @@ import cors from "cors"; // Import the CORS middleware
 import dotenv from "dotenv"; // Import dotenv for environment variables
 dotenv.config(); // Load environment variables from the .env file
 import { connectDB } from "./config/db"; // Import database connection function (not used here)
+import { auth0Config } from "./config/Auth0";
+
+import userRoutes from "./routes/userRoutes";
+
+const { auth } = require("express-openid-connect");
 
 // Defines the port the app will run on. Defaults to 8080, but can be overridden
 const port = process.env.PORT; // Set the port number for the server
@@ -13,12 +18,15 @@ const app = express(); // Create an instance of the Express application
 app.use(cors()); // Enable CORS (Cross-Origin Resource Sharing)
 app.use(express.json()); // Parse incoming JSON data
 app.use(express.urlencoded({ extended: false })); // Parse URL-encoded data
+app.use(auth(auth0Config));
+app.use(userRoutes);
 
 // Use the routes for handling API requests
 // ROUTES - These routes USE controller functions ;)
 
 // Connection to the database through Mongoose
 connectDB();
+console.log(process.env.AUTH0_CLIENTID);
 
 // Start the server and listen for incoming requests on the specified port
 app.listen(port, () => {
