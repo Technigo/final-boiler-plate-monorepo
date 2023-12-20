@@ -9,7 +9,7 @@ export const CreateAd = () => {
   const [quantity, setQuantity] = useState('');
   const [unit, setUnit] = useState('');
   const [address, setAddress] = useState('');
-  const [pickUpTime, setPickUpTime] = useState('');
+  const [pickupDate, setPickupDate] = useState('');
 
   const { createAd } = adStore();
 
@@ -32,7 +32,7 @@ export const CreateAd = () => {
     setQuantity('');
     setUnit('');
     setAddress('');
-    setPickUpTime('');
+    setPickupDate('');
   };
 
   return (
@@ -63,7 +63,7 @@ export const CreateAd = () => {
       </div>
       <div>
         <label>Pickup Time:</label>
-        <input type="datetime-local" value={pickUpTime} onChange={(e) => setPickUpTime(e.target.value)} />
+        <input type="datetime-local" value={pickupDate} onChange={(e) => setPickupDate(e.target.value)} />
       </div>
       <div>
         <label>Image:</label>

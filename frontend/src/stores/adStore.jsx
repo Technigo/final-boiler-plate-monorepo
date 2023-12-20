@@ -85,6 +85,26 @@ export const adStore = create((set) => ({
     }
   },
 
+  // New action to fetch a specific ad by its ID
+  getAdById: async (id) => {
+    try {
+      const response = await fetch(`${apiEnv}/getAd/${id}`, {
+        method: "GET",
+        headers: {
+          Authorization: localStorage.getItem("accessToken"),
+        },
+      });
+      if (response.ok) {
+        const ad = await response.json();
+        return ad;
+      } else {
+        console.error("Failed to fetch ad");
+      }
+    } catch (error) {
+      console.error("Error fetching ad:", error);
+    }
+  },
+
   // New action to add an ad to the server and then to the store
   createAd: async (newAdData, imageFile) => {
     console.log("imageFile:", imageFile); // Log the imageFile here
@@ -96,11 +116,11 @@ export const adStore = create((set) => ({
       formData.append('quantity', newAdData.quantity);
       formData.append('unit', newAdData.unit);
       formData.append('address', newAdData.address);
-      formData.append('pickupTime', newAdData.pickupTime);
+      formData.append('pickupDate', newAdData.pickupDate);
       // Assuming 'available' is a boolean, it should not be set from the model but rather a static value or state.
       formData.append('available', true); // or whatever the logic is to set this
       formData.append('image', imageFile);
-  
+
       // Send the request to create a new ad with form data
       const response = await fetch(`${apiEnv}/createAd`, {
         method: "POST",
@@ -111,10 +131,10 @@ export const adStore = create((set) => ({
         },
         body: formData,
       });
-  
+
       const newAd = await response.json();
       console.log("Server response for new ad:", newAd);
-  
+
       if (response.ok) {
         set((state) => {
           const updatedAds = [...state.ads, newAd];
