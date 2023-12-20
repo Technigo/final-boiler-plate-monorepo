@@ -39,7 +39,7 @@ router.get('/restaurants/search', asyncHandler(async (req, res) => {
 }));
 
 // Endpoint to get all occasions
-router.get('/api/occasion', asyncHandler(async (req, res) => {
+router.get('/occasion', asyncHandler(async (req, res) => {
   try {
     const occasion = await Restaurant.distinct('occasion');
     res.json(occasion);
@@ -49,7 +49,7 @@ router.get('/api/occasion', asyncHandler(async (req, res) => {
 }));
 
 // Endpoint to get all moods
-router.get('/api/mood', asyncHandler(async (req, res) => {
+router.get('/mood', asyncHandler(async (req, res) => {
   try {
     const mood = await Restaurant.distinct('mood');
     res.json(mood);
