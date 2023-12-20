@@ -1,49 +1,78 @@
-// ADAPT THIS FILE FOR CREATING ADVERTS
-
-// Import necessary dependencies and the 'advertStore' from the store.
-import { useState } from "react";
+import { useState } from 'react';
 import { adStore } from "../stores/adStore";
 
-// Define the 'CreateTask' functional component.
 export const CreateAd = () => {
-  // Initialize state variable 'task' using 'useState' to store the task input.
-  const [task, setTask] = useState("");
-  // Access the 'addTaskToServer' and 'deleteAllTasks' functions from the 'advertStore'.
-  const { addTaskToServer, deleteAllTasks } = adStore();
+  const [image, setImage] = useState(null);
+  const [title, setTitle] = useState('');
+  const [description, setDescription] = useState('');
+  const [product, setProduct] = useState('');
+  const [quantity, setQuantity] = useState('');
+  const [unit, setUnit] = useState('');
+  const [address, setAddress] = useState('');
+  const [pickUpTime, setPickUpTime] = useState('');
 
-  // Function to update the 'task' state with the value entered in the input field.
-  const taskInput = (e) => {
-    setTask(e.target.value);
-  };
+  const { createAd } = adStore();
 
-  // Function to add a new task both locally and to the server.
-  const addTaskLocal = async () => {
-    if (task.trim() !== "") {
-      // Check if the 'task' input is not empty or only whitespace.
-      await addTaskToServer(task); // Add the task to the server.
-      setTask(""); // Clear the input field after the task is added.
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    // Basic validation
+    if (!image || !title || !description || !product || !quantity || !unit || !address || !pickUpTime) {
+      alert("All fields are required");
+      return;
     }
+
+    await createAd({ title, description, product, quantity, unit, address, pickUpTime }, image);
+
+    // Reset form fields after submission
+    setImage(null);
+    setTitle('');
+    setDescription('');
+    setProduct('');
+    setQuantity('');
+    setUnit('');
+    setAddress('');
+    setPickUpTime('');
   };
 
-  // Render the component content.
   return (
-    <>
-      <div className="cta-block">
-        {/* Create an input field for entering the task description. */}
-        <input
-          className="task-input"
-          type="text"
-          placeholder="enter task"
-          onChange={taskInput}
-          value={task}
-        />
-        {/* Create a button to trigger the 'addTaskLocal' function for adding the task. */}
-        <button onClick={addTaskLocal}>Add Task</button>
-        {/* Create a button to trigger the 'deleteAllTasks' function to delete all tasks from the server. */}
-        <button onClick={deleteAllTasks}>Delete All My Tasks</button>
+    <form onSubmit={handleSubmit}>
+      <div>
+        <label>Title:</label>
+        <input type="text" value={title} onChange={(e) => setTitle(e.target.value)} />
       </div>
-    </>
+      <div>
+        <label>Description:</label>
+        <textarea value={description} onChange={(e) => setDescription(e.target.value)} />
+      </div>
+      <div>
+        <label>Product:</label>
+        <input type="text" value={product} onChange={(e) => setProduct(e.target.value)} />
+      </div>
+      <div>
+        <label>Quantity:</label>
+        <input type="number" value={quantity} onChange={(e) => setQuantity(e.target.value)} />
+      </div>
+      <div>
+        <label>Unit:</label>
+        <input type="text" value={unit} onChange={(e) => setUnit(e.target.value)} />
+      </div>
+      <div>
+        <label>Address:</label>
+        <input type="text" value={address} onChange={(e) => setAddress(e.target.value)} />
+      </div>
+      <div>
+        <label>Pickup Time:</label>
+        <input type="datetime-local" value={pickUpTime} onChange={(e) => setPickUpTime(e.target.value)} />
+      </div>
+      <div>
+        <label>Image:</label>
+        <input type="file" onChange={(e) => setImage(e.target.files[0])} />
+      </div>
+      <button type="submit">Create Ad</button>
+    </form>
   );
 };
 
-// SUMMARY
+
+//Component to create an Ad
