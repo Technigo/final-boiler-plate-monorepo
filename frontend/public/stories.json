@@ -1,0 +1,204 @@
+{
+  "stories": [
+    {
+      "id": 1,
+      "content": "Overheard at a café in Stockholm: Someone claimed they'd seen a moose casually strolling in Gamla Stan!",
+      "createdAt": "2023-12-10T07:30:00Z",
+      "location": { "latitude": 59.3293, "longitude": 18.0686 },
+      "city": "Stockholm",
+      "ranking": 5,
+      "category": "Hearsay",
+      "image": "image1.png"
+    },
+    {
+      "id": 2,
+      "content": "Once upon a time in Gothenburg there was an unusual event that became the talk of the town. It all started one sunny morning when the famous statue of Poseidon at Götaplatsen suddenly went missing. The city woke up to find a giant rubber duck in its place, wearing a Viking helmet, no less! The news spread like wildfire, and soon everyone in Gothenburg was talking about the mysterious disappearance. The police were baffled, tourists were snapping photos, and the local newspapers had a field day. Amidst this chaos, a group of local fishermen claimed they saw a group of mischievous university students near the statue late at night, but no one could be sure. As the investigation continued, strange things began happening across the city. First, the iconic trams were found decorated with colorful graffiti depicting famous Swedish fables. Then, Liseberg, the beloved amusement park, reported that their prized roller coaster, Helix, was playing ABBA songs backwards! The plot thickened when a local baker, known for her exceptional kanelbullar (cinnamon buns), discovered a cryptic note hidden inside a batch of dough. The note hinted at a secret society of pranksters called The Gothenburg Gnomes, dedicated to spreading joy and laughter through elaborate pranks. The climax of this bizarre tale occurred during the Göteborgs Kulturkalas, the city's annual cultural festival. Just as the mayor was about to give a speech, a flash mob of dancers dressed as famous Swedish figures - from Alfred Nobel to Astrid Lindgren - took over the stage, performing an impeccably choreographed routine to a medley of Swedish pop hits. In the end, it turned out that the Poseidon statue had not been stolen but had been carefully relocated to a nearby warehouse by the Gothenburg Gnomes. They revealed themselves to be a group of artists, tech enthusiasts, and local business owners who wanted to create a series of joyful events to bring the city together and celebrate its unique culture. The city of Gothenburg embraced the spirit of the pranks. The mayor, seeing the positive impact on the community, declared an annual Day of Mischief, where residents are encouraged to engage in playful pranks and celebrate the city's vibrant spirit. And so, the legend of the Gothenburg Gnomes became a cherished part of local folklore, reminding everyone that sometimes, a little bit of mischief can bring a whole lot of joy.",
+      "createdAt": "2023-12-09T15:45:00Z",
+      "location": { "latitude": 57.7089, "longitude": 11.9746 },
+      "city": "Gothenburg",
+      "ranking": 4,
+      "category": "Rumor",
+      "image": "image2.png"
+    },
+    {
+      "id": 3,
+      "content": "Rumor has it that a famous Hollywood star was seen buying kanelbullar at a bakery in Malmö!",
+      "createdAt": "2023-12-08T22:00:00Z",
+      "location": { "latitude": 55.604981, "longitude": 13.003822 },
+      "city": "Malmö",
+      "ranking": 4,
+      "category": "Hearsay",
+      "image": "image3.png"
+    },
+    {
+      "id": 4,
+      "content": "Did you hear about the Uppsala student who allegedly invented a new language just for their thesis?",
+      "createdAt": "2023-12-07T10:30:00Z",
+      "location": { "latitude": 59.8586, "longitude": 17.6389 },
+      "city": "Uppsala",
+      "ranking": 5,
+      "category": "Historical",
+      "image": "image4.png"
+    },
+    {
+      "id": 5,
+      "content": "A group in Umeå claimed they found a hidden treasure map in an old book at the city library.",
+      "createdAt": "2023-12-06T03:15:00Z",
+      "location": { "latitude": 63.8258, "longitude": 20.263 },
+      "city": "Umeå",
+      "ranking": 5,
+      "category": "Historical",
+      "image": "image5.png"
+    },
+    {
+      "id": 6,
+      "content": "Locals in Lund were baffled by a mysterious cat that only appears during full moons to play the piano in a window.",
+      "createdAt": "2023-12-05T19:00:00Z",
+      "location": { "latitude": 55.7047, "longitude": 13.191 },
+      "city": "Lund",
+      "ranking": 3,
+      "category": "Rumor",
+      "image": "image6.png"
+    },
+    {
+      "id": 7,
+      "content": "A fisherman in Helsingborg insists he caught a fish that could speak three languages!",
+      "createdAt": "2023-12-04T14:25:00Z",
+      "location": { "latitude": 56.0465, "longitude": 12.6945 },
+      "city": "Helsingborg",
+      "ranking": 4,
+      "category": "Hearsay",
+      "image": "image7.png"
+    },
+    {
+      "id": 8,
+      "content": "A mysterious figure in a cloak was seen performing magic tricks on the streets of Västerås.",
+      "createdAt": "2023-12-03T22:10:00Z",
+      "location": { "latitude": 59.6099, "longitude": 16.5448 },
+      "city": "Västerås",
+      "ranking": 2,
+      "category": "Rumor",
+      "image": "image8.png"
+    },
+    {
+      "id": 9,
+      "content": "Residents of Örebro talk about a secret underground city only accessible through hidden passages in the castle.",
+      "createdAt": "2023-12-02T08:00:00Z",
+      "location": { "latitude": 59.2753, "longitude": 15.2134 },
+      "city": "Örebro",
+      "ranking": 5,
+      "category": "Historical",
+      "image": "image9.png"
+    },
+    {
+      "id": 10,
+      "content": "In Linköping, there's a tale of a ghostly cyclist who rides through the main square at midnight.",
+      "createdAt": "2023-12-01T11:30:00Z",
+      "location": { "latitude": 58.4108, "longitude": 15.6214 },
+      "city": "Linköping",
+      "ranking": 9,
+      "category": "Rumor",
+      "image": "image10.png"
+    },
+    {
+      "id": 11,
+      "content": "Overheard at a café in Stockholm: Someone claimed they'd seen a moose casually strolling in Gamla Stan!",
+      "createdAt": "2023-12-10T07:30:00Z",
+      "location": { "latitude": 59.3293, "longitude": 18.0686 },
+      "city": "Stockholm",
+      "ranking": 5,
+      "category": "Hearsay",
+      "image": "image1.png"
+    },
+    {
+      "id": 12,
+      "content": "A local in Gothenburg swore they spotted a submarine surfacing near the archipelago. Could it be true?",
+      "createdAt": "2023-12-09T15:45:00Z",
+      "location": { "latitude": 57.7089, "longitude": 11.9746 },
+      "city": "Gothenburg",
+      "ranking": 4,
+      "category": "Rumor",
+      "image": "image2.png"
+    },
+    {
+      "id": 13,
+      "content": "Rumor has it that a famous Hollywood star was seen buying kanelbullar at a bakery in Malmö!",
+      "createdAt": "2023-12-08T22:00:00Z",
+      "location": { "latitude": 55.604981, "longitude": 13.003822 },
+      "city": "Malmö",
+      "ranking": 4,
+      "category": "Hearsay",
+      "image": "image3.png"
+    },
+    {
+      "id": 14,
+      "content": "Did you hear about the Uppsala student who allegedly invented a new language just for their thesis?",
+      "createdAt": "2023-12-07T10:30:00Z",
+      "location": { "latitude": 59.8586, "longitude": 17.6389 },
+      "city": "Uppsala",
+      "ranking": 5,
+      "category": "Historical",
+      "image": "image4.png"
+    },
+    {
+      "id": 15,
+      "content": "A group in Umeå claimed they found a hidden treasure map in an old book at the city library.",
+      "createdAt": "2023-12-06T03:15:00Z",
+      "location": { "latitude": 63.8258, "longitude": 20.263 },
+      "city": "Umeå",
+      "ranking": 5,
+      "category": "Historical",
+      "image": "image5.png"
+    },
+    {
+      "id": 16,
+      "content": "Locals in Lund were baffled by a mysterious cat that only appears during full moons to play the piano in a window.",
+      "createdAt": "2023-12-05T19:00:00Z",
+      "location": { "latitude": 55.7047, "longitude": 13.191 },
+      "city": "Lund",
+      "ranking": 3,
+      "category": "Rumor",
+      "image": "image6.png"
+    },
+    {
+      "id": 17,
+      "content": "A fisherman in Helsingborg insists he caught a fish that could speak three languages!",
+      "createdAt": "2023-12-04T14:25:00Z",
+      "location": { "latitude": 56.0465, "longitude": 12.6945 },
+      "city": "Helsingborg",
+      "ranking": 4,
+      "category": "Hearsay",
+      "image": "image7.png"
+    },
+    {
+      "id": 18,
+      "content": "A mysterious figure in a cloak was seen performing magic tricks on the streets of Västerås.",
+      "createdAt": "2023-12-03T22:10:00Z",
+      "location": { "latitude": 59.6099, "longitude": 16.5448 },
+      "city": "Västerås",
+      "ranking": 2,
+      "category": "Rumor",
+      "image": "image8.png"
+    },
+    {
+      "id": 19,
+      "content": "Residents of Örebro talk about a secret underground city only accessible through hidden passages in the castle.",
+      "createdAt": "2023-12-02T08:00:00Z",
+      "location": { "latitude": 59.2753, "longitude": 15.2134 },
+      "city": "Örebro",
+      "ranking": 5,
+      "category": "Historical",
+      "image": "image9.png"
+    },
+    {
+      "id": 20,
+      "content": "In Linköping, there's a tale of a ghostly cyclist who rides through the main square at midnight.",
+      "createdAt": "2023-12-01T11:30:00Z",
+      "location": { "latitude": 58.4108, "longitude": 15.6214 },
+      "city": "Linköping",
+      "ranking": 3,
+      "category": "Rumor",
+      "image": "image10.png"
+    }
+  ]
+}

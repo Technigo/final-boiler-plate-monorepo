@@ -1,0 +1,34 @@
+.carousel-wrapper {
+  position: relative;
+  z-index: 10 !important;
+}
+
+.swiper-slide {
+  transition: transform 0.3s ease-in-out, z-index 0.3s;
+  z-index: 1; /* Default z-index for all slides */
+}
+
+.swiper-slide-active {
+  transform: scale(1);
+  z-index: 100; /* Higher z-index for active slide */
+}
+
+/* Styles for larger screens */
+@media (min-width: 600px) {
+  .story-card {
+    width: 200px; /* Larger width on desktop */
+    /* Other styles... */
+  }
+}
+@media (min-width: 768px) {
+  .story-card {
+    width: 300px; /* Larger width on desktop */
+    /* Other styles... */
+  }
+}
+@media (min-width: 1024px) {
+  .story-card {
+    width: 400px; /* Larger width on desktop */
+    /* Other styles... */
+  }
+}

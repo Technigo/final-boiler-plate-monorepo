@@ -4,6 +4,11 @@ export const AboutUs = () => {
   //When the home button is clicked, this function kicks in
 
   return (
+<<<<<<< HEAD
+    <div>AboutUs !!!!</div>
+  )
+}
+=======
     <div className="about-us">
       <p>
         We are a group of four women who attend Technigos Web developer boot
@@ -27,3 +32,4 @@ export const AboutUs = () => {
     </div>
   );
 };
+>>>>>>> main
