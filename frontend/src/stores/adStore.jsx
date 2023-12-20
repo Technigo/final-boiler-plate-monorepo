@@ -20,38 +20,13 @@ export const adStore = create((set) => ({
   // Define an action to set the ads state to a new array of ads
   setads: (ads) => set({ ads }),
 
-  // New action to delete all ads
-  deleteAllAds: async () => {
-    try {
-      // Send a DELETE request to the backend API to delete all ads
-      const response = await fetch(`${apiEnv}/deleteAll`, {
-        method: "DELETE",
-        headers: {
-          Authorization: localStorage.getItem("accessToken"),
-        },
-      });
-      // Check if the request was successful
-      if (response.ok) {
-        // Clear the ads in the state
-        set({ ads: [] });
-      } else {
-        console.error("Failed to delete ads");
-      }
-    } catch (error) {
-      console.error(error);
-    }
-  },
+  //FETCH AD FUNCTIONS
 
-  // New action to fetch all ads in the DB
+  // Fetch all ads
   getAllAds: async () => {
     try {
-      // Send a GET request to the backend API to fetch all ads
-      const response = await fetch(`${apiEnv}/getAllAds`, {
-        method: "GET",
-      });
-      // Check if the request was successful
+      const response = await fetch(`${apiEnv}/getAllAds`);
       if (response.ok) {
-        // Parse the response data and set it as the ads state
         const data = await response.json();
         set({ ads: data });
       } else {
@@ -62,19 +37,14 @@ export const adStore = create((set) => ({
     }
   },
 
-  // New action to fetch ads
+
+  // Fetch ads for a specific user
   fetchAds: async () => {
     try {
-      // Send a GET request to the backend API to fetch ads
       const response = await fetch(`${apiEnv}/getAds`, {
-        method: "GET",
-        headers: {
-          Authorization: localStorage.getItem("accessToken"),
-        },
+        headers: { Authorization: localStorage.getItem("accessToken") },
       });
-      // Check if the request was successful
       if (response.ok) {
-        // Parse the response data and set it as the ads state
         const data = await response.json();
         set({ ads: data });
       } else {
@@ -85,18 +55,12 @@ export const adStore = create((set) => ({
     }
   },
 
-  // New action to fetch a specific ad by its ID
+  // Fetch a specific ad by ID
   getAdById: async (id) => {
     try {
-      const response = await fetch(`${apiEnv}/getAd/${id}`, {
-        method: "GET",
-        headers: {
-          Authorization: localStorage.getItem("accessToken"),
-        },
-      });
+      const response = await fetch(`${apiEnv}/getAd/${id}`);
       if (response.ok) {
-        const ad = await response.json();
-        return ad;
+        return await response.json();
       } else {
         console.error("Failed to fetch ad");
       }
@@ -105,6 +69,8 @@ export const adStore = create((set) => ({
     }
   },
 
+
+  //CREATE AD FUNCTIONS
   // New action to add an ad to the server and then to the store
   createAd: async (newAdData, imageFile) => {
     console.log("imageFile:", imageFile); // Log the imageFile here
@@ -149,13 +115,15 @@ export const adStore = create((set) => ({
     }
   },
 
-
-  // New action to update the boolean isAvailable value in the store
+  //UPDATE AD FUNCTIONS
+  // Action to update an existing ad
   handleEdit: async (id, updatedAdData, imageFile) => {
     try {
       const formData = new FormData();
-      formData.append('brand', updatedAdData.brand);
-      formData.append('model', updatedAdData.model);
+      // Append updated fields from the updatedAdData object
+      Object.entries(updatedAdData).forEach(([key, value]) => {
+        formData.append(key, value);
+      });
       if (imageFile) {
         formData.append('image', imageFile);
       }
@@ -163,16 +131,13 @@ export const adStore = create((set) => ({
       // Send a PUT request with form data
       const response = await fetch(`${apiEnv}/update/${id}`, {
         method: "PUT",
-        headers: {
-          Authorization: localStorage.getItem("accessToken"),
-        },
+        headers: { Authorization: localStorage.getItem("accessToken") },
         body: formData,
       });
-      // Parse the updated ad data
-      const updatedAd = await response.json();
-      // Check if the request was successful
+
       if (response.ok) {
-        // Update the ad in the ads state
+        const updatedAd = await response.json();
+        // Update the ad in the state
         set((state) => ({
           ads: state.ads.map((ad) =>
             ad._id === id ? { ...ad, ...updatedAd } : ad
@@ -180,6 +145,30 @@ export const adStore = create((set) => ({
         }));
       } else {
         console.error("Failed to update the ad");
+      }
+    } catch (error) {
+      console.error("Error updating ad:", error);
+    }
+  },
+
+
+  //DELETE FUNCTIONS
+  // New action to delete all ads of a specific user
+  deleteAllAds: async () => {
+    try {
+      // Send a DELETE request to the backend API to delete all ads
+      const response = await fetch(`${apiEnv}/deleteAll`, {
+        method: "DELETE",
+        headers: {
+          Authorization: localStorage.getItem("accessToken"),
+        },
+      });
+      // Check if the request was successful
+      if (response.ok) {
+        // Clear the ads in the state
+        set({ ads: [] });
+      } else {
+        console.error("Failed to delete ads");
       }
     } catch (error) {
       console.error(error);
