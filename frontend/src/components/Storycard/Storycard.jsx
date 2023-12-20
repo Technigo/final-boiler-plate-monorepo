@@ -17,7 +17,7 @@ export const StoryCard = ({ story, isActive }) => {
   
 
   return (
-    <div className="story-card" style={cardStyle} >
+    <div className="story-card" style={cardStyle}>
     {/* Image and Category/City Info */}
     <img src={`/${story.image}`} alt={`${story.city} story`} />
     <div className="story-info">
@@ -27,10 +27,10 @@ export const StoryCard = ({ story, isActive }) => {
       <div className="story-overlay">
         <p>{story.content}</p>
         <div className="overlay-date-icon">
-	          {timeSince(story.createdAt)}
-	          <img src={likeIcon} alt="Like" />
-	          <span className="like-count">{story.ranking}</span>
-	        </div>
+          {timeSince(story.createdAt)}
+          <img src={likeIcon} alt="Like" />
+          <span className="like-count">{story.ranking}</span>
+        </div>
       </div>
     )}
   </div>

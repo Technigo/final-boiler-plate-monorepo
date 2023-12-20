@@ -31,7 +31,7 @@
     margin-bottom: 10px; 
   }
   .story-card-list .story-info h3 {
-    margin: 0; 
+    
     color: #242424;
     font-size: 1.2em; 
   }
@@ -41,9 +41,13 @@
   }
   .story-footer span {
     color: #242424;
+   
   }
   .story-footer {
     height: 30px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: center;
   }
   .like-icon {
     width: 25px;
@@ -52,7 +56,7 @@
   .story-card-list .story-footer {
     display: flex;
     align-items: center;
-    margin-top: 20px;
+   
     color: #242424;
   }
   .story-card-list .story-footer img {
@@ -62,4 +66,21 @@
     width: 25px; 
     margin-right: 3px; 
   }
- 
+  .story-list {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  @media (min-width: 600px) {
+    .story-card-list .story-content {
+      max-height: 300px;
+    }
+    .story-card-list {
+      max-height: 320px;
+      max-width: 650px;
+    }
+  }
+    
+  

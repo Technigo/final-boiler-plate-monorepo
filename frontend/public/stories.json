@@ -12,7 +12,7 @@
     },
     {
       "id": 2,
-      "content": "A local in Gothenburg swore they spotted a submarine surfacing near the archipelago. Could it be true?",
+      "content": "Once upon a time in Gothenburg there was an unusual event that became the talk of the town. It all started one sunny morning when the famous statue of Poseidon at Götaplatsen suddenly went missing. The city woke up to find a giant rubber duck in its place, wearing a Viking helmet, no less! The news spread like wildfire, and soon everyone in Gothenburg was talking about the mysterious disappearance. The police were baffled, tourists were snapping photos, and the local newspapers had a field day. Amidst this chaos, a group of local fishermen claimed they saw a group of mischievous university students near the statue late at night, but no one could be sure. As the investigation continued, strange things began happening across the city. First, the iconic trams were found decorated with colorful graffiti depicting famous Swedish fables. Then, Liseberg, the beloved amusement park, reported that their prized roller coaster, Helix, was playing ABBA songs backwards! The plot thickened when a local baker, known for her exceptional kanelbullar (cinnamon buns), discovered a cryptic note hidden inside a batch of dough. The note hinted at a secret society of pranksters called The Gothenburg Gnomes, dedicated to spreading joy and laughter through elaborate pranks. The climax of this bizarre tale occurred during the Göteborgs Kulturkalas, the city's annual cultural festival. Just as the mayor was about to give a speech, a flash mob of dancers dressed as famous Swedish figures - from Alfred Nobel to Astrid Lindgren - took over the stage, performing an impeccably choreographed routine to a medley of Swedish pop hits. In the end, it turned out that the Poseidon statue had not been stolen but had been carefully relocated to a nearby warehouse by the Gothenburg Gnomes. They revealed themselves to be a group of artists, tech enthusiasts, and local business owners who wanted to create a series of joyful events to bring the city together and celebrate its unique culture. The city of Gothenburg embraced the spirit of the pranks. The mayor, seeing the positive impact on the community, declared an annual Day of Mischief, where residents are encouraged to engage in playful pranks and celebrate the city's vibrant spirit. And so, the legend of the Gothenburg Gnomes became a cherished part of local folklore, reminding everyone that sometimes, a little bit of mischief can bring a whole lot of joy.",
       "createdAt": "2023-12-09T15:45:00Z",
       "location": { "latitude": 57.7089, "longitude": 11.9746 },
       "city": "Gothenburg",
@@ -96,7 +96,7 @@
       "createdAt": "2023-12-01T11:30:00Z",
       "location": { "latitude": 58.4108, "longitude": 15.6214 },
       "city": "Linköping",
-      "ranking": 3,
+      "ranking": 9,
       "category": "Rumor",
       "image": "image10.png"
     },

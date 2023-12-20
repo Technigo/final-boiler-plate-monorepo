@@ -3,9 +3,9 @@ import './StoryCardList.css';
 import likeIcon from '../../assets/likeBlack.svg';
 import { timeSince } from '../utils/timeUtils';
 
+
 export const StoryCardList = ({ story }) => {
-
-
+  
   return (
     <div className="story-card-list">
     <div className='left-wrapper'>
@@ -23,7 +23,6 @@ export const StoryCardList = ({ story }) => {
           <h3>{story.category} - {story.city}</h3>
         </div>
         <p>{story.content}</p>
-        
       </div>
     </div>
   );

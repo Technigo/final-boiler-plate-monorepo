@@ -55,6 +55,39 @@ export const Carousel = () => {
       }}
       pagination={{ clickable: true }}
       onSlideChange={onSlideChange}
+      breakpoints={{
+        // when window width is >= 320px
+        320: {
+          slidesPerView: 2,
+          spaceBetween: 10
+        },
+        // when window width is >= 640px
+        500: {
+          slidesPerView: 3,
+          spaceBetween: 20
+        },
+        // when window width is >= 1024px
+        700: {
+          slidesPerView: 4,
+          spaceBetween: 30
+        },
+        900: {
+          slidesPerView: 5,
+          spaceBetween: 30
+        },
+        1200: {
+          slidesPerView: 6,
+          spaceBetween: 30
+        },
+        1400: {
+          slidesPerView: 7,
+          spaceBetween: 30
+        },
+        1600: {
+          slidesPerView: 8,
+          spaceBetween: 30
+        }
+      }}
     >
       {stories.map((story, index) => (
         <SwiperSlide key={story.id}>
