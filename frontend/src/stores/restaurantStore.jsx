@@ -11,7 +11,7 @@ export const useRestaurantStore = create((set) => ({
   // Fetch occasions from the backend
   fetchOccasions: async () => {
     try {
-      const response = await fetch('/api/occasion');
+      const response = await fetch('http://localhost:3000/api/occasion');
       const occasions = await response.json();
       set({ occasions });
     } catch (error) {
@@ -21,7 +21,7 @@ export const useRestaurantStore = create((set) => ({
   
   fetchMoods: async () => {
     try {
-      const response = await fetch('/api/mood');
+      const response = await fetch('http://localhost:3000/api/mood');
       const moods = await response.json();
       set({ moods });
     } catch (error) {

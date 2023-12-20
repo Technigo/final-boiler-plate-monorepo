@@ -19,3 +19,20 @@ Jag får det här i viewport :/ har kollat igenom endpoints och rättat men miss
 
 20231220
 [ ](backend/routes/restaurantRoutes.js) la till denna som en grund för att kunna lägga in data, behöver byggas på för att få till de rätta fälten och sen kopplas till frontend
+
+
+Att göra:
+Express Routes (router.js files)
+Observation: The routes are defined correctly. Ensure that the route paths ('/api/results', '/restaurants/search', '/occasion', '/mood', and '/restaurants') match the paths used in your frontend fetch calls. Also, confirm that the route handlers are correctly processing the request data.
+
+Server Setup (server.js) Observation: The server setup appears to be correct. Ensure all routes are correctly mounted (app.use('/api', ...)). Check CORS settings to ensure your frontend can communicate with the backend, especially if they are running on different hosts or ports.
+
+Mongoose Schema (restaurantModel.js) Observation: The schema seems correctly set up. Ensure that the field names used in the schema match those used in your frontend forms and API requests.
+
+Potential Issues to Check:
+Correct API Endpoints: Make sure the frontend fetch calls are targeting the correct backend endpoints.
+Database Connection: Confirm that your MongoDB database is running and accessible.
+Environment Variables: Check if all required environment variables (like MONGO_URL) are correctly set and accessible in your Node.js environment.
+Console Logs: Use console.log in both your frontend and backend to trace the flow of data and catch any discrepancies.
+Network Activity: Use the browser's developer tools to inspect network activity and see if requests are made correctly and what responses are received.
+If the issue persists despite these checks, it may require a more detailed examination of your entire codebase and running environment, potentially indicating a more complex issue.
