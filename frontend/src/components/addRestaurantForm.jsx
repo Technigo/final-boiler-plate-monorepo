@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import Navbar from './navbar';
 import Footer from './footer';
@@ -10,21 +10,29 @@ const PageContainer = styled.div`
   min-height: 100vh; /* Make sure it covers the full height of the viewport */
 `;
 
-const OccasionButton = styled.button`
-  margin: 0.5em;
-  padding: 0.5em 1em;
-  border: none;
-  background-color: ${({ selected }) => selected ? '#a5d6a7' : '#efefef'};
-  font-size: 16px;
-  cursor: pointer;
+
+const Button = styled.button`
+background-color: #B6244F;
+  color: #504746;
+  padding: 10px 20px; /* Some padding */
+  border: none; /* No border */
+  border-radius: 5px; /* Rounded corners */
+  cursor: pointer; /* Pointer/hand icon */
+  text-align: center; /* Center the text */
+  text-decoration: none; /* No underline */
+  display: inline-block; /* Inline block element */
+  font-size: 16px; /* Font size */
+  margin: 4px 2px; /* Margin around the button */
+  transition-duration: 0.4s; /* Transition for hover effect */
+
+  &:hover {
+    background-color: #B89685;
+    color: #FBB7C0;
+  }
 `;
 
-const OccasionSelectorContainer = styled.div`
-  font-size: 20px;
-  font-family: Arial, sans-serif;
-`;
 
-const AddRestaurantForm = () => {
+const addRestaurantForm = () => {
     const [formData, setFormData] = useState({
         restaurantName: '',
         address: '',
@@ -38,43 +46,30 @@ const AddRestaurantForm = () => {
         description: '',
         url: ''
     });
+    const [occasionOptions, setOccasionOptions] = useState([]);
+    const [moodOptions, setMoodOptions] = useState([]);
 
-    const occasionOptions = [
-        "Have dinner with the in-laws",
-        "Have a sunday funday aka brunch",
-        "Have dinner with kids present",
-        "Have dinner with your bestie",
-        "Have dinner with friends to catch up",
-        "Say Cheers- a classic Swedish after work",
-        "Have dinner with colleagues",
-        "Have dinner with the whole family",
-        "Have dinner with your parents",
-        "Celebrate you turning 28 again (honey, you ain't fooling anyone)",
-        "Have a meparty aka dinner for one",
-        "Go on a nice date with that special someone"
-    ];
-
-    const moodOptions = [
-        "Cozy",
-        "Good lighting",
-        "Soft-spoken",
-        "Bustling",
-        "Intimate",
-        "Casual",
-        "Sophisticated",
-        "Family friendly",
-        "Homely",
-        "Kid friendly",
-        "Dog friendly",
-        "Calm",
-        "Vegan option",
-        "Extended dining hours",
-        "Romantic"
-    ];
+    useEffect(() => {
+        fetch('http://localhost:3000/api/occasion')
+            .then(response => response.json())
+            .then(data => {
+                console.log('Occasion Data:', data); // Log the data
+                setOccasionOptions(data);
+            })
+            .catch(error => console.error('Error:', error));
+    
+        fetch('http://localhost:3000/api/mood')
+            .then(response => response.json())
+            .then(data => {
+                console.log('Mood Data:', data); // Log the data
+                setMoodOptions(data);
+            })
+            .catch(error => console.error('Error:', error));
+    }, []);
 
     const handleChange = (e) => {
-        const { name, value, checked } = e.target;
-        if (name === "occasion" || name === "mood") {
+        const { name, value, checked, type } = e.target;
+        if (type === 'checkbox') {
             setFormData((prevData) => ({
                 ...prevData,
                 [name]: checked
@@ -91,7 +86,6 @@ const AddRestaurantForm = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        // POST request to the server
         fetch('http://localhost:3000/api/restaurants', {
             method: 'POST',
             headers: {
@@ -100,25 +94,76 @@ const AddRestaurantForm = () => {
             body: JSON.stringify(formData),
         })
         .then(response => response.json())
-        .then(data => {
-            console.log('Success:', data);
-            // Handle success - clear the form or show a success message
-        })
-        .catch(error => {
-            console.error('Error:', error);
-            // Handle errors here, such as showing an error message
-        });
+        .then(data => console.log('Success:', data))
+        .catch(error => console.error('Error:', error));
     };
 
     return (
         <PageContainer>
-    
             <Navbar />
             <form onSubmit={handleSubmit}>
                 <h1>Add a New Restaurant</h1>
-                {/* Input fields for each property in your schema */}
-                {/* ... (other fields) ... */}
-    
+                <label>
+                    Restaurant Name:
+                    <input
+                        type="text"
+                        name="restaurantName"
+                        value={formData.restaurantName}
+                        onChange={handleChange}
+                    />
+                </label>
+                <br />
+                <label>
+                    Address:
+                    <input
+                        type="text"
+                        name="address"
+                        value={formData.address}
+                        onChange={handleChange}
+                    />
+                </label>
+                <br />
+                <label>
+                    Zipcode:
+                    <input
+                        type="number"
+                        name="zipcode"
+                        value={formData.zipcode}
+                        onChange={handleChange}
+                    />
+                </label>
+                <br />
+                <label>
+                    City:
+                    <input
+                        type="text"
+                        name="city"
+                        value={formData.city}
+                        onChange={handleChange}
+                    />
+                </label>
+                <br />
+                <label>
+                    Borough:
+                    <input
+                        type="text"
+                        name="borough"
+                        value={formData.borough}
+                        onChange={handleChange}
+                    />
+                </label>
+                <br />
+                <label>
+                    Cuisine:
+                    <input
+                        type="text"
+                        name="cuisine"
+                        value={formData.cuisine}
+                        onChange={handleChange}
+                    />
+                </label>
+                <br />
+                
                 {/* Occasion (checkboxes) */}
                 <div>
                     <p>Occasion:</p>
@@ -155,17 +200,34 @@ const AddRestaurantForm = () => {
                 </div>
                 <br />
                 
-                {/* Add fields for description and URL */}
-                {/* ... (description and URL fields) ... */}
+                <label>
+                    Description:
+                    <input
+                        type="text"
+                        name="description"
+                        value={formData.description}
+                        onChange={handleChange}
+                    />
+                </label>
+                <br />
+
+                {/* URL input */}
+                <label>
+                    Website URL:
+                    <input
+                        type="text"
+                        name="url"
+                        value={formData.url}
+                        onChange={handleChange}
+                    />
+                </label>
+                <br />
                 
-                <button type="submit">Submit</button>
+                <Button type="submit">Submit</Button>
             </form>
             <Footer />
         </PageContainer>
     );
 };
 
-export default AddRestaurantForm;
-
-
-
+export default addRestaurantForm;

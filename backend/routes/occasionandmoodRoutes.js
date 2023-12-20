@@ -39,23 +39,22 @@ router.get('/restaurants/search', asyncHandler(async (req, res) => {
 }));
 
 // Endpoint to get all occasions
-router.get('/occasion', asyncHandler(async (req, res) => {
+router.get('/occasion', async (req, res) => {
   try {
-    const occasion = await Restaurant.distinct('occasion');
-    res.json(occasion);
+      const occasions = await Restaurant.distinct('occasion');
+      res.json(occasions);
   } catch (error) {
-    res.status(500).json({ message: error.message });
+      res.status(500).json({ message: error.message });
   }
-}));
+});
 
-// Endpoint to get all moods
-router.get('/mood', asyncHandler(async (req, res) => {
+router.get('/mood', async (req, res) => {
   try {
-    const mood = await Restaurant.distinct('mood');
-    res.json(mood);
+      const moods = await Restaurant.distinct('mood');
+      res.json(moods);
   } catch (error) {
-    res.status(500).json({ message: error.message });
+      res.status(500).json({ message: error.message });
   }
-}));
+});
 
 export default router;
