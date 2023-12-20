@@ -6,6 +6,7 @@ yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
+
 node_modules/
 node_modules
 dist
@@ -24,5 +25,13 @@ node_modules/
 *.njsproj
 *.sln
 *.sw?
+<<<<<<< HEAD
+.env
+
+# Comment out later ;) 
+# .env
+=======
 
 .env
+node_modules
+>>>>>>> main

@@ -1,3 +1,4 @@
+import React from "react";
 import { Link } from "react-router-dom";
 import { Buttons } from "../Buttons/Buttons";
 import "./Footer.css";
@@ -11,8 +12,8 @@ export const Footer = () => {
     <div className="footer">
       <div className="footer-text">
         <p>
-          Final Project by Frida Lindskog, Carolina Luna, Sandra Gustafsson and
-          Emmy Jansson. Technigo Web Developer Bootcamp Fall 2023
+          Final Project by Frida Lindskog, Karolina Luna, Sandra Gustafsson and
+          Emmy Jansson. <br /> Technigo Web Developer Bootcamp Fall 2023
         </p>
         <Link to="/about-us">
           <Buttons buttonText="About Us" onClick={handleButtonClick} />
