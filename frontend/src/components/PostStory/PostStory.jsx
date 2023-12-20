@@ -78,8 +78,14 @@ export const PostStory = () => {
   };
 
   const handleImageSelect = (image) => {
-    setSelectedImage(require(`./public/${image}`));
-    closeImageModal();
+    import(`/${image}`)
+      .then((module) => {
+        setSelectedImage(module.default);
+        closeImageModal();
+      })
+      .catch((error) => {
+        console.error("Error loading image:", error);
+      });
   };
 
   return (
@@ -166,19 +172,19 @@ export const PostStory = () => {
         >
           <div className="gallery-images">
             <button type="button" onClick={() => handleImageSelect("hero.png")}>
-              Image 1
+              <img src={"aboutimg.jpg"} alt="Image 1" />
             </button>
             <button
               type="button"
-              onClick={() => handleImageSelect("image2.jpg")}
+              onClick={() => handleImageSelect("./aboutimg.jpg")}
             >
-              Image 2
+              <img src={"aboutimg.jpg"} alt="Image 2" />
             </button>
             <button
               type="button"
-              onClick={() => handleImageSelect("image3.jpg")}
+              onClick={() => handleImageSelect("hero3.png")}
             >
-              Image 3
+              <img src={"hero3.png"} alt="Image 3" />
             </button>
           </div>
         </Modal>

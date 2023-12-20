@@ -42,6 +42,11 @@
   margin: 15%;
 }
 
+.gallery img {
+  height: 10%;
+  width: 15%;
+}
+
 /* POPUPKALENDERN
  .date-picker {
   width: 70%;
