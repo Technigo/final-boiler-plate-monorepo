@@ -1,8 +1,15 @@
-// Import the 'React' library.
-import React from "react";
 
-// Define the 'NotFound' functional component.
+import React from "react";
+import "./NotFound.css";
+
 export const NotFound = () => {
-  // Render a div element with a CSS class 'not-found' containing the text 'NotFound'.
-  return <div className="not-found">NotFound</div>;
+  return (
+    <div className="not-found-message">
+      <h3>
+        Error 404: Page not found. Looks like this page is on a coffee break ☕
+      </h3>
+    </div>
+  );
+
+
 };
