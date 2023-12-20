@@ -8,6 +8,8 @@ import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import BackArrow from "../components/BackArrow";
 import defalutImg from "../assets/image.png";
+import "../pages/search.css";
+import searchIcon from "../assets/search-icon.svg";
 
 // Define the 'Search' functional component.
 export const Search = () => {
@@ -18,11 +20,6 @@ export const Search = () => {
   //Add search state
   const [searchTerm, setSearchTerm] = useState("");
   const [filteredAds, setFilteredAds] = useState([]);
-
-  // Use the 'useEffect' hook to fetch tasks when 'tasks' or 'accessToken' change.
-  useEffect(() => {
-    getAllAds();
-  }, [getAllAds]);
 
   // Initialize the 'navigate' function from React Router.
   const navigate = useNavigate();
@@ -51,19 +48,22 @@ export const Search = () => {
 
   return (
     <div>
-      <h1>Search</h1>
-      <input
-        className="search-bar"
-        type="search"
-        value={searchTerm}
-        onChange={(e) => setSearchTerm(e.target.value)}
-      />
-      <div>
-        <button className="search-button" onClick={handleSearch}>
-          Search
-        </button>
+      <div className="search-bar">
+        <input
+          type="search"
+          value={searchTerm}
+          placeholder="Search for something"
+          onChange={(e) => setSearchTerm(e.target.value)}
+        />
+        <img
+          src={searchIcon}
+          className="search-icon"
+          alt="search-icon"
+          onClick={handleSearch}
+        />
       </div>
-      <ul className="">
+      <h1 className="search-result">Search result</h1>
+      <ul className="filtered-ads">
         {filteredAds.map((ad) => (
           <li key={ad._id}>
             <img src={defalutImg} className="default-img" alt="Img" />
