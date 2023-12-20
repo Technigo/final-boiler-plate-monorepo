@@ -2,21 +2,17 @@ import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 dotenv.config();
 
-const connectionURI = process.env.MONGO_URL;
-
-const databaseOptions = {
+mongoose.connect(process.env.MONGO_URL, {
   useNewUrlParser: true,
-  useUnifiedTopology: true
-};
-
-const db = mongoose.createConnection(connectionURI, databaseOptions);
-
-db.on('error', console.error.bind(console, 'MongoDB connection error:'));
-db.once('open', () => {
-  console.log('Connected to MongoDB');
+  useUnifiedTopology: true,
 });
 
+const db = mongoose.connection;
+db.on('error', console.error.bind(console, 'MongoDB connection error:'));
+
 export default db;
+
+
 // In summary, this code does the following:
 
 // - Imports the necessary libraries (mongoose and dotenv) for working with MongoDB and loading environment variables.

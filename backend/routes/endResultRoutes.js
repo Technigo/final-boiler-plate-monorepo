@@ -1,5 +1,6 @@
 import express from 'express';
-import Restaurant from '../models/restaurantModel.js';
+import Restaurant from '../models/restaurantModel.js'; 
+import asyncHandler from 'express-async-handler'; 
 
 const router = express.Router();
 

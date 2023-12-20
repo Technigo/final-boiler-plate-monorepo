@@ -1,5 +1,4 @@
 import mongoose from 'mongoose';
-import db from '../config//db.js';
 
 
 
@@ -7,11 +6,11 @@ const restaurantSchema = new mongoose.Schema({
   restaurantName: {
     type: String,
     required: true,
-    minlength: 5, // Minimum length of 5 characters
+    minlength: 3, // Minimum length of 5 characters
   },
   address: {
     type: String,
-    minlength: 5, // Minimum length of 5 characters
+    minlength: 3, // Minimum length of 5 characters
   },
   zipcode: {
     type: String,
@@ -20,11 +19,11 @@ const restaurantSchema = new mongoose.Schema({
   city: {
     type: String,
     required: true,
-    minlength: 5, // Minimum length of 5 characters
+    minlength: 3, // Minimum length of 5 characters
   },
   country: {
     type: String,
-    minlength: 5, // Minimum length of 5 characters
+    minlength: 3, // Minimum length of 5 characters
   },
   borough: {
     type: String,
@@ -33,7 +32,7 @@ const restaurantSchema = new mongoose.Schema({
   cuisine: {
     type: String,
     required: true,
-    minlength: 5, // Minimum length of 5 characters
+    minlength: 3, // Minimum length of 5 characters
   },
   occasion: [{
     type: String,
@@ -80,14 +79,14 @@ const restaurantSchema = new mongoose.Schema({
   description: {
     type: String,
     required: true,
-    minlength: 5, // Minimum length of 5 characters
+    minlength: 20, // Minimum length of 5 characters
   },
   url: {
     type: String,
-    minlength: 5, // Minimum length of 5 characters
+    validate: /^https?:\/\/.+/ // Basic validation for URLs
   },
 });
 
-const Restaurant = db.model('Restaurant', restaurantSchema);
+const Restaurant = mongoose.model('Restaurant', restaurantSchema);
 
 export default Restaurant;

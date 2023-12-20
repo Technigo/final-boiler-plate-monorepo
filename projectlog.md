@@ -16,3 +16,6 @@ flushWork @ scheduler.development.js:239
 performWorkUntilDeadline @ scheduler.development.js:533
 VM803:1  Error fetching occasions: SyntaxError: Unexpected token '<', "<!doctype "... is not valid JSON 
 Jag får det här i viewport :/ har kollat igenom endpoints och rättat men misstänker att det kan lösas om vi får till en webadress, eller så är det jag som tänker fel //Alexandra
+
+20231220
+[ ](backend/routes/restaurantRoutes.js) la till denna som en grund för att kunna lägga in data, behöver byggas på för att få till de rätta fälten och sen kopplas till frontend
