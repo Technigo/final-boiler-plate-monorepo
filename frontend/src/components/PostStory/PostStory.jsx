@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Modal from "react-modal";
 import { Buttons } from "../Buttons/Buttons";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
@@ -7,10 +8,14 @@ import { enGB } from "date-fns/locale";
 import "./PostStory.css";
 
 export const PostStory = () => {
+  const [newHeading, setNewHeading] = useState("");
   const [newStory, setNewStory] = useState("");
+  const [newCategory, setNewCategory] = useState("");
   const [newWhere, setNewWhere] = useState("");
   const [selectedDate, setSelectedDate] = useState(new Date());
   const [isCalendarVisible, setIsCalendarVisible] = useState(false);
+  const [isImageModalOpen, setIsImageModalOpen] = useState(false);
+  const [selectedImage, setSelectedImage] = useState("");
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
@@ -22,15 +27,25 @@ export const PostStory = () => {
 
     setNewStory("");
 
+    const handleCategoryChange = (e) => {
+      setNewCategory(e.target.value);
+    };
+
     fetch("", {
       method: "POST",
-      body: JSON.stringify({ message: newStory, date: selectedDate }),
+      body: JSON.stringify({
+        message: newStory,
+        date: selectedDate,
+        category: newCategory,
+        image: selectedImage,
+      }),
     })
       .then((res) => res.json())
       .then((newStory) => {
         console.log("New story posted:", newStory);
         console.log("Date:", selectedDate);
-        // Reload the page after successful post
+        console.log("Category:", newCategory);
+        // Reload the page after a successful post
         window.location.reload();
       })
       .catch((error) => {
@@ -50,10 +65,36 @@ export const PostStory = () => {
     console.log("Button clicked within PostStory component", newStory);
   };
 
+  const handleCategoryChange = (e) => {
+    setNewCategory(e.target.value);
+  };
+
+  const openImageModal = () => {
+    setIsImageModalOpen(true);
+  };
+
+  const closeImageModal = () => {
+    setIsImageModalOpen(false);
+  };
+
+  const handleImageSelect = (image) => {
+    setSelectedImage(require(`./public/${image}`));
+    closeImageModal();
+  };
+
   return (
     <div className="new-story-container">
       <h2>Share your story</h2>
       <form onSubmit={handleFormSubmit}>
+        <textarea
+          type="text"
+          value={newHeading}
+          onChange={(e) => setNewHeading(e.target.value)}
+          minLength="5"
+          maxLength="30"
+          placeholder="Heading"
+          className="input-field"
+        />
         <textarea
           type="text"
           value={newStory}
@@ -63,6 +104,19 @@ export const PostStory = () => {
           placeholder="Please write your story here"
           className="input-field"
         />
+        <div>
+          <select
+            className="category"
+            value={newCategory}
+            onChange={handleCategoryChange}
+            required
+          >
+            <option value="">Choose a category</option>
+            <option value="funny story">Funny story</option>
+            <option value="anecdote">Anecdote</option>
+            <option value="tall tale">Tall tale</option>
+          </select>
+        </div>
         <textarea
           type="text"
           value={newWhere}
@@ -71,18 +125,63 @@ export const PostStory = () => {
           className="input-field"
         />
         <div>
-          <DatePicker
-            selected={selectedDate}
-            onChange={handleDateChange}
-            locale={enGB}
-            dateFormat="MMMM d, yyyy h:mm aa"
-            placeholderText="🕘 When did this happen?"
-            className="input-field"
-          />
+          {newCategory === "funny story" && (
+            <DatePicker
+              selected={selectedDate}
+              onChange={handleDateChange}
+              locale={enGB}
+              dateFormat="MMMM d, yyyy"
+              className="input-field"
+            />
+          )}
+          {newCategory !== "funny story" && (
+            <DatePicker
+              selected={selectedDate}
+              onChange={handleDateChange}
+              locale={enGB}
+              showYearPicker
+              dateFormat="yyyy"
+              className="input-field"
+            />
+          )}
+        </div>
+        <div>
+          <button
+            className="gallery-button"
+            type="button"
+            onClick={openImageModal}
+          >
+            Select Image
+          </button>
         </div>
         <div>
           <Buttons buttonText="Send Story" onClick={handleButtonClick} />
         </div>
+        {/* Image Modal */}
+        <Modal
+          className="gallery"
+          isOpen={isImageModalOpen}
+          onRequestClose={closeImageModal}
+          contentLabel="Select Image"
+        >
+          <div className="gallery-images">
+            <button type="button" onClick={() => handleImageSelect("hero.png")}>
+              Image 1
+            </button>
+            <button
+              type="button"
+              onClick={() => handleImageSelect("image2.jpg")}
+            >
+              Image 2
+            </button>
+            <button
+              type="button"
+              onClick={() => handleImageSelect("image3.jpg")}
+            >
+              Image 3
+            </button>
+          </div>
+        </Modal>
       </form>
     </div>
   );
