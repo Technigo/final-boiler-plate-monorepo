@@ -32,8 +32,6 @@ export const LandingPage = () => {
 
       <Hero />
 
-      <Map />
-
       <div>
         <Outlet /> {/* This is where the content will change */}
       </div>

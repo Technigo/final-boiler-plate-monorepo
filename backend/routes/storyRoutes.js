@@ -2,7 +2,7 @@
 import express from "express";
 
 import listEndpoints from "express-list-endpoints";
-import { StoryModel } from "../models/StoryModel";
+import { StoryModel } from "../models/mapStoryModel";
 
 // Create an instance of the Express router
 const router = express.Router();
@@ -37,11 +37,14 @@ router.get("/stories", async (req, res) => {
 
 //route for post a story
 router.post("/stories", async (req, res) => {
+  const { title, content, category, ranking, lat, lng } = req.body;
   const newStory = new StoryModel({
+
     heading: req.body.heading,
     content: req.body.content,
     ranking: req.body.ranking,
     category: req.body.category,
+
   });
 
   try {
