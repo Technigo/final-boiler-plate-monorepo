@@ -15,25 +15,52 @@ const AddRestaurantForm = () => {
         url: ''
     });
 
+    const occasionOptions = [
+        "Have dinner with the in-laws",
+        "Have a sunday funday aka brunch",
+        "Have dinner with kids present",
+        "Have dinner with your bestie",
+        "Have dinner with friends to catch up",
+        "Say Cheers- a classic Swedish after work",
+        "Have dinner with colleagues",
+        "Have dinner with the whole family",
+        "Have dinner with your parents",
+        "Celebrate you turning 28 again (honey, you ain't fooling anyone)",
+        "Have a meparty aka dinner for one",
+        "Go on a nice date with that special someone"
+    ];
+
+    const moodOptions = [
+        "Cozy",
+        "Good lighting",
+        "Soft-spoken",
+        "Bustling",
+        "Intimate",
+        "Casual",
+        "Sophisticated",
+        "Family friendly",
+        "Homely",
+        "Kid friendly",
+        "Dog friendly",
+        "Calm",
+        "Vegan option",
+        "Extended dining hours",
+        "Romantic"
+    ];
+
     const handleChange = (e) => {
-        if (e.target.name === "occasion" || e.target.name === "mood") {
-            // For multiselect fields
-            const options = e.target.options;
-            const values = [];
-            for (let i = 0; i < options.length; i++) {
-                if (options[i].selected) {
-                    values.push(options[i].value);
-                }
-            }
-            setFormData({
-                ...formData,
-                [e.target.name]: values
-            });
+        const { name, value, checked } = e.target;
+        if (name === "occasion" || name === "mood") {
+            setFormData((prevData) => ({
+                ...prevData,
+                [name]: checked
+                    ? [...prevData[name], value]
+                    : prevData[name].filter((item) => item !== value),
+            }));
         } else {
-            // For regular input fields
             setFormData({
                 ...formData,
-                [e.target.name]: e.target.value
+                [name]: value
             });
         }
     };
@@ -63,42 +90,53 @@ const AddRestaurantForm = () => {
         <form onSubmit={handleSubmit}>
             <h1>Add a New Restaurant</h1>
             {/* Input fields for each property in your schema */}
-            <label>
-                Restaurant Name:
-                <input type="text" name="restaurantName" value={formData.restaurantName} onChange={handleChange} />
-            </label><br /><br />
-            {/* Repeat for other fields like address, zipcode, city, country, etc. */}
-            {/* Occasion (multi-select example) */}
-            <label>
-                Occasion:
-                <select multiple name="occasion" value={formData.occasion} onChange={handleChange}>
-                    {/* List of occasions */}
-                    <option value="Have dinner with the in-laws">Have dinner with the in-laws</option>
-                    {/* Repeat for other occasions */}
-                </select>
-            </label><br /><br />
-            {/* Mood (multi-select example) */}
-            <label>
-                Mood:
-                <select multiple name="mood" value={formData.mood} onChange={handleChange}>
-                    {/* List of moods */}
-                    <option value="Cozy">Cozy</option>
-                    {/* Repeat for other moods */}
-                </select>
-            </label><br /><br />
+            {/* ... (other fields) ... */}
+
+            {/* Occasion (checkboxes) */}
+            <div>
+                <p>Occasion:</p>
+                {occasionOptions.map((option) => (
+                    <label key={option}>
+                        {option}
+                        <input
+                            type="checkbox"
+                            name="occasion"
+                            value={option}
+                            checked={formData.occasion.includes(option)}
+                            onChange={handleChange}
+                        />
+                    </label>
+                ))}
+            </div>
+            <br />
+            
+            {/* Mood (checkboxes) */}
+            <div>
+                <p>Mood:</p>
+                {moodOptions.map((option) => (
+                    <label key={option}>
+                        {option}
+                        <input
+                            type="checkbox"
+                            name="mood"
+                            value={option}
+                            checked={formData.mood.includes(option)}
+                            onChange={handleChange}
+                        />
+                    </label>
+                ))}
+            </div>
+            <br />
+            
             {/* Add fields for description and URL */}
-            <label>
-                Description:
-                <textarea name="description" value={formData.description} onChange={handleChange}></textarea>
-            </label><br /><br />
-            <label>
-                URL:
-                <input type="text" name="url" value={formData.url} onChange={handleChange} />
-            </label><br /><br />
+            {/* ... (description and URL fields) ... */}
+            
             <button type="submit">Submit</button>
         </form>
     );
 };
 
 export default AddRestaurantForm;
+
+
 

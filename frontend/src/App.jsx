@@ -5,7 +5,7 @@ import AboutPage from './components/about';
 import Mood from './components/mood';
 import Occasion from './components/occasion';
 import ResultPage from './components/result';
-import AddRestaurantForm from './components/addRestaurantForm,'
+import AddRestaurantForm from './components/addRestaurantForm'
 
 const App = () => {
   return (
