@@ -1,0 +1,35 @@
+.banner-container {
+  background-color: var(--spring);
+  font-family: var(--title-font);
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--chalk);
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+}
+
+.banner-container img {
+    width: 2.5rem;
+}
+
+.healty-plants-container,
+.packed-with-love-container,
+.climate-shipping-container,
+.care-advice-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    text-align: center;
+    letter-spacing: 0.8px;
+    line-height: 2.5rem;
+    font-size: 1.1rem;
+}
+
+/* For extra large devices */
+@media (min-width: 1280px) {
+  .banner-container {
+    padding: 3.5rem 9rem;
+  }
+}

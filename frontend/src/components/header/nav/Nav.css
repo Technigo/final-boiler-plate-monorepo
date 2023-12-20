@@ -1,4 +1,23 @@
-.menu-icon {
-  width: 32px;
-  height: 32px;
+.nav-left-wrapper,
+.nav-right-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  color: var(--sand);
+}
+
+.menu-icon,
+.search-icon,
+.heart-icon,
+.bag-icon {
+  width: 2rem;
+  height: 2rem;
+}
+
+.shop-nav,
+.login-nav {
+  font-family: var(--title-font);
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
 }
