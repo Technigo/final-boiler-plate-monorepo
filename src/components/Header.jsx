@@ -11,7 +11,9 @@ export const Header = () => {
 			<div>{<Link to="/">HOME</Link>}</div>
 			<div>
 				{isLoggedIn ? (
-					<img src={userIcon} />
+					<Link to="/user">
+						<img src={userIcon} />
+					</Link>
 				) : (
 					<>
 						<Link to="/login">
