@@ -1,26 +1,33 @@
 
 import { userStore } from '../store/userStore';
 import { useState } from "react";
-// import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 // import { Link } from "react-router-dom";
 import './Register.css'
 
 export const Register = () => {
 
-  const [userName, setUserName] = useState("");
+  const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
-  const handleRegister = userStore(state => state.handleRegister)
+  const navigate = useNavigate();
+  const storeHandleRegister = userStore(state => state.handleRegister)
 
   const onRegisterClick = async () => {
-    if (!userName || !email || !password) {
+    if (!username || !email || !password) {
       alert('Please enter username, email, and password');
       return
     }
     try {
-      await handleRegister(userName, email, password)
-      alert('Registration successful !')
+      await storeHandleRegister(username, email, password)
+      //console.log("storeHandleRegister ", storeHandleRegister);
+      console.log("username ", username);
+
+      if (username && password) {
+        const appContainer = document.getElementById("app-container")
+        appContainer.innerText = `Registration successful`
+        navigate('/')
+      }
     } catch (error) {
       console.error('Registration error:', error);
       alert('An error occurred during registration');
@@ -44,13 +51,13 @@ export const Register = () => {
     //       </nav>
     //       {/* Render the 'Logos' component. */}
     //       <Logos />
-    <div className="app-container">
+    <div className="app-container" id="app-container">
       <div className="input-container">
         <input
           type='text'
           placeholder='username'
-          value={userName}
-          onChange={event => setUserName(event.target.value)}
+          value={username}
+          onChange={event => setUsername(event.target.value)}
         />
         <input
           type='text'
