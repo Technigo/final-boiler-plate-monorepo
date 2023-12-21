@@ -9,7 +9,7 @@ const StyledProfilePhotoUser = styled.img`
   border-radius: 20px 0 20px 20px;
 `;
 
-export const ProfilePhoto = ({ gender }) => {
+export const ProfilePhotoUser = ({ gender }) => {
   const selectedPhoto = gender === "female" ? femaleUser : maleUser;
 
   return (

@@ -1,5 +1,5 @@
 import { SocialMediaLinks } from "../components/SocialMediaLinks";
-import { ProfilePhotoFounder } from "../components/ProfilePhoto.jsx/ProfilePhotoFounder";
+import { ProfilePhotoFounder } from "../components/ProfilePhoto/ProfilePhotoFounder";
 import styled from "styled-components";
 
 const StyledAbout = styled.div`

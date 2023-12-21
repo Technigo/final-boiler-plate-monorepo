@@ -57,7 +57,9 @@ export const taskStore = create((set) => ({
         // Parse the response data and set it as the tasks state
         const data = await response.json();
         console.log("Fetched tasks successfully:", data);
-        set({ tasks: data });
+        set({
+          tasks: data,
+        });
       } else {
         console.error("Failed to fetch tasks. Response:", response);
       }

@@ -26,10 +26,18 @@ export const userStore = create((set, get) => ({
   // Define a function to set the accessToken state.
   setAccessToken: (token) => set({ accessToken: token }),
 
-  // Initialize isLoggedIn state with false..
+  // Initialize isLoggedIn state with false.
   isLoggedIn: false,
   // Define a function to set the isLoggedIn state.
   setIsLoggedIn: (isLoggedIn) => set({ isLoggedIn }),
+
+  loggedInUserId: null,
+  setLoggedInUserId: (user) => set({ loggedInUserId }),
+
+  // Initialize selectedGender state with "female".
+  selectedGender: "female",
+  // Define a function to set the selectedGender state.
+  setSelectedGender: (gender) => set({ selectedGender: gender }),
 
   // FUNCTION TO REGISTER USERS
   handleSignup: async (username, password) => {
@@ -96,6 +104,8 @@ export const userStore = create((set, get) => ({
           accessToken: data.response.accessToken,
           isLoggedIn: true,
         });
+        // Set the loggedInUserId in the store.
+        set({ loggedInUserId: data.response.userId });
         // Store the accessToken in the browser's localStorage.
         localStorage.setItem("accessToken", data.response.accessToken);
         // Display a success alert.
@@ -110,6 +120,10 @@ export const userStore = create((set, get) => ({
       console.error("Login error:", error);
       alert("An error occurred during login");
     }
+  },
+
+  handleGenderChange: (gender) => {
+    set({ selectedGender: gender });
   },
 
   // Function to handle user logout.
