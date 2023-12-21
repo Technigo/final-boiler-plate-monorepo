@@ -11,8 +11,8 @@ export const NewRecipe = () => {
   return (
     <div>
       <h3>Your recipe:</h3>
-      <h2>{newRecipe.recipe.title}</h2>
-      <p><strong>Description:</strong> {newRecipe.recipe.description}</p>
+      {/* <h2>{newRecipe.recipe.title}</h2>
+      <p><strong>Description:</strong> {newRecipe.recipe.description}</p> */}
       {/* Iterate over the ingredients object */}
       <p><strong>Ingredients:</strong></p>
       {/* <ul>
