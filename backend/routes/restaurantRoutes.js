@@ -6,7 +6,7 @@ import asyncHandler from 'express-async-handler';
 const router = express.Router();
 
 // Endpoint to add a new restaurant
-router.post('/restaurants', asyncHandler(async (req, res) => {
+router.post('/addrestaurant', asyncHandler(async (req, res) => {
   try {
     const newRestaurant = new Restaurant(req.body);
     await newRestaurant.save();

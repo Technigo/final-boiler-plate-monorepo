@@ -74,7 +74,7 @@ const AddRestaurantForm = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        fetch('http://localhost:3000/api/restaurants', {
+        fetch('http://localhost:3000/api/addrestaurant', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
