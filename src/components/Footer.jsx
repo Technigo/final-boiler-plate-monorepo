@@ -1,3 +1,3 @@
 export const Footer = () => {
-	return <footer>FOOTER</footer>
+	return <footer>© Frida & Klaudia for Technigo</footer>
 }
