@@ -14,16 +14,20 @@ export const PromptForm = () => {
         try {
             //Use the generateRecipe function from the recipeStore
             console.log(inputRecipe)
+            
             await generateRecipe(inputRecipe)
-
-
+          
+        
             //Clear inputRecipe and fetch new recipe data
             setInputRecipe("")
             fetchNewRecipe()
 
+            
+
         } catch (error) {
             console.error("Error in handleFormSubmit", error)
         }
+
     };
 
     // Render the component. Form element

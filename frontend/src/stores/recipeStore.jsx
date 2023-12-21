@@ -13,7 +13,8 @@ export const recipeStore = create((set) => ({
   // Function to set the recipes in the state
   setRecipes: (recipes) => set({ recipes }),
   // Initialize the newRecipe state with null
-  newRecipe: null,
+  newRecipe: false,
+  isGenerating: false,
   // Function to set the new recipe in the state
   setNewRecipe: (newRecipe) => set({ newRecipe }),
   inputRecipe: "",
@@ -63,8 +64,11 @@ export const recipeStore = create((set) => ({
       const data = await response.json();
       const recipes = data.recipes
       const reversedRecipes = recipes.reverse()
+      
       //Update the Recipes state with the fetched recipes
       set(() => ({ recipes: reversedRecipes }));
+      // Update the newRecipe state to null initially
+      set(() => ({ newRecipe: null }));
       
     } catch (error) {
       console.error("Error fetching collection of recipes:", error);
@@ -74,11 +78,8 @@ export const recipeStore = create((set) => ({
   // From PromptForm.jsx
   generateRecipe: async (ingredients) => {
     try {
-      // const newRecipeData = {
-      //   ingredients,
-      // }
-
-      // http://localhost:3001/openai/generateText
+      console.log("Sending post request!")
+      set(() => ({isGenerating: true}))
 
       const response = await fetch(`${api}/openai/generateText`, {
         method: 'POST',
@@ -93,14 +94,13 @@ export const recipeStore = create((set) => ({
       const data = await response.json()
 
       console.log(data.recipe)
-      //Update the state with the new recipe
-      // set((state) => ({
-      //   recipes: [...state.recipes, data],
-      //   newRecipe: data,
-      // }))
+    
 
     } catch (error) {
       console.error("Error generating OpenAI completion:", error);
+    } finally {
+      // Set isGenerating back to false once the operation is completed (either success or error)
+      set(() => ({ isGenerating: false }));
     }
   },
 

@@ -27,7 +27,7 @@ export const CollectionRecipes = () => {
 
   //loading state (Need to set this, so rendering doesn't happen BEFORE fetch!)
   if (loading) {
-    return <p>Loading...</p>; // You can replace this with a loading spinner or other loading indicator
+    return <p>Loading recipes...</p>; // You can replace this with a loading spinner or other loading indicator
   }
 
   // Slice the recipes array to get only the first 12 recipes

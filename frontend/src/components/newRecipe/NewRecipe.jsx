@@ -3,7 +3,6 @@ import { recipeStore } from "../../stores/recipeStore";
 
 export const NewRecipe = () => {
   const { newRecipe } = recipeStore();
-  // console.log(newRecipe.recipe.ingredients)
 
   return (
     <div>

@@ -6,13 +6,12 @@ import { CollectionRecipes } from "../components/collectionRecipes/CollectionRec
 import { recipeStore } from '../stores/recipeStore';
 
 export const Home = () => {
-  const { newRecipe } = recipeStore()
+  const { newRecipe, isGenerating } = recipeStore()
   return (
     <>
-      {/* <OpenAiAssistant /> */}
       <Header />
       <HeroSection/>
-      {newRecipe && <NewRecipe />} {/* Conditionally render NewRecipe only when newRecipe is truthy */}
+      {isGenerating ? <p>Generating your delicious outdoor meal...</p>: (newRecipe && <NewRecipe />)} {/* Conditionally render NewRecipe only when newRecipe is truthy */}
       <CollectionRecipes />
     </>
   );
