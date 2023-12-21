@@ -32,9 +32,10 @@
       "Chinese money plant",
       "coin plant",
       "UFO plant",
-      "friendship plant"
+      "friendship plant",
+      "shade"
     ],
-    "category_type": ["pilea", "popular"],
+    "category_type": ["pilea", "popular", "shade"],
     "origin": "Southern China",
     "description": "One of the more iconic looking houseplants synonymous with the recent resurgence in houseplant popularity is the Chinese Money Plant (Pilea peperomioides). It is much loved for its almost perfectly round leaves, its speed of growth and its ability to prolifically reproduce, being a great plant to share with friends.",
     "height": "±20cm",
@@ -115,7 +116,7 @@
     "plant_title": "ZZ Plant",
     "botanical_name": "Zamioculcas zamiifolia",
     "common_names": ["ZZ Plant", "Zanzibar Gem"],
-    "category_type": ["zz plant", "low-light", "air-purifying", "popular"],
+    "category_type": ["zz plant", "shade", "air-purifying", "popular"],
     "origin": "Eastern Africa",
     "description": "The ZZ Plant is known for its tolerance to low light and neglect. Its glossy, dark green leaves add a modern touch to any space. Perfect for those with a busy lifestyle.",
     "fun_fact": "The ZZ Plant's rhizomes store water, making it highly drought-tolerant.",
@@ -163,7 +164,7 @@
     "plant_title": "Raven ZZ Plant",
     "botanical_name": "Zamioculcas zamiifolia 'dowon'",
     "common_names": ["Raven ZZ Plant"],
-    "category_type": ["air-purifying", "popular"],
+    "category_type": ["air-purifying", "popular", "shade"],
     "origin": "East Africa",
     "description": "Jet-black leaflets adorn gracefully arching stalks of the low maintenance Raven ZZ Plant. New leaves emerge chartreuse and darken with age, providing deep contrast for added drama. ZZ plants are famously tough, able to thrive in any light level and requiring very infrequent watering. Keep the glossy leaves gleaming with a pair of microfiber dusting gloves.",
     "fun_fact": "The leaves of your ZZ Plant are naturally shiny and glossy, so no leaf shine is needed. Simply wipe them with a damp cloth or mist them occasionally to keep them dust free.",
@@ -421,7 +422,7 @@
       "Tabletop Palm",
       "Bella Palm"
     ],
-    "category_type": ["arecaceae", "palm", "tree", "green", "pet-friendly"],
+    "category_type": ["arecaceae", "palm", "tree", "green", "pet-friendly", "shade"],
     "origin": "Rainforests of southern Mexico and Guatemala",
     "description": "This slow-growing, compact palm thrives in a variety of light situations and tight spaces. It's dark green fronds create a bushy, lush plant perfect for tabletops, desks, and shelves. The Parlor Palm will do best in bright, filtered light, but will readily adapt to low light as well. Native to Mexico and Central America, the Parlor Palm requires very little care and is an excellent air purifier.  This indoor plant is highly adaptable making it perfect for offices, businesses with less than ideal growing conditions.",
     "fun_fact": "The parlor palm, despite its name, isn't a true palm. It belongs to the Chamaedorea genus and is often called the 'bamboo palm' or 'neanthe bella palm.'",
@@ -451,7 +452,8 @@
       "velvet",
       "green",
       "climbing",
-      "popular"
+      "popular",
+      "shade"
     ],
     "origin": "Tropical regions of Mexico and the Caribbean",
     "description": "The philodendron micans is a stunning philodendron variety that is known for its velvety, heart-shaped leaves and trailing growth habit. It has become extremely popular as a houseplant and can be difficult to come across in some regions as a result; but if you are able to get your hands on one you won’t regret it.",
@@ -481,7 +483,8 @@
       "Chinese Evergreen 'Crete'",
       "Aglaonema 'Siam Aurora'",
       "Siam Aglaonema",
-      "Firecracker Aglaonema"
+      "Firecracker Aglaonema",
+      "shade"
     ],
     "category_type": ["araceae", "red", "pink"],
     "origin": "Southeast Asia",
@@ -568,7 +571,7 @@
       "Philodendron Lemon",
       "Lemon Lime Heartleaf Philodendron"
     ],
-    "category_type": ["lime", "green", "climbing", "hanging"],
+    "category_type": ["lime", "green", "climbing", "hanging", "shade"],
     "origin": "Tropical regions of the Americas",
     "description": "The Philodendron Lemon Lime is a visually striking plant known for its vibrant, heart-shaped leaves with lemon and lime-colored accents. With a glossy texture and vining habit, it adds a tropical touch to indoor spaces. Thriving in bright, indirect light and consistently moist soil, it's versatile for hanging baskets or shelves. Its relatively fast growth makes it a lively and low-maintenance choice for plant enthusiasts.",
     "fun_fact": "There are nearly 500 species of Philodendron!",
@@ -592,7 +595,7 @@
     "plant_title": "Philodendron Birkin",
     "botanical_name": "Philodendron 'birkin'",
     "common_names": ["White Wave", "Philodendron Birkin"],
-    "category_type": ["stripes", "philodendron", "climbing"],
+    "category_type": ["stripes", "philodendron", "climbing", "shade"],
     "origin": "Relatively new hybrid, many philodendrons hail from the lush rainforests of Brazil and Paraguay",
     "description": "Seeking a plant that effortlessly combines elegance and ease? Look no further than the Philodendron Birkin - a unique philodendron cultivar with lush, glossy leaves adorned by intricate white pinstripes.",
     "fun_fact": "There are nearly 500 species of Philodendron!",
@@ -616,7 +619,7 @@
     "plant_title": "Philodendron Mayoi",
     "botanical_name": "Philodendron 'Mayoi'",
     "common_names": ["Philodendron Mayoi"],
-    "category_type": ["climbing", "green", "fun shape", "rare"],
+    "category_type": ["climbing", "green", "fun shape", "rare", "shade"],
     "origin": "Tropical regions of the Americas",
     "description": "Philodendron mayoi is a rare species that there's a growing demand for. What sets this plant apart from the common heartleaf philodendron is its large, palm-like leaves and the stalks (petioles) and underside veins with a striking red tinge. As the plant grows, the glossy green lobes deepen and widen. A large climbing, vining plant that, when mature, can grow to be over 6 feet tall, it's a perfect dramatic floor specimen.",
     "fun_fact": "A fun fact about her name is that she is named after the botanist who discovered her.",
@@ -642,7 +645,8 @@
     "common_names": [
       "Philodendron Brasil",
       "Heartleaf",
-      "Variegated heart leaf philodendron "
+      "Variegated heart leaf philodendron",
+      "shade"
     ],
     "category_type": ["philodendron", "climbing", "green", "variegated"],
     "origin": "Rainforests of South America",
@@ -673,7 +677,8 @@
       "variegated",
       "green",
       "pink",
-      "climbing"
+      "climbing",
+      "shade"
     ],
     "origin": "Columbia",
     "description": "Isn't she stunning! The Philodendron Pink Princess, also commonly referred to as the Blushing Philodendron, has beautiful dark green leaves in the shape of arrows and that are decorated with an explosion of pink color. She is really a living work of art. Even the undersides of the leaves have an amazing red/coppery hue. Try to keep your eyes off her!",
@@ -914,7 +919,8 @@
     "common_names": [
       "Flamingo Flower",
       "Crystal anthurium",
-      "Crystal laceleaf"
+      "Crystal laceleaf",
+      "shade"
     ],
     "category_type": ["araceae", "green", "striped", "rare", "trendy"],
     "origin": "Rainforest of Central and South America",

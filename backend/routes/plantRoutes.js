@@ -2,6 +2,11 @@ import express from "express";
 import {
   getPlantsController,
   getPlantController,
+  getPopularPlantsController,
+  getPetFriendlyPlantsController,
+  getEasyPlantsController, 
+  getShadyPlantsController,
+  getClimbingPlantsController
 } from "../controllers/plantController";
 
 const router = express.Router();
@@ -12,8 +17,18 @@ router.get("/", (req, res) => {
   res.json({ endpoints })
 })
 
-router.get("/plants", getPlantsController);
+router.get("/plants/climbing", getClimbingPlantsController);
+
+router.get("/plants/shady", getShadyPlantsController);
+
+router.get("/plants/easy", getEasyPlantsController);
+
+router.get("/plants/popular", getPopularPlantsController);
+
+router.get("/plants/pet-friendly", getPetFriendlyPlantsController);
 
 router.get("/plants/:id", getPlantController);
+
+router.get("/plants", getPlantsController);
 
 module.exports = router;
