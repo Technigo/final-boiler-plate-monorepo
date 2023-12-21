@@ -254,6 +254,21 @@ export const TripGenerator = () => {
 
       {trips.length > 0 && (
         <div className="mt-8 space-y-4">
+          <div className="grid grid-cols-12 gap-1">
+            <div className="col-span-12 bg-blue-200 p-4 text-center">1</div>
+            <div className="col-span-6 bg-green-200 p-4 text-center">MALMÖ</div>
+            <div className="col-span-6 bg-yellow-200 p-4 text-center">
+              LINKÖPING
+            </div>
+            <div className="col-span-3 bg-green-200 p-4 text-center">
+              24 juli
+            </div>
+            <div className="col-span-3 bg-green-200 p-4 text-center">2</div>
+            <div className="col-span-3 bg-green-200 p-4 text-center">2</div>
+            <div className="col-span-3 bg-green-200 p-4 text-center">2</div>
+            <div className="col-span-12 bg-pink-200 p-4 text-center"></div>
+          </div>
+
           <h1 className="text-xl font-bold">Trips</h1>
           {trips.map((trip) => (
             <div key={trip.id} className="bg-blue-50 p-4 rounded-md">

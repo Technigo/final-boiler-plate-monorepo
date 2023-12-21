@@ -40,8 +40,7 @@ export const Navbar = () => {
       <div className="container mx-auto flex items-center justify-between">
         <div
           onClick={() => navigate("/")}
-          className="text-white font-bold text-xl cursor-pointer"
-        >
+          className="text-white font-bold text-xl cursor-pointer">
           Piggyback
         </div>
         <ul className="hidden md:flex space-x-4">
