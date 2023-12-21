@@ -1,0 +1,27 @@
+.input-container {
+	grid-row: 2/3;
+	display: flex;
+	gap: 10px;
+	flex-direction: column;
+	justify-content: center;
+}
+.input-container input {
+	border: none;
+	border-bottom: 1px var(--font-color) solid;
+	background-color: transparent;
+	padding: 1.5rem 5rem 0 0;
+	outline: none; /* Remove border on focus */
+}
+
+.button-container {
+	grid-row: 3/4;
+	display: flex;
+	justify-content: center;
+	align-items: start;
+}
+.button-container button {
+	font-size: 1em;
+	margin-top: 1rem;
+	background-color: var(--primary-color); /*beige color as in Trello? */
+	color: var(--background-color);
+}
