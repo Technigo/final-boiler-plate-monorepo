@@ -25,25 +25,22 @@ const routes = (
     <Route path="/login" element={<Login />} />
     {/* Define a route for the "/home" path that renders the "Home" page */}
     <Route path="/home" element={<Home />} />
-    {/* Define a route for the '/tasks' path that renders the 'Adverts' component. */}
-    <Route path="/tasks" element={<Ads />} />
-    {/* Define a route for the '/ads/:id' path that renders the 'AdDe' component. */}
-    <Route path="/ads/:id" element={<AdDetails />} />
-    {/* Define a route for the '/register' path that renders the 'Register' component. */}
     {/* Define a route for the "/register" path that renders the "Register" page */}
     <Route path="/register" element={<Register />} />
     {/* Define a route for the "/profile" path that renders the "Profile" page */}
     <Route path="/profile" element={<Profile />} />    
     {/* Define a route for the "/settings" path that renders the "Profile Settings" component. */}
     <Route path="/settings" element={<ProfileSettings />} /> 
-    {/* Define a route for the "/create-ad" path that renders the "Create Ad" page */}
-    <Route path="/create-ad" element={<CreateAd />} />
-    {/* Define a route for the "/search" path and renders the "Search" page */}
-    <Route path="/search" element={<Search />} />
     {/* Define a route for the "/about" path and renders the "About" page */}
     <Route path="/about" element={<About />} />
     {/* Define a route for the "/policy" path and renders the "Policy" page */}
     <Route path="/policy" element={<Policy />} />
+    {/* Define a route for the '/ads/:id' path that renders the 'AdDe' component. */}
+    <Route path="/ads/:id" element={<AdDetails />} />
+    {/* Define a route for the "/create-ad" path that renders the "Create Ad" page */}
+    <Route path="/create-ad" element={<CreateAd />} />
+    {/* Define a route for the "/search" path and renders the "Search" page */}
+    <Route path="/search" element={<Search />} />
     {/* Define a catch-all route that matches any other path ("*") and renders the "NotFound" component. */}
     <Route path="*" element={<NotFound />} />
   </>
