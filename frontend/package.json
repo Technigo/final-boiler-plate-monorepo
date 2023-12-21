@@ -17,6 +17,8 @@
     "react-bootstrap": "^2.9.1",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.21.0",
+    "react-slick": "^0.29.0",
+    "slick-carousel": "^1.8.1",
     "sweetalert2": "^11.6.13",
     "validator": "^13.11.0",
     "zustand": "^4.4.6"
