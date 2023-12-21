@@ -8,9 +8,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-
 }
-
 
 input {
   font-size: 18px;
@@ -19,9 +17,8 @@ input {
   margin-top: 40px;
   margin-bottom: 20px;
   width: 300px;
-  font-family: "Roboto", sans-serif;
+  font-family: "Rethink Sans", sans-serif;
 }
-
 
 .map-control {
   background-color: #fff;

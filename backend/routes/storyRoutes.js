@@ -39,12 +39,11 @@ router.get("/stories", async (req, res) => {
 router.post("/stories", async (req, res) => {
   const { title, content, category, ranking, lat, lng } = req.body;
   const newStory = new StoryModel({
-
-    heading: req.body.heading,
-    content: req.body.content,
-    ranking: req.body.ranking,
-    category: req.body.category,
-
+    title,
+    content,
+    category,
+    ranking,
+    location: { lat, lng },
   });
 
   try {
@@ -68,7 +67,7 @@ router.put("/stories/:id/rank", async (req, res) => {
     const updatedStory = await StoryModel.findByIdAndUpdate(
       storyId,
       { ranking: newRanking },
-      { new: true }
+      { new: true } // Returns the updated document
     );
 
     if (!updatedStory) {
