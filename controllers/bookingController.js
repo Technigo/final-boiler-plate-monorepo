@@ -1,9 +1,9 @@
 import BookingModel from '../models/BookingModel'
-
+import asyncHandler from 'express-async-handler'
 // @desc get all bookings
 // @route /
 // @access public
-export const getAllBookings = async (req, res) => {
+export const getAllBookings = asyncHandler(async (req, res) => {
 	try {
 		const bookings = await BookingModel.find()
 		if (bookings.length > 0) {
@@ -14,12 +14,12 @@ export const getAllBookings = async (req, res) => {
 	} catch (error) {
 		res.status(500).json({ message: error.message })
 	}
-}
+})
 
 // @desc get booking by ID
 // @route /:id
 // @access public
-export const getBookingById = async (req, res) => {
+export const getBookingById = asyncHandler(async (req, res) => {
 	try {
 		const bookingId = +req.params.id
 		const booking = await BookingModel.findById(bookingId)
@@ -35,18 +35,16 @@ export const getBookingById = async (req, res) => {
 			error: 'Something went wrong, please try again.',
 		})
 	}
-}
+})
 
 // @desc add a new booking
 // @route /add
 // @access public
-export const addBooking = async (req, res) => {
+export const addBooking = asyncHandler(async (req, res) => {
 	try {
 		const { userId, movieId, price, showtimeId } = req.body
 		if (!userId || !movieId || !price || !showtimeId)
-			return res
-				.status(400)
-				.json({ error: 'Missing required information' })
+			return res.status(400).json({ error: 'Missing required information' })
 
 		const newBooking = new BookingModel({
 			userId: userId,
@@ -60,4 +58,4 @@ export const addBooking = async (req, res) => {
 	} catch (error) {
 		res.status(500).json({ message: error.message })
 	}
-}
+})

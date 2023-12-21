@@ -1,9 +1,9 @@
 import CinemaHallModel from '../models/CinemaHallModel'
-
+import asyncHandler from 'express-async-handler'
 // @desc get all cinemaHall
 // @route /
 // @access public
-export const getAllCinemaHall = async (req, res) => {
+export const getAllCinemaHall = asyncHandler(async (req, res) => {
 	try {
 		const cinemaHalls = await CinemaHallModel.find()
 		if (cinemaHalls.length > 0) {
@@ -14,12 +14,12 @@ export const getAllCinemaHall = async (req, res) => {
 	} catch (error) {
 		res.status(500).json({ message: error.message })
 	}
-}
+})
 
 // @desc get cinemaHall by ID
 // @route /:id
 // @access public
-export const getCinemaHallById = async (req, res) => {
+export const getCinemaHallById = asyncHandler(async (req, res) => {
 	try {
 		const cinemaHallsId = parseInt.req.params.id
 		const cinemaHall = await CinemaHallModel.findById(cinemaHallsId)
@@ -31,12 +31,12 @@ export const getCinemaHallById = async (req, res) => {
 	} catch (error) {
 		res.status(500).json({ error: 'Something went wrong, please try again.' })
 	}
-}
+})
 
 // @desc  add a new cinemaHall
 // @route /add
 // @access public
-export const addCinemaHall = async (req, res) => {
+export const addCinemaHall = asyncHandler(async (req, res) => {
 	try {
 		const { name, capacity, rows } = req.body
 		if (!name || !capacity || !rows)
@@ -52,4 +52,4 @@ export const addCinemaHall = async (req, res) => {
 	} catch (error) {
 		res.status(500).json({ message: error.message })
 	}
-}
+})
