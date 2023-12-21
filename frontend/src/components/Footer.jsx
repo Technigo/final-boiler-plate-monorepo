@@ -1,5 +1,4 @@
 import { SocialMediaLinks } from "./SocialMediaLinks";
-//import logo from "/technigo-logo.svg";
 import styled from "styled-components";
 
 /* Styling for the footer */

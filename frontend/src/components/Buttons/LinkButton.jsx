@@ -22,9 +22,9 @@ const StyledButton = styled(Link)`
 // />;
 
 // Radera bilddelen om det aldrig kommer till användning!
-export const LinkButton = ({ to, buttonName, className }) => {
+export const LinkButton = ({ to, buttonName, className, onClick }) => {
   return (
-    <StyledButton to={to} className={className}>
+    <StyledButton to={to} className={className} onClick={onClick}>
       {buttonName}
     </StyledButton>
   );

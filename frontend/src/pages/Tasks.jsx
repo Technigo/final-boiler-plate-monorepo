@@ -68,9 +68,9 @@ export const Tasks = () => {
           <li className="app-li">
             <Link to="/tasks">Tasks</Link>
           </li>*/}
-      <li className="app-li">
+      {/* <li className="app-li">
         <button onClick={onLogoutClick}>Sign Out</button>
-      </li>
+      </li> */}
       {/*</ul> 
       {/*</nav> */}
       {/* Render the 'LogoText' component. */}
