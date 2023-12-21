@@ -37,24 +37,24 @@ export const CollectionRecipes = () => {
               <strong>Ingredients:</strong>
             </p>
             {/* Iterate over the ingredients object: */}
-            <ul>
+            {/* <ul>
               {Object.entries(recipe.ingredients).map(
                 ([ingredient, quantity], i) => (
                   <li key={i}>{`${ingredient}: ${quantity}`}</li>
                 )
               )}
-            </ul>
+            </ul> */}
             <div>
               <p>
                 <strong>Instructions:</strong>
               </p>
-              <ol>
+              {/* <ol>
                 {recipe.instructions.map((instruction, index) => (
                   <li key={index}>{instruction}</li>
                 ))}
-              </ol>
+              </ol> */}
             </div>
-            
+
           </li>
         ))}
       </ul>

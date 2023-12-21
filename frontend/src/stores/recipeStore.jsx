@@ -1,7 +1,10 @@
 // Import the 'create' function from Zustand
 import { create } from "zustand";
 
-const api = "http://localhost:3001";
+// *** If we want to work in the localhost:
+// const api = "http://localhost:3001";
+
+const api = "https://ai-recipes-collin-dieden.onrender.com";
 
 // Define the recipeStore using Zustand's 'create' function
 export const recipeStore = create((set) => ({
@@ -76,9 +79,11 @@ export const recipeStore = create((set) => ({
       //   ingredients,
       // }
 
-      const response = await fetch("http://localhost:3001/openai/generateText", {
+      // http://localhost:3001/openai/generateText
+
+      const response = await fetch(`${api}/openai/generateText`, {
         method: 'POST',
-        body: JSON.stringify({prompt: ingredients}),
+        body: JSON.stringify({ prompt: ingredients }),
         headers: { 'Content-Type': 'application/json' },
       })
 
@@ -100,5 +105,5 @@ export const recipeStore = create((set) => ({
     }
   },
 
-  
+
 }));
