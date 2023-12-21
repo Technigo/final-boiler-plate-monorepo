@@ -9,6 +9,7 @@ import { Ads } from "../pages/Ads";
 import { Login } from "../pages/Login";
 import { NotFound } from "../pages/NotFound";
 import { Search } from "../pages/Search";
+import AdDetails from "../components/AdDetails";
 
 // Define the 'routes' variable as a JSX expression.
 const routes = (
@@ -19,6 +20,8 @@ const routes = (
     <Route path="/home" element={<Home />} />
     {/* Define a route for the '/tasks' path that renders the 'Adverts' component. */}
     <Route path="/tasks" element={<Ads />} />
+    {/* Define a route for the '/ads/:id' path that renders the 'AdDe' component. */}
+    <Route path="/ads/:id" element={<AdDetails />} />
     {/* Define a route for the '/register' path that renders the 'Register' component. */}
     <Route path="/register" element={<Register />} />
     {/* Define a catch-all route that matches any other path ('*') and renders the 'NotFound' component. */}

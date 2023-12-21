@@ -1,20 +1,29 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from "react";
 import { adStore } from "../stores/adStore";
+import { useParams } from "react-router-dom";
+import { Modal, Button } from "react-bootstrap";
+// Import Bootstrap styles
+import "bootstrap/dist/css/bootstrap.min.css";
+import { ContactForm } from "./ContactForm";
 
-const AdDetails = ({ match }) => {
+const AdDetails = () => {
   const [ad, setAd] = useState({});
   const { getAdById } = adStore();
+  const { id } = useParams();
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
   useEffect(() => {
     const fetchAd = async () => {
-      const adDetails = await getAdById(match.params.id);
+      const adDetails = await getAdById(id);
       if (adDetails) {
         setAd(adDetails);
       }
     };
 
     fetchAd();
-  }, [match.params.id, getAdById]);
+  }, [id, getAdById]);
 
   return (
     <div>
@@ -22,13 +31,23 @@ const AdDetails = ({ match }) => {
       <img src={ad.image} alt={ad.title} />
       <p>Description: {ad.description}</p>
       <p>Product: {ad.product}</p>
-      <p>Quantity: {ad.quantity} {ad.unit}</p>
+      <p>
+        Quantity: {ad.quantity} {ad.unit}
+      </p>
       <p>Pickup Date: {new Date(ad.pickupDate).toLocaleDateString()}</p>
       <p>Observation: {ad.observation}</p>
       <p>Posted by: {ad.user?.username}</p>
-      <button onClick={() => {/* logic to send message */}}>
-        Contact Advertiser
-      </button>
+      <Button onClick={handleShow}>Contact Advertiser</Button>
+      <Modal show={show} onHide={handleClose}>
+        <Modal.Body>
+          <ContactForm
+            advertiserName={ad.user?.username}
+            productName={ad.product}
+            adTitle={ad.title}
+            handleClose={handleClose}
+          />
+        </Modal.Body>
+      </Modal>
     </div>
   );
 };
