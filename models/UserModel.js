@@ -6,19 +6,19 @@ const { Schema } = mongoose
 const userSchema = new Schema({
 	username: {
 		type: String,
-		required: true,
-		unique: true,
+		required: [true, 'username missing'],
+		unique: [true, 'username is already in use'],
 		minlength: 2,
 	},
 	password: {
 		type: String,
-		required: true,
+		required: [true, 'password missing'],
 		minlength: 6,
 	},
 	email: {
 		type: String,
-		required: true,
-		unique: true,
+		required: [true, 'email missing'],
+		unique: [true, 'email already in use'],
 	},
 	accessToken: {
 		type: String,
