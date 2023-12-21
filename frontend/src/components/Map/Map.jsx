@@ -9,8 +9,7 @@ import {
   InfoWindow,
   Autocomplete,
 } from "@react-google-maps/api";
-import { google } from "google-maps";
-// import customMarker from "../../assets/marker.png";
+
 import "./Map.css";
 
 const libraries = ["places"];
@@ -142,7 +141,7 @@ export const Map = () => {
   const [autocomplete, setAutocomplete] = useState(null);
 
   const customMarker = {
-    url: "../../assets/marker.png", // URL or path to your custom marker image
+    url: "/marker.png", // URL or path to your custom marker image
     scaledSize: new google.maps.Size(30, 30), // Width and height of your marker
   };
 
@@ -158,17 +157,6 @@ export const Map = () => {
   const onMarkerClick = useCallback((marker) => {
     setSelectedMarker(marker);
   }, []);
-
-  const handleCommentChange = (event) => {
-    setSelectedMarker({ ...selectedMarker, comment: event.target.value });
-  };
-
-  const handleCommentSubmit = () => {
-    setMarkers((current) =>
-      current.map((m) => (m === selectedMarker ? selectedMarker : m))
-    );
-    setSelectedMarker(null);
-  };
 
   const onLoadAutocomplete = (autocomplete) => {
     setAutocomplete(autocomplete);
@@ -226,12 +214,13 @@ export const Map = () => {
             position={{ lat: selectedMarker.lat, lng: selectedMarker.lng }}
             onCloseClick={() => setSelectedMarker(null)}>
             <div>
-              <textarea
-                value={selectedMarker.comment}
-                onChange={handleCommentChange}
-                placeholder="Enter your comment here"
-              />
-              <button onClick={handleCommentSubmit}>Submit</button>
+              <p>{stories[selectedMarker.storyId].title}</p>
+              <a
+                href={stories[selectedMarker.storyId].url}
+                target="_blank"
+                rel="noopener noreferrer">
+                Go to Story
+              </a>
             </div>
           </InfoWindow>
         )}
