@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import { LogOut } from '../../components/LogOut';
 import usePlaygroundStore from '../../stores/usePlaygroundStore';
 
-const MyFavorites = () => {
+export const MyFavorites = () => {
   const [favorites, setFavorites] = useState([]);
   const { fetchUserFavorites } = usePlaygroundStore();
 
@@ -40,4 +40,3 @@ const MyFavorites = () => {
   );
 };
 
-export default MyFavorites;

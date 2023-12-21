@@ -2,6 +2,7 @@
 import { create } from "zustand";
 
 const playgroundAPI = `https://catalog.eslov.se/rowstore/dataset/08b5e92d-7bc7-41de-aa56-f67f6662e919`;
+const BACKEND_URL = import.meta.env.VITE_BACKEND_API;
 
 const usePlaygroundStore = create((set) => ({
   playgrounds: [],
@@ -57,7 +58,7 @@ const usePlaygroundStore = create((set) => ({
   likePlayground: async () => {
     const { id, name } = playgroundDetails;
     try {
-      const response = await fetch('http://localhost:3002/api/playground/add-to-favorites', {
+      const response = await fetch(`${BACKEND_URL}/api/playground/add-to-favorites`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -80,7 +81,7 @@ const usePlaygroundStore = create((set) => ({
    fetchUserFavorites: async () => {
     try {
       const token = localStorage.getItem('token');
-      const response = await fetch('http://localhost:3002/api/user/favorites', {
+      const response = await fetch(`${BACKEND_URL}/api/user/favorites`, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',

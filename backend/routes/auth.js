@@ -71,7 +71,7 @@ router.post('/signin', async (req, res) => {
 router.post('/add-to-favorites', async (req, res) => {
   try {
     // Check if the playground already exists in the user's favorites
-    const user = await User.findById(req.userId).populate('favorites');
+    const user = await User.findById(req.userId).populate('Favorites');
     const existingFavorite = user.favorites.find((fav) => fav.apiId === req.body.apiId);
 
     if (existingFavorite) {
