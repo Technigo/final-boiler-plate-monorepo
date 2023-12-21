@@ -2,7 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import db from './config/db.js';
 import listEndpoints from 'express-list-endpoints';
-import restaurantRoutes from './routes/restaurantRoutes.js';
+import restaurantRoutes from './routes/seedingRestaurant.js';
 import occasionandmoodRoutes from './routes/occasionandmoodRoutes.js';
 import customMiddleware from './middlewares/useDatabase';
 

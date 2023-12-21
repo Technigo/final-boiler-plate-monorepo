@@ -1,5 +1,5 @@
 import express from 'express';
-import Restaurant from '../models/restaurantModel.js'; // Adjust the path as necessary
+import Restaurant from '../models/seedingRestaurant.js'; // Adjust the path as necessary
 import asyncHandler from 'express-async-handler'; // Ensure you have this package installed for handling async requests
 
 const router = express.Router();

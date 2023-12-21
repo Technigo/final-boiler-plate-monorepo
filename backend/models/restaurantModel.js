@@ -1,7 +1,6 @@
 //Alexandra jobbar med den här!
 
-import mongoose from 'mongoose';
-import db from '../config/db.js';
+
 
 
 const restaurantSchema = new mongoose.Schema({

@@ -1,6 +1,6 @@
 import express from 'express';
 import cors from 'cors';
-import Restaurant from '../models/restaurantModel.js';
+import Restaurant from '../models/seedingRestaurant.js';
 import asyncHandler from 'express-async-handler';
 import dotenv from 'dotenv';
 dotenv.config();
