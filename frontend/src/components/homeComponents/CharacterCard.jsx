@@ -1,7 +1,10 @@
 import React from 'react'
-import { Link } from "react-router-dom"
+import { Link } from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
 
 export const CharacterCard = () => {
+
+    const navigate = useNavigate()
 
     const cards = [
         {id: 1, heading: "Pet-Friendly", image: "", imgAlt: ""},
@@ -14,7 +17,7 @@ export const CharacterCard = () => {
     <div className="cards-container">
         {cards.map((card) => {
             return (
-                <div className="character-card-wrapper" key={card.id}>
+                <div onClick={() => navigate(`/plants`)} className="character-card-wrapper" key={card.id}>
                     <h3>{card.heading}</h3>
                     <Link to="" className="shop-now-link">shop now</Link>
                     <img src={card.image} alt={card.imgAlt} />

@@ -26,8 +26,8 @@
 }
 
 .plant-card {
-  width: 10rem;
-  height: 15rem;
+  width: auto;
+  height: 14rem;
   position: relative;
   font-family: var(--montserrat);
   letter-spacing: 0.025rem;
@@ -45,6 +45,8 @@
 .preview-plant-img {
   object-fit: cover;
   border-radius: 0.625rem;
+  height: 100%;
+  width: 100%;
 }
 
 .card-price {

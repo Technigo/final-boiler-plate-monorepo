@@ -1,0 +1,36 @@
+.categories-wrapper {
+  background-color: var(--chalk);
+  padding: 1rem;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.main-content {
+    display: flex;
+}
+
+.options-container {
+    display: none;
+}
+
+.categories-wrapper .products-wrapper {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+/* For extra large devices */
+@media (min-width: 1280px) {
+  .categories-wrapper .products-wrapper {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .options-container {
+    display: block;
+    width: 21rem;
+}
+}

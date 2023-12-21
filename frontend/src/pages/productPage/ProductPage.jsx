@@ -2,6 +2,7 @@ import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { Button } from "../../components/buttons/Button";
 import { plantStore } from "../../stores/plantStore";
+import { cartStore } from "../../stores/cartStore";
 
 import "./ProductPage.css";
 
@@ -10,6 +11,7 @@ export const ProductPage = () => {
   console.log("plant product id:", id);
 
   const { plants, fetchPlants, setApiEndpoint } = plantStore();
+  const { addToCart, cart } = cartStore();
   const [error, setError] = useState(null);
 
   useEffect(() => {
@@ -22,6 +24,12 @@ export const ProductPage = () => {
 
   console.log("PLANTS IN PRODUCT PAGE:", plants);
 
+  const handleAddToCart = () => {
+    addToCart(plants)
+  }
+
+  console.log("CART:", cart)
+  
   return (
     <section className="product-page">
       <div className="product-highlights-wrapper">
@@ -31,6 +39,7 @@ export const ProductPage = () => {
         <p>{plants.price}</p>
         <Button
           className="add-to-cart-btn"
+          onClick={handleAddToCart}
           btnText="Add to Cart"
           ariaLabel="cart button"
         />

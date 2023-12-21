@@ -133,6 +133,12 @@ export const usersController = asyncHandler(async (req, res) => {
 
 })
 
+// @desc    Logged in user wishlist
+// @route   GET 
+// @access  Private
+
+export const wishlistController = asyncHandler()
+
 
 // SUMMARY
 

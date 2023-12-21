@@ -7,6 +7,8 @@ import { Register } from "../pages/register/Register";
 import { Login } from "../pages/login/Login";
 import { NotFound } from "../pages/notfound/NotFound";
 import { ProductPage } from "../pages/productPage/ProductPage"
+import { CategoriesPage } from "../pages/categoriesPage/CategoriesPage";
+import { CartPage } from "../pages/cartpage/CartPage";
 
 // Define the 'routes' variable as a JSX expression.
 const routes = (
@@ -22,6 +24,8 @@ const routes = (
     {/* Define a catch-all route that matches any other path ('*') and renders the 'NotFound' component. */}
     <Route path="*" element={<NotFound />} />
     <Route path="/plants/:id" element={<ProductPage />}/>
+    <Route path="/plants/categories" element={<CategoriesPage />} />
+    <Route path="/cart" element={<CartPage />} />
     
   </>
 );
