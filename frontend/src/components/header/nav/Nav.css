@@ -1,23 +1,59 @@
-.nav-left-wrapper,
-.nav-right-wrapper {
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.left-side,
+.right-side {
   display: flex;
   align-items: center;
-  gap: 2rem;
-  color: var(--sand);
+  gap: 0.5rem;
 }
 
-.menu-icon,
-.search-icon,
+.close-icon,
+.open-icon {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
 .heart-icon,
-.bag-icon {
-  width: 2rem;
-  height: 2rem;
+.bag-icon,
+.search-icon {
+  width: 1rem;
+  height: 1rem;
 }
 
-.shop-nav,
-.login-nav {
-  font-family: var(--josefin);
-  font-weight: 700;
-  letter-spacing: 3px;
-  text-transform: uppercase;
+.logo-container {
+  width: 200px;
+}
+
+@media (min-width: 768px) {
+  .header-container {
+    gap: 2.5rem;
+  }
+
+  .header-container span {
+    color: var(--sand);
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 0.1875rem;
+  }
+
+  .left-side,
+  .right-side {
+    gap: 2rem;
+  }
+
+  .heart-icon,
+  .bag-icon,
+  .search-icon,
+  .menu-icon {
+    width: 2rem;
+    height: 2rem;
+  }
+
+  .logo-container {
+    width: auto;
+  }
 }

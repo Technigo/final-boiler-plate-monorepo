@@ -1,9 +1,103 @@
 .hero-wrapper {
+  background-color: var(--chalk);
+  display: flex;
+}
+
+.hero-content-wrapper {
+  padding: 1rem;
+}
+
+h1 {
+  color: var(--charcoal);
+  font-family: var(--big-h-font);
+  font-size: 2.5rem;
+  font-style: normal;
+  font-weight: 900;
+  line-height: normal;
+}
+
+.hero-wrapper p {
+  color: var(--charcoal);
+  font-family: var(--montserrat);
+  font-size: 1rem;
+  line-height: 1.8;
+  letter-spacing: 0.09rem;
+}
+
+.hero-image-container {
+  background: linear-gradient(to bottom left, #3f543f, #dddfd1);
+  border-radius: 0rem 0rem 31.5rem 31.5rem;
+  padding: 0 1.5rem 1.5rem;
+  height: 100%;
+  width: 80%;
+  margin: 0 1rem 0 0;
+}
+
+.hero-image-container img {
+  border-radius: 0rem 0rem 31.25rem 31.25rem;
+}
+
+.all-plants-btn {
+  background-color: var(--terracotta);
+  color: var(--chalk);
+  border-radius: 4.5rem;
+  padding: 0.5rem 1.5rem;
+  text-transform: uppercase;
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 2.8125rem; /* 187.5% */
+  letter-spacing: 0.06rem;
+}
+
+@media (min-width: 900px) {
+  .hero-wrapper {
     background-color: var(--chalk);
     display: flex;
-}
+  }
 
-.hero-wrapper img {
-    width: 40%; 
-}
+  .hero-content-wrapper {
+    padding: 7rem 1rem 7rem 7rem;
+  }
 
+  h1 {
+    color: var(--charcoal);
+    font-family: var(--big-h-font);
+    font-size: 3.5rem;
+    font-style: normal;
+    font-weight: 900;
+    line-height: normal;
+  }
+
+  .hero-wrapper p {
+    color: var(--charcoal);
+    font-family: var(--montserrat);
+    font-size: 1.5rem;
+    line-height: 2.8125rem; /* 187.5% */
+    letter-spacing: 0.09rem;
+  }
+
+  .hero-image-container {
+    background: linear-gradient(to bottom left, #3f543f, #dddfd1);
+    border-radius: 0rem 0rem 31.5rem 31.5rem;
+    padding: 0 1.5rem 1.5rem;
+    height: 100%;
+    width: 80%;
+    margin: 0 7rem 0 1rem;
+  }
+
+  .hero-image-container img {
+    border-radius: 0rem 0rem 31.25rem 31.25rem;
+  }
+
+  .all-plants-btn {
+    background-color: var(--terracotta);
+    color: var(--chalk);
+    border-radius: 4.5rem;
+    padding: 0.8rem 1.8rem;
+    text-transform: uppercase;
+    font-size: 1.3rem;
+    font-weight: 700;
+    line-height: 2.8125rem; /* 187.5% */
+    letter-spacing: 0.06rem;
+  }
+}
