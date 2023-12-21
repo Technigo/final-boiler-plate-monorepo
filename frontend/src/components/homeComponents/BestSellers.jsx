@@ -7,6 +7,8 @@ import { useNavigate } from "react-router-dom";
 
 import { plantStore } from "../../stores/plantStore";
 
+const apiEnv = import.meta.env.VITE_BACKEND_API;
+
 export const BestSellers = () => {
   //const [plantList, setPlantList] = useState([]);
   const [error, setError] = useState(null);
@@ -39,7 +41,11 @@ export const BestSellers = () => {
                 <div className="plant-card">
                   <img
                     className="preview-plant-img"
-                    src={plant.images.full_size_url}
+                    // HÄR ÄR EN "FULLÖSNING" PÅ BILDPROBLEMET !!! JAG KAN KANSKE LÖSA SEN!!!
+                    src={
+                      plant.images.full_size_url.substring(0,4) === "http"
+                      ? plant.images.full_size_url
+                      : apiEnv + plant.images.full_size_url}
                     alt=""
                   />
                   <div className="product-overlay">
