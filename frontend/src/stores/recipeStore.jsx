@@ -65,8 +65,7 @@ export const recipeStore = create((set) => ({
       const reversedRecipes = recipes.reverse()
       //Update the Recipes state with the fetched recipes
       set(() => ({ recipes: reversedRecipes }));
-
-      // setRecipes(data.recipes)
+      
     } catch (error) {
       console.error("Error fetching collection of recipes:", error);
     }
@@ -95,10 +94,10 @@ export const recipeStore = create((set) => ({
 
       console.log(data.recipe)
       //Update the state with the new recipe
-      set((state) => ({
-        recipes: [...state.recipes, data],
-        newRecipe: data,
-      }))
+      // set((state) => ({
+      //   recipes: [...state.recipes, data],
+      //   newRecipe: data,
+      // }))
 
     } catch (error) {
       console.error("Error generating OpenAI completion:", error);

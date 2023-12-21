@@ -1,6 +1,6 @@
 // This component is mounted in page: Login. The component fetches a list from the local API using the fetch function and displays them
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { recipeStore } from "../../stores/recipeStore";
 import "./collectionRecipes.css";
 
@@ -8,12 +8,27 @@ import "./collectionRecipes.css";
 export const CollectionRecipes = () => {
   // Destructure recipes and setRecipes from the recipeStore
   const { recipes, fetchCollectionRecipes } = recipeStore();
+  const [loading, setLoading] = useState(true);
 
   // Use the useEffect hook to fetch recipes when the component mounts
   useEffect(() => {
-    //FOR LATER: UPDATE LOADING STATE TO SHOW LOADING?
-    fetchCollectionRecipes();
+    const fetchData = async () => {
+      try {
+        await fetchCollectionRecipes();
+        setLoading(false);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+        setLoading(false);
+      }
+    };
+
+    fetchData();
   }, []);
+
+  //loading state (Need to set this, so rendering doesn't happen BEFORE fetch!)
+  if (loading) {
+    return <p>Loading...</p>; // You can replace this with a loading spinner or other loading indicator
+  }
 
   // Slice the recipes array to get only the first 12 recipes
   const limitedRecipes = recipes.slice(0, 12);
@@ -37,24 +52,31 @@ export const CollectionRecipes = () => {
               <strong>Ingredients:</strong>
             </p>
             {/* Iterate over the ingredients object: */}
-            {/* <ul>
-              {Object.entries(recipe.ingredients).map(
-                ([ingredient, quantity], i) => (
-                  <li key={i}>{`${ingredient}: ${quantity}`}</li>
-                )
-              )}
-            </ul> */}
+            {recipe.ingredients ? (
+              <ul>
+                {Object.entries(recipe.ingredients).map(
+                  ([ingredient, quantity], i) => (
+                    <li key={i}>{`${ingredient}: ${quantity}`}</li>
+                  )
+                )}
+              </ul>
+            ) : (
+              <p>No ingredients available.</p>
+            )}
             <div>
               <p>
                 <strong>Instructions:</strong>
               </p>
-              {/* <ol>
-                {recipe.instructions.map((instruction, index) => (
-                  <li key={index}>{instruction}</li>
-                ))}
-              </ol> */}
+              {recipe.instructions ? (
+                <ol>
+                  {recipe.instructions.map((instruction, index) => (
+                    <li key={index}>{instruction}</li>
+                  ))}
+                </ol>
+              ) : (
+                <p>No instructions available.</p>
+              )}
             </div>
-
           </li>
         ))}
       </ul>
