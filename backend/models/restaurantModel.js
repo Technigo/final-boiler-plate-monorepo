@@ -1,4 +1,5 @@
 //Alexandra jobbar med den här!
+import mongoose from 'mongoose';
 
 
 
