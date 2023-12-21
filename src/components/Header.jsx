@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import { userStore } from '../store/userStore'
 import userIcon from '/user.svg'
-import './header.css'
+import './Header.css'
 
 export const Header = () => {
 	const isLoggedIn = userStore.getState().isLoggedIn
