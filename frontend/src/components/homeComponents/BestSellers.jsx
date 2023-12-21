@@ -5,33 +5,24 @@ import "./BestSellers.css";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
+import { plantStore } from "../../stores/plantStore";
 
 export const BestSellers = () => {
-  const [plantList, setPlantList] = useState([]);
+  //const [plantList, setPlantList] = useState([]);
   const [error, setError] = useState(null);
 
-  console.log("PLANTS:", plantList);
-  const navigate = useNavigate()
+  // Access the 'plants' and 'fetchPlants' functions from the 'plantStore'.
+  const { plants, fetchPlants, setApiEndpoint } = plantStore();
 
-  const popularApi = "http://localhost:3000/plants";
-
-  const fetchPlants = async () => {
-    try {
-      const response = await fetch(popularApi);
-      if (!response.ok) {
-        throw new Error("Failed to fetch plants");
-      }
-
-      const plants = await response.json();
-      setPlantList(plants);
-    } catch (error) {
-      console.error("Error fetching plant data", error);
-      setError(error);
-    }
-  };
+  console.log("POPULAR PLANTS:", plants);
+  const navigate = useNavigate();
 
   useEffect(() => {
-    fetchPlants();
+    setApiEndpoint("http://localhost:3000/plants/popular")
+    fetchPlants().catch((error) => {
+      console.error("error fetching plant data", error);
+      setError(error);
+    });
   }, []);
 
   return (
@@ -39,11 +30,18 @@ export const BestSellers = () => {
       <div className="best-sellers-container">
         <h2 className="section-title">Best Sellers</h2>
         <div className="products-wrapper">
-          {plantList.map((plant) => {
+          {plants.map((plant) => {
             return (
-              <div onClick={() => navigate(`/plants/${plant._id}`)} key={plant._id}>
-                <div className="plant-card" >
-                  <img className="preview-plant-img" src={plant.images.full_size_url} alt="" />
+              <div
+                onClick={() => navigate(`/plants/${plant._id}`)}
+                key={plant._id}
+              >
+                <div className="plant-card">
+                  <img
+                    className="preview-plant-img"
+                    src={plant.images.full_size_url}
+                    alt=""
+                  />
                   <div className="product-overlay">
                     <PiHeartStraightFill className="like-icon" />
                     <div className="title-price-container">
@@ -60,3 +58,29 @@ export const BestSellers = () => {
     </section>
   );
 };
+
+
+
+
+
+
+ //const popularApi = "http://localhost:3000/plants";
+
+  // const fetchPlants = async () => {
+  //   try {
+  //     const response = await fetch(popularApi);
+  //     if (!response.ok) {
+  //       throw new Error("Failed to fetch plants");
+  //     }
+
+  //     const plants = await response.json();
+  //     setPlantList(plants);
+  //   } catch (error) {
+  //     console.error("Error fetching plant data", error);
+  //     setError(error);
+  //   }
+  //};
+
+  // useEffect(() => {
+  //   fetchPlants();
+  // }, []);
