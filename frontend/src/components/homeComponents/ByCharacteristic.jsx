@@ -1,5 +1,6 @@
 import React from 'react';
-import { CharacterCard } from "../components/CharacterCard.jsx";
+import { CharacterCard } from "./CharacterCard.jsx";
+import "./ByCharacteristic.css"
 
 export const ByCharacteristic = () => {
 
@@ -8,7 +9,7 @@ export const ByCharacteristic = () => {
     }
   return (
     <section className="by-characteristic-wrapper">
-        <h2>{text.heading}</h2>
+        <h2 className="section-title">{text.heading}</h2>
         <CharacterCard />
     </section>
   )

@@ -1,0 +1,61 @@
+.best-sellers-wrapper {
+  background-color: var(--chalk);
+}
+
+.best-sellers-container {
+  padding: 3rem 1rem;
+}
+
+.products-wrapper {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.product-overlay {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 1rem;
+
+  inset: 0;
+  border-radius: 0.625rem;
+  border: 1px solid var(--Forest, #3f543f);
+  background: linear-gradient(180deg, rgba(51, 51, 51, 0) 50%, #333 100%);
+}
+
+.plant-card {
+  width: 10rem;
+  height: 15rem;
+  position: relative;
+  font-family: var(--montserrat);
+  letter-spacing: 0.025rem;
+}
+
+.like-icon {
+  width: 1.8rem;
+  height: 1.8rem;
+  align-self: flex-end;
+  fill: none;
+  stroke-width: 0.8rem;
+  stroke: var(--charcoal);
+}
+
+.preview-plant-img {
+  object-fit: cover;
+  border-radius: 0.625rem;
+}
+
+.card-price {
+  color: var(--breeze);
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+/* For extra large devices */
+@media (min-width: 1280px) {
+  .best-sellers-container {
+    padding: 5rem;
+  }
+}

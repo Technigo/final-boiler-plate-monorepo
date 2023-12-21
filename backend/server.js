@@ -38,7 +38,7 @@ const seedDatabase = async () => {
   }
 };
 
-seedDatabase();
+//seedDatabase();
 
 // Connection to the database through Mongoose
 connectDB();

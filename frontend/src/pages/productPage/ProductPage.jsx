@@ -1,17 +1,20 @@
 import { useParams } from "react-router-dom";
-import { Button } from "../components/Button";
+import { useState, useEffect } from "react";
+import { Button } from "../../components/buttons/Button";
+
+import "./ProductPage.css"
 
 export const ProductPage = () => {
 
     const { id } = useParams();
     console.log("plant product id:", id);
 
-    const [plantDetails, setPlantDetails] = useState([]);
+    const [plantDetails, setPlantDetails] = useState({});
     const [error, setError] = useState(null);
   
-    console.log("PLANTS:", plantList);
+    console.log("PLANT:", plantDetails);
   
-    const plantApi = "http://localhost:3000/plants/${id}";
+    const plantApi = `http://localhost:3000/plants/${id}`;
   
     const fetchPlantDetails = async () => {
       try {
@@ -19,9 +22,8 @@ export const ProductPage = () => {
         if (!response.ok) {
           throw new Error("Failed to fetch plant details");
         }
-  
         const plants = await response.json();
-        setPlantDetails(plant);
+        setPlantDetails(plants);
       } catch (error) {
         console.error("Error fetching plant details", error);
         setError(error);
@@ -30,10 +32,11 @@ export const ProductPage = () => {
   
     useEffect(() => {
       fetchPlantDetails();
-    }, []);
+    }, [id]);
 
   return (
-    <div> A PRODUCT
+    <section className="product-page">
+      <div className="product-highlights-wrapper">
         <h4>{plantDetails.botanical_name}</h4>
         <h3>{plantDetails.plant_title}</h3>
         <p>{plantDetails.description}</p>
@@ -43,16 +46,19 @@ export const ProductPage = () => {
               btnText="Add to Cart"
               ariaLabel="cart button"
         />
-        <img src={plantDetails.images.full_size_url} alt="" />
+      </div>
+        <img className="product-image" src={plantDetails.images && plantDetails.images.full_size_url} alt="" />
+        <div className="product-care-wrapper">
         <h4>Treatments & Facts</h4>
         <ul>
-            <li>{plantDetails.careDetails.watering}</li>
-            <li>{plantDetails.careDetails.care_level}</li>
-            <li>{plantDetails.careDetails.light}</li>
-            <li>{plantDetails.careDetails.care_description}</li>
+            <li>{plantDetails.careDetails && plantDetails.careDetails.watering}</li>
+            <li>{plantDetails.careDetails && plantDetails.careDetails.care_level}</li>
+            <li>{plantDetails.careDetails && plantDetails.careDetails.light}</li>
+            <li>{plantDetails.careDetails && plantDetails.careDetails.care_description}</li>
         </ul>
+        </div>
  
     
-    </div>
+    </section>
   );
 };

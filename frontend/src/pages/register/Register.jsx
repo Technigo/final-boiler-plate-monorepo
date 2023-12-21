@@ -1,8 +1,8 @@
-import { userStore } from "../stores/userStore";
+import { userStore } from "../../stores/userStore";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Input } from "../components/Input";
-import { Button } from "../components/Button";
+import { Input } from "../../components/inputs/Input";
+import { Button } from "../../components/buttons/Button";
 import "./Register.css"
 
 // Define the 'Register' functional component.

@@ -21,7 +21,7 @@ JOSEFIN SANS (400, 500, 600, 700 ----------*/
   );
 
   /*---------- Fonts ----------*/
-  --title-font: "Josefin Sans", sans-serif;
+  --josefin: "Josefin Sans", sans-serif;
   --montserrat: "Montserrat", sans-serif;
   --big-h-font: "Playfair Display", serif;
 }
@@ -51,7 +51,7 @@ h6 {
 
 .section-title {
   font-family: var(--big-h-font);
-  font-size: 3.5rem;
+  font-size: 1.8rem;
   color: var(--charcoal);
   font-weight: 900;
   letter-spacing: 0.1375rem;
@@ -59,8 +59,10 @@ h6 {
 
 .card-name {
   font-family: var(--montserrat);
-  font-size: 1.25rem;
+  font-size: 0.9rem;
   color: var(--chalk);
+  font-weight: 600;
+  letter-spacing: 0.025rem;
 }
 
 a {
@@ -86,6 +88,13 @@ button {
 /*---------- BREAKPOINTS ----------*/
 /* For extra large devices */
 @media (min-width: 1280px) {
+  .section-title {
+    font-size: 3.5rem;
+  }
+  
+  .card-name {
+    font-size: 1.25rem;
+  }
 }
 
 /* For large devices */
