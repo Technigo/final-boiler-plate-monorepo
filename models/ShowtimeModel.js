@@ -11,12 +11,10 @@ const ShowtimeSchema = new Schema({
 		type: String,
 		required: true,
 	},
-
 	date: {
 		type: Date,
 		required: true,
 	},
-
 	startingTime: {
 		type: Date,
 		required: true,

@@ -5,6 +5,8 @@ import mongoose from 'mongoose'
 import dotenv from 'dotenv'
 dotenv.config()
 
+const { errorHandler } = require('./middleware/errorMiddleware')
+
 // Defines the port the app will run on. Defaults to 8080
 const port = process.env.PORT || 8080
 const app = express()
@@ -21,6 +23,7 @@ import showtimeRoutes from './routes/showtimeRoutes'
 app.use(cors())
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
+app.use(errorHandler)
 
 app.use('/users', userRoutes)
 app.use('/bookings', bookingRoutes)

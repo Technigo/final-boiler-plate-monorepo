@@ -1,5 +1,6 @@
 import BookingModel from '../models/BookingModel'
 import asyncHandler from 'express-async-handler'
+
 // @desc get all bookings
 // @route /
 // @access public
@@ -44,7 +45,9 @@ export const addBooking = asyncHandler(async (req, res) => {
 	try {
 		const { userId, movieId, price, showtimeId } = req.body
 		if (!userId || !movieId || !price || !showtimeId)
-			return res.status(400).json({ error: 'Missing required information' })
+			return res
+				.status(400)
+				.json({ error: 'Missing required information' })
 
 		const newBooking = new BookingModel({
 			userId: userId,
