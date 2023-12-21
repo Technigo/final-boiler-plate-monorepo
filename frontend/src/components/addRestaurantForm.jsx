@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import Navbar from './navbar';
 import Footer from './footer';
+import { useRestaurantStore } from '../stores/restaurantStore'; 
 
 const PageContainer = styled.div`
   margin: 0 auto;
@@ -32,7 +33,8 @@ background-color: #B6244F;
 `;
 
 
-const addRestaurantForm = () => {
+const AddRestaurantForm = () => {
+    const { occasions, moods, fetchOccasions, fetchMoods } = useRestaurantStore();
     const [formData, setFormData] = useState({
         restaurantName: '',
         address: '',
@@ -46,26 +48,12 @@ const addRestaurantForm = () => {
         description: '',
         url: ''
     });
-    const [occasionOptions, setOccasionOptions] = useState([]);
-    const [moodOptions, setMoodOptions] = useState([]);
+
 
     useEffect(() => {
-        fetch('http://localhost:3000/api/occasion')
-            .then(response => response.json())
-            .then(data => {
-                console.log('Occasion Data:', data); // Log the data
-                setOccasionOptions(data);
-            })
-            .catch(error => console.error('Error:', error));
-    
-        fetch('http://localhost:3000/api/mood')
-            .then(response => response.json())
-            .then(data => {
-                console.log('Mood Data:', data); // Log the data
-                setMoodOptions(data);
-            })
-            .catch(error => console.error('Error:', error));
-    }, []);
+        fetchOccasions();
+        fetchMoods();
+      }, [fetchOccasions, fetchMoods]);
 
     const handleChange = (e) => {
         const { name, value, checked, type } = e.target;
@@ -102,7 +90,7 @@ const addRestaurantForm = () => {
         <PageContainer>
             <Navbar />
             <form onSubmit={handleSubmit}>
-                <h1>Add a New Restaurant</h1>
+                <h1>Add a new restaurant</h1>
                 <label>
                     Restaurant Name:
                     <input
@@ -166,38 +154,38 @@ const addRestaurantForm = () => {
                 
                 {/* Occasion (checkboxes) */}
                 <div>
-                    <p>Occasion:</p>
-                    {occasionOptions.map((option) => (
-                        <label key={option}>
-                            {option}
-                            <input
-                                type="checkbox"
-                                name="occasion"
-                                value={option}
-                                checked={formData.occasion.includes(option)}
-                                onChange={handleChange}
-                            />
-                        </label>
-                    ))}
-                </div>
+                <p>Occasion:</p>
+                {occasions.map((option) => (
+                    <label key={option}>
+                        {option}
+                        <input
+                            type="checkbox"
+                            name="occasion"
+                            value={option}
+                            checked={formData.occasion.includes(option)}
+                            onChange={handleChange}
+                        />
+                    </label>
+                ))}
+            </div>
                 <br />
                 
                 {/* Mood (checkboxes) */}
                 <div>
-                    <p>Mood:</p>
-                    {moodOptions.map((option) => (
-                        <label key={option}>
-                            {option}
-                            <input
-                                type="checkbox"
-                                name="mood"
-                                value={option}
-                                checked={formData.mood.includes(option)}
-                                onChange={handleChange}
-                            />
-                        </label>
-                    ))}
-                </div>
+                <p>Mood:</p>
+                {moods.map((option) => (
+                    <label key={option}>
+                        {option}
+                        <input
+                            type="checkbox"
+                            name="mood"
+                            value={option}
+                            checked={formData.mood.includes(option)}
+                            onChange={handleChange}
+                        />
+                    </label>
+                ))}
+            </div>
                 <br />
                 
                 <label>
@@ -230,4 +218,4 @@ const addRestaurantForm = () => {
     );
 };
 
-export default addRestaurantForm;
+export default AddRestaurantForm;

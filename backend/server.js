@@ -1,24 +1,22 @@
-// server.js
 import express from 'express';
 import cors from 'cors';
 import db from './config/db.js';
 import listEndpoints from 'express-list-endpoints';
-import restaurantRoutes from './routes/restaurantRoutes.js'; // This handles restaurant-related routes
-import occasionandmoodRoutes from './routes/occasionandmoodRoutes.js'; // This handles occasions and moods
-
+import restaurantRoutes from './routes/restaurantRoutes.js';
+import occasionandmoodRoutes from './routes/occasionandmoodRoutes.js';
 
 const app = express();
 const port = process.env.PORT || 3000;
 
 app.use(cors({
-  origin: 'http://yourfrontenddomain.com'
+  origin: 'http://localhost:5173'
 }));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 // Mount routes
-app.use('/api', restaurantRoutes); 
-app.use('/api', occasionandmoodRoutes); 
+app.use('/api', restaurantRoutes);
+app.use('/api', occasionandmoodRoutes);
 
 // Endpoint to list all available endpoints
 app.get('/', (req, res) => {
@@ -31,13 +29,16 @@ app.get('/', (req, res) => {
   }
 });
 
-
 // Connect to database and start server
 db.once('open', () => {
+  console.log('MongoDB connected...');
   app.listen(port, () => {
     console.log(`Server running on http://localhost:${port}`);
   });
 });
+
+db.on('error', console.error.bind(console, 'MongoDB connection error:'));
+
 
 
 
