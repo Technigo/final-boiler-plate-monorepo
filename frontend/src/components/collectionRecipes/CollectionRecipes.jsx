@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { recipeStore } from "../../stores/recipeStore";
+import { CollectionRecipe } from "../collectionRecipes/CollectionRecipe"
 import "./collectionRecipes.css";
 
 // Define the CollectionRecipes component
@@ -37,49 +38,11 @@ export const CollectionRecipes = () => {
   return (
     <div>
       <h2>Recipes:</h2>
-      <ul>
+  
         {limitedRecipes.map((recipe, index) => (
-          <li key={index}>
-            {/* Render your recipe details here */}
-            <h2>{recipe.title}</h2>
-            <p>
-              <strong>User input:</strong> {recipe.userInput}
-            </p>
-            <p>
-              <strong>Description:</strong> {recipe.description}
-            </p>
-            <p>
-              <strong>Ingredients:</strong>
-            </p>
-            {/* Iterate over the ingredients object: */}
-            {recipe.ingredients ? (
-              <ul>
-                {Object.entries(recipe.ingredients).map(
-                  ([ingredient, quantity], i) => (
-                    <li key={i}>{`${ingredient}: ${quantity}`}</li>
-                  )
-                )}
-              </ul>
-            ) : (
-              <p>No ingredients available.</p>
-            )}
-            <div>
-              <p>
-                <strong>Instructions:</strong>
-              </p>
-              {recipe.instructions ? (
-                <ol>
-                  {recipe.instructions.map((instruction, index) => (
-                    <li key={index}>{instruction}</li>
-                  ))}
-                </ol>
-              ) : (
-                <p>No instructions available.</p>
-              )}
-            </div>
-          </li>
+          <CollectionRecipe key={index} recipe={recipe} />
         ))}
-      </ul>
+    
     </div>
   );
 };

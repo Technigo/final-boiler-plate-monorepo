@@ -14,6 +14,7 @@ export const recipeStore = create((set) => ({
   setRecipes: (recipes) => set({ recipes }),
   // Initialize the newRecipe state with null
   newRecipe: false,
+  //Generating state for the post request to openAI. False as default.
   isGenerating: false,
   // Function to set the new recipe in the state
   setNewRecipe: (newRecipe) => set({ newRecipe }),
@@ -79,6 +80,7 @@ export const recipeStore = create((set) => ({
   generateRecipe: async (ingredients) => {
     try {
       console.log("Sending post request!")
+      //Setting the isGenerating state to true so that loading message can be rendered in Home.jsx
       set(() => ({isGenerating: true}))
 
       const response = await fetch(`${api}/openai/generateText`, {

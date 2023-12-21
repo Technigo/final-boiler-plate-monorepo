@@ -5,9 +5,11 @@ export const NewRecipe = () => {
   const { newRecipe } = recipeStore();
 
   return (
-    <div>
-      <h3>Your recipe:</h3>
-       <h2>{newRecipe.title}</h2> 
+    <>
+    <h2>Your recipe:</h2>
+    <div className="new-recipe-wrapper">
+       <h3>{newRecipe.title}</h3> 
+       <p><strong>Your input:</strong> {newRecipe.userInput}</p>
        <p><strong>Description:</strong> {newRecipe.description}</p> 
       {/* Iterate over the ingredients object */}
       <p><strong>Ingredients:</strong></p>
@@ -26,5 +28,6 @@ export const NewRecipe = () => {
         </ol> 
       </div>
     </div>
+    </>
   );
 };
