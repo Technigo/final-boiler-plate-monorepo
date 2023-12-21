@@ -15,7 +15,7 @@ const listEndpoints = require('express-list-endpoints')
 //Importing the routes
 import userRoutes from './routes/userRoutes'
 import bookingRoutes from './routes/bookingRoutes'
-import movieRoutes from './routes/MovieRoutes'
+import movieRoutes from './routes/movieRoutes'
 import cinemaHallRoutes from './routes/cinemaHallRoutes'
 import showtimeRoutes from './routes/showtimeRoutes'
 
