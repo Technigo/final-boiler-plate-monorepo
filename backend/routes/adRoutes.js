@@ -19,7 +19,7 @@ const router = express.Router();
 router.get("/getAllAds", getAllAdsController);
 
 // Define a route for handling GET requests to retrieve all ads
-router.get("/get", authenticateUser, getAdsController); // When a GET request is made to /get, authenticate the user using middleware and then execute the getAdsController function
+router.get("/getAds", authenticateUser, getAdsController); // When a GET request is made to /get, authenticate the user using middleware and then execute the getAdsController function
 
 // Define a route for handling GET requests to retrieve a specific ad by ID
 router.get("/getAd/:id", getAdByIdController);
