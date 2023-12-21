@@ -36,3 +36,18 @@ Environment Variables: Check if all required environment variables (like MONGO_U
 Console Logs: Use console.log in both your frontend and backend to trace the flow of data and catch any discrepancies.
 Network Activity: Use the browser's developer tools to inspect network activity and see if requests are made correctly and what responses are received.
 If the issue persists despite these checks, it may require a more detailed examination of your entire codebase and running environment, potentially indicating a more complex issue.
+
+
+jag tror att problemet är med middleware: 
+The middleware you should use in an Express application depends on the specific needs of your application. Here is a list of commonly used middlewares and their purposes:
+
+Body Parser Middleware (express.json() and express.urlencoded()):
+
+Included in Express 4.16+.
+Parses incoming request bodies in a middleware before your handlers, available under the req.body property.
+express.json() is for parsing JSON body data.
+express.urlencoded() is for parsing URL-encoded data.
+CORS Middleware (cors):
+
+Enables Cross-Origin Resource Sharing (CORS).
+Allows you to define which domains are permitted to access your API.

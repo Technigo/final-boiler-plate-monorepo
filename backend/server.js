@@ -4,9 +4,9 @@ import db from './config/db.js';
 import listEndpoints from 'express-list-endpoints';
 import restaurantRoutes from './routes/restaurantRoutes.js';
 import occasionandmoodRoutes from './routes/occasionandmoodRoutes.js';
+import customMiddleware from './middlewares/useDatabase';
 
 const app = express();
-const port = process.env.PORT || 3000;
 
 app.use(cors({
   origin: 'http://localhost:5173'
@@ -15,6 +15,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 // Mount routes
+app.use(customMiddleware);
 app.use('/api', restaurantRoutes);
 app.use('/api', occasionandmoodRoutes);
 
@@ -31,12 +32,10 @@ app.get('/', (req, res) => {
 
 // Connect to database and start server
 db.once('open', () => {
-  console.log('MongoDB connected...');
-  app.listen(port, () => {
-    console.log(`Server running on http://localhost:${port}`);
+  app.listen(process.env.PORT || 3000, () => {
+    console.log(`Server running on http://localhost:${process.env.PORT || 3000}`);
   });
 });
-
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
 
