@@ -7,7 +7,11 @@ const favoritesSchema = new mongoose.Schema({
     like: {
         type: Boolean,
         default: false
-    }
+    },
+    // user: {
+    //     type: mongoose.Schema.Types.ObjectId,
+    //     ref: 'User'
+    // }
 });
 
 const Favorites = mongoose.model('Favorites', favoritesSchema);

@@ -56,32 +56,39 @@ const usePlaygroundStore = create((set) => ({
     }
   },
   likePlayground: async () => {
-    const { id, name } = playgroundDetails;
-    try {
-      const response = await fetch(`${BACKEND_URL}/api/playground/add-to-favorites`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${localStorage.getItem('token')}`,
-        },
-        body: JSON.stringify({ apiId: id, name }),
-      });
+  if (!playgroundAPI) {
+    console.error('playgroundDetails is not defined');
+    return;
+  }
 
-      if (response.ok) {
-        console.log('Playground added to favorites successfully');
-        set({ isLiked: true });
-      } else {
-        console.error('Failed to add playground to favorites');
-      }
-    } catch (error) {
-      console.error('Something went wrong:', error);
+  const { id, name } = playgroundAPI;
+
+  try {
+    const response = await fetch(`${BACKEND_URL}/playground/add-to-favorites`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${localStorage.getItem('token')}`,
+      },
+      body: JSON.stringify({ apiId: id, name }),
+    });
+
+    if (response.ok) {
+      console.log('Playground added to favorites successfully');
+      set({ isLiked: true });
+    } else {
+      console.error('Failed to add playground to favorites');
     }
-  },
+  } catch (error) {
+    console.error('Something went wrong:', error);
+  }
+},
+
 
    fetchUserFavorites: async () => {
     try {
       const token = localStorage.getItem('token');
-      const response = await fetch(`${BACKEND_URL}/api/user/favorites`, {
+      const response = await fetch(`${BACKEND_URL}/user/favorites`, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
