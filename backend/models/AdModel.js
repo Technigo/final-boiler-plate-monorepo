@@ -9,7 +9,11 @@ const { Schema } = mongoose;
 export const adSchema = new Schema(
     {
         image: {
-            type: String, // Store the image as Base64
+            type: String, // Store URL for the image
+            required: true
+        },
+        imageId: {
+            type: String, // Store the unique identifier for the image
             required: true
         },
         title: {
@@ -38,13 +42,23 @@ export const adSchema = new Schema(
             type: String,
             required: true
         },
-        pickupTime: {
+        pickupDate: {
             type: Date,
             default: Date.now
         },
         available: {
             type: Boolean, // Specifies that 'sold' should be a Boolean
             default: true, // Sets a default value of 'true' for 'available'
+        },
+        //Add "tags" in model to have the possibility to search by "tags"
+        tags: [
+            {
+                type: String,
+            },
+        ],
+        observation: {
+            type: String,
+            required: false
         },
         // Define the relaitonship between the user and his/her ad --  1:1 relationship with the user or 1 usar can have many ads
         user: {

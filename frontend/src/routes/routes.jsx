@@ -12,6 +12,7 @@ import { Profile } from "../pages/Profile";
 import { ProfileSettings } from "../pages/ProfileSettings";
 import { NotFound } from "../pages/NotFound";
 import { CreateAd } from "../components/CreateAd";
+import { Search } from "../pages/Search";
 
 // Define the 'routes' variable as a JSX expression.
 const routes = (
@@ -32,6 +33,8 @@ const routes = (
     <Route path="/settings" element={<ProfileSettings />} /> 
     {/* Define a route for the '/create-ad' path that renders the 'Create Ad' component. */}
     <Route path="/create-ad" element={<CreateAd />} />
+    {/* Define a catch-all route that matches any other path ('*') and renders the 'NotFound' component. */}
+    <Route path="/search" element={<Search />} />
     {/* Define a catch-all route that matches any other path ('*') and renders the 'NotFound' component. */}
     <Route path="*" element={<NotFound />} />
   </>
