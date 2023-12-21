@@ -2,9 +2,8 @@ import express from 'express';
 import cors from 'cors';
 import db from './config/db.js';
 import listEndpoints from 'express-list-endpoints';
-import restaurantRoutes from './routes/seedingRestaurant.js';
+import restaurantRoutes from './routes/restaurantRoutes.js';
 import occasionandmoodRoutes from './routes/occasionandmoodRoutes.js';
-import customMiddleware from './middlewares/useDatabase';
 
 const app = express();
 
@@ -15,7 +14,6 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 // Mount routes
-app.use(customMiddleware);
 app.use('/api', restaurantRoutes);
 app.use('/api', occasionandmoodRoutes);
 
