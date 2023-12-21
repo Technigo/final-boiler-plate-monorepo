@@ -3,7 +3,7 @@ import { useLayoutEffect } from "react";
 import { useParams } from "react-router-dom";
 import usePlaygroundStore from "../../stores/usePlaygroundStore";
 import { BackBtn } from "../../components/BackBtn";
-// import Like from "../../components/Like";
+//import Like from "../../components/Like";
 
 //Import of icons
 import { FaWheelchair } from "react-icons/fa";
