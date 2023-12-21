@@ -1,85 +1,84 @@
-
-import { userStore } from '../store/userStore';
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { userStore } from '../store/userStore'
+import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 // import { Link } from "react-router-dom";
 import './Register.css'
 
 export const Register = () => {
+	const [username, setUsername] = useState('')
+	const [email, setEmail] = useState('')
+	const [password, setPassword] = useState('')
+	const navigate = useNavigate()
+	const storeHandleRegister = userStore((state) => state.handleRegister)
 
-  const [username, setUsername] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const navigate = useNavigate();
-  const storeHandleRegister = userStore(state => state.handleRegister)
+	const onRegisterClick = async () => {
+		if (!username || !email || !password) {
+			alert('Please enter username, email, and password')
+			return
+		}
+		try {
+			await storeHandleRegister(username, email, password)
+			//console.log("storeHandleRegister ", storeHandleRegister);
+			console.log('username ', username)
 
-  const onRegisterClick = async () => {
-    if (!username || !email || !password) {
-      alert('Please enter username, email, and password');
-      return
-    }
-    try {
-      await storeHandleRegister(username, email, password)
-      //console.log("storeHandleRegister ", storeHandleRegister);
-      console.log("username ", username);
+			if (username && password) {
+				const appContainer = document.getElementById('app-container')
+				appContainer.innerText = `Registration successful`
+				navigate('/')
+			}
+		} catch (error) {
+			console.error('Registration error:', error)
+			alert('An error occurred during registration')
+		}
+	}
 
-      if (username && password) {
-        const appContainer = document.getElementById("app-container")
-        appContainer.innerText = `Registration successful`
-        navigate('/')
-      }
-    } catch (error) {
-      console.error('Registration error:', error);
-      alert('An error occurred during registration');
-
-    }
-  }
-
-  //   Render the component content.
-  return (
-    // <>
-    //       <nav>
-    //         {/* Create a navigation menu with links to the login and sign-up routes. */}
-    //         <ul className="app-ul">
-    //           <li className="app-li">
-    //             <Link to="/">Login</Link>
-    //           </li>
-    //           <li className="app-li">
-    //             <Link to="/register">Sign Up</Link>
-    //           </li>
-    //         </ul>
-    //       </nav>
-    //       {/* Render the 'Logos' component. */}
-    //       <Logos />
-    <div className="app-container" id="app-container">
-      <div className="input-container">
-        <input
-          type='text'
-          placeholder='username'
-          value={username}
-          onChange={event => setUsername(event.target.value)}
-        />
-        <input
-          type='text'
-          placeholder='email'
-          value={email}
-          onChange={event => setEmail(event.target.value)}
-
-        />
-        <input
-          type='password'
-          placeholder='password'
-          value={password}
-          onChange={event => setPassword(event.target.value)}
-        />
-      </div>
-      <div className="button-container">
-        <button onClick={onRegisterClick}> Register</button>
-      </div>
-    </div>
-    //  </>
-  );
-};
+	//   Render the component content.
+	return (
+		// <>
+		//       <nav>
+		//         {/* Create a navigation menu with links to the login and sign-up routes. */}
+		//         <ul className="app-ul">
+		//           <li className="app-li">
+		//             <Link to="/">Login</Link>
+		//           </li>
+		//           <li className="app-li">
+		//             <Link to="/register">Sign Up</Link>
+		//           </li>
+		//         </ul>
+		//       </nav>
+		//       {/* Render the 'Logos' component. */}
+		//       <Logos />
+		<div
+			className="app-container"
+			id="app-container"
+		>
+			<div className="input-container">
+				<input
+					type="text"
+					placeholder="username"
+					value={username}
+					onChange={(event) => setUsername(event.target.value)}
+				/>
+				<input
+					type="text"
+					placeholder="email"
+					value={email}
+					onChange={(event) => setEmail(event.target.value)}
+				/>
+				<input
+					type="password"
+					placeholder="password"
+					value={password}
+					onChange={(event) => setPassword(event.target.value)}
+				/>
+			</div>
+			<div className="button-container">
+				<button onClick={onRegisterClick}> Register</button>
+			</div>
+		</div>
+		//  </>
+	)
+}
 
 // // SUMMARY
 
