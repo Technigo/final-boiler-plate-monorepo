@@ -3,7 +3,7 @@ const express = require('express');
 const bcrypt = require('bcryptjs'); // Library for hashing passwords
 const jwt = require('jsonwebtoken'); // JSON Web Token for user authentication
 const User = require('../models/user.js'); // Importing the User model
-
+const Favorites = require('../models/favorites');
 const router = express.Router(); // Creating an instance of an Express router
 
 
@@ -62,4 +62,39 @@ router.post('/signin', async (req, res) => {
 
 // Add other authentication-related endpoints as needed
 
+// routes/playground.js
+//Create an endpoint to add a playground to favorites:
+//In your backend, create a new route to handle adding a playground to a user's favorites. Modify your routes accordingly:
+
+
+// Endpoint to add a playground to favorites
+router.post('/add-to-favorites', async (req, res) => {
+  try {
+    // Check if the playground already exists in the user's favorites
+    const user = await User.findById(req.userId).populate('favorites');
+    const existingFavorite = user.favorites.find((fav) => fav.apiId === req.body.apiId);
+
+    if (existingFavorite) {
+      return res.status(400).send('Playground already in favorites');
+    }
+
+    // Create a new favorite and add it to the user's favorites
+    const newFavorite = new Favorites({ apiId: req.body.apiId, like: true });
+    await newFavorite.save();
+    
+    user.favorites.push(newFavorite);
+    await user.save();
+
+    res.status(201).json({ message: 'Playground added to favorites successfully' });
+  } catch (error) {
+    console.error(error);
+    res.status(500).send('Something went wrong');
+  }
+});
+
+// Add other playground-related endpoints as needed
+
+
 module.exports = router; // Exporting the router for use in other parts of the application
+
+
