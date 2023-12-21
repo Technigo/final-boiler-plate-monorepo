@@ -1,11 +1,12 @@
 // playgroundStore.js
-import {create} from "zustand";
+import { create } from "zustand";
 
 const playgroundAPI = `https://catalog.eslov.se/rowstore/dataset/08b5e92d-7bc7-41de-aa56-f67f6662e919`;
 
 const usePlaygroundStore = create((set) => ({
   playgrounds: [],
   playgroundDetails: null,
+  isLiked: false, // Add isLiked state to track if the playground is liked
   fetchPlaygrounds: async () => {
     try {
       const response = await fetch(playgroundAPI);
@@ -47,17 +48,56 @@ const usePlaygroundStore = create((set) => ({
         slide: data.results[0].slide,
         basketswing: data.results[0].basketswing,
         sandpit: data.results[0].sandpit
-
-        // Add other details you want to fetch
       };
       set({ playgroundDetails });
     } catch (error) {
       console.error("Error fetching playground details:", error.message);
-      // You might want to set an error state or handle this in your component
     }
   },
-  likePlayground: () => {
-    set((state) => ({ isLiked: !state.isLiked }));
+  likePlayground: async () => {
+    const { id, name } = playgroundDetails;
+    try {
+      const response = await fetch('http://localhost:3002/api/playground/add-to-favorites', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${localStorage.getItem('token')}`,
+        },
+        body: JSON.stringify({ apiId: id, name }),
+      });
+
+      if (response.ok) {
+        console.log('Playground added to favorites successfully');
+        set({ isLiked: true });
+      } else {
+        console.error('Failed to add playground to favorites');
+      }
+    } catch (error) {
+      console.error('Something went wrong:', error);
+    }
+  },
+
+   fetchUserFavorites: async () => {
+    try {
+      const token = localStorage.getItem('token');
+      const response = await fetch('http://localhost:3002/api/user/favorites', {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`,
+        },
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        return data.favorites; // Assuming the response has a property named 'favorites'
+      } else {
+        throw new Error(`Error fetching user favorites: ${response.statusText}`);
+      }
+    } catch (error) {
+      console.error('Error fetching user favorites:', error);
+      throw error;
+    }
   },
 }));
 
