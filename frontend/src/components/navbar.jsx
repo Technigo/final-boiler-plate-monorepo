@@ -42,7 +42,7 @@ const Navbar = () => {
           <NavbarLink to="/about">About</NavbarLink>
         </NavItem>
         <NavItem>
-          <NavbarLink to="/addrestaurant">Add new restaurant</NavbarLink>
+          <NavbarLink to="/addrestaurant">Add a new restaurant</NavbarLink>
         </NavItem>
       </NavbarNav>
     </NavbarContainer>
