@@ -1,7 +1,7 @@
 import ShowtimeModel from '../models/ShowtimeModel'
 import asyncHandler from 'express-async-handler'
 
-// @desc get  all showtimes
+// @desc get  all showtime
 // @route /
 // @access public
 export const getAllShowtime = asyncHandler(async (req, res) => {
