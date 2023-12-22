@@ -55,29 +55,33 @@ const usePlaygroundStore = create((set) => ({
       console.error("Error fetching playground details:", error.message);
     }
   },
+
   likePlayground: async () => {
   if (!playgroundAPI) {
     console.error('playgroundDetails is not defined');
     return;
   }
 
-  const { id, name } = playgroundAPI;
+  const { id } = playgroundAPI;
 
   try {
-    const response = await fetch(`${BACKEND_URL}/playground/add-to-favorites`, {
+    const response = await fetch(`${BACKEND_URL}/add-to-favorites`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': `Bearer ${localStorage.getItem('token')}`,
+        'Authorization': localStorage.getItem('token'),
       },
-      body: JSON.stringify({ apiId: id, name }),
+      body: JSON.stringify({ 
+        apiId: id}),
     });
 
+     // Handle the response
     if (response.ok) {
-      console.log('Playground added to favorites successfully');
-      set({ isLiked: true });
+      const result = await response.json();
+      console.log(result.message); // Output success message
     } else {
-      console.error('Failed to add playground to favorites');
+      const error = await response.text();
+      console.error(`Error: ${error}`);
     }
   } catch (error) {
     console.error('Something went wrong:', error);
