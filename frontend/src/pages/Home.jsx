@@ -15,16 +15,16 @@ export const Home = () => {
   const navigate = useNavigate();
 
   // Get 'isLoggedIn' and 'accessToken' from the 'userStore'.
-  const isLoggedIn = userStore.getState((state) => state.isLoggedIn);
+  const isLoggedin = userStore.getState((state) => state.isLoggedin);
 
   // useEffect hook to check user authentication status.
   useEffect(() => {
-    if (!isLoggedIn) {
+    if (!isLoggedin) {
       // If the user is not logged in, show an alert and navigate to the login route.
       alert("Please log in to see the content");
       navigate("/login");
     }
-  }, [isLoggedIn, navigate]);
+  }, [isLoggedin, navigate]);
 
   // Render the component content.
   return (
