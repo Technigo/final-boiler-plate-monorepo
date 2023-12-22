@@ -9,14 +9,14 @@ export const CategoriesPage = () => {
   const navigate = useNavigate();
 
   const [error, setError] = useState(null);
-//   const [selectedCategory, setSelectedCategory] = useState(null);
+  //   const [selectedCategory, setSelectedCategory] = useState(null);
 
   // Access the 'plants' and 'fetchPlants' functions from the 'plantStore'.
   const { plants, fetchPlantsByCategory } = plantStore();
 
-    useEffect(() => {
-        fetchPlantsByCategory(null)
-    }, [fetchPlantsByCategory])
+  useEffect(() => {
+    fetchPlantsByCategory(null);
+  }, [fetchPlantsByCategory]);
 
   const handleCategoryClick = (category) => {
     fetchPlantsByCategory(category);

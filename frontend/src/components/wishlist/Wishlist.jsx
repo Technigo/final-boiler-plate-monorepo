@@ -4,12 +4,9 @@ import { useState } from "react";
 // Displays the plant details and a button to add/remove from the wishlist
 // Handle the button click to send a request to the backend.
 export const Wishlist = () => {
-    const [isLiked, setIsLiked] = useState()
+  const [isLiked, setIsLiked] = useState();
 
-    const handleToggleLike = () => {
-        
-    }
-
+  const handleToggleLike = () => {};
 
   return (
     <div>

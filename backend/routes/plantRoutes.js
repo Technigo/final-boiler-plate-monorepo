@@ -4,18 +4,18 @@ import {
   getPlantController,
   getPopularPlantsController,
   getPetFriendlyPlantsController,
-  getEasyPlantsController, 
+  getEasyPlantsController,
   getShadyPlantsController,
-  getClimbingPlantsController
+  getClimbingPlantsController,
 } from "../controllers/plantController";
 
 const router = express.Router();
-const listEndpoints = require("express-list-endpoints")
+const listEndpoints = require("express-list-endpoints");
 
 router.get("/", (req, res) => {
-  const endpoints = listEndpoints(router)
-  res.json({ endpoints })
-})
+  const endpoints = listEndpoints(router);
+  res.json({ endpoints });
+});
 
 router.get("/plants/climbing", getClimbingPlantsController);
 

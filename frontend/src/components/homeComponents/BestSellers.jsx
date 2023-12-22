@@ -18,7 +18,7 @@ export const BestSellers = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    setApiEndpoint("http://localhost:3000/plants/popular")
+    setApiEndpoint("http://localhost:3000/plants/popular");
     fetchPlants().catch((error) => {
       console.error("error fetching plant data", error);
       setError(error);
@@ -59,28 +59,23 @@ export const BestSellers = () => {
   );
 };
 
+//const popularApi = "http://localhost:3000/plants";
 
+// const fetchPlants = async () => {
+//   try {
+//     const response = await fetch(popularApi);
+//     if (!response.ok) {
+//       throw new Error("Failed to fetch plants");
+//     }
 
+//     const plants = await response.json();
+//     setPlantList(plants);
+//   } catch (error) {
+//     console.error("Error fetching plant data", error);
+//     setError(error);
+//   }
+//};
 
-
-
- //const popularApi = "http://localhost:3000/plants";
-
-  // const fetchPlants = async () => {
-  //   try {
-  //     const response = await fetch(popularApi);
-  //     if (!response.ok) {
-  //       throw new Error("Failed to fetch plants");
-  //     }
-
-  //     const plants = await response.json();
-  //     setPlantList(plants);
-  //   } catch (error) {
-  //     console.error("Error fetching plant data", error);
-  //     setError(error);
-  //   }
-  //};
-
-  // useEffect(() => {
-  //   fetchPlants();
-  // }, []);
+// useEffect(() => {
+//   fetchPlants();
+// }, []);

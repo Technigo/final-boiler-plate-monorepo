@@ -8,8 +8,8 @@
 
 .products-wrapper {
   display: flex;
-  justify-content: space-between;
   gap: 1rem;
+  flex-wrap: wrap;
 }
 
 .product-overlay {
@@ -26,8 +26,8 @@
 }
 
 .plant-card {
-  width: auto;
-  height: 14rem;
+  width: 18rem;
+  height: 25rem;
   position: relative;
   font-family: var(--montserrat);
   letter-spacing: 0.025rem;

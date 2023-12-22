@@ -10,7 +10,7 @@ const apiEnv = import.meta.env.VITE_BACKEND_API;
 export const plantStore = create((set, get) => ({
   plants: [],
   apiEndpoint: `${apiEnv}/plants`, // Default API endpoint
-  selectedCategory: null, 
+  selectedCategory: null,
 
   setPlants: (plants) => set({ plants }),
   setApiEndpoint: (endpoint) => set({ apiEndpoint: endpoint }),
@@ -32,33 +32,33 @@ export const plantStore = create((set, get) => ({
     }
   },
   fetchPlantsByCategory: async (category) => {
-    let endpoint; 
+    let endpoint;
     switch (category) {
-      case "Shade-loving": 
+      case "Shade-loving":
         endpoint = `${apiEnv}/plants/shady`;
         break;
-      case "Easy": 
+      case "Easy":
         endpoint = `${apiEnv}/plants/easy`;
         break;
-      case "Pet Friendly": 
+      case "Pet Friendly":
         endpoint = `${apiEnv}/plants/pet-friendly`;
         break;
-      case "Climbing": 
+      case "Climbing":
         endpoint = `${apiEnv}/plants/climbing`;
         break;
-      case "Popular": 
+      case "Popular":
         endpoint = `${apiEnv}/plants/popular`;
         break;
-      default: 
-        endpoint = `${apiEnv}/plants`
+      default:
+        endpoint = `${apiEnv}/plants`;
     }
 
-    set({ selectedCategory: category, apiEndpoint: endpoint })
+    set({ selectedCategory: category, apiEndpoint: endpoint });
 
     try {
-      await get().fetchPlants()
+      await get().fetchPlants();
     } catch (error) {
-      console.error("Error fetching plants", error)
+      console.error("Error fetching plants", error);
     }
-  }
+  },
 }));

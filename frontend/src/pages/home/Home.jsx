@@ -4,12 +4,12 @@ import { userStore } from "../../stores/userStore";
 import { useNavigate } from "react-router-dom";
 // import Logos from "../components/Logos";
 import { Link } from "react-router-dom";
-import { Hero } from "../../components/homeComponents/Hero"
+import { Hero } from "../../components/homeComponents/Hero";
 import { Banner } from "../../components/banner/Banner";
 import { BestSellers } from "../../components/homeComponents/BestSellers";
 import { InspoSection } from "../../components/homeComponents/InspoSection";
 import { ByCharacteristic } from "../../components/homeComponents/ByCharacteristic";
-import { InstagramSection } from "../../components/homeComponents/InstagramSection"; 
+import { InstagramSection } from "../../components/homeComponents/InstagramSection";
 
 // Define the 'Home' functional component.
 export const Home = () => {
@@ -51,10 +51,10 @@ export const Home = () => {
   // Render the component content.
   return (
     <>
-      <Hero /> 
+      <Hero />
       {/* <nav>
         {/* Create a navigation menu with links to various routes. */}
-        {/* <ul className="app-ul">
+      {/* <ul className="app-ul">
           <li className="app-li">
             <Link to="/home">Home</Link>
           </li>
@@ -63,7 +63,7 @@ export const Home = () => {
           </li>
           <li className="app-li">
             {/* Create a button for logging out and attach the 'onLogoutClick' event handler. */}
-            {/* <button onClick={onLogoutClick}>Sign Out</button>
+      {/* <button onClick={onLogoutClick}>Sign Out</button>
           </li>
         </ul>
       </nav> */}

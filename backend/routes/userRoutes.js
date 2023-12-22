@@ -3,18 +3,18 @@ import express from "express";
 import {
   registerUserController,
   loginUserController,
-  usersController
+  usersController,
 } from "../controllers/userController"; // Import controller functions for user registration and login
 // import { authenticateUser } from "../middleware/authenticateUser";
 
 // Create an instance of the Express router
 const router = express.Router();
-const listEndpoints = require("express-list-endpoints")
+const listEndpoints = require("express-list-endpoints");
 
 router.get("/", (req, res) => {
-  const endpoints = listEndpoints(router)
-  res.json({ endpoints })
-})
+  const endpoints = listEndpoints(router);
+  res.json({ endpoints });
+});
 
 // REGISTER ROUTE: Handle user registration
 router.post("/register", registerUserController); // When a POST request is made to /register, execute the registerUserController function
@@ -23,7 +23,7 @@ router.post("/register", registerUserController); // When a POST request is made
 router.post("/login", loginUserController); // When a POST request is made to /login, execute the loginUserController function
 
 // LIST USERS ENDPOINT
-router.get("/users", usersController)
+router.get("/users", usersController);
 
 // Export the router for use in the main application
 export default router;

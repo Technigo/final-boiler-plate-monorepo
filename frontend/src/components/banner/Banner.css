@@ -12,21 +12,21 @@
 }
 
 .banner-container img {
-    width: 1.8rem;
+  width: 1.8rem;
 }
 
 .healty-plants-container,
 .packed-with-love-container,
 .climate-shipping-container,
 .care-advice-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    text-align: center;
-    letter-spacing: 0.8px;
-    line-height: 1.5rem;
-    font-size: 0.7rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  text-align: center;
+  letter-spacing: 0.8px;
+  line-height: 1.5rem;
+  font-size: 0.7rem;
 }
 
 /* For extra large devices */
@@ -35,20 +35,20 @@
     padding: 3.5rem 9rem;
 
     display: flex;
-  justify-content: space-around;
-  align-items: flex-start;
-  font-weight: 700;
+    justify-content: space-around;
+    align-items: flex-start;
+    font-weight: 700;
   }
 
-.healty-plants-container,
-.packed-with-love-container,
-.climate-shipping-container,
-.care-advice-container {
-  font-size: 1.25rem;
+  .healty-plants-container,
+  .packed-with-love-container,
+  .climate-shipping-container,
+  .care-advice-container {
+    font-size: 1.25rem;
     line-height: 2.5rem;
-}
+  }
 
-.banner-container img {
-  width: 2.5rem;
-}
+  .banner-container img {
+    width: 2.5rem;
+  }
 }

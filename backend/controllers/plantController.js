@@ -113,11 +113,9 @@ export const getShadyPlantsController = asyncHandler(async (req, res) => {
     }
   } catch (error) {
     console.error(error);
-    res
-      .status(500)
-      .json({
-        error: "Somthing went wrong when searching for shadeloving plants",
-      });
+    res.status(500).json({
+      error: "Somthing went wrong when searching for shadeloving plants",
+    });
   }
 });
 
@@ -136,10 +134,8 @@ export const getClimbingPlantsController = asyncHandler(async (req, res) => {
     }
   } catch (error) {
     console.error(error);
-    res
-      .status(500)
-      .json({
-        error: "Somthing went wrong when searching for climbing plants",
-      });
+    res.status(500).json({
+      error: "Somthing went wrong when searching for climbing plants",
+    });
   }
 });

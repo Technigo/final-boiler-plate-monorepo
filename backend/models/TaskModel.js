@@ -1,6 +1,5 @@
 // import mongoose from "mongoose";
 
-
 // // Import the Schema class from the Mongoose library
 // // Destructures the Schema class from the Mongoose library, allowing us to create a schema.
 // const { Schema } = mongoose;

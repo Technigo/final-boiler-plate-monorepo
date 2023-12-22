@@ -25,11 +25,11 @@ export const ProductPage = () => {
   console.log("PLANTS IN PRODUCT PAGE:", plants);
 
   const handleAddToCart = () => {
-    addToCart(plants)
-  }
+    addToCart(plants);
+  };
 
-  console.log("CART:", cart)
-  
+  console.log("CART:", cart);
+
   return (
     <section className="product-page">
       <div className="product-highlights-wrapper">
