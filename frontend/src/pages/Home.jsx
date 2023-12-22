@@ -4,6 +4,7 @@ import { userStore } from "../stores/userStore";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import BackArrow from "../components/BackArrow";
+import { Footer } from "../components/Footer";
 
 // Define the 'Home' functional component.
 export const Home = () => {
@@ -45,6 +46,7 @@ export const Home = () => {
   // Render the component content.
   return (
     <>
+    <Footer />
       <nav>
         {/* Create a navigation menu with links to various routes. */}
         <ul className="app-ul">
