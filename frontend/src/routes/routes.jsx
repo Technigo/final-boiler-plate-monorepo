@@ -1,6 +1,6 @@
 import { Route, Routes } from "react-router-dom";
 import { NotFound } from "../pages/NotFound/NotFound";
-import { LandingPage } from "../pages/LandingPage/LandingPage";
+import { LandingPage } from "../pages/LandingPage/Landingpage";
 import { AboutUs } from "../pages/AboutUs/AboutUs";
 import { PostStory } from "../components/PostStory/PostStory";
 import { StoryList } from "../components/StoryList/StoryList";

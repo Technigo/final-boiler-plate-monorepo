@@ -1,10 +1,11 @@
 .new-story-container {
+  position: relative;
   padding: 3%;
   padding-bottom: 5%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  z-index: 10;
+  z-index: 100;
 }
 
 .input-field {
@@ -13,7 +14,7 @@
   border: 2px solid rgba(2, 108, 124, 0.7);
   margin: 3%;
   width: 70%;
-  z-index: 10;
+  z-index: 100;
 }
 
 .category {
@@ -35,6 +36,7 @@
 }
 
 .gallery {
+  position: relative;
   width: 50%;
   height: 30%;
   display: flex;
