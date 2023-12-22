@@ -4,6 +4,7 @@ import { userStore } from "../stores/userStore";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 //import { Link } from "react-router-dom";
+import { Button } from "../components/Buttons/Button";
 
 // Define the 'Register' functional component.
 export const Register = () => {
@@ -49,17 +50,6 @@ export const Register = () => {
   // Render the component content.
   return (
     <>
-      {/* <nav>
-        {/* Create a navigation menu with links to the login and sign-up routes. */}
-      {/* <ul className="app-ul">
-          <li className="app-li">
-            <Link to="/login">Login</Link>
-          </li>
-          <li className="app-li">
-            <Link to="/register">Sign Up</Link>
-          </li>
-        </ul> */}
-      {/*</nav> */}
       {/* Render the 'LogoText' component. */}
       <LogoText />
       <div>
@@ -82,7 +72,11 @@ export const Register = () => {
             onChange={(e) => setPassword(e.target.value)}
           />
           {/* Create a button for signing up and attach the 'onSignupClick' event handler. */}
-          <button onClick={onSignupClick}>Sign Up</button>
+          <Button
+            onClick={onSignupClick}
+            className="signUp-btn"
+            buttonName="Create profile"
+          />
         </div>
       </div>
     </>

@@ -59,20 +59,6 @@ export const Tasks = () => {
   // Render the component content.
   return (
     <>
-      {/* <nav>
-        {/* Create a navigation menu with links to the home, tasks, and sign-out routes. */}
-      {/* <ul className="app-ul">
-          <li className="app-li">
-            <Link to="/">Home</Link>
-          </li>
-          <li className="app-li">
-            <Link to="/tasks">Tasks</Link>
-          </li>*/}
-      {/* <li className="app-li">
-        <button onClick={onLogoutClick}>Sign Out</button>
-      </li> */}
-      {/*</ul> 
-      {/*</nav> */}
       {/* Render the 'LogoText' component. */}
       {/* <LogoText /> */}
 

@@ -67,6 +67,7 @@ import { GiHammerNails } from "react-icons/gi";
 import { MdMiscellaneousServices } from "react-icons/md";
 import styled from "styled-components";
 import { IconButton } from "../Buttons/IconButton";
+import { useEffect } from "react";
 
 // Styled components for the FeedTaskCard modal
 const StyledFeedCardModal = styled.div`
@@ -75,6 +76,13 @@ const StyledFeedCardModal = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+`;
+
+const StyledModalContent = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px; /* Add padding to the modal content */
 `;
 
 const iconSize = "50px"; // Define the icon size
@@ -121,6 +129,20 @@ export const FeedTaskCard = ({ task }) => {
     setIsModalOpen(false);
   };
 
+  useEffect(() => {
+    // Add or remove 'active-modal' class to the body based on modal state
+    if (isModalOpen) {
+      document.body.classList.add("active-modal");
+    } else {
+      document.body.classList.remove("active-modal");
+    }
+
+    // Cleanup function to remove the class when the component is unmounted
+    return () => {
+      document.body.classList.remove("active-modal");
+    };
+  }, [isModalOpen]);
+
   return (
     <>
       <StyledFeedCardModal style={{ backgroundColor }}>
@@ -130,9 +152,9 @@ export const FeedTaskCard = ({ task }) => {
           <p>{category}</p>
           <p>{area}</p>
           <Button
+            onClick={openModal}
             className="show-more-button"
             buttonName="Show more"
-            onClick={openModal}
           />
         </li>
       </StyledFeedCardModal>
@@ -142,25 +164,39 @@ export const FeedTaskCard = ({ task }) => {
         isOpen={isModalOpen}
         onRequestClose={closeModal}
         contentLabel="Feed Task Modal"
+        style={{
+          overlay: {
+            backgroundColor: "rgba(49, 49, 49, 0.8)", // Change overlay background color
+            width: "100vw",
+            height: "100vh",
+            position: "fixed",
+          },
+        }}
       >
-        {/* <h2>Feed Task Modal Content</h2>
-        <p>This is the content inside the modal for Feed Task Card.</p> */}
+        <StyledFeedCardModal>
+          {/* <h2>Feed Task Modal Content</h2> */}
 
-        {/* Content from FeedTaskCard */}
-        {CategoryIcon && <CategoryIcon size={iconSize} />}
-        {/* Button to close the modal */}
-        <button onClick={closeModal}>X</button>
-        <h3>{task.task}</h3>
-        <p>{category}</p>
-        <p>{area}</p>
-        <p>{task.description}</p>
-        {/* <Button className="show-more-button" buttonName="Show more" /> */}
-        <IconButton
-          className="offer-help-button"
-          buttonName="Lend a helping hand"
-          iconAlt="YourAltText"
-          src="/Logo-black.png"
-        />
+          {CategoryIcon && <CategoryIcon size={iconSize} />}
+
+          {/* Button to close the modal */}
+
+          <Button
+            onClick={closeModal}
+            className="closeModal-btn"
+            buttonName="X"
+          />
+          <h3>{task.task}</h3>
+          <p>{category}</p>
+          <p>{area}</p>
+          <p>{task.description}</p>
+          {/* Button to offer help */}
+          <IconButton
+            className="offer-help-button"
+            buttonName="Lend a helping hand"
+            iconAlt="Logo showing two shaking hands forming a heart"
+            src="/Logo-black.png"
+          />
+        </StyledFeedCardModal>
       </Modal>
     </>
   );

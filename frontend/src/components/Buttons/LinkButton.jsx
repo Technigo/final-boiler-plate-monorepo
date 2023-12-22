@@ -8,6 +8,8 @@ const StyledButton = styled(Link)`
   border-radius: 20px;
   font-size: 20px;
   cursor: pointer;
+  width: fit-content;
+  height: fit-content;
 
   &:hover {
     background-color: #9eb7bf;

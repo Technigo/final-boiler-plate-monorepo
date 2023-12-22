@@ -1,6 +1,7 @@
 // Import necessary dependencies and the 'taskStore' from the store.
 import { useState } from "react";
 import { taskStore } from "../stores/taskStore";
+import { Button } from "../components/Buttons/Button";
 
 // Define the 'CreateTask' functional component.
 export const CreateTask = () => {
@@ -103,12 +104,20 @@ export const CreateTask = () => {
           value={description}
         />
         {/* Create a button to trigger the 'addTaskLocal' function for adding the task. */}
-        <button onClick={addTaskLocal}>Add Task</button>
-        {/* Create a button to trigger the 'deleteAllTasks' function to delete all tasks from the server. */}
-        <button onClick={deleteAllTasks}>Delete All My Tasks</button>
+
+        <Button
+          onClick={addTaskLocal}
+          className="add-task-btn"
+          buttonName="Ask for help"
+        />
+        {/* This is a button to trigger the 'deleteAllTasks' function to delete all tasks from the server. */}
+
+        {/* <Button
+          onClick={deleteAllTasks}
+          className="delete-all-btn"
+          buttonName="Delete all my tasks"
+        /> */}
       </div>
     </>
   );
 };
-
-// SUMMARY

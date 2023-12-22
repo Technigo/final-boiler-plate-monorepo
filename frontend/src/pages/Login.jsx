@@ -6,6 +6,7 @@ import { userStore } from "../stores/userStore"; // Make sure this is correctly 
 // Import the 'useState' and 'useNavigate' hooks from 'react'.
 import { useState } from "react";
 import { useNavigate } from "react-router-dom"; // Import useNavigate
+import { Button } from "../components/Buttons/Button";
 
 // Define the 'Login' functional component.
 export const Login = () => {
@@ -86,7 +87,11 @@ export const Login = () => {
             onChange={(e) => setPassword(e.target.value)}
           />
           {/* Create a button for logging in and attach the 'onLoginClick' event handler. */}
-          <button onClick={onLoginClick}>Login</button>
+          <Button
+            onClick={onLoginClick}
+            className="login-btn"
+            buttonName="Log in"
+          />
         </div>
       </div>
     </>
