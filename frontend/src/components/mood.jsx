@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import Navbar from './navbar'; // Ensure the path is correct
 import Footer from './footer'; // Ensure the path is correct
 import styled from 'styled-components';
@@ -73,38 +73,30 @@ const MoodSelector = () => {
     fetchMoods();
   }, [fetchMoods, setSelectedMoods]);
 
+
   const handleMoodSelect = (mood) => {
     setSelectedMoods((prevSelectedMoods) => {
-      //check if the mood is already selected
-      const isMoodSelected = prevSelectedMoods.includes(mood);
-    //If the mood is selected, remove it from the selectedMoods
-    if (isMoodSelected) {
-      return prevSelectedMoods.filter((selectedMood) => selectedMood !== mood);
-      
-    } else if (prevSelectedMoods.length < 3) {
-      // If the mood is not selected and less than 3 moods are selected, add it
-      const newSelectedMoods = [...prevSelectedMoods, mood];
-      console.log('Updated selected moods:', newSelectedMoods);
-      return newSelectedMoods;
-    }
-    //If more than 3 moods are slected, return the current state
-    return prevSelectedMoods;
+      console.log('Setting selected moods:', mood);
+      const isSelected = prevSelectedMoods.includes(mood);
+      // If the mood is already selected, remove it from the array
+      if (isSelected) {
+        return { selectedMoods: state.selectedMoods.filter(selectedMood => selectedMood !== mood) };
+      }
+    
+      // If less than 3 moods are selected, add the new mood
+      if (state.selectedMoods.length < 3) {
+        return { selectedMoods: [...prevSelectedMoods, mood] };
+      }
+    
+      // If already 3 moods are selected and the new mood is not one of them, ignore the selection
+      return { selectedMoods: prevSelectedMoods };
     });
   };
-    // If you want to handle more than 3 moods, you can modify the condition accordingly
-
 
   const handleMoodClick = (mood) => {
     console.log(`Clicked on mood: ${mood}`);
     handleMoodSelect(mood);
   };
-
-  //Display selected moods
-  const selectedMoodsDisplay = (
-    <div>
-      <p>Selected Mood(s): {selectedMoods.join(', ')}</p>
-    </div>
-  );
 
   const handleResultsButtonClick = async () => {
     if (selectedMoods.length === 0) {
@@ -120,7 +112,7 @@ const MoodSelector = () => {
     }
 
     // You can perform any actions related to fetching results here
-    await fetchResults();
+    await fetchResults(selectedMoods);
   };
 
 
@@ -129,7 +121,7 @@ const MoodSelector = () => {
       <Navbar />
       <TitleContainer>
         <h2>Select your mood(s)</h2>
-        <p>You can select minimun one mood and max 3 moods</p>
+        <p>You can select a minimum of one mood and a maximum of 3 moods</p>
       </TitleContainer>
       <MoodSelectorContainer>
         {moods.map((mood) => (
@@ -142,8 +134,6 @@ const MoodSelector = () => {
           </MoodButton>
         ))}
       </MoodSelectorContainer>
-      {selectedMoodsDisplay}
-      {/* Link to results page */}
       <Link to="/result">
         <ResultsButton onClick={handleResultsButtonClick}>
           Give me my results

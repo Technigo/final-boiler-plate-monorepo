@@ -61,19 +61,20 @@ export const useRestaurantStore = create((set) => ({
     }
   },
 
-  setSelectedMoods: (newMood) => set((state) => {
-    console.log('Setting selected moods:', newMood);
-    const isSelected = state.selectedMoods.includes(newMood);
+  setSelectedMoods: (mood) => set((state) => {
+    console.log('Setting selected moods:', mood);
+    const isSelected = state.selectedMoods.includes(mood);
   
-    // If the mood is already selected, remove it from the array
-    if (isSelected) {
-      return { selectedMoods: state.selectedMoods.filter(mood => mood !== newMood) };
-    }
+   // If the mood is already selected, remove it from the array
+  if (isSelected) {
+    return { selectedMoods: state.selectedMoods.filter(selectedMood => selectedMood !== mood) };
+  }
   
-    // If less than 3 moods are selected, add the new mood
-    if (state.selectedMoods.length < 3) {
-      return { selectedMoods: [...state.selectedMoods, newMood] };
-    }
+  
+  // If less than 3 moods are selected, add the new mood
+  if (state.selectedMoods.length < 3) {
+    return { selectedMoods: [...state.selectedMoods, mood] };
+  }
   
     // If already 3 moods are selected and the new mood is not one of them, ignore the selection
     return {};
@@ -88,30 +89,22 @@ export const useRestaurantStore = create((set) => ({
     if (selectedOccasion) {
       queryParams.append('occasion', encodeURIComponent(selectedOccasion));
     }
-    
+
+      // Check if selectedMoods is an array before trying to iterate over it
+  if (Array.isArray(selectedMoods) && selectedMoods.length > 0) {
     selectedMoods.forEach((mood) => {
       queryParams.append('mood', encodeURIComponent(mood));
-
     });
+  }
+  
+  try {
+    const response = await fetch(`http://localhost:3000/restaurants/search?${queryParams.toString()}`);
+    if (!response.ok) throw new Error('Failed to fetch search results');
 
-    try {
-      const response = await fetch(`http://localhost:3000/restaurants/search?${queryParams.toString()}`);
-      if (!response.ok) throw new Error('Failed to fetch search results');
-
-      const results = await response.json();
-      set({ results });
-    } catch (error) {
-      console.error('Error fetching search results:', error);
-    }
-  },
+    const results = await response.json();
+    set({ results });
+  } catch (error) {
+    console.error('Error fetching search results:', error);
+  }
+},
 }));
-
-
-
-
-
-
-
-
-
-//Make sure your backend endpoint /api/results is capable of handling multiple mood query parameters and filtering the results accordingly. This approach allows the user to select one occasion and up to three moods, and the results will be fetched based on these selectio
