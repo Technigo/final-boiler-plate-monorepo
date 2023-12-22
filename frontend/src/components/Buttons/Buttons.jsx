@@ -1,6 +1,6 @@
 import "./Buttons.css";
 
-export const Buttons = ({ buttonText, url, onClick }) => {
+export const Buttons = ({ buttonText, onClick }) => {
   const handleClick = () => {
     console.log(`Clicked ${buttonText}`);
     if (onClick) {

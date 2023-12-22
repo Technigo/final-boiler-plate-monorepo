@@ -67,7 +67,7 @@ router.put("/stories/:id/rank", async (req, res) => {
     const updatedStory = await StoryModel.findByIdAndUpdate(
       storyId,
       { ranking: newRanking },
-      { new: true }
+      { new: true } // Returns the updated document
     );
 
     if (!updatedStory) {
