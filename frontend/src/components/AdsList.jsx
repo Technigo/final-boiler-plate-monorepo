@@ -1,23 +1,27 @@
 import { useEffect, useState } from 'react';
 import { AdCard } from './AdCard';
-import { adStore } from '../stores/adStore'; 
+import { adStore } from '../stores/adStore';
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-export const AllAds = () => {
+export const AdsList = ({ fetchType }) => {
   const [ads, setAds] = useState([]);
   const getAllAds = adStore((state) => state.getAllAds);
+  const fetchAds = adStore((state) => state.fetchAds);
 
   useEffect(() => {
-    async function fetchAds() {
-      await getAllAds();
-      // Assuming the store updates the ads state after fetching
+    async function fetchData() {
+      if (fetchType === 'all') {
+        await getAllAds();
+      } else {
+        await fetchAds();
+      }
       const fetchedAds = adStore.getState().ads;
       setAds(fetchedAds);
     }
-    fetchAds();
-  }, [getAllAds]);
+    fetchData();
+  }, [getAllAds, fetchAds, fetchType]); // Add fetchType to dependency array
 
   // Example settings for the carousel
   const settings = {
@@ -74,3 +78,10 @@ export const AllAds = () => {
     </div>
   );
 };
+
+//THIS IS HOW TO USE IT IN YOUR PAGE/COMPONENT
+// To fetch all ads
+//<AdsList fetchType="all" />
+
+// To fetch user-specific ads
+//<AdsList fetchType="user" />
