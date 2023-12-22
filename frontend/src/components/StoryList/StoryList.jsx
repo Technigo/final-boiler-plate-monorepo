@@ -61,7 +61,7 @@ export const StoryList = () => {
   return (
     <div className="story-list">
     <div className="filter-options">
-      <select value={filterType} onChange={handleFilterTypeChange}>
+      <select className="dropdown" value={filterType} onChange={handleFilterTypeChange}>
         <option value="">Select Filter</option>
         <option value="ranking">Ranking</option>
         <option value="city">City</option>

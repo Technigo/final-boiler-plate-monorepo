@@ -8,7 +8,8 @@ export const StoryCardList = ({ story }) => {
   
   return (
     <div className="story-card-list">
-    <div className='left-wrapper'>
+
+    <div className='story-cards'>
       <div className="story-image">
         <img src={`/${story.image}`} alt={`${story.city} story`} />
         </div>
