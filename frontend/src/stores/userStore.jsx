@@ -49,25 +49,29 @@ export const userStore = create((set) => ({
         title: "Error!",
         text: "Your username should have at least 5 characters",
         icon: "error"
-      })
+      });
+      return;
     } else if (!validator.isEmail(email)) {
       Swal.fire({
         title: "Error!",
         text: "Please enter a valid email address",
         icon: "error"
       });
+      return;
     } else if (password.length < 5) {
       Swal.fire({
         title: "Error!",
         text: "Your password should have at least 5 characters",
         icon: "error"
       });
+      return;
     } else if (!username || !password || !email || !consent) {
       Swal.fire({
         title: "Error!",
         text: "Please fill in all the fields and agree to the terms and conditions",
         icon: "error"
       });
+      return;
     } 
 
     try {
@@ -100,7 +104,12 @@ export const userStore = create((set) => ({
         console.log("Signing up with: ", username);
       } else {
         // Handle the case where the server responds with an error or user exists
-        alert(data.response || "Sign up failed");
+        Swal.fire({
+          title: "Error!",
+          text: data.response || "Sign up failed",
+          icon: "error"
+        }); 
+        // alert(data.response || "Sign up failed");
       }
     } catch (error) {
       // Handle and log any signup errors
@@ -155,7 +164,12 @@ export const userStore = create((set) => ({
         console.log("Logging in with: ", username, password);
       } else {
         // Display an error message from the server or a generic message.
-        alert(data.response || "Log in failed");
+        Swal.fire({
+          title: "Error!",
+          text: data.response || "Log in failed",
+          icon: "error"
+        });
+        // alert(data.response || "Log in failed");
       }
     } catch (error) {
       // Handle and log any login errors.
@@ -177,6 +191,7 @@ export const userStore = create((set) => ({
         text: "Please log in to see your profile",
         icon: "error"
       });
+      return;
     } else {
       try {
         // If they are logged in, send GET request to the user endpoint to retrieve user data
@@ -194,7 +209,12 @@ export const userStore = create((set) => ({
           set({ data });
         } else {
           // Display an error message from the server or a generic message.
-          alert(data.response || "User profile display failed");
+          Swal.fire({
+            title: "Error!",
+            text: data.response || "User profile display failed",
+            icon: "error"
+          });
+          // alert(data.response || "User profile display failed");
         }
       } catch (error) {
         // Handle and log any login errors.
@@ -217,6 +237,7 @@ export const userStore = create((set) => ({
         text: "Please log in to update your profile",
         icon: "error"
       });
+      return;
     } else {
       // If they are logged in, send a POST request to the update endpoint with user data. 
       try { 
@@ -247,7 +268,12 @@ export const userStore = create((set) => ({
           });
         } else {
           // Display an error message from the server or a generic message
-          alert(data.response || "User profile update failed");
+          Swal.fire({
+            title: "Error!",
+            text: data.response || "User profile update failed",
+            icon: "error"
+          });
+          // alert(data.response || "User profile update failed");
         }
       } catch (error) {
         // Handle and log any login errors
