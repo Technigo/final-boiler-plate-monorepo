@@ -41,4 +41,4 @@ const mapStorySchema = new Schema({
   },
 });
 
-export const mapStoryModel = mongoose.model("MapStory", mapStorySchema);
+export const mapStoryModel = mongoose.model("mapStoryModel", mapStorySchema);

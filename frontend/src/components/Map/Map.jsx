@@ -131,7 +131,7 @@ const styles = {
   ],
 };
 
-export const Map = ({ stories }) => {
+export const Map = ({ stories = [] }) => {
   const [map, setMap] = useState(null);
   // const [markers, setMarkers] = useState([]);
   const [selectedMarker, setSelectedMarker] = useState(null);
@@ -151,14 +151,14 @@ export const Map = ({ stories }) => {
     setCustomMarkerIcon(customMarker);
   }, []);
 
-  // const onMapClick = useCallback((event) => {
-  //   const newMarker = {
-  //     lat: event.latLng.lat(),
-  //     lng: event.latLng.lng(),
-  //     comment: "",
-  //   };
-  //   setMarkers((current) => [...current, newMarker]);
-  // }, []);
+  const onMapClick = useCallback((event) => {
+    const newMarker = {
+      lat: event.latLng.lat(),
+      lng: event.latLng.lng(),
+      comment: "",
+    };
+    setMarkers((current) => [...current, newMarker]);
+  }, []);
 
   const markers = stories.map((story) => ({
     lat: story.lat,
@@ -202,7 +202,11 @@ export const Map = ({ stories }) => {
         onLoad={onLoadAutocomplete}
         onPlaceChanged={onPlaceChanged}
         types={["(cities)", "address"]}>
-        <input type="text" placeholder="Search location" />
+        <input
+          className="search-input"
+          type="text"
+          placeholder="Search location"
+        />
       </Autocomplete>
       <GoogleMap
         onLoad={onMapLoad}

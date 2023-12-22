@@ -10,7 +10,8 @@
   align-items: center;
 }
 
-input {
+.search-input {
+  position: relative;
   font-size: 18px;
   padding: 10px;
   border: 2px solid rgba(2, 108, 124, 0.7);
