@@ -26,7 +26,6 @@ app.use(userRoutes);
 
 // Connection to the database through Mongoose
 connectDB();
-console.log(process.env.AUTH0_CLIENTID);
 
 // Start the server and listen for incoming requests on the specified port
 app.listen(port, () => {

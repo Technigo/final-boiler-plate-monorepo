@@ -1,6 +1,7 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { LoginBtn } from "./LoginBtn";
+import { LogoutBtn } from "./LogoutBtn";
 
 export const Navbar = () => {
   const navigate = useNavigate();
@@ -52,6 +53,9 @@ export const Navbar = () => {
           ))}
           <li>
             <LoginBtn />
+          </li>
+          <li>
+            <LogoutBtn />
           </li>
         </ul>
 

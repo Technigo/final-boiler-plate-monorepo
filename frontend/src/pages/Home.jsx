@@ -1,3 +1,13 @@
+import { useAuth0 } from "@auth0/auth0-react";
+import { UserProfile } from "./UserProfile";
+
 export const Home = () => {
-  return <div>Home</div>;
+  const { isAuthenticated } = useAuth0();
+  console.log(isAuthenticated);
+  return (
+    <div>
+      Home
+      <UserProfile />
+    </div>
+  );
 };

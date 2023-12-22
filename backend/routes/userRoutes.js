@@ -1,4 +1,5 @@
 import express from "express";
+import listEndpoints from "express-list-endpoints";
 
 const router = express.Router();
 
@@ -13,6 +14,10 @@ router.get("/profile", requiresAuth(), (req, res) => {
 
 router.get("/", (req, res) => {
   res.send(req.oidc.isAuthenticated() ? "Logged in" : "Logged out");
+});
+router.get("/endpoints", (req, res) => {
+  const endpoints = listEndpoints(router);
+  res.json({ endpoints });
 });
 
 export default router;

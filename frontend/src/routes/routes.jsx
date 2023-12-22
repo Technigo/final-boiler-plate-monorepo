@@ -16,7 +16,7 @@ const routes = (
     <Route path="/" element={<Home />} />
     <Route path="/about" element={<About />} />
     <Route path="/account" element={<Account />} />
-    <Route path="/login" element={<Login />} />
+    {/* <Route path="/login" element={<Login />} /> */}
     <Route path="/posttrip" element={<PostTrip />} />
     <Route path="/register" element={<Register />} />
     <Route path="*" element={<NotFound />} />
