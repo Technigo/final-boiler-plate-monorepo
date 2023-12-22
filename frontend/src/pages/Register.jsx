@@ -56,7 +56,7 @@ export const Register = () => {
           required
           placeholder="Enter password..."
           className="px-3 py-1 rounded-sm"
-          onChange={(e) => e.target.value}
+          onChange={(e) => setPassMatch(e.target.value)}
         />
         <div className="flex gap-x-4 mt-4">
           <button className=" bg-gray-500 rounded-md py-2 px-3 hover:bg-gray-400 cursor-pointer">
