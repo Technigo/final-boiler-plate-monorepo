@@ -119,39 +119,29 @@ export const adStore = create((set) => ({
   //UPDATE AD FUNCTIONS
   // Action to update an existing ad
   handleEdit: async (id, updatedAdData, imageFile) => {
-    try {
-      const formData = new FormData();
-      // Append updated fields from the updatedAdData object
-      Object.entries(updatedAdData).forEach(([key, value]) => {
-        formData.append(key, value);
-      });
-      if (imageFile) {
-        formData.append('image', imageFile);
-      }
+    const formData = new FormData();
+    Object.entries(updatedAdData).forEach(([key, value]) => {
+      formData.append(key, value);
+    });
+    if (imageFile) {
+      formData.append('image', imageFile);
+    }
 
-      // Send a PUT request with form data
-      const response = await fetch(`${apiEnv}/update/${id}`, {
-        method: "PUT",
-        headers: { Authorization: localStorage.getItem("accessToken") },
-        body: formData,
-      });
+    const response = await fetch(`${apiEnv}/update/${id}`, {
+      method: "PUT",
+      headers: { Authorization: localStorage.getItem("accessToken") },
+      body: formData,
+    });
 
-      if (response.ok) {
-        const updatedAd = await response.json();
-        // Update the ad in the state
-        set((state) => ({
-          ads: state.ads.map((ad) =>
-            ad._id === id ? { ...ad, ...updatedAd } : ad
-          ),
-        }));
-      } else {
-        console.error("Failed to update the ad");
-      }
-    } catch (error) {
-      console.error("Error updating ad:", error);
+    if (response.ok) {
+      const updatedAd = await response.json();
+      set((state) => ({
+        ads: state.ads.map((ad) => ad._id === id ? { ...ad, ...updatedAd } : ad),
+      }));
+    } else {
+      console.error("Failed to update the ad");
     }
   },
-
 
   //DELETE FUNCTIONS
   // New action to delete all ads of a specific user
