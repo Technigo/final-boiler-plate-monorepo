@@ -4,7 +4,7 @@ import { userStore } from "../stores/userStore";
 import { useNavigate, Link } from "react-router-dom";
 import BackArrow from "../components/BackArrow";
 import { SearchBar } from "../components/SearchBar";
-import { AllAds } from "../components/AdsList";
+import { AdsList } from "../components/AdsList";
 import { YourAds } from "../components/YourAds";
 import { Footer } from "../components/Footer";
 import { Navbar } from "../components/Navbar";
@@ -37,7 +37,7 @@ export const Home = () => {
       </Link>
       {/* Render the recently added ads */}
       <h1>Recently Added</h1>
-      <AllAds />
+      <AdsList />
       {/* Render the user's ads */}
       <YourAds />
       <Footer />
