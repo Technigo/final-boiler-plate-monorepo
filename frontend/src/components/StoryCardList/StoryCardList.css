@@ -6,8 +6,10 @@
     border: 1px solid #ddd; 
     background-color: #f1f1f1; 
     border-radius: 5px;
+    position: relative;
+    z-index: 10;
   }
-  .left-wrapper {
+  .story-cards {
     flex-basis: 40%; 
   }
   .story-card-list .story-image { 
@@ -73,6 +75,10 @@
     align-items: center;
     flex-wrap: wrap;
   }
+   /* .story-cards {
+    position: relative;
+    z-index: 20;
+  }  */
   @media (min-width: 600px) {
     .story-card-list .story-content {
       max-height: 300px;
