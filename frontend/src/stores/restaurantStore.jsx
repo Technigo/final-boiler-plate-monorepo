@@ -4,6 +4,8 @@ const capitalizeFirstLetter = (string) => {
   return string.charAt(0).toUpperCase() + string.slice(1).toLowerCase();
 }
 
+const apiURL = 'http://localhost:3000/restaurants/search';
+
 export const useRestaurantStore = create((set) => ({
   occasions: [],
   moods: [],
@@ -84,21 +86,17 @@ export const useRestaurantStore = create((set) => ({
   fetchResults: async () => {
     console.log('Fetching results...');
     const { selectedOccasion, selectedMoods } = useRestaurantStore.getState();
-    const queryParams = new URLSearchParams();
-
-    if (selectedOccasion) {
-      queryParams.append('occasion', encodeURIComponent(selectedOccasion));
-    }
-
-      // Check if selectedMoods is an array before trying to iterate over it
-  if (Array.isArray(selectedMoods) && selectedMoods.length > 0) {
-    selectedMoods.forEach((mood) => {
-      queryParams.append('mood', encodeURIComponent(mood));
-    });
-  }
   
   try {
-    const response = await fetch(`http://localhost:3000/restaurants/search?${queryParams.toString()}`);
+    const apiUrl = 'http://localhost:3000/restaurants/search';
+    const queryParams = new URLSearchParams({
+      occasion: encodeURIComponent(selectedOccasion),
+      mood: selectedMoods.map(mood => encodeURIComponent(mood)).join(',')
+    });
+    
+    const url = `${apiURL}?${queryParams}`;
+
+    const response = await fetch(url);
     if (!response.ok) throw new Error('Failed to fetch search results');
 
     const results = await response.json();

@@ -74,29 +74,18 @@ const MoodSelector = () => {
   }, [fetchMoods, setSelectedMoods]);
 
 
-  const handleMoodSelect = (mood) => {
+  const handleMoodClick = (mood) => {
     setSelectedMoods((prevSelectedMoods) => {
       console.log('Setting selected moods:', mood);
-      const isSelected = prevSelectedMoods.includes(mood);
-      // If the mood is already selected, remove it from the array
-      if (isSelected) {
-        return { selectedMoods: state.selectedMoods.filter(selectedMood => selectedMood !== mood) };
-      }
-    
-      // If less than 3 moods are selected, add the new mood
-      if (state.selectedMoods.length < 3) {
-        return { selectedMoods: [...prevSelectedMoods, mood] };
-      }
-    
-      // If already 3 moods are selected and the new mood is not one of them, ignore the selection
-      return { selectedMoods: prevSelectedMoods };
-    });
-  };
-
-  const handleMoodClick = (mood) => {
-    console.log(`Clicked on mood: ${mood}`);
-    handleMoodSelect(mood);
-  };
+      
+         // If the mood is already selected, remove it from the array
+    if (prevSelectedMoods.includes(mood)) {
+      return prevSelectedMoods.filter(selectedMood => selectedMood !== mood);
+    }
+// If less than 3 moods are selected or if the new mood is one of them, add the new mood
+return [...prevSelectedMoods, mood];
+});
+};
 
   const handleResultsButtonClick = async () => {
     if (selectedMoods.length === 0) {
