@@ -41,12 +41,15 @@ export const useRestaurantStore = create((set) => ({
 
   fetchMoods: async () => {
     try {
+      console.log('Fetching moods...');
+      set({ selectedMoods: [] });
       const response = await fetch('http://localhost:3000/api/mood');
       if (!response.ok) {
         throw new Error('Failed to fetch moods');
       }
 
       const moods = await response.json();
+      console.log('Fetched moods:', moods)
       // You might want to transform the moods data similarly to occasions
       // For example, if you want to capitalize the first letter:
       const capitalizedMoods = moods.map((mood) => capitalizeFirstLetter(mood.trim()));
@@ -59,6 +62,7 @@ export const useRestaurantStore = create((set) => ({
   },
 
   setSelectedMoods: (newMood) => set((state) => {
+    console.log('Setting selected moods:', newMood);
     const isSelected = state.selectedMoods.includes(newMood);
   
     // If the mood is already selected, remove it from the array
@@ -77,13 +81,18 @@ export const useRestaurantStore = create((set) => ({
 
   // Fetch results based on selected occasion and moods
   fetchResults: async () => {
+    console.log('Fetching results...');
     const { selectedOccasion, selectedMoods } = useRestaurantStore.getState();
     const queryParams = new URLSearchParams();
 
     if (selectedOccasion) {
-      queryParams.append('occasion', selectedOccasion);
+      queryParams.append('occasion', encodeURIComponent(selectedOccasion));
     }
-    selectedMoods.forEach((mood) => queryParams.append('mood', mood));
+    
+    selectedMoods.forEach((mood) => {
+      queryParams.append('mood', encodeURIComponent(mood));
+
+    });
 
     try {
       const response = await fetch(`http://localhost:3000/restaurants/search?${queryParams.toString()}`);

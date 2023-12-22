@@ -1,9 +1,10 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import Navbar from './navbar'; // Ensure the path is correct
 import Footer from './footer'; // Ensure the path is correct
 import styled from 'styled-components';
 import { useRestaurantStore } from '../stores/restaurantStore'; // Ensure the path is correct
 import { Link } from 'react-router-dom'; 
+
 
 // Styled components, change to fit our stylingschema
 const PageContainer = styled.div`
@@ -31,7 +32,8 @@ const MoodButton = styled.button`
   margin: 0.5em;
   padding: 0.5em 1em;
   border: none;
-  background-color: ${({ selected }) => selected ? '#a5d6a7' : '#efefef'}; // Same as OccasionButton
+  background-color: ${({ selected }) => selected ? '#B89685' : '#efefef'};
+  color: ${({ selected }) => selected ? 'white' : 'black'};  // Text color
   font-size: 16px;
   cursor: pointer;
   border-radius: 20px; // Same as OccasionButton
@@ -63,49 +65,92 @@ const ResultsButton = styled.button`
 `;
 
 const MoodSelector = () => {
-  const { moods, selectedMoods, fetchMoods, setSelectedMoods } = useRestaurantStore();
+  const { moods, selectedMoods, fetchMoods, setSelectedMoods, fetchResults } = useRestaurantStore();
+  
 
   useEffect(() => {
+    setSelectedMoods([]);
     fetchMoods();
-  }, [fetchMoods]);
+  }, [fetchMoods, setSelectedMoods]);
 
-  const handleMoodToggle = (mood) => {
+  const handleMoodSelect = (mood) => {
     setSelectedMoods((prevSelectedMoods) => {
-      if (!Array.isArray(prevSelectedMoods)) {
-        return [mood];
-      }
-      const isSelected = prevSelectedMoods.includes(mood);
-      if (isSelected) {
-        return prevSelectedMoods.filter((m) => m !== mood);
-      } else if (prevSelectedMoods.length < 3) {
-        return [...prevSelectedMoods, mood];
-      }
-      return prevSelectedMoods;
+      //check if the mood is already selected
+      const isMoodSelected = prevSelectedMoods.includes(mood);
+    //If the mood is selected, remove it from the selectedMoods
+    if (isMoodSelected) {
+      return prevSelectedMoods.filter((selectedMood) => selectedMood !== mood);
+      
+    } else if (prevSelectedMoods.length < 3) {
+      // If the mood is not selected and less than 3 moods are selected, add it
+      const newSelectedMoods = [...prevSelectedMoods, mood];
+      console.log('Updated selected moods:', newSelectedMoods);
+      return newSelectedMoods;
+    }
+    //If more than 3 moods are slected, return the current state
+    return prevSelectedMoods;
     });
   };
+    // If you want to handle more than 3 moods, you can modify the condition accordingly
+
+
+  const handleMoodClick = (mood) => {
+    console.log(`Clicked on mood: ${mood}`);
+    handleMoodSelect(mood);
+  };
+
+  //Display selected moods
+  const selectedMoodsDisplay = (
+    <div>
+      <p>Selected Mood(s): {selectedMoods.join(', ')}</p>
+    </div>
+  );
+
+  const handleResultsButtonClick = async () => {
+    if (selectedMoods.length === 0) {
+      // You can handle this case if needed
+      console.log('Please choose at least one mood.');
+      return;
+    }
+
+    if (selectedMoods.length > 3) {
+      // You can handle this case if needed
+      console.log('Please choose a maximum of three moods.');
+      return;
+    }
+
+    // You can perform any actions related to fetching results here
+    await fetchResults();
+  };
+
 
   return (
     <PageContainer>
       <Navbar />
       <TitleContainer>
         <h2>Select your mood(s)</h2>
+        <p>You can select minimun one mood and max 3 moods</p>
       </TitleContainer>
       <MoodSelectorContainer>
         {moods.map((mood) => (
           <MoodButton
             key={mood}
-            onClick={() => handleMoodToggle(mood)}
+            onClick={() => handleMoodClick(mood)}
             selected={selectedMoods.includes(mood)}
           >
             {mood}
           </MoodButton>
         ))}
       </MoodSelectorContainer>
+      {selectedMoodsDisplay}
       {/* Link to results page */}
       <Link to="/result">
-        <ResultsButton>
+        <ResultsButton onClick={handleResultsButtonClick}>
           Give me my results
         </ResultsButton>
+      </Link>
+      <Link to="/occasion">
+        <button>Go back to choose occasion</button>
       </Link>
       <Footer />
     </PageContainer>

@@ -29,7 +29,7 @@ const OccasionButton = styled.button`
   transition: background-color 0.3s, transform 0.3s;
 
   &:hover {
-    background-color: ${({ selected }) => selected ? '#98c9a3' : '#ddd'};
+    background-color: ${({ selected }) => selected ? '#B89685' : '#ddd'};
     transform: translateY(-2px);
   }
 
@@ -69,8 +69,9 @@ const OccasionSelector = () => {
   const { occasions, selectedOccasion, fetchOccasions, setSelectedOccasion } = useRestaurantStore();
 
   useEffect(() => {
+    setSelectedOccasion(null);
     fetchOccasions();
-  }, [fetchOccasions]);
+  }, [fetchOccasions, setSelectedOccasion]);
 
   const handleOccasionSelect = (occasion) => {
     setSelectedOccasion(occasion);

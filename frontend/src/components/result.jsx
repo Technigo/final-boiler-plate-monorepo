@@ -2,6 +2,7 @@ import Navbar from './navbar'; // Ensure the path is correct
 import Footer from './footer'; // Ensure the path is correct
 import styled from 'styled-components';
 import React, { useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { useRestaurantStore } from '../stores/restaurantStore'; 
 
 const ResultsContainer = styled.div`
@@ -52,6 +53,9 @@ const ResultsComponent = () => {
           <p>No results to display. Please select an occasion and mood(s).</p>
         )}
       </ResultsContainer>
+      <Link to="/mood">
+        <button>Go back to choose mood(s)</button>
+      </Link>
       <Footer />
     </>
   );
