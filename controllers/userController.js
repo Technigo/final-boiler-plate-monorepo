@@ -32,7 +32,7 @@ export const registerUserController = asyncHandler(async (req, res) => {
 			throw new Error(
 				`User with ${
 					existingUser.username === username ? 'username' : 'email'
-				} already exists`
+				} already exists`,
 			)
 		}
 
@@ -74,18 +74,14 @@ export const loginUserController = asyncHandler(async (req, res) => {
 		const user = await UserModel.findOne({ username })
 
 		if (!user) {
-			return res
-				.status(401)
-				.json({ success: false, response: 'User not found' })
+			return res.status(401).json({ success: false, response: 'User not found' })
 		}
 
 		// Compare the provided password with the hashed password in the database
 		const isMatch = await bcrypt.compare(password, user.password)
 
 		if (!isMatch) {
-			return res
-				.status(401)
-				.json({ success: false, response: 'Incorrect password' })
+			return res.status(401).json({ success: false, response: 'Incorrect password' })
 		}
 
 		let token = generateToken(user._id)
