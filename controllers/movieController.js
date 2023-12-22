@@ -6,7 +6,7 @@ import asyncHandler from 'express-async-handler'
 // @access public
 export const getComingMovies = asyncHandler(async (req, res) => {
 	const apiKey = process.env.MOVIE_API_KEY
-	const url = `https://api.themoviedb.org/3/movie/now_playing?api_key=${apiKey}&language=en-US&page=1`
+	const url = `https://api.themoviedb.org/3/movie/now_playing?api_key=${apiKey}&language=en-US`
 
 	fetch(url)
 		.then((response) => response.json())

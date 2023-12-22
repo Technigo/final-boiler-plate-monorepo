@@ -9,7 +9,7 @@ import {
 import { authenticateUser } from '../middleware/authenticateUser'
 
 router.route('/').get(authenticateUser, getMovies).post(postMovie)
-router.route('/:movieID').get(getMovie)
+router.route('/movie/:movieID').get(getMovie)
 router.route('/coming').get(getComingMovies)
 
 export default router
