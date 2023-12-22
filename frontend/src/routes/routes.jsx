@@ -9,7 +9,8 @@ import { Carousel } from "../components/Carousel/Carousel";
 const routes = (
   <Routes>
     <Route path="/" element={<LandingPage />}>
-      <Route index element={<Carousel />} /> {/* Default content for Landingpage */}
+      <Route index element={<Carousel />} />{" "}
+      {/* Default content for Landingpage */}
       <Route path="/about-us" element={<AboutUs />} />
       <Route path="/post-story" element={<PostStory />} />
       <Route path="/story-list" element={<StoryList />} />

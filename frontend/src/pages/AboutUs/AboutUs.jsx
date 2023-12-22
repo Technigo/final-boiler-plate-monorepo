@@ -5,6 +5,7 @@ export const AboutUs = () => {
 
   return (
     <div className="about-us">
+      <h2>About us</h2>
       <p>
         We are a group of four women who attend Technigos Web developer boot
         camp during the fall 2023. We are all pretty new to coding and this is
