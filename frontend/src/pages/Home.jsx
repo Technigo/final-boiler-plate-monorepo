@@ -30,7 +30,7 @@ export const Home = () => {
   // Render the component content.
   return (
     <>
-      <Navbar />
+       <Navbar menuItems={[{path: "/search", name: "Search"} ,{path: "/profile", name: "Profile"},{path: "/setting", name: "Setting"}, {path: "/about", name: "About"} , {path: "/terms", name: "Terms"}]}/>
       <BackArrow />
       {/* Render the search bar */}
       <Link to="/search">
