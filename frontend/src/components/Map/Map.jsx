@@ -10,7 +10,7 @@ import {
   Autocomplete,
 } from "@react-google-maps/api";
 import markerIcon from "../../assets/marker.png";
-import StoryList from "../StoryList/StoryList";
+// import StoryList from "../StoryList/StoryList";
 import "./Map.css";
 
 const libraries = ["places"];

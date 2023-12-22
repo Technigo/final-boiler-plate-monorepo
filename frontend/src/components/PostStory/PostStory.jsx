@@ -119,8 +119,9 @@ export const PostStory = () => {
           >
             <option value="">Choose a category</option>
             <option value="funny story">Funny story</option>
-            <option value="anecdote">Anecdote</option>
-            <option value="tall tale">Tall tale</option>
+            <option value="rumor">Rumor</option>
+            <option value="historical">Historical</option>
+            <option value="hearsay">Hearsay</option>
           </select>
         </div>
         <textarea
@@ -167,20 +168,25 @@ export const PostStory = () => {
         <Modal
           className="gallery"
           isOpen={isImageModalOpen}
-          onRequestClose={closeImageModal}
           contentLabel="Select Image"
         >
           <div className="gallery-images">
-            <button type="button" onClick={() => handleImageSelect("hero.png")}>
+            <button
+              className="image-buttons"
+              type="button"
+              onClick={() => handleImageSelect("hero.png")}
+            >
               <img src={"aboutimg.jpg"} alt="Image 1" />
             </button>
             <button
+              className="image-buttons"
               type="button"
               onClick={() => handleImageSelect("./aboutimg.jpg")}
             >
               <img src={"aboutimg.jpg"} alt="Image 2" />
             </button>
             <button
+              className="image-buttons"
               type="button"
               onClick={() => handleImageSelect("hero3.png")}
             >

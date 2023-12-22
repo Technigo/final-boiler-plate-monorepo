@@ -2,33 +2,21 @@ import { NavBar } from "../../components/NavBar/NavBar";
 import { Hero } from "../../components/Hero/Hero";
 import { Footer } from "../../components/Footer/Footer";
 import { Outlet } from "react-router-dom"; // For rendering nested routes
-// import {
-//   fluidAnimationStyle,
-//   animationConfig,
-// } from "../../components/animationConfig";
-// import ReactFluidAnimation from "@usertive/react-fluid-animation";
-// import { useRef } from "react";
+import { Smoke } from "../../components/Smoke/Smoke";
+import { useRef } from "react";
 
 export const LandingPage = () => {
-  // const animationRef = useRef(null);
+  const smokeRef = useRef(null);
 
-  // const addSplat = () => {
-  //   if (animationRef.current) {
-  //     animationRef.current.addRandomSplats(10); // Adjust number of splats as needed
-  //   }
-  // };
+  const addSplat = () => {
+    smokeRef.current?.addRandomSplats(10);
+  };
 
   return (
     <div>
-      {/* <div className="fluid-animation-wrapper">
-        <ReactFluidAnimation
-          style={fluidAnimationStyle}
-          config={animationConfig}
-          animationRef={(animation) => (animationRef.current = animation)}
-        />
-      </div> */}
-      {/* <NavBar onLogoClick={addSplat} /> */}
-      <NavBar />
+      <Smoke ref={smokeRef} />
+      <NavBar onLogoClick={addSplat} />
+
       <Hero />
       <div className="outlet-wrapper">
         <Outlet /> {/* This is where the content will change */}
