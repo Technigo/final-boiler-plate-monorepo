@@ -29,8 +29,10 @@ export const Login = () => {
       // Call the 'handleLogin' function from 'userStore' with 'username' and 'password' parameters.
       await storeHandleLogin(username, password);
       // Get the 'isLoggedIn' state from 'userStore'.
-      const isLoggedIn = userStore.getState().isLoggedIn;
+      const isLoggedIn = userStore.getState().isLoggedin;
+      console.log(isLoggedIn)
       if (isLoggedIn) {
+        console.log("navigate to hpome")
         // If the user is logged in, navigate to the "/home" route.
         navigate("/home");
       }

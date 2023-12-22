@@ -22,18 +22,18 @@ export const Home = () => {
   const navigate = useNavigate();
 
   // Get 'isLoggedIn' and 'accessToken' from the 'userStore'.
-  const { isLoggedIn, accessToken } = userStore();
-  console.log(isLoggedIn);
+  const { isLoggedin, accessToken } = userStore();
+  console.log(isLoggedin);
   console.log(accessToken);
 
   // useEffect hook to check user authentication status.
   useEffect(() => {
-    if (!isLoggedIn) {
+    if (!isLoggedin) {
       // If the user is not logged in, show an alert and navigate to the login route.
       alert("no permission - here");
       navigate("/"); // You can change this to the login route
     }
-  }, [isLoggedIn]);
+  }, [isLoggedin]);
 
   // Function to handle the click event of the logout button.
   const onLogoutClick = () => {
@@ -46,7 +46,7 @@ export const Home = () => {
   // Render the component content.
   return (
     <>
-    <Footer />
+    
       <nav>
         {/* Create a navigation menu with links to various routes. */}
         <ul className="app-ul">
@@ -70,6 +70,7 @@ export const Home = () => {
       {/* (Note: 'text.intro' is not defined in the code.) */}
       {/* Display additional content (text.intro is missing). */}
       <p>{text.intro}</p>
+      <Footer />
     </>
   );
 };

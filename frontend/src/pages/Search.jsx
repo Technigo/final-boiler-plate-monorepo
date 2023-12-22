@@ -10,6 +10,7 @@ import BackArrow from "../components/BackArrow";
 import defalutImg from "../assets/image.png";
 import "../pages/search.css";
 import searchIcon from "../assets/search-icon.svg";
+import { Footer } from "../components/Footer";
 
 // Define the 'Search' functional component.
 export const Search = () => {
@@ -73,6 +74,8 @@ export const Search = () => {
           </li>
         ))}
       </ul>
+      <Footer />
     </div>
+    
   );
 };
