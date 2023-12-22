@@ -25,7 +25,7 @@ router.get("/getAds", authenticateUser, getAdsController); // When a GET request
 router.get("/getAd/:id", getAdByIdController);
 
 // Define a route for handling PUT requests to update a specific ad by ID
-router.put("/update/:id", updateAdController); // When a PUT request is made to /update/:id, execute the updateAdController function
+router.put("/update/:id", authenticateUser, parser.single('image'), updateAdController);
 
 // Define a route for handling DELETE requests to delete all ads
 router.delete("/deleteAll", deleteAllAdsController); // When a DELETE request is made to /deleteAll, execute the deleteAllAdsController function
