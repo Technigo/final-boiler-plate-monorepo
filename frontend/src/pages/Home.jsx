@@ -6,6 +6,7 @@
 import { LinkButton } from "../components/Buttons/LinkButton";
 // import { Link } from "react-router-dom";
 import styled from "styled-components";
+import { TestimonialsCarousel } from "../components/Testimonials/TestimonialsCarousel";
 
 const StyledButtonWrapper = styled.div`
   display: flex;
@@ -66,6 +67,7 @@ export const Home = () => {
           buttonName="Join the community"
         />
       </StyledButtonWrapper>
+      <TestimonialsCarousel />
     </>
     // <>
     //   {/* Display the heading and subheading. */}

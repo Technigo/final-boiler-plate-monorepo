@@ -1,0 +1,124 @@
+{
+    "testimonials": [
+      {
+        "testimonialId": 1,
+        "reviewerName": "",
+        "reviewerAge": "",
+        "imageUrl": "",
+        "imageAlt": "",
+        "review": ""
+      },
+      {
+        "testimonialId": 2,
+        "reviewerName": "",
+        "reviewerAge": "",
+        "imageUrl": "",
+        "imageAlt": "",
+        "review": ""
+      },
+      {
+        "testimonialId": 3,
+        "reviewerName": "",
+        "reviewerAge": "",
+        "imageUrl": "",
+        "imageAlt": "",
+        "review": ""
+      },
+      {
+        "testimonialId": 4,
+        "reviewerName": "Adam",
+        "reviewerAge": "34",
+        "imageUrl": "/testimonials/testimonial-adam.jpg",
+        "imageAlt": "Adam in suit",
+        "review": "'Thanks to this service, and Sam who quickly lent me his suit, when my luggage had gotten lost during my flight over to Sweden. Thanks to you I still could look well dressed during my best friends wedding!'"
+      },
+      {
+        "testimonialId": 5,
+        "reviewerName": "",
+        "reviewerAge": "",
+        "imageUrl": "",
+        "imageAlt": "",
+        "review": ""
+      },
+      {
+        "testimonialId": 6,
+        "reviewerName": "",
+        "reviewerAge": "",
+        "imageUrl": "",
+        "imageAlt": "",
+        "review": ""
+      },
+      {
+        "testimonialId": 7,
+        "reviewerName": "",
+        "reviewerAge": "",
+        "imageUrl": "",
+        "imageAlt": "",
+        "review": ""
+      },
+      {
+        "testimonialId": 8,
+        "reviewerName": "Nadia",
+        "reviewerAge": "26",
+        "imageUrl": "/testimonials/testimonial-nadia.jpg",
+        "imageAlt": "Nadia eating nudles",
+        "review": "So grateful for the person that helped me get my suitcase open so I could pack for my trip to Asia, the money I saved on not having to buy a new suitcase was spent on nice meals during my vacation instead!"
+      },
+      {
+        "testimonialId": 9,
+        "reviewerName": "",
+        "reviewerAge": "",
+        "imageUrl": "",
+        "imageAlt": "",
+        "review": ""
+      },
+      {
+        "testimonialId": 10,
+        "reviewerName": "",
+        "reviewerAge": "",
+        "imageUrl": "",
+        "imageAlt": "",
+        "review": ""
+      },
+      {
+        "testimonialId": 11,
+        "reviewerName": "",
+        "reviewerAge": "",
+        "imageUrl": "",
+        "imageAlt": "",
+        "review": ""
+      },
+      {
+        "testimonialId": 12,
+        "reviewerName": "",
+        "reviewerAge": "",
+        "imageUrl": "",
+        "imageAlt": "",
+        "review": ""
+      },
+      {
+        "testimonialId": 13,
+        "reviewerName": "",
+        "reviewerAge": "",
+        "imageUrl": "",
+        "imageAlt": "",
+        "review": ""
+      },
+      {
+        "testimonialId": 14,
+        "reviewerName": "",
+        "reviewerAge": "",
+        "imageUrl": "",
+        "imageAlt": "",
+        "review": ""
+      },
+      {
+        "testimonialId": 15,
+        "reviewerName": "",
+        "reviewerAge": "",
+        "imageUrl": "",
+        "imageAlt": "",
+        "review": ""
+      } 
+    ]
+}
