@@ -8,6 +8,8 @@ import { userStore } from "../stores/userStore";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import BackArrow from "../components/BackArrow";
+import { Footer } from "../components/Footer";
+
 
 // Define the 'Tasks' functional component.
 export const Ads = () => {
@@ -90,6 +92,7 @@ export const Ads = () => {
             </div>
           ))
         )}
+        <Footer />
       </div>
     </>
   );

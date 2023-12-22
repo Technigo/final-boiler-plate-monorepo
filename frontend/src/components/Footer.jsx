@@ -11,11 +11,11 @@ export const Footer = () => {
             Feel free to reach out to us if you have any questions or inquiries.
           </p>
           <ul className="medias-container">
-             <li><a href=""><i className="fa-brands fa-linkedin-in"></i></a></li>
-             <li><a href=""><i className="fa-brands fa-github"></i></a></li>
-             <li><a href=""><i className="fa-brands fa-stack-overflow"></i></a></li>
-             <li><a href=""><i className="fa-brands fa-twitter"></i></a></li>
-             <li><a href=""><i className="fa-brands fa-instagram"></i></a></li>
+             <li><a href="#"><i className="fa-brands fa-linkedin-in"></i></a></li>
+             <li><a href="#"><i className="fa-brands fa-github"></i></a></li>
+             <li><a href="#"><i className="fa-brands fa-stack-overflow"></i></a></li>
+             <li><a href="#"><i className="fa-brands fa-twitter"></i></a></li>
+             <li><a href="#"><i className="fa-brands fa-instagram"></i></a></li>
          </ul>
           {/* Add your contact information or a contact form here */}
         </div>
