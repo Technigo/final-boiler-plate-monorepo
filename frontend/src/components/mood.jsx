@@ -1,8 +1,9 @@
 import React, { useEffect } from 'react';
-import Navbar from './navbar'; 
-import Footer from './footer'; 
+import Navbar from './navbar'; // Ensure the path is correct
+import Footer from './footer'; // Ensure the path is correct
 import styled from 'styled-components';
-import { useRestaurantStore } from '../stores/restaurantStore'; 
+import { useRestaurantStore } from '../stores/restaurantStore'; // Ensure the path is correct
+import { Link } from 'react-router-dom'; 
 
 // Styled components, change to fit our stylingschema
 const PageContainer = styled.div`

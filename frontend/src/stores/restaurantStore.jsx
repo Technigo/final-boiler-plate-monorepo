@@ -1,8 +1,10 @@
 import { create } from 'zustand';
 
+// Helper function to capitalize the first letter of a string
 const capitalizeFirstLetter = (string) => {
   return string.charAt(0).toUpperCase() + string.slice(1).toLowerCase();
 }
+
 export const useRestaurantStore = create((set) => ({
   occasions: [],
   moods: [],
@@ -13,43 +15,52 @@ export const useRestaurantStore = create((set) => ({
   // This function fetches the occasions from your API and updates the state
   fetchOccasions: async () => {
     try {
-      // Attempt to fetch the occasions from your API endpoint
       const response = await fetch('http://localhost:3000/api/occasion');
       if (!response.ok) {
         throw new Error('Failed to fetch occasions');
       }
 
-      // Parse the JSON response
-      const data = await response.json();
+      let data = await response.json();
 
-      const normalizedData = data.map((item) =>
-      capitalizeFirstLetter(item.trim())
-    );
+      // Normalize the data by capitalizing the first letter and making the rest lowercase
+      data = data.map((item) => capitalizeFirstLetter(item.trim()));
 
-    // Remove duplicates
-    const uniqueData = Array.from(new Set(normalizedData));
+      // Filter out the misspelled 'relatonship' occasion
+      data = data.filter((item) => item.toLowerCase() !== 'celebrate a relatonship anniversary');
 
-    set({ occasions: uniqueData });
+      // Remove duplicates
+      const uniqueData = Array.from(new Set(data));
 
-  } catch (error) {
-    console.error('Error fetching occasions:', error);
-  }
-},
+      set({ occasions: uniqueData });
 
-  fetchMoods: async () => {
-    try {
-      const response = await fetch('http://localhost:3000/api/mood');
-      if (!response.ok) throw new Error('Failed to fetch moods');
-      const data = await response.json();
-      set({ moods: data });
     } catch (error) {
-      console.error('Error fetching moods:', error);
+      console.error('Error fetching occasions:', error);
     }
   },
 
   // Update the selected occasion
   setSelectedOccasion: (occasion) => set({ selectedOccasion: occasion }),
 
+  fetchMoods: async () => {
+    try {
+      const response = await fetch('http://localhost:3000/api/mood');
+      if (!response.ok) {
+        throw new Error('Failed to fetch moods');
+      }
+
+      const moods = await response.json();
+      // You might want to transform the moods data similarly to occasions
+      // For example, if you want to capitalize the first letter:
+      const capitalizedMoods = moods.map((mood) => capitalizeFirstLetter(mood.trim()));
+
+      set({ moods: capitalizedMoods });
+
+    } catch (error) {
+      console.error('Error fetching moods:', error);
+    }
+  },
+
+  // .
   // Update the selected moods
   setSelectedMoods: (moods) => set({ selectedMoods: moods }), // Takes an array of moods
 
@@ -65,6 +76,8 @@ export const useRestaurantStore = create((set) => ({
 
     try {
       const response = await fetch(`http://localhost:3000/restaurants/search?${queryParams.toString()}`);
+      if (!response.ok) throw new Error('Failed to fetch search results');
+
       const results = await response.json();
       set({ results });
     } catch (error) {
