@@ -3,6 +3,10 @@ import mongoose from "mongoose";
 const { Schema } = mongoose;
 
 const mapStorySchema = new Schema({
+  id: {
+    type: Number,
+    required: true,
+  },
   title: {
     type: String,
     required: true,
@@ -22,11 +26,14 @@ const mapStorySchema = new Schema({
     default: 0,
   },
   location: {
-    type: {
-      lat: Number,
-      lng: Number,
+    lat: {
+      type: Number,
+      required: true,
     },
-    required: true,
+    lng: {
+      type: Number,
+      required: true,
+    },
   },
   createdAt: {
     type: Date,

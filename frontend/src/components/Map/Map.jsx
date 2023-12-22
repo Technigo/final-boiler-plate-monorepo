@@ -9,7 +9,8 @@ import {
   InfoWindow,
   Autocomplete,
 } from "@react-google-maps/api";
-
+import markerIcon from "../../assets/marker.png";
+import StoryList from "../StoryList/StoryList";
 import "./Map.css";
 
 const libraries = ["places"];
@@ -130,29 +131,42 @@ const styles = {
   ],
 };
 
-export const Map = () => {
+export const Map = ({ stories }) => {
   const [map, setMap] = useState(null);
-  const [markers, setMarkers] = useState([]);
+  // const [markers, setMarkers] = useState([]);
   const [selectedMarker, setSelectedMarker] = useState(null);
   const [mapCenter, setMapCenter] = useState({
     lat: 62.7507414,
     lng: 15.422574800000007,
   });
   const [autocomplete, setAutocomplete] = useState(null);
+  const [customMarkerIcon, setCustomMarkerIcon] = useState(null);
 
-  const customMarker = {
-    url: "/marker.png", // URL or path to your custom marker image
-    scaledSize: new google.maps.Size(30, 30), // Width and height of your marker
-  };
-
-  const onMapClick = useCallback((event) => {
-    const newMarker = {
-      lat: event.latLng.lat(),
-      lng: event.latLng.lng(),
-      comment: "",
+  const onMapLoad = useCallback((mapInstance) => {
+    setMap(mapInstance);
+    const customMarker = {
+      url: markerIcon, // URL or path to your custom marker image
+      scaledSize: new window.google.maps.Size(30, 30), // Width and height of your marker
     };
-    setMarkers((current) => [...current, newMarker]);
+    setCustomMarkerIcon(customMarker);
   }, []);
+
+  // const onMapClick = useCallback((event) => {
+  //   const newMarker = {
+  //     lat: event.latLng.lat(),
+  //     lng: event.latLng.lng(),
+  //     comment: "",
+  //   };
+  //   setMarkers((current) => [...current, newMarker]);
+  // }, []);
+
+  const markers = stories.map((story) => ({
+    lat: story.lat,
+    lng: story.lng,
+    title: story.title,
+    description: story.description,
+    id: story.id,
+  }));
 
   const onMarkerClick = useCallback((marker) => {
     setSelectedMarker(marker);
@@ -161,10 +175,6 @@ export const Map = () => {
   const onLoadAutocomplete = (autocomplete) => {
     setAutocomplete(autocomplete);
   };
-
-  const onMapLoad = useCallback((mapInstance) => {
-    setMap(mapInstance);
-  }, []);
 
   const onPlaceChanged = () => {
     if (autocomplete !== null) {
@@ -191,7 +201,7 @@ export const Map = () => {
       <Autocomplete
         onLoad={onLoadAutocomplete}
         onPlaceChanged={onPlaceChanged}
-        types={["address"]}>
+        types={["(cities)", "address"]}>
         <input type="text" placeholder="Search location" />
       </Autocomplete>
       <GoogleMap
@@ -206,7 +216,7 @@ export const Map = () => {
             key={index}
             position={{ lat: marker.lat, lng: marker.lng }}
             onClick={() => onMarkerClick(marker)}
-            icon={customMarker}
+            icon={customMarkerIcon}
           />
         ))}
         {selectedMarker && (
@@ -214,13 +224,9 @@ export const Map = () => {
             position={{ lat: selectedMarker.lat, lng: selectedMarker.lng }}
             onCloseClick={() => setSelectedMarker(null)}>
             <div>
-              <p>{stories[selectedMarker.storyId].title}</p>
-              <a
-                href={stories[selectedMarker.storyId].url}
-                target="_blank"
-                rel="noopener noreferrer">
-                Go to Story
-              </a>
+              <h3>{selectedMarker.title}</h3>
+              <p>{selectedMarker.description}</p>
+              <a href={`/stories/${selectedMarker.id}`}>Follow the whisper</a>
             </div>
           </InfoWindow>
         )}
