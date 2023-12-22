@@ -1,3 +1,4 @@
+import { Footer } from "../components/Footer"
 
 
 
@@ -7,6 +8,7 @@ export const Landing = () => {
     
     <div>Landing</div>
 
+    <Footer />
     </>
   )
   

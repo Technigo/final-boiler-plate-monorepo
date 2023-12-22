@@ -1,9 +1,7 @@
 // Import the 'create' function from the 'zustand' library.
 import { create } from "zustand";
 import validator from "validator";
-// Uncomment if decide to use sweetalert2 for success/error messages
-// import Swal from "sweetalert2"; 
-
+import Swal from "sweetalert2"; 
 
 // Get the backend API endpoint from the environment variables.
 const apiEnv = import.meta.env.VITE_BACKEND_API;
@@ -47,45 +45,34 @@ export const userStore = create((set) => ({
   handleSignup: async (username, password, email, consent) => {
     // Check if required fields are provided, display an alert if not and exit the function immediately
     if (username.length < 5) {
-      alert("Your username should have at least 5 characters");
+      Swal.fire({
+        title: "Error!",
+        text: "Your username should have at least 5 characters",
+        icon: "error"
+      });
       return;
     } else if (!validator.isEmail(email)) {
-      alert("Please enter a valid email address");
+      Swal.fire({
+        title: "Error!",
+        text: "Please enter a valid email address",
+        icon: "error"
+      });
       return;
     } else if (password.length < 5) {
-      alert("Your password should have at least 5 characters");
+      Swal.fire({
+        title: "Error!",
+        text: "Your password should have at least 5 characters",
+        icon: "error"
+      });
       return;
     } else if (!username || !password || !email || !consent) {
-      alert("Please fill in all the fields and agree to the terms and conditions"); 
+      Swal.fire({
+        title: "Error!",
+        text: "Please fill in all the fields and agree to the terms and conditions",
+        icon: "error"
+      });
       return;
-    }
-
-    // Implement sweetalert2
-    // if (username.length < 5) {
-    //   Swal.fire({
-    //     title: "Error!",
-    //     text: "Your username should have at least 5 characters",
-    //     icon: "error"
-    //   })
-    // } else if (!validator.isEmail(email)) {
-    //   Swal.fire({
-    //     title: "Error!",
-    //     text: "Please enter a valid email address",
-    //     icon: "error"
-    //   });
-    // } else if (password.length < 5) {
-    //   Swal.fire({
-    //     title: "Error!",
-    //     text: "Your password should have at least 5 characters",
-    //     icon: "error"
-    //   });
-    // } else if (!username || !password || !email || (!document.getElementById("consent").checked)) {
-    //   Swal.fire({
-    //     title: "Error!",
-    //     text: "Please fill in all the fields",
-    //     icon: "error"
-    //   });
-    // } 
+    } 
 
     try {
       // Send a POST request to the registration endpoint with user data.
@@ -109,16 +96,29 @@ export const userStore = create((set) => ({
           isSignedup: true
         });
         // Display a success alert
-        alert("Sign up successful");
+        Swal.fire({
+          title: "Congratulations!",
+          text: "Sign up successful",
+          icon: "success"
+        });
         console.log("Signing up with: ", username);
       } else {
         // Handle the case where the server responds with an error or user exists
-        alert(data.response || "Sign up failed");
+        Swal.fire({
+          title: "Error!",
+          text: data.response || "Sign up failed",
+          icon: "error"
+        }); 
+        // alert(data.response || "Sign up failed");
       }
     } catch (error) {
       // Handle and log any signup errors
       console.error("Sign up error: ", error);
-      alert("An error occurred during signup");
+      Swal.fire({
+        title: "Error!",
+        text: "An error occurred during signup",
+        icon: "error"
+      });
     }
   },
 
@@ -126,7 +126,11 @@ export const userStore = create((set) => ({
   handleLogin: async (username, password) => {
     // Check if both username and password are provided and display an alert if not.
     if (!username || !password) {
-      alert("Please enter both username and password");
+      Swal.fire({
+        title: "Error!",
+        text: "Please enter both username and password",
+        icon: "error"
+      });
       return;
     }
 
@@ -152,16 +156,29 @@ export const userStore = create((set) => ({
         // Store the accessToken in the browser's localStorage.
         localStorage.setItem("accessToken", data.response.accessToken);
         // Display a success alert.
-        alert("Log in successful");
+        Swal.fire({
+          title: "Congratulations!",
+          text: "Log in successful",
+          icon: "success"
+        });
         console.log("Logging in with: ", username, password);
       } else {
         // Display an error message from the server or a generic message.
-        alert(data.response || "Log in failed");
+        Swal.fire({
+          title: "Error!",
+          text: data.response || "Log in failed",
+          icon: "error"
+        });
+        // alert(data.response || "Log in failed");
       }
     } catch (error) {
       // Handle and log any login errors.
       console.error("Log in error: ", error);
-      alert("An error occurred during log in");
+      Swal.fire({
+        title: "Error!",
+        text: "An error occurred during login",
+        icon: "error"
+      });
     }
   },
 
@@ -169,7 +186,12 @@ export const userStore = create((set) => ({
   handleProfileDisplay: async (isLoggedin, userId) => {
     // Check if the user is logged in and display message if they are not
     if (!isLoggedin) {
-      alert("Please log in to see your profile");
+      Swal.fire({
+        title: "Error!",
+        text: "Please log in to see your profile",
+        icon: "error"
+      });
+      return;
     } else {
       try {
         // If they are logged in, send GET request to the user endpoint to retrieve user data
@@ -187,12 +209,21 @@ export const userStore = create((set) => ({
           set({ data });
         } else {
           // Display an error message from the server or a generic message.
-          alert(data.response || "User profile display failed");
+          Swal.fire({
+            title: "Error!",
+            text: data.response || "User profile display failed",
+            icon: "error"
+          });
+          // alert(data.response || "User profile display failed");
         }
       } catch (error) {
         // Handle and log any login errors.
         console.error("Profile display error: ", error);
-        alert("User profile display failed");
+        Swal.fire({
+          title: "Error!",
+          text: "User profile display failed",
+          icon: "error"
+        });
       }
     }
   },
@@ -201,7 +232,12 @@ export const userStore = create((set) => ({
   handleProfileUpdate: async (isLoggedin, userId, email, password, location, introduction, products) => {
     // Check if the user is logged in and display message if they are not
     if (!isLoggedin) {
-      alert("Please log in to update your profile");
+      Swal.fire({
+        title: "Error!",
+        text: "Please log in to update your profile",
+        icon: "error"
+      });
+      return;
     } else {
       // If they are logged in, send a POST request to the update endpoint with user data. 
       try { 
@@ -225,15 +261,28 @@ export const userStore = create((set) => ({
             products 
           });
           // Display a success alert
-          alert("User profile update successful");
+          Swal.fire({
+            title: "Congratulations!",
+            text: "User profile update successful",
+            icon: "success"
+          });
         } else {
           // Display an error message from the server or a generic message
-          alert(data.response || "User profile update failed");
+          Swal.fire({
+            title: "Error!",
+            text: data.response || "User profile update failed",
+            icon: "error"
+          });
+          // alert(data.response || "User profile update failed");
         }
       } catch (error) {
         // Handle and log any login errors
         console.error("Profile update error: ", error);
-        alert("An error occurred during profile update");
+        Swal.fire({
+          title: "Error!",
+          text: "An error occurred during profile update",
+          icon: "error"
+        });
       }
     }
   },
@@ -249,24 +298,75 @@ export const userStore = create((set) => ({
 
   // FUNCTION TO HANDLE USER ACCOUNT DELETION
   handleAccountDeletion: () => {
-    // Clear user information - to be doublechecked if this is deletion or just deactivation
-    set({ 
-      username: "", 
-      email: "",
-      password: "",
-      consent: false,
-      location: "",
-      introduction: "",
-      products: [],
-      userId: null,
-      accessToken: null, 
-      isLoggedin: false 
+    const swalWithBootstrapButtons = Swal.mixin({
+      customClass: {
+        confirmButton: "btn btn-success",
+        cancelButton: "btn btn-danger"
+      },
+      buttonsStyling: false
     });
-    // Remove the accessToken from localStorage.
-    localStorage.removeItem("accessToken");
-    // Show an alert that the account has been deleted
-    alert("Your account has been deleted. Feel free to create a new account anytime!");
+    swalWithBootstrapButtons.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonText: "Yes, delete my account!",
+      cancelButtonText: "No, cancel!",
+      reverseButtons: true
+    }).then((result) => {
+      if (result.isConfirmed) {
+        // Clear user information - to be doublechecked if this is deletion or just deactivation
+        set({ 
+          username: "", 
+          email: "",
+          password: "",
+          consent: false,
+          location: "",
+          introduction: "",
+          products: [],
+          userId: null,
+          accessToken: null, 
+          isLoggedin: false 
+        });
+        // Remove the accessToken from localStorage.
+        localStorage.removeItem("accessToken");
+        // Display confirmation message
+        swalWithBootstrapButtons.fire({
+          title: "We are sad to see you go...",
+          text: "Your account has been deleted. Feel free to create a new account anytime!",
+          icon: "success"
+        });
+      } else if (
+        /* Read more about handling dismissals below */
+        result.dismiss === Swal.DismissReason.cancel
+      ) {
+        swalWithBootstrapButtons.fire({
+          title: "Cancelled",
+          text: "Thanks for staying with us :)",
+          icon: "error"
+        });
+      }
+    });
   }
+
+  // Original code
+    // Clear user information - to be doublechecked if this is deletion or just deactivation
+    // set({ 
+    //   username: "", 
+    //   email: "",
+    //   password: "",
+    //   consent: false,
+    //   location: "",
+    //   introduction: "",
+    //   products: [],
+    //   userId: null,
+    //   accessToken: null, 
+    //   isLoggedin: false 
+    // });
+    // Remove the accessToken from localStorage.
+    // localStorage.removeItem("accessToken");
+    // Display confirmation message
+    // alert("Your account has been deleted. Feel free to create a new account anytime!");
 }));
 
 // SUMMARY

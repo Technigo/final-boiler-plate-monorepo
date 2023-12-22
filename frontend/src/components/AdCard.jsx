@@ -1,12 +1,17 @@
+import { Link } from "react-router-dom";
+
 export const AdCard = ({ ad }) => {
   console.log(ad); // Debug: Log the ad object
 
   return (
-      <div style={{ border: '1px solid #ddd', padding: '10px', margin: '10px' }}> {/* can take this away */}
-        <img src={ad.image} alt={`${ad.title}`} style={{ width: '100%', height: '200px', objectFit: 'cover' }} />
+    <Link to={`/ads/${ad._id}`}>
+      <div style={{ display: "flex", flexDirection: "column", alignItems: "center", border: "1px solid #ddd", padding: "10px", margin: "10px", width: "250px" }}> {/* can take this away */}
+        <img src={ad.image} alt={`${ad.title}`} style={{ width: "200px", height: "200px", objectFit: "cover" }} />
         <h3>{ad.title}</h3>
-        <p>Posted by: {ad.user.username || 'Unknown'}</p>
+        <p>Posted by: {ad.user.username || "Unknown"}</p>
       </div>
-    );
-  };
+    </Link>
+
+  );
+};
   

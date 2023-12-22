@@ -6,6 +6,7 @@ dotenv.config(); // Load environment variables from the .env file
 import userRoutes from "./routes/userRoutes"; // Import custom user routes
 import adRoutes from "./routes/adRoutes"; // Import custom ad routes
 import { connectDB } from "./config/db"; // Import database connection function (not used here)
+import listEndpoints from 'express-list-endpoints';
 
 // Defines the port the app will run on. Defaults to 8080, but can be overridden
 const port = process.env.PORT; // Set the port number for the server
@@ -21,8 +22,11 @@ app.use(express.urlencoded({ extended: false })); // Parse URL-encoded data
 app.use(userRoutes); // Use the user-controlled routes for user-related requests
 app.use(adRoutes); // Use the ad-controlled routes for ad-related requests
 
-connectDB();
+app.get("/", (req, res) => {
+  res.json(listEndpoints(app));
+});
 
+connectDB();
 
 app.listen(port, () => {
   console.log(`Server running on http://localhost:${port}`); 

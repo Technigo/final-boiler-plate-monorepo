@@ -1,8 +1,17 @@
 import { useState, useRef } from "react";
 import emailjs from "@emailjs/browser";
 import "./contactForm.css";
+import "bootstrap/dist/css/bootstrap.min.css";
+import closeBtn from "../assets/close.svg";
 
-export const ContactForm = () => {
+// Contact form
+
+export const ContactForm = ({
+  advertiserName,
+  productName,
+  adTitle,
+  handleClose,
+}) => {
   const [showMessage, setShowMessage] = useState(false);
   // const [showErrorMesssage, setShowErrorMessage] = useState(false);
   const form = useRef();
@@ -16,19 +25,18 @@ export const ContactForm = () => {
     form.current.message.value = "";
   };
 
+  const advertiserEmail = "greenbuddy.strawberry@gmail.com";
+
+  // Send email
   const sendEmail = (e) => {
     e.preventDefault();
-
-    // Get advertiser email
-    const advertiserEmail = "greenbuddy.strawberry@gmail.com";
-    const advertiserName = "Jacob";
 
     // Set up template parameters
     const templateParams = {
       user_name: form.current.user_name.value,
       user_email: form.current.user_email.value,
-      subject: form.current.subject.value,
-      product_name: form.current.product_name.value,
+      subject: adTitle,
+      product_name: productName,
       message: form.current.message.value,
       to_email: advertiserEmail,
       to_name: advertiserName,
@@ -55,18 +63,18 @@ export const ContactForm = () => {
 
   return (
     <form className="contact-form" ref={form} onSubmit={sendEmail}>
+      <img
+        src={closeBtn}
+        className="close-btn"
+        alt="search-icon"
+        onClick={handleClose}
+      />
       <h1 className="contact-title">Contact Form</h1>
       <label>
         <input placeholder="Your name" type="text" name="user_name" required />
       </label>
       <label>
         <input placeholder="E-mail" type="email" name="user_email" required />
-      </label>
-      <label>
-        <input placeholder="Subject" type="text" name="subject" />
-      </label>
-      <label>
-        <input placeholder="Product name" type="text" name="product_name" />
       </label>
       <label>
         <textarea className="msg-box" placeholder="Message" name="message" />

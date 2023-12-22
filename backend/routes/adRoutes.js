@@ -19,13 +19,13 @@ const router = express.Router();
 router.get("/getAllAds", getAllAdsController);
 
 // Define a route for handling GET requests to retrieve all ads
-router.get("/get", authenticateUser, getAdsController); // When a GET request is made to /get, authenticate the user using middleware and then execute the getAdsController function
+router.get("/getAds", authenticateUser, getAdsController); // When a GET request is made to /get, authenticate the user using middleware and then execute the getAdsController function
 
 // Define a route for handling GET requests to retrieve a specific ad by ID
 router.get("/getAd/:id", getAdByIdController);
 
 // Define a route for handling PUT requests to update a specific ad by ID
-router.put("/update/:id", updateAdController); // When a PUT request is made to /update/:id, execute the updateAdController function
+router.put("/update/:id", authenticateUser, parser.single('image'), updateAdController);
 
 // Define a route for handling DELETE requests to delete all ads
 router.delete("/deleteAll", deleteAllAdsController); // When a DELETE request is made to /deleteAll, execute the deleteAllAdsController function

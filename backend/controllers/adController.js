@@ -124,44 +124,25 @@ export const createAdController = asyncHandler(async (req, res) => {
 // access: Private
 export const updateAdController = asyncHandler(async (req, res) => {
   const { id } = req.params;
-  const updateData = req.body; // This contains the fields to be updated
+  let updateData = req.body;
 
   if (req.file) {
-    try {
-      // Upload the new image file to Cloudinary
-      const result = await cloudinary.uploader.upload(req.file.path);
-      updateData.image = result.url;
-      updateData.imageId = result.public_id;
-    } catch (uploadError) {
-      console.error("Cloudinary Upload Error:", uploadError);
-      return res
-        .status(500)
-        .json({
-          message: "Error uploading new image to Cloudinary.",
-          error: uploadError,
-        });
-    }
+    const result = await cloudinary.uploader.upload(req.file.path);
+    updateData.image = result.url;
+    updateData.imageId = result.public_id;
   }
 
-  // Make sure to check that the user making the update is the owner of the ad
   const userFromStorage = await UserModel.findOne({
     accessToken: req.header("Authorization"),
   });
+
   if (!userFromStorage) {
     return res.status(401).json({ message: "Unauthorized: User not found." });
   }
 
-  // Update the ad with the new data
-  AdModel.findByIdAndUpdate(id, updateData, { new: true }) // {new: true} will return the updated document
-    .then((updatedAd) => {
-      if (!updatedAd) {
-        return res.status(404).json({ message: "Ad not found." });
-      }
-      res.json(updatedAd);
-    })
-    .catch((err) =>
-      res.status(500).json({ message: "Error updating ad.", error: err })
-    );
+  AdModel.findByIdAndUpdate(id, updateData, { new: true })
+    .then(updatedAd => res.json(updatedAd))
+    .catch(err => res.status(500).json({ message: "Error updating ad.", error: err }));
 });
 
 // desciption: DELETE all ads
