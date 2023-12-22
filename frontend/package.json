@@ -12,12 +12,8 @@
   },
   "dependencies": {
     "@react-google-maps/api": "^2.19.2",
-
     "date-fns": "^3.0.0",
     "js-datepicker": "^5.18.2",
-
-    "@usertive/react-fluid-animation": "^1.0.5",
-
     "react": "^18.2.0",
     "react-calendar": "^4.7.0",
     "react-datepicker": "^4.24.0",
@@ -25,7 +21,6 @@
     "react-modal": "^3.16.1",
     "react-router-dom": "^6.15.0",
     "react-slick": "^0.29.0",
-    "slick-carousel": "^1.8.1",
     "swiper": "^11.0.5",
     "zustand": "^4.4.6"
   },

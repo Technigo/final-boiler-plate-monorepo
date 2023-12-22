@@ -9,12 +9,7 @@ import { Carousel } from "../components/Carousel/Carousel";
 const routes = (
   <Routes>
     <Route path="/" element={<LandingPage />}>
-<<<<<<< HEAD
       <Route index element={<Carousel />} /> {/* Default content for Landingpage */}
-=======
-      <Route index element={<StoryList />} />{" "}
-      {/* Default content for Landingpage */}
->>>>>>> main
       <Route path="/about-us" element={<AboutUs />} />
       <Route path="/post-story" element={<PostStory />} />
       <Route path="/story-list" element={<StoryList />} />
@@ -23,3 +18,4 @@ const routes = (
   </Routes>
 );
 export default routes;
+  
