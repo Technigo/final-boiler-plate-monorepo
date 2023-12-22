@@ -51,7 +51,12 @@ export const Navbar = () => {
         </div>
       </div>
       <div className="logo-container">
-        <img src="./logo-sand.svg" alt="Plants by Holm and Witting logotype" />
+        <Link to="/">
+          <img
+            src="./logo-sand.svg"
+            alt="Plants by Holm and Witting logotype"
+          />
+        </Link>
       </div>
       <div className="right-side">
         <Link to="/login">
