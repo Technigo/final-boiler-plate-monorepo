@@ -16,6 +16,31 @@ router.get('/', async (req, res) => {
     }
 });
 
+/*
+// Get all bookings with grouping by createdAt date, hour, and minute
+router.get('/', async (req, res) => {
+    try {
+        const bookings = await Booking.aggregate([
+            {
+                $group: {
+                    _id: {
+                        date: { $dateToString: { format: '%Y-%m-%d', date: '$createdAt' } },
+                        time: { $dateToString: { format: '%H:%M', date: '$createdAt' } }
+                    },
+                    bookings: { $push: '$$ROOT' }
+                }
+            },
+            {
+                $sort: { '_id.date': -1, '_id.time': -1 } // Sort in descending order by date and time
+            }
+        ]).exec();
+
+        res.json(bookings);
+    } catch (error) {
+        handleErrors(res, error);
+    }
+});
+*/
 // Post a new booking
 router.post('/', async (req, res) => {
     console.log(req.body);
@@ -84,7 +109,26 @@ router.post('/:bookingId/handled', async (req, res) => {
         handleErrors(res, error, 400, 'Booking not found. Could not mark as handled!');
     }
 });
+// Fetch only the handled bookings
+// Fetch only the handled bookings
+router.get('/handledBookings', async (req, res) => {
+    try {
+        const handledBookings = await Booking.find({ bookingIsHandled: true }).sort({ createdAt: -1 }).exec();
+        res.json(handledBookings);
+    } catch (error) {
+        handleErrors(res, error);
+    }
+});
 
+// Fetch only the unhandled bookings
+router.get('/unhandledBookings', async (req, res) => {
+    try {
+        const unhandledBookings = await Booking.find({ bookingIsHandled: false }).sort({ createdAt: -1 }).exec();
+        res.json(unhandledBookings);
+    } catch (error) {
+        handleErrors(res, error);
+    }
+});
 // DELETE a specific booking by ID
 router.delete("/deleteBooking/:id", async (req, res) => {
     const { id } = req.params;
@@ -110,4 +154,3 @@ router.delete("/deleteBooking/:id", async (req, res) => {
 });
 
 export default router;
-
