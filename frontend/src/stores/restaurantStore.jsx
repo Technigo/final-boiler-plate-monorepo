@@ -1,6 +1,5 @@
 import { create } from 'zustand';
 
-// Helper function to capitalize the first letter of a string
 const capitalizeFirstLetter = (string) => {
   return string.charAt(0).toUpperCase() + string.slice(1).toLowerCase();
 }
@@ -12,7 +11,6 @@ export const useRestaurantStore = create((set) => ({
   selectedMoods: [],
   results: [],
 
-  // This function fetches the occasions from your API and updates the state
   fetchOccasions: async () => {
     try {
       const response = await fetch('http://localhost:3000/api/occasion');
@@ -60,9 +58,22 @@ export const useRestaurantStore = create((set) => ({
     }
   },
 
-  // .
-  // Update the selected moods
-  setSelectedMoods: (moods) => set({ selectedMoods: moods }), // Takes an array of moods
+  setSelectedMoods: (newMood) => set((state) => {
+    const isSelected = state.selectedMoods.includes(newMood);
+  
+    // If the mood is already selected, remove it from the array
+    if (isSelected) {
+      return { selectedMoods: state.selectedMoods.filter(mood => mood !== newMood) };
+    }
+  
+    // If less than 3 moods are selected, add the new mood
+    if (state.selectedMoods.length < 3) {
+      return { selectedMoods: [...state.selectedMoods, newMood] };
+    }
+  
+    // If already 3 moods are selected and the new mood is not one of them, ignore the selection
+    return {};
+  }),
 
   // Fetch results based on selected occasion and moods
   fetchResults: async () => {

@@ -62,7 +62,6 @@ const ResultsButton = styled.button`
   }
 `;
 
-// MoodSelector component
 const MoodSelector = () => {
   const { moods, selectedMoods, fetchMoods, setSelectedMoods } = useRestaurantStore();
 
@@ -70,18 +69,18 @@ const MoodSelector = () => {
     fetchMoods();
   }, [fetchMoods]);
 
-  //make sure that you can only choose one!
   const handleMoodToggle = (mood) => {
     setSelectedMoods((prevSelectedMoods) => {
+      if (!Array.isArray(prevSelectedMoods)) {
+        return [mood];
+      }
       const isSelected = prevSelectedMoods.includes(mood);
       if (isSelected) {
-        // Remove mood from the array if it's already selected
         return prevSelectedMoods.filter((m) => m !== mood);
       } else if (prevSelectedMoods.length < 3) {
-        // Add mood to the array if less than 3 are already selected
         return [...prevSelectedMoods, mood];
       }
-      return prevSelectedMoods; // No change if 3 moods are already selected
+      return prevSelectedMoods;
     });
   };
 
