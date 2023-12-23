@@ -4,6 +4,7 @@ import Booking from '../models/BookingModel';
 
 const router = express.Router();
 
+
 // Get all bookings
 router.get('/', async (req, res) => {
     try {
@@ -44,7 +45,7 @@ router.get('/', async (req, res) => {
 // Post a new booking
 router.post('/', async (req, res) => {
     console.log(req.body);
-    const { name, age, weight, height, film, droneVideos, photo, phonenumber, email, message, date, beginner, intermediate, advanced, bookingIsHandled } = req.body;
+    const { name, age, weight, height, film, droneVideos, photo, phonenumber, email, message, date, beginner, intermediate, advanced, createdAt, bookingIsHandled, groupID } = req.body;
 
     try {
         // Validate the length of the message
@@ -68,8 +69,10 @@ router.post('/', async (req, res) => {
             beginner,
             intermediate,
             advanced,
+            createdAt,
             bookingIsHandled,
             complete: false, // Set complete to false by default
+            groupID
         });
 
         // Save it to the database
@@ -109,7 +112,7 @@ router.post('/:bookingId/handled', async (req, res) => {
         handleErrors(res, error, 400, 'Booking not found. Could not mark as handled!');
     }
 });
-// Fetch only the handled bookings
+
 // Fetch only the handled bookings
 router.get('/handledBookings', async (req, res) => {
     try {

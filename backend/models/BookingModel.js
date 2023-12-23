@@ -90,6 +90,11 @@ const bookingSchema = new mongoose.Schema({
         type: Boolean,
         default: false,
     },
+    groupID: {
+        type: String,
+        default: null,
+
+    },
 });
 
 bookingSchema.statics.getBookings = async function () {
