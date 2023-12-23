@@ -8,30 +8,33 @@ import { Link } from "react-router-dom";
 const PageContainer = styled.div`
 margin: 0 auto;
 padding: 20px;
-background-color: #FBB7C0; /* Your chosen color */
+background-color: #FFF0F3; /* Your chosen color */
 min-height: 100vh; /* Make sure it covers the full height of the viewport */
 `;
 
 const Heading = styled.h1`
 font-size: 24px;
 font-family: Arial, sans-serif; 
-  /* Your styles for heading */
+color: #800F2F;
+font-family: Montserrat, sans-serif;
 `;
 
 const Subheading = styled.h2`
 font-size: 20px;
 font-family: Arial, sans-serif; 
-  /* Your styles for subheading */
+color: #800F2F;
+font-family: Montserrat, sans-serif;
 `;
 
 const Intro = styled.p`
 font-size: 16px;
-font-family: Arial, sans-serif; 
+color: #800F2F;
+font-family: Montserrat, sans-serif;
   /* Your styles for intro paragraph */
 `;
 const StyledButton = styled.button`
-background-color: #B6244F;
-  color: #504746;
+background-color: #FFCCD5;
+  color: #800F2F;
   padding: 10px 20px; /* Some padding */
   border: none; /* No border */
   border-radius: 5px; /* Rounded corners */
@@ -44,8 +47,8 @@ background-color: #B6244F;
   transition-duration: 0.4s; /* Transition for hover effect */
 
   &:hover {
-    background-color: #B89685;
-    color: #FBB7C0;
+    background-color: #FF8FA3;
+    color: #590D22;
   }
 `;
 // Define the 'Home' functional component.

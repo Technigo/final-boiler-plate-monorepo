@@ -7,13 +7,15 @@ import styled from 'styled-components';
 const AboutWrapper = styled.div`
   margin: 0 auto;
   padding: 20px;
-  background-color: #FBB7C0; /* Your chosen color */
+  background-color: #FFF0F3; /* Your chosen color */
   min-height: 100vh; /* Make sure it covers the full height of the viewport */
 `;
 
 const IntroParagraph = styled.p`
   font-size: 24px;
   margin-bottom: 20px;
+  color: #800F2F;
+  font-family: Montserrat, sans-serif;
 `;
 
 const TeamSection = styled.section`
@@ -26,6 +28,8 @@ const TeamMember = styled.div`
   flex-basis: calc(33.33% - 20px);
   margin-bottom: 20px;
   text-align: center;
+  color: #800F2F;
+  font-family: Montserrat, sans-serif;
 `;
 
 const TeamMemberPhoto = styled.img`

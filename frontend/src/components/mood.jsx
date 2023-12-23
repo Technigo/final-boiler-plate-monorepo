@@ -10,12 +10,14 @@ import { Link } from 'react-router-dom';
 const PageContainer = styled.div`
   margin: 0 auto;
   padding: 20px;
-  background-color: #FBB7C0; // Your chosen color
+  background-color: #FFF0F3; // Your chosen color
   min-height: 100vh; // Full height of the viewport
 `;
 const TitleContainer = styled.div`
   text-align: center; /* Centers the title text */
   margin-bottom: 20px; /* Adds some space between the title and the buttons */
+  color: #800F2F;
+  font-family: Montserrat, sans-serif;
 `;
 const MoodSelectorContainer = styled.div`
 display: flex; /* Enables Flexbox */
@@ -29,38 +31,50 @@ margin: 0 auto; /* Centers the container in the parent */
 `;
 
 const MoodButton = styled.button`
-  margin: 0.5em;
-  padding: 0.5em 1em;
-  border: none;
-  background-color: ${({ selected }) => selected ? '#B89685' : '#efefef'};
-  color: ${({ selected }) => selected ? 'white' : 'black'};  // Text color
-  font-size: 16px;
-  cursor: pointer;
-  border-radius: 20px; // Same as OccasionButton
-  transition: background-color 0.3s, transform 0.3s; // Same as OccasionButton
+background-color: #FFCCD5;
+  color: #800F2F;
+  padding: 10px 20px; /* Some padding */
+  border: none; /* No border */
+  border-radius: 5px; /* Rounded corners */
+  cursor: pointer; /* Pointer/hand icon */
+  text-align: center; /* Center the text */
+  text-decoration: none; /* No underline */
+  display: inline-block; /* Inline block element */
+  font-size: 16px; /* Font size */
+  margin: 4px 2px; /* Margin around the button */
+  transition-duration: 0.4s; /* Transition for hover effect */
 
   &:hover {
-    background-color: ${({ selected }) => selected ? '#98c9a3' : '#ddd'}; // Same as OccasionButton
-    transform: translateY(-2px); // Same as OccasionButton
+    background-color: #FF8FA3;
+    color: #590D22;
   }
 
   &:active {
-    transform: translateY(1px); // Same as OccasionButton
+    transform: translateY(1px);
   }
 `;
 
 const ResultsButton = styled.button`
-  padding: 0.5em 1em;
-  background-color: #4caf50; // Choose a color that indicates a primary action
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 18px;
-  display: block; // Centers the button
-  margin: 20px auto; // Adds top margin and centers horizontally
+background-color: #FFCCD5;
+  color: #800F2F;
+  padding: 10px 20px; /* Some padding */
+  border: none; /* No border */
+  border-radius: 5px; /* Rounded corners */
+  cursor: pointer; /* Pointer/hand icon */
+  text-align: center; /* Center the text */
+  text-decoration: none; /* No underline */
+  display: inline-block; /* Inline block element */
+  font-size: 16px; /* Font size */
+  margin: 4px 2px; /* Margin around the button */
+  transition-duration: 0.4s; /* Transition for hover effect */
+
   &:hover {
-    background-color: #45a049;
+    background-color: #FF8FA3;
+    color: #590D22;
+  }
+
+  &:active {
+    transform: translateY(1px);
   }
 `;
 
@@ -123,13 +137,15 @@ return [...prevSelectedMoods, mood];
           </MoodButton>
         ))}
       </MoodSelectorContainer>
+      <Link to="/occasion">
+      <MoodButton onClick={handleResultsButtonClick}>
+          Back to occasion
+        </MoodButton>
+      </Link>
       <Link to="/result">
         <ResultsButton onClick={handleResultsButtonClick}>
           Give me my results
         </ResultsButton>
-      </Link>
-      <Link to="/occasion">
-        <button>Go back to choose occasion</button>
       </Link>
       <Footer />
     </PageContainer>

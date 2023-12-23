@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
 const NavbarContainer = styled.nav`
-  background: #B6244F;
+  background-color: #FFCCD5; 
   color: #504746;
   display: flex;
   justify-content: space-between;
@@ -13,8 +13,8 @@ const NavbarContainer = styled.nav`
 const NavbarNav = styled.ul`
   list-style: none;
   display: flex;
-  margin: 0;
-  padding: 0;
+  margin: 20px;
+  padding: 10px;
 `;
 
 const NavItem = styled.li`
@@ -22,9 +22,9 @@ const NavItem = styled.li`
 `;
 
 const NavbarLink = styled(Link)`
-  color: #504746;
+  color: #800F2F;
   font-size: 16px; 
-  font-family: Arial, sans-serif; 
+  font-family: Montserrat, sans-serif; 
   text-decoration: none;
   &:hover {
     text-decoration: underline;

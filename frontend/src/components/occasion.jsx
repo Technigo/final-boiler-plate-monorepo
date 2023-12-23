@@ -9,34 +9,64 @@ import { Link } from 'react-router-dom';
 const PageContainer = styled.div`
   margin: 0 auto;
   padding: 20px;
-  background-color: #FBB7C0; /* Your chosen color */
+  background-color: #FFF0F3; /* Your chosen color */
   min-height: 100vh; /* Make sure it covers the full height of the viewport */
 `;
 
 const TitleContainer = styled.div`
   text-align: center; /* Centers the title text */
   margin-bottom: 20px; /* Adds some space between the title and the buttons */
+  color: #800F2F;
+  font-family: Montserrat, sans-serif;
 `;
 
-const OccasionButton = styled.button`
-  margin: 0.5em;
-  padding: 0.5em 1em;
-  border: none;
-  background-color: ${({ selected }) => selected ? '#a5d6a7' : '#efefef'};
-  font-size: 16px;
-  cursor: pointer;
-  border-radius: 20px;
-  transition: background-color 0.3s, transform 0.3s;
+const NextButton = styled.button`
+background-color: #FFCCD5;
+  color: #800F2F;
+  padding: 10px 20px; /* Some padding */
+  border: none; /* No border */
+  border-radius: 5px; /* Rounded corners */
+  cursor: pointer; /* Pointer/hand icon */
+  text-align: center; /* Center the text */
+  text-decoration: none; /* No underline */
+  display: inline-block; /* Inline block element */
+  font-size: 16px; /* Font size */
+  margin: 4px 2px; /* Margin around the button */
+  transition-duration: 0.4s; /* Transition for hover effect */
 
   &:hover {
-    background-color: ${({ selected }) => selected ? '#B89685' : '#ddd'};
-    transform: translateY(-2px);
+    background-color: #FF8FA3;
+    color: #590D22;
   }
 
   &:active {
     transform: translateY(1px);
   }
 `;
+
+const OccasionButton = styled.button`
+background-color: #FFCCD5;
+  color: #800F2F;
+  padding: 10px 20px; /* Some padding */
+  border: none; /* No border */
+  border-radius: 5px; /* Rounded corners */
+  cursor: pointer; /* Pointer/hand icon */
+  text-align: center; /* Center the text */
+  text-decoration: none; /* No underline */
+  display: inline-block; /* Inline block element */
+  font-size: 16px; /* Font size */
+  margin: 4px 2px; /* Margin around the button */
+  transition-duration: 0.4s; /* Transition for hover effect */
+
+  &:hover {
+    background-color: #FF8FA3;
+    color: #590D22;
+  }
+
+  &:active {
+    transform: translateY(1px);
+  }
+`; 
 const OccasionSelectorContainer = styled.div`
   display: flex; /* Enables Flexbox */
   flex-wrap: wrap; /* Allows items to wrap to the next line */
@@ -48,22 +78,7 @@ const OccasionSelectorContainer = styled.div`
   margin: 0 auto; /* Centers the container in the parent */
 `;
 
-const NextButton = styled.button`
-  padding: 0.5em 1em;
-  margin-top: 20px; // Provide some space above the button
-  background-color: #4caf50; // A color that stands out for primary actions
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 18px;
-  display: block; // So it doesn't inline
-  margin-left: auto;
-  margin-right: auto;
-  &:hover {
-    background-color: #45a049;
-  }
-`;
+
 
 const OccasionSelector = () => {
   const { occasions, selectedOccasion, fetchOccasions, setSelectedOccasion } = useRestaurantStore();
@@ -82,7 +97,7 @@ const OccasionSelector = () => {
       <PageContainer>
         <Navbar />
         <TitleContainer>
-          <h2>Here you decide what you have planned</h2>
+          <h2>What's the occasion? Is it to</h2>
         </TitleContainer>
         <OccasionSelectorContainer>
           {occasions && occasions.length > 0 ? (
@@ -100,11 +115,11 @@ const OccasionSelector = () => {
           )}
         </OccasionSelectorContainer>
         {selectedOccasion && (
-          <Link to="/mood"> {/* This will navigate to mood selection when clicked */}
-            <NextButton>
-              Next
-            </NextButton>
-          </Link>
+         <Link to="/mood">
+         <NextButton>
+           Next
+         </NextButton>
+       </Link>
         )}
         <Footer />
       </PageContainer>

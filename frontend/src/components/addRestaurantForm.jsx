@@ -7,7 +7,7 @@ import { useRestaurantStore } from '../stores/restaurantStore';
 const PageContainer = styled.div`
   margin: 0 auto;
   padding: 20px;
-  background-color: #FBB7C0; /* Your chosen color */
+  background-color: #FFF0F3; /* Your chosen color */
   min-height: 100vh; /* Make sure it covers the full height of the viewport */
 `;
 

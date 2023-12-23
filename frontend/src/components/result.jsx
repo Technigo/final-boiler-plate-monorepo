@@ -9,6 +9,14 @@ const ResultsContainer = styled.div`
   /* Style for your results container */
   margin: 0 auto;
   padding: 20px;
+  background-color: #FFF0F3; /* Your chosen color */
+`;
+
+const NoResultsText = styled.p`
+  color: #800F2F; /* Dark red color */
+  font-family: Montserrat, sans-serif; /* Montserrat font */
+  text-align: center; /* Centers the title text */
+  margin-bottom: 20px; /* Adds some space between the title and the buttons */
 `;
 
 const ResultCard = styled.div`
@@ -17,8 +25,32 @@ const ResultCard = styled.div`
   padding: 15px;
   border: 1px solid #ddd;
   border-radius: 8px;
+  background-color: #FFF0F3; /* Your chosen color */
 `;
 
+const BackButton = styled.button`
+background-color: #FFCCD5;
+  color: #800F2F;
+  padding: 10px 20px; /* Some padding */
+  border: none; /* No border */
+  border-radius: 5px; /* Rounded corners */
+  cursor: pointer; /* Pointer/hand icon */
+  text-align: center; /* Center the text */
+  text-decoration: none; /* No underline */
+  display: inline-block; /* Inline block element */
+  font-size: 16px; /* Font size */
+  margin: 4px 2px; /* Margin around the button */
+  transition-duration: 0.4s; /* Transition for hover effect */
+
+  &:hover {
+    background-color: #FF8FA3;
+    color: #590D22;
+  }
+
+  &:active {
+    transform: translateY(1px);
+  }
+`;
 const ResultsComponent = () => {
   const { results, fetchResults, selectedOccasion, selectedMoods } = useRestaurantStore();
 
@@ -49,13 +81,16 @@ const ResultsComponent = () => {
               <a href={restaurant.url}>Visit Website</a>
             </ResultCard>
           )) //click more to get more text//
-        ) : (
-          <p>No results to display. Please select an occasion and mood(s).</p>
-        )}
-      </ResultsContainer>
-      <Link to="/mood">
-        <button>Go back to choose mood(s)</button>
+          ) : (
+            <NoResultsText>We are sad to say we cannot find anything that fits your needs. Please try again!</NoResultsText>
+          )}
+          <Link to="/mood">
+        <BackButton>
+          Go back to choose moods
+        </BackButton>
       </Link>
+       </ResultsContainer>
+
       <Footer />
     </>
   );
