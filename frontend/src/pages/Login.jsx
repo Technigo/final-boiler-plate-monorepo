@@ -1,8 +1,9 @@
+//Import relevant library
 import { userStore } from "../stores/userStore";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-//Import comonents
+//Import relevant comonents
 import { SubHeadingComponent } from "../components/SubHeadingComponent";
 import { BtnComponent } from "../components/BtnComonent";
 

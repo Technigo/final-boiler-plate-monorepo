@@ -1,12 +1,19 @@
 import "../font.css"
 
-export const SubHeadingComponent = ({ text, className }) => {
-    // You can use template literals to concatenate Tailwind CSS classes
-    const defaultClasses = 'text-center text-3xl font-josefin-sans bg-backgroundPink max-w-3xl mx-auto'; // You can customize this based on your design
+/**
+ * Subheading component with customizable text and additional classes.
+ * @param {Object} props - Component props
+ * @param {string} props.text - Text content of the subheading
+ * @param {string} props.className - Additional classes to apply to the subheading
+ * @returns {JSX.Element} - Rendered subheading component
+ */
+export const SubHeadingComponent = ({ text, className, ...rest }) => {
+    // Default classes that can be customized
+    const defaultClasses = 'px-10 pt-6 text-center text-3xl font-josefin-sans bg-backgroundPink lg:max-w-3xl mx-auto';
 
     return (
-        <h2 className={`${defaultClasses} ${className}`}>{text}</h2>
+        <h2 className={`${defaultClasses} ${className}`} {...rest}>
+            {text}
+        </h2>
     );
 };
-
-

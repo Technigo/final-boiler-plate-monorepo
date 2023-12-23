@@ -4,18 +4,20 @@ import { create } from 'zustand';
 const useBookingStore = create((set) => ({
     bookings: [],
 
-
-    bookingIsHandledClick: async (bookingId) => {
+    bookingIsHandledClick: async (bookingId, currentHandledState) => {
         try {
+            const newHandledState = !currentHandledState;
+
+            // Update the booking on the server
             await fetch(`${import.meta.env.VITE_API_URL}/booking/${bookingId}/handled`, {
                 method: 'POST',
             });
 
-            // Update the local state to mark the booking as handled
+            // Update the local state to toggle the handled state
             set((state) => ({
                 bookings: state.bookings.map((booking) =>
                     booking._id === bookingId
-                        ? { ...booking, isHandled: true }
+                        ? { ...booking, bookingIsHandled: newHandledState }
                         : booking
                 ),
             }));
@@ -24,8 +26,7 @@ const useBookingStore = create((set) => ({
         }
     },
 
-
-    //delete one booking by id 
+    // Delete one booking by id 
     handleDeleteBooking: async (id) => {
         try {
             await fetch(`${import.meta.env.VITE_API_URL}/booking/deleteBooking/${id}`, {
@@ -39,17 +40,14 @@ const useBookingStore = create((set) => ({
             set((state) => ({
                 bookings: state.bookings.filter((booking) => booking._id !== id),
             }));
-
-
         } catch (error) {
             console.error('Error deleting booking:', error);
         }
     },
 
-    //fetch all bookings
     fetchBookings: async () => {
         try {
-            const response = await fetch(`${import.meta.env.VITE_API_URL}/booking`);
+            const response = await fetch(`${import.meta.env.VITE_API_URL}/booking/booking`);
             const data = await response.json();
 
             // Update the local state with the fetched bookings
@@ -59,7 +57,29 @@ const useBookingStore = create((set) => ({
         }
     },
 
-}));
 
+    fetchHandledBookings: async () => {
+        try {
+            const response = await fetch(`${import.meta.env.VITE_API_URL}/booking/handledBookings`);
+            const data = await response.json();
+
+            // Update the local state with the fetched handled bookings
+            set({ bookings: data });
+        } catch (error) {
+            console.error('Error fetching handled bookings:', error);
+        }
+    },
+    fetchUnHandledBookings: async () => {
+        try {
+            const response = await fetch(`${import.meta.env.VITE_API_URL}/booking`);
+            const data = await response.json();
+
+            // Update the local state with the fetched handled bookings
+            set({ bookings: data });
+        } catch (error) {
+            console.error('Error fetching handled bookings:', error);
+        }
+    },
+}));
 
 export default useBookingStore;

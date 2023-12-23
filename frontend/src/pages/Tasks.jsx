@@ -1,35 +1,35 @@
-// Import necessary dependencies, components, and stores.
-import { useEffect } from "react";
+// Import relevant library
+import { useEffect, useState } from "react";
+import { useNavigate, useParams, Link } from "react-router-dom";
+
+// Import relevant components
 import { CreateTask } from "../components/CreateTask";
+
+// Import relevant storage using zustand
 import { taskStore } from "../stores/taskStore";
 import { userStore } from "../stores/userStore";
-import { useNavigate } from "react-router-dom";
-import { Link } from "react-router-dom";
 
 // Define the 'Tasks' functional component.
 export const Tasks = () => {
-  // Text content for the heading and paragraphs.
-  const text = {
-    heading: "Tasks Page",
-    intro: "Tasks Here",
-    loremIpsum:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore, vitae fugit ipsam quo accusantium autem officia necessitatibus ullam voluptati",
-  };
-
   // Access the 'tasks', 'fetchTasks', 'handleEdit', and 'deleteTaskById' functions from the 'taskStore'.
-  const { tasks, fetchTasks, handleEdit, deleteTaskById } = taskStore();
+  const { tasks, fetchTasks, handleEdit, deleteTaskById, addTask } = taskStore();
   // Access the 'accessToken' from the 'userStore'.
   const { accessToken } = userStore();
+
+  // Initialize the 'navigate' function from React Router.
+  const navigate = useNavigate();
+  // Access the 'handleLogout' function from the 'userStore'.
+  const storeHandleLogout = userStore((state) => state.handleLogout);
+  // Get the parameters from the route
+  const { id } = useParams();
 
   // Use the 'useEffect' hook to fetch tasks when 'tasks' or 'accessToken' change.
   useEffect(() => {
     fetchTasks();
   }, [tasks, accessToken]);
 
-  // Initialize the 'navigate' function from React Router.
-  const navigate = useNavigate();
-  // Access the 'handleLogout' function from the 'userStore'.
-  const storeHandleLogout = userStore((state) => state.handleLogout);
+  // State to track the new task
+  const [newTask, setNewTask] = useState("");
 
   // Function to handle the click event of the logout button.
   const onLogoutClick = () => {
@@ -37,6 +37,14 @@ export const Tasks = () => {
     // Additional logic after logout can be added here.
     alert("Log out successful");
     navigate("/"); // You can change this to the login route
+  };
+
+  // Function to handle adding a new task
+  const onAddTaskClick = () => {
+    // Call the addTask function to add the new task
+    addTask({ task: newTask, done: false });
+    // Clear the input field
+    setNewTask("");
   };
 
   // Render the component content.
@@ -57,20 +65,17 @@ export const Tasks = () => {
         </ul>
       </nav>
       {/* Render the 'Logos' component. */}
-
       <div>
-
         {/* Display the heading and paragraphs. */}
-        <h2>{text.heading}</h2>
-        <p>{text.intro}</p>
-        <p>{text.loremIpsum}</p>
         {/* Render the 'CreateTask' component to add new tasks. */}
-        <CreateTask />
+        <CreateTask
+          newTask={newTask}
+          setNewTask={setNewTask}
+          onAddTaskClick={onAddTaskClick}
+        />
         {/* Conditional rendering based on the number of tasks. */}
         {tasks.length === 0 ? (
-          <>
-            <p>No tasks yet, go ahead and get moving!!...</p>
-          </>
+          <p>No tasks yet, go ahead and get moving!!...</p>
         ) : (
           // Map through 'tasks' and render task items.
           tasks.map((task) => (
@@ -82,7 +87,9 @@ export const Tasks = () => {
               >
                 <p>{task.task}</p>
                 <p>{task.done ? "Task is Completed" : "Not Completed"}</p>
-                <button onClick={() => deleteTaskById(task._id)}>Delete</button>
+                <button onClick={() => deleteTaskById(task._id)}>
+                  Delete
+                </button>
               </div>
             </div>
           ))
@@ -91,7 +98,3 @@ export const Tasks = () => {
     </>
   );
 };
-
-// SUMMARY
-
-// This code defines the Tasks component, which handles the display of tasks, their creation, editing, and deletion. It imports necessary components, hooks, and stores, and it uses React Router to navigate between routes. The component also fetches tasks from the server using the fetchTasks function and updates the display based on the user's authentication status. Additionally, it renders text content and conditionally displays tasks or a message when there are no tasks.

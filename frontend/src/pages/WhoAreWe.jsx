@@ -1,11 +1,20 @@
+//import relavant library
 import { NavigationMenu } from "../components/NavigationMenu";
-import WhoAreWePhoto from "../assets/WhoAreWePhoto.jpg";
+import { useEffect } from "react";
+
+//import relevant components
 import { HeadingComponent } from "../components/HeadingComponent";
 import { FooterComponent } from '../components/FooterComponent';
 import { SubHeadingComponent } from '../components/SubHeadingComponent';
 import { ParagraphComponent } from "../components/ParagraphComponent";
 
+//import media 
+import WhoAreWePhoto from "../assets/WhoAreWePhoto.jpg";
 export const WhoAreWe = () => {
+
+    useEffect(() => {
+        window.scrollTo(0, 0); // Scroll to the top of the page when the About component mounts
+    }, []);
 
     const backgroundImageStyle = {
         backgroundImage: `url(${WhoAreWePhoto})`,

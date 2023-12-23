@@ -1,0 +1,23 @@
+.fade {
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+    /* Adjust the duration here (e.g., 1s for 1 second) */
+}
+
+.fade-enter {
+    opacity: 1;
+}
+
+.fade-enter-active {
+    opacity: 1;
+    transition: opacity 500ms;
+}
+
+.fade-exit {
+    opacity: 1;
+}
+
+.fade-exit-active {
+    opacity: 0;
+    transition: opacity 500ms;
+}

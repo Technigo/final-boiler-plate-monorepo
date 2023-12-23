@@ -1,11 +1,14 @@
-
+//Import relevant library
 import { NavigationMenu } from "../components/NavigationMenu";
-import homePhoto from "../assets/homePhoto.jpg";
+import { useEffect } from "react";
+
+//Import relevant components
 import { HeadingComponent } from "../components/HeadingComponent";
 import { FooterComponent } from '../components/FooterComponent';
 import { SubHeadingComponent } from '../components/SubHeadingComponent';
 
-
+//import relevant media
+import homePhoto from "../assets/homePhoto.jpg";
 export const Home = () => {
     const backgroundImageStyle = {
         backgroundImage: `url(${homePhoto})`,
@@ -15,6 +18,9 @@ export const Home = () => {
         backgroundSize: 'cover',
 
     };
+    useEffect(() => {
+        window.scrollTo(0, 0); // Scroll to the top of the page when the About component mounts
+    }, []);
 
     return (
         <div className="bg-backgroundPink h-screen">

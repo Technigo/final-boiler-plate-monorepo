@@ -1,15 +1,15 @@
 // Import necessary dependencies and components.
-import { useEffect } from "react";
+import React, { useEffect } from "react";
 import { userStore } from "../stores/userStore";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
-import { BookingListComponent } from "../components/BookingListComponent"
+import { BookingListComponent } from "../components/BookingListComponent";
 import { BtnComponent } from "../components/BtnComonent";
-
-// Define the 'Home' functional component.
+import { DropDownComponent } from "../components/DropDownComponent";
+import { SubHeadingComponent } from "../components/SubHeadingComponent";
+// Admin component to manage and display bookings.
+// This component fetches and displays all bookings (handled and unhandled).
 export const Admin = () => {
-  // Define text content for the heading and subheading.
-
   // Access the 'handleLogout' function from the 'userStore'.
   const storeHandleLogout = userStore((state) => state.handleLogout);
 
@@ -25,7 +25,7 @@ export const Admin = () => {
   useEffect(() => {
     if (!isLoggedIn) {
       // If the user is not logged in, show an alert and navigate to the login route.
-      alert("no permission - here");
+      alert("No permission - please log in");
       navigate("/"); // You can change this to the login route
     }
   }, [isLoggedIn]);
@@ -40,7 +40,8 @@ export const Admin = () => {
 
   // Render the component content.
   return (
-    <>
+
+    <div className="bg-backgroundPink">
       <nav>
         {/* Create a navigation menu with links to various routes. */}
         <ul className="app-ul">
@@ -54,7 +55,18 @@ export const Admin = () => {
       <div className="flex items-center justify-center p-4">
         <BtnComponent label="Logout" onClick={onLogoutClick} />
       </div>
-      <BookingListComponent />
-    </>
+
+      <div className="flex flex-col items-center justify-center p-4">
+        <SubHeadingComponent text="All bookings" />
+        <DropDownComponent />
+      </div>
+
+      {/* 
+        Display the BookingListComponent to show all bookings.
+        Set fetchAllBookings to true to fetch and display all bookings (handled and unhandled).
+      */}
+      <BookingListComponent fetchAllBookings={true} />
+    </div>
+
   );
 };

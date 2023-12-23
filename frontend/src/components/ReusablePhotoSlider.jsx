@@ -73,6 +73,7 @@ export const ReusablePhotoSlider = ({ images }) => {
                 settings: {
                     slidesToShow: 1.1,
                     slidesToScroll: 1
+
                 }
             }
         ]
