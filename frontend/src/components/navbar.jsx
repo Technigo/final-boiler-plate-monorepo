@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
+
 const NavbarContainer = styled.nav`
   background-color: #FFCCD5; 
   color: #504746;
