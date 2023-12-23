@@ -6,6 +6,7 @@ dotenv.config();
 import taskRoutes from "./routes/taskRoutes";
 import userRoutes from "./routes/userRoutes";
 import habitRoutes from "./routes/habitRoutes";
+import loginRoutes from "./routes/loginRoutes";
 import { connectDB } from "./config/db";
 
 const port = process.env.PORT;
