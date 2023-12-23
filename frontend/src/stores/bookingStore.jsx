@@ -47,7 +47,7 @@ const useBookingStore = create((set) => ({
 
     fetchBookings: async () => {
         try {
-            const response = await fetch(`${import.meta.env.VITE_API_URL}/booking/booking`);
+            const response = await fetch(`${import.meta.env.VITE_API_URL}/booking`);
             const data = await response.json();
 
             // Update the local state with the fetched bookings
@@ -71,7 +71,7 @@ const useBookingStore = create((set) => ({
     },
     fetchUnHandledBookings: async () => {
         try {
-            const response = await fetch(`${import.meta.env.VITE_API_URL}/booking`);
+            const response = await fetch(`${import.meta.env.VITE_API_URL}/booking/unhandledBookings`);
             const data = await response.json();
 
             // Update the local state with the fetched handled bookings

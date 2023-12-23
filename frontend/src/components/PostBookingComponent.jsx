@@ -111,7 +111,7 @@ export const PostBookingComponent = () => {
             try {
 
                 // Send a POST request to the server
-                const response = await fetch(`http://localhost:3000/booking`, {
+                const response = await fetch(`${import.meta.env.VITE_API_URL}/booking`, {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json",
