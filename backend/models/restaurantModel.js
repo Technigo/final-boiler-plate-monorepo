@@ -32,6 +32,7 @@ const restaurantSchema = new mongoose.Schema({
     type: String,
     required: true,
     minlength: 3, // Minimum length of 5 characters
+  required: true, // Make it required
   },
   occasion: [{
     type: String,
