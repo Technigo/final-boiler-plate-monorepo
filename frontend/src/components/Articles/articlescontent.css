@@ -1,7 +1,4 @@
 .articles-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
     margin-left: 240px;
 }
 
@@ -53,14 +50,30 @@ p articles-info {
 
 .article-info {
     display: flex;
-    flex-direction: column;
-    align-items: flex-start;
+    flex-direction: row;
+    align-items: center;
 }
 
 .article-text {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    width: 60%;
+}
+
+.article-text h3 {
+    margin-bottom: 10px; /* Add margin to separate title and text */
+}
+
+.article-text p {
+    margin-bottom: 15px; /* Add margin between paragraphs */
+}
+
+.article-info img {
+    max-width: 300px; /* Adjust the width of the image */
+    margin-right: 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 /* Dotted line */
