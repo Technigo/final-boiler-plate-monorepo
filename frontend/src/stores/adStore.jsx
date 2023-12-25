@@ -108,6 +108,7 @@ export const adStore = create((set) => ({
           console.log("Updated ads state:", updatedAds); // Log updated state here
           return { ads: updatedAds };
         });
+        alert("Your ad has been successfully created!");
       } else {
         console.error("Failed to create ad");
       }
