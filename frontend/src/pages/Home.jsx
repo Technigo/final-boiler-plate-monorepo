@@ -2,7 +2,6 @@
 import { useEffect } from "react";
 import { userStore } from "../stores/userStore";
 import { useNavigate, Link } from "react-router-dom";
-import BackArrow from "../components/BackArrow";
 import { Footer } from "../components/Footer";
 import { SearchBar } from "../components/SearchBar";
 import { AdsList } from "../components/AdsList";
@@ -30,7 +29,6 @@ export const Home = () => {
   return (
     <>
       <Navbar />
-      <BackArrow />
       {/* Render the search bar */}
       <Link to="/search">
         <SearchBar />
@@ -39,6 +37,7 @@ export const Home = () => {
       <h1>Recently Added</h1>
       <AdsList fetchType="all"/>
       {/* Render the user's ads */}
+      <h1>Your Products</h1>
       <AdsList fetchType="user" />
       <Footer />
     </>

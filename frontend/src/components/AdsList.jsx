@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import "./adslist.css";
 
 export const AdsList = ({ fetchType }) => {
   const [ads, setAds] = useState([]);
@@ -72,7 +73,7 @@ export const AdsList = ({ fetchType }) => {
   return (
     <>
       {fetchType === "all" ? (
-        <div>
+        <div className="ads-wrapper">
           <Slider {...settings}>
             {ads.map((ad) => (
               <AdCard key={ad._id} ad={ad} />
@@ -80,22 +81,28 @@ export const AdsList = ({ fetchType }) => {
           </Slider>
         </div>
       ) : (
-        <div>
-          {/* Display the heading and paragraphs. */}
-          <h1>Your products</h1>
-
+        <div className="ads-wrapper">
           {/* Conditional rendering based on the number of ads. */}
           {ads.length === 0 ? (
             <>
               <p>You don&apos;t have any product...</p>
             </>
           ) : (
-            // Map through 'ads' and render task items.
-            <Slider {...settings}>
-              {ads.map((ad) => (
-                <AdCard key={ad._id} ad={ad} />
-              ))}
-            </Slider>
+            ads.length > 0 & ads.length < 4 ? (
+              <div className="ads-inner-wrapper">
+                {/* If the users have fewer than 4 ads, map through 'ads' and render ad items in a row */}
+                {ads.map((ad) => (
+                  <AdCard key={ad._id} ad={ad} />
+                ))}
+              </div>
+            ) : (          
+              // Only display user's ads in carousel if user has four or more ads               
+              <Slider {...settings}>
+                {ads.map((ad) => (
+                  <AdCard key={ad._id} ad={ad} />
+                ))}
+              </Slider>
+            )
           )}    
           <Link to="/create-ad">+ Add a product</Link>
         </div>

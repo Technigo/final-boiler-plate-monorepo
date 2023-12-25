@@ -1,0 +1,22 @@
+.ads-wrapper {
+    display: flex;
+    flex-direction: column;
+}
+
+.ads-inner-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.slick-prev:before,
+.slick-next:before {
+    color: black;
+}
+
+/********* MEDIA QUERIES *********/
+@media (min-width: 745px) {
+    .ads-inner-wrapper {
+        flex-direction: row;
+    }
+}
