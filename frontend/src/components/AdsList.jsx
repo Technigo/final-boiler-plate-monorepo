@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { AdCard } from './AdCard';
 import { adStore } from '../stores/adStore';
+import { Link } from "react-router-dom";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -12,10 +13,10 @@ export const AdsList = ({ fetchType }) => {
 
   useEffect(() => {
     async function fetchData() {
-      if (fetchType === 'all') {
+      if (fetchType === "all") {
         await getAllAds();
-      } else {
-        await fetchAds();
+      } else if (fetchType === "user") {
+        await fetchAds(localStorage.getItem("accessToken"));
       }
       const fetchedAds = adStore.getState().ads;
       setAds(fetchedAds);
@@ -69,13 +70,37 @@ export const AdsList = ({ fetchType }) => {
   };
 
   return (
-    <div>
-      <Slider {...settings}>
-        {ads.map((ad) => (
-          <AdCard key={ad._id} ad={ad} />
-        ))}
-      </Slider>
-    </div>
+    <>
+      {fetchType === "all" ? (
+        <div>
+          <Slider {...settings}>
+            {ads.map((ad) => (
+              <AdCard key={ad._id} ad={ad} />
+            ))}
+          </Slider>
+        </div>
+      ) : (
+        <div>
+          {/* Display the heading and paragraphs. */}
+          <h1>Your products</h1>
+
+          {/* Conditional rendering based on the number of ads. */}
+          {ads.length === 0 ? (
+            <>
+              <p>You don&apos;t have any product...</p>
+            </>
+          ) : (
+            // Map through 'ads' and render task items.
+            <Slider {...settings}>
+              {ads.map((ad) => (
+                <AdCard key={ad._id} ad={ad} />
+              ))}
+            </Slider>
+          )}    
+          <Link to="/create-ad">+ Add a product</Link>
+        </div>
+      )}
+    </>
   );
 };
 

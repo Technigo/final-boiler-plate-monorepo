@@ -6,7 +6,6 @@ import BackArrow from "../components/BackArrow";
 import { Footer } from "../components/Footer";
 import { SearchBar } from "../components/SearchBar";
 import { AdsList } from "../components/AdsList";
-import { YourAds } from "../components/YourAds";
 import { Navbar } from "../components/Navbar";
 
 // Define the 'Home' functional component.
@@ -38,9 +37,9 @@ export const Home = () => {
       </Link>
       {/* Render the recently added ads */}
       <h1>Recently Added</h1>
-      <AdsList />
+      <AdsList fetchType="all"/>
       {/* Render the user's ads */}
-      <YourAds />
+      <AdsList fetchType="user" />
       <Footer />
     </>
   );
