@@ -1,6 +1,6 @@
 import React from "react";
 import { Route } from "react-router-dom";
-import { Fade } from "../components/Fade"; // Assuming you have a Fade component implemented
+import { FadeWrapper } from "../components/Fade"; // Assuming you have a Fade component implemented
 
 import { Admin } from "../pages/Admin";
 import { Register } from "../pages/Register";
@@ -17,18 +17,18 @@ import { UnHandledBooking } from "../pages/UnHandledBooking";
 
 const routes = (
   <>
-    <Route path="/" element={<Fade><Home /></Fade>} />
-    <Route path="/ContactUs" element={<Fade><ContactUs /></Fade>} />
-    <Route path="/WhoAreWe" element={<Fade><WhoAreWe /></Fade>} />
-    <Route path="/SurfLessons" element={<Fade><SurfLessons /></Fade>} />
-    <Route path="/BookNow" element={<Fade><BookNow /></Fade>} />
-    <Route path="/Admin" element={<Fade><Admin /></Fade>} />
-    <Route path="/HandledBooking" element={<Fade><HandledBooking /></Fade>} />
-    <Route path="/UnHandledBooking" element={<Fade><UnHandledBooking /></Fade>} />
-    <Route path="/Login" element={<Fade><Login /></Fade>} />
-    <Route path="/register" element={<Fade><Register /></Fade>} />
-    <Route path="/booking/:id" element={<Fade><Tasks /></Fade>} />
-    <Route path="*" element={<Fade><NotFound /></Fade>} />
+    <Route path="/" element={<FadeWrapper><Home /></FadeWrapper>} />
+    <Route path="/ContactUs" element={<FadeWrapper><ContactUs /></FadeWrapper>} />
+    <Route path="/WhoAreWe" element={<FadeWrapper><WhoAreWe /></FadeWrapper>} />
+    <Route path="/SurfLessons" element={<FadeWrapper><SurfLessons /></FadeWrapper>} />
+    <Route path="/BookNow" element={<FadeWrapper><BookNow /></FadeWrapper>} />
+    <Route path="/Admin" element={<FadeWrapper><Admin /></FadeWrapper>} />
+    <Route path="/HandledBooking" element={<FadeWrapper><HandledBooking /></FadeWrapper>} />
+    <Route path="/UnHandledBooking" element={<FadeWrapper><UnHandledBooking /></FadeWrapper>} />
+    <Route path="/Login" element={<FadeWrapper><Login /></FadeWrapper>} />
+    <Route path="/register" element={<FadeWrapper><Register /></FadeWrapper>} />
+    <Route path="/booking/:id" element={<FadeWrapper><Tasks /></FadeWrapper>} />
+    <Route path="*" element={<FadeWrapper><NotFound /></FadeWrapper>} />
   </>
 );
 

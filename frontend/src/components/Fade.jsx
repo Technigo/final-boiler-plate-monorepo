@@ -1,9 +1,9 @@
+// Fade.js
 import React from 'react';
-import { CSSTransition } from 'react-transition-group';
-import '../transitions.css';
+import Fade from 'react-reveal/Fade';
 
-export const Fade = ({ children, ...props }) => (
-    <CSSTransition {...props} timeout={{ enter: 500, exit: 500 }} classNames="fade">
-        {children}
-    </CSSTransition>
-);
+export const FadeWrapper = ({ children }) => {
+    return <Fade>{children}</Fade>;
+};
+
+

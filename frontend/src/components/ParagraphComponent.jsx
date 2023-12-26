@@ -1,4 +1,5 @@
 import "../font.css";
+import { FadeWrapper } from "./Fade";
 /**
  * Paragraph component with customizable text, additional classes, and an optional category.
  * @param {Object} props - Component props
@@ -9,11 +10,15 @@ import "../font.css";
  */
 export const ParagraphComponent = ({ text, className, category, ...rest }) => {
     // Default classes that can be customized
-    const defaultClasses = 'p-10 lg:p-2 text-lg font-josefin-sans bg-backgroundPink max-w-4xl mx-auto';
+    const defaultClasses = 'py-12 lg:py-12 text-lg font-josefin-sans max-w-4xl mx-auto';
 
     return (
-        <p className={`${defaultClasses} ${className}`} {...rest}>
-            {category && <span className="font-bold">{category}:</span>} {text}
-        </p>
+
+        <FadeWrapper>
+            <p className={`${defaultClasses} ${className}`} {...rest}>
+                {category && <span className="font-bold">{category}:</span>} {text}
+            </p>
+        </FadeWrapper>
+
     );
 };

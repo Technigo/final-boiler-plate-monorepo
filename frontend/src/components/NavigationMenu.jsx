@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import { FadeWrapper } from './Fade';
 import logo from '../assets/logo.png';
 import '../font.css';
 import '../logo.css';
@@ -38,53 +39,55 @@ export const NavigationMenu = () => {
     }, [lastScrollY]);
 
     return (
-        <div className={`h-24 font-josefin-sans text-lg bg-customPink bg-opacity-70 flex items-center justify-between px-8 sticky top-0 z-10`}>
-            <a href="/home">
-                <img className={`w-24 ${isLogoSpinning ? 'spin' : ''}`} src={logo} alt="logo" />
-            </a>
-            <nav>
-                <section className="mobile-menu flex lg:hidden">
-                    <div className="hamburger-icon space-y-2" onClick={handleToggleNav}>
-                        <span className="block h-0.5 w-8 animate-pulse bg-black"></span>
-                        <span className="block h-0.5 w-8 animate-pulse bg-black"></span>
-                        <span className="block h-0.5 w-8 animate-pulse bg-black"></span>
-                    </div>
-                    <div className={`menu-nav ${isNavOpen ? 'show-menu' : 'hide-menu'}`}>
-                        <div
-                            className="bg-customPink rounded-full absolute top-0 right-0 px-8 py-8"
-                            onClick={() => setIsNavOpen(false)}
-                        >
-                            <svg
-                                className="h-8 w-8 text-black"
-                                viewBox="0 0 24 24"
-                                fill="none"
-                                stroke="currentColor"
-                                strokeWidth="2"
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                            >
-                                <line x1="18" y1="6" x2="6" y2="18" />
-                                <line x1="6" y1="6" x2="18" y2="18" />
-                            </svg>
+        <FadeWrapper>
+            <div className={`h-24 font-josefin-sans text-lg bg-customPink bg-opacity-70 flex items-center justify-between px-8 sticky top-0 z-10`}>
+                <a href="/home">
+                    <img className={`w-24 ${isLogoSpinning ? 'spin' : ''}`} src={logo} alt="logo" />
+                </a>
+                <nav>
+                    <section className="mobile-menu flex lg:hidden">
+                        <div className="hamburger-icon space-y-2" onClick={handleToggleNav}>
+                            <span className="block h-0.5 w-8 animate-pulse bg-black"></span>
+                            <span className="block h-0.5 w-8 animate-pulse bg-black"></span>
+                            <span className="block h-0.5 w-8 animate-pulse bg-black"></span>
                         </div>
-                        <ul className="flex flex-col items-center justify-between min-h-[250px]">
-                            <NavItem to="/" label="Home" />
-                            <NavItem to="/WhoAreWe" label="Who Are We?" />
-                            <NavItem to="/SurfLessons" label="Surf lessons" />
-                            <NavItem to="/BookNow" label="Book Now" />
-                            <NavItem to="/ContactUs" label="Contact Us" />
-                        </ul>
-                    </div>
-                </section>
-                <ul className="desktop-menu hidden space-x-8 lg:flex">
-                    <NavItem to="/" label="Home" />
-                    <NavItem to="/WhoAreWe" label="Who Are We?" />
-                    <NavItem to="/SurfLessons" label="Surf lessons" />
-                    <NavItem to="/BookNow" label="Book Now" />
-                    <NavItem to="/ContactUs" label="Contact Us" />
-                </ul>
-            </nav>
-            <style>{`
+                        <div className={`menu-nav ${isNavOpen ? 'show-menu' : 'hide-menu'}`}>
+                            <div
+                                className="bg-customPink rounded-full absolute top-0 right-0 px-8 py-8"
+                                onClick={() => setIsNavOpen(false)}
+                            >
+                                <svg
+                                    className="h-8 w-8 text-black"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    strokeWidth="2"
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                >
+                                    <line x1="18" y1="6" x2="6" y2="18" />
+                                    <line x1="6" y1="6" x2="18" y2="18" />
+                                </svg>
+                            </div>
+                            <ul className="flex flex-col items-center justify-between min-h-[250px]">
+                                <NavItem to="/" label="Home" />
+                                <NavItem to="/WhoAreWe" label="Who Are We?" />
+                                <NavItem to="/SurfLessons" label="Surf lessons" />
+                                <NavItem to="/BookNow" label="Book Now" />
+                                <NavItem to="/ContactUs" label="Contact Us" />
+                            </ul>
+                        </div>
+                    </section>
+                    <ul className="desktop-menu hidden space-x-8 lg:flex">
+                        <NavItem to="/" label="Home" />
+                        <NavItem to="/WhoAreWe" label="Who Are We?" />
+                        <NavItem to="/SurfLessons" label="Surf lessons" />
+                        <NavItem to="/BookNow" label="Book Now" />
+                        <NavItem to="/ContactUs" label="Contact Us" />
+                    </ul>
+                </nav>
+
+                <style>{`
                 .hide-menu {
                     display: none;
                 }
@@ -103,7 +106,8 @@ export const NavigationMenu = () => {
                 }
                
             `}</style>
-        </div>
+            </div>
+        </FadeWrapper>
     );
 
     function NavItem({ to, label }) {

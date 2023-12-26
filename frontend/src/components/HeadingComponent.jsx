@@ -1,5 +1,5 @@
 import "../font.css";
-
+import { FadeWrapper } from "./Fade";
 /**
  * A flexible heading component that accepts text, level, className, and style props.
  * @param {Object} props - The component props.
@@ -14,5 +14,10 @@ export const HeadingComponent = ({ text, level, className, style }) => {
     const HeadingTag = `h${level || 1}`;
 
     // Render the heading element with the specified text, className, and style
-    return <HeadingTag className={`font-moo-lah-lah text-amber-300 drop-shadow-md pt-8 text-5xl lg:text-8xl text-center ${className || ''}`} style={style}>{text}</HeadingTag>;
+    return (
+
+        <FadeWrapper>
+            <HeadingTag className={`font-moo-lah-lah text-amber-300 drop-shadow-md pt-8 text-5xl lg:text-8xl text-center ${className || ''}`} style={style}>{text}</HeadingTag>;
+        </FadeWrapper>
+    )
 };

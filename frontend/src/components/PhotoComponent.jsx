@@ -1,3 +1,4 @@
+import { FadeWrapper } from "./Fade";
 /**
  * Image component with customizable source, alt text, and additional classes.
  * @param {Object} props - Component props
@@ -8,5 +9,11 @@
  * @returns {JSX.Element} - Rendered image component
  */
 export const PhotoComponent = ({ img, alt, className, ...rest }) => {
-    return <img src={img} alt={alt} className={className} {...rest} />;
+    return (
+
+        <FadeWrapper>
+            <img src={img} alt={alt} className={className} {...rest} />
+        </FadeWrapper>
+
+    );
 };

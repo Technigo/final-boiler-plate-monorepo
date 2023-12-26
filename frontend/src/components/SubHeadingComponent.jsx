@@ -1,5 +1,5 @@
 import "../font.css"
-
+import { FadeWrapper } from "./Fade";
 /**
  * Subheading component with customizable text and additional classes.
  * @param {Object} props - Component props
@@ -9,11 +9,13 @@ import "../font.css"
  */
 export const SubHeadingComponent = ({ text, className, ...rest }) => {
     // Default classes that can be customized
-    const defaultClasses = 'px-10 pt-6 text-center text-3xl font-josefin-sans bg-backgroundPink lg:max-w-3xl mx-auto';
+    const defaultClasses = 'px-10 pt-6 text-center text-3xl font-josefin-sans lg:max-w-3xl mx-auto';
 
     return (
-        <h2 className={`${defaultClasses} ${className}`} {...rest}>
-            {text}
-        </h2>
+        <FadeWrapper>
+            <h2 className={`${defaultClasses} ${className}`} {...rest}>
+                {text}
+            </h2>
+        </FadeWrapper>
     );
 };

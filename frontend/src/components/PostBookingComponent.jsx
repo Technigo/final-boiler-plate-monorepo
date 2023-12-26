@@ -8,17 +8,32 @@ import { SpinningLogo } from "./SpinningLogo";
 
 // Functional Component: PostBookingComponent
 export const PostBookingComponent = () => {
+    const [minDate, setMinDate] = useState(new Date());
 
     // State Hooks
     const [numberOfPeople, setNumberOfPeople] = useState(1);
     const [isGroupBooking, setIsGroupBooking] = useState(false);
     const [groupID, setGroupID] = useState("");
     const [errorMessage, setErrorMessage] = useState("");
+    // At the beginning of your component
+    // At the beginning of your component
+    // Separate error states for each field in each form
+    const [errors, setErrors] = useState(Array.from({ length: numberOfPeople }, () => ({})));
+
+    // Separate error states for name and age
+    const [nameError, setNameError] = useState("");
+    const [ageError, setAgeError] = useState("");
+    const [phonenumberError, setPhonenumberError] = useState("");
+    const [emailError, setEmailError] = useState("");
+    const [weightError, setWeightError] = useState("");
+    const [heightError, setHeightError] = useState("");
+    const [dateError, setDateError] = useState("");
+    const [surfLevelError, setSurfLevelError] = useState("");
+    const [groupIDError, setGroupIDError] = useState("")
     // State Hook for success message visibility
     const [showSuccessMessage, setShowSuccessMessage] = useState(false);
 
     const [forms, setForms] = useState(Array.from({ length: numberOfPeople }, () => ({
-
         // Initial form state for each person
         name: "",
         age: "",
@@ -37,6 +52,8 @@ export const PostBookingComponent = () => {
         errorMessage: "",
         createdAt: Date.now(),
         groupID: "",
+        groupIDError: "",
+
     })));
 
     // Function to log new messages
@@ -56,6 +73,7 @@ export const PostBookingComponent = () => {
 
         // Dynamically create forms based on the new number of people
         setForms(Array.from({ length: number }, () => ({
+            // Initial form state for each person
             name: "",
             age: "",
             weight: "",
@@ -73,7 +91,14 @@ export const PostBookingComponent = () => {
             errorMessage: "",
             createdAt: Date.now(),
             groupID: isGroupBooking ? generateUniqueGroupID() : "",
+            groupIDError: "",
+
         })));
+
+        // Update the errors state
+        setErrors(Array.from({ length: number }, () => ({})));
+        // Update minDate to the current date whenever the number of people changes
+        setMinDate(new Date());
     };
 
     // Event handler for changing the group booking checkbox
@@ -82,30 +107,100 @@ export const PostBookingComponent = () => {
         setIsGroupBooking(!isGroupBooking);
         // Set or clear the groupID based on the group booking state
         setGroupID(isGroupBooking ? "" : generateUniqueGroupID());
+        // Clear the groupIDError when the checkbox is changed
+        setGroupIDError("");
     };
+
 
     const handleBookAgain = () => {
         window.location.reload();
     }
 
-    // Async function to handle form submission
+
+    const validateForm = () => {
+
+        let isValid = true;
+        const newErrors = Array.from({ length: numberOfPeople }, () => ({
+            name: "",
+            age: "",
+            phonenumber: "",
+            weight: "",
+            height: "",
+            date: "",
+            surfLevel: "",
+            confirmation: "",
+        }));
+        for (const [index, form] of forms.entries()) {
+            // Validate name
+            if (!form.name) {
+                newErrors[index].name = "Name is required";
+                isValid = false;
+            }
+
+            // Validate age
+            if (!form.age) {
+                newErrors[index].age = "Age is required";
+                isValid = false;
+            }
+            // Validate phonenumber
+            if (!form.phonenumber) {
+                newErrors[index].phonenumber = "Phone number is required";
+                isValid = false;
+            }
+            // Validate weight
+            if (!form.weight) {
+                newErrors[index].weight = "Weight is required";
+                isValid = false;
+            }
+            // Validate height
+            if (!form.height) {
+                newErrors[index].height = "Height is required";
+                isValid = false;
+            }
+            // Validate Date
+            if (!form.date) {
+                newErrors[index].date = "Date is required";
+                isValid = false;
+            }
+            // Validate surf level
+            if (!(form.beginner || form.intermediate || form.advanced)) {
+                newErrors[index].surfLevel = "Surf level is required";
+                isValid = false;
+            }
+            // Validate groupID checkbox
+            if (numberOfPeople > 1 && !isGroupBooking) {
+                setGroupIDError('Confirmation required');
+                isValid = false;
+            }
+
+
+        }
+
+        setErrors(newErrors);
+        return isValid;
+    };
+
     const handleSubmit = async () => {
         // Clear previous error messages
-        setErrorMessage("");
+        // Clear previous error messages
+        setNameError("");
+        setAgeError("");
+        setPhonenumberError("");
+        setEmailError("");
+        setWeightError("");
+        setHeightError("");
+        setDateError("");
+        setSurfLevelError("");
+        setGroupIDError("");
 
-        // Loop through each form
+        // Iterate over each form
         for (const form of forms) {
-            if (form.newPost.length > 140) {
-                alert("Your message is too long, use a maximum of 140 characters!");
+            // Validate name
+            // Validate the form
+            if (!validateForm()) {
                 return;
             }
 
-            // Validate the date - you may want to add additional date validation logic
-            if (!form.date) {
-                // Validate message length
-                alert("Please select a date for the booking.");
-                return;
-            }
 
             // Add more validation logic if needed
             try {
@@ -132,6 +227,7 @@ export const PostBookingComponent = () => {
                         beginner: form.beginner,
                         intermediate: form.intermediate,
                         advanced: form.advanced,
+                        errorMessage: "",
                         createdAt: Date.now(),
                         groupID: isGroupBooking ? groupID : null,
                     }),
@@ -143,15 +239,15 @@ export const PostBookingComponent = () => {
 
                 const data = await response.json();
                 newMessage(data);
-
-
             } catch (error) {
                 console.error("Error:", error);
             }
-        }
+        };
+
         // After processing the forms, reset the form state
         setForms((prevForms) =>
-            prevForms.map((form) => ({
+            prevForms.map(() => ({
+                // Initial form state for each person
                 name: "",
                 age: "",
                 weight: "",
@@ -171,15 +267,23 @@ export const PostBookingComponent = () => {
                 groupID: isGroupBooking ? generateUniqueGroupID() : "",
             }))
         );
+        setNameError("");
+        setAgeError("");
+        setPhonenumberError("");
+        setEmailError("");
+        setWeightError("");
+        setHeightError("");
+        setSurfLevelError("");
+        setGroupIDError("");
         // Show success message
         setShowSuccessMessage(true);
     };
+
     // JSX (React elements) representing the component structure
     return (
         <div>
             {/* Conditional rendering based on the success message visibility */}
             {showSuccessMessage ? (
-
                 <div className="flex text-center flex-col items-center h-screen mt-9">
                     <SpinningLogo />
                     <ParagraphComponent className="mt-9" text="Thank you for your booking request!" />
@@ -200,7 +304,7 @@ export const PostBookingComponent = () => {
                                 onChange={handleChangeNumberOfPeople}
                                 className="border rounded"
                             >
-                                {[1, 2, 3].map((num) => (
+                                {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((num) => (
                                     <option key={num} value={num}>
                                         {num}
                                     </option>
@@ -211,22 +315,25 @@ export const PostBookingComponent = () => {
                         {/* Form for each person */}
                         {forms.map((form, index) => (
                             <div key={index}>
-                                {/* ... (your form elements for each person) */}
+
                                 {/* Form Name */}
                                 <label className="mr-2">Name</label>
                                 <input
                                     type="text"
                                     placeholder={`Name for Person ${index + 1}`}
                                     value={form.name}
-                                    onChange={(e) =>
+                                    onChange={(e) => {
                                         setForms((prevForms) =>
-                                            prevForms.map((f, i) =>
-                                                i === index ? { ...f, name: e.target.value } : f
-                                            )
-                                        )
-                                    }
+                                            prevForms.map((f, i) => (i === index ? { ...f, name: e.target.value } : f))
+                                        );
+                                        setNameError(""); // Clear the error as you type
+                                    }}
+                                    onFocus={() => setNameError("")}
                                     className="mb-2 p-2 w-full border rounded"
                                 />
+                                {errors[index].name && <p className="text-red-600">{errors[index].name}</p>}
+
+
                                 {/* Form Age */}
                                 <label className="mr-2">Age</label>
                                 <input
@@ -240,7 +347,10 @@ export const PostBookingComponent = () => {
                                             )
                                         )
                                     }
+                                    onFocus={() => setNameError("")}
                                     className="mb-2 p-2 w-full border rounded" />
+                                {errors[index].age && <p className="text-red-600">{errors[index].age}</p>}
+
                                 {/* Input Phone number */}
                                 <label className="mr-2">Phone number</label>
                                 <input
@@ -254,7 +364,9 @@ export const PostBookingComponent = () => {
                                             )
                                         )
                                     }
+                                    onFocus={() => setNameError("")}
                                     className="mb-2 p-2 w-full border rounded" />
+                                {errors[index].phonenumber && <p className="text-red-600">{errors[index].phonenumber}</p>}
 
                                 {/* Input email */}
                                 <label className="mr-2">Email</label>
@@ -270,6 +382,7 @@ export const PostBookingComponent = () => {
                                         )
                                     }
                                     className="mb-2 p-2 w-full border rounded" />
+                                {errors[index].email && <p className="text-red-600">{errors[index].email}</p>}
 
                                 {/* Form weight */}
                                 <label className="mr-2">Weight in KG</label>
@@ -284,7 +397,9 @@ export const PostBookingComponent = () => {
                                             )
                                         )
                                     }
+                                    onFocus={() => setNameError("")}
                                     className="mb-2 p-2 w-full border rounded" />
+                                {errors[index].weight && <p className="text-red-600">{errors[index].weight}</p>}
 
                                 {/* Form height */}
                                 <label className="mr-2">Height in CM</label>
@@ -299,7 +414,9 @@ export const PostBookingComponent = () => {
                                             )
                                         )
                                     }
+                                    onFocus={() => setNameError("")}
                                     className="mb-2 p-2 w-full border rounded" />
+                                {errors[index].height && <p className="text-red-600">{errors[index].height}</p>}
 
                                 {/* Checkbox Film */}
                                 <label className="mr-2">Would you like any documentation?</label>
@@ -348,7 +465,6 @@ export const PostBookingComponent = () => {
                                 </div>
 
 
-
                                 {/* Form Date */}
                                 <div className="mb-2">
                                     <label className="mr-2">Select Date</label>
@@ -360,9 +476,14 @@ export const PostBookingComponent = () => {
                                             )
                                         }
                                         dateFormat="yyyy-MM-dd"
+                                        onFocus={() => setNameError("")}
+                                        minDate={minDate}  // Set the minimum date
                                         className="border rounded p-2"
                                     />
+                                    {errors[index].date && <p className="text-red-600">{errors[index].date}</p>}
                                 </div>
+
+
                                 {/* Checkbox Surf Level 1 */}
                                 <label className="mr-2">Which surfing level are you on?</label>
                                 <div className="mb-2">
@@ -377,6 +498,7 @@ export const PostBookingComponent = () => {
                                                 )
                                             )
                                         }
+                                        disabled={form.intermediate || form.advanced}
                                     />
                                 </div>
 
@@ -393,6 +515,8 @@ export const PostBookingComponent = () => {
                                                 )
                                             )
                                         }
+                                        onFocus={() => setNameError("")}
+                                        disabled={form.beginner || form.advanced}
                                     />
                                 </div>
 
@@ -409,7 +533,11 @@ export const PostBookingComponent = () => {
                                                 )
                                             )
                                         }
+                                        onFocus={() => setNameError("")}
+                                        disabled={form.beginner || form.intermediate}
                                     />
+
+                                    {errors[index].surfLevel && <p className="text-red-600">{errors[index].surfLevel}</p>}
                                 </div>
 
                                 {/* Input textare */}
@@ -452,7 +580,9 @@ export const PostBookingComponent = () => {
                                     checked={isGroupBooking}
                                     onChange={handleGroupBookingCheckboxChange}
                                 />
+                                {groupIDError && <p className="text-red-600">{groupIDError}</p>}
                             </div>
+
                         )}
 
                         <div className="flex items-center justify-center p-4">
