@@ -27,7 +27,7 @@ const ArticlesContent = () => {
             <hr />
 
             {articles.map((article) => (
-                <div key={article.id} className={`article-summary ${article.isReverse ? "reverse" : ""} ${expandedArticle === article.id ? "expanded" : ""}`}>
+                <div key={article.id} className={`article-summary ${article.isReverse ? "reverse" : ""} ${expandedArticle === article.id ? "expanded" : ""} ${article.id === 2 ? "middle-article" : ""}`}>
                     <div
                         className={`article-info ${expandedArticle === article.id ? "expanded" : ""}`}
                         onClick={() => handleArticleClick(article.id)}

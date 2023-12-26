@@ -1,5 +1,8 @@
 .articles-container {
     margin-left: 240px;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
 }
 
 .articles-container h2 {
@@ -76,6 +79,23 @@ p articles-info {
     margin-bottom: 10px;
 }
 
+.article-summary.middle-article {
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.article-summary.middle-article .article-info {
+    width: auto; 
+}
+
+.article-summary.middle-article .article-info img {
+    order: 2; 
+}
+
+.article-summary.middle-article .article-text {
+    order: 1; 
+    width: 60%;
+}
 
 
 .article-summary.expanded .article-info {
