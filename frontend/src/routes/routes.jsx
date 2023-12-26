@@ -1,4 +1,3 @@
-
 import { Route } from "react-router-dom";
 import { MyPage } from "../pages/MyPage";
 import { Register } from "../pages/Register";
@@ -22,4 +21,3 @@ const routes = (
 );
 
 export default routes;
-
