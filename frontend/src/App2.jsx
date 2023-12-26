@@ -1,7 +1,7 @@
-import { useEffect } from "react";
-import Header from "./components/Header"
+import { useEffect, useState } from "react";
 
 export const App = () => {
+  const [audio] = useState(new Audio('https://www.youtube.com/watch?v=BjOq9SEDzKY'))
   useEffect(() => {
     // document.body.style.textAlign = 'center'
     document.body.style.fontFamily = 'Roboto, sans-serif'
@@ -24,12 +24,17 @@ export const App = () => {
       document.body.style.height = ''
     }
   }, []) // the empty dependency array ensures this effect runs only once when the component mounts
+
+  const playAudio = () => {
+    if (audio.paused) {
+      audio.play()
+    } else {
+      audio.pause()
+      audio.currentTime = 0
+    }
+  }
+
   return (
-    <div>
-      <Header />
-      <div>
-        "you are alone in the dark ... "
-      </div>
-    </div>
+    <p onClick={playAudio}>you are alone in the dark ... </p>
   )
 };
