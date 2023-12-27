@@ -139,7 +139,7 @@ export const PostBookingComponent = () => {
 
             // Validate age
             if (!form.age) {
-                newErrors[index].age = "Age is required";
+                newErrors[index].age = "Age is required (must be between 4 and 100";
                 isValid = false;
             }
             // Validate phonenumber
@@ -284,15 +284,15 @@ export const PostBookingComponent = () => {
         <div>
             {/* Conditional rendering based on the success message visibility */}
             {showSuccessMessage ? (
-                <div className="flex text-center flex-col items-center h-screen mt-9">
+                <div className="flex text-center flex-col items-center h-screen m-9">
                     <SpinningLogo />
-                    <ParagraphComponent className="mt-9" text="Thank you for your booking request!" />
+                    <ParagraphComponent className="" text="Thank you for your booking request!" />
 
                     <ParagraphComponent className="" text="Tuanis Surfschool will get back to you as soon as possible. Don't forget to check your email!" />
 
                     <ParagraphComponent className="" text="If you have any questions in the meantime don't hesitate to get in touch with us at tuanissurfschool@gmail.com or +506 6140-7609." />
 
-                    <BtnComponent className="mt-6" label="Send another request" onClick={handleBookAgain} />
+                    <BtnComponent className="" label="Send another request" onClick={handleBookAgain} />
                 </div>
             ) : (
                 <div className="flex justify-center items-center h-auto m-10">
@@ -347,6 +347,8 @@ export const PostBookingComponent = () => {
                                             )
                                         )
                                     }
+                                    min={4}  // Set the minimum age
+                                    max={100} // Set the maximum age
                                     onFocus={() => setNameError("")}
                                     className="mb-2 p-2 w-full border rounded" />
                                 {errors[index].age && <p className="text-red-600">{errors[index].age}</p>}
@@ -389,6 +391,7 @@ export const PostBookingComponent = () => {
                                 <input
                                     type="number"
                                     placeholder={`Weight for Person ${index + 1}`}
+                                    min={0}
                                     value={form.weight}
                                     onChange={(e) =>
                                         setForms((prevForms) =>
@@ -406,6 +409,7 @@ export const PostBookingComponent = () => {
                                 <input
                                     type="number"
                                     placeholder={`Height for Person ${index + 1}`}
+                                    min={0}
                                     value={form.height}
                                     onChange={(e) =>
                                         setForms((prevForms) =>

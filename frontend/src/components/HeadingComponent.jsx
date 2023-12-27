@@ -17,7 +17,7 @@ export const HeadingComponent = ({ text, level, className, style }) => {
     return (
 
         <FadeWrapper>
-            <HeadingTag className={`font-moo-lah-lah text-amber-300 drop-shadow-md pt-8 text-5xl lg:text-8xl text-center ${className || ''}`} style={style}>{text}</HeadingTag>;
+            <HeadingTag className={`font-moo-lah-lah text-amber-300 drop-shadow-md pt-8 text-5xl lg:text-8xl text-center rounded-b-full pb-24 bg-gradient-to-b from-pink-400 from-0% to-transparent to-100% w-3/5 mx-auto ${className || ''}`} style={style}>{text}</HeadingTag>;
         </FadeWrapper>
     )
 };

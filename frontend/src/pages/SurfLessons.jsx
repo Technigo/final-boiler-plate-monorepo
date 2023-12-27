@@ -40,9 +40,9 @@ export const SurfLessons = () => {
 
     return (
         <FadeWrapper>
-            <div className="">
+            <div className="bg-backgroundPink">
                 <NavigationMenu />
-                <div className="h-96 lg:h-screen" style={backgroundImageStyle}>
+                <div className="h-3/6 md:h-5/6 lg:h-screen rounded-full" style={backgroundImageStyle}>
                     {/* Any content you want on top of the background image */}
                     <HeadingComponent text="Our Surf Lessons" level={1} style={{}} />
                 </div>
@@ -70,21 +70,21 @@ export const SurfLessons = () => {
 
                     <ParagraphComponent text="All ages are welcomed! We have a lot of experience working with children of all ages: from as young as 3 years of age to our oldest surfer so far that was 78 years old. Our surf school welcomes everyone, from first timers to seasoned surfers, no matter what age you are. Surfing is also a great family activity, our expert instructors are great with kids and adults. Discover the passion of surfing together and create unforgettable memories in Costa Rica’s surfing paradise. Come and enjoy Playa Samara, our very family-friendly surf spot." />
 
-                    <SubHeadingComponent className="p-10" text="Pricing for our lessons" />
+                    <SubHeadingComponent className="p-10 underline decoration-wavy decoration-customPink decoration-8" text="Pricing for our lessons" />
 
                     <div className="p-12 grid gap-8 md:grid-cols-3 lg:grid-cols-3">
 
-                        <div className="bg-customPink rounded-t-lg py-7">
-                            <SubHeadingComponent text="Book one lesson:" />
+                        <div className="border-4 border-customPink rounded-full py-7">
+                            <SubHeadingComponent className="" text="Book one lesson:" />
                             <SubHeadingComponent text="One groupe lesson $55 (a minimum of 2 people)." />
                             <SubHeadingComponent text="One private lesson: $75f-board" />
                         </div>
-                        <div className="bg-customPink rounded-t-lg py-7">
-                            <SubHeadingComponent text="Book a package of 3 lessons:" />
+                        <div className="border-4 border-customPink rounded-full py-7">
+                            <SubHeadingComponent className="" text="Book a package of 3 lessons:" />
                             <SubHeadingComponent text="3 group lessons: $45x3 = $135 in total." />
                             <SubHeadingComponent text="3 private lessons: $65x3 = $195 in total" />
                         </div>
-                        <div className="bg-customPink rounded-t-lg py-7">
+                        <div className="border-4 border-customPink rounded-full py-7">
                             <SubHeadingComponent className="" text="Book a package of 6 lessons:" />
                             <SubHeadingComponent className="" text="6 group lessons: $35x6 = $210 in total." />
                             <SubHeadingComponent className="" text="6 Private Lessons: $55x6 = $330 in total" />

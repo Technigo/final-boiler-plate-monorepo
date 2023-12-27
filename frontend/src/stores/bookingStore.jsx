@@ -80,6 +80,23 @@ const useBookingStore = create((set) => ({
             console.error('Error fetching handled bookings:', error);
         }
     },
+    handleDeleteAllBookings: async () => {
+        try {
+            // Trigger the deleteAllBookings action from the store
+            const response = await fetch(`${import.meta.env.VITE_API_URL}/booking/deleteAll`, {
+                method: 'DELETE',
+                headers: {
+                    Authorization: localStorage.getItem('accessToken'),
+                },
+            });
+
+            const result = await response.json();
+
+            console.log(result.message);
+        } catch (error) {
+            console.error('Error deleting all bookings:', error);
+        }
+    },
 }));
 
 export default useBookingStore;

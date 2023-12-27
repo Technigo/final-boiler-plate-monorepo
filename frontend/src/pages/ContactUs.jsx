@@ -1,5 +1,5 @@
 import { NavigationMenu } from "../components/NavigationMenu";
-import WhoAreWePhoto from "../assets/WhoAreWePhoto.jpg";
+import ContactUsBackground from "../assets/ContactUs.jpg";
 import { HeadingComponent } from "../components/HeadingComponent";
 import { FooterComponent } from '../components/FooterComponent';
 import { SubHeadingComponent } from '../components/SubHeadingComponent';
@@ -14,7 +14,7 @@ export const ContactUs = () => {
     }, []);
 
     const backgroundImageStyle = {
-        backgroundImage: `url(${WhoAreWePhoto})`,
+        backgroundImage: `url(${ContactUsBackground})`,
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat',
         // Default backgroundSize for larger screens
@@ -27,7 +27,7 @@ export const ContactUs = () => {
         <FadeWrapper>
             <div className="bg-backgroundPink">
                 <NavigationMenu />
-                <div className="h-96 lg:h-screen" style={backgroundImageStyle}>
+                <div className="h-3/6 md:h-5/6 lg:h-screen rounded-full" style={backgroundImageStyle}>
                     {/* Any content you want on top of the background image */}
                     <HeadingComponent text="Contact Us" level={1} style={{}} />
                 </div>

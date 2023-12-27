@@ -7,12 +7,26 @@ import { BookingListComponent } from "../components/BookingListComponent";
 import { BtnComponent } from "../components/BtnComonent";
 import { DropDownComponent } from "../components/DropDownComponent";
 import { SubHeadingComponent } from "../components/SubHeadingComponent";
+import useBookingStore from '../stores/bookingStore';
 // Admin component to manage and display bookings.
 // This component fetches and displays all bookings (handled and unhandled).
 export const Admin = () => {
   // Access the 'handleLogout' function from the 'userStore'.
   const storeHandleLogout = userStore((state) => state.handleLogout);
 
+  const handleDeleteAllBookings = useBookingStore((state) => state.handleDeleteAllBookings);
+
+
+  const handleDeleteAllButtonClick = () => {
+    const userConfirmed = window.confirm("Are you sure you want to delete all bookings?");
+
+    if (userConfirmed) {
+      // User clicked OK, proceed with the deletion
+      handleDeleteAllBookings();
+    } else {
+      // User clicked Cancel, do nothing
+    }
+  };
   // Use the 'useNavigate' hook to programmatically navigate between routes.
   const navigate = useNavigate();
 
@@ -54,6 +68,7 @@ export const Admin = () => {
       {/* Logout button */}
       <div className="flex items-center justify-center p-4">
         <BtnComponent label="Logout" onClick={onLogoutClick} />
+        <BtnComponent label="Delete all bookings" onClick={handleDeleteAllButtonClick} />
       </div>
 
       <div className="flex flex-col items-center justify-center p-4">
