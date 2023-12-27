@@ -34,10 +34,10 @@ export const Home = () => {
         <SearchBar />
       </Link>
       {/* Render the recently added ads */}
-      <h1>Recently Added</h1>
+      <h1>Recently added</h1>
       <AdsList fetchType="all"/>
       {/* Render the user's ads */}
-      <h1>Your Products</h1>
+      <h1>Your ads</h1>
       <AdsList fetchType="user" />
       <Footer />
     </>

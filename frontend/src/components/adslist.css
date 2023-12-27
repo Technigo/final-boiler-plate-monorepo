@@ -13,7 +13,6 @@
 .ads-inner-wrapper {
     display: flex;
     justify-content: flex-start;
-    flex-grow: 1
 }
 
 .slick-prev:before,
