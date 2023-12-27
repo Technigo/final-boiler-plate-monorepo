@@ -7,6 +7,7 @@ export const App = () => {
 
   // event handler for when the user is ready to proceed, with playing video enough
   const onReady = (event) => {
+    console.log('user is ready', event)
     // you can access the player instance here (if needed)
     const player = event.target
   }
