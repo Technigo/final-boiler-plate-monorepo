@@ -468,7 +468,6 @@ export const PostBookingComponent = () => {
                                         } />
                                 </div>
 
-
                                 {/* Form Date */}
                                 <div className="mb-2">
                                     <label className="mr-2">Select Date</label>

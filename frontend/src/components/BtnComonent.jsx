@@ -24,7 +24,7 @@ export const BtnComponent = ({ label, onClick, img, alt, href, target, className
         <FadeWrapper>
             <a href={href} target={target} rel="noopener noreferrer" className="no-underline">
                 <button onClick={onClick} className={combinedClasses} {...rest}>
-                    {img && <img src={img} alt={alt} className="" />} {/* Render the image if img prop is provided */}
+                    {img && <img src={img} alt={alt} />} {/* Render the image if img prop is provided */}
                     {label}
                 </button>
             </a>

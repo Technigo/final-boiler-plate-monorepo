@@ -9,7 +9,7 @@ import { SubHeadingComponent } from '../components/SubHeadingComponent';
 
 //import relevant media
 import homePhoto from "../assets/homePhoto.jpg";
-import Video from "../assets/backgroundFilm.mp4"
+
 
 export const Home = () => {
     const backgroundImageStyle = {
