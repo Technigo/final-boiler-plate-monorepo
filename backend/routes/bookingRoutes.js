@@ -1,6 +1,7 @@
 // bookingRoute.js
 import express from 'express';
 import Booking from '../models/BookingModel';
+import UserModel from '../models/UserModel'; // Make sure to use the correct path to your UserModel file
 
 const router = express.Router();
 
@@ -17,35 +18,11 @@ router.get('/', async (req, res) => {
     }
 });
 
-/*
-// Get all bookings with grouping by createdAt date, hour, and minute
-router.get('/', async (req, res) => {
-    try {
-        const bookings = await Booking.aggregate([
-            {
-                $group: {
-                    _id: {
-                        date: { $dateToString: { format: '%Y-%m-%d', date: '$createdAt' } },
-                        time: { $dateToString: { format: '%H:%M', date: '$createdAt' } }
-                    },
-                    bookings: { $push: '$$ROOT' }
-                }
-            },
-            {
-                $sort: { '_id.date': -1, '_id.time': -1 } // Sort in descending order by date and time
-            }
-        ]).exec();
 
-        res.json(bookings);
-    } catch (error) {
-        handleErrors(res, error);
-    }
-});
-*/
 // Post a new booking
 router.post('/', async (req, res) => {
     console.log(req.body);
-    const { name, age, weight, height, film, droneVideos, photo, phonenumber, email, message, date, beginner, intermediate, advanced, createdAt, bookingIsHandled, groupID } = req.body;
+    const { name, age, weight, height, film, droneVideos, photo, phonenumber, email, message, date, beginner, intermediate, advanced, createdAt, bookingIsHandled, groupID, singleID } = req.body;
 
     try {
         // Validate the length of the message
@@ -72,7 +49,8 @@ router.post('/', async (req, res) => {
             createdAt,
             bookingIsHandled,
             complete: false, // Set complete to false by default
-            groupID
+            groupID,
+            singleID
         });
 
         // Save it to the database
@@ -154,6 +132,23 @@ router.delete("/deleteBooking/:id", async (req, res) => {
         // Use the handleErrors function for consistent error handling
         handleErrors(res, error);
     }
+
 });
+// DELETE all bookings
+router.delete("/deleteAll", async (req, res) => {
+    try {
+        // Perform the deletion without filtering by user
+        const result = await Booking.deleteMany({});
+
+        res.json({
+            message: "All bookings deleted",
+            deletedCount: result.deletedCount,
+        });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: "Internal Server Error" });
+    }
+});
+
 
 export default router;

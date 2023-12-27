@@ -95,6 +95,7 @@ const bookingSchema = new mongoose.Schema({
         default: null,
 
     },
+
 });
 
 bookingSchema.statics.getBookings = async function () {
