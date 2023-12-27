@@ -4,7 +4,7 @@
   margin: 0 auto; /* Center align the content horizontally */
   /* padding: 2rem; Add padding around the content */
   min-height: 100vh; /* Ensure a minimum height to cover the viewport */
-  text-align: center; /* Center-align text within the root element */
+  /* text-align: center; Center-align text within the root element */
 }
 
 :root {

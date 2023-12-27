@@ -73,35 +73,43 @@ export const AdsList = ({ fetchType }) => {
   return (
     <>
       {fetchType === "all" ? (
-        <div className="ads-wrapper">
+        <div className="ads-outer-wrapper">
           <Slider {...settings}>
             {ads.map((ad) => (
-              <AdCard key={ad._id} ad={ad} />
+              <div className="ads-inner-wrapper" key={ad._id}>
+                <AdCard ad={ad} />            
+              </div>
             ))}
           </Slider>
         </div>
       ) : (
-        <div className="ads-wrapper">
+        <div className="ads-outer-wrapper">
           {/* Conditional rendering based on the number of ads. */}
           {ads.length === 0 ? (
             <>
               <p>You don&apos;t have any product...</p>
             </>
           ) : (
-            ads.length > 0 & ads.length < 4 ? (
-              <div className="ads-inner-wrapper">
-                {/* If the users have fewer than 4 ads, map through 'ads' and render ad items in a row */}
+            ads.length > 0 && ads.length < 4 ? (
+              <div className="ads-outer-wrapper-user">
+              {/* If the users have fewer than 4 ads, map through 'ads' and render ad items in a row */}
                 {ads.map((ad) => (
-                  <AdCard key={ad._id} ad={ad} />
+                  <div className="ads-inner-wrapper" key={ad._id}>
+                    <AdCard ad={ad} />
+                  </div>
                 ))}
               </div>
             ) : (          
-              // Only display user's ads in carousel if user has four or more ads               
-              <Slider {...settings}>
-                {ads.map((ad) => (
-                  <AdCard key={ad._id} ad={ad} />
-                ))}
-              </Slider>
+              // Only display user's ads in carousel if user has four or more ads          
+              <div className="ads-outer-wrapper">     
+                <Slider {...settings}>
+                  {ads.map((ad) => (
+                    <div className="ads-inner-wrapper" key={ad._id}>
+                      <AdCard ad={ad} />            
+                    </div>
+                  ))}
+                </Slider>
+              </div>
             )
           )}    
           <Link to="/create-ad">+ Add a product</Link>

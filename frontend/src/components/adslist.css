@@ -1,12 +1,19 @@
-.ads-wrapper {
+.ads-outer-wrapper {
     display: flex;
     flex-direction: column;
+    width: 100%;
+}
+
+.ads-outer-wrapper-user {
+    display: flex;
+    flex-direction: column;
+    width: 100%
 }
 
 .ads-inner-wrapper {
     display: flex;
-    flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
+    flex-grow: 1
 }
 
 .slick-prev:before,
@@ -16,7 +23,7 @@
 
 /********* MEDIA QUERIES *********/
 @media (min-width: 745px) {
-    .ads-inner-wrapper {
+    .ads-outer-wrapper-user {
         flex-direction: row;
     }
 }
