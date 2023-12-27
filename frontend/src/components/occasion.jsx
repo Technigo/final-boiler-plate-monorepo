@@ -34,6 +34,7 @@ background-color: #FFCCD5;
   margin: 4px 2px; /* Margin around the button */
   transition-duration: 0.4s; /* Transition for hover effect */
 
+
   &:hover {
     background-color: #FF8FA3;
     color: #590D22;
@@ -41,6 +42,7 @@ background-color: #FFCCD5;
 
   &:active {
     transform: translateY(1px);
+    
   }
 `;
 
@@ -57,6 +59,7 @@ background-color: #FFCCD5;
   font-size: 16px; /* Font size */
   margin: 4px 2px; /* Margin around the button */
   transition-duration: 0.4s; /* Transition for hover effect */
+  background-color: ${props => props.selected ? '#FF8FA3' : '#FFCCD5'};
 
   &:hover {
     background-color: #FF8FA3;

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import Navbar from './navbar'; // Ensure the path is correct
 import Footer from './footer'; // Ensure the path is correct
 import styled from 'styled-components';
@@ -43,6 +43,7 @@ background-color: #FFCCD5;
   font-size: 16px; /* Font size */
   margin: 4px 2px; /* Margin around the button */
   transition-duration: 0.4s; /* Transition for hover effect */
+  background-color: ${props => props.selected ? '#FF8FA3' : '#FFCCD5'};
 
   &:hover {
     background-color: #FF8FA3;
@@ -67,6 +68,7 @@ background-color: #FFCCD5;
   font-size: 16px; /* Font size */
   margin: 4px 2px; /* Margin around the button */
   transition-duration: 0.4s; /* Transition for hover effect */
+  background-color: ${props => props.$clicked ? '#SomeColorForClickedState' : '#FFCCD5'};
 
   &:hover {
     background-color: #FF8FA3;
@@ -80,42 +82,41 @@ background-color: #FFCCD5;
 
 const MoodSelector = () => {
   const { moods, selectedMoods, fetchMoods, setSelectedMoods, fetchResults } = useRestaurantStore();
-  
+  const [resultsButtonClicked, setResultsButtonClicked] = useState(false);
 
   useEffect(() => {
     setSelectedMoods([]);
     fetchMoods();
   }, [fetchMoods, setSelectedMoods]);
 
-
   const handleMoodClick = (mood) => {
-    setSelectedMoods((prevSelectedMoods) => {
-      console.log('Setting selected moods:', mood);
-      
-         // If the mood is already selected, remove it from the array
-    if (prevSelectedMoods.includes(mood)) {
-      return prevSelectedMoods.filter(selectedMood => selectedMood !== mood);
-    }
-// If less than 3 moods are selected or if the new mood is one of them, add the new mood
-return [...prevSelectedMoods, mood];
-});
-};
+    setSelectedMoods(prevSelectedMoods => {
+      // Check if the mood is already selected
+      if (prevSelectedMoods.includes(mood)) {
+        // If so, remove it from the array
+        return prevSelectedMoods.filter(selectedMood => selectedMood !== mood);
+      } else {
+        // If the mood is not selected and we have less than 3 moods selected,
+        // add this mood to the array
+        if (prevSelectedMoods.length < 3) {
+          return [...prevSelectedMoods, mood];
+        }
+        // If already 3 moods are selected, return the array as is
+        console.log('You can select up to 3 moods.');
+        return prevSelectedMoods;
+      }
+    });
+  };
+  
+  
 
   const handleResultsButtonClick = async () => {
-    if (selectedMoods.length === 0) {
-      // You can handle this case if needed
-      console.log('Please choose at least one mood.');
-      return;
+    if (selectedMoods.length > 0 && selectedMoods.length <= 3) {
+      setResultsButtonClicked(true); // Set the state to true when the button is clicked
+      await fetchResults(selectedMoods);
+    } else {
+      console.log('Please select between 1 and 3 moods.');
     }
-
-    if (selectedMoods.length > 3) {
-      // You can handle this case if needed
-      console.log('Please choose a maximum of three moods.');
-      return;
-    }
-
-    // You can perform any actions related to fetching results here
-    await fetchResults(selectedMoods);
   };
 
 
@@ -124,7 +125,7 @@ return [...prevSelectedMoods, mood];
       <Navbar />
       <TitleContainer>
         <h2>Select your mood(s)</h2>
-        <p>You can select a minimum of one mood and a maximum of 3 moods</p>
+        <p>You can select a minimum of one mood and a maximum of three moods</p>
       </TitleContainer>
       <MoodSelectorContainer>
         {moods.map((mood) => (
@@ -138,19 +139,23 @@ return [...prevSelectedMoods, mood];
         ))}
       </MoodSelectorContainer>
       <Link to="/occasion">
-      <MoodButton onClick={handleResultsButtonClick}>
+        <MoodButton onClick={handleResultsButtonClick}>
           Back to occasion
         </MoodButton>
       </Link>
       <Link to="/result">
-        <ResultsButton onClick={handleResultsButtonClick}>
-          Give me my results
-        </ResultsButton>
-      </Link>
+  <ResultsButton 
+    onClick={handleResultsButtonClick} 
+    $clicked={resultsButtonClicked}
+  >
+    Give me my results
+  </ResultsButton>
+</Link>
+
+
       <Footer />
     </PageContainer>
   );
 };
 
 export default MoodSelector;
-
