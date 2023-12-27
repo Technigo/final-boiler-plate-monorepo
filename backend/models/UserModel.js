@@ -27,11 +27,11 @@ const userSchema = new Schema(
       required: true,
       unique: true,
     },
-    //Define the 'accessToken' field with a String data type
-    accessToken: {
-      type: String, // Specifies that 'accessToken' should be a string
-      default: () => crypto.randomBytes(128).toString("hex"), // Sets a default value using a cryptographic random string
-    },
+    // //Define the 'accessToken' field with a String data type
+    // accessToken: {
+    //   type: String, // Specifies that 'accessToken' should be a string
+    //   default: () => crypto.randomBytes(128).toString("hex"), // Sets a default value using a cryptographic random string
+    // },
   },
   {
     timestamps: true,

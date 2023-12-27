@@ -1,5 +1,6 @@
 import express from "express";
-import listEndpoints from "express-list-endpoints";
+import { UserModel } from "../models/UserModel";
+import bcrypt from "bcrypt";
 
 const router = express.Router();
 
@@ -14,10 +15,6 @@ router.get("/profile", requiresAuth(), (req, res) => {
 
 router.get("/", (req, res) => {
   res.send(req.oidc.isAuthenticated() ? "Logged in" : "Logged out");
-});
-router.get("/endpoints", (req, res) => {
-  const endpoints = listEndpoints(router);
-  res.json({ endpoints });
 });
 
 // Registration endpoint
@@ -57,6 +54,19 @@ router.post("/register", async (req, res) => {
       message: "Could not create user",
       errors: err.errors,
     });
+  }
+});
+
+router.get("/users", async (req, res) => {
+  try {
+    await UserModel.find()
+      .sort({ createdAt: "desc" })
+      .exec()
+      .then((result) => {
+        res.json(result);
+      });
+  } catch (error) {
+    res.json(error);
   }
 });
 
