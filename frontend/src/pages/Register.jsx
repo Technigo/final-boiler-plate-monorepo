@@ -5,6 +5,44 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 //import { Link } from "react-router-dom";
 import { Button } from "../components/Buttons/Button";
+import styled from "styled-components";
+
+const StyledIntroReg = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 30px 30px 30px;
+
+  .intro,
+  p {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    margin: 20px;
+    max-width: 600px;
+  }
+`;
+
+const StyledRegField = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-width: 500px;
+  min-width: 300px;
+  border: 1px solid orange;
+  border-radius: 20px 0 20px 20px;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  margin: 20px;
+
+  input {
+    margin-bottom: 10px; /* Add some space between the input fields */
+    height: 30px; /* Set the height of the input fields */
+    border-bottom: 2px solid orange; /* Add a bottom border to the input fields */
+    width: 100%; /* Set the width of the input fields */
+  }
+`;
 
 // Define the 'Register' functional component.
 export const Register = () => {
@@ -52,33 +90,35 @@ export const Register = () => {
     <>
       {/* Render the 'LogoText' component. */}
       <LogoText />
-      <div>
+      <StyledIntroReg>
         {/* Display the heading and paragraphs. */}
         <h2>{text.heading}</h2>
         <p>{text.intro}</p>
         <p>{text.p}</p>
-        <div className="user-registration">
-          {/* Create input fields for 'username' and 'password' and associate them with state variables. */}
-          <input
-            type="text"
-            placeholder="Username"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-          />
-          <input
-            type="password"
-            placeholder="Password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-          {/* Create a button for signing up and attach the 'onSignupClick' event handler. */}
-          <Button
-            onClick={onSignupClick}
-            className="signUp-btn"
-            buttonName="Create profile"
-          />
-        </div>
-      </div>
+        <StyledRegField>
+          <div className="user-registration">
+            {/* Create input fields for 'username' and 'password' and associate them with state variables. */}
+            <input
+              type="text"
+              placeholder="Username"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+            />
+            <input
+              type="password"
+              placeholder="Password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+            {/* Create a button for signing up and attach the 'onSignupClick' event handler. */}
+            <Button
+              onClick={onSignupClick}
+              className="signUp-btn"
+              buttonName="Create profile"
+            />
+          </div>
+        </StyledRegField>
+      </StyledIntroReg>
     </>
   );
 };

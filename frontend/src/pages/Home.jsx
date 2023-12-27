@@ -2,8 +2,8 @@
 //import { useEffect } from "react";
 //import { userStore } from "../stores/userStore";
 //import { useNavigate } from "react-router-dom";
-//import { LogoText } from "../components/LogoText";
 import { LinkButton } from "../components/Buttons/LinkButton";
+import LogoText from "../components/LogoText";
 // import { Link } from "react-router-dom";
 import styled from "styled-components";
 
@@ -54,7 +54,7 @@ export const Home = () => {
   // Render the component content.
   return (
     <>
-      {/*<LogoText />*/}
+      <LogoText />
       <h1 className="heading">{text.heading}</h1>
       <h2>{text.subheading}</h2>
       <p>{text.intro}</p>
