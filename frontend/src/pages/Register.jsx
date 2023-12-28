@@ -7,13 +7,21 @@ import { useNavigate } from "react-router-dom";
 import { Button } from "../components/Buttons/Button";
 import styled from "styled-components";
 
-const StyledIntroReg = styled.div`
+const StyledRegister = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  text-align: center;
+`;
+
+const StyledIntroReg = styled.div`
+  text-align: center;
   margin: 0 30px 30px 30px;
 
-  .intro,
+  h2 {
+    text-align: center;
+  }
+
   p {
     display: flex;
     flex-direction: column;
@@ -28,11 +36,9 @@ const StyledRegField = styled.div`
   flex-direction: column;
   justify-content: center;
   max-width: 500px;
-  min-width: 300px;
+
   border: 1px solid orange;
   border-radius: 20px 0 20px 20px;
-  display: flex;
-  flex-direction: column;
   padding: 20px;
   margin: 20px;
 
@@ -88,13 +94,15 @@ export const Register = () => {
   // Render the component content.
   return (
     <>
-      {/* Render the 'LogoText' component. */}
-      <LogoText />
-      <StyledIntroReg>
-        {/* Display the heading and paragraphs. */}
-        <h2>{text.heading}</h2>
-        <p>{text.intro}</p>
-        <p>{text.p}</p>
+      <StyledRegister>
+        {/* Render the 'LogoText' component. */}
+        <LogoText />
+        <StyledIntroReg>
+          {/* Display the heading and paragraphs. */}
+          <h2>{text.heading}</h2>
+          <p>{text.intro}</p>
+          <p>{text.p}</p>
+        </StyledIntroReg>
         <StyledRegField>
           <div className="user-registration">
             {/* Create input fields for 'username' and 'password' and associate them with state variables. */}
@@ -118,7 +126,7 @@ export const Register = () => {
             />
           </div>
         </StyledRegField>
-      </StyledIntroReg>
+      </StyledRegister>
     </>
   );
 };

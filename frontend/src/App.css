@@ -13,11 +13,11 @@ li {
   list-style: none;
 }
 
-/* img,
+img,
 svg {
   display: block;
   max-width: 100%;
-} */
+}
 
 /* Apply styles to the body when the modal is active */
 body.active-modal {
@@ -41,7 +41,8 @@ body.active-modal {
 
   /* max-width: 1280px; Set maximum width for the content */
   /* margin: 0 auto; Center align the content horizontally */
-  min-height: 100vh; /* Ensure a minimum height to cover the viewport */
+  min-height: 100vh;
+  /* Ensure a minimum height to cover the viewport */
 }
 
 @media (prefers-color-scheme: light) {

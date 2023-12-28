@@ -13,7 +13,6 @@ const StyledIntro = styled.div`
   align-items: center;
   margin: 0 30px 30px 30px;
 
-  .intro,
   p {
     display: flex;
     flex-direction: column;
@@ -28,11 +27,8 @@ const StyledLoginField = styled.div`
   flex-direction: column;
   justify-content: center;
   max-width: 500px;
-  min-width: 300px;
   border: 1px solid orange;
   border-radius: 20px 0 20px 20px;
-  display: flex;
-  flex-direction: column;
   padding: 20px;
   margin: 20px;
 

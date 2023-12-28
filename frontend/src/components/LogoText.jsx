@@ -3,7 +3,7 @@ import { Link } from "react-router-dom"; // Ensure the correct import for Link
 import aHelpingHandLogo from "/a-helping-hand-logo.png";
 import styled from "styled-components";
 
-// STYLING I .LOGO I APP.CSS ÄR DET SOM TAR STYLINGEN, JUSTERA (Susanne kommenterade ut det i app.css när jag stylade login-sidan)
+// STYLING I .LOGO I APP.CSS ÄR DET SOM TAR STYLINGEN, JUSTERA
 const StyledLogoText = styled.img`
   width: 300px;
   height: 200px; /* Set height for logo images */
@@ -11,6 +11,16 @@ const StyledLogoText = styled.img`
   padding: 20px;
   will-change: filter; /* Specify a CSS property that may change */
   transition: filter 300ms; /* Apply a transition effect to the 'filter' property */
+
+  @media screen and (min-width: 550px) {
+    width: 400px;
+    height: 300px;
+  }
+
+  @media screen and (min-width: 800px) {
+    width: 500px;
+    height: 400px;
+  }
 `;
 
 // Lade in denna för att få loggan att hamna i mitten av sidan
