@@ -57,12 +57,14 @@ const ResultsComponent = () => {
 
   useEffect(() => {
     if (selectedOccasion && selectedMoods.length > 0) {
-      fetchResults().then(() => {
-        console.log("Results fetched:", results);
-      });
+      fetchResults();
     }
   }, [selectedOccasion, selectedMoods, fetchResults]);
 
+  useEffect(() => {
+    console.log("Results fetched:", results);
+  }, [results]);
+  
   return (
     <>
       <Navbar />
