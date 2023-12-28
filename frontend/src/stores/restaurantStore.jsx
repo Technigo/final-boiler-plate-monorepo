@@ -39,12 +39,16 @@ export const useRestaurantStore = create((set) => ({
   },
 
   // Update the selected occasion
-  setSelectedOccasion: (occasion) => set({ selectedOccasion: occasion }),
+  setSelectedOccasion: (occasion) => {
+    console.log('Setting selected occasion:', occasion);
+    set({ selectedOccasion: occasion });
+  },
 
   fetchMoods: async () => {
     try {
       set({ selectedMoods: [] });
       const { selectedOccasion } = useRestaurantStore.getState();
+      console.log('Fetching moods for occasion:', selectedOccasion);
       const response = await fetch(`http://localhost:3000/api/mood?occasion=${encodeURIComponent(selectedOccasion)}`);
       if (!response.ok) {
         throw new Error('Failed to fetch moods');
@@ -54,6 +58,8 @@ export const useRestaurantStore = create((set) => ({
       // You might want to transform the moods data similarly to occasions
       // For example, if you want to capitalize the first letter:
       const capitalizedMoods = moods.map((mood) => capitalizeFirstLetter(mood.trim()));
+
+      console.log('Fetched moods:', capitalizedMoods);
 
       set({ moods: capitalizedMoods });
 
@@ -65,6 +71,7 @@ export const useRestaurantStore = create((set) => ({
   fetchMoodsForOccasion: async (occasion) => {
     try {
       set({ selectedMoods: [] });
+      console.log('Fetching moods for occasion:', occasion);
       const response = await fetch(`http://localhost:3000/api/mood?occasion=${encodeURIComponent(occasion)}`);
       if (!response.ok) {
         throw new Error('Failed to fetch moods for occasion');
@@ -72,6 +79,8 @@ export const useRestaurantStore = create((set) => ({
 
       const moods = await response.json();
       const capitalizedMoods = moods.map((mood) => capitalizeFirstLetter(mood.trim()));
+
+      console.log('Fetched moods:', capitalizedMoods);
       
       set({ moods: capitalizedMoods });
 
@@ -96,25 +105,31 @@ export const useRestaurantStore = create((set) => ({
   }
   
     // If already 3 moods are selected and the new mood is not one of them, ignore the selection
-    return {};
+    return { selectedMoods: state.selectedMoods };
   }),
 
   // Fetch results based on selected occasion and moods
   fetchResults: async () => {
+    try {
     console.log('Fetching results...');
     const { selectedOccasion, selectedMoods } = useRestaurantStore.getState();
+    console.log('Selected Occasion:', selectedOccasion);
+    console.log('Selected Moods:', selectedMoods);
   
-  try {
     const apiURL = 'http://localhost:3000/restaurants/search';
     const queryParams = new URLSearchParams({
-      occasion: encodeURIComponent(selectedOccasion),
-      mood: selectedMoods.map(mood => encodeURIComponent(mood)).join(',')
+      occasion: selectedOccasion,
+      mood: selectedMoods.join(',')
     });
     
     const url = `${apiURL}?${queryParams}`;
+    console.log('Fetching from URL:', url);
 
     const response = await fetch(url);
-    if (!response.ok) throw new Error('Failed to fetch search results');
+    if (!response.ok) {
+      const errorMessage = `Failed to fetch search results. Status: ${response.status}, ${response.statusText}`;
+      throw new Error(errorMessage);
+    }
 
     const results = await response.json();
     set({ results });

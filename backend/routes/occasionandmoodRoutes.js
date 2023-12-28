@@ -8,6 +8,12 @@ const router = express.Router();
 router.get('/restaurants/search', asyncHandler(async (req, res) => {
   // Extract occasion and mood query parameters from the request
   const { occasion, mood } = req.query;
+  console.log('Received request with occasion:', occasion, 'and mood:', mood);
+
+  // Validate that both occasion and mood are provided
+  if (!occasion || !mood) {
+    return res.status(400).json({ message: 'Both occasion and mood are required parameters' });
+  }
 
   // Ensure occasion is provided and only one is selected
   if (!occasion || Array.isArray(occasion)) {
@@ -16,7 +22,7 @@ router.get('/restaurants/search', asyncHandler(async (req, res) => {
 
   // Ensure mood is provided and between 1 to 3 moods are selected
   const moods = Array.isArray(mood) ? mood : [mood];
-  if (mood.length === 0 || mood.length > 3) {
+  if (moods.length === 0 || moods.length > 3) {
     return res.status(400).json({ message: 'You have to make a selection of 1 to 3 moods' });
   }
 
@@ -26,6 +32,7 @@ router.get('/restaurants/search', asyncHandler(async (req, res) => {
       occasion: occasion, 
       mood: { $in: mood } 
     });
+    console.log('Found restaurants:', restaurants);
 
     // Check if any restaurants were found
     if (restaurants.length === 0) {
@@ -34,6 +41,7 @@ router.get('/restaurants/search', asyncHandler(async (req, res) => {
 
     res.json(restaurants); // Respond with the found restaurants in JSON format
   } catch (err) {
+    console.error('Error during search:', err);
     res.status(500).json({ message: err.message }); // Handle any errors that occur during the operation
   }
 }));
