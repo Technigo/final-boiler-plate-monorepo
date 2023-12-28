@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import Modal from "react-modal";
 import { Button } from "../Buttons/Button";
 import { GiGardeningShears } from "react-icons/gi";
@@ -17,13 +17,6 @@ const StyledFeedCardModal = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-`;
-
-const StyledModalContent = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 20px; /* Add padding to the modal content */
 `;
 
 const iconSize = "50px"; // Define the icon size

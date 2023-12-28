@@ -20,7 +20,7 @@ const ProfilePhotoUserWrapper = styled.div`
 `;
 
 export const Profile = () => {
-  const { username, user, userId, selectedGender, handleGenderChange } =
+  const { username, loggedInUserId, selectedGender, handleGenderChange } =
     userStore(); // Destructure selectedGender and setSelectedGender from Zustand store
   const { tasks } = taskStore();
 
@@ -41,13 +41,11 @@ export const Profile = () => {
   //   // volunteeredTasks,
   // } = userStore();
 
-  const loggedInUserId = userStore.loggedInUserId;
+  // const loggedInUserId = userStore.loggedInUserId;
 
   // Filter tasks created by the current user
   // const createdTasks = tasks.filter((task) => task.user === user);
-  const createdTasks = tasks.filter(
-    (task) => task.user.toString() === loggedInUserId
-  );
+  const createdTasks = tasks.filter((task) => task.userId === loggedInUserId);
 
   return (
     <div>

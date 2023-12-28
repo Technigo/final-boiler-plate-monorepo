@@ -8,6 +8,7 @@ const apiEnv = import.meta.env.VITE_BACKEND_API;
 export const userStore = create((set, get) => ({
   // Initialize username state.
   username: "",
+  //username: localStorage.getItem("username") || "",
   // Define a function to set the username state.
   setUsername: (username) => set({ username }),
 
@@ -32,7 +33,7 @@ export const userStore = create((set, get) => ({
   setIsLoggedIn: (isLoggedIn) => set({ isLoggedIn }),
 
   loggedInUserId: null,
-  setLoggedInUserId: (user) => set({ loggedInUserId }),
+  setLoggedInUserId: (id) => set({ loggedInUserId: id }),
 
   // Initialize selectedGender state with "female".
   selectedGender: "female",
@@ -103,9 +104,10 @@ export const userStore = create((set, get) => ({
           username,
           accessToken: data.response.accessToken,
           isLoggedIn: true,
+          loggedInUserId: data.response.id,
         });
         // Set the loggedInUserId in the store.
-        set({ loggedInUserId: data.response.userId });
+        set({ loggedInUserId: data.response.id });
         // Store the accessToken in the browser's localStorage.
         localStorage.setItem("accessToken", data.response.accessToken);
         // Display a success alert.

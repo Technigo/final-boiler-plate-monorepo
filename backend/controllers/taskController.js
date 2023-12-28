@@ -7,7 +7,7 @@ import jwt from "jsonwebtoken";
 export const getTasksController = asyncHandler(async (req, res) => {
   try {
     // Assuming userStorage contains the user details
-    const tasks = await TaskModel.find().sort("-createdAt").populate("user");
+    const tasks = await TaskModel.find().sort("-createdAt").populate("user"); // Find all tasks in the database and sort them by creation date
     res.json(tasks);
   } catch (error) {
     res.status(500).json(error);

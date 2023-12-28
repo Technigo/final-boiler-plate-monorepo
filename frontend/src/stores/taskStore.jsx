@@ -44,6 +44,7 @@ export const taskStore = create((set) => ({
   fetchTasks: async () => {
     try {
       console.log("Before fetching tasks...");
+      //const userId = userStore((state) => state.loggedInUserId); // Get the userId from the userStore
       // Send a GET request to the backend API to fetch tasks
       const response = await fetch(`${apiEnv}/get`, {
         method: "GET",
@@ -69,6 +70,7 @@ export const taskStore = create((set) => ({
   // New action to add a task to the server and then to the store
   addTaskToServer: async (task) => {
     try {
+      //const userId = userStore((state) => state.loggedInUserId); // Get the userId from the userStore
       // Send a POST request to the backend API to add a new task
       const response = await fetch(`${apiEnv}/add`, {
         method: "POST",
@@ -79,6 +81,7 @@ export const taskStore = create((set) => ({
 
         body: JSON.stringify({
           // Convert JS object to JSON string
+          //userId,
           task: task.task,
           category: task.category,
           area: task.area,
@@ -86,6 +89,7 @@ export const taskStore = create((set) => ({
         }),
       });
       console.log("Authorization Header:", localStorage.getItem("accessToken"));
+      //console.log("Response:", response);
 
       // Parse the response data
       const data = await response.json();
