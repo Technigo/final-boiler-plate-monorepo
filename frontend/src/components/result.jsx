@@ -52,13 +52,14 @@ background-color: #FFCCD5;
   }
 `;
 const ResultsComponent = () => {
+  console.log("ResultsComponent rendered");
   const { results, fetchResults, selectedOccasion, selectedMoods } = useRestaurantStore();
 
   useEffect(() => {
-    // selectedMoods is an array, so you might need to adjust how you're fetching results
-    // depending on how the backend expects to receive multiple mood values.
     if (selectedOccasion && selectedMoods.length > 0) {
-      fetchResults();
+      fetchResults().then(() => {
+        console.log("Results fetched:", results);
+      });
     }
   }, [selectedOccasion, selectedMoods, fetchResults]);
 
@@ -78,7 +79,7 @@ const ResultsComponent = () => {
               <p>{`Occasion: ${restaurant.occasion.join(', ')}`}</p>
               <p>{`Mood: ${restaurant.mood.join(', ')}`}</p>
               <p>{restaurant.description}</p>
-              <a href={restaurant.url}>Visit Website</a>
+              <a href={restaurant.url} target="_blank" rel="noopener noreferrer">Visit the restaurants website</a>
             </ResultCard>
           )) //click more to get more text//
           ) : (
