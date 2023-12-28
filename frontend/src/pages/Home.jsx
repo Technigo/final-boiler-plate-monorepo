@@ -11,7 +11,7 @@ import { TestimonialsCarousel } from "../components/Testimonials/TestimonialsCar
 const StyledHomePage = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 50px;
 `;
 
 const StyledButtonWrapper = styled.div`
@@ -28,6 +28,7 @@ export const Home = () => {
     subheading: "Our mission is to help people connect with their communities",
     intro:
       "Welcome to our community of compassion and generosity. We believe in the power of uniting hearts and strive to create a world where every act of kindness matters. Our platform is a vibrant hub where those in need of help encounter those who are ready to offer their time and care without expecting anything in return. Here, it's about uplifting each other, where a simple gesture can make a tremendous difference. Perhaps there's an elderly neighbor who needs help raking leaves, someone requiring assistance with grocery shopping, or an individual unable to walk their four-legged friend. Our platform serves as a bridge connecting needs with helpful souls. We believe in fostering an inclusive community where goodwill and kindness are the currency. Here, commitment and generosity matter most. With us, every effort is a step towards a warmer, more empathetic world. Together, we're building a place where hearts meet to make a difference. Welcome to being a part of this beautiful movement of humanity.",
+    testimonials: "What do our users think?",
   };
 
   // Access the 'handleLogout' function from the 'userStore'.
@@ -61,7 +62,7 @@ export const Home = () => {
   // Render the component content.
   return (
     <StyledHomePage>
-      {/*<LogoText />*/}
+      {/* <LogoText /> */}
       <h1 className="heading">{text.heading}</h1>
       <h2>{text.subheading}</h2>
       <p>{text.intro}</p>
@@ -73,15 +74,8 @@ export const Home = () => {
           buttonName="Join the community"
         />
       </StyledButtonWrapper>
+      <h3>{text.testimonials}</h3>
       <TestimonialsCarousel />
     </StyledHomePage>
-    // <>
-    //   {/* Display the heading and subheading. */}
-    //   <h1 className="heading">{text.heading}</h1>
-    //   <h2>{text.subheading}</h2>
-    //   {/* (Note: 'text.intro' is not defined in the code.) */}
-    //   {/* Display additional content (text.intro is missing). */}
-    //   <p>{text.intro}</p>
-    // </>
   );
 };
