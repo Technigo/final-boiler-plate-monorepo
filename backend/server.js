@@ -109,6 +109,7 @@ const app = express();
 app.use(cors()); 
 app.use(express.json()); 
 app.use(express.urlencoded({ extended: false })); 
+app.use('/', router)  // to mount router on the app
 
 // to connect to the MongoDB database
 const connectDB = async () => {

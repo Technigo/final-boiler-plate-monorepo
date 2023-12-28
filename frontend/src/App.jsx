@@ -60,6 +60,7 @@ export const App = () => {
 
   const handleRegister = async () => {
     try {
+      console.log("trying register:", username)
       const response = await fetch("http://localhost:3000/register", {
         method: "POST",
         headers: {
@@ -67,8 +68,14 @@ export const App = () => {
         },
         body: JSON.stringify({ username, password })
       })
+      console.log("after fetch:", username)
+      
+      console.log("Response status:", response.status)
+      const responseText = await response.text()
+      console.log("Response text:", responseText)
 
       const data = await response.json()
+      console.log("after update data:", username)
       console.log(data)
       setIsLoggedIn(true)
     } catch (error) {
