@@ -8,6 +8,12 @@ import { LinkButton } from "../components/Buttons/LinkButton";
 import styled from "styled-components";
 import { TestimonialsCarousel } from "../components/Testimonials/TestimonialsCarousel";
 
+const StyledHomePage = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+`;
+
 const StyledButtonWrapper = styled.div`
   display: flex;
   justify-content: center;
@@ -54,7 +60,7 @@ export const Home = () => {
 
   // Render the component content.
   return (
-    <>
+    <StyledHomePage>
       {/*<LogoText />*/}
       <h1 className="heading">{text.heading}</h1>
       <h2>{text.subheading}</h2>
@@ -68,7 +74,7 @@ export const Home = () => {
         />
       </StyledButtonWrapper>
       <TestimonialsCarousel />
-    </>
+    </StyledHomePage>
     // <>
     //   {/* Display the heading and subheading. */}
     //   <h1 className="heading">{text.heading}</h1>

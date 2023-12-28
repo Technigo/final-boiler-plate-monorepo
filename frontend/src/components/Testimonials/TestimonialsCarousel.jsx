@@ -45,7 +45,7 @@ const StyledCourseCard = styled.div`
     height: 360px;
     width: 300px;
     object-fit: cover;
-    border-radius: 16px 16px 0px 0px;
+    border-radius: 20px 20px 0 0;
     background: lightgray 50% / cover no-repeat;
   }
 
@@ -103,9 +103,13 @@ const CourseCardText = styled.div`
     // Styling for the rest of the text
     color: #202537;
     font-size: 16px;
-    font-style: normal;
+    font-style: italic;
     font-weight: 400;
     line-height: normal;
+  }
+
+  p.reviewer {
+    font-style: normal;
   }
 
   /* @media screen and (min-width: 1024px) {
@@ -155,7 +159,7 @@ export const TestimonialsCarousel = () => {
             {/* <h5>{isWideScreen ? course.courseNameShort : course.courseName}</h5> */}
             {/* <CourseBrief> */}
             <p>{testimonial.review}</p>
-            <p>
+            <p className="reviewer">
               {testimonial.reviewerName}, {testimonial.reviewerAge} y/o
             </p>
             {/* </CourseBrief> */}

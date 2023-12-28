@@ -2,27 +2,27 @@
     "testimonials": [
       {
         "testimonialId": 1,
-        "reviewerName": "",
+        "reviewerName": "Sarah",
         "reviewerAge": "",
-        "imageUrl": "",
-        "imageAlt": "",
-        "review": ""
+        "imageUrl": "/testimonials/testimonial-sarah.jpg",
+        "imageAlt": "Sarah",
+        "review": "'Lucas, your fitness regimen has me feeling healthier and more energized. Thank you for the motivation!'"
       },
       {
         "testimonialId": 2,
-        "reviewerName": "",
+        "reviewerName": "Anita",
         "reviewerAge": "",
-        "imageUrl": "",
-        "imageAlt": "",
-        "review": ""
+        "imageUrl": "/testimonials/testimonial-anita.jpg",
+        "imageAlt": "Anita",
+        "review": "'Kudos to Lisa for picking up my groceries when I was down with the flu! Lifesaver!'"
       },
       {
         "testimonialId": 3,
-        "reviewerName": "",
+        "reviewerName": "Jaqueline",
         "reviewerAge": "",
-        "imageUrl": "",
-        "imageAlt": "",
-        "review": ""
+        "imageUrl": "/testimonials/testimonial-jaqueline-sandy.jpg",
+        "imageAlt": "Jaqueline with dog Sandy",
+        "review": "'So happy for finding Lisa through your service. She helped me walk my dog Sandy after I had an accident and wasn't able to post-surgery. So fun because me and Lisa still stay in touch!'"
       },
       {
         "testimonialId": 4,
@@ -30,31 +30,31 @@
         "reviewerAge": "34",
         "imageUrl": "/testimonials/testimonial-adam.jpg",
         "imageAlt": "Adam in suit",
-        "review": "'Thanks to this service, and Sam who quickly lent me his suit, when my luggage had gotten lost during my flight over to Sweden. Thanks to you I still could look well dressed during my best friends wedding!'"
+        "review": "'Thanks to this service, and Sam who quickly lent me his suit, when my luggage had gotten lost during my flight over to Sweden. Thanks to you I still could look well dressed and have the best time during my best friends wedding!'"
       },
       {
         "testimonialId": 5,
-        "reviewerName": "",
+        "reviewerName": "Jack",
         "reviewerAge": "",
-        "imageUrl": "",
-        "imageAlt": "",
-        "review": ""
+        "imageUrl": "/testimonials/testimonial-jack.jpg",
+        "imageAlt": "Jack",
+        "review": "'I got the opportunity to help this sweet lady Maria with her garden. One of my hobbies is gardening so this was right up my alley. And seeing her smile was priceless!'"
       },
       {
         "testimonialId": 6,
-        "reviewerName": "",
+        "reviewerName": "Maya",
         "reviewerAge": "",
-        "imageUrl": "",
-        "imageAlt": "",
-        "review": ""
+        "imageUrl": "/testimonials/testimonial-maya.jpg",
+        "imageAlt": "Maya",
+        "review": "''"
       },
       {
         "testimonialId": 7,
-        "reviewerName": "",
+        "reviewerName": "Robert",
         "reviewerAge": "",
-        "imageUrl": "",
-        "imageAlt": "",
-        "review": ""
+        "imageUrl": "/testimonials/testimonial-robert.jpg",
+        "imageAlt": "Robert",
+        "review": "'Thank you to the young man who came and cleared away all the snow in my driveway'"
       },
       {
         "testimonialId": 8,
@@ -62,63 +62,63 @@
         "reviewerAge": "26",
         "imageUrl": "/testimonials/testimonial-nadia.jpg",
         "imageAlt": "Nadia eating nudles",
-        "review": "So grateful for the person that helped me get my suitcase open so I could pack for my trip to Asia, the money I saved on not having to buy a new suitcase was spent on nice meals during my vacation instead!"
+        "review": "'So grateful for the person that helped me get my suitcase open so I could pack for my trip to Asia. The money I saved on not having to buy a new suitcase was spent on nice meals during my vacation instead!'"
       },
       {
         "testimonialId": 9,
-        "reviewerName": "",
+        "reviewerName": "Ruth & Zoe",
         "reviewerAge": "",
-        "imageUrl": "",
-        "imageAlt": "",
-        "review": ""
+        "imageUrl": "/testimonials/testimonial-ruth-zoe.jpg",
+        "imageAlt": "Ruth and Zoe",
+        "review": "''"
       },
       {
         "testimonialId": 10,
-        "reviewerName": "",
+        "reviewerName": "Alex",
         "reviewerAge": "",
-        "imageUrl": "",
-        "imageAlt": "",
-        "review": ""
+        "imageUrl": "/testimonials/testimonial-alex.jpg",
+        "imageAlt": "Alex",
+        "review": "''"
       },
       {
         "testimonialId": 11,
-        "reviewerName": "",
-        "reviewerAge": "",
-        "imageUrl": "",
-        "imageAlt": "",
-        "review": ""
+        "reviewerName": "Sandeep",
+        "reviewerAge": "27",
+        "imageUrl": "/testimonials/testimonial-sandeep.jpg",
+        "imageAlt": "Sandeep",
+        "review": "''"
       },
       {
         "testimonialId": 12,
-        "reviewerName": "",
-        "reviewerAge": "",
-        "imageUrl": "",
-        "imageAlt": "",
-        "review": ""
+        "reviewerName": "Inez",
+        "reviewerAge": "57",
+        "imageUrl": "/testimonials/testimonial-inez.jpg",
+        "imageAlt": "Inez",
+        "review": "'Huge shoutout to Mike for fixing my leaky faucet. You saved me from a mini flood!'"
       },
       {
         "testimonialId": 13,
-        "reviewerName": "",
-        "reviewerAge": "",
-        "imageUrl": "",
-        "imageAlt": "",
-        "review": ""
+        "reviewerName": "Simon",
+        "reviewerAge": "62",
+        "imageUrl": "/testimonials/testimonial-simon.jpg",
+        "imageAlt": "Simon",
+        "review": "'A big thank you to James for letting me help with his car repairs. Felt good to lend a hand and pass on my knowledge!'"
       },
       {
         "testimonialId": 14,
-        "reviewerName": "",
-        "reviewerAge": "",
-        "imageUrl": "",
-        "imageAlt": "",
-        "review": ""
+        "reviewerName": "Edward",
+        "reviewerAge": "59",
+        "imageUrl": "/testimonials/testimonial-edward.jpg",
+        "imageAlt": "Edward",
+        "review": "'Big shoutout to Grace for watching over my cat while I was away. Happy and purring, thanks to you!'"
       },
       {
         "testimonialId": 15,
-        "reviewerName": "",
-        "reviewerAge": "",
-        "imageUrl": "",
-        "imageAlt": "",
-        "review": ""
+        "reviewerName": "Jenny",
+        "reviewerAge": "30",
+        "imageUrl": "/testimonials/testimonial-jenny.jpg",
+        "imageAlt": "Jenny",
+        "review": "'Thanks to Mark for fixing my bike just before my big race! You're amazing!'"
       } 
     ]
 }
