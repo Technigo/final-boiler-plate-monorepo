@@ -130,7 +130,7 @@ export const BookingListComponent = ({ fetchAllBookings, fetchUnHandledBookings 
                                     <div>
                                         {/* Display various details about the booking */}
                                         {/* Name, age weight*/}
-                                        <ParagraphComponent className="py-0 pt-12 lg:py-0 lg:pt-1" text={`${booking.name}, ${booking.age} years old`} category="Name" />
+                                        <ParagraphComponent text={`${booking.name}, ${booking.age} years old`} category="Name" />
                                         <ParagraphComponent className="py-0 pt-12 lg:py-0 lg:pt-0" text={`${booking.weight || "N/A"}`} category="Weight" />
                                         <ParagraphComponent className="py-0 pt-12 lg:py-0 lg:pt-0" text={`${booking.height || "N/A"}`} category="Height" />
 
