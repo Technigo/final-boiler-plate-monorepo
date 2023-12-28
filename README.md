@@ -235,3 +235,5 @@ const generateToken = (user) => {
 
 export default generateToken;
 In summary, the generateToken function doesn't need the user's access token as input; instead, it creates a new JWT that may be used as an access token in your authentication flow.
+
+# 
