@@ -22,12 +22,12 @@ export const userStore = create((set, get) => ({
   setPassword: (password) => set({ password }),
 
   // Initialize accessToken state with null.
-  accessToken: null,
+  accessToken: localStorage.getItem("accessToken") || null,
   // Define a function to set the accessToken state.
   setAccessToken: (token) => set({ accessToken: token }),
 
-  // Initialize isLoggedIn state with false.
-  isLoggedIn: false,
+  // Initialize isLoggedIn state with false..
+  isLoggedIn: localStorage.getItem("accessToken") ? true : false,
   // Define a function to set the isLoggedIn state.
   setIsLoggedIn: (isLoggedIn) => set({ isLoggedIn }),
 

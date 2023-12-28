@@ -56,10 +56,8 @@ export const taskStore = create((set) => ({
       if (response.ok) {
         // Parse the response data and set it as the tasks state
         const data = await response.json();
-        console.log("Fetched tasks successfully:", data);
-        set({
-          tasks: data,
-        });
+        //console.log("Fetched tasks successfully:", data);
+        set({ tasks: data });
       } else {
         console.error("Failed to fetch tasks. Response:", response);
       }
@@ -94,7 +92,7 @@ export const taskStore = create((set) => ({
       // Check if the request was successful
       if (response.ok) {
         // Add the new task to the tasks state
-        set((state) => ({ tasks: [...state.tasks, data] }));
+        set((state) => ({ tasks: [data, ...state.tasks] }));
       } else {
         console.error("Failed to add task");
       }

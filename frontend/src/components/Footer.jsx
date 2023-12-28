@@ -1,16 +1,16 @@
 import { SocialMediaLinks } from "./SocialMediaLinks";
-//import logo from "/technigo-logo.svg";
 import styled from "styled-components";
 
 /* Styling for the footer */
 const StyledFooter = styled.div`
   display: flex;
+  justify-content: center;
   flex-direction: column;
   padding: 20px 0;
-  width: 100%;
   text-align: center;
-  position: fixed;
+  position: relative;
   bottom: 0;
+
   background: -webkit-linear-gradient(
     45deg,
     #42121d,
@@ -21,7 +21,7 @@ const StyledFooter = styled.div`
   );
 
   a {
-    font-size: 25px;
+    font-size: 20px;
   }
 `;
 
@@ -30,12 +30,12 @@ const FooterText = styled.div`
   flex-direction: column;
   align-items: center;
   color: #f8f8f8;
-  font-size: 18px;
+  font-size: 16px;
 `;
 
 const Contact = styled.div`
   display: flex;
-  gap: 20px;
+  gap: 10px;
   margin: 10px 0;
 `;
 

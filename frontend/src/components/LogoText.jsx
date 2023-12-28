@@ -8,25 +8,44 @@ const StyledLogoText = styled.img`
   width: 300px;
   height: 200px; /* Set height for logo images */
   object-fit: cover;
-  padding: 1.5em; /* Add padding around logo images */
+  padding: 20px;
   will-change: filter; /* Specify a CSS property that may change */
   transition: filter 300ms; /* Apply a transition effect to the 'filter' property */
+
+  @media screen and (min-width: 550px) {
+    width: 400px;
+    height: 300px;
+  }
+
+  @media screen and (min-width: 800px) {
+    width: 500px;
+    height: 400px;
+  }
+`;
+
+// Lade in denna för att få loggan att hamna i mitten av sidan
+const StyledLogoDiv = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `;
 
 // Define the 'Logo' functional component.
 function LogoText() {
   return (
-    <div>
-      {/* Create a link to the A Helping Hand website that opens in a new tab. */}
-      <Link to="/">
-        {/* Display the A Helping Hand logo image with CSS classes 'logo'. */}
-        <StyledLogoText
-          src={aHelpingHandLogo}
-          className="logo"
-          alt="A Helping Hand logo"
-        />
-      </Link>
-    </div>
+    <StyledLogoDiv>
+      <div className="logo-img">
+        {/* Create a link to the A Helping Hand website that opens in a new tab. */}
+        <Link to="/">
+          {/* Display the A Helping Hand logo image with CSS classes 'logo'. */}
+          <StyledLogoText
+            src={aHelpingHandLogo}
+            className="logo"
+            alt="A Helping Hand logo"
+          />
+        </Link>
+      </div>
+    </StyledLogoDiv>
   );
 }
 
