@@ -37,15 +37,10 @@ export const MyPage = () => {
   // Render the component content.
   return (
     <>
+      <Navbar />
       <nav>
         {/* Create a navigation menu with links to various routes. */}
         <ul className="app-ul">
-          <li className="app-li">
-            <Link to="/home">Home</Link>
-          </li>
-          <li className="app-li">
-            <Link to="/tasks">Tasks</Link>
-          </li>
           <li className="app-li">
             {/* Create a button for logging out and attach the 'onLogoutClick' event handler. */}
             <button onClick={onLogoutClick}>Sign Out</button>
@@ -53,7 +48,6 @@ export const MyPage = () => {
         </ul>
       </nav>
       {/* Display the personalized greeting. */}
-      <Navbar />
       <h1 className="heading">Hi, {username}</h1>
       {/* Display additional content (text.intro is missing). */}
       {/* (Note: 'text.intro' is not defined in the code.) */}

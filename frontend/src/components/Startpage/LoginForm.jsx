@@ -9,6 +9,7 @@ const LoginForm = () => {
     const [password, setPassword] = useState("");
     const navigate = useNavigate();
     const storeHandleLogin = userStore((state) => state.handleLogin);
+    const isLoggedIn = userStore((state) => state.isLoggedIn);
 
     const onLoginClick = async () => {
         if (!username || !password) {
@@ -19,7 +20,7 @@ const LoginForm = () => {
             await storeHandleLogin(username, password);
             const isLoggedIn = userStore.getState().isLoggedIn;
             if (isLoggedIn) {
-                navigate("/home");
+                navigate("/habits");
             }
         } catch (error) {
             console.error("Login error:", error);
@@ -29,8 +30,10 @@ const LoginForm = () => {
 
     const { t } = useTranslation();
 
-    return (
-        <div className="loginform">
+    if (isLoggedIn) {
+        return null;
+    } else {
+        return (<div className="loginform">
             <h2>{t("My page")}</h2>
             <div className="user-login">
                 <input
@@ -47,8 +50,8 @@ const LoginForm = () => {
                 />
                 <button className="login" onClick={onLoginClick}>{t("Login")}</button>
             </div>
-        </div>
-    );
+        </div>);
+    }
 };
 
 export default LoginForm;

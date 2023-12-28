@@ -1,9 +1,9 @@
 // Import necessary components, hooks, and stores.
-import Navbar from "../components/Navbar";
-import Footer from "../components/Footer";
+import Logos from "../components/Logos";
 import { userStore } from "../stores/userStore";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 // Define the 'Register' functional component.
 export const Register = () => {
@@ -24,29 +24,12 @@ export const Register = () => {
       alert("Please enter email, username, and password");
       return;
     }
-
     try {
-      // Make a POST request to the API endpoint
-      const response = await fetch("https://authentication-j1oa.onrender.com/users", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          username,
-          password,
-          email,
-        }),
-      });
-
-      if (response.ok) {
+      // Call the 'handleSignup' function from 'userStore' with 'username', 'password', and 'email' parameters.
+      await storeHandleSignup(username, password, email);
+      if (username && password) {
         // If the signup is successful, navigate to the login route ("/").
-        navigate("/");
-      } else {
-        // If the response is not okay, handle the error and display an alert.
-        const errorData = await response.json();
-        console.error("Signup error:", errorData);
-        alert(`An error occurred during signup: ${errorData.message}`);
+        navigate("/"); // Replace with your desired path
       }
     } catch (error) {
       // Handle any errors that occur during signup and display an alert.
@@ -66,7 +49,19 @@ export const Register = () => {
   // Render the component content.
   return (
     <>
-      <Navbar />
+      <nav>
+        {/* Create a navigation menu with links to the login and sign-up routes. */}
+        <ul className="app-ul">
+          <li className="app-li">
+            <Link to="/">Login</Link>
+          </li>
+          <li className="app-li">
+            <Link to="/register">Sign Up</Link>
+          </li>
+        </ul>
+      </nav>
+      {/* Render the 'Logos' component. */}
+      <Logos />
       <div>
         {/* Display the heading and paragraphs. */}
         <h2>{text.heading}</h2>
@@ -93,10 +88,9 @@ export const Register = () => {
             onChange={(e) => setPassword(e.target.value)}
           />
           {/* Create a button for signing up and attach the 'onSignupClick' event handler. */}
-          <button className="login" onClick={onSignupClick}>Sign Up</button>
+          <button onClick={onSignupClick}>Sign Up</button>
         </div>
       </div>
-      <Footer />
     </>
   );
 };

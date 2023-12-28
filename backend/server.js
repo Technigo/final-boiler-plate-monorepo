@@ -3,10 +3,9 @@ import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
 dotenv.config();
-import taskRoutes from "./routes/taskRoutes";
+
 import userRoutes from "./routes/userRoutes";
 import habitRoutes from "./routes/habitRoutes";
-import loginRoutes from "./routes/loginRoutes";
 import { connectDB } from "./config/db";
 
 const port = process.env.PORT;
@@ -17,7 +16,6 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 // Use the routes for handling API requests
-app.use(taskRoutes);
 app.use(userRoutes);
 app.use(habitRoutes); // Use the habit-controlled routes for habit-related requests
 

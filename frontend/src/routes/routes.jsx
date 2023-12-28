@@ -2,7 +2,7 @@
 import { Route } from "react-router-dom";
 import { MyPage } from "../pages/MyPage";
 import { Register } from "../pages/Register";
-import { Tasks } from "../pages/Tasks";
+import { Habits } from "../pages/Habits";
 import { Startpage } from "../pages/Startpage";
 import { AboutUs } from "../pages/AboutUs";
 import { Articles } from "../pages/Articles";
@@ -13,7 +13,7 @@ const routes = (
   <>
     <Route path="/" element={<Startpage />} />
     <Route path="/mypage" element={<MyPage />} />
-    <Route path="/tasks" element={<Tasks />} />
+    <Route path="/habits" element={<Habits />} />
     <Route path="/register" element={<Register />} />
     <Route path="*" element={<NotFound />} />
     <Route path="/aboutus" element={<AboutUs />} />

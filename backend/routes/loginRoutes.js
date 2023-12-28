@@ -5,30 +5,8 @@ import crypto from "crypto";
 import bcrypt from "bcrypt";
 import listEndpoints from 'express-list-endpoints';
 
-const mongoUrl = process.env.MONGO_URL || "mongodb://127.0.0.1/auth";
-mongoose.connect(mongoUrl, { useNewUrlParser: true, useUnifiedTopology: true });
-mongoose.Promise = Promise;
 
-const User = mongoose.model('User', {
-  name: {
-    type: String,
-    unique: true
-  },
-  email: {
-    type: String,
-    unique: true,
-    required: true
-  },
-  password: {
-    type: String,
-    required: true
-  },
-  accessToken: {
-    type: String,
-    default: () => crypto.randomBytes(128).toString('hex')
-  }
-});
-
+const router = express.Router();
 const authenticateUser = async (req, res, next) => {
   const accessToken = req.header('Authorization');
 
@@ -46,13 +24,13 @@ const authenticateUser = async (req, res, next) => {
   }
 };
 
-app.get("/", (req, res) => {
+router.get("/", (req, res) => {
   const endpoints = listEndpoints(app);
   res.json(endpoints);
 });
 
 
-app.post('/users', async (req, res) => {
+router.post('/users', async (req, res) => {
   try {
     console.log('Received registration request:', req.body);
     const { name, email, password } = req.body;
@@ -80,7 +58,7 @@ app.post('/users', async (req, res) => {
   }
 });
 
-app.post('/sessions', async (req, res) => {
+router.post('/sessions', async (req, res) => {
   try {
     const { email, password } = req.body;
     const user = await User.findOne({ email });
@@ -95,8 +73,8 @@ app.post('/sessions', async (req, res) => {
   }
 });
 
-app.use('/secrets', authenticateUser);
-app.get('/secrets', (req, res) => {
+router.use('/secrets', authenticateUser);
+router.get('/secrets', (req, res) => {
   const { name } = req.user;
 
   res.json({ secret: `Hello, ${name}! This is a secret message for logged-in users` });
