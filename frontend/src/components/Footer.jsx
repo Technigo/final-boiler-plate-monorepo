@@ -8,8 +8,9 @@ const StyledFooter = styled.div`
   flex-direction: column;
   padding: 20px 0;
   text-align: center;
-  position: relative;
+  position: absolute;
   bottom: 0;
+  width: 100%;
 
   background: -webkit-linear-gradient(
     45deg,
@@ -31,6 +32,15 @@ const FooterText = styled.div`
   align-items: center;
   color: #f8f8f8;
   font-size: 16px;
+
+  @media screen and (min-width: 768px) {
+    .contact-wrapper {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      gap: 50px;
+    }
+  }
 `;
 
 const Contact = styled.div`
@@ -74,14 +84,20 @@ export const Footer = () => {
   return (
     <StyledFooter>
       <FooterText>
-        <Contact>
-          <p>Anna Robertsson</p>
-          <SocialMediaLinks person="Anna" />
-        </Contact>
-        <Contact>
-          <p>Susanne Ekenheim</p>
-          <SocialMediaLinks person="Susanne" />
-        </Contact>
+        <div className="contact-wrapper">
+          <div className="anna-wrapper">
+            <Contact>
+              <p>Anna Robertsson</p>
+              <SocialMediaLinks person="Anna" />
+            </Contact>
+          </div>
+          <div className="susanne-wrapper">
+            <Contact>
+              <p>Susanne Ekenheim</p>
+              <SocialMediaLinks person="Susanne" />
+            </Contact>
+          </div>
+        </div>
         {/* <Copyright> */}
         <p>Web Development students at Technigo | January 2024</p>
         {/* <p className="separator"> | </p> */}
