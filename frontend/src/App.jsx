@@ -7,6 +7,7 @@ export const App = () => {
   const [username, setUsername] = useState("")
   const [password, setPassword] = useState("")
   const [showAuthSection, setShowAuthSection] = useState(false)
+  const [isLoggedIn, setIsLoggedIn] = useState(false)
 
   // event handler for when the user is ready to proceed, with playing video enough
   const onReady = (event) => {
@@ -69,6 +70,7 @@ export const App = () => {
 
       const data = await response.json()
       console.log(data)
+      setIsLoggedIn(true)
     } catch (error) {
       console.error("couldnt register", error)
     }
@@ -86,6 +88,7 @@ export const App = () => {
 
       const data = await response.json()
       console.log(data)
+      setIsLoggedIn(true)
     } catch (error) {
       console.error("couldnt login", error)
     }
@@ -103,7 +106,7 @@ export const App = () => {
         />
       </header>
       <div>
-        {displayText}
+        {isLoggedIn ? "you are freezing ..." : displayText}
         {showAuthSection && (
         <div>
           <input

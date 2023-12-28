@@ -35,6 +35,7 @@ const UserModel = mongoose.model('Cat', userSchema, 'cats')
 const registerUserController = asyncHandler(async (req,res) => {
   const { username, password } = req.body
   try {
+    console.log("Received registration request:", { username, password })
     if (!username || !password) {
       res.status(400)
       throw new Error("Please add all fields")
@@ -62,6 +63,7 @@ const registerUserController = asyncHandler(async (req,res) => {
       },
     })
   } catch (e) {
+    console.error("Registration Error:", e.message)
     res.status(500).json({ success: false, response: e.message })
   }
 })
@@ -69,6 +71,7 @@ const registerUserController = asyncHandler(async (req,res) => {
 const loginUserController = asyncHandler(async (req, res) => {
   const { username, password } = req.body
   try {
+    console.log("Received login request:", { username, password })
     const user = await UserModel.findOne({ username })
     if (!user) {
       return res
@@ -90,6 +93,7 @@ const loginUserController = asyncHandler(async (req, res) => {
       }
     })
   } catch (e) {
+    console.error("Login Error:", e.message)
     res.status(500).json({ success: false, response: e.message })
   }
 })
