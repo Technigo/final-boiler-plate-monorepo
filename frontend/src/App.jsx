@@ -6,6 +6,7 @@ export const App = () => {
   const [isVideoPlaying, setIsVideoPlaying] = useState(false)
   const [username, setUsername] = useState("")
   const [password, setPassword] = useState("")
+  const [showAuthSection, setShowAuthSection] = useState(false)
 
   // event handler for when the user is ready to proceed, with playing video enough
   const onReady = (event) => {
@@ -48,6 +49,7 @@ export const App = () => {
     if (isVideoPlaying) {
       const timeoutId = setTimeout(() => {
         setDisplayText("it is dark and cold ...")
+        setShowAuthSection(true) // show the register/login section
       }, 10000)
 
       // clenup function to cancel the timeout if the component unmounts or video stops playing
@@ -102,10 +104,22 @@ export const App = () => {
       </header>
       <div>
         {displayText}
-        <input type="text" placeholder="name" onChange={(e) => setUsername(e.target.value)} />
-        <input type="password" placeholder="secret" onChange={(e) => setPassword(e.target.value)}/>
-        <button onClick={handleRegister}>start</button>
-        <button onClick={handleLogin}>load</button>
+        {showAuthSection && (
+        <div>
+          <input
+            type="text"
+            placeholder="name"
+            onChange={(e) => setUsername(e.target.value)}
+          />
+          <input
+            type="password"
+            placeholder="secret"
+            onChange={(e) => setPassword(e.target.value)}
+          />
+          <button onClick={handleRegister}>start</button>
+          <button onClick={handleLogin}>load</button>
+        </div>
+      )}
       </div>
     </div>
   )
