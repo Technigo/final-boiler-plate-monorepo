@@ -130,9 +130,9 @@ export const BookingListComponent = ({ fetchAllBookings, fetchUnHandledBookings 
                                     <div>
                                         {/* Display various details about the booking */}
                                         {/* Name, age weight*/}
-                                        <ParagraphComponent className="py-0 pt-12 lg:py-0 lg:pt-12" text={`${booking.name}, ${booking.age} years old`} category="Name" />
-                                        <ParagraphComponent className="py-0 pt-12 lg:py-0 lg:pt-2" text={`${booking.weight || "N/A"}`} category="Weight" />
-                                        <ParagraphComponent className="py-0 pt-12 lg:py-0 lg:pt-2" text={`${booking.height || "N/A"}`} category="Height" />
+                                        <ParagraphComponent className="py-0 pt-12 lg:py-0 lg:pt-1" text={`${booking.name}, ${booking.age} years old`} category="Name" />
+                                        <ParagraphComponent className="py-0 pt-12 lg:py-0 lg:pt-0" text={`${booking.weight || "N/A"}`} category="Weight" />
+                                        <ParagraphComponent className="py-0 pt-12 lg:py-0 lg:pt-0" text={`${booking.height || "N/A"}`} category="Height" />
 
                                         {/* Documentation, display only the true ones) */}
                                         {booking.film && <ParagraphComponent className="py-0 pt-12 lg:py-0 lg:pt-2" text="film: Yes" category="Documentation" />}

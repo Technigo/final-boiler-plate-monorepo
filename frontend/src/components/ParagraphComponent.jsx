@@ -10,7 +10,7 @@ import { FadeWrapper } from "./Fade";
  */
 export const ParagraphComponent = ({ text, className, category, ...rest }) => {
     // Default classes that can be customized
-    const defaultClasses = 'py-12 lg:py-12 text-lg font-josefin-sans max-w-4xl mx-auto';
+    const defaultClasses = 'py-12 lg:py-2 text-lg font-josefin-sans max-w-4xl mx-auto';
 
     return (
 
