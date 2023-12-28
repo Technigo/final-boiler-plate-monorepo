@@ -1,8 +1,8 @@
-// Import the 'mongoose' library to work with MongoDB
-import mongoose from "mongoose";
+// MIRELA SÅ LANGT
 
-// Import the 'dotenv' library to load environment variables from a .env file
+import mongoose from "mongoose";
 import dotenv from "dotenv";
+dotenv.config();// Load environment variables from the .env file
 
 // Load environment variables from the .env file
 dotenv.config();
