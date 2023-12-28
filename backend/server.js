@@ -53,6 +53,8 @@ const userSchema = new Schema(
 // // This model is used to interact with the "users" collection in the MongoDB database. It allows you to perform CRUD operations on user documents and provides methods for data validation based on the schema.
 // export const UserModel = mongoose.model("User", userSchema) 
 
+// In summary, this code defines a Mongoose schema (userSchema) that describes the structure of documents for users in a MongoDB collection. It also creates a Mongoose model (UserModel) associated with the "users" collection, which can be used to interact with the database and perform operations like creating, reading, updating, and deleting user documents.
+
 // but im tired of 'users' collection. i had long hard times with this collection before. so ill use 'cats' instead in this case 
 // no. im having err with this...
 // yes. i cant use User anyway bcs ive used that with w16s project. so lets use Cat instead xD
@@ -84,6 +86,34 @@ const connectDB = async () => {
     process.exit(1)
   }
 }
+
+// middleware for user authentication
+// Define a function called authenticateUser that takes a request (req), response (res), and a next function as parameters
+const authenticateUser = async (req, res, nest) => {
+  // Retrieve the access token from the request header
+  const accessToken = req.header("Authorization")
+  try {
+    // Find a user in the database using the retrieved access token
+    // Mongoose Method: UserModel.findOne({ accessToken: accessToken })
+    // Description: This line of code serves the purpose of authenticating a user based on the provided access token. It checks if a user with the specified accessToken exists in the database using the UserModel. If a user is found, their user document is stored in the user variable. This allows the middleware to add the user object to the request, making it available for subsequent middleware or routes. If no user is found, it prepares to send a 401 Unauthorized response to indicate that the user needs to log in. This code is an essential part of user authentication in the Node.js application and helps control access to protected routes or endpoints. 
+    const user = await UserModel.findOne({ accessToken: accessToken })
+    if (user) {
+      // If a user is found, add the user object to the request object
+      req.user = user // Add user to the request object 
+      next() // Continue to the next middleware or route 
+    } else {
+      // If no user is found, send a 401 Unauthorized response
+      res.status(401).json({ success: false, response: "Please log in" })
+    }
+  } catch (e) {
+    // Handle any errors that occur during the database query or user authentication
+    res.status(500).json({ success: false, response: e.message })
+  }
+}
+
+// SUMMARY
+
+//In this code, we have a function called authenticateUser that is used as middleware in a Node.js application. This middleware is responsible for checking the authorization header of an incoming request, searching for a user with the provided access token in the database using the UserModel, and adding the user object to the request if found. If no user is found or if there are any errors during the process, appropriate response are sent back to the client. In summary, this code is handling user authentication by checking the access token in the request header and verifying it against the database to grant access to protected routes or endpoints.
 
 // Use the routes for handling API requests
 // ROUTES - These routes USE controller functions ;)
