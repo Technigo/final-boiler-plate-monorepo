@@ -1,3 +1,5 @@
+// before i delete email here
+
 import express from "express"
 import cors from "cors"
 import dotenv from "dotenv"
@@ -21,6 +23,11 @@ const userSchema = new Schema(
       required: true, 
       minlength: 6, 
     },
+    email: {
+      type: String,
+      required: true,
+      unique: true,
+    },
     accessToken: {
       type: String, 
       default: () => crypto.randomBytes(128).toString("hex"), 
@@ -35,23 +42,28 @@ const UserModel = mongoose.model('Cat', userSchema, 'cats')
 
 // user controller function
 const registerUserController = asyncHandler(async (req,res) => {
-  const { username, password } = req.body
+  const { username, password, email } = req.body
   try {
-    if (!username || !password) {
+    if (!username || !email || !password) {
       res.status(400)
       throw new Error("Please add all fields")
     }
-    const existingUser = await UserModel.findOne({ username })
+    const existingUser = await UserModel.findOne({
+      $or: [{ username }, { email }],
+    })
     if (existingUser) {
       res.status(400)
       throw new Error(
-        `User with username ${username} already exists`
+        `User with ${
+          existingUser.username === username ? "username" : "email"
+        } already exists`
       )
     }
     const salt = bcrypt.genSaltSync(10)
     const hashedPassword = bcrypt.hashSync(password, salt)
     const newUser = new UserModel({
       username,
+      email,
       password: hashedPassword,
     })
     await newUser.save()
@@ -59,6 +71,7 @@ const registerUserController = asyncHandler(async (req,res) => {
       success: true,
       response: {
         username: newUser.username,
+        email: newUser.email,
         id: newUser._id,
         accessToken: newUser.accessToken,
       },
