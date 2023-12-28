@@ -40,10 +40,10 @@ export const Register = () => {
 
   // Text content for the heading and paragraphs.
   const text = {
-    heading: "SignUp Page",
-    intro: "signup here...",
+    heading: "HabitFlow",
+    intro: "Start your journey towards a better you: Set goals, track progress, and achieve your best self with us",
     loremIpsum:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore, vitae fugit ipsam quo accusantium autem officia necessitatibus ullam voluptati",
+      "Sign up here and become a member today!",
   };
 
   // Render the component content.

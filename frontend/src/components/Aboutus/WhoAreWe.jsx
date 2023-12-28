@@ -22,13 +22,13 @@ const WhoAreWe = () => {
                 </div>
             </div>
             <div className="whoarewe-info">
-                <img src="/lisa.JPG" alt="picture of lisa" />
+                <img src="/Linnea.jpg" alt="picture of linnea" />
                 <div className="whoarewe-text">
                     <h3>{t("I'm")} Linnea Johansson</h3>
                     <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web</p>
                     <div className="icons">
-                        <a href="#" className="icon" target="_blanc"><img className="icon" src="/github.png" alt="github" /></a>
-                        <a href="#" className="icon" target="_blanc"><img className="icon" src="/linkedin.png" alt="linkedin" /></a>
+                        <a href="https://github.com/JohanssonLinnea" className="icon" target="_blanc"><img className="icon" src="/github.png" alt="github" /></a>
+                        <a href="https://www.linkedin.com/in/linnea-johansson-68886828a/" className="icon" target="_blanc"><img className="icon" src="/linkedin.png" alt="linkedin" /></a>
                         <a href="#" className="icon" target="_blanc"><img className="icon" src="/portfolio.png" alt="portfolio" /></a>
                     </div>
                 </div>
