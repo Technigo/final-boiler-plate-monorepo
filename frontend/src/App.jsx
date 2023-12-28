@@ -4,6 +4,8 @@ import YouTube from "react-youtube"
 export const App = () => {
   const [displayText, setDisplayText] = useState("you are alone in the dark ...")
   const [isVideoPlaying, setIsVideoPlaying] = useState(false)
+  const [username, setUsername] = useState("")
+  const [password, setPassword] = useState("")
 
   // event handler for when the user is ready to proceed, with playing video enough
   const onReady = (event) => {
@@ -53,6 +55,40 @@ export const App = () => {
     }
   }, [isVideoPlaying])
 
+  const handleRegister = async () => {
+    try {
+      const response = await fetch("http://localhost:3000/register", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ username, password })
+      })
+
+      const data = await response.json()
+      console.log(data)
+    } catch (error) {
+      console.error("couldnt register", error)
+    }
+  }
+
+  const handleLogin = async () => {
+    try {
+      const response = await fetch("http://localhost:3000/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ username, password }),
+      })
+
+      const data = await response.json()
+      console.log(data)
+    } catch (error) {
+      console.error("couldnt login", error)
+    }
+  }
+
   return (
     <div>
       <header>
@@ -66,6 +102,10 @@ export const App = () => {
       </header>
       <div>
         {displayText}
+        <input type="text" placeholder="name" onChange={(e) => setUsername(e.target.value)} />
+        <input type="password" placeholder="secret" onChange={(e) => setPassword(e.target.value)}/>
+        <button onClick={handleRegister}>start</button>
+        <button onClick={handleLogin}>load</button>
       </div>
     </div>
   )

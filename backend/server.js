@@ -14,12 +14,10 @@ const userSchema = new Schema(
       type: String, 
       required: true, 
       unique: true, 
-      minlength: 2, 
     },
     password: {
       type: String, 
       required: true, 
-      minlength: 6, 
     },
     accessToken: {
       type: String, 
