@@ -14,12 +14,12 @@ const StyledLogoText = styled.img`
 
   @media screen and (min-width: 550px) {
     width: 400px;
-    height: 300px;
+    height: 200px;
   }
 
   @media screen and (min-width: 800px) {
     width: 500px;
-    height: 400px;
+    height: 200px;
   }
 `;
 
