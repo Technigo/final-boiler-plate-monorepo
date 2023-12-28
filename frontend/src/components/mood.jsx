@@ -81,43 +81,85 @@ background-color: #FFCCD5;
 `;
 
 const MoodSelector = () => {
-  const { moods, selectedMoods, fetchMoods, setSelectedMoods, fetchResults } = useRestaurantStore();
+  const {
+    selectedOccasion,
+    fetchMoodsForOccasion,
+    moods,
+    selectedMoods,
+    setSelectedMoods, 
+    fetchResults,
+  } = useRestaurantStore();
+
   const [resultsButtonClicked, setResultsButtonClicked] = useState(false);
 
   useEffect(() => {
-    setSelectedMoods([]);
-    fetchMoods();
-  }, [fetchMoods, setSelectedMoods]);
+    if (selectedOccasion) {
+      fetchMoodsForOccasion(selectedOccasion);
+    }
+  }, [fetchMoodsForOccasion, selectedOccasion]);
 
-  const handleMoodClick = (mood) => {
-    setSelectedMoods(prevSelectedMoods => {
-      // Check if the mood is already selected
-      if (prevSelectedMoods.includes(mood)) {
-        // If so, remove it from the array
-        return prevSelectedMoods.filter(selectedMood => selectedMood !== mood);
+  const handleMoodClick = mood => {
+    if (selectedMoods.includes(mood)) {
+      setSelectedMoods(prevSelectedMoods =>
+        prevSelectedMoods.filter(selectedMood => selectedMood !== mood)
+      );
+    } else {
+      if (selectedMoods.length < 3) {
+        setSelectedMoods([...selectedMoods, mood]);
       } else {
-        // If the mood is not selected and we have less than 3 moods selected,
-        // add this mood to the array
-        if (prevSelectedMoods.length < 3) {
-          return [...prevSelectedMoods, mood];
-        }
-        // If already 3 moods are selected, return the array as is
         console.log('You can select up to 3 moods.');
-        return prevSelectedMoods;
       }
-    });
+    }
   };
-  
-  
 
   const handleResultsButtonClick = async () => {
     if (selectedMoods.length > 0 && selectedMoods.length <= 3) {
-      setResultsButtonClicked(true); // Set the state to true when the button is clicked
+      setResultsButtonClicked(true);
       await fetchResults(selectedMoods);
     } else {
       console.log('Please select between 1 and 3 moods.');
     }
   };
+
+//Malin testar att göra om funktionerna för att få koden att registrera vilka moods som valts, därav utkommenterat tidigare kod
+// const MoodSelector = () => {
+//   const { moods, selectedMoods, fetchMoods, setSelectedMoods, fetchResults } = useRestaurantStore();
+//   const [resultsButtonClicked, setResultsButtonClicked] = useState(false);
+
+//   useEffect(() => {
+//     setSelectedMoods([]);
+//     fetchMoods();
+//   }, [fetchMoods, setSelectedMoods]);
+
+//   const handleMoodClick = (mood) => {
+//     setSelectedMoods(prevSelectedMoods => {
+//       // Check if the mood is already selected
+//       if (prevSelectedMoods.includes(mood)) {
+//         // If so, remove it from the array
+//         return prevSelectedMoods.filter(selectedMood => selectedMood !== mood);
+//       } else {
+//         // If the mood is not selected and we have less than 3 moods selected,
+//         // add this mood to the array
+//         if (prevSelectedMoods.length < 3) {
+//           return [...prevSelectedMoods, mood];
+//         }
+//         // If already 3 moods are selected, return the array as is
+//         console.log('You can select up to 3 moods.');
+//         return prevSelectedMoods;
+//       }
+//     });
+//   };
+  
+  
+
+//   const handleResultsButtonClick = async () => {
+//     if (selectedMoods.length > 0 && selectedMoods.length <= 3) {
+//       setResultsButtonClicked(true); // Set the state to true when the button is clicked
+//       await fetchResults(selectedMoods);
+//     } else {
+//       console.log('Please select between 1 and 3 moods.');
+//     }
+//   };
 
 
   return (

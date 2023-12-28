@@ -43,15 +43,14 @@ export const useRestaurantStore = create((set) => ({
 
   fetchMoods: async () => {
     try {
-      console.log('Fetching moods...');
       set({ selectedMoods: [] });
-      const response = await fetch('http://localhost:3000/api/mood');
+      const { selectedOccasion } = useRestaurantStore.getState();
+      const response = await fetch(`http://localhost:3000/api/mood?occasion=${encodeURIComponent(selectedOccasion)}`);
       if (!response.ok) {
         throw new Error('Failed to fetch moods');
       }
 
       const moods = await response.json();
-      console.log('Fetched moods:', moods)
       // You might want to transform the moods data similarly to occasions
       // For example, if you want to capitalize the first letter:
       const capitalizedMoods = moods.map((mood) => capitalizeFirstLetter(mood.trim()));
@@ -60,6 +59,24 @@ export const useRestaurantStore = create((set) => ({
 
     } catch (error) {
       console.error('Error fetching moods:', error);
+    }
+  },
+
+  fetchMoodsForOccasion: async (occasion) => {
+    try {
+      set({ selectedMoods: [] });
+      const response = await fetch(`http://localhost:3000/api/mood?occasion=${encodeURIComponent(occasion)}`);
+      if (!response.ok) {
+        throw new Error('Failed to fetch moods for occasion');
+      }
+
+      const moods = await response.json();
+      const capitalizedMoods = moods.map((mood) => capitalizeFirstLetter(mood.trim()));
+      
+      set({ moods: capitalizedMoods });
+
+    } catch (error) {
+      console.error('Error fetching moods for occasion:', error);
     }
   },
 
@@ -88,7 +105,7 @@ export const useRestaurantStore = create((set) => ({
     const { selectedOccasion, selectedMoods } = useRestaurantStore.getState();
   
   try {
-    const apiUrl = 'http://localhost:3000/restaurants/search';
+    const apiURL = 'http://localhost:3000/restaurants/search';
     const queryParams = new URLSearchParams({
       occasion: encodeURIComponent(selectedOccasion),
       mood: selectedMoods.map(mood => encodeURIComponent(mood)).join(',')
