@@ -84,7 +84,7 @@ const OccasionSelectorContainer = styled.div`
 
 
 const OccasionSelector = () => {
-  const { occasions, selectedOccasion, fetchOccasions, fetchMoods, setSelectedOccasion } = useRestaurantStore();
+  const { occasions, selectedOccasion, fetchOccasions, fetchMoodsForOccasion, setSelectedOccasion } = useRestaurantStore();
 
   useEffect(() => {
     setSelectedOccasion(null);
@@ -93,7 +93,7 @@ const OccasionSelector = () => {
 
   const handleOccasionSelect = async (occasion) => {
     setSelectedOccasion(occasion);
-    await fetchMoods();
+    await fetchMoodsForOccasion();
   };
 
   return (

@@ -44,29 +44,29 @@ export const useRestaurantStore = create((set) => ({
     set({ selectedOccasion: occasion });
   },
 
-  fetchMoods: async () => {
-    try {
-      set({ selectedMoods: [] });
-      const { selectedOccasion } = useRestaurantStore.getState();
-      console.log('Fetching moods for occasion:', selectedOccasion);
-      const response = await fetch(`http://localhost:3000/api/mood?occasion=${encodeURIComponent(selectedOccasion)}`);
-      if (!response.ok) {
-        throw new Error('Failed to fetch moods');
-      }
+  // fetchMoods: async () => {
+  //   try {
+  //     set({ selectedMoods: [] });
+  //     const { selectedOccasion } = useRestaurantStore.getState();
+  //     console.log('Fetching moods for occasion:', selectedOccasion);
+  //     const response = await fetch(`http://localhost:3000/api/mood?occasion=${encodeURIComponent(selectedOccasion)}`);
+  //     if (!response.ok) {
+  //       throw new Error('Failed to fetch moods');
+  //     }
 
-      const moods = await response.json();
-      // You might want to transform the moods data similarly to occasions
-      // For example, if you want to capitalize the first letter:
-      const capitalizedMoods = moods.map((mood) => capitalizeFirstLetter(mood.trim()));
+  //     const moods = await response.json();
+  //     // You might want to transform the moods data similarly to occasions
+  //     // For example, if you want to capitalize the first letter:
+  //     const capitalizedMoods = moods.map((mood) => capitalizeFirstLetter(mood.trim()));
 
-      console.log('Fetched moods:', capitalizedMoods);
+  //     console.log('Fetched moods:', capitalizedMoods);
 
-      set({ moods: capitalizedMoods });
+  //     set({ moods: capitalizedMoods });
 
-    } catch (error) {
-      console.error('Error fetching moods:', error);
-    }
-  },
+  //   } catch (error) {
+  //     console.error('Error fetching moods:', error);
+  //   }
+  // },
 
   fetchMoodsForOccasion: async (occasion) => {
     try {
