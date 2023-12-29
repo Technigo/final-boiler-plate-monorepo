@@ -12,6 +12,7 @@ const imageUrls = [
 export const CollectionRecipe = ({ recipe, index }) => {
   // Calculate the index of the image to use based on the recipe index
   const imageIndex = index % imageUrls.length;
+  const selectedImageUrl = imageUrls[imageIndex]
 
   return (
     <Link
@@ -20,7 +21,7 @@ export const CollectionRecipe = ({ recipe, index }) => {
     >
       <section className="collection-recipe-card">
         <div className="collection-recipe-image-container">
-          <img src={imageUrls[imageIndex]} alt={recipe.title} />
+          <img src={selectedImageUrl} alt={recipe.title} />
         </div>
         <h2>{recipe.title}</h2>
 

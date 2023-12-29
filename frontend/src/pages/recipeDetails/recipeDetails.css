@@ -1,4 +1,22 @@
-.recipe-details h1{
-font-size: 32px;
-font-weight: 300;
+.recipe-details  {
+  line-height: 1.25;
+}
+.recipe-details h1 {
+  font-size: 32px;
+  font-weight: 400;
+}
+
+.recipe-details .users-input {
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-size: 13px;
+}
+
+.recipe-details .description {
+   font-family: "Nunito", sans-serif
+}
+
+.recipe-details img {
+  width: 100%;
+  height: 100vw; /* Set the height to be equal to the viewport width */
+  object-fit: cover; /* Maintain aspect ratio and cover the container */
 }
