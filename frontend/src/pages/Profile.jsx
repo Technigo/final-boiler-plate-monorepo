@@ -1,5 +1,4 @@
 import { ProfilePhotoUser } from "../components/ProfilePhoto/ProfilePhotoUser";
-//import { FeedTaskCard } from "../components/TaskCards/FeedTaskCard";
 import { userStore } from "../stores/userStore";
 import { taskStore } from "../stores/taskStore";
 import styled from "styled-components";
@@ -21,11 +20,13 @@ const ProfilePhotoUserWrapper = styled.div`
 
 export const Profile = () => {
   const { username, selectedGender, handleGenderChange } = userStore(); // Destructure selectedGender and setSelectedGender from Zustand store
-  const { userTasks, fetchUserTasks } = taskStore();
+  const { userTasks, fetchUserTasks, volunteeredTasks, fetchVolunteeredTasks } =
+    taskStore();
 
   useEffect(() => {
     fetchUserTasks();
-  }, [fetchUserTasks]);
+    fetchVolunteeredTasks();
+  }, [fetchUserTasks, fetchVolunteeredTasks]);
 
   //const tasks = userTasks;
   console.log(userTasks);
@@ -84,24 +85,23 @@ export const Profile = () => {
       <p>Description: {description}</p> */}
 
       <div>
-        <h3>Created Tasks</h3>
+        <h3>Tasks you have created:</h3>
         <ul>
           {userTasks.map((task) => (
             <li key={task._id}>
               {task.task}
               {task.description}
             </li>
-            //<FeedTaskCard key={task._id} task={task} />
           ))}
         </ul>
       </div>
 
       <div>
-        <h3>Volunteered Tasks</h3>
+        <h3>Tasks you have volunteered to:</h3>
         <ul>
-          {/* {volunteeredTasks.map((task) => (
+          {volunteeredTasks.map((task) => (
             <li key={task._id}>{task.task}</li>
-          ))} */}
+          ))}
         </ul>
       </div>
     </div>

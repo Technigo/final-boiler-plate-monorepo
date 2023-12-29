@@ -21,8 +21,7 @@ const userSchema = new Schema(
       default: () => crypto.randomBytes(128).toString("hex"), // Sets a default value using a cryptographic random string
     },
   },
-  //    taskIds: [{ type: Schema.Types.ObjectId, ref: "Task" }], //  The user's task ids
-  //  },
+
   {
     timestamps: true,
   }

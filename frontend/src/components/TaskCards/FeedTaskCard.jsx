@@ -1,14 +1,14 @@
-import { useState } from "react";
-import Modal from "react-modal";
-import { Button } from "../Buttons/Button";
+import { useState, useEffect } from "react";
 import { GiGardeningShears } from "react-icons/gi";
 import { MdPets } from "react-icons/md";
 import { TiShoppingCart } from "react-icons/ti";
 import { GiHammerNails } from "react-icons/gi";
 import { MdMiscellaneousServices } from "react-icons/md";
-import styled from "styled-components";
+import { Button } from "../Buttons/Button";
 import { IconButton } from "../Buttons/IconButton";
-import { useEffect } from "react";
+import { taskStore } from "../../stores/taskStore";
+import Modal from "react-modal";
+import styled from "styled-components";
 
 // Styled components for the FeedTaskCard modal
 const StyledFeedCardModal = styled.div`
@@ -52,6 +52,9 @@ export const FeedTaskCard = ({ task }) => {
     backgroundColor: "#ffffff",
   };
 
+  // Destructure the addMyselfToTask (volunteer) action from the taskStore
+  const { addMyselfToTask } = taskStore();
+
   // State to manage the modal
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -61,6 +64,25 @@ export const FeedTaskCard = ({ task }) => {
 
   const closeModal = () => {
     setIsModalOpen(false);
+  };
+
+  // Convert createdAt to a Date object
+  const createdAtDate = new Date(task.createdAt);
+
+  // Format createdAt date to display only date
+  const formattedCreatedAt = createdAtDate
+    .toLocaleDateString("sv-SE", {
+      // Format date to Swedish locale
+      year: "numeric", // Format year to 4 digits
+      month: "2-digit", // Format month to 2 digits
+      day: "2-digit", // Format day to 2 digits
+    })
+    .replace(/\//g, "/"); // Replace slashes with dashes
+
+  // Add current user as a volunteer to a specific task
+  const addMyselfToTaskClick = () => {
+    console.log(task._id);
+    addMyselfToTask(task._id);
   };
 
   useEffect(() => {
@@ -85,7 +107,7 @@ export const FeedTaskCard = ({ task }) => {
           <h3>{task.task}</h3>
           <p>{category}</p>
           <p>{area}</p>
-          <p>Posted: {task.createdAt}</p>
+          <p>Posted: {formattedCreatedAt}</p>
           <Button
             onClick={openModal}
             className="show-more-button"
@@ -109,25 +131,24 @@ export const FeedTaskCard = ({ task }) => {
         }}
       >
         <StyledFeedCardModal>
-          {/* <h2>Feed Task Modal Content</h2> */}
-
           {CategoryIcon && <CategoryIcon size={iconSize} />}
 
           {/* Button to close the modal */}
-
           <Button
             onClick={closeModal}
             className="closeModal-btn"
             buttonName="X"
           />
+          {/* Modal content */}
           <h3>{task.task}</h3>
           <p>{category}</p>
           <p>{area}</p>
           <p>{task.description}</p>
-          <p>{task.createdAt}</p>
+          <p>Posted: {formattedCreatedAt}</p>
+
           {/* Button to offer help */}
           <IconButton
-            //onClick={onClick}
+            onClick={addMyselfToTaskClick}
             className="offer-help-button"
             buttonName="Lend a helping hand"
             iconAlt="Logo showing two shaking hands forming a heart"
