@@ -8,6 +8,7 @@ export const App = () => {
   const [password, setPassword] = useState("")
   const [showAuthSection, setShowAuthSection] = useState(false)
   const [isLoggedIn, setIsLoggedIn] = useState(false)
+  const [registrationError, setRegistrationError] = useState(null)
 
   // event handler for when the user is ready to proceed, with playing video enough
   const onReady = (event) => {
@@ -89,15 +90,21 @@ export const App = () => {
         // registration successful, proceed with login
         setIsLoggedIn(true)
         setShowAuthSection(false) // hide this after registration
+        setRegistrationError(null) // reset regi err if regi is successful // idk i need this here
       } else {
         // registration failed. would be better handle accordingly 
         // for now, just logging err msg
         console.error("cant register:", data.response)
+        // registration failed. set the err msg in state
+        const errorMessage = data.response || "cant register"
+        setRegistrationError(errorMessage)
       }
 
       console.log("isLoggedIn:", isLoggedIn)
     } catch (error) {
       console.error("couldnt register", error)
+      // set err msg if there is exception
+      setRegistrationError("couldnt register")
     }
   }
 
@@ -149,6 +156,8 @@ export const App = () => {
           />
           <button onClick={handleRegister}>start</button>
           <button onClick={handleLogin}>load</button>
+          <br/>
+          <div style={{ color: 'red' }}>{registrationError}</div>
         </div>
       )}
       </div>
