@@ -2,6 +2,7 @@
 import { userStore } from "../stores/userStore";
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from 'react-i18next';
 import { Link } from "react-router-dom";
 import { useMediaQuery } from "react-responsive";
 import Navbar from "../components/Navbar";
@@ -47,6 +48,8 @@ export const Register = () => {
   const isMobile = useMediaQuery({ maxWidth: 393 });
   const isTablet = useMediaQuery({ minWidth: 394, maxWidth: 834 });
 
+  const { t } = useTranslation();
+
   useEffect(() => {
     const container = document.getElementById('calender-lottie-container');
 
@@ -78,30 +81,30 @@ export const Register = () => {
       )}
       <div className="register-container">
         <div id="calender-lottie-container" className="calender-lottie-container" />
-        <h2>Start your journey towards a better you:</h2>
-        <h3>Set goals, track progress, and achieve your best self with us.</h3>
-        <h3>Sign up here and become a member today!</h3>
+        <h2>{t("Start your journey towards a better you")}</h2>
+        <h3>{t("Set goals, track progress, and achieve your best self with us.")}</h3>
+        <h3>{t("Sign up here and become a member today!")}</h3>
         <div className="user-registration">
           <input
             type="text"
-            placeholder="Email"
+            placeholder={t("Email")}
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
           <input
             type="text"
-            placeholder="Username"
+            placeholder={t("Username")}
             value={username}
             onChange={(e) => setUsername(e.target.value)}
           />
           <input
             type="password"
-            placeholder="Password"
+            placeholder={t("Password")}
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
           {/* Create a button for signing up and attach the 'onSignupClick' event handler. */}
-          <button className="register" onClick={onSignupClick}>Sign Up</button>
+          <button className="register" onClick={onSignupClick}>{t("Sign Up")}</button>
         </div>
       </div>
       <Footer />

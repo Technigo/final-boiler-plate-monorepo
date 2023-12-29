@@ -28,6 +28,11 @@ const resources = {
             "> See how many weeks you have finished": "> Se hur många veckor en vana varit aktiv",
             "> Up to 10 habits": "> Upp till 10 vanor",
 
+            "Start your journey towards a better you": "Starta din resa mot ett bättre jag",
+            "Set goals, track progress, and achieve your best self with us.": "Sätt mål, spåra dina framsteg och bli ditt bästa jag med oss.",
+            "Sign up here and become a member today!": "Bli medlem idag!",
+            "Sign Up": "Bli medlem",
+
             "At HabitFlow, we understand the profound impact that habits can have on shaping the course of one's life. Rooted in the belief that intentional habits are the building blocks of personal growth, we've crafted a dedicated platform to guide you on your journey towards positive change.": "På HabitFlow förstår vi den djupgående inverkan som vanor kan ha på att forma ens livs gång. Med rötter i tron ​​att avsiktliga vanor är byggstenarna för personlig tillväxt, har vi skapat en dedikerad plattform för att guida dig på din resa mot positiv förändring.",
             "Our Mission: Empowering Your Daily Choices": "Vårt uppdrag: Stärka dina dagliga val",
             "Our mission is simple yet transformative: to empower individuals to take control of their daily choices and steer them towards a life of purpose and fulfillment. We recognize that the smallest habits, when cultivated intentionally, can lead to profound transformations.": "Vårt uppdrag är enkelt men ändå transformerande: att ge individer möjlighet att ta kontroll över sina dagliga val och styra dem mot ett liv i syfte och tillfredsställelse. Vi inser att de minsta vanorna, när de odlas avsiktligt, kan leda till djupgående förvandlingar.",
