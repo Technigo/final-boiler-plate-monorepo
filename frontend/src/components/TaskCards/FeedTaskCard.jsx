@@ -17,14 +17,25 @@ const StyledFeedCardModal = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  /* .modal-content {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #f1f1f1;
+    padding: 14px 28px;
+    max-width: 500px;
+    min-width: 300px;
+  } */
 `;
 
-const StyledModalContent = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 20px; /* Add padding to the modal content */
-`;
+// const StyledModalContent = styled.div`
+//   display: flex;
+//   flex-direction: column;
+//   align-items: center;
+//   padding: 20px; /* Add padding to the modal content */
+// `;
 
 const iconSize = "50px"; // Define the icon size
 
@@ -87,17 +98,19 @@ export const FeedTaskCard = ({ task }) => {
   return (
     <>
       <StyledFeedCardModal style={{ backgroundColor }}>
-        <li key={_id}>
-          {CategoryIcon && <CategoryIcon size={iconSize} />}
-          <h3>{task.task}</h3>
-          <p>{category}</p>
-          <p>{area}</p>
-          <Button
-            onClick={openModal}
-            className="show-more-button"
-            buttonName="Show more"
-          />
-        </li>
+        <div className="modal-content">
+          <li key={_id}>
+            {CategoryIcon && <CategoryIcon size={iconSize} />}
+            <h3>{task.task}</h3>
+            <p>{category}</p>
+            <p>{area}</p>
+            <Button
+              onClick={openModal}
+              className="show-more-button"
+              buttonName="Show more"
+            />
+          </li>
+        </div>
       </StyledFeedCardModal>
 
       {/* Modal component */}
@@ -110,16 +123,16 @@ export const FeedTaskCard = ({ task }) => {
             backgroundColor: "rgba(49, 49, 49, 0.8)", // Change overlay background color
             width: "100vw",
             height: "100vh",
+            top: "0",
+            left: "0",
+            right: "0",
+            bottom: "0",
             position: "fixed",
           },
         }}
       >
         <StyledFeedCardModal>
-          {/* <h2>Feed Task Modal Content</h2> */}
-
           {CategoryIcon && <CategoryIcon size={iconSize} />}
-
-          {/* Button to close the modal */}
 
           <Button
             onClick={closeModal}
