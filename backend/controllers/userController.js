@@ -1,15 +1,7 @@
 import { UserModel } from "../models/UserModel";
-//asyncHandler: We use asyncHandler to simplify error handling in asynchronous code. It helps us avoid writing repetitive try-catch blocks by automatically catching errors and passing them to our error handling middleware. This makes our code cleaner and more readable, reducing the risk of unhandled exceptions that could crash the server.
-import asyncHandler from "express-async-handler";
-// bcrypt: We use bcrypt to securely hash and store passwords in our database. Storing plain-text passwords is a security risk, as it exposes user credentials in case of a data breach. bcrypt helps us hash passwords in a way that is computationally expensive and time-consuming for potential attackers, making it difficult to crack passwords even if the database is compromised. It enhances the overall security of user authentication in our application.
-import bcrypt from "bcrypt";
-// jwt (JSON Web Tokens): We use jwt for authentication and authorization. It allows us to create and verify tokens that contain user identity information, such as user IDs or roles. These tokens are often sent with requests to secure routes and verify that a user has the necessary permissions to access certain resources. JWTs are stateless and efficient, making them a popular choice for secure communication between the client and server.
-//import jwt from "jsonwebtoken";
-
-// Actual Functions here
-
-// -----------------------
-// -----------------------
+import asyncHandler from "../middleware/asyncHandler";
+import bcrypt from "bcrypt"; // Use bcrypt to securely hash and store passwords in our database.
+import { generateToken } from "../utils/generateToken";
 
 // @desc    Register new user
 // @route   POST api/register

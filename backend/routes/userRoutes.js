@@ -3,10 +3,13 @@ import {
   registerUserController,
   loginUserController,
   usersController,
-} from "../controllers/userController"; // Import controller functions for user registration and login
-// import { authenticateUser } from "../middleware/authenticateUser";
+} from "../controllers/userController";
+import {
+  authenticateUser,
+  authorizedAdmin,
+} from "../middleware/authenticateUser";
 
-// Create an instance of the Express router
+// Create an instance of the Express router.
 const router = express.Router();
 
 // REGISTER ROUTE: Handle user registration
@@ -38,7 +41,7 @@ export default router;
 // router
 //   .route("/register")
 //   .post(registerUserController)
-  
+
 //   // ADMIN route to GET list of all users.
 //   .get(usersController);
 
