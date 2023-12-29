@@ -78,14 +78,13 @@ export const Habits = () => {
       </nav>
       <div>
         <h2>{text.heading}</h2>
+        <hr />
         <p>{text.intro}</p>
         <p>{text.loremIpsum}</p>
-        {/* Render the 'Createhabit' component to add new habits. */}
-        <CreateHabit />
         {/* Conditional rendering based on the number of Habits. */}
         {habits.length === 0 ? (
           <>
-            <p>No habits yet, go ahead and get moving!!...</p>
+            <p>No habits yet, go ahead and add some!</p>
           </>
         ) : (
           // Map through 'habits' and render habit items.
@@ -93,12 +92,16 @@ export const Habits = () => {
             <div key={habit._id} className="card-wrapper">
               <div className="">
                 <p>{habit.habit}</p>
-                <p>{finishedComponent(habit)}</p>
-                <button onClick={() => deleteHabitById(habit._id)}>Delete</button>
+                {finishedComponent(habit)}
+                <button className="trash" onClick={() => deleteHabitById(habit._id)}><img src="/trashcan.png" alt="delete" className="trash-icon" /></button>
               </div>
+
             </div>
           ))
         )}
+
+        {/* Render the 'Createhabit' component to add new habits. */}
+        <CreateHabit />
       </div>
       <Footer />
     </>

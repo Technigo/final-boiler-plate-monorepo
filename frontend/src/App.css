@@ -88,13 +88,13 @@ button {
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: #1a1a1a;
   cursor: pointer;
   transition: border-color 0.25s;
+  background-color: none;
 }
 
 button:hover {
-  border-color: #646cff;
+  border-color: none;
 }
 
 button:focus,
@@ -113,17 +113,6 @@ button:focus-visible {
   }
 }
 
-/* Apply styles to elements with the 'logo' class */
-.logo {
-  height: 2.5em;
-  /* Set height for logo images */
-  padding: 1.5em;
-  /* Add padding around logo images */
-  will-change: filter;
-  /* Specify a CSS property that may change */
-  transition: filter 300ms;
-  /* Apply a transition effect to the 'filter' property */
-}
 
 /* Apply styles to all list items */
 li {
@@ -216,7 +205,7 @@ li {
 .cta-block button {
   margin: 0.5em 0em;
   /* Add margin above and below buttons */
-  width: 100%;
+  width: 30%;
   /* Set the width of buttons to 100% */
 }
 
@@ -224,7 +213,6 @@ li {
 .cta-block button:nth-of-type(odd) {
   background: #7ae582;
   /* Set background color for odd buttons */
-  color: #fafafa;
   /* Set text color for odd buttons */
 }
 
@@ -232,6 +220,5 @@ li {
 .cta-block button:nth-of-type(even) {
   background: #bc4749;
   /* Set background color for even buttons */
-  color: #fafafa;
   /* Set text color for even buttons */
 }

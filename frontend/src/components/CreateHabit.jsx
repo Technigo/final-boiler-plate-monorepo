@@ -1,4 +1,3 @@
-// Import necessary dependencies and the 'habitStore' from the store.
 import { useState } from "react";
 import { habitStore } from "../stores/habitStore";
 import "./createhabit.css";
@@ -27,19 +26,19 @@ export const CreateHabit = () => {
   // Render the component content.
   return (
     <>
-      <div className="cta-block">
+      <div className="add-habits-container">
         {/* Create an input field for entering the Habit description. */}
         <input
           className="habit-input"
           type="text"
-          placeholder="enter habit"
+          placeholder="enter new habit"
           onChange={habitInput}
           value={habit}
         />
         {/* Create a button to trigger the 'addhabitLocal' function for adding the habit. */}
-        <button className="add-habit" onClick={addHabitLocal}>Add Habit</button>
+        <button className="add-habit" onClick={addHabitLocal}><img className="plus" src="/plus.png" /><br />Add Habit</button>
         {/* Create a button to trigger the 'deleteAllHabits' function to delete all Habits from the server. */}
-        <button onClick={deleteAllHabits}>Delete All My Habits</button>
+        <button className="delete-habit" onClick={deleteAllHabits}><img className="trash-icon" src="/trashcan.png" />Delete All My Habits</button>
       </div>
     </>
   );

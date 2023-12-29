@@ -16,7 +16,7 @@ const Navbar = () => {
                 <div className="nav-links1">
                     <Link to="/">{t('Home')}</Link>
                     <Link to="/aboutus">{t('About us')}</Link>
-                    <Link to="/home">{t('My page')}</Link>
+                    <Link to="/habits">{t('My page')}</Link>
                     <Link to="/articles">{t('Articles')}</Link>
                 </div>
                 <div className="nav-links2">
