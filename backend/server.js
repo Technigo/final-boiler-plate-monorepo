@@ -112,7 +112,7 @@ const upUserController = asyncHandler(async (req, res) => {
     // update the user's grid by decreasing the row by 1
     const upUser = await UserModel.findOneAndUpdate(
       { _id: user._id }, // find the user by id
-      { $inc: { 'grid.row': -1 } }, // decrease the row
+      { $inc: { 'grid.0.row': -1 } }, // decrease the row
       { new: true } // return the updated document
     )
     // save the updated user to the database
