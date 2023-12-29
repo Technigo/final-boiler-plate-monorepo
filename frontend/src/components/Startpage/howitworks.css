@@ -3,15 +3,19 @@
     flex-direction: row;
     justify-content: center;
     padding: 40px;
-    gap: 420px;
-}
-
-.how-it-works-container h1 {
-    color: #3EC3CE; 
+    gap: 230px;
+    margin-left: 60px;
 }
 
 .how-it-works-container h2 {
-    margin: 10px 0; 
+    color: #3EC3CE;
+    font-weight: 700;
+    font-size: 35px;
+}
+
+.how-it-works-container h3 {
+    font-weight: 400;
+    font-size: 20px;
 }
 
 .how-column {
@@ -36,7 +40,5 @@
     width: 70%;
     margin-left: 0px;
     padding-bottom: 40px;
-    position: relative; 
+    position: relative;
 }
-
-  

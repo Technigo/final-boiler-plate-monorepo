@@ -33,6 +33,7 @@ export const Habits = () => {
 
   // Initialize the 'navigate' function from React Router.
   const navigate = useNavigate();
+
   // Access the 'handleLogout' function from the 'userStore'.
   const storeHandleLogout = userStore((state) => state.handleLogout);
 
@@ -71,19 +72,11 @@ export const Habits = () => {
         {/* Create a navigation menu with links to the home, habits, and sign-out routes. */}
         <ul className="app-ul">
           <li className="app-li">
-            <Link to="/home">Home</Link>
-          </li>
-          <li className="app-li">
-            <Link to="/habits">habits</Link>
-          </li>
-          <li className="app-li">
             <button onClick={onLogoutClick}>Sign Out</button>
           </li>
         </ul>
       </nav>
-      {/* Render the 'Logos' component. */}
       <div>
-        {/* Display the heading and paragraphs. */}
         <h2>{text.heading}</h2>
         <p>{text.intro}</p>
         <p>{text.loremIpsum}</p>

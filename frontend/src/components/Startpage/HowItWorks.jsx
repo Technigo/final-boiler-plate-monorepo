@@ -8,17 +8,15 @@ const HowItWorks = () => {
     return (
         <div className="how-it-works-container">
             <div className="how-column">
-                <h1>{t("How it works")}</h1>
-                <h2>{t("> You choose your habits")}</h2>
-                <h2>{t("> Track your daily progress")}</h2>
-                <h2>{t("> See how your longest streak lasts")}</h2>
-                <h2>{t("> See how many weeks you have finished")}</h2>
-                <h2>{t("> Up to 10 habits")}</h2>
+                <h2>{t("How it works")}</h2>
+                <h3>{t("> You choose your habits")}</h3>
+                <h3>{t("> Track your daily progress")}</h3>
+                <h3>{t("> See how your longest streak lasts")}</h3>
+                <h3>{t("> See how many weeks you have finished")}</h3>
+                <h3>{t("> Up to 10 habits")}</h3>
             </div>
             <div className="welcome-column">
-                <h3>{t("Welcome, Emma!")}</h3>
-                <h3>{t("My habits")}</h3>
-                <hr />
+                <h3>{t("en bild här med en print sen på hur habit ser ut")}</h3>
             </div>
         </div>
     );
