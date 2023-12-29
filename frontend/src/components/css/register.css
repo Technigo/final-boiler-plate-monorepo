@@ -1,0 +1,48 @@
+.register-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.register-container h2 {
+    color: #3EC3CE;
+    font-family: 'Montserrat', sans-serif;
+    text-transform: uppercase;
+}
+
+.register-container h3 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 300;
+}
+
+.calender-lottie-container {
+    width: 600px;
+}
+
+.user-registration {
+    margin: 40px;
+}
+
+.register {
+    color: black;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
+    border-radius: 25px;
+    background-color: #3EC3CE;
+    width: 250px;
+    margin-bottom: 40px;
+    border: none;
+}
+
+.register:hover {
+    color: black;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
+    border-radius: 25px;
+    background-color: #E7FDFF;
+    width: 250px;
+    margin-bottom: 40px;
+    border: none;
+}

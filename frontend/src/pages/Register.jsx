@@ -1,12 +1,15 @@
 // Import necessary components, hooks, and stores.
 import { userStore } from "../stores/userStore";
-import { useState } from "react";
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { useMediaQuery } from "react-responsive";
 import Navbar from "../components/Navbar";
 import NavbarMobile from "../components/NavbarMobile";
 import Footer from "../components/Footer";
+import lottie from 'lottie-web';
+import calenderAnimationData from '../data/calender.json';
+import "../components/css/register.css";
 
 // Define the 'Register' functional component.
 export const Register = () => {
@@ -41,15 +44,27 @@ export const Register = () => {
     }
   };
 
-  // Text content for the heading and paragraphs.
-  const text = {
-    intro: "Start your journey towards a better you: Set goals, track progress, and achieve your best self with us",
-    loremIpsum:
-      "Sign up here and become a member today!",
-  };
-
   const isMobile = useMediaQuery({ maxWidth: 393 });
   const isTablet = useMediaQuery({ minWidth: 394, maxWidth: 834 });
+
+  useEffect(() => {
+    const container = document.getElementById('calender-lottie-container');
+
+    if (container) {
+      const animation = lottie.loadAnimation({
+        container,
+        animationData: calenderAnimationData,
+        renderer: 'svg',
+        loop: true,
+        autoplay: true,
+      });
+
+      // Cleanup the animation on component unmount
+      return () => {
+        animation.destroy();
+      };
+    }
+  }, [calenderAnimationData]);
 
   // Render the component content.
   return (
@@ -61,12 +76,12 @@ export const Register = () => {
       ) : (
         <Navbar />
       )}
-      <div>
-        {/* Display the heading and paragraphs. */}
-        <p>{text.intro}</p>
-        <p>{text.loremIpsum}</p>
+      <div className="register-container">
+        <div id="calender-lottie-container" className="calender-lottie-container" />
+        <h2>Start your journey towards a better you:</h2>
+        <h3>Set goals, track progress, and achieve your best self with us.</h3>
+        <h3>Sign up here and become a member today!</h3>
         <div className="user-registration">
-          {/* Create input fields for 'email', 'username', and 'password' and associate them with state variables. */}
           <input
             type="text"
             placeholder="Email"
@@ -86,7 +101,7 @@ export const Register = () => {
             onChange={(e) => setPassword(e.target.value)}
           />
           {/* Create a button for signing up and attach the 'onSignupClick' event handler. */}
-          <button onClick={onSignupClick}>Sign Up</button>
+          <button className="register" onClick={onSignupClick}>Sign Up</button>
         </div>
       </div>
       <Footer />
