@@ -5,21 +5,21 @@ import styled from "styled-components";
 
 // STYLING I .LOGO I APP.CSS ÄR DET SOM TAR STYLINGEN, JUSTERA
 const StyledLogoText = styled.img`
-  width: 300px;
-  height: 200px; /* Set height for logo images */
+  width: 200px;
+  height: 80px; /* Set height for logo images */
   object-fit: cover;
-  padding: 20px;
+  //padding: 20px;
   will-change: filter; /* Specify a CSS property that may change */
   transition: filter 300ms; /* Apply a transition effect to the 'filter' property */
 
-  @media screen and (min-width: 550px) {
-    width: 400px;
-    height: 200px;
+  @media screen and (min-width: 400px) {
+    width: 300px;
+    height: 100px;
   }
 
   @media screen and (min-width: 800px) {
-    width: 500px;
-    height: 200px;
+    width: 400px;
+    height: 125px;
   }
 `;
 

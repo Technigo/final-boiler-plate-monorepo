@@ -1,5 +1,5 @@
 // Import necessary components, hooks, and stores.
-import LogoText from "../components/LogoText";
+//import LogoText from "../components/LogoText";
 import { userStore } from "../stores/userStore";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -96,7 +96,7 @@ export const Register = () => {
     <>
       <StyledRegister>
         {/* Render the 'LogoText' component. */}
-        <LogoText />
+        {/* <LogoText /> */}
         <StyledIntroReg>
           {/* Display the heading and paragraphs. */}
           <h2>{text.heading}</h2>

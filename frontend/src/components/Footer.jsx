@@ -12,13 +12,22 @@ const StyledFooter = styled.div`
   bottom: 0;
   width: 100%;
 
-  background: -webkit-linear-gradient(
+  /* background: -webkit-linear-gradient(
     45deg,
     #42121d,
     #7b3848,
     #965862,
     #7b3848,
     #42121d
+  ); */
+
+  background: -webkit-linear-gradient(
+    45deg,
+    #633d57,
+    #9b6489,
+    #ad719a,
+    #9b6489,
+    #633d57
   );
 
   a {
@@ -30,7 +39,8 @@ const FooterText = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  color: #f8f8f8;
+  /* color: #f8f8f8; */
+  color: #fff;
   font-size: 16px;
 
   @media screen and (min-width: 768px) {

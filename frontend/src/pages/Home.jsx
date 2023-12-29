@@ -3,7 +3,7 @@
 //import { userStore } from "../stores/userStore";
 //import { useNavigate } from "react-router-dom";
 import { LinkButton } from "../components/Buttons/LinkButton";
-import LogoText from "../components/LogoText";
+//import LogoText from "../components/LogoText";
 // import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { TestimonialsCarousel } from "../components/Testimonials/TestimonialsCarousel";
@@ -16,8 +16,20 @@ const StyledHomePage = styled.div`
 
 const StyledButtonWrapper = styled.div`
   display: flex;
-  justify-content: center;
-  gap: 100px;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+
+  @media (min-width: 600px) {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 50px;
+  }
+
+  @media (min-width: 1050px) {
+    gap: 100px;
+  }
 `;
 
 // Define the 'Home' functional component.
@@ -62,7 +74,7 @@ export const Home = () => {
   // Render the component content.
   return (
     <StyledHomePage>
-      <LogoText />
+      {/* <LogoText /> */}
       <h1 className="heading">{text.heading}</h1>
       <h2>{text.subheading}</h2>
       <p>{text.intro}</p>

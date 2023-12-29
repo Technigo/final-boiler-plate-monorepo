@@ -10,11 +10,13 @@ const SocialButton = styled.a`
   font-size: 32px;
   display: flex;
   align-items: center;
-  color: #d0d0d0;
+  /* color: #d0d0d0; */
+  color: #fff;
   transition: color 0.3s ease; /* Transition for smooth color change */
 
   &:hover {
-    color: #000000;
+    /* color: #000000; */
+    color: #d0d0d0;
   }
 `;
 

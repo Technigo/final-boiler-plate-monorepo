@@ -22,9 +22,10 @@ const StyledNav = styled.nav`
     width: 150px;
   }
 
-  @media (min-width: 800px) {
+  @media (min-width: 1050px) {
     ul {
       display: flex;
+      align-items: center;
       gap: 30px;
     }
   }
@@ -45,7 +46,7 @@ export const Navbar = () => {
     // Logic to toggle burger menu visibility based on window width
     const handleResize = () => {
       const width = window.innerWidth;
-      if (width <= 800) {
+      if (width <= 1050) {
         setBurgerMenuVisible(true);
       } else {
         setBurgerMenuVisible(false);

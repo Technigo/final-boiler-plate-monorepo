@@ -1,4 +1,4 @@
-import LogoText from "../components/LogoText";
+//import LogoText from "../components/LogoText";
 //import { Link } from "react-router-dom";
 import { userStore } from "../stores/userStore"; // Make sure this is correctly imported
 // Import the 'useState' and 'useNavigate' hooks from 'react'.
@@ -87,7 +87,7 @@ export const Login = () => {
   // Render the component content.
   return (
     <>
-      <LogoText />
+      {/* <LogoText /> */}
       <StyledIntro>
         {/* Display the heading and paragraphs. */}
         <h2>{text.heading}</h2>

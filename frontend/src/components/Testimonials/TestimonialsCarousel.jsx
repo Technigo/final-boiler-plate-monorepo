@@ -18,6 +18,7 @@ const CarouselContainer = styled.div`
 
   &::-webkit-scrollbar {
     width: 8px; /* width of the scrollbar */
+    height: 7px;
   }
 
   &::-webkit-scrollbar-thumb {
