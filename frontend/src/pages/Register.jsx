@@ -3,6 +3,10 @@ import { userStore } from "../stores/userStore";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
+import { useMediaQuery } from "react-responsive";
+import Navbar from "../components/Navbar";
+import NavbarMobile from "../components/NavbarMobile";
+import Footer from "../components/Footer";
 
 // Define the 'Register' functional component.
 export const Register = () => {
@@ -39,29 +43,26 @@ export const Register = () => {
 
   // Text content for the heading and paragraphs.
   const text = {
-    heading: "HabitFlow",
     intro: "Start your journey towards a better you: Set goals, track progress, and achieve your best self with us",
     loremIpsum:
       "Sign up here and become a member today!",
   };
 
+  const isMobile = useMediaQuery({ maxWidth: 393 });
+  const isTablet = useMediaQuery({ minWidth: 394, maxWidth: 834 });
+
   // Render the component content.
   return (
     <>
-      <nav>
-        {/* Create a navigation menu with links to the login and sign-up routes. */}
-        <ul className="app-ul">
-          <li className="app-li">
-            <Link to="/">Login</Link>
-          </li>
-          <li className="app-li">
-            <Link to="/register">Sign Up</Link>
-          </li>
-        </ul>
-      </nav>
+      {isMobile ? (
+        <NavbarMobile />
+      ) : isTablet ? (
+        <NavbarMobile />
+      ) : (
+        <Navbar />
+      )}
       <div>
         {/* Display the heading and paragraphs. */}
-        <h2>{text.heading}</h2>
         <p>{text.intro}</p>
         <p>{text.loremIpsum}</p>
         <div className="user-registration">
@@ -88,6 +89,7 @@ export const Register = () => {
           <button onClick={onSignupClick}>Sign Up</button>
         </div>
       </div>
+      <Footer />
     </>
   );
 };

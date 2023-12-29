@@ -2,16 +2,22 @@
 import { useEffect } from "react";
 import moment from 'moment';
 import Navbar from "../components/Navbar";
+import NavbarMobile from "../components/NavbarMobile";
 import Footer from "../components/Footer";
 import { CreateHabit } from "../components/CreateHabit";
 import { habitStore } from "../stores/habitStore";
 import { userStore } from "../stores/userStore";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
-import "./habits.css";
+import { useMediaQuery } from "react-responsive";
+import "../components/css/habits.css";
 
 // Define the 'Habits' functional component.
 export const Habits = () => {
+
+  const isMobile = useMediaQuery({ maxWidth: 393 });
+  const isTablet = useMediaQuery({ minWidth: 394, maxWidth: 834 });
+
   // Text content for the heading and paragraphs.
   const text = {
     heading: "Habits Page",
@@ -67,7 +73,13 @@ export const Habits = () => {
   // Render the component content.
   return (
     <>
-      <Navbar />
+      {isMobile ? (
+        <NavbarMobile />
+      ) : isTablet ? (
+        <NavbarMobile />
+      ) : (
+        <Navbar />
+      )}
       <nav>
         {/* Create a navigation menu with links to the home, habits, and sign-out routes. */}
         <ul className="app-ul">

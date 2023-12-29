@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { habitStore } from "../stores/habitStore";
-import "./createhabit.css";
+import "./css/createhabit.css";
 
 // Define the 'Createhabit' functional component.
 export const CreateHabit = () => {

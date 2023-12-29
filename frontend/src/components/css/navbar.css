@@ -54,3 +54,55 @@
     cursor: pointer;
     margin-top: 10px;
 }
+
+
+
+/* Mobile */
+@media (max-width: 393px) {
+
+    .navbar {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        margin-left: -130px;
+    }
+
+
+    .navbar img {
+        width: 50px;
+        height: 33px;
+        margin: 0;
+        padding: 10px;
+    }
+
+    .burger-menu-container {
+        width: 25px;
+    }
+
+
+}
+
+/* Tablet */
+@media (min-width: 394px) and (max-width: 834px) {
+
+    .navbar {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        margin-left: -300px;
+    }
+
+    .navbar img {
+        width: 50px;
+        height: 33px;
+        margin: 0;
+        padding: 10px;
+    }
+
+    .burger-menu-container {
+        width: 25px;
+    }
+
+}

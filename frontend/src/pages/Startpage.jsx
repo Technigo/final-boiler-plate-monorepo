@@ -1,6 +1,7 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { useMediaQuery } from "react-responsive";
 import Navbar from "../components/Navbar";
+import NavbarMobile from "../components/NavbarMobile";
 import Header from "../components/Header";
 import LoginForm from "../components/Startpage/LoginForm";
 import HowItWorks from "../components/Startpage/HowItWorks";
@@ -11,9 +12,18 @@ import Footer from "../components/Footer";
 
 export const Startpage = () => {
 
+  const isMobile = useMediaQuery({ maxWidth: 393 });
+  const isTablet = useMediaQuery({ minWidth: 394, maxWidth: 834 });
+
   return (
     <>
-      <Navbar />
+      {isMobile ? (
+        <NavbarMobile />
+      ) : isTablet ? (
+        <NavbarMobile />
+      ) : (
+        <Navbar />
+      )}
       <Header />
       <LoginForm />
       <HowItWorks />
