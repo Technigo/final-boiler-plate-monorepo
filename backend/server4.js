@@ -1,3 +1,5 @@
+// before i update the user schema and make sure i dont fuck up everything xD
+
 import express from "express"
 import cors from "cors"
 import dotenv from "dotenv"
@@ -22,10 +24,6 @@ const userSchema = new Schema(
     accessToken: {
       type: String, 
       default: () => crypto.randomBytes(128).toString("hex"), 
-    },
-    grid: {
-      type: Array,
-      default: [{ row: 3, column: 'C' }] // initial value for the grid
     },
   },
   {
@@ -56,9 +54,7 @@ const registerUserController = asyncHandler(async (req,res) => {
     const newUser = new UserModel({
       username,
       password: hashedPassword,
-      grid: [{ row: 3, column: 'C' }]
     })
-    console.log(newUser) // log user before saving
     await newUser.save()
     res.status(201).json({
       success: true,
@@ -66,7 +62,6 @@ const registerUserController = asyncHandler(async (req,res) => {
         username: newUser.username,
         id: newUser._id,
         accessToken: newUser.accessToken,
-        grid: newUser.grid // when a client registers , user will receive the initial position
       },
     })
   } catch (e) {
