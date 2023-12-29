@@ -1,5 +1,6 @@
 // Import the necessary modules and functions
 import express from "express";
+import parser from "../middleware/imageUpload"; // Import the parser middleware for image upload
 import {
   registerUserController,
   loginUserController,
@@ -22,10 +23,10 @@ router.post("/login", loginUserController); // When a POST request is made to /l
 router.get("/users", getAllUsersController);
 
 // DISPLAY PROFILE ROUTE: Handle user profile display
-router.get("/users/:userId", getUserProfileController);
+router.get("/users/:userId", parser.single('image'), getUserProfileController);
 
 // UPDATE ROUTE: Handle user profile update
-router.put("/users/:userId", updateUserController);
+router.put("/users/:userId", parser.single('image'), updateUserController);
 
 // DELETE ROUTE: Hander user removal
 router.delete("/users/:userId", deleteUserController);

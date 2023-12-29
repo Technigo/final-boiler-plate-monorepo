@@ -27,6 +27,12 @@ const userSchema = new Schema(
       type: Boolean,
       required: true
     },
+    image: {
+      type: String, // Store URL for the image
+    },
+    imageId: {
+      type: String, // Store the unique identifier for the image
+    },
     location: {
       type: String,
       default: ""

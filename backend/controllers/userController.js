@@ -2,7 +2,8 @@ import asyncHandler from "express-async-handler";
 import bcrypt from "bcrypt";
 import { validateRegistration } from "../middleware/registrationValidation";
 import { UserModel } from "../models/UserModel";
-
+// Import cloudinary configuration
+import cloudinary from "../config/cloudinaryConfig";
 
 // @desc    Register new user
 // @route   POST api/register
@@ -160,6 +161,7 @@ export const getUserProfileController = asyncHandler(async (req, res) => {
           password: userToBeDisplayed.password,
           email: userToBeDisplayed.email,
           consent: userToBeDisplayed.consent,
+          image: userToBeDisplayed.image,
           location: userToBeDisplayed.location,
           introduction: userToBeDisplayed.introduction,
           products: userToBeDisplayed.products
@@ -196,11 +198,28 @@ export const updateUserController = asyncHandler(async (req, res) => {
       return;
     }
 
+    // Upload image to Cloudinary
+    let imageUrl, imageId;
+    try {
+      const result = await cloudinary.uploader.upload(req.file.path);
+      imageUrl = result.url;
+      imageId = result.public_id;
+    } catch (uploadError) {
+      console.error("Cloudinary Upload Error:", uploadError);
+      res.status(500).json({
+        success: false,
+        response: "Error uploading image to Cloudinary.",
+        error: uploadError,
+      });
+    }
+
     // Find a user in the database with the same ID and update the details
     const userToBeUpdated = await UserModel.findByIdAndUpdate(userId, {
       $set: {
         password: password, // doublecheck how to display password in frontend
         email: email,
+        image: imageUrl,
+        imageId: imageId,
         location: location,
         introduction: introduction,
         products: products
@@ -238,6 +257,8 @@ export const deleteUserController = asyncHandler(async (req, res) => {
     const userToBeDeleted = await UserModel.findByIdAndDelete(userId);
 
     if (userToBeDeleted) {
+      // Delete the image from Cloudinary using the imageId
+      await cloudinary.uploader.destroy(userToBeDeleted.imageId);
       res.status(200).json({
         success: true,
         response: {
