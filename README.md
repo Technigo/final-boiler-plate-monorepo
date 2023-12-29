@@ -460,3 +460,5 @@ This way, the log will be triggered after the state update has taken effect.
 # "This might be a result of the asynchronous nature of the setState function. When you log the value immediately after calling setIsLoggedIn(true), it might not have taken effect yet."
 
 # anyway, the text is saying "you are freezing ...", indicating that isLoggedIn is true. but no token at local. this is kind of making me care about it a bit, but lets ignore this for this moment. 
+
+# next goal - user will gather dandelion and visit dandelion shop. might buy dream made of happy instance
