@@ -128,6 +128,21 @@ export const App = () => {
     }
   }
 
+  const handleUP = async () => {
+    try {
+      const response = await fetch('http://localhost:3000/up', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      })
+      const data = await response.json()
+      console.log(data)
+    } catch (error) {
+      console.error('Error:', error.message)
+    }
+  }
+
   return (
     <div>
       <header>
@@ -159,6 +174,9 @@ export const App = () => {
           <br/>
           <div style={{ color: 'red' }}>{registrationError}</div>
         </div>
+      )}
+      {isLoggedIn && (
+        <button onClick={handleUP}>Up</button>
       )}
       </div>
     </div>

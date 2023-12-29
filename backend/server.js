@@ -105,10 +105,36 @@ const loginUserController = asyncHandler(async (req, res) => {
   }
 })
 
+// controller to handle /up endpoint
+const upUserController = asyncHandler(async (req, res) => {
+  const { user } = req
+  try {
+    // update the user's grid by decreasing the row by 1
+    const upUser = await UserModel.findOneAndUpdate(
+      { _id: user._id }, // find the user by id
+      { $inc: { 'grid.row': -1 } }, // decrease the row
+      { new: true } // return the updated document
+    )
+    // save the updated user to the database
+    await user.save()
+    // respond with the updated user information
+    res.status(200).json({
+      success: true, 
+      response: {
+        grid: upUser.grid
+      }
+    })
+  } catch (e) {
+    console.error("Error updating grid:", e.message)
+    res.status(500).json({ success: false, response: e.message })
+  }
+})
+
 // Define user routes
 const router = express.Router()
 router.post("/register", registerUserController) 
 router.post("/login", loginUserController) 
+router.post("/up", upUserController)
 
 const port = process.env.PORT; 
 const app = express(); 
