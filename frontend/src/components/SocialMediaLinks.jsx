@@ -67,7 +67,7 @@ const susanneLinks = [
   },
 ];
 
-export const SocialMediaLinks = ({ person }) => {
+export const SocialMediaLinks = ({ person, style }) => {
   const linksToDisplay = person === "Anna" ? annaLinks : susanneLinks;
 
   return (
@@ -80,6 +80,7 @@ export const SocialMediaLinks = ({ person }) => {
           rel="noopener noreferrer"
           aria-label={`Link to ${link.label}`}
           className={"social-link-${link.label.toLowerCase()}"}
+          style={style}
         >
           {link.icon}
           <SrOnly>{link.label}</SrOnly>

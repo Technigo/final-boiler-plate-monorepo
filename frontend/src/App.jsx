@@ -3,18 +3,16 @@ import routes from "./routes/routes";
 import { Footer } from "./components/Footer";
 import "./App.css";
 import { Header } from "./components/Header/Header";
-// import { Navbar } from "./components/Header/Navbar";
 
 export const App = () => {
   return (
     <>
       <BrowserRouter>
-        <main>
-          {/* <Navbar /> */}
-          <Header />
+        <Header />
+        <main className="main">
           <Routes>{routes}</Routes>
-          <Footer />
         </main>
+        <Footer />
       </BrowserRouter>
     </>
   );

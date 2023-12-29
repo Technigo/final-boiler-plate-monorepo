@@ -51,7 +51,7 @@ const CarouselContainer = styled.div`
 
 // Styled component for the review card
 const StyledReviewCard = styled.div`
-  height: 285px;
+  height: 290px;
   width: 225px; /* Set a width for each review card */
   flex-shrink: 0; /* Prevent cards from shrinking */
   padding-bottom: 0px;

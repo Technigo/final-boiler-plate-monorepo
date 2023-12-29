@@ -13,8 +13,8 @@ const StyledBurgerMenu = styled.div`
   flex-direction: column;
   max-width: 150px;
   padding: 20px;
-  border: none;
-  border-radius: 20px 0 20px 20px;
+  /*border: 1px solid #eeb885;
+  border-radius: 20px 0 20px 20px; */
 `;
 
 const StyledToggleButton = styled.button`
@@ -67,7 +67,15 @@ export const BurgerMenu = () => {
     <StyledBurgerMenu>
       <StyledToggleButton onClick={() => setBurgerMenuOpen(!burgerMenuOpen)}>
         {burgerMenuOpen ? (
-          <IoCloseOutline style={{ width: "32px", height: "32px" }} />
+          <IoCloseOutline
+            style={{
+              width: "32px",
+              height: "32px",
+              position: "absolute",
+              top: "3px",
+              right: "3px",
+            }}
+          />
         ) : (
           <RxHamburgerMenu style={{ width: "32px", height: "32px" }} />
         )}

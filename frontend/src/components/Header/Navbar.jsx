@@ -27,6 +27,7 @@ const StyledNav = styled.nav`
       display: flex;
       align-items: center;
       gap: 30px;
+      height: 100%;
     }
   }
 `;

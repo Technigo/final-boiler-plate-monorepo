@@ -2,45 +2,50 @@
 //import { useEffect } from "react";
 //import { userStore } from "../stores/userStore";
 //import { useNavigate } from "react-router-dom";
-import { LinkButton } from "../components/Buttons/LinkButton";
-//import LogoText from "../components/LogoText";
+// import { LinkButton } from "../components/Buttons/LinkButton";
 // import { Link } from "react-router-dom";
+import { Hero } from "../components/Hero";
 import styled from "styled-components";
 import { TestimonialsCarousel } from "../components/Testimonials/TestimonialsCarousel";
 
 const StyledHomePage = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 50px;
+  gap: 150px;
 `;
 
-const StyledButtonWrapper = styled.div`
+// const StyledButtonWrapper = styled.div`
+//   display: flex;
+//   flex-direction: column;
+//   align-items: center;
+//   gap: 20px;
+
+//   @media (min-width: 600px) {
+//     display: flex;
+//     flex-direction: row;
+//     justify-content: center;
+//     gap: 50px;
+//   }
+
+//   @media (min-width: 1050px) {
+//     gap: 100px;
+//   }
+// `;
+
+const StyledTestimonials = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: 20px;
-
-  @media (min-width: 600px) {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    gap: 50px;
-  }
-
-  @media (min-width: 1050px) {
-    gap: 100px;
-  }
 `;
 
 // Define the 'Home' functional component.
 export const Home = () => {
   // Define text content for the heading and subheading.
   const text = {
-    heading: "Welcome",
-    subheading: "Our mission is to help people connect with their communities",
-    intro:
-      "Welcome to our community of compassion and generosity. We believe in the power of uniting hearts and strive to create a world where every act of kindness matters. Our platform is a vibrant hub where those in need of help encounter those who are ready to offer their time and care without expecting anything in return. Here, it's about uplifting each other, where a simple gesture can make a tremendous difference. Perhaps there's an elderly neighbor who needs help raking leaves, someone requiring assistance with grocery shopping, or an individual unable to walk their four-legged friend. Our platform serves as a bridge connecting needs with helpful souls. We believe in fostering an inclusive community where goodwill and kindness are the currency. Here, commitment and generosity matter most. With us, every effort is a step towards a warmer, more empathetic world. Together, we're building a place where hearts meet to make a difference. Welcome to being a part of this beautiful movement of humanity.",
-    testimonials: "What do our users think?",
+    // heading: "Welcome",
+    // subheading: "Our mission is to help people connect with their community",
+    // intro:
+    //   "Join a community of compassion and generosity, connecting hearts through simple acts of kindness. Together, we build a world where every effort makes a meaningful difference. Welcome to our movement of humanity.",
+    testimonials: "Stories of kindness",
   };
 
   // Access the 'handleLogout' function from the 'userStore'.
@@ -74,20 +79,22 @@ export const Home = () => {
   // Render the component content.
   return (
     <StyledHomePage>
-      {/* <LogoText /> */}
-      <h1 className="heading">{text.heading}</h1>
+      {/* <h1 className="heading">{text.heading}</h1>
       <h2>{text.subheading}</h2>
-      <p>{text.intro}</p>
-      <StyledButtonWrapper>
+      <p>{text.intro}</p> */}
+      <Hero />
+      {/* <StyledButtonWrapper>
         <LinkButton to="/login" className="login-button" buttonName="Log in" />
         <LinkButton
           to="/register"
           className="register-button"
           buttonName="Join the community"
         />
-      </StyledButtonWrapper>
-      <h3>{text.testimonials}</h3>
-      <TestimonialsCarousel />
+      </StyledButtonWrapper> */}
+      <StyledTestimonials>
+        <h3>{text.testimonials}</h3>
+        <TestimonialsCarousel />
+      </StyledTestimonials>
     </StyledHomePage>
   );
 };

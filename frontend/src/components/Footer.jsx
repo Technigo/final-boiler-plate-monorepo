@@ -8,7 +8,7 @@ const StyledFooter = styled.div`
   flex-direction: column;
   padding: 20px 0;
   text-align: center;
-  position: relative;
+  position: sticky;
   bottom: 0;
   width: 100%;
 
