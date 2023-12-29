@@ -1,5 +1,3 @@
-// Import necessary libraries and modules.
-
 // Packages
 import path from "path";
 import express from "express";
@@ -16,6 +14,7 @@ import { connectDB } from "./config/db";
 import data from "./data/plants";
 
 dotenv.config();
+
 // Defines the port number the app (server) will run on.
 const port = process.env.PORT || 8080;
 
