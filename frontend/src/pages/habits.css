@@ -1,9 +1,24 @@
+.habits-container {
+    text-align: left;
+    margin-left: 120px;
+    width: 1000px;
+}
+
+
+.one-habit {
+    background-color: #c2e7eb;
+    border-radius: 20px;
+    padding: 20px;
+}
+
 .finished {
     color: green;
+    background-color: transparent;
 }
 
 .unfinished {
     color: red;
+    background-color: transparent;
 }
 
 .trash-icon {
@@ -11,25 +26,24 @@
 }
 
 .trash {
-    background-color: white;
+    background-color: transparent;
     border: none;
     padding: none;
 }
 
 .trash:hover {
-    background-color: white;
     border: none;
 }
 
 /* Dotted line */
-hr {
+.habits-container hr {
     border: none;
     border-top: 8px dotted #3EC3CE;
     color: #fff;
     background-color: none;
     height: 1px;
     width: 70%;
-    margin-left: 0px;
+    margin-left: 40px;
     padding-bottom: 40px;
     position: relative;
 }

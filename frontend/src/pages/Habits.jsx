@@ -76,7 +76,7 @@ export const Habits = () => {
           </li>
         </ul>
       </nav>
-      <div>
+      <div className="habits-container">
         <h2>{text.heading}</h2>
         <hr />
         <p>{text.intro}</p>
@@ -90,7 +90,7 @@ export const Habits = () => {
           // Map through 'habits' and render habit items.
           habits.map((habit) => (
             <div key={habit._id} className="card-wrapper">
-              <div className="">
+              <div className="one-habit">
                 <p>{habit.habit}</p>
                 {finishedComponent(habit)}
                 <button className="trash" onClick={() => deleteHabitById(habit._id)}><img src="/trashcan.png" alt="delete" className="trash-icon" /></button>

@@ -3,8 +3,8 @@
     flex-direction: column;
     gap: 10px;
     width: 250px;
-    margin-left: 70px;
     padding: 40px;
+    padding-left: 0px;
 }
 
 .add-habit {
