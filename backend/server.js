@@ -117,6 +117,8 @@ const upUserController = asyncHandler(async (req, res) => {
     )
     // save the updated user to the database
     await user.save()
+    console.log('Updated grid:', upUser.grid)
+    
     // respond with the updated user information
     res.status(200).json({
       success: true, 
