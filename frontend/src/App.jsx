@@ -84,8 +84,17 @@ export const App = () => {
       const data = JSON.parse(responseText) // parse the json response bcs response can be read only once
       console.log("after update data:", username)
       console.log(data)
-      setIsLoggedIn(true)
-      setShowAuthSection(false) // hide this after registration
+      
+      if (response.status === 201) {
+        // registration successful, proceed with login
+        setIsLoggedIn(true)
+        setShowAuthSection(false) // hide this after registration
+      } else {
+        // registration failed. would be better handle accordingly 
+        // for now, just logging err msg
+        console.error("cant register:", data.response)
+      }
+
       console.log("isLoggedIn:", isLoggedIn)
     } catch (error) {
       console.error("couldnt register", error)
