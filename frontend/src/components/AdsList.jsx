@@ -25,7 +25,7 @@ export const AdsList = ({ fetchType }) => {
     fetchData();
   }, [getAllAds, fetchAds, fetchType]); // Add fetchType to dependency array
 
-  // Example settings for the carousel
+  // Settings for the carousel
   const settings = {
     dots: true,
     arrows: true,

@@ -6,6 +6,7 @@ import { Footer } from "../components/Footer";
 import { SearchBar } from "../components/SearchBar";
 import { AdsList } from "../components/AdsList";
 import { Navbar } from "../components/Navbar";
+import Swal from "sweetalert2";
 
 // Define the 'Home' functional component.
 export const Home = () => {
@@ -19,11 +20,13 @@ export const Home = () => {
   useEffect(() => {
     if (!isLoggedin) {
       // If the user is not logged in, show an alert and navigate to the login route.
-      alert("Please log in to see the content");
+      Swal.fire({
+        title: "Error!",
+        text: "Please log in to see the content",
+        icon: "error"
+      });
       navigate("/login");
-    }
-  }, [isLoggedin, navigate]);
-
+  }}, [isLoggedin, navigate]);
 
   // Render the component content.
   return (

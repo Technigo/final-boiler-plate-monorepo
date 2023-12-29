@@ -29,6 +29,9 @@ export const userStore = create((set) => ({
   products: [],
   setProducts: (products) => set({ products }),
 
+  image: null,
+  setImage: (image) => set({ image }),
+
   userId: null,
   setUserId: (userId) => set({ userId }),
 
@@ -147,14 +150,16 @@ export const userStore = create((set) => ({
       // Parse the response data as JSON.
       const data = await response.json();
       if (data.success) {
-        // Update the state with username, accessToken, and set isLoggedin to true.
+        // Update the state with username, userId, accessToken, and set isLoggedin to true.
         set({
           username,
+          userId: data.response.id,
           accessToken: data.response.accessToken,
           isLoggedin: true,
         });
-        // Store the accessToken in the browser's localStorage.
+        // Store the accessToken and userId in the browser's localStorage.
         localStorage.setItem("accessToken", data.response.accessToken);
+        localStorage.setItem("userId", data.response.id);
         // Display a success alert.
         Swal.fire({
           title: "Congratulations!",
@@ -206,7 +211,17 @@ export const userStore = create((set) => ({
         const data = await response.json();
         if (data.success) {
           // Update the state with the response data
-          set({ data });
+          set((state) => ({
+            ...state,
+            username: data.response.username,
+            email: data.response.email,
+            location: data.response.location,
+            introduction: data.response.introduction,
+            products: data.response.products,
+            image: data.response.image 
+          }));
+          // Return the profile data for further use in the component
+          return data.response;
         } else {
           // Display an error message from the server or a generic message.
           Swal.fire({
@@ -214,6 +229,7 @@ export const userStore = create((set) => ({
             text: data.response || "User profile display failed",
             icon: "error"
           });
+          return null;
           // alert(data.response || "User profile display failed");
         }
       } catch (error) {
@@ -224,12 +240,13 @@ export const userStore = create((set) => ({
           text: "User profile display failed",
           icon: "error"
         });
+        return null;
       }
     }
   },
 
   // FUNCTION TO HANDLE USER PROFILE UPDATE
-  handleProfileUpdate: async (isLoggedin, userId, email, password, location, introduction, products) => {
+  handleProfileUpdate: async (isLoggedin, userId, email, password, location, introduction, products, image) => {
     // Check if the user is logged in and display message if they are not
     if (!isLoggedin) {
       Swal.fire({
@@ -246,7 +263,7 @@ export const userStore = create((set) => ({
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify({ email, password, location, introduction, products }),
+          body: JSON.stringify({ email, password, location, introduction, products, image }),
         });
 
         // Parse the response data as JSON.
@@ -258,7 +275,8 @@ export const userStore = create((set) => ({
             password, 
             location, 
             introduction, 
-            products 
+            products, 
+            image 
           });
           // Display a success alert
           Swal.fire({
@@ -290,9 +308,15 @@ export const userStore = create((set) => ({
   // FUNCTION TO HANDLE USER LOGOUT
   handleLogout: () => {
     // Clear user information and set isLoggedin to false.
-    set({ username: "", accessToken: null, isLoggedin: false });
+    set({ 
+      username: "", 
+      accessToken: null, 
+      userId: null, 
+      isLoggedin: false 
+    });
     // Remove the accessToken from localStorage.
     localStorage.removeItem("accessToken");
+    localStorage.removeItem("userId");
     // Additional logout logic can be added here if needed.
   },
 
@@ -324,6 +348,7 @@ export const userStore = create((set) => ({
           location: "",
           introduction: "",
           products: [],
+          image: null,
           userId: null,
           accessToken: null, 
           isLoggedin: false 

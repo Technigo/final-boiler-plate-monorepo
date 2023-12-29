@@ -25,10 +25,10 @@ const routes = (
     <Route path="/" element={<Landing />} />
     {/* Define a route for the path ("/login") that renders the "Login" page */}
     <Route path="/login" element={<Login />} />
-    {/* Define a route for the "/home" path that renders the "Home" page */}
-    <Route path="/home" element={<Home />} />
     {/* Define a route for the "/register" path that renders the "Register" page */}
     <Route path="/register" element={<Register />} />
+    {/* Define a route for the "/home" path that renders the "Home" page */}
+    <Route path="/home" element={<Home />} />
     {/* Define a route for the "/profile" path that renders the "Profile" page */}
     <Route path="/profile" element={<Profile />} />    
     {/* Define a route for the "/settings" path that renders the "Profile Settings" component. */}
