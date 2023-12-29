@@ -1,3 +1,5 @@
+// wanted to save before delete some comments :)
+
 import { useState, useEffect } from "react";
 import YouTube from "react-youtube"
 
@@ -49,6 +51,8 @@ export const App = () => {
     // Change text after 10 seconds while the video is playing
     if (isVideoPlaying) {
       const timeoutId = setTimeout(() => {
+        // need to remove freezing when no delay for this text works
+        // setDisplayText(isLoggedIn ? "you are freezing ..." : "it is dark and cold ...")
         setDisplayText("it is dark and cold ...")
         setShowAuthSection(true) // show the register/login section
       }, 10000)
@@ -58,9 +62,11 @@ export const App = () => {
     }
   }, [isVideoPlaying])
 
-  // change text without delay when isLoggedin is updated
+  // change text withoout delay when isLoggedin is updated
   useEffect(() => {
     console.log("isLoggedIn updated:", isLoggedIn)
+    // this makes it is dark and cold is showing without delay, so need to remove this
+    // setDisplayText(isLoggedIn ? "you are freezing ..." : "it is dark and cold ...")
     setDisplayText(isLoggedIn ? "you are freezing ..." : displayText)
   }, [isLoggedIn, displayText])
 
@@ -85,7 +91,6 @@ export const App = () => {
       console.log("after update data:", username)
       console.log(data)
       setIsLoggedIn(true)
-      setShowAuthSection(false) // hide this after registration
       console.log("isLoggedIn:", isLoggedIn)
     } catch (error) {
       console.error("couldnt register", error)
@@ -105,7 +110,6 @@ export const App = () => {
       const data = await response.json()
       console.log(data)
       setIsLoggedIn(true)
-      setShowAuthSection(false) // hide after login
       console.log("isLoggedIn:", isLoggedIn)
     } catch (error) {
       console.error("couldnt login", error)
