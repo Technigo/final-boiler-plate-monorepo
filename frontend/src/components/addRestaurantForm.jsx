@@ -3,6 +3,8 @@ import styled from 'styled-components';
 import Navbar from './navbar';
 import Footer from './footer';
 import { useRestaurantStore } from '../stores/restaurantStore'; 
+import emailjs from 'emailjs-com';
+
 
 const PageContainer = styled.div`
   margin: 0 auto;
@@ -116,18 +118,22 @@ const AddRestaurantForm = () => {
     };
 
     const handleSubmit = (e) => {
-        e.preventDefault();
-        fetch('http://localhost:3000/api/addrestaurant', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(formData),
-        })
-        .then(response => response.json())
-        .then(data => console.log('Success:', data))
-        .catch(error => console.error('Error:', error));
-    };
+      e.preventDefault();
+  
+      emailjs.sendForm(
+          process.env.REACT_APP_EMAILJS_SERVICE_ID, 
+          process.env.REACT_APP_EMAILJS_TEMPLATE_ID, 
+          e.target, 
+          process.env.REACT_APP_EMAILJS_USER_ID
+      )
+      .then((result) => {
+          console.log('Email sent successfully', result.text);
+          // Handle success
+      }, (error) => {
+          console.log('Failed to send email', error.text);
+          // Handle error
+      });
+  };
 
     return (
         <PageContainer>
