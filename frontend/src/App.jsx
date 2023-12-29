@@ -9,6 +9,7 @@ export const App = () => {
   const [showAuthSection, setShowAuthSection] = useState(false)
   const [isLoggedIn, setIsLoggedIn] = useState(false)
   const [registrationError, setRegistrationError] = useState(null)
+  const [accessToken, setAccessToken] = useState("")
 
   // event handler for when the user is ready to proceed, with playing video enough
   const onReady = (event) => {
@@ -88,6 +89,7 @@ export const App = () => {
       
       if (response.status === 201) {
         // registration successful, proceed with login
+        setAccessToken(data.response.accessToken)
         setIsLoggedIn(true)
         setShowAuthSection(false) // hide this after registration
         setRegistrationError(null) // reset regi err if regi is successful // idk i need this here
@@ -120,9 +122,14 @@ export const App = () => {
 
       const data = await response.json()
       console.log(data)
-      setIsLoggedIn(true)
-      setShowAuthSection(false) // hide after login
-      console.log("isLoggedIn:", isLoggedIn)
+
+      if (response.status === 200) {
+        // login successful, set token in state
+        setAccessToken(data.response.accessToken)
+        setIsLoggedIn(true)
+        console.log("isLoggedIn:", isLoggedIn)
+        setShowAuthSection(false) // hide after login
+      }
     } catch (error) {
       console.error("couldnt login", error)
     }
@@ -134,6 +141,7 @@ export const App = () => {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
+          'Authorization': `${accessToken}`
         },
       })
       const data = await response.json()

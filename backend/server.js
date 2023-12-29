@@ -130,11 +130,29 @@ const upUserController = asyncHandler(async (req, res) => {
   }
 })
 
+
+// middleware for user authentication
+const authenticateUser = async (req, res, next) => {
+  const accessToken = req.header("Authorization")
+  try {
+    const user = await UserModel.findOne({ accessToken: accessToken })
+    if (user) {
+      req.user = user 
+      next() 
+    } else {
+      res.status(401).json({ success: false, response: "Please log in" })
+    }
+  } catch (e) {
+    res.status(500).json({ success: false, response: e.message })
+  }
+}
+
+
 // Define user routes
 const router = express.Router()
 router.post("/register", registerUserController) 
 router.post("/login", loginUserController) 
-router.post("/up", upUserController)
+router.post("/up", authenticateUser, upUserController)
 
 const port = process.env.PORT; 
 const app = express(); 
@@ -152,22 +170,6 @@ const connectDB = async () => {
   } catch (error) {
     console.log(error)
     process.exit(1)
-  }
-}
-
-// middleware for user authentication
-const authenticateUser = async (req, res, next) => {
-  const accessToken = req.header("Authorization")
-  try {
-    const user = await UserModel.findOne({ accessToken: accessToken })
-    if (user) {
-      req.user = user 
-      next() 
-    } else {
-      res.status(401).json({ success: false, response: "Please log in" })
-    }
-  } catch (e) {
-    res.status(500).json({ success: false, response: e.message })
   }
 }
 
