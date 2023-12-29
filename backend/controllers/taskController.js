@@ -14,6 +14,27 @@ export const getTasksController = asyncHandler(async (req, res) => {
   }
 });
 
+export const getUserTasksController = asyncHandler(async (req, res) => {
+  const userId = req.user._id;
+  console.log("userId", userId);
+  try {
+    // Assuming userStorage contains the user details
+    const tasks = await TaskModel.find()
+      .sort("-createdAt")
+      .populate({
+        path: "user",
+        match: { _id: userId },
+      });
+    const userTasks = tasks.filter((task) => task.user !== null);
+    // Find all tasks in the database and sort them by creation date
+
+    res.json(userTasks);
+  } catch (error) {
+    console.error("Error in getUserTasksController:", error);
+    res.status(500).json(error);
+  }
+});
+
 // desciption: POST Tasks
 // route: /add
 // access: not Private, public

@@ -32,8 +32,8 @@ export const userStore = create((set, get) => ({
   // Define a function to set the isLoggedIn state.
   setIsLoggedIn: (isLoggedIn) => set({ isLoggedIn }),
 
-  loggedInUserId: null,
-  setLoggedInUserId: (id) => set({ loggedInUserId: id }),
+  // loggedInUserId: null,
+  // setLoggedInUserId: (id) => set({ loggedInUserId: id }),
 
   // Initialize selectedGender state with "female".
   selectedGender: "female",
@@ -104,10 +104,10 @@ export const userStore = create((set, get) => ({
           username,
           accessToken: data.response.accessToken,
           isLoggedIn: true,
-          loggedInUserId: data.response.id,
+          // loggedInUserId: data.response.id,
         });
         // Set the loggedInUserId in the store.
-        set({ loggedInUserId: data.response.id });
+        // set({ loggedInUserId: data.response.id });
         // Store the accessToken in the browser's localStorage.
         localStorage.setItem("accessToken", data.response.accessToken);
         // Display a success alert.

@@ -9,6 +9,7 @@ console.log(apiEnv);
 export const taskStore = create((set) => ({
   // Initialize the tasks state with an empty array
   tasks: [],
+  userTasks: [],
   // Initialize the userId state by accessing it from the userStore
   userId: userStore.userId,
 
@@ -44,7 +45,6 @@ export const taskStore = create((set) => ({
   fetchTasks: async () => {
     try {
       console.log("Before fetching tasks...");
-      //const userId = userStore((state) => state.loggedInUserId); // Get the userId from the userStore
       // Send a GET request to the backend API to fetch tasks
       const response = await fetch(`${apiEnv}/get`, {
         method: "GET",
@@ -59,6 +59,31 @@ export const taskStore = create((set) => ({
         const data = await response.json();
         //console.log("Fetched tasks successfully:", data);
         set({ tasks: data });
+      } else {
+        console.error("Failed to fetch tasks. Response:", response);
+      }
+    } catch (error) {
+      console.error("Error during fetchTasks:", error);
+    }
+  },
+
+  fetchUserTasks: async () => {
+    try {
+      console.log("Before fetching user tasks...");
+      // Send a GET request to the backend API to fetch tasks
+      const response = await fetch(`${apiEnv}/userTask`, {
+        method: "GET",
+        headers: {
+          Authorization: localStorage.getItem("accessToken"),
+        },
+      });
+
+      // Check if the request was successful
+      if (response.ok) {
+        // Parse the response data and set it as the tasks state
+        const data = await response.json();
+        //console.log("Fetched tasks successfully:", data);
+        set({ userTasks: data });
       } else {
         console.error("Failed to fetch tasks. Response:", response);
       }

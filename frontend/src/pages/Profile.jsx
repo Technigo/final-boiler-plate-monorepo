@@ -1,9 +1,9 @@
 import { ProfilePhotoUser } from "../components/ProfilePhoto/ProfilePhotoUser";
-import { FeedTaskCard } from "../components/TaskCards/FeedTaskCard";
+//import { FeedTaskCard } from "../components/TaskCards/FeedTaskCard";
 import { userStore } from "../stores/userStore";
 import { taskStore } from "../stores/taskStore";
 import styled from "styled-components";
-// Detta är konstruerad av
+import { useEffect } from "react";
 
 const StyledProfileInfo = styled.div`
   display: flex;
@@ -20,10 +20,15 @@ const ProfilePhotoUserWrapper = styled.div`
 `;
 
 export const Profile = () => {
-  const { username, loggedInUserId, selectedGender, handleGenderChange } =
-    userStore(); // Destructure selectedGender and setSelectedGender from Zustand store
-  const { tasks } = taskStore();
+  const { username, selectedGender, handleGenderChange } = userStore(); // Destructure selectedGender and setSelectedGender from Zustand store
+  const { userTasks, fetchUserTasks } = taskStore();
 
+  useEffect(() => {
+    fetchUserTasks();
+  }, [fetchUserTasks]);
+
+  //const tasks = userTasks;
+  console.log(userTasks);
   const onGenderChange = (event) => {
     const gender = event.target.value;
     handleGenderChange(gender);
@@ -41,11 +46,7 @@ export const Profile = () => {
   //   // volunteeredTasks,
   // } = userStore();
 
-  // const loggedInUserId = userStore.loggedInUserId;
-
   // Filter tasks created by the current user
-  // const createdTasks = tasks.filter((task) => task.user === user);
-  const createdTasks = tasks.filter((task) => task.userId === loggedInUserId);
 
   return (
     <div>
@@ -85,9 +86,12 @@ export const Profile = () => {
       <div>
         <h3>Created Tasks</h3>
         <ul>
-          {createdTasks.map((task) => (
-            // <li key={task.id}>{task.title}</li>
-            <FeedTaskCard key={task._id} task={task} />
+          {userTasks.map((task) => (
+            <li key={task._id}>
+              {task.task}
+              {task.description}
+            </li>
+            //<FeedTaskCard key={task._id} task={task} />
           ))}
         </ul>
       </div>
@@ -96,7 +100,7 @@ export const Profile = () => {
         <h3>Volunteered Tasks</h3>
         <ul>
           {/* {volunteeredTasks.map((task) => (
-            <li key={task.id}>{task.title}</li>
+            <li key={task._id}>{task.task}</li>
           ))} */}
         </ul>
       </div>

@@ -85,6 +85,7 @@ export const FeedTaskCard = ({ task }) => {
           <h3>{task.task}</h3>
           <p>{category}</p>
           <p>{area}</p>
+          <p>Posted: {task.createdAt}</p>
           <Button
             onClick={openModal}
             className="show-more-button"
@@ -123,8 +124,10 @@ export const FeedTaskCard = ({ task }) => {
           <p>{category}</p>
           <p>{area}</p>
           <p>{task.description}</p>
+          <p>{task.createdAt}</p>
           {/* Button to offer help */}
           <IconButton
+            //onClick={onClick}
             className="offer-help-button"
             buttonName="Lend a helping hand"
             iconAlt="Logo showing two shaking hands forming a heart"
