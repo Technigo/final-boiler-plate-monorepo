@@ -8,12 +8,12 @@
 
 .register-container h2 {
     color: #3EC3CE;
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Poppins', sans-serif;
     text-transform: uppercase;
 }
 
 .register-container h3 {
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Poppins', sans-serif;
     font-weight: 300;
 }
 
@@ -27,7 +27,7 @@
 
 .register {
     color: black;
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Poppins', sans-serif;
     font-weight: 700;
     text-transform: uppercase;
     border-radius: 25px;
@@ -39,7 +39,7 @@
 
 .register:hover {
     color: black;
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Poppins', sans-serif;
     font-weight: 700;
     text-transform: uppercase;
     border-radius: 25px;

@@ -37,7 +37,7 @@
 /* Login-button */
 .login {
     color: black;
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Poppins', sans-serif;
     font-weight: 700;
     text-transform: uppercase;
     border-radius: 25px;
@@ -49,7 +49,7 @@
 
 .login:hover {
     color: black;
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Poppins', sans-serif;
     font-weight: 700;
     text-transform: uppercase;
     border-radius: 25px;

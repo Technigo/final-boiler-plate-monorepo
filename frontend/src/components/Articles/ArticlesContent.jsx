@@ -35,7 +35,7 @@ const ArticlesContent = () => {
                         <img
                             src={expandedArticle === article.id ? article.imageL : article.imageS}
                             alt={article.name}
-                            style={{ maxWidth: expandedArticle === article.id ? "800px" : "300px" }}
+                            style={{ maxWidth: expandedArticle === article.id ? "800px" : "350px" }}
                         />
                         <div className="article-text">
                             <h3>{article.name}</h3>
