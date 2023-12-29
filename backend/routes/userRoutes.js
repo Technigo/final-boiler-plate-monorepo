@@ -1,4 +1,3 @@
-// Import the necessary modules and functions
 import express from "express";
 import {
   registerUserController,
@@ -9,12 +8,6 @@ import {
 
 // Create an instance of the Express router
 const router = express.Router();
-const listEndpoints = require("express-list-endpoints");
-
-router.get("/", (req, res) => {
-  const endpoints = listEndpoints(router);
-  res.json({ endpoints });
-});
 
 // REGISTER ROUTE: Handle user registration
 router.post("/register", registerUserController); // When a POST request is made to /register, execute the registerUserController function
