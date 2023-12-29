@@ -63,7 +63,6 @@ export const Home = () => {
   return (
     <StyledHomePage>
       <LogoText />
-      {/* <LogoText /> */}
       <h1 className="heading">{text.heading}</h1>
       <h2>{text.subheading}</h2>
       <p>{text.intro}</p>
