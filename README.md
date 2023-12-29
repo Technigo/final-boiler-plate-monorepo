@@ -461,4 +461,4 @@ This way, the log will be triggered after the state update has taken effect.
 
 # anyway, the text is saying "you are freezing ...", indicating that isLoggedIn is true. but no token at local. this is kind of making me care about it a bit, but lets ignore this for this moment. 
 
-# next goal - user will gather dandelion and visit dandelion shop. might buy dream made of happy instance
+# next goal - user will gather dandelion and visit dandelion shop. might buy dream made of happy instance! (might test shoppingcart?)..
