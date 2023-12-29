@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { recipeStore } from "../../stores/recipeStore";
-import { CollectionRecipe } from "../collectionRecipes/CollectionRecipe"
+import { CollectionRecipe } from "../collectionRecipes/CollectionRecipe";
 import "./collectionRecipes.css";
 
 // Define the CollectionRecipes component
@@ -36,13 +36,13 @@ export const CollectionRecipes = () => {
 
   // Render the component with a list of recipes (map over the recipes and render each recipe's ingredients and instructions)
   return (
-    <div>
-      <h2>Recipes:</h2>
-  
+    <section className="collection-recipes">
+      <h3>Recipes:</h3>
+      <div className="recipe-grid">
         {limitedRecipes.map((recipe, index) => (
-          <CollectionRecipe key={index} recipe={recipe} />
+          <CollectionRecipe key={index} recipe={recipe} index={index} />
         ))}
-    
-    </div>
+      </div>
+    </section>
   );
 };

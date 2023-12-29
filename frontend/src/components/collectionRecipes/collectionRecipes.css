@@ -1,0 +1,11 @@
+.collection-recipes {
+    background-color: rgb(253, 240, 236);
+    padding: 1rem; 
+   
+}
+
+.recipe-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+}
