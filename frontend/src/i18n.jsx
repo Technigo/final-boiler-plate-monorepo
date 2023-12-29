@@ -22,6 +22,11 @@ const resources = {
             "Discover a variety of articles about habits. From understanding the science behind habit formation to practical tips for positive changes, our collection offers valuable insights for cultivating a healthier and more productive lifestyle.": "Upptäck en mängd olika artiklar om vanor. Från att förstå vetenskapen bakom vanebildning till praktiska tips för positiva förändringar, vår kollektion erbjuder värdefulla insikter för att odla en hälsosammare och mer produktiv livsstil.",
 
             "How it works": "Såhär funkar det",
+            "> You choose your habits": "> Du väljer dina vanor",
+            "> Track your daily progress": "> Håll koll på dina dagliga framsteg",
+            "> See how your longest streak lasts": "> Se hur många dagar i rad du håller din vana",
+            "> See how many weeks you have finished": "> Se hur många veckor en vana varit aktiv",
+            "> Up to 10 habits": "> Upp till 10 vanor",
 
             "At HabitFlow, we understand the profound impact that habits can have on shaping the course of one's life. Rooted in the belief that intentional habits are the building blocks of personal growth, we've crafted a dedicated platform to guide you on your journey towards positive change.": "På HabitFlow förstår vi den djupgående inverkan som vanor kan ha på att forma ens livs gång. Med rötter i tron ​​att avsiktliga vanor är byggstenarna för personlig tillväxt, har vi skapat en dedikerad plattform för att guida dig på din resa mot positiv förändring.",
             "Our Mission: Empowering Your Daily Choices": "Vårt uppdrag: Stärka dina dagliga val",

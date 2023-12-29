@@ -7,7 +7,7 @@ import {
     deleteSpecificHabitController,
     addHabitController,
     addHabitDateController,
-} from "../controllers/habitController"; // Import custom habit controller functions
+} from "../controllers/_habitController"; // Import custom habit controller functions
 
 const router = express.Router();
 
