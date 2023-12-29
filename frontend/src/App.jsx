@@ -10,6 +10,7 @@ export const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false)
   const [registrationError, setRegistrationError] = useState(null)
   const [accessToken, setAccessToken] = useState("")
+  const [showButton, setShowButton] = useState(false)
 
   // event handler for when the user is ready to proceed, with playing video enough
   const onReady = (event) => {
@@ -93,6 +94,10 @@ export const App = () => {
         setIsLoggedIn(true)
         setShowAuthSection(false) // hide this after registration
         setRegistrationError(null) // reset regi err if regi is successful // idk i need this here
+        // show button after 10 sec
+        setTimeout(() => {
+          setShowButton(true)
+        }, 10000)
       } else {
         // registration failed. would be better handle accordingly 
         // for now, just logging err msg
@@ -129,6 +134,10 @@ export const App = () => {
         setIsLoggedIn(true)
         console.log("isLoggedIn:", isLoggedIn)
         setShowAuthSection(false) // hide after login
+        // show button after 10 sec
+        setTimeout(() => {
+          setShowButton(true)
+        }, 10000)
       }
     } catch (error) {
       console.error("couldnt login", error)
@@ -164,7 +173,7 @@ export const App = () => {
       </header>
       <div>
         {/* {isLoggedIn ? "you are freezing ..." : displayText} */}
-        {displayText}
+        {displayText} {' '}
         {showAuthSection && (
         <div>
           <input
@@ -183,7 +192,7 @@ export const App = () => {
           <div style={{ color: 'red' }}>{registrationError}</div>
         </div>
       )}
-      {isLoggedIn && (
+      {isLoggedIn && showButton && (
         <button onClick={handleUP}>go forward</button>
       )}
       </div>
