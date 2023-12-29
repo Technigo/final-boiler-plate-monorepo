@@ -15,7 +15,7 @@ const ArticlesFront = () => {
                 {/* Map through articles and create Link components */}
                 {data.articles.map((article, index) => (
                     // Wrap the article content in a Link component with the desired destination path
-                    <Link key={index} to={`/article/${article.id}`}>
+                    <Link key={index} to="/articles">
                         <div>
                             <img src={article.imageM} alt={article.name} />
                             <h3>{article.name}</h3>
