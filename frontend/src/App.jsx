@@ -155,6 +155,14 @@ export const App = () => {
       })
       const data = await response.json()
       console.log(data)
+      // check if the fetch request was successful before updating displayText
+      if (response.ok) {
+        console.log('setting displaytext')
+        // setDisplayText("you step forward, but you stay there. there is vision that never can be reached")
+        setDisplayText("s")
+      } else {
+        console.error('Error:', data.response || 'Failed to go forward')
+      }
     } catch (error) {
       console.error('Error:', error.message)
     }
