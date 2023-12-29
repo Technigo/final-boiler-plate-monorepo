@@ -49,6 +49,8 @@ export const App = () => {
     // Change text after 10 seconds while the video is playing
     if (isVideoPlaying) {
       const timeoutId = setTimeout(() => {
+        // need to remove freezing when no delay for this text works
+        // setDisplayText(isLoggedIn ? "you are freezing ..." : "it is dark and cold ...")
         setDisplayText("it is dark and cold ...")
         setShowAuthSection(true) // show the register/login section
       }, 10000)
@@ -57,6 +59,14 @@ export const App = () => {
       return () => clearTimeout(timeoutId)
     }
   }, [isVideoPlaying])
+
+  // change text withoout delay when isLoggedin is updated
+  useEffect(() => {
+    console.log("isLoggedIn updated:", isLoggedIn)
+    // this makes it is dark and cold is showing without delay, so need to remove this
+    // setDisplayText(isLoggedIn ? "you are freezing ..." : "it is dark and cold ...")
+    setDisplayText(isLoggedIn ? "you are freezing ..." : displayText)
+  }, [isLoggedIn, displayText])
 
   const handleRegister = async () => {
     try {
@@ -74,10 +84,12 @@ export const App = () => {
       const responseText = await response.text()
       console.log("Response text:", responseText)
 
-      const data = await response.json()
+      // const data = await response.json()
+      const data = JSON.parse(responseText) // parse the json response bcs response can be read only once
       console.log("after update data:", username)
       console.log(data)
       setIsLoggedIn(true)
+      console.log("isLoggedIn:", isLoggedIn)
     } catch (error) {
       console.error("couldnt register", error)
     }
@@ -96,6 +108,7 @@ export const App = () => {
       const data = await response.json()
       console.log(data)
       setIsLoggedIn(true)
+      console.log("isLoggedIn:", isLoggedIn)
     } catch (error) {
       console.error("couldnt login", error)
     }
@@ -113,7 +126,8 @@ export const App = () => {
         />
       </header>
       <div>
-        {isLoggedIn ? "you are freezing ..." : displayText}
+        {/* {isLoggedIn ? "you are freezing ..." : displayText} */}
+        {displayText}
         {showAuthSection && (
         <div>
           <input
