@@ -1,5 +1,6 @@
 .articles-container {
     margin-top: 40px;
+    margin-bottom: 70px;
     margin-left: 240px;
     display: flex;
     flex-direction: column;
@@ -41,6 +42,7 @@ p articles-info {
     font-family: 'Poppins', sans-serif;
     font-style: italic;
     cursor: pointer;
+    font-size: 13px;
 }
 
 .reverse {
@@ -83,7 +85,7 @@ p articles-info {
 }
 
 .article-summary.middle-article {
-    flex-direction: row;
+    flex-direction: row-reverse;
     justify-content: space-between;
 }
 
@@ -100,6 +102,13 @@ p articles-info {
     width: 60%;
 }
 
+.article-summary.middle-article.expanded .article-info img {
+    order: 1;
+}
+
+.article-summary.middle-article.expanded .article-text {
+    order: 2;
+}
 
 .article-summary.expanded .article-info {
     flex-direction: column;

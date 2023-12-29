@@ -38,17 +38,17 @@ const ArticlesContent = () => {
                             style={{ maxWidth: expandedArticle === article.id ? "800px" : "350px" }}
                         />
                         <div className="article-text">
-                            <h3>{article.name}</h3>
+                            <h3>{t(article.name)}</h3>
                             {expandedArticle === article.id ? (
                                 <>
                                     <p className="date">{article.date}</p>
-                                    <p>{article.text}</p>
+                                    <p>{t(article.text)}</p>
                                     <hr />
                                 </>
                             ) : (
                                 <>
-                                    <p className="article-info">{article.info}</p>
-                                    <p className="readmore">{article.readmore}</p>
+                                    <p className="article-info">{t(article.info)}</p>
+                                    <p className="readmore">{t(article.readmore)}</p>
                                 </>
                             )}
                         </div>
