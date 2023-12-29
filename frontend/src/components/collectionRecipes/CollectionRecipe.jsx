@@ -1,4 +1,4 @@
-// recipe card, prepped for later
+import { Link } from "react-router-dom";
 
 import "./collectionRecipe.css";
 
@@ -14,46 +14,20 @@ export const CollectionRecipe = ({ recipe, index }) => {
   const imageIndex = index % imageUrls.length;
 
   return (
-    <section className="collection-recipe-card">
-      <div className="collection-recipe-image-container">
-        <img src={imageUrls[imageIndex]} alt={recipe.title} />
-      </div>
-      <h2>{recipe.title}</h2>
+    <Link
+      to={`/recipe-details/${recipe._id}`}
+      className="collection-recipe-link"
+    >
+      <section className="collection-recipe-card">
+        <div className="collection-recipe-image-container">
+          <img src={imageUrls[imageIndex]} alt={recipe.title} />
+        </div>
+        <h2>{recipe.title}</h2>
 
-      <p>
-        <strong>User input:</strong> {recipe.userInput}
-      </p>
-      {/* <p>
-        <strong>Description:</strong> {recipe.description}
-      </p>
-      <p>
-        <strong>Ingredients:</strong>
-      </p>
-      {recipe.ingredients ? (
-        <ul>
-          {Object.entries(recipe.ingredients).map(
-            ([ingredient, quantity], i) => (
-              <li key={i}>{`${ingredient}: ${quantity}`}</li>
-            )
-          )}
-        </ul>
-      ) : (
-        <p>No ingredients available.</p>
-      )}
-      <div>
         <p>
-          <strong>Instructions:</strong>
+          <strong>User's ingredients:</strong> {recipe.userInput}
         </p>
-        {recipe.instructions ? (
-          <ol>
-            {recipe.instructions.map((instruction, index) => (
-              <li key={index}>{instruction}</li>
-            ))}
-          </ol>
-        ) : (
-          <p>No instructions available.</p>
-        )}
-      </div> */}
-    </section>
+      </section>
+    </Link>
   );
 };

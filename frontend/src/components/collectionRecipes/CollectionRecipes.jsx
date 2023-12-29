@@ -28,7 +28,7 @@ export const CollectionRecipes = () => {
 
   //loading state (Need to set this, so rendering doesn't happen BEFORE fetch!)
   if (loading) {
-    return <p>Loading recipes...</p>; // You can replace this with a loading spinner or other loading indicator
+    return <p>Loading recipes...Be patient, this might take a minute or two!</p>; // You can replace this with a loading spinner or other loading indicator
   }
 
   // Slice the recipes array to get only the first 12 recipes
@@ -40,7 +40,7 @@ export const CollectionRecipes = () => {
       <h3>Recipes:</h3>
       <div className="recipe-grid">
         {limitedRecipes.map((recipe, index) => (
-          <CollectionRecipe key={index} recipe={recipe} index={index} />
+          <CollectionRecipe key={recipe._id} recipe={recipe} index={index} />
         ))}
       </div>
     </section>

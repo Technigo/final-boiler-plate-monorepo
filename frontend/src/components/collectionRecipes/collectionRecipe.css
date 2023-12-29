@@ -1,6 +1,15 @@
+.collection-recipe-card {
+  line-height: 1.25; 
+}
+
 .collection-recipe-card h2 {
   font-size: 18px;
   font-weight: 300;
+}
+
+.collection-recipe-card p {
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-size: 13px; 
 }
 
 .collection-recipe-image-container {
