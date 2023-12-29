@@ -184,7 +184,7 @@ export const App = () => {
         </div>
       )}
       {isLoggedIn && (
-        <button onClick={handleUP}>Up</button>
+        <button onClick={handleUP}>go forward</button>
       )}
       </div>
     </div>
