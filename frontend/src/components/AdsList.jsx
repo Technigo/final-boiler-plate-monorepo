@@ -6,7 +6,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "./adslist.css";
 
-export const AdsList = ({ fetchType, userId }) => {
+export const AdsList = ({ fetchType }) => {
   const [ads, setAds] = useState([]);
   const getAllAds = adStore((state) => state.getAllAds);
   const fetchAds = adStore((state) => state.fetchAds);
@@ -16,13 +16,13 @@ export const AdsList = ({ fetchType, userId }) => {
       if (fetchType === "all") {
         await getAllAds();
       } else if (fetchType === "user") {
-        await fetchAds(localStorage.getItem("accessToken"), userId);
+        await fetchAds(localStorage.getItem("accessToken"));
       }
       const fetchedAds = adStore.getState().ads;
       setAds(fetchedAds);
     }
     fetchData();
-  }, [getAllAds, fetchAds, fetchType, userId]); // Add fetchType to dependency array
+  }, [getAllAds, fetchAds, fetchType]); // Add fetchType to dependency array
 
   // Settings for the carousel
   const settings = {

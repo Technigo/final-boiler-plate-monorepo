@@ -39,9 +39,9 @@ export const adStore = create((set) => ({
 
 
   // Fetch ads for a specific user
-  fetchAds: async ({ userId }) => {
+  fetchAds: async () => {
     try {
-      const response = await fetch(`${apiEnv}/getAds/${userId}`, {
+      const response = await fetch(`${apiEnv}/getAds`, {
         headers: { Authorization: localStorage.getItem("accessToken") },
       });
       if (response.ok) {

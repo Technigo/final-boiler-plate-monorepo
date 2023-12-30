@@ -38,7 +38,7 @@ export const Home = () => {
       </Link>
       {/* Render the recently added ads */}
       <h1>Recently added</h1>
-      <AdsList fetchType="all"/>
+      <AdsList fetchType="all" />
       {/* Render the user's ads */}
       <h1>Your ads</h1>
       <AdsList fetchType="user" />
