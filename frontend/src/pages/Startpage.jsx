@@ -9,6 +9,8 @@ import HowItWorks from "../components/Startpage/HowItWorks";
 import WhyHabit from "../components/Startpage/WhyHabit";
 import WhyHabitMobile from "../components/Startpage/WhyHabitMobile";
 import ArticlesFront from "../components/Startpage/ArticlesFront";
+import ArticlesFrontTablet from "../components/Startpage/ArticlesFrontTablet";
+import ArticlesFrontMobile from "../components/Startpage/ArticlesFrontMobile";
 import Footer from "../components/Footer";
 import FooterMobile from "../components/FooterMobile";
 
@@ -43,7 +45,13 @@ export const Startpage = () => {
       ) : (
         <WhyHabit />
       )}
-      <ArticlesFront />
+      {isMobile ? (
+        <ArticlesFrontMobile />
+      ) : isTablet ? (
+        <ArticlesFrontTablet />
+      ) : (
+        <ArticlesFront />
+      )}
       {isMobile ? (
         <FooterMobile />
       ) : isTablet ? (
