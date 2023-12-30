@@ -1,0 +1,44 @@
+/* Container for the cards */
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 1%;
+    gap: 20px;
+    /* Adjust the gap between cards */
+}
+
+/* Style for each card */
+.card {
+    width: calc(50% - 10px);
+    /* Make cards take up 50% of the container width with a gap */
+    box-sizing: border-box;
+    border: 1px solid #86bca8;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+/* Style for the card content (image, title, text) */
+.card-content {
+    padding: 20px;
+}
+
+/* Style for the card image */
+.card img {
+    width: 150px;
+    height: 150px;
+    padding-bottom: 20%;
+    /* Adjust the aspect ratio (height/width) as needed */
+    object-fit: cover;
+    /* Maintain aspect ratio and cover the container */
+    border-bottom: 1px solid #ddd;
+}
+
+/* Style for the card title */
+.card h2 {
+    margin-top: 0;
+}
+
+/* Style for the card text */
+.card p {
+    margin-bottom: 0;
+}

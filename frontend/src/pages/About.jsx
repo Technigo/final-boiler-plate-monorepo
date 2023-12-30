@@ -1,12 +1,14 @@
 import { Header } from '../components/header/Header';
+import { AboutContent } from '../components/about/AboutContent'
+import { Footer } from '../components/footer/Footer';
 
 
 export const About = () => {
   return (
     <>
       <Header />
-      <div>Bild + info om oss, länk till portföljer, github och kontaktuppgifter...</div>
-      <div>Info om uppbyggnad av sidan alt. länk till Repon på Github/read me.</div>
+      <AboutContent />
+      <Footer />
     </>
   )
 }

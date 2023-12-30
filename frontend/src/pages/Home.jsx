@@ -4,15 +4,17 @@ import { HeroSection } from '../components/heroSection/HeroSection';
 import { NewRecipe } from '../components/newRecipe/NewRecipe';
 import { CollectionRecipes } from "../components/collectionRecipes/CollectionRecipes"
 import { recipeStore } from '../stores/recipeStore';
+import { Footer } from '../components/footer/Footer';
 
 export const Home = () => {
   const { newRecipe, isGenerating } = recipeStore()
   return (
     <>
       <Header />
-      <HeroSection/>
-      {isGenerating ? <p>Generating your delicious outdoor meal...</p>: (newRecipe && <NewRecipe />)} {/* Conditionally render NewRecipe only when newRecipe is truthy */}
+      <HeroSection />
+      {isGenerating ? <p>Generating your delicious outdoor meal...</p> : (newRecipe && <NewRecipe />)} {/* Conditionally render NewRecipe only when newRecipe is truthy */}
       <CollectionRecipes />
+      <Footer />
     </>
   );
 };
