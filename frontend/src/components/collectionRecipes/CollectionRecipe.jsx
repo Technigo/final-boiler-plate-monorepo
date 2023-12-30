@@ -3,10 +3,10 @@ import { Link } from "react-router-dom";
 import "./collectionRecipe.css";
 
 const imageUrls = [
-  "/src/assets/recipe-imgs/campfire-896196_1280.jpg",
-  "/src/assets/recipe-imgs/camping-cooker-1853680_1280.jpg",
-  "/src/assets/recipe-imgs/picnic-4246724_1280.jpg",
-  "/src/assets/recipe-imgs/pot-5901086_1280.jpg",
+  "/recipe-imgs/campfire-896196_1280.jpg",
+  "/recipe-imgs/camping-cooker-1853680_1280.jpg",
+  "/recipe-imgs/picnic-4246724_1280.jpg",
+  "/recipe-imgs/pot-5901086_1280.jpg",
 ]; //These can be moved to a json-file later!
 
 export const CollectionRecipe = ({ recipe, index }) => {
