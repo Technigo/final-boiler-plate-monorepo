@@ -7,8 +7,10 @@ import HeaderMobile from "../components/HeaderMobile";
 import LoginForm from "../components/Startpage/LoginForm";
 import HowItWorks from "../components/Startpage/HowItWorks";
 import WhyHabit from "../components/Startpage/WhyHabit";
+import WhyHabitMobile from "../components/Startpage/WhyHabitMobile";
 import ArticlesFront from "../components/Startpage/ArticlesFront";
 import Footer from "../components/Footer";
+import FooterMobile from "../components/FooterMobile";
 
 
 export const Startpage = () => {
@@ -34,9 +36,21 @@ export const Startpage = () => {
       )}
       <LoginForm />
       <HowItWorks />
-      <WhyHabit />
+      {isMobile ? (
+        <WhyHabitMobile />
+      ) : isTablet ? (
+        <WhyHabitMobile />
+      ) : (
+        <WhyHabit />
+      )}
       <ArticlesFront />
-      <Footer />
+      {isMobile ? (
+        <FooterMobile />
+      ) : isTablet ? (
+        <Footer />
+      ) : (
+        <Footer />
+      )}
     </>
   );
 };

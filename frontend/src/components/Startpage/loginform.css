@@ -10,7 +10,6 @@
     text-transform: uppercase;
 }
 
-/* Apply styles to elements with either 'user-login' or 'user-registration' class */
 .user-login,
 .user-registration {
     display: flex;
@@ -19,7 +18,6 @@
     align-items: center;
 }
 
-/* Apply styles to input elements within 'user-login' or 'user-registration' class */
 .user-login>input,
 .user-registration>input {
     margin-bottom: 1em;
@@ -56,4 +54,16 @@
     width: 250px;
     margin-bottom: 40px;
     border: none;
+}
+
+
+/* Mobile */
+@media (max-width: 393px) {
+
+
+    .user-login>input,
+    .user-registration>input {
+        width: 300px;
+    }
+
 }
