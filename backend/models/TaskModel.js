@@ -44,6 +44,8 @@ export const taskSchema = new Schema(
       type: mongoose.Schema.Types.ObjectId,
       ref: "user",
     },
+    creatorUsername: String,
+
     volunteers: {
       type: [{ type: Schema.Types.ObjectId, ref: "user" }], //  The user's task ids
     },

@@ -43,7 +43,10 @@ export const getVolunteeredTasksController = asyncHandler(async (req, res) => {
       volunteers: { $elemMatch: { $eq: userId } }, // find all tasks where the volunteers array contains the user id
     })
       .sort("-createdAt")
-      .populate("user");
+      .populate({
+        path: "user",
+        select: "username",
+      });
 
     res.json(tasks);
   } catch (error) {
