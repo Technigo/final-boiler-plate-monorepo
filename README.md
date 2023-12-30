@@ -465,3 +465,5 @@ This way, the log will be triggered after the state update has taken effect.
 
 # you refuse to move, admitting the death
 i refuse to move, admit the end
+
+# it rains, and snow goes away a bit. user happens to notice something from the ground. 

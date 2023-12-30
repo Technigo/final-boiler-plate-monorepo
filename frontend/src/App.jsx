@@ -13,6 +13,7 @@ export const App = () => {
   const [showButton, setShowButton] = useState(false)
   const [isGoForwardClicked, setIsGoForwardClicked] = useState(false)
   const [refuseToMove, setRefuseToMove] = useState(false)
+  const [loopCounter, setLoopCounter] = useState(0)
 
   // event handler for when the user is ready to proceed, with playing video enough
   const onReady = (event) => {
@@ -176,6 +177,16 @@ export const App = () => {
           setTimeout(() => {
             setIsGoForwardClicked(false)
             setRefuseToMove(true) // to change the label of the button 
+            // loop counter
+            if (refuseToMove) {
+              setLoopCounter((prevCounter) => prevCounter + 1)
+              console.log("Loop Counter:", loopCounter)
+              if (loopCounter > 0) {
+                setDisplayText("... the snow turns to the rain ")
+                // reset the counter for the next time
+                setLoopCounter(0)
+              } 
+            }
           }, 10000)
         }, 10000)
         // assuming that the 'grid' property is an array in the response
