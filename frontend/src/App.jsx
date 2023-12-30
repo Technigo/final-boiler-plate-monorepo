@@ -11,6 +11,7 @@ export const App = () => {
   const [registrationError, setRegistrationError] = useState(null)
   const [accessToken, setAccessToken] = useState("")
   const [showButton, setShowButton] = useState(false)
+  const [isGoForwardClicked, setIsGoForwardClicked] = useState(false)
 
   // event handler for when the user is ready to proceed, with playing video enough
   const onReady = (event) => {
@@ -67,7 +68,7 @@ export const App = () => {
     // setDisplayText(isLoggedIn ? "you are freezing ..." : displayText)
     // only update displayText if isLoggedIn is true and not after 10 sec (showButton false), which will make not setdisplaytext to continuously render "you are freezing ... " even after i set new text value for displaytext
     if (isLoggedIn && !showButton ) {
-      setDisplayText("you are freezing ...")
+      setDisplayText("you are freezing ... ")
     }
   // }, [isLoggedIn, displayText])
   }, [isLoggedIn, showButton])
@@ -163,12 +164,17 @@ export const App = () => {
       // check if the fetch request was successful before updating displayText
       if (response.ok) {
         console.log('setting displaytext')
-        setDisplayText("you step forward, but you stay there. there is vision that never can be reached")
-        // setDisplayText("s")
+        // setDisplayText("you step forward, but you stay there. \nthere is vision that never can be reached")
+        setDisplayText([
+          "you step forward, but you stay there",
+          "there is vision that never can be reached"
+        ])
         // assuming that the 'grid' property is an array in the response
         // const updateGrid = data.response.grid
         // update the displayText state with the new value
+        // wanted to show text based on grid position. so this is something to be done next someday
         console.log('after setting displaytext')
+        setIsGoForwardClicked(true)
       } else {
         console.error('Error:', data.response || 'Failed to go forward')
       }
@@ -192,7 +198,21 @@ export const App = () => {
       </header>
       <div>
         {/* {isLoggedIn ? "you are freezing ..." : displayText} */}
-        {displayText} {' '}
+        {/* {displayText.map((line, index) => (
+          <div key={index}>{line}</div>
+        ))} {' '} */}
+        {/* if displaytext is a string, render it as it is */}
+        {typeof displayText === 'string' ? (
+          displayText
+        ) : (
+          // if displaytext is an array, map over it and render each line
+          <>
+            {displayText.map((line, index) => (
+              <div key={index}>{line}</div>
+            ))} 
+            {' '}
+          </>
+        )}
         {showAuthSection && (
         <div>
           <input
@@ -211,7 +231,7 @@ export const App = () => {
           <div style={{ color: 'red' }}>{registrationError}</div>
         </div>
       )}
-      {isLoggedIn && showButton && (
+      {isLoggedIn && showButton && !isGoForwardClicked && (
         <button onClick={handleUP}>go forward</button>
       )}
       </div>
