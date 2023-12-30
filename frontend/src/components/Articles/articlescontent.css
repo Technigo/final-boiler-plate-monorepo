@@ -21,9 +21,11 @@
     padding: 0 auto;
 }
 
+/* DELETE? 
 p articles-info {
     width: 100px;
 }
+*/
 
 .date {
     color: #3EC3CE;
@@ -136,26 +138,6 @@ p articles-info {
     position: relative;
 }
 
-/* Mobile */
-@media (max-width: 393px) {
-
-    .articles-container {
-        margin-top: 40px;
-        margin-bottom: 20px;
-        margin-left: 20px;
-        display: flex;
-        flex-direction: column;
-        gap: 40px;
-        width: 330px;
-    }
-
-    .article-info {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-
-}
 
 /* Tablet */
 @media (min-width: 394px) and (max-width: 834px) {

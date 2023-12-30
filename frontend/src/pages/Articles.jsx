@@ -6,6 +6,7 @@ import NavbarMobile from "../components/NavbarMobile";
 import Footer from "../components/Footer";
 import FooterMobile from "../components/FooterMobile";
 import ArticlesContent from "../components/Articles/ArticlesContent";
+import ArticlesContentMobile from "../components/Articles/ArticlesContentMobile";
 
 export const Articles = () => {
 
@@ -24,7 +25,15 @@ export const Articles = () => {
             ) : (
                 <Navbar />
             )}
-            <ArticlesContent />
+
+            {isMobile ? (
+                <ArticlesContentMobile />
+            ) : isTablet ? (
+                <ArticlesContent />
+            ) : (
+                <ArticlesContent />
+            )}
+
             {isMobile ? (
                 <FooterMobile />
             ) : isTablet ? (
