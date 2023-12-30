@@ -1,16 +1,17 @@
-.habit-container {
+.habitfront-container {
   margin-bottom: 20px;
   align-items: flex-start;
 }
 
-.habit-title {
+.habitfront-title {
   font-size: 14px;
   color: #333;
   margin-left: 0;
   margin-bottom: 10px;
+  text-align: left;
 }
 
-.habit-tracker {
+.habitfront-tracker {
   display: flex;
   justify-content: space-between;
   background-color: #e6f7ff;
@@ -59,7 +60,7 @@
   border: 2px solid grey;
 }
 
-.habit-footer {
+.habitfront-footer {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -67,14 +68,14 @@
   margin-top: 10px;
 }
 
-.water .habit-tracker {
+.water .habitfront-tracker {
   background-color: #e0f5ff;
 }
 
-.book .habit-tracker {
+.book .habitfront-tracker {
   background-color: #e8ffe8;
 }
 
-.walk .habit-tracker {
+.walk .habitfront-tracker {
   background-color: #ffe6ff;
 }

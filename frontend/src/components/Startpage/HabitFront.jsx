@@ -1,13 +1,13 @@
 import React from 'react';
-import './Habit.css';
+import './habitfront.css';
 
 const daysOfWeek = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
 
-const Habit = ({ habitName, habitColor, containerClass }) => {
+const HabitFront = ({ habitName, habitColor, containerClass }) => {
   return (
-    <div className={`habit-container ${containerClass}`}>
-      <span className="habit-title">{habitName}</span>
-      <div className="habit-tracker">
+    <div className={`habitfront-container ${containerClass}`}>
+      <span className="habitfront-title">{habitName}</span>
+      <div className="habitfront-tracker">
         {daysOfWeek.map((day, index) => (
           <div key={index} className="day-container">
             <label className="day-label">{day}</label>
@@ -15,7 +15,7 @@ const Habit = ({ habitName, habitColor, containerClass }) => {
           </div>
         ))}
       </div>
-      <div className="habit-footer">
+      <div className="habitfront-footer">
         <span>Finished weeks: X</span>
         <span>Longest streak: X</span>
       </div>
@@ -23,7 +23,7 @@ const Habit = ({ habitName, habitColor, containerClass }) => {
   );
 };
 
-export default Habit;
+export default HabitFront;
 
 
 

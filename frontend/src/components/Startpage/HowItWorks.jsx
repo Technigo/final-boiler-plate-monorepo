@@ -1,7 +1,7 @@
 import React from "react";
 import { useTranslation } from 'react-i18next';
 import "./howitworks.css";
-import Habit from './Habit';
+import HabitFront from './HabitFront';
 
 const HowItWorks = () => {
     const { t } = useTranslation();
@@ -22,9 +22,9 @@ const HowItWorks = () => {
                 <p>My Habits</p>
                 <hr></hr>
                 <div className="my-habits">
-                    <Habit habitName="Drink 2L of water" habitColor="blue" containerClass="water" />
-                    <Habit habitName="Read 20 pages in a book" habitColor="green" containerClass="book" />
-                    <Habit habitName="Walk for 30 minutes" habitColor="purple" containerClass="walk" />
+                    <HabitFront habitName="Drink 2L of water" habitColor="blue" containerClass="water" />
+                    <HabitFront habitName="Read 20 pages in a book" habitColor="green" containerClass="book" />
+                    <HabitFront habitName="Walk for 30 minutes" habitColor="purple" containerClass="walk" />
                 </div>
             </div>
         </div>

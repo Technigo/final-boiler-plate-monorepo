@@ -1,9 +1,18 @@
 .habits-container {
     text-align: left;
     margin-left: 120px;
-    width: 1000px;
+    margin-top: 100px;
+    width: 900px;
 }
 
+.habits-container h2 {
+    font-weight: 500;
+}
+
+.habits-container h3 {
+    font-weight: 500;
+    margin-top: 40px;
+}
 
 .one-habit {
     background-color: #c2e7eb;
@@ -42,8 +51,8 @@
     color: #fff;
     background-color: none;
     height: 1px;
-    width: 70%;
-    margin-left: 40px;
+    width: 100%;
+    margin-left: 0px;
     padding-bottom: 40px;
     position: relative;
 }
