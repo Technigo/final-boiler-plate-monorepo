@@ -6,6 +6,7 @@ import Header from "../components/Header";
 import HeaderMobile from "../components/HeaderMobile";
 import LoginForm from "../components/Startpage/LoginForm";
 import HowItWorks from "../components/Startpage/HowItWorks";
+import HowItWorksMobile from "../components/Startpage/HowItWorksMobile";
 import WhyHabit from "../components/Startpage/WhyHabit";
 import WhyHabitMobile from "../components/Startpage/WhyHabitMobile";
 import ArticlesFront from "../components/Startpage/ArticlesFront";
@@ -29,6 +30,7 @@ export const Startpage = () => {
       ) : (
         <Navbar />
       )}
+
       {isMobile ? (
         <HeaderMobile />
       ) : isTablet ? (
@@ -36,8 +38,19 @@ export const Startpage = () => {
       ) : (
         <Header />
       )}
+
       <LoginForm />
-      <HowItWorks />
+
+
+      {isMobile ? (
+        <HowItWorksMobile />
+      ) : isTablet ? (
+        <HowItWorksMobile />
+      ) : (
+        <HowItWorks />
+      )}
+
+
       {isMobile ? (
         <WhyHabitMobile />
       ) : isTablet ? (
@@ -45,6 +58,7 @@ export const Startpage = () => {
       ) : (
         <WhyHabit />
       )}
+
       {isMobile ? (
         <ArticlesFrontMobile />
       ) : isTablet ? (
@@ -52,6 +66,7 @@ export const Startpage = () => {
       ) : (
         <ArticlesFront />
       )}
+
       {isMobile ? (
         <FooterMobile />
       ) : isTablet ? (

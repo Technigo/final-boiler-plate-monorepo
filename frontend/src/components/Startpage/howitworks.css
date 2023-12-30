@@ -54,3 +54,31 @@
     flex-direction: column;
     align-items: flex-start;
 }
+
+
+/* Mobile */
+@media (max-width: 393px) {
+
+    .how-it-works-container {
+        padding: 0px;
+        padding-bottom: 20px;
+        margin-left: 30px;
+    }
+
+    .how-it-works-container h3 {
+        font-size: 15px;
+    }
+
+}
+
+/* Tablet */
+@media (min-width: 394px) and (max-width: 834px) {
+
+    .how-it-works-container {
+        padding: 0px;
+        padding-bottom: 20px;
+        margin-left: 30px;
+        justify-content: flex-start;
+    }
+
+}

@@ -5,7 +5,7 @@
 }
 
 .whymobile-container img {
-    width: 20px;
+    width: 15px;
     display: inline-block;
     vertical-align: top;
     padding-top: 4px;
@@ -20,7 +20,7 @@
 .whymobile-container h3 {
     font-weight: 300;
     font-style: italic;
-    font-size: 20px;
+    font-size: 15px;
 }
 
 .become-membermobile {
