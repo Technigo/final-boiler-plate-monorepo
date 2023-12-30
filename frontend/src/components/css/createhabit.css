@@ -15,6 +15,14 @@
     background-color: white;
 }
 
+.habit-input {
+    border-radius: 10px;
+    border: 1px grey solid;
+    padding: 5px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 12px;
+}
+
 .add-habit:hover {
     border: none;
 }
@@ -24,11 +32,14 @@
 }
 
 .delete-habit {
-    border: red dotted 3px;
+    border: red dotted 2px;
     margin-top: 30px;
+    color: red;
+    background-color: transparent;
+    font-family: 'Poppins', sans-serif;
 }
 
-.trash-icon {
-    width: 20px;
-    padding-right: 10px;
+.delete-trash-icon {
+    width: 14px;
+    padding-right: 8px;
 }
