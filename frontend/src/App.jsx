@@ -14,6 +14,7 @@ export const App = () => {
   const [isGoForwardClicked, setIsGoForwardClicked] = useState(false)
   const [refuseToMove, setRefuseToMove] = useState(false)
   const [loopCounter, setLoopCounter] = useState(0)
+  const [showButton2, setShowButton2] = useState(true)
 
   // event handler for when the user is ready to proceed, with playing video enough
   const onReady = (event) => {
@@ -185,6 +186,8 @@ export const App = () => {
                 setDisplayText("... the snow turns to the rain ")
                 // reset the counter for the next time
                 setLoopCounter(0)
+                // setShowButton(false) // hide the button after the loop
+                setShowButton2(false)
               } 
             }
           }, 10000)
