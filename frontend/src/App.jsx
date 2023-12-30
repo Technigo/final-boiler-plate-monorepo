@@ -64,8 +64,13 @@ export const App = () => {
   // change text without delay when isLoggedin is updated
   useEffect(() => {
     console.log("isLoggedIn updated:", isLoggedIn)
-    setDisplayText(isLoggedIn ? "you are freezing ..." : displayText)
-  }, [isLoggedIn, displayText])
+    // setDisplayText(isLoggedIn ? "you are freezing ..." : displayText)
+    // only update displayText if isLoggedIn is true and not after 10 sec (showButton false), which will make not setdisplaytext to continuously render "you are freezing ... " even after i set new text value for displaytext
+    if (isLoggedIn && !showButton ) {
+      setDisplayText("you are freezing ...")
+    }
+  // }, [isLoggedIn, displayText])
+  }, [isLoggedIn, showButton])
 
   const handleRegister = async () => {
     try {
@@ -158,8 +163,12 @@ export const App = () => {
       // check if the fetch request was successful before updating displayText
       if (response.ok) {
         console.log('setting displaytext')
-        // setDisplayText("you step forward, but you stay there. there is vision that never can be reached")
-        setDisplayText("s")
+        setDisplayText("you step forward, but you stay there. there is vision that never can be reached")
+        // setDisplayText("s")
+        // assuming that the 'grid' property is an array in the response
+        // const updateGrid = data.response.grid
+        // update the displayText state with the new value
+        console.log('after setting displaytext')
       } else {
         console.error('Error:', data.response || 'Failed to go forward')
       }
@@ -167,6 +176,8 @@ export const App = () => {
       console.error('Error:', error.message)
     }
   }
+
+  console.log("Current displayText value:", displayText) // to see if the component is re-rendering 
 
   return (
     <div>
