@@ -67,27 +67,30 @@ set({ selectedMoods: [] });
      console.error('Error fetching moods:', error);
   }
  },
-
-  fetchMoodsForOccasion: async (occasion) => {
-    try {
-      set({ selectedMoods: [] });
-      console.log('Fetching moods for occasion:', occasion);
-      const response = await fetch(`http://localhost:3000/api/mood?occasion=${encodeURIComponent(occasion)}`);
-      if (!response.ok) {
-        throw new Error('Failed to fetch moods for occasion');
-      }
-
-      const moods = await response.json();
-      const capitalizedMoods = moods.map((mood) => capitalizeFirstLetter(mood.trim()));
-
-      console.log('Fetched moods:', capitalizedMoods);
-      
-      set({ moods: capitalizedMoods });
-
-    } catch (error) {
-      console.error('Error fetching moods for occasion:', error);
+ fetchMoodsForOccasion: async (selectedOccasion) => {
+  if (!selectedOccasion) {
+    console.log('No occasion selected');
+    return;
+  }
+  try {
+    set({ selectedMoods: [] });
+    console.log('Fetching moods for occasion:', selectedOccasion);
+    const response = await fetch(`http://localhost:3000/api/mood?occasion=${encodeURIComponent(selectedOccasion)}`);
+    if (!response.ok) {
+      throw new Error('Failed to fetch moods for occasion');
     }
-  },
+
+    const moods = await response.json();
+    const capitalizedMoods = moods.map((mood) => capitalizeFirstLetter(mood.trim()));
+
+    console.log('Fetched moods:', capitalizedMoods);
+    
+    set({ moods: capitalizedMoods });
+
+  } catch (error) {
+    console.error('Error fetching moods for occasion:', error);
+  }
+},
 
   setSelectedMoods: (mood) => set((state) => {
     console.log('Setting selected moods:', mood);

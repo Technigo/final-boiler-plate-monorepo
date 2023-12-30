@@ -93,7 +93,7 @@ const OccasionSelector = () => {
 
   const handleOccasionSelect = async (occasion) => {
     setSelectedOccasion(occasion);
-    await fetchMoodsForOccasion();
+    await fetchMoodsForOccasion(occasion); // Pass the occasion directly
   };
 
   return (
