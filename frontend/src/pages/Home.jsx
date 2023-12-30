@@ -1,7 +1,7 @@
 // Import necessary dependencies and components.
 import { useEffect } from "react";
-import { userStore } from "../stores/userStore";
 import { useNavigate, Link } from "react-router-dom";
+import { userStore } from "../stores/userStore";
 import { Footer } from "../components/Footer";
 import { SearchBar } from "../components/SearchBar";
 import { AdsList } from "../components/AdsList";
@@ -42,6 +42,7 @@ export const Home = () => {
       {/* Render the user's ads */}
       <h1>Your ads</h1>
       <AdsList fetchType="user" />
+      <Link to="/create-ad">+ Add a product</Link>
       <Footer />
     </>
   );

@@ -1,13 +1,12 @@
 import { useEffect, useState } from 'react';
 import { AdCard } from './AdCard';
 import { adStore } from '../stores/adStore';
-import { Link } from "react-router-dom";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "./adslist.css";
 
-export const AdsList = ({ fetchType }) => {
+export const AdsList = ({ fetchType, userId }) => {
   const [ads, setAds] = useState([]);
   const getAllAds = adStore((state) => state.getAllAds);
   const fetchAds = adStore((state) => state.fetchAds);
@@ -17,13 +16,13 @@ export const AdsList = ({ fetchType }) => {
       if (fetchType === "all") {
         await getAllAds();
       } else if (fetchType === "user") {
-        await fetchAds(localStorage.getItem("accessToken"));
+        await fetchAds(localStorage.getItem("accessToken"), userId);
       }
       const fetchedAds = adStore.getState().ads;
       setAds(fetchedAds);
     }
     fetchData();
-  }, [getAllAds, fetchAds, fetchType]); // Add fetchType to dependency array
+  }, [getAllAds, fetchAds, fetchType, userId]); // Add fetchType to dependency array
 
   // Settings for the carousel
   const settings = {
@@ -112,7 +111,6 @@ export const AdsList = ({ fetchType }) => {
               </div>
             )
           )}    
-          <Link to="/create-ad">+ Add a product</Link>
         </div>
       )}
     </>

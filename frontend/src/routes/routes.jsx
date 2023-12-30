@@ -9,6 +9,7 @@ import { Register } from "../pages/Register";
 import { Login } from "../pages/Login";
 import { Profile } from "../pages/Profile";
 import { ProfileSettings } from "../pages/ProfileSettings";
+import { UpdateSettings } from "../pages/UpdateSettings";
 import { NotFound } from "../pages/NotFound";
 import { CreateAd } from "../pages/CreateAd";
 import { Search } from "../pages/Search";
@@ -30,9 +31,11 @@ const routes = (
     {/* Define a route for the "/home" path that renders the "Home" page */}
     <Route path="/home" element={<Home />} />
     {/* Define a route for the "/profile" path that renders the "Profile" page */}
-    <Route path="/profile" element={<Profile />} />    
+    <Route path="/profile/:userId" element={<Profile />} />    
     {/* Define a route for the "/settings" path that renders the "Profile Settings" component. */}
     <Route path="/settings" element={<ProfileSettings />} /> 
+    {/* Define a route for the "/update-settings" path that renders the "Update Settings" component. */}
+    <Route path="/update-settings" element={<UpdateSettings />} /> 
     {/* Define a route for the "/about" path and renders the "About" page */}
     <Route path="/about" element={<About />} />
     {/* Define a route for the "/policy" path and renders the "Policy" page */}

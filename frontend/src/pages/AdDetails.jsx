@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
+import { useParams, Link } from "react-router-dom";
 import { adStore } from "../stores/adStore";
-import { useParams } from "react-router-dom";
 import { Modal, Button } from "react-bootstrap";
 // Import Bootstrap styles
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -39,7 +39,7 @@ const AdDetails = () => {
         </p>
         <p>Pickup Date: {new Date(ad.pickupDate).toLocaleDateString()}</p>
         <p>Observation: {ad.observation}</p>
-        <p>Posted by: {ad.user?.username}</p>
+        <p>Posted by: <Link to={`/profile/${ad.user?._id}`}>{ad.user?.username}</Link></p>
         <Button onClick={handleShow}>Contact Advertiser</Button>
         <Modal show={show} onHide={handleClose}>
           <Modal.Body>

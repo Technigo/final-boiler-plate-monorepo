@@ -27,7 +27,7 @@ export const Navbar = () => {
         {/* Create a navigation menu with links to various routes. */}
         <ul className="app-ul">
           <li className="app-li">
-            <Link to="/profile">Username</Link>
+            Username {/* double check how to display username in homepage with minimum code */}
           </li>
           <li className="app-li">
             <Link to="/settings">Settings</Link>

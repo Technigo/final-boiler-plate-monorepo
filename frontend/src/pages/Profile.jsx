@@ -1,14 +1,22 @@
 import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import { userStore } from "../stores/userStore";
 import BackArrow from "../components/BackArrow";
+import { AdsList } from "../components/AdsList";
+import { Modal, Button } from "react-bootstrap";
+// Import Bootstrap styles
+import "bootstrap/dist/css/bootstrap.min.css";
+import { ContactForm } from "../components/ContactForm";
 
+// How to make sure that this is advertiser's profile???
 export const Profile = () => {
-  const isLoggedin = userStore((state) => state.isLoggedin);
-  const userId = userStore((state) => state.userId);
+  const { userId } = useParams();
   const username = userStore((state) => state.username);
-  const storeHandleProfileDisplay = userStore((state) => state.handleProfileDisplay);
+  const storeHandleAdvertiserProfile = userStore((state) => state.handleAdvertiserProfileDisplay);
   
-  console.log(isLoggedin, username, userId);
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
   const [profileData, setProfileData] = useState({
     introduction: "",
@@ -20,7 +28,7 @@ export const Profile = () => {
   useEffect(() => {
     const getProfileData = async () => {
       try {
-        const profileData = await storeHandleProfileDisplay(isLoggedin, userId);
+        const profileData = await storeHandleAdvertiserProfile(userId);
         if (profileData) {
           setProfileData({
             introduction: profileData.introduction,
@@ -35,19 +43,29 @@ export const Profile = () => {
       }
     };
     getProfileData();
-  }, [storeHandleProfileDisplay, isLoggedin, userId]);
+  }, [storeHandleAdvertiserProfile, userId]);
 
   return (
     <>
       <BackArrow />
       <div>
-        <div>User: {username}</div>
+        <h1>{username}</h1>
         <img src={profileData.image} alt={username} />
         <p>Introduction: {profileData.introduction}</p>
         <p>Location: {profileData.location}</p>
         <p>Products: {profileData.products.join(", ")}</p>
       </div>
+      <h2>Recent ads</h2>
+      <AdsList fetchType="user" userId={userId} />
+      <Button onClick={handleShow}>Contact Advertiser</Button>
+      <Modal show={show} onHide={handleClose}>
+        <Modal.Body>
+          <ContactForm
+            advertiserName={username}
+            handleClose={handleClose}
+          />
+        </Modal.Body>
+      </Modal>
     </>
-
-  )
+  );
 }

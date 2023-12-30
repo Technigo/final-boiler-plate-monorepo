@@ -187,13 +187,13 @@ export const userStore = create((set) => ({
     }
   },
 
-  // FUNCTION TO DISPLAY USER PROFILE
+  // FUNCTION TO DISPLAY USER'S OWN PROFILE (for each user to see their profile settings)
   handleProfileDisplay: async (isLoggedin, userId) => {
     // Check if the user is logged in and display message if they are not
     if (!isLoggedin) {
       Swal.fire({
         title: "Error!",
-        text: "Please log in to see your profile",
+        text: "Please log in to see the profile",
         icon: "error"
       });
       return;
@@ -233,7 +233,7 @@ export const userStore = create((set) => ({
           // alert(data.response || "User profile display failed");
         }
       } catch (error) {
-        // Handle and log any login errors.
+        // Handle and log any errors.
         console.error("Profile display error: ", error);
         Swal.fire({
           title: "Error!",
@@ -245,7 +245,54 @@ export const userStore = create((set) => ({
     }
   },
 
-  // FUNCTION TO HANDLE USER PROFILE UPDATE
+  // FUNCTION TO DISPLAY ADVERTISER'S PROFILE (for other users to see, no details about the advertiser's password or email)
+  handleAdvertiserProfileDisplay: async (userId) => {
+    try {
+      // If they are logged in, send GET request to the user endpoint to retrieve user data
+      const response = await fetch(`${apiEnv}/users/${userId}`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+
+      // Parse the response data as JSON.
+      const data = await response.json();
+      if (data.success) {
+        // Update the state with the response data
+        set((state) => ({
+          ...state,
+          username: data.response.username,
+          location: data.response.location,
+          introduction: data.response.introduction,
+          products: data.response.products,
+          image: data.response.image 
+        }));
+        // Return the profile data for further use in the component
+        return data.response;
+      } else {
+        // Display an error message from the server or a generic message.
+        Swal.fire({
+          title: "Error!",
+          text: data.response || "Advertiser profile display failed",
+          icon: "error"
+        });
+        return null;
+        // alert(data.response || "User profile display failed");
+      }
+    } catch (error) {
+      // Handle and log any errors.
+      console.error("Profile display error: ", error);
+      Swal.fire({
+        title: "Error!",
+        text: "Advertiser profile display failed",
+        icon: "error"
+      });
+      return null;
+    }
+  },
+
+  // FUNCTION TO HANDLE USER'S OWN PROFILE UPDATE (for each user to update their own profile settings)
   handleProfileUpdate: async (isLoggedin, userId, email, password, location, introduction, products, image) => {
     // Check if the user is logged in and display message if they are not
     if (!isLoggedin) {
