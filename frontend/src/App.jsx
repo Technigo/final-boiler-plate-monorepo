@@ -12,6 +12,7 @@ export const App = () => {
   const [accessToken, setAccessToken] = useState("")
   const [showButton, setShowButton] = useState(false)
   const [isGoForwardClicked, setIsGoForwardClicked] = useState(false)
+  const [refuseToMove, setRefuseToMove] = useState(false)
 
   // event handler for when the user is ready to proceed, with playing video enough
   const onReady = (event) => {
@@ -163,17 +164,24 @@ export const App = () => {
       console.log(data)
       // check if the fetch request was successful before updating displayText
       if (response.ok) {
-        console.log('setting displaytext')
-        // setDisplayText("you step forward, but you stay there. \nthere is vision that never can be reached")
-        setDisplayText([
-          "you step forward, but you stay there",
-          "there is vision that never can be reached"
-        ])
+        // setDisplayText([
+        //   "you step forward, but you stay there",
+        //   "there is vision that never can be reached"
+        // ])
+        const originalText = "you step forward, but you stay there"
+        setDisplayText([originalText])
+        setTimeout(() => {
+          setDisplayText([originalText, "there is vision that never can be reached"])
+          // show go forward button again after 10sec
+          setTimeout(() => {
+            setIsGoForwardClicked(false)
+            setRefuseToMove(true) // to change the label of the button 
+          }, 10000)
+        }, 10000)
         // assuming that the 'grid' property is an array in the response
         // const updateGrid = data.response.grid
         // update the displayText state with the new value
         // wanted to show text based on grid position. so this is something to be done next someday
-        console.log('after setting displaytext')
         setIsGoForwardClicked(true)
       } else {
         console.error('Error:', data.response || 'Failed to go forward')
@@ -232,7 +240,7 @@ export const App = () => {
         </div>
       )}
       {isLoggedIn && showButton && !isGoForwardClicked && (
-        <button onClick={handleUP}>go forward</button>
+        <button onClick={handleUP}>{refuseToMove ? "i refuse to move, admit the end" : "go forward"}</button>
       )}
       </div>
     </div>
