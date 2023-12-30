@@ -1,77 +1,80 @@
 .habit-container {
-    margin-bottom: 20px;
-    align-items: flex-start;
-  }
-  
-  .habit-title {
-    font-size: 14px;
-    color: #333; 
-    margin-left: 0; 
-    margin-bottom: 10px;
-  }
-  
-  .habit-tracker {
-    display: flex;
-    justify-content: space-between;
-    background-color: #e6f7ff; 
-    border-radius: 10px;
-    padding: 10px;
-    margin-top: 5px;
-  }
-  
-  .day-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 0 5px;
-  }
-  
-  .day-label {
-    margin-bottom: 5px;
-    font-size: 14px;
-  }
-  
-  .day-circle {
-    width: 25px;
-    height: 25px;
-    border-radius: 50%;
-    background-color: transparent;
-    border: 2px solid grey;
-    margin-bottom: 10px;
-  }
-  
-  .day-circle.colored {
-    border: none;
-  }
-  
-  .day-circle.green {
-    background-color: #A4C639;
-    border: 2px solid grey;
-  }
-  
-  .day-circle.purple {
-    background-color: #9C27B0;
-    border: 2px solid grey;
-  }
-  
-  .habit-footer {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    font-size: 14px;
-    margin-top: 10px;
-  }
+  margin-bottom: 20px;
+  align-items: flex-start;
+}
 
-  .water .habit-tracker {
-    background-color: #e0f5ff; 
-  }
-  
-  .book .habit-tracker {
-    background-color: #e8ffe8; 
-  }
-  
-  .walk .habit-tracker {
-    background-color: #ffe6ff; 
-  }
-  
-  
+.habit-title {
+  font-size: 14px;
+  color: #333;
+  margin-left: 0;
+  margin-bottom: 10px;
+}
+
+.habit-tracker {
+  display: flex;
+  justify-content: space-between;
+  background-color: #e6f7ff;
+  border-radius: 10px;
+  padding: 10px;
+  margin-top: 5px;
+}
+
+.day-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 5px;
+}
+
+.day-label {
+  margin-bottom: 5px;
+  font-size: 14px;
+}
+
+.day-circle {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background-color: transparent;
+  border: 2px solid grey;
+  margin-bottom: 10px;
+}
+
+.day-circle.colored {
+  border: none;
+}
+
+.day-circle.blue {
+  background-color: #3EC3CE;
+  border: 2px solid grey;
+}
+
+.day-circle.green {
+  background-color: #A4C639;
+  border: 2px solid grey;
+}
+
+.day-circle.purple {
+  background-color: #9C27B0;
+  border: 2px solid grey;
+}
+
+.habit-footer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  font-size: 14px;
+  margin-top: 10px;
+}
+
+.water .habit-tracker {
+  background-color: #e0f5ff;
+}
+
+.book .habit-tracker {
+  background-color: #e8ffe8;
+}
+
+.walk .habit-tracker {
+  background-color: #ffe6ff;
+}

@@ -22,11 +22,11 @@ const HowItWorks = () => {
                 <p>My Habits</p>
                 <hr></hr>
                 <div className="my-habits">
-                <Habit habitName="Drink 2L of water" habitColor="green" containerClass="water" />
-                <Habit habitName="Read 20 pages in a book" habitColor="green" containerClass="book" />
-                <Habit habitName="Walk for 30 minutes" habitColor="purple" containerClass="walk" />
-            </div> 
-        </div>
+                    <Habit habitName="Drink 2L of water" habitColor="blue" containerClass="water" />
+                    <Habit habitName="Read 20 pages in a book" habitColor="green" containerClass="book" />
+                    <Habit habitName="Walk for 30 minutes" habitColor="purple" containerClass="walk" />
+                </div>
+            </div>
         </div>
     );
 };
