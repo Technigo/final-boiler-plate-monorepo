@@ -25,7 +25,7 @@ export const RecipeDetails = () => {
           <strong>User's ingredients:</strong>
           {foundRecipe.userInput}
         </p>
-        <img src="/src/assets/recipe-imgs/campfire-896196_1280.jpg" alt="" />
+        <img src="/recipe-imgs/campfire-896196_1280.jpg" alt="" />
         <p className="description">{foundRecipe.description}</p>
 
         <h3>Ingredients:</h3>
