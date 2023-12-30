@@ -1,6 +1,7 @@
 import React from "react";
 import { useTranslation } from 'react-i18next';
 import "./howitworks.css";
+import Habit from './Habit';
 
 const HowItWorks = () => {
     const { t } = useTranslation();
@@ -17,8 +18,15 @@ const HowItWorks = () => {
                 <h3>{t("> Up to 10 habits")}</h3>
             </div>
             <div className="welcome-column">
-                <h3>{t("en bild här med en print sen på hur habit ser ut")}</h3>
-            </div>
+                <p>Welcome, Emma!</p>
+                <p>My Habits</p>
+                <hr></hr>
+                <div className="my-habits">
+                <Habit habitName="Drink 2L of water" habitColor="green" containerClass="water" />
+                <Habit habitName="Read 20 pages in a book" habitColor="green" containerClass="book" />
+                <Habit habitName="Walk for 30 minutes" habitColor="purple" containerClass="walk" />
+            </div> 
+        </div>
         </div>
     );
 };
