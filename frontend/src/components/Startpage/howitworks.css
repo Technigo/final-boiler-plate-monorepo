@@ -1,0 +1,56 @@
+.how-it-works-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding: 40px;
+    gap: 230px;
+    margin-left: 60px;
+}
+
+.how-it-works-container h2 {
+    color: #3EC3CE;
+    font-weight: 700;
+    font-size: 35px;
+}
+
+.how-it-works-container h3 {
+    font-weight: 400;
+    font-size: 20px;
+}
+
+.how-column {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.welcome-column {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    position: relative;
+}
+
+.welcome-column p {
+    color: #3EC3CE;
+    margin-bottom: 0;
+    margin-top: 5px;
+}
+
+.welcome-column hr {
+    border: none;
+    border-top: 10px dotted #3EC3CE;
+    color: #fff;
+    background-color: none;
+    height: 1px;
+    width: 70%;
+    margin-left: 0px;
+    padding-bottom: 10px;
+    position: relative;
+}
+
+.my-habits {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}

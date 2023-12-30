@@ -1,0 +1,137 @@
+.articles-container {
+    margin-top: 40px;
+    margin-bottom: 70px;
+    margin-left: 240px;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    width: 900px;
+}
+
+.articles-container h2 {
+    font-weight: 500;
+    font-size: 30px;
+    text-align: left;
+    padding: 0 auto;
+}
+
+
+.articles-container p {
+    text-align: left;
+    padding: 0 auto;
+}
+
+p articles-info {
+    width: 100px;
+}
+
+.date {
+    color: #3EC3CE;
+    font-weight: 700;
+    font-size: 10px;
+    max-width: 80px;
+    overflow: hidden;
+    white-space: nowrap;
+    background-color: #E7FDFF;
+    padding: 5px;
+    border-radius: 3px;
+}
+
+.readmore {
+    color: #3EC3CE;
+    font-family: 'Poppins', sans-serif;
+    font-style: italic;
+    cursor: pointer;
+    font-size: 17px;
+}
+
+.reverse {
+    flex-direction: row-reverse;
+}
+
+
+.article-summary {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+.article-info {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.article-text {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 60%;
+}
+
+.article-text h3 {
+    margin-bottom: 10px;
+}
+
+.article-text p {
+    margin-bottom: 15px;
+}
+
+.article-info img {
+    max-width: 300px;
+    margin-right: 20px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+.article-summary.middle-article {
+    flex-direction: row-reverse;
+    justify-content: space-between;
+}
+
+.article-summary.middle-article .article-info {
+    width: auto;
+}
+
+.article-summary.middle-article .article-info img {
+    order: 2;
+}
+
+.article-summary.middle-article .article-text {
+    order: 1;
+    width: 60%;
+}
+
+.article-summary.middle-article.expanded .article-info img {
+    order: 1;
+}
+
+.article-summary.middle-article.expanded .article-text {
+    order: 2;
+}
+
+.article-summary.expanded .article-info {
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.article-summary.expanded .article-text {
+    width: 100%;
+}
+
+.article-summary.expanded img {
+    margin-bottom: 20px;
+}
+
+/* Dotted line */
+.articles-container hr {
+    border: none;
+    border-top: 8px dotted #3EC3CE;
+    color: #fff;
+    background-color: none;
+    height: 1px;
+    width: 100%;
+    margin-left: 0px;
+    padding-bottom: 40px;
+    position: relative;
+}

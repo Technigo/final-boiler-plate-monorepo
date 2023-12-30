@@ -1,0 +1,84 @@
+.aboutus-container {
+    background-color: #F0E9DC;
+    padding: 50px;
+    padding-left: 300px;
+}
+
+.aboutus-container h2 {
+    font-weight: 400;
+    font-style: italic;
+    font-size: 30px;
+    text-align: left;
+    margin-top: 50px;
+}
+
+.aboutus-text {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    width: 800px;
+}
+
+/* Dotted line */
+hr {
+    border: none;
+    border-top: 8px dotted #3EC3CE;
+    color: #fff;
+    background-color: none;
+    height: 1px;
+    width: 30%;
+    position: absolute;
+    margin-left: 200px;
+}
+
+
+
+/* Mobile */
+@media (max-width: 393px) {
+
+    .aboutus-container {
+        padding: 20px;
+        padding-left: 30px;
+        padding-bottom: 40px;
+    }
+
+    .aboutus-container h2 {
+        font-size: 25px;
+        text-align: left;
+    }
+
+    .aboutus-text {
+        width: 300px;
+        font-size: 12px;
+    }
+
+    /* Dotted line */
+    hr {
+        width: 70%;
+        position: absolute;
+        margin-left: 30px;
+    }
+
+}
+
+/* Tablet */
+@media (min-width: 394px) and (max-width: 834px) {
+
+    .aboutus-container {
+        padding: 20px;
+        padding-left: 30px;
+        padding-bottom: 40px;
+    }
+
+    .aboutus-text {
+        width: 700px;
+    }
+
+    /* Dotted line */
+    hr {
+        width: 70%;
+        position: absolute;
+        margin-left: 100px;
+    }
+
+}

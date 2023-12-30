@@ -1,0 +1,14 @@
+.footermobile {
+    background-color: #f0e9dc;
+    overflow: hidden;
+    padding: 10px;
+}
+
+.footermobile-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.footermobile p {
+    font-size: 8px;
+}

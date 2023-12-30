@@ -1,0 +1,40 @@
+{
+    "articles": [
+        {
+            "id": 1,
+            "imageS": "/article1S.jpeg",
+            "imageM": "/article1M.jpeg",
+            "imageL": "/article1L.jpeg",
+            "name": "The Power of Habits: How They Shape Your Life",
+            "info": "Habits are the invisible architects of our lives, shaping our routines, decisions, and ultimately, our destinies. From the moment we wake up to the...",
+            "text": "Habits are the invisible architects of our lives, shaping our routines, decisions, and ultimately, our destinies. From the moment we wake up to the time we go to bed, habits influence our actions and reactions. Understanding the power of habits can be the key to unlocking positive change in our lives.\n\nThis article explores the science behind habits, delving into the neurological processes that occur when habits are formed. It discusses the three components of a habit loop: cue, routine, and reward, and how identifying and manipulating these elements can help us establish new, beneficial habits and break free from detrimental ones.\n\nBy recognizing the role habits play in our lives, we gain the ability to intentionally cultivate habits that align with our goals and values. Whether it's adopting a morning exercise routine, practicing mindfulness, or cultivating a reading habit, harnessing the power of habits empowers us to lead more intentional and fulfilling lives.",
+            "isReverse": false,
+            "date": "December 2023",
+            "readmore": "Read more"
+        },
+        {
+            "id": 2,
+            "imageS": "/article2S.png",
+            "imageM": "/article2M.webp",
+            "imageL": "/article2L.png",
+            "name": "The Habits of Highly Successful People: Lessons in Productivity and Achievement",
+            "info": "Ever wondered what sets highly successful individuals apart from the rest? It often boils down to their habits. In this article, we explore...",
+            "text": "Ever wondered what sets highly successful individuals apart from the rest? It often boils down to their habits. In this article, we explore the habits of successful people, drawing insights from the routines of entrepreneurs, athletes, and other high achievers.\n\nFrom time management and goal setting to cultivating a growth mindset, successful individuals often share common habits that contribute to their accomplishments. This article breaks down these habits, providing readers with valuable lessons and actionable tips to incorporate into their own lives.\n\nBy adopting the habits of highly successful people, readers can enhance their productivity, resilience, and overall success. From the power of a morning routine to the significance of continuous learning, this article serves as a roadmap for those aspiring to achieve greatness in their personal and professional lives.",
+            "isReverse": true,
+            "date": "December 2023",
+            "readmore": "Read more"
+        },
+        {
+            "id": 3,
+            "imageS": "/article3S.png",
+            "imageM": "/article3M.jpg",
+            "imageL": "/article3L.webp",
+            "name": "Breaking Bad: Strategies for Overcoming Unhealthy Habits",
+            "info": "Breaking bad habits can be a challenging but crucial step toward personal growth and well-being. This article explores effective strategies for overcoming unhealthy habits, providing readers...",
+            "text": "Breaking bad habits can be a challenging but crucial step toward personal growth and well-being. This article explores effective strategies for overcoming unhealthy habits, offering readers actionable tips for positive change.\n\nIdentify the root cause by understanding triggers and emotions associated with your habits. Set clear, achievable goals, celebrating each step forward. Replace negative habits with positive alternatives aligned with your values.\n\nBuild a support system with friends, family, or a support group. Practice mindfulness to heighten self-awareness, interrupting automatic behaviors. View setbacks as growth opportunities, adjusting your strategy accordingly.\n\nConsider professional help if needed. Celebrate progress, no matter how small, to reinforce positive behavior. Breaking bad habits is a gradual journey requiring patience and perseverance. Commit to these strategies for transformative, lasting change.",
+            "isReverse": false,
+            "date": "December 2023",
+            "readmore": "Read more"
+        }
+    ]
+}
