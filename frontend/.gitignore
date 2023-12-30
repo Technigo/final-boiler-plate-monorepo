@@ -12,6 +12,7 @@ dist
 dist-ssr
 *.local
 package-lock.json
+.env
 
 # Editor directories and files
 .vscode/*
@@ -23,7 +24,3 @@ package-lock.json
 *.njsproj
 *.sln
 *.sw?
-
-
-Comment out later ;) 
-.env
