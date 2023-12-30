@@ -1,8 +1,8 @@
 import express from "express";
 import {
-  registerUserController,
-  loginUserController,
-  usersController,
+  registerUser,
+  loginUser,
+  allUsers,
 } from "../controllers/userController";
 import {
   authenticateUser,
@@ -13,13 +13,13 @@ import {
 const router = express.Router();
 
 // REGISTER ROUTE: Handle user registration
-router.post("/register", registerUserController); // When a POST request is made to /register, execute the registerUserController function
+router.post("/register", registerUser); // When a POST request is made to /register, execute the registerUserController function.
 
 // LOGIN ROUTE: Handle user login
-router.post("/login", loginUserController); // When a POST request is made to /login, execute the loginUserController function
+router.post("/login", loginUser); // When a POST request is made to /login, execute the loginUserController function
 
-// LIST USERS ENDPOINT
-router.get("/users", usersController);
+// ADMIN route to GET list of all users.
+router.get("/all-users", authenticateUser, authorizedAdmin, allUsers);
 
 // Export the router for use in the main application
 export default router;

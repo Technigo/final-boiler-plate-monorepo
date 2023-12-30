@@ -3,140 +3,101 @@ import asyncHandler from "../middleware/asyncHandler";
 import bcrypt from "bcrypt"; // Use bcrypt to securely hash and store passwords in our database.
 import { generateToken } from "../utils/generateToken";
 
-// @desc    Register new user
-// @route   POST api/register
-// @access  Public
-
-export const registerUserController = asyncHandler(async (req, res) => {
-  // Extract email, username and password from the request body
+// REGISTER A NEW USER | POST api/register | Access: Public
+const registerUser = asyncHandler(async (req, res) => {
+  // Get user data - Extract email, username and password from the request body.
   const { username, password, email } = req.body;
-  // In this try section of the try catch we will first do some conditional logic and then generate the newUser with a crypted password within the DB.
+
+  // 1st Condition - Check if all fields are inputted.
+  if (!username || !email || !password) {
+    throw new Error("Please fill all the inputs.");
+  }
+
+  // 2nd Condition - Check if the user already exists.
+  const existingUsername = await UserModel.findOne({ username });
+  if (existingUsername) res.status(400).send("User already exists");
+
+  const existingEmail = await UserModel.findOne({ email });
+  if (existingEmail)
+    res
+      .status(400)
+      .send("Email already exists. Please use a different email address.");
+
+  // Generate a salt and hash the user's password from the bcrypt library.
+  const salt = await bcrypt.genSalt(10);
+  const hashedPassword = await bcrypt.hash(password, salt);
+
+  // Create a new user.
+  const newUser = new UserModel({ username, email, password: hashedPassword });
+
   try {
-    // 1st Condition
-    // Check wether all fields of registration logic are NOT [!email] inputted from the request.body object
-    if (!username || !email || !password) {
-      // if so, set http status to a 400code
-      res.status(400);
-      // and throw new error with some info
-      throw new Error("Please add all fields");
-    }
-    // 2nd Condition
-    // Check if the current user trying to register is using an username or email that matches with the same username or email in the database, so they would have to choose something diferent
-    const existingUser = await UserModel.findOne({
-      $or: [{ username }, { email }],
-    });
-    if (existingUser) {
-      res.status(400);
-      throw new Error(
-        `User with ${
-          existingUser.username === username ? "username" : "email"
-        } already exists`
-      );
-    }
-
-    // Generate a salt and hash the user's password
-    //In this line below, we're using the bcrypt library to create a random value called "salt." The salt is added to the password before hashing it. It adds an extra layer of security by making it more difficult for attackers to use precomputed tables (rainbow tables) to crack passwords. The 10 in genSaltSync(10) represents the cost factor, which determines how computationally intensive the hashing process will be.
-    const salt = bcrypt.genSaltSync(10);
-
-    const hashedPassword = bcrypt.hashSync(password, salt);
-    // In this line below, we're using the generated salt to hash the user's password. Hashing transforms the password into a secure and irreversible string of characters. The bcrypt library handles the entire process for us, ensuring that the password is securely hashed. The resulting hashedPassword is what we store in the database to keep the user's password safe.
-    // Create a new user instance with the hashed password
-    const newUser = new UserModel({
-      username,
-      email,
-      password: hashedPassword,
-    });
-
-    // Mongoose Method: newUser.save()
-    // Description: Save the new user instance to the database
     await newUser.save();
+    generateToken(res, newUser._id);
 
-    // Respond with a success message, user details, and the JWT token
     res.status(201).json({
-      success: true,
-      response: {
-        username: newUser.username,
-        email: newUser.email,
-        id: newUser._id,
-        accessToken: newUser.accessToken,
-      },
+      _id: newUser._id,
+      username: newUser.username,
+      email: newUser.email,
+      isAdmin: newUser.isAdmin,
     });
-  } catch (e) {
-    // Handle any errors that occur during the registration process
-    res.status(500).json({ success: false, response: e.message });
+  } catch (error) {
+    res.status(400);
+    throw new Error("Invalid user data");
   }
 });
 
-// -----------------------
-// -----------------------
-// -----------------------
-// -----------------------
-// -----------------------
-
-// @desc    Login Existing User
-// @route   POST api/login
-// @access  Public
-
-export const loginUserController = asyncHandler(async (req, res) => {
-  // Extract username and password from the request body
+// LOGIN A USER | POST api/login | Access: Public
+const loginUser = asyncHandler(async (req, res) => {
+  // Extract username and password from the request body.
   const { username, password } = req.body;
 
-  try {
-    // Find a user with the provided username in the database
-    const user = await UserModel.findOne({ username });
-    if (!user) {
-      // If no user is found with the provided username, respond with a 401 Unauthorized and a user not found message
-      return res
-        .status(401)
-        .json({ success: false, response: "User not found" });
-    }
+  // Check if it's already a existing user with the provided username in the database.
+  const existingUser = await UserModel.findOne({ username });
 
-    // Compare the provided password with the hashed password in the database
-    const isMatch = await bcrypt.compare(password, user.password);
-    if (!isMatch) {
-      // If the provided password doesn't match the stored password, respond with a 401 Unauthorized and an incorrect password message
-      return res
-        .status(401)
-        .json({ success: false, response: "Incorrect password" });
+  if (existingUser) {
+    const passwordMatch = await bcrypt.compare(password, existingUser.password);
+
+    // If user provided the right password.
+    if (passwordMatch) {
+      generateToken(res, existingUser._id);
+
+      res.status(201).json({
+        _id: existingUser._id,
+        username: existingUser.username,
+        email: existingUser.email,
+        isAdmin: existingUser.isAdmin,
+      });
+      return; // Exit the function after sending the response.
+    } else {
+      res.status(401);
+      throw new Error("Invalid password.");
     }
-    // Respond with a success message, user details, and the JWT token
-    res.status(200).json({
-      success: true,
-      response: {
-        username: user.username,
-        id: user._id,
-        accessToken: user.accessToken, //  token for the user using the acessToken generated from the model, // Use the generated token here
-      },
-    });
-  } catch (e) {
-    // Handle any errors that occur during the login process
-    res.status(500).json({ success: false, response: e.message });
+  } else {
+    res.status(401);
+    throw new Error("User not found.");
   }
 });
 
-export const usersController = asyncHandler(async (req, res) => {
-  try {
-    const users = await UserModel.find({}, { password: 0, accessToken: 0 });
-    res.status(200).json({ success: true, response: users });
-  } catch (e) {
-    res.status(500).json({ success: false, response: e.message });
-  }
+// LOGOUT A USER | POST api/register | Access: Public
+const logoutUser = asyncHandler(async (req, res) => {
+  res.cookie("jwt", "", {
+    httpOnly: true,
+    expires: new Date(0),
+  });
+  res.status(200).json({ message: "Logged out successfully" });
+});
+
+// ADMIN CONTROLLER: GET ALL USERS
+const allUsers = asyncHandler(async (req, res) => {
+  const users = await UserModel.find({});
+  res.json(users);
 });
 
 // @desc    Logged in user wishlist
 // @route   GET
 // @access  Private
 
-export const wishlistController = asyncHandler();
+// export const wishlistController = asyncHandler();
 
-// SUMMARY
-
-// This file contains controller functions for user-related operations within an Express.js application. Let's provide a summary with additional context:
-
-// registerUserController: This controller handles user registration. It extracts the user's username, password, and email from the request body. It performs several checks, such as ensuring that all required fields are provided and that the chosen username or email is not already in use by another user. It securely hashes the user's password using the bcrypt library and stores the hashed password in the database. After successfully registering the user, it responds with a success message, user details, and a JSON Web Token (JWT) for authentication.
-
-// generateToken: This is a utility function used to generate JWT tokens for user authentication. It takes a user object and creates a token containing the user's access token, with an optional secret key and a 24-hour expiration time.
-
-// loginUserController: This controller manages user login. It extracts the username and password from the request body, then attempts to find a user with the provided username in the database. If the user is found, it compares the provided password with the hashed password stored in the database using bcrypt. If the credentials match, it generates a JWT token for the user and responds with a success message, user details, and the JWT token. In case of authentication failure (wrong password or non-existent user), it responds with appropriate error messages.
-
-// In summary, this file provides controllers for user registration and login, ensuring that user credentials are securely handled and authenticated using JWT tokens. It also uses bcrypt to hash and store passwords securely in the database, enhancing the overall security of user authentication in the application.
+// Exports
+export { registerUser, loginUser, logoutUser, allUsers };

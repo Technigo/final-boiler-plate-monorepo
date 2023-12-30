@@ -1,28 +1,27 @@
+import jwt from "jsonwebtoken";
 import { UserModel } from "../models/UserModel";
 import asyncHandler from "./asyncHandler.js";
 
 // USER AUTHENTICATION
 const authenticateUser = asyncHandler(async (req, res, next) => {
-  // Retrieve the access token from the request header.
-  const accessToken = req.header("Authorization");
+  let token;
 
-  try {
-    // Find a user in the database using the retrieved access token.
-    const userToken = await UserModel.findOne({ accessToken: accessToken });
+  // Read JWT from the "jwt" cookie.
+  token = req.cookies.jwt;
 
-    if (userToken) {
-      // If a user is found, add the user object to the request object.
-      req.user = user;
+  if (token) {
+    try {
+      const decoded = jwt.verify(token, process.env.JWT_SECRET);
+      req.user = await UserModel.findById(decoded.id).select("-password");
       next();
-    } else {
-      // If no user is found, send a 401 Unauthorized response.
-      res
-        .status(401)
-        .json({ success: false, response: "Not authorized. Please login." });
+    } catch (error) {
+      console.error(error);
+      res.status(401);
+      throw new Error("Not authorized, token failed");
     }
-  } catch (error) {
-    // Handle any errors that occur during the database query or user authentication.
-    res.status(500).json({ success: false, response: error.message });
+  } else {
+    res.status(401);
+    throw new Error("Not authorized, no token.");
   }
 });
 
@@ -31,7 +30,7 @@ const authorizedAdmin = (req, res, next) => {
   if (req.user && req.user.isAdmin) {
     next();
   } else {
-    res.status(401).send("Admin authorization failed.");
+    res.status(401).send("Not authorized as an admin.");
   }
 };
 

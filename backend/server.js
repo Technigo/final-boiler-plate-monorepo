@@ -4,6 +4,7 @@ import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
 import mongoose from "mongoose";
+import cookieParser from "cookie-parser";
 const listEndpoints = require("express-list-endpoints"); // A package that lists all the endpoints of the server.
 
 // Utils
@@ -27,6 +28,16 @@ const app = express(); // Create an instance of the Express application.
 app.use(cors()); // Enable CORS (Cross-Origin Resource Sharing).
 app.use(express.json()); // Parse incoming JSON data.
 app.use(express.urlencoded({ extended: false })); // Parse URL-encoded data.
+app.use(cookieParser());
+
+// Error handling for server state.
+app.use((req, res, next) => {
+  if (mongoose.connection.readyState === 1) {
+    next();
+  } else {
+    res.status(503).json({ error: "Service unavailable" });
+  }
+});
 
 app.get("/", (req, res) => {
   // This function returns a list of all registered routes in the application.
@@ -50,15 +61,6 @@ app.use("/api/plants", plantRoutes);
 //   }
 // };
 // seedDatabase();
-
-// Error handling for server state.
-app.use((req, res, next) => {
-  if (mongoose.connection.readyState === 1) {
-    next();
-  } else {
-    res.status(503).json({ error: "Service unavailable" });
-  }
-});
 
 // start the server and log a message indicating that the server has started and on which URL it's running.
 app.listen(port, () => {
