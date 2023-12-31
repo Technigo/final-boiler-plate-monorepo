@@ -532,3 +532,56 @@ so it is showing 3 now, instead of actual minus value from the database.
 
 
 4. there, i can remember. but was just part of it.  better than nothing though
+
+
+
+
+# this saved me. the thing is that i got this this much late... but yea, time to celebrate that i got this finally. now my value is updated with 3 at database as well
+but the thing is... do i need to continuously have unexplainable useless time to finally get this answer from chatgpt eventually? it is rly unproductive, but since this made progress, i can say this is bit productive at least. but im rly not sure how can i proceed in this way. if i am lucky, i get answer. if im not, i suffer at nowhere with no clue. i need help because i am student of this course, but help is not being made. is the purpose of learning is to only find out that i need help? that never can get? this is such a waste of life... why i get pain? in return of this little progress? and this is not right, bcs im not self studying. this is very much wrong. im angry with technigo. no. at least this school made me start. but yea, i can say the way is rly painful and unproductive, but yea, still say, better than nothing. but just better than nothing. this is not learning. im getting knowledge eventually in middle of meanlingless long pain. this is how i wasted my life in stockholm with 3 month. i was supposed to learn other things than this, more productive and happier, was i, that i before met technigo. many doubts that never could be solved, i tried to ignore all my question that comes form inside of me. so this is result that i get, because im not smart. im not smart and choose wrong thing time to time. but because i was hard working, i got effect that i work with wrong thing. this is the reason that i destroy myself now. but because we are human, and group of people, not individual, or since this process is not done by myself, i think we, or me, or another organization that might created by someone, can do things better. bcs i suffer and bcs i think this is not right, i think, there is way to make things better. but im not into myself to education business itself. i dont want to consume my life in that way. but , nevertheless, i can still ask. this is wrong, there is something wrong, and because of that, we can make things better. if you will. bcs you wont, you are not listening me. and i die of this lack of comminication.
+
+
+
+
+chatgpt
+
+It looks like the issue is not with the code you provided but rather with how Mongoose handles the findOneAndUpdate operation in combination with the subsequent save. In Mongoose, findOneAndUpdate operates atomically, meaning that it doesn't retrieve the latest version of the document from the database before updating it. As a result, when you perform findOneAndUpdate followed by a modification and save, it's possible that the save operation doesn't take into account changes made outside of the findOneAndUpdate operation.
+
+To address this, you can use the lean() option with findOneAndUpdate to get a plain JavaScript object instead of a Mongoose document. Here's the modified upUserController:
+
+javascript
+Copy code
+const upUserController = asyncHandler(async (req, res) => {
+  const { user } = req;
+  try {
+    // Update the user's grid by decreasing the row by 1
+    const upUser = await UserModel.findOneAndUpdate(
+      { _id: user._id },
+      { $inc: { 'grid.0.row': -1 } },
+      { new: true, lean: true } // Use lean to get a plain JavaScript object
+    );
+
+    // If the row becomes less than 1, set it back to 3
+    console.log('before upuser grid row:', upUser.grid[0].row);
+    if (upUser.grid[0].row < 1) {
+      upUser.grid[0].row = 3;
+      console.log('after upuser grid row:', upUser.grid[0].row);
+    }
+
+    // Save the updated user to the database
+    await UserModel.findByIdAndUpdate(user._id, { $set: { grid: upUser.grid } });
+
+    console.log('Saved grid to the database:', upUser.grid[0].row);
+
+    // Respond with the updated user information
+    res.status(200).json({
+      success: true,
+      response: {
+        grid: upUser.grid,
+      },
+    });
+  } catch (e) {
+    console.error('Error updating grid:', e.message);
+    res.status(500).json({ success: false, response: e.message });
+  }
+});
+This code uses lean: true to get a plain JavaScript object from findOneAndUpdate. Then, it uses findByIdAndUpdate to update the document with the modified grid value. This ensures that changes outside of the findOneAndUpdate operation are taken into account when saving to the database.

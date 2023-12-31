@@ -113,13 +113,15 @@ const upUserController = asyncHandler(async (req, res) => {
     const upUser = await UserModel.findOneAndUpdate(
       { _id: user._id }, // find the user by id
       { $inc: { 'grid.0.row': -1 } }, // decrease the row
-      { new: true } // return the updated document
+      { new: true, lean: true } // return the updated document // use lean to get a plain javascript document
     )
     
     // if the row becomes less than 1, set it back to 3
+    console.log('before upuser grid row:', upUser.grid[0].row)
     if (upUser.grid[0].row < 1 ) {
       upUser.grid[0].row = 3
       // await upUser.save()
+      console.log('after upuser grid row:', upUser.grid[0].row)
     }
 
     // // if the row becomes less than 1, set it back to 3
@@ -130,17 +132,19 @@ const upUserController = asyncHandler(async (req, res) => {
     // }
 
     // save the updated user to the database
-    await user.save()
+    // await user.save()
     // await upUser.save()
-    // console.log('Updated grid:', upUser.grid)
-    console.log('Updated grid:', user.grid)
+    await UserModel.findByIdAndUpdate(user._id, { $set: { grid: upUser.grid }})
+    console.log('saved grid to the database:', upUser.grid[0].row)
+    console.log('Updated grid:', upUser.grid)
+    // console.log('Updated grid:', user.grid)
 
     // respond with the updated user information
     res.status(200).json({
       success: true, 
       response: {
-        // grid: upUser.grid
-        grid: user.grid
+        grid: upUser.grid,
+        // grid: user.grid,
       }
     })
   } catch (e) {
