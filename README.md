@@ -585,3 +585,78 @@ const upUserController = asyncHandler(async (req, res) => {
   }
 });
 This code uses lean: true to get a plain JavaScript object from findOneAndUpdate. Then, it uses findByIdAndUpdate to update the document with the modified grid value. This ensures that changes outside of the findOneAndUpdate operation are taken into account when saving to the database.
+
+
+
+# things have been solved better than what ive been done xD
+didnt tested, but looks like this one looks better.
+happy days with wasting time i guess haha
+
+
+This code uses lean: true to get a plain JavaScript object from findOneAndUpdate. Then, it uses findByIdAndUpdate to update the document with the modified grid value. This ensures that changes outside of the findOneAndUpdate operation are taken into account when saving to the database.
+
+if the thing is the change has been outside of the findoneandupdate, if I move 
+
+if (upUser.grid[0].row < 1) {
+      upUser.grid[0].row = 3;
+      console.log('after upuser grid row:', upUser.grid[0].row);
+    }
+
+
+this inside of 
+
+
+ const upUser = await UserModel.findOneAndUpdate(
+      { _id: user._id },
+      { $inc: { 'grid.0.row': -1 } },
+      { new: true, lean: true } // Use lean to get a plain JavaScript object
+    );
+
+
+here, I don't need lean true?
+
+
+if so, how? 
+
+
+ChatGPT
+If you move the modification of the upUser.grid[0].row inside the findOneAndUpdate callback, you can avoid using lean: true. The reason lean: true was suggested was to ensure that the upUser object is a plain JavaScript object instead of a Mongoose document, as there were potential issues with Mongoose document methods not behaving as expected.
+
+Here's how you can modify the code:
+
+javascript
+Copy code
+const upUserController = asyncHandler(async (req, res) => {
+  const { user } = req;
+  try {
+    // Update the user's grid by decreasing the row by 1
+    const upUser = await UserModel.findOneAndUpdate(
+      { _id: user._id },
+      { $inc: { 'grid.0.row': -1 } },
+      { new: true } // No need for lean: true here
+    );
+
+    // If the row becomes less than 1, set it back to 3
+    if (upUser.grid[0].row < 1) {
+      upUser.grid[0].row = 3;
+      console.log('after upuser grid row:', upUser.grid[0].row);
+    }
+
+    // Save the updated user to the database
+    await upUser.save();
+
+    console.log('Saved grid to the database:', upUser.grid[0].row);
+
+    // Respond with the updated user information
+    res.status(200).json({
+      success: true,
+      response: {
+        grid: upUser.grid,
+      },
+    });
+  } catch (e) {
+    console.error('Error updating grid:', e.message);
+    res.status(500).json({ success: false, response: e.message });
+  }
+});
+In this modification, we've removed lean: true from the findOneAndUpdate options, and the modification of upUser.grid[0].row is now inside the callback. This should work without issues, and you can save the modified upUser directly to the database.
