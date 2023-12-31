@@ -182,6 +182,10 @@ export const App = () => {
       })
       const data = await response.json()
       console.log(data)
+
+      // to see current grid
+      console.log('grid:', data.response.grid)
+
       // check if the fetch request was successful before updating displayText
       if (response.ok) {
         // setDisplayText([
