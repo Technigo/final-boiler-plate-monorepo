@@ -5,10 +5,31 @@ import jwt from "jsonwebtoken";
 
 //  This controller is responsible for fetching tasks associated with a logged-in user. It uses the TaskModel to retrieve tasks from the database, sorts them by creation date, and responds with the list of tasks in JSON format. Access to this route is restricted to authenticated users.
 export const getTasksController = asyncHandler(async (req, res) => {
+  const userId = req.user._id; // Get the user ID from the request object
   try {
-    const tasks = await TaskModel.find().sort("-createdAt").populate("user"); // Find all tasks in the database and sort them by creation date
-    res.json(tasks);
+    const tasks = await TaskModel.find()
+      .sort("-createdAt")
+      .populate({
+        path: "user",
+        select: "username",
+      })
+      .populate({
+        path: "volunteers",
+        match: { _id: { $ne: userId } }, // Exclude the creator from the volunteers
+        select: "username",
+      });
+
+    // Filter out tasks where the creator is the only volunteer
+    const filteredTasks = tasks.filter((task) => {
+      const creatorId = task.user && task.user._id.toString();
+
+      // Check if user is not creator or if there are other volunteers
+      return task.volunteers.length > 0 && creatorId !== userId;
+    });
+    res.json(filteredTasks);
   } catch (error) {
+    console.error("Error in getTasksController:", error);
+
     res.status(500).json(error);
   }
 });
@@ -163,6 +184,7 @@ export const deleteAllTasksController = asyncHandler(async (req, res) => {
 export const deleteSpecificTaskController = asyncHandler(async (req, res) => {
   // Extract the task ID from the request parameters
   const { id } = req.params;
+  console.log("Deleting task on the server:", id);
   // Use TaskModel to find and delete a task by its ID
   await TaskModel.findByIdAndDelete(id)
     .then((result) => {

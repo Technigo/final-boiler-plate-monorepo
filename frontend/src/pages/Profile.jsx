@@ -3,6 +3,7 @@ import { userStore } from "../stores/userStore";
 import { taskStore } from "../stores/taskStore";
 import styled from "styled-components";
 import { useEffect } from "react";
+import { Button } from "../components/Buttons/Button";
 
 const StyledProfileInfo = styled.div`
   display: flex;
@@ -18,7 +19,12 @@ const ProfilePhotoUserWrapper = styled.div`
   padding: 10px;
 `;
 
-// Styled component for the container div
+// Styled component for the header container
+const HeaderContainer = styled.div`
+  padding: 20px;
+`;
+
+// Styled component for the task container div
 const TasksContainer = styled.div`
   margin-top: 20px;
 `;
@@ -59,6 +65,11 @@ const CreatedBySection = styled.div`
   color: #333;
 `;
 
+// Styled component for "Volunteers" section
+const VolunteersSection = styled.div`
+  color: #555;
+`;
+
 export const Profile = () => {
   const { username, selectedGender, handleGenderChange } = userStore(); // Destructure selectedGender and setSelectedGender from Zustand store
   const { userTasks, fetchUserTasks, volunteeredTasks, fetchVolunteeredTasks } =
@@ -75,6 +86,9 @@ export const Profile = () => {
     const gender = event.target.value;
     handleGenderChange(gender);
   };
+
+  const { deleteTaskById } = taskStore();
+
   // const handleGenderChange = (event) => {
   //   setSelectedGender(event.target.value); // Update selected gender based on checkbox
   // };
@@ -92,7 +106,13 @@ export const Profile = () => {
 
   return (
     <div>
-      <h2>Welcome to your space, {username}!</h2>
+      <HeaderContainer>
+        <h2>Hi {username}!</h2>
+        <p>
+          This page gives you an overview over all the tasks you've created and
+          those you have volunteered to.
+        </p>
+      </HeaderContainer>
       {/* <StyledProfileInfo>
         <h3>Your profile</h3> */}
       {/* Render ProfilePhoto component based on selected gender */}
@@ -132,6 +152,26 @@ export const Profile = () => {
             <StyledListItem key={task._id}>
               <TaskTitle>{task.task}</TaskTitle>
               <TaskDescription>{task.description}</TaskDescription>
+              <VolunteersSection>
+                <strong>Volunteers: </strong>{" "}
+                {task.volunteers.length > 0
+                  ? task.volunteers
+                      .filter(
+                        (volunteer) =>
+                          volunteer._id &&
+                          task.user._id &&
+                          volunteer._id.toString() !== task.user._id.toString()
+                      ) // Exclude the creator
+                      .map((volunteer) => volunteer.username)
+                      .join(", ")
+                  : "No Volunteers"}
+              </VolunteersSection>
+              {/* Delete button for tasks you have created */}
+              <Button
+                buttonName="Delete"
+                className="delete-button"
+                onClick={() => deleteTaskById(task._id)}
+              />
             </StyledListItem>
           ))}
         </StyledList>
@@ -142,15 +182,12 @@ export const Profile = () => {
         <StyledList>
           {volunteeredTasks.map((task) => (
             <StyledListItem key={task._id}>
-              <TaskTitle>
-                <strong>Task: </strong> {task.task}
-              </TaskTitle>
-              <TaskDescription>
-                <strong>Description: </strong> {task.description}
-              </TaskDescription>
+              <TaskTitle>{task.task}</TaskTitle>
+              <TaskDescription>{task.description}</TaskDescription>
               <CreatedBySection>
                 <strong>Created by: </strong>
                 {task.user?.username || "Unknown User"}
+                {/* Show the name of the autor or Unknown user if the task is missing username */}
               </CreatedBySection>
             </StyledListItem>
           ))}

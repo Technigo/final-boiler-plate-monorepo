@@ -108,6 +108,7 @@ export const FeedTaskCard = ({ task }) => {
           <p>{category}</p>
           <p>{area}</p>
           <p>Posted: {formattedCreatedAt}</p>
+          <p>Created by: {task.user && task.user.username}</p>
           <Button
             onClick={openModal}
             className="show-more-button"
@@ -145,7 +146,7 @@ export const FeedTaskCard = ({ task }) => {
           <p>{area}</p>
           <p>{task.description}</p>
           <p>Posted: {formattedCreatedAt}</p>
-
+          <p>Created by: {task.user && task.user.username}</p>
           {/* Button to offer help */}
           <IconButton
             onClick={addMyselfToTaskClick}

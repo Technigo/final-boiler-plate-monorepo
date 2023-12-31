@@ -24,7 +24,7 @@ export const taskStore = create((set) => ({
   // New action to fetch all tasks
   fetchTasks: async () => {
     try {
-      //console.log("Before fetching tasks...");
+      console.log("Before fetching tasks...");
       // Send a GET request to the backend API to fetch tasks
       const response = await fetch(`${apiEnv}/get`, {
         method: "GET",
@@ -36,10 +36,15 @@ export const taskStore = create((set) => ({
       if (response.ok) {
         // Parse the response data and convert it to a JS array
         const data = await response.json();
+        console.log("Fetched tasks:", data);
 
         set({ tasks: data });
       } else {
-        console.error("Failed to fetch tasks. Response:", response);
+        console.error(
+          "Failed to fetch tasks. Response:",
+          response.status,
+          errorResponse
+        );
       }
     } catch (error) {
       console.error("Error during fetchTasks:", error);
@@ -184,8 +189,38 @@ export const taskStore = create((set) => ({
   },
 
   // New action to delete a specific task by its ID
+  // deleteTaskById: async (id) => {
+  //   try {
+  //     // Send a DELETE request to the backend API to delete a task by its ID
+  //     const response = await fetch(`${apiEnv}/delete/${id}`, {
+  //       method: "DELETE",
+  //       headers: {
+  //         Authorization: localStorage.getItem("accessToken"),
+  //       },
+  //     });
+
+  //     // Check if the request was successful
+  //     if (response.ok) {
+  //       // Remove the task from the tasks state
+  //       set((state) => ({
+  //         tasks: state.tasks.filter((task) => task._id !== id),
+  //       }));
+  //     } else {
+  //       console.error("Failed to delete task");
+  //     }
+  //   } catch (error) {
+  //     console.error("Error deleting task:", error);
+  //   }
+  // },
+
   deleteTaskById: async (id) => {
     try {
+      console.log("Deleting task:", id);
+      // Remove the task from the tasks state immediately
+      set((state) => ({
+        tasks: state.tasks.filter((task) => task._id !== id),
+      }));
+
       // Send a DELETE request to the backend API to delete a task by its ID
       const response = await fetch(`${apiEnv}/delete/${id}`, {
         method: "DELETE",
@@ -193,14 +228,9 @@ export const taskStore = create((set) => ({
           Authorization: localStorage.getItem("accessToken"),
         },
       });
-
+      console.log("Delete request completed:", response);
       // Check if the request was successful
-      if (response.ok) {
-        // Remove the task from the tasks state
-        set((state) => ({
-          tasks: state.tasks.filter((task) => task._id !== id),
-        }));
-      } else {
+      if (!response.ok) {
         console.error("Failed to delete task");
       }
     } catch (error) {
