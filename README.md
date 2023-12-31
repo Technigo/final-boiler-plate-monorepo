@@ -359,3 +359,79 @@ dfx start -- --http-port=8100
 ```
 - Firewall and Antivirus:
 Check your firewall and antivirus settings. They might be blocking the communication on the specified port. Ensure that the port is allowed.
+
+4. No production canister_ids.json found. Continuing with local
+[webpack-cli] 
+
+To resolve the issue: 
+
+copy canister_ids.json from .idx/local to your root directory
+
+5. TypeError: cli.isMultipleCompiler is not a function 
+
+The error mentions a TypeError related to cli.isMultipleCompiler not being a function.
+
+-  Check and install webpack version:
+
+Check the version of webpack installed in your project:
+```
+bash 
+npm list webpack
+```
+
+or 
+
+check the current version of webpack and webpack-cli in your project by running the following commands:
+
+```
+bash
+npm list webpack webpack-cli
+```
+
+Make sure you have a compatible version of webpack for your project. If not, you can install a specific version using:
+
+```
+bash
+npm install webpack@<version> --save-dev
+```
+
+- Check webpack-cli version:
+
+Check the compatible version of webpack-cli installed
+
+```
+bash
+npm list webpack-cli
+```
+
+install a specific version:
+```
+bash
+npm install webpack-cli@<version> --save-dev
+```
+
+- Update Webpack CLI:
+
+the command to update the webpack-cli to the latest version:
+
+```
+npm install webpack-cli@latest --save-dev
+```
+
+- Clean and Reinstall:
+Remove the node_modules directory and the package-lock.json file, and then reinstall the dependencies:
+
+```
+bash
+rm -rf node_modules package-lock.json
+npm install
+```
+
+After making these changes, try running npm start again
+
+The logs of the IC replica for any errors or issues can be checked with the following command: 
+
+```
+bash
+dfx logs
+```
