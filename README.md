@@ -473,3 +473,62 @@ i refuse to move, admit the end
 {isLoggedIn && showButton && showButton2 && !isGoForwardClicked && (
         <button onClick={handleUP}>{refuseToMove ? "i refuse to move, admit the end" : "go forward"}</button>
       )}
+
+# i think i have memory problem. this restricts me to think logically, because i forget what i was doing while fixing the logic. for example, im fixing my grid showing function now. i have several problem mixed in this function. was trying to simplifying it by write down that here, but i cant even remember what that was. the reason that made me start writing this is i was fixing something, and then, lost. cant remember what i was doing. what i was fixing? no. cant make it come from. one alternative that i can take is write down while i work. there i can look back where i were.
+
+problem : the user need to have location 'row' back to 3, when the user reaches 0.
+
+1. when the user reaches 0, it seems to have been back to 3. 
+bcs i see this from chrome dev console time to time. 
+
+grid: 
+[{…}]
+0
+: 
+{row: 3, column: 'C'}
+length
+: 
+1
+[[Prototype]]
+: 
+Array(0)
+
+2. the cloud db is not having this value. it is still somewhere between minus value
+
+_id
+65915cd92fc29f980d263025
+username
+"22222"
+password
+"$2b$10$86zdaZM470Q5XdT14MUdeuNe/k/vbthogAWfhnioOH3fc6Ycp/UCq"
+
+grid
+Array (1)
+
+0
+Object
+row
+-16
+column
+"C"
+accessToken
+"7f47d061551f01418b566310be81ce6cb6eea29c6c88d01f3277683a582689d501de8a…"
+createdAt
+2023-12-31T12:21:45.866+00:00
+updatedAt
+2023-12-31T13:09:00.210+00:00
+__v
+0
+
+3. one of the problem is console is not showing the actual value that cloud has.
+instead, it is showing that the value need to be have, 3.
+
+so, i did somehow to make both console (front and back) to show the value from cloud.
+
+but i forgot how. 
+
+so it is showing 3 now, instead of actual minus value from the database.
+
+
+
+4. there, i can remember. but was just part of it.  better than nothing though

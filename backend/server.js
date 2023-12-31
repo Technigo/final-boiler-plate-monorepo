@@ -119,18 +119,28 @@ const upUserController = asyncHandler(async (req, res) => {
     // if the row becomes less than 1, set it back to 3
     if (upUser.grid[0].row < 1 ) {
       upUser.grid[0].row = 3
+      // await upUser.save()
     }
 
+    // // if the row becomes less than 1, set it back to 3
+    // if (user.grid[0].row < 1 ) {
+    //   user.grid[0].row = 3
+    //   // await upUser.save()
+    //   await user.save()
+    // }
+
     // save the updated user to the database
-    // await user.save()
-    await upUser.save()
-    console.log('Updated grid:', upUser.grid)
+    await user.save()
+    // await upUser.save()
+    // console.log('Updated grid:', upUser.grid)
+    console.log('Updated grid:', user.grid)
 
     // respond with the updated user information
     res.status(200).json({
       success: true, 
       response: {
-        grid: upUser.grid
+        // grid: upUser.grid
+        grid: user.grid
       }
     })
   } catch (e) {
