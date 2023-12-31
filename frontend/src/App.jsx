@@ -76,6 +76,11 @@ export const App = () => {
   // }, [isLoggedIn, displayText])
   }, [isLoggedIn, showButton])
 
+  // to see showbutton2 is updated or not. this is located here, not inside the function itself,  bcs needed to do this, after the component re-renders
+  useEffect(() => {
+    console.log("setshowbutton2:", showButton2)
+  }, [showButton2])
+
   const handleRegister = async () => {
     try {
       console.log("trying register:", username)
@@ -188,6 +193,7 @@ export const App = () => {
                 setLoopCounter(0)
                 // setShowButton(false) // hide the button after the loop
                 setShowButton2(false)
+                // console.log('setshowbutton2:', setShowButton2)
               } 
             }
           }, 10000)
@@ -253,7 +259,7 @@ export const App = () => {
           <div style={{ color: 'red' }}>{registrationError}</div>
         </div>
       )}
-      {isLoggedIn && showButton && !isGoForwardClicked && (
+      {isLoggedIn && showButton && showButton2 && !isGoForwardClicked && (
         <button onClick={handleUP}>{refuseToMove ? "i refuse to move, admit the end" : "go forward"}</button>
       )}
       </div>
