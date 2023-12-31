@@ -49,23 +49,44 @@ export const Habits = () => {
   };
 
   const finishedComponent = (habit) => {
-    var buttons = [];
+    // This array will hold both the labels and the circles for each day of the week.
+    var dayElements = [];
+  
     var finished = habit.finished.map((i) => moment(i).dayOfYear());
+    
     for (var i = 1; i <= 7; i++) {
       const day = moment().day(i);
-      const active = finished.includes(day.dayOfYear()) ? true : false;
-      buttons.push(
-        <button
-          key={`${habit._id}-${i}`}
-          className={active ? "finished" : "unfinished"}
-          onClick={() => onClickMark(habit, active, day.format('YYYY-MM-DDT12:00:00'))}
-        >
-          {moment().day(i).format('dddd')}
-        </button>
+      const active = finished.includes(day.dayOfYear());
+      const dayLabel = day.format('dddd');
+  
+      // Create a container for each day that includes the label and the circle.
+      dayElements.push(
+        <div key={dayLabel} className="day-container">
+          <button
+            className={`day-label ${active ? "finished" : "unfinished"}`}
+            onClick={() => onClickMark(habit, active, day.format('YYYY-MM-DDT12:00:00'))}
+          >
+            {dayLabel}
+          </button>
+          <button
+            className={`day-circle ${active ? "finished" : "unfinished"}`}
+            onClick={() => onClickMark(habit, active, day.format('YYYY-MM-DDT12:00:00'))}
+          />
+        </div>
       );
     }
-    return buttons;
+    
+    return (
+      <div className="days-wrapper">
+        {dayElements.map((dayElement, index) => (
+          <div key={index} className="day-container">
+            {dayElement}
+          </div>
+        ))}
+      </div>
+    );
   };
+  
 
   // Render the component content.
   return (
@@ -123,3 +144,5 @@ export const Habits = () => {
     </>
   );
 };
+
+
