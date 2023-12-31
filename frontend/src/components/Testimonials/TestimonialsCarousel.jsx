@@ -9,7 +9,6 @@ const CarouselContainer = styled.div`
   display: flex; /* Display review cards side by side */
   scroll-behavior: smooth;
   gap: 12px;
-  padding: 0 24px;
 
   /* Custom scrollbar styles */
   scrollbar-width: thin;
@@ -40,13 +39,6 @@ const CarouselContainer = styled.div`
     ); /* color of the scrollbar track */
     border-radius: 6px; /* rounded corners for track */
   }
-
-  /* Hide scrollbar */
-  /* scrollbar-width: none; /* Firefox */
-  /*-ms-overflow-style: none; /* Internet Explorer 10+ */
-  /*&::-webkit-scrollbar {
-    display: none; /* WebKit (Chrome, Safari, etc.) */
-  /*} */
 `;
 
 // Styled component for the review card
@@ -54,7 +46,7 @@ const StyledReviewCard = styled.div`
   height: 290px;
   width: 225px; /* Set a width for each review card */
   flex-shrink: 0; /* Prevent cards from shrinking */
-  padding-bottom: 0px;
+  padding-bottom: 0;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -70,27 +62,6 @@ const StyledReviewCard = styled.div`
     border-radius: 20px 0 20px 20px;
     background: lightgray 50% / cover no-repeat;
   }
-
-  /* @media screen and (min-width: 1024px) and (max-width: 1360px) {
-    position: relative;
-    width: 100%;
-    height: 100%;
-
-    img {
-      height: 220px;
-      width: 100%;
-    }
-  }
-
-  @media screen and (min-width: 1360px) {
-    width: 100%;
-    height: 380px;
-
-    img {
-      height: 220px;
-      width: 100%;
-    }
-  } */
 `;
 
 const ReviewCardText = styled.div`

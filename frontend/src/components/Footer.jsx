@@ -8,7 +8,7 @@ const StyledFooter = styled.div`
   flex-direction: column;
   padding: 20px 0;
   text-align: center;
-  position: sticky;
+  position: fixed;
   bottom: 0;
   width: 100%;
 
@@ -43,7 +43,7 @@ const FooterText = styled.div`
   color: #fff;
   font-size: 16px;
 
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: 800px) {
     .contact-wrapper {
       display: flex;
       flex-direction: row;
@@ -74,23 +74,13 @@ const Contact = styled.div`
 //     max-width: 45px;
 //     padding-left: 7px;
 //   }
-
-/* .separator {
-    display: none; /* Initially hide the separator on small screens */
-
-// @media (min-width: 667px) {
-//   flex-direction: row;
-//   gap: 0;
-
-/*.separator {
-      display: inline; /* Display the separator as inline on screens wider than 667px */
-/*margin: 0 5px; /* Add space on both sides of the separator */
-/*}*/
-//   }
 // `;
 
 // Define the Footer component as a functional component.
 export const Footer = () => {
+  const footerStyle = {
+    color: "#fff", // White color for footer links when not hovered
+  };
   return (
     <StyledFooter>
       <FooterText>
@@ -98,19 +88,18 @@ export const Footer = () => {
           <div className="anna-wrapper">
             <Contact>
               <p>Anna Robertsson</p>
-              <SocialMediaLinks person="Anna" />
+              <SocialMediaLinks person="Anna" footerStyle={footerStyle} />
             </Contact>
           </div>
           <div className="susanne-wrapper">
             <Contact>
               <p>Susanne Ekenheim</p>
-              <SocialMediaLinks person="Susanne" />
+              <SocialMediaLinks person="Susanne" footerStyle={footerStyle} />
             </Contact>
           </div>
         </div>
         {/* <Copyright> */}
         <p>Web Development students at Technigo | January 2024</p>
-        {/* <p className="separator"> | </p> */}
         {/* <a
             href="https://www.technigo.io"
             target="_blank"

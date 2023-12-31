@@ -24,36 +24,37 @@ body.active-modal {
   overflow-y: hidden;
 }
 
-/* body {
-  background: #f2f3f4;
-} */
+body {
+  height: 100%;
+  /*background: #f2f3f4;*/
+}
 
 .main {
-  /* min-height: 100vh; */
-  margin: 50px 15px;
+  height: 100%;
+  margin: 50px 15px 235px;
   /*border: 1px solid orange;
   border-radius: 20px 0 20px 20px;
   padding: 20px;
   background: #fff; */
 
   @media (min-width: 400px) {
-    margin: 100px 50px;
+    margin: 50px 50px 192px;
   }
 
-  @media (min-width: 700px) {
-    margin: 100px;
+  @media (min-width: 800px) {
+    margin: 50px 100px 158px;
   }
 
   @media (min-width: 1050px) {
-    margin: 100px 200px;
+    margin: 100px 200px 208px;
   }
 
   @media (min-width: 1300px) {
-    margin: 100px 300px;
+    margin: 100px 300px 208px;
   }
 
   @media (min-width: 1600px) {
-    margin: 100px 450px;
+    margin: 100px 450px 208px;
   }
 }
 

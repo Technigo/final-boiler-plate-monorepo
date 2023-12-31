@@ -31,9 +31,9 @@ const StyledButtonWrapper = styled.div`
     gap: 50px;
   }
 
-  @media (min-width: 1050px) {
+  /* @media (min-width: 1050px) {
     gap: 100px;
-  }
+  } */
 `;
 
 export const Hero = () => {

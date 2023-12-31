@@ -11,7 +11,8 @@ const SocialButton = styled.a`
   display: flex;
   align-items: center;
   /* color: #d0d0d0; */
-  color: #fff;
+  /* color: #fff; */
+  color: #9b6489;
   transition: color 0.3s ease; /* Transition for smooth color change */
 
   &:hover {
@@ -67,7 +68,7 @@ const susanneLinks = [
   },
 ];
 
-export const SocialMediaLinks = ({ person, style }) => {
+export const SocialMediaLinks = ({ person, footerStyle }) => {
   const linksToDisplay = person === "Anna" ? annaLinks : susanneLinks;
 
   return (
@@ -80,7 +81,7 @@ export const SocialMediaLinks = ({ person, style }) => {
           rel="noopener noreferrer"
           aria-label={`Link to ${link.label}`}
           className={"social-link-${link.label.toLowerCase()}"}
-          style={style}
+          style={footerStyle}
         >
           {link.icon}
           <SrOnly>{link.label}</SrOnly>

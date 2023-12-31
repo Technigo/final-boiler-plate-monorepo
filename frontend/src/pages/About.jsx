@@ -81,18 +81,12 @@ export const About = () => {
           <StyledFounderInfo>
             <ProfilePhotoFounder person="Susanne" />
             <h3>Susanne Ekenheim</h3>
-            <SocialMediaLinks person="Susanne" style={{ color: "#9b6489" }} />
+            <SocialMediaLinks person="Susanne" />
           </StyledFounderInfo>
           <StyledFounderInfo>
             <ProfilePhotoFounder person="Anna" />
             <h3>Anna Robertsson</h3>
-            <SocialMediaLinks
-              person="Anna"
-              style={{
-                color: "#9b6489",
-                hoverColor: "#bdb9b9",
-              }}
-            />
+            <SocialMediaLinks person="Anna" />
           </StyledFounderInfo>
         </StyledFounders>
       </StyledFounderSection>
