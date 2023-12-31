@@ -115,10 +115,17 @@ const upUserController = asyncHandler(async (req, res) => {
       { $inc: { 'grid.0.row': -1 } }, // decrease the row
       { new: true } // return the updated document
     )
-    // save the updated user to the database
-    await user.save()
-    console.log('Updated grid:', upUser.grid)
     
+    // if the row becomes less than 1, set it back to 3
+    if (upUser.grid[0].row < 1 ) {
+      upUser.grid[0].row = 3
+    }
+
+    // save the updated user to the database
+    // await user.save()
+    await upUser.save()
+    console.log('Updated grid:', upUser.grid)
+
     // respond with the updated user information
     res.status(200).json({
       success: true, 
