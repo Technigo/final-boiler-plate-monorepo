@@ -4,6 +4,10 @@
         "myPages": "Mina Sidor"
     },
 
+    "Hero": {
+        "hero-title" : "Hitta din lekplats i Eslöv!"
+    },
+
     "Form" : {
         "greeting": "Välkommen tillbaka",
         "headerRegister": "Registrera dig",
@@ -15,5 +19,9 @@
         "username": "Användarnamn",
         "password": "Lösenord",
         "email": "Epost"
+    },
+
+    "PlaygroundContainer" : {
+        "more-details": "Se mer"
     }
 }

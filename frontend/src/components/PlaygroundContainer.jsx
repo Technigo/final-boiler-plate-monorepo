@@ -1,10 +1,15 @@
+/* eslint-disable no-unused-vars */
 import { useLayoutEffect } from "react";
 import usePlaygroundStore from "../stores/usePlaygroundStore";
 import "../pages/Home/home.css"
 import { Link } from "react-router-dom";
+import { Button } from "./Button";
+import { useTranslation } from "react-i18next";
+
 
 
 const PlaygroundContainer = () => {
+    const { t } = useTranslation();
     const { playgrounds, fetchPlaygrounds } = usePlaygroundStore();
   
     useLayoutEffect(() => {
@@ -22,9 +27,9 @@ const PlaygroundContainer = () => {
             return (
               <div className="playground" key={index}>
                 <h2>{playground.name}</h2>
-                <p>{playground.description}</p>
+                {/* <p>{playground.description}</p> */}
                 <Link key={playground.id} to={`/playground/${playground.id}`}>
-                  <button>More Details</button>
+                <Button className={"more-details"} btnText={t("PlaygroundContainer.more-details")} />
                   </Link>
               </div>
             );

@@ -1,0 +1,45 @@
+.my-favorites {
+    background-color: #0000;
+        color: #416641;;
+        width: 100px;
+        height: 35px;
+        border-radius: 8px;
+        border: solid 0.5px #557C55;
+        margin: 0;
+
+}
+
+.my-favorites:hover {
+    background-color: #557C55;
+    border: none;
+    color: #F2FFE9;
+}
+
+.form-button {
+    background-color: #557C55;
+    color: #F2FFE9;
+    width: 240px;
+    height: 40px;
+    border-radius: 8px;
+    border: none;
+}
+
+.form-button:hover {
+    background-color: #A6CF98;
+}
+
+.more-details {
+    background-color: #0000;
+        color: #416641;
+        width: 100px;
+        height: 35px;
+        border-radius: 8px;
+        border: solid 0.5px #557C55;
+        margin: 0;
+}
+
+.more-details:hover{
+    background-color: #557C55;
+        border: none;
+        color: #F2FFE9;
+}

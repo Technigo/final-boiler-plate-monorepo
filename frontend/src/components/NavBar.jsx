@@ -1,6 +1,6 @@
 //Satte in ny kod för att bara visa "my pages" om man är inloggad. 
 
-import { IoIosGlobe } from "react-icons/io";
+
 import { Button } from "./Button";
 import { Link } from "react-router-dom";
 import { Translations } from "../Translations/Translations";
@@ -15,7 +15,7 @@ export const NavBar = () => {
   return (
     <div className="navbar">
       <div className="left-section">
-        <IoIosGlobe color="white" style={{ fontSize: '30px' }} > </IoIosGlobe>
+        
         <Translations />
       </div>
       <Link to="/">

@@ -3,6 +3,10 @@
         "home": "HOME",
         "myPages": "My Pages"
     },
+
+    "Hero": {
+        "hero-title" : "Find your playground in Eslöv"
+    },
     "Form": {
         "greeting": "Welcome back",
         "headerRegister": "Register",
@@ -14,6 +18,10 @@
         "username": "Username",
         "password": "Password",
         "email": "Email"
+    },
+
+    "PlaygroundContainer" : {
+        "more-details": "More Details"
     }
 
 }

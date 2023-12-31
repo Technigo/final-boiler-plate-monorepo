@@ -24,18 +24,7 @@ flex-direction: column;
     align-items: center;
 }
 
-.form-button {
-    background-color: #557C55;
-    color: #F2FFE9;
-    width: 240px;
-    height: 40px;
-    border-radius: 8px;
-    border: none;
-}
 
-.form-button:hover {
-    background-color: #A6CF98;
-}
 
 .form-header {
     color: #557C55;

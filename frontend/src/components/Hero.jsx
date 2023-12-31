@@ -1,10 +1,14 @@
+import { useTranslation } from "react-i18next";
+
 export const Hero = () => {
+  const { t } = useTranslation();
+
     return (
       <div className="hero">
         <img src="/girl-996635_1280.jpg" alt="Hero Image" className="hero-image" />
         <div className="hero-content">
-          <h1>Hero Titel</h1>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe minus qui veritatis ducimus pariatur quas eligendi reprehenderit cum doloribus similique expedita iusto, suscipit fugit eius aliquam praesentium quis temporibus modi?.</p>
+          <h1 className="hero-title">{t("Hero.hero-title")}</h1>
+          <p >Lorizzle ipsum rizzle boofron crackalackin, sure adipiscing elit. Nullam yo velizzle, crazy volutpizzle, suscipit quizzle, fo shizzle my nizzle vel, arcu. Pellentesque doggy boofron.</p>
         </div>
       </div>
     );

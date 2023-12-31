@@ -1,4 +1,5 @@
 import { useTranslation } from "react-i18next"
+import { IoIosGlobe } from "react-icons/io"; 
 
 
 export const Translations = () => {
@@ -10,8 +11,9 @@ export const Translations = () => {
 
   return (
       <div className="translation-buttons">
+        <IoIosGlobe color="white" style={{ fontSize: '30px' }} > </IoIosGlobe>
           <button className="translate-button" onClick={() => changeLanguage("en")}>
-              EN</button>
+              EN </button>
           <button className="translate-button" onClick={() => changeLanguage("sv")}>
               SV</button>
       </div>
