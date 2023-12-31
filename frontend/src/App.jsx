@@ -15,6 +15,7 @@ export const App = () => {
   const [refuseToMove, setRefuseToMove] = useState(false)
   const [loopCounter, setLoopCounter] = useState(0)
   const [showButton2, setShowButton2] = useState(true)
+  const [videoId, setVideoId] = useState("BjOq9SEDzKY")
 
   // event handler for when the user is ready to proceed, with playing video enough
   const onReady = (event) => {
@@ -80,6 +81,18 @@ export const App = () => {
   useEffect(() => {
     console.log("setshowbutton2:", showButton2)
   }, [showButton2])
+
+  // Change the video based on the displaytext condition
+  useEffect(() => {
+    if (displayText === "... the snow turns to the rain ") {
+      setVideoId("to1-K8vP3gk")
+      // after 10 sec show button
+      setTimeout(() => {
+        setShowButton2(true)
+        setRefuseToMove(false)
+      }, 10000);
+    }
+  }, [displayText])
 
   const handleRegister = async () => {
     try {
@@ -218,7 +231,8 @@ export const App = () => {
       <header>
         <h1>you are alone in the dark ...</h1>
         <YouTube 
-          videoId="BjOq9SEDzKY" 
+          // videoId="BjOq9SEDzKY" 
+          videoId={videoId}
           opts={{ height: "390", width: "640", playerVars: { autoplay: 1 } }}
           onReady={onReady}
           onStateChange={onStateChange}

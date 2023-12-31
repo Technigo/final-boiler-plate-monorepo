@@ -467,3 +467,9 @@ This way, the log will be triggered after the state update has taken effect.
 i refuse to move, admit the end
 
 # it rains, and snow goes away a bit. user happens to notice something from the ground. 
+
+# unclear things with and (&&) <- is this 'and' or 'or'? works 'or' for me currently, but said to be 'and'???
+
+{isLoggedIn && showButton && showButton2 && !isGoForwardClicked && (
+        <button onClick={handleUP}>{refuseToMove ? "i refuse to move, admit the end" : "go forward"}</button>
+      )}
