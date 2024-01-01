@@ -17,6 +17,7 @@ export const App = () => {
   const [showButton2, setShowButton2] = useState(true)
   const [videoId, setVideoId] = useState("BjOq9SEDzKY")
   const [targetUserFound, setTargetUserFound] = useState(false)
+  const [isRain, setIsRain] = useState(false)
 
   // event handler for when the user is ready to proceed, with playing video enough
   const onReady = (event) => {
@@ -96,6 +97,17 @@ export const App = () => {
       }, 10000);
     }
   }, [displayText])
+
+  // update displaytext when text is rain and targetuserfound is true
+  useEffect(() => {
+    // if (displayText === "... the snow turns to the rain " && targetUserFound) {
+    if (isRain && targetUserFound) {
+      // setDisplayText("... you cant believe your eyes. you found something from the ground")
+      setDisplayText("... the snow turns to the rain ")
+      // failed to set display text at right time. instead of this, create new user at this point? that has role of 22222? bcs this user born this moment, the user should meet this user AFTER this moment. but no, cant create new user every time. it will make thousands of useless user. need to find this certain user called 33333 from this moment, i did this previously. and this happens whenever user presses upuser button, which will lead user to 3 to 2. finding at 2, 33333 that has location of 3, takes time, so i can show the rain text while that i guess...? i feel there should be more organized way than this, but no. lack of brain energy
+    }
+  // }, [displayText, targetUserFound])
+  }, [isRain, targetUserFound])
 
   const handleRegister = async () => {
     try {
@@ -214,6 +226,7 @@ export const App = () => {
                 // setShowButton(false) // hide the button after the loop
                 setShowButton2(false)
                 // console.log('setshowbutton2:', setShowButton2)
+                setIsRain(true)
                 // goes to useeffect that checks whether the snow text exists, and then, change the yt video to rain, and then, show button again
                 // check response again bcs response should be updated
                 // but does this if block means we are checking the updated response?
