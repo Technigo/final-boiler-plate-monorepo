@@ -47,6 +47,7 @@
   .navbar-links.open {
     right: 0; /* Move the menu back to the visible area */
     transition: right 0.5s ease-in; /* Animate from left to right */
+    
   }
 
     .close-button {
@@ -54,9 +55,9 @@
         cursor: pointer;
         position: absolute;
         top: 8px;
-        right: 220px;
         color: #fff; /* Set the color to white or your desired color */
         display: block;
+        left: 20px;
        
   }
   
@@ -79,8 +80,16 @@
     list-style: none;
     text-align: center;
   }
+  .app-ul .app-li{
+    display: none;
+  }
   /* Media query for desktop devices */
   @media screen and (min-width: 900px) {
+    nav .app-ul{
+        background-color: #a09d9d;
+        color: #000000;
+        margin-bottom: 2rem;
+    }
     
     .hamburger-menu {
         display: none;
@@ -88,12 +97,26 @@
       }
   
       .navbar-links {
-        display: flex;
+        display: none;
       }
   
       .close-button {
        display: none;
       }
+     .nav-list{
+        display: none;
+     }
+     .app-ul .app-li{
+        display: block;
+        
+     }
+     nav .app-ul .app-li a{
+        color: black;
+         font-weight: 600;
+     }
+     nav .app-ul .app-li a:hover{
+        color: red;
+     }
   
    
   

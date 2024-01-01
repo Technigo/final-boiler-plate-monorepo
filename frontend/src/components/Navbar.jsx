@@ -5,7 +5,7 @@ import { useState } from 'react';
 import './Navbar.css';
 
 
-export const Navbar = ({menuItems}) => {
+export const Navbar = ({menuItems , menuDesks}) => {
     // Access the 'handleLogout' function from the 'userStore'.
     const storeHandleLogout = userStore((state) => state.handleLogout);
 
@@ -26,39 +26,33 @@ export const Navbar = ({menuItems}) => {
 
   return (
     <div>
- 
-    
-
-     
       <nav>
         {/* Create a navigation menu with links to various routes. */}
-        {/* <ul className="app-ul">
-          <li className="app-li">
-            <Link to="/profile">Username</Link>
-          </li>
-          <li className="app-li">
-            <Link to="/settings">Settings</Link>
-          </li>
-          <li className="app-li">
-            <Link to="/about">About</Link>
-          </li>
-          <li className="app-li">
-            <Link to="/login" onClick={onLogoutClick}>Sign Out</Link>
-          </li>
-        </ul> */}
-
-        <div className="navbar-container">
+        <ul className="app-ul">
         <div className="navbar-logo">
           {/* Your logo goes here */}
           <span>Logo</span>
-        </div>
 
-        {/* Hamburger menu button for mobile */}
+        </div>
         <div className="hamburger-menu" onClick={toggleMenu}>
           <div className={`bar ${isMenuOpen ? 'open' : ''}`} />
           <div className={`bar ${isMenuOpen ? 'open' : ''}`} />
           <div className={`bar ${isMenuOpen ? 'open' : ''}`} />
         </div>
+
+        
+        
+        
+          {menuDesks.map((menuDesk) => (
+            <li  key={menuDesk.path} className="app-li">
+              <Link to={menuDesk.path}>{menuDesk.name}</Link>
+            </li>
+          ))}
+        </ul>
+
+        <div className="navbar-container">
+      
+    
 
    
 
@@ -71,6 +65,12 @@ export const Navbar = ({menuItems}) => {
 
         )}
             <ul className="nav-list">
+            <div className="navbar-logo">
+          {/* Your logo goes here */}
+          <span>Logo</span>
+        </div>
+
+
           {menuItems.map((menuItem) => (
             <li  key={menuItem.path} className="app-li">
               <Link to={menuItem.path}>{menuItem.name}</Link>

@@ -30,7 +30,8 @@ export const Home = () => {
   // Render the component content.
   return (
     <>
-       <Navbar menuItems={[{path: "/search", name: "Search"} ,{path: "/profile", name: "Profile"},{path: "/setting", name: "Setting"}, {path: "/about", name: "About"} , {path: "/terms", name: "Terms"}]}/>
+       <Navbar menuItems={[{path: "/search", name: "Search"} ,{path: "/profile", name: "Profile"},{path: "/setting", name: "Setting"}, {path: "/about", name: "About"} , {path: "/terms", name: "Terms"}]} menuDesks={[{path: "/profile", name: "Profile"} ,{path: "/setting", name: "Setting"} , {path: "/about", name: "About"} ]}/>
+       
       <BackArrow />
       {/* Render the search bar */}
       <Link to="/search">
@@ -44,4 +45,4 @@ export const Home = () => {
       <Footer />
     </>
   );
-};
+};      
