@@ -151,6 +151,9 @@ const upUserController = asyncHandler(async (req, res) => {
     // retrieve users with grid value of 3,C
     const userWithGrid3C = await UserModel.find({ 'grid.row': 3, 'grid.column': 'C' })
     console.log('Users with grid value 3,C:', userWithGrid3C)
+    // retrieve users with the same grid value of current user
+    const userWithSameGrid = await UserModel.find({ 'grid.row': upUser.grid[0].row, 'grid.column': upUser.grid[0].column })
+    console.log('Users with the same grid value:', userWithSameGrid)
   } catch (e) {
     console.error("Error updating grid:", e.message)
     res.status(500).json({ success: false, response: e.message })
