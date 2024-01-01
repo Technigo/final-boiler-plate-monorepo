@@ -660,3 +660,7 @@ const upUserController = asyncHandler(async (req, res) => {
   }
 });
 In this modification, we've removed lean: true from the findOneAndUpdate options, and the modification of upUser.grid[0].row is now inside the callback. This should work without issues, and you can save the modified upUser directly to the database.
+
+
+
+# one thing to check - the thing happening now (prints dandelion msg at backend), should happen after the video changes to the rain. it is better for the user to start to have value for grid at that time, or start to have moving value for grid at that time. bcs if user moves before the video changes to the rain, this doesnt makes sense. ........
