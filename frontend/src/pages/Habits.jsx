@@ -18,26 +18,20 @@ export const Habits = () => {
   const isMobile = useMediaQuery({ maxWidth: 393 });
   const isTablet = useMediaQuery({ minWidth: 394, maxWidth: 834 });
 
-  // Access the 'Habits', 'fetchHabits', 'handleEdit', and 'deleteHabitById' functions from the 'HabitStore'.
   const { habits, fetchHabits, handleEdit, deleteHabitById, markFinished, markUnfinished } = habitStore();
-  // Access the 'username', 'isLoggedIn', and 'handleLogout' from the 'userStore'.
   const { username, isLoggedIn, handleLogout } = userStore();
 
-  // Use the 'useEffect' hook to fetch habits when 'habits' or 'accessToken' change.
   useEffect(() => {
     fetchHabits();
     console.log('fetch');
   }, []);
 
-  // Initialize the 'navigate' function from React Router.
   const navigate = useNavigate();
 
-  // Function to handle the click event of the logout button.
   const onLogoutClick = () => {
     handleLogout();
-    // Additional logic after logout can be added here.
     alert("Log out successful");
-    navigate("/"); // You can change this to the login route
+    navigate("/");
   };
 
   const onClickMark = async (habit, active, date) => {
@@ -49,9 +43,7 @@ export const Habits = () => {
   };
 
   const finishedComponent = (habit) => {
-    // This array will hold both the labels and the circles for each day of the week.
     var dayElements = [];
-  
     var finished = habit.finished.map((i) => moment(i).dayOfYear());
     
     for (var i = 1; i <= 7; i++) {
@@ -59,7 +51,6 @@ export const Habits = () => {
       const active = finished.includes(day.dayOfYear());
       const dayLabel = day.format('dddd');
   
-      // Create a container for each day that includes the label and the circle.
       dayElements.push(
         <div key={dayLabel} className="day-container">
           <button
@@ -86,34 +77,29 @@ export const Habits = () => {
       </div>
     );
   };
-  
 
-  // Render the component content.
+  // Function to get the background class based on the habit index
+  const getHabitBackgroundClass = (index) => {
+    const classes = ['habit-bg-first', 'habit-bg-second', 'habit-bg-third'];
+    return classes[index % classes.length];
+  };
+
   return (
     <>
-      {isMobile ? (
-        <NavbarMobile />
-      ) : isTablet ? (
-        <NavbarMobile />
-      ) : (
-        <Navbar />
-      )}
+      {isMobile ? <NavbarMobile /> : isTablet ? <NavbarMobile /> : <Navbar />}
 
       <div className="habits-container">
         {isLoggedIn && <h2>Hi {username}, welcome! Let's make the best of this day ☀️</h2>}
 
-        {/* Display habits if user is logged in, otherwise show login message. */}
         {isLoggedIn ? (
           <>
             <h3>My habits</h3>
             <hr />
-            {/* Conditional rendering based on the number of Habits. */}
             {habits.length === 0 ? (
               <p>No habits yet, go ahead and add some!</p>
             ) : (
-              // Map through 'habits' and render habit items.
-              habits.map((habit) => (
-                <div key={habit._id} className="card-wrapper">
+              habits.map((habit, index) => (
+                <div key={habit._id} className={`card-wrapper ${getHabitBackgroundClass(index)}`}>
                   <div className="one-habit">
                     <div className="habit-name-container">
                       <p>{habit.habit}</p>
@@ -129,7 +115,6 @@ export const Habits = () => {
               ))
             )}
 
-            {/* Render the 'Createhabit' component to add new habits. */}
             <CreateHabit />
             <button onClick={onLogoutClick}>Sign Out</button>
           </>
@@ -148,5 +133,4 @@ export const Habits = () => {
     </>
   );
 };
-
 

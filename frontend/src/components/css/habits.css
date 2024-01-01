@@ -14,12 +14,29 @@
 }
   
 .one-habit {
-  background-color: #c2e7eb;
   border-radius: 20px;
   padding: 20px;
-  display: flex; 
-  flex-direction: column; 
-  align-items: flex-start;
+}
+
+.habit-bg-first {
+  background-color: #e0f5ff;
+  border-radius: 20px;
+  padding: 20px;
+  margin-bottom: 15px;
+}
+
+.habit-bg-second {
+  background-color: #e8ffe8;
+  border-radius: 20px;
+  padding: 20px;
+  margin-bottom: 15px;
+}
+
+.habit-bg-third {
+  background-color: #ffe6ff;
+  border-radius: 20px;
+  padding: 20px;
+  margin-bottom: 15px;
 }
 
 .habit-name-container {
@@ -35,7 +52,6 @@
 }
 
 .unfinished {
-  color: red;
   background-color: transparent;
 }
 
