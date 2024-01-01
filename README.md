@@ -669,3 +669,5 @@ In this modification, we've removed lean: true from the findOneAndUpdate options
 # you were in dark, but how you come to see dandelion? although the rain took out the snow? no light so cant see
 
 # if it is 3, and targetuserfound is not happening, let it go another loop, and then, the console spit oout targetuserfoudn true. dk why. but it works just like thiat. 
+
+# create finduser button. this prevents nummerous events happening once user arrives certain place. 
