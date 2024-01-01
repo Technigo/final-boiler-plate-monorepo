@@ -24,15 +24,15 @@ body.active-modal {
   overflow-y: hidden;
 }
 
-body {
-  height: 100%;
-  /*background: #f2f3f4;*/
-}
+/* body {
+  /*height: 100vh;*/
+/*background: #f2f3f4;
+} */
 
-.main {
+main {
   height: 100%;
   margin: 50px 15px 235px;
-  /*border: 1px solid orange;
+  /* border: 1px solid #eeb885;
   border-radius: 20px 0 20px 20px;
   padding: 20px;
   background: #fff; */
@@ -45,16 +45,12 @@ body {
     margin: 50px 100px 158px;
   }
 
-  @media (min-width: 1050px) {
+  @media (min-width: 1100px) {
     margin: 100px 200px 208px;
   }
 
   @media (min-width: 1300px) {
     margin: 100px 300px 208px;
-  }
-
-  @media (min-width: 1600px) {
-    margin: 100px 450px 208px;
   }
 }
 
@@ -85,7 +81,7 @@ body {
     background-color: #ffffff;
   }
   a:hover {
-    color: #747bff;
+    color: #213547;
   }
   /* button {
     background-color: #f9f9f9;

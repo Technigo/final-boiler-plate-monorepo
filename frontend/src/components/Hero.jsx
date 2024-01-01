@@ -1,13 +1,18 @@
 import { LinkButton } from "../components/Buttons/LinkButton";
 import styled from "styled-components";
+import { HeroAnimation } from "./Animations/HeroAnimation";
 
 const StyledHero = styled.div`
   display: flex;
-  gap: 40px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
 
-  img {
-    width: 40%;
-    object-fit: cover;
+  @media (min-width: 950px) {
+    display: flex;
+    flex-direction: row;
+    gap: 50px;
   }
 `;
 
@@ -15,7 +20,12 @@ const StyledHeroText = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   gap: 20px;
+
+  @media (min-width: 950px) {
+    width: 60%;
+  }
 `;
 
 const StyledButtonWrapper = styled.div`
@@ -30,19 +40,14 @@ const StyledButtonWrapper = styled.div`
     justify-content: center;
     gap: 50px;
   }
-
-  /* @media (min-width: 1050px) {
-    gap: 100px;
-  } */
 `;
 
 export const Hero = () => {
-  // Define text content for the heading and subheading.
   const text = {
     heading: "Welcome",
-    subheading: "Our mission is to help people connect with their community",
+    subheading: "We help people in Varberg connect with their community",
     intro:
-      "Join a community of compassion and generosity, connecting people through simple acts of kindness. Together, we build a world where every effort makes a meaningful difference. Welcome to our movement of humanity.",
+      "Join a community of compassion and generosity, connecting the people in Varberg through simple acts of kindness. Together, we build a world where every effort makes a meaningful difference.",
   };
 
   return (
@@ -64,10 +69,7 @@ export const Hero = () => {
           />
         </StyledButtonWrapper>
       </StyledHeroText>
-      <img
-        src="/placeholder-hero.jpg"
-        alt="Man receiving groceries from woman"
-      />
+      <HeroAnimation />
     </StyledHero>
   );
 };

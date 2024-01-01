@@ -1,5 +1,5 @@
 import { SocialMediaLinks } from "../components/SocialMediaLinks";
-import { ProfilePhotoFounder } from "../components/ProfilePhoto.jsx/ProfilePhotoFounder";
+import { ProfilePhotoFounder } from "../components/ProfilePhoto/ProfilePhotoFounder";
 import styled from "styled-components";
 
 const StyledAbout = styled.div`
@@ -29,7 +29,7 @@ const StyledFounders = styled.div`
   justify-content: center;
   gap: 100px;
 
-  @media (min-width: 1050px) {
+  @media (min-width: 1100px) {
     flex-direction: row;
     gap: 100px;
   }

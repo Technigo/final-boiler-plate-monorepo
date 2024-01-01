@@ -9,7 +9,7 @@ export const App = () => {
     <>
       <BrowserRouter>
         <Header />
-        <main className="main">
+        <main>
           <Routes>{routes}</Routes>
         </main>
         <Footer />

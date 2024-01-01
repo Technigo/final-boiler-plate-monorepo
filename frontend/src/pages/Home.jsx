@@ -11,7 +11,11 @@ import { TestimonialsCarousel } from "../components/Testimonials/TestimonialsCar
 const StyledHomePage = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 150px;
+  gap: 50px;
+
+  @media (min-width: 800px) {
+    gap: 150px;
+  }
 `;
 
 // const StyledButtonWrapper = styled.div`

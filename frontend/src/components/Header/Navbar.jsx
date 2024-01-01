@@ -22,12 +22,13 @@ const StyledNav = styled.nav`
     width: 150px;
   }
 
-  @media (min-width: 1050px) {
+  @media (min-width: 1100px) {
     ul {
       display: flex;
       align-items: center;
       gap: 30px;
       height: 100%;
+      font-size: 18px;
     }
   }
 `;
@@ -47,7 +48,7 @@ export const Navbar = () => {
     // Logic to toggle burger menu visibility based on window width
     const handleResize = () => {
       const width = window.innerWidth;
-      if (width <= 1050) {
+      if (width <= 1100) {
         setBurgerMenuVisible(true);
       } else {
         setBurgerMenuVisible(false);

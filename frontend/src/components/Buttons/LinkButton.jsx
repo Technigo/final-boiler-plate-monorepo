@@ -4,7 +4,7 @@ import styled from "styled-components";
 const StyledButton = styled(Link)`
   background-color: #eeb885;
   color: #000;
-  padding: 10px 20px;
+  padding: 5px 15px;
   border-radius: 20px;
   font-size: 20px;
   cursor: pointer;
@@ -12,7 +12,7 @@ const StyledButton = styled(Link)`
   height: fit-content;
 
   &:hover {
-    background-color: #9eb7bf;
+    background-color: #ebc5a2;
   }
 `;
 

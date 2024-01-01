@@ -16,7 +16,7 @@ const StyledRegister = styled.div`
 
 const StyledIntroReg = styled.div`
   text-align: center;
-  margin: 0 30px 30px 30px;
+  /* margin: 0 30px 30px 30px; */
 
   h2 {
     text-align: center;
@@ -37,7 +37,7 @@ const StyledRegField = styled.div`
   justify-content: center;
   max-width: 500px;
 
-  border: 1px solid orange;
+  border: 1px solid #eeb885;
   border-radius: 20px 0 20px 20px;
   padding: 20px;
   margin: 20px;
@@ -45,8 +45,9 @@ const StyledRegField = styled.div`
   input {
     margin-bottom: 10px; /* Add some space between the input fields */
     height: 30px; /* Set the height of the input fields */
-    border-bottom: 2px solid orange; /* Add a bottom border to the input fields */
+    border-bottom: 2px solid #eeb885; /* Add a bottom border to the input fields */
     width: 100%; /* Set the width of the input fields */
+    padding-left: 5px;
   }
 `;
 

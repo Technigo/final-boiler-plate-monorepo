@@ -6,13 +6,15 @@ const StyledIconButton = styled.button`
   align-items: center;
   background-color: #eeb885;
   color: #000;
-  padding: 10px 20px;
+  padding: 5px 15px;
   border-radius: 20px;
   font-size: 20px;
   cursor: pointer;
+  width: fit-content;
+  height: fit-content;
 
   &:hover {
-    background-color: #9eb7bf;
+    background-color: #ebc5a2;
   }
 `;
 
