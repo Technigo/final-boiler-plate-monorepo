@@ -1,36 +1,34 @@
-import React, { useState, useEffect } from 'react';
-import styled from 'styled-components';
-import Navbar from './navbar';
-import Footer from './footer';
-import { useRestaurantStore } from '../stores/restaurantStore'; 
-import emailjs from 'emailjs-com';
-
-
+import React, { useState, useEffect } from "react";
+import styled from "styled-components";
+import Navbar from "./navbar";
+import Footer from "./footer";
+import { useRestaurantStore } from "../stores/restaurantStore";
+// import emailjs from 'emailjs-com';
 
 const PageContainer = styled.div`
   margin: 0 auto;
   padding: 20px;
-  background-color: #FFF0F3; /* Your chosen color */
+  background-color: #fff0f3; /* Your chosen color */
   min-height: 100vh; /* Make sure it covers the full height of the viewport */
 `;
 
 const StyledH1 = styled.h1`
-text-align: center; /* Centers the title text */
-margin-bottom: 20px; /* Adds some space between the title and the buttons */
-color: #800F2F;
-font-family: Montserrat, sans-serif;
+  text-align: center; /* Centers the title text */
+  margin-bottom: 20px; /* Adds some space between the title and the buttons */
+  color: #800f2f;
+  font-family: Montserrat, sans-serif;
 `;
 
 const StyledH2 = styled.h2`
-color: #800F2F;
-font-family: Montserrat, sans-serif;
-display: block; /* Ensures each label is on a new line */
-margin-bottom: 5px; /* Space above each input */
-font-size: 16px;
+  color: #800f2f;
+  font-family: Montserrat, sans-serif;
+  display: block; /* Ensures each label is on a new line */
+  margin-bottom: 5px; /* Space above each input */
+  font-size: 16px;
 `;
 
 const StyledInput = styled.input`
-  color: #800F2F;
+  color: #800f2f;
   font-family: Montserrat, sans-serif;
   text-align: left;
   margin-top: 5px; /* Adds spacing between the label text and the input box */
@@ -42,15 +40,15 @@ const StyledInput = styled.input`
 `;
 
 const FormLabel = styled.label`
-  color: #800F2F;
+  color: #800f2f;
   font-family: Montserrat, sans-serif;
   display: block; /* Ensures each label is on a new line */
   margin-bottom: 5px; /* Space above each input */
 `;
 
 const Button = styled.button`
-background-color: #FFCCD5;
-  color: #800F2F;
+  background-color: #ffccd5;
+  color: #800f2f;
   padding: 10px 20px; /* Some padding */
   border: none; /* No border */
   border-radius: 5px; /* Rounded corners */
@@ -63,180 +61,179 @@ background-color: #FFCCD5;
   transition-duration: 0.4s; /* Transition for hover effect */
 
   &:hover {
-    background-color: #FF8FA3;
-    color: #590D22;
+    background-color: #ff8fa3;
+    color: #590d22;
   }
 
   &:active {
     transform: translateY(1px);
   }
-`; 
+`;
 
 const StyledParagraph = styled.p`
-  color: #800F2F; /* Example color */
+  color: #800f2f; /* Example color */
   font-family: Montserrat, sans-serif; /* Montserrat font */
   text-align: left; /* Text aligned to the left */
   margin-bottom: 10px; /* Space below the paragraph */
 `;
 
 const AddRestaurantForm = () => {
-    const { occasions, moods, fetchOccasions, fetchMoods } = useRestaurantStore();
-    const [formData, setFormData] = useState({
-        restaurantName: '',
-        address: '',
-        zipcode: '',
-        city: '',
-        country: '',
-        borough: '',
-        cuisine: '',
-        occasion: [],
-        mood: [],
-        description: '',
-        url: ''
-    });
+  const { occasions, moods, fetchOccasions, fetchMoods } = useRestaurantStore();
+  const [formData, setFormData] = useState({
+    restaurantName: "",
+    address: "",
+    zipcode: "",
+    city: "",
+    country: "",
+    borough: "",
+    cuisine: "",
+    occasion: [],
+    mood: [],
+    description: "",
+    url: "",
+  });
 
+  useEffect(() => {
+    fetchOccasions();
+    fetchMoods();
+  }, [fetchOccasions, fetchMoods]);
 
-    useEffect(() => {
-        fetchOccasions();
-        fetchMoods();
-      }, [fetchOccasions, fetchMoods]);
-
-    const handleChange = (e) => {
-        const { name, value, checked, type } = e.target;
-        if (type === 'checkbox') {
-            setFormData((prevData) => ({
-                ...prevData,
-                [name]: checked
-                    ? [...prevData[name], value]
-                    : prevData[name].filter((item) => item !== value),
-            }));
-        } else {
-            setFormData({
-                ...formData,
-                [name]: value
-            });
-        }
-    };
-
-    const handleSubmit = (e) => {
-      e.preventDefault();
-  
-      emailjs.sendForm(
-          process.env.REACT_APP_EMAILJS_SERVICE_ID, 
-          process.env.REACT_APP_EMAILJS_TEMPLATE_ID, 
-          e.target, 
-          process.env.REACT_APP_EMAILJS_USER_ID
-      )
-      .then((result) => {
-          console.log('Email sent successfully', result.text);
-          // Handle success
-      }, (error) => {
-          console.log('Failed to send email', error.text);
-          // Handle error
+  const handleChange = (e) => {
+    const { name, value, checked, type } = e.target;
+    if (type === "checkbox") {
+      setFormData((prevData) => ({
+        ...prevData,
+        [name]: checked
+          ? [...prevData[name], value]
+          : prevData[name].filter((item) => item !== value),
+      }));
+    } else {
+      setFormData({
+        ...formData,
+        [name]: value,
       });
+    }
   };
 
-    return (
-        <PageContainer>
-          <Navbar />
-          <form onSubmit={handleSubmit}>
-          <StyledH1>Add a new restaurant</StyledH1>
-    
-            <FormLabel>
-              Restaurant Name*:
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    // emailjs.sendForm(
+    //     process.env.REACT_APP_EMAILJS_SERVICE_ID,
+    //     process.env.REACT_APP_EMAILJS_TEMPLATE_ID,
+    //     e.target,
+    //     process.env.REACT_APP_EMAILJS_USER_ID
+    // )
+    // .then((result) => {
+    //     console.log('Email sent successfully', result.text);
+    //     // Handle success
+    // }, (error) => {
+    //     console.log('Failed to send email', error.text);
+    //     // Handle error
+    // });
+  };
+
+  return (
+    <PageContainer>
+      <Navbar />
+      <form onSubmit={handleSubmit}>
+        <StyledH1>Add a new restaurant</StyledH1>
+
+        <FormLabel>
+          Restaurant Name*:
+          <StyledInput
+            type="text"
+            name="restaurantName"
+            value={formData.restaurantName}
+            onChange={handleChange}
+          />
+        </FormLabel>
+
+        <FormLabel>
+          Address:
+          <StyledInput
+            type="text"
+            name="address"
+            value={formData.address}
+            onChange={handleChange}
+          />
+        </FormLabel>
+
+        <FormLabel>
+          Zipcode:
+          <StyledInput
+            type="number"
+            name="zipcode"
+            value={formData.zipcode}
+            onChange={handleChange}
+          />
+        </FormLabel>
+
+        <FormLabel>
+          City*:
+          <StyledInput
+            type="text"
+            name="city"
+            value={formData.city}
+            onChange={handleChange}
+          />
+        </FormLabel>
+
+        <FormLabel>
+          Borough:
+          <StyledInput
+            type="text"
+            name="borough"
+            value={formData.borough}
+            onChange={handleChange}
+          />
+        </FormLabel>
+
+        <FormLabel>
+          Cuisine*:
+          <StyledInput
+            type="text"
+            name="cuisine"
+            value={formData.cuisine}
+            onChange={handleChange}
+          />
+        </FormLabel>
+
+        {/* Occasion (checkboxes) */}
+        <div>
+          <FormLabel>Occasion*:</FormLabel>
+          {occasions.map((option) => (
+            <FormLabel key={option}>
+              {option}
               <StyledInput
-                type="text"
-                name="restaurantName"
-                value={formData.restaurantName}
+                type="checkbox"
+                name="occasion"
+                value={option}
+                checked={formData.occasion.includes(option)}
                 onChange={handleChange}
               />
             </FormLabel>
-            
-            <FormLabel>
-              Address:
+          ))}
+        </div>
+
+        {/* Mood (checkboxes) */}
+        <div>
+          <FormLabel>Mood*:</FormLabel>
+          {moods.map((option) => (
+            <FormLabel key={option}>
+              {option}
               <StyledInput
-                type="text"
-                name="address"
-                value={formData.address}
+                type="checkbox"
+                name="mood"
+                value={option}
+                checked={formData.mood.includes(option)}
                 onChange={handleChange}
               />
             </FormLabel>
-            
-            <FormLabel>
-              Zipcode:
-              <StyledInput
-                type="number"
-                name="zipcode"
-                value={formData.zipcode}
-                onChange={handleChange}
-              />
-            </FormLabel>
-            
-            <FormLabel>
-              City*:
-              <StyledInput
-                type="text"
-                name="city"
-                value={formData.city}
-                onChange={handleChange}
-              />
-            </FormLabel>
-            
-            <FormLabel>
-              Borough:
-              <StyledInput
-                type="text"
-                name="borough"
-                value={formData.borough}
-                onChange={handleChange}
-              />
-            </FormLabel>
-            
-            <FormLabel>
-              Cuisine*:
-              <StyledInput
-                type="text"
-                name="cuisine"
-                value={formData.cuisine}
-                onChange={handleChange}
-              />
-            </FormLabel>
-    
-            {/* Occasion (checkboxes) */}
-            <div>
-            <FormLabel>Occasion*:</FormLabel>
-              {occasions.map((option) => (
-                <FormLabel key={option}>
-                  {option}
-                  <StyledInput
-                    type="checkbox"
-                    name="occasion"
-                    value={option}
-                    checked={formData.occasion.includes(option)}
-                    onChange={handleChange}
-                  />
-                </FormLabel>
-              ))}
-            </div>
-    
-            {/* Mood (checkboxes) */}
-            <div>
-            <FormLabel>Mood*:</FormLabel>
-              {moods.map((option) => (
-                <FormLabel key={option}>
-                  {option}
-                  <StyledInput
-                    type="checkbox"
-                    name="mood"
-                    value={option}
-                    checked={formData.mood.includes(option)}
-                    onChange={handleChange}
-                  />
-                </FormLabel>
-              ))}
-            </div>
-    
-            <FormLabel>
+          ))}
+        </div>
+
+        <FormLabel>
           Description*:
           <StyledInput
             type="text"
@@ -256,13 +253,14 @@ const AddRestaurantForm = () => {
             onChange={handleChange}
           />
         </FormLabel>
-        <StyledParagraph>Fields marked with an * are mandatory to fill in.</StyledParagraph>
+        <StyledParagraph>
+          Fields marked with an * are mandatory to fill in.
+        </StyledParagraph>
         <Button type="submit">Submit</Button>
       </form>
       <Footer />
     </PageContainer>
   );
 };
-    
-    export default AddRestaurantForm;
- 
+
+export default AddRestaurantForm;
