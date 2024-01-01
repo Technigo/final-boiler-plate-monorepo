@@ -139,14 +139,14 @@ const upUserController = asyncHandler(async (req, res) => {
     console.log('Updated grid:', upUser.grid)
     // console.log('Updated grid:', user.grid)
 
-    // respond with the updated user information
-    res.status(200).json({
-      success: true, 
-      response: {
-        grid: upUser.grid,
-        // grid: user.grid,
-      }
-    })
+    // // respond with the updated user information
+    // res.status(200).json({
+    //   success: true, 
+    //   response: {
+    //     grid: upUser.grid,
+    //     // grid: user.grid,
+    //   }
+    // })
 
     // retrieve users with grid value of 3,C
     const userWithGrid3C = await UserModel.find({ 'grid.row': 3, 'grid.column': 'C' })
@@ -160,7 +160,33 @@ const upUserController = asyncHandler(async (req, res) => {
     const userWithTargetUsername = userWithSameGrid.some(user => user.username === targetUsername)
     if (userWithTargetUsername) {
       console.log('... you cant believe your eyes. you found something from the ground')
+
+      // // send a custom response to indicate that target user is found
+      // return res.status(200).json({
+      //   targetUserFound: true,
+      // })
+
+      // send a custom response to indicate that target user is found
+      res.status(200).json({
+        success: true,
+        response: {
+          grid: upUser.grid,
+          targetUserFound: true,
+        },
+      })
+    } else {
+      // respond with the updated user information
+      res.status(200).json({
+        success: true,
+        response:{
+          grid: upUser.grid,
+        },
+      })
     }
+
+    // respond with the updated user info need to be placed here, to not send respond twice. but i was needed to receive grid first with formal response. and then, do this and that, and then, needed new updated response again. how can i receive response twice? can i split this function rather? -> use return (chatgpt says -> turn to be false, and ive already had that though. chatgpt is not working xD ) -> use if else so if something send res with grid else res withoout grid // i strongly feel this make winter user find dandelion? idk. lets test at least 
+
+
   } catch (e) {
     console.error("Error updating grid:", e.message)
     res.status(500).json({ success: false, response: e.message })

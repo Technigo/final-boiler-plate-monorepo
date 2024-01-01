@@ -16,6 +16,7 @@ export const App = () => {
   const [loopCounter, setLoopCounter] = useState(0)
   const [showButton2, setShowButton2] = useState(true)
   const [videoId, setVideoId] = useState("BjOq9SEDzKY")
+  const [targetUserFound, setTargetUserFound] = useState(false)
 
   // event handler for when the user is ready to proceed, with playing video enough
   const onReady = (event) => {
@@ -88,8 +89,10 @@ export const App = () => {
       setVideoId("to1-K8vP3gk")
       // after 10 sec show button
       setTimeout(() => {
+        // show btn and change text
         setShowButton2(true)
         setRefuseToMove(false)
+        // user clicks button and frontend checks respond and set targetuserfound based on res
       }, 10000);
     }
   }, [displayText])
@@ -211,6 +214,29 @@ export const App = () => {
                 // setShowButton(false) // hide the button after the loop
                 setShowButton2(false)
                 // console.log('setshowbutton2:', setShowButton2)
+                // goes to useeffect that checks whether the snow text exists, and then, change the yt video to rain, and then, show button again
+                // check response again bcs response should be updated
+                // but does this if block means we are checking the updated response?
+                if(response.ok) {
+                  // check if the target user is found in the server response
+                  // // why do i check data.response here? do i need this here?
+                  // if (data.response && data.response.targetUserFound) {
+                  //   setTargetUserFound(true)
+                  //   console.log('targetuserfound:', targetUserFound)
+                  // }
+
+                  // why do i check data.response here? do i need this here?
+                  if (data.response.targetUserFound) {
+                    console.log('target user found:', data.response.targetUserFound)
+                    setTargetUserFound(true)
+                    console.log('targetuserfound:', targetUserFound)
+                  } else {
+                    console.log('cant find targetuserfound value')
+                  }
+
+                  // // set targetuserfound based on the response
+                  // setTargetUserFound(data.response.userWithTargetUsername || false)
+                }
               } 
             }
           }, 10000)

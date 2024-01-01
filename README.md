@@ -664,3 +664,8 @@ In this modification, we've removed lean: true from the findOneAndUpdate options
 
 
 # one thing to check - the thing happening now (prints dandelion msg at backend), should happen after the video changes to the rain. it is better for the user to start to have value for grid at that time, or start to have moving value for grid at that time. bcs if user moves before the video changes to the rain, and if they get dandelion at snow, this doesnt makes sense. ........
+
+
+# you were in dark, but how you come to see dandelion? although the rain took out the snow? no light so cant see
+
+# if it is 3, and targetuserfound is not happening, let it go another loop, and then, the console spit oout targetuserfoudn true. dk why. but it works just like thiat. 
