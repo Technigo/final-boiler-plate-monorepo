@@ -18,6 +18,7 @@ export const App = () => {
   const [videoId, setVideoId] = useState("BjOq9SEDzKY")
   const [targetUserFound, setTargetUserFound] = useState(false)
   const [isRain, setIsRain] = useState(false)
+  const [isDandelionFound, setIsDandelionFound] = useState(false)
 
   // event handler for when the user is ready to proceed, with playing video enough // currently not using
   const onReady = (event) => {
@@ -90,9 +91,9 @@ export const App = () => {
       setVideoId("to1-K8vP3gk")
       // after 20 sec show button
       setTimeout(() => {
-        // // show btn and change text
-        // not show btn yet but change text of button
-        // setShowButton2(true)
+        // show btn and change text
+        // // not show btn yet but change text of button
+        setShowButton2(true)
         setRefuseToMove(false)
         // user clicks button and frontend checks respond and set targetuserfound based on res
       }, 20000);
@@ -111,6 +112,8 @@ export const App = () => {
     if (isRain && targetUserFound) {
       setTimeout(() => {
       setDisplayText(["... you cant believe your eyes.", "you found something from the ground"])
+      setIsDandelionFound(true)
+      console.log('dandelion found:', isDandelionFound)
     }, 20000)
   } 
   // }, [displayText, targetUserFound])

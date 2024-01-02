@@ -670,4 +670,4 @@ In this modification, we've removed lean: true from the findOneAndUpdate options
 
 # if it is 3, and targetuserfound is not happening, let it go another loop, and then, the console spit oout targetuserfoudn true. dk why. but it works just like thiat. 
 
-# create finduser button. this prevents nummerous events happening once user arrives certain place. .
+# create finduser button. this prevents nummerous events happening once user arrives certain place. ..
