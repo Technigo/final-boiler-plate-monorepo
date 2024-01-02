@@ -12,6 +12,14 @@ const StyledNav = styled.nav`
   display: flex;
   justify-content: flex-end;
 
+  a {
+    color: #213547;
+  }
+
+  a:hover {
+    text-decoration-line: underline;
+  }
+
   ul {
     display: none;
   }
@@ -103,7 +111,7 @@ export const Navbar = () => {
                 setActivePage("login");
               }}
             >
-              Login
+              Log in
             </Link>
           </li>
           <li className={activePage === "register" ? "active" : ""}>

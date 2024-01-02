@@ -19,39 +19,14 @@ svg {
   max-width: 100%;
 }
 
-/* Apply styles to the body when the modal is active */
-body.active-modal {
-  overflow-y: hidden;
-}
-
 /* body {
   /*height: 100vh;*/
 /*background: #f2f3f4;
 } */
 
-main {
-  height: 100%;
-  margin: 50px 15px 235px;
-  /* border: 1px solid #eeb885;
-  border-radius: 20px 0 20px 20px;
-  padding: 20px;
-  background: #fff; */
-
-  @media (min-width: 400px) {
-    margin: 50px 50px 192px;
-  }
-
-  @media (min-width: 800px) {
-    margin: 50px 100px 158px;
-  }
-
-  @media (min-width: 1100px) {
-    margin: 100px 200px 208px;
-  }
-
-  @media (min-width: 1300px) {
-    margin: 100px 300px 208px;
-  }
+/* Apply styles to the body when the modal is active */
+body.active-modal {
+  overflow-y: hidden;
 }
 
 :root {
@@ -81,11 +56,36 @@ main {
     background-color: #ffffff;
   }
   a:hover {
-    color: #213547;
+    color: #fff;
   }
   /* button {
     background-color: #f9f9f9;
   } */
+}
+
+main {
+  height: 100%;
+  margin: 50px 15px 235px;
+  /* border: 1px solid #eeb885;
+  border-radius: 20px 0 20px 20px;
+  padding: 20px;
+  background: #fff; */
+
+  @media (min-width: 400px) {
+    margin: 50px 50px 192px;
+  }
+
+  @media (min-width: 800px) {
+    margin: 50px 100px 158px;
+  }
+
+  @media (min-width: 1100px) {
+    margin: 100px 200px 208px;
+  }
+
+  @media (min-width: 1300px) {
+    margin: 100px 300px 208px;
+  }
 }
 
 /* Apply styles to elements with either 'user-login' or 'user-registration' class 

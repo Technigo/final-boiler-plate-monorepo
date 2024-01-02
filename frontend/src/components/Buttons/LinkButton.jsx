@@ -2,8 +2,8 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 const StyledButton = styled(Link)`
-  background-color: #eeb885;
-  color: #000;
+  background-color: #64899b;
+  color: #fff;
   padding: 5px 15px;
   border-radius: 20px;
   font-size: 20px;
@@ -12,7 +12,7 @@ const StyledButton = styled(Link)`
   height: fit-content;
 
   &:hover {
-    background-color: #ebc5a2;
+    background-color: #899b64;
   }
 `;
 

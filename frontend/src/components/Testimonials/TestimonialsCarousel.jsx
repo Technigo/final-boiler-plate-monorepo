@@ -12,7 +12,7 @@ const CarouselContainer = styled.div`
 
   /* Custom scrollbar styles */
   scrollbar-width: thin;
-  scrollbar-color: rgba(238, 184, 133, 0.5) rgba(255, 255, 255, 0.8); /* thumb and track colors */
+  scrollbar-color: rgba(100, 137, 155, 0.5) rgba(255, 255, 255, 0.8); /* thumb and track colors */
   margin: 10px 0;
 
   &::-webkit-scrollbar {
@@ -22,9 +22,9 @@ const CarouselContainer = styled.div`
 
   &::-webkit-scrollbar-thumb {
     background-color: rgba(
-      238,
-      184,
-      133,
+      100,
+      137,
+      155,
       0.5
     ); /* color of the scrollbar thumb */
     border-radius: 10px; /* rounded corners for thumb */
@@ -52,7 +52,7 @@ const StyledReviewCard = styled.div`
   align-items: center;
   gap: 16px;
   border-radius: 20px 0 20px 20px;
-  border: 0.5px solid rgba(238, 184, 133, 0.5);
+  border: 1px solid #64899b;
   background: rgba(255, 255, 255, 0.8);
 
   img {

@@ -4,8 +4,8 @@ const StyledIconButton = styled.button`
   display: flex;
   gap: 10px;
   align-items: center;
-  background-color: #eeb885;
-  color: #000;
+  background-color: #64899b;
+  color: #fff;
   padding: 5px 15px;
   border-radius: 20px;
   font-size: 20px;
@@ -14,7 +14,7 @@ const StyledIconButton = styled.button`
   height: fit-content;
 
   &:hover {
-    background-color: #ebc5a2;
+    background-color: #899b64;
   }
 `;
 
