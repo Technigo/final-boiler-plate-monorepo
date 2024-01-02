@@ -3,9 +3,13 @@
     color: #fff;
     padding: 15px 0;
     position: relative; /* Added for positioning the close button */
+
+  }
+  nav{
+    margin: 10px;
   }
   
-  .navbar-container {
+  nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -47,7 +51,7 @@
   .navbar-links.open {
     right: 0; /* Move the menu back to the visible area */
     transition: right 0.5s ease-in; /* Animate from left to right */
-    
+    z-index: 2;
   }
 
     .close-button {
@@ -85,10 +89,14 @@
   }
   /* Media query for desktop devices */
   @media screen and (min-width: 900px) {
-    nav .app-ul{
+    nav{
         background-color: #a09d9d;
         color: #000000;
-        margin-bottom: 2rem;
+        margin: 0 0 2rem 0;
+        padding: 10px;
+        height: 5rem;
+        display: flex;
+       
     }
     
     .hamburger-menu {
@@ -106,6 +114,7 @@
      .nav-list{
         display: none;
      }
+   
      .app-ul .app-li{
         display: block;
         
@@ -113,6 +122,9 @@
      nav .app-ul .app-li a{
         color: black;
          font-weight: 600;
+         align-items: center;
+        
+      
      }
      nav .app-ul .app-li a:hover{
         color: red;

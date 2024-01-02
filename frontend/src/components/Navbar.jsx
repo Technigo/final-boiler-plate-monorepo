@@ -50,7 +50,6 @@ export const Navbar = ({menuItems , menuDesks}) => {
           ))}
         </ul>
 
-        <div className="navbar-container">
       
     
 
@@ -78,8 +77,6 @@ export const Navbar = ({menuItems , menuDesks}) => {
           ))}
         </ul>
         </div>
-        
-      </div>
       </nav>
     </div>
     
