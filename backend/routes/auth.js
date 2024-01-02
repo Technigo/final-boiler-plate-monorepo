@@ -89,27 +89,58 @@ router.post('/signin', async (req, res) => {
 
 // Endpoint to add a playground to favorites
 // Endpoint to add a playground to favorites
-router.post('/add-to-favorites',authenticateToken, async (req, res) => {
+// router.post('/add-to-favorites',authenticateToken, async (req, res) => {
+//   try {
+//     // Check if the playground already exists in the user's favorites
+//     const user = await User.findById(req.userId).populate('favorites');
+
+//     // Check if the user was found
+//     if (!user) {
+//       return res.status(404).send('User not found');
+//     }
+
+//     const existingFavorite = user.favorites.find((fav) => fav.apiId === req.body.apiId);
+
+//     if (existingFavorite) {
+//       return res.status(400).send('Playground already in favorites');
+//     }
+
+//     // Create a new favorite and add it to the user's favorites
+//     const newFavorite = new Favorites({ apiId: req.body.apiId, like: true });
+//     await newFavorite.save();
+    
+//     user.favorites.push(newFavorite);
+//     await user.save();
+
+//     res.status(201).json({ message: 'Playground added to favorites successfully' });
+//   } catch (error) {
+//     console.error(error);
+//     res.status(500).send('Something went wrong');
+//   }
+// });
+
+// New test-code
+router.post('/add-to-favorites', authenticateToken, async (req, res) => {
   try {
     // Check if the playground already exists in the user's favorites
-    const user = await User.findById(req.userId).populate('favorites');
+    const user = await User.findById(req.userId);
 
     // Check if the user was found
     if (!user) {
       return res.status(404).send('User not found');
     }
 
-    const existingFavorite = user.favorites.find((fav) => fav.apiId === req.body.apiId);
+    const existingFavorite = user.favorites.find((fav) => fav.equals(req.body.apiId));
 
     if (existingFavorite) {
       return res.status(400).send('Playground already in favorites');
     }
 
-    // Create a new favorite and add it to the user's favorites
+    // Create a new favorite and add its ObjectId to the user's favorites
     const newFavorite = new Favorites({ apiId: req.body.apiId, like: true });
     await newFavorite.save();
-    
-    user.favorites.push(newFavorite);
+
+    user.favorites.push(newFavorite._id);
     await user.save();
 
     res.status(201).json({ message: 'Playground added to favorites successfully' });
@@ -118,6 +149,7 @@ router.post('/add-to-favorites',authenticateToken, async (req, res) => {
     res.status(500).send('Something went wrong');
   }
 });
+
 
 
 // Add other playground-related endpoints as needed
