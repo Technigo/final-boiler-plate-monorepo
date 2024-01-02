@@ -105,7 +105,7 @@ const ResultsComponent = () => {
             <ResultCard key={restaurant._id}>
             <StyledHeading>{restaurant.restaurantName}</StyledHeading>
             <FlexRow>
-    <StyledParagraph>Address: {`${restaurant.address}, ${restaurant.zipcode}, ${restaurant.city}`}</StyledParagraph>
+    <StyledParagraph>Address: {`${restaurant.address}, ${restaurant.zipcode} ${restaurant.city}`}</StyledParagraph>
   </FlexRow>
               <StyledParagraph>Borough: {restaurant.borough}</StyledParagraph>
               <StyledParagraph>Cuisine: {restaurant.cuisine}</StyledParagraph>
