@@ -5,6 +5,8 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useRestaurantStore } from '../stores/restaurantStore'; 
 
+
+
 const ResultsContainer = styled.div`
   /* Style for your results container */
   margin: 0 auto;
@@ -43,16 +45,6 @@ font-family: Montserrat, sans-serif;
   /* Your styles for intro paragraph */
 `;
 
-const StyledLink = styled.a`
-color: #800F2F;
-font-size: 16px; 
-font-family: Montserrat, sans-serif; 
-text-decoration: none;
-&:hover {
-  text-decoration: underline;
-}
-`;
-
 const BackButton = styled.button`
 background-color: #FFCCD5;
   color: #800F2F;
@@ -66,6 +58,30 @@ background-color: #FFCCD5;
   font-size: 16px; /* Font size */
   margin: 4px 2px; /* Margin around the button */
   transition-duration: 0.4s; /* Transition for hover effect */
+
+  &:hover {
+    background-color: #FF8FA3;
+    color: #590D22;
+  }
+
+  &:active {
+    transform: translateY(1px);
+  }
+`;
+
+const StyledButtonLink = styled(Link)`
+  background-color: #FFCCD5;
+  color: #800F2F;
+  padding: 10px 20px; // Some padding
+  border: none; // No border
+  border-radius: 5px; // Rounded corners
+  cursor: pointer; // Pointer/hand icon
+  text-align: center; // Center the text
+  text-decoration: none; // No underline
+  display: inline-block; // Inline block element
+  font-size: 16px; // Font size
+  margin: 4px 2px; // Margin around the button
+  transition-duration: 0.4s; // Transition for hover effect
 
   &:hover {
     background-color: #FF8FA3;
@@ -120,6 +136,11 @@ const ResultsComponent = () => {
         {/* Add other sorting options here if needed */}
       </select>
       <ResultsContainer>
+      <Link to="/mood">
+        <BackButton>
+          Go back to choose moods
+        </BackButton>
+      </Link>
         {sortedResults.length > 0 ? (
           sortedResults.map((restaurant) => (
             <ResultCard key={restaurant._id}>
@@ -132,21 +153,20 @@ const ResultsComponent = () => {
               <StyledParagraph>Occasion: {restaurant.occasion.join(', ')}</StyledParagraph>
               <StyledParagraph>Mood: {restaurant.mood.join(', ')}</StyledParagraph>
               <StyledParagraph>Description: {restaurant.description}</StyledParagraph>
-            <StyledLink href={restaurant.url} target="_blank" rel="noopener noreferrer">
+            <StyledButtonLink href={restaurant.url} target="_blank" rel="noopener noreferrer">
                 Visit the restaurant's website by clicking here
-              </StyledLink>
+              </StyledButtonLink>
+              <br/>
+              <StyledButtonLink to="/suggestion">
+          If you have suggestions about the description, click here.
+        </StyledButtonLink>
             </ResultCard>
+          
           )) //click more to get more text//
           ) : (
             <NoResultsText>We are sad to say we cannot find anything that fits your needs. Please try again!</NoResultsText>
           )}
-          <Link to="/mood">
-        <BackButton>
-          Go back to choose moods
-        </BackButton>
-      </Link>
        </ResultsContainer>
-
       <Footer />
     </>
   );
