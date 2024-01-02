@@ -2,7 +2,7 @@
 .card-container {
     display: flex;
     flex-wrap: wrap;
-    margin: 1%;
+    margin: 3%;
     gap: 20px;
     /* Adjust the gap between cards */
 }
@@ -11,6 +11,7 @@
 .card {
     width: calc(50% - 10px);
     /* Make cards take up 50% of the container width with a gap */
+    background-color: #cff0e4;
     box-sizing: border-box;
     border: 1px solid #86bca8;
     border-radius: 8px;
@@ -19,22 +20,21 @@
 
 /* Style for the card content (image, title, text) */
 .card-content {
-    padding: 20px;
+    padding: 5%;
 }
 
 /* Style for the card image */
 .card img {
-    width: 150px;
-    height: 150px;
+    width: 125px;
+    height: 125px;
     padding-bottom: 20%;
     /* Adjust the aspect ratio (height/width) as needed */
     object-fit: cover;
-    /* Maintain aspect ratio and cover the container */
     border-bottom: 1px solid #ddd;
 }
 
 /* Style for the card title */
-.card h2 {
+.card h3 {
     margin-top: 0;
 }
 
@@ -42,12 +42,14 @@
 /* Style for the social media icons */
 .contact-idah a,
 .contact-emmy a {
-    color: black; /* Default color for icons */
-    transition: color 0.3s ease; /* Smooth transition effect */
+    color: #286052;
+    /* Default color for icons */
+    transition: color 0.3s ease;
+    /* Smooth transition effect */
 }
 
 /* Change icon color on hover */
 .contact-idah a:hover,
 .contact-emmy a:hover {
-    color: #0077b5; /* Change to the desired color on hover (LinkedIn color in this case) */
+    color: #86bca8;
 }
