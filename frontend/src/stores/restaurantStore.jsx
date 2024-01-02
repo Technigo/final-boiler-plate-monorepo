@@ -4,7 +4,7 @@ const capitalizeFirstLetter = (string) => {
   return string.charAt(0).toUpperCase() + string.slice(1).toLowerCase();
 }
 
-const apiURL = 'http://localhost:3000/restaurants/search';
+const apiURL = 'http://localhost:3000/api/restaurants/search';
 
 export const useRestaurantStore = create((set) => ({
   occasions: [],
@@ -44,53 +44,50 @@ export const useRestaurantStore = create((set) => ({
     set({ selectedOccasion: occasion });
   },
 
-  fetchMoods: async () => {
-  try {
-set({ selectedMoods: [] });
- const { selectedOccasion } = useRestaurantStore.getState();
-  console.log('Fetching moods for occasion:', selectedOccasion);
- const response = await fetch(`http://localhost:3000/api/mood?occasion=${encodeURIComponent(selectedOccasion)}`);
- if (!response.ok) {
-   throw new Error('Failed to fetch moods');
-  }
+   fetchMoods: async () => {
+     try {
+       set({ selectedMoods: [] });
+       const { selectedOccasion } = useRestaurantStore.getState();
+       console.log('Fetching moods for occasion:', selectedOccasion);
+     const response = await fetch(`http://localhost:3000/api/mood?occasion=${encodeURIComponent(selectedOccasion)}`);
+      if (!response.ok) {
+         throw new Error('Failed to fetch moods');
+       }
 
- const moods = await response.json();
-  //     // You might want to transform the moods data similarly to occasions
-  //     // For example, if you want to capitalize the first letter:
-  const capitalizedMoods = moods.map((mood) => capitalizeFirstLetter(mood.trim()));
+       const moods = await response.json();
+     // You might want to transform the moods data similarly to occasions
+     // For example, if you want to capitalize the first letter:
+      const capitalizedMoods = moods.map((mood) => capitalizeFirstLetter(mood.trim()));
 
-  console.log('Fetched moods:', capitalizedMoods);
+      console.log('Fetched moods:', capitalizedMoods);
 
-  set({ moods: capitalizedMoods });
+      set({ moods: capitalizedMoods });
 
-  } catch (error) {
-     console.error('Error fetching moods:', error);
-  }
- },
- fetchMoodsForOccasion: async (selectedOccasion) => {
-  if (!selectedOccasion) {
-    console.log('No occasion selected');
-    return;
-  }
-  try {
-    set({ selectedMoods: [] });
-    console.log('Fetching moods for occasion:', selectedOccasion);
-    const response = await fetch(`http://localhost:3000/api/mood?occasion=${encodeURIComponent(selectedOccasion)}`);
-    if (!response.ok) {
-      throw new Error('Failed to fetch moods for occasion');
+     } catch (error) {
+       console.error('Error fetching moods:', error);
+     }
+   },
+
+  fetchMoodsForOccasion: async (occasion) => {
+    try {
+      set({ selectedMoods: [] });
+      console.log('Fetching moods for occasion:', occasion);
+      const response = await fetch(`http://localhost:3000/api/mood?occasion=${encodeURIComponent(occasion)}`);
+      if (!response.ok) {
+        throw new Error('Failed to fetch moods for occasion');
+      }
+
+      const moods = await response.json();
+      const capitalizedMoods = moods.map((mood) => capitalizeFirstLetter(mood.trim()));
+
+      console.log('Fetched moods:', capitalizedMoods);
+      
+      set({ moods: capitalizedMoods });
+
+    } catch (error) {
+      console.error('Error fetching moods for occasion:', error);
     }
-
-    const moods = await response.json();
-    const capitalizedMoods = moods.map((mood) => capitalizeFirstLetter(mood.trim()));
-
-    console.log('Fetched moods:', capitalizedMoods);
-    
-    set({ moods: capitalizedMoods });
-
-  } catch (error) {
-    console.error('Error fetching moods for occasion:', error);
-  }
-},
+  },
 
   setSelectedMoods: (mood) => set((state) => {
     console.log('Setting selected moods:', mood);
@@ -119,7 +116,7 @@ set({ selectedMoods: [] });
     console.log('Selected Occasion:', selectedOccasion);
     console.log('Selected Moods:', selectedMoods);
   
-    const apiURL = 'http://localhost:3000/restaurants/search';
+    const apiURL = 'http://localhost:3000/api/restaurants/search';
     const queryParams = new URLSearchParams({
       occasion: selectedOccasion,
       mood: selectedMoods.join(',')
