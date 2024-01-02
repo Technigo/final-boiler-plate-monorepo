@@ -119,6 +119,30 @@ router.post('/signin', async (req, res) => {
 //   }
 // });
 
+// routes/playground.js
+
+// Endpoint to get all favorites for the authenticated user
+router.get('/get-my-favorites', authenticateToken, async (req, res) => {
+  try {
+    // Find the user by ID and populate the favorites array
+    const user = await User.findById(req.userId).populate('favorites');
+
+    // Check if the user was found
+    if (!user) {
+      return res.status(404).send('User not found');
+    }
+
+    // Send the favorites array in the response
+    res.status(200).json(user.favorites);
+  } catch (error) {
+    console.error(error);
+    res.status(500).send('Something went wrong');
+  }
+});
+
+// Add other playground-related endpoints as needed
+
+
 // New test-code
 router.post('/add-to-favorites', authenticateToken, async (req, res) => {
   try {
