@@ -7,7 +7,6 @@ const StyledButton = styled.div`
   border-radius: 15px;
   margin: 10px;
   font-size: 16px;
-  font-weight: bold;
   cursor: pointer;
   width: fit-content;
   height: fit-content;

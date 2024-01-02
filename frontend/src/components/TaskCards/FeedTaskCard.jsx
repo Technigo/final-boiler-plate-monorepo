@@ -17,9 +17,41 @@ const StyledFeedCardModal = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  max-width: 500px;
+  //height: auto;
+  margin: 10px;
+
+  .task-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 10px;
+  }
+
+  .task-footer {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    margin: 10px;
+    align-items: center;
+  }
+
+  .area {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 10px;
+  }
+
+  /* @media screen and (min-width: 600px) {
+    .card-container {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+    } */
+  /* } */
 `;
 
-const iconSize = "50px"; // Define the icon size
+const iconSize = "40px"; // Define the icon size
 
 const categoryStyle = {
   Garden: {
@@ -73,9 +105,9 @@ export const FeedTaskCard = ({ task }) => {
   const formattedCreatedAt = createdAtDate
     .toLocaleDateString("sv-SE", {
       // Format date to Swedish locale
-      year: "numeric", // Format year to 4 digits
-      month: "2-digit", // Format month to 2 digits
-      day: "2-digit", // Format day to 2 digits
+      year: "numeric",
+      month: "2-digit",
+      day: "2-digit",
     })
     .replace(/\//g, "/"); // Replace slashes with dashes
 
@@ -102,19 +134,27 @@ export const FeedTaskCard = ({ task }) => {
   return (
     <>
       <StyledFeedCardModal style={{ backgroundColor }}>
-        <li key={_id}>
-          {CategoryIcon && <CategoryIcon size={iconSize} />}
-          <h3>{task.task}</h3>
-          <p>{category}</p>
-          <p>{area}</p>
-          <p>Posted: {formattedCreatedAt}</p>
-          <p>Created by: {task.user && task.user.username}</p>
-          <Button
-            onClick={openModal}
-            className="show-more-button"
-            buttonName="Show more"
-          />
-        </li>
+        <div className="card-container">
+          <li key={_id}>
+            <div className="task-header">
+              {CategoryIcon && <CategoryIcon size={iconSize} />}
+              <p>{category}</p>
+            </div>
+            <div className="area">
+              <h3>{task.task}</h3>
+              <p>{area}</p>
+            </div>
+            <div className="task-footer">
+              <p>Created by: {task.user && task.user.username}</p>
+              <p>Posted: {formattedCreatedAt}</p>
+            </div>
+            <Button
+              onClick={openModal}
+              className="show-more-button"
+              buttonName="Show more"
+            />
+          </li>
+        </div>
       </StyledFeedCardModal>
 
       {/* Modal component */}
@@ -149,7 +189,10 @@ export const FeedTaskCard = ({ task }) => {
           <p>Created by: {task.user && task.user.username}</p>
           {/* Button to offer help */}
           <IconButton
-            onClick={addMyselfToTaskClick}
+            onClick={() => {
+              addMyselfToTaskClick();
+              closeModal(); // Call closeModal after volunteer is added
+            }}
             className="offer-help-button"
             buttonName="Lend a helping hand"
             iconAlt="Logo showing two shaking hands forming a heart"

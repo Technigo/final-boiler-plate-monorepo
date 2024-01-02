@@ -159,8 +159,6 @@ export const updateTaskController = asyncHandler(async (req, res) => {
 });
 
 // desciption: DELETE all tasks
-// route: /deleteAll
-// access: Private
 export const deleteAllTasksController = asyncHandler(async (req, res) => {
   // Extract the accessToken from the request object, but it is not going to be from the req.body but, its going to be from the req.header
   const accessToken = req.header("Authorization"); // we are requesting the Authorization key from the headerObject
@@ -179,8 +177,6 @@ export const deleteAllTasksController = asyncHandler(async (req, res) => {
 });
 
 // desciption: DELETE task by its ID
-// route: /delete/:id
-// access: Private
 export const deleteSpecificTaskController = asyncHandler(async (req, res) => {
   // Extract the task ID from the request parameters
   const { id } = req.params;
@@ -199,19 +195,3 @@ export const deleteSpecificTaskController = asyncHandler(async (req, res) => {
     })
     .catch((err) => res.status(500).json(err)); // Handle any errors that occur during the operation
 });
-
-// IN SUMMARY
-
-//This file defines several controllers for handling tasks in an Express.js application. Here's a summary of what the file does in simple words:
-
-// getTasksController: This controller is responsible for fetching tasks associated with a logged-in user. It uses the TaskModel to retrieve tasks from the database, sorts them by creation date, and responds with the list of tasks in JSON format. Access to this route is restricted to authenticated users.
-
-// addTaskController: This controller handles the addition of new tasks. It extracts the task data from the request body and the user's authentication token from the request header. It then associates the task with the authenticated user and saves it to the database. The newly created task is sent back as a JSON response. This route is also accessible only to authenticated users.
-
-// updateTaskController: This controller is responsible for marking a specific task as completed. It extracts the task ID from the request parameters, logs it to the console, and updates the task status to "done" in the database. It then responds with the updated task in JSON format. Access to this route is restricted to authenticated users.
-
-// deleteAllTasksController: This controller is used to delete all tasks associated with the authenticated user. It retrieves the user's authentication token from the request header, finds the user in the database, and deletes all tasks associated with that user. It responds with a JSON message indicating the number of deleted tasks. This route can only be accessed by authenticated users.
-
-// deleteSpecificTaskController: Here, the controller is responsible for deleting a specific task by its ID. It extracts the task ID from the request parameters and uses the TaskModel to find and delete the task. If the task is found and deleted, it responds with a success message and the deleted task. If the task is not found, it responds with a 404 error message. Authentication is required to access this route.
-
-// In summary, this file contains controllers for handling tasks within a web application. These controllers ensure that tasks can be retrieved, added, updated, and deleted while enforcing authentication and error handling to maintain the application's integrity and security.
