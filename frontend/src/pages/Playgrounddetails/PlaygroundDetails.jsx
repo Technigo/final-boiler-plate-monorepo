@@ -58,8 +58,22 @@ const PlaygroundDetails = () => {
 
 
         <p className={playgroundDetails.roundabout === 'true' ? 'highlight' : ''}>Roundabout: {playgroundDetails.roundabout}</p>
+        <p className={playgroundDetails.roundabout === 'true' ? 'highlight' : ''}>Roundabout: {playgroundDetails.roundabout}</p>
         <p className={playgroundDetails.zipwire === 'true' ? 'highlight' : ''}>Zipwire: {playgroundDetails.zipwire}</p>
-        <p className={playgroundDetails.swing === 'true' ? 'highlight' : ''}>Swing: {playgroundDetails.swing}</p>
+
+        <p>
+          {playgroundDetails.swing === 'true' ? (
+            <>
+              <img src="Icons/Black/icons8-swing-50.png" alt="" /> {playgroundDetails.swing}
+            </>
+          ) : (
+            <>
+              <img src="Icons/White/icons8-swing-50 (1).png" alt="" /> {playgroundDetails.swing}
+            </>
+          )}
+        </p>
+
+
         <p className={playgroundDetails.basketswing === 'true' ? 'highlight' : ''}>Basketswing: {playgroundDetails.basketswing}</p>
         <p className={playgroundDetails.sandpit === 'true' ? 'highlight' : ''}>Sandpit: {playgroundDetails.sandpit}</p>
 

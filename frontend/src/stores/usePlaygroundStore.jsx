@@ -45,7 +45,7 @@ const usePlaygroundStore = create((set) => ({
         wheelchair: data.results[0].wheelchair,
         roundabout: data.results[0].roundabout,
         zipwire: data.results[0].zipwire,
-        swing: data.results[0].swing,
+        swing: data.results[0].swing === 'true', //tried to convert to boolean
         slide: data.results[0].slide,
         basketswing: data.results[0].basketswing,
         sandpit: data.results[0].sandpit
