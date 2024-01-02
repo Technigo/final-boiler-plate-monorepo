@@ -120,25 +120,25 @@ const AddRestaurantForm = () => {
         method="POST"
       >
         <FormLabel>Restaurant Name*:</FormLabel>
-        <StyledInput type="text" name="restaurantName" value={formData.restaurantName} onChange={handleChange} />
+        <StyledInput type="text" name="restaurantName" value={formData.restaurantName} onChange={handleChange} required />
+
         <FormLabel>Address:</FormLabel>
-                <StyledInput type="text" name="address" value={formData.address} onChange={handleChange} />
+        <StyledInput type="text" name="address" value={formData.address} onChange={handleChange} />
 
-                <FormLabel>Zipcode:</FormLabel>
-                <StyledInput type="number" name="zipcode" value={formData.zipcode} onChange={handleChange} />
+        <FormLabel>Zipcode:</FormLabel>
+        <StyledInput type="number" name="zipcode" value={formData.zipcode} onChange={handleChange} />
 
-                <FormLabel>City*:</FormLabel>
-                <StyledInput type="text" name="city" value={formData.city} onChange={handleChange} />
+        <FormLabel>City*:</FormLabel>
+        <StyledInput type="text" name="city" value={formData.city} onChange={handleChange} required />
 
-                <FormLabel>Country:</FormLabel>
-                <StyledInput type="text" name="country" value={formData.country} onChange={handleChange} />
+        <FormLabel>Country:</FormLabel>
+        <StyledInput type="text" name="country" value={formData.country} onChange={handleChange} />
 
-                <FormLabel>Borough:</FormLabel>
-                <StyledInput type="text" name="borough" value={formData.borough} onChange={handleChange} />
+        <FormLabel>Borough:</FormLabel>
+        <StyledInput type="text" name="borough" value={formData.borough} onChange={handleChange} />
 
-                <FormLabel>Cuisine*:</FormLabel>
-                <StyledInput type="text" name="cuisine" value={formData.cuisine} onChange={handleChange} />
-        {/* Ensure each input has a name attribute for FormSubmit to work */}
+        <FormLabel>Cuisine*:</FormLabel>
+        <StyledInput type="text" name="cuisine" value={formData.cuisine} onChange={handleChange} required />
 
         {/* Occasion checkboxes */}
         <div>
@@ -146,7 +146,7 @@ const AddRestaurantForm = () => {
           {occasions.map((option, index) => (
             <label key={index}>
               {option}
-              <StyledInput type="checkbox" name="occasion" value={option} checked={formData.occasion.includes(option)} onChange={handleChange} />
+              <StyledInput type="checkbox" name="occasion" value={option} checked={formData.occasion.includes(option)} onChange={handleChange} required />
             </label>
           ))}
         </div>
@@ -157,22 +157,28 @@ const AddRestaurantForm = () => {
           {moods.map((option, index) => (
             <label key={index}>
               {option}
-              <StyledInput type="checkbox" name="mood" value={option} checked={formData.mood.includes(option)} onChange={handleChange} />
+              <StyledInput type="checkbox" name="mood" value={option} checked={formData.mood.includes(option)} onChange={handleChange} required />
             </label>
           ))}
         </div>
 
         <FormLabel>Description*:</FormLabel>
-        <StyledInput type="text" name="description" value={formData.description} onChange={handleChange} />
+        <StyledInput type="text" name="description" value={formData.description} onChange={handleChange} required />
 
         <FormLabel>Website URL:</FormLabel>
         <StyledInput type="text" name="url" value={formData.url} onChange={handleChange} />
+
+        <FormLabel>Your name:</FormLabel>
+        <StyledInput type="text" name="name" value={formData.name} onChange={handleChange} />
+
+        <FormLabel>Your e-mail (in case we need some more info):</FormLabel>
+        <StyledInput type="email" name="email" value={formData.email} onChange={handleChange} />
 
         {/* Hidden input for redirection and multiple email addresses */}
         <input type="hidden" name="_cc" value="foodiemoodieappen@gmail.com" />
 
         <StyledParagraph>Fields marked with * are mandatory.</StyledParagraph>
-        <Button type="submit">Submit Form</Button>
+        <Button type="submit">Submit</Button>
       </form>
       <Footer />
     </PageContainer>
@@ -180,7 +186,3 @@ const AddRestaurantForm = () => {
 };
 
 export default AddRestaurantForm;
-
-/*
-  form e-mail with https://formsubmit.co/
-*/
