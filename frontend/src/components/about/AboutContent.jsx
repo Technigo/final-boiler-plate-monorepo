@@ -27,7 +27,12 @@ export const AboutContent = () => {
                     </div>
                 </div>
             </div>
-            <div className="about-vision">Our vision.... Info info text test text test Info info text test text test Info info text test text test Info info text test text test varför kan inte denna och nästa div ligga utanför card-container diven?</div>
+
+            <div className="about-vision">
+                <h3>Our vision</h3>
+                <p>Our vision is to make it easier for people to connect with nature and enjoy delicious meals outdoors. varför kan inte denna och nästa div ligga utanför card-container diven?</p>
+            </div>
+
             <div className="about-tech">
                 <h3>Tech</h3>
                 <ul>
