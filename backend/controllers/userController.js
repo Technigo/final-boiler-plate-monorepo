@@ -67,7 +67,7 @@ const loginUser = asyncHandler(async (req, res) => {
 
     // If the passwords match, generate a JWT token and send it to the client.
     if (passwordMatch) {
-     // generateToken(res, existingUser._id);
+      // generateToken(res, existingUser._id);
 
       res.status(201).json({
         _id: existingUser._id,

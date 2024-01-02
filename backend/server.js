@@ -5,7 +5,7 @@ import dotenv from "dotenv";
 import mongoose from "mongoose";
 // import cookieParser from "cookie-parser";
 import listEndpoints from "express-list-endpoints"; // A package that lists all the endpoints of the server.
-import data from "./data/plants.json" assert { type: 'json' }
+import data from "./data/plants.json" assert { type: "json" };
 
 // Utils
 import { connectDB } from "./config/db.js";
