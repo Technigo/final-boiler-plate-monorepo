@@ -28,6 +28,31 @@ const ResultCard = styled.div`
   background-color: #FFF0F3; /* Your chosen color */
 `;
 
+
+const StyledHeading = styled.h2`
+font-size: 20px;
+font-family: Arial, sans-serif; 
+color: #800F2F;
+font-family: Montserrat, sans-serif;
+`;
+
+const StyledParagraph = styled.p`
+font-size: 16px;
+color: #800F2F;
+font-family: Montserrat, sans-serif;
+  /* Your styles for intro paragraph */
+`;
+
+const StyledLink = styled.a`
+color: #800F2F;
+font-size: 16px; 
+font-family: Montserrat, sans-serif; 
+text-decoration: none;
+&:hover {
+  text-decoration: underline;
+}
+`;
+
 const BackButton = styled.button`
 background-color: #FFCCD5;
   color: #800F2F;
@@ -51,6 +76,12 @@ background-color: #FFCCD5;
     transform: translateY(1px);
   }
 `;
+
+const FlexRow = styled.div`
+  display: flex;
+  align-items: center;
+`;
+
 const ResultsComponent = () => {
   console.log("ResultsComponent rendered");
   const { results, fetchResults, selectedOccasion, selectedMoods } = useRestaurantStore();
@@ -72,16 +103,18 @@ const ResultsComponent = () => {
         {results.length > 0 ? (
           results.map((restaurant) => (
             <ResultCard key={restaurant._id}>
-              <h2>{restaurant.restaurantName}</h2>
-              <p>{restaurant.address}</p>
-              <p>{restaurant.zipcode}</p>
-              <p>{restaurant.city}</p>
-              <p>{restaurant.borough}</p>
-              <p>{restaurant.cuisine}</p>
-              <p>{`Occasion: ${restaurant.occasion.join(', ')}`}</p>
-              <p>{`Mood: ${restaurant.mood.join(', ')}`}</p>
-              <p>{restaurant.description}</p>
-              <a href={restaurant.url} target="_blank" rel="noopener noreferrer">Visit the restaurants website</a>
+            <StyledHeading>{restaurant.restaurantName}</StyledHeading>
+            <FlexRow>
+    <StyledParagraph>Address: {`${restaurant.address}, ${restaurant.zipcode}, ${restaurant.city}`}</StyledParagraph>
+  </FlexRow>
+              <StyledParagraph>Borough: {restaurant.borough}</StyledParagraph>
+              <StyledParagraph>Cuisine: {restaurant.cuisine}</StyledParagraph>
+              <StyledParagraph>Occasion: {restaurant.occasion.join(', ')}</StyledParagraph>
+              <StyledParagraph>Mood: {restaurant.mood.join(', ')}</StyledParagraph>
+              <StyledParagraph>Description: {restaurant.description}</StyledParagraph>
+            <StyledLink href={restaurant.url} target="_blank" rel="noopener noreferrer">
+                Visit the restaurant's website by clicking here
+              </StyledLink>
             </ResultCard>
           )) //click more to get more text//
           ) : (
