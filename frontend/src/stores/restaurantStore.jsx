@@ -4,7 +4,7 @@ const capitalizeFirstLetter = (string) => {
   return string.charAt(0).toUpperCase() + string.slice(1).toLowerCase();
 }
 
-const apiURL = 'http://localhost:3000/restaurants/search';
+const apiURL = 'http://localhost:3000/api/restaurants/search';
 
 export const useRestaurantStore = create((set) => ({
   occasions: [],
@@ -116,7 +116,7 @@ export const useRestaurantStore = create((set) => ({
     console.log('Selected Occasion:', selectedOccasion);
     console.log('Selected Moods:', selectedMoods);
   
-    const apiURL = 'http://localhost:3000/restaurants/search';
+    const apiURL = 'http://localhost:3000/api/restaurants/search';
     const queryParams = new URLSearchParams({
       occasion: selectedOccasion,
       mood: selectedMoods.join(',')
