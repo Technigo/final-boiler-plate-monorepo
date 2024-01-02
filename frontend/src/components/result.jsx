@@ -1,7 +1,7 @@
 import Navbar from './navbar'; // Ensure the path is correct
 import Footer from './footer'; // Ensure the path is correct
 import styled from 'styled-components';
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useRestaurantStore } from '../stores/restaurantStore'; 
 
@@ -83,8 +83,8 @@ const FlexRow = styled.div`
 `;
 
 const ResultsComponent = () => {
-  console.log("ResultsComponent rendered");
   const { results, fetchResults, selectedOccasion, selectedMoods } = useRestaurantStore();
+  const [sortType, setSortType] = useState('restaurantName'); // Default sorting type
 
   useEffect(() => {
     if (selectedOccasion && selectedMoods.length > 0) {
@@ -92,16 +92,36 @@ const ResultsComponent = () => {
     }
   }, [selectedOccasion, selectedMoods, fetchResults]);
 
-  useEffect(() => {
-    console.log("Results fetched:", results);
-  }, [results]);
-  
+  // Function to sort results based on sortType
+  const getSortedResults = () => {
+    switch (sortType) {
+      case 'restaurantName':
+        return [...results].sort((a, b) => a.restaurantName.localeCompare(b.restaurantName));
+      case 'borough':
+        return [...results].sort((a, b) => a.borough.localeCompare(b.borough));
+        case 'cuisine':
+        return [...results].sort((a, b) => a.cuisine.localeCompare(b.cuisine));
+      default:
+        return results; // Return unsorted results if no sortType matches
+    }
+  };
+
+  // Call the sorting function
+  const sortedResults = getSortedResults();
+
   return (
     <>
       <Navbar />
+      {/* Dropdown for selecting sort type */}
+      <select onChange={(e) => setSortType(e.target.value)} value={sortType}>
+        <option value="restaurantName">Sort by restaurantname</option>
+        <option value="borough">Sort by borough</option>
+        <option value="cuisine">Sort by cuisine</option>
+        {/* Add other sorting options here if needed */}
+      </select>
       <ResultsContainer>
-        {results.length > 0 ? (
-          results.map((restaurant) => (
+        {sortedResults.length > 0 ? (
+          sortedResults.map((restaurant) => (
             <ResultCard key={restaurant._id}>
             <StyledHeading>{restaurant.restaurantName}</StyledHeading>
             <FlexRow>
