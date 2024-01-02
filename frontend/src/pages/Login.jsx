@@ -34,9 +34,9 @@ export const Login = () => {
   // Render the component content.
   return (
     <>
-      <nav>
+      
         <BackArrow />
-      </nav>
+
       <div>
         {/* Display the heading and paragraphs. */}
         <h1>Login</h1>

@@ -38,9 +38,8 @@ export const Register = () => {
   // Render the component content.
   return (
     <div>
-      <nav>
         <BackArrow />
-      </nav>
+    
       <h1>Sign up</h1>
       <div className="user-registration">
         {/* Create input fields for "email", "username", "password", "consent" and associate them with state variables. */}
