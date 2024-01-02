@@ -41,7 +41,7 @@ const climbingPlants = asyncHandler(async (req, res) => {
 
 // GET SHADY PLANTS ---------------------------------------------
 const shadyPlants = asyncHandler(async (req, res) => {
-  const shady = await PlantModel.find({ category_type: "shady" });
+  const shady = await PlantModel.find({ category_type: "shade" });
 
   if (shady.length > 0) {
     res.json(shady);
@@ -54,7 +54,7 @@ const shadyPlants = asyncHandler(async (req, res) => {
 
 // GET POPULAR PLANTS ---------------------------------------------
 const popularPlants = asyncHandler(async (req, res) => {
-  const popular = await PlantModel.find({ category: "popular" });
+  const popular = await PlantModel.find({ category_type: "popular" });
 
   if (popular.length > 0) {
     res.json(popular);
