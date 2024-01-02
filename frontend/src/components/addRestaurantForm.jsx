@@ -168,6 +168,12 @@ const AddRestaurantForm = () => {
         <FormLabel>Website URL:</FormLabel>
         <StyledInput type="text" name="url" value={formData.url} onChange={handleChange} />
 
+        <FormLabel>Your name:</FormLabel>
+        <StyledInput type="text" name="url" value={formData.url} onChange={handleChange} />
+
+        <FormLabel>Your e-mail (in case we need some more info):</FormLabel>
+        <StyledInput type="text" name="url" value={formData.url} onChange={handleChange} />
+
         {/* Hidden input for redirection and multiple email addresses */}
         <input type="hidden" name="_cc" value="foodiemoodieappen@gmail.com" />
 
