@@ -40,13 +40,8 @@ export const IconButton = ({
 }) => {
   return (
     <>
-      <StyledIconButton>
-        <StyledIcon
-          className={className}
-          alt={iconAlt}
-          src={src}
-          onClick={onClick}
-        />
+      <StyledIconButton onClick={onClick}>
+        <StyledIcon className={className} alt={iconAlt} src={src} />
         {buttonName}
       </StyledIconButton>
     </>

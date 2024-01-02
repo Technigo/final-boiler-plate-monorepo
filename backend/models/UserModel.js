@@ -21,6 +21,7 @@ const userSchema = new Schema(
       default: () => crypto.randomBytes(128).toString("hex"), // Sets a default value using a cryptographic random string
     },
   },
+
   {
     timestamps: true,
   }

@@ -3,43 +3,119 @@ import asyncHandler from "express-async-handler";
 import { UserModel } from "../models/UserModel";
 import jwt from "jsonwebtoken";
 
-// Denna koden kan användas på profile page också, byt ut modellen til relevant modelss samt user til task (fråga Jonny)
+//  This controller is responsible for fetching tasks associated with a logged-in user. It uses the TaskModel to retrieve tasks from the database, sorts them by creation date, and responds with the list of tasks in JSON format. Access to this route is restricted to authenticated users.
 export const getTasksController = asyncHandler(async (req, res) => {
+  const userId = req.user._id; // Get the user ID from the request object
   try {
-    // Assuming userStorage contains the user details
-    const tasks = await TaskModel.find().sort("-createdAt").populate("user");
-    res.json(tasks);
+    const tasks = await TaskModel.find()
+      .sort("-createdAt")
+      .populate({
+        path: "user",
+        select: "username",
+      })
+      .populate({
+        path: "volunteers",
+        match: { _id: { $ne: userId } }, // Exclude the creator from the volunteers
+        select: "username",
+      });
+
+    // Filter out tasks where the creator is the only volunteer
+    const filteredTasks = tasks.filter((task) => {
+      const creatorId = task.user && task.user._id.toString();
+
+      // Check if user is not creator or if there are other volunteers
+      return task.volunteers.length > 0 && creatorId !== userId;
+    });
+    res.json(filteredTasks);
   } catch (error) {
+    console.error("Error in getTasksController:", error);
+
     res.status(500).json(error);
   }
 });
 
-// desciption: POST Tasks
-// route: /add
-// access: not Private, public
+// This controller is responsible for fetching tasks for a specific user. It uses the TaskModel to retrieve tasks from the database, sorts them by creation date, finds all tasks in the database and add the user object to the task object, filters out tasks that is not connected to a user and in the end responds with the list of tasks in JSON format. Access to this route is restricted to authenticated users.
+export const getUserTasksController = asyncHandler(async (req, res) => {
+  const userId = req.user._id;
+  console.log("userId", userId);
+  try {
+    // Assuming userStorage contains the user details
+    const tasks = await TaskModel.find()
+      .sort("-createdAt")
+      .populate({
+        path: "user", // populate the user object
+        match: { _id: userId }, // match the user id with the user id from the db
+      });
+    const userTasks = tasks.filter((task) => task.user !== null); // Filter out tasks that is not connected to a user
+
+    res.json(userTasks);
+  } catch (error) {
+    console.error("Error in getUserTasksController:", error);
+    res.status(500).json(error);
+  }
+});
+
+// This controller is responsible for fetching tasks that a specific user has volunteered to. It uses the TaskModel to retrieve tasks from the database, sorts them by creation date, finds all tasks in the database and add the user object to the task object and the responds with the list of tasks in JSON format. Access to this route is restricted to authenticated users.
+export const getVolunteeredTasksController = asyncHandler(async (req, res) => {
+  const userId = req.user._id;
+  console.log("userId", userId);
+  try {
+    const tasks = await TaskModel.find({
+      volunteers: { $elemMatch: { $eq: userId } }, // find all tasks where the volunteers array contains the user id
+    })
+      .sort("-createdAt")
+      .populate({
+        path: "user",
+        select: "username",
+      });
+
+    res.json(tasks);
+  } catch (error) {
+    console.error("Error in getVolunteeredTasks:", error);
+    res.status(500).json(error);
+  }
+});
+
+// This controller handles the addition of new tasks. It extracts the task data from the request body and the user's authentication token from the request header. It then associates the task with the authenticated user and saves it to the database. The newly created task is sent back as a JSON response. This route is only accessible to authenticated users.
 export const addTaskController = asyncHandler(async (req, res) => {
   try {
-    const accessToken = req.header("Authorization"); // we are requesting the Authorization key from the headerObject
+    const accessToken = req.header("Authorization");
     const decoded = jwt.verify(
       accessToken,
       process.env.JWT_SECRET || "default_secret"
     );
     console.log("accessToken", accessToken);
-    const userFromStorage = await UserModel.findById(decoded.id);
+    const userFromStorage = await UserModel.findById(decoded.id); // get the user and matchIt with the user from the db.
 
-    // Define var to pass new task
+    // Create a new task object using the TaskModel
     const newTask = new TaskModel({
-      task: req.body.task, // Assuming your task object has a 'taskTitle' property
-      category: req.body.category,
-      area: req.body.area,
-      description: req.body.description,
-      user: userFromStorage,
+      task: req.body.task, // Extract the task title from the request body
+      category: req.body.category, // Extract the task category from the request body
+      area: req.body.area, // Extract the task area from the request body
+      description: req.body.description, // Extract the task description from the request body
+      user: userFromStorage, // Associate the task with the authenticated user
     });
 
+    // Save the task to the database
     const savedTask = await newTask.save();
     res.json(savedTask);
   } catch (error) {
     console.error("Error in addTaskController:", error);
+    res.status(500).json(error);
+  }
+});
+
+// This controller is responsible for adding a volunteer to a specific task. It extracts the task ID from the request parameters, finds the task in the database, adds the user ID to the task's volunteers array, and saves the task to the database. The updated task is sent back as a JSON response. This route is only accessible to authenticated users.
+export const addVolunteerController = asyncHandler(async (req, res) => {
+  try {
+    const taskId = req.params.id;
+    const task = await TaskModel.findById(taskId);
+    task.volunteers.push(req.user._id);
+
+    const savedTask = await task.save();
+    res.json(savedTask);
+  } catch (error) {
+    console.error("Error in addVolunteerController:", error);
     res.status(500).json(error);
   }
 });
@@ -83,8 +159,6 @@ export const updateTaskController = asyncHandler(async (req, res) => {
 });
 
 // desciption: DELETE all tasks
-// route: /deleteAll
-// access: Private
 export const deleteAllTasksController = asyncHandler(async (req, res) => {
   // Extract the accessToken from the request object, but it is not going to be from the req.body but, its going to be from the req.header
   const accessToken = req.header("Authorization"); // we are requesting the Authorization key from the headerObject
@@ -103,11 +177,10 @@ export const deleteAllTasksController = asyncHandler(async (req, res) => {
 });
 
 // desciption: DELETE task by its ID
-// route: /delete/:id
-// access: Private
 export const deleteSpecificTaskController = asyncHandler(async (req, res) => {
   // Extract the task ID from the request parameters
   const { id } = req.params;
+  console.log("Deleting task on the server:", id);
   // Use TaskModel to find and delete a task by its ID
   await TaskModel.findByIdAndDelete(id)
     .then((result) => {
@@ -122,19 +195,3 @@ export const deleteSpecificTaskController = asyncHandler(async (req, res) => {
     })
     .catch((err) => res.status(500).json(err)); // Handle any errors that occur during the operation
 });
-
-// IN SUMMARY
-
-//This file defines several controllers for handling tasks in an Express.js application. Here's a summary of what the file does in simple words:
-
-// getTasksController: This controller is responsible for fetching tasks associated with a logged-in user. It uses the TaskModel to retrieve tasks from the database, sorts them by creation date, and responds with the list of tasks in JSON format. Access to this route is restricted to authenticated users.
-
-// addTaskController: This controller handles the addition of new tasks. It extracts the task data from the request body and the user's authentication token from the request header. It then associates the task with the authenticated user and saves it to the database. The newly created task is sent back as a JSON response. This route is also accessible only to authenticated users.
-
-// updateTaskController: This controller is responsible for marking a specific task as completed. It extracts the task ID from the request parameters, logs it to the console, and updates the task status to "done" in the database. It then responds with the updated task in JSON format. Access to this route is restricted to authenticated users.
-
-// deleteAllTasksController: This controller is used to delete all tasks associated with the authenticated user. It retrieves the user's authentication token from the request header, finds the user in the database, and deletes all tasks associated with that user. It responds with a JSON message indicating the number of deleted tasks. This route can only be accessed by authenticated users.
-
-// deleteSpecificTaskController: Here, the controller is responsible for deleting a specific task by its ID. It extracts the task ID from the request parameters and uses the TaskModel to find and delete the task. If the task is found and deleted, it responds with a success message and the deleted task. If the task is not found, it responds with a 404 error message. Authentication is required to access this route.
-
-// In summary, this file contains controllers for handling tasks within a web application. These controllers ensure that tasks can be retrieved, added, updated, and deleted while enforcing authentication and error handling to maintain the application's integrity and security.

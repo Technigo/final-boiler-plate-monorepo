@@ -8,7 +8,7 @@ export const taskSchema = new Schema(
     task: {
       type: String, // Specifies that 'task' should be a string
       required: true, // Indicates that 'task' is a required field
-      minlength: 5, // Sets a minimum length of 5 characters for 'task'
+      minlength: 2, // Sets a minimum length of 5 characters for 'task' title
       maxlength: 30,
     },
     category: {
@@ -31,7 +31,7 @@ export const taskSchema = new Schema(
     description: {
       type: String,
       required: true,
-      minlength: 10,
+      //minlength: 10,
       maxlength: 300,
     },
     // Define the 'done' field with a Boolean data type
@@ -44,6 +44,11 @@ export const taskSchema = new Schema(
       type: mongoose.Schema.Types.ObjectId,
       ref: "user",
     },
+    creatorUsername: String,
+
+    volunteers: {
+      type: [{ type: Schema.Types.ObjectId, ref: "user" }], //  The user's task ids
+    },
   },
   {
     timestamps: true,
@@ -52,5 +57,3 @@ export const taskSchema = new Schema(
 
 // Create a Mongoose model for tasks utilizing the taskSchema and crud operations can be performed on the tasks collection using the TaskModel.
 export const TaskModel = mongoose.model("Task", taskSchema);
-
-// In summary, this code defines a Mongoose schema (taskSchema) that describes the structure of documents for tasks in a MongoDB collection. It also creates a Mongoose model (TaskModel) associated with the "tasks" collection, which can be used to interact with the database and perform operations like creating, reading, updating, and deleting tasks.
