@@ -5,9 +5,9 @@ const favoritesSchema = new mongoose.Schema({
         type: String
     },
 
-    name: {
-        type: String
-    },
+   // name: {
+       // type: String
+    //},
     
     like: {
         type: Boolean,
