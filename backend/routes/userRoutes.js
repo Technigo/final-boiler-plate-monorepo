@@ -3,7 +3,6 @@ import {
   getAllUsers,
   registerUser,
   loginUser,
-  logoutUser,
 } from "../controllers/userController.js"; // Imports the registerUser function from the userController.js file.
 // import {
 //   authenticateUser,
@@ -24,6 +23,6 @@ router.post("/register", registerUser); // When a POST request is made to /regis
 router.post("/login", loginUser); // When a POST request is made to /login, execute the loginUser function.
 
 // POST api/users/logout | Access: Private
-router.post("/logout", logoutUser); // When a POST request is made to /logout, execute the logoutUser function.
+// router.post("/logout", logoutUser); // When a POST request is made to /logout, execute the logoutUser function.
 
 export default router; // The router object is exported.
