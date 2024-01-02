@@ -3,7 +3,7 @@ import express from "express";
 
 import listEndpoints from "express-list-endpoints";
 import { mapStoryModel } from "../models/mapStoryModel";
-
+import { analyzePostTone } from "../contentAnalysis/contentAnalysis";
 // Create an instance of the Express router
 const router = express.Router();
 
@@ -38,15 +38,26 @@ router.get("/stories", async (req, res) => {
 //route for post a story
 router.post("/stories", async (req, res) => {
   const { title, content, category, ranking, lat, lng } = req.body;
-  const newStory = new mapStoryModel({
-    title,
-    content,
-    category,
-    ranking,
-    location: { lat, lng },
-  });
 
   try {
+    // Analyze the content
+    const analysisResult = await analyzePostTone(content);
+
+    // Example logic: Check if the sentiment is acceptable
+    // Adjust this logic based on your needs and the response structure
+    if (analysisResult.documentSentiment.score < -0.5) {
+      return res.status(400).json({ message: "Content is too negative" });
+    }
+
+    // If content is acceptable, proceed to save the story
+    const newStory = new mapStoryModel({
+      title,
+      content,
+      category,
+      ranking,
+      location: { lat, lng },
+    });
+
     const savedStory = await newStory.save();
     res.status(201).json(savedStory);
   } catch (error) {
