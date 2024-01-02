@@ -7,6 +7,7 @@ import { SearchBar } from "../components/SearchBar";
 import { AdsList } from "../components/AdsList";
 import { Navbar } from "../components/Navbar";
 import Swal from "sweetalert2";
+import BackArrow from "../components/BackArrow";
 
 // Define the 'Home' functional component.
 export const Home = () => {
@@ -31,7 +32,8 @@ export const Home = () => {
   // Render the component content.
   return (
     <>
-      <Navbar />
+       <Navbar menuItems={[{path: "/search", name: "Search"} ,{path: "/profile", name: "Profile"},{path: "/setting", name: "Setting"}, {path: "/about", name: "About"} , {path: "/terms", name: "Terms"}]} menuDesks={[{path: "/profile", name: "Profile"} ,{path: "/setting", name: "Setting"} , {path: "/about", name: "About"} ]}/>
+      <BackArrow />
       {/* Render the search bar */}
       <Link to="/search">
         <SearchBar />
@@ -46,4 +48,4 @@ export const Home = () => {
       <Footer />
     </>
   );
-};
+};      
