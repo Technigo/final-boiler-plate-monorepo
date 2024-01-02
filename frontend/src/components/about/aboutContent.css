@@ -38,7 +38,16 @@
     margin-top: 0;
 }
 
-/* Style for the card text */
-.card p {
-    margin-bottom: 0;
+
+/* Style for the social media icons */
+.contact-idah a,
+.contact-emmy a {
+    color: black; /* Default color for icons */
+    transition: color 0.3s ease; /* Smooth transition effect */
+}
+
+/* Change icon color on hover */
+.contact-idah a:hover,
+.contact-emmy a:hover {
+    color: #0077b5; /* Change to the desired color on hover (LinkedIn color in this case) */
 }

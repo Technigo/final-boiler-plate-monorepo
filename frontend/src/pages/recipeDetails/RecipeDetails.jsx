@@ -2,6 +2,8 @@ import "./recipeDetails.css";
 import { useParams } from "react-router-dom";
 import { Header } from "../../components/header/Header";
 import { recipeStore } from "../../stores/recipeStore";
+import { PiCookingPot } from "react-icons/pi";
+
 
 export const RecipeDetails = () => {
   const { id } = useParams();
@@ -15,16 +17,27 @@ export const RecipeDetails = () => {
   if (!foundRecipe) {
     return <p>Recipe not found.</p>;
   }
+
+   // Function to capitalise the first letter of a word in array
+   const capitaliseFirstLetter = (word) => {
+    return word.charAt(0).toUpperCase() + word.slice(1);
+  };
+
+  //Making the userinput into an array
+  const userInputArray = foundRecipe.userInput.split(",")
+  
   return (
     <>
       <Header />
       <section className="recipe-details">
         <h1>{foundRecipe.title}</h1>
-        <p className="users-input">
-          {" "}
-          <strong>User's ingredients:</strong>
-          {foundRecipe.userInput}
-        </p>
+        <ul className="recipe-info">
+          <div className="servings"> <PiCookingPot/> <p>Serves 2 people</p></div>
+          <div className="users-input"> {userInputArray.map((item, index) => (
+        <p key={index}>{item}</p>
+      ))} </div>
+          {console.log(userInputArray)}
+          </ul>
         <img src="/recipe-imgs/campfire-896196_1280.jpg" alt="" />
         <p className="description">{foundRecipe.description}</p>
 

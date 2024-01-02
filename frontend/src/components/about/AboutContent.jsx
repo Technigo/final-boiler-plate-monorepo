@@ -1,4 +1,6 @@
 import "./aboutContent.css";
+import { FaLinkedin } from "react-icons/fa"
+import { FaGithub } from "react-icons/fa"
 
 export const AboutContent = () => {
     return (
@@ -7,10 +9,10 @@ export const AboutContent = () => {
                 <div className="card-content">
                     <img src="https://idah-collin-portfolio.netlify.app/assets/profilbildidah.jpeg" alt="Photo of Idah Collin" />
                     <h2>Idah Collin</h2>
-                    <p>
-                        Meet Idah, a rising star in the world of junior developers. Armed with a solid foundation. Idah's journey from classroom to cubicle has been nothing short of impressive. AI-GENERATED PLACEHOLDER!
-
-                        Meet Idah, a rising star in the world of junior developers.</p>
+                    <div className="contact-idah">
+                        <a href="https://www.linkedin.com/in/idah-collin"><FaLinkedin/></a>
+                        <a href="https://github.com/IdahCollin"><FaGithub/></a>
+                       </div>
                 </div>
             </div>
 
@@ -19,9 +21,10 @@ export const AboutContent = () => {
                 <div className="card-content">
                     <img src="https://emmy-dieden-portfolio.netlify.app/assets/gifs/Profilbild-min.JPG" alt="Photo of Emmy Dieden" />
                     <h2>Emmy Dieden</h2>
-                    <p>Meet Emmy, a rising star in the world of junior developers. Armed with a solid foundation. Emmy's journey from classroom to cubicle has been nothing short of impressive. AI-GENERATED PLACEHOLDER!
-
-                        Meet Emmy, a rising star in the world of junior developers.</p>
+                    <div className="contact-Emmy">
+                    <a href="https://www.linkedin.com/in/emmy-dieden-774574283/"><FaLinkedin/></a>
+                    <a href="https://github.com/EmmyDieden"><FaGithub/></a>
+                      </div>
                 </div>
             </div>
         </div>
