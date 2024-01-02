@@ -178,7 +178,7 @@ const AddRestaurantForm = () => {
         <input type="hidden" name="_cc" value="foodiemoodieappen@gmail.com" />
 
         <StyledParagraph>Fields marked with * are mandatory.</StyledParagraph>
-        <Button type="submit">Submit Form</Button>
+        <Button type="submit">Submit</Button>
       </form>
       <Footer />
     </PageContainer>
