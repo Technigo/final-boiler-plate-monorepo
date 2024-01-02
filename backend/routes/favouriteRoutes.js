@@ -1,3 +1,11 @@
 import express from "express"
 
-router.post("/add-to-favourites",)
+import { addFavourite, getFavourites } from "../controllers/favouritesController.js"
+
+const router = express.Router(); // Creates a new router object.
+
+router.post("/add-to-favourites", addFavourite)
+
+router.get("/get-my-favourites", getFavourites)
+
+export default router; 

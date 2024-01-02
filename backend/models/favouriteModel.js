@@ -12,4 +12,4 @@ const favouriteSchema = new Schema({
     }
 })
 
-export const FavouriteModel = mongoose.model("Favourite", favouritesSchema)
+export const FavouriteModel = mongoose.model("Favourite", favouriteSchema)

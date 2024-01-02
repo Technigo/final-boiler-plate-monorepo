@@ -11,6 +11,7 @@ import data from "./data/plants.json" assert { type: "json" };
 import { connectDB } from "./config/db.js";
 import userRoutes from "./routes/userRoutes.js";
 import plantRoutes from "./routes/plantRoutes.js";
+import favouriteRoutes from "./routes/favouriteRoutes.js";
 import { PlantModel } from "./models/plantModel.js";
 
 // Environment variables
@@ -49,6 +50,7 @@ app.get("/", (req, res) => {
 
 app.use("/api/users", userRoutes);
 app.use("/api/plants", plantRoutes);
+app.use("api/favourites", favouriteRoutes);
 
 // Seeding the database with the plant data
 const seedDatabase = async () => {

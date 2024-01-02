@@ -24,6 +24,12 @@ const userSchema = new Schema(
       required: true,
       unique: true,
     },
+    favourites: [
+      { 
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Favourites",
+      },
+    ],
     // Define the 'isAdmin' field with a Boolean data type.
     isAdmin: {
       type: Boolean,
