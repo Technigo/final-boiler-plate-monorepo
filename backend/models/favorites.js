@@ -4,6 +4,11 @@ const favoritesSchema = new mongoose.Schema({
     apiId: {
         type: String
     },
+
+    name: {
+        type: String
+    },
+    
     like: {
         type: Boolean,
         default: false
