@@ -84,30 +84,119 @@ export const App = () => {
     console.log("setshowbutton2:", showButton2)
   }, [showButton2])
 
+  // // Change the video based on the displaytext condition
+  // useEffect(() => {
+  //   if (displayText === "... the snow turns to the rain ") {
+  //     setVideoId("to1-K8vP3gk")
+  //     // after 10 sec show button
+  //     setTimeout(() => {
+  //       // show btn and change text
+  //       setShowButton2(true)
+  //       setRefuseToMove(false)
+  //       // user clicks button and frontend checks respond and set targetuserfound based on res
+  //     }, 10000);
+  //   }
+  // }, [displayText])
+
+
+  // // Change the video based on the displaytext condition
+  // useEffect(() => {
+  //   if (displayText === "... the snow turns to the rain ") {
+  //     setVideoId("to1-K8vP3gk")
+  //     // after 20 sec show button
+  //     setTimeout(() => {
+  //       // show btn and change text
+  //       setShowButton2(true)
+  //       setRefuseToMove(false)
+  //       // user clicks button and frontend checks respond and set targetuserfound based on res
+  //     }, 20000);
+  //   }
+  // }, [displayText])
+
   // Change the video based on the displaytext condition
   useEffect(() => {
     if (displayText === "... the snow turns to the rain ") {
       setVideoId("to1-K8vP3gk")
-      // after 10 sec show button
+      // after 20 sec show button
       setTimeout(() => {
-        // show btn and change text
-        setShowButton2(true)
+        // // show btn and change text
+        // not show btn yet but change text of button
+        // setShowButton2(true)
         setRefuseToMove(false)
         // user clicks button and frontend checks respond and set targetuserfound based on res
-      }, 10000);
+      }, 20000);
     }
   }, [displayText])
 
-  // update displaytext when text is rain and targetuserfound is true
+
+  // // // update displaytext when text is rain and targetuserfound is true
+  // // when text is rain and targetuser is true, set showbutton 2 false.
+  // // and then, 20 sec after, change the text
+  // useEffect(() => {
+  //   setShowButton2(false)
+  //   // setTimeout(() => {
+  //   //   // show btn and change text
+  //   //   setShowButton2(true)
+  //   //   setRefuseToMove(false)
+  //   //   // user clicks button and frontend checks respond and set targetuserfound based on res
+  //   // }, 10000);
+
+  //   // setTimeout(() => {
+  //     // if (displayText === "... the snow turns to the rain " && targetUserFound) {
+  //   if (isRain && targetUserFound) {
+  //     setTimeout(() => {
+  //     setDisplayText("... you cant believe your eyes. you found something from the ground")
+  //     // setDisplayText("... the snow turns to the rain ")
+
+  //     // failed to set display text at right time. instead of this, create new user at this point? that has role of 22222? bcs this user born this moment, the user should meet this user AFTER this moment. but no, cant create new user every time. it will make thousands of useless user. need to find this certain user called 33333 from this moment, i did this previously. and this happens whenever user presses upuser button, which will lead user to 3 to 2. finding at 2, 33333 that has location of 3, takes time, so i can show the rain text while that i guess...? i feel there should be more organized way than this, but no. lack of brain energy
+  //     // i wanted to make this happen 10 sec after, but safari not works so chatgpt not works so need to restart the pc..
+  //     // }
+  //   }, 20000)
+  // }
+
+    
+    
+  // // }, [displayText, targetUserFound])
+  // }, [isRain, targetUserFound])
+
+
+
+
+
+// // update displaytext when text is rain and targetuserfound is true
+  // when text is rain and targetuser is true, set showbutton 2 false.
+  // and then, 20 sec after, change the text
   useEffect(() => {
-    // if (displayText === "... the snow turns to the rain " && targetUserFound) {
+    // setShowButton2(false)
+    // setTimeout(() => {
+    //   // show btn and change text
+    //   setShowButton2(true)
+    //   setRefuseToMove(false)
+    //   // user clicks button and frontend checks respond and set targetuserfound based on res
+    // }, 10000);
+
+    // setTimeout(() => {
+      // if (displayText === "... the snow turns to the rain " && targetUserFound) {
     if (isRain && targetUserFound) {
-      setDisplayText("... you cant believe your eyes. you found something from the ground")
+      setTimeout(() => {
+      setDisplayText(["... you cant believe your eyes.", "you found something from the ground"])
       // setDisplayText("... the snow turns to the rain ")
+
       // failed to set display text at right time. instead of this, create new user at this point? that has role of 22222? bcs this user born this moment, the user should meet this user AFTER this moment. but no, cant create new user every time. it will make thousands of useless user. need to find this certain user called 33333 from this moment, i did this previously. and this happens whenever user presses upuser button, which will lead user to 3 to 2. finding at 2, 33333 that has location of 3, takes time, so i can show the rain text while that i guess...? i feel there should be more organized way than this, but no. lack of brain energy
-    }
+      // i wanted to make this happen 10 sec after, but safari not works so chatgpt not works so need to restart the pc..
+      // }
+    }, 20000)
+  }
+
+    
+    
   // }, [displayText, targetUserFound])
   }, [isRain, targetUserFound])
+
+
+
+
+
 
   const handleRegister = async () => {
     try {
