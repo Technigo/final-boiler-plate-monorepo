@@ -1,3 +1,5 @@
+// before add dandelion
+
 import express from "express"
 import cors from "cors"
 import dotenv from "dotenv"
@@ -27,10 +29,6 @@ const userSchema = new Schema(
       type: Array,
       default: [{ row: 3, column: 'C' }] // initial value for the grid
     },
-    dandelion: {
-      type: Number,
-      default: 0,
-    }
   },
   {
     timestamps: true,
@@ -60,8 +58,7 @@ const registerUserController = asyncHandler(async (req,res) => {
     const newUser = new UserModel({
       username,
       password: hashedPassword,
-      grid: [{ row: 3, column: 'C' }],
-      dandelion: 0,
+      grid: [{ row: 3, column: 'C' }]
     })
     console.log(newUser) // log user before saving
     await newUser.save()
@@ -71,8 +68,7 @@ const registerUserController = asyncHandler(async (req,res) => {
         username: newUser.username,
         id: newUser._id,
         accessToken: newUser.accessToken,
-        grid: newUser.grid, // when a client registers , user will receive the initial position
-        dandelion: newUser.dandelion,
+        grid: newUser.grid // when a client registers , user will receive the initial position
       },
     })
   } catch (e) {
