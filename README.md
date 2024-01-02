@@ -435,3 +435,146 @@ The logs of the IC replica for any errors or issues can be checked with the foll
 bash
 dfx logs
 ```
+6. index.js:421 Uncaught (in promise) Error: Invalid certificate: Invalid signature from replica signed query: no matching node key found.
+    at HttpAgent.query (index.js:421:1)
+    at async caller (actor.js:171:1)
+
+to resolve this issue: 
+
+- run in terminal
+
+```
+bash 
+DFX_VERSION=0.15.2-beta.2 sh -ci "$(curl -fsSL https://internetcomputer.org/install.sh)"
+```
+
+- deleting node_packages folder and target and upgrade all packages then re-run everything 
+
+To delete the node_modules folder and the target directory, upgrade all packages, and then re-run everything in a Node.js project, you can follow these steps:
+
+Open a terminal or command prompt.
+
+Navigate to the root directory of your Node.js project.
+
+Run the following commands:
+
+```
+bash
+# Delete the node_modules folder
+rm -rf node_modules  # On Unix-like systems (Linux/Mac)
+rmdir /s /q node_modules  # On Windows
+
+# Delete the target directory
+rm -rf .dfx/target  # On Unix-like systems (Linux/Mac)
+rmdir /s /q .dfx\target  # On Windows
+
+```
+
+Update your package.json file to adjust the versions of your dependencies if needed. You can manually edit the package.json file or use the following command:
+
+```
+bash
+# Use npm to update all dependencies to their latest versions
+npm update
+```
+
+Install the updated packages:
+```
+bash
+npm install
+```
+
+After the dependencies are installed, you can run your project using the appropriate command. For example, if you use npm start to start your application, run:
+
+```
+bash
+npm start
+```
+
+These steps will help you clean up your project, update the dependencies, and run your application with the latest configurations. Always make sure to back up any important files before performing such operations, especially if you're manually deleting directories.
+
+if The version of DFX used (0.9.3) is different than the version being run (0.15.2-beta.2).
+This might happen because your dfx.json specifies an older version, or DFX_VERSION is set in your environment.
+We are forwarding the command line to the old version. To disable this warning, set the DFX_WARNING=-version_check environment variable.
+
+you need to upgrade the DFX version with the following command: 
+
+1. Stop the replica:
+```
+bash
+dfx stop
+```
+
+2. Remove the existing state:
+
+Delete the .dfx directory in your project, which contains the state of the replica.
+
+```
+bash
+rm -rf .dfx
+```
+
+3. Start the replica again:
+```
+bash
+dfx start
+```
+This will restart the replica and create a fresh state.
+
+4. Update DFX:
+
+You have a warning about the DFX version mismatch. It's a good idea to make sure you are using the latest version of DFX. You can update DFX using the following command:
+
+```
+bash
+dfx upgrade
+```
+This will upgrade DFX to the latest version from DFX used (0.9.3) to the version being run (0.15.2-beta.2).
+
+5. Retry your application:
+After performing the above steps, try running your application again and see if the issue persists.
+
+- Rebuild and Deploy:
+
+If you've made changes to your code or declarations, make sure to rebuild your project and redeploy the canister. Use the following commands:
+
+```
+bash
+dfx stop
+dfx start
+dfx deploy
+```
+
+- Rebuild the Project:
+
+If you have made changes to the Motoko code or the import statements, make sure to rebuild your project to apply the changes. This might involve running any necessary build or deploy commands.
+
+7. an issue with the DFX cache version
+
+To resolve these issues: 
+
+- Clear DFX Cache:
+Run the following command to clear the DFX cache:
+
+```
+bash
+dfx cache clear
+```
+This command will clear the cached files for DFX. After running this command, try starting your project again.
+
+- Start the Project:
+Run the following command to start your project:
+
+```
+bash
+dfx start
+```
+
+or alternatively can Remove the .dfx Directory:
+
+```
+bash
+rm -rf .dfx
+```
+
+After removing the directory, try starting your project again.
