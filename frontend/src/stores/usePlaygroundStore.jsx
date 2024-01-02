@@ -45,9 +45,8 @@ const usePlaygroundStore = create((set) => ({
         wheelchair: data.results[0].wheelchair,
         roundabout: data.results[0].roundabout,
         zipwire: data.results[0].zipwire,
-        swing: data.results[0].swing === 'true', //tried to convert to boolean
+        swing: data.results[0].swing, 
         slide: data.results[0].slide,
-        basketswing: data.results[0].basketswing,
         sandpit: data.results[0].sandpit
       };
       set({ playgroundDetails });
@@ -111,7 +110,35 @@ const usePlaygroundStore = create((set) => ({
       throw error;
     }
   },
+
+  // Frontend function to fetch and display user favorites
+  displayUserFavorites: async () => {
+    try {
+      const response = await fetch(`${BACKEND_URL}/get-my-favorites`, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': localStorage.getItem('token'),
+        },
+      });
+
+      if (response.ok) {
+        const favorites = await response.json();
+        return favorites; // Return the favorites array directly
+      } else {
+        throw new Error(`Error fetching user favorites: ${response.statusText}`);
+      }
+    } catch (error) {
+      console.error('Error fetching user favorites:', error);
+      throw error;
+    }
+  },
+
 }));
+
+
+
+
 
 export default usePlaygroundStore;
 

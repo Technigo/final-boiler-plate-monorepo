@@ -32,14 +32,15 @@ const PlaygroundDetails = () => {
 
         <h2>Vad finns på lekplatsen:</h2>
         
+        
         <p>
           {playgroundDetails.wheelchair === 'yes' ? (
             <>
-              <FaWheelchair /> {playgroundDetails.wheelchair}
+              <img src="/Icons/Black/icons8-wheelchair-50 (1).png" alt="wheelchair" /> {playgroundDetails.wheelchair}
             </>
           ) : (
             <>
-              <PiWheelchairThin /> {playgroundDetails.wheelchair}
+              <img src="/Icons/White/icons8-wheelchair-50.png" alt="wheelchair" /> {playgroundDetails.wheelchair}
             </>
           )}
         </p>
@@ -47,35 +48,66 @@ const PlaygroundDetails = () => {
         <p>
           {playgroundDetails.roundabout === 'true' ? (
             <>
-              <img src="./playgroundIcons/black/icons8-carousel-50-B.png" alt="" /> {playgroundDetails.roundabout}
+              <img src="/Icons/Black/icons8-carousel-50-B.png" alt="" /> {playgroundDetails.roundabout}
             </>
           ) : (
             <>
-              <img src="./playgroundIcons/white/icons8-carousel-50.png" alt="" /> {playgroundDetails.roundabout}
+              <img src="/Icons/White/icons8-carousel-50.png" alt="" /> {playgroundDetails.roundabout}
             </>
           )}
         </p>
 
+        <p>
+          {playgroundDetails.zipwire === 'true' ? (
+            <>
+              <img src="/Icons/Black/icons8-zipline-50 (1).png" alt="" /> {playgroundDetails.zipwire}
+            </>
+          ) : (
+            <>
+              <img src="/Icons/White/icons8-zipline-50.png" alt="" /> {playgroundDetails.zipwire}
+            </>
+          )}
+        </p>
 
-        <p className={playgroundDetails.roundabout === 'true' ? 'highlight' : ''}>Roundabout: {playgroundDetails.roundabout}</p>
-        <p className={playgroundDetails.roundabout === 'true' ? 'highlight' : ''}>Roundabout: {playgroundDetails.roundabout}</p>
-        <p className={playgroundDetails.zipwire === 'true' ? 'highlight' : ''}>Zipwire: {playgroundDetails.zipwire}</p>
 
         <p>
           {playgroundDetails.swing === 'true' ? (
             <>
-              <img src="Icons/Black/icons8-swing-50.png" alt="" /> {playgroundDetails.swing}
+              <img src="/Icons/Black/icons8-swing-50.png" alt="" /> {playgroundDetails.swing}
             </>
           ) : (
             <>
-              <img src="Icons/White/icons8-swing-50 (1).png" alt="" /> {playgroundDetails.swing}
+              <img src="/Icons/White/icons8-swing-50 (1).png" alt="" /> {playgroundDetails.swing}
             </>
           )}
         </p>
 
+        <p>
+          {playgroundDetails.slide === 'true' ? (
+            <>
+              <img src="/Icons/Black/icons8-slide-60.png" alt="" /> {playgroundDetails.slide}
+            </>
+          ) : (
+            <>
+              <img src="/Icons/White/icons8-slide-60 (1).png" alt="" /> {playgroundDetails.slide}
+            </>
+          )}
+        </p>
 
-        <p className={playgroundDetails.basketswing === 'true' ? 'highlight' : ''}>Basketswing: {playgroundDetails.basketswing}</p>
-        <p className={playgroundDetails.sandpit === 'true' ? 'highlight' : ''}>Sandpit: {playgroundDetails.sandpit}</p>
+        <p>
+          {playgroundDetails.sandpit === 'true' ? (
+            <>
+              <img src="/Icons/Black/icons8-sandpit-50 (1).png" alt="" /> {playgroundDetails.sandpit}
+            </>
+          ) : (
+            <>
+              <img src="/Icons/White/icons8-sandpit-50.png" alt="" /> {playgroundDetails.sandpit}
+            </>
+          )}
+        </p>
+
+      
+       
 
 
         <div>
