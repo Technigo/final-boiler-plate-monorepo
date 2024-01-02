@@ -2,6 +2,8 @@
 import { create } from "zustand";
 // Import the userStore to access user-related data
 import { userStore } from "./userStore";
+import Swal from 'sweetalert2';
+
 
 // Get the backend API URL from the environment variable
 const apiEnv = import.meta.env.VITE_BACKEND_API;
@@ -30,12 +32,21 @@ export const adStore = create((set) => ({
         const data = await response.json();
         set({ ads: data });
       } else {
-        console.error("Failed to fetch ads");
+        Swal.fire({
+          title: 'Error!',
+          text: 'Failed to fetch ads',
+          icon: 'error'
+        });
       }
     } catch (error) {
-      console.error(error);
+      Swal.fire({
+        title: 'Error!',
+        text: 'An error occurred while fetching ads',
+        icon: 'error'
+      });
     }
   },
+
 
 
   // Fetch ads for a specific user
@@ -48,10 +59,10 @@ export const adStore = create((set) => ({
         const data = await response.json();
         set({ ads: data });
       } else {
-        console.error("Failed to fetch ads");
+        Swal.fire('Error!', 'Failed to fetch ads', 'error');
       }
     } catch (error) {
-      console.error(error);
+      Swal.fire('Error!', 'An error occurred while fetching ads', 'error');
     }
   },
 
@@ -61,11 +72,11 @@ export const adStore = create((set) => ({
       const response = await fetch(`${apiEnv}/getAd/${id}`);
       if (response.ok) {
         return await response.json();
-      } else {
-        console.error("Failed to fetch ad");
+      } {
+        Swal.fire('Error!', 'Failed to fetch ad', 'error');
       }
     } catch (error) {
-      console.error("Error fetching ad:", error);
+      Swal.fire('Error!', 'An error occurred while fetching the ad', 'error');
     }
   },
 
@@ -108,12 +119,12 @@ export const adStore = create((set) => ({
           console.log("Updated ads state:", updatedAds); // Log updated state here
           return { ads: updatedAds };
         });
-        alert("Your ad has been successfully created!");
+        Swal.fire('Success!', 'Your ad has been successfully created!', 'success');
       } else {
-        console.error("Failed to create ad");
+        Swal.fire('Error!', 'Failed to create ad', 'error');
       }
     } catch (error) {
-      console.error(error);
+      Swal.fire('Error!', 'An error occurred while creating the ad', 'error');
     }
   },
 
@@ -139,8 +150,9 @@ export const adStore = create((set) => ({
       set((state) => ({
         ads: state.ads.map((ad) => ad._id === id ? { ...ad, ...updatedAd } : ad),
       }));
+      Swal.fire('Success!', 'Ad updated successfully', 'success');
     } else {
-      console.error("Failed to update the ad");
+      Swal.fire('Error!', 'Failed to update the ad', 'error');
     }
   },
 
@@ -159,11 +171,12 @@ export const adStore = create((set) => ({
       if (response.ok) {
         // Clear the ads in the state
         set({ ads: [] });
+        Swal.fire('Success!', 'All ads have been deleted', 'success');
       } else {
-        console.error("Failed to delete ads");
+        Swal.fire('Error!', 'Failed to delete ads', 'error');
       }
     } catch (error) {
-      console.error(error);
+      Swal.fire('Error!', 'An error occurred while deleting ads', 'error');
     }
   },
 
@@ -184,11 +197,12 @@ export const adStore = create((set) => ({
         set((state) => ({
           ads: state.ads.filter((ad) => ad._id !== id),
         }));
+        Swal.fire('Success!', 'Ad successfully deleted', 'success');
       } else {
-        console.error("Failed to delete ad");
+        Swal.fire('Error!', 'Failed to delete ad', 'error');
       }
     } catch (error) {
-      console.error("Error deleting ad:", error);
+      Swal.fire('Error!', 'An error occurred while deleting the ad', 'error');
     }
   },
 }));
