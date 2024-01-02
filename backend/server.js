@@ -8,6 +8,7 @@ import listEndpoints from "express-list-endpoints"; // A package that lists all 
 
 // Utils
 import { connectDB } from "./config/db.js";
+import userRoutes from "./routes/userRoutes.js";
 
 // Environment variables
 dotenv.config();
@@ -25,7 +26,7 @@ app.use(express.json()); // Parse incoming requests with JSON payloads.
 app.use(express.urlencoded({ extended: false })); // Parse incoming requests with urlencoded payloads.
 app.use(cookieParser()); // Parse cookie header and populate req.cookies with an object keyed by the cookie names.
 
-// Error handling for server state.
+// Checks the state of your MongoDB connection. If the database is not connected/ready, a 503 Service Unavailable status code returns.
 app.use((req, res, next) => {
   if (mongoose.connection.readyState === 1) {
     next();
@@ -41,6 +42,14 @@ app.get("/", (req, res) => {
   const endpoints = listEndpoints(app);
   // The list of endpoints is returned as a JSON object.
   res.json({ endpoints });
+});
+
+app.use("/api/users", userRoutes);
+
+// General error handling middleware.
+app.use((err, req, res, next) => {
+  console.error(err.stack); // Log error stack trace to console
+  res.status(500).send("Something broke!");
 });
 
 // Start the server. The server is listening on port 8080. Logs a message to the console once the server has started.
