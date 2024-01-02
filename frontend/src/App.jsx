@@ -85,6 +85,25 @@ export const App = () => {
     console.log("setshowbutton2:", showButton2)
   }, [showButton2])
 
+  // // Change the video based on the displaytext condition
+  // useEffect(() => {
+  //   if (displayText === "... the snow turns to the rain ") {
+  //     setVideoId("to1-K8vP3gk")
+  //     // after 20 sec show button
+  //     setTimeout(() => {
+  //       // show btn and change text
+  //       // // not show btn yet but change text of button
+  //       setShowButton2(true)
+  //       setRefuseToMove(false)
+  //       // user clicks button and frontend checks respond and set targetuserfound based on res
+  //     }, 20000);
+  //   }
+  // }, [displayText])
+
+
+
+
+
   // Change the video based on the displaytext condition
   useEffect(() => {
     if (displayText === "... the snow turns to the rain ") {
@@ -93,12 +112,59 @@ export const App = () => {
       setTimeout(() => {
         // show btn and change text
         // // not show btn yet but change text of button
-        setShowButton2(true)
+        // if dandelion found true, hide button
+        // setShowButton2(true)
         setRefuseToMove(false)
+        console.log('isDandelionFound:', isDandelionFound)
+        if (isDandelionFound) {
+          setShowButton2(false)
+        } else {
+          setShowButton2(true)
+        }
         // user clicks button and frontend checks respond and set targetuserfound based on res
       }, 20000);
     }
-  }, [displayText])
+  }, [displayText, isDandelionFound])
+
+
+
+
+
+  // // // update displaytext when text is rain and targetuserfound is true
+  // // update displaytext when israin is true and targetuserfound is true
+  // // // when text is rain and targetuser is true, set showbutton 2 false.
+  // // and then, 20 sec after, change the text
+  // useEffect(() => {
+  //   // setShowButton2(false)
+
+  //   // setTimeout(() => {
+  //     // if (displayText === "... the snow turns to the rain " && targetUserFound) {
+  //   if (isRain && targetUserFound) {
+  //     setTimeout(() => {
+  //     setDisplayText(["... you cant believe your eyes.", "you found something from the ground"])
+  //     setIsDandelionFound(true)
+  //     console.log('dandelion found:', isDandelionFound)
+  //   }, 20000)
+  // } 
+  // // }, [displayText, targetUserFound])
+  // }, [isRain, targetUserFound, isDandelionFound])
+
+
+
+
+
+
+
+
+
+
+
+
+
+// this one makes check when user is  location of 2
+// but this one says dandelion found is false, therefore, the button is showing
+// but what i wanted is dandelion found should be true, since this function is executed, and according to button setting usereffect before this useeffect, the set show button should be false. 
+
 
   // // update displaytext when text is rain and targetuserfound is true
   // update displaytext when israin is true and targetuserfound is true
@@ -109,15 +175,70 @@ export const App = () => {
 
     // setTimeout(() => {
       // if (displayText === "... the snow turns to the rain " && targetUserFound) {
-    if (isRain && targetUserFound) {
-      setTimeout(() => {
-      setDisplayText(["... you cant believe your eyes.", "you found something from the ground"])
-      setIsDandelionFound(true)
-      console.log('dandelion found:', isDandelionFound)
-    }, 20000)
-  } 
+
+      // check if isRain first. and then, check targetuserfound.
+    if (isRain) {
+      if (targetUserFound) {
+        setTimeout(() => {
+        setDisplayText(["... you cant believe your eyes.", "you found something from the ground"])
+        console.log('Before isDandelionFound update:', isDandelionFound)
+        setIsDandelionFound(true)
+        console.log('After isDandellionFound update:', isDandelionFound)
+        console.log('dandelion found:', isDandelionFound)
+      }, 20000)
+      }
+    }  
+     
   // }, [displayText, targetUserFound])
-  }, [isRain, targetUserFound])
+  }, [isRain, targetUserFound, isDandelionFound])
+
+
+
+// this one is not checking when user is location 2
+// but // check if isRain first. and then, check targetuserfound. and then, set dande true. and then, display text
+// this order looks better. dk why this is not working like this
+
+  // // // update displaytext when text is rain and targetuserfound is true
+  // // update displaytext when israin is true and targetuserfound is true
+  // // // when text is rain and targetuser is true, set showbutton 2 false.
+  // // and then, 20 sec after, change the text
+  // useEffect(() => {
+  //   // setShowButton2(false)
+
+  //   // setTimeout(() => {
+  //     // if (displayText === "... the snow turns to the rain " && targetUserFound) {
+
+  //     // check if isRain first. and then, check targetuserfound. and then, set dande true. and then, display text
+  //   if (isRain) {
+  //     if (targetUserFound) {
+  //       setTimeout(() => {
+  //       console.log('Before isDandelionFound update:', isDandelionFound)
+  //       setIsDandelionFound(true)
+  //       console.log('After isDandellionFound update:', isDandelionFound)
+  //       console.log('dandelion found:', isDandelionFound)
+  //       setDisplayText(["... you cant believe your eyes.", "you found something from the ground"])
+  //       // console.log('Before isDandelionFound update:', isDandelionFound)
+  //       // setIsDandelionFound(true)
+  //       // console.log('After isDandellionFound update:', isDandelionFound)
+  //       // console.log('dandelion found:', isDandelionFound)
+  //     }, 20000)
+  //     }
+  //   }  
+     
+  // // }, [displayText, targetUserFound])
+  // }, [isRain, targetUserFound, isDandelionFound])
+
+
+
+
+
+
+
+
+
+
+
+
 
   const handleRegister = async () => {
     try {
