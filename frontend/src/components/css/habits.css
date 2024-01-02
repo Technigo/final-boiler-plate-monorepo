@@ -15,27 +15,24 @@
   
 .one-habit {
   border-radius: 20px;
-  padding: 20px;
+  padding-left: 20px;
 }
 
 .habit-bg-first {
   background-color: #e0f5ff;
   border-radius: 20px;
-  padding: 20px;
   margin-bottom: 15px;
 }
 
 .habit-bg-second {
   background-color: #e8ffe8;
   border-radius: 20px;
-  padding: 20px;
   margin-bottom: 15px;
 }
 
 .habit-bg-third {
   background-color: #f0edf0;
   border-radius: 20px;
-  padding: 20px;
   margin-bottom: 15px;
 }
 
