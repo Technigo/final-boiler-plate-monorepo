@@ -3,9 +3,9 @@ import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
 import mongoose from "mongoose";
-import cookieParser from "cookie-parser";
+// import cookieParser from "cookie-parser";
 import listEndpoints from "express-list-endpoints"; // A package that lists all the endpoints of the server.
-// import data from "./data/plants.json" assert { type: 'json' }
+import data from "./data/plants.json" assert { type: 'json' }
 
 // Utils
 import { connectDB } from "./config/db.js";
@@ -50,17 +50,17 @@ app.get("/", (req, res) => {
 app.use("/api/users", userRoutes);
 app.use("/api/plants", plantRoutes);
 
-// // Seeding the database with the plant data
-// const seedDatabase = async () => {
-//   try {
-//     await PlantModel.deleteMany({});
-//     await PlantModel.insertMany(data);
-//     console.log("Database has been seeded");
-//   } catch (error) {
-//     console.error("Error resetting the database:", error.message);
-//   }
-// };
-// seedDatabase();
+// Seeding the database with the plant data
+const seedDatabase = async () => {
+  try {
+    await PlantModel.deleteMany({});
+    await PlantModel.insertMany(data);
+    console.log("Database has been seeded");
+  } catch (error) {
+    console.error("Error resetting the database:", error.message);
+  }
+};
+seedDatabase();
 
 // General error handling middleware.
 // app.use((err, req, res, next) => {
