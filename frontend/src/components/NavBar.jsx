@@ -15,7 +15,6 @@ export const NavBar = () => {
   return (
     <div className="navbar">
       <div className="left-section">
-        
         <Translations />
       </div>
       <Link to="/">

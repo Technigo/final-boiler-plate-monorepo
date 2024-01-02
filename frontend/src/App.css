@@ -1,6 +1,5 @@
 /* Apply styles to the root element of the application */
 #root {
-  max-width: 1280px; /* Set maximum width for the content */
   margin: 0px; /* Center align the content horizontally */
   padding: 0px; /* Add padding around the content */
   min-height: 100vh; /* Ensure a minimum height to cover the viewport */
