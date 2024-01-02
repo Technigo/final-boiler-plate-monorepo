@@ -17,6 +17,7 @@ const FMLogo = styled.img`
 const NavbarContainer = styled.nav`
   background-color: #01999a;
   color: #66feff;
+  border-radius: 5px;
   display: flex;
   justify-content: space-between;
   padding: 5px;
@@ -39,16 +40,52 @@ const NavbarNav = styled.ul`
 `;
 
 const NavItem = styled.li`
-  margin: 0 1rem;
+  margin: 2px;
+  display: none;
+  @media ${tablet} {
+    color: #66feff;
+    font-size: 45px;
+    font-family: "Mercusuar";
+    display: inline-block;
+    justify-content: flex-end;
+    margin-right: 15px;
+    text-decoration: none;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+  @media ${desktop} {
+    color: #66feff;
+    font-size: 45px;
+    font-family: "Mercusuar";
+    text-decoration: none;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
 `;
 
 const NavbarLink = styled(Link)`
-  color: #66feff;
-  font-size: 45px;
-  font-family: "Mercusuar";
-  text-decoration: none;
-  &:hover {
-    text-decoration: underline;
+  display: none;
+  @media ${tablet} {
+    color: #66feff;
+    font-size: 45px;
+    font-family: "Mercusuar";
+    display: inline-block;
+    justify-content: space-around;
+    text-decoration: none;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+  @media ${tablet} {
+    color: #66feff;
+    font-size: 45px;
+    font-family: "Mercusuar";
+    text-decoration: none;
+    &:hover {
+      text-decoration: underline;
+    }
   }
 `;
 

@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 const PageContainer = styled.div`
   margin: 0 auto;
   padding: 20px;
-  background-color: #e7ffff; /* Your chosen color */
+  background-color: white; /* Your chosen color */
   min-height: 100vh; /* Make sure it covers the full height of the viewport */
 `;
 
@@ -28,33 +28,37 @@ const Intro = styled.p`
   font-size: 16px;
   color: #800f2f;
   font-family: Montserrat, sans-serif;
+  text-align: center;
   /* Your styles for intro paragraph */
 `;
 const StyledButton = styled.button`
   background-color: #fcabe3;
-  color: #66feff;
+  color: white;
+  border: solid white;
   padding: 10px 20px; /* Some padding */
-  border: none; /* No border */
   border-radius: 5px; /* Rounded corners */
   cursor: pointer; /* Pointer/hand icon */
   text-align: center; /* Center the text */
   text-decoration: none; /* No underline */
   display: inline-block; /* Inline block element */
-  font-size: 16px; /* Font size */
+  flex-direction: column;
+  font-size: 54px; /* Font size */
+  font-family: "Mercusuar";
   margin: 4px 2px; /* Margin around the button */
   transition-duration: 0.4s; /* Transition for hover effect */
 
   &:hover {
-    background-color: #ff8fa3;
-    color: #590d22;
+    background-color: white;
+    color: #01999a;
+    border: solid #fcabe3;
   }
 `;
 // Define the 'Home' functional component.
 const Home = () => {
   // Define text content for the heading and subheading.
   const text = {
-    heading: "Welcome to the home of Foodie Moodie!",
-    subheading: "Start your quest for the perfect diningspot below",
+    heading: "Who",
+    subheading: "are you dining with?",
   };
 
   return (
@@ -65,7 +69,22 @@ const Home = () => {
         <Subheading>{text.subheading}</Subheading>
         <Intro>
           <StyledButton as={Link} to="/occasion">
-            Start
+            Family
+          </StyledButton>
+          <StyledButton as={Link} to="/occasion">
+            Friends
+          </StyledButton>
+          <StyledButton as={Link} to="/occasion">
+            Business
+          </StyledButton>
+          <StyledButton as={Link} to="/occasion">
+            Date
+          </StyledButton>
+          <StyledButton as={Link} to="/occasion">
+            Celebration
+          </StyledButton>
+          <StyledButton as={Link} to="/occasion">
+            Other
           </StyledButton>
         </Intro>
       </main>

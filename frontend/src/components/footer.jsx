@@ -12,8 +12,8 @@ const FooterContainer = styled.footer`
 
 const FooterParagraph = styled.p`
   font-size: 16px;
-  font-family: "Helvetica";
-  color: #fcabe3;
+  font-family: "Mercusuar";
+  color: white;
 `;
 
 const Footer = () => {
