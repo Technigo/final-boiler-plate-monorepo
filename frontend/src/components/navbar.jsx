@@ -6,10 +6,14 @@ const tablet = `(min-width: 768px)`;
 const desktop = `(min-width: 1024px)`;
 
 const FMLogo = styled.img`
-  height: 40px;
+  height: 50px;
   width: auto;
   @media ${tablet} {
-    height: 80px;
+    height: 90px;
+    width: auto;
+  }
+  @media ${desktop} {
+    height: 90px;
     width: auto;
   }
 `;
@@ -19,8 +23,8 @@ const NavbarContainer = styled.nav`
   color: #66feff;
   border-radius: 5px;
   display: flex;
-  justify-content: space-between;
-  padding: 5px;
+  justify-content: flex-start;
+  padding: 10px 5px 0.1px 5px;
   @media ${tablet} {
     display: flex;
     justify-content: space-between;
@@ -78,7 +82,7 @@ const NavbarLink = styled(Link)`
       text-decoration: underline;
     }
   }
-  @media ${tablet} {
+  @media ${desktop} {
     color: #66feff;
     font-size: 35px;
     font-family: "JosefinSans";
@@ -92,7 +96,9 @@ const NavbarLink = styled(Link)`
 const Navbar = () => {
   return (
     <NavbarContainer>
-      <FMLogo src="/public/Logo2.jpg" alt="Logo" />
+      <a href="/" target="_blank" rel="noopener noreferrer">
+        <FMLogo src="/public/Logo2.jpg" alt="Logo" />
+      </a>
       <NavbarNav>
         <NavItem>
           <NavbarLink to="/">Home</NavbarLink>

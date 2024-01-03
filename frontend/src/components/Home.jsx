@@ -59,11 +59,11 @@ const StyledButton = styled.button`
 // <button class="button-74" role="button">Button 74</button>
 
 const TestButton = styled.button`
-  background-color: #fbeee0;
-  border: 2px solid #422800;
+  background-color: #fcabe3;
+  border: 2px solid #01999a;
   border-radius: 30px;
-  box-shadow: #422800 4px 4px 0 0;
-  color: #422800;
+  box-shadow: #01999a 2px 2px 0 0;
+  color: white;
   cursor: pointer;
   display: inline-block;
   font-weight: 600;
@@ -77,7 +77,10 @@ const TestButton = styled.button`
   touch-action: manipulation;
 
   &:hover {
-    background-color: #fff;
+    // Ska bara va på tablet och laptop
+    background-color: white;
+    color: #01999a;
+    border: 4px solid #fcabe3;
   }
 
   &:active {
