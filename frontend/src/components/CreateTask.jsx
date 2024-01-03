@@ -1,5 +1,5 @@
 // Import necessary dependencies and the 'taskStore' from the store.
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { taskStore } from "../stores/taskStore";
 import { Button } from "../components/Buttons/Button";
 
@@ -27,6 +27,15 @@ export const CreateTask = () => {
   const taskDescription = (e) => {
     setDescription(e.target.value); // Update the 'task' state with the value entered in the input field.
   };
+
+  // Function to filter tasks by category and area
+  const filterTasks = () => {
+    taskStore.getState().filterTasksByCategoryAndArea(category, area);
+  };
+
+  useEffect(() => {
+    filterTasks();
+  }, [category, area]);
 
   // Function to add a new task both locally and to the server.
   const addTaskLocal = async () => {
@@ -104,12 +113,47 @@ export const CreateTask = () => {
           value={description}
         />
         {/* Create a button to trigger the 'addTaskLocal' function for adding the task. */}
-
         <Button
           onClick={addTaskLocal}
           className="add-task-btn"
           buttonName="Ask for help"
         />
+
+        {/* Filter tasks by category */}
+        <select
+          className="category-select"
+          type="select"
+          onChange={filterTasks}
+          value={category}
+        >
+          <option disabled default value="">
+            Filter by category
+          </option>
+          <option value="Garden">Garden</option>
+          <option value="Pets">Pets</option>
+          <option value="Shopping">Shopping</option>
+          <option value="Repairs">Repairs</option>
+          <option value="Other">Other</option>
+        </select>
+
+        {/* Filter tasks by area */}
+        <select
+          className="area-select"
+          type="select"
+          onChange={filterTasks}
+          value={area}
+        >
+          <option disabled default value="">
+            Filter by area
+          </option>
+          <option value="Varberg City Center">Varberg City Center</option>
+          <option value="Himle">Himle</option>
+          <option value="Kungsäter">Kungsäter</option>
+          <option value="Rolfstorp">Rolfstorp</option>
+          <option value="Tvååker">Tvååker</option>
+          <option value="Veddige">Veddige</option>
+        </select>
+
         {/* This is a button to trigger the 'deleteAllTasks' function to delete all tasks from the server. */}
 
         {/* <Button

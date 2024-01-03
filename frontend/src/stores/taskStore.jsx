@@ -134,6 +134,26 @@ export const taskStore = create((set) => ({
     }
   },
 
+  // Filter tasks by category and area
+  filterTasksByCategoryAndArea: async (category, area) => {
+    try {
+      // Get tasks from the state
+      const allTasks = await taskStore.getState().tasks;
+
+      // Filter tasks based on category and area
+      const filteredTasks = allTasks.filter(
+        (task) =>
+          (category === "" || task.category === category) &&
+          (area === "" || task.area === area)
+      );
+
+      // Set the filtered tasks in the state
+      set({ tasks: filteredTasks });
+    } catch (error) {
+      console.error("Error filtering tasks:", error);
+    }
+  },
+
   // Volunteer for a task
   addMyselfToTask: async (taskId) => {
     try {

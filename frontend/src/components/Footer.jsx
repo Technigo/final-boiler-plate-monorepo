@@ -12,15 +12,6 @@ const StyledFooter = styled.div`
   bottom: 0;
   width: 100%;
 
-  /* background: -webkit-linear-gradient(
-    45deg,
-    #42121d,
-    #7b3848,
-    #965862,
-    #7b3848,
-    #42121d
-  ); */
-
   background: -webkit-linear-gradient(
     45deg,
     #633d57,

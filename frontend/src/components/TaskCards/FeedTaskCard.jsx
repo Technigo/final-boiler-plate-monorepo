@@ -200,7 +200,7 @@ export const FeedTaskCard = ({ task }) => {
             className="offer-help-button"
             buttonName="Lend a helping hand"
             iconAlt="Logo showing two shaking hands forming a heart"
-            src="/Logo-black.png"
+            src="/Logo-white.png"
           />
         </StyledFeedCardModal>
       </Modal>
