@@ -51,7 +51,7 @@ app.get("/", (req, res) => {
 
 app.use("/api/users", userRoutes);
 app.use("/api/plants", plantRoutes);
-app.use("api/favourites", favouriteRoutes);
+app.use("/api/favourites", favouriteRoutes);
 
 // Seeding the database with the plant data
 const seedDatabase = async () => {
@@ -63,9 +63,9 @@ const seedDatabase = async () => {
     console.error("Error resetting the database:", error.message);
   }
 };
-seedDatabase();
+//seedDatabase();
 
-// General error handling middleware.
+// General error handling middleware
 // app.use((err, req, res, next) => {
 //   console.error(err.stack); // Log error stack trace to console
 //   res.status(500).send("Something broke!");

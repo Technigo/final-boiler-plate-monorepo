@@ -1,0 +1,16 @@
+input {
+    border-radius: 0.3125rem;
+    border: 1px solid var(--forrest);
+    background: rgba(221, 223, 209, 0.8);
+    backdrop-filter: blur(5px);
+    width: 15rem;
+    padding: 1rem 0.6rem;
+  }
+  
+  input::placeholder {
+    color: var(--forrest);
+    font-family: var(--p-font);
+    font-size: 0.75rem;
+    font-weight: 600;
+    line-height: 113.5%; /* 0.85125rem */
+  }
