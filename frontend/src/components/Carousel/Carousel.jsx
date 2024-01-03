@@ -61,12 +61,10 @@ export const Carousel = () => {
           slidesPerView: 2,
           spaceBetween: 10
         },
-        // when window width is >= 640px
         500: {
           slidesPerView: 3,
           spaceBetween: 20
         },
-        // when window width is >= 1024px
         700: {
           slidesPerView: 4,
           spaceBetween: 30

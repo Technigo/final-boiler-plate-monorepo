@@ -1,5 +1,8 @@
 import { useState, useEffect } from 'react';
-import { StoryCardList } from '../StoryCardList/StoryCardList'; 
+import PropTypes from 'prop-types';
+import likeIcon from "../../assets/likeBlack.svg";
+import { timeSince } from "../utils/timeUtils";
+import './StoryList.css';
 
 export const StoryList = () => {
   const [stories, setStories] = useState([]);
@@ -14,12 +17,8 @@ export const StoryList = () => {
       .then(response => response.json())
       .then(data => {
         setStories(data.stories);
-        // Extract unique cities
-        const uniqueCities = Array.from(new Set(data.stories.map(story => story.city)));
-        setCities(uniqueCities);
-        // Extract unique categories
-        const uniqueCategories = Array.from(new Set(data.stories.map(story => story.category)));
-        setCategories(uniqueCategories);
+        setCities([...new Set(data.stories.map(story => story.city))]);
+        setCategories([...new Set(data.stories.map(story => story.category))]);
       })
       .catch(error => console.error('Error fetching stories:', error));
   }, []);
@@ -39,60 +38,80 @@ export const StoryList = () => {
   };
 
   const filteredStories = stories.filter(story => {
-    // Filter by city only if a specific city is selected
     if (filterType === 'city' && selectedCity) {
       return story.city === selectedCity;
-    }
-    // Filter by category only if a specific category is selected
-    else if (filterType === 'category' && selectedCategory) {
+    } else if (filterType === 'category' && selectedCategory) {
       return story.category === selectedCategory;
     }
-    // No specific filter selected, return all stories
     return true;
-  }).sort((a, b) => {
-    // Sort by ranking if that filter is selected
-    if (filterType === 'ranking') {
-      return b.ranking - a.ranking;
-    }
-    // No sorting applied
-    return 0;
-  });
+  }).sort((a, b) => filterType === 'ranking' ? b.ranking - a.ranking : 0);
 
   return (
+    <div className='list-wrapper'>
     <div className="story-list">
-    <div className="filter-options">
-      <select value={filterType} onChange={handleFilterTypeChange}>
-        <option value="">Select Filter</option>
-        <option value="ranking">Ranking</option>
-        <option value="city">City</option>
-        <option value="category">Category</option>
-        <option value="latest">Latest</option>
-      </select>
-
-      {filterType === 'city' && (
-        <select value={selectedCity} onChange={handleCityChange}>
-          <option value="">Select City</option>
-          {cities.map(city => (
-            <option key={city} value={city}>{city}</option>
-          ))}
+      <div className="filter-options">
+        <select className="dropdowns" value={filterType} onChange={handleFilterTypeChange}>
+          <option value="">Select Filter</option>
+          <option value="ranking">Ranking</option>
+          <option value="city">City</option>
+          <option value="category">Category</option>
+          <option value="latest">Latest</option>
         </select>
-      )}
 
-      {filterType === 'category' && (
-        <select value={selectedCategory} onChange={handleCategoryChange}>
-          <option value="">Select Category</option>
-          {categories.map(category => (
-            <option key={category} value={category}>{category}</option>
-          ))}
-        </select>
-      )}
+        {filterType === 'city' && (
+          <select className="dropdowns" value={selectedCity} onChange={handleCityChange}>
+            <option value="">Select City</option>
+            {cities.map(city => (
+              <option key={city} value={city}>{city}</option>
+            ))}
+          </select>
+        )}
+
+        {filterType === 'category' && (
+          <select className="dropdowns" value={selectedCategory} onChange={handleCategoryChange}>
+            <option value="">Select Category</option>
+            {categories.map(category => (
+              <option key={category} value={category}>{category}</option>
+            ))}
+          </select>
+        )}
+      </div>
+      {filteredStories.map(story => (
+        <div key={story.id} className="story-card-list">
+          <div className='story-cards'>
+            <div className="story-image">
+              <img src={`/${story.image}`} alt={`${story.city} story`} />
+            </div>
+            <div className="story-footer">
+              {timeSince(story.createdAt)}
+              <img className="like-icon" src={likeIcon} alt="Like" />
+              <span className="like-count">{story.ranking}</span>
+            </div>
+          </div>
+          <div className="story-content">
+            <div className="story-info">
+              <h3>{story.category} - {story.city}</h3>
+            </div>
+            <p>{story.content}</p>
+          </div>
+        </div>
+      ))}
     </div>
-    {filteredStories.map(story => (
-      <StoryCardList key={story.id} story={story} />
-    ))}
-  </div>
-);
+    </div>
+  );
 };
 
+StoryList.propTypes = {
+  stories: PropTypes.arrayOf(
+    PropTypes.shape({
+      city: PropTypes.string.isRequired,
+      content: PropTypes.string.isRequired,
+      category: PropTypes.string.isRequired,
+      image: PropTypes.string.isRequired,
+      createdAt: PropTypes.string.isRequired,
+      ranking: PropTypes.number.isRequired,
+    })
+  ),
+};
 
 export default StoryList;
