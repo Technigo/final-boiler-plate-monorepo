@@ -24,6 +24,24 @@ export const adStore = create((set) => ({
 
   //FETCH AD FUNCTIONS
 
+  // Function to fetch all saved ads for the current user
+  fetchSavedAds: async () => {
+    try {
+      const userId = userStore.getState().userId; // Fetch the current user's ID from userStore
+      const response = await fetch(`${apiEnv}/getSavedAdsByUserId/${userId}`, {
+        headers: { Authorization: localStorage.getItem("accessToken") },
+      });
+      if (!response.ok) throw new Error('Failed to fetch saved ads');
+
+      const savedAds = await response.json();
+      set({ ads: savedAds }); // Update the ads state with the fetched saved ads
+      Swal.fire('Success!', 'Saved ads fetched successfully', 'success');
+    } catch (error) {
+      console.error('Fetch Saved Ads Error:', error);
+      Swal.fire('Error!', 'Failed to fetch saved ads', 'error');
+    }
+  },
+
   // Fetch all ads
   getAllAds: async () => {
     try {
@@ -142,6 +160,26 @@ export const adStore = create((set) => ({
     }
   },
 
+  // Action to save an ad
+  saveAd: async (adId) => {
+    try {
+      const response = await fetch(`${apiEnv}/saveAd`, {
+        method: "POST",
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: localStorage.getItem("accessToken"),
+        },
+        body: JSON.stringify({ adId }),
+      });
+      if (!response.ok) throw new Error('Failed to save ad');
+      Swal.fire('Saved!', 'Ad saved successfully', 'success');
+    } catch (error) {
+      console.error('Save Ad Error:', error);
+      Swal.fire('Error!', 'Failed to save ad', 'error');
+    }
+  },
+
+
   //UPDATE AD FUNCTIONS
   // Action to update an existing ad
   handleEdit: async (id, updatedAdData, imageFile) => {
@@ -219,4 +257,22 @@ export const adStore = create((set) => ({
       Swal.fire('Error!', 'An error occurred while deleting the ad', 'error');
     }
   },
+
+  // Action to unsave an ad
+  unsaveAd: async (adId) => {
+    try {
+      const response = await fetch(`${apiEnv}/unsaveAd/${adId}`, {
+        method: "DELETE",
+        headers: {
+          Authorization: localStorage.getItem("accessToken"),
+        },
+      });
+      if (!response.ok) throw new Error('Failed to unsave ad');
+      Swal.fire('Removed!', 'Ad unsaved successfully', 'success');
+    } catch (error) {
+      console.error('Unsave Ad Error:', error);
+      Swal.fire('Error!', 'Failed to unsave ad', 'error');
+    }
+  },
+
 }));

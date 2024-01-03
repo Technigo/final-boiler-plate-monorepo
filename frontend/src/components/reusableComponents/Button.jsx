@@ -1,23 +1,36 @@
-//import './button.css'
+import { useNavigate } from 'react-router-dom';
+//import './button.css';
 
 export const Button = ({ icon, label, link, className, onClick, ariaLabel }) => {
+  const navigate = useNavigate(); // Hook for navigation
+
   const handleClick = () => {
-    window.open(link, '_blank');
+    if (onClick) {
+      onClick(); // Custom click handler if provided
+    } else if (link) {
+      navigate(link); // Navigate to the link if provided
+    }
   };
 
   return (
     <button
       className={`button ${className || ''}`}
-      onClick={onClick || handleClick}
+      onClick={handleClick}
       aria-label={ariaLabel || label} // Allow custom aria-label
     >
-      <img
-        src={icon}
-        alt=""
-        className="icon"
-        aria-hidden="true" // Hide the icon from assistive technologies
-      />
+      {icon && (
+        <img
+          src={icon}
+          alt=""
+          className="icon"
+          aria-hidden="true" // Hide the icon from assistive technologies
+        />
+      )}
       <span className="label">{label}</span>
     </button>
   );
 };
+
+
+//Eaxmple use
+//<Button icon="/path/to/icon.svg" label="Go to Home" link="/" />
