@@ -4,15 +4,18 @@ import { useParams } from "react-router-dom";
 import usePlaygroundStore from "../../stores/usePlaygroundStore";
 import { BackBtn } from "../../components/BackBtn";
 //import Like from "../../components/Like";
-
-//Import of icons
-import { FaWheelchair } from "react-icons/fa";
-import { PiWheelchairThin } from "react-icons/pi";
+import { useLocation } from "react-router-dom";
 
 
 const PlaygroundDetails = () => {
   const { id } = useParams();
   const { getPlaygroundDetails, playgroundDetails, isLiked, likePlayground } = usePlaygroundStore();
+  const location = useLocation();
+
+
+
+  // Retrieve the random image from the state passed by Link
+  const randomImage = new URLSearchParams(location.search).get("randomImage");
 
   useLayoutEffect(() => {
     getPlaygroundDetails(id);
@@ -28,6 +31,7 @@ const PlaygroundDetails = () => {
       <div className="playground-details-container">
         <h2>{playgroundDetails.name}</h2>
         <h3>{playgroundDetails.city}, {playgroundDetails.postcode}, {playgroundDetails.street}</h3>
+        {randomImage && <img src={decodeURIComponent(randomImage)} alt={`Random Image for ${playgroundDetails.name}`} />}
         <p>{playgroundDetails.description}</p>
 
         <h2>Vad finns på lekplatsen:</h2>

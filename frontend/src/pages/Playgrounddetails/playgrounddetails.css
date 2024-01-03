@@ -14,4 +14,9 @@
     border: 1px solid black;
   }
 
-  
+
+  .playground-details-container img {
+    max-width: 100%; 
+    height: auto; 
+    max-height: 200px;
+  }

@@ -5,6 +5,7 @@ import "../pages/Home/home.css"
 import { Link } from "react-router-dom";
 import { Button } from "./Button";
 import { useTranslation } from "react-i18next";
+import { useState } from "react";
 
 import randomImage1 from "/Playgrounds/_08db1d05-2a11-457f-869e-4968d3d6cbe4.jpeg";
 import randomImage2 from "/Playgrounds/_9df306ce-3682-4f2d-8087-dfda556b834e.jpeg";
@@ -35,6 +36,7 @@ const PlaygroundContainer = () => {
     const randomIndex = Math.floor(Math.random() * images.length);
     return images[randomIndex];
   };
+
   
     return (
       <div className="flex-container">
@@ -43,16 +45,19 @@ const PlaygroundContainer = () => {
           if (playground.id) {
             // Use encodeURIComponent to handle spaces and special characters in the ID
             const encodedId = encodeURIComponent(playground.id);
-            const randomImage = getRandomImage();
+
+            // Generate a random image for each playground
+          const randomImage = getRandomImage();
 
   
             return (
               <div className="playground" key={index}>
                 <h2>{playground.name}</h2>
                  {/* Use the random image for each playground */}
-              <img src={randomImage} alt={`Random Image for ${playground.name}`} />
                 {/* <p>{playground.description}</p> */}
-                <Link key={playground.id} to={`/playground/${playground.id}`}>
+                <Link key={playground.id} to={`/playground/${playground.id}?randomImage=${encodeURIComponent(randomImage)}`}>
+                <img src={randomImage} alt={`Random Image for ${playground.name}`} />
+
                 <Button className={"more-details"} btnText={t("PlaygroundContainer.more-details")} />
                   </Link>
               </div>
