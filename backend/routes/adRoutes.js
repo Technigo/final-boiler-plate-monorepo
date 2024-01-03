@@ -6,6 +6,7 @@ import {
     getAllAdsController,
     getAdsController,
     getAdByIdController,
+    getAdsByUserIdController,
     updateAdController,
     deleteAllAdsController,
     deleteSpecificAdController,
