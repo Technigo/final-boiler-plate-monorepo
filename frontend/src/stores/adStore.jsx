@@ -47,9 +47,7 @@ export const adStore = create((set) => ({
     }
   },
 
-
-
-  // Fetch ads for a specific user
+  // Fetch ads for the logged in user
   fetchAds: async () => {
     try {
       const response = await fetch(`${apiEnv}/getAds`, {
@@ -79,6 +77,22 @@ export const adStore = create((set) => ({
       Swal.fire('Error!', 'An error occurred while fetching the ad', 'error');
     }
   },
+
+  // Fetch ads for a specific user by UserID
+  fetchAdsByUserId: async (userId) => {
+    try {
+      const response = await fetch(`${apiEnv}/getAdsByUserId/${userId}`);
+      if (response.ok) {
+        const data = await response.json();
+        set({ ads: data });
+      } else {
+        Swal.fire('Error!', 'Failed to fetch ads for the user', 'error');
+      }
+    } catch (error) {
+      Swal.fire('Error!', 'An error occurred while fetching ads for the user', 'error');
+    }
+  },
+
 
 
   //CREATE AD FUNCTIONS
