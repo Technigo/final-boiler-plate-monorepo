@@ -1,4 +1,7 @@
+@import url("font.css");
+
 /* Apply styles to the root element of the application */
+
 #root {
   max-width: 1280px; /* Set maximum width for the content */
   margin: 0 auto; /* Center align the content horizontally */
@@ -8,7 +11,7 @@
 }
 
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: MercusuarBoldItalic;
   line-height: 1.5;
   font-weight: 400;
 

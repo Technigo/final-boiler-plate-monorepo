@@ -4,32 +4,30 @@ import Navbar from './navbar';
 import Footer from './footer';
 import { useRestaurantStore } from '../stores/restaurantStore'; 
 
-
-
 const PageContainer = styled.div`
   margin: 0 auto;
   padding: 20px;
-  background-color: #FFF0F3; /* Your chosen color */
+  background-color: #fff0f3; /* Your chosen color */
   min-height: 100vh; /* Make sure it covers the full height of the viewport */
 `;
 
 const StyledH1 = styled.h1`
-text-align: center; /* Centers the title text */
-margin-bottom: 20px; /* Adds some space between the title and the buttons */
-color: #800F2F;
-font-family: Montserrat, sans-serif;
+  text-align: center; /* Centers the title text */
+  margin-bottom: 20px; /* Adds some space between the title and the buttons */
+  color: #800f2f;
+  font-family: Montserrat, sans-serif;
 `;
 
 const StyledH2 = styled.h2`
-color: #800F2F;
-font-family: Montserrat, sans-serif;
-display: block; /* Ensures each label is on a new line */
-margin-bottom: 5px; /* Space above each input */
-font-size: 16px;
+  color: #800f2f;
+  font-family: Montserrat, sans-serif;
+  display: block; /* Ensures each label is on a new line */
+  margin-bottom: 5px; /* Space above each input */
+  font-size: 16px;
 `;
 
 const StyledInput = styled.input`
-  color: #800F2F;
+  color: #800f2f;
   font-family: Montserrat, sans-serif;
   text-align: left;
   margin-top: 5px; /* Adds spacing between the label text and the input box */
@@ -41,15 +39,15 @@ const StyledInput = styled.input`
 `;
 
 const FormLabel = styled.label`
-  color: #800F2F;
+  color: #800f2f;
   font-family: Montserrat, sans-serif;
   display: block; /* Ensures each label is on a new line */
   margin-bottom: 5px; /* Space above each input */
 `;
 
 const Button = styled.button`
-background-color: #FFCCD5;
-  color: #800F2F;
+  background-color: #ffccd5;
+  color: #800f2f;
   padding: 10px 20px; /* Some padding */
   border: none; /* No border */
   border-radius: 5px; /* Rounded corners */
@@ -62,17 +60,17 @@ background-color: #FFCCD5;
   transition-duration: 0.4s; /* Transition for hover effect */
 
   &:hover {
-    background-color: #FF8FA3;
-    color: #590D22;
+    background-color: #ff8fa3;
+    color: #590d22;
   }
 
   &:active {
     transform: translateY(1px);
   }
-`; 
+`;
 
 const StyledParagraph = styled.p`
-  color: #800F2F; /* Example color */
+  color: #800f2f; /* Example color */
   font-family: Montserrat, sans-serif; /* Montserrat font */
   text-align: left; /* Text aligned to the left */
   margin-bottom: 10px; /* Space below the paragraph */
@@ -81,6 +79,7 @@ const StyledParagraph = styled.p`
 const AddRestaurantForm = () => {
   const { occasions, moods, fetchOccasions, fetchMoods } = useRestaurantStore();
   const [formData, setFormData] = useState({
+
       restaurantName: '',
       address: '',
       zipcode: '',
@@ -114,6 +113,7 @@ const AddRestaurantForm = () => {
   return (
     <PageContainer>
       <Navbar />
+
       <StyledH1>Add a New Restaurant</StyledH1>
       <form 
         action="https://formsubmit.co/foodiemoodieappen@gmail.com"
@@ -184,5 +184,6 @@ const AddRestaurantForm = () => {
     </PageContainer>
   );
 };
+
 
 export default AddRestaurantForm;
