@@ -54,6 +54,19 @@ export const getAdsByUserIdController = asyncHandler(async (req, res) => {
   res.json(ads);
 });
 
+// Description: Get Ads saved by a specific user
+// Route: /getSavedAdsByUser/:userId
+// Access: Public (or Private if you want to restrict access)
+export const getSavedAdsByUserController = asyncHandler(async (req, res) => {
+  const { userId } = req.params;
+  try {
+    const savedAds = await AdModel.find({ savedBy: userId }).populate("user", "username");
+    res.json(savedAds);
+  } catch (error) {
+    res.status(500).json({ message: "Error fetching saved ads", error: error.message });
+  }
+});
+
 // desciption: POST Ad
 // route: /add
 // access: Private
