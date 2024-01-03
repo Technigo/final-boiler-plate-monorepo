@@ -40,11 +40,12 @@ export const taskStore = create((set) => ({
 
         set({ tasks: data });
       } else {
-        console.error(
-          "Failed to fetch tasks. Response:",
-          response.status,
-          errorResponse
-        );
+        // Log the error status and response
+        console.error("Failed to fetch tasks. Response:", response.status);
+
+        // Parse and log the error response
+        const errorResponse = await response.json();
+        console.error("Error response:", errorResponse);
       }
     } catch (error) {
       console.error("Error during fetchTasks:", error);
@@ -168,9 +169,10 @@ export const taskStore = create((set) => ({
       console.log("Authorization Header:", localStorage.getItem("accessToken"));
 
       // Parse the response data
-      const data = await response.json();
+      //const data = await response.json();
       // Check if the request was successful
       if (response.ok) {
+        console.log("Successfully added myself to task");
       } else {
         console.error("Failed to add myself to task");
       }

@@ -102,7 +102,7 @@ export const BurgerMenu = () => {
                 closeBurgerMenu();
               }}
             >
-              Login
+              Log in
             </Link>
           </li>
           <li className={activePage === "register" ? "active" : ""}>
@@ -124,7 +124,7 @@ export const BurgerMenu = () => {
                 closeBurgerMenu();
               }}
             >
-              Task feed
+              Deed Hub
             </Link>
           </li>
           <li className={activePage === "profile" ? "active" : ""}>

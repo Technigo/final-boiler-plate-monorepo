@@ -7,15 +7,22 @@ import { userStore } from "../stores/userStore";
 import { useNavigate } from "react-router-dom";
 import { FeedTaskCard } from "../components/TaskCards/FeedTaskCard";
 //import { Link } from "react-router-dom";
+import styled from "styled-components";
+
+const StyledTaskText = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 20px;
+`;
 
 // Define the 'Tasks' functional component.
 export const Tasks = () => {
   // Text content for the heading and paragraphs.
   const text = {
-    heading: "Tasks Page",
-    intro:
-      "Are you facing a challenge or have a task that could use an extra hand?",
-    p: "Share it with the community and get the assistance you need! Remember, clear and detailed descriptions increase the chances of finding the perfect helper for your task.",
+    heading: "In Need, In Deed",
+    intro: "Do you need an extra hand?",
+    p: "Share it with the community and get the assistance you need! ",
   };
 
   // Access the 'tasks', 'fetchTasks', 'handleEdit', and 'deleteTaskById' functions from the 'taskStore'.
@@ -63,16 +70,18 @@ export const Tasks = () => {
       {/* <LogoText /> */}
 
       <div>
-        {/* Display the heading and paragraphs. */}
-        <h2>{text.heading}</h2>
-        <p>{text.intro}</p>
-        <p>{text.p}</p>
+        <StyledTaskText>
+          {/* Display the heading and paragraphs. */}
+          <h2>{text.heading}</h2>
+          <p>{text.intro}</p>
+          <p>{text.p}</p>
+        </StyledTaskText>
         {/* Render the 'CreateTask' component to add new tasks. */}
         <CreateTask />
         {/* Conditional rendering based on the number of tasks. */}
         {tasks.length === 0 ? (
           <>
-            <p>Nothing to volunteer to yet, create your own ad!</p>
+            <p>No deeds to be done!</p>
           </>
         ) : (
           // Map through 'tasks' and render task items.

@@ -131,7 +131,7 @@ export const Navbar = () => {
                 setActivePage("tasks");
               }}
             >
-              Task feed
+              Deed Hub
             </Link>
           </li>
           <li className={activePage === "profile" ? "active" : ""}>
