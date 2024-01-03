@@ -392,7 +392,7 @@
     "zipcode": "11164",
     "city": "Stockholm",
     "country": "Sweden",
-    "borough": "Normalm",
+    "borough": "Norrmalm",
     "cuisine": "International Fusion",
     "occasion": ["Have dinner with the in-laws",
     "Have a sunday funday aka brunch",
@@ -653,7 +653,7 @@
 
     { 
       "restaurantID": "22", 
-    "restaurantName": "Café facile",
+    "restaurantName": "Café Facile",
     "address": "Luntmakargatan 99",
     "zipcode": "11351",
     "city": "Stockholm",
@@ -1318,7 +1318,7 @@
 
     { 
       "restaurantID": "43", 
-    "restaurantName": "Meno male Mariatorger" ,
+    "restaurantName": "Meno male Mariatorget" ,
     "address": "Krukmakargatan 1",
     "zipcode": "11851",
     "city": "Stockholm",

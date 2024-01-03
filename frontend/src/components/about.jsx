@@ -2,6 +2,7 @@ import React from "react";
 import Navbar from "./navbar";
 import Footer from "./footer";
 import styled from "styled-components";
+import alexandra from '../assets/alexandra.jpg'
 
 const AboutWrapper = styled.div`
   margin: 0 auto;
@@ -34,6 +35,8 @@ const TeamMember = styled.div`
 const TeamMemberPhoto = styled.img`
   max-width: 100%;
   border-radius: 50%;
+  height: 120px;
+  width: 120px;
 `;
 
 const TeamMemberName = styled.h3`
@@ -60,9 +63,9 @@ const AboutPage = () => {
       <AboutWrapper>
         <IntroParagraph>
           {/* Your intro paragraph content */}
-          We are three coders who teamed up during our final sprint of the
-          <a href="https://www.technigo.io/">Technigo</a> web developer bootcamp
-          to bring you the Foodie moodie app
+          We are three coders who teamed up during our final sprint of the 
+          <a href="https://www.technigo.io/" target="_blank" rel="noopener noreferrer">Technigo</a>
+web developer bootcamp to bring you the Foodie moodie app. 
         </IntroParagraph>
         <TeamSection>
           <TeamMember>

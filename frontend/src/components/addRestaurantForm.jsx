@@ -1,9 +1,8 @@
-import React, { useState, useEffect } from "react";
-import styled from "styled-components";
-import Navbar from "./navbar";
-import Footer from "./footer";
-import { useRestaurantStore } from "../stores/restaurantStore";
-// import emailjs from 'emailjs-com';
+import React, { useState, useEffect } from 'react';
+import styled from 'styled-components';
+import Navbar from './navbar';
+import Footer from './footer';
+import { useRestaurantStore } from '../stores/restaurantStore'; 
 
 const PageContainer = styled.div`
   margin: 0 auto;
@@ -80,187 +79,111 @@ const StyledParagraph = styled.p`
 const AddRestaurantForm = () => {
   const { occasions, moods, fetchOccasions, fetchMoods } = useRestaurantStore();
   const [formData, setFormData] = useState({
-    restaurantName: "",
-    address: "",
-    zipcode: "",
-    city: "",
-    country: "",
-    borough: "",
-    cuisine: "",
-    occasion: [],
-    mood: [],
-    description: "",
-    url: "",
+
+      restaurantName: '',
+      address: '',
+      zipcode: '',
+      city: '',
+      country: '',
+      borough: '',
+      cuisine: '',
+      occasion: [],
+      mood: [],
+      description: '',
+      url: ''
   });
 
   useEffect(() => {
-    fetchOccasions();
-    fetchMoods();
+      fetchOccasions();
+      fetchMoods();
   }, [fetchOccasions, fetchMoods]);
 
   const handleChange = (e) => {
-    const { name, value, checked, type } = e.target;
-    if (type === "checkbox") {
-      setFormData((prevData) => ({
+    const { name, value, type, checked } = e.target;
+    if (type === 'checkbox') {
+      setFormData(prevData => ({
         ...prevData,
-        [name]: checked
-          ? [...prevData[name], value]
-          : prevData[name].filter((item) => item !== value),
+        [name]: checked ? [...prevData[name], value] : prevData[name].filter(item => item !== value),
       }));
     } else {
-      setFormData({
-        ...formData,
-        [name]: value,
-      });
+      setFormData({ ...formData, [name]: value });
     }
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
-    // emailjs.sendForm(
-    //     process.env.REACT_APP_EMAILJS_SERVICE_ID,
-    //     process.env.REACT_APP_EMAILJS_TEMPLATE_ID,
-    //     e.target,
-    //     process.env.REACT_APP_EMAILJS_USER_ID
-    // )
-    // .then((result) => {
-    //     console.log('Email sent successfully', result.text);
-    //     // Handle success
-    // }, (error) => {
-    //     console.log('Failed to send email', error.text);
-    //     // Handle error
-    // });
   };
 
   return (
     <PageContainer>
       <Navbar />
-      <form onSubmit={handleSubmit}>
-        <StyledH1>Add a new restaurant</StyledH1>
 
-        <FormLabel>
-          Restaurant Name*:
-          <StyledInput
-            type="text"
-            name="restaurantName"
-            value={formData.restaurantName}
-            onChange={handleChange}
-          />
-        </FormLabel>
+      <StyledH1>Add a New Restaurant</StyledH1>
+      <form 
+        action="https://formsubmit.co/foodiemoodieappen@gmail.com"
+        method="POST"
+      >
+        <FormLabel>Restaurant Name*:</FormLabel>
+        <StyledInput type="text" name="restaurantName" value={formData.restaurantName} onChange={handleChange} required />
 
-        <FormLabel>
-          Address:
-          <StyledInput
-            type="text"
-            name="address"
-            value={formData.address}
-            onChange={handleChange}
-          />
-        </FormLabel>
+        <FormLabel>Address:</FormLabel>
+        <StyledInput type="text" name="address" value={formData.address} onChange={handleChange} />
 
-        <FormLabel>
-          Zipcode:
-          <StyledInput
-            type="number"
-            name="zipcode"
-            value={formData.zipcode}
-            onChange={handleChange}
-          />
-        </FormLabel>
+        <FormLabel>Zipcode:</FormLabel>
+        <StyledInput type="number" name="zipcode" value={formData.zipcode} onChange={handleChange} />
 
-        <FormLabel>
-          City*:
-          <StyledInput
-            type="text"
-            name="city"
-            value={formData.city}
-            onChange={handleChange}
-          />
-        </FormLabel>
+        <FormLabel>City*:</FormLabel>
+        <StyledInput type="text" name="city" value={formData.city} onChange={handleChange} required />
 
-        <FormLabel>
-          Borough:
-          <StyledInput
-            type="text"
-            name="borough"
-            value={formData.borough}
-            onChange={handleChange}
-          />
-        </FormLabel>
+        <FormLabel>Country:</FormLabel>
+        <StyledInput type="text" name="country" value={formData.country} onChange={handleChange} />
 
-        <FormLabel>
-          Cuisine*:
-          <StyledInput
-            type="text"
-            name="cuisine"
-            value={formData.cuisine}
-            onChange={handleChange}
-          />
-        </FormLabel>
+        <FormLabel>Borough:</FormLabel>
+        <StyledInput type="text" name="borough" value={formData.borough} onChange={handleChange} />
 
-        {/* Occasion (checkboxes) */}
+        <FormLabel>Cuisine*:</FormLabel>
+        <StyledInput type="text" name="cuisine" value={formData.cuisine} onChange={handleChange} required />
+
+        {/* Occasion checkboxes */}
         <div>
           <FormLabel>Occasion*:</FormLabel>
-          {occasions.map((option) => (
-            <FormLabel key={option}>
+          {occasions.map((option, index) => (
+            <label key={index}>
               {option}
-              <StyledInput
-                type="checkbox"
-                name="occasion"
-                value={option}
-                checked={formData.occasion.includes(option)}
-                onChange={handleChange}
-              />
-            </FormLabel>
+              <StyledInput type="checkbox" name="occasion" value={option} checked={formData.occasion.includes(option)} onChange={handleChange} required />
+            </label>
           ))}
         </div>
 
-        {/* Mood (checkboxes) */}
+        {/* Mood checkboxes */}
         <div>
           <FormLabel>Mood*:</FormLabel>
-          {moods.map((option) => (
-            <FormLabel key={option}>
+          {moods.map((option, index) => (
+            <label key={index}>
               {option}
-              <StyledInput
-                type="checkbox"
-                name="mood"
-                value={option}
-                checked={formData.mood.includes(option)}
-                onChange={handleChange}
-              />
-            </FormLabel>
+              <StyledInput type="checkbox" name="mood" value={option} checked={formData.mood.includes(option)} onChange={handleChange} required />
+            </label>
           ))}
         </div>
 
-        <FormLabel>
-          Description*:
-          <StyledInput
-            type="text"
-            name="description"
-            value={formData.description}
-            onChange={handleChange}
-          />
-        </FormLabel>
+        <FormLabel>Description*:</FormLabel>
+        <StyledInput type="text" name="description" value={formData.description} onChange={handleChange} required />
 
-        {/* Website URL input */}
-        <FormLabel>
-          Website URL:
-          <StyledInput
-            type="text"
-            name="url"
-            value={formData.url}
-            onChange={handleChange}
-          />
-        </FormLabel>
-        <StyledParagraph>
-          Fields marked with an * are mandatory to fill in.
-        </StyledParagraph>
+        <FormLabel>Website URL:</FormLabel>
+        <StyledInput type="text" name="url" value={formData.url} onChange={handleChange} />
+
+        <FormLabel>Your name:</FormLabel>
+        <StyledInput type="text" name="name" value={formData.name} onChange={handleChange} />
+
+        <FormLabel>Your e-mail (in case we need some more info):</FormLabel>
+        <StyledInput type="email" name="email" value={formData.email} onChange={handleChange} />
+
+        {/* Hidden input for redirection and multiple email addresses */}
+        <input type="hidden" name="_cc" value="foodiemoodieappen@gmail.com" />
+
+        <StyledParagraph>Fields marked with * are mandatory.</StyledParagraph>
         <Button type="submit">Submit</Button>
       </form>
       <Footer />
     </PageContainer>
   );
 };
+
 
 export default AddRestaurantForm;

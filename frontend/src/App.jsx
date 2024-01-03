@@ -19,7 +19,7 @@ body {
 const App = () => {
   return (
     <BrowserRouter>
-      <Wrapper>
+       <Wrapper>
         <GlobalFonts />
         <GlobalStyle />
         <Routes>
