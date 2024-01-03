@@ -1,5 +1,6 @@
 import "./recipeDetails.css";
 import { useParams } from "react-router-dom";
+import { useEffect } from "react";
 import { Header } from "../../components/header/Header";
 import { recipeStore } from "../../stores/recipeStore";
 import { PiCookingPot } from "react-icons/pi";
@@ -12,6 +13,11 @@ export const RecipeDetails = () => {
 
   // Find the recipe with the matching 'id' from the 'recipes' array
   const foundRecipe = recipes.find((recipe) => recipe._id === id);
+
+  //This is to make the page scroll up to top automatically
+  useEffect (() => {
+    window.scrollTo(0,0)
+  }, [])
 
   // Check if a recipe was found
   if (!foundRecipe) {

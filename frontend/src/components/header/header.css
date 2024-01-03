@@ -8,7 +8,7 @@
     align-items: center;
 }
 
-.header h1 {
+.header a {
     font-size: 3vh;
     color: #286052;
 }
