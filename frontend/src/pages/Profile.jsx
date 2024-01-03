@@ -56,7 +56,7 @@ export const Profile = () => {
         <p>Products: {profileData.products.join(", ")}</p>
       </div>
       <h2>Recent ads</h2>
-      <AdsList fetchType="user" />
+      <AdsList fetchType="user" userId={userId} />
       <Button onClick={handleShow}>Contact Advertiser</Button>
       <Modal show={show} onHide={handleClose}>
         <Modal.Body>
