@@ -127,9 +127,14 @@ const TruncatedText = ({ text, maxLength }) => {
   );
 };
 
+function generateGoogleMapsUrl(address, city, country) {
+  const query = encodeURIComponent(`${address}, ${city}, ${country}`);
+  return `https://www.google.com/maps/search/?api=1&query=${query}`;
+}
+
 const ResultsComponent = () => {
   const { results, fetchResults, selectedOccasion, selectedMoods } = useRestaurantStore();
-  const [sortType, setSortType] = useState('restaurantName'); // Default sorting type
+  const [sortType, setSortType] = useState('restaurantName');
 
   useEffect(() => {
     if (selectedOccasion && selectedMoods.length > 0) {
@@ -137,21 +142,28 @@ const ResultsComponent = () => {
     }
   }, [selectedOccasion, selectedMoods, fetchResults]);
 
-  // Function to sort results based on sortType
   const getSortedResults = () => {
+    let sorted = [];
     switch (sortType) {
       case 'restaurantName':
-        return [...results].sort((a, b) => a.restaurantName.localeCompare(b.restaurantName));
+        sorted = [...results].sort((a, b) => a.restaurantName.localeCompare(b.restaurantName));
+        break;
       case 'borough':
-        return [...results].sort((a, b) => a.borough.localeCompare(b.borough));
-        case 'cuisine':
-        return [...results].sort((a, b) => a.cuisine.localeCompare(b.cuisine));
+        sorted = [...results].sort((a, b) => a.borough.localeCompare(b.borough));
+        break;
+      case 'cuisine':
+        sorted = [...results].sort((a, b) => a.cuisine.localeCompare(b.cuisine));
+        break;
       default:
-        return results; // Return unsorted results if no sortType matches
+        sorted = results; // Return unsorted results if no sortType matches
+        break;
     }
+    return sorted.map(restaurant => ({
+      ...restaurant,
+      mapsUrl: generateGoogleMapsUrl(restaurant.address, restaurant.city, restaurant.country)
+    }));
   };
 
-  // Call the sorting function
   const sortedResults = getSortedResults();
 
   return (
@@ -159,47 +171,44 @@ const ResultsComponent = () => {
       <Navbar />
       {/* Dropdown for selecting sort type */}
       <select onChange={(e) => setSortType(e.target.value)} value={sortType}>
-        <option value="restaurantName">Sort by restaurantname</option>
+        <option value="restaurantName">Sort by restaurant name</option>
         <option value="borough">Sort by borough</option>
         <option value="cuisine">Sort by cuisine</option>
         {/* Add other sorting options here if needed */}
       </select>
       <ResultsContainer>
-      <Link to="/mood">
-        <BackButton>
-          Go back to choose moods
-        </BackButton>
-      </Link>
+        <Link to="/mood">
+          <BackButton>Go back to choose moods</BackButton>
+        </Link>
         {sortedResults.length > 0 ? (
           sortedResults.map((restaurant) => (
             <ResultCard key={restaurant._id}>
-            <StyledHeading>{restaurant.restaurantName}</StyledHeading>
+              <StyledHeading>{restaurant.restaurantName}</StyledHeading>
               <StyledParagraph>Borough: {restaurant.borough}</StyledParagraph>
               <StyledParagraph>Cuisine: {restaurant.cuisine}</StyledParagraph>
               <StyledParagraph>
-  <TruncatedText text={`Occasion: ${restaurant.occasion.join(', ')}`} maxLength={100} />
-</StyledParagraph>
+                <TruncatedText text={`Occasion: ${restaurant.occasion.join(', ')}`} maxLength={100} />
+              </StyledParagraph>
               <StyledParagraph>Mood: {restaurant.mood.join(', ')}</StyledParagraph>
               <StyledParagraph>
-              <TruncatedText text={`Description: ${restaurant.description}`} maxLength={100} />
+                <TruncatedText text={`Description: ${restaurant.description}`} maxLength={100} />
               </StyledParagraph>
-              <FlexRow>
-    <StyledParagraph>Address: {`${restaurant.address}, ${restaurant.zipcode} ${restaurant.city}`}</StyledParagraph>
-  </FlexRow>
-            <StyledButtonLink href={restaurant.url} target="_blank" rel="noopener noreferrer">
+              <StyledParagraph>
+                Address: <a href={restaurant.mapsUrl} target="_blank" rel="noopener noreferrer">{`${restaurant.address}, ${restaurant.zipcode} ${restaurant.city}`}</a>
+              </StyledParagraph>
+              <StyledButtonLink href={restaurant.url} target="_blank" rel="noopener noreferrer">
                 Visit the restaurant's website by clicking here
               </StyledButtonLink>
-              <br/>
+              <br />
               <StyledButtonLink to="/suggestion">
-          If you have suggestions about the description, click here.
-        </StyledButtonLink>
+                If you have suggestions about the description, click here.
+              </StyledButtonLink>
             </ResultCard>
-          
-          )) //click more to get more text//
-          ) : (
-            <NoResultsText>We are sad to say we cannot find anything that fits your needs. Please try again!</NoResultsText>
-          )}
-       </ResultsContainer>
+          ))
+        ) : (
+          <NoResultsText>We are sad to say we cannot find anything that fits your needs. Please try again!</NoResultsText>
+        )}
+      </ResultsContainer>
       <Footer />
     </>
   );
