@@ -31,7 +31,7 @@ export const PostStory = () => {
       setNewCategory(e.target.value);
     };
 
-    fetch("", {
+    fetch("http://localhost:3000/stories", {
       method: "POST",
       body: JSON.stringify({
         message: newStory,
