@@ -48,29 +48,6 @@ router.get("/stories", async (req, res) => {
   }
 });
 
-// router.get("/stories", async (req, res) => {
-//   const { category, sortBy } = req.query;
-//   let query = {};
-//   let sortOption = { createdAt: -1 }; // Default sorting
-
-//   // Filter by category if it's provided
-//   if (category) {
-//     query.category = category;
-//   }
-
-//   // Change sorting based on the query parameter
-//   if (sortBy === "ranking") {
-//     sortOption = { ranking: -1 }; // Sort by ranking in descending order
-//   }
-
-//   try {
-//     const stories = await mapStoryModel.find(query).sort(sortOption);
-//     res.json(stories);
-//   } catch (error) {
-//     res.status(500).json({ message: error.message });
-//   }
-// });
-
 //route for post a story
 router.post("/stories", async (req, res) => {
   const { title, content, category, ranking, lat, lng } = req.body;
