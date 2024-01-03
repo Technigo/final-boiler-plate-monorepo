@@ -24,10 +24,13 @@ const NoResultsText = styled.p`
 const ResultCard = styled.div`
   /* Style for each result card */
   margin-bottom: 20px;
+  margin-top: 20px;
   padding: 15px;
   border: 1px solid #ddd;
-  border-radius: 8px;
+  border-radius: 20px;
+  border-color: #800F2F;
   background-color: #FFF0F3; /* Your chosen color */
+  width: 60vw;
 `;
 
 
@@ -98,6 +101,32 @@ const FlexRow = styled.div`
   align-items: center;
 `;
 
+const MoreLink = styled.a`
+  color: #FF8FA3;
+  cursor: pointer;
+`;
+
+const TruncatedText = ({ text, maxLength }) => {
+  const [isTruncated, setIsTruncated] = useState(true);
+
+  const toggleTruncation = () => {
+    setIsTruncated(!isTruncated);
+  };
+
+  const resultString = isTruncated ? `${text.substring(0, maxLength)}...` : text;
+
+  return (
+    <>
+      {resultString}
+      {text.length > maxLength && (
+        <MoreLink onClick={toggleTruncation}>
+          {isTruncated ? ' Read more' : ' Read less'}
+        </MoreLink>
+      )}
+    </>
+  );
+};
+
 const ResultsComponent = () => {
   const { results, fetchResults, selectedOccasion, selectedMoods } = useRestaurantStore();
   const [sortType, setSortType] = useState('restaurantName'); // Default sorting type
@@ -145,14 +174,18 @@ const ResultsComponent = () => {
           sortedResults.map((restaurant) => (
             <ResultCard key={restaurant._id}>
             <StyledHeading>{restaurant.restaurantName}</StyledHeading>
-            <FlexRow>
-    <StyledParagraph>Address: {`${restaurant.address}, ${restaurant.zipcode} ${restaurant.city}`}</StyledParagraph>
-  </FlexRow>
               <StyledParagraph>Borough: {restaurant.borough}</StyledParagraph>
               <StyledParagraph>Cuisine: {restaurant.cuisine}</StyledParagraph>
-              <StyledParagraph>Occasion: {restaurant.occasion.join(', ')}</StyledParagraph>
+              <StyledParagraph>
+  <TruncatedText text={`Occasion: ${restaurant.occasion.join(', ')}`} maxLength={100} />
+</StyledParagraph>
               <StyledParagraph>Mood: {restaurant.mood.join(', ')}</StyledParagraph>
-              <StyledParagraph>Description: {restaurant.description}</StyledParagraph>
+              <StyledParagraph>
+              <TruncatedText text={`Description: ${restaurant.description}`} maxLength={100} />
+              </StyledParagraph>
+              <FlexRow>
+    <StyledParagraph>Address: {`${restaurant.address}, ${restaurant.zipcode} ${restaurant.city}`}</StyledParagraph>
+  </FlexRow>
             <StyledButtonLink href={restaurant.url} target="_blank" rel="noopener noreferrer">
                 Visit the restaurant's website by clicking here
               </StyledButtonLink>

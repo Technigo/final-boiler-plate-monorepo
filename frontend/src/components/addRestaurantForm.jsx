@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import Navbar from './navbar';
 import Footer from './footer';
 import { useRestaurantStore } from '../stores/restaurantStore'; 
-import emailjs from 'emailjs-com';
+
 
 
 const PageContainer = styled.div`
