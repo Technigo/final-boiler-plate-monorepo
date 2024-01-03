@@ -21,7 +21,7 @@ router.get('/restaurants/search', asyncHandler(async (req, res) => {
     }
 
     // Ensure mood is provided and between 1 to 3 moods are selected
-    const moods = Array.isArray(mood) ? mood : [mood];
+    const moods = mood.split(',');
     if (moods.length === 0 || moods.length > 3) {
         return res.status(400).json({ message: 'You must select between 1 and 3 moods' });
     }
@@ -30,10 +30,10 @@ router.get('/restaurants/search', asyncHandler(async (req, res) => {
         // Assuming mood is an array field in the database schema
         const restaurants = await Restaurant.find({
             occasion: occasion,
-            mood: { $in: moods } // Using moods array here
+            mood: { $all: moods } // Using moods array here
         });
 
-        console.log('Query:', { occasion: occasion, mood: { $in: moods } });
+        console.log('Query:', { occasion: occasion, mood: { $all: moods } });
         console.log('Found restaurants:', restaurants);
         // Respond with the found restaurants in JSON format
         res.json(restaurants);
