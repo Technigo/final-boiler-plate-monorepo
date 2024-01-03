@@ -20,7 +20,7 @@ export const useRestaurantStore = create((set) => ({
       const { selectedCategory } = useRestaurantStore.getState();
       console.log('Selected Category:', selectedCategory);
 
-      const response = await fetch(`${apiURL}/category`);
+      const response = await fetch('http://localhost:3000/api/category');
       if (!response.ok) {
         throw new Error('Failed to fetch category');
       }

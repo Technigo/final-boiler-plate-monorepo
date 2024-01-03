@@ -49,6 +49,16 @@ router.get('/restaurants/search', asyncHandler(async (req, res) => {
     }
 }));
 
+//Endpoint to get all categories
+router.get('/category', async (req, res) => {
+    try {
+        const categories = await Restaurant.distinct('category');
+        res.json(categories);
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+});
+
 // Endpoint to get all occasions
 router.get('/occasion', async (req, res) => {
     try {
