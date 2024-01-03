@@ -24,6 +24,9 @@ router.get("/getAds", authenticateUser, getAdsController); // When a GET request
 // Define a route for handling GET requests to retrieve a specific ad by ID
 router.get("/getAd/:id", getAdByIdController);
 
+// Define a route for handling GET requests to retrieve ads for a specific user
+router.get("/getAdsByUserId/:userId", getAdsByUserIdController);
+
 // Define a route for handling PUT requests to update a specific ad by ID
 router.put("/update/:id", authenticateUser, parser.single('image'), updateAdController);
 
