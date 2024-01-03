@@ -33,79 +33,114 @@ const PlaygroundDetails = () => {
         <h2>Vad finns på lekplatsen:</h2>
         
         
+<div className="icon-container">
         <p>
-          {playgroundDetails.wheelchair === 'yes' ? (
-            <>
-              <img src="/Icons/Black/icons8-wheelchair-50 (1).png" alt="wheelchair" /> {playgroundDetails.wheelchair}
-            </>
-          ) : (
-            <>
-              <img src="/Icons/White/icons8-wheelchair-50.png" alt="wheelchair" /> {playgroundDetails.wheelchair}
-            </>
-          )}
-        </p>
+  {playgroundDetails.wheelchair !== null ? (
+    <>
+      {playgroundDetails.wheelchair === 'yes' ? (
+        <>
+          <img src="/Icons/Black/icons8-wheelchair-50 (1).png" alt="Wheelchair accessible" /> 
+        </>
+      ) : (
+        <>
+          <img src="/Icons/White/icons8-wheelchair-50.png" alt="Not wheelchair accessible" /> 
+        </>
+      )}
+    </>
+  ) : (
+    <>
+      <img src="/Icons/White/icons8-wheelchair-50.png" alt="Not wheelchair accessible" /> 
+    </>
+  )}
+</p>
+
 
         <p>
+          {playgroundDetails.roundabout && (
+            <>
           {playgroundDetails.roundabout === 'true' ? (
             <>
-              <img src="/Icons/Black/icons8-carousel-50-B.png" alt="" /> {playgroundDetails.roundabout}
-            </>
+          <img src="/Icons/Black/icons8-carousel-50-B.png" alt="Carousel" /> 
+           </>
           ) : (
-            <>
-              <img src="/Icons/White/icons8-carousel-50.png" alt="" /> {playgroundDetails.roundabout}
-            </>
-          )}
-        </p>
+           <>
+          <img src="/Icons/White/icons8-carousel-50.png" alt="No Carousel" /> 
+           </>
+      )}
+         </>
+      )}
+      </p>
 
-        <p>
+      <p>
+          {playgroundDetails.zipwire && (
+            <>
           {playgroundDetails.zipwire === 'true' ? (
             <>
-              <img src="/Icons/Black/icons8-zipline-50 (1).png" alt="" /> {playgroundDetails.zipwire}
-            </>
+          <img src="/Icons/Black/icons8-zipline-50 (1).png" alt="Zipwire" /> 
+           </>
           ) : (
+           <>
+          <img src="/Icons/White/icons8-zipline-50.png" alt="No Zipwire" /> 
+           </>
+      )}
+         </>
+      )}
+      </p>
+
+      <p>
+          {playgroundDetails.swing && (
             <>
-              <img src="/Icons/White/icons8-zipline-50.png" alt="" /> {playgroundDetails.zipwire}
-            </>
-          )}
-        </p>
-
-
-        <p>
           {playgroundDetails.swing === 'true' ? (
             <>
-              <img src="/Icons/Black/icons8-swing-50.png" alt="" /> {playgroundDetails.swing}
-            </>
+          <img src="/Icons/Black/icons8-swing-50.png" alt="Swing" /> 
+           </>
           ) : (
-            <>
-              <img src="/Icons/White/icons8-swing-50 (1).png" alt="" /> {playgroundDetails.swing}
-            </>
-          )}
-        </p>
+           <>
+          <img src="/Icons/White/icons8-swing-50 (1).png" alt="No Swing" /> 
+           </>
+      )}
+         </>
+      )}
+      </p>
 
-        <p>
+      <p>
+          {playgroundDetails.slide && (
+            <>
           {playgroundDetails.slide === 'true' ? (
             <>
-              <img src="/Icons/Black/icons8-slide-60.png" alt="" /> {playgroundDetails.slide}
-            </>
+          <img src="/Icons/Black/icons8-slide-60.png" alt="Slide" /> 
+           </>
           ) : (
-            <>
-              <img src="/Icons/White/icons8-slide-60 (1).png" alt="" /> {playgroundDetails.slide}
-            </>
-          )}
-        </p>
+           <>
+          <img src="/Icons/White/icons8-slide-60 (1).png" alt="No Slide" /> 
+           </>
+      )}
+         </>
+      )}
+      </p>
 
-        <p>
-          {playgroundDetails.sandpit === 'true' ? (
-            <>
-              <img src="/Icons/Black/icons8-sandpit-50 (1).png" alt="" /> {playgroundDetails.sandpit}
-            </>
-          ) : (
-            <>
-              <img src="/Icons/White/icons8-sandpit-50.png" alt="" /> {playgroundDetails.sandpit}
-            </>
-          )}
-        </p>
-
+      <p>
+  {playgroundDetails.sandpit !== null ? (
+    <>
+      {playgroundDetails.sandpit === 'true' ? (
+        <>
+          <img src="/Icons/Black/icons8-sandpit-50 (1).png" alt="Sandpit" /> 
+        </>
+      ) : (
+        <>
+          <img src="/Icons/White/icons8-sandpit-50.png" alt="No sandpit" /> 
+        </>
+      )}
+    </>
+  ) : (
+    <>
+      <img src="/Icons/White/icons8-sandpit-50.png" alt="No sandpit" /> 
+    </>
+  )}
+</p>
+</div>
+      
+        
       
        
 
