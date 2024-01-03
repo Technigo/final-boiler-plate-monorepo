@@ -12,6 +12,7 @@ export const AdCard = ({ ad }) => {
 
   // Check if this ad is saved by the current user
   useEffect(() => {
+    console.log(ad)
     setIsSaved(ad.savedBy.includes(userId));
   }, [ad.savedBy, userId]);
 

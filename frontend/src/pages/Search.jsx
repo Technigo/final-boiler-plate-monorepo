@@ -14,7 +14,7 @@ export const Search = () => {
 
   return (
     <div>
-       <Navbar menuItems={[{path: "/search", name: "Search"} ,{path: "/profile", name: "Profile"},{path: "/setting", name: "Setting"}, {path: "/about", name: "About"} , {path: "/terms", name: "Terms"}]} menuDesks={[{path: "/profile", name: "Profile"} ,{path: "/setting", name: "Setting"} , {path: "/about", name: "About"} ]}/>
+       <Navbar menuItems={[{path: "/search", name: "Search"} ,{path: "/setting", name: "Profile Setting"}, {path: "/about", name: "About"} , {path: "/terms", name: "Terms"}]} menuDesks={[{path: "/setting", name: "Profile Setting"},{path: "/terms", name: "Terms"} , {path: "/about", name: "About"} ]}/>
       <SearchBar />
       <h1 className="search-result">Search result</h1>
       <ul className="filtered-ads">
