@@ -55,9 +55,8 @@ const PlaygroundContainer = () => {
                 <h2>{playground.name}</h2>
                  {/* Use the random image for each playground */}
                 {/* <p>{playground.description}</p> */}
-                <Link key={playground.id} to={`/playground/${playground.id}?randomImage=${encodeURIComponent(randomImage)}`}>
                 <img src={randomImage} alt={`Random Image for ${playground.name}`} />
-
+                <Link key={playground.id} to={`/playground/${playground.id}?randomImage=${encodeURIComponent(randomImage)}`}>
                 <Button className={"more-details"} btnText={t("PlaygroundContainer.more-details")} />
                   </Link>
               </div>

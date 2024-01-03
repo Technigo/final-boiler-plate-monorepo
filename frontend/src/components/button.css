@@ -43,3 +43,12 @@
         border: none;
         color: #F2FFE9;
 }
+
+.like-button {
+    border: none;
+    background-color: rgba(255, 56, 56, 0.801);
+    border-radius: 30px;
+    width: 40px;
+        height: 40px;
+        font-size: 25px;
+}
