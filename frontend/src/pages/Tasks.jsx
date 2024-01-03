@@ -85,7 +85,7 @@ export const Tasks = () => {
         {/* Conditional rendering based on the number of tasks. */}
         {tasks.length === 0 ? (
           <>
-            <p>No deeds to be done!</p>
+            <p>No Needs to offer your helping hand to!</p>
           </>
         ) : (
           // Map through 'tasks' and render task items.

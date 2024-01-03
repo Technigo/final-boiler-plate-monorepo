@@ -170,12 +170,12 @@ export const taskStore = create((set) => ({
 
       // Check if the request was successful
       if (response.ok) {
-        console.log("Successfully added myself to task");
       } else {
-        console.error("Failed to add myself to task");
+        alert("You have already volunteered for this Need!");
+        console.error("User already added as volunteer");
       }
     } catch (error) {
-      console.error(error);
+      console.error("Error adding user as volunteer:", error);
     }
   },
 

@@ -15,8 +15,8 @@ export const getTasksController = asyncHandler(async (req, res) => {
       .populate({
         path: "volunteers",
         match: { _id: { $ne: userId } }, // Exclude the creator from the volunteers
-        select: "username _id",
       });
+
     console.log("tasks", tasks);
     // Filter out tasks where the creator is the only volunteer
     const filteredTasks = tasks.filter((task) => {
@@ -105,17 +105,44 @@ export const addTaskController = asyncHandler(async (req, res) => {
 });
 
 // This controller is responsible for adding a volunteer to a specific task. It extracts the task ID from the request parameters, finds the task in the database, adds the user ID to the task's volunteers array, and saves the task to the database. The updated task is sent back as a JSON response. This route is only accessible to authenticated users.
+// export const addVolunteerController = asyncHandler(async (req, res) => {
+//   try {
+//     const taskId = req.params.id;
+//     const task = await TaskModel.findById(taskId);
+//     task.volunteers.push(req.user._id);
+
+//     const savedTask = await task.save();
+//     res.json(savedTask);
+//   } catch (error) {
+//     console.error("Error in addVolunteerController:", error);
+//     res.status(500).json(error);
+//   }
+// });
+
 export const addVolunteerController = asyncHandler(async (req, res) => {
   try {
     const taskId = req.params.id;
     const task = await TaskModel.findById(taskId);
-    task.volunteers.push(req.user._id);
 
+    if (!task) {
+      return res.status(404).json({ message: "Need not found" });
+    }
+
+    const userId = req.user._id;
+
+    // Check if the user is already a volunteer for this task
+    if (task.volunteers.includes(userId)) {
+      return res
+        .status(400)
+        .json({ message: "User is already a volunteer for this Need" });
+    }
+
+    task.volunteers.push(userId);
     const savedTask = await task.save();
     res.json(savedTask);
   } catch (error) {
     console.error("Error in addVolunteerController:", error);
-    res.status(500).json(error);
+    res.status(500).json({ message: "Internal Server Error" });
   }
 });
 

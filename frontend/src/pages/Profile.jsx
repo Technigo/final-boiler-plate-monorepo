@@ -80,7 +80,6 @@ export const Profile = () => {
     fetchVolunteeredTasks();
   }, [fetchUserTasks, fetchVolunteeredTasks]);
 
-  //const tasks = userTasks;
   console.log(userTasks);
   const onGenderChange = (event) => {
     const gender = event.target.value;
