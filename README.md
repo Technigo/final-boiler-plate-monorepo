@@ -671,3 +671,47 @@ In this modification, we've removed lean: true from the findOneAndUpdate options
 # if it is 3, and targetuserfound is not happening, let it go another loop, and then, the console spit oout targetuserfoudn true. dk why. but it works just like thiat. 
 
 # create finduser button. this prevents nummerous events happening once user arrives certain place. ..
+
+# current problem - if dandelion found, setShowbutton need to become false. but this is true, and showing button. wanted to hide this button...
+
+# when the user is with same location with user 22222, which is 2 in this case, there is no checking for if target user is here, therefore, no dandelion, no text changes. but after that step, when the user reaches 1, check for targetuser happens at last, and bcs user is currently at 1, the check cant meet, bcs the user supposed to be 2, and suppposed to find the target user. conclusion: when user is 2, needed to be checked. or, every step the user takes, regardless of 2 or something, needed to be checked. idk why in this case it only checks when user is 1
+
+# handleUP function (fetch- targetuserfindcheck) needs to be happen when user clicks the up. if this happen, targetuserfound happens at same time(when needs were been done)
+
+# once targetuserfound become false, if handleUP happens again afterwards, targetuserfould is not happening
+
+# if user starts 1, then eventually get 2 when video changes - so get the right msg at right time. if i fix this like this, no need to work on. but this restricts starting point.
+
+# no. i cant understand. this user started 2 in this case, and ended with 2. do i need to test more even? it was not working and then started to work. my lack of knowledge cant explain this
+
+# again 1, then 2. need to force to test start 2 or 3, or forse to start only 1
+
+# the case is when you start with 3. it gets to 2 after rain, but not checks targetuser bcs it checks that at 3. oh no. im suffering, im lost. i dont feel i remember what i was doing. ths makes me discouraging. but the thing is when you start with 3, something bad is happening. so, in this case, why?
+
+# when user starts 3, and returns to 3, the loop is counted, so the video changes to rain. but since the user is at 3, not 2, the user didnt met the targeteduser, so this user hadnt found the dandelion. there is still go forward button, but it makes neverending loop. 
+
+# my app is about finding dandelion. user starts location of 3(sometimes not, but this is starting point). when they go forward, they get -1 for the value, so 3 to 2. after that, whey they go forward, they 2 to 1, and then, 1 to 3. 
+
+there is special condition, called 'rain'.
+this happens when user moves 3 time. 
+so when user starts 3, 
+they move 2, 1, and 3, and get 'rain'
+
+there is special condition, called 'dandelion'
+this happens when it is rain, and the user's place is 2. 
+so usually, the user starts 3, and keep move, to 2, 1, and 3, get 'rain'
+and move one more time, have 2 for the place, and get 'dandelion'
+
+when user starts 2, 
+they go to 1, 3, and then 2, so 'rain' and 'dandelion' happens once.
+
+but when user starts 3, they need to move once more to get dandelion.
+
+checking for dandelion happens every time when user moves.
+but this is not happening for some reason when user starts 3
+when they are 3, already moved from 3, 2, 1, and then 3,  
+the logic checks both rain and dandelion,
+and then stop working when this user moves to 2. 
+
+
+
