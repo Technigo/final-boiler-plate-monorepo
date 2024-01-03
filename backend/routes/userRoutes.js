@@ -70,4 +70,18 @@ router.get("/users", async (req, res) => {
   }
 });
 
+router.get("/user/:user_id", async (req, res) => {
+  const user_id = req.params.user_id;
+  try {
+    const user = await UserModel.findOne({ user_id });
+    if (!user) {
+      return res.status(404).json({ message: "user not found" });
+    }
+
+    res.json(user);
+  } catch (error) {
+    res.json({ error: error.message });
+  }
+});
+
 export default router;

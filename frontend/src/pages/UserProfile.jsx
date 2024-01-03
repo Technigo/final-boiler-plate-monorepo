@@ -7,7 +7,10 @@ export const UserProfile = () => {
   const [userMetadata, setUserMetadata] = useState(null);
   const domain = import.meta.env.VITE_AUTH0_DOMAIN;
 
-  console.log(useAuth0());
+  const [username, setUsername] = useState(null);
+  const [email, setEmail] = useState(null);
+
+  // console.log(useAuth0());
   useEffect(() => {
     const getUserMetadata = async () => {
       try {
@@ -31,6 +34,16 @@ export const UserProfile = () => {
         setUserMetadata(user_metadata);
       } catch (e) {
         console.log(e.message);
+      }
+    };
+
+    const getUserDataFromMongo = async () => {
+      try {
+        fetch(`${VITE_BACKUP_API}/user/${JSON.stringify(user)}`)
+          .then((res) => res.json())
+          .then((data) => console.log(data));
+      } catch (error) {
+        console.log(error);
       }
     };
 
