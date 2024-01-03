@@ -2,6 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
+const tablet = `(min-width: 768px)`;
+const desktop = `(min-width: 1024px)`;
 
 const NavbarContainer = styled.nav`
   background-color: #01999a;
@@ -22,6 +24,7 @@ const NavbarNav = styled.ul`
 const NavItem = styled.li`
   margin: 2px;
   display: none;
+
   @media ${tablet} {
     color: #66feff;
     font-size: 45px;
