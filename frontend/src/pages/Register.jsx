@@ -75,6 +75,7 @@ export const Register = () => {
       await storeHandleSignup(username, password);
       if (username && password) {
         // If the signup is successful, navigate to the task route ("/tasks").
+        console.log("navigate");
         navigate("/tasks"); // Replace with your desired path
       }
     } catch (error) {

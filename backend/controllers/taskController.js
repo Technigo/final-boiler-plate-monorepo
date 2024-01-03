@@ -11,20 +11,21 @@ export const getTasksController = asyncHandler(async (req, res) => {
       .sort("-createdAt")
       .populate({
         path: "user",
-        select: "username",
+
+        //select: "username",
       })
       .populate({
         path: "volunteers",
         match: { _id: { $ne: userId } }, // Exclude the creator from the volunteers
-        select: "username",
+        //select: "username",
       });
-
+    console.log("tasks", tasks);
     // Filter out tasks where the creator is the only volunteer
     const filteredTasks = tasks.filter((task) => {
       const creatorId = task.user && task.user._id.toString();
 
       // Check if user is not creator or if there are other volunteers
-      return task.volunteers.length > 0 && creatorId !== userId;
+      return creatorId !== userId.toString();
     });
     res.json(filteredTasks);
   } catch (error) {

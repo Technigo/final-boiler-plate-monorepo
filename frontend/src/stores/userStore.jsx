@@ -7,8 +7,8 @@ const apiEnv = import.meta.env.VITE_BACKEND_API;
 // Create a Zustand store for user-related state and actions.
 export const userStore = create((set, get) => ({
   // Initialize username state.
-  username: "",
-  //username: localStorage.getItem("username") || "",
+  username: localStorage.getItem("username") || "",
+
   // Define a function to set the username state.
   setUsername: (username) => set({ username }),
 
@@ -31,9 +31,6 @@ export const userStore = create((set, get) => ({
   isLoggedIn: localStorage.getItem("accessToken") ? true : false,
   // Define a function to set the isLoggedIn state.
   setIsLoggedIn: (isLoggedIn) => set({ isLoggedIn }),
-
-  // loggedInUserId: null,
-  // setLoggedInUserId: (id) => set({ loggedInUserId: id }),
 
   // Initialize selectedGender state with "female".
   selectedGender: "female",
@@ -62,9 +59,19 @@ export const userStore = create((set, get) => ({
       const data = await response.json();
       if (data.success) {
         // Update the username state.
-        set({ username });
+
+        set({
+          username,
+          accessToken: data.response.accessToken,
+          isLoggedIn: true,
+        });
+        // Store the accessToken in the browser's localStorage.
+        localStorage.setItem("accessToken", data.response.accessToken);
+        localStorage.setItem("username", username);
         // Display a success alert.
+        console.log("Signing up with:", username, password);
         alert("Signup successful!");
+
         //console.log("Signing up with:", username);
       } else {
         // Display an error message from the server or a generic message.
@@ -104,12 +111,12 @@ export const userStore = create((set, get) => ({
           username,
           accessToken: data.response.accessToken,
           isLoggedIn: true,
-          // loggedInUserId: data.response.id,
         });
         // Set the loggedInUserId in the store.
         // set({ loggedInUserId: data.response.id });
         // Store the accessToken in the browser's localStorage.
         localStorage.setItem("accessToken", data.response.accessToken);
+        localStorage.setItem("username", username);
         // Display a success alert.
         alert("Login successful!");
         //console.log("Logging in with:", username, password);
@@ -135,6 +142,7 @@ export const userStore = create((set, get) => ({
     set({ username: "", accessToken: null, isLoggedIn: false });
     // Remove the accessToken from localStorage.
     localStorage.removeItem("accessToken");
+    localStorage.removeItem("username");
     // Additional logout logic can be added here if needed.
   },
 }));

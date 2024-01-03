@@ -30,6 +30,10 @@ export const Tasks = () => {
   // Access the 'accessToken' from the 'userStore'.
   const { accessToken } = userStore();
 
+  useEffect(() => {
+    console.log("useEffect", tasks);
+  }, [tasks]);
+
   // Use the 'useEffect' hook to fetch tasks when 'tasks' or 'accessToken' change.
   useEffect(() => {
     //console.log("useEffect", accessToken);

@@ -168,8 +168,6 @@ export const taskStore = create((set) => ({
       });
       console.log("Authorization Header:", localStorage.getItem("accessToken"));
 
-      // Parse the response data
-      //const data = await response.json();
       // Check if the request was successful
       if (response.ok) {
         console.log("Successfully added myself to task");
@@ -239,8 +237,11 @@ export const taskStore = create((set) => ({
     try {
       console.log("Deleting task:", id);
       // Remove the task from the tasks state immediately
+
       set((state) => ({
-        tasks: state.tasks.filter((task) => task._id !== id),
+        tasks: state.tasks.filter(
+          (task) => task._id.toString() !== id.toString()
+        ),
       }));
 
       // Send a DELETE request to the backend API to delete a task by its ID
