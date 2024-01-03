@@ -109,8 +109,8 @@ export const Profile = () => {
       <HeaderContainer>
         <h2>Hi {username}!</h2>
         <p>
-          This page gives you an overview over all the tasks you&apos;ve created
-          and those you have volunteered to.
+          This page gives you an overview over all the Needs you&apos;ve created
+          and those you have volunteered for.
         </p>
       </HeaderContainer>
       {/* <StyledProfileInfo>

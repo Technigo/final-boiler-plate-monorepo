@@ -11,13 +11,11 @@ export const getTasksController = asyncHandler(async (req, res) => {
       .sort("-createdAt")
       .populate({
         path: "user",
-
-        //select: "username",
       })
       .populate({
         path: "volunteers",
         match: { _id: { $ne: userId } }, // Exclude the creator from the volunteers
-        //select: "username",
+        select: "username _id",
       });
     console.log("tasks", tasks);
     // Filter out tasks where the creator is the only volunteer
@@ -59,7 +57,7 @@ export const getUserTasksController = asyncHandler(async (req, res) => {
 // This controller is responsible for fetching tasks that a specific user has volunteered to. It uses the TaskModel to retrieve tasks from the database, sorts them by creation date, finds all tasks in the database and add the user object to the task object and the responds with the list of tasks in JSON format. Access to this route is restricted to authenticated users.
 export const getVolunteeredTasksController = asyncHandler(async (req, res) => {
   const userId = req.user._id;
-  console.log("userId", userId);
+  //console.log("userId", userId);
   try {
     const tasks = await TaskModel.find({
       volunteers: { $elemMatch: { $eq: userId } }, // find all tasks where the volunteers array contains the user id
@@ -120,30 +118,6 @@ export const addVolunteerController = asyncHandler(async (req, res) => {
     res.status(500).json(error);
   }
 });
-
-// desciption: PUT/PATCH a specific task to mark it complete
-// route: /update/:id"
-// access: Private
-// export const updateTaskController = asyncHandler(async (req, res) => {
-//   // Extract the task ID from the request parameters
-//   const { id } = req.params;
-//   console.log(id); // Log the ID to the console
-//   // Use TaskModel to find and update a task by its ID, marking it as done
-//   // Use TaskModel to delete all tasks in the database
-//   // Extract the accessToken from the request object, but it is not going to be from the req.body but, its going to be from the req.header
-//   const accessToken = req.header("Authorization"); // we are requesting the Authorization key from the headerObject
-//   // get the user and matchIt with the user from the db - remmeber that we are using the accessToken to do so :)
-//   const userFromStorage = await UserModel.findOne({
-//     accessToken: accessToken,
-//   });
-//   await TaskModel.findByIdAndUpdate(
-//     { _id: id },
-//     { done: true },
-//     { user: userFromStorage }
-//   )
-//     .then((result) => res.json(result)) // Respond with the updated task in JSON format
-//     .catch((err) => res.json(err)); // Handle any errors that occur during the operation
-// });
 
 export const updateTaskController = asyncHandler(async (req, res) => {
   const { id } = req.params;

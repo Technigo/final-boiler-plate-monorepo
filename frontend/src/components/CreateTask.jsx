@@ -4,6 +4,12 @@ import { taskStore } from "../stores/taskStore";
 import { Button } from "../components/Buttons/Button";
 import styled from "styled-components";
 
+const CreateAndFilter = styled.div`
+  p {
+    margin-top: 10px;
+  }
+`;
+
 const StyledCreateTask = styled.div`
   display: flex;
   flex-direction: column;
@@ -27,32 +33,37 @@ const StyledSelects = styled.select`
   width: 120px;
   border: 1px solid #64899b;
   border-radius: 20px;
-  gap: 20px;
+  gap: 10px;
   padding: 5px;
+
+  &.category-select,
+  &.area-select {
+    width: 140px;
+  }
 `;
 
 const StyledTaskInput = styled.textarea`
   border: 1px solid #64899b;
   border-radius: 20px 0 20px 20px;
   width: 250px;
-  height: 200px;
+  height: 150px;
+  padding: 10px;
   resize: none; /* Prevent resizing */
   overflow-y: auto; /* Enable vertical scrollbar when content exceeds height */
 
   &::placeholder {
-    padding: 5px 10px;
     word-wrap: break-word; /* Wrap long words */
     text-align: left; /* Align text to the left */
     vertical-align: top; /* Align text to the top */
-    font-size: sans-serif;
   }
 `;
 
 const StyledFilters = styled.div`
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 10px;
-  margin-top: 20px;
+  margin: 20px 0;
 `;
 
 // Define the 'CreateTask' functional component.
@@ -116,75 +127,25 @@ export const CreateTask = () => {
 
   // Render the component content.
   return (
-    <>
-      <div className="cta-block">
-        <StyledCreateTask>
-          {/* Create an input field for entering the task description. */}
-          <StyledTaskTitleInput
-            className="task-input"
-            type="text"
-            placeholder="Short title of needed help"
-            onChange={taskTitle}
-            value={task}
-          />
-          <CreateTaskSelects>
-            <StyledSelects
-              className="task-select"
-              type="select"
-              onChange={taskCategory}
-              value={category}
-            >
-              <option disabled default value="">
-                Category
-              </option>
-              <option value="Garden">Garden</option>
-              <option value="Pets">Pets</option>
-              <option value="Shopping">Shopping</option>
-              <option value="Repairs">Repairs</option>
-              <option value="Other">Other</option>
-            </StyledSelects>
-            <StyledSelects
-              className="task-select"
-              type="select"
-              onChange={taskArea}
-              value={area}
-            >
-              <option disabled default value="">
-                Area
-              </option>
-              <option value="Varberg City">Varberg City</option>
-              <option value="Himle">Himle</option>
-              <option value="Kungsäter">Kungsäter</option>
-              <option value="Rolfstorp">Rolfstorp</option>
-              <option value="Tvååker">Tvååker</option>
-              <option value="Veddige">Veddige</option>
-            </StyledSelects>
-          </CreateTaskSelects>
-          <StyledTaskInput
-            className="task-input"
-            type="text"
-            placeholder="Give a clear and detailed description of the help you need"
-            onChange={taskDescription}
-            value={description}
-          />
-          {/* Create a button to trigger the 'addTaskLocal' function for adding the task. */}
-          <Button
-            onClick={addTaskLocal}
-            className="add-task-btn"
-            buttonName="Ask for help"
-          />
-        </StyledCreateTask>
-
-        <StyledFilters>
-          {/* Filter tasks by category */}
+    <CreateAndFilter>
+      <StyledCreateTask>
+        {/* Create an input field for entering the task description. */}
+        <StyledTaskTitleInput
+          className="task-input"
+          type="text"
+          placeholder="Enter descriptive title"
+          onChange={taskTitle}
+          value={task}
+        />
+        <CreateTaskSelects>
           <StyledSelects
-            className="category-select"
+            className="task-select"
             type="select"
-            onChange={filterTasks}
+            onChange={taskCategory}
             value={category}
           >
             <option disabled default value="">
-              Filter by category
+              Category
             </option>
             <option value="Garden">Garden</option>
             <option value="Pets">Pets</option>
@@ -192,33 +153,76 @@ export const CreateTask = () => {
             <option value="Repairs">Repairs</option>
             <option value="Other">Other</option>
           </StyledSelects>
-
-          {/* Filter tasks by area */}
           <StyledSelects
-            className="area-select"
+            className="task-select"
             type="select"
-            onChange={filterTasks}
+            onChange={taskArea}
             value={area}
           >
             <option disabled default value="">
-              Filter by area
+              Area
             </option>
-            <option value="Varberg City Center">Varberg City Center</option>
+            <option value="Varberg City">Varberg City</option>
             <option value="Himle">Himle</option>
             <option value="Kungsäter">Kungsäter</option>
             <option value="Rolfstorp">Rolfstorp</option>
             <option value="Tvååker">Tvååker</option>
             <option value="Veddige">Veddige</option>
           </StyledSelects>
-        </StyledFilters>
-        {/* This is a button to trigger the 'deleteAllTasks' function to delete all tasks from the server. */}
+        </CreateTaskSelects>
+        <StyledTaskInput
+          className="task-input"
+          type="text"
+          placeholder="Give a clear and detailed description of the help you need"
+          onChange={taskDescription}
+          value={description}
+        />
+        {/* Create a button to trigger the 'addTaskLocal' function for adding the task. */}
+        <Button
+          onClick={addTaskLocal}
+          className="add-task-btn"
+          buttonName="Ask for help"
+        />
+      </StyledCreateTask>
 
-        {/* <Button
-          onClick={deleteAllTasks}
-          className="delete-all-btn"
-          buttonName="Delete all my tasks"
-        /> */}
-      </div>
-    </>
+      <p>Or do you want to make a good deed and offer a helping hand?</p>
+
+      <StyledFilters>
+        {/* Filter tasks by category */}
+        <StyledSelects
+          className="category-select"
+          type="select"
+          onChange={filterTasks}
+          value={category}
+        >
+          <option disabled default value="">
+            Filter by category
+          </option>
+          <option value="Garden">Garden</option>
+          <option value="Pets">Pets</option>
+          <option value="Shopping">Shopping</option>
+          <option value="Repairs">Repairs</option>
+          <option value="Other">Other</option>
+        </StyledSelects>
+
+        {/* Filter tasks by area */}
+        <StyledSelects
+          className="area-select"
+          type="select"
+          onChange={filterTasks}
+          value={area}
+        >
+          <option disabled default value="">
+            Filter by area
+          </option>
+          <option value="Varberg City">Varberg City</option>
+          <option value="Himle">Himle</option>
+          <option value="Kungsäter">Kungsäter</option>
+          <option value="Rolfstorp">Rolfstorp</option>
+          <option value="Tvååker">Tvååker</option>
+          <option value="Veddige">Veddige</option>
+        </StyledSelects>
+      </StyledFilters>
+    </CreateAndFilter>
   );
 };

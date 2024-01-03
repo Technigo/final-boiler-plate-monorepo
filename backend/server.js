@@ -1,11 +1,11 @@
 // Import necessary libraries and modules
-import express from "express"; // Import the Express.js framework
-import cors from "cors"; // Import the CORS middleware
-import dotenv from "dotenv"; // Import dotenv for environment variables
-dotenv.config(); // Load environment variables from the .env file
-import taskRoutes from "./routes/taskRoutes"; // Import custom task controlled-routes
-import userRoutes from "./routes/userRoutes"; // Import custom user routes
-import { connectDB } from "./config/db"; // Import database connection function (not used here)
+import express from "express";
+import cors from "cors";
+import dotenv from "dotenv";
+dotenv.config();
+import taskRoutes from "./routes/taskRoutes";
+import userRoutes from "./routes/userRoutes";
+import { connectDB } from "./config/db";
 
 // Defines the port the app will run on. Defaults to 8080, but can be overridden
 const port = process.env.PORT || 8080; // Set the port number for the server

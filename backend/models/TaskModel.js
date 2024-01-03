@@ -34,12 +34,7 @@ export const taskSchema = new Schema(
       //minlength: 10,
       maxlength: 300,
     },
-    // Define the 'done' field with a Boolean data type
-    // done: {
-    //   type: Boolean, // Specifies that 'done' should be a Boolean
-    //   default: false, // Sets a default value of 'false' for 'done'
-    // },
-    // Define the relationship between the user and his/her tasks --  1:1 relationship with the user or 1 user can have many tasks
+
     user: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "user",

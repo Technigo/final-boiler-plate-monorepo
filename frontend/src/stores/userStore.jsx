@@ -12,11 +12,6 @@ export const userStore = create((set, get) => ({
   // Define a function to set the username state.
   setUsername: (username) => set({ username }),
 
-  // Initialize email state.
-  //email: "",
-  // Define a function to set the email state.
-  //setEmail: (email) => set({ email }),
-
   // Initialize password state.
   password: "",
   // Define a function to set the password state.
