@@ -143,6 +143,31 @@ export const createAdController = asyncHandler(async (req, res) => {
   }
 });
 
+// desciption: POST to save an ad
+// route: /savedAd
+// access: Private
+export const saveAdController = asyncHandler(async (req, res) => {
+  const { adId } = req.body;
+  const userId = req.user._id; // Assuming user's ID is available in req.user._id
+
+  try {
+    const ad = await AdModel.findById(adId);
+    if (!ad) {
+      return res.status(404).json({ message: "Ad not found" });
+    }
+
+    // Add userId to the savedBy array if not already present
+    if (!ad.savedBy.includes(userId)) {
+      ad.savedBy.push(userId);
+      await ad.save();
+    }
+
+    res.status(200).json({ message: "Ad saved successfully" });
+  } catch (error) {
+    res.status(500).json({ message: "Error saving ad", error: error.message });
+  }
+});
+
 // desciption: PUT/PATCH a specific AD
 // route: /update/:id
 // access: Private
