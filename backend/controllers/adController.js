@@ -249,3 +249,27 @@ export const deleteSpecificAdController = asyncHandler(async (req, res) => {
       .json({ message: "Failed to delete ad and/or image", error: err });
   }
 });
+
+// desciption: DELETE saved AD by its ID
+// route: /unsaveAd/:adId
+// access: Private
+export const unsaveAdController = asyncHandler(async (req, res) => {
+  const { adId } = req.params; // Now expecting adId as a URL parameter
+  const userId = req.user._id; // Assuming user's ID is available in req.user._id
+
+  try {
+    const ad = await AdModel.findById(adId);
+    if (!ad) {
+      return res.status(404).json({ message: "Ad not found" });
+    }
+
+    // Remove userId from the savedBy array
+    ad.savedBy = ad.savedBy.filter(id => id.toString() !== userId.toString());
+    await ad.save();
+
+    res.status(200).json({ message: "Ad unsaved successfully" });
+  } catch (error) {
+    res.status(500).json({ message: "Error unsaving ad", error: error.message });
+  }
+});
+

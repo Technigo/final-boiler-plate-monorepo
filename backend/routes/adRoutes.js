@@ -12,6 +12,7 @@ import {
     updateAdController,
     deleteAllAdsController,
     deleteSpecificAdController,
+    unsaveAdController,
     createAdController,
 } from "../controllers/adController"; // Import controller functions for ads
 
@@ -44,6 +45,9 @@ router.delete("/deleteAll", deleteAllAdsController); // When a DELETE request is
 
 // Define a route for handling DELETE requests to delete a specific ads by ID
 router.delete("/delete/:id", deleteSpecificAdController); // When a DELETE request is made to /delete/:id, execute the deleteSpecificAdController function
+
+// Define a route for handling DELETE requests to unsave saved ads
+router.delete("/unsaveAd/:adId", authenticateUser, unsaveAdController);
 
 // Define a route for handling POST requests to add a new AD
 router.post("/createAd", authenticateUser, parser.single('image'), createAdController);
