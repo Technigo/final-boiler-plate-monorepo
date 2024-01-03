@@ -45,7 +45,7 @@ const TeamMemberName = styled.h3`
 `;
 
 const TeamMemberDescription = styled.p`
-  font-size: 16px;
+  font-size: 20px;
   margin-bottom: 10px;
 `;
 
@@ -72,18 +72,19 @@ web developer bootcamp to bring you the Foodie moodie app.
             <TeamMemberPhoto src="placeholder1.jpg" alt="The Brains" />
             <TeamMemberName>Malin Lunde</TeamMemberName>
             <TeamMemberDescription>Description here</TeamMemberDescription>
-            <PortfolioLink href="portfolio1-link">Portfolio</PortfolioLink>
+            <PortfolioLink href="portfolio1-link" target="_blank" rel="noopener noreferrer">Portfolio</PortfolioLink>
           </TeamMember>
 
           <TeamMember>
             <TeamMemberPhoto src="placeholder2.jpg" alt="The Floof" />
             <TeamMemberName>Ulrika Galnander</TeamMemberName>
             <TeamMemberDescription>Description here </TeamMemberDescription>
-            <PortfolioLink href="portfolio2-link">Portfolio</PortfolioLink>
+            <PortfolioLink href="portfolio2-link" target="_blank" rel="noopener noreferrer">Portfolio</PortfolioLink>
+
           </TeamMember>
 
           <TeamMember>
-            <TeamMemberPhoto src="placeholder3.jpg" alt="The Genius" />
+          <TeamMemberPhoto src={alexandra} alt="Alexandra Meija" />
             <TeamMemberName>Alexandra Meija</TeamMemberName>
             <TeamMemberDescription>
               For me a foodie is someone who really loves food, and not just the
@@ -98,7 +99,7 @@ web developer bootcamp to bring you the Foodie moodie app.
               for everything, and yes, it's dog friendly. An extra neat feature
               is the dessertcart which gets rolled out after every meal.
             </TeamMemberDescription>
-            <PortfolioLink href="portfolio3-link">Portfolio</PortfolioLink>
+            <PortfolioLink href="https://alexandrameijaportfolio.netlify.app" target="_blank" rel="noopener noreferrer">Portfolio</PortfolioLink>
           </TeamMember>
         </TeamSection>
       </AboutWrapper>
