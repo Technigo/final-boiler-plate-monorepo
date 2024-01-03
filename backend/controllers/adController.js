@@ -43,6 +43,17 @@ export const getAdByIdController = asyncHandler(async (req, res) => {
   }
 });
 
+// Description: Get Ads by a specific User ID
+// Route: /getAdsByUserId/:userId
+// Access: Public (or Private if you want to restrict access)
+export const getAdsByUserIdController = asyncHandler(async (req, res) => {
+  const { userId } = req.params;
+  const ads = await AdModel.find({ user: userId })
+    .sort("-createdAt")
+    .populate("user", "username");
+  res.json(ads);
+});
+
 // desciption: POST Ad
 // route: /add
 // access: Private
