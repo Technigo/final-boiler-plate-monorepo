@@ -23,9 +23,9 @@ export const CartPage = () => {
     <section>
       <h2>Your Shopping Cart</h2>
       {cart.length === 0 && <p>Your cart is empty...</p>}
-      {cart.map((item) => {
+      {cart.map((item, index) => {
         return (
-          <div key={item.index}>
+          <div key={index}>
             <p>{item.plant_title}</p>
             <button onClick={() => handleRemoveFromCart(item._id)}>
               Remove
