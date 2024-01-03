@@ -1,7 +1,7 @@
 import { UserModel } from "../models/userModel.js";
 import asyncHandler from "../utils/asyncHandler.js";
 import bcrypt from "bcrypt"; // Use bcrypt to securely hash and store passwords in our database.
-// import { generateToken } from "../utils/generateToken.js";
+import { generateToken } from "../utils/generateToken.js";
 
 // ADMIN ONLY - GET ALL USERS ---------------------------------------------
 const getAllUsers = asyncHandler(async (req, res) => {
@@ -41,16 +41,16 @@ const registerUser = asyncHandler(async (req, res) => {
 
   try {
     await newUser.save();
-    // generateToken(res, newUser._id);
+    generateToken(res, newUser._id);
 
     res.status(201).json({
       _id: newUser._id,
       username: newUser.username,
       email: newUser.email,
-      isAdmin: newUser.isAdmin,
+      role: newUser.role,
     });
   } catch (error) {
-    return res.status(400).json({ message: "Invalid user data" });
+    return res.status(400).json({ message: "Could not create user" });
   }
 });
 
@@ -67,13 +67,13 @@ const loginUser = asyncHandler(async (req, res) => {
 
     // If the passwords match, generate a JWT token and send it to the client.
     if (passwordMatch) {
-      // generateToken(res, existingUser._id);
+      generateToken(res, existingUser._id);
 
       res.status(201).json({
         _id: existingUser._id,
         username: existingUser.username,
         email: existingUser.email,
-        isAdmin: existingUser.isAdmin,
+        role: existingUser.role,
       });
       return; // Exit the function after sending the response.
       // If the passwords don't match, send an error message.
@@ -86,12 +86,12 @@ const loginUser = asyncHandler(async (req, res) => {
 });
 
 // LOGOUT AS A USER ---------------------------------------------
-// const logoutUser = asyncHandler(async (req, res) => {
-//   res.cookie("jwt", "", {
-//     httpOnly: true,
-//     expires: new Date(0),
-//   });
-//   res.status(200).json({ message: "Logged out successfully" });
-// });
+const logoutUser = asyncHandler(async (req, res) => {
+  res.cookie("jwt", "", {
+    httpOnly: true,
+    expires: new Date(0),
+  });
+  res.status(200).json({ message: "Logged out successfully" });
+});
 
-export { getAllUsers, registerUser, loginUser };
+export { getAllUsers, registerUser, loginUser, logoutUser };

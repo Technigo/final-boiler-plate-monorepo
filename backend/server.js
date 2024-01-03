@@ -3,9 +3,9 @@ import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
 import mongoose from "mongoose";
-// import cookieParser from "cookie-parser";
+import cookieParser from "cookie-parser";
 import listEndpoints from "express-list-endpoints"; // A package that lists all the endpoints of the server.
-import data from "./data/plants.json" assert { type: "json" };
+import passport from "passport";
 
 // Utils
 import { connectDB } from "./config/db.js";
@@ -13,6 +13,7 @@ import userRoutes from "./routes/userRoutes.js";
 import plantRoutes from "./routes/plantRoutes.js";
 import favouriteRoutes from "./routes/favouriteRoutes.js";
 import { PlantModel } from "./models/plantModel.js";
+import data from "./data/plants.json" assert { type: "json" };
 
 // Environment variables
 dotenv.config();
@@ -28,7 +29,7 @@ const app = express(); // Creates an Express application.
 app.use(cors()); // Enable CORS for all origins.
 app.use(express.json()); // Parse incoming requests with JSON payloads.
 app.use(express.urlencoded({ extended: false })); // Parse incoming requests with urlencoded payloads.
-// app.use(cookieParser()); // Parse cookie header and populate req.cookies with an object keyed by the cookie names.
+app.use(cookieParser()); // Parse cookie header and populate req.cookies with an object keyed by the cookie names.
 
 // Checks the state of your MongoDB connection. If the database is not connected/ready, a 503 Service Unavailable status code returns.
 app.use((req, res, next) => {

@@ -25,20 +25,20 @@ const userSchema = new Schema(
       unique: true,
     },
     favourites: [
-      { 
+      {
         type: mongoose.Schema.Types.ObjectId,
         ref: "Favourites",
       },
     ],
-    // Define the 'isAdmin' field with a Boolean data type.
-    isAdmin: {
-      type: Boolean,
-      required: true,
-      default: false, // User is not an admin by default.
+    // Defines the 'role' field with a String data type.
+    role: {
+      type: String,
+      enum: ["user", "admin"], // Specifies that 'role' can only be either "user" or "admin".
+      default: "user", // Sets the default value of 'role' to "user".
     },
   },
   {
-    timestamps: true,
+    timestamps: true, // Adds timestamps to the document: createdAt and updatedAt.
   }
 );
 
