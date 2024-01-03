@@ -6,6 +6,7 @@ const bookingSchema = new mongoose.Schema({
         type: String,
         required: true,
         trim: true,
+        minlength: 1,
     },
 
     age: {
@@ -55,9 +56,10 @@ const bookingSchema = new mongoose.Schema({
         type: String,
         required: true,
         validate: {
-            validator: (value) => /^\+?\d+$/.test(value), // Validate that the input is a valid phone number
+            validator: (value) => /^\+?\d{10,15}$/.test(value),
             message: "Invalid phone number format",
         }
+
     },
     email: {
         type: String,
@@ -94,6 +96,9 @@ const bookingSchema = new mongoose.Schema({
         type: String,
         default: null,
 
+    }, user: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User",
     },
 
 });

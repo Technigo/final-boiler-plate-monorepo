@@ -4,9 +4,10 @@ import cors from "cors"; // Import the CORS middleware
 import dotenv from "dotenv"; // Import dotenv for environment variables
 import listEndpoints from "express-list-endpoints"; // Import listEndpoints to get a list of available endpoints
 import bookingRouter from './routes/bookingRoutes'; // Import the bookingRouter
-import taskRoutes from "./routes/taskRoutes"; // Import custom task controlled-routes
+import newsletterRoutes from "./routes/newsLetterRoutes";
 import userRoutes from "./routes/userRoutes"; // Import custom user routes
 import { connectDB } from "./config/db"; // Import database connection function (not used here)
+import { handleErrors } from "./controllers/commonController"; // Import the handleErrors function
 
 // Load environment variables from the .env file
 dotenv.config();
@@ -22,7 +23,7 @@ app.get('/', (req, res) => {
     const endpoints = listEndpoints(app);
     res.json(endpoints);
   } catch (error) {
-    res.status(500).json({ error: "Failed to retrieve endpoints" });
+    handleErrors(res, error);
   }
 });
 
@@ -30,15 +31,22 @@ app.get('/', (req, res) => {
 app.use(cors()); // Enable CORS (Cross-Origin Resource Sharing)
 app.use(express.json()); // Parse incoming JSON data
 app.use(express.urlencoded({ extended: false })); // Parse URL-encoded data
+
 // Mount the booking router
 app.use('/booking', bookingRouter);
+
 // Use the routes for handling API requests
 // ROUTES - These routes USE controller functions ;)
-app.use(taskRoutes); // Use the task-controlled routes for task-related requests
+app.use('/newsLetter', newsletterRoutes); // Use the newsletterRoutes for newsletter-related requests
 app.use(userRoutes); // Use the user-controlled routes for user-related requests
 
 // Connection to the database through Mongoose
 connectDB();
+
+// Global error handling middleware
+app.use((error, req, res, next) => {
+  handleErrors(res, error);
+});
 
 // Start the server and listen for incoming requests on the specified port
 app.listen(port, () => {
