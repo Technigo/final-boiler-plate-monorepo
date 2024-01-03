@@ -94,4 +94,36 @@ const logoutUser = asyncHandler(async (req, res) => {
   res.status(200).json({ message: "Logged out successfully" });
 });
 
-export { getAllUsers, registerUser, loginUser, logoutUser };
+// USER PROFILE ---------------------------------------------
+const currentUserProfile = asyncHandler(async (req, res) => {
+  const user = await UserModel.findById(req.user._id);
+  if (user) {
+    res.json({
+      _id: user._id,
+      username: user.username,
+      email: user.email,
+    })
+  } else {
+    return res.status(404).json({ message: "User profile not found" });
+  }
+});
+
+// UPDATE USER PROFILE: User can update their information if authenticated.
+const updateCurrentUserProfile = asyncHandler(async (req, res) => {
+  const user = await UserModel.findById(req.user._id);
+  if (user) {
+    user.username = req.body.username || user.username;
+    user.email = req.body.email || user.email;
+
+    const updatedUser = await user.save();
+    res.json({
+      username: updatedUser.username,
+      email: updatedUser.email,
+    })
+
+  } else {
+    return res.status(404).json({ message: "User profile not found" });
+  }
+})
+
+export { getAllUsers, registerUser, loginUser, logoutUser, currentUserProfile, updateCurrentUserProfile };

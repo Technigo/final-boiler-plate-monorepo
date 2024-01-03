@@ -16,6 +16,6 @@ export const cartStore = create((set) => ({
       return { cart: newCart };
     }),
   removeFromCart: (itemId) =>
-    set((state) => ({ cart: state.cart.filter((item) => item.id !== itemId) })),
+    set((state) => ({ cart: state.cart.filter((item) => item._id !== itemId) })),
   clearCart: () => set({ cart: [] }),
 }));

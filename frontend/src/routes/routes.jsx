@@ -6,7 +6,7 @@ import { NotFound } from "../pages/notfound/NotFound";
 import { ProductPage } from "../pages/productPage/ProductPage";
 import { PlantsPage } from "../pages/plantsPage/PlantsPage";
 import { CartPage } from "../pages/cartPage/CartPage";
-import { CategoriesPage } from "../pages1/plantsPage/PlantsPage";
+
 
 const routes = (
     <>

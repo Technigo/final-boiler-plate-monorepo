@@ -15,7 +15,7 @@ export const ProductPage = () => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    setApiEndpoint(`http://localhost:3000/api/plants/plants/${id}`);
+    setApiEndpoint(`https://plants-holm-witting-backend.onrender.com/api/plants/${id}`);
     fetchPlants().catch((error) => {
       console.error("Error fetching plant details", error);
       setError(error);

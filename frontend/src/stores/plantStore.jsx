@@ -37,22 +37,22 @@ export const plantStore = create((set, get) => ({
     let endpoint;
     switch (category) {
       case "Shade-loving":
-        endpoint = `${apiEnv}/shady`;
+        endpoint = `${apiEnv}/category/shady`;
         break;
       case "Easy":
-        endpoint = `${apiEnv}/easy`;
+        endpoint = `${apiEnv}/category/easy`;
         break;
       case "Pet Friendly":
-        endpoint = `${apiEnv}/pet-friendly`;
+        endpoint = `${apiEnv}/category/pet-friendly`;
         break;
       case "Climbing":
-        endpoint = `${apiEnv}/climbing`;
+        endpoint = `${apiEnv}/category/climbing`;
         break;
       case "Popular":
-        endpoint = `${apiEnv}/popular`;
+        endpoint = `${apiEnv}/category/popular`;
         break;
       default:
-        endpoint = `${apiEnv}/plants`;
+        endpoint = `${apiEnv}`;
     }
 
     set({ selectedCategory: category, apiEndpoint: endpoint });

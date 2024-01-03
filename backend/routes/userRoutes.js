@@ -4,6 +4,8 @@ import {
   registerUser,
   loginUser,
   logoutUser,
+  currentUserProfile,
+  updateCurrentUserProfile,
 } from "../controllers/userController.js"; // Imports the registerUser function from the userController.js file.
 import { authenticateUser, authorizedAdmin } from "../middlewares/auth.js";
 
@@ -22,5 +24,11 @@ router.post("/login", loginUser); // When a POST request is made to /login, exec
 
 // LOGOUT ROUTE: Handle user logout
 router.post("/logout", logoutUser); // When a POST request is made to /logout, execute the logoutUser function.
+
+// USER PROFILE ROUTE: Handle users profile.
+router
+  .route("/profile")
+  .get(authenticateUser, currentUserProfile)
+  .put(authenticateUser, updateCurrentUserProfile);
 
 export default router; // The router object is exported.

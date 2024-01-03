@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom"
-import { Button } from "../../../components/buttons/Button";
+import { Button } from "../../../../components/buttons/Button";
 
 import "./Hero.css"
 
@@ -15,7 +15,7 @@ export const Hero = () => {
             <div>
                 <h1>{text.heading}</h1>
                 <p>{text.text}</p>
-                <Link to="plants/categories">
+                <Link to="plants/all-plants">
                     <Button className={"all-plants-btn"}
                     btnText={text.btnText}
                     ariaLabel={"Get to all plants"}
