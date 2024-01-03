@@ -21,11 +21,20 @@ const NavbarContainer = styled.nav`
   display: flex;
   justify-content: space-between;
   padding: 5px;
+  @media ${tablet} {
+    display: flex;
+    justify-content: space-between;
+  }
+  @media ${desktop} {
+    display: flex;
+    justify-content: space-between;
+  }
 `;
 
 const NavbarNav = styled.ul`
   list-style: none;
   display: flex;
+  flex-direction: row;
   margin: 20px;
   padding: 10px;
 `;
@@ -33,7 +42,6 @@ const NavbarNav = styled.ul`
 const NavItem = styled.li`
   margin: 2px;
   display: none;
-
   @media ${tablet} {
     color: #66feff;
     font-size: 45px;
@@ -84,17 +92,16 @@ const NavbarLink = styled(Link)`
 const Navbar = () => {
   return (
     <NavbarContainer>
+      <FMLogo src="/public/Logo2.jpg" alt="Logo" />
       <NavbarNav>
         <NavItem>
           <NavbarLink to="/">Home</NavbarLink>
         </NavItem>
         <NavItem>
-          <NavbarLink to="/about">About</NavbarLink>
+          <NavbarLink to="/about">About </NavbarLink>
         </NavItem>
         <NavItem>
-          <NavItem>
-            <NavbarLink to="/addrestaurant">Add a new restaurant</NavbarLink>
-          </NavItem>
+          <NavbarLink to="/addrestaurant">Add Restaurant</NavbarLink>
         </NavItem>
       </NavbarNav>
     </NavbarContainer>
