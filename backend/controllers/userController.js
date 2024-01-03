@@ -2,6 +2,7 @@ import asyncHandler from "express-async-handler";
 import bcrypt from "bcrypt";
 import { validateRegistration } from "../middleware/registrationValidation";
 import { UserModel } from "../models/UserModel";
+import { AdModel } from "../models/AdModel";
 // Import cloudinary configuration
 import cloudinary from "../config/cloudinaryConfig";
 
@@ -11,7 +12,7 @@ import cloudinary from "../config/cloudinaryConfig";
 
 export const registerUserController = asyncHandler(async (req, res) => {
   // Run validation middleware
-  validateRegistration(req, res, () => {});
+  validateRegistration(req, res, () => { });
 
   // Extract email, username, password and consent from the request body
   const { username, password, email, consent } = req.body;
@@ -34,8 +35,7 @@ export const registerUserController = asyncHandler(async (req, res) => {
     if (existingUser) {
       res.status(400);
       throw new Error(
-        `User with ${
-          existingUser.username === username ? "username" : "email"
+        `User with ${existingUser.username === username ? "username" : "email"
         } already exists`
       );
     }
@@ -238,7 +238,7 @@ export const updateUserController = asyncHandler(async (req, res) => {
         success: false,
         response: "User not found"
       });
-    } 
+    }
   } catch (e) {
     res.status(500).json({ success: false, response: e.message });
   };
@@ -253,25 +253,35 @@ export const deleteUserController = asyncHandler(async (req, res) => {
   const userId = req.params.userId;
 
   try {
-    // Find a user in the database with the same ID and delele
-    const userToBeDeleted = await UserModel.findByIdAndDelete(userId);
-
-    if (userToBeDeleted) {
-      // Delete the image from Cloudinary using the imageId
-      await cloudinary.uploader.destroy(userToBeDeleted.imageId);
-      res.status(200).json({
-        success: true,
-        response: {
-          message: `User with ID ${userId} deleted successfully`,
-          deletedUser: userToBeDeleted        
-        }});
-    } else {
-      res.status(400).json({
+    const userToBeDeleted = await UserModel.findById(userId);
+    if (!userToBeDeleted) {
+      return res.status(400).json({
         success: false,
         response: "User not found"
       });
     }
-    
+
+    // Remove user ID from savedBy array in all ads
+    await AdModel.updateMany(
+      { savedBy: userId },
+      { $pull: { savedBy: userId } }
+    );
+
+    // Delete the user's image from Cloudinary, if applicable
+    if (userToBeDeleted.imageId) {
+      await cloudinary.uploader.destroy(userToBeDeleted.imageId);
+    }
+
+    // Delete the user from the database
+    await UserModel.findByIdAndDelete(userId);
+
+    res.status(200).json({
+      success: true,
+      response: {
+        message: `User with ID ${userId} deleted successfully`,
+        deletedUser: userToBeDeleted
+      }
+    });
   } catch (e) {
     res.status(500).json({ success: false, response: e.message });
   };
