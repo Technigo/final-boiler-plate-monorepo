@@ -4,6 +4,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  position: relative;
   z-index: 10;
 }
 
@@ -31,7 +32,7 @@
   margin: 3%;
   padding: 2%;
   width: 70%;
-  z-index: 10;
+  z-index: 30;
 }
 
 .gallery {
@@ -44,13 +45,15 @@
   border: 5px solid rgba(2, 108, 124, 0.7);
   border-radius: 20px;
   margin: 15%;
-  z-index: 10;
+  margin-right: 20%;
+  position: relative;
+  z-index: 30;
 }
 
 .gallery img {
   height: 100%;
   width: 100%;
-  z-index: 10;
+  z-index: 30;
 }
 
 .image-buttons {
@@ -59,7 +62,7 @@
   padding: 0;
   width: 20%;
   margin: 2%;
-  z-index: 10;
+  z-index: 30;
 }
 
 /* POPUPKALENDERN
