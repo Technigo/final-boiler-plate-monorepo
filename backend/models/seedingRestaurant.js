@@ -16,6 +16,7 @@ const seedingRestaurantSchema = new mongoose.Schema({
   country: String,
   borough: String,
   cuisine: String,
+category: [String],
   occasion: [String], // Array of strings without enum restrictions
   mood: [String], // Array of strings without enum restrictions
   description: String,
