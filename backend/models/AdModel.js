@@ -65,6 +65,11 @@ export const adSchema = new Schema(
             type: mongoose.Schema.Types.ObjectId,
             ref: "User",
         },
+        //ObjectId represents a user who has saved this ad. The Ids are stored in an array
+        savedBy: [{
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "User",
+        }],
     },
     {
         timestamps: true,
