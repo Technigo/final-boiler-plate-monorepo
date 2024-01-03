@@ -50,8 +50,8 @@ router.get("/stories", async (req, res) => {
 
 //route for post a story
 router.post("/stories", async (req, res) => {
-  const { title, content, category, ranking, lat, lng } = req.body;
-
+  const { title, content, category, ranking, lat, lng, city, image } = req.body;
+  console.log(req.body);
   try {
     // Analyze the content
     const analysisResult = await analyzePostTone(content);
@@ -69,6 +69,8 @@ router.post("/stories", async (req, res) => {
       category,
       ranking,
       location: { lat, lng },
+      city,
+      image,
     });
 
     const savedStory = await newStory.save();
