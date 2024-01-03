@@ -6,23 +6,26 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "./adslist.css";
 
-export const AdsList = ({ fetchType }) => {
+export const AdsList = ({ fetchType, userId }) => {
   const [ads, setAds] = useState([]);
   const getAllAds = adStore((state) => state.getAllAds);
   const fetchAds = adStore((state) => state.fetchAds);
+  const fetchAdsByUserId = adStore((state) => state.fetchAdsByUserId);
 
   useEffect(() => {
     async function fetchData() {
       if (fetchType === "all") {
         await getAllAds();
-      } else if (fetchType === "user") {
-        await fetchAds(localStorage.getItem("accessToken"));
+      } else if (fetchType === "user" && !userId) {
+        await fetchAds();
+      } else if (fetchType === "user" && userId) {
+        await fetchAdsByUserId(userId);
       }
       const fetchedAds = adStore.getState().ads;
       setAds(fetchedAds);
     }
     fetchData();
-  }, [getAllAds, fetchAds, fetchType]); // Add fetchType to dependency array
+  }, [getAllAds, fetchAds, fetchAdsByUserId, fetchType, userId]); // Add fetchType to dependency array
 
   // Settings for the carousel
   const settings = {
@@ -72,54 +75,54 @@ export const AdsList = ({ fetchType }) => {
   return (
     <>
       {fetchType === "all" ? (
+        // Display all ads in a carousel
         <div className="ads-outer-wrapper">
           <Slider {...settings}>
             {ads.map((ad) => (
               <div className="ads-inner-wrapper" key={ad._id}>
-                <AdCard ad={ad} />            
+                <AdCard ad={ad} />
               </div>
             ))}
           </Slider>
         </div>
       ) : (
+        // Display user-specific ads (either logged-in user or a specific user)
         <div className="ads-outer-wrapper">
-          {/* Conditional rendering based on the number of ads. */}
           {ads.length === 0 ? (
-            <>
-              <p>You don&apos;t have any product...</p>
-            </>
+            // No ads found message
+            <p>{userId ? "This user doesn't have any ads." : "You don't have any ads."}</p>
           ) : (
             ads.length > 0 && ads.length < 4 ? (
+              // If the users have fewer than 4 ads, render them in a row
               <div className="ads-outer-wrapper-user">
-              {/* If the users have fewer than 4 ads, map through 'ads' and render ad items in a row */}
                 {ads.map((ad) => (
                   <div className="ads-inner-wrapper" key={ad._id}>
                     <AdCard ad={ad} />
                   </div>
                 ))}
               </div>
-            ) : (          
-              // Only display user's ads in carousel if user has four or more ads          
-              <div className="ads-outer-wrapper">     
+            ) : (
+              // Display user's ads in carousel if user has four or more ads
+              <div className="ads-outer-wrapper">
                 <Slider {...settings}>
                   {ads.map((ad) => (
                     <div className="ads-inner-wrapper" key={ad._id}>
-                      <AdCard ad={ad} />            
+                      <AdCard ad={ad} />
                     </div>
                   ))}
                 </Slider>
               </div>
             )
-          )}    
+          )}
         </div>
       )}
     </>
   );
+  
 };
 
 //THIS IS HOW TO USE IT IN YOUR PAGE/COMPONENT
-// To fetch all ads
-//<AdsList fetchType="all" />
-
-// To fetch user-specific ads
-//<AdsList fetchType="user" />
+// Usage examples:
+// <AdsList fetchType="all" />  // For all ads
+// <AdsList fetchType="user" />  // For the logged-in user's ads
+// <AdsList fetchType="user" userId="specificUserId" />  // For a specific user's ads
