@@ -17,7 +17,7 @@ export const getAllAdsController = asyncHandler(async (req, res) => {
 
 // desciption: Get Ads
 // route: /getAds
-// access: Prublic
+// access: Public
 export const getAdsController = asyncHandler(async (req, res) => {
   const userStorage = req.user;
   const ads = await AdModel.find({ user: userStorage })
@@ -55,9 +55,9 @@ export const getAdsByUserIdController = asyncHandler(async (req, res) => {
 });
 
 // Description: Get Ads saved by a specific user
-// Route: /getSavedAdsByUser/:userId
+// Route: /getSavedAdsByUserId/:userId
 // Access: Public (or Private if you want to restrict access)
-export const getSavedAdsByUserController = asyncHandler(async (req, res) => {
+export const getSavedAdsByUserIdController = asyncHandler(async (req, res) => {
   const { userId } = req.params;
   try {
     const savedAds = await AdModel.find({ savedBy: userId }).populate("user", "username");

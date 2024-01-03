@@ -7,7 +7,7 @@ import {
     getAdsController,
     getAdByIdController,
     getAdsByUserIdController,
-    getSavedAdsByUserController,
+    getSavedAdsByUserIdController,
     saveAdController,
     updateAdController,
     deleteAllAdsController,
@@ -32,7 +32,7 @@ router.get("/getAd/:id", getAdByIdController);
 router.get("/getAdsByUserId/:userId", getAdsByUserIdController);
 
 // Define a route for handling GET requests to retrieve saved ads for a specific user
-router.get("/getSavedAdsByUser/:userId", getSavedAdsByUserController);
+router.get("/getSavedAdsByUserId/:userId", getSavedAdsByUserIdController);
 
 // Define a route for handling POST requests to save an ad
 router.post("/saveAd", authenticateUser, saveAdController);
