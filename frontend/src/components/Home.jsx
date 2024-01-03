@@ -64,16 +64,18 @@ const Home = () => {
     subheading: "ARE YOU DINING WITH?",
   };
 
-  const { category, fetchCategory } = useRestaurantStore();
-  const [categoryButtons, setCategoryButtons] = useState([]);
+  const { category, fetchCategory, setSelectedCategory } = useRestaurantStore();
 
   useEffect(() => {
     fetchCategory()
-    .then((categories) => setCategoryButtons(categories))
     .catch((error) => {
       console.error('Error fetching category:', error);
     });
   }, [fetchCategory]);
+
+  const handleCategorySelect = (selectedCategory) => {
+    setSelectedCategory(selectedCategory);
+  };
 
   return (
     <PageContainer>
@@ -82,8 +84,11 @@ const Home = () => {
         <Heading>{text.heading}</Heading>
         <Subheading>{text.subheading}</Subheading>
         <Intro>
-        {categoryButtons.map((category, index) => (
-            <StyledButton key={index} as={Link} to={`/occasion?category=${category}`}>
+        {category.map((category, index) => (
+            <StyledButton 
+            key={index} 
+            onClick={() => handleCategorySelect(category)}
+            as={Link} to={`/occasion?category=${category}`}>
               {category}
             </StyledButton>
           ))}
