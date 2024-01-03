@@ -9,13 +9,13 @@ import { Link } from "react-router-dom";
 const PageContainer = styled.div`
   margin: 0 auto;
   padding: 20px;
-  background-color: #fff0f3; // Your chosen color
+  background-color: white; // Your chosen color: ;
   min-height: 100vh; // Full height of the viewport
 `;
 const TitleContainer = styled.div`
   text-align: center; /* Centers the title text */
   margin-bottom: 20px; /* Adds some space between the title and the buttons */
-  color: #800f2f;
+  color: #01999a;
   font-family: Montserrat, sans-serif;
 `;
 const MoodSelectorContainer = styled.div`

@@ -12,22 +12,23 @@ const PageContainer = styled.div`
 `;
 
 const Heading = styled.h1`
-  font-size: 24px;
+  font-size: 48px;
   color: #01999a;
-  font-family: "Mercusuar";
+  text-align: center;
+  font-family: "JosefinSans";
 `;
 
 const Subheading = styled.h2`
+  font-family: "JosefinSans";
   font-size: 20px;
-  font-family: Arial, sans-serif;
+  text-align: center;
   color: #1bc6c6;
-  font-family: "Mercusuar";
 `;
 
 const Intro = styled.p`
   font-size: 16px;
   color: #800f2f;
-  font-family: Montserrat, sans-serif;
+  font-family: "JosefinSans";
   text-align: center;
   /* Your styles for intro paragraph */
 `;
@@ -36,14 +37,14 @@ const StyledButton = styled.button`
   color: white;
   border: solid white;
   padding: 10px 20px; /* Some padding */
-  border-radius: 5px; /* Rounded corners */
+  border-radius: 10px; /* Rounded corners */
   cursor: pointer; /* Pointer/hand icon */
   text-align: center; /* Center the text */
   text-decoration: none; /* No underline */
   display: inline-block; /* Inline block element */
   flex-direction: column;
-  font-size: 54px; /* Font size */
-  font-family: "Mercusuar";
+  font-size: 36px; /* Font size */
+  font-family: "JosefinSans";
   margin: 4px 2px; /* Margin around the button */
   transition-duration: 0.4s; /* Transition for hover effect */
 
@@ -53,12 +54,13 @@ const StyledButton = styled.button`
     border: solid #fcabe3;
   }
 `;
+
 // Define the 'Home' functional component.
 const Home = () => {
   // Define text content for the heading and subheading.
   const text = {
-    heading: "Who",
-    subheading: "are you dining with?",
+    heading: "WHO",
+    subheading: "ARE YOU DINING WITH?",
   };
 
   return (

@@ -16,9 +16,9 @@ const PageContainer = styled.div`
 
 const TitleContainer = styled.div`
   text-align: center; /* Centers the title text */
+  font-family: "JosefinSans";
   margin-bottom: 20px; /* Adds some space between the title and the buttons */
-  color: #800f2f;
-  font-family: Montserrat, sans-serif;
+  color: #01999a;
 `;
 
 const NextButton = styled.button`
@@ -104,7 +104,7 @@ const OccasionSelector = () => {
       <PageContainer>
         <Navbar />
         <TitleContainer>
-          <h2>What's the occasion? Is it to</h2>
+          <h2>What's the occasion?</h2>
         </TitleContainer>
         <OccasionSelectorContainer>
           {occasions && occasions.length > 0 ? (

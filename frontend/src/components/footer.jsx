@@ -8,11 +8,12 @@ const FooterContainer = styled.footer`
   padding: 10px;
   text-align: center;
   margin-top: 40px;
+  border-radius: 5px;
 `;
 
 const FooterParagraph = styled.p`
   font-size: 16px;
-  font-family: "Mercusuar";
+  font-family: "JosefinSans";
   color: white;
 `;
 
