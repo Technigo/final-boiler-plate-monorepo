@@ -1,4 +1,4 @@
-VM803:1  Error fetching occasions: SyntaxError: Unexpected token '<', "<!doctype "... is not valid JSON
+VM803:1 Error fetching occasions: SyntaxError: Unexpected token '<', "<!doctype "... is not valid JSON
 eval @ VM803:1
 fetchOccasions @ restaurantStore.jsx:18
 await in fetchOccasions (async)
@@ -14,12 +14,11 @@ flushPassiveEffects @ react-dom.development.js:26984
 workLoop @ scheduler.development.js:266
 flushWork @ scheduler.development.js:239
 performWorkUntilDeadline @ scheduler.development.js:533
-VM803:1  Error fetching occasions: SyntaxError: Unexpected token '<', "<!doctype "... is not valid JSON 
+VM803:1 Error fetching occasions: SyntaxError: Unexpected token '<', "<!doctype "... is not valid JSON
 Jag får det här i viewport :/ har kollat igenom endpoints och rättat men misstänker att det kan lösas om vi får till en webadress, eller så är det jag som tänker fel //Alexandra
 
 20231220
 [ ](backend/routes/restaurantRoutes.js) la till denna som en grund för att kunna lägga in data, behöver byggas på för att få till de rätta fälten och sen kopplas till frontend
-
 
 Att göra:
 Express Routes (router.js files)
@@ -37,8 +36,7 @@ Console Logs: Use console.log in both your frontend and backend to trace the flo
 Network Activity: Use the browser's developer tools to inspect network activity and see if requests are made correctly and what responses are received.
 If the issue persists despite these checks, it may require a more detailed examination of your entire codebase and running environment, potentially indicating a more complex issue.
 
-
-jag tror att problemet är med middleware: 
+jag tror att problemet är med middleware:
 The middleware you should use in an Express application depends on the specific needs of your application. Here is a list of commonly used middlewares and their purposes:
 
 Body Parser Middleware (express.json() and express.urlencoded()):
@@ -51,3 +49,11 @@ CORS Middleware (cors):
 
 Enables Cross-Origin Resource Sharing (CORS).
 Allows you to define which domains are permitted to access your API.
+
+Ulrika 1 Jan - Gott nytt år!
+Har suttit och slitit med att få till en font, den jag har nu är varken perfekt eller har alla tecken (suck..) men nu vet jag hur och kan byta ut lätt iallafall. Så designmässigt är det mest att hitta en eller flera som känns fräscha och fina!
+
+Färgkodningen är inte på plats än, jag har ändrat och provat lite fram och tillbaka, men det fattas nåt för att det ska "pop" ordentligt!
+Har kollat en hel del på andra restaurang och mat-appar som Foodora, Karma och annat och hur man kommer rakt in i knapparna - ingen intro eller annat (det har vi About til för!) så kommer jobba åt det hållet.
+
+## Jag får inte upp några occasions att välja på alls i min localhost - ska se om det är nåt från min sida!
