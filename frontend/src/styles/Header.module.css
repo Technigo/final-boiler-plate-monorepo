@@ -1,0 +1,13 @@
+.mainContainer {
+    background-color: #CDD6C1;
+    display: flex;
+    flex-wrap: nowrap;
+}
+
+@media screen and (max-width: 667px) {
+    .mainContainer {
+        align-items: center;
+        justify-content: center;
+        height: 6em;
+    }
+}

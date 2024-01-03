@@ -1,7 +1,7 @@
 // Import the 'Route' component from the 'react-router-dom' library.
 import { Route } from "react-router-dom";
 // Import various page components used as route elements.
-import { Home } from "../pages/Home";
+import { Home } from '../components/Home.jsx'
 import { Register } from "../pages/Register";
 import { Tasks } from "../pages/Tasks";
 import { Login } from "../pages/Login";
@@ -11,7 +11,7 @@ import { NotFound } from "../pages/NotFound";
 const routes = (
   <>
     {/* Define a route for the root path ('/') that renders the 'Login' component. */}
-    <Route path="/" element={<Login />} />
+    <Route path="/" element={<Home />} />
     {/* Define a route for the '/home' path that renders the 'Home' component. */}
     <Route path="/home" element={<Home />} />
     {/* Define a route for the '/tasks' path that renders the 'Tasks' component. */}

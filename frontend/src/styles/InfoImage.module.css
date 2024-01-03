@@ -1,0 +1,19 @@
+.mainContainer {
+    background-image: url('../assets/info-dog.webp');
+    background-position: center;
+    display: flex;
+}
+
+@media screen and (max-width: 667px) {
+    .mainContainer {
+        height: 25em;
+        align-items: center;
+        justify-content: left;
+    }
+
+    .textContainer {
+        text-align: left;
+        max-width: 40%;
+        margin-left: 2em;
+    }
+}

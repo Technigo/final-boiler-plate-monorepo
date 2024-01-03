@@ -1,0 +1,23 @@
+.mainContainer {
+    background-image: url('../assets/hero-dog.jpg');
+    display: flex;
+}
+
+.textContainer {
+    display: flex;
+}
+
+@media screen and (max-width: 667px) {
+    .mainContainer {
+        background-position: right;
+        height: 20em;
+        align-items: center;
+        justify-content: left;
+    }
+
+    .textContainer {
+        max-width: 40%;
+        text-align: left;
+        margin-left: 2em;
+    }
+}

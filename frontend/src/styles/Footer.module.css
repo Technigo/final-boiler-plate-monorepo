@@ -1,0 +1,9 @@
+.mainContainer {
+    background-color: #42531D;
+}
+
+@media screen and (max-width: 667px) {
+    .mainContainer {
+        height: 15em;
+    }
+}

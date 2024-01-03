@@ -1,0 +1,21 @@
+.mainContainer {
+    background-color: #CDD6C1;
+    display: flex;
+    flex-direction: column;
+}
+
+.whiteText {
+    color: #FFFFFF;
+    margin: 0.2em;
+}
+
+.greenText {
+    color: #42531D;
+}
+
+@media screen and (max-width: 667px) {
+    .mainContainer {
+        height: 9em;
+        justify-content: center;
+    }
+}
