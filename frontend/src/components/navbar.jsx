@@ -44,8 +44,8 @@ const NavItem = styled.li`
   display: none;
   @media ${tablet} {
     color: #66feff;
-    font-size: 45px;
-    font-family: "Mercusuar";
+    font-size: 35px;
+    font-family: "JosefinSans";
     display: inline-block;
     justify-content: flex-end;
     margin-right: 15px;
@@ -56,8 +56,8 @@ const NavItem = styled.li`
   }
   @media ${desktop} {
     color: #66feff;
-    font-size: 45px;
-    font-family: "Mercusuar";
+    font-size: 35px;
+    font-family: "JosefinSans";
     text-decoration: none;
     &:hover {
       text-decoration: underline;
@@ -69,8 +69,8 @@ const NavbarLink = styled(Link)`
   display: none;
   @media ${tablet} {
     color: #66feff;
-    font-size: 45px;
-    font-family: "Mercusuar";
+    font-size: 35px;
+    font-family: "JosefinSans";
     display: inline-block;
     justify-content: space-around;
     text-decoration: none;
@@ -80,8 +80,8 @@ const NavbarLink = styled(Link)`
   }
   @media ${tablet} {
     color: #66feff;
-    font-size: 45px;
-    font-family: "Mercusuar";
+    font-size: 35px;
+    font-family: "JosefinSans";
     text-decoration: none;
     &:hover {
       text-decoration: underline;
@@ -98,7 +98,7 @@ const Navbar = () => {
           <NavbarLink to="/">Home</NavbarLink>
         </NavItem>
         <NavItem>
-          <NavbarLink to="/about">About </NavbarLink>
+          <NavbarLink to="/about">About</NavbarLink>
         </NavItem>
         <NavItem>
           <NavbarLink to="/addrestaurant">Add Restaurant</NavbarLink>
