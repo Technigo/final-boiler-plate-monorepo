@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Navbar from "./navbar";
 import Footer from "./footer";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import { useRestaurantStore } from "../stores/restaurantStore";
 
 const PageContainer = styled.div`
   margin: 0 auto;
@@ -63,6 +64,17 @@ const Home = () => {
     subheading: "ARE YOU DINING WITH?",
   };
 
+  const { categories, fetchCategories } = useRestaurantStore();
+  const [categoryButtons, setCategoryButtons] = useState([]);
+
+  useEffect(() => {
+    fetchCategories()
+    .then((categories) => setCategoryButtons(categories))
+    .catch((error) => {
+      console.error('Error fetching categories:', error);
+    });
+  }, [fetchCategories]);
+
   return (
     <PageContainer>
       <Navbar />
@@ -70,24 +82,11 @@ const Home = () => {
         <Heading>{text.heading}</Heading>
         <Subheading>{text.subheading}</Subheading>
         <Intro>
-          <StyledButton as={Link} to="/occasion">
-            Family
-          </StyledButton>
-          <StyledButton as={Link} to="/occasion">
-            Friends
-          </StyledButton>
-          <StyledButton as={Link} to="/occasion">
-            Business
-          </StyledButton>
-          <StyledButton as={Link} to="/occasion">
-            Date
-          </StyledButton>
-          <StyledButton as={Link} to="/occasion">
-            Celebration
-          </StyledButton>
-          <StyledButton as={Link} to="/occasion">
-            Other
-          </StyledButton>
+        {categoryButtons.map((category, index) => (
+            <StyledButton key={index} as={Link} to={`/occasion?category=${category}`}>
+              {category}
+            </StyledButton>
+          ))}
         </Intro>
       </main>
       <Footer />

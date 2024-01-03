@@ -15,8 +15,9 @@ export const useRestaurantStore = create((set) => ({
   selectedMoods: [],
   results: [],
 
-  fetchCategories:async () => {
+  fetchCategories: async () => {
     try {
+      const { selectedCategory } = useRestaurantStore.getState();
       console.log('Selected Category:', selectedCategory);
       const response = await fetch(`${apiURL}/category`);
       if (!response.ok) {
@@ -30,8 +31,10 @@ export const useRestaurantStore = create((set) => ({
     const uniqueCategories = Array.from(new Set(data.map((item) => capitalizeFirstLetter(item.trim()))));
 
     set({ category: uniqueCategories });
+    return uniqueCategories;
   } catch (error) {
     console.error('Error fetching categories:', error);
+    throw error;
   }
 },
 
@@ -143,10 +146,11 @@ setSelectedCategory: (category) => {
   fetchResults: async () => {
     try {
     console.log('Fetching results...');
-    const { selectedOccasion, selectedMoods, selectedCategory } = useRestaurantStore.getState();
+    const { selectedCategory, selectedOccasion, selectedMoods } = useRestaurantStore.getState();
+    console.log('Selected Category:', selectedCategory);
     console.log('Selected Occasion:', selectedOccasion);
     console.log('Selected Moods:', selectedMoods);
-    console.log('Selected Category:', selectedCategory);
+    
   
     const apiURL = 'http://localhost:3000/api/restaurants/search';
     const queryParams = new URLSearchParams({

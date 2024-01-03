@@ -15,10 +15,10 @@ router.get('/restaurants/search', asyncHandler(async (req, res) => {
         return res.status(400).json({ message: 'Category, occasion and mood are required parameters' });
     }
 
-        // Ensure only one category is selected
-        if (Array.isArray(category)) {
-            return res.status(400).json({ message: 'You can only pick one category' });
-        }
+    // Ensure only one category is selected
+    if (Array.isArray(category) || !category) {
+         return res.status(400).json({ message: 'You can only pick one category' });
+    }
 
     // Ensure occasion is provided and only one is selected
     if (!occasion || Array.isArray(occasion)) {
