@@ -13,6 +13,7 @@
     "@babel/node": "^7.16.8",
     "@babel/preset-env": "^7.16.11",
     "@google-cloud/language": "^6.1.1",
+    "@google-cloud/translate": "^8.0.2",
     "bcrypt": "^5.1.0",
     "cors": "^2.8.5",
     "crypto": "^1.0.1",
