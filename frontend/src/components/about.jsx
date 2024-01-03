@@ -1,21 +1,22 @@
-import React from "react";
-import Navbar from "./navbar";
-import Footer from "./footer";
-import styled from "styled-components";
+import React from 'react';
+import Navbar from './navbar';
+import Footer from './footer';
+import styled from 'styled-components';
 import alexandra from '../assets/alexandra.jpg'
+
 
 const AboutWrapper = styled.div`
   margin: 0 auto;
   padding: 20px;
-  background-color: #fff0f3; /* Your chosen color */
+  background-color: #FFF0F3; /* Your chosen color */
   min-height: 100vh; /* Make sure it covers the full height of the viewport */
 `;
 
 const IntroParagraph = styled.p`
   font-size: 24px;
   margin-bottom: 20px;
-  color: #800f2f;
-  font-family: "Mercusuar";
+  color: #800F2F;
+  font-family: Montserrat, sans-serif;
 `;
 
 const TeamSection = styled.section`
@@ -28,8 +29,8 @@ const TeamMember = styled.div`
   flex-basis: calc(33.33% - 20px);
   margin-bottom: 20px;
   text-align: center;
-  color: #800f2f;
-  font-family: Mercusuar;
+  color: #800F2F;
+  font-family: Montserrat, sans-serif;
 `;
 
 const TeamMemberPhoto = styled.img`
@@ -52,7 +53,7 @@ const TeamMemberDescription = styled.p`
 const PortfolioLink = styled.a`
   font-size: 16px;
   text-decoration: none;
-  color: #007bff;
+  color: #007BFF;
 `;
 
 // AboutPage component
@@ -69,37 +70,31 @@ web developer bootcamp to bring you the Foodie moodie app.
         </IntroParagraph>
         <TeamSection>
           <TeamMember>
-            <TeamMemberPhoto src="placeholder1.jpg" alt="The Brains" />
+            <TeamMemberPhoto src="placeholder1.jpg" alt="Team Member 1" />
             <TeamMemberName>Malin Lunde</TeamMemberName>
-            <TeamMemberDescription>Description here</TeamMemberDescription>
-            <PortfolioLink href="portfolio1-link">Portfolio</PortfolioLink>
-          </TeamMember>
-
-          <TeamMember>
-            <TeamMemberPhoto src="placeholder2.jpg" alt="The Floof" />
-            <TeamMemberName>Ulrika Galnander</TeamMemberName>
-            <TeamMemberDescription>Description here </TeamMemberDescription>
-            <PortfolioLink href="portfolio2-link">Portfolio</PortfolioLink>
-          </TeamMember>
-
-          <TeamMember>
-            <TeamMemberPhoto src="placeholder3.jpg" alt="The Genius" />
-            <TeamMemberName>Alexandra Meija</TeamMemberName>
             <TeamMemberDescription>
-              For me a foodie is someone who really loves food, and not just the
-              high- end fancy pants restaurants, but just plain good food,
-              either it is an amazing fishcake you buy for 10 bahts from a
-              street vendor or having a seven course meal at Ekstedt. And for me
-              the experience is enhanced when you find that perfect spot that
-              suits you and the people you are with, that you can hold a
-              conversation and that it's cozy. I always look for dogfriendly
-              places so I can take with me my furrycompanion. I have a lot of
-              favorites, but if I had to pick one place it's Bar Doma, it works
-              for everything, and yes, it's dog friendly. An extra neat feature
-              is the dessertcart which gets rolled out after every meal.
+              Brief description of Team Member 1 goes here.
             </TeamMemberDescription>
-            <PortfolioLink href="portfolio3-link">Portfolio</PortfolioLink>
+            <PortfolioLink href="portfolio1-link" target="_blank" rel="noopener noreferrer">Portfolio</PortfolioLink>
           </TeamMember>
+
+          <TeamMember>
+          <TeamMemberPhoto src="placeholder2.jpg" alt="Team Member 2" />
+          <TeamMemberName>Ulrika Gålnander</TeamMemberName>
+          <TeamMemberDescription>
+            Brief description of Team Member 2 goes here.
+          </TeamMemberDescription>
+          <PortfolioLink href="portfolio2-link" target="_blank" rel="noopener noreferrer">Portfolio</PortfolioLink>
+        </TeamMember>
+
+        <TeamMember>
+        <TeamMemberPhoto src={alexandra} alt="Alexandra Meija" />
+          <TeamMemberName>Alexandra Meija</TeamMemberName>
+          <TeamMemberDescription>
+         For me a foodie is someone who really loves food, and not just the high- end fancy pants restaurants, but just plain good food, either it is an amazing fishcake you buy for 10 bahts from a street vendor or having a seven course meal at Ekstedt. And for me the experience is enhanced when you find that perfect spot that suits you and the people you are with, that you can hold a conversation and that it's cozy. I always look for dogfriendly places so I can take with me my furrycompanion. I have a lot of favorites, but if I had to pick one place it's Bar Doma, it works for everything, and yes, it's dog friendly. An extra neat feature is the dessertcart which gets rolled out after every meal.
+          </TeamMemberDescription>
+          <PortfolioLink href="https://alexandrameijaportfolio.netlify.app" target="_blank" rel="noopener noreferrer">Portfolio</PortfolioLink>
+        </TeamMember>
         </TeamSection>
       </AboutWrapper>
       <Footer />
@@ -108,3 +103,4 @@ web developer bootcamp to bring you the Foodie moodie app.
 };
 
 export default AboutPage;
+
