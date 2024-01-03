@@ -9,9 +9,9 @@ export const AdCard = ({ ad }) => {
       <div className="ad-card">
         <img src={ad.image} alt={`${ad.title}`} />
         <h3>{ad.title}</h3>
-        <p>Posted by: {ad.user.username || "Unknown"}</p>
+        <p>Posted by: {ad.user?.username || "Unknown"}</p>
       </div>
     </Link>
   );
 };
-  
+
