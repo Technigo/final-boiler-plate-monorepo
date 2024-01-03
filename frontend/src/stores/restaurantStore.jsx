@@ -15,10 +15,11 @@ export const useRestaurantStore = create((set) => ({
   selectedMoods: [],
   results: [],
 
-  fetchCategories: async () => {
+  fetchCategory: async () => {
     try {
       const { selectedCategory } = useRestaurantStore.getState();
       console.log('Selected Category:', selectedCategory);
+
       const response = await fetch(`${apiURL}/category`);
       if (!response.ok) {
         throw new Error('Failed to fetch category');
@@ -28,12 +29,12 @@ export const useRestaurantStore = create((set) => ({
 
 
     // Normalize and set unique categories
-    const uniqueCategories = Array.from(new Set(data.map((item) => capitalizeFirstLetter(item.trim()))));
+    const uniqueCategory = Array.from(new Set(data.map((item) => capitalizeFirstLetter(item.trim()))));
 
-    set({ category: uniqueCategories });
-    return uniqueCategories;
+    set({ category: uniqueCategory });
+    return uniqueCategory;
   } catch (error) {
-    console.error('Error fetching categories:', error);
+    console.error('Error fetching category:', error);
     throw error;
   }
 },

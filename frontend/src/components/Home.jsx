@@ -64,16 +64,16 @@ const Home = () => {
     subheading: "ARE YOU DINING WITH?",
   };
 
-  const { categories, fetchCategories } = useRestaurantStore();
+  const { category, fetchCategory } = useRestaurantStore();
   const [categoryButtons, setCategoryButtons] = useState([]);
 
   useEffect(() => {
-    fetchCategories()
+    fetchCategory()
     .then((categories) => setCategoryButtons(categories))
     .catch((error) => {
-      console.error('Error fetching categories:', error);
+      console.error('Error fetching category:', error);
     });
-  }, [fetchCategories]);
+  }, [fetchCategory]);
 
   return (
     <PageContainer>
