@@ -76,6 +76,9 @@ export const adSchema = new Schema(
     }
 );
 
+// Creating an index on the savedBy field
+adSchema.index({ savedBy: 1 });  // '1' for ascending order
+
 // Create a Mongoose model named 'AdModel' based on the 'adSchema' for the 'ads' collection
 // This model is used to interact with the "ads" collection in the MongoDB database. It allows you to perform CRUD operations on documents in that collection and provides methods for data validation based on the schema.
 export const AdModel = mongoose.model("Ad", adSchema);
