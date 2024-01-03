@@ -39,12 +39,10 @@ router.get("/stories", async (req, res) => {
 router.post("/stories", async (req, res) => {
   const { title, content, category, ranking, lat, lng } = req.body;
   const newStory = new StoryModel({
-
     heading: req.body.heading,
     content: req.body.content,
     ranking: req.body.ranking,
     category: req.body.category,
-
   });
 
   try {
