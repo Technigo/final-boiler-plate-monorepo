@@ -245,10 +245,9 @@ export const updateUserController = asyncHandler(async (req, res) => {
 });
 
 
-// @desc    Delete Existing User - if the user wish to delete their account
+// @desc    Delete Existing User and their Ads
 // @route   DELETE api/users/:userId
 // @access  Private
-
 export const deleteUserController = asyncHandler(async (req, res) => {
   const userId = req.params.userId;
 
@@ -267,6 +266,15 @@ export const deleteUserController = asyncHandler(async (req, res) => {
       { $pull: { savedBy: userId } }
     );
 
+    // Delete all ads created by this user
+    const adsToDelete = await AdModel.find({ user: userId });
+    for (const ad of adsToDelete) {
+      if (ad.imageId) {
+        await cloudinary.uploader.destroy(ad.imageId);
+      }
+    }
+    await AdModel.deleteMany({ user: userId });
+
     // Delete the user's image from Cloudinary, if applicable
     if (userToBeDeleted.imageId) {
       await cloudinary.uploader.destroy(userToBeDeleted.imageId);
@@ -278,7 +286,7 @@ export const deleteUserController = asyncHandler(async (req, res) => {
     res.status(200).json({
       success: true,
       response: {
-        message: `User with ID ${userId} deleted successfully`,
+        message: `User with ID ${userId} and their ads deleted successfully`,
         deletedUser: userToBeDeleted
       }
     });
@@ -286,4 +294,3 @@ export const deleteUserController = asyncHandler(async (req, res) => {
     res.status(500).json({ success: false, response: e.message });
   };
 });
-
