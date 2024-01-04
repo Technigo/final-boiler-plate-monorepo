@@ -5,7 +5,6 @@ import "../pages/Home/home.css"
 import { Link } from "react-router-dom";
 import { Button } from "./Button";
 import { useTranslation } from "react-i18next";
-import { useState } from "react";
 
 import randomImage1 from "/Playgrounds/_08db1d05-2a11-457f-869e-4968d3d6cbe4.jpeg";
 import randomImage2 from "/Playgrounds/_9df306ce-3682-4f2d-8087-dfda556b834e.jpeg";

@@ -5,7 +5,8 @@
     },
 
     "Hero": {
-        "hero-title" : "Hitta din lekplats i Eslöv!"
+        "hero-title" : "Hitta din lekplats i Eslöv!",
+        "hero-p": "Välkommen till vår gemenskap för lekglada invånare i Eslöv! Upptäck dina favoritlekplatser med vårt användarvänliga verktyg. Genom att skapa konto kan du spara dina mest älskade platser och enkelt återvända till dem när du vill. Eslövs lekplatser är nu bara ett klick bort - skapa ditt konto idag och börja utforska staden med lekfull entusiasm!"
     },
 
     "Form" : {

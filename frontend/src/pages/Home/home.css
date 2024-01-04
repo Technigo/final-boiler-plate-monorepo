@@ -94,7 +94,7 @@
     margin: 0 10px;
   }
 
- /* Hero */
+/* Hero */
 .hero {
   position: relative;
   text-align: center;
@@ -102,12 +102,11 @@
 }
 
 .hero-image {
-  width: 100%; 
+  width: 100%;
   height: auto;
   max-height: 450px;
   margin: 0;
   object-fit: cover;
-  
 }
 
 .hero-content {
@@ -116,6 +115,9 @@
   left: 50%;
   transform: translate(-50%, -50%);
   color: white;
+  overflow: hidden;
+  max-width: 100%;
+  width: 100%;
 }
 
 .hero-content h1 {
@@ -126,4 +128,12 @@
 .hero-content p {
   font-size: 1.2rem;
   margin: 0;
+  background-color: rgba(85, 124, 85, 0.7);
+}
+
+@media only screen and (max-width: 375px) {
+  .hero-content h1,
+  .hero-content p {
+    font-size: 1rem; /* Adjust the font size or other properties for smaller screens */
+  }
 }

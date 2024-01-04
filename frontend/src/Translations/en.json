@@ -5,7 +5,8 @@
     },
 
     "Hero": {
-        "hero-title" : "Find your playground in Eslöv"
+        "hero-title" : "Find your playground in Eslöv",
+        "hero-p": "Welcome to our community for playful residents in Eslöv! Discover your favorite playgrounds with our user-friendly tool. By creating an account, you can save your most beloved spots and easily revisit them whenever you like. Eslöv's playgrounds are now just a click away - create your account today and start exploring the city with playful enthusiasm!"
     },
     "Form": {
         "greeting": "Welcome back",
