@@ -37,13 +37,14 @@ router.get("/stories", async (req, res) => {
 
 //route for post a story
 router.post("/stories", async (req, res) => {
-  const { title, content, category, ranking, lat, lng } = req.body;
+  const { title, content, category, ranking, lat, lng, image } = req.body;
   const newStory = new mapStoryModel({
     title,
     content,
     category,
     ranking,
     location: { lat, lng },
+    image,
   });
 
   try {

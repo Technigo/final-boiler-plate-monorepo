@@ -19,7 +19,7 @@ const mapStorySchema = new Schema({
   category: {
     type: String,
     required: true,
-    enum: ["historical", "hearsay", "anecdote"],
+    enum: ["historical", "hearsay", "anecdote","rumor"],
   },
   ranking: {
     type: Number,
