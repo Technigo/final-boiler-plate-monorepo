@@ -6,10 +6,14 @@ export const UserProfile = () => {
     useAuth0();
   // const [userMetadata, setUserMetadata] = useState(null);
   // const domain = import.meta.env.VITE_AUTH0_DOMAIN;
+  const vite_backend = import.meta.env.VITE_BACKEND_API;
   const vite_backup = import.meta.env.VITE_BACKUP_API;
 
   const [username, setUsername] = useState(null);
   const [email, setEmail] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [userList, setUserList] = useState(null);
+  console.log("username: " + username);
 
   //#REGION USER_METADATA
   // console.log(useAuth0());
@@ -47,20 +51,29 @@ export const UserProfile = () => {
 
   useEffect(() => {
     const getUserDataFromMongo = async () => {
-      console.log(`${vite_backup}/user/${user.sub}`);
+      console.log(`${vite_backend}/user/${user.sub}`);
       try {
-        await fetch(`${vite_backup}/user/${user.sub}`)
+        await fetch(`${vite_backend}/user/${user.sub}`)
           .then((res) => res.json())
           .then((data) => {
             setUsername(data.username);
             setEmail(data.email);
+            setLoading(!loading);
           });
       } catch (error) {
         console.log(error);
       }
     };
 
+    const getUsers = async () => {
+      const fetchUsers = await fetch(`${vite_backend}/users`);
+      const jsonUsers = await fetchUsers.json();
+      setUserList(jsonUsers);
+      console.log(userList);
+    };
+
     getUserDataFromMongo();
+    getUsers();
   }, []);
 
   console.log("User: " + JSON.stringify(user));
@@ -72,7 +85,18 @@ export const UserProfile = () => {
   return (
     isAuthenticated && (
       <div className="text-black">
-        <h1 className="text-black text-2xl">Welcome {username}</h1>
+        {!loading && (
+          <>
+            <h1 className="text-black text-2xl px-1 py-1 text">
+              Welcome {username}
+            </h1>
+            {/* <ul>
+              {userList.map((user) => (
+                <li>{user}</li>
+              ))}
+            </ul> */}
+          </>
+        )}
         {/* <img src={user.picture} alt={user.name} />
         <h2 className="text-black">{user.nickname}</h2>
         <p className="text-black">{user.email}</p> */}

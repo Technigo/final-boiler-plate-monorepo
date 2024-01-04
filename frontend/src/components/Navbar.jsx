@@ -14,9 +14,9 @@ export const Navbar = () => {
   };
 
   const navlinks = [
-    { linkName: "About", linkRoute: "/about" },
     { linkName: "Search", linkRoute: "/search" },
     { linkName: "Post Trip", linkRoute: "/posttrip" },
+    { linkName: "About", linkRoute: "/about" },
     { linkName: "Register", linkRoute: "/register" },
   ];
 

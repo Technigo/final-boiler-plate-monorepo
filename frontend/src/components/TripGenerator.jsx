@@ -19,7 +19,6 @@ export const TripGenerator = () => {
     const storedTrips = localStorage.getItem("trips");
     return storedTrips ? JSON.parse(storedTrips) : [];
   });
-
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
@@ -56,6 +55,12 @@ export const TripGenerator = () => {
     }
 
     setFormData((prevData) => ({ ...prevData, [name]: formattedValue }));
+
+    if (e.target.type === "submit") {
+      setFormData((prevData) => ({
+        ...prevData,
+      }));
+    }
   };
 
   const handleTimeChange = (e) => {
@@ -130,276 +135,273 @@ export const TripGenerator = () => {
     );
   });
 
+  const formDataIsIncomplete = () => {
+    const { from, to, date, time, make, model, reg, availableSeats, message } =
+      formData;
+
+    return (
+      !from ||
+      !to ||
+      !date ||
+      !time ||
+      !make ||
+      !model ||
+      !reg ||
+      !availableSeats ||
+      !message
+    );
+  };
+
   return (
-    <div className="mt-8 max-w-2xl mx-auto p-2">
-      <form onSubmit={handleSubmit} className="flex flex-col space-y-2 p-2">
-        <LocationInput
-          label="From"
-          name="from"
-          value={formData.from}
-          onChange={handleChange}
-          setFormData={setFormData}
-        />
-        <LocationInput
-          label="To"
-          name="to"
-          value={formData.to}
-          onChange={handleChange}
-          setFormData={setFormData}
-        />
+    <>
+      <div className="mt-8 max-w-2xl mx-auto p-2">
+        <form onSubmit={handleSubmit} className="flex flex-col space-y-2 p-2">
+          <LocationInput
+            label="From"
+            name="from"
+            value={formData.from}
+            onChange={handleChange}
+            setFormData={setFormData}
+          />
+          <LocationInput
+            label="To"
+            name="to"
+            value={formData.to}
+            onChange={handleChange}
+            setFormData={setFormData}
+          />
 
-        <div className="flex space-x-4">
-          <div className="w-1/2">
-            <label
-              htmlFor="date"
-              className="block text-sm font-md text-gray-700">
-              Date
-            </label>
-            <input
-              type="date"
-              id="date"
-              name="date"
-              value={formData.date}
-              onChange={handleChange}
-              className="input-field border p-2 rounded-md w-full h-10"
-            />
+          <div className="flex space-x-4">
+            <div className="w-1/2">
+              <label
+                htmlFor="date"
+                className="block text-sm font-md text-gray-700"
+              >
+                Date
+              </label>
+              <input
+                type="date"
+                id="date"
+                name="date"
+                value={formData.date}
+                onChange={handleChange}
+                className="input-field border p-2 rounded-md w-full h-10"
+              />
+            </div>
+
+            <div className="w-1/2">
+              <label
+                htmlFor="time"
+                className="block text-sm font-md text-gray-700"
+              >
+                Time
+              </label>
+              <select
+                id="time"
+                name="time"
+                value={formData.time}
+                onChange={handleTimeChange}
+                className="input-field border p-2 rounded-md w-full h-10"
+              >
+                {timeOptions}
+              </select>
+            </div>
           </div>
 
-          <div className="w-1/2">
-            <label
-              htmlFor="time"
-              className="block text-sm font-md text-gray-700">
-              Time
-            </label>
-            <select
-              id="time"
-              name="time"
-              value={formData.time}
-              onChange={handleTimeChange}
-              className="input-field border p-2 rounded-md w-full h-10">
-              {timeOptions}
-            </select>
-          </div>
-        </div>
-
-        <div className="flex space-x-4">
-          <div className="w-1/2">
-            <label
-              htmlFor="make"
-              className="block text-sm font-md text-gray-700">
-              Make
-            </label>
-            <select
-              id="make"
-              name="make"
-              value={formData.make}
-              onChange={(e) =>
-                handleChange({
-                  target: { name: e.target.name, value: e.target.value },
-                })
-              }
-              className="input-field border p-2 rounded-md w-full">
-              <option value="" disabled>
+          <div className="flex space-x-4">
+            <div className="w-1/2">
+              <label
+                htmlFor="make"
+                className="block text-sm font-md text-gray-700"
+              >
                 Make
-              </option>
-              {makes.map((make) => (
-                <option key={make} value={make}>
-                  {make}
+              </label>
+              <select
+                id="make"
+                name="make"
+                value={formData.make}
+                onChange={(e) =>
+                  handleChange({
+                    target: { name: e.target.name, value: e.target.value },
+                  })
+                }
+                className="input-field border p-2 rounded-md w-full"
+              >
+                <option value="" disabled>
+                  Make
                 </option>
-              ))}
-            </select>
-          </div>
-          <div className="w-1/2">
-            <label
-              htmlFor="model"
-              className="block text-sm font-md text-gray-700">
-              Model
-            </label>
-            <select
-              id="model"
-              name="model"
-              value={formData.model}
-              onChange={handleChange}
-              className="input-field border p-2 rounded-md w-full">
-              <option value="" disabled>
-                Model
-              </option>
-              {formData.make &&
-                models[formData.make].map((model) => (
-                  <option key={model} value={model}>
-                    {model}
+                {makes.map((make) => (
+                  <option key={make} value={make}>
+                    {make}
                   </option>
                 ))}
-            </select>
+              </select>
+            </div>
+            <div className="w-1/2">
+              <label
+                htmlFor="model"
+                className="block text-sm font-md text-gray-700"
+              >
+                Model
+              </label>
+              <select
+                id="model"
+                name="model"
+                value={formData.model}
+                onChange={handleChange}
+                className="input-field border p-2 rounded-md w-full"
+              >
+                <option value="" disabled>
+                  Model
+                </option>
+                {formData.make &&
+                  models[formData.make].map((model) => (
+                    <option key={model} value={model}>
+                      {model}
+                    </option>
+                  ))}
+              </select>
+            </div>
           </div>
-        </div>
 
-        <div className="flex space-x-4 mb-4">
-          <div className="w-1/2">
+          <div className="flex space-x-4 mb-4">
+            <div className="w-1/2">
+              <label
+                htmlFor="reg"
+                className="block text-sm font-md text-gray-700"
+              >
+                Reg. no
+              </label>
+              <input
+                type="text"
+                id="reg"
+                name="reg"
+                value={formData.reg}
+                onChange={handleChange}
+                className="input-field border p-2 rounded-md w-full"
+                maxLength={6}
+                pattern="[a-zA-Z]{3}\d{2}[a-zA-Z\d]{1}"
+                title="Please follow the patterns ABC123/ABC12X"
+                placeholder="e.g. ABC123"
+              />
+            </div>
+
+            <div className="w-1/2">
+              <label
+                htmlFor="availableSeats"
+                className="block text-sm font-md text-gray-700"
+              >
+                Available Seats
+              </label>
+              <input
+                type="number"
+                id="availableSeats"
+                name="availableSeats"
+                value={formData.availableSeats}
+                onChange={(e) => {
+                  const value = parseInt(e.target.value, 10);
+                  handleChange({
+                    target: {
+                      name: e.target.name,
+                      value: value > 0 ? value : 1,
+                    },
+                  });
+                }}
+                className="input-field border p-2 rounded-md w-full"
+                min={1}
+                max={8}
+                maxLength={1}
+                pattern="[1-8]"
+                placeholder="Max 8"
+              />
+            </div>
+          </div>
+
+          <div className="mb-4">
             <label
-              htmlFor="reg"
-              className="block text-sm font-md text-gray-700">
-              Reg. no
+              htmlFor="message"
+              className="block text-sm font-md text-gray-700"
+            >
+              Message
             </label>
-            <input
-              type="text"
-              id="reg"
-              name="reg"
-              value={formData.reg}
+            <textarea
+              id="message"
+              name="message"
+              value={formData.message}
               onChange={handleChange}
-              className="input-field border p-2 rounded-md w-full"
-              maxLength={6}
-              pattern="[a-zA-Z]{3}\d{2}[a-zA-Z\d]{1}"
-              title="Please follow the patterns ABC123/ABC12X"
-              placeholder="e.g. ABC123"
+              className="input-field h-24 border p-2 rounded-md w-full"
+              maxLength={400}
+              placeholder="Write a message. Max 400 characters."
             />
           </div>
-
-          <div className="w-1/2">
-            <label
-              htmlFor="availableSeats"
-              className="block text-sm font-md text-gray-700">
-              Available Seats
-            </label>
-            <input
-              type="number"
-              id="availableSeats"
-              name="availableSeats"
-              value={formData.availableSeats}
-              onChange={(e) => {
-                const value = parseInt(e.target.value, 10);
-                handleChange({
-                  target: {
-                    name: e.target.name,
-                    value: value > 0 ? value : 1,
-                  },
-                });
-              }}
-              className="input-field border p-2 rounded-md w-full"
-              min={1}
-              max={8}
-              maxLength={1}
-              pattern="[1-8]"
-              placeholder="Max 8"
-            />
-          </div>
-        </div>
-
-        <div className="mb-4">
-          <label
-            htmlFor="message"
-            className="block text-sm font-md text-gray-700">
-            Message
-          </label>
-          <textarea
-            id="message"
-            name="message"
-            value={formData.message}
-            onChange={handleChange}
-            className="input-field h-24 border p-2 rounded-md w-full"
-            maxLength={400}
-            placeholder="Write a message. Max 400 characters."
-          />
-        </div>
+          <button
+            type="submit"
+            className={`submit-button ${
+              loading
+                ? "bg-gray-100"
+                : formDataIsIncomplete()
+                ? "bg-gray-100"
+                : "bg-rose-500 hover:bg-rose-700"
+            } text-white p-4 py-2 rounded-full focus:outline-none focus:ring focus:border-blue-300`}
+            disabled={loading || formDataIsIncomplete()}
+          >
+            {loading ? "Generating..." : "Create Trip"}
+          </button>
+        </form>
 
         <button
-          type="submit"
-          className="submit-button bg-rose-500 text-white p-4 rounded-md hover:bg-rose-700 focus:outline-none focus:ring focus:border-blue-300"
-          disabled={loading}>
-          {loading ? "Generating..." : "Create Trip"}
+          onClick={clearLocalStorage}
+          className="clear-button bg-lime-500 text-white px-4 py-2 mt-4 rounded-full hover:bg-lime-700 focus:outline-none focus:ring focus:border-red-300"
+        >
+          Clear Local Storage
         </button>
-      </form>
 
-      <button
-        onClick={clearLocalStorage}
-        className="clear-button bg-violet-500 text-white px-4 py-2 mt-4 rounded-md hover:bg-lime-700 focus:outline-none focus:ring focus:border-red-300">
-        Clear Local Storage
-      </button>
+        {trips.length > 0 && (
+          <div className="mt-8 space-y-4">
+            <h1 className="text-lg font-md">Available Trips</h1>
+            {trips.reverse().map((trip) => (
+              <div
+                key={trip.id}
+                className="grid grid-cols-12 gap-2 p-4 bg-gray-100 rounded-lg relative"
+              >
+                <div className="col-span-4 p-1 bg-gray-900 text-xs text-gray-50 sm:text-2xl text-center rounded border-2 border-gray-900">
+                  {trip.from}
+                </div>
 
-      {trips.length > 0 && (
-        <div className="mt-8 space-y-4">
-          <h1 className="text-lg font-md">Available Trips</h1>
-          {trips.reverse().map((trip) => (
-            <div
-              key={trip.id}
-              className="grid grid-cols-12 gap-2 p-4 bg-emerald-100 rounded-lg">
-              <div className="col-span-6 text-xs text-emerald-900">FROM</div>
-              <div className="col-span-6 text-xs text-emerald-900">TO</div>
-              <div className="col-span-6 p-4 flex items-center justify-center text-center bg-emerald-900 text-white text-md sm:text-2xl sm:p-4 font-semibold">
-                {trip.from}
-              </div>
-              <div className="col-span-6 p-4 flex items-center justify-center text-center bg-emerald-900 text-white text-md sm:text-2xl sm:p-4 font-semibold">
-                {trip.to}
-              </div>
-              <div className="col-span-5 text-xs mt-2 text-emerald-900">
-                DATE
-              </div>
-              <div className="col-span-2 text-xs mt-2 text-emerald-900">
-                TIME
-              </div>
-              <div className="col-span-5 text-xs mt-2 text-emerald-900">
-                DRIVER
-              </div>
-              <div className="col-span-5 bg-emerald-400 p-4 flex items-center justify-center text-center text-md sm:text-xl text-emerald-900">
-                {trip.date}
-              </div>
+                <div className="col-span-1 p-1 text-xs text-gray-900 sm:text-2xl text-center">
+                  →
+                </div>
 
-              <div className="col-span-2  bg-emerald-400 p-4 flex items-center justify-center text-center text-md sm:text-xl text-emerald-900">
-                {trip.time}
+                <div className="col-span-4 p-1 text-xs text-gray-900 sm:text-2xl text-center rounded border-2 border-gray-900">
+                  {trip.to}
+                </div>
+
+                <div className="col-span-3"></div>
+
+                <div className="col-span-3 text-xs text-gray-900 sm:text-xl">
+                  {trip.date}
+                </div>
+                <div className="col-span-2 text-xs text-gray-900 sm:text-xl">
+                  {trip.time}
+                </div>
+                <div className="col-span-4 text-xs text-gray-900 sm:text-xl">
+                  User456789012
+                </div>
+                <div className="col-span-3"></div>
+                <div className="col-span-12 text-xs text-gray-500 text-left">
+                  TRIP {trip.id}
+                </div>
+
+                <div className="col-span-3 absolute right-4 top-1/2 transform -translate-y-1/2 h-full flex items-center justify-center">
+                  <button className="bg-rose-500 text-white px-4 py-2 rounded-full hover:bg-rose-700 focus:outline-none sm:text-xl">
+                    View
+                  </button>
+                </div>
               </div>
-              <div className="col-span-5 p-4 flex items-center justify-center text-center text-md sm:text-xl text-emerald-900">
-                User01234567
-              </div>
-              <div className="col-span-4 text-xs mt-2 text-emerald-900">
-                MAKE
-              </div>
-              <div className="col-span-4 text-xs mt-2 text-emerald-900">
-                MODEL
-              </div>
-              <div className="col-span-4 text-xs mt-2 text-emerald-900">
-                REG. NO
-              </div>
-              <div className="col-span-4 bg-emerald-200 p-4 flex items-center justify-center text-center text-sm sm:text-xl text-emerald-900 truncate">
-                {trip.make}
-              </div>
-              <div className="col-span-4 bg-emerald-200 p-4 flex items-center justify-center text-center text-sm sm:text-xl text-emerald-900">
-                {trip.model}
-              </div>
-              <div className="col-span-4 bg-white p-0 flex items-center justify-center text-center text-lg sm:text-2xl font-semibold rounded-md border-2 border-gray-500">
-                {trip.reg}
-              </div>
-              <div className="col-span-12 text-xs mt-2 text-emerald-900">
-                MESSAGE
-              </div>
-              <div className="col-span-12 p-4 flex items-left justify-left text-sm sm:text-lg text-left text-emerald-900">
-                {trip.message}
-              </div>
-              <div className="col-span-7 text-xs mt-2 text-emerald-900">
-                CO-PASSENGERS
-              </div>
-              <div className="col-span-5 text-xs mt-2 text-emerald-900">
-                FREE SEATS
-              </div>
-              <div className="col-span-7 text-md sm:text-xl p-4 flex items-center justify-left text-left">
-                User1, User2, User3
-              </div>
-              <div className="col-span-2 bg-white p-4 flex items-center justify-center text-center text-emerald-900 text-lg sm:text-xl">
-                {trip.availableSeats}
-              </div>
-              <div className="col-span-3">
-                <button
-                  type="button"
-                  className="submit-button bg-rose-500 text-white px-4 py-2 rounded-md hover:bg-rose-700 focus:outline-none focus:ring focus:border-blue-300 h-full w-full">
-                  Join
-                </button>
-              </div>
-              <div className="col-span-12 mt-2 text-xs text-right text-emerald-900">
-                TRIP ID {trip.id}
-              </div>
-            </div>
-          ))}
-        </div>
-      )}
-    </div>
+            ))}
+          </div>
+        )}
+      </div>
+    </>
   );
 };

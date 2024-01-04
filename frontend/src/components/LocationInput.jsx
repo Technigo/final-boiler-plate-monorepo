@@ -33,7 +33,6 @@ export const LocationInput = ({
   }, [inputValue, name, setFormData, isSuggestionSelected]);
 
   const handleSelect = (selectedValue) => {
-    setInputValue(selectedValue);
     onChange({ target: { name, value: selectedValue } });
     setSuggestions([]);
     setIsSuggestionSelected(true);
@@ -61,15 +60,11 @@ export const LocationInput = ({
   };
 
   const handleInputKeyDown = (e) => {
-    console.log("Key pressed:", e.key);
-
     if (e.key === "Escape") {
-      console.log("Clearing suggestions...");
       setSuggestions([]);
     }
 
     if (e.key === "Enter" && suggestions.length > 0) {
-      console.log("Selecting suggestion:", suggestions[0]);
       handleSelect(suggestions[0]);
       inputRef.current.focus();
       e.preventDefault();
@@ -86,7 +81,7 @@ export const LocationInput = ({
         type="text"
         id={name}
         name={name}
-        value={inputValue}
+        value={value}
         onChange={handleInputChange}
         onBlur={handleInputBlur}
         onKeyDown={handleInputKeyDown}
@@ -108,7 +103,8 @@ export const LocationInput = ({
             <li
               key={suggestion}
               className="suggestion-item cursor-pointer p-2 hover:bg-gray-100"
-              onClick={() => handleSuggestionClick(suggestion)}>
+              onClick={() => handleSuggestionClick(suggestion)}
+            >
               {suggestion}
             </li>
           ))}
