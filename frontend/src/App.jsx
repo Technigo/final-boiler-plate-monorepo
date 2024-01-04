@@ -276,17 +276,40 @@ export const App = () => {
         // use settimeout to delay the displaytext
         setTimeout(() => {
           setDisplayText(["... you cant believe your eyes.", "you found something from the ground"])
-        // console.log('Before isDandelionFound update:', isDandelionFound)
-        setIsDandelionFound(true)
-        setShowButton2(false)
-        // console.log('After isDandellionFound update:', isDandelionFound)
-        // console.log('dandelion found:', isDandelionFound)
-      }, 20000)
+          // console.log('Before isDandelionFound update:', isDandelionFound)
+          setIsDandelionFound(true)
+          setShowButton2(false)
+          // console.log('After isDandellionFound update:', isDandelionFound)
+          console.log('dandelion found:', isDandelionFound)
+        }, 20000)
+        const updateDandelion = async () => {
+          try {
+            const response = await fetch("http://localhost:3000/up?updateDandelion=true", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+                "Authorization": `${accessToken}`
+              },
+              body: JSON.stringify({
+                dandelionFound: true
+              })
+            })
+
+            if (response.ok) {
+              console.log("Dandelion found and updated on the server.")
+            } else {
+              console.error("failed to update dandelion on the server")
+            }
+          } catch (error) {
+            console.error("error updating dandelion:", error.message)
+          }
+        }
+        updateDandelion()
       // }
     }  
      
   // }, [displayText, targetUserFound])
-  }, [isRain, targetUserFound, isDandelionFound])
+  }, [isRain, targetUserFound, isDandelionFound, accessToken])
 
 
 

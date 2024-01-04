@@ -153,6 +153,21 @@ const upUserController = asyncHandler(async (req, res) => {
     //     // grid: user.grid,
     //   }
     // })
+    
+    // to check if dandelion needs to be updated
+    const updateDandelion = req.query.updateDandelion === 'true'
+    if (updateDandelion) {
+      // increase dandelion by 1
+      await UserModel.findByIdAndUpdate(user._id, { $inc: { dandelion: 1 } })
+      // is this continuously working whenever user clicks afterwards update dandelion?
+      // can i make res?
+      res.status(200).json({
+        success: true,
+        response: {
+          dandelion: user.dandelion
+        }
+      })
+    }
 
     // retrieve users with grid value of 3,C
     const userWithGrid3C = await UserModel.find({ 'grid.row': 3, 'grid.column': 'C' })
