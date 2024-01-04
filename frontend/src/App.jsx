@@ -3,6 +3,7 @@ import routes from "./routes/routes";
 import { TripGenerator } from "./components/TripGenerator";
 import { Footer } from "./components/footer";
 import { Navbar } from "./components/Navbar";
+import { Hero } from "./components/Hero";
 
 export const App = () => {
   return (
@@ -11,8 +12,9 @@ export const App = () => {
         <main>
           <Navbar />
           <Routes>{routes}</Routes>
-          <TripGenerator />
-          <Footer/>
+          {/* <TripGenerator /> */}
+          <Hero />
+          <Footer />
         </main>
       </BrowserRouter>
     </>
