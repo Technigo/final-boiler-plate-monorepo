@@ -154,7 +154,7 @@
     },
     "images": {
       "preview_url": "",
-      "full_size_url": "/uploads/rubber-plant.jpeg"
+      "full_size_url": "https://drive.google.com/uc?id=1Fi451A5Hw2HRhV86QxCjKJOubb6Z-bOo"
     },
     "price": 49.95,
     "added_to_wishlist": false
@@ -178,7 +178,7 @@
     },
     "images": {
       "preview_url": "",
-      "full_size_url": "/uploads/raven-zz.jpeg"
+      "full_size_url": "https://drive.google.com/uc?id=1frESDOvASaKq3AeTRNsSXbjXmkV5xfiT"
     },
     "price": 49,
     "added_to_wishlist": false
@@ -226,7 +226,7 @@
     },
     "images": {
       "preview_url": "",
-      "full_size_url": "/uploads/aloe-vera.png"
+      "full_size_url": "https://drive.google.com/uc?id=1Y0k-sHKD61F50pXd_kgH8nQZQTtvnxLK"
     },
     "price": 22.95,
     "added_to_wishlist": false
@@ -250,7 +250,7 @@
     },
     "images": {
       "preview_url": "",
-      "full_size_url": "/uploads/snake-plant.jpeg"
+      "full_size_url": "https://drive.google.com/uc?id=1D8JZBvRKheOO3-oMiU0jQn9KcD82blrE"
     },
     "price": 39,
     "added_to_whishlist": false
@@ -274,7 +274,7 @@
     },
     "images": {
       "preview_url": "",
-      "full_size_url": "/uploads/ficus-burgundy.jpeg"
+      "full_size_url": "https://drive.google.com/uc?id=17cXG2amZ3K3-v0kHGeCmm1KFcbDsVIfc"
     },
     "price": 69.95,
     "added_to_whishlist": false
@@ -346,7 +346,7 @@
     },
     "images": {
       "preview_url": "",
-      "full_size_url": "/uploads/spider.png"
+      "full_size_url": "https://drive.google.com/uc?id=18CGeD6n3cHwmshNNhMIoJ5aYoJqmgw6x"
     },
     "price": 13.95,
     "added_to_whishlist": false
@@ -406,7 +406,7 @@
     },
     "images": {
       "preview_url": "",
-      "full_size_url": "/uploads/peperomia-hope.jpeg"
+      "full_size_url": "https://drive.google.com/uc?id=1BMOz-yMjcofibH_rPTQGmTFFIpk6_6u8"
     },
     "price": 7.95,
     "added_to_whishlist": false
@@ -475,7 +475,7 @@
     },
     "images": {
       "preview_url": "",
-      "full_size_url": "/uploads/philodendron-micans.jpeg"
+      "full_size_url": "https://drive.google.com/uc?id=1CtlNKpgsWE7e7aQ6J1WeXVUNrNfbCCdV"
     },
     "price": 29,
     "added_to_whishlist": false
@@ -507,7 +507,7 @@
     },
     "images": {
       "preview_url": "",
-      "full_size_url": "/uploads/crete-flame.jpg"
+      "full_size_url": "https://drive.google.com/uc?id=1guaFs-PEFB_SzwbckNCzTr0FZABFpzLT"
     },
     "price": 11.95,
     "added_to_whishlist": false
@@ -563,7 +563,7 @@
     },
     "images": {
       "preview_url": "",
-      "full_size_url": "/uploads/money-tree.jpg"
+      "full_size_url": "https://drive.google.com/uc?id=1KJ5OV-Dy6xZeWcRQTMJDnT0tpINgHnFS"
     },
     "price": 27.95,
     "added_to_whishlist": false
@@ -592,7 +592,7 @@
     },
     "images": {
       "preview_url": "",
-      "full_size_url": "/uploads/philodendron-lemon-lime.jpeg"
+      "full_size_url": "/https://drive.google.com/uc?id=1OXkCIA47EIxEEF7YEfJ_tlC9kard0E5e"
     },
     "price": 13.95,
     "added_to_whishlist": false
@@ -623,26 +623,26 @@
   },
   {
     "plantID": 24,
-    "plant_title": "Philodendron Mayoi",
-    "botanical_name": "Philodendron 'Mayoi'",
-    "common_names": ["Philodendron Mayoi"],
-    "category_type": ["climbing", "green", "fun shape", "rare", "shade"],
-    "origin": "Tropical regions of the Americas",
-    "description": "Philodendron mayoi is a rare species that there's a growing demand for. What sets this plant apart from the common heartleaf philodendron is its large, palm-like leaves and the stalks (petioles) and underside veins with a striking red tinge. As the plant grows, the glossy green lobes deepen and widen. A large climbing, vining plant that, when mature, can grow to be over 6 feet tall, it's a perfect dramatic floor specimen.",
-    "fun_fact": "A fun fact about her name is that she is named after the botanist who discovered her.",
-    "height": "±35",
+    "plant_title": "Bird of Paradise",
+    "botanical_name": "Strelitzia nicolai",
+    "common_names": ["White Bird", "White Bird of Paradise", "Giant Bird of Paradise", "Natal Wild Banana"],
+    "category_type": ["green"],
+    "origin": "South Africa",
+    "description": "Impressive and tropical with large, glossy leaves that naturally split over time. The Bird of Paradise is considered the queen of the indoor plant world. This large, upright plant adds a rich, tropical flair to your space as its glossy, banana-shaped leaves fan out.",
+    "fun_fact": "The breaks and slits in your Bird of Paradise's leaves aren't necessarily a cause for concern. These slits occur naturally in the wild to help the plant become more aerodynamic in wind and rain.",
+    "height": "±70",
     "careDetails": {
-      "care_description": "Philodendrons are fast-growing, easy plants. They range in growth pattern from graceful and vining to bold and bushy. Philodendrons are generally forgiving and will tolerate all kinds of neglect including low light, poor soil, and inconsistent watering.",
+      "care_description": "It is relatively hardy and adapts to a wide spectrum of light conditions from direct sun to low, indirect light, but will flourish in a sunny spot.",
       "care_level": "Easy",
-      "watering": "Unlike some thirsty tropical species, your Philodendron mayoi isn't too fussy regarding its watering regime. Feel the soil with your fingers to check when your plant needs irrigating. When the top couple of inches of potting soil is dry, it's usually time to water.",
-      "light": "Natural, bright light is important for your Philodendron mayoi, but ideally, it should be indirect. A couple of hours of morning sun near a north or east-facing window shouldn't be harmful.",
+      "watering": "Water your Bird of Paradise when the soil volume is 50% dry. Water until liquid flows through the drainage hole at the bottom of the pot and discard any water that has accumulated in the saucer.",
+      "light": "The Bird of Paradise can handle direct and bright indirect light. However, it will flourish most in a sunny spot in direct sun. If you don't think you have a spot with enough light, try using a grow light.",
       "benefits": "Air cleaner"
     },
     "images": {
       "preview_url": "",
-      "full_size_url": "/uploads/philodendron-mayoi.jpg"
+      "full_size_url": "https://images.unsplash.com/photo-1677069080087-84f9f598ebeb?q=80&w=1364&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
     },
-    "price": 25,
+    "price": 69,
     "added_to_whishlist": false
   },
   {
@@ -669,7 +669,7 @@
     },
     "images": {
       "preview_url": "",
-      "full_size_url": "frontend/public/plant-images/philodendron-brasil.jpg"
+      "full_size_url": "https://drive.google.com/uc?id=13F5_EbuUWtrrw5g6DSpRYuKk4--buKq0"
     },
     "price": 12,
     "added_to_whishlist": false
@@ -736,7 +736,7 @@
     },
     "images": {
       "preview_url": "",
-      "full_size_url": ""
+      "full_size_url": "https://drive.google.com/uc?id=1FeUVIBkpXxCbpv1y-5fxfojuzUoGcbtH"
     },
     "price": 22.95,
     "added_to_whishlist": false
@@ -766,7 +766,7 @@
     },
     "images": {
       "preview_url": "",
-      "full_size_url": "frontend/public/plant-images/tetrasperma.jpg"
+      "full_size_url": "https://drive.google.com/uc?id=1Efe6kxBSuCjPI6cPpq7-NxwLMIl9qk_q"
     },
     "price": 12.95,
     "added_to_whishlist": false
@@ -790,7 +790,7 @@
     },
     "images": {
       "preview_url": "",
-      "full_size_url": "frontend/public/plant-images/adansonii.jpg"
+      "full_size_url": "https://drive.google.com/uc?id=1VZVVODjUFUJHX9IxL55NIVD-jgvkja4Q"
     },
     "price": 49,
     "added_to_whishlist": false
@@ -824,7 +824,7 @@
     },
     "images": {
       "preview_url": "",
-      "full_size_url": "frontend/public/plant-images/rubber-plant.jpeg"
+      "full_size_url": "https://drive.google.com/uc?id=1ro2QMR373TR6mlABga5R6eW6wF4hZBO8"
     },
     "price": 29.95,
     "added_to_whishlist": false
@@ -914,7 +914,7 @@
     },
     "images": {
       "preview_url": "",
-      "full_size_url": "frontend/public/plant-images/calathea-white-fusion.jpg"
+      "full_size_url": "https://drive.google.com/uc?id=1LEPuDCE_8qEPehUNEkaOhxB8UxsOcgvq"
     },
     "price": 26,
     "added_to_whishlist": false
@@ -943,7 +943,7 @@
     },
     "images": {
       "preview_url": "",
-      "full_size_url": "frontend/public/plant-images/anthurium-rystallinum.jpeg"
+      "full_size_url": "https://drive.google.com/uc?id=18hZPYqyDE3zHuy6zPpfaq8FjICHCsgc7"
     },
     "price": 59,
     "added_to_whishlist": false
@@ -977,7 +977,7 @@
     },
     "images": {
       "preview_url": "",
-      "full_size_url": "frontend/public/plant-images/hoya-tricolor.jpg"
+      "full_size_url": "https://drive.google.com/uc?id=1R3quF0dEfBdovfbOr9PRuPUgEpfq2tir"
     },
     "price": 21.95,
     "added_to_whishlist": false
@@ -1030,7 +1030,7 @@
     },
     "images": {
       "preview_url": "",
-      "full_size_url": "frontend/public/plant-images/fishbone-cactus.jpg"
+      "full_size_url": "https://drive.google.com/uc?id=15imD8t0XthoF-69yOn4F6Yir_Yvpk-U8"
     },
     "price": 25,
     "added_to_whishlist": false
@@ -1112,7 +1112,7 @@
     },
     "images": {
       "preview_url": "",
-      "full_size_url": "frontend/public/plant-images/garnet-lotus.jpg"
+      "full_size_url": "https://drive.google.com/uc?id=1JAN0kO-rng_hO2Y0CY7MGIG1xJcKPJjj"
     },
     "price": 7.95,
     "added_to_whishlist": false

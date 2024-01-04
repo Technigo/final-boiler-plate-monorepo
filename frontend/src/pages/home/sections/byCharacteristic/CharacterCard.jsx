@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 
 export const CharacterCard = () => {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   const cards = [
     {
@@ -36,14 +36,14 @@ export const CharacterCard = () => {
       {cards.map((card) => {
         return (
           <div
-            onClick={() => navigate(`/plants`)}
+            // onClick={() => navigate(`/plants`)}
             className="character-card-wrapper"
             key={card.id}
           >
             <img src={card.image} alt={card.imgAlt} />
             <div className="character-overlay">
               <h3>{card.heading}</h3>
-              <Link to="" className="shop-now-link">
+              <Link to="/plants" className="shop-now-link">
                 shop now
               </Link>
             </div>

@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react";
 import { PiHeartStraightFill } from "react-icons/pi";
+import { Link } from "react-router-dom"
 
 import "./BestSellers.css";
-import { useNavigate } from "react-router-dom";
+//import { useNavigate } from "react-router-dom";
 
 import {plantStore} from "../../../../stores/plantStore";
 
@@ -16,7 +17,7 @@ export const BestSellers = () => {
   const { plants, fetchPlants, setApiEndpoint } = plantStore();
 
   console.log("POPULAR PLANTS:", plants);
-  const navigate = useNavigate();
+  //const navigate = useNavigate();
 
   useEffect(() => {
     setApiEndpoint("https://plants-holm-witting-backend.onrender.com/api/plants/category/popular");
@@ -33,8 +34,9 @@ export const BestSellers = () => {
         <div className="products-wrapper">
           {plants.map((plant) => {
             return (
+              <Link to={`/plants/${plant._id}`}>
               <div
-                onClick={() => navigate(`/plants/${plant._id}`)}
+                // onClick={() => navigate(`/plants/${plant._id}`)}
                 key={plant._id}
               >
                 <div className="plant-card">
@@ -52,6 +54,7 @@ export const BestSellers = () => {
                   </div>
                 </div>
               </div>
+              </Link>
             );
           })}
         </div>

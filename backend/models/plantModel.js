@@ -61,9 +61,6 @@ const plantSchema = new Schema({
     type: Number,
     required: true,
   },
-  added_to_wishlist: {
-    type: Boolean,
-  },
 });
 
 export const PlantModel = mongoose.model("Plant", plantSchema);

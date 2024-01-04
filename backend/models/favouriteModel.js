@@ -1,15 +1,18 @@
-import mongoose from "mongoose"; 
+import mongoose from "mongoose";
 
 const { Schema } = mongoose;
 
 const favouriteSchema = new Schema({
-    apiId: {
-        type: String
+  likedPlants: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Plant"
     },
-    like: {
-        type: Boolean,
-        default: false
-    }
-})
+  ],
+  user: {
+    type: mongoose.Schema.Types.ObjectId, 
+    ref: "User",
+  }
+});
 
-export const FavouriteModel = mongoose.model("Favourite", favouriteSchema)
+export const FavouriteModel = mongoose.model("Favourite", favouriteSchema);

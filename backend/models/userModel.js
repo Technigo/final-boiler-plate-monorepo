@@ -24,12 +24,12 @@ const userSchema = new Schema(
       required: true,
       unique: true,
     },
-    favourites: [
-      {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "Favourites",
-      },
-    ],
+    // favourites: [
+    //   {
+    //     type: mongoose.Schema.Types.ObjectId,
+    //     ref: "Favourites",
+    //   },
+    // ],
     // Defines the 'role' field with a String data type.
     role: {
       type: String,

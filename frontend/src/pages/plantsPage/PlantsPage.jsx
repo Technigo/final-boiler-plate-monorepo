@@ -1,12 +1,12 @@
 import { plantStore } from "../../stores/plantStore";
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom"
+
 import "./PlantsPage.css";
 
 import { PiHeartStraightFill } from "react-icons/pi";
 
 export const PlantsPage = () => {
-  const navigate = useNavigate();
 
   const [error, setError] = useState(null);
   //   const [selectedCategory, setSelectedCategory] = useState(null);
@@ -52,9 +52,9 @@ export const PlantsPage = () => {
         <div className="products-wrapper">
           {plants.map((plant) => {
             return (
+              <Link to={`/plants/${plant._id}`}>
               <div
                 className="plant-card"
-                onClick={() => navigate(`/plants/${plant._id}`)}
                 key={plant._id}
               >
                 <img
@@ -70,6 +70,7 @@ export const PlantsPage = () => {
                   </div>
                 </div>
               </div>
+              </Link>
             );
           })}
         </div>
