@@ -15,9 +15,32 @@ export const Carousel = () => {
   const [stories, setStories] = useState([]);
   const [activeSlide, setActiveSlide] = useState(0); 
   
+  // const handleRankUpdate = (updatedStory) => {
+  //   setStories(stories.map(story => story.id === updatedStory.id ? updatedStory : story));
+  // };
+
   const handleRankUpdate = (updatedStory) => {
-    setStories(stories.map(story => story.id === updatedStory.id ? updatedStory : story));
+    setStories(prevStories => 
+      prevStories.map(story => 
+        story._id === updatedStory._id ? updatedStory : story
+      )
+    );
   };
+
+  const updateStories = () => {
+    fetch('http://localhost:3000/stories')
+    .then(response => response.json())
+    .then(data => {
+      setStories(data.map(story => ({
+        ...story,
+        id: story._id,
+        city: 'Temporary City', // Update as needed
+        image: 'placeholderImage.png' // Update as needed
+      })));
+    })
+    .catch(error => console.error('Error fetching stories:', error));
+  };
+  
 
   useEffect(() => {
     fetch('http://localhost:3000/stories')
@@ -101,7 +124,7 @@ export const Carousel = () => {
     >
       {stories.map((story, index) => (
         <SwiperSlide key={story.id}>
-          <StoryCard story={story} isActive={index === activeSlide} onRankUpdate={handleRankUpdate} />
+          <StoryCard story={story} isActive={index === activeSlide} onRankUpdate={handleRankUpdate} onUpdateStories={updateStories} />
         </SwiperSlide>
       ))}
     </Swiper>

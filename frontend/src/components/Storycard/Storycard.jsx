@@ -4,7 +4,7 @@ import './Storycard.css';
 import { timeSince } from '../utils/timeUtils';
 import likeIcon from '../../assets/like.svg';
 
-export const StoryCard = ({ story, isActive, onRankUpdate }) => {
+export const StoryCard = ({ story, isActive, onUpdateStories }) => {
   const cardStyle = {
     transform: isActive ? 'scale(1)' : 'scale(1)',
     transition: 'transform 0.3s ease-in-out',
@@ -12,23 +12,40 @@ export const StoryCard = ({ story, isActive, onRankUpdate }) => {
     position: 'relative',
   };
 
+  // const handleLikeClick = () => {
+  //   fetch(`http://localhost:3000/stories/${story._id}/rank`, {
+  //     method: 'PUT',
+  //     headers: {
+  //       'Content-Type': 'application/json',
+  //     }
+  //   })
+  //   .then(response => response.json())
+  //   .then(updatedStory => {
+  //     if (onRankUpdate) { 
+  //       onRankUpdate(updatedStory);
+  //     }
+  //   })
+  //   .catch(error => console.error('Error updating story ranking:', error));
+  // };
+
   const handleLikeClick = () => {
     fetch(`http://localhost:3000/stories/${story._id}/rank`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
       }
-      // No need to send the body as the ranking increment is handled server-side
     })
     .then(response => response.json())
-    .then(updatedStory => {
-      if (onRankUpdate) { 
-        onRankUpdate(updatedStory);
+    .then(() => {
+      if (onUpdateStories) { 
+        onUpdateStories(); // Function to trigger re-fetching of stories
       }
     })
     .catch(error => console.error('Error updating story ranking:', error));
   };
   
+
+
   return (
     <div className="story-card" style={cardStyle}>
       {story.image && <img src={`/${story.image}`} alt={`${story.city} story`} />}
