@@ -1,0 +1,5 @@
+{
+    "name": "Room 1",
+    "capacity": 20,
+    "rows-then-seats": [5, 4]
+}
