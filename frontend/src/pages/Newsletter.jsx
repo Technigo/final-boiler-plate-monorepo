@@ -10,7 +10,6 @@ export const Newsletter = () => {
 
     const storeHandleLogout = userStore((state) => state.handleLogout);
 
-
     // Use the 'useNavigate' hook to programmatically navigate between routes.
     const navigate = useNavigate();
 

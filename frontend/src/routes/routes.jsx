@@ -24,8 +24,6 @@ const routes = (
     <Route path="/Admin" element={<Admin />} />
     <Route path="/HandledBooking" element={<HandledBooking />} />
     <Route path="/UnHandledBooking" element={<UnHandledBooking />} />
-    <Route path="/UnHandledBooking" element={<UnHandledBooking />} />
-    <Route path="/Newsletter" element={<Newsletter />} />
     <Route path="/Newsletter" element={<Newsletter />} />
     <Route path="/Login" element={<Login />} />
     <Route path="/Register" element={<Register />} />

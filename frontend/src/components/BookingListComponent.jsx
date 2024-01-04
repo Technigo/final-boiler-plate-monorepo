@@ -1,6 +1,5 @@
 // Import necessary dependencies and components
 import React, { useEffect } from "react";
-import { formatDistanceToNow } from "date-fns";
 import { BtnComponent } from "./BtnComonent";
 import { ParagraphComponent } from "./ParagraphComponent";
 import { format, isValid } from 'date-fns';
