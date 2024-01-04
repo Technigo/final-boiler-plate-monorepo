@@ -229,11 +229,14 @@ export const updateUserController = asyncHandler(async (req, res) => {
         imageId = result.public_id;
       } catch (uploadError) {
         console.error("Cloudinary Upload Error:", uploadError);
-        res.status(500).json({
-          success: false,
-          response: "Error uploading image to Cloudinary.",
-          error: uploadError,
-        });
+        // Set default image URL if upload fails
+        imageUrl = defaultProfileImage;
+        imageId = null;
+        // res.status(500).json({
+        //   success: false,
+        //   response: "Error uploading image to Cloudinary.",
+        //   error: uploadError,
+        // });
       };
       // Find a user in the database with the same ID and update the details
       userToBeUpdated = await UserModel.findByIdAndUpdate(userId, {
