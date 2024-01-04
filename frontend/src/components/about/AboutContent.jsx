@@ -1,10 +1,29 @@
 import "./aboutContent.css";
 import { FaLinkedin } from "react-icons/fa"
 import { FaGithub } from "react-icons/fa"
+import { TbHealthRecognition } from "react-icons/tb";
+import { MdOutlineComputer } from "react-icons/md";
+import { IoTrailSignOutline } from "react-icons/io5";
 
 export const AboutContent = () => {
     return (
         <div className="card-container">
+            <div className="about-vision">
+                <h3><TbHealthRecognition /> Vision</h3>
+                <p>Our vision is to make it easier for people to connect with nature and enjoy delicious meals outdoors.</p>
+            </div>
+
+            <div className="about-tech">
+                <h3><MdOutlineComputer /> Tech</h3>
+                <p>
+                    React, JavaScript, Zustand, OpenAI, MongoDB, CSS, HTML, Mob Programming
+                </p></div>
+
+            <div className="project-info">
+                <h3><IoTrailSignOutline /> Info</h3>
+                <p>
+                    Navigate through the GitHub Read-me trail for a deeper exploration.
+                </p></div>
             <div className="card">
                 <div className="card-content">
                     <img src="https://idah-collin-portfolio.netlify.app/assets/profilbildidah.jpeg" alt="Photo of Idah Collin" />
@@ -28,24 +47,7 @@ export const AboutContent = () => {
                 </div>
             </div>
 
-            <div className="about-vision">
-                <h3>Our vision</h3>
-                <p>Our vision is to make it easier for people to connect with nature and enjoy delicious meals outdoors. varför kan inte denna och nästa div ligga utanför card-container diven?</p>
-            </div>
 
-            <div className="about-tech">
-                <h3>Tech</h3>
-                <ul>
-                    <li>React</li>
-                    <li>JavaScript</li>
-                    <li>Zustand</li>
-                    <li>OpenAI</li>
-                    <li>MongoDB</li>
-                    <li>Fyll på</li>
-                </ul>
-                <h4>More information about the project: Länk till Read-me på GitHub?</h4>
-            </div>
         </div>
-
     )
 }

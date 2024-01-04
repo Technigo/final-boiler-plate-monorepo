@@ -7,8 +7,8 @@ export const Header = () => {
       <h1 className="header-title"><Link to="/">Open AIr Feast</Link></h1>
       <nav className="header-nav">
         <ul>
-          <li><Link to="/">Home</Link></li>
-          <li><Link to="/about">About</Link></li>
+          {/* <li><Link to="/">Home</Link></li> */}
+          <li><Link to="/about">Discover</Link></li>
         </ul>
       </nav>
     </div>

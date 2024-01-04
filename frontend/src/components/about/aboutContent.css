@@ -2,7 +2,9 @@
 .card-container {
     display: flex;
     flex-wrap: wrap;
-    margin: 3%;
+    margin: 2%;
+    margin-top: 12%;
+    ;
     gap: 20px;
     /* Adjust the gap between cards */
 }
@@ -13,8 +15,6 @@
     /* Make cards take up 50% of the container width with a gap */
     background-color: #cff0e4;
     box-sizing: border-box;
-    border: 1px solid #86bca8;
-    border-radius: 8px;
     overflow: hidden;
 }
 
@@ -30,7 +30,6 @@
     padding-bottom: 20%;
     /* Adjust the aspect ratio (height/width) as needed */
     object-fit: cover;
-    border-bottom: 1px solid #ddd;
 }
 
 /* Style for the card title */
@@ -52,4 +51,40 @@
 .contact-idah a:hover,
 .contact-emmy a:hover {
     color: #86bca8;
+}
+
+.about-vision h3 {
+    text-align: center;
+    padding-bottom: 2%;
+}
+
+.about-tech h3 {
+    text-align: center;
+    padding-bottom: 2%;
+}
+
+.project-info h3 {
+    text-align: center;
+    padding-bottom: 2%;
+}
+
+.project-info p {
+    margin-bottom: 12%;
+    ;
+}
+
+/* ---------TABLET VIEW---------- */
+@media (min-width: 667px) and (max-width: 1024px) {
+    .about-tech {
+        display: flex;
+        flex-direction: row;
+    }
+}
+
+/* ---------DESKTOP VIEW---------- */
+@media (min-width: 1025px) {
+    .about-tech {
+        display: flex;
+        flex-direction: row;
+    }
 }
