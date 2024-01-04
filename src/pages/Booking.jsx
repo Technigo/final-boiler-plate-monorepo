@@ -1,6 +1,7 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { userStore } from '../store/userStore'
+import { SelectedTicket } from '../components/SelectedTicket'
 
 import data from '../showTime.json'
 
@@ -52,6 +53,9 @@ export const Booking = () => {
 			event.target.classList.add('selected')
 		}
 	}
+
+	useEffect( () => console.log(selectedSeats)
+		,[selectedSeats])
 	
 	return (
 		<>
@@ -90,6 +94,13 @@ export const Booking = () => {
 					</li>
 				</ul>
 			</section>
+
+			{selectedSeats && (
+				<div className="ticket-container">
+					{selectedSeats.map(item => <SelectedTicket key={item[1]} row={item[0]} seat={item[1]} />)}
+				</div>
+			)}
+
 			{isLoggedIn ? (
 				<>
 					<div className="button-container">

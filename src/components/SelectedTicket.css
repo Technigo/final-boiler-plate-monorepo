@@ -1,0 +1,47 @@
+.a-ticket {
+    --notch-size: 20px;
+    --notch-size-radius: -10px;
+    --ticket-border-color: var(--screen-text-color);
+
+    border: solid var(--ticket-border-color) 1px;
+    border-radius: 8px;
+    width: fit-content;
+    padding: 25px 15px;
+    display: flex;
+    flex-direction: column;
+    color: var(--screen-text-color);
+    position: relative;
+
+}
+
+.ticket-container p {
+    margin: 0;
+}
+.ticket-text {
+    font-size: 0.6rem;
+}
+.seat-number {
+    font-size: 1.2rem;
+    margin: 0;
+    color: var(--font-color);
+}
+
+.ticket-notch {
+    position: absolute;
+    background-color: var(--background-color);
+    /* border: red 1px solid; */
+    border-radius: 50%;
+    left: 50%;
+    transform: translate(-50%, 0);
+    width: var(--notch-size);
+    height: var(--notch-size);
+    overflow: hidden;
+}
+.ticket-notch.top {
+    top: var(--notch-size-radius);
+    border-bottom: var(--ticket-border-color) 1px solid;
+}
+.ticket-notch.bottom {
+    bottom: var(--notch-size-radius);
+    border-top: var(--ticket-border-color) 1px solid;
+}

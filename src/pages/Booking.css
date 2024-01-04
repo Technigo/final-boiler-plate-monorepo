@@ -56,3 +56,10 @@
 .seat-legend li span {
     margin: 2px;
 }
+
+.ticket-container {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    gap: 15px;
+}
