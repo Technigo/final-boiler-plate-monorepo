@@ -5,6 +5,27 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { useRestaurantStore } from "../stores/restaurantStore";
 
+ // Function to determine the route based on the category
+ export const getCategoryRoute = (category) => {
+  switch(category.toLowerCase()) {
+    case 'date':
+      return '/date';
+      case 'celebration':
+      return '/celebration';
+    case 'family':
+      return '/family';
+    case 'friends':
+      return '/friends';
+    case 'business':
+      return '/business';
+    case 'other':
+      return '/other';
+    // Add more cases as needed
+    default:
+      return '/occasion'; // Default route if category doesn't match
+  }
+};
+
 const PageContainer = styled.div`
   margin: 0 auto;
   padding: 20px;
@@ -74,27 +95,6 @@ const Home = () => {
 
   const handleCategorySelect = (selectedCategory) => {
     setSelectedCategory(selectedCategory);
-  };
-
-  // Function to determine the route based on the category
-  const getCategoryRoute = (category) => {
-    switch(category.toLowerCase()) {
-      case 'date':
-        return '/date';
-        case 'celebration':
-        return '/celebration';
-      case 'family':
-        return '/family';
-      case 'friends':
-        return '/friends';
-      case 'business':
-        return '/business';
-      case 'other':
-        return '/other';
-      // Add more cases as needed
-      default:
-        return '/occasion'; // Default route if category doesn't match
-    }
   };
 
   return (

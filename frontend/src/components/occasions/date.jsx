@@ -4,6 +4,7 @@ import Footer from "../footer"; // Ensure the path is correct
 import styled from "styled-components";
 import { useRestaurantStore } from '../../stores/restaurantStore';
 import { Link } from "react-router-dom";
+import { getCategoryRoute } from "../Home";
 
 const PageContainer = styled.div`
   font-family: "JosefinSans";
@@ -145,9 +146,14 @@ const DateSelector = () => {
         </BackButton>
         </Link>
         {selectedOccasion && (
-          <Link to="/mood">
-            <NextButton>Next</NextButton>
-          </Link>
+          <Link
+          to={{
+            pathname: "/mood",
+            state: { occasionRoute: getCategoryRoute(selectedOccasion) }, 
+          }}
+        >
+          <NextButton>Next</NextButton>
+        </Link>
         )}
         <Footer/>
       </PageContainer>
