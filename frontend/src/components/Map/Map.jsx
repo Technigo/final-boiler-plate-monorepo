@@ -151,14 +151,14 @@ export const Map = ({ stories = [] }) => {
     setCustomMarkerIcon(customMarker);
   }, []);
 
-  const onMapClick = useCallback((event) => {
-    const newMarker = {
-      lat: event.latLng.lat(),
-      lng: event.latLng.lng(),
-      comment: "",
-    };
-    setMarkers((current) => [...current, newMarker]);
-  }, []);
+  // const onMapClick = useCallback((event) => {
+  //   const newMarker = {
+  //     lat: event.latLng.lat(),
+  //     lng: event.latLng.lng(),
+  //     comment: "",
+  //   };
+  //   setMarkers((current) => [...current, newMarker]);
+  // }, []);
 
   const markers = stories.map((story) => ({
     lat: story.lat,
@@ -198,10 +198,8 @@ export const Map = ({ stories = [] }) => {
     <LoadScript
       googleMapsApiKey={import.meta.env.VITE_GOOGLE_MAPS_API_KEY}
       libraries={libraries}>
-      <Autocomplete
-        onLoad={onLoadAutocomplete}
-        onPlaceChanged={onPlaceChanged}
-        types={["(cities)", "address"]}>
+      <Autocomplete onLoad={onLoadAutocomplete} onPlaceChanged={onPlaceChanged}>
+        {/* // types={["(cities)", "address"]} */}
         <input
           className="search-input"
           type="text"
@@ -213,7 +211,7 @@ export const Map = ({ stories = [] }) => {
         mapContainerClassName="my-map-container"
         center={mapCenter}
         zoom={4}
-        onClick={onMapClick}
+        // onClick={onMapClick}
         options={{ styles: styles.retro, streetViewControl: false }}>
         {markers.map((marker, index) => (
           <Marker
