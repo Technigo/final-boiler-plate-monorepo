@@ -6,9 +6,11 @@ import { BackBtn } from "../../components/BackBtn";
 import { Button } from "../../components/Button";
 //import Like from "../../components/Like";
 import { useLocation } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 
 const PlaygroundDetails = () => {
+  const { t } = useTranslation();
   const { id } = useParams();
   const { getPlaygroundDetails, playgroundDetails, isLiked, likePlayground } = usePlaygroundStore();
   const location = useLocation();
@@ -35,10 +37,8 @@ const PlaygroundDetails = () => {
       <h1>
         {playgroundDetails.name}
       </h1>
-      <h3>{
-        playgroundDetails.street}, 
-        {playgroundDetails.city} 
-        {playgroundDetails.postcode}
+      <h3>
+        {playgroundDetails.street}, {playgroundDetails.city} {playgroundDetails.postcode}
       </h3>
           {randomImage && 
             <img 
@@ -49,9 +49,7 @@ const PlaygroundDetails = () => {
         {playgroundDetails.description}
       </p>
 
-      <h2>
-        Information om lekplatsen:
-      </h2>
+      <h2 className="playground-details-info-header">{t("PlaygroundDetails.playground-details-info-header")}</h2>
     </div>
         
         
@@ -222,6 +220,9 @@ const PlaygroundDetails = () => {
         {isLiked ? 'Liked!' : 'Not liked yet'}
       </span> */}
     </div>
+  </div>
+  <div>
+    <p className="icon-explanation">{t("PlaygroundDetails.icon-explanation")} </p>
   </div>
 </div>
   );

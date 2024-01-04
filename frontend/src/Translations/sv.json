@@ -24,5 +24,15 @@
 
     "PlaygroundContainer" : {
         "more-details": "Se mer"
+    },
+
+    "PlaygroundDetails": {
+        "icon-explanation": "Ikonerna förklarar vad som finns på lekplatsen och inte. Om ikonen är svart och ifylld finns detta på lekplatsen, annars inte.",
+        "playground-details-info-header": "Information om lekplatsen:"
+    },
+
+    "BackBtn": {
+        "back-link": "Tillbaka"
     }
+
 }

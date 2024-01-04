@@ -23,6 +23,15 @@
 
     "PlaygroundContainer" : {
         "more-details": "More Details"
+    },
+
+    "PlaygroundDetails": {
+        "icon-explanation": "The icons explain what is available on the playground and what is not. If the icon is black and filled, it is present at the playground; otherwise, it is not.",
+        "playground-details-info-header": "Information about the playground:"
+    },
+
+    "BackBtn": {
+        "back-link": "Back"
     }
 
 }
