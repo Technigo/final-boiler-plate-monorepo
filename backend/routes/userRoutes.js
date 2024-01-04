@@ -1,14 +1,20 @@
 import express from "express";
-import listEndpoints from "express-list-endpoints";
 import { UserModel } from "../models/UserModel";
 import bcrypt from "bcrypt";
 
 const router = express.Router();
 
-// Route to get available endpoints
+const { requiresAuth } = require("express-openid-connect");
+
+// To display the user's profile, your application should provide a protected route.
+
+// Add the requiresAuth middleware for routes that require authentication. Any route using this middleware will check for a valid user session and, if one does not exist, it will redirect the user to log in.
+router.get("/profile", requiresAuth(), (req, res) => {
+  res.send(JSON.stringify(req.oidc.user));
+});
+
 router.get("/", (req, res) => {
-  const endpoints = listEndpoints(router);
-  res.json({ endpoints });
+  res.send(req.oidc.isAuthenticated() ? "Logged in" : "Logged out");
 });
 
 // Registration endpoint
@@ -61,6 +67,20 @@ router.get("/users", async (req, res) => {
       });
   } catch (error) {
     res.json(error);
+  }
+});
+
+router.get("/user/:user_id", async (req, res) => {
+  const user_id = req.params.user_id;
+  try {
+    const user = await UserModel.findOne({ user_id });
+    if (!user) {
+      return res.status(404).json({ message: "user not found" });
+    }
+
+    res.json(user);
+  } catch (error) {
+    res.json({ error: error.message });
   }
 });
 

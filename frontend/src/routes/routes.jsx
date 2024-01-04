@@ -8,18 +8,16 @@ import { NotFound } from "../pages/NotFound";
 import { PostTrip } from "../pages/PostTrip";
 import { Register } from "../pages/Register";
 
-
 // Define the 'routes' variable as a JSX expression.
 const routes = (
   <>
-    <Route path="/" element={<Home />}>
-      <Route path="/about" element={<About />} />
-      <Route path="/account" element={<Account />} />
-      <Route path="/login" element={<Login />} />
-      <Route path="/posttrip" element={<PostTrip />} />
-      <Route path="/register" element={<Register />} />
-      <Route path="*" element={<NotFound />} />
-    </Route>
+    <Route path="/" element={<Home />} />
+    <Route path="/about" element={<About />} />
+    <Route path="/account" element={<Account />} />
+    {/* <Route path="/login" element={<Login />} /> */}
+    <Route path="/posttrip" element={<PostTrip />} />
+    <Route path="/register" element={<Register />} />
+    <Route path="*" element={<NotFound />} />
   </>
 );
 
