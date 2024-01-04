@@ -44,6 +44,30 @@ const NextButton = styled.button`
   }
 `;
 
+const BackButton = styled.button`
+  background-color: #ffccd5;
+  color: #800f2f;
+  padding: 10px 20px; /* Some padding */
+  border: none; /* No border */
+  border-radius: 5px; /* Rounded corners */
+  cursor: pointer; /* Pointer/hand icon */
+  text-align: center; /* Center the text */
+  text-decoration: none; /* No underline */
+  display: inline-block; /* Inline block element */
+  font-size: 16px; /* Font size */
+  margin: 4px 2px; /* Margin around the button */
+  transition-duration: 0.4s; /* Transition for hover effect */
+
+  &:hover {
+    background-color: #ff8fa3;
+    color: #590d22;
+  }
+
+  &:active {
+    transform: translateY(1px);
+  }
+`;
+
 const OccasionButton = styled.button`
   background-color: #ffccd5;
   color: #800f2f;
@@ -115,6 +139,11 @@ const DateSelector = () => {
             </OccasionButton>
           ))}
         </OccasionSelectorContainer>
+        <Link to="/">
+        <BackButton>
+          Back
+        </BackButton>
+        </Link>
         {selectedOccasion && (
           <Link to="/mood">
             <NextButton>Next</NextButton>
