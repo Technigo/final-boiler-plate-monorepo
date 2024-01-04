@@ -24,11 +24,6 @@ router.get("/profile", authenticateUser, (req, res) => {
   res.json({ profile: "This is your profile" });
 });
 
-// Add the authenticateUser middleware to the route to protect it
-// router.get("/tasks", authenticateUser, (req, res) => {
-//   res.json({ tasks: "This is all (private) tasks" });
-// });
-
 // removed the authenticateUser middleware to be able to see all tasks
 router.get("/tasks", (req, res) => {
   res.json({ tasks: "This is all tasks" });

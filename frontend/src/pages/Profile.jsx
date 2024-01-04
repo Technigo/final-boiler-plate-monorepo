@@ -157,11 +157,22 @@ export const Profile = () => {
                   ? task.volunteers
                       .filter(
                         (volunteer) =>
-                          volunteer._id &&
+                          volunteer &&
+                          (typeof volunteer === "object"
+                            ? volunteer._id
+                            : volunteer) &&
+                          task.user &&
                           task.user._id &&
-                          volunteer._id.toString() !== task.user._id.toString()
-                      ) // Exclude the creator
-                      .map((volunteer) => volunteer.username)
+                          (typeof volunteer === "object"
+                            ? volunteer._id.toString()
+                            : volunteer.toString()) !== task.user._id.toString()
+                      )
+                      // map over the volunteers array and return the username of each volunteer
+                      .map((volunteer) =>
+                        typeof volunteer === "object"
+                          ? volunteer.username
+                          : volunteer
+                      )
                       .join(", ")
                   : "No Volunteers"}
               </VolunteersSection>

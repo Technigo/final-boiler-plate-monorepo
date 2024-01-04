@@ -8,7 +8,7 @@ export const taskSchema = new Schema(
     task: {
       type: String, // Specifies that 'task' should be a string
       required: true, // Indicates that 'task' is a required field
-      minlength: 2, // Sets a minimum length of 5 characters for 'task' title
+      minlength: 3, // Sets a minimum length of 3 characters for 'task' title
       maxlength: 30,
     },
     category: {

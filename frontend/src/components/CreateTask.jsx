@@ -1,5 +1,5 @@
 // Import necessary dependencies and the 'taskStore' from the store.
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { taskStore } from "../stores/taskStore";
 import { Button } from "../components/Buttons/Button";
 import styled from "styled-components";
@@ -47,6 +47,16 @@ const StyledTaskInput = styled.textarea`
   }
 `;
 
+const StyledDescriptionError = styled.p`
+  color: #ff0000;
+  margin-top: 5px;
+`;
+
+const StyledTitleError = styled.p`
+  color: red;
+  margin-top: 5px;
+`;
+
 // Define the 'CreateTask' functional component.
 export const CreateTask = () => {
   // Initialize state variable 'task' using 'useState' to store the task input.
@@ -54,22 +64,49 @@ export const CreateTask = () => {
   const [category, setCategory] = useState("");
   const [area, setArea] = useState("");
   const [description, setDescription] = useState("");
+  const [titleError, setTitleError] = useState("");
+  const [descriptionError, setDescriptionError] = useState("");
 
   // Access the 'addTaskToServer' function from the 'taskStore'.
   const { addTaskToServer } = taskStore();
 
   // Function to update the 'task' state with the value entered in the input field.
+  // const taskTitle = (e) => {
+  //   setTask(e.target.value); // Update the 'task' state with the value entered in the input field.
+  // };
+
   const taskTitle = (e) => {
-    setTask(e.target.value); // Update the 'task' state with the value entered in the input field.
+    const newTitle = e.target.value;
+    setTask(newTitle);
+
+    // Check the length of the title and update the error state
+    if (newTitle.length < 3 || newTitle.length > 30) {
+      setTitleError("Title must be between 3 and 30 characters.");
+    } else {
+      setTitleError("");
+    }
   };
+
   const taskCategory = (e) => {
     setCategory(e.target.value); // Update the 'task' state with the value entered in the input field.
   };
   const taskArea = (e) => {
     setArea(e.target.value); // Update the 'task' state with the value entered in the input field.
   };
+  // const taskDescription = (e) => {
+  //   setDescription(e.target.value); // Update the 'task' state with the value entered in the input field.
+  // };
+
   const taskDescription = (e) => {
-    setDescription(e.target.value); // Update the 'task' state with the value entered in the input field.
+    const newDescription = e.target.value;
+    setDescription(newDescription);
+
+    // Check the length of the description and update the error state
+    if (newDescription.length < 10 || newDescription.length > 300) {
+      setDescriptionError("Description must be between 10 and 300 characters.");
+    } else {
+      setDescriptionError("");
+    }
   };
 
   // Function to add a new task both locally and to the server.
@@ -80,20 +117,26 @@ export const CreateTask = () => {
       area !== "" &&
       description !== ""
     ) {
-      // Check if all fields are not empty or only whitespace.
+      if (titleError || descriptionError) {
+        // Don't proceed if there is a description error
+        window.alert("Please adjust the length of the text before submitting.");
+        return;
+      }
+
       const newTask = {
         task: task,
-        category: category, // Include the selected category value
-        area: area, // Include the selected area value
+        category: category,
+        area: area,
         description: description,
-      }; // Create an object with task details
-      await addTaskToServer(newTask); // Add the task to the server.
-      setTask(""); // Clear the input field after the task is added.
+      };
+
+      await addTaskToServer(newTask);
+      setTask("");
       setCategory("");
       setArea("");
       setDescription("");
     } else {
-      alert("Please fill in all fields"); // Alert the user if any of the fields are empty.
+      alert("Please fill in all fields");
     }
   };
 
@@ -108,6 +151,8 @@ export const CreateTask = () => {
         onChange={taskTitle}
         value={task}
       />
+      {/* Title error message */}
+      {titleError && <StyledTitleError>{titleError}</StyledTitleError>}
       <CreateTaskSelects>
         <StyledSelects
           className="task-select"
@@ -148,6 +193,10 @@ export const CreateTask = () => {
         onChange={taskDescription}
         value={description}
       />
+      {/* Description error message */}
+      {descriptionError && (
+        <StyledDescriptionError>{descriptionError}</StyledDescriptionError>
+      )}
       {/* Create a button to trigger the 'addTaskLocal' function for adding the task. */}
       <Button
         onClick={addTaskLocal}
