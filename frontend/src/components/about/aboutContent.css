@@ -5,11 +5,17 @@
     margin-right: 4%;
 }
 
-.about-vision h3,
-.about-tech h3,
-.project-info h3 {
+.about-icons {
     text-align: center;
     padding-bottom: 4%;
+    font-size: 150%;
+}
+
+.about-icons svg {
+    color: white;
+    background: #286052;
+    padding: 1.5%;
+    border-radius: 50%;
 }
 
 .about-vision p,

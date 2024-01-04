@@ -5,6 +5,7 @@
 .collection-recipe-card h2 {
   font-size: 18px;
   font-weight: 300;
+  margin: 0.3em 0 0.7em 0; 
 }
 
 .collection-recipe-card p {

@@ -30,7 +30,7 @@ export const RecipeDetails = () => {
   };
 
   //Making the userinput into an array
-  const userInputArray = foundRecipe.userInput.split(",")
+  const userInputArray = foundRecipe.userInput.split(/[ ,]+/)
   
   return (
     <>
@@ -43,6 +43,7 @@ export const RecipeDetails = () => {
         <p key={index}>{item}</p>
       ))} </div>
           {console.log(userInputArray)}
+          {console.log(foundRecipe.userInput)}
           </ul>
         <img src="/recipe-imgs/campfire-896196_1280.jpg" alt="" />
         <p className="description">{foundRecipe.description}</p>

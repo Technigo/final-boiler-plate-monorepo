@@ -7,14 +7,21 @@ export const PromptForm = () => {
     // Destructure the addNewRecipe function from the recipeStore
     const { inputRecipe, setInputRecipe, fetchNewRecipe, generateRecipe } = recipeStore()
 
+    //Handle userInput(ingredients) to make into array and split of 5 first words
+    const handleUserInputToArray = (userInput) => {
+        const array = userInput.split(/[ ,]+/)
+        const limitedArray = array.slice(0, 5)
+        return limitedArray
+    }
+
     // Define the form submission handler function
     const handleFormSubmit = async (event) => {
         event.preventDefault();
 
         try {
-            //Use the generateRecipe function from the recipeStore
-            console.log(inputRecipe)
-
+           //TESTAR DENNA NYA FUNKTION FÖR ATT GÖRA INPUTEN TILL EN ARRAY
+            console.log(handleUserInputToArray(inputRecipe))
+             //Use the generateRecipe function from the recipeStore
             await generateRecipe(inputRecipe)
 
 

@@ -1,28 +1,31 @@
 import "./aboutContent.css";
-import { FaLinkedin } from "react-icons/fa"
-import { FaGithub } from "react-icons/fa"
+
+
 import { TbHealthRecognition } from "react-icons/tb";
 import { MdOutlineComputer } from "react-icons/md";
 import { IoTrailSignOutline } from "react-icons/io5";
 import { FaBook } from "react-icons/fa";
+import { FaLinkedin } from "react-icons/fa"
+import { FaGithub } from "react-icons/fa"
+
 
 export const AboutContent = () => {
     return (
         <div className="about-container">
             <div className="vision-tech-info">
                 <div className="about-vision">
-                    <h3><TbHealthRecognition /></h3>
+                    <div className="about-icons"><TbHealthRecognition /></div>
                     <p>Vision: Our vision is to make it easier for people to connect with nature and enjoy delicious meals outdoors.</p>
                 </div>
 
                 <div className="about-tech">
-                    <h3><MdOutlineComputer /></h3>
+                    <div className="about-icons"><MdOutlineComputer /></div>
                     <p>
                         Tech: React, JavaScript, Zustand, HTML, OpenAI, MongoDB/Atlas, CSS, React Router, Node, Express, Render, Netlify.
                     </p></div>
 
                 <div className="project-info">
-                    <h3><IoTrailSignOutline /></h3>
+                    <div className="about-icons"><IoTrailSignOutline /></div>
                     <p>
                         Info: Navigate through the GitHub Read-me trail for a deeper exploration. KLICKBAR ANIMATION?
                     </p></div></div>

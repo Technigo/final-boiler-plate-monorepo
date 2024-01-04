@@ -1,7 +1,10 @@
 .collection-recipes {
-    background-color: rgb(253, 240, 236);
-    padding: 1rem;
+    padding: 1rem; /*Vill inte ändra till %, blir konstigt om det är dynamiskt*/
+}
 
+.collection-recipes h3 {
+    font-size: 23px;
+    margin: 0 0 0.9em; 
 }
 
 .recipe-grid {

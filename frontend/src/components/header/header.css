@@ -13,6 +13,10 @@
     color: #286052;
 }
 
+.header-logo {
+    width: 230px;  
+}
+
 /**** Hover effects****/
 .header a {
     background-image: linear-gradient(to right,
@@ -53,11 +57,17 @@
 
 .header nav ul {
     display: flex;
-    gap: 5%;
+    gap: 15%;
     list-style: none;
 }
 
 .header nav a {
     color: #286052;
-    font-size: 2vh;
+}
+
+.header-nav svg {
+    color: #286052;
+    background: white;
+    padding: 10%;
+    border-radius: 50%;
 }

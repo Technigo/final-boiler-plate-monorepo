@@ -26,7 +26,7 @@ export const CollectionRecipe = ({ recipe, index }) => {
         <h2>{recipe.title}</h2>
 
         <p>
-          <strong>User's ingredients:</strong> {recipe.userInput}
+         {recipe.userInput}
         </p>
       </section>
     </Link>

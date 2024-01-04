@@ -10,7 +10,7 @@ export const Footer = () => {
             <p>Crafted by Emmy Dieden and Idah Collin <a href="https://www.technigo.io/web-development-boot-camp?utm_source=google&utm_medium=cpc&utm_campaign=SE_Web_BC_PMaxFall2022&utm_adgroup=&utm_keyword=&device=c&gad_source=1&gclid=CjwKCAiAnL-sBhBnEiwAJRGignEdI26zEcDhy8PaJwGSgwQnfi6Q73Ac7nU-wog6RJga0mdReZc8VhoCdsYQAvD_BwE" target="_blank" rel="noopener noreferrer">Technigo</a> 23/24</p>
             <nav className="footer-nav">
                 <ul>
-                    {/* <li><Link to="/">Home</Link></li> */}
+                    <li><Link to="/">Home</Link></li>
                     <li><Link to="/about">Discover</Link></li>
                 </ul>
             </nav>

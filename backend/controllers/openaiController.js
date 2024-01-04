@@ -10,6 +10,8 @@ const openai = new OpenAI({ key: process.env.OPENAI_API_KEY });
 const generateText = async (req, res) => {
   // Extract the "prompt" from the request body
   const { prompt } = req.body
+  console.log(prompt)
+  
   try {
     // Use the OpenAI API to generate text using the chat completions endpoint
     const response = await openai.chat.completions.create({
@@ -36,10 +38,7 @@ const generateText = async (req, res) => {
     const ingredients = generatedRecipeObject.ingredients
     const instructions = generatedRecipeObject.instructions
     console.log(generatedRecipeObject)
-    // console.log(title)
-    // console.log(description)
-    // console.log(ingredients)
-    // console.log(instructions)
+   
 
     // Create a new RecipeModel with the provided ingredients and generatedRecipe
     const newRecipe = new RecipeModel({

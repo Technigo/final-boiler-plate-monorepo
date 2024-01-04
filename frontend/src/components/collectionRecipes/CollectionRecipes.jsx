@@ -38,7 +38,7 @@ export const CollectionRecipes = () => {
   // Render the component with a list of recipes (map over the recipes and render each recipe's ingredients and instructions)
   return (
     <section className="collection-recipes">
-      <h3>Recipes:</h3>
+      <h3>Recipes</h3>
       <div className="recipe-grid">
         {limitedRecipes.map((recipe, index) => (
           <CollectionRecipe key={recipe._id} recipe={recipe} index={index} />

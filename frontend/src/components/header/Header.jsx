@@ -1,14 +1,17 @@
 import "./header.css";
 import { Link } from 'react-router-dom';
+import { CiHome } from "react-icons/ci";
+import { CiCircleInfo } from "react-icons/ci";
 
 export const Header = () => {
   return (
     <div className="header">
-      <h1 className="header-title"><Link to="/">Open AIr Feast</Link></h1>
+      
+      <Link to="/"><img className="header-logo"src="/logo6.png" alt="logo" /></Link>
       <nav className="header-nav">
         <ul>
-          {/* <li><Link to="/">Home</Link></li> */}
-          <li><Link to="/about">Discover</Link></li>
+          <li><Link to="/"><CiHome /></Link></li>
+          <li><Link to="/about"><CiCircleInfo /></Link></li>
         </ul>
       </nav>
     </div>
