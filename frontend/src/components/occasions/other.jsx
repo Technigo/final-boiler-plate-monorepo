@@ -1,10 +1,9 @@
-import React, { useEffect } from "react";
-import Navbar from "./navbar"; // Ensure the path is correct
-import Footer from "./footer"; // Ensure the path is correct
+import React from "react";
+import Navbar from "../navbar"; // Ensure the path is correct
+import Footer from "../footer"; // Ensure the path is correct
 import styled from "styled-components";
-import { useRestaurantStore } from "../stores/restaurantStore"; // Ensure the path is correct
+import { useRestaurantStore } from '../../stores/restaurantStore';
 import { Link } from "react-router-dom";
-
 
 const PageContainer = styled.div`
   font-family: "JosefinSans";
@@ -80,56 +79,50 @@ const OccasionSelectorContainer = styled.div`
   margin: 0 auto; /* Centers the container in the parent */
 `;
 
-const OccasionSelector = () => {
+const OtherSelector = () => {
   const {
-    occasions,
     selectedOccasion,
-    fetchOccasions,
-    fetchMoodsForOccasion,
     setSelectedOccasion,
   } = useRestaurantStore();
 
-  useEffect(() => {
-    setSelectedOccasion(null);
-    fetchOccasions();
-  }, [fetchOccasions, setSelectedOccasion]);
+  // Other specific occasions
+  const otherOccasions = [
+    "Have a sunday funday aka brunch",
+    "Have a meparty aka dinner for one"
+  ];
 
-  const handleOccasionSelect = async (occasion) => {
+  const handleOccasionSelect = (occasion) => {
     setSelectedOccasion(occasion);
-    await fetchMoodsForOccasion(occasion); // Pass the occasion directly
+    // Add logic here if needed for fetching moods or other data
   };
 
   return (
     <>
       <PageContainer>
-        <Navbar />
+        <Navbar/>
         <TitleContainer>
-          <h2>What's the occasion?</h2>
+          <h2>Looking for Something Different?</h2>
         </TitleContainer>
         <OccasionSelectorContainer>
-          {occasions && occasions.length > 0 ? (
-            occasions.map((occasion, index) => (
-              <OccasionButton
-                key={index}
-                onClick={() => handleOccasionSelect(occasion)}
-                selected={selectedOccasion === occasion}
-              >
-                {occasion}
-              </OccasionButton>
-            ))
-          ) : (
-            <p>Loading occasions...</p> // or some other placeholder
-          )}
+          {otherOccasions.map((occasion, index) => (
+            <OccasionButton
+              key={index}
+              onClick={() => handleOccasionSelect(occasion)}
+              selected={selectedOccasion === occasion}
+            >
+              {occasion}
+            </OccasionButton>
+          ))}
         </OccasionSelectorContainer>
         {selectedOccasion && (
           <Link to="/mood">
             <NextButton>Next</NextButton>
           </Link>
         )}
-        <Footer />
+        <Footer/>
       </PageContainer>
     </>
   );
 };
 
-export default OccasionSelector;
+export default OtherSelector;
