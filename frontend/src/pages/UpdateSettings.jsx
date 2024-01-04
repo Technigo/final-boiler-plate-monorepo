@@ -2,8 +2,11 @@ import { useState, useEffect } from "react";
 import { userStore } from "../stores/userStore";
 import BackArrow from "../components/BackArrow";
 import defaultProfileImage from "../assets/images/profile_icon.png";
+import { useNavigate } from "react-router-dom";
 
 export const UpdateSettings = () => {
+  const navigate = useNavigate();
+
   // For retrieving the updated user profile data later on
   const [inputEmail, setInputEmail] = useState("");
   const [inputPassword, setInputPassword] = useState("");
@@ -96,6 +99,10 @@ export const UpdateSettings = () => {
     );
 
     console.log(updatedProfileData);
+  };
+
+  const handleCancelClick = () => {
+    navigate("/settings");
   };
 
   return (
@@ -206,8 +213,8 @@ export const UpdateSettings = () => {
           <input type="file" onChange={handleImageUpdate} />
         </div>
 
-        <button type="submit">Update settings</button>
-        <button type="submit">Cancel</button>
+        <button type="submit">Save changes</button>
+        <button type="submit" onClick={handleCancelClick}>Cancel</button>
       </form>
     </div>
   )
