@@ -73,7 +73,7 @@ export const Register = () => {
 				/>
 			</div>
 			<div className="button-container">
-				<button onClick={onRegisterClick}> Register</button>
+				<button onClick={onRegisterClick}>Register</button>
 			</div>
 		</div>
 		//  </>

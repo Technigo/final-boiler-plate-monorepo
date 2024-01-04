@@ -1,6 +1,8 @@
 .the-screen {
     background-color: var(--screen-color);
     color: var(--screen-text-color);
+    width: 70%;
+    margin: 0 auto;
 }
 
 .seat-container {

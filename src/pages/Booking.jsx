@@ -1,4 +1,7 @@
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
+import { userStore } from '../store/userStore'
+
 import data from '../showTime.json'
 
 import './Booking.css'
@@ -14,8 +17,10 @@ const compareArrays = (arrayOne, arrayTwo) => {
 
 export const Booking = () => {
 	const [ selectedSeats, setSelectedSeats ] = useState([])
+	const isLoggedIn = userStore.getState().isLoggedIn
 
 	const thisShowTime = data[1]
+	const cinemaHall = thisShowTime.cinemaHall
 	const movieTitle = thisShowTime.movieTitle
 	const seatInfo = thisShowTime.seats
 
@@ -50,8 +55,8 @@ export const Booking = () => {
 	
 	return (
 		<>
-			<h2>BOOKING</h2>
-			<h3>{movieTitle}</h3>
+			<h2>{movieTitle}</h2>
+			<h3>{cinemaHall}</h3>
 			<section className="cinema-container">
 				<div className="the-screen">Screen</div>
 				<div className="seat-container">
@@ -85,6 +90,20 @@ export const Booking = () => {
 					</li>
 				</ul>
 			</section>
+			{isLoggedIn ? (
+				<>
+					<div className="button-container">
+						<Link to={`/bookingForm/user`} state={{ seats: selectedSeats }}><button>BOOK</button></Link>
+					</div>
+				</>
+			) : (
+				<>
+					<div className="button-container">
+						<Link to={`/bookingForm/guest`} state={{ seats: selectedSeats }}><button>Book as a guest</button></Link>
+						<Link to={`/bookingForm/register`} state={{ seats: selectedSeats }}><button>Sign up/Log in to book</button></Link>
+					</div>
+				</>
+			)}
 		</>
 	)
 }

@@ -3,6 +3,7 @@ import { Home } from '../pages/Home'
 import { Login } from '../pages/Login'
 import { Register } from '../pages/Register'
 import { Booking } from '../pages/Booking'
+import { BookingForm } from '../components/BookingForm'
 import { UserProfile } from '../pages/UserProfile'
 import { Movie } from '../pages/Movie'
 import { NotFound } from '../pages/NotFound'
@@ -24,6 +25,10 @@ const routes = (
 		<Route
 			path="/booking"
 			element={<Booking />}
+		/>
+		<Route
+			path="/bookingForm/:typeOfBooking"
+			element={<BookingForm />}
 		/>
 		<Route
 			path="/:movie"
