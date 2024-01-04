@@ -1,5 +1,30 @@
 import { Link } from 'react-router-dom'
+import { userStore } from '../store/userStore'
+import userIcon from '/user.svg'
+import './Header.css'
 
 export const Header = () => {
-	return <header>{<Link to="/">HOME</Link>}</header>
+	const isLoggedIn = userStore.getState().isLoggedIn
+
+	return (
+		<header className="the-header">
+			<div>{<Link to="/">HOME</Link>}</div>
+			<div>
+				{isLoggedIn ? (
+					<Link to="/user">
+						<img src={userIcon} />
+					</Link>
+				) : (
+					<>
+						<Link to="/login">
+							<img
+								src={userIcon}
+								className="login-icon"
+							/>
+						</Link>
+					</>
+				)}
+			</div>
+		</header>
+	)
 }
