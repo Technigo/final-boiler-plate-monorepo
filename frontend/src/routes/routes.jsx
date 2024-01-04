@@ -12,7 +12,8 @@ import { SurfLessons } from "../pages/SurfLessons";
 import { BookNow } from "../pages/BookNow";
 import { HandledBooking } from "../pages/HandleBooking";
 import { UnHandledBooking } from "../pages/UnHandledBooking";
-import { Newsletter } from "../pages/NewsLetter";
+import { Newsletter } from "../pages/NewsLetter"; //adjusted
+
 
 const routes = (
   <>
