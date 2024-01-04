@@ -6,6 +6,12 @@ dotenv.config(); // Load environment variables from the .env file
 import taskRoutes from "./routes/taskRoutes"; // Import custom task controlled-routes
 import userRoutes from "./routes/userRoutes"; // Import custom user routes
 import { connectDB } from "./config/db"; // Import database connection function (not used here)
+import mongoose from "mongoose";
+
+const mongoUrl = process.env.MONGO_URL || "mongodb://localhost/dogs" //not sure if its supposed to say dogs here
+mongoose.connect(mongoUrl, {useNewUrlParser: true, useUnifiedTopology: true})
+mongoose.Promise = Promise
+
 
 // Defines the port the app will run on. Defaults to 8080, but can be overridden
 const port = process.env.PORT; // Set the port number for the server
@@ -20,6 +26,10 @@ app.use(express.urlencoded({ extended: false })); // Parse URL-encoded data
 // ROUTES - These routes USE controller functions ;)
 app.use(taskRoutes); // Use the task-controlled routes for task-related requests
 app.use(userRoutes); // Use the user-controlled routes for user-related requests
+
+app.get('/secrets', (req, res) =>{
+res.json({secret: 'Hello you.'})
+});
 
 // Connection to the database through Mongoose
 connectDB();
