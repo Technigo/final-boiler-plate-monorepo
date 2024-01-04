@@ -1,22 +1,21 @@
-import React from 'react';
-import Navbar from './navbar';
-import Footer from './footer';
-import styled from 'styled-components';
+import React from "react";
+import Navbar from "./navbar";
+import Footer from "./footer";
+import styled from "styled-components";
 import alexandra from '../assets/alexandra.jpg'
-
 
 const AboutWrapper = styled.div`
   margin: 0 auto;
   padding: 20px;
-  background-color: #FFF0F3; /* Your chosen color */
+  background-color: #fff0f3; /* Your chosen color */
   min-height: 100vh; /* Make sure it covers the full height of the viewport */
 `;
 
 const IntroParagraph = styled.p`
   font-size: 24px;
   margin-bottom: 20px;
-  color: #800F2F;
-  font-family: Montserrat, sans-serif;
+  color: #800f2f;
+  font-family: "Mercusuar";
 `;
 
 const TeamSection = styled.section`
@@ -29,8 +28,8 @@ const TeamMember = styled.div`
   flex-basis: calc(33.33% - 20px);
   margin-bottom: 20px;
   text-align: center;
-  color: #800F2F;
-  font-family: Montserrat, sans-serif;
+  color: #800f2f;
+  font-family: Mercusuar;
 `;
 
 const TeamMemberPhoto = styled.img`
@@ -53,7 +52,7 @@ const TeamMemberDescription = styled.p`
 const PortfolioLink = styled.a`
   font-size: 16px;
   text-decoration: none;
-  color: #007BFF;
+  color: #007bff;
 `;
 
 // AboutPage component
@@ -70,7 +69,7 @@ web developer bootcamp to bring you the Foodie moodie app.
         </IntroParagraph>
         <TeamSection>
           <TeamMember>
-            <TeamMemberPhoto src="placeholder1.jpg" alt="Team Member 1" />
+            <TeamMemberPhoto src="placeholder1.jpg" alt="The Brains" />
             <TeamMemberName>Malin Lunde</TeamMemberName>
             <TeamMemberDescription>Description here</TeamMemberDescription>
             <PortfolioLink href="portfolio1-link" target="_blank" rel="noopener noreferrer">Portfolio</PortfolioLink>
@@ -110,4 +109,3 @@ web developer bootcamp to bring you the Foodie moodie app.
 };
 
 export default AboutPage;
-
