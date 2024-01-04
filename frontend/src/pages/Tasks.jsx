@@ -1,19 +1,18 @@
 // Import necessary dependencies, components, and stores.
 import { useEffect } from "react";
-//import { LogoText } from "../components/LogoText";
-import { CreateTask } from "../components/CreateTask";
 import { taskStore } from "../stores/taskStore";
 import { userStore } from "../stores/userStore";
 import { useNavigate } from "react-router-dom";
+import { CreateTask } from "../components/CreateTask";
 import { FeedTaskCard } from "../components/TaskCards/FeedTaskCard";
-//import { Link } from "react-router-dom";
+import { FilterTaskFeed } from "../components/FilterTaskFeed";
 import styled from "styled-components";
 
 const StyledTaskText = styled.div`
   display: flex;
   flex-direction: column;
   gap: 10px;
-  margin-bottom: 20px;
+  //margin-bottom: 20px;
 `;
 
 // Define the 'Tasks' functional component.
@@ -25,8 +24,8 @@ export const Tasks = () => {
     p: "Share it with the community and get the assistance you need! ",
   };
 
-  // Access the 'tasks', 'fetchTasks', 'handleEdit', and 'deleteTaskById' functions from the 'taskStore'.
-  const { tasks, fetchTasks, handleEdit, deleteTaskById } = taskStore();
+  // Access the 'tasks' and 'fetchTasks' functions from the 'taskStore'.
+  const { tasks, fetchTasks } = taskStore();
   // Access the 'accessToken' from the 'userStore'.
   const { accessToken } = userStore();
 
@@ -54,62 +53,39 @@ export const Tasks = () => {
   useEffect(() => {
     if (!isLoggedIn) {
       // If the user is not logged in, show an alert and navigate to the login route.
-      alert("no permission - here");
+      alert("You need to log in to see all the content");
       navigate("/"); // You can change this to the login route
     }
   }, [isLoggedIn, navigate]);
 
-  // Function to handle the click event of the logout button.
-  const onLogoutClick = () => {
-    storeHandleLogout();
-    // Additional logic after logout can be added here.
-    alert("Log out successful");
-    navigate("/"); // You can change this to the login route
-  };
+  // // Function to handle the click event of the logout button.
+  // const onLogoutClick = () => {
+  //   storeHandleLogout();
+  //   // Additional logic after logout can be added here.
+  //   alert("Log out successful");
+  //   navigate("/"); // You can change this to the login route
+  // };
 
   // Render the component content.
   return (
-    <>
-      {/* Render the 'LogoText' component. */}
-      {/* <LogoText /> */}
-
-      <div>
-        <StyledTaskText>
-          {/* Display the heading and paragraphs. */}
-          <h2>{text.heading}</h2>
-          <p>{text.intro}</p>
-          <p>{text.p}</p>
-        </StyledTaskText>
-        {/* Render the 'CreateTask' component to add new tasks. */}
-        <CreateTask />
-        {/* Conditional rendering based on the number of tasks. */}
-        {tasks.length === 0 ? (
-          <>
-            <p>No Needs to offer your helping hand to!</p>
-          </>
-        ) : (
-          // Map through 'tasks' and render task items.
-          tasks.map((task) => (
-            <FeedTaskCard key={task._id} task={task} />
-            // <div key={task._id} className="card-wrapper">
-            //   <div
-            //     className={`card-container ${
-            //       task.done ? "green-border" : "red-border"
-            //     }`}
-            //     onClick={() => handleEdit(task._id)}
-            //   >
-            //     <p>{task.task}</p>
-            //     <p>{task.category}</p>
-            //     <p>{task.area}</p>
-            //     <p>{task.description}</p>
-            //     {/* <p>{task.done ? "Task is Completed" : "Not Completed"}</p>
-            //     <button onClick={() => deleteTaskById(task._id)}>Delete</button> */}
-            //   </div>
-            // </div>
-          ))
-        )}
-      </div>
-    </>
+    <div>
+      <StyledTaskText>
+        {/* Display the heading and paragraphs. */}
+        <h2>{text.heading}</h2>
+        <p>{text.intro}</p>
+        <p>{text.p}</p>
+      </StyledTaskText>
+      {/* Render the 'CreateTask' component to add new tasks. */}
+      <CreateTask />
+      <FilterTaskFeed />
+      {/* Conditional rendering based on the number of tasks. */}
+      {tasks.length === 0 ? (
+        <p>No Needs to offer your helping hand to!</p>
+      ) : (
+        // Map through 'tasks' and render task items.
+        tasks.map((task) => <FeedTaskCard key={task._id} task={task} />)
+      )}
+    </div>
   );
 };
 

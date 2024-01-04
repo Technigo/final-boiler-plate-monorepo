@@ -1,14 +1,8 @@
 // Import necessary dependencies and the 'taskStore' from the store.
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { taskStore } from "../stores/taskStore";
 import { Button } from "../components/Buttons/Button";
 import styled from "styled-components";
-
-const CreateAndFilter = styled.div`
-  p {
-    margin-top: 10px;
-  }
-`;
 
 const StyledCreateTask = styled.div`
   display: flex;
@@ -35,11 +29,6 @@ const StyledSelects = styled.select`
   border-radius: 20px;
   gap: 10px;
   padding: 5px;
-
-  &.category-select,
-  &.area-select {
-    width: 140px;
-  }
 `;
 
 const StyledTaskInput = styled.textarea`
@@ -58,14 +47,6 @@ const StyledTaskInput = styled.textarea`
   }
 `;
 
-const StyledFilters = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 10px;
-  margin: 20px 0;
-`;
-
 // Define the 'CreateTask' functional component.
 export const CreateTask = () => {
   // Initialize state variable 'task' using 'useState' to store the task input.
@@ -74,8 +55,8 @@ export const CreateTask = () => {
   const [area, setArea] = useState("");
   const [description, setDescription] = useState("");
 
-  // Access the 'addTaskToServer' and 'deleteAllTasks' functions from the 'taskStore'.
-  const { addTaskToServer, deleteAllTasks } = taskStore();
+  // Access the 'addTaskToServer' function from the 'taskStore'.
+  const { addTaskToServer } = taskStore();
 
   // Function to update the 'task' state with the value entered in the input field.
   const taskTitle = (e) => {
@@ -90,15 +71,6 @@ export const CreateTask = () => {
   const taskDescription = (e) => {
     setDescription(e.target.value); // Update the 'task' state with the value entered in the input field.
   };
-
-  // Function to filter tasks by category and area
-  const filterTasks = () => {
-    taskStore.getState().filterTasksByCategoryAndArea(category, area);
-  };
-
-  useEffect(() => {
-    filterTasks();
-  }, [category, area]);
 
   // Function to add a new task both locally and to the server.
   const addTaskLocal = async () => {
@@ -127,76 +99,24 @@ export const CreateTask = () => {
 
   // Render the component content.
   return (
-    <CreateAndFilter>
-      <StyledCreateTask>
-        {/* Create an input field for entering the task description. */}
-        <StyledTaskTitleInput
-          className="task-input"
-          type="text"
-          placeholder="Enter descriptive title"
-          onChange={taskTitle}
-          value={task}
-        />
-        <CreateTaskSelects>
-          <StyledSelects
-            className="task-select"
-            type="select"
-            onChange={taskCategory}
-            value={category}
-          >
-            <option disabled default value="">
-              Category
-            </option>
-            <option value="Garden">Garden</option>
-            <option value="Pets">Pets</option>
-            <option value="Shopping">Shopping</option>
-            <option value="Repairs">Repairs</option>
-            <option value="Other">Other</option>
-          </StyledSelects>
-          <StyledSelects
-            className="task-select"
-            type="select"
-            onChange={taskArea}
-            value={area}
-          >
-            <option disabled default value="">
-              Area
-            </option>
-            <option value="Varberg City">Varberg City</option>
-            <option value="Himle">Himle</option>
-            <option value="Kungsäter">Kungsäter</option>
-            <option value="Rolfstorp">Rolfstorp</option>
-            <option value="Tvååker">Tvååker</option>
-            <option value="Veddige">Veddige</option>
-          </StyledSelects>
-        </CreateTaskSelects>
-        <StyledTaskInput
-          className="task-input"
-          type="text"
-          placeholder="Give a clear and detailed description of the help you need"
-          onChange={taskDescription}
-          value={description}
-        />
-        {/* Create a button to trigger the 'addTaskLocal' function for adding the task. */}
-        <Button
-          onClick={addTaskLocal}
-          className="add-task-btn"
-          buttonName="Ask for help"
-        />
-      </StyledCreateTask>
-
-      <p>Or do you want to make a good deed and offer a helping hand?</p>
-
-      <StyledFilters>
-        {/* Filter tasks by category */}
+    <StyledCreateTask>
+      {/* Create an input field for entering the task description. */}
+      <StyledTaskTitleInput
+        className="task-input"
+        type="text"
+        placeholder="Enter descriptive title"
+        onChange={taskTitle}
+        value={task}
+      />
+      <CreateTaskSelects>
         <StyledSelects
-          className="category-select"
+          className="task-select"
           type="select"
-          onChange={filterTasks}
+          onChange={taskCategory}
           value={category}
         >
           <option disabled default value="">
-            Filter by category
+            Category
           </option>
           <option value="Garden">Garden</option>
           <option value="Pets">Pets</option>
@@ -204,16 +124,14 @@ export const CreateTask = () => {
           <option value="Repairs">Repairs</option>
           <option value="Other">Other</option>
         </StyledSelects>
-
-        {/* Filter tasks by area */}
         <StyledSelects
-          className="area-select"
+          className="task-select"
           type="select"
-          onChange={filterTasks}
+          onChange={taskArea}
           value={area}
         >
           <option disabled default value="">
-            Filter by area
+            Area
           </option>
           <option value="Varberg City">Varberg City</option>
           <option value="Himle">Himle</option>
@@ -222,7 +140,20 @@ export const CreateTask = () => {
           <option value="Tvååker">Tvååker</option>
           <option value="Veddige">Veddige</option>
         </StyledSelects>
-      </StyledFilters>
-    </CreateAndFilter>
+      </CreateTaskSelects>
+      <StyledTaskInput
+        className="task-input"
+        type="text"
+        placeholder="Give a clear and detailed description of the help you need"
+        onChange={taskDescription}
+        value={description}
+      />
+      {/* Create a button to trigger the 'addTaskLocal' function for adding the task. */}
+      <Button
+        onClick={addTaskLocal}
+        className="add-task-btn"
+        buttonName="Ask for help"
+      />
+    </StyledCreateTask>
   );
 };
