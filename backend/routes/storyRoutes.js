@@ -3,8 +3,8 @@ import express from "express";
 
 import listEndpoints from "express-list-endpoints";
 import { mapStoryModel } from "../models/mapStoryModel";
-import { analyzePostTone } from "../ApiComponents/contentAnalysis";
-import { translateText } from "../ApiComponents/contentTranslate";
+import { analyzeTextWithApiKey } from "../ApiComponents/contentAnalysis";
+import { translateTextWithApiKey } from "../ApiComponents/contentTranslate";
 // Create an instance of the Express router
 const router = express.Router();
 
@@ -36,7 +36,10 @@ router.get("/stories", async (req, res) => {
       // Translate each story content
       stories = await Promise.all(
         stories.map(async (story) => {
-          const translatedText = await translateText(story.content, language);
+          const translatedText = await translateTextWithApiKey(
+            story.content,
+            language
+          );
           return { ...story.toObject(), content: translatedText };
         })
       );
@@ -56,11 +59,11 @@ router.post("/stories", async (req, res) => {
 
   try {
     // Analyze the content
-    const analysisResult = await analyzePostTone(content);
+    const analysisResult = await analyzeTextWithApiKey(content);
 
-    // Example logic: Check if the sentiment is acceptable
-    // Adjust this logic based on your needs and the response structure
-    if (analysisResult.documentSentiment.score < -0.5) {
+    // Add logic to check the sentiment score and handle negative content
+    // Adjust the condition based on your requirements
+    if (analysisResult.documentSentiment.score < 0.5) {
       return res.status(400).json({ message: "Content is too negative" });
     }
 
