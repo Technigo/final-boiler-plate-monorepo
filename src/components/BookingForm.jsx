@@ -3,10 +3,10 @@ import { useLocation } from "react-router-dom"
 export const BookingForm = () => {
     
     const location = useLocation()
-    const { selectedSeats } = location.state
+    const { seats } = location.state
 
-    console.log(selectedSeats, 'selected seats')
-    
+    console.log(seats, 'selected seats')
+
     return(
         <>
             <form>
