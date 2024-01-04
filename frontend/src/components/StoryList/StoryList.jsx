@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import PropTypes from "prop-types";
-import { likeIcon } from "../../../public/likeblack.svg";
+import likeIcon from "../../../public/likeblack.svg";
 import { timeSince } from "../utils/timeUtils";
 import "./StoryList.css";
 
