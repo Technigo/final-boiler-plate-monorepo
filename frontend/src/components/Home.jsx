@@ -81,6 +81,8 @@ const Home = () => {
     switch(category.toLowerCase()) {
       case 'date':
         return '/date';
+        case 'celebration':
+        return '/celebration';
       case 'family':
         return '/family';
       case 'friends':
