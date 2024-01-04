@@ -1,23 +1,20 @@
-// Import necessary modules
-import express from 'express';
-// import { authenticateAdmin } from '../middleware/authenticateAdmin'; // Ensure you have this middleware to authenticate admins MIRELA
-import {
+const express = require('express');
+// const authenticateAdmin = require('../middleware/authenticateAdmin'); // Uncomment and use this when the middleware is ready
+
+const {
     getCocktailsController,
     getCocktailByIdController,
     addCocktailController,
     updateCocktailController,
-    deleteCocktailController,
-} from '../controllers/cocktailController'; // Import your controller functions
+    deleteCocktailController
+} = require('../controllers/cocktailController'); // Require your controller functions
 
-// Create a router instance
 const router = express.Router();
 
-// Define the routes
-router.get('/', authenticateAdmin, getCocktailsController);
-router.get('/:id', authenticateAdmin, getCocktailByIdController);
-router.post('/', authenticateAdmin, addCocktailController);
-router.put('/:id', authenticateAdmin, updateCocktailController);
-router.delete('/:id', authenticateAdmin, deleteCocktailController);
+router.get('/', /* authenticateAdmin, */ getCocktailsController);
+router.get('/:id', /* authenticateAdmin, */ getCocktailByIdController);
+router.post('/', /* authenticateAdmin, */ addCocktailController);
+router.put('/:id', /* authenticateAdmin, */ updateCocktailController);
+router.delete('/:id', /* authenticateAdmin, */ deleteCocktailController);
 
-// Export the router
-export default router;
+module.exports = router;

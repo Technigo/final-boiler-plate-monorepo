@@ -1,30 +1,40 @@
-// Import necessary libraries and modules
-import express from "express"; // Import the Express.js framework
-import cors from "cors"; // Import the CORS middleware
-import dotenv from "dotenv"; // Import dotenv for environment variables
-dotenv.config(); // Load environment variables from the .env file
-import taskRoutes from "./routes/taskRoutes"; // Import custom task controlled-routes
-import userRoutes from "./routes/userRoutes"; // Import custom user routes
-import { connectDB } from "./config/db"; // Import database connection function (not used here)
+// I believe this is the main server file for the Node.js Express application
 
-// Defines the port the app will run on. Defaults to 8080, but can be overridden
-const port = process.env.PORT; // Set the port number for the server
-const app = express(); // Create an instance of the Express application
+// Importing necessary libraries and modules
+import express from "express"; // Express.js framework for building web applications
+import cors from "cors"; // CORS middleware for handling cross-origin requests
+import dotenv from "dotenv"; // dotenv for loading environment variables from .env file
+dotenv.config(); // Load and parse environment variables from the .env file
 
-// Add middlewares to enable cors and json body parsing
-app.use(cors()); // Enable CORS (Cross-Origin Resource Sharing)
-app.use(express.json()); // Parse incoming JSON data
-app.use(express.urlencoded({ extended: false })); // Parse URL-encoded data
+// Importing custom route handlers
+import taskRoutes from "./routes/taskRoutes"; // Routes for task-related API endpoints
+import userRoutes from "./routes/userRoutes"; // Routes for user-related API endpoints
+import cocktailRoutes from "./routes/cocktailRoutes"; // Import routes for cocktail-related endpoints
 
-// Use the routes for handling API requests
-// ROUTES - These routes USE controller functions ;)
-app.use(taskRoutes); // Use the task-controlled routes for task-related requests
-app.use(userRoutes); // Use the user-controlled routes for user-related requests
+// Import database connection function
+import { connectDB } from "./config/db"; // Function to connect to the MongoDB database
 
-// Connection to the database through Mongoose
+// Retrieve the port number from environment variables or set default
+const port = process.env.PORT || 3000; // Use the PORT environment variable or default to 3000
+
+// Create an Express application instance
+const app = express();
+
+// Middlewares setup
+app.use(cors()); // Enable CORS to allow cross-origin requests
+app.use(express.json()); // Middleware to parse JSON bodies
+app.use(express.urlencoded({ extended: false })); // Middleware to parse URL-encoded bodies
+
+// Registering API routes with the Express application
+app.use(taskRoutes); // Use taskRoutes for handling requests related to tasks
+app.use(userRoutes); // Use userRoutes for handling requests related to users
+app.use('/cocktails', cocktailRoutes); // Use cocktailRoutes for handling requests related to cocktails, prefixed with '/cocktails'
+
+// Establish a connection to the database
 connectDB();
 
-// Start the server and listen for incoming requests on the specified port
+// Start the server and listen for incoming requests
 app.listen(port, () => {
-  console.log(`Server running on http://localhost:${port}`); // Display a message when the server is successfully started
+  // Log a message when the server starts successfully
+  console.log(`Server running on http://localhost:${port}`);
 });
