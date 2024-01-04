@@ -1,3 +1,4 @@
+
 /*! HTML5 Boilerplate v6.1.0 | MIT License | https://html5boilerplate.com/ */
 
 /*
@@ -9,6 +10,8 @@
 /* ==========================================================================
    Base styles: opinionated defaults
    ========================================================================== */
+/* Importing Fonts */
+@import url('https://fonts.googleapis.com/css?family=Open+Sans|Montserrat|Hind&display=swap');
 
 html {
   color: #222;
@@ -98,8 +101,6 @@ textarea {
      ========================================================================== */
 
 
-/* Importing Fonts */
-@import url('https://fonts.googleapis.com/css?family=Open+Sans|Montserrat|Hind&display=swap');
 
 * {
   margin: 0;

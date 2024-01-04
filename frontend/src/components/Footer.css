@@ -55,7 +55,7 @@
 .medias-container li a:hover{
     color: brown;
 }
-  @media screen and (min-width: 900px) {
+  @media screen and (min-width: 1120px) {
     .footer-content{
         flex-direction: row;
         align-items: flex-start;

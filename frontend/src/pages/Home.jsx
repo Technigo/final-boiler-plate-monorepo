@@ -15,8 +15,8 @@ export const Home = () => {
   const navigate = useNavigate();
 
   // Get 'isLoggedIn' and 'accessToken' from the 'userStore'.
-  const isLoggedin = userStore.getState((state) => state.isLoggedin);
-
+  const isLoggedin = userStore((state) => state.isLoggedin);
+  const handleLogout = userStore((state) => state.handleLogout);
   // useEffect hook to check user authentication status.
   useEffect(() => {
     if (!isLoggedin) {
@@ -32,7 +32,10 @@ export const Home = () => {
   // Render the component content.
   return (
     <>
-       <Navbar menuItems={[{path: "/search", name: "Search"} ,{path: "/setting", name: "Profile Setting"}, {path: "/about", name: "About"} , {path: "/terms", name: "Terms"}]} menuDesks={[{path: "/setting", name: "Profile Setting"},{path: "/terms", name: "Terms"} , {path: "/about", name: "About"} ]}/>
+       <Navbar menuItems={[{path: "/search", name: "Search"} ,{path: "/setting", name: "Profile Setting"}, {path: "/about", name: "About"} , {path: "/terms", name: "Terms"}]} menuDesks={[{path: "/setting", name: "Profile Setting"},{path: "/terms", name: "Terms"} , {path: "/about", name: "About"}, {name: "Logout", onClick: () => {
+        handleLogout()
+        navigate("/login")
+       }} ]}/>
       <BackArrow />
       {/* Render the search bar */}
       <Link to="/search">
@@ -40,10 +43,10 @@ export const Home = () => {
       </Link>
       {/* Render the recently added ads */}
       <h1>Recently added</h1>
-      <AdsList fetchType="all" />
+      {isLoggedin && <AdsList fetchType="all" />}
       {/* Render the user's ads */}
       <h1>Your ads</h1>
-      <AdsList fetchType="user" />
+      {isLoggedin && <AdsList fetchType="user" />}
       <Link to="/create-ad">+ Add a product</Link>
       <Footer />
     </>

@@ -13,6 +13,7 @@ export const AdsList = ({ fetchType, userId }) => {
   const fetchAdsByUserId = adStore((state) => state.fetchAdsByUserId);
 
   useEffect(() => {
+
     async function fetchData() {
       if (fetchType === "all") {
         await getAllAds();

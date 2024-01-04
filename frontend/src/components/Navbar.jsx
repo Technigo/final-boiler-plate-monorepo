@@ -1,25 +1,13 @@
 import { Link } from "react-router-dom";
-import { userStore } from "../stores/userStore";
-import { useNavigate } from "react-router-dom";
 import { useState } from 'react';
 import './Navbar.css';
 
 
 export const Navbar = ({menuItems , menuDesks}) => {
-    // Access the 'handleLogout' function from the 'userStore'.
-    const storeHandleLogout = userStore((state) => state.handleLogout);
-
-    // Use the 'useNavigate' hook to programmatically navigate between routes.
-    const navigate = useNavigate();
+ 
     const [isMenuOpen, setMenuOpen] = useState(false);
 
-    // Function to handle the click event of the logout button.
-    const onLogoutClick = () => {
-        storeHandleLogout(); // Call the 'handleLogout' function from 'userStore'.
-        // Additional logic after logout - navigate to login
-        alert("Log out successful");
-        navigate("/login");
-    };
+  
     const toggleMenu = () => {
       setMenuOpen(!isMenuOpen);
     };
@@ -43,11 +31,14 @@ export const Navbar = ({menuItems , menuDesks}) => {
         
         
         
-          {menuDesks.map((menuDesk) => (
-            <li  key={menuDesk.path} className="app-li">
-              <Link to={menuDesk.path}>{menuDesk.name}</Link>
-            </li>
-          ))}
+          {menuDesks.map((menuDesk) => 
+                      (<li  key={menuDesk.path} className="app-li">
+                        {menuDesk.path ? 
+                        <Link to={menuDesk.path}>{menuDesk.name}</Link> :
+                        <button key={menuDesk.name} onClick={menuDesk.onClick}>{menuDesk.name}</button>
+                      }
+                      </li>)
+          )}
         </ul>
 
       
@@ -72,7 +63,7 @@ export const Navbar = ({menuItems , menuDesks}) => {
 
           {menuItems.map((menuItem) => (
             <li  key={menuItem.path} className="app-li">
-              <Link to={menuItem.path}>{menuItem.name}</Link>
+              <Link to={menuItem.path} onClick={() => menuItem.onClick ? menuItem.onClick() : null}>{menuItem.name}</Link>
             </li>
           ))}
         </ul>
