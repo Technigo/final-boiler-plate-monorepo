@@ -1,3 +1,40 @@
 # Final Boiler Project
 
-Detailed info on how to consume this boilerplate will be updated shortly...
+We chose to use MongoDB Atlas for storing our data as an API because the database will (hopefully) be frequently updated by admins.
+- Elba
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
