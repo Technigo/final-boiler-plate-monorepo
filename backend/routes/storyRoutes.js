@@ -50,8 +50,10 @@ router.get("/stories", async (req, res) => {
 
 //route for post a story
 router.post("/stories", async (req, res) => {
+
   const { title, content, category, ranking, lat, lng, city, image } = req.body;
   console.log(req.body);
+
   try {
     // Analyze the content
     const analysisResult = await analyzePostTone(content);
@@ -80,19 +82,40 @@ router.post("/stories", async (req, res) => {
   }
 });
 
+// //route for rank/like
+// router.put("/stories/:id/rank", async (req, res) => {
+//   const storyId = req.params.id;
+//   const newRanking = req.body.ranking;
+
+//   if (newRanking === undefined) {
+//     return res.status(400).json({ message: "Ranking not provided" });
+//   }
+
+//   try {
+//     const updatedStory = await mapStoryModel.findByIdAndUpdate(
+//       storyId,
+//       { ranking: newRanking },
+//       { new: true } // Returns the updated document
+//     );
+
+//     if (!updatedStory) {
+//       return res.status(404).json({ message: "Story not found" });
+//     }
+
+//     res.json(updatedStory);
+//   } catch (error) {
+//     res.status(500).json({ message: error.message });
+//   }
+// });
+
 //route for rank/like
 router.put("/stories/:id/rank", async (req, res) => {
   const storyId = req.params.id;
-  const newRanking = req.body.ranking;
-
-  if (newRanking === undefined) {
-    return res.status(400).json({ message: "Ranking not provided" });
-  }
 
   try {
     const updatedStory = await mapStoryModel.findByIdAndUpdate(
       storyId,
-      { ranking: newRanking },
+      { $inc: { ranking: 1 } }, // Increment the ranking by 1
       { new: true } // Returns the updated document
     );
 
