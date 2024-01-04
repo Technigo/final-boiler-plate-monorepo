@@ -4,9 +4,9 @@
         width: 100px;
         height: 35px;
         border-radius: 8px;
-        border: solid 0.5px #557C55;
+        /* border: solid 0.5px #557C55; */
+        border: none;
         margin: 0;
-
 }
 
 .my-favorites:hover {

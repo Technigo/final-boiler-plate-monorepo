@@ -29,7 +29,7 @@ export const NavBar = () => {
         ) : (
           // If user is not logged in, show "Log In"
           <Link to="/login">
-            <Button className={"my-favorites"} btnText={t("Form.login")} />
+            <Button className={"my-favorites"} btnText={t("Navbar.login")} />
           </Link>
         )}
       </div>

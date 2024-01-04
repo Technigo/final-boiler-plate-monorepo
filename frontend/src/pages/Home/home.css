@@ -3,7 +3,7 @@
         justify-content: center;
         align-items: center;
         flex-direction: column;
-        height: 100vh;
+       
 }
 
 /* Playgrounds */
@@ -79,20 +79,7 @@
     
   }
   
-  /* Navbar */
-  .navbar {
-    padding: 10px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    color: white;
-  }
-
-  .navbar a {
-    color: white;
-    text-decoration: none;
-    margin: 0 10px;
-  }
+  
 
 /* Hero */
 .hero {

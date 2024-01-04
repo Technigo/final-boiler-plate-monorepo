@@ -1,7 +1,8 @@
 {
     "Navbar": {
         "home": "HOME",
-        "myPages": "My Pages"
+        "myPages": "MY PAGES",
+        "login": "LOGIN"
     },
 
     "Hero": {

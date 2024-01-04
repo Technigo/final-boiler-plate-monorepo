@@ -1,7 +1,8 @@
 {
     "Navbar": {
         "home": "HEM",
-        "myPages": "Mina Sidor"
+        "myPages": "MINA SIDOR",
+        "login": "LOGGA IN"
     },
 
     "Hero": {

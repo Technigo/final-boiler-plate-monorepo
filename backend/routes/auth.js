@@ -74,11 +74,17 @@ router.post('/signin', async (req, res) => {
 
     // Creating a JSON Web Token (JWT) for user authentication
     const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET_KEY, { expiresIn: '1h' });
+
+    // Set the token as an HttpOnly cookie
+    res.cookie('token', token, { httpOnly: true, secure: true });
+
+    // Respond with the token in the JSON body (optional, depending on your frontend needs)
     res.status(200).json({ token, favorites: user.favorites });
   } catch (error) {
     res.status(500).send('Something went wrong');
   }
 });
+
 
 // Add other authentication-related endpoints as needed
 

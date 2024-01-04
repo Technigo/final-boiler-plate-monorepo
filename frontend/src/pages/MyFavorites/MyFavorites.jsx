@@ -65,8 +65,8 @@ export const MyFavorites = () => {
             {userFavorites.map((favorite) => (
               <li key={favorite._id}>
                 {/* Display playground details as needed */}
-                <p>Name: {favorite.name}</p>
-                <p>Description: {favorite.description}</p>
+                <p>Name: {favorite._id}</p>
+                {/* <p>Description: {favorite.description}</p> */}
                 {/* Add more playground details as needed */}
               </li>
             ))}

@@ -13,6 +13,7 @@ export const Translations = () => {
   };
 
   const languageOptions = [
+    // { value: "", label: "🌐", disabled: true },
     { value: "en", label: "English" },
     { value: "sv", label: "Swedish" },
   ];
@@ -27,10 +28,10 @@ export const Translations = () => {
 
   return (
     <div className="translation-buttons">
-      <div className="globe-icon" onClick={() => setShowDropdown(!showDropdown)}>
+      {/* <div className="globe-icon" onClick={() => setShowDropdown(!showDropdown)}>
         <IoIosGlobe color="white" style={{ fontSize: '30px' }} />
-      </div>
-      {showDropdown && (
+      </div> */}
+      {/* {showDropdown && (
         <Select
           options={languageOptions}
           values={[
@@ -47,7 +48,25 @@ export const Translations = () => {
           styles={dropdownStyles} // Apply custom styles
           open // Make the dropdown open by default
         />
-      )}
+      )} */}
+      <Select
+        className="select"
+        options={languageOptions}
+        values={[
+          {
+            value: i18n.language,
+            label: i18n.language === "en" ? "English" : "Swedish",
+          },
+        ]}
+        onChange={(values) => changeLanguage(values[0].value)}
+        labelField="label"
+        valueField="value"
+        placeholder=""
+        dropdownHandle={false}
+        direction="ltr"
+        styles={dropdownStyles} // Apply custom styles
+        open // Make the dropdown open by default
+      />
     </div>
   );
 };
