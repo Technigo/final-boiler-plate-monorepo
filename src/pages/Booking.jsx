@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import data from '../showTime.json'
 
 import './Booking.css'
@@ -23,15 +23,12 @@ export const Booking = () => {
 		const newSelection = [row, seat]
 
 		const removeSelected = (event) => {
-			console.log('REMOVE')
 			event.target.classList.remove('selected')
 			let filteredArray = selectedSeats.filter(item => !compareArrays(item, newSelection))
 			setSelectedSeats(filteredArray)
-			console.log('filtered', filteredArray)
 		}
 
 		const addSelected = (event) => {
-			console.log('ADD')
 			event.target.classList.add('selected')
 			setSelectedSeats((selectedSeats) => [...selectedSeats, newSelection])
 		}
@@ -39,19 +36,17 @@ export const Booking = () => {
 		if (event.target.classList.contains('booked')) return null
 		if (selectedSeats !== null && selectedSeats.length > 0) {
 			let existsAlready = false
+
 			selectedSeats.map((seats) => {
 				compareArrays(seats, newSelection) ? existsAlready = !existsAlready : false
 			})
+
 			existsAlready ? removeSelected(event) : addSelected(event)
 		} else {
 			setSelectedSeats([newSelection])
 			event.target.classList.add('selected')
 		}
 	}
-
-	useEffect(() => {
-		console.log(selectedSeats)
-	},[selectedSeats])
 	
 	return (
 		<>
