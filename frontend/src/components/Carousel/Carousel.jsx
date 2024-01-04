@@ -14,12 +14,47 @@ import 'swiper/css/pagination';
 export const Carousel = () => {
   const [stories, setStories] = useState([]);
   const [activeSlide, setActiveSlide] = useState(0); 
+  
+  // const handleRankUpdate = (updatedStory) => {
+  //   setStories(stories.map(story => story.id === updatedStory.id ? updatedStory : story));
+  // };
+
+  const handleRankUpdate = (updatedStory) => {
+    setStories(prevStories => 
+      prevStories.map(story => 
+        story._id === updatedStory._id ? updatedStory : story
+      )
+    );
+  };
+
+  const updateStories = () => {
+    fetch('http://localhost:3000/stories')
+    .then(response => response.json())
+    .then(data => {
+      setStories(data.map(story => ({
+        ...story,
+        id: story._id,
+        city: 'Temporary City', // Update as needed
+        image: 'placeholderImage.png' // Update as needed
+      })));
+    })
+    .catch(error => console.error('Error fetching stories:', error));
+  };
+  
 
   useEffect(() => {
-    fetch('stories.json') // The URL is relative to the public directory
-      .then(response => response.json())
-      .then(data => setStories(data.stories))
-      .catch(error => console.error('Error fetching stories:', error));
+    fetch('http://localhost:3000/stories')
+    .then(response => response.json())
+    .then(data => {
+      const formattedStories = data.map(story => ({
+        ...story,
+        id: story._id, // Map _id to id
+        city: 'Temporary City', // Placeholder until your API is updated
+        image: 'image1.png' // Placeholder image
+      }));
+      setStories(formattedStories);
+    })
+    .catch(error => console.error('Error fetching stories:', error));
   }, []);
 
   const onSlideChange = (swiper) => {
@@ -89,7 +124,7 @@ export const Carousel = () => {
     >
       {stories.map((story, index) => (
         <SwiperSlide key={story.id}>
-          <StoryCard story={story} isActive={index === activeSlide} />
+          <StoryCard story={story} isActive={index === activeSlide} onRankUpdate={handleRankUpdate} onUpdateStories={updateStories} />
         </SwiperSlide>
       ))}
     </Swiper>

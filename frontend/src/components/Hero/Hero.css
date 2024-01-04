@@ -1,5 +1,5 @@
 .hero-wrapper {
-  background-image: url("/hero2.png");
+  background-image: url("/hero5.png");
   width: 100vw;
   height: 27vh;
   background-size: cover;
@@ -12,12 +12,12 @@
 
 @media (min-width: 768px) {
   .hero-wrapper {
-    height: 44vh;
+    height: 42vh;
   }
 }
 
 @media (min-width: 1280px) {
   .hero-wrapper {
-    height: 71vh;
+    height: 52vh;
   }
 }

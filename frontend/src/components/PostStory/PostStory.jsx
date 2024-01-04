@@ -8,6 +8,8 @@ import { enGB } from "date-fns/locale";
 
 import "./PostStory.css";
 
+const libraries = ["places"];
+
 // const apiKey = import.meta.env.VITE_GOOGLE_MAPS_API_KEY;
 
 export const PostStory = () => {
@@ -37,7 +39,7 @@ export const PostStory = () => {
       setNewCategory(e.target.value);
     };
 
-    fetch("http://localhost:3000/stories", {
+    fetch("https://whisperwall.onrender.com/stories", {
       method: "POST",
       body: JSON.stringify({
         title: newHeading,
@@ -86,7 +88,7 @@ export const PostStory = () => {
   };
 
   const handleImageSelect = (image) => {
-    import(`./${image}` /* @vite-ignore */)
+    import(`/${image}` /* @vite-ignore */)
       .then((module) => {
         setSelectedImage(module.default);
         closeImageModal();
@@ -149,7 +151,8 @@ export const PostStory = () => {
         </div>
         <div>
           <LoadScript
-            googleMapsApiKey={import.meta.env.VITE_GOOGLE_MAPS_API_KEY}>
+            googleMapsApiKey={import.meta.env.VITE_GOOGLE_MAPS_API_KEY}
+            libraries={libraries}>
             <Autocomplete
               onLoad={onLoadAutocomplete}
               onPlaceChanged={onPlaceChanged}>
