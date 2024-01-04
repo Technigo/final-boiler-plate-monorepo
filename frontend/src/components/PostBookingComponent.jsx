@@ -5,7 +5,7 @@ import { SucessMessage } from "./sucessMessage";
 import { Checkbox } from './Checkbox';
 import { FormComponent } from './FormComponent';
 import { SpinningLogo } from "./SpinningLogo";
-// Functional Component: PostBookingComponent
+import { Fade } from "react-awesome-reveal";
 
 export const PostBookingComponent = () => {
 
@@ -289,13 +289,15 @@ export const PostBookingComponent = () => {
         <div>
             {/* Conditional rendering based on the success message visibility and loading state */}
             {isLoading ? (
-                <div className="flex text-center flex-col items-center h-auto m-9">
-                    <SpinningLogo />
-                </div>
+                <Fade>
+                    <div className="flex text-center flex-col items-center h-screen m-9">
+                        <SpinningLogo />
+                    </div>
+                </Fade>
             ) : showSuccessMessage ? (
-
-                <SucessMessage />
-
+                <Fade>
+                    <SucessMessage />
+                </Fade>
             ) : (
                 <div className="flex justify-center items-center h-auto m-4 text-s font-josefin-sans">
                     <div className="w-full max-w-md p-4 bg-gray-200 rounded">

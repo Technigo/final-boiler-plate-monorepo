@@ -12,7 +12,7 @@ import { PostNewsletter } from "../components/PostNewsletter";
 //import media 
 import Video from "../assets/backgroundFilm.mp4"
 import WhoAreWePhoto from "../assets/WhoAreWe.jpg";
-import { Fade } from "react-reveal";
+import { Fade } from "react-awesome-reveal";
 
 export const WhoAreWe = () => {
 

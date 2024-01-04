@@ -92,9 +92,10 @@ export const BookingListComponent = ({ fetchAllBookings, fetchUnHandledBookings 
                         text={`${bookingsInGroup.length > 1 ? 'Group' : 'Single'} booking created at ${format(new Date(timeKey.split('_')[0]), 'yyyy-MM-dd HH:mm')} requested date: ${format(new Date(timeKey.split('_')[1]), 'yyyy-MM-dd')}`} />
 
                     {/* Display a grid for each booking in the group */}
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+
                         {bookingsInGroup.map((booking, index) => (
-                            <div key={index} className="mx-10 flex justify-center items-center h-auto">
+                            <div key={index} className="m-10 flex justify-center items-center h-auto">
                                 <div className="rounded-md bg-backgroundPink border-solid border-2 border-customPink px-4">
                                     <div>
                                         {/* Display various details about the booking */}
