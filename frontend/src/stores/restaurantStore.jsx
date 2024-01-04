@@ -7,11 +7,43 @@ const capitalizeFirstLetter = (string) => {
 const apiURL = 'http://localhost:3000/api/restaurants/search';
 
 export const useRestaurantStore = create((set) => ({
+  category: [],
+  selectedCategory: null,
   occasions: [],
   moods: [],
   selectedOccasion: null,
   selectedMoods: [],
   results: [],
+
+  fetchCategory: async () => {
+    try {
+      const { selectedCategory } = useRestaurantStore.getState();
+      console.log('Selected Category:', selectedCategory);
+
+      const response = await fetch('http://localhost:3000/api/category');
+      if (!response.ok) {
+        throw new Error('Failed to fetch category');
+      }
+
+      const data = await response.json();
+
+
+    // Normalize and set unique categories
+    const uniqueCategory = Array.from(new Set(data.map((item) => capitalizeFirstLetter(item.trim()))));
+
+    set({ category: uniqueCategory });
+    return uniqueCategory;
+  } catch (error) {
+    console.error('Error fetching category:', error);
+    throw error;
+  }
+},
+
+setSelectedCategory: (category) => {
+  console.log('Setting selected category:', category);
+  set({ selectedCategory: category });
+},
+    
 
   fetchOccasions: async () => {
     try {
@@ -47,10 +79,13 @@ export const useRestaurantStore = create((set) => ({
    fetchMoods: async () => {
      try {
        set({ selectedMoods: [] });
-       const { selectedOccasion } = useRestaurantStore.getState();
-       console.log('Fetching moods for occasion:', selectedOccasion);
-     const response = await fetch(`http://localhost:3000/api/mood?occasion=${encodeURIComponent(selectedOccasion)}`);
-      if (!response.ok) {
+       const { selectedOccasion, selectedCategory } = useRestaurantStore.getState();
+       console.log('Fetching moods for occasion and category:', selectedOccasion, selectedCategory);
+     const response = await fetch(
+      `${apiURL}/mood?occasion=${encodeURIComponent(selectedOccasion)}&category=${encodeURIComponent(selectedCategory)}`
+     );
+     
+     if (!response.ok) {
          throw new Error('Failed to fetch moods');
        }
 
@@ -112,12 +147,15 @@ export const useRestaurantStore = create((set) => ({
   fetchResults: async () => {
     try {
     console.log('Fetching results...');
-    const { selectedOccasion, selectedMoods } = useRestaurantStore.getState();
+    const { selectedCategory, selectedOccasion, selectedMoods } = useRestaurantStore.getState();
+    console.log('Selected Category:', selectedCategory);
     console.log('Selected Occasion:', selectedOccasion);
     console.log('Selected Moods:', selectedMoods);
+    
   
     const apiURL = 'http://localhost:3000/api/restaurants/search';
     const queryParams = new URLSearchParams({
+      category: selectedCategory,
       occasion: selectedOccasion,
       mood: selectedMoods.join(',')
     });
@@ -132,7 +170,7 @@ export const useRestaurantStore = create((set) => ({
     }
 
     const results = await response.json();
-    set({ results });
+    useRestaurantStore.setState({ results });
   } catch (error) {
     console.error('Error fetching search results:', error);
   }

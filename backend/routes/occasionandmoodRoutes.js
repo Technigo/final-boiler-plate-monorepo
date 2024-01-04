@@ -7,12 +7,17 @@ const router = express.Router();
 // Endpoint to search restaurants based on occasion and mood
 router.get('/restaurants/search', asyncHandler(async (req, res) => {
     // Extract occasion and mood query parameters from the request
-    const { occasion, mood } = req.query;
-    console.log('Received request with occasion:', occasion, 'and mood:', mood);
+    const { category, occasion, mood } = req.query;
+    console.log('Received request with category:', category, 'occasion:', occasion, 'and mood:', mood);
 
     // Validate that both occasion and mood are provided
-    if (!occasion || !mood) {
-        return res.status(400).json({ message: 'Both occasion and mood are required parameters' });
+    if (!category || !occasion || !mood) {
+        return res.status(400).json({ message: 'Category, occasion and mood are required parameters' });
+    }
+
+    // Ensure only one category is selected
+    if (Array.isArray(category) || !category) {
+         return res.status(400).json({ message: 'You can only pick one category' });
     }
 
     // Ensure occasion is provided and only one is selected
@@ -21,7 +26,7 @@ router.get('/restaurants/search', asyncHandler(async (req, res) => {
     }
 
     // Ensure mood is provided and between 1 to 3 moods are selected
-    const moods = Array.isArray(mood) ? mood : [mood];
+    const moods = mood.split(',');
     if (moods.length === 0 || moods.length > 3) {
         return res.status(400).json({ message: 'You must select between 1 and 3 moods' });
     }
@@ -29,11 +34,12 @@ router.get('/restaurants/search', asyncHandler(async (req, res) => {
     try {
         // Assuming mood is an array field in the database schema
         const restaurants = await Restaurant.find({
+            category: category,
             occasion: occasion,
-            mood: { $in: moods } // Using moods array here
+            mood: { $all: moods } // Using moods array here
         });
 
-        console.log('Query:', { occasion: occasion, mood: { $in: moods } });
+        console.log('Query:', { category: category, occasion: occasion, mood: { $all: moods } });
         console.log('Found restaurants:', restaurants);
         // Respond with the found restaurants in JSON format
         res.json(restaurants);
@@ -42,6 +48,16 @@ router.get('/restaurants/search', asyncHandler(async (req, res) => {
         res.status(500).json({ message: err.message });
     }
 }));
+
+//Endpoint to get all categories
+router.get('/category', async (req, res) => {
+    try {
+        const categories = await Restaurant.distinct('category');
+        res.json(categories);
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+});
 
 // Endpoint to get all occasions
 router.get('/occasion', async (req, res) => {

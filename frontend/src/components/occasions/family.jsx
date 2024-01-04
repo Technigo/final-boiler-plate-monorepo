@@ -1,10 +1,10 @@
-import React, { useEffect } from "react";
-import Navbar from "./navbar"; // Ensure the path is correct
-import Footer from "./footer"; // Ensure the path is correct
+import React from "react";
+import Navbar from "../navbar"; // Ensure the path is correct
+import Footer from "../footer"; // Ensure the path is correct
 import styled from "styled-components";
-import { useRestaurantStore } from "../stores/restaurantStore"; // Ensure the path is correct
+import { useRestaurantStore } from '../../stores/restaurantStore';
 import { Link } from "react-router-dom";
-
+import { getCategoryRoute } from "../Home";
 
 const PageContainer = styled.div`
   font-family: "JosefinSans";
@@ -22,6 +22,30 @@ const TitleContainer = styled.div`
 `;
 
 const NextButton = styled.button`
+  background-color: #ffccd5;
+  color: #800f2f;
+  padding: 10px 20px; /* Some padding */
+  border: none; /* No border */
+  border-radius: 5px; /* Rounded corners */
+  cursor: pointer; /* Pointer/hand icon */
+  text-align: center; /* Center the text */
+  text-decoration: none; /* No underline */
+  display: inline-block; /* Inline block element */
+  font-size: 16px; /* Font size */
+  margin: 4px 2px; /* Margin around the button */
+  transition-duration: 0.4s; /* Transition for hover effect */
+
+  &:hover {
+    background-color: #ff8fa3;
+    color: #590d22;
+  }
+
+  &:active {
+    transform: translateY(1px);
+  }
+`;
+
+const BackButton = styled.button`
   background-color: #ffccd5;
   color: #800f2f;
   padding: 10px 20px; /* Some padding */
@@ -80,35 +104,34 @@ const OccasionSelectorContainer = styled.div`
   margin: 0 auto; /* Centers the container in the parent */
 `;
 
-const OccasionSelector = () => {
-  const {
-    occasions,
-    selectedOccasion,
-    fetchOccasions,
-    fetchMoodsForOccasion,
-    setSelectedOccasion,
-  } = useRestaurantStore();
-
-  useEffect(() => {
-    setSelectedOccasion(null);
-    fetchOccasions();
-  }, [fetchOccasions, setSelectedOccasion]);
-
-  const handleOccasionSelect = async (occasion) => {
-    setSelectedOccasion(occasion);
-    await fetchMoodsForOccasion(occasion); // Pass the occasion directly
-  };
-
-  return (
-    <>
-      <PageContainer>
-        <Navbar />
-        <TitleContainer>
-          <h2>What's the occasion?</h2>
-        </TitleContainer>
-        <OccasionSelectorContainer>
-          {occasions && occasions.length > 0 ? (
-            occasions.map((occasion, index) => (
+const FamilySelector = () => {
+    const {
+      selectedOccasion,
+      setSelectedOccasion,
+    } = useRestaurantStore();
+  
+    // Family occasions
+    const familyOccasions = [
+      "Have dinner with the in-laws",
+      "Have dinner with kids present",
+      "Have dinner with the whole family",
+      "Have dinner with your parents"
+    ];
+  
+    const handleOccasionSelect = (occasion) => {
+      setSelectedOccasion(occasion);
+      // Additional logic for fetching moods or other data related to the selected occasion
+    };
+  
+    return (
+      <>
+        <PageContainer>
+        <Navbar/>
+          <TitleContainer>
+            <h2>What's the family plan?</h2>
+          </TitleContainer>
+          <OccasionSelectorContainer>
+            {familyOccasions.map((occasion, index) => (
               <OccasionButton
                 key={index}
                 onClick={() => handleOccasionSelect(occasion)}
@@ -116,20 +139,27 @@ const OccasionSelector = () => {
               >
                 {occasion}
               </OccasionButton>
-            ))
-          ) : (
-            <p>Loading occasions...</p> // or some other placeholder
-          )}
-        </OccasionSelectorContainer>
-        {selectedOccasion && (
-          <Link to="/mood">
+            ))}
+          </OccasionSelectorContainer>
+          <Link to="/">
+        <BackButton>
+          Back
+        </BackButton>
+        </Link>
+          {selectedOccasion && (
+            <Link
+            to={{
+              pathname: "/mood",
+              state: { occasionRoute: getCategoryRoute(selectedOccasion) }, 
+            }}
+          >
             <NextButton>Next</NextButton>
           </Link>
-        )}
-        <Footer />
-      </PageContainer>
-    </>
-  );
-};
-
-export default OccasionSelector;
+          )}
+          <Footer/>
+        </PageContainer>
+      </>
+    );
+  };
+  
+  export default FamilySelector;

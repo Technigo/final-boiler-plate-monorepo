@@ -106,6 +106,33 @@ const MoreLink = styled.a`
   cursor: pointer;
 `;
 
+const AgreeButton = styled.button`
+  background-color: #FFCCD5;
+  color: #800F2F;
+  padding: 5px 10px; /* Adjust padding as needed */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  margin-right: 10px; /* Add margin to separate from count */
+  transition-duration: 0.4s;
+
+  &:hover {
+    background-color: #FF8FA3;
+    color: #590D22;
+  }
+
+  &:active {
+    transform: translateY(1px);
+  }
+`;
+
+const AgreeCount = styled.span`
+  font-size: 14px;
+  color: #800F2F;
+`;
+
+
 const TruncatedText = ({ text, maxLength }) => {
   const [isTruncated, setIsTruncated] = useState(true);
 
@@ -135,12 +162,19 @@ function generateGoogleMapsUrl(address, city, country) {
 const ResultsComponent = () => {
   const { results, fetchResults, selectedOccasion, selectedMoods } = useRestaurantStore();
   const [sortType, setSortType] = useState('restaurantName');
+  const [agreeCounts, setAgreeCounts] = useState(() => {
+    return JSON.parse(localStorage.getItem('agreeCounts')) || {};
+  });
 
   useEffect(() => {
     if (selectedOccasion && selectedMoods.length > 0) {
       fetchResults();
     }
   }, [selectedOccasion, selectedMoods, fetchResults]);
+
+  useEffect(() => {
+    localStorage.setItem('agreeCounts', JSON.stringify(agreeCounts));
+  }, [agreeCounts]);
 
   const getSortedResults = () => {
     let sorted = [];
@@ -155,7 +189,7 @@ const ResultsComponent = () => {
         sorted = [...results].sort((a, b) => a.cuisine.localeCompare(b.cuisine));
         break;
       default:
-        sorted = results; // Return unsorted results if no sortType matches
+        sorted = results;
         break;
     }
     return sorted.map(restaurant => ({
@@ -164,17 +198,22 @@ const ResultsComponent = () => {
     }));
   };
 
+  const handleAgreeClick = (restaurantId) => {
+    setAgreeCounts(prevCounts => {
+      const newCounts = { ...prevCounts, [restaurantId]: (prevCounts[restaurantId] || 0) + 1 };
+      return newCounts;
+    });
+  };
+
   const sortedResults = getSortedResults();
 
   return (
     <>
       <Navbar />
-      {/* Dropdown for selecting sort type */}
       <select onChange={(e) => setSortType(e.target.value)} value={sortType}>
-        <option value="restaurantName">Sort by restaurant name</option>
-        <option value="borough">Sort by borough</option>
-        <option value="cuisine">Sort by cuisine</option>
-        {/* Add other sorting options here if needed */}
+        <option value="restaurantName">Sort by Restaurant Name</option>
+        <option value="borough">Sort by Borough</option>
+        <option value="cuisine">Sort by Cuisine Type</option>
       </select>
       <ResultsContainer>
         <Link to="/mood">
@@ -194,7 +233,9 @@ const ResultsComponent = () => {
                 <TruncatedText text={`Description: ${restaurant.description}`} maxLength={100} />
               </StyledParagraph>
               <StyledParagraph>
-                Address: <a href={restaurant.mapsUrl} target="_blank" rel="noopener noreferrer">{`${restaurant.address}, ${restaurant.zipcode} ${restaurant.city}`}</a>
+                Address: <a href={restaurant.mapsUrl} target="_blank" rel="noopener noreferrer">
+                  {`${restaurant.address}, ${restaurant.zipcode} ${restaurant.city}`}
+                </a>
               </StyledParagraph>
               <StyledButtonLink href={restaurant.url} target="_blank" rel="noopener noreferrer">
                 Visit the restaurant's website by clicking here
@@ -203,6 +244,11 @@ const ResultsComponent = () => {
               <StyledButtonLink to="/suggestion">
                 If you have suggestions about the description, click here.
               </StyledButtonLink>
+              <StyledParagraph>
+              <AgreeButton onClick={() => handleAgreeClick(restaurant._id)}>
+              {agreeCounts[restaurant._id] || 0} 👍
+                </AgreeButton>
+              </StyledParagraph>
             </ResultCard>
           ))
         ) : (

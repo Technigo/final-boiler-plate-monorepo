@@ -8,6 +8,7 @@
     "country": "Sweden",
     "borough": "Midsommarkransen",
     "cuisine": "Italian deli",
+    "category": ["Business", "Date", "Family", "Friends", "Other"],
     "occasion": [
       "Have dinner with your bestie",
       "Have dinner with friends to catch up",
@@ -42,6 +43,7 @@
     "country": "Sweden",
     "borough": "Östermalm",
     "cuisine": "French- persian",
+    "category": ["Date", "Celebration", "Family", "Friends"],
     "occasion": [
       "Have dinner with the in-laws",
       "Have dinner with your bestie",
@@ -74,6 +76,7 @@
     "country": "Sweden",
     "borough": "Axelsberg",
     "cuisine": "Carribean",
+    "category": ["Family", "Friends"],
     "occasion": [
       "Have dinner with kids present",
       "Have dinner with your bestie",
@@ -95,6 +98,7 @@
     "country": "Sweden",
     "borough": "Södermalm",
     "cuisine": "Scandinavian",
+    "category": ["Business", "Date", "Family", "Friends", "Other"],
     "occasion": [
       "Have dinner with the in-laws",
       "Have a sunday funday aka brunch",
@@ -132,6 +136,14 @@
     "country": "Sweden",
     "borough": "Norrmalm",
     "cuisine": "Italian",
+    "category": [
+      "Business",
+      "Celebration",
+      "Date",
+      "Family",
+      "Friends",
+      "Other"
+    ],
     "occasion": [
       "Have dinner with the in-laws",
       "Have a sunday funday aka brunch",
@@ -170,6 +182,14 @@
     "country": "Sweden",
     "borough": "Östermalm",
     "cuisine": "Scandinavian",
+    "category": [
+      "Business",
+      "Celebration",
+      "Date",
+      "Family",
+      "Friends",
+      "Other"
+    ],
     "occasion": [
       "Have dinner with the in-laws",
       "Have a sunday funday aka brunch",
@@ -200,6 +220,7 @@
     "country": "Sweden",
     "borough": "Östermalm",
     "cuisine": "French",
+    "category": "Date",
     "occasion": ["Go on a nice date with that special someone"],
     "mood": [
       "Good lighting",
@@ -224,6 +245,7 @@
     "country": "Sweden",
     "borough": "Södermalm",
     "cuisine": "Middleeastern and meditteranean",
+    "category": ["Business", "Date", "Family", "Friends", "Other"],
     "occasion": [
       "Have a sunday funday aka brunch",
       "Have dinner with kids present",
@@ -258,6 +280,7 @@
     "country": "Sweden",
     "borough": "Östermalm",
     "cuisine": "Scandinavian with a speciality for fish and shellfish",
+    "category": ["Celebration", "Date", "Family", "Friends"],
     "occasion": [
       "Have dinner with the in-laws",
       "Have dinner with your bestie",
@@ -293,6 +316,7 @@
     "country": "Sweden",
     "borough": "Norrmalm",
     "cuisine": "Asian",
+    "category": ["Business", "Celebration", "Date", "Family", "Friends"],
     "occasion": [
       "Have dinner with the in-laws",
       "Have dinner with kids present",
@@ -332,10 +356,8 @@
     "country": "Sweden",
     "borough": "Östermalm",
     "cuisine": "Scandinavian and great coffee",
-    "occasion": [
-      "Impress your date and the sky is the limit",
-      "Impress your date on a tight budget"
-    ],
+    "category": "Date",
+    "occasion": ["Impress your date on a tight budget"],
     "mood": [
       "Soft- spoken",
       "Bustling",
@@ -358,6 +380,7 @@
     "country": "Sweden",
     "borough": "Södermalm",
     "cuisine": "French",
+    "category": ["Business", "Date", "Family", "Friends", "Other"],
     "occasion": [
       "Have dinner with the in-laws",
       "Have a sunday funday aka brunch",
@@ -395,13 +418,13 @@
     "country": "Sweden",
     "borough": "Södermalm",
     "cuisine": "Different themes that change aevery few months",
+    "category": ["Celebration", "Date", "Family", "Friends"],
     "occasion": [
       "Have dinner with the in-laws",
       "Have dinner with your bestie",
       "Have dinner with friends to catch up",
       "Have dinner with your parents",
       "Impress your date and the sky is the limit",
-      "Impress your date on a tight budget",
       "Celebrate a relationship anniversary",
       "Go on a nice date with that special someone"
     ],
@@ -428,6 +451,14 @@
     "country": "Sweden",
     "borough": "Norrmalm",
     "cuisine": "International Fusion",
+    "category": [
+      "Business",
+      "Celebration",
+      "Date",
+      "Family",
+      "Friends",
+      "Other"
+    ],
     "occasion": [
       "Have dinner with the in-laws",
       "Have a sunday funday aka brunch",
@@ -471,6 +502,7 @@
     "country": "Sweden",
     "borough": "Östermalm",
     "cuisine": "Scandinavian",
+    "category": ["Celebration", "Date", "Family", "Friends"],
     "occasion": [
       "Have dinner with the in-laws",
       "Have dinner with your bestie",
@@ -506,6 +538,14 @@
     "country": "Sweden",
     "borough": "Östermalm",
     "cuisine": "Mediterranean",
+    "category": [
+      "Business",
+      "Celebration",
+      "Date",
+      "Family",
+      "Friends",
+      "Other"
+    ],
     "occasion": [
       "Have dinner with the in-laws",
       "Have a sunday funday aka brunch",
@@ -543,6 +583,7 @@
     "country": "Sweden",
     "borough": "Vasastan",
     "cuisine": "Scandinavian",
+    "category": ["Business", "Celebration", "Date", "Family", "Friends"],
     "occasion": [
       "Have dinner with the in-laws",
       "Have dinner with your bestie",
@@ -577,6 +618,7 @@
     "country": "Sweden",
     "borough": "Vasastan",
     "cuisine": "Southern european",
+    "category": ["Business", "Celebration", "Date", "Family", "Friends"],
     "occasion": [
       "Have dinner with the in-laws",
       "Have dinner with your bestie",
@@ -602,6 +644,14 @@
     "country": "Sweden",
     "borough": "Södermalm",
     "cuisine": "Mediterranean and scandinavian",
+    "category": [
+      "Business",
+      "Celebration",
+      "Date",
+      "Family",
+      "Friends",
+      "Other"
+    ],
     "occasion": [
       "Have dinner with the in-laws",
       "Have a sunday funday aka brunch",
@@ -643,6 +693,14 @@
     "country": "Sweden",
     "borough": "Östermalm",
     "cuisine": "Scandinavian",
+    "category": [
+      "Business",
+      "Celebration",
+      "Date",
+      "Family",
+      "Friends",
+      "Other"
+    ],
     "occasion": [
       "Have dinner with the in-laws",
       "Have a sunday funday aka brunch",
@@ -685,6 +743,14 @@
     "country": "Sweden",
     "borough": "Östermalm",
     "cuisine": "International Fusion",
+    "category": [
+      "Business",
+      "Celebration",
+      "Date",
+      "Family",
+      "Friends",
+      "Other"
+    ],
     "occasion": [
       "Have a sunday funday aka brunch",
       "Have dinner with kids present",
@@ -710,6 +776,7 @@
     "country": "Sweden",
     "borough": "Vasastan",
     "cuisine": "French",
+    "category": ["Celebration", "Date", "Family", "Friends", "Other"],
     "occasion": [
       "Have dinner with the in-laws",
       "Have dinner with your bestie",
@@ -746,6 +813,14 @@
     "country": "Sweden",
     "borough": "Norrmalm",
     "cuisine": "Spanish",
+    "category": [
+      "Business",
+      "Celebration",
+      "Date",
+      "Family",
+      "Friends",
+      "Other"
+    ],
     "occasion": [
       "Have dinner with the in-laws",
       "Have a sunday funday aka brunch",
@@ -774,6 +849,7 @@
     "country": "Sweden",
     "borough": "Vasastan",
     "cuisine": "Latinamerican and asian fusion",
+    "category": ["Business", "Celebration", "Date", "Family", "Friends"],
     "occasion": [
       "Have dinner with kids present",
       "Have dinner with your bestie",
@@ -805,6 +881,14 @@
     "country": "Sweden",
     "borough": "Södermalm",
     "cuisine": "Chinese with cantonese,Shang-hai and  Sichuan influences",
+    "category": [
+      "Business",
+      "Celebration",
+      "Date",
+      "Family",
+      "Friends",
+      "Other"
+    ],
     "occasion": [
       "Have a sunday funday aka brunch",
       "Have dinner with kids present",
@@ -840,6 +924,14 @@
     "country": "Sweden",
     "borough": "Östermalm",
     "cuisine": "Scandinavian",
+    "category": [
+      "Business",
+      "Celebration",
+      "Date",
+      "Family",
+      "Friends",
+      "Other"
+    ],
     "occasion": [
       "Have dinner with the in-laws",
       "Have dinner with kids present",
@@ -884,6 +976,14 @@
     "country": "Sweden",
     "borough": "Östermalm",
     "cuisine": "Asian",
+    "category": [
+      "Business",
+      "Celebration",
+      "Date",
+      "Family",
+      "Friends",
+      "Other"
+    ],
     "occasion": [
       "Have dinner with the in-laws",
       "Have dinner with kids present",
@@ -927,6 +1027,14 @@
     "country": "Sweden",
     "borough": "Vasastan",
     "cuisine": "Scandinavian",
+    "category": [
+      "Business",
+      "Celebration",
+      "Date",
+      "Family",
+      "Friends",
+      "Other"
+    ],
     "occasion": [
       "Have dinner with the in-laws",
       "Have dinner with kids present",
@@ -965,6 +1073,7 @@
     "country": "Sweden",
     "borough": "Vasastan",
     "cuisine": "Vietnamese",
+    "category": ["Business", "Celebration", "Family", "Friends", "Other"],
     "occasion": [
       "Have dinner with the in-laws",
       "Have a sunday funday aka brunch",
@@ -1000,6 +1109,7 @@
     "country": "Sweden",
     "borough": "Djurgården",
     "cuisine": "Scandinavian",
+    "category": ["Celebration", "Date", "Family", "Friends", "Other"],
     "occasion": [
       "Have dinner with the in-laws",
       "Have a sunday funday aka brunch",
@@ -1037,8 +1147,8 @@
     "country": "Sweden",
     "borough": "Djurgården",
     "cuisine": "Scandinavian and baked goods",
+    "category": ["Date", "Family", "Other"],
     "occasion": [
-      "Have dinner with the in-laws",
       "Have a sunday funday aka brunch",
       "Impress your date on a tight budget",
       "Go on a nice date with that special someone"
@@ -1068,6 +1178,14 @@
     "country": "Sweden",
     "borough": "Norrmalm",
     "cuisine": "French",
+    "category": [
+      "Business",
+      "Celebration",
+      "Date",
+      "Family",
+      "Friends",
+      "Other"
+    ],
     "occasion": [
       "Have dinner with the in-laws",
       "Have a sunday funday aka brunch",
@@ -1109,6 +1227,7 @@
     "country": "Sweden",
     "borough": "Vasastan",
     "cuisine": "Middle eastern mostly kebab",
+    "category": ["Date", "Family", "Friends", "Other"],
     "occasion": [
       "Have dinner with kids present",
       "Have dinner with your bestie",
@@ -1136,9 +1255,9 @@
     "country": "Sweden",
     "borough": "Vasastan",
     "cuisine": "Japanese",
+    "category": ["Friends", "Other"],
     "occasion": [
       "Have dinner with your bestie",
-      "Impress your date on a tight budget",
       "Have a meparty aka dinner for one"
     ],
     "mood": ["Good lighting", "Bustling"],
@@ -1155,6 +1274,7 @@
     "country": "Sweden",
     "borough": "Södermalm",
     "cuisine": "Japanese",
+    "category": ["Business", "Date", "Family", "Friends", "Other"],
     "occasion": [
       "Have dinner with the in-laws",
       "Have a sunday funday aka brunch",
@@ -1189,6 +1309,7 @@
     "country": "Sweden",
     "borough": "Norrmalm",
     "cuisine": "International , all dishes contain chicken",
+    "category": ["Business", "Date", "Family", "Friends", "Other"],
     "occasion": [
       "Have dinner with your bestie",
       "Have dinner with friends to catch up",
@@ -1219,6 +1340,7 @@
     "country": "Sweden",
     "borough": "Kungsholmen",
     "cuisine": "Scandinavian",
+    "category": ["Celebration", "Date", "Family", "Friends", "Other"],
     "occasion": [
       "Have dinner with the in-laws",
       "Have dinner with kids present",
@@ -1258,6 +1380,7 @@
     "country": "Sweden",
     "borough": "Vasastan",
     "cuisine": "Scandinavian and mediterranean",
+    "category": ["Celebration", "Date", "Family", "Friends", "Other"],
     "occasion": [
       "Have dinner with the in-laws",
       "Have dinner with kids present",
@@ -1300,6 +1423,7 @@
     "country": "Sweden",
     "borough": "Södermalm",
     "cuisine": "Japanese and peruvian fusion",
+    "category": ["Celebration", "Date", "Family", "Friends", "Other"],
     "occasion": [
       "Have dinner with kids present",
       "Have dinner with your bestie",
@@ -1334,6 +1458,7 @@
     "country": "Sweden",
     "borough": "Södermalm",
     "cuisine": "Thai",
+    "category": ["Date", "Family", "Friends"],
     "occasion": [
       "Have dinner with kids present",
       "Have dinner with your bestie",
@@ -1364,6 +1489,7 @@
     "country": "Sweden",
     "borough": "Södermalm",
     "cuisine": "Spanish",
+    "category": ["Date", "Family", "Friends", "Other"],
     "occasion": [
       "Have dinner with friends to catch up",
       "Say cheers- a classic swedish after work",
@@ -1395,6 +1521,14 @@
     "country": "Sweden",
     "borough": "Södermalm",
     "cuisine": "Scandinavian",
+    "category": [
+      "Business",
+      "Celebration",
+      "Date",
+      "Family",
+      "Friends",
+      "Other"
+    ],
     "occasion": [
       "Have dinner with the in-laws",
       "Have a sunday funday aka brunch",
@@ -1434,6 +1568,7 @@
     "country": "Sweden",
     "borough": "Södermalm",
     "cuisine": "Italian  mostly pizza",
+    "category": ["Business", "Date", "Family", "Friends", "Other"],
     "occasion": [
       "Have dinner with the in-laws",
       "Have a sunday funday aka brunch",
@@ -1473,6 +1608,7 @@
     "country": "Sweden",
     "borough": "Östermalm",
     "cuisine": "Sushi",
+    "category": ["Date", "Family", "Friends"],
     "occasion": [
       "Have dinner with your bestie",
       "Have dinner with your parents",
@@ -1502,6 +1638,7 @@
     "country": "Sweden",
     "borough": "Södermalm",
     "cuisine": "English and american breakfast and brunch",
+    "category": ["Date", "Family", "Friends", "Other"],
     "occasion": [
       "Have a sunday funday aka brunch",
       "Have dinner with kids present",
@@ -1536,6 +1673,7 @@
     "country": "Sweden",
     "borough": "Östermalm",
     "cuisine": "French and scandinavian",
+    "category": ["Celebration", "Date", "Family", "Friends", "Other"],
     "occasion": [
       "Have dinner with the in-laws",
       "Have dinner with kids present",
@@ -1575,6 +1713,7 @@
     "country": "Sweden",
     "borough": "Vasastan",
     "cuisine": "Italian",
+    "category": ["Business", "Celebration", "Date", "Family", "Friends"],
     "occasion": [
       "Have dinner with the in-laws",
       "Have dinner with kids present",
@@ -1611,6 +1750,7 @@
     "country": "Sweden",
     "borough": "Vasastan",
     "cuisine": "Japanese, baked goods",
+    "category": "Other",
     "occasion": [
       "Have a sunday funday aka brunch",
       "Go on a nice date with that special someone"
@@ -1638,6 +1778,14 @@
     "country": "Sweden",
     "borough": "Östermalm",
     "cuisine": "Italian",
+    "category": [
+      "Business",
+      "Celebration",
+      "Date",
+      "Family",
+      "Friends",
+      "Other"
+    ],
     "occasion": [
       "Have dinner with the in-laws",
       "Have a sunday funday aka brunch",
@@ -1677,6 +1825,7 @@
     "country": "Sweden",
     "borough": "Norrmalm",
     "cuisine": "Japanese",
+    "category": ["Celebration", "Date", "Family", "Friends", "Other"],
     "occasion": [
       "Have dinner with the in-laws",
       "Have a sunday funday aka brunch",
@@ -1715,6 +1864,7 @@
     "country": "Sweden",
     "borough": "Vasastan",
     "cuisine": "Italian  mostly pizza",
+    "category": ["Business", "Date", "Friends", "Other"],
     "occasion": [
       "Have a sunday funday aka brunch",
       "Have dinner with your bestie",
@@ -1738,6 +1888,7 @@
     "country": "Sweden",
     "borough": "Södermalm",
     "cuisine": "Korean",
+    "category": ["Celebration", "Date", "Family", "Friends", "Other"],
     "occasion": [
       "Have dinner with the in-laws",
       "Have dinner with your bestie",
@@ -1771,6 +1922,7 @@
     "country": "Sweden",
     "borough": "Vasastan",
     "cuisine": "Spanish",
+    "category": ["Celebration", "Date", "Family", "Friends", "Other"],
     "occasion": [
       "Have dinner with the in-laws",
       "Have dinner with kids present",
@@ -1809,6 +1961,14 @@
     "country": "Sweden",
     "borough": "Södermalm",
     "cuisine": "Thai",
+    "category": [
+      "Business",
+      "Celebration",
+      "Date",
+      "Family",
+      "Friends",
+      "Other"
+    ],
     "occasion": [
       "Have dinner with the in-laws",
       "Have a sunday funday aka brunch",
@@ -1849,6 +2009,7 @@
     "country": "Sweden",
     "borough": "Östermalm",
     "cuisine": "Scandinavian",
+    "category": ["Celebration", "Date", "Family", "Friends", "Other"],
     "occasion": [
       "Have dinner with the in-laws",
       "Have a sunday funday aka brunch",
@@ -1888,6 +2049,14 @@
     "country": "Sweden",
     "borough": "Östermalm",
     "cuisine": "Scandinavian",
+    "category": [
+      "Business",
+      "Celebration",
+      "Date",
+      "Family",
+      "Friends",
+      "Other"
+    ],
     "occasion": [
       "Have dinner with the in-laws",
       "Have dinner with kids present",
@@ -1932,6 +2101,14 @@
     "country": "Sweden",
     "borough": "Östermalm",
     "cuisine": "Scandinavian",
+    "category": [
+      "Business",
+      "Celebration",
+      "Date",
+      "Family",
+      "Friends",
+      "Other"
+    ],
     "occasion": [
       "Have dinner with the in-laws",
       "Have a sunday funday aka brunch",
@@ -1974,6 +2151,14 @@
     "country": "Sweden",
     "borough": "Södermalm",
     "cuisine": "Mexican",
+    "category": [
+      "Business",
+      "Celebration",
+      "Date",
+      "Family",
+      "Friends",
+      "Other"
+    ],
     "occasion": [
       "Have dinner with the in-laws",
       "Have a sunday funday aka brunch",
@@ -2013,6 +2198,7 @@
     "country": "Sweden",
     "borough": "Vasastan",
     "cuisine": "English and american breakfast and brunch",
+    "category": ["Date", "Family", "Friends", "Other"],
     "occasion": [
       "Have a sunday funday aka brunch",
       "Have dinner with kids present",
@@ -2047,6 +2233,14 @@
     "country": "Sweden",
     "borough": "Östermalm",
     "cuisine": "Spanish",
+    "category": [
+      "Business",
+      "Celebration",
+      "Date",
+      "Family",
+      "Friends",
+      "Other"
+    ],
     "occasion": [
       "Have dinner with the in-laws",
       "Have a sunday funday aka brunch",
@@ -2085,6 +2279,7 @@
     "country": "Sweden",
     "borough": "Vasastan",
     "cuisine": "Scandinavian and great coffee",
+    "category": ["Date", "Other"],
     "occasion": [
       "Have a sunday funday aka brunch",
       "Go on a nice date with that special someone"
@@ -2115,6 +2310,7 @@
     "country": "Sweden",
     "borough": "Södermalm",
     "cuisine": "Scandinavian and great coffee",
+    "category": ["Date", "Other"],
     "occasion": [
       "Have a sunday funday aka brunch",
       "Go on a nice date with that special someone"
@@ -2144,6 +2340,7 @@
     "country": "Sweden",
     "borough": "Södermalm",
     "cuisine": "Hamburgers",
+    "category": ["Business", "Family", "Friends", "Other"],
     "occasion": [
       "Have dinner with kids present",
       "Have dinner with your bestie",
@@ -2172,6 +2369,7 @@
     "country": "Sweden",
     "borough": "Telefonplan",
     "cuisine": "Hamburgers",
+    "category": ["Business", "Family", "Friends", "Other"],
     "occasion": [
       "Have dinner with kids present",
       "Have dinner with your bestie",
@@ -2203,6 +2401,7 @@
     "country": "Sweden",
     "borough": "Telefonplan",
     "cuisine": "Hamburgers",
+    "category": ["Business", "Family", "Friends", "Other"],
     "occasion": [
       "Have dinner with kids present",
       "Have dinner with your bestie",
@@ -2235,6 +2434,7 @@
     "country": "Sweden",
     "borough": "Södermalm",
     "cuisine": "Hamburgers with an asian twist",
+    "category": ["Family", "Friends", "Other"],
     "occasion": [
       "Have a sunday funday aka brunch",
       "Have dinner with kids present",
@@ -2261,6 +2461,14 @@
     "country": "Sweden",
     "borough": "Midsommarkransen",
     "cuisine": "Scandinavian with french influences",
+    "category": [
+      "Business",
+      "Celebration",
+      "Date",
+      "Family",
+      "Friends",
+      "Other"
+    ],
     "occasion": [
       "Have dinner with the in-laws",
       "Have dinner with kids present",
@@ -2301,6 +2509,7 @@
     "country": "Sweden",
     "borough": "Södermalm",
     "cuisine": "Vietnamese",
+    "category": ["Family", "Friends", "Other"],
     "occasion": [
       "Have a sunday funday aka brunch",
       "Have dinner with kids present",
@@ -2332,6 +2541,14 @@
     "country": "Sweden",
     "borough": "Södermalm",
     "cuisine": "French",
+    "category": [
+      "Business",
+      "Celebration",
+      "Date",
+      "Family",
+      "Friends",
+      "Other"
+    ],
     "occasion": [
       "Have dinner with the in-laws",
       "Have dinner with kids present",
@@ -2375,6 +2592,14 @@
     "country": "Sweden",
     "borough": "Södermalm",
     "cuisine": "Scandinavian",
+    "category": [
+      "Business",
+      "Celebration",
+      "Date",
+      "Family",
+      "Friends",
+      "Other"
+    ],
     "occasion": [
       "Have dinner with the in-laws",
       "Have a sunday funday aka brunch",
@@ -2416,6 +2641,7 @@
     "country": "Sweden",
     "borough": "Södermalm",
     "cuisine": "Hamburgers",
+    "category": ["Business", "Family", "Friends", "Other"],
     "occasion": [
       "Have a sunday funday aka brunch",
       "Have dinner with kids present",
@@ -2448,6 +2674,14 @@
     "country": "Sweden",
     "borough": "Södermalm",
     "cuisine": "Hamburgers",
+    "category": [
+      "Business",
+      "Celebration",
+      "Date",
+      "Family",
+      "Friends",
+      "Other"
+    ],
     "occasion": [
       "Have a sunday funday aka brunch",
       "Have dinner with kids present",
@@ -2485,6 +2719,14 @@
     "country": "Sweden",
     "borough": "Södermalm",
     "cuisine": "Thai",
+    "category": [
+      "Business",
+      "Celebration",
+      "Date",
+      "Family",
+      "Friends",
+      "Other"
+    ],
     "occasion": [
       "Have dinner with the in-laws",
       "Have a sunday funday aka brunch",
@@ -2522,6 +2764,7 @@
     "country": "Sweden",
     "borough": "Södermalm",
     "cuisine": "Italian",
+    "category": ["Celebration", "Date", "Family", "Friends", "Other"],
     "occasion": [
       "Have dinner with the in-laws",
       "Have a sunday funday aka brunch",
@@ -2559,12 +2802,12 @@
     "country": "Sweden",
     "borough": "Södermalm",
     "cuisine": "Scandinavian and lots of waffles",
+    "category": ["Date", "Family", "Friends", "Other"],
     "occasion": [
       "Have a sunday funday aka brunch",
       "Impress your date on a tight budget",
-      "Celebrate a relationship anniversary",
-      "Celebrate you turning 28 again (honey, you ain't fooling anyone)",
       "Have a meparty aka dinner for one",
+      "Have dinner with kids present",
       "Go on a nice date with that special someone"
     ],
     "mood": [
@@ -2590,6 +2833,7 @@
     "country": "Sweden",
     "borough": "Telefonplan",
     "cuisine": "Indian",
+    "category": ["Business", "Family", "Friends", "Other"],
     "occasion": [
       "Have dinner with the in-laws",
       "Have a sunday funday aka brunch",
@@ -2598,8 +2842,7 @@
       "Have dinner with friends to catch up",
       "Have dinner with colleagues",
       "Have dinner with the whole family",
-      "Have dinner with your parents",
-      "Go on a nice date with that special someone"
+      "Have dinner with your parents"
     ],
     "mood": [
       "Cozy",
@@ -2625,6 +2868,7 @@
     "country": "Sweden",
     "borough": "Östermalm",
     "cuisine": "Asian",
+    "category": ["Celebration", "Date", "Family", "Friends"],
     "occasion": [
       "Have dinner with the in-laws",
       "Have dinner with your bestie",
@@ -2660,6 +2904,14 @@
     "country": "Sweden",
     "borough": "Blasieholmen",
     "cuisine": "Scandinavian with a speciality for fish and shellfish",
+    "category": [
+      "Business",
+      "Celebration",
+      "Date",
+      "Family",
+      "Friends",
+      "Other"
+    ],
     "occasion": [
       "Have dinner with the in-laws",
       "Have a sunday funday aka brunch",
@@ -2696,6 +2948,7 @@
     "country": "Sweden",
     "borough": "Vasastan",
     "cuisine": "Japanese",
+    "category": ["Business", "Date", "Family", "Friends", "Other"],
     "occasion": [
       "Have dinner with kids present",
       "Have dinner with your bestie",
@@ -2720,7 +2973,6 @@
     "description": "Take Ramen, a Japanese restaurant specializing in ramen, offers a cozy and casual dining experience suitable for a variety of occasions. Whether you're having dinner with family, catching up with friends, or seeking an affordable yet impressive date spot, this restaurant's warm and inviting atmosphere is perfect. The ambiance at Take Ramen is characterized by its soft-spoken and calm environment, enhanced by good lighting, creating a homely feel. This setting makes it ideal for relaxed meals with kids, colleagues, or parents. It's a place where you can feel at ease, whether you're enjoying a solo meal or dining with a special someone.",
     "url": "https://www.takeramen.com"
   },
-
   {
     "restaurantID": "80",
     "restaurantName": "Farang",
@@ -2729,7 +2981,8 @@
     "city": "Stockholm",
     "country": "Sweden",
     "borough": "Norrmalm",
-    "cuisine": "Thai and vietnamese",
+    "cuisine": "Thai and Vietnamese",
+    "category": ["Celebration", "Date", "Family", "Friends"],
     "occasion": [
       "Have dinner with the in-laws",
       "Have dinner with your bestie",
@@ -2753,7 +3006,6 @@
     "description": "Farang, blending Thai and Vietnamese cuisines, offers a sophisticated and intimate dining experience perfect for various occasions. Whether you're planning a dinner with in-laws, a night out with friends, or a romantic date, Farang's cozy and calm atmosphere sets the perfect tone.",
     "url": "https://www.farang,se"
   },
-
   {
     "restaurantID": "81",
     "restaurantName": "Thaiboat",
@@ -2763,6 +3015,7 @@
     "country": "Sweden",
     "borough": "Södermalm",
     "cuisine": "Thai",
+    "category": ["Business", "Celebration", "Date", "Family", "Friends"],
     "occasion": [
       "Have dinner with the in-laws",
       "Have dinner with kids present",
@@ -2788,7 +3041,6 @@
     "description": "Thaiboat specializes in authentic Thai flavors, catering to various tastes, including vegan options. For those who prefer milder flavors, asking for non-spicy dishes allows you to enjoy the rich tastes of Thai cuisine without the heat. Whether you're celebrating a special occasion, enjoying a casual meal, or just seeking a cozy spot for a memorable meal, Thaiboat's combination of delicious food, friendly vibes, and inclusivity makes it a great choice for anyone looking to enjoy a laid-back, enjoyable Thai dining experience.",
     "url": "https://www.thaiboat.se"
   },
-
   {
     "restaurantID": "82",
     "restaurantName": "Ramblas",
@@ -2798,6 +3050,7 @@
     "country": "Sweden",
     "borough": "Södermalm",
     "cuisine": "Spanish",
+    "category": ["Celebration", "Family", "Friends"],
     "occasion": [
       "Have dinner with the in-laws",
       "Have dinner with your bestie",
@@ -2820,6 +3073,14 @@
     "country": "Sweden",
     "borough": "Södermalm",
     "cuisine": "International Fusion",
+    "category": [
+      "Business",
+      "Celebration",
+      "Date",
+      "Family",
+      "Friends",
+      "Other"
+    ],
     "occasion": [
       "Have dinner with the in-laws",
       "Have a sunday funday aka brunch",
@@ -2854,7 +3115,8 @@
     "city": "Stockholm",
     "country": "Sweden",
     "borough": "Södermalm",
-    "cuisine": "Italian  mostly pizza",
+    "cuisine": "Italian mostly pizza",
+    "category": ["Business", "Friends"],
     "occasion": [
       "Have dinner with your bestie",
       "Have dinner with friends to catch up",
@@ -2869,7 +3131,7 @@
       "Dog friendly",
       "Vegan option"
     ],
-    "description": "Rost, specializing in Italian cuisine with a focus on pizza, offers a bustling and casual dining environment perfect for various social occasions. Whether you're catching up with your bestie, enjoying a meal with friends, or unwinding after work with colleagues, Rost's inviting atmosphere is ideal. The ambiance at Rost is characterized by good lighting, creating a warm and homely feel. This setting makes it a great spot for casual gatherings, where guests can enjoy the conviviality of shared meals in a relaxed setting. The restaurant's dog-friendly policy also welcomes those who wish to dine with their furry companions, adding to its inclusive and easygoing vibe. Don't miss out on quiznight!",
+    "description": "Rost, specializing in Italian cuisine with a focus on pizza, offers a bustling and casual dining environment perfect for various social occasions. Whether you're catching up with your bestie, enjoying a meal with friends, or unwinding after work with colleagues, Rost's inviting atmosphere is ideal. The ambiance at Rost is characterized by good lighting, creating a warm and homely feel. This setting makes it a great spot for casual gatherings, where guests can enjoy the conviviality of shared meals in a relaxed setting. The restaurant's dog-friendly policy also welcomes those who wish to dine with their furry companions, adding to its inclusive and easygoing vibe. Don't miss out on quiz night!",
     "url": "https://www.roststockholm.se/"
   },
   {
@@ -2881,6 +3143,14 @@
     "country": "Sweden",
     "borough": "Långbro",
     "cuisine": "Scandinavian",
+    "category": [
+      "Business",
+      "Celebration",
+      "Date",
+      "Family",
+      "Friends",
+      "Other"
+    ],
     "occasion": [
       "Have dinner with the in-laws",
       "Have a sunday funday aka brunch",
@@ -2922,6 +3192,7 @@
     "country": "Sweden",
     "borough": "Långbro",
     "cuisine": "Scandinavian with a french twist",
+    "category": ["Celebration", "Date", "Family", "Friends"],
     "occasion": [
       "Have dinner with the in-laws",
       "Have dinner with friends to catch up",
@@ -2944,6 +3215,7 @@
     "country": "Sweden",
     "borough": "Norrmalm",
     "cuisine": "Italian",
+    "category": ["Business", "Family", "Friends"],
     "occasion": [
       "Have dinner with the in-laws",
       "Have dinner with your bestie",
@@ -2965,6 +3237,7 @@
     "country": "Sweden",
     "borough": "Midsommarkransen",
     "cuisine": "English gastropub",
+    "category": ["Business", "Family", "Friends"],
     "occasion": [
       "Have dinner with kids present",
       "Have dinner with your bestie",
@@ -2986,6 +3259,7 @@
     "country": "Sweden",
     "borough": "Norrmalm",
     "cuisine": "Steakhouse",
+    "category": ["Celebration", "Date", "Family", "Friends"],
     "occasion": [
       "Have dinner with the in-laws",
       "Have dinner with your bestie",
@@ -3017,6 +3291,7 @@
     "country": "Sweden",
     "borough": "Norrmalm",
     "cuisine": "French and american",
+    "category": ["Celebration", "Date", "Family", "Friends"],
     "occasion": [
       "Have dinner with your bestie",
       "Have dinner with friends to catch up",
@@ -3049,6 +3324,14 @@
     "country": "Sweden",
     "borough": "Östermalm",
     "cuisine": "Asian",
+    "category": [
+      "Business",
+      "Celebration",
+      "Date",
+      "Family",
+      "Friends",
+      "Other"
+    ],
     "occasion": [
       "Have dinner with the in-laws",
       "Have a sunday funday aka brunch",
@@ -3090,6 +3373,7 @@
     "country": "Sweden",
     "borough": "Älvsjö",
     "cuisine": "Scandinavian",
+    "category": ["Celebration", "Date", "Family", "Friends"],
     "occasion": [
       "Have dinner with the in-laws",
       "Have dinner with your bestie",
@@ -3121,6 +3405,14 @@
     "country": "Sweden",
     "borough": "Norrmalm",
     "cuisine": "Scandinavian and Italian",
+    "category": [
+      "Business",
+      "Celebration",
+      "Date",
+      "Family",
+      "Friends",
+      "Other"
+    ],
     "occasion": [
       "Have dinner with the in-laws",
       "Have dinner with kids present",

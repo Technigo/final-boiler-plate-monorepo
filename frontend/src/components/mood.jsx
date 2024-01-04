@@ -3,7 +3,9 @@ import Navbar from "./navbar"; // Ensure the path is correct
 import Footer from "./footer"; // Ensure the path is correct
 import styled from "styled-components";
 import { useRestaurantStore } from "../stores/restaurantStore"; // Ensure the path is correct
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
+import { getCategoryRoute } from "./Home";
 
 // Styled components, change to fit our stylingschema
 const PageContainer = styled.div`
@@ -81,6 +83,8 @@ const ResultsButton = styled.button`
 `;
 
 const MoodSelector = () => {
+  const { state } = useLocation();
+  const { occasionRoute } = state || {};
   const {
     selectedOccasion,
     fetchMoodsForOccasion,
@@ -111,6 +115,19 @@ const MoodSelector = () => {
     }
   };
 
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  //Function to handle the back button click
+  const handleBackButtonClick = () => {
+    const { state } = location;
+    const { occasionRoute } = state || {};
+  
+
+     // Navigate back to the relevant occasion-page using the occasionRoute
+     navigate(occasionRoute || "/");
+  };
+
   return (
     <PageContainer>
       <Navbar />
@@ -129,8 +146,8 @@ const MoodSelector = () => {
           </MoodButton>
         ))}
       </MoodSelectorContainer>
-      <Link to="/occasion">
-        <MoodButton onClick={handleResultsButtonClick}>
+      <Link to={occasionRoute || "/"}>
+        <MoodButton onClick={handleBackButtonClick}>
           Back to occasion
         </MoodButton>
       </Link>
