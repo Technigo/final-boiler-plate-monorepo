@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { GoogleMap, LoadScript, Marker } from "@react-google-maps/api";
 import Modal from "react-modal";
 import { Buttons } from "../Buttons/Buttons";
 import DatePicker from "react-datepicker";
@@ -6,6 +7,8 @@ import "react-datepicker/dist/react-datepicker.css";
 import { enGB } from "date-fns/locale";
 
 import "./PostStory.css";
+
+const apiKey = import.meta.env.VITE_GOOGLE_MAPS_API_KEY;
 
 export const PostStory = () => {
   const [newHeading, setNewHeading] = useState("");
@@ -16,6 +19,8 @@ export const PostStory = () => {
   const [isCalendarVisible, setIsCalendarVisible] = useState(false);
   const [isImageModalOpen, setIsImageModalOpen] = useState(false);
   const [selectedImage, setSelectedImage] = useState("");
+  const [location, setLocation] = useState({ lat: 0, lng: 0 });
+  const [isMapVisible, setIsMapVisible] = useState(false);
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
@@ -31,11 +36,13 @@ export const PostStory = () => {
       setNewCategory(e.target.value);
     };
 
-    fetch("", {
+    fetch("https://whisperwall.onrender.com/stories", {
       method: "POST",
       body: JSON.stringify({
-        message: newStory,
-        date: selectedDate,
+        title: newHeading,
+        content: newStory,
+        createdAt: selectedDate,
+        location: newWhere,
         category: newCategory,
         image: selectedImage,
       }),
@@ -51,6 +58,14 @@ export const PostStory = () => {
       .catch((error) => {
         console.error("Error posting the story", error);
       });
+  };
+
+  const handleMapClick = (e) => {
+    setLocation({
+      lat: e.latLng.lat(),
+      lng: e.latLng.lng(),
+    });
+    setNewWhere(`🌍 Location: ${e.latLng.lat()}, ${e.latLng.lng()}`);
   };
 
   const handleDateChange = (date) => {
@@ -78,7 +93,7 @@ export const PostStory = () => {
   };
 
   const handleImageSelect = (image) => {
-    import(`/${image}`)
+    import(`/${image}` /* @vite-ignore */)
       .then((module) => {
         setSelectedImage(module.default);
         closeImageModal();
@@ -86,6 +101,23 @@ export const PostStory = () => {
       .catch((error) => {
         console.error("Error loading image:", error);
       });
+  };
+
+  const toggleMapVisibility = () => {
+    setIsMapVisible(!isMapVisible);
+  };
+
+  const handleWhereInputChange = (e) => {
+    setNewWhere(e.target.value);
+
+    setLocation({
+      lat: 59.325, // Set a default latitude
+      lng: 18.05, // Set a default longitude
+    });
+  };
+
+  const handleWhereInputClick = () => {
+    toggleMapVisibility();
   };
 
   return (
@@ -124,13 +156,31 @@ export const PostStory = () => {
             <option value="hearsay">Hearsay</option>
           </select>
         </div>
-        <textarea
-          type="text"
-          value={newWhere}
-          onChange={(e) => setNewWhere(e.target.value)}
-          placeholder="🌍 Where did this happen?"
-          className="input-field"
-        />
+        <div>
+          <textarea
+            type="text"
+            value={newWhere}
+            onChange={handleWhereInputChange}
+            onClick={handleWhereInputClick}
+            placeholder="🌍 Where did this happen?"
+            className="input-field"
+          />
+          {isMapVisible && (
+            <LoadScript googleMapsApiKey={apiKey}>
+              <GoogleMap
+                className="map"
+                mapContainerStyle={{ height: "300px", width: "100%" }}
+                zoom={8}
+                center={location}
+                onClick={handleMapClick}
+              >
+                {location.lat !== 0 && location.lng !== 0 && (
+                  <Marker position={location} />
+                )}
+              </GoogleMap>
+            </LoadScript>
+          )}
+        </div>
         <div>
           {newCategory === "funny story" && (
             <DatePicker
@@ -166,6 +216,8 @@ export const PostStory = () => {
         </div>
         {/* Image Modal */}
         <Modal
+          appElement={document.getElementById("root")}
+          selected={selectedImage}
           className="gallery"
           isOpen={isImageModalOpen}
           contentLabel="Select Image"
