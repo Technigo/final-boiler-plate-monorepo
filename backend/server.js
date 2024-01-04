@@ -5,8 +5,11 @@ import dotenv from "dotenv"; // Import dotenv for environment variables
 dotenv.config(); // Load environment variables from the .env file
 import { connectDB } from "./config/db"; // Import database connection function (not used here)
 import { auth0Config } from "./config/Auth0";
-
 import userRoutes from "./routes/userRoutes";
+
+//Websocket
+import ws from "ws";
+//------------------
 
 const { auth } = require("express-openid-connect");
 
@@ -28,6 +31,31 @@ app.use(userRoutes);
 connectDB();
 
 // Start the server and listen for incoming requests on the specified port
-app.listen(port, () => {
+// app.listen(port, () => {
+//   console.log(`Server running on http://localhost:${port}`); // Display a message when the server is successfully started
+// });
+
+//#REGION Websocket stuff
+const server = app.listen(port, () => {
   console.log(`Server running on http://localhost:${port}`); // Display a message when the server is successfully started
 });
+
+const wss = new ws.WebSocketServer({ server });
+wss.on("connection", (connection, req) => {
+  const cookies = req.headers.cookie;
+  if (cookies) {
+    const cookieString = cookies
+      .split(";")
+      .find((str) => str.startsWith("_legacy"));
+    // console.log(cookieString);
+    if (cookieString) {
+      const properCookie = cookieString.split(".")[1];
+      if (properCookie) {
+        // console.log(properCookie);
+      }
+    }
+  }
+  // console.log([...wss.clients].map((x) => x.username));
+  // console.log([...wss.clients].length);
+});
+//#ENDREGION
