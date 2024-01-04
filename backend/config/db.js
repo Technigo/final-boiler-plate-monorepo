@@ -7,6 +7,7 @@ import mongoose from "mongoose";
 // Importing the dotenv library to manage environment variables
 import dotenv from "dotenv";
 // Execute the config function to load variables from .env file into process.env
+
 dotenv.config();
 
 /**
