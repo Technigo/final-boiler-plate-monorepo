@@ -1,7 +1,7 @@
 //Import relevant library
 import { NavigationMenu } from "../components/NavigationMenu";
 import { useEffect } from "react";
-
+import { Fade } from "react-awesome-reveal";
 //Import relevant components
 import { HeadingComponent } from "../components/HeadingComponent";
 import { FooterComponent } from '../components/FooterComponent';
@@ -27,23 +27,26 @@ export const Home = () => {
     }, []);
 
     return (
-        <div className="bg-backgroundPink h-auto">
 
-            <NavigationMenu />
+        <Fade>
+            <div className="bg-backgroundPink h-auto">
 
-            <div className="h-3/6 md:h-5/6 lg:h-screen rounded-b-full" style={backgroundImageStyle}>
-                {/* Any content you want on top of the background image */}
-                <HeadingComponent text="Tuanis Surf School" level={1} style={{}} />
+                <NavigationMenu />
 
+                <div className="h-3/6 md:h-5/6 lg:h-screen rounded-b-full" style={backgroundImageStyle}>
+                    {/* Any content you want on top of the background image */}
+                    <HeadingComponent text="Tuanis Surf School" level={1} style={{}} />
+
+                </div>
+
+                <div className="bg-backgroundPink">
+                    <SubHeadingComponent className="pt-12" text="We believe that the most important part of surfing is to have fun. If you’re not having fun, " />
+                    <SubHeadingComponent className="pb-12" text="you’re doing it wrong!" />
+
+
+                </div>
+                <FooterComponent />
             </div>
-
-            <div className="bg-backgroundPink">
-                <SubHeadingComponent className="pt-12" text="We believe that the most important part of surfing is to have fun. If you’re not having fun, " />
-                <SubHeadingComponent className="pb-12" text="you’re doing it wrong!" />
-
-
-            </div>
-            <FooterComponent />
-        </div>
+        </Fade>
     );
 };

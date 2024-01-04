@@ -3,6 +3,7 @@ import { FooterComponent } from "../components/FooterComponent"
 import { PostBookingComponent } from "../components/PostBookingComponent"
 import { HeadingComponent } from "../components/HeadingComponent"
 import { useEffect } from "react";
+
 //import media 
 import WhoAreWePhoto from "../assets/SL2.jpg";
 
@@ -32,6 +33,5 @@ export const BookNow = () => {
             <PostBookingComponent />
             <FooterComponent />
         </div>
-
     )
 }

@@ -1,4 +1,4 @@
-//import { FadeWrapper } from "./Fade";
+import { Fade } from "react-awesome-reveal";
 /**
  * Button component with customizable label, click handler, image, external link, and additional classes.
  * @param {Object} props - Component props
@@ -21,13 +21,13 @@ export const BtnComponent = ({ label, onClick, img, alt, href, target, className
     const combinedClasses = `${defaultClasses} ${className}`;
 
     return (
-        // <FadeWrapper>
-        <a href={href} target={target} rel="noopener noreferrer" className="no-underline">
-            <button onClick={onClick} className={combinedClasses} {...rest}>
-                {img && <img src={img} alt={alt} />} {/* Render the image if img prop is provided */}
-                {label}
-            </button>
-        </a>
-        // </FadeWrapper>
+        <Fade>
+            <a href={href} target={target} rel="noopener noreferrer" className="no-underline">
+                <button onClick={onClick} className={combinedClasses} {...rest}>
+                    {img && <img src={img} alt={alt} />} {/* Render the image if img prop is provided */}
+                    {label}
+                </button>
+            </a>
+        </Fade>
     );
 };

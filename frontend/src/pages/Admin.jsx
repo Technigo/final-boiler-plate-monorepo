@@ -5,11 +5,11 @@ import { BookingListComponent } from "../components/BookingListComponent";
 import { BtnComponent } from "../components/BtnComonent";
 import { DropDownComponent } from "../components/DropDownComponent";
 import { SubHeadingComponent } from "../components/SubHeadingComponent";
+//import relevant store
 import useBookingStore from '../stores/bookingStore';
 
 export const Admin = () => {
   const { fetchBookings, handleDeleteAllBookings } = useBookingStore();
-
 
   const handleDeleteAllButtonClick = async () => {
     const userConfirmed = window.confirm("Are you sure you want to delete all bookings?");
@@ -54,6 +54,7 @@ export const Admin = () => {
 
   // Render the component content.
   return (
+
     <div className="bg-backgroundPink">
       {/* Logout button */}
       <div className="flex items-center justify-center p-4">
@@ -69,5 +70,6 @@ export const Admin = () => {
       {/* Display the BookingListComponent to show all bookings. Set fetchAllBookings to true. */}
       <BookingListComponent fetchAllBookings={true} />
     </div>
+
   );
 };

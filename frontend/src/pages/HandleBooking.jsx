@@ -3,7 +3,6 @@ import { DropDownComponent } from '../components/DropDownComponent';
 import { BookingListComponent } from "../components/BookingListComponent";
 import { SubHeadingComponent } from "../components/SubHeadingComponent"
 import { BtnComponent } from '../components/BtnComonent';
-import useBookingStore from '../stores/bookingStore';
 import { userStore } from "../stores/userStore";
 import { useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';

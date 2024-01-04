@@ -1,4 +1,4 @@
-import React from 'react';
+import { Fade } from "react-awesome-reveal";
 import { FormField } from './FormField';
 import { Checkbox } from './Checkbox';
 import { MyDatePicker } from './MyDatePicker';

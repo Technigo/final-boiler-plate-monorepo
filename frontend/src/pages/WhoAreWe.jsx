@@ -12,7 +12,7 @@ import { PostNewsletter } from "../components/PostNewsletter";
 //import media 
 import Video from "../assets/backgroundFilm.mp4"
 import WhoAreWePhoto from "../assets/WhoAreWe.jpg";
-
+import { Fade } from "react-reveal";
 
 export const WhoAreWe = () => {
 
@@ -26,7 +26,6 @@ export const WhoAreWe = () => {
         backgroundRepeat: 'no-repeat',
         // Default backgroundSize for larger screens
         backgroundSize: 'cover'
-
     };
 
     return (
@@ -53,12 +52,16 @@ export const WhoAreWe = () => {
                     <SubHeadingComponent className="lg:mb-16 lg:mt-16" text="We offer surf-lessons for all levels at: PLAYA SAMARA." />
 
                     {/* Video container */}
+
                     <div className="flex flex-col md:flex-row items-center justify-center h-3/6 md:h-5/6 lg:h-screen overflow-hidden relative">
+
                         {/* Video */}
-                        <video autoPlay muted loop className="w-84 h-auto p-4 rounded-full lg:rounded-full lg:w-2/4 lg:h-2/4 lg:h-full lg:object-cover">
-                            <source src={Video} type="video/mp4" />
-                            Your browser does not support the video tag.
-                        </video>
+                        <Fade>
+                            <video autoPlay muted loop className="w-84 h-auto p-4 rounded-full lg:rounded-full lg:w-2/4 lg:h-2/4 lg:h-full lg:object-cover">
+                                <source src={Video} type="video/mp4" />
+                                Your browser does not support the video tag.
+                            </video>
+                        </Fade>
 
                         {/* Text */}
                         <div className="lg:ml-4 max-w-md">
@@ -66,18 +69,22 @@ export const WhoAreWe = () => {
                         </div>
 
                     </div>
+
                     <div className="lg:grid lg:grid-cols-2">
                         <div className="lg:m-32">
                             <SubHeadingComponent text="Surfing is an activity for the whole family!" />
 
                             <ParagraphComponent className="lg:text-center" text="All ages are welcomed! We have a lot of experience working with children of all ages: from as young as 3 years of age to our oldest surfer so far that was 78 years old. Our surf school welcomes everyone, from first timers to seasoned surfers, no matter what age you are. Surfing is also a great family activity, our expert instructors are great with kids and adults. Discover the passion of surfing together and create unforgettable memories in Costa Rica’s surfing paradise. Come and enjoy Playa Samara, our very family-friendly surf spot." />
                         </div>
+
                         <div className="lg:m-16">
                             <PostNewsletter />
                         </div>
+
                     </div>
                     <FooterComponent />
                 </div>
+
             </div>
         </>
     )

@@ -1,3 +1,4 @@
+import { Fade } from "react-awesome-reveal";
 /**
  * Checkbox Component
  * @param {Object} props - Component properties
@@ -8,10 +9,12 @@
  */
 export const Checkbox = ({ label, checked, onChange, disabled, error }) => {
     return (
-        <div className="flex items-center">
-            <input type="checkbox" checked={checked} onChange={onChange} disabled={disabled} />
-            <label className="ml-2">{label}</label>
-            {error && <p className="text-red-500 ml-2">{error}</p>} {/* Display error message */}
-        </div>
+        <Fade>
+            <div className="flex items-center">
+                <input type="checkbox" checked={checked} onChange={onChange} disabled={disabled} />
+                <label className="ml-2">{label}</label>
+                {error && <p className="text-red-500 ml-2">{error}</p>} {/* Display error message */}
+            </div>
+        </Fade>
     );
 };

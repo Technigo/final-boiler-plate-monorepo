@@ -1,5 +1,6 @@
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
+import { Fade } from "react-awesome-reveal";
 
 /**
  * Custom DatePicker component with added props for customization.
@@ -20,17 +21,19 @@ export const MyDatePicker = ({ selected, onChange, minDate, error, label, dateFo
     minAllowedDate.setDate(today.getDate() + 2);
 
     return (
-        <div className="mb-2">
-            {label && <label className="mr-2">{label}</label>}
-            <DatePicker
-                selected={selected}
-                onChange={onChange}
-                dateFormat={dateFormat}
-                onFocus={onFocus}
-                minDate={minAllowedDate}  // Set the minimum allowed date
-                className="border rounded p-2"
-            />
-            {error && <p className="text-red-600">{error}</p>}
-        </div>
+        <Fade>
+            <div className="mb-2">
+                {label && <label className="mr-2">{label}</label>}
+                <DatePicker
+                    selected={selected}
+                    onChange={onChange}
+                    dateFormat={dateFormat}
+                    onFocus={onFocus}
+                    minDate={minAllowedDate}  // Set the minimum allowed date
+                    className="border rounded p-2"
+                />
+                {error && <p className="text-red-600">{error}</p>}
+            </div>
+        </Fade>
     );
 };

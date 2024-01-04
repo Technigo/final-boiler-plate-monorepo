@@ -1,11 +1,10 @@
 import '../logo.css'
 import logo from '../assets/logo.png';
-//import { FadeWrapper } from './Fade';
+
 export const SpinningLogo = () => {
     const isLogoSpinning = true; // or false, depending on your logic
 
     return (
-        // <FadeWrapper>
         <a href="/home">
             <img
                 className={`w-56 ${isLogoSpinning ? 'animate-spin' : ''}`}
@@ -14,7 +13,6 @@ export const SpinningLogo = () => {
                 alt="logo"
             />
         </a>
-        // </FadeWrapper>
     );
 };
 

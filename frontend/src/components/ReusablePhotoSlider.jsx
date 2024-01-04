@@ -4,7 +4,7 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { PhotoComponent } from "../components/PhotoComponent";
-//import { FadeWrapper } from "./Fade";
+import { Fade } from "react-awesome-reveal";
 /**
  * ReusablePhotoSlider component displays a photo slider using the react-slick library.
  *
@@ -80,19 +80,19 @@ export const ReusablePhotoSlider = ({ images }) => {
     };
 
     return (
-        //  <FadeWrapper>
-        <div className="p-10 overflow-x-hidden rounded-lg">
-            {/* Use the react-slick Slider component */}
-            <Slider {...settings}>
-                {/* Map through the array of images and create a slide for each */}
-                {images.map((image, index) => (
-                    <div key={index}>
-                        {/* Display each image using the PhotoComponent */}
-                        <PhotoComponent className="rounded-3xl p-1 h-52 md:h-auto" img={image} />
-                    </div>
-                ))}
-            </Slider>
-        </div>
-        //  </FadeWrapper>
+        <Fade>
+            <div className="p-10 overflow-x-hidden rounded-lg">
+                {/* Use the react-slick Slider component */}
+                <Slider {...settings}>
+                    {/* Map through the array of images and create a slide for each */}
+                    {images.map((image, index) => (
+                        <div key={index}>
+                            {/* Display each image using the PhotoComponent */}
+                            <PhotoComponent className="rounded-3xl p-1 h-52 md:h-auto" img={image} />
+                        </div>
+                    ))}
+                </Slider>
+            </div>
+        </Fade>
     );
 };

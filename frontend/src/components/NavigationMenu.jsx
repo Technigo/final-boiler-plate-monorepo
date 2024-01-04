@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-//import { FadeWrapper } from './Fade';
+
 import logo from '../assets/logo.png';
 import '../font.css';
 import '../logo.css';
@@ -39,7 +39,7 @@ export const NavigationMenu = () => {
     }, [lastScrollY]);
 
     return (
-        //<FadeWrapper>
+
         <div className={`h-24 font-josefin-sans text-lg bg-customPink bg-opacity-70 flex items-center justify-between px-8 sticky top-0 z-10`}>
             <a href="/home">
                 <img className={`w-24 ${isLogoSpinning ? 'spin' : ''}`} src={logo} alt="logo" />
@@ -107,7 +107,7 @@ export const NavigationMenu = () => {
                
             `}</style>
         </div>
-        // </FadeWrapper>
+
     );
 
     function NavItem({ to, label }) {
