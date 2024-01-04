@@ -51,3 +51,6 @@
     justify-content: center;
     margin: 0 10px;
 }
+.seat-legend li span {
+    margin: 2px;
+}
