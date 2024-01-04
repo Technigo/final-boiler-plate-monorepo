@@ -15,7 +15,7 @@ export const cartStore = create((set) => ({
       localStorage.setItem("cart", JSON.stringify(newCart));
       return { cart: newCart };
     }),
-  removeFromCart: (itemId) =>
-    set((state) => ({ cart: state.cart.filter((item) => item._id !== itemId) })),
+  removeFromCart: (index) =>
+    set((state) => ({ cart: state.cart.filter((_, i) => i !== index) })),
   clearCart: () => set({ cart: [] }),
 }));

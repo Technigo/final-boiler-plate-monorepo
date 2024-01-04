@@ -6,6 +6,7 @@ import { NotFound } from "../pages/notfound/NotFound";
 import { ProductPage } from "../pages/productPage/ProductPage";
 import { PlantsPage } from "../pages/plantsPage/PlantsPage";
 import { CartPage } from "../pages/cartPage/CartPage";
+import { CheckOut } from "../pages/checkOut/CheckOut";
 
 
 const routes = (
@@ -17,6 +18,7 @@ const routes = (
     <Route path="/plants/:id" element={<ProductPage />}/>
     <Route path="/plants/all-plants" element={<PlantsPage />}/>
     <Route path="/cart" element={<CartPage />}/>
+    <Route path="/check-out" element={<CheckOut />}/>
     </>
 );
 

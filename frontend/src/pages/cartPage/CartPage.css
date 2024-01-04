@@ -1,0 +1,17 @@
+section {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1rem
+}
+
+.cart-item {
+    display: flex;
+    gap: 1rem; 
+    padding: 1rem; 
+    border: solid 0.5px; 
+}
+
+.cart-img {
+    height: 200px; 
+}
