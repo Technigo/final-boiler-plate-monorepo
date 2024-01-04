@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { useState } from 'react';
 import './Navbar.css';
+import logoutIcon from "../assets/logout.svg"
 
 
 export const Navbar = ({menuItems , menuDesks}) => {
@@ -35,11 +36,12 @@ export const Navbar = ({menuItems , menuDesks}) => {
                       (<li  key={menuDesk.path} className="app-li">
                         {menuDesk.path ? 
                         <Link to={menuDesk.path}>{menuDesk.name}</Link> :
-                        <button key={menuDesk.name} onClick={menuDesk.onClick}>{menuDesk.name}</button>
+                        <img src={logoutIcon} key={menuDesk.name} onClick={menuDesk.onClick}/>
                       }
                       </li>)
           )}
         </ul>
+
 
       
     
@@ -62,9 +64,12 @@ export const Navbar = ({menuItems , menuDesks}) => {
 
 
           {menuItems.map((menuItem) => (
-            <li  key={menuItem.path} className="app-li">
-              <Link to={menuItem.path} onClick={() => menuItem.onClick ? menuItem.onClick() : null}>{menuItem.name}</Link>
-            </li>
+                      <li  key={menuItem.path} className="app-li">
+                      {menuItem.path ? 
+                      <Link to={menuItem.path}>{menuItem.name}</Link> :
+                      <img src={logoutIcon} key={menuItem.name} onClick={menuItem.onClick}/>
+                    }
+                    </li>
           ))}
         </ul>
         </div>

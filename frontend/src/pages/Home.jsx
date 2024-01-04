@@ -32,10 +32,13 @@ export const Home = () => {
   // Render the component content.
   return (
     <>
-       <Navbar menuItems={[{path: "/search", name: "Search"} ,{path: "/setting", name: "Profile Setting"}, {path: "/about", name: "About"} , {path: "/terms", name: "Terms"}]} menuDesks={[{path: "/setting", name: "Profile Setting"},{path: "/terms", name: "Terms"} , {path: "/about", name: "About"}, {name: "Logout", onClick: () => {
+       <Navbar menuItems={[{path: "/search", name: "Search"} ,{path: "/setting", name: "Profile Setting"}, {path: "/about", name: "About"} , {path: "/terms", name: "Terms"} ,{name: "Logout", onClick: () => {
         handleLogout()
         navigate("/login")
-       }} ]}/>
+        }} ]} menuDesks={[{path: "/setting", name: "Profile Setting"},{path: "/terms", name: "Terms"} , {path: "/about", name: "About"}, {name: "Logout", onClick: () => {
+        handleLogout()
+        navigate("/login")
+        }} ]}/>
       <BackArrow />
       {/* Render the search bar */}
       <Link to="/search">

@@ -39,7 +39,7 @@ export const Login = () => {
 
       <div>
         {/* Display the heading and paragraphs. */}
-        <h1>Login</h1>
+
         <div className="user-login">
           {/* Create input fields for 'username' and 'password' and associate them with state variables. */}
           <h2>Username</h2>
