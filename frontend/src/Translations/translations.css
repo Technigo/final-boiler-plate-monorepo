@@ -1,0 +1,14 @@
+.translations-container {
+
+}
+
+.translate-dropdown {
+    border: none;
+    background-color: #0000;
+    color: #416641;
+    width: 100px;
+    height: 35px;
+    border-radius: 8px;
+    margin: 0;
+    font-size: 25;
+}

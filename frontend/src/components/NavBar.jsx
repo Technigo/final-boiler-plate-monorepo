@@ -1,11 +1,9 @@
-//Satte in ny kod för att bara visa "my pages" om man är inloggad. 
-
-
 import { Button } from "./Button";
 import { Link } from "react-router-dom";
 import { Translations } from "../Translations/Translations";
 import { useTranslation } from "react-i18next";
 import { useUserStore } from "../stores/useUserStore";
+// import { BurgerMenu } from "./BurgerMenu";
 import "./navbar.css";
 
 export const NavBar = () => {
