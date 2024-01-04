@@ -52,3 +52,25 @@
         height: 40px;
         font-size: 25px;
 }
+
+.like-button.clicked {
+    background-color: black; 
+    color: white;
+  }
+
+.logout-button {
+    background-color: #0000;
+    color: #416641;;
+    width: 100px;
+    height: 35px;
+    border-radius: 8px;
+    /* border: solid 0.5px #557C55; */
+    border: none;
+    margin: 0; 
+}
+
+.logout-button:hover {
+    background-color: #557C55;
+    border: none;
+    color: #F2FFE9;
+}

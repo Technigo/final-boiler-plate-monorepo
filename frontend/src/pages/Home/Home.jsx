@@ -13,7 +13,7 @@ export const Home = () => {
         <> 
         {/* <NavBar /> */}
         <Hero />
-        <Filter /> 
+       {/* <Filter /> */}
         <div className="home-container">
             <PlaygroundContainer />
         </div>

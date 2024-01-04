@@ -20,7 +20,7 @@ export const LogOut = () => {
     return (
         <div className="logOut">
             {isLoggedIn ? (
-                <Link to="/logout" onClick={handleLogout}><Button className={"button"} btnText={"Log out"} /></Link>
+                <Link to="/logout" onClick={handleLogout}><Button className={"logout-button"} btnText={"Log out"} /></Link>
             ) : (
                 null
             )}

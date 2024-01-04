@@ -8,6 +8,8 @@ const usePlaygroundStore = create((set) => ({
   playgrounds: [],
   playgroundDetails: null,
   isLiked: false, // Add isLiked state to track if the playground is liked
+
+
   fetchPlaygrounds: async () => {
     try {
       const response = await fetch(playgroundAPI);
@@ -141,5 +143,6 @@ const usePlaygroundStore = create((set) => ({
 
 
 export default usePlaygroundStore;
+
 
 

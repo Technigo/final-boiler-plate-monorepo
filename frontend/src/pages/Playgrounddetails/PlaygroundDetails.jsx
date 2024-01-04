@@ -9,11 +9,13 @@ import { useLocation } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
 
+
 const PlaygroundDetails = () => {
   const { t } = useTranslation();
   const { id } = useParams();
   const { getPlaygroundDetails, playgroundDetails, isLiked, likePlayground } = usePlaygroundStore();
   const location = useLocation();
+  
 
 
 
@@ -203,22 +205,14 @@ const PlaygroundDetails = () => {
     </div>
       
     <div>
-      {/* <Like /> */}
 
-      <Button 
-        className={"like-button"} 
-        handleOnClick={likePlayground} 
-        btnText={"♡"} 
-        />
+    <Button 
+    className={isLiked ? "like-button clicked" : "like-button"} 
+    handleOnClick={likePlayground} 
+    btnText={"♡"} 
+    />
 
-      {/* <button 
-        onClick={likePlayground}>
-        Like Playground
-      </button> */}
-
-      {/* <span>
-        {isLiked ? 'Liked!' : 'Not liked yet'}
-      </span> */}
+     
     </div>
   </div>
   <div>
