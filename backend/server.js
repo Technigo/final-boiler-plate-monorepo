@@ -8,7 +8,7 @@ import userRoutes from "./routes/userRoutes"; // Import custom user routes
 import { connectDB } from "./config/db"; // Import database connection function (not used here)
 import mongoose from "mongoose";
 
-const mongoUrl = process.env.MONGO_URL || "mongodb://localhost/dogs" //not sure if its supposed to say dogs here
+const mongoUrl = process.env.MONGO_URL || "0.0.0.0" //not sure if its supposed to say dogs here
 mongoose.connect(mongoUrl, {useNewUrlParser: true, useUnifiedTopology: true})
 mongoose.Promise = Promise
 
