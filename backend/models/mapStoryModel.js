@@ -19,7 +19,9 @@ const mapStorySchema = new Schema({
   category: {
     type: String,
     required: true,
-    enum: ["historical", "hearsay", "anecdote"],
+
+    enum: ["historical", "hearsay", "anecdote", "rumor"],
+
   },
   ranking: {
     type: Number,
@@ -28,16 +30,52 @@ const mapStorySchema = new Schema({
   location: {
     lat: {
       type: Number,
-      // required: true,
+      required: true,
     },
     lng: {
       type: Number,
-      // required: true,
+      required: true,
     },
+  },
+  city: {
+    type: String,
+    required: true,
+  },
+  image: {
+    type: String,
+    required: true,
+    enum: [
+      "image1.png",
+      "image2.png",
+      "image3.png",
+      "image4.png",
+      "image5.png",
+      "image6.png",
+      "image7.png",
+      "image8.png",
+      "image9.png",
+      "image10.png",
+      "image11.png",
+      "image12.png",
+    ],
   },
   createdAt: {
     type: Date,
     default: Date.now,
+  },
+  // Add new fields
+  city: {
+    type: String,
+    required: false, // Set to true if city is a required field
+  },
+  image: {
+    type: String,
+    required: false,
+    enum: [
+      'image1.png', 'image2.png', 'image3.png', 'image4.png', 
+      'image5.png', 'image6.png', 'image7.png', 'image8.png', 
+      'image9.png', 'image10.png', 'image11.png', 'image12.png'
+    ],
   },
 });
 
