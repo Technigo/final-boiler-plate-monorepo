@@ -1,0 +1,211 @@
+[{
+    "_id": {
+      "$oid": "6585c91e06618a9dee3c493c"
+    },
+    "title": "Aquaman and the Lost Kingdom",
+    "director": "WHO?",
+    "duration": 100,
+    "description": "Black Manta, still driven by the need to avenge his father's death and wielding the power of the mythic Black Trident, will stop at nothing to take Aquaman down once and for all. To defeat him, Aquaman must turn to his imprisoned brother Orm, the former King of Atlantis, to forge an unlikely alliance in order to save the world from irreversible destruction.",
+    "genre": [
+      "comedy",
+      "thriller"
+    ],
+    "releaseDate": {
+      "$date": "2023-12-20T00:00:00.000Z"
+    },
+    "posterUrl": "/8xV47NDrjdZDpkVcCFqkdHa3T0C.jpg",
+    "backdropUrl": "/jXJxMcVoEuXzym3vFnjqDW4ifo6.jpg",
+    "rating": 3,
+    "IMDBRating": 6.9,
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6585c91e06618a9dee3c4941"
+    },
+    "title": "Killers of the Flower Moon",
+    "director": "WHO?",
+    "duration": 100,
+    "description": "When oil is discovered in 1920s Oklahoma under Osage Nation land, the Osage people are murdered one by one—until the FBI steps in to unravel the mystery.",
+    "genre": [
+      "comedy",
+      "thriller"
+    ],
+    "releaseDate": {
+      "$date": "2023-10-18T00:00:00.000Z"
+    },
+    "posterUrl": "/dB6Krk806zeqd0YNp2ngQ9zXteH.jpg",
+    "backdropUrl": "/1X7vow16X7CnCoexXh4H4F2yDJv.jpg",
+    "rating": 3,
+    "IMDBRating": 7.563,
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6585c91e06618a9dee3c4943"
+    },
+    "title": "Trolls Band Together",
+    "director": "WHO?",
+    "duration": 100,
+    "description": "When Branch's brother, Floyd, is kidnapped for his musical talents by a pair of nefarious pop-star villains, Branch and Poppy embark on a harrowing and emotional journey to reunite the other brothers and rescue Floyd from a fate even worse than pop-culture obscurity.",
+    "genre": [
+      "comedy",
+      "thriller"
+    ],
+    "releaseDate": {
+      "$date": "2023-10-12T00:00:00.000Z"
+    },
+    "posterUrl": "/bkpPTZUdq31UGDovmszsg2CchiI.jpg",
+    "backdropUrl": "/k1KrbaCMACQiq7EA0Yhw3bdzMv7.jpg",
+    "rating": 3,
+    "IMDBRating": 7.2,
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6585c91e06618a9dee3c4942"
+    },
+    "title": "Freelance",
+    "director": "WHO?",
+    "duration": 100,
+    "description": "An ex-special forces operative takes a job to provide security for a journalist as she interviews a dictator, but a military coup breaks out in the middle of the interview, they are forced to escape into the jungle where they must survive.",
+    "genre": [
+      "comedy",
+      "thriller"
+    ],
+    "releaseDate": {
+      "$date": "2023-01-05T00:00:00.000Z"
+    },
+    "posterUrl": "/7Bd4EUOqQDKZXA6Od5gkfzRNb0.jpg",
+    "backdropUrl": "/zIYROrkHJPYB3VTiW1L9QVgaQO.jpg",
+    "rating": 3,
+    "IMDBRating": 6.447,
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6585c91e06618a9dee3c4945"
+    },
+    "title": "Leo",
+    "director": "WHO?",
+    "duration": 100,
+    "description": "Jaded 74-year-old lizard Leo has been stuck in the same Florida classroom for decades with his terrarium-mate turtle. When he learns he only has one year left to live, he plans to escape to experience life on the outside but instead gets caught up in the problems of his anxious students — including an impossibly mean substitute teacher.",
+    "genre": [
+      "comedy",
+      "thriller"
+    ],
+    "releaseDate": {
+      "$date": "2023-11-17T00:00:00.000Z"
+    },
+    "posterUrl": "/pD6sL4vntUOXHmuvJPPZAgvyfd9.jpg",
+    "backdropUrl": "/9PqD3wSIjntyJDBzMNuxuKHwpUD.jpg",
+    "rating": 3,
+    "IMDBRating": 7.589,
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6585c91e06618a9dee3c4944"
+    },
+    "title": "Leave the World Behind",
+    "director": "WHO?",
+    "duration": 100,
+    "description": "A family's getaway to a luxurious rental home takes an ominous turn when a cyberattack knocks out their devices—and two strangers appear at their door.",
+    "genre": [
+      "comedy",
+      "thriller"
+    ],
+    "releaseDate": {
+      "$date": "2023-11-22T00:00:00.000Z"
+    },
+    "posterUrl": "/29rhl1xopxA7JlGVVsf1UHfYPvN.jpg",
+    "backdropUrl": "/tLsc8SCFO0rMVgVyNm9XtfnyX84.jpg",
+    "rating": 3,
+    "IMDBRating": 6.558,
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6585c91e06618a9dee3c4948"
+    },
+    "title": "Good Boy",
+    "director": "WHO?",
+    "duration": 100,
+    "description": "Christian - a millionaire heir, meets Sigrid - a young student, on a dating app. They hit it off quickly, but there's only one problem: Christian lives with Frank, a man who dresses up and constantly acts like a dog.",
+    "genre": [
+      "comedy",
+      "thriller"
+    ],
+    "releaseDate": {
+      "$date": "2022-06-03T00:00:00.000Z"
+    },
+    "posterUrl": "/9DPG1gxLwV2oyFdHq3SnISsWbse.jpg",
+    "backdropUrl": "/AucuqDaUW4z1oT5XyL71qwRY2F6.jpg",
+    "rating": 3,
+    "IMDBRating": 6.8,
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6585c91e06618a9dee3c4949"
+    },
+    "title": "Thanksgiving",
+    "director": "WHO?",
+    "duration": 100,
+    "description": "After a Black Friday riot ends in tragedy, a mysterious Thanksgiving-inspired killer terrorizes Plymouth, Massachusetts - the birthplace of the holiday. Picking off residents one by one, what begins as random revenge killings are soon revealed to be part of a larger, sinister holiday plan.",
+    "genre": [
+      "comedy",
+      "thriller"
+    ],
+    "releaseDate": {
+      "$date": "2023-11-16T00:00:00.000Z"
+    },
+    "posterUrl": "/f5f3TEVst1nHHyqgn7Z3tlwnBIH.jpg",
+    "backdropUrl": "/ktHEdqmMWC1wdfPRMRCTZe2OISL.jpg",
+    "rating": 3,
+    "IMDBRating": 6.67,
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6585c91e06618a9dee3c493e"
+    },
+    "title": "Wonka",
+    "director": "WHO?",
+    "duration": 100,
+    "description": "Willy Wonka – chock-full of ideas and determined to change the world one delectable bite at a time – is proof that the best things in life begin with a dream, and if you’re lucky enough to meet Willy Wonka, anything is possible.",
+    "genre": [
+      "comedy",
+      "thriller"
+    ],
+    "releaseDate": {
+      "$date": "2023-12-06T00:00:00.000Z"
+    },
+    "posterUrl": "/qhb1qOilapbapxWQn9jtRCMwXJF.jpg",
+    "backdropUrl": "/yOm993lsJyPmBodlYjgpPwBjXP9.jpg",
+    "rating": 3,
+    "IMDBRating": 7.177,
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6585c91e06618a9dee3c493d"
+    },
+    "title": "The Hunger Games: The Ballad of Songbirds & Snakes",
+    "director": "WHO?",
+    "duration": 100,
+    "description": "64 years before he becomes the tyrannical president of Panem, Coriolanus Snow sees a chance for a change in fortunes when he mentors Lucy Gray Baird, the female tribute from District 12.",
+    "genre": [
+      "comedy",
+      "thriller"
+    ],
+    "releaseDate": {
+      "$date": "2023-11-15T00:00:00.000Z"
+    },
+    "posterUrl": "/mBaXZ95R2OxueZhvQbcEWy2DqyO.jpg",
+    "backdropUrl": "/8GnWDLn2AhnmkQ7hlQ9NJUYobSS.jpg",
+    "rating": 3,
+    "IMDBRating": 7.258,
+    "__v": 0
+  }
+]
