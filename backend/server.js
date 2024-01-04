@@ -27,9 +27,7 @@ app.use(express.urlencoded({ extended: false })); // Parse URL-encoded data
 app.use(taskRoutes); // Use the task-controlled routes for task-related requests
 app.use(userRoutes); // Use the user-controlled routes for user-related requests
 
-app.get('/secrets', (req, res) =>{
-res.json({secret: 'Hello you.'})
-});
+
 
 // Connection to the database through Mongoose
 connectDB();
