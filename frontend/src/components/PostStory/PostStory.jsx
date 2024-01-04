@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { GoogleMap, LoadScript, Marker } from "@react-google-maps/api";
+import { Autocomplete, LoadScript } from "@react-google-maps/api";
 import Modal from "react-modal";
 import { Buttons } from "../Buttons/Buttons";
 import DatePicker from "react-datepicker";
@@ -8,7 +8,7 @@ import { enGB } from "date-fns/locale";
 
 import "./PostStory.css";
 
-const apiKey = import.meta.env.VITE_GOOGLE_MAPS_API_KEY;
+// const apiKey = import.meta.env.VITE_GOOGLE_MAPS_API_KEY;
 
 export const PostStory = () => {
   const [newHeading, setNewHeading] = useState("");
@@ -19,8 +19,9 @@ export const PostStory = () => {
   const [isCalendarVisible, setIsCalendarVisible] = useState(false);
   const [isImageModalOpen, setIsImageModalOpen] = useState(false);
   const [selectedImage, setSelectedImage] = useState("");
-  const [location, setLocation] = useState({ lat: 0, lng: 0 });
-  const [isMapVisible, setIsMapVisible] = useState(false);
+
+  const [autocomplete, setAutocomplete] = useState(null);
+  const [locationName, setLocationName] = useState("");
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
@@ -36,7 +37,6 @@ export const PostStory = () => {
       setNewCategory(e.target.value);
     };
 
-    fetch("https://localhost:3000/stories", {
     fetch("http://localhost:3000/stories", {
       method: "POST",
       body: JSON.stringify({
@@ -59,14 +59,6 @@ export const PostStory = () => {
       .catch((error) => {
         console.error("Error posting the story", error);
       });
-  };
-
-  const handleMapClick = (e) => {
-    setLocation({
-      lat: e.latLng.lat(),
-      lng: e.latLng.lng(),
-    });
-    setNewWhere(`🌍 Location: ${e.latLng.lat()}, ${e.latLng.lng()}`);
   };
 
   const handleDateChange = (date) => {
@@ -94,7 +86,7 @@ export const PostStory = () => {
   };
 
   const handleImageSelect = (image) => {
-    import(`/${image}`)
+    import(`./${image}` /* @vite-ignore */)
       .then((module) => {
         setSelectedImage(module.default);
         closeImageModal();
@@ -104,21 +96,20 @@ export const PostStory = () => {
       });
   };
 
-  const toggleMapVisibility = () => {
-    setIsMapVisible(!isMapVisible);
+  const onLoadAutocomplete = (autocomplete) => {
+    setAutocomplete(autocomplete);
   };
 
-  const handleWhereInputChange = (e) => {
-    setNewWhere(e.target.value);
-
-    setLocation({
-      lat: 59.325, // Set a default latitude
-      lng: 18.05, // Set a default longitude
-    });
-  };
-
-  const handleWhereInputClick = () => {
-    toggleMapVisibility();
+  const onPlaceChanged = () => {
+    if (autocomplete !== null) {
+      const place = autocomplete.getPlace();
+      setLocationName(place.name);
+      // Optionally capture latitude and longitude
+      // const lat = place.geometry.location.lat();
+      // const lng = place.geometry.location.lng();
+    } else {
+      console.error("Autocomplete is not loaded yet!");
+    }
   };
 
   return (
@@ -157,29 +148,21 @@ export const PostStory = () => {
           </select>
         </div>
         <div>
-          <textarea
-            type="text"
-            value={newWhere}
-            onChange={handleWhereInputChange}
-            onClick={handleWhereInputClick}
-            placeholder="🌍 Where did this happen?"
-            className="input-field"
-          />
-          {isMapVisible && (
-            <LoadScript googleMapsApiKey={apiKey}>
-              <GoogleMap
-                className="map"
-                mapContainerStyle={{ height: "300px", width: "100%" }}
-                zoom={8}
-                center={location}
-                onClick={handleMapClick}>
-                {location.lat !== 0 && location.lng !== 0 && (
-                  <Marker position={location} />
-                )}
-              </GoogleMap>
-            </LoadScript>
-          )}
+          <LoadScript
+            googleMapsApiKey={import.meta.env.VITE_GOOGLE_MAPS_API_KEY}>
+            <Autocomplete
+              onLoad={onLoadAutocomplete}
+              onPlaceChanged={onPlaceChanged}>
+              <input
+                className="search-input"
+                type="text"
+                placeholder="Search location"
+              />
+            </Autocomplete>
+          </LoadScript>
+          <p>Selected Location: {locationName}</p>
         </div>
+
         <div>
           {newCategory === "funny story" && (
             <DatePicker
