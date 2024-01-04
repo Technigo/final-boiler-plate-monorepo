@@ -7,7 +7,7 @@
         "$oid": "6585c91e06618a9dee3c493e"
       },
     "bookingDate": "2nd jan",
-    "price": 70,
+    "price": 100,
     "showtimeId": {
           "$oid": "6585c91e06618a9dee3c493e"
           },
