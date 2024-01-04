@@ -8,8 +8,9 @@ const StyledFooter = styled.div`
   flex-direction: column;
   padding: 20px 0;
   text-align: center;
-  position: fixed;
-  bottom: 0;
+  /* position: sticky; */
+  position: -webkit-sticky;
+  /* bottom: 0; */
   width: 100%;
 
   background: -webkit-linear-gradient(

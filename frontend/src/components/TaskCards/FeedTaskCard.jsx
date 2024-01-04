@@ -14,17 +14,33 @@ import styled from "styled-components";
 const StyledFeedCardModal = styled.div`
   border: 1px solid #9eb7bf;
   border-radius: 20px 0 20px 20px;
-  display: flex;
+  /* display: flex;
   flex-direction: column;
-  align-items: center;
-  max-width: 500px;
+  justify-content: center;
+  align-items: center; */
+  /* max-width: 500px; */
+  width: 250px;
   //height: auto;
-  margin: 10px;
+  //margin: 10px;
+
+  .card-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
 
   .task-header {
     display: flex;
     align-items: center;
     gap: 10px;
+    margin: 10px;
+  }
+
+  .area {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     margin: 10px;
   }
 
@@ -34,13 +50,6 @@ const StyledFeedCardModal = styled.div`
     flex-wrap: wrap;
     margin: 10px;
     align-items: center;
-  }
-
-  .area {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 10px;
   }
 
   /* @media screen and (min-width: 600px) {

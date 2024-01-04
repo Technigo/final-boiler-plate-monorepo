@@ -8,11 +8,72 @@ import { FeedTaskCard } from "../components/TaskCards/FeedTaskCard";
 import { FilterTaskFeed } from "../components/FilterTaskFeed";
 import styled from "styled-components";
 
+const StyledTaskPage = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+`;
+
+const StyledTaskFields = styled.div`
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  /* align-items: center; */
+  /*justify-content: center; */
+  width: 250px;
+  gap: 10px;
+
+  @media screen and (min-width: 600px) {
+    width: 500px;
+  }
+
+  @media screen and (min-width: 1000px) {
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 100px;
+    margin-bottom: 30px;
+    width: 750px;
+  }
+`;
+
+const StyledTaskCreator = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+`;
+
 const StyledTaskText = styled.div`
   display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
   gap: 10px;
   //margin-bottom: 20px;
+`;
+
+const CardWrapper = styled.div`
+  display: grid;
+  grid-template-columns: 1fr;
+  /* width: 250px; */
+  /* align-items: center;
+  justify-content: center; */
+  gap: 10px;
+
+  @media screen and (min-width: 600px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media screen and (min-width: 1000px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @media screen and (min-width: 1400px) {
+    grid-template-columns: repeat(4, 1fr);
+  }
 `;
 
 // Define the 'Tasks' functional component.
@@ -68,24 +129,30 @@ export const Tasks = () => {
 
   // Render the component content.
   return (
-    <div>
-      <StyledTaskText>
-        {/* Display the heading and paragraphs. */}
-        <h2>{text.heading}</h2>
-        <p>{text.intro}</p>
-        <p>{text.p}</p>
-      </StyledTaskText>
-      {/* Render the 'CreateTask' component to add new tasks. */}
-      <CreateTask />
-      <FilterTaskFeed />
-      {/* Conditional rendering based on the number of tasks. */}
-      {tasks.length === 0 ? (
-        <p>No Needs to offer your helping hand to!</p>
-      ) : (
-        // Map through 'tasks' and render task items.
-        tasks.map((task) => <FeedTaskCard key={task._id} task={task} />)
-      )}
-    </div>
+    <StyledTaskPage>
+      <StyledTaskFields>
+        <StyledTaskCreator>
+          <StyledTaskText>
+            {/* Display the heading and paragraphs. */}
+            <h2>{text.heading}</h2>
+            <p>{text.intro}</p>
+            <p>{text.p}</p>
+          </StyledTaskText>
+          {/* Render the 'CreateTask' component to add new tasks. */}
+          <CreateTask />
+        </StyledTaskCreator>
+        <FilterTaskFeed />
+      </StyledTaskFields>
+      <CardWrapper>
+        {/* Conditional rendering based on the number of tasks. */}
+        {tasks.length === 0 ? (
+          <p>No Needs to offer your helping hand to!</p>
+        ) : (
+          // Map through 'tasks' and render task items.
+          tasks.map((task) => <FeedTaskCard key={task._id} task={task} />)
+        )}
+      </CardWrapper>
+    </StyledTaskPage>
   );
 };
 

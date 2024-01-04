@@ -3,8 +3,15 @@ import { taskStore } from "../stores/taskStore";
 import styled from "styled-components";
 
 const StyledFilterTaskFeed = styled.div`
-  p {
-    margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 10px;
+  margin-bottom: 30px;
+
+  @media screen and (min-width: 1000px) {
+    margin-top: 78px;
   }
 `;
 
@@ -13,7 +20,6 @@ const StyledSelects = styled.select`
   width: 120px;
   border: 1px solid #64899b;
   border-radius: 20px;
-  gap: 10px;
   padding: 5px;
 
   &.category-select,
@@ -27,7 +33,10 @@ const StyledFilters = styled.div`
   flex-direction: column;
   align-items: center;
   gap: 10px;
-  margin: 20px 0;
+
+  @media screen and (min-width: 1000px) {
+    flex-direction: row;
+  }
 `;
 
 export const FilterTaskFeed = () => {

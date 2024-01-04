@@ -6,6 +6,9 @@ const StyledHeader = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  /* position: fixed;
+  top: 0;
+  width: 100%; */
   padding: 10px 5px 0 10px;
 
   @media (min-width: 1100px) {

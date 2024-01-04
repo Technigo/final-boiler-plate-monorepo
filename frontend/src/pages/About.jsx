@@ -27,7 +27,7 @@ const StyledFounders = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 100px;
+  gap: 50px;
 
   @media (min-width: 1100px) {
     flex-direction: row;
