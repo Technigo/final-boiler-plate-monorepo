@@ -1,6 +1,6 @@
 /* Apply styles to the root element of the application */
 #root {
-  max-width: 1280px; /* Set maximum width for the content */
+  max-width: 1220px; /* Set maximum width for the content */
   margin: 0 auto; /* Center align the content horizontally */
   /* padding: 2rem; Add padding around the content */
   min-height: 100vh; /* Ensure a minimum height to cover the viewport */
@@ -8,19 +8,38 @@
 }
 
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  color: #242424;
+  background-color: rgba(255, 255, 255, 0.87);
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
+
+  /* Primary Colors */
+  --color-primary-text: #333333; 
+  --color-primary-background: #FFFFFF; 
+  --color-cta: #2a423a; 
+  --color-cta-hover: #202322; 
+  --color-cta-text: #e2e3ed; 
+  --color-cta-hover-text: #;
+  --color-secondary-background: #F5F5F5; 
+
+  /* Secondary Colors */
+  --color-secondary-text: #666666; /* Lighter gray for secondary text */
+  --color-accent: #4CAF50; /* Green for accent elements */
+  --color-border: #DDDDDD; /* Light gray for borders */
+}
+
+.ad-card a {
+  font-weight: 500;
+  color: var(--color-primary-text);
+  text-decoration: inherit;
+}
+.ad-card a:hover {
+  color: var(--color-primary-text);
+  cursor: pointer;
 }
 
 a {
@@ -30,6 +49,7 @@ a {
 }
 a:hover {
   color: #535bf2;
+  cursor: pointer;
 }
 
 body {
@@ -38,10 +58,6 @@ body {
   min-height: 100vh;
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
-}
 
 button {
   border-radius: 8px;
@@ -62,18 +78,7 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
-}
+
 
 /* Apply styles to elements with the 'logo' class */
 .logo {
@@ -81,40 +86,6 @@ button:focus-visible {
   padding: 1.5em; /* Add padding around logo images */
   will-change: filter; /* Specify a CSS property that may change */
   transition: filter 300ms; /* Apply a transition effect to the 'filter' property */
-}
-
-/* Apply styles to all list items */
-li {
-  text-align: left; /* Left-align text within list items */
-}
-
-/* Apply styles to elements with the 'app-ul' class (unordered list) */
-.app-ul {
-  list-style-type: none; /* Remove bullets from list items */
-  padding: 0; /* Remove padding from list */
-  margin: 0; /* Remove margin from list */
-  display: flex; /* Display list items in a horizontal row */
-  justify-content: space-between; /* Space items evenly within the container */
-}
-
-/* Apply styles to elements with the 'app-li' class (list items) */
-.app-li {
-  margin-bottom: 10px; /* Add space between list items */
-}
-
-/* Apply styles to elements with the 'heading' class */
-.heading {
-  font-size: 1.5em; /* Set font size for headings */
-}
-
-/* Apply styles to elements with the 'card' class */
-.card {
-  padding: 2em; /* Add padding around card content */
-}
-
-/* Apply styles to elements with the 'read-the-docs' class */
-.read-the-docs {
-  color: #888; /* Set text color to gray */
 }
 
 /* Apply styles to elements with either 'user-login' or 'user-registration' class */
@@ -132,56 +103,6 @@ li {
   height: 2em; /* Set height for input elements */
 }
 
-/* Apply styles to elements with the 'card-wrapper' class */
-.card-wrapper {
-  padding: 1rem 0rem; /* Add padding above and below card wrappers */
-}
-
-/* Apply styles to elements with the 'card-container' class */
-.card-container {
-  border: 1px solid red; /* Add a red border to card containers */
-  padding-bottom: 1em; /* Add padding below card containers */
-}
-
-/* Apply styles to elements with the 'green-border' class */
-.green-border {
-  border: 1px solid green; /* Add a green border to elements with this class */
-}
-
-/* Apply styles to elements with the 'red-border' class */
-.red-border {
-  border: 1px solid red; /* Add a red border to elements with this class */
-}
-
-/* Apply styles to input elements with the 'task-input' class */
-.task-input {
-  width: 50%; /* Set width for task input elements */
-  padding: 0.5em; /* Add padding around task input elements */
-}
-
-/* Apply styles to elements with the 'cta-block' class */
-.cta-block {
-  display: block; /* Display elements as block-level */
-  width: 100%; /* Set the width to 100% */
-}
-
-/* Apply styles to buttons within elements with the 'cta-block' class */
-.cta-block button {
-  margin: 0.5em 0em; /* Add margin above and below buttons */
-  width: 100%; /* Set the width of buttons to 100% */
-}
-
-/* Apply styles to odd-numbered buttons within 'cta-block' class */
-.cta-block button:nth-of-type(odd) {
-  background: #7ae582; /* Set background color for odd buttons */
-  color: #fafafa; /* Set text color for odd buttons */
-}
-
-/* Apply styles to even-numbered buttons within 'cta-block' class */
-.cta-block button:nth-of-type(even) {
-  background: #bc4749; /* Set background color for even buttons */
-  color: #fafafa; /* Set text color for even buttons */
-}
 
 /* Apply styles to elements with the 'not-found' class */
 .not-found {

@@ -1,13 +1,306 @@
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@300;400&display=swap");
+/*! HTML5 Boilerplate v6.1.0 | MIT License | https://html5boilerplate.com/ */
 
-body {
-  font-family: "Montserrat", sans-serif;
-  position: relative;
-  overflow-x: hidden;
+/*
+ * What follows is the result of much research on cross-browser styling.
+ * Credit left inline and big thanks to Nicolas Gallagher, Jonathan Neal,
+ * Kroc Camen, and the H5BP dev community and team.
+ */
+
+/* ==========================================================================
+   Base styles: opinionated defaults
+   ========================================================================== */
+
+html {
+  color: #222;
+  font-size: 1em;
+  line-height: 1.4;
 }
 
-*{
+/*
+   * Remove text-shadow in selection highlight:
+   * https://twitter.com/miketaylr/status/12228805301
+   *
+   * Vendor-prefixed and regular ::selection selectors cannot be combined:
+   * https://stackoverflow.com/a/16982510/7133471
+   *
+   * Customize the background color to match your design.
+   */
+
+::-moz-selection {
+  background: #b3d4fc;
+  text-shadow: none;
+}
+
+::selection {
+  background: #b3d4fc;
+  text-shadow: none;
+}
+
+/*
+   * A better looking default horizontal rule
+   */
+
+hr {
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid #ccc;
+  margin: 1em 0;
+  padding: 0;
+}
+
+/*
+   * Remove the gap between audio, canvas, iframes,
+   * images, videos and the bottom of their containers:
+   * https://github.com/h5bp/html5-boilerplate/issues/440
+   */
+
+audio,
+canvas,
+iframe,
+img,
+svg,
+video {
+  vertical-align: middle;
+}
+
+/*
+   * Remove default fieldset styles.
+   */
+
+fieldset {
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+
+/*
+   * Allow only vertical resizing of textareas.
+   */
+
+textarea {
+  resize: vertical;
+}
+
+/* ==========================================================================
+     Browser Upgrade Prompt
+     ========================================================================== */
+
+.browserupgrade {
+  margin: 0.2em 0;
+  background: #ccc;
+  color: #000;
+  padding: 0.2em 0;
+}
+
+/* ==========================================================================
+     Author's custom styles
+     ========================================================================== */
+
+
+/* Importing Fonts */
+@import url('https://fonts.googleapis.com/css?family=Open+Sans|Montserrat|Hind&display=swap');
+
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+/* Base Styles */
+html {
+  font-size: 16px;
+}
+
+body {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 1em;
+  background-color: #FFFFFF;
+  /* Neutral white background */
+}
+
+h1,
+input {
+  font-family: 'Montserrat', sans-serif;
+}
+
+h2,
+h3,
+h4 {
+  font-family: 'Montserrat', sans-serif;
+}
+
+p {
+  font-family: 'Hind', sans-serif;
+}
+
+
+/* ---------- MOBILE ---------- */
+h1 {
+  font-size: 56px;
+  line-height: 43px;
+  font-weight: 700;
+}
+
+h2 {
+  font-size: 32px;
+  font-weight: 600;
+}
+
+h3 {
+  font-size: 24px;
+  font-weight: 600;
+}
+
+h4,
+.buttons,
+.cards {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+p {
+  font-size: 18px;
+  line-height: 18px;
+  font-weight: 400;
+}
+
+.navigation {
+  font-size: 24px;
+  font-weight: 600;
+}
+
+input[type="text"],
+.input-text {
+  font-size: 18px;
+  font-weight: 400;
+}
+
+.address {
+  font-style: normal;
+}
+
+.about-icons {
+  font-size: 80px;
+}
+
+.social-media-icons {
+  font-size: 32px;
+}
+
+/* ---------- DESKTOP --------- */
+@media (min-width: 1120px) {
+  h1 {
+    font-size: 80px;
+  }
+
+  h2 {
+    font-size: 56px;
+  }
+
+  h3 {
+    font-size: 32px;
+  }
+
+  .navigation {
+    font-size: 32px;
+    font-weight: 600;
+  }
+
+  p {
+    font-size: 18px;
+  }
+}
+
+
+/* ---------- CONTAINERS ---------- */
+@media (max-width: 1120px) {
+  .container {
+    max-width: 680px;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 680px) {
+  .container {
+    max-width: 343px;
+    margin: 0 auto;
+  }
+}
+
+/* ==========================================================================
+   Print styles.
+   Inlined to avoid the additional HTTP request:
+   https://www.phpied.com/delay-loading-your-print-css/
+   ========================================================================== */
+
+@media print {
+
+  *,
+  *:before,
+  *:after {
+    background: transparent !important;
+    color: #000 !important;
+    /* Black prints faster */
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+
+  a,
+  a:visited {
+    text-decoration: underline;
+  }
+
+  a[href]:after {
+    content: " (" attr(href) ")";
+  }
+
+  abbr[title]:after {
+    content: " (" attr(title) ")";
+  }
+
+  /*
+       * Don't show links that are fragment identifiers,
+       * or use the `javascript:` pseudo protocol
+       */
+  a[href^="#"]:after,
+  a[href^="javascript:"]:after {
+    content: "";
+  }
+
+  pre {
+    white-space: pre-wrap !important;
+  }
+
+  pre,
+  blockquote {
+    border: 1px solid #999;
+    page-break-inside: avoid;
+  }
+
+  /*
+       * Printing Tables:
+       * http://css-discuss.incutio.com/wiki/Printing_Tables
+       */
+  thead {
+    display: table-header-group;
+  }
+
+  tr,
+  img {
+    page-break-inside: avoid;
+  }
+
+  p,
+  h2,
+  h3 {
+    orphans: 3;
+    widows: 3;
+  }
+
+  h2,
+  h3 {
+    page-break-after: avoid;
+  }
 }
