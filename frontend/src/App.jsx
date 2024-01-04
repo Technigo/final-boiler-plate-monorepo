@@ -8,6 +8,7 @@ import MoodSelector from "./components/mood";
 import OccasionSelector from "./components/occasion";
 import ResultsComponent from "./components/result";
 import AddRestaurantForm from "./components/addRestaurantForm";
+import Suggestion from "./components/suggestion";
 import styled, { createGlobalStyle } from "styled-components";
 
 const GlobalStyle = createGlobalStyle`
@@ -29,6 +30,7 @@ const App = () => {
           <Route path="/result" element={<ResultsComponent />} />
           <Route path="/about" element={<AboutPage />} />
           <Route path="/addrestaurant" element={<AddRestaurantForm />} />
+          <Route path="/suggestion" element={<Suggestion />} />
         </Routes>
       </Wrapper>
     </BrowserRouter>
