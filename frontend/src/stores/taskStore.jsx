@@ -244,6 +244,12 @@ export const taskStore = create((set) => ({
         ),
       }));
 
+      set((state) => ({
+        userTasks: state.userTasks.filter(
+          (task) => task._id.toString() !== id.toString()
+        ),
+      }));
+
       // Send a DELETE request to the backend API to delete a task by its ID
       const response = await fetch(`${apiEnv}/delete/${id}`, {
         method: "DELETE",
