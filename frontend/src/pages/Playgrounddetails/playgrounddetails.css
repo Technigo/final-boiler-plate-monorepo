@@ -41,6 +41,48 @@
       width: 30px;
   }
 
+  .wheelchair-explanation {
+    display: flex;
+    flex-direction: row;
+    font-size: 10px;
+  }
+
+  .roundabout-explanation {
+    display: flex;
+    flex-direction: row;
+    font-size: 10px;
+  }
+
+  .zipwire-explanation {
+    display: flex;
+    flex-direction: row;
+    font-size: 10px;
+  }
+
+  .swing-explanation {
+    display: flex;
+    flex-direction: row;
+    font-size: 10px;
+  }
+
+  .slide-explanation {
+    display: flex;
+    flex-direction: row;
+    font-size: 10px;
+  }
+
+  .sandpit-explanation {
+    display: flex;
+    flex-direction: row;
+    font-size: 10px;
+  }
+
+  .icon-explanation-box {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 10px;
+  }
   
 
   

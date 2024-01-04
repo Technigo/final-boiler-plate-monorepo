@@ -27,7 +27,13 @@
 
     "PlaygroundDetails": {
         "icon-explanation": "The icons explain what is available on the playground and what is not. If the icon is black and filled, it is present at the playground; otherwise, it is not.",
-        "playground-details-info-header": "Information about the playground:"
+        "playground-details-info-header": "Information about the playground:",
+        "wheelchair-explanation-p": "- Wheelchair accessible",
+        "roundabout-explanation-p": "- Roundabout",
+        "zipwire-explanation-p": "- Zipwire",
+        "swing-explanation-p": "- Swing",
+        "slide-explanation-p": "- Slide",
+        "sandpit-explanation-p": "- Sandpit"
     },
 
     "BackBtn": {

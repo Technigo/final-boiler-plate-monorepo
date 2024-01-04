@@ -223,6 +223,28 @@ const PlaygroundDetails = () => {
   </div>
   <div>
     <p className="icon-explanation">{t("PlaygroundDetails.icon-explanation")} </p>
+    
+<div className="icon-explanation-box">
+    <div className="wheelchair-explanation">
+    <img className="available playground-icon" src="/Icons/Black/icons8-wheelchair-50 (1).png" alt="Wheelchair accessible" /><p className="wheelchair-explanation-p">{t("PlaygroundDetails.wheelchair-explanation-p")}</p>          
+    </div>
+    <div className="roundabout-explanation">
+    <img className="available playground-icon" src="/Icons/Black/icons8-carousel-50-B.png" alt="Roundabout" /><p className="roundabout-explanation-p">{t("PlaygroundDetails.roundabout-explanation-p")}</p>          
+    </div>
+    <div className="zipwire-explanation">
+    <img className="available playground-icon" src="/Icons/Black/icons8-zipline-50 (1).png" alt="Zipwire" /> <p className="zipwire-explanation-p">{t("PlaygroundDetails.zipwire-explanation-p")}</p>          
+    </div>
+    <div className="swing-explanation">
+    <img className="available playground-icon" src="/Icons/Black/icons8-swing-50.png" alt="Swing" /> <p className="swing-explanation-p">{t("PlaygroundDetails.swing-explanation-p")}</p>          
+    </div>
+    <div className="slide-explanation">
+    <img className="available playground-icon" src="/Icons/Black/icons8-slide-60.png" alt="Slide" /> <p className="slide-explanation-p">{t("PlaygroundDetails.slide-explanation-p")}</p>           
+    </div>
+    <div className="sandpit-explanation">
+    <img className="available playground-icon" src="/Icons/Black/icons8-sandpit-50 (1).png" alt="Sandpit" /> <p className="sandpit-explanation-p">{t("PlaygroundDetails.sandpit-explanation-p")}</p>       
+    </div>
+</div>
+
   </div>
 </div>
   );
