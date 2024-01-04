@@ -1,7 +1,7 @@
 import { userStore } from "../stores/userStore";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Link } from "react-router-dom";
+
 //Import components
 import { SubHeadingComponent } from "../components/SubHeadingComponent";
 import { BtnComponent } from "../components/BtnComonent";

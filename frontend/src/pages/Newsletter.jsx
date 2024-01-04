@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom"
 import { useEffect } from "react"
 import { userStore } from "../stores/userStore";
 
-export const NewsLetter = () => {
+export const Newsletter = () => {
 
     const storeHandleLogout = userStore((state) => state.handleLogout);
 
@@ -45,9 +45,7 @@ export const NewsLetter = () => {
                 <SubHeadingComponent text="Newletter subscriptions" />
                 <DropDownComponent />
             </div>
-
             <NewsLetterListComponent />
-
         </div>
 
     )

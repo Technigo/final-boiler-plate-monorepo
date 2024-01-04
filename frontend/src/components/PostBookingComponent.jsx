@@ -9,7 +9,6 @@ import { SpinningLogo } from "./SpinningLogo";
 
 export const PostBookingComponent = () => {
 
-
     // State Hooks
     const [minDate, setMinDate] = useState(new Date());
     const [numberOfPeople, setNumberOfPeople] = useState(1);

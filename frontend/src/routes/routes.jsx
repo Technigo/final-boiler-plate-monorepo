@@ -12,8 +12,7 @@ import { SurfLessons } from "../pages/SurfLessons";
 import { BookNow } from "../pages/BookNow";
 import { HandledBooking } from "../pages/HandleBooking";
 import { UnHandledBooking } from "../pages/UnHandledBooking";
-import { NewsLetter } from "../pages/NewsLetter"; //adjusted
-
+import { Newsletter } from "../pages/Newsletter";
 
 const routes = (
   <>
@@ -25,7 +24,7 @@ const routes = (
     <Route path="/Admin" element={<Admin />} />
     <Route path="/HandledBooking" element={<HandledBooking />} />
     <Route path="/UnHandledBooking" element={<UnHandledBooking />} />
-    <Route path="/NewsLetter" element={<NewsLetter />} />
+    <Route path="/Newsletter" element={<Newsletter />} />
     <Route path="/Login" element={<Login />} />
     <Route path="/Register" element={<Register />} />
     <Route path="*" element={<NotFound />} />
