@@ -6,7 +6,7 @@ import "./PlantsPage.css";
 
 import { PiHeartStraightFill } from "react-icons/pi";
 
-export const PlantsPage = () => {
+export const FilteredPopularPage = () => {
 
   const [error, setError] = useState(null);
   //   const [selectedCategory, setSelectedCategory] = useState(null);
@@ -15,9 +15,8 @@ export const PlantsPage = () => {
   const { plants, fetchPlantsByCategory } = plantStore();
 
   useEffect(() => {
-    fetchPlantsByCategory(null);
+    fetchPlantsByCategory("Popular");
   }, [fetchPlantsByCategory]);
-
 
   return (
     <section className="categories-wrapper">
@@ -31,7 +30,7 @@ export const PlantsPage = () => {
       </div>
       <div className="main-content">
         <nav className="options-container">
-        <ul className="category-options">
+          <ul className="category-options">
             <li><Link to="/plants/all-plants/shady">Shade-loveing</Link></li>
             <li><Link to="/plants/all-plants/easy">Easy</Link></li>
             <li><Link to="/plants/all-plants/pets">Pet friendly</Link></li>

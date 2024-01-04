@@ -6,18 +6,17 @@ import "./PlantsPage.css";
 
 import { PiHeartStraightFill } from "react-icons/pi";
 
-export const PlantsPage = () => {
+export const FilteredShadyPage = () => {
 
   const [error, setError] = useState(null);
   //   const [selectedCategory, setSelectedCategory] = useState(null);
 
   // Access the 'plants' and 'fetchPlants' functions from the 'plantStore'.
-  const { plants, fetchPlantsByCategory } = plantStore();
+  const { plants, fetchPlantsByCategory, selectedCategory } = plantStore();
 
   useEffect(() => {
-    fetchPlantsByCategory(null);
+    fetchPlantsByCategory("Popular");
   }, [fetchPlantsByCategory]);
-
 
   return (
     <section className="categories-wrapper">

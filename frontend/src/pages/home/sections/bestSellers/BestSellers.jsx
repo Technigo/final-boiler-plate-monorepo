@@ -14,18 +14,13 @@ export const BestSellers = () => {
   const [error, setError] = useState(null);
 
   // Access the 'plants' and 'fetchPlants' functions from the 'plantStore'.
-  const { plants, fetchPlants, setApiEndpoint } = plantStore();
+  const { plants, fetchPlantsByCategory } = plantStore();
 
   console.log("POPULAR PLANTS:", plants);
-  //const navigate = useNavigate();
 
   useEffect(() => {
-    setApiEndpoint("https://plants-holm-witting-backend.onrender.com/api/plants/category/popular");
-    fetchPlants().catch((error) => {
-      console.error("error fetching plant data", error);
-      setError(error);
-    });
-  }, []);
+    fetchPlantsByCategory("Popular");
+  }, [fetchPlantsByCategory]);
 
   return (
     <section className="best-sellers-wrapper">
@@ -36,7 +31,7 @@ export const BestSellers = () => {
             return (
               <Link to={`/plants/${plant._id}`}>
               <div
-                // onClick={() => navigate(`/plants/${plant._id}`)}
+                
                 key={plant._id}
               >
                 <div className="plant-card">

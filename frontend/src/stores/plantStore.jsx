@@ -1,21 +1,24 @@
 // Import the 'create' function from the 'zustand' library.
 import { create } from "zustand";
 
+
 // Import the userStore to access user-related data
-import { userStore } from "./userStore";
+//WE DONT NEED THIS?
+//import { userStore } from "./userStore";
 
 // Get the backend API endpoint from the environment variables.
 // const apiEnv = import.meta.env.VITE_BACKEND_API;
 const apiEnv = "https://plants-holm-witting-backend.onrender.com/api/plants";
 
+
 export const plantStore = create((set, get) => ({
   plants: [],
-  apiEndpoint: `${apiEnv}/category`,
+  // apiEndpoint: `${apiEnv}/category`,
   // apiEndpoint: `${apiEnv}/plants`, // Default API endpoint
-  selectedCategory: null,
+  // selectedCategory: null,
 
   setPlants: (plants) => set({ plants }),
-  setApiEndpoint: (endpoint) => set({ apiEndpoint: endpoint }),
+  //setApiEndpoint: (endpoint) => set({ apiEndpoint: endpoint }),
 
   fetchPlants: async () => {
     try {

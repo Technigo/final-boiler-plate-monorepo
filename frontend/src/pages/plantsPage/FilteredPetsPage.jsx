@@ -6,7 +6,7 @@ import "./PlantsPage.css";
 
 import { PiHeartStraightFill } from "react-icons/pi";
 
-export const PlantsPage = () => {
+export const FilteredPetsPage = () => {
 
   const [error, setError] = useState(null);
   //   const [selectedCategory, setSelectedCategory] = useState(null);
@@ -15,9 +15,8 @@ export const PlantsPage = () => {
   const { plants, fetchPlantsByCategory } = plantStore();
 
   useEffect(() => {
-    fetchPlantsByCategory(null);
+    fetchPlantsByCategory("Pet Friendly");
   }, [fetchPlantsByCategory]);
-
 
   return (
     <section className="categories-wrapper">

@@ -1,32 +1,54 @@
-import { Link } from "react-router-dom"
-import { IoIosClose } from "react-icons/io";
+import { Link } from "react-router-dom";
 import { PiPawPrintLight } from "react-icons/pi";
 
-
-export const Navigation = ({isMenuOpen}) => {
-return (
-  <nav className={`nav-menu ${isMenuOpen && "active"}`}>
-    <IoIosClose className="close-icon" />
+export const Navigation = () => {
+  return (
+    <>
       <ul>
         <li className="ul-title">Categories</li>
-        <li>All plants</li>
-        <li>Most popular</li>
-        <li>Shade lovers</li>
-        <li>Easy care</li>
-        <li>Pet friendly <PiPawPrintLight />
-</li>
-        <li>Hanging & climbing</li>
+        <li>
+          <Link to="/plants/all-plants">All plants</Link>
+        </li>
+        <li>
+          <Link to="/plants/popular">Most popular</Link>
+        </li>
+        <li>
+          <Link to="/plants/shady">Shade lovers</Link>
+        </li>
+        <li>
+          <Link to="/plants/easy">Easy care</Link>
+        </li>
+        <li>
+          <Link to="/plants/pets">
+            Pet friendly <PiPawPrintLight />
+          </Link>
+        </li>
+        <li>
+          <Link to="/plants/easy">Hanging & climbing</Link>
+        </li>
       </ul>
-      <hr></hr>
+      <hr />
       <ul>
-        <li>My account</li>
-        <li>Register</li>
-        <li>About us</li>
-        <li>Contact</li>
+        <li>
+          <Link to="">My account</Link>
+        </li>
+        <li>
+          <Link to="">Register</Link>
+        </li>
+        <li>
+          <Link to="">About us</Link>
+        </li>
+        <li>
+          <Link to="">Contact</Link>
+        </li>
       </ul>
-    <Link to="/">
-      <img className="menu-logo" src="./big-logo-sand.svg" alt="Plants by Holm and Witting logotype" />
-    </Link>
-  </nav>
-  )
-}
+      <Link to="/">
+        <img
+          className="menu-logo"
+          src="./big-logo-sand.svg"
+          alt="Plants by Holm and Witting logotype"
+        />
+      </Link>
+    </>
+  );
+};
