@@ -305,7 +305,7 @@ export const userStore = create((set) => ({
     } else {
       // If they are logged in, send a POST request to the update endpoint with user data. 
       try { 
-        const response = await fetch(`${apiEnv}/update/${userId}`, {
+        const response = await fetch(`${apiEnv}/users/${userId}`, {
           method: "PUT",
           headers: {
             "Content-Type": "application/json",

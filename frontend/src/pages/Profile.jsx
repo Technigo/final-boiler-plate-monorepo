@@ -8,7 +8,7 @@ import { Modal, Button } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { ContactForm } from "../components/ContactForm";
 
-// How to make sure that this is advertiser's profile???
+// This component renders the advertiser's profile
 export const Profile = () => {
   const { userId } = useParams();
   const username = userStore((state) => state.username);
