@@ -8,6 +8,7 @@ const cocktailSchema = mongoose.Schema({
     category: String,
     color: String,
     ingredientsCount: Number,
+    creator: String,
     occasion: [String],
     difficulty: String,
     flavorProfile: String,
@@ -27,6 +28,7 @@ module.exports = mongoose.model('Cocktail', cocktailSchema);
 // Use Express to set up routes like GET /cocktails, POST /cocktails, etc.
 
 
+
 // eksempel:
 // {
 //     "name": "Margarita",
@@ -36,6 +38,7 @@ module.exports = mongoose.model('Cocktail', cocktailSchema);
 //     "category": "Classic",
 //     "color": "Green",
 //     "ingredientsCount": 4,
+//     "creator": "Eva", //(Ine, Guest, Mirela ol)
 //     "occasion": ["Summer", "Beach Party"],
 //     "difficulty": "Easy",
 //     "flavorProfile": "Sour",
