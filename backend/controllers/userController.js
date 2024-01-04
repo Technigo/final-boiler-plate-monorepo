@@ -187,7 +187,6 @@ export const updateUserController = asyncHandler(async (req, res) => {
   const userId = req.params.userId;
 
   const { password, email, location, introduction, products } = req.body;
-  const image = req.file;
 
   let userToBeUpdated; 
   
@@ -221,7 +220,7 @@ export const updateUserController = asyncHandler(async (req, res) => {
     // const hashedPassword = bcrypt.hashSync(password, salt);
 
     // Upload image to Cloudinary if there is one in request
-    if (image) {
+    if (req.file) {
       let imageUrl, imageId;
       try {
         const result = await cloudinary.uploader.upload(req.file.path);
