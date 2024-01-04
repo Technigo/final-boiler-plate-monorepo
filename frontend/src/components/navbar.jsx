@@ -101,8 +101,8 @@ const Navbar = () => {
           <NavbarLink to="/about">About </NavbarLink>
         </NavItem>
         <NavItem>
-          <NavbarLink to="/addrestaurant">Add a new restaurant</NavbarLink>
-        </NavItem> 
+          <NavbarLink to="/addrestaurant">Add Restaurant</NavbarLink>
+        </NavItem>
       </NavbarNav>
     </NavbarContainer>
   );
