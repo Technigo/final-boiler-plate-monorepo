@@ -93,7 +93,7 @@ export const PostStory = () => {
   };
 
   const handleImageSelect = (image) => {
-    import(`/${image}`)
+    import(`/${image}` /* @vite-ignore */)
       .then((module) => {
         setSelectedImage(module.default);
         closeImageModal();
