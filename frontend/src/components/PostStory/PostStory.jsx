@@ -36,7 +36,7 @@ export const PostStory = () => {
       setNewCategory(e.target.value);
     };
 
-    fetch("http://localhost:3000/stories", {
+    fetch("https://whisperwall.onrender.com/stories", {
       method: "POST",
       body: JSON.stringify({
         title: newHeading,
