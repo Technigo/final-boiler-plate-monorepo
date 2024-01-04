@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom"
 import { useEffect } from "react"
 import { userStore } from "../stores/userStore";
 
-export const Newsletter = () => {
+export const NewsLetter = () => {
 
     const storeHandleLogout = userStore((state) => state.handleLogout);
 
