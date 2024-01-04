@@ -31,7 +31,7 @@ export const Home = () => {
 
             <NavigationMenu />
 
-            <div className="h-3/6 md:h-5/6 lg:h-screen rounded-full" style={backgroundImageStyle}>
+            <div className="h-3/6 md:h-5/6 lg:h-screen rounded-b-full" style={backgroundImageStyle}>
                 {/* Any content you want on top of the background image */}
                 <HeadingComponent text="Tuanis Surf School" level={1} style={{}} />
 

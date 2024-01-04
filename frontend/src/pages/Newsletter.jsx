@@ -1,14 +1,13 @@
-import React, { useEffect } from 'react';
-import { DropDownComponent } from "../components/DropDownComponent";
-import { BookingListComponent } from "../components/BookingListComponent";
-import { SubHeadingComponent } from '../components/SubHeadingComponent';
-import { BtnComponent } from '../components/BtnComonent';
-import useBookingStore from '../stores/bookingStore';
+import { NewsLetterListComponent } from "../components/NewsLetterListComponent"
+import { DropDownComponent } from "../components/DropDownComponent"
+import { BtnComponent } from "../components/BtnComonent"
+import { SubHeadingComponent } from "../components/SubHeadingComponent"
+import { useNavigate } from "react-router-dom"
+import { useEffect } from "react"
 import { userStore } from "../stores/userStore";
-import { useNavigate } from 'react-router-dom';
 
+export const Newsletter = () => {
 
-export const UnHandledBooking = () => {
     const storeHandleLogout = userStore((state) => state.handleLogout);
 
 
@@ -37,7 +36,6 @@ export const UnHandledBooking = () => {
         navigate("/"); // You can change this to the login route
     };
 
-
     return (
         <div className="bg-backgroundPink">
             <div className="flex items-center justify-center p-4">
@@ -45,14 +43,13 @@ export const UnHandledBooking = () => {
             </div>
 
             <div className="flex flex-col items-center justify-center p-4">
-                <SubHeadingComponent text="Unhandled Bookings" />
+                <SubHeadingComponent text="Newletter subscriptions" />
                 <DropDownComponent />
             </div>
 
-            <div>
-                {/* Pass prop fetchUnHandledBookings as true to fetch only unhandled bookings */}
-                <BookingListComponent fetchUnHandledBookings={true} />
-            </div>
+            <NewsLetterListComponent />
+
         </div>
-    );
-};
+
+    )
+}

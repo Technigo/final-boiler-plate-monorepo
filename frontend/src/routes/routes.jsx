@@ -3,7 +3,6 @@ import { Route } from "react-router-dom";
 
 import { Admin } from "../pages/Admin";
 import { Register } from "../pages/Register";
-import { Tasks } from "../pages/Tasks";
 import { Login } from "../pages/Login";
 import { NotFound } from "../pages/NotFound";
 import { ContactUs } from "../pages/ContactUs";
@@ -13,6 +12,7 @@ import { SurfLessons } from "../pages/SurfLessons";
 import { BookNow } from "../pages/BookNow";
 import { HandledBooking } from "../pages/HandleBooking";
 import { UnHandledBooking } from "../pages/UnHandledBooking";
+import { Newsletter } from "../pages/NewsLetter";
 
 const routes = (
   <>
@@ -24,9 +24,11 @@ const routes = (
     <Route path="/Admin" element={<Admin />} />
     <Route path="/HandledBooking" element={<HandledBooking />} />
     <Route path="/UnHandledBooking" element={<UnHandledBooking />} />
+    <Route path="/UnHandledBooking" element={<UnHandledBooking />} />
+    <Route path="/Newsletter" element={<Newsletter />} />
+    <Route path="/Newsletter" element={<Newsletter />} />
     <Route path="/Login" element={<Login />} />
-    <Route path="/register" element={<Register />} />
-    <Route path="/booking/:id" element={<Tasks />} />
+    <Route path="/Register" element={<Register />} />
     <Route path="*" element={<NotFound />} />
   </>
 );

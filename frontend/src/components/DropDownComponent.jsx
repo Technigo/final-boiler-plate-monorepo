@@ -1,8 +1,8 @@
-import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 
 export const DropDownComponent = () => {
     const navigate = useNavigate();
+    const location = useLocation();
 
     const handleChange = (event) => {
         navigate(event.target.value);
@@ -11,17 +11,15 @@ export const DropDownComponent = () => {
     return (
         <div>
             <label htmlFor="booking-filter">Filter Bookings: </label>
-            <select id="booking-filter" onChange={handleChange}>
-                <option value="" disabled selected>
-                    Select an option
-                </option>
+            <select id="booking-filter" onChange={handleChange} value={location.pathname}>
                 <option value="/Admin">All Bookings</option>
                 <option value="/HandledBooking">Handled Bookings</option>
                 <option value="/UnHandledBooking">Unhandled Bookings</option>
+                <option value="/Newsletter">Newsletter</option>
             </select>
         </div>
     );
-}
+};
 
 
 
