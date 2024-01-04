@@ -1,15 +1,16 @@
 import { useState, useEffect } from "react";
 import { userStore } from "../stores/userStore";
 import BackArrow from "../components/BackArrow";
+import defaultProfileImage from "../assets/images/profile_icon.png";
 
 export const UpdateSettings = () => {
   // For retrieving the updated user profile data later on
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [location, setLocation] = useState("");
-  const [introduction, setIntroduction] = useState("");
-  const [products, setProducts] = useState([]);
-  const [image, setImage] = useState(null);
+  const [inputEmail, setInputEmail] = useState("");
+  const [inputPassword, setInputPassword] = useState("");
+  const [inputLocation, setInputLocation] = useState("");
+  const [inputIntroduction, setInputIntroduction] = useState("");
+  const [inputProducts, setInputProducts] = useState([]);
+  const [image, setImage] = useState(defaultProfileImage);
 
   // For fetching the current user profile data
   const isLoggedin = userStore((state) => state.isLoggedin);
@@ -24,7 +25,7 @@ export const UpdateSettings = () => {
     introduction: "",
     location: "",
     products: [],
-    image: null,
+    image: defaultProfileImage,
   });
 
   useEffect(() => {
@@ -44,53 +45,33 @@ export const UpdateSettings = () => {
   // Handle changes in states based on user's inputs
   const handlePasswordUpdate = (e) => {
     e.preventDefault();
-    if (e.target.value === "") {
-      setPassword(profileData.password);
-    } else {
-      setPassword(e.target.value);
-    }
+    setInputPassword(e.target.value);
   };
 
   const handleEmailUpdate = (e) => {
     e.preventDefault();
-    if (e.target.value === "") {
-      setEmail(profileData.email);
-    } else {
-      setEmail(e.target.value);
-    }
+    setInputEmail(e.target.value);
   };
 
   const handleLocationUpdate = (e) => {
     e.preventDefault();
-    if (e.target.value === "") {
-      setLocation(profileData.location);
-    } else {
-      setLocation(e.target.value);
-    }
+    setInputLocation(e.target.value);
   };
 
   const handleProductsUpdate = (e) => {
     e.preventDefault();
-    if (e.target.value === "") {
-      setProducts(profileData.products);
-    } else {
-      setProducts(e.target.value);
-    }
+    setInputProducts(e.target.value);
   };
 
   const handleIntroductionUpdate = (e) => {
     e.preventDefault();
-    if (e.target.value === "") {
-      setIntroduction(profileData.introduction);
-    } else {
-      setIntroduction(e.target.value);
-    }
+    setInputIntroduction(e.target.value);
   };
 
   const handleImageUpdate = (e) => {
     e.preventDefault();
-    if (e.target.files[0] === null) {
-      setImage(profileData.image);
+    if (e.target.files.length === 0) {
+      setImage(defaultProfileImage);
     } else {
       setImage(e.target.files[0]);
     }
@@ -100,19 +81,21 @@ export const UpdateSettings = () => {
     e.preventDefault();
 
     const updatedProfileData = {
-      email, 
-      password,
-      introduction,
-      location,
-      products,
+      email: inputEmail || profileData.email, 
+      password: inputPassword || profileData.password,
+      introduction: inputIntroduction || profileData.introduction,
+      location: inputLocation || profileData.location,
+      products: inputProducts || profileData.products,
+      image: image || profileData.image
     };
 
     await storeHandleProfileUpdate(
       isLoggedin, 
       userId, 
       updatedProfileData,
-      image
     );
+
+    console.log(updatedProfileData);
   };
 
   return (
@@ -139,7 +122,7 @@ export const UpdateSettings = () => {
             name="password"
             id="password"
             placeholder="leave blank to keep the same"
-            value={password}
+            value={inputPassword}
             onChange={handlePasswordUpdate}
           />
         </div>
@@ -156,7 +139,7 @@ export const UpdateSettings = () => {
             name="email"
             id="email"
             placeholder="leave blank to keep the same"
-            value={email}
+            value={inputEmail}
             onChange={handleEmailUpdate}
           />
         </div>
@@ -173,7 +156,7 @@ export const UpdateSettings = () => {
             name="location"
             id="location"
             placeholder="leave blank to keep the same"
-            value={location}
+            value={inputLocation}
             onChange={handleLocationUpdate}
           />
         </div>
@@ -190,7 +173,7 @@ export const UpdateSettings = () => {
             name="products"
             id="products"
             placeholder="leave blank to keep the same"
-            value={products}
+            value={inputProducts}
             onChange={handleProductsUpdate}
           />
         </div>
@@ -208,14 +191,14 @@ export const UpdateSettings = () => {
             placeholder="leave blank to keep the same"
             rows={4}
             cols={50}
-            value={introduction}
+            value={inputIntroduction}
             onChange={handleIntroductionUpdate}
           />
         </div>
 
         <div>
           <label htmlFor="image">Current profile image:</label>
-          <img src={profileData.image} alt={username} />
+          <img src={image} alt={username} />
         </div>
         
         <div>
@@ -224,6 +207,7 @@ export const UpdateSettings = () => {
         </div>
 
         <button type="submit">Update settings</button>
+        <button type="submit">Cancel</button>
       </form>
     </div>
   )

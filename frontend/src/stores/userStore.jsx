@@ -2,6 +2,7 @@
 import { create } from "zustand";
 import validator from "validator";
 import Swal from "sweetalert2"; 
+import defaultProfileImage from "../assets/images/profile_icon.png";
 
 // Get the backend API endpoint from the environment variables.
 const apiEnv = import.meta.env.VITE_BACKEND_API;
@@ -29,7 +30,7 @@ export const userStore = create((set) => ({
   products: [],
   setProducts: (products) => set({ products }),
 
-  image: null,
+  image: defaultProfileImage,
   setImage: (image) => set({ image }),
 
   userId: null,
@@ -293,7 +294,7 @@ export const userStore = create((set) => ({
   },
 
   // FUNCTION TO HANDLE USER'S OWN PROFILE UPDATE (for each user to update their own profile settings)
-  handleProfileUpdate: async (isLoggedin, userId, email, password, location, introduction, products, image) => {
+  handleProfileUpdate: async (isLoggedin, userId, updatedProfileData) => {
     // Check if the user is logged in and display message if they are not
     if (!isLoggedin) {
       Swal.fire({
@@ -302,53 +303,55 @@ export const userStore = create((set) => ({
         icon: "error"
       });
       return;
-    } else {
-      // If they are logged in, send a POST request to the update endpoint with user data. 
-      try { 
-        const response = await fetch(`${apiEnv}/users/${userId}`, {
-          method: "PUT",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ email, password, location, introduction, products, image }),
-        });
+    } 
+    
+    // If they are logged in, send a POST request to the update endpoint with user data. 
+    const formData = new FormData();
+    formData.append("email", updatedProfileData.email);
+    formData.append("password", updatedProfileData.password);
+    formData.append("location", updatedProfileData.location);
+    formData.append("introduction", updatedProfileData.introduction);
+    formData.append("products", updatedProfileData.products);
+  
+    // Append image if it exists
+    if (updatedProfileData.image !== null && updatedProfileData.image !== undefined) {
+      formData.append("image", updatedProfileData.image);
+    }
 
-        // Parse the response data as JSON.
-        const data = await response.json();
-        if (data.success) {
-          // Update relevant states
-          set({ 
-            email, 
-            password, 
-            location, 
-            introduction, 
-            products, 
-            image 
-          });
-          // Display a success alert
-          Swal.fire({
-            title: "Congratulations!",
-            text: "User profile update successful",
-            icon: "success"
-          });
-        } else {
-          // Display an error message from the server or a generic message
-          Swal.fire({
-            title: "Error!",
-            text: data.response || "User profile update failed",
-            icon: "error"
-          });
-          // alert(data.response || "User profile update failed");
-        }
-      } catch (error) {
-        // Handle and log any login errors
-        console.error("Profile update error: ", error);
+    try { 
+      const response = await fetch(`${apiEnv}/users/${userId}`, {
+        method: "PUT",
+        body: formData,
+      });
+
+      // Parse the response data as JSON.
+      const data = await response.json();
+      if (data.success) {
+        // Update relevant states
+        set(updatedProfileData);
+        // Display a success alert
+        Swal.fire({
+          title: "Congratulations!",
+          text: "User profile update successful",
+          icon: "success"
+        });
+      } else {
+        // Display an error message from the server or a generic message
         Swal.fire({
           title: "Error!",
-          text: "An error occurred during profile update",
+          text: data.response || "User profile update failed",
           icon: "error"
         });
+        // alert(data.response || "User profile update failed");
       }
+    } catch (error) {
+      // Handle and log any login errors
+      console.error("Profile update error: ", error);
+      Swal.fire({
+        title: "Error!",
+        text: "An error occurred during profile update",
+        icon: "error"
+      });
     }
   },
 
@@ -400,8 +403,9 @@ export const userStore = create((set) => ({
           accessToken: null, 
           isLoggedin: false 
         });
-        // Remove the accessToken from localStorage.
+        // Remove the accessToken from localStorage and userId.
         localStorage.removeItem("accessToken");
+        localStorage.removeItem("userId");
         // Display confirmation message
         swalWithBootstrapButtons.fire({
           title: "We are sad to see you go...",
