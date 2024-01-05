@@ -713,5 +713,5 @@ when they are 3, already moved from 3, 2, 1, and then 3,
 the logic checks both rain and dandelion,
 and then stop working when this user moves to 2. 
 
-
+# you realize this all was just a dream, a nightmare. you wake up with the usual place that you were. no snow, no cold anymore. there was nothing, and there is nothing. then, what is all this suffer for? nothing. why did you suffered? idk, might be you are hated from the god or something
 

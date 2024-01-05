@@ -300,6 +300,21 @@ export const App = () => {
 
             if (response.ok) {
               console.log("Dandelion found and updated on the server.")
+
+        //       const originalText = "you step forward, but you stay there"
+        // setDisplayText([originalText])
+        // setTimeout(() => {
+        //   setDisplayText([originalText, "there is vision that never can be reached"])
+         
+
+              setTimeout(() => {
+                // setDisplayText(["you wake up with the usual place that you were", "it was nothing but just a dream"])
+                const text = "you wake up with the usual place that you were"
+                setDisplayText([text])
+                setTimeout(() => {
+                  setDisplayText([text, "it was nothing, but just a dream"])
+                }, 10000);
+              }, 50000);
             } else {
               console.error("failed to update dandelion on the server")
             }
@@ -317,6 +332,12 @@ export const App = () => {
 
 
 
+// Change the video based on the displayText condition
+useEffect(() => {
+  if (displayText.includes("you wake up with the usual place that you were")) {
+    setVideoId("RbC86Yn6ypg");
+  }
+}, [displayText]);
 
 
 
