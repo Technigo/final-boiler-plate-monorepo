@@ -24,9 +24,16 @@ const resources = {
             "How it works": "Såhär funkar det",
             "> You choose your habits": "> Du väljer dina vanor",
             "> Track your daily progress": "> Håll koll på dina dagliga framsteg",
-            "> See how your longest streak lasts": "> Se hur många dagar i rad du håller din vana",
+            "> Set personal goals": "> Sätt upp personliga mål",
             "> See how many weeks you have finished": "> Se hur många veckor en vana varit aktiv",
             "> Up to 10 habits": "> Upp till 10 vanor",
+
+            "Welcome Emma!": "Välkommen Emma!",
+            "My Habits": "Mina Vanor",
+            "Drink 2L of water": "Drick 2L vatten",
+            "Read 20 pages in a book": "Läs 20 sidor i en bok",
+            "Walk for 30 minutes": "Promenera i 30 minuter",
+            "Finished Weeks: X": "Avklarade veckor: X",
 
             "Start your journey towards a better you": "Starta din resa mot ett bättre jag",
             "Set goals, track progress, and achieve your best self with us.": "Sätt mål, spåra dina framsteg och bli ditt bästa jag med oss.",

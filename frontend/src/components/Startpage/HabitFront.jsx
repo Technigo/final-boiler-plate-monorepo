@@ -16,7 +16,7 @@ const HabitFront = ({ habitName, habitColor, containerClass }) => {
         ))}
       </div>
       <div className="habitfront-footer">
-        <span>Finished weeks: X</span>
+        <span>"Finished weeks: X"</span>
       </div>
     </div>
   );
