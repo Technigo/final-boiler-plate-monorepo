@@ -215,9 +215,9 @@ export const updateUserController = asyncHandler(async (req, res) => {
 
     // Generate a salt and hash the user's password
     // In this line below, we're using the bcrypt library to create a random value called "salt." The salt is added to the password before hashing it. It adds an extra layer of security by making it more difficult for attackers to use precomputed tables (rainbow tables) to crack passwords. The 10 in genSaltSync(10) represents the cost factor, which determines how computationally intensive the hashing process will be.
-    const salt = bcrypt.genSaltSync(10);
+    // const salt = bcrypt.genSaltSync(10);
 
-    const hashedPassword = bcrypt.hashSync(password, salt);
+    // const hashedPassword = bcrypt.hashSync(password, salt);
 
     // Upload image to Cloudinary if there is one in request
     if (req.file) {
@@ -240,7 +240,8 @@ export const updateUserController = asyncHandler(async (req, res) => {
       // Find a user in the database with the same ID and update the details
       userToBeUpdated = await UserModel.findByIdAndUpdate(userId, {
         $set: {
-          password: hashedPassword, // doublecheck how to display password in frontend
+          // password: hashedPassword, // doublecheck how to display password in frontend
+          password: password,
           email: email,
           image: imageUrl,
           imageId: imageId,
@@ -255,7 +256,8 @@ export const updateUserController = asyncHandler(async (req, res) => {
       // Find a user in the database with the same ID and update the details
       userToBeUpdated = await UserModel.findByIdAndUpdate(userId, {
         $set: {
-          password: hashedPassword, // doublecheck how to display password in frontend
+          // password: hashedPassword, // doublecheck how to display password in frontend
+          password: password,
           email: email,
           location: location,
           introduction: introduction,
