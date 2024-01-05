@@ -1,6 +1,6 @@
-import { useEffect, useState } from 'react';
-import { AdCard } from './AdCard';
-import { adStore } from '../stores/adStore';
+import { useEffect, useState } from "react";
+import { AdCard } from "./AdCard";
+import { adStore } from "../stores/adStore";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -43,33 +43,33 @@ export const AdsList = ({ fetchType, userId }) => {
         settings: {
           slidesToShow: 4,
           slidesToScroll: 3,
-          initialSlide: 3
-        }
+          initialSlide: 3,
+        },
       },
       {
         breakpoint: 1440,
         settings: {
           slidesToShow: 3,
           slidesToScroll: 3,
-          initialSlide: 3
-        }
+          initialSlide: 3,
+        },
       },
       {
         breakpoint: 834,
         settings: {
           slidesToShow: 2,
           slidesToScroll: 2,
-          initialSlide: 2
-        }
+          initialSlide: 2,
+        },
       },
       {
         breakpoint: 393,
         settings: {
           slidesToShow: 1,
-          slidesToScroll: 1
-        }
-      }
-    ]
+          slidesToScroll: 1,
+        },
+      },
+    ],
   };
 
   return (
@@ -90,35 +90,36 @@ export const AdsList = ({ fetchType, userId }) => {
         <div className="ads-outer-wrapper">
           {ads.length === 0 ? (
             // No ads found message
-            <p>{userId ? "This user doesn't have any ads." : "You don't have any ads."}</p>
+            <p>
+              {userId
+                ? "This user doesn't have any ads."
+                : "You don't have any ads."}
+            </p>
+          ) : ads.length > 0 && ads.length < 4 ? (
+            // If the users have fewer than 4 ads, render them in a row
+            <div className="ads-outer-wrapper-user">
+              {ads.map((ad) => (
+                <div className="ads-inner-wrapper" key={ad._id}>
+                  <AdCard ad={ad} />
+                </div>
+              ))}
+            </div>
           ) : (
-            ads.length > 0 && ads.length < 4 ? (
-              // If the users have fewer than 4 ads, render them in a row
-              <div className="ads-outer-wrapper-user">
+            // Display user's ads in carousel if user has four or more ads
+            <div className="ads-outer-wrapper">
+              <Slider {...settings}>
                 {ads.map((ad) => (
                   <div className="ads-inner-wrapper" key={ad._id}>
                     <AdCard ad={ad} />
                   </div>
                 ))}
-              </div>
-            ) : (
-              // Display user's ads in carousel if user has four or more ads
-              <div className="ads-outer-wrapper">
-                <Slider {...settings}>
-                  {ads.map((ad) => (
-                    <div className="ads-inner-wrapper" key={ad._id}>
-                      <AdCard ad={ad} />
-                    </div>
-                  ))}
-                </Slider>
-              </div>
-            )
+              </Slider>
+            </div>
           )}
         </div>
       )}
     </>
   );
-  
 };
 
 //THIS IS HOW TO USE IT IN YOUR PAGE/COMPONENT
@@ -126,3 +127,5 @@ export const AdsList = ({ fetchType, userId }) => {
 // <AdsList fetchType="all" />  // For all ads
 // <AdsList fetchType="user" />  // For the logged-in user's ads
 // <AdsList fetchType="user" userId="specificUserId" />  // For a specific user's ads
+
+//
