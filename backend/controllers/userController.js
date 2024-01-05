@@ -185,8 +185,10 @@ export const getUserProfileController = asyncHandler(async (req, res) => {
 
 export const updateUserController = asyncHandler(async (req, res) => {
   const userId = req.params.userId;
-
-  const { password, email, location, introduction, products } = req.body;
+  // Log the userId to check if it's correctly extracted
+  console.log("userId:", userId);
+  // const { password, email, location, introduction, products } = req.body;
+  const { password, email, location, introduction } = req.body;
 
   let userToBeUpdated; 
   
@@ -201,72 +203,62 @@ export const updateUserController = asyncHandler(async (req, res) => {
     }
 
     // Check if the current user is using a new email or password that matches with the same email or password in the database, so they would have to choose something diferent
-    const existingUser = await UserModel.findOne({
-      $or: [{ password }, { email }],
-    });
-
-    if (existingUser) {
-      res.status(400);
-      throw new Error(
-        `${existingUser.password === password ? "Password" : "Email"
-        } already exists`
-      );
+    // Find a user with the provided username in the database
+    const user = await UserModel.findById(userId);
+    if (!user) {
+      // If no user is found with the provided username, respond with a 401 Unauthorized and a user not found message
+      return res
+        .status(401)
+        .json({ success: false, response: "User not found" });
     }
+    console.log(user);
+    // if (existingUser) {
+    //   res.status(400);
+    //   throw new Error(
+    //     `${existingUser.password === hashedPassword ? "Password" : "Email"
+    //     } already exists`
+    //   );
+    // }
 
+    if (email && email === user.email) {
+      return res
+      .status(500)
+      .json({ success: false, response: "Email already exists" });
+    };
+    
+
+    if (password) {
+      // Compare the provided password with the hashed password in the database
+      const isMatch = await bcrypt.compare(password, user.password);
+      if (isMatch) {
+        // If the provided password doesn't match the stored password, respond with 500 and a message that password already exists
+          return res
+          .status(500)
+          .json({ success: false, response: "Password already exists" });
+      } else {
+        const salt = bcrypt.genSaltSync(10);
+        req.body.password = bcrypt.hashSync(password, salt);
+      };
+    };
     // Generate a salt and hash the user's password
     // In this line below, we're using the bcrypt library to create a random value called "salt." The salt is added to the password before hashing it. It adds an extra layer of security by making it more difficult for attackers to use precomputed tables (rainbow tables) to crack passwords. The 10 in genSaltSync(10) represents the cost factor, which determines how computationally intensive the hashing process will be.
     // const salt = bcrypt.genSaltSync(10);
 
     // const hashedPassword = bcrypt.hashSync(password, salt);
 
-    // Upload image to Cloudinary if there is one in request
-    if (req.file) {
-      let imageUrl, imageId;
-      try {
-        const result = await cloudinary.uploader.upload(req.file.path);
-        imageUrl = result.url;
-        imageId = result.public_id;
-      } catch (uploadError) {
-        console.error("Cloudinary Upload Error:", uploadError);
-        // Set default image URL if upload fails
-        imageUrl = defaultProfileImage;
-        imageId = null;
-        // res.status(500).json({
-        //   success: false,
-        //   response: "Error uploading image to Cloudinary.",
-        //   error: uploadError,
-        // });
-      };
-      // Find a user in the database with the same ID and update the details
-      userToBeUpdated = await UserModel.findByIdAndUpdate(userId, {
-        $set: {
-          // password: hashedPassword, // doublecheck how to display password in frontend
-          password: password,
-          email: email,
-          image: imageUrl,
-          imageId: imageId,
-          location: location,
-          introduction: introduction,
-          products: products
-        }
-      }, {
-        new: true // add this to return the updated
-      });
-    } else {
-      // Find a user in the database with the same ID and update the details
-      userToBeUpdated = await UserModel.findByIdAndUpdate(userId, {
-        $set: {
-          // password: hashedPassword, // doublecheck how to display password in frontend
-          password: password,
-          email: email,
-          location: location,
-          introduction: introduction,
-          products: products
-        }
-      }, {
-        new: true // add this to return the updated
-      });
-    }    
+    // Find a user in the database with the same ID and update the details
+    userToBeUpdated = await UserModel.findByIdAndUpdate(userId, {
+      $set: {
+        // password: hashedPassword, // doublecheck how to display password in frontend
+        password: req.body.password,
+        email: req.body.email,
+        location: req.body.location,
+        introduction: req.body.introduction
+        // products: products
+      }
+    }, {
+      new: true // add this to return the updated
+    });
 
     if (userToBeUpdated) {
       res.status(200).json({
@@ -282,6 +274,54 @@ export const updateUserController = asyncHandler(async (req, res) => {
   } catch (e) {
     res.status(500).json({ success: false, response: e.message });
   };
+});
+
+// @desc    Update User Image - update or add a new image to an existing user profile
+// @route   PUT api/update-image/:userId
+// @access  Private
+export const updateImageController = asyncHandler(async (req, res) => {
+  const userId = req.params.userId;
+
+  try {
+    if (!req.file) {
+      return res.status(400).json({
+        success: false,
+        response: 'No image file provided',
+      });
+    };
+
+    // Upload image to Cloudinary if there is one in request
+    const result = await cloudinary.uploader.upload(req.file.path);
+
+    // Save the Cloudinary URL and image ID in the user's record
+    const userToBeUpdated = await UserModel.findByIdAndUpdate(userId, {
+      $set: {
+        image: result.url,
+        imageId: result.public_id,
+      },
+    }, {
+      new: true
+    });
+
+    if (userToBeUpdated) {
+      res.status(200).json({
+        success: true,
+        response: userToBeUpdated
+      });
+    } else {
+      res.status(400).json({
+        success: false,
+        response: "User not found"
+      });
+    }
+  } catch (error) {
+    console.error('Image Upload Error:', error);
+    return res.status(500).json({
+      success: false,
+      response: 'Error uploading image to Cloudinary.',
+      error: error.message,
+    });
+  }
 });
 
 
