@@ -20,6 +20,12 @@ export const habitSchema = new Schema(
       type: mongoose.Schema.Types.ObjectId,
       ref: "User",
     },
+    finished: [Date],
+
+    finishedWeeks: {
+      type: Number,
+      default: 0,
+    },
   },
   {
     timestamps: true,

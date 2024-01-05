@@ -9,6 +9,8 @@ import {
   addHabitController,
   markFinishedHabitController,
   markUnfinishedHabitController,
+  resetFinishedController,
+  
 } from "../controllers/habitController"; // Import controller functions for habits
 
 // Create an instance of the Express router
@@ -34,6 +36,9 @@ router.delete("/delete/:id", deleteSpecificHabitController); // When a DELETE re
 
 // Define a route for handling POST requests to add a new Habit
 router.post("/add", authenticateUser, addHabitController); // When a POST request is made to /add, authenticate the user using middleware and then execute the addHabitController function
+
+// Define a route for handling PUT requests to reset finished days and increment finished weeks
+router.put('/resetFinished/:id', authenticateUser, resetFinishedController);
 
 // Export the router for use in the main application
 export default router;

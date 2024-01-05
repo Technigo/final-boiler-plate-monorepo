@@ -69,14 +69,14 @@ export const Habits = () => {
     
     return (
       <div className="days-wrapper">
-        {dayElements.map((dayElement, index) => (
-          <div key={index} className="day-container">
-            {dayElement}
-          </div>
-        ))}
+        {dayElements}
+        <div className="finished-weeks">
+          Finished weeks: {habit.finishedWeeks || 0}
+        </div>
       </div>
     );
   };
+  
 
   // Function to get the background class based on the habit index
   const getHabitBackgroundClass = (index) => {

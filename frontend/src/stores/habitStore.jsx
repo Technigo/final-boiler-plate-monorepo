@@ -8,7 +8,7 @@ const apiEnv = import.meta.env.VITE_BACKEND_API;
 console.log(apiEnv);
 
 // Create and export a Zustand store for managing habits
-export const habitStore = create((set) => ({
+export const habitStore = create((set, get) => ({
   // Initialize the habits state with an empty array
   habits: [],
   // Initialize the userId state by accessing it from the userStore
@@ -120,22 +120,59 @@ export const habitStore = create((set) => ({
     }
   },
   // New action to update the boolean isDone value in the store
-  markFinished: async (id, finished) => {
-    console.log('markfinished', id, finished);
+markFinished: async (id, finished) => {
+  console.log('markfinished', id, finished);
+  try {
+    // Send a PUT request to the backend API to update a habit by its ID
+    const response = await fetch(`${apiEnv}/finished/${id}`, {
+      method: "PUT",
+      headers: {
+        Authorization: localStorage.getItem("accessToken"),
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ finished: finished }),
+    });
+    // Parse the updated habit data
+    const updatedHabit = await response.json();
+    // Check if the request was successful
+    if (response.ok) {
+      // Update the Habit in the Habits state
+      set((state) => ({
+        habits: state.habits.map((habit) =>
+          habit._id === id ? { ...habit, ...updatedHabit } : habit
+        ),
+      }));
+
+      // After updating, check if all days are finished
+      const updatedHabits = get().habits;
+      const habit = updatedHabits.find((h) => h._id === id);
+
+      // If all days are marked as finished, call the resetFinishedDays action
+      if (habit && habit.finished.length === 7) {
+        await get().resetFinishedDays(id);
+      }
+    } else {
+      console.error("Failed to update habit");
+    }
+  } catch (error) {
+    console.error(error);
+  }
+},
+
+  // Action to reset finished days and increment the finished weeks counter
+  resetFinishedDays: async (id) => {
     try {
-      // Send a PUT request to the backend API to update a habit by its ID
-      const response = await fetch(`${apiEnv}/finished/${id}`, {
+      // Send a PUT request to the backend API to reset finished days
+      const response = await fetch(`${apiEnv}/resetFinished/${id}`, {
         method: "PUT",
         headers: {
           Authorization: localStorage.getItem("accessToken"),
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ finished: finished }),
       });
-      // Parse the updated habit data
-      const updatedHabit = await response.json();
-      // Check if the request was successful
       if (response.ok) {
+        // Parse the updated habit data
+        const updatedHabit = await response.json();
         // Update the Habit in the Habits state
         set((state) => ({
           habits: state.habits.map((habit) =>
@@ -143,12 +180,13 @@ export const habitStore = create((set) => ({
           ),
         }));
       } else {
-        console.error("Failed to update habit");
+        console.error("Failed to reset finished days and increment weeks");
       }
     } catch (error) {
-      console.error(error);
+      console.error("Error resetting finished days and increment weeks", error);
     }
   },
+
   // New action to update the boolean isDone value in the store
   markUnfinished: async (id, unfinished) => {
     console.log('markunfinished', id, unfinished);

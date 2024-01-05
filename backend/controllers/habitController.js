@@ -156,6 +156,22 @@ export const deleteSpecificHabitController = asyncHandler(async (req, res) => {
     .catch((err) => res.status(500).json(err)); // Handle any errors that occur during the operation
 });
 
+// Controller function to reset finished days and increment finished weeks
+export const resetFinishedController = asyncHandler(async (req, res) => {
+  const { id } = req.params;
+  
+  const habit = await HabitModel.findById(id);
+  if (!habit) {
+    return res.status(404).json({ message: 'Habit not found' });
+  }
+
+  habit.finished = []; // Reset the finished days
+  habit.finishedWeeks += 1; // Increment the finished weeks
+  await habit.save();
+
+  res.json({ success: true, habit });
+});
+
 // IN SUMMARY
 
 //This file defines several controllers for handling Habits in an Express.js application. Here's a summary of what the file does in simple words:
