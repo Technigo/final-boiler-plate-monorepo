@@ -119,7 +119,13 @@ export const Habits = () => {
             <button onClick={onLogoutClick}>Sign Out</button>
           </>
         ) : (
-          <p>No permission - Please log in.<Link to="/">Back to start</Link></p>
+          <div className="access-denied-container">
+            <div className="message-box">
+              <h2>Oops! You need to be logged in.</h2>
+              <p>Access to "My Page" is exclusive to our members. Please <Link to="/login">log in</Link> or <Link to="/signup">sign up</Link> to manage your personal content and enjoy all the benefits of being a member.</p>
+              <p>If you're just looking around, welcome! Feel free to <Link to="/">go back to our homepage</Link> and explore.</p>
+            </div>
+          </div>
         )}
       </div>
 

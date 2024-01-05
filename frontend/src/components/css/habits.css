@@ -97,6 +97,9 @@
   width: 100%; 
   display: flex;
   justify-content: flex-end; 
+  align-items: center; 
+  padding-right: 20px; 
+  margin-top: -40px;
 }
   
 .trash-icon {
@@ -125,4 +128,39 @@
   margin-left: 0px;
   padding-bottom: 40px;
   position: relative;
+}
+
+.access-denied-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 70vh; 
+  text-align: center;
+}
+
+.message-box {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.message-box h2 {
+  color: #3EC3CE;
+  font-size: 30px;
+  margin-bottom: 10px;
+}
+
+.message-box p {
+  color: #555;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.message-box a {
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.message-box a:hover {
+  text-decoration: underline;
 }
