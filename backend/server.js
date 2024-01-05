@@ -9,6 +9,7 @@ dotenv.config(); // Load and parse environment variables from the .env file
 // Importing custom route handlers
 import taskRoutes from "./routes/taskRoutes"; // Routes for task-related API endpoints
 import userRoutes from "./routes/userRoutes"; // Routes for user-related API endpoints
+import adminRoutes from "./routes/adminRoutes"; // Routes for admin-related API endpoints
 import cocktailRoutes from "./routes/cocktailRoutes"; // Import routes for cocktail-related endpoints
 
 // Import database connection function
@@ -27,7 +28,8 @@ app.use(express.urlencoded({ extended: false })); // Middleware to parse URL-enc
 
 // Registering API routes with the Express application
 app.use(taskRoutes); // Use taskRoutes for handling requests related to tasks
-app.use(userRoutes); // Use userRoutes for handling requests related to users
+app.use('/', userRoutes); // Use userRoutes for handling requests related to users
+app.use('/admin', adminRoutes); // Use adminRoutes for handling requests related to admin users
 app.use('/cocktails', cocktailRoutes); // Use cocktailRoutes for handling requests related to cocktails, prefixed with '/cocktails'
 
 // Establish a connection to the database
