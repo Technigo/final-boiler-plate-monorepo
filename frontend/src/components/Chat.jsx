@@ -3,9 +3,16 @@ import { useEffect, useState } from "react";
 export const Chat = () => {
   const [ws, setWs] = useState();
 
+  const userId = "23Abc14";
   useEffect(() => {
     const ws = new WebSocket("ws://localhost:3000");
     setWs(ws);
+
+    // Send the user ID to the server after WebSocket connection is open
+    ws.addEventListener("open", () => {
+      ws.send(JSON.stringify({ type: "setUserId", userId }));
+    });
+
     ws.addEventListener("message", handleMessage);
   }, []);
 

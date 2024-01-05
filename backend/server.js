@@ -41,21 +41,42 @@ const server = app.listen(port, () => {
 });
 
 const wss = new ws.WebSocketServer({ server });
-wss.on("connection", (connection, req) => {
-  const cookies = req.headers.cookie;
-  if (cookies) {
-    const cookieString = cookies
-      .split(";")
-      .find((str) => str.startsWith("_legacy"));
-    // console.log(cookieString);
-    if (cookieString) {
-      const properCookie = cookieString.split(".")[1];
-      if (properCookie) {
-        // console.log(properCookie);
-      }
+// wss.on("connection", (connection, req) => {
+
+//   const cookies = req.headers.cookie;
+//   console.log(req._events);
+//   if (cookies) {
+//     const cookieString = cookies
+//       .split(";")
+//       .find((str) => str.startsWith("_legacy"));
+//     // console.log(cookieString);
+//     if (cookieString) {
+//       const properCookie = cookieString.split(".")[1];
+//       if (properCookie) {
+//         // console.log(properCookie);
+//       }
+//     }
+//   }
+//   // console.log([...wss.clients].map((x) => x.username));
+//   // console.log([...wss.clients].length);
+// });
+
+wss.on("connection", (ws) => {
+  ws.on("message", (message) => {
+    const data = JSON.parse(message);
+
+    if (data.type === "setUserId") {
+      // Associate the user ID with the WebSocket connection
+      ws.userId = data.userId;
+      console.log(`User ${ws.userId} connected.`);
+    } else {
+      // Handle other message types
     }
-  }
-  // console.log([...wss.clients].map((x) => x.username));
-  // console.log([...wss.clients].length);
+  });
+
+  ws.on("close", () => {
+    // Clean up user-related data upon WebSocket close
+    console.log(`User ${ws.userId} disconnected.`);
+  });
 });
 //#ENDREGION
