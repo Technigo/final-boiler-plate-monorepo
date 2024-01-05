@@ -18,7 +18,7 @@ const StyledFilterTaskFeed = styled.div`
 const StyledSelects = styled.select`
   display: flex;
   width: 120px;
-  border: 1px solid #64899b;
+  border: 1px solid var(--secondaryColor);
   border-radius: 20px;
   padding: 5px;
 

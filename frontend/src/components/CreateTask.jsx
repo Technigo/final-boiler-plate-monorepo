@@ -1,5 +1,5 @@
 // Import necessary dependencies and the 'taskStore' from the store.
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { taskStore } from "../stores/taskStore";
 import { Button } from "../components/Buttons/Button";
 import styled from "styled-components";
@@ -11,7 +11,7 @@ const StyledCreateTask = styled.div`
 `;
 
 const StyledTaskTitleInput = styled.input`
-  border: 1px solid #64899b;
+  border: 1px solid var(--secondaryColor);
   border-radius: 20px;
   width: 250px;
   padding: 5px 5px 5px 10px;
@@ -25,14 +25,14 @@ const CreateTaskSelects = styled.div`
 const StyledSelects = styled.select`
   display: flex;
   width: 120px;
-  border: 1px solid #64899b;
+  border: 1px solid var(--secondaryColor);
   border-radius: 20px;
   gap: 10px;
   padding: 5px;
 `;
 
 const StyledTaskInput = styled.textarea`
-  border: 1px solid #64899b;
+  border: 1px solid var(--secondaryColor);
   border-radius: 20px 0 20px 20px;
   width: 250px;
   height: 150px;

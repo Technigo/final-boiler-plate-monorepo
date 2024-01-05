@@ -37,7 +37,7 @@ const StyledRegField = styled.div`
   justify-content: center;
   max-width: 500px;
 
-  border: 1px solid #64899b;
+  border: 1px solid var(--secondaryColor);
   border-radius: 20px 0 20px 20px;
   padding: 20px;
   margin: 20px;
@@ -45,7 +45,7 @@ const StyledRegField = styled.div`
   input {
     margin-bottom: 10px; /* Add some space between the input fields */
     height: 30px; /* Set the height of the input fields */
-    border-bottom: 1px solid #64899b; /* Add a bottom border to the input fields */
+    border-bottom: 1px solid var(--secondaryColor); /* Add a bottom border to the input fields */
     width: 100%; /* Set the width of the input fields */
     padding-left: 5px;
   }

@@ -74,7 +74,7 @@ main {
   align-items: center;
   justify-content: center; */
 
-  /* border: 1px solid #eeb885;
+  /* border: 1px solid var(--secondaryColor);
   border-radius: 20px 0 20px 20px;
   padding: 20px;
   background: #fff; */

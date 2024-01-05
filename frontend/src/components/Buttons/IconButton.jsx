@@ -4,7 +4,7 @@ const StyledIconButton = styled.button`
   display: flex;
   gap: 10px;
   align-items: center;
-  background-color: #64899b;
+  background-color: var(--secondaryColor);
   color: #fff;
   padding: 5px 15px;
   border-radius: 20px;

@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 const StyledButton = styled(Link)`
-  background-color: #64899b;
+  background-color: var(--secondaryColor);
   color: #fff;
   padding: 5px 15px;
   border-radius: 20px;

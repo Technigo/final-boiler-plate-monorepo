@@ -53,7 +53,7 @@ const StyledReviewCard = styled.div`
   align-items: center;
   gap: 16px;
   border-radius: 20px 0 20px 20px;
-  border: 1px solid #64899b;
+  border: 1px solid var(--secondaryColor);
   background: rgba(255, 255, 255, 0.8);
 
   img {
