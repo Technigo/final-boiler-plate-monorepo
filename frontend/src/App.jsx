@@ -1,25 +1,19 @@
+import { BrowserRouter, Routes } from "react-router-dom";
 import routes from "./routes/routes";
-import { BrowserRouter, Routes, useNavigate } from "react-router-dom";
-import { TripGenerator } from "./components/TripGenerator";
-import { Footer } from "./components/footer";
+import { Footer } from "./components/Footer";
 import { Navbar } from "./components/Navbar";
 import { Hero } from "./components/Hero";
 
 export const App = () => {
-  const navigateToHome = () => {
-    if (window.location.pathname !== "/") {
-      navigate("/");
-    }
-  };
+
+
   return (
     <>
       <BrowserRouter>
         <main>
-          {/* {window.location.pathname !== "/" && <Navbar />} */}
           <Navbar />
           <Routes>{routes}</Routes>
-          {/* <TripGenerator /> */}
-          {window.location.pathname !== "/" && <Hero />}
+          <Hero />
           <Footer />
         </main>
       </BrowserRouter>

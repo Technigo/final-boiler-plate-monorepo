@@ -20,6 +20,11 @@ export const userStore = create((set, get) => ({
   password: "",
   // Define a function to set the password state.
   setPassword: (password) => set({ password }),
+  
+  //Initialize user to chat with 
+  chatReceiver: "",
+  // Define a function to set the chatReceiver state.
+  setChatReceiver: (chatReceiver) => set({chatReceiver}),
 
   // Initialize accessToken state with null.
   accessToken: null,

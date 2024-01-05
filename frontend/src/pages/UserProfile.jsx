@@ -1,21 +1,24 @@
 import { useAuth0 } from "@auth0/auth0-react";
 import { useState, useEffect } from "react";
+import {userStore} from "../stores/userStore";
 
 export const UserProfile = () => {
   const { user, isAuthenticated, isLoading, getAccessTokenSilently } =
     useAuth0();
+    const {chatReceiver, setChatReceiver, username, setUsername} = userStore();
   // const [userMetadata, setUserMetadata] = useState(null);
   // const domain = import.meta.env.VITE_AUTH0_DOMAIN;
   const vite_backend = import.meta.env.VITE_BACKEND_API;
   const vite_backup = import.meta.env.VITE_BACKUP_API;
 
-  const [username, setUsername] = useState(null);
+  const [mongoUsername, setMongoUsername] = useState(null);
   const [email, setEmail] = useState(null);
   const [loading, setLoading] = useState(true);
   const [userLoading, setUserLoading] = useState(true);
   const [userList, setUserList] = useState(null);
   // console.log("username: " + username);
   console.log("user:", user);
+  console.log("mongoUsername: " + mongoUsername)
 
   //#REGION USER_METADATA
   // console.log(useAuth0());
@@ -58,9 +61,10 @@ export const UserProfile = () => {
         await fetch(`${vite_backend}/user/${user.sub}`)
           .then((res) => res.json())
           .then((data) => {
-            setUsername(data.username);
+            setMongoUsername(data.username);
             setEmail(data.email);
             setLoading(!loading);
+            
           });
       } catch (error) {
         console.log(error);
@@ -75,11 +79,13 @@ export const UserProfile = () => {
       console.log(userList);
     };
 
-    console.log("here");
     getUserDataFromMongo();
-    console.log("there");
     getUsers();
-    console.log("not here");
+
+    // const chatSetup = async() => {
+    //   await setUsername(mongoUsername); console.log("chatReceiver: " + chatReceiver )};
+
+    // chatSetup();
   }, []);
 
   console.log("User: " + JSON.stringify(user));
@@ -93,15 +99,16 @@ export const UserProfile = () => {
       <div className="text-black">
         {!loading && (
           <h1 className="text-black text-2xl px-1 py-1 text">
-            Welcome {username}
+            Welcome {mongoUsername}
           </h1>
         )}
         {!userLoading && (
           <ul>
-            {userList.map((user) => (
-              <li
+            {userList.map((user, index) => (
+              <li key = {index}
                 className="cursor-pointer"
-                onClick={() => console.log(user._id)}
+                onClick={() => {console.log(user._id); setChatReceiver(user.username);
+                  setUsername(mongoUsername);}}
               >
                 {user.username}
               </li>

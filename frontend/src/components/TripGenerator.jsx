@@ -324,18 +324,22 @@ export const TripGenerator = () => {
               placeholder="Write a message. Max 400 characters."
             />
           </div>
-          <button
-            type="submit"
-            className={`submit-button ${
-              loading
-                ? "bg-gray-100"
-                : formDataIsIncomplete()
-                ? "bg-gray-100"
-                : "bg-rose-500 hover:bg-rose-700"
-            } text-white p-4 py-2 rounded-full focus:outline-none focus:ring focus:border-blue-300`}
-            disabled={loading || formDataIsIncomplete()}>
-            {loading ? "Generating..." : "Create Trip"}
-          </button>
+          <div className="flex justify-center items-center">
+  <button
+    type="submit"
+    className={`submit-button ${
+      loading
+        ? "bg-gray-100"
+        : formDataIsIncomplete()
+        ? "bg-gray-100"
+        : "bg-rose-500 hover:bg-rose-700"
+    } text-white p-4 py-2 rounded-full focus:outline-none focus:ring focus:border-blue-300`}
+    disabled={loading || formDataIsIncomplete()}
+  >
+    {loading ? "Generating..." : "Create Trip"}
+  </button>
+</div>
+
         </form>
 
         <button

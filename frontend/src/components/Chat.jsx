@@ -1,9 +1,13 @@
 import { useEffect, useState } from "react";
+import {userStore} from "../stores/userStore"
 
 export const Chat = () => {
   const [ws, setWs] = useState();
-
-  const userId = "23Abc14";
+  const {chatReceiver, username} = userStore();
+console.log("username in chat: " + username)
+  // const userId = "23Abc14";
+  const userId = username;
+  const receiverId = chatReceiver;
   useEffect(() => {
     const ws = new WebSocket("ws://localhost:3000");
     setWs(ws);
@@ -11,6 +15,7 @@ export const Chat = () => {
     // Send the user ID to the server after WebSocket connection is open
     ws.addEventListener("open", () => {
       ws.send(JSON.stringify({ type: "setUserId", userId }));
+      ws.send(JSON.stringify({ type: "setReceiverId", receiverId }));
     });
 
     ws.addEventListener("message", handleMessage);

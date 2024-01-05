@@ -69,6 +69,9 @@ wss.on("connection", (ws) => {
       // Associate the user ID with the WebSocket connection
       ws.userId = data.userId;
       console.log(`User ${ws.userId} connected.`);
+    } else if(data.type === "setReceiverId"){
+      ws.receiverId = data.receiverId;
+      console.log(`User ${ws.userId} will send chat messages to ${ws.receiverId}.`);
     } else {
       // Handle other message types
     }

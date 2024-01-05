@@ -3,7 +3,6 @@ import { Route } from "react-router-dom";
 import { About } from "../pages/About";
 import { Account } from "../pages/Account";
 import { Home } from "../pages/Home";
-import { Login } from "../pages/Login";
 import { NotFound } from "../pages/NotFound";
 import { PostTrip } from "../pages/PostTrip";
 import { Register } from "../pages/Register";
@@ -15,7 +14,6 @@ const routes = (
     <Route path="/" element={<Home />} />
     <Route path="/about" element={<About />} />
     <Route path="/account" element={<Account />} />
-    {/* <Route path="/login" element={<Login />} /> */}
     <Route path="/posttrip" element={<PostTrip />} />
     <Route path="/register" element={<Register />} />
     <Route path="*" element={<NotFound />} />
