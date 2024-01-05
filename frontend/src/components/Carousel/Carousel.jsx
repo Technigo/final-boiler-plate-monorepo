@@ -12,6 +12,9 @@ import 'swiper/css/pagination';
 
 
 export const Carousel = () => {
+
+
+  
   const [stories, setStories] = useState([]);
   const [activeSlide, setActiveSlide] = useState(0); 
   
@@ -34,8 +37,8 @@ export const Carousel = () => {
       setStories(data.map(story => ({
         ...story,
         id: story._id,
-        city: 'Temporary City', // Update as needed
-        image: 'placeholderImage.png' // Update as needed
+        city: story.city,
+        image: story.image
       })));
     })
     .catch(error => console.error('Error fetching stories:', error));
@@ -48,14 +51,20 @@ export const Carousel = () => {
     .then(data => {
       const formattedStories = data.map(story => ({
         ...story,
-        id: story._id, // Map _id to id
-        city: 'Temporary City', // Placeholder until your API is updated
-        image: 'image1.png' // Placeholder image
+        id: story._id, 
+        city: story.city, 
+        image: story.image 
       }));
       setStories(formattedStories);
     })
     .catch(error => console.error('Error fetching stories:', error));
   }, []);
+
+  // Filter stories on category
+  const rumorStories = stories.filter(story => story.category === 'rumor');
+const hearsayStories = stories.filter(story => story.category === 'hearsay');
+const historicalStories = stories.filter(story => story.category === 'historical');
+
 
   const onSlideChange = (swiper) => {
     setActiveSlide(swiper.realIndex); // Update active slide index
@@ -72,9 +81,10 @@ export const Carousel = () => {
     }
   };
 
+  
 
   return (
-    <Swiper
+    <><Swiper
       modules={[EffectCoverflow, Pagination]}
       effect="coverflow"
       centeredSlides={true}
@@ -122,12 +132,118 @@ export const Carousel = () => {
         }
       }}
     >
-      {stories.map((story, index) => (
+      {rumorStories.map((story, index) => (
         <SwiperSlide key={story.id}>
           <StoryCard story={story} isActive={index === activeSlide} onRankUpdate={handleRankUpdate} onUpdateStories={updateStories} />
         </SwiperSlide>
       ))}
-    </Swiper>
+    </Swiper><Swiper
+      modules={[EffectCoverflow, Pagination]}
+      effect="coverflow"
+      centeredSlides={true}
+      slidesPerView={2}
+      loop={true}
+      initialSlide={0}
+      coverflowEffect={{
+        rotate: 0,
+        stretch: 20,
+        depth: 100,
+        modifier: 1,
+        slideShadows: true,
+      }}
+      pagination={{ clickable: true }}
+      onSlideChange={onSlideChange}
+      breakpoints={{
+        // when window width is >= 320px
+        320: {
+          slidesPerView: 2,
+          spaceBetween: 10
+        },
+        500: {
+          slidesPerView: 3,
+          spaceBetween: 20
+        },
+        700: {
+          slidesPerView: 4,
+          spaceBetween: 30
+        },
+        900: {
+          slidesPerView: 5,
+          spaceBetween: 30
+        },
+        1200: {
+          slidesPerView: 6,
+          spaceBetween: 30
+        },
+        1400: {
+          slidesPerView: 7,
+          spaceBetween: 30
+        },
+        1600: {
+          slidesPerView: 8,
+          spaceBetween: 30
+        }
+      }}
+    >
+        {hearsayStories.map((story, index) => (
+          <SwiperSlide key={story.id}>
+            <StoryCard story={story} isActive={index === activeSlide} onRankUpdate={handleRankUpdate} onUpdateStories={updateStories} />
+          </SwiperSlide>
+        ))}
+      </Swiper><Swiper
+        modules={[EffectCoverflow, Pagination]}
+        effect="coverflow"
+        centeredSlides={true}
+        slidesPerView={2}
+        loop={true}
+        initialSlide={0}
+        coverflowEffect={{
+          rotate: 0,
+          stretch: 20,
+          depth: 100,
+          modifier: 1,
+          slideShadows: true,
+        }}
+        pagination={{ clickable: true }}
+        onSlideChange={onSlideChange}
+        breakpoints={{
+          // when window width is >= 320px
+          320: {
+            slidesPerView: 2,
+            spaceBetween: 10
+          },
+          500: {
+            slidesPerView: 3,
+            spaceBetween: 20
+          },
+          700: {
+            slidesPerView: 4,
+            spaceBetween: 30
+          },
+          900: {
+            slidesPerView: 5,
+            spaceBetween: 30
+          },
+          1200: {
+            slidesPerView: 6,
+            spaceBetween: 30
+          },
+          1400: {
+            slidesPerView: 7,
+            spaceBetween: 30
+          },
+          1600: {
+            slidesPerView: 8,
+            spaceBetween: 30
+          }
+        }}
+      >
+        {historicalStories.map((story, index) => (
+          <SwiperSlide key={story.id}>
+            <StoryCard story={story} isActive={index === activeSlide} onRankUpdate={handleRankUpdate} onUpdateStories={updateStories} />
+          </SwiperSlide>
+        ))}
+      </Swiper></>
   );
 };
 

@@ -2,7 +2,7 @@
   background-color: #f1ede8;
   color: #242424;
    border: 1px solid #242424;
-   padding: 10px;
+   padding: 11px;
    border-radius: 5px;
    transition: all 0.3s ease;
    cursor: pointer;
@@ -11,6 +11,22 @@
   overflow: hidden;
  }
  
+ button.like-button {
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
+ button.like-button img {
+  border: none;
+  margin-left: 15px;
+  margin-right: 5px;
+ }
+
+ .like-button-icon {
+  background-color: none;
+ }
  .story-card img {
    width: 100%;
    border-radius: 3px;
@@ -38,7 +54,6 @@
  overflow-y: auto;
  display: flex;
  align-items: center;
- justify-content: center;
  text-align: center;
  flex-direction: column;
  overflow-y: auto;
@@ -48,7 +63,7 @@
 .overlay-date-icon img {
   width: 30px;
   margin-bottom: -5px;
-  margin-left: 40px;
+  background-color: none;
 }
 
  .story-card.active .story-overlay {

@@ -50,16 +50,17 @@ export const StoryCard = ({ story, isActive, onUpdateStories }) => {
     <div className="story-card" style={cardStyle}>
       {story.image && <img src={`/${story.image}`} alt={`${story.city} story`} />}
       <div className="story-info">
-        <h3>{story.title}</h3> {/* Display title */}
+        
         <h4>{story.category} {story.city}</h4>
       </div>
       {isActive && (
         <div className="story-overlay">
+          <h3>{story.title}</h3> 
           <p>{story.content}</p>
           <div className="overlay-date-icon">
             {timeSince(story.createdAt)}
             <button onClick={handleLikeClick} className="like-button">
-            <img src={likeIcon} alt="Like" />
+            <img className="like-button-icon" src={likeIcon} alt="Like" />
             </button>
             <span className="like-count">{story.ranking}</span>
           </div>
