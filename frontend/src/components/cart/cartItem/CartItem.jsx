@@ -1,6 +1,6 @@
-import { cartStore } from "../../stores/cartStore"
+import { cartStore } from "../../../stores/cartStore";
 
-export const CartItem = ({ index, img, title, price}) => {
+export const CartItem = ({ index, img, title, price, botanicalName}) => {
 
     const { removeFromCart } = cartStore()
 
@@ -14,7 +14,8 @@ export const CartItem = ({ index, img, title, price}) => {
             <img className="cart-img" src={img} alt="" />
             <div className="cart-item-text">
             <h3>{title}</h3>
-            <p>{price}€</p>
+            <p>{botanicalName}</p>
+            <p>€{price}</p>
             <button onClick={() => handleRemoveFromCart(index)}>
               Remove
             </button>

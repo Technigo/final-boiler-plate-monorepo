@@ -1,23 +1,32 @@
 import { plantStore } from "../../stores/plantStore";
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom"
+
+import { Link, useParams } from "react-router-dom"
 import { FilteredNav } from "./FilteredNav"
+import { PlantCard } from "./PlantCard"
 
 import "./PlantsPage.css";
 
-import { PiHeartStraightFill } from "react-icons/pi";
-
 export const PlantsPage = () => {
 
+  const allCategories = ["Shade-Loving", "Easy", "Pet-Friendly", "Climbing", "Popular"];
+
+  const { category } = useParams();
+
   const [error, setError] = useState(null);
-  //   const [selectedCategory, setSelectedCategory] = useState(null);
 
   // Access the 'plants' and 'fetchPlants' functions from the 'plantStore'.
   const { plants, fetchPlantsByCategory } = plantStore();
 
   useEffect(() => {
+    if (category) {
+      fetchPlantsByCategory(category);
+    } else {
     fetchPlantsByCategory(null);
-  }, [fetchPlantsByCategory]);
+    }
+  }, [fetchPlantsByCategory, category]);
+
+  console.log(category);
 
 
   return (
@@ -31,31 +40,24 @@ export const PlantsPage = () => {
         </div>
       </div>
       <div className="main-content">
-        <FilteredNav />
+        {/* <FilteredNav /> */}
+        {allCategories.map((category) => {
+          return (
+          <div key={category}>
+          <Link to={`/plants/all-plants/${category.toLowerCase()}`}>{category}</Link>
+          </div>
+          )
+        })}
+  <nav className="options-container">
+    
+    <Link to="/plants/all-plants">
+    <button>
+      Clear filters
+    </button>
+    </Link>
+  </nav>
         <div className="products-wrapper">
-          {plants.map((plant) => {
-            return (
-              <Link to={`/plants/${plant._id}`}>
-              <div
-                className="plant-card"
-                key={plant._id}
-              >
-                <img
-                  className="preview-plant-img"
-                  src={plant.images.full_size_url}
-                  alt=""
-                />
-                <div className="product-overlay">
-                  <PiHeartStraightFill className="like-icon" />
-                  <div className="title-price-container">
-                    <h3 className="card-name">{plant.plant_title}</h3>
-                    <span className="card-price">€{plant.price}</span>
-                  </div>
-                </div>
-              </div>
-              </Link>
-            );
-          })}
+          <PlantCard plants={plants}/>
         </div>
       </div>
     </section>

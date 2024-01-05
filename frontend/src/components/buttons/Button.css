@@ -1,8 +1,14 @@
-button {
+/* button {
     border-radius: 10rem;
     padding: 1.1rem 2.2rem;
     font-family: var(--josefin);
     font-size: 1rem;
     font-weight: 700;
     letter-spacing: 1px;
+  } */
+
+ button {
+    font-family: var(--josefin);
+    letter-spacing: 1px;
+    cursor: pointer;
   }

@@ -2,7 +2,7 @@ import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { Button } from "../../components/buttons/Button";
 import { plantStore } from "../../stores/plantStore";
-import { cartStore } from "../../stores/cartStore";
+//import { cartStore } from "../../stores/cartStore";
 
 import "./ProductPage.css";
 
@@ -10,22 +10,22 @@ export const ProductPage = () => {
   const { id } = useParams();
   console.log("plant product id:", id);
 
-  const { plants, fetchPlants, setApiEndpoint } = plantStore();
-  const { addToCart, cart } = cartStore();
+  const { singlePlant, setApiEndpoint, fetchSinglePlant } = plantStore();
+  //const { addToCart, cart } = cartStore();
   const [error, setError] = useState(null);
 
   useEffect(() => {
     setApiEndpoint(`https://plants-holm-witting-backend.onrender.com/api/plants/${id}`);
-    fetchPlants().catch((error) => {
+    fetchSinglePlant().catch((error) => {
       console.error("Error fetching plant details", error);
       setError(error);
     });
-  }, [id, fetchPlants, setApiEndpoint]);
+  }, [id, fetchSinglePlant]);
 
-  console.log("PLANTS IN PRODUCT PAGE:", plants);
+  console.log("PLANTS IN PRODUCT PAGE:", singlePlant);
 
   const handleAddToCart = () => {
-    addToCart(plants);
+    addToCart(singlePlant);
   };
 
   console.log("CART:", cart);
@@ -33,10 +33,10 @@ export const ProductPage = () => {
   return (
     <section className="product-page">
       <div className="product-highlights-wrapper">
-        <h4>{plants.botanical_name}</h4>
-        <h3>{plants.plant_title}</h3>
-        <p>{plants.description}</p>
-        <p>{plants.price}</p>
+        <h4>{singlePlant.botanical_name}</h4>
+        <h3>{singlePlant.plant_title}</h3>
+        <p>{singlePlant.description}</p>
+        <p>{singlePlant.price}</p>
         <Button
           className="add-to-cart-btn"
           onClick={handleAddToCart}
@@ -46,16 +46,16 @@ export const ProductPage = () => {
       </div>
       <img
         className="product-image"
-        src={plants.images && plants.images.full_size_url}
+        src={singlePlant.images && singlePlant.images.full_size_url}
         alt=""
       />
       <div className="product-care-wrapper">
         <h4>Treatments & Facts</h4>
         <ul>
-          <li>{plants.careDetails && plants.careDetails.watering}</li>
-          <li>{plants.careDetails && plants.careDetails.care_level}</li>
-          <li>{plants.careDetails && plants.careDetails.light}</li>
-          <li>{plants.careDetails && plants.careDetails.care_description}</li>
+          <li>{singlePlant.careDetails && singlePlant.careDetails.watering}</li>
+          <li>{singlePlant.careDetails && singlePlant.careDetails.care_level}</li>
+          <li>{singlePlant.careDetails && singlePlant.careDetails.light}</li>
+          <li>{singlePlant.careDetails && singlePlant.careDetails.care_description}</li>
         </ul>
       </div>
     </section>

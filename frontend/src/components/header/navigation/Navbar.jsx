@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useMediaQuery } from "react-responsive";
 import { Navigation } from "./Navigation";
@@ -18,6 +18,15 @@ export const Navbar = () => {
   const toggleHiddenMenu = () => {
     setHiddenMenu(!hiddenMenu);
   };
+
+  // Add or remove the 'no-scroll' class on the body when hiddenMenu changes
+  useEffect(() => {
+    if (hiddenMenu) {
+      document.body.classList.add("no-scroll");
+    } else {
+      document.body.classList.remove("no-scroll");
+    }
+  }, [hiddenMenu]);
 
   return isMobile ? (
     <div className="header-wrapper">
@@ -48,9 +57,13 @@ export const Navbar = () => {
         </div>
       </nav>
       {hiddenMenu && (
-        <div className="hidden-menu">
-          <IoClose className="close-icon" onClick={toggleHiddenMenu} />
-          <Navigation />
+        <div className="overlay-background">
+          <div className="hidden-menu">
+            <div className="menu-header">
+              <IoClose className="close-icon" onClick={toggleHiddenMenu} />
+            </div>
+            <Navigation />
+          </div>
         </div>
       )}
     </div>
@@ -87,9 +100,14 @@ export const Navbar = () => {
         </div>
       </nav>
       {hiddenMenu && (
-        <div className="hidden-menu">
-          <IoClose className="close-icon" onClick={toggleHiddenMenu} />
-          <Navigation />
+        <div className="overlay-background">
+          <div className="hidden-menu">
+            <div className="menu-header">
+              <IoClose className="close-icon" onClick={toggleHiddenMenu} />
+            </div>
+
+            <Navigation />
+          </div>
         </div>
       )}
     </div>

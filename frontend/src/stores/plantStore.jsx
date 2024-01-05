@@ -13,12 +13,15 @@ const apiEnv = "https://plants-holm-witting-backend.onrender.com/api/plants";
 
 export const plantStore = create((set, get) => ({
   plants: [],
-  // apiEndpoint: `${apiEnv}/category`,
-  // apiEndpoint: `${apiEnv}/plants`, // Default API endpoint
-  // selectedCategory: null,
+  singlePlant: {},
+  
+  apiEndpoint: `${apiEnv}`, // Default API endpoint
+  selectedCategory: null, 
+  
 
   setPlants: (plants) => set({ plants }),
-  //setApiEndpoint: (endpoint) => set({ apiEndpoint: endpoint }),
+  setSinglePlant: (singlePlant) => set({ singlePlant }),
+  setApiEndpoint: (endpoint) => set({ apiEndpoint: endpoint }),
 
   fetchPlants: async () => {
     try {
@@ -39,19 +42,19 @@ export const plantStore = create((set, get) => ({
   fetchPlantsByCategory: async (category) => {
     let endpoint;
     switch (category) {
-      case "Shade-loving":
-        endpoint = `${apiEnv}/category/shady`;
+      case "shade-loving":
+        endpoint = `${apiEnv}/category/shade-loving`;
         break;
-      case "Easy":
+      case "easy":
         endpoint = `${apiEnv}/category/easy`;
         break;
-      case "Pet Friendly":
+      case "pet-friendly":
         endpoint = `${apiEnv}/category/pet-friendly`;
         break;
-      case "Climbing":
+      case "climbing":
         endpoint = `${apiEnv}/category/climbing`;
         break;
-      case "Popular":
+      case "popular":
         endpoint = `${apiEnv}/category/popular`;
         break;
       default:
@@ -64,6 +67,20 @@ export const plantStore = create((set, get) => ({
       await get().fetchPlants();
     } catch (error) {
       console.error("Error fetching plants", error);
+    }
+  },
+  fetchSinglePlant: async () => {
+    try {
+      const response = await fetch(get().apiEndpoint);
+      if (response.ok) {
+        const data = await response.json();
+        set({ singlePlant: data });
+        console.log("singlePlant data fetch:", data);
+      } else {
+        console.error("Failed to fetch plant product");
+      }
+    } catch (error) {
+      console.error(error);
     }
   },
 }));

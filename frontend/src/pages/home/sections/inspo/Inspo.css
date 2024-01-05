@@ -2,5 +2,17 @@
   background-image: url("/insta_4.jpeg");
   background-size: cover;
   background-position: center;
-  padding: 1rem;
+}
+
+.inspo-container {
+  padding: 3rem 1rem;
+}
+
+.inspo-title {
+  font-family: var(--big-h-font);
+  font-size: 1.8rem;
+  color: var(--charcoal);
+  font-weight: 900;
+  letter-spacing: 0.1375rem;
+  margin-bottom: 1rem;
 }

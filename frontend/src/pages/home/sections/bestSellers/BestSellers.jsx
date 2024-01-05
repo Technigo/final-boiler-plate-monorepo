@@ -1,13 +1,9 @@
 import { useState, useEffect } from "react";
-import { PiHeartStraightFill } from "react-icons/pi";
-import { Link } from "react-router-dom";
+import { PlantCard } from "../../../plantsPage/PlantCard";
 
 import "./BestSellers.css";
-//import { useNavigate } from "react-router-dom";
 
 import { plantStore } from "../../../../stores/plantStore";
-
-// import { plantStore } from "../../stores/plantStore";
 
 export const BestSellers = () => {
   //const [plantList, setPlantList] = useState([]);
@@ -19,36 +15,21 @@ export const BestSellers = () => {
   console.log("POPULAR PLANTS:", plants);
 
   useEffect(() => {
-    fetchPlantsByCategory("Popular");
+    fetchPlantsByCategory("popular");
   }, [fetchPlantsByCategory]);
 
   return (
     <section className="best-sellers-wrapper">
       <div className="best-sellers-container">
-        <h2 className="section-title">Best Sellers</h2>
+        <h2 className="section-title">
+          Best Sellers{" "}
+          <p className="h2-p">
+            A wise person once said that <br />{" "}
+            <em>"if everyone likes it, I like it too"</em>
+          </p>
+        </h2>
         <div className="products-wrapper">
-            {plants.map((plant) => {
-              return (
-                <Link to={`/plants/${plant._id}`}>
-                  <div key={plant._id}>
-                    <div className="plant-card">
-                      <img
-                        className="preview-plant-img"
-                        src={plant.images.full_size_url}
-                        alt=""
-                      />
-                      <div className="product-overlay">
-                        <PiHeartStraightFill className="like-icon" />
-                        <div className="title-price-container">
-                          <h3 className="card-name">{plant.plant_title}</h3>
-                          <span className="card-price">€{plant.price}</span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </Link>
-              );
-            })}
+          <PlantCard plants={plants} />
         </div>
       </div>
     </section>

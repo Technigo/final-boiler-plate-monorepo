@@ -1,10 +1,10 @@
 .banner-container {
-  background-color: var(--chalk);
-  color: var(--spring);
+  background-color: var(--spring);
+  color: var(--chalk);
   font-family: var(--josefin);
   font-weight: 600;
   text-transform: uppercase;
-  padding: 2rem 1rem 0;
+  padding: 2rem 1rem;
   display: grid;
   gap: 0.5rem;
   grid-template-columns: 1fr 1fr;

@@ -1,5 +1,8 @@
 .by-characteristic-wrapper {
   background-color: var(--chalk);
+}
+
+.by-characteristic-container {
   padding: 3rem 1rem;
 }
 
@@ -15,8 +18,8 @@
 }
 
 .character-card-wrapper {
-  width: 100%;
-  height: 15rem;
+  width: auto;
+  height: 100%;
   position: relative;
   letter-spacing: 0.025rem;
 }
@@ -54,16 +57,14 @@
   letter-spacing: 0.025rem;
 }
 
-
-
 /* For extra large devices */
 @media (min-width: 1280px) {
-    .categories-wrapper .products-wrapper {
-      grid-template-columns: repeat(4, 1fr);
-    }
-  
-    .options-container {
-      display: block;
-      width: 21rem;
-    }
+  .categories-wrapper .products-wrapper {
+    grid-template-columns: repeat(4, 1fr);
   }
+
+  .options-container {
+    display: block;
+    width: 21rem;
+  }
+}

@@ -10,7 +10,7 @@ export const CharacterCard = () => {
       heading: "Pet-Friendly",
       image: "pet-friendly.png",
       imgAlt: "Image of dog for category pet friendly",
-      url: "/plants/all-plants/pets",
+      url: "/plants/all-plants/pet-friendly",
     },
     {
       id: 2,
@@ -24,7 +24,7 @@ export const CharacterCard = () => {
       heading: "Shade-Loving",
       image: "shade-loving.png",
       imgAlt: "Image of a ZZ plant in shadow for category shade loving",
-      url: "/plants/all-plants/shady",
+      url: "/plants/all-plants/shade-loving",
     },
     {
       id: 4,
