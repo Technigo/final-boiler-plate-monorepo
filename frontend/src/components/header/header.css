@@ -14,7 +14,9 @@
 }
 
 .header-logo {
-    width: 230px;  
+    width: 200px;
+    padding-bottom: 5%;
+    /*Adjust to get correct height as it is a logo*/
 }
 
 /**** Hover effects****/
@@ -57,17 +59,49 @@
 
 .header nav ul {
     display: flex;
-    gap: 15%;
+    justify-content: center;
+    gap: 20%;
     list-style: none;
-}
-
-.header nav a {
-    color: #286052;
+    margin-right: 4%;
 }
 
 .header-nav svg {
-    color: #286052;
+    color: #173e34;
     background: white;
     padding: 10%;
     border-radius: 50%;
+    stroke-width: 1.3;
+    /* Changes how bold the strokes are in the react icons */
+}
+
+/* ---------TABLET VIEW---------- */
+@media (min-width: 667px) and (max-width: 1024px) {
+    .header-logo {
+        width: 300px;
+        padding-left: 4%;
+    }
+
+    .header nav ul {
+        gap: 30%;
+        margin-right: 24%;
+    }
+}
+
+/* ---------DESKTOP VIEW---------- */
+@media (min-width: 1025px) {
+    .header-logo {
+        width: 305px;
+        padding-bottom: 3%;
+        padding-left: 8%;
+        /*Adjust to get correct height as it is a logo*/
+    }
+
+    .header nav ul {
+        gap: 70%;
+        margin-right: 36%;
+    }
+
+    .header a {
+        font-size: 4vh;
+    }
 }

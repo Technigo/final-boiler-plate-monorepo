@@ -33,7 +33,7 @@ textarea::placeholder {
 
 /* Ev flyttas. Om alla knappar ska se likadana ut så kan denna flyttas till app */
 .generate-button {
-    background-color: #286052;
+    background-color: #173e34;
     color: white;
     border: 1px solid white;
     border-radius: 1.6rem;
