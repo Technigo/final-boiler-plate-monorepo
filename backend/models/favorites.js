@@ -13,10 +13,16 @@ const favoritesSchema = new mongoose.Schema({
         type: Boolean,
         default: false
     },
-    // user: {
-    //     type: mongoose.Schema.Types.ObjectId,
-    //     ref: 'User'
-    // }
+    user: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User'
+    },
+
+    createdAt: {
+        type: Date,
+        default: () => new Date()
+    }
+
 });
 
 const Favorites = mongoose.model('Favorites', favoritesSchema);
