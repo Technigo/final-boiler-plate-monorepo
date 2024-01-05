@@ -175,8 +175,7 @@ export const TripGenerator = () => {
             <div className="w-1/2">
               <label
                 htmlFor="date"
-                className="block text-sm font-md text-gray-700"
-              >
+                className="block text-sm font-md text-gray-700">
                 Date
               </label>
               <input
@@ -192,8 +191,7 @@ export const TripGenerator = () => {
             <div className="w-1/2">
               <label
                 htmlFor="time"
-                className="block text-sm font-md text-gray-700"
-              >
+                className="block text-sm font-md text-gray-700">
                 Time
               </label>
               <select
@@ -201,8 +199,7 @@ export const TripGenerator = () => {
                 name="time"
                 value={formData.time}
                 onChange={handleTimeChange}
-                className="input-field border p-2 rounded-md w-full h-10"
-              >
+                className="input-field border p-2 rounded-md w-full h-10">
                 {timeOptions}
               </select>
             </div>
@@ -212,8 +209,7 @@ export const TripGenerator = () => {
             <div className="w-1/2">
               <label
                 htmlFor="make"
-                className="block text-sm font-md text-gray-700"
-              >
+                className="block text-sm font-md text-gray-700">
                 Make
               </label>
               <select
@@ -225,8 +221,7 @@ export const TripGenerator = () => {
                     target: { name: e.target.name, value: e.target.value },
                   })
                 }
-                className="input-field border p-2 rounded-md w-full"
-              >
+                className="input-field border p-2 rounded-md w-full">
                 <option value="" disabled>
                   Make
                 </option>
@@ -240,8 +235,7 @@ export const TripGenerator = () => {
             <div className="w-1/2">
               <label
                 htmlFor="model"
-                className="block text-sm font-md text-gray-700"
-              >
+                className="block text-sm font-md text-gray-700">
                 Model
               </label>
               <select
@@ -249,8 +243,7 @@ export const TripGenerator = () => {
                 name="model"
                 value={formData.model}
                 onChange={handleChange}
-                className="input-field border p-2 rounded-md w-full"
-              >
+                className="input-field border p-2 rounded-md w-full">
                 <option value="" disabled>
                   Model
                 </option>
@@ -268,8 +261,7 @@ export const TripGenerator = () => {
             <div className="w-1/2">
               <label
                 htmlFor="reg"
-                className="block text-sm font-md text-gray-700"
-              >
+                className="block text-sm font-md text-gray-700">
                 Reg. no
               </label>
               <input
@@ -289,8 +281,7 @@ export const TripGenerator = () => {
             <div className="w-1/2">
               <label
                 htmlFor="availableSeats"
-                className="block text-sm font-md text-gray-700"
-              >
+                className="block text-sm font-md text-gray-700">
                 Available Seats
               </label>
               <input
@@ -320,8 +311,7 @@ export const TripGenerator = () => {
           <div className="mb-4">
             <label
               htmlFor="message"
-              className="block text-sm font-md text-gray-700"
-            >
+              className="block text-sm font-md text-gray-700">
               Message
             </label>
             <textarea
@@ -343,16 +333,14 @@ export const TripGenerator = () => {
                 ? "bg-gray-100"
                 : "bg-rose-500 hover:bg-rose-700"
             } text-white p-4 py-2 rounded-full focus:outline-none focus:ring focus:border-blue-300`}
-            disabled={loading || formDataIsIncomplete()}
-          >
+            disabled={loading || formDataIsIncomplete()}>
             {loading ? "Generating..." : "Create Trip"}
           </button>
         </form>
 
         <button
           onClick={clearLocalStorage}
-          className="clear-button bg-lime-500 text-white px-4 py-2 mt-4 rounded-full hover:bg-lime-700 focus:outline-none focus:ring focus:border-red-300"
-        >
+          className="clear-button bg-lime-500 text-white px-4 py-2 mt-4 rounded-full hover:bg-lime-700 focus:outline-none focus:ring focus:border-red-300">
           Clear Local Storage
         </button>
 
@@ -362,39 +350,37 @@ export const TripGenerator = () => {
             {trips.reverse().map((trip) => (
               <div
                 key={trip.id}
-                className="grid grid-cols-12 gap-2 p-4 bg-gray-100 rounded-lg relative"
-              >
-                <div className="col-span-4 p-1 bg-gray-900 text-xs text-gray-50 sm:text-2xl text-center rounded border-2 border-gray-900">
+                className="grid grid-cols-12 gap-2 p-4 bg-gray-100 rounded-lg relative">
+                <div className="col-span-4 text-md text-gray-900 sm:text-xl">
                   {trip.from}
                 </div>
 
-                <div className="col-span-1 p-1 text-xs text-gray-900 sm:text-2xl text-center">
+                <div className="col-span-1 text-md text-gray-900 text-center sm:text-xl">
                   →
                 </div>
 
-                <div className="col-span-4 p-1 text-xs text-gray-900 sm:text-2xl text-center rounded border-2 border-gray-900">
+                <div className="col-span-4 text-md text-gray-900 sm:text-xl">
                   {trip.to}
                 </div>
 
                 <div className="col-span-3"></div>
 
-                <div className="col-span-3 text-xs text-gray-900 sm:text-xl">
+                <div className="col-span-3 text-xs text-gray-900 sm:text-lg">
                   {trip.date}
                 </div>
-                <div className="col-span-2 text-xs text-gray-900 sm:text-xl">
+                <div className="col-span-2 text-xs text-gray-900 sm:text-lg">
                   {trip.time}
                 </div>
-                <div className="col-span-4 text-xs text-gray-900 sm:text-xl">
+                <div className="col-span-4 text-xs text-gray-900 sm:text-lg">
                   User456789012
                 </div>
                 <div className="col-span-3"></div>
-                <div className="col-span-12 text-xs text-gray-500 text-left">
-                  TRIP {trip.id}
-                </div>
 
                 <div className="col-span-3 absolute right-4 top-1/2 transform -translate-y-1/2 h-full flex items-center justify-center">
-                  <button className="bg-rose-500 text-white px-4 py-2 rounded-full hover:bg-rose-700 focus:outline-none sm:text-xl">
-                    View
+                  <button
+                    type="button"
+                    className=" bg-rose-500 text-white px-4 py-2 rounded-full hover:bg-rose-700 focus:outline-none focus:ring focus:border-blue-300">
+                    Details
                   </button>
                 </div>
               </div>
