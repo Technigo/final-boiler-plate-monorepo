@@ -1,3 +1,5 @@
+// in the middle of make proper res for updatedandelion
+
 import express from "express"
 import cors from "cors"
 import dotenv from "dotenv"
@@ -158,14 +160,11 @@ const upUserController = asyncHandler(async (req, res) => {
     const updateDandelion = req.query.updateDandelion === 'true'
     if (updateDandelion) {
       // increase dandelion by 1
-      await UserModel.findByIdAndUpdate(user._id, { $inc: { dandelion: 1 } })
-      // await UserModel.findByIdAndUpdate(user._id, { $inc: { dandelion: 1 } }, { new: true })
+      // await UserModel.findByIdAndUpdate(user._id, { $inc: { dandelion: 1 } })
+      await UserModel.findByIdAndUpdate(user._id, { $inc: { dandelion: 1 } }, { new: true })
       // is this continuously working whenever user clicks afterwards update dandelion?
 
-      console.log('updateDandelion')
-
-      // console.log('dandelion:', user.dandelion)
-      // this might not work bcs data is received at client side
+      console.log('dandelion:', user.dandelion)
 
 
       // can i make res?

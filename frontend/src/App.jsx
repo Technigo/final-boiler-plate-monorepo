@@ -295,6 +295,9 @@ export const App = () => {
               })
             })
 
+            const data = await response.json()
+            console.log("response:", data)
+
             if (response.ok) {
               console.log("Dandelion found and updated on the server.")
             } else {
