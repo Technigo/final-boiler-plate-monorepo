@@ -2,6 +2,7 @@
 // import { useEffect } from "react";
 // import { useNavigate } from "react-router-dom";
 // import { Link } from "react-router-dom";
+import { Calendar } from '../components/Calendar'
 import { MovieList } from '../components/MovieList'
 // // Define the 'Home' functional component.
 export const Home = () => {
@@ -43,7 +44,7 @@ export const Home = () => {
   // Render the component content.
   return (
     <>
-      <p>Calendar 📅</p>
+      <Calendar />
       <MovieList /></>
     // <>
     //       <nav>

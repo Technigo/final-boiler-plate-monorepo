@@ -9,40 +9,40 @@ import { Movie } from '../pages/Movie'
 import { NotFound } from '../pages/NotFound'
 
 const routes = (
-	<>
-		<Route
-			path="/"
-			element={<Home />}
-		/>
-		<Route
-			path="/login"
-			element={<Login />}
-		/>
-		<Route
-			path="/register"
-			element={<Register />}
-		/>
-		<Route
-			path="/booking"
-			element={<Booking />}
-		/>
-		<Route
-			path="/bookingForm/:typeOfBooking"
-			element={<BookingForm />}
-		/>
-		<Route
-			path="/:movie"
-			element={<Movie />}
-		/>
-		<Route
-			path="/user-profile/:userId"
-			element={<UserProfile />}
-		/>
-		<Route
-			path="*"
-			element={<NotFound />}
-		/>
-	</>
+  <>
+    <Route
+      path="/"
+      element={<Home />}
+    />
+    <Route
+      path="/login"
+      element={<Login />}
+    />
+    <Route
+      path="/register"
+      element={<Register />}
+    />
+    <Route
+      path="/booking"
+      element={<Booking />}
+    />
+    <Route
+      path="/bookingForm/:typeOfBooking"
+      element={<BookingForm />}
+    />
+    <Route
+      path="/movie/:id" //:movie"
+      element={<Movie />}
+    />
+    <Route
+      path="/user-profile/:userId"
+      element={<UserProfile />}
+    />
+    <Route
+      path="*"
+      element={<NotFound />}
+    />
+  </>
 )
 
 export default routes
