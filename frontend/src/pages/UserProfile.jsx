@@ -12,8 +12,10 @@ export const UserProfile = () => {
   const [username, setUsername] = useState(null);
   const [email, setEmail] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [userLoading, setUserLoading] = useState(true);
   const [userList, setUserList] = useState(null);
-  console.log("username: " + username);
+  // console.log("username: " + username);
+  console.log("user:", user);
 
   //#REGION USER_METADATA
   // console.log(useAuth0());
@@ -69,11 +71,15 @@ export const UserProfile = () => {
       const fetchUsers = await fetch(`${vite_backend}/users`);
       const jsonUsers = await fetchUsers.json();
       setUserList(jsonUsers);
+      setUserLoading(!userLoading);
       console.log(userList);
     };
 
+    console.log("here");
     getUserDataFromMongo();
+    console.log("there");
     getUsers();
+    console.log("not here");
   }, []);
 
   console.log("User: " + JSON.stringify(user));
@@ -86,17 +92,29 @@ export const UserProfile = () => {
     isAuthenticated && (
       <div className="text-black">
         {!loading && (
-          <>
-            <h1 className="text-black text-2xl px-1 py-1 text">
-              Welcome {username}
-            </h1>
-            {/* <ul>
-              {userList.map((user) => (
-                <li>{user}</li>
-              ))}
-            </ul> */}
-          </>
+          <h1 className="text-black text-2xl px-1 py-1 text">
+            Welcome {username}
+          </h1>
         )}
+        {!userLoading && (
+          <ul>
+            {userList.map((user) => (
+              <li
+                className="cursor-pointer"
+                onClick={() => console.log(user._id)}
+              >
+                {user.username}
+              </li>
+            ))}
+          </ul>
+        )}
+        <button
+          onClick={() => {
+            console.log(userList);
+          }}
+        >
+          click me
+        </button>
         {/* <img src={user.picture} alt={user.name} />
         <h2 className="text-black">{user.nickname}</h2>
         <p className="text-black">{user.email}</p> */}
