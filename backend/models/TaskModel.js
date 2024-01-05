@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+/*import mongoose from "mongoose";
 
 // Import the Schema class from the Mongoose library
 // Destructures the Schema class from the Mongoose library, allowing us to create a schema.
@@ -35,3 +35,4 @@ export const taskSchema = new Schema(
 export const TaskModel = mongoose.model("Task", taskSchema);
 
 // In summary, this code defines a Mongoose schema (taskSchema) that describes the structure of documents for tasks in a MongoDB collection. It also creates a Mongoose model (TaskModel) associated with the "tasks" collection, which can be used to interact with the database and perform operations like creating, reading, updating, and deleting tasks.
+*/

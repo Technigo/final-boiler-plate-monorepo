@@ -8,13 +8,13 @@ import userRoutes from "./routes/userRoutes"; // Import custom user routes
 import { connectDB } from "./config/db"; // Import database connection function (not used here)
 import mongoose from "mongoose";
 
-const mongoUrl = process.env.MONGO_URL || "0.0.0.0" //not sure if its supposed to say dogs here
+const mongoUrl = process.env.MONGO_URL || "mongodb://127.0.0.1:27017/dogs"; //not sure if its supposed to say dogs here
 mongoose.connect(mongoUrl, {useNewUrlParser: true, useUnifiedTopology: true})
 mongoose.Promise = Promise
 
 
 // Defines the port the app will run on. Defaults to 8080, but can be overridden
-const port = process.env.PORT; // Set the port number for the server
+const port = process.env.PORT || 4000; // Set the port number for the server
 const app = express(); // Create an instance of the Express application
 
 // Add middlewares to enable cors and json body parsing
@@ -24,8 +24,8 @@ app.use(express.urlencoded({ extended: false })); // Parse URL-encoded data
 
 // Use the routes for handling API requests
 // ROUTES - These routes USE controller functions ;)
-app.use(taskRoutes); // Use the task-controlled routes for task-related requests
-app.use(userRoutes); // Use the user-controlled routes for user-related requests
+//app.use(taskRoutes); // Use the task-controlled routes for task-related requests
+//app.use(userRoutes); // Use the user-controlled routes for user-related requests
 
 
 

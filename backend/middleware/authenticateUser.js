@@ -1,4 +1,4 @@
-// Import the UserModel from the User model file
+/* Import the UserModel from the User model file
 import { UserModel } from "../models/UserModel";
 // Define a function called authenticateUser that takes a request (req), response (res), and a next function as parameters
 export const authenticateUser = async (req, res, next) => {
@@ -25,4 +25,4 @@ export const authenticateUser = async (req, res, next) => {
 
 // SUMMARY
 
-//In this code, we have a function called authenticateUser that is used as middleware in a Node.js application. This middleware is responsible for checking the authorization header of an incoming request, searching for a user with the provided access token in the database using the UserModel, and adding the user object to the request if found. If no user is found or if there are any errors during the process, appropriate responses are sent back to the client. In summary, this code is handling user authentication by checking the access token in the request header and verifying it against the database to grant access to protected routes or endpoints.
+//In this code, we have a function called authenticateUser that is used as middleware in a Node.js application. This middleware is responsible for checking the authorization header of an incoming request, searching for a user with the provided access token in the database using the UserModel, and adding the user object to the request if found. If no user is found or if there are any errors during the process, appropriate responses are sent back to the client. In summary, this code is handling user authentication by checking the access token in the request header and verifying it against the database to grant access to protected routes or endpoints.*/

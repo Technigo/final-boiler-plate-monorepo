@@ -1,4 +1,4 @@
-// Import the necessary modules and functions
+/* Import the necessary modules and functions
 import express from "express";
 import { authenticateUser } from "../middleware/authenticateUser"; // Import middleware for user authentication
 import {
@@ -31,3 +31,4 @@ router.post("/add", authenticateUser, addTaskController); // When a POST request
 export default router;
 
 // In summary, this file sets up routes using the Express router for various CRUD operations on tasks. It includes middleware for user authentication and associates each route with the corresponding controller function. These routes define the API endpoints for managing tasks within the application.
+*/

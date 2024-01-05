@@ -1,4 +1,4 @@
-// Import the necessary modules and functions
+/* Import the necessary modules and functions
 import express from "express";
 import {
   registerUserController,
@@ -18,3 +18,4 @@ router.post("/login", loginUserController); // When a POST request is made to /l
 export default router;
 
 // In summary, this file sets up routes using the Express router for user registration and login operations. It associates each route with the corresponding controller function. These routes define the API endpoints for handling user registration and login within the application.
+*/
