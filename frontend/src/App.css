@@ -3,7 +3,7 @@
 }
 
 a {
-  font-family: sans-serif;
+  font-family: "Nunito", sans-serif;
   text-decoration: none;
   color: black;
 }
@@ -32,6 +32,6 @@ li {
 }
 
 button {
-  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-family: "Nunito", sans-serif;
   font-size: 1rem;
 }

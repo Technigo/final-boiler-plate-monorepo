@@ -1,0 +1,18 @@
+.tab-button {
+    display: inline-flex;
+    background-color: #dbdbdb;
+    border-radius: 50px;
+}
+
+.tab-button-ingredients {
+    border: none; 
+    background: transparent;
+    border-right: solid white 5px;
+    padding: 1em; 
+}
+
+.tab-button-method {
+    border: none; 
+    background: transparent;
+    padding: 1em; 
+}

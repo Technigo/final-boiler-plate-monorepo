@@ -2,6 +2,8 @@ import "./recipeDetails.css";
 import { useParams } from "react-router-dom";
 import { useEffect } from "react";
 import { Header } from "../../components/header/Header";
+import { SaveButtonBig } from "../../components/buttons/saveButtonBig/SaveButtonBig";
+import { TabButton } from "../../components/buttons/tabButton/TabButton";
 import { recipeStore } from "../../stores/recipeStore";
 import { PiCookingPot } from "react-icons/pi";
 
@@ -53,17 +55,20 @@ export const RecipeDetails = () => {
           <span className="dot">•</span> {/* Add a dot here */}
           <div className="users-input">
             {console.log(foundRecipe.userInput)}
-            {foundRecipe.userInput.map((item, index) => (
+            {/* {foundRecipe.userInput.map((item, index) => (
               <p className="georgia" key={index}>
                 {item}
               </p>
-            ))}{" "}
+            ))} WHY NOT WORKING????*/} 
           </div>
         </div>
         <img src="/recipe-imgs/campfire-896196_1280.jpg" alt="" />
+          <SaveButtonBig/>
         <p className="description">{foundRecipe.description}</p>
 
-        <h3>Ingredients:</h3>
+            <TabButton/>
+
+        <h3>Ingredients</h3>
         {/*Mapping the ingredients: */}
         <ul>
           {Object.entries(capitalizeKeys(foundRecipe.ingredients)).map(

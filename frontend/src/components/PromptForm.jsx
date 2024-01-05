@@ -48,7 +48,7 @@ export const PromptForm = () => {
                     onChange={(e) => setInputRecipe(e.target.value)}
                     required
                 ></textarea>
-                <button type="submit">Create recipe using AI</button>
+                <button className="generate-button"type="submit">Create recipe using AI</button>
             </form>
         </div>
     );
