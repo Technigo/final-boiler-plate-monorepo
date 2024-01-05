@@ -168,19 +168,34 @@ export const saveAdController = asyncHandler(async (req, res) => {
   }
 });
 
-// desciption: PUT/PATCH a specific AD
+// description: PUT/PATCH a specific AD
 // route: /update/:id
 // access: Private
 export const updateAdController = asyncHandler(async (req, res) => {
   const { id } = req.params;
+
+  // Retrieve the existing ad
+  const existingAd = await AdModel.findById(id);
+  if (!existingAd) {
+    return res.status(404).json({ message: "Ad not found" });
+  }
+
   let updateData = req.body;
 
+  // If a new file is included in the update
   if (req.file) {
+    // Upload new image
     const result = await cloudinary.uploader.upload(req.file.path);
     updateData.image = result.url;
     updateData.imageId = result.public_id;
+
+    // Delete old image from Cloudinary if it exists
+    if (existingAd.imageId) {
+      await cloudinary.uploader.destroy(existingAd.imageId);
+    }
   }
 
+  // Check if the user is authorized
   const userFromStorage = await UserModel.findOne({
     accessToken: req.header("Authorization"),
   });
@@ -189,10 +204,12 @@ export const updateAdController = asyncHandler(async (req, res) => {
     return res.status(401).json({ message: "Unauthorized: User not found." });
   }
 
+  // Update the ad in the database
   AdModel.findByIdAndUpdate(id, updateData, { new: true })
     .then(updatedAd => res.json(updatedAd))
     .catch(err => res.status(500).json({ message: "Error updating ad.", error: err }));
 });
+
 
 // desciption: DELETE all ads
 // route: /deleteAll
