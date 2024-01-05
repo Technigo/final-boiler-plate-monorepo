@@ -9,14 +9,18 @@
   margin-top: 1rem; 
   margin-bottom: 1rem; 
 }
-
-.recipe-details .users-input {
-  font-family: Georgia, "Times New Roman", Times, serif;
-  font-size: 13px;
+.servings {
+  display: flex;
+  gap: 5px; 
+  margin-bottom: 12px; 
 }
 
-.recipe-details .description {
-   font-family: "Nunito", sans-serif
+.recipe-info {
+  display: flex; 
+}
+
+.dot{
+  margin: 0 5px 0 5px; 
 }
 
 .recipe-details img {

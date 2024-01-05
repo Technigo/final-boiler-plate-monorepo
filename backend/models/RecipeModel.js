@@ -8,7 +8,7 @@ const { Schema } = mongoose;
 export const recipeSchema = new Schema(
     {
         userInput: {
-            type: [String],
+            type: String,
             required: true,
         },
 
