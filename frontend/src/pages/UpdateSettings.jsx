@@ -4,7 +4,7 @@ import BackArrow from "../components/reusableComponents/BackArrow";
 import { useNavigate } from "react-router-dom";
 import defaultProfileImage from "../assets/images/profile_icon.png";
 
-export const UpdateSettingsSimple = () => {
+export const UpdateSettings = () => {
     const navigate = useNavigate();
 
     // For retrieving the updated user profile data later on
