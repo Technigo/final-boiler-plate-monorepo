@@ -12,6 +12,7 @@ import { useNavigate } from "react-router-dom";
 import { useMediaQuery } from "react-responsive";
 import { Link } from "react-router-dom";
 import "../components/css/habits.css";
+import { useTranslation } from 'react-i18next';
 
 // Define the 'Habits' functional component.
 export const Habits = () => {
@@ -20,6 +21,8 @@ export const Habits = () => {
 
   const { habits, fetchHabits, handleEdit, deleteHabitById, markFinished, markUnfinished } = habitStore();
   const { username, isLoggedIn, handleLogout } = userStore();
+
+  const { t } = useTranslation();
 
   useEffect(() => {
     fetchHabits();
@@ -89,14 +92,14 @@ export const Habits = () => {
       {isMobile ? <NavbarMobile /> : isTablet ? <NavbarMobile /> : <Navbar />}
 
       <div className="habits-container">
-        {isLoggedIn && <h2>Hi {username}, welcome! Let's make the best of this day ☀️</h2>}
+        {isLoggedIn && <h2>{t("Hi")} {username}{t(", welcome! Let's make the best of this day ☀️")}</h2>}
 
         {isLoggedIn ? (
           <>
-            <h3>My habits</h3>
+            <h3>{t("My habits")}</h3>
             <hr />
             {habits.length === 0 ? (
-              <p>No habits yet, go ahead and add some!</p>
+              <p>{t("No habits yet, go ahead and add some!")}</p>
             ) : (
               habits.map((habit, index) => (
                 <div key={habit._id} className={`card-wrapper ${getHabitBackgroundClass(index)}`}>
@@ -116,14 +119,24 @@ export const Habits = () => {
             )}
 
             <CreateHabit />
-            <button onClick={onLogoutClick}>Sign Out</button>
+            <button onClick={onLogoutClick}>{t("Sign Out")}</button>
           </>
         ) : (
           <div className="access-denied-container">
             <div className="message-box">
-              <h2>Oops! You need to be logged in.</h2>
-              <p>Access to "My Page" is exclusive to our members. Please <Link to="/login">log in</Link> or <Link to="/signup">sign up</Link> to manage your personal content and enjoy all the benefits of being a member.</p>
-              <p>If you're just looking around, welcome! Feel free to <Link to="/">go back to our homepage</Link> and explore.</p>
+              <h2>{t("Oops! You need to be logged in.")}</h2> 
+              <p>
+                {t("Access to My Page is exclusive to our members. Please")}
+                <Link to="/">{t("log in")}</Link>
+                {t("or")}
+                <Link to="/">{t("sign up")}</Link>
+                {t("to manage your personal content and enjoy all the benefits of being a member.")}
+              </p>
+              <p>
+                {t("If you're just looking around, welcome! Feel free to")}
+                <Link to="/">{t("go back to our homepage")}</Link>
+                {t("and explore.")}
+              </p>
             </div>
           </div>
         )}
