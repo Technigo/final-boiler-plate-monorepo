@@ -31,8 +31,26 @@ export const Register = () => {
     }
   };
 
+  //   Render the component content.
   return (
-    <div className="app-container" id="app-container">
+    // <>
+    //       <nav>
+    //         {/* Create a navigation menu with links to the login and sign-up routes. */}
+    //         <ul className="app-ul">
+    //           <li className="app-li">
+    //             <Link to="/">Login</Link>
+    //           </li>
+    //           <li className="app-li">
+    //             <Link to="/register">Sign Up</Link>
+    //           </li>
+    //         </ul>
+    //       </nav>
+    //       {/* Render the 'Logos' component. */}
+    //       <Logos />
+    <div
+      className="app-container"
+      id="app-container"
+    >
       <div className="input-container">
         <input
           type="text"
@@ -57,5 +75,10 @@ export const Register = () => {
         <button onClick={onRegisterClick}>Register</button>
       </div>
     </div>
-  );
-};
+    //  </>
+  )
+}
+
+// // SUMMARY
+
+// // This code defines the Register component, which handles user registration functionality. It imports necessary components, hooks, and the user store, and it defines state variables for email, username, and password. The component provides a form for entering registration details, handles the signup button click event, and uses React Router to navigate between login and sign-up routes. Additionally, it renders text content and the 'Logos' component.
