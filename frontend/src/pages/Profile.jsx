@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { userStore } from "../stores/userStore";
-import BackArrow from "../components/BackArrow";
+import BackArrow from "../components/reusableComponents/BackArrow";
 import { AdsList } from "../components/AdsList";
 import { Modal, Button } from "react-bootstrap";
 // Import Bootstrap styles

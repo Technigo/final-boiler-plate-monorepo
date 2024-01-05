@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { userStore } from "../stores/userStore";
-import BackArrow from "../components/BackArrow";
+import BackArrow from "../components/reusableComponents/BackArrow";
 
 export const ProfileSettings = () => {
   const isLoggedin = userStore((state) => state.isLoggedin);

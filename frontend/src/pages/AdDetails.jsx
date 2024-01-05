@@ -5,7 +5,7 @@ import { Modal, Button } from "react-bootstrap";
 // Import Bootstrap styles
 import "bootstrap/dist/css/bootstrap.min.css";
 import { ContactForm } from "../components/ContactForm";
-import BackArrow from "../components/BackArrow";
+import BackArrow from "../components/reusableComponents/BackArrow";
 
 const AdDetails = () => {
   const [ad, setAd] = useState({});

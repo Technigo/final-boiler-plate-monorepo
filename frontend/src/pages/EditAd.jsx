@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { adStore } from "../stores/adStore";
 
-export const UpdateAd = ({ adId }) => {
+export const EditAd = ({ adId }) => {
   const [image, setImage] = useState(null);
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
