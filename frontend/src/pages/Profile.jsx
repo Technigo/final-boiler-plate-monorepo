@@ -21,7 +21,6 @@ export const Profile = () => {
   const [profileData, setProfileData] = useState({
     introduction: "",
     location: "",
-    products: [],
     image: null,
   });
   
@@ -33,7 +32,6 @@ export const Profile = () => {
           setProfileData({
             introduction: profileData.introduction,
             location: profileData.location,
-            products: profileData.products,
             image: profileData.image
           })
         console.log(profileData);
@@ -53,7 +51,6 @@ export const Profile = () => {
         <img src={profileData.image} alt={username} />
         <p>Introduction: {profileData.introduction}</p>
         <p>Location: {profileData.location}</p>
-        <p>Products: {profileData.products.join(", ")}</p>
       </div>
       <h2>Recent ads</h2>
       <AdsList fetchType="user" userId={userId} />
