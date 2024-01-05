@@ -174,7 +174,7 @@ export const userStore = create((set) => ({
           text: data.response || "Log in failed",
           icon: "error"
         });
-        // alert(data.response || "Log in failed");
+        return;
       }
     } catch (error) {
       // Handle and log any login errors.
