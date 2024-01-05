@@ -18,18 +18,18 @@
   -webkit-text-size-adjust: 100%;
 
   /* Primary Colors */
-  --color-primary-text: #333333; 
-  --color-primary-background: #FFFFFF; 
-  --color-cta: #2a423a; 
-  --color-cta-hover: #202322; 
-  --color-cta-text: #e2e3ed; 
+  --color-primary-text: #333333;
+  --color-primary-background: #ffffff;
+  --color-cta: #2a423a;
+  --color-cta-hover: #202322;
+  --color-cta-text: #e2e3ed;
   --color-cta-hover-text: #;
-  --color-secondary-background: #F5F5F5; 
+  --color-secondary-background: #f5f5f5;
 
   /* Secondary Colors */
   --color-secondary-text: #666666; /* Lighter gray for secondary text */
-  --color-accent: #4CAF50; /* Green for accent elements */
-  --color-border: #DDDDDD; /* Light gray for borders */
+  --color-accent: #4caf50; /* Green for accent elements */
+  --color-border: #dddddd; /* Light gray for borders */
 }
 
 .ad-card a {
@@ -58,7 +58,6 @@ body {
   min-height: 100vh;
 }
 
-
 button {
   border-radius: 8px;
   border: 1px solid transparent;
@@ -69,6 +68,7 @@ button {
   background-color: #1a1a1a;
   cursor: pointer;
   transition: border-color 0.25s;
+  color: var(--color-cta-text);
 }
 button:hover {
   border-color: #646cff;
@@ -77,8 +77,6 @@ button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
-
-
 
 /* Apply styles to elements with the 'logo' class */
 .logo {
@@ -102,7 +100,6 @@ button:focus-visible {
   margin-bottom: 1em; /* Add space below input elements */
   height: 2em; /* Set height for input elements */
 }
-
 
 /* Apply styles to elements with the 'not-found' class */
 .not-found {
