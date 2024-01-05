@@ -51,6 +51,7 @@ const routes = (
     <Route path="/manage-your-ads" element={<ManageYourAds />} />
     {/* Define a route for the "/search" path and renders the "Search" page */}
     <Route path="/search" element={<Search />} />
+    
     {/* Define a catch-all route that matches any other path ("*") and renders the "NotFound" component. */}
     <Route path="*" element={<NotFound />} />
   </>
