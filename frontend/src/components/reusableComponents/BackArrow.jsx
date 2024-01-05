@@ -20,7 +20,9 @@ function BackArrow() {
         {/* Create a link to the previous page */}
         <a href="#" onClick={handleClick}>
           {/* Display the back arrow logo image with a CSS class 'logo'. */}
-          <img src={backArrow} alt="Back arrow logo" />
+          <img className="back" src={backArrow} alt="Back arrow logo" />
+          <img className="back" src={backArrow} alt="Back arrow logo" />
+          <img className="back" src={backArrow} alt="Back arrow logo" />
         </a>
       </div>
     </div>
