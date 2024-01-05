@@ -170,10 +170,49 @@ p {
   font-weight: 600;
 }
 
-input[type="text"],
-.input-text {
-  font-size: 18px;
-  font-weight: 400;
+/* Global input style that affects all input types */
+input,
+select,
+textarea {
+  font-family: 'Open Sans', sans-serif;
+  /* Match the font style with your body font */
+  font-size: 1em;
+  /* Set font-size to match the base size */
+  padding: 0.5em;
+  /* Add padding inside the input fields */
+  border: 1px solid #ccc;
+  /* Add a border */
+  border-radius: 4px;
+  /* Optionally round the corners */
+  box-sizing: border-box;
+  /* Ensure padding does not affect overall size */
+  width: 100%;
+  /* Make sure input fields are full width */
+  margin-bottom: 0.5em;
+  /* Add some space below the input */
+}
+
+/* Specific style for the file input type */
+input[type="file"] {
+  padding: 0.5em;
+  /* Adjust padding as needed */
+}
+
+/* Specific style for the date input type */
+input[type="date"],
+input[type="datetime-local"] {
+  padding: 0.5em;
+  /* Adjust padding as needed */
+  cursor: pointer;
+  /* Indicates the field is clickable */
+}
+
+/* Specific style for textarea */
+textarea {
+  height: 150px;
+  /* Adjust height as needed */
+  resize: vertical;
+  /* Only allow vertical resizing */
 }
 
 .address {
@@ -200,6 +239,15 @@ input[type="text"],
 
   h3 {
     font-size: 32px;
+  }
+
+  input,
+  select,
+  textarea {
+    font-size: 1.125em;
+    /* Slightly larger font-size on desktop */
+    padding: 0.75em;
+    /* More padding on larger screens */
   }
 
   .navigation {

@@ -1,0 +1,46 @@
+.create-ad-form {
+    display: grid;
+}
+
+.create-ad-form label {
+    display: block;
+    /* Ensures the label is on a separate line */
+    margin-top: 10px;
+    /* Adds space above the label */
+}
+
+.create-ad-form input,
+.create-ad-form textarea,
+.create-ad-form button {
+    width: 100%;
+    /* Ensures full width */
+    margin-top: 5px;
+    /* Adds space above the input */
+}
+
+.create-ad-form textarea {
+    height: 150px;
+    /* Set a fixed height for the textarea */
+}
+
+@media (min-width: 1120px) {
+    /* ... existing styles ... */
+
+    input[type="text"],
+    input[type="number"],
+    input[type="datetime-local"],
+    input[type="file"],
+    .input-text {
+        font-size: 20px;
+        /* Larger font size for better readability */
+        padding: 10px;
+        /* Larger padding for a bigger field */
+    }
+
+    textarea {
+        font-size: 20px;
+        /* Larger font size for better readability */
+        padding: 10px;
+        /* Larger padding for a bigger field */
+    }
+}
