@@ -2,7 +2,7 @@ import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { Button } from "../../components/buttons/Button";
 import { plantStore } from "../../stores/plantStore";
-//import { cartStore } from "../../stores/cartStore";
+import { cartStore } from "../../stores/cartStore";
 
 import "./ProductPage.css";
 
@@ -11,7 +11,7 @@ export const ProductPage = () => {
   console.log("plant product id:", id);
 
   const { singlePlant, setApiEndpoint, fetchSinglePlant } = plantStore();
-  //const { addToCart, cart } = cartStore();
+  const { addToCart, cart } = cartStore();
   const [error, setError] = useState(null);
 
   useEffect(() => {
@@ -36,7 +36,7 @@ export const ProductPage = () => {
         <h4>{singlePlant.botanical_name}</h4>
         <h3>{singlePlant.plant_title}</h3>
         <p>{singlePlant.description}</p>
-        <p>{singlePlant.price}</p>
+        <p>€{singlePlant.price}</p>
         <Button
           className="add-to-cart-btn"
           onClick={handleAddToCart}

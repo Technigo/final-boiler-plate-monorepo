@@ -7,7 +7,7 @@ import { OrderInfo } from "../../components/cart/OrderInfo"
 import "./CartPage.css";
 
 export const CartPage = () => {
-  const { cart, clearCart, total, calculateTotalPrice, freeDelivery } = cartStore();
+  const { cart, clearCart, total, calculateTotalPrice, freeDelivery, numberOfProducts } = cartStore();
 
 //   console.log("CART!:", cart);
 //   console.log("item-id's:", cart[0]._id);
@@ -23,6 +23,7 @@ export const CartPage = () => {
   }, []);
 
   //console.log("TOTAL:", total);
+  console.log(numberOfProducts);
 
   return (
     <section className="cart-page-section">
@@ -31,7 +32,7 @@ export const CartPage = () => {
       {cart.map((item, index) => {
         return (
           <div key={index}>
-          <CartItem index={index} img={item.images.full_size_url} title={item.plant_title} botanicalName={item.botanical_name} price={item.price}/>
+          <CartItem index={index} img={item.images.full_size_url} title={item.plant_title} botanicalName={item.botanical_name} price={item.price} quantity={1}/>
           </div>
         );
       })}

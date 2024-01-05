@@ -1,5 +1,4 @@
-//THIS NEEDS FIXING
-//TODO: fix remove and clear cart functions!
+
 import { create } from "zustand";
 
 const loadCartFromLocalStorage = () => {
@@ -9,11 +8,23 @@ const loadCartFromLocalStorage = () => {
 
 export const cartStore = create((set) => ({
   cart: loadCartFromLocalStorage(),
+  numberOfProducts: loadCartFromLocalStorage().length, 
   addToCart: (item) =>
     set((state) => {
-      const newCart = [...state.cart, item];
-      localStorage.setItem("cart", JSON.stringify(newCart));
-      return { cart: newCart };
+      const existingItem = state.cart.findIndex((cartItem) => cartItem._id === item._id)
+      if ( existingItem !== -1 ) {
+        const updatedCart = [...state.cart];
+        updatedCart[existingItem] = {
+          ...updatedCart[existingItem], 
+          quantity: updatedCart[existingItem].quantity +1,
+        };
+        localStorage.setItem("cart", JSON.stringify(updatedCart));
+        return {cart: updatedCart};
+      } else {
+        const newCart = [...state.cart, { ...item, quantity: 1 }];
+        localStorage.setItem("cart", JSON.stringify(newCart));
+        return { cart: newCart };
+      }
     }),
   removeFromCart: (index) =>
     set((state) => {

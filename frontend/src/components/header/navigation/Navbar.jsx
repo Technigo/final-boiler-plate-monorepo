@@ -1,7 +1,9 @@
 import { useState, useEffect } from "react";
+import { cartStore } from "../../../stores/cartStore";
 import { Link } from "react-router-dom";
 import { useMediaQuery } from "react-responsive";
 import { Navigation } from "./Navigation";
+import Badge from "@mui/material/Badge";
 
 // ICONS
 import { IoIosMenu } from "react-icons/io";
@@ -12,6 +14,8 @@ import { HiShoppingBag } from "react-icons/hi2";
 
 // NAVBAR COMPONENT
 export const Navbar = () => {
+  const { numberOfProducts } = cartStore();
+
   const [hiddenMenu, setHiddenMenu] = useState(false);
   const isMobile = useMediaQuery({ maxWidth: 767 });
 
@@ -92,11 +96,13 @@ export const Navbar = () => {
           <Link to="/">
             <IoHeart className="heart-icon" />
           </Link>
-          <Link to="/cart">
-            <div className="bag-container">
-              <HiShoppingBag className="bag-icon" />
-            </div>
-          </Link>
+          <Badge color="secondary" badgeContent={numberOfProducts} showZero>
+            <Link to="/cart">
+              <div className="bag-container">
+                <HiShoppingBag className="bag-icon" />
+              </div>
+            </Link>
+          </Badge>
         </div>
       </nav>
       {hiddenMenu && (
