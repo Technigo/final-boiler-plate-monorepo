@@ -110,6 +110,7 @@ export const addTaskController = asyncHandler(async (req, res) => {
 });
 
 // This controller is responsible for adding a volunteer to a specific task. It extracts the task ID from the request parameters, finds the task in the database, adds the user ID to the task's volunteers array, and saves the task to the database. The updated task is sent back as a JSON response. This route is only accessible to authenticated users.
+
 // export const addVolunteerController = asyncHandler(async (req, res) => {
 //   try {
 //     const taskId = req.params.id;
@@ -146,7 +147,8 @@ export const addVolunteerController = asyncHandler(async (req, res) => {
         .json({ message: "User is already a volunteer for this Need" });
     }
 
-    task.volunteers.push(userId); // Add the user ID to the task's volunteers array
+    // task.volunteers.push(userId);
+    task.volunteers.push(req.user._id); // Add the user ID to the task's volunteers array
     const savedTask = await task.save(); // Save the task to the database
     res.json(savedTask); // Respond with the updated task in JSON format
   } catch (error) {
