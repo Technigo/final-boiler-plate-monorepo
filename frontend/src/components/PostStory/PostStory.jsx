@@ -16,7 +16,7 @@ export const PostStory = () => {
   const [newHeading, setNewHeading] = useState("");
   const [newStory, setNewStory] = useState("");
   const [newCategory, setNewCategory] = useState("");
-  const [newWhere, setNewWhere] = useState("");
+  // const [newWhere, setNewWhere] = useState("");
   const [selectedDate, setSelectedDate] = useState(new Date());
   const [isCalendarVisible, setIsCalendarVisible] = useState(false);
   const [isImageModalOpen, setIsImageModalOpen] = useState(false);
@@ -28,8 +28,8 @@ export const PostStory = () => {
   const handleFormSubmit = (e) => {
     e.preventDefault();
 
-    if (newStory.length < 5 || newStory.length > 200) {
-      alert("The message can only contain 5-200 letters. Please try again! 💕");
+    if (newStory.length < 10) {
+      alert("The message is too short. Please try again! 💕");
       return;
     }
 
@@ -39,28 +39,56 @@ export const PostStory = () => {
       setNewCategory(e.target.value);
     };
 
-    fetch("https://whisperwall.onrender.com/stories", {
-      method: "POST",
-      body: JSON.stringify({
-        title: newHeading,
-        content: newStory,
-        createdAt: selectedDate,
-        location: newWhere,
-        category: newCategory,
-        image: selectedImage,
-      }),
-    })
+    const googleApiPayload = {
+      document: {
+        content: newStory, // Set the content field with the story text
+        type: "PLAIN_TEXT",
+      },
+    };
+    console.log("Sending request to Google API with body:", googleApiPayload);
+
+    fetch(
+      `https://language.googleapis.com/v1/documents:analyzeSentiment?key=${
+        import.meta.env.VITE_GOOGLE_LANGUAGE_KEY
+      }`,
+      {
+        method: "POST",
+        body: JSON.stringify(googleApiPayload),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    )
       .then((res) => res.json())
-      .then((newStory) => {
-        console.log("New story posted:", newStory);
-        console.log("Date:", selectedDate);
-        console.log("Category:", newCategory);
-        // Reload the page after a successful post
-        window.location.reload();
+      .then((googleApiResponse) => {
+        console.log("Response from Google API:", googleApiResponse);
       })
       .catch((error) => {
-        console.error("Error posting the story", error);
+        console.error("Error calling Google API:", error);
       });
+
+    // fetch("http://localhost:3000/stories", {
+    //   method: "POST",
+    //   body: JSON.stringify({
+    //     title: newHeading,
+    //     content: newStory,
+    //     createdAt: selectedDate,
+    //     location: locationName,
+    //     category: newCategory,
+    //     image: selectedImage,
+    //   }),
+    // })
+    //   .then((res) => res.json())
+    //   .then((newStory) => {
+    //     console.log("New story posted:", newStory);
+    //     console.log("Date:", selectedDate);
+    //     console.log("Category:", newCategory);
+    //     // Reload the page after a successful post
+    //     // window.location.reload();
+    //   })
+    //   .catch((error) => {
+    //     console.error("Error posting the story", error);
+    //   });
   };
 
   const handleDateChange = (date) => {
@@ -132,8 +160,7 @@ export const PostStory = () => {
           type="text"
           value={newStory}
           onChange={(e) => setNewStory(e.target.value)}
-          minLength="5"
-          maxLength="200"
+          minLength="10"
           placeholder="Please write your story here"
           className="input-field"
         />
@@ -239,3 +266,5 @@ export const PostStory = () => {
     </div>
   );
 };
+
+// ${import.meta.env.VITE_GOOGLE_LANGUAGE_KEY}
