@@ -7,7 +7,7 @@ import { SearchBar } from "../components/SearchBar";
 import { AdsList } from "../components/AdsList";
 import { Navbar } from "../components/Navbar";
 import Swal from "sweetalert2";
-import BackArrow from "../components/BackArrow";
+import BackArrow from "../components/reusableComponents/BackArrow";
 
 // Define the 'Home' functional component.
 export const Home = () => {

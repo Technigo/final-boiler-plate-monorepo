@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { adStore } from "../stores/adStore";
-import BackArrow from '../components/BackArrow';
+import BackArrow from '../components/reusableComponents/BackArrow';
 
 export const CreateAd = () => {
   const [image, setImage] = useState(null);

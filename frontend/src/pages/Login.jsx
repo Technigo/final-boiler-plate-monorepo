@@ -3,7 +3,7 @@ import { userStore } from "../stores/userStore"; // Make sure this is correctly 
 // Import the 'useState' and 'useNavigate' hooks from 'react'.
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import BackArrow from "../components/BackArrow";
+import BackArrow from "../components/reusableComponents/BackArrow";
 import "../pages/login.css";
 
 // Define the 'Login' functional component.
