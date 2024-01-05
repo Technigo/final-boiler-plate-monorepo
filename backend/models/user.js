@@ -25,12 +25,9 @@ const userSchema = new mongoose.Schema({
   //   },
   // ],
 
-  favorites: [
-    {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'Favorites',
-    },
-  ],
+  // completedChallenges: [{ 
+  //   type: mongoose.Schema.Types.ObjectId, 
+  //   ref: 'Challenge' }],
 
 
   createdAt: {
