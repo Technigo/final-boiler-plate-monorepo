@@ -12,7 +12,7 @@
 .servings {
   display: flex;
   gap: 5px; 
-  margin-bottom: 12px; 
+  margin-bottom: 12px; /*% här är fult!*/
 }
 
 .recipe-info {
