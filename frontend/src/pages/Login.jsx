@@ -25,7 +25,7 @@ export const Login = () => {
     // Call the 'handleLogin' function from 'userStore' with 'username' and 'password' parameters.
     await storeHandleLogin(username, password);
     // Get the 'isLoggedIn' state from 'userStore'.
-    const isLoggedin = userStore.getState((state) => state.isLoggedin);
+    const isLoggedin = userStore.getState().isLoggedin;
 
     if (isLoggedin) {
       // If the user is logged in, navigate to the "/home" route.

@@ -188,6 +188,8 @@ export const updateUserController = asyncHandler(async (req, res) => {
 
   const { password, email, location, introduction, products } = req.body;
 
+  let userToBeUpdated; 
+  
   try {
     // Ensure that the username is not included in the update
     if ("username" in req.body) {
@@ -198,35 +200,71 @@ export const updateUserController = asyncHandler(async (req, res) => {
       return;
     }
 
-    // Upload image to Cloudinary
-    let imageUrl, imageId;
-    try {
-      const result = await cloudinary.uploader.upload(req.file.path);
-      imageUrl = result.url;
-      imageId = result.public_id;
-    } catch (uploadError) {
-      console.error("Cloudinary Upload Error:", uploadError);
-      res.status(500).json({
-        success: false,
-        response: "Error uploading image to Cloudinary.",
-        error: uploadError,
-      });
+    // Check if the current user is using a new email or password that matches with the same email or password in the database, so they would have to choose something diferent
+    const existingUser = await UserModel.findOne({
+      $or: [{ password }, { email }],
+    });
+
+    if (existingUser) {
+      res.status(400);
+      throw new Error(
+        `${existingUser.password === password ? "Password" : "Email"
+        } already exists`
+      );
     }
 
-    // Find a user in the database with the same ID and update the details
-    const userToBeUpdated = await UserModel.findByIdAndUpdate(userId, {
-      $set: {
-        password: password, // doublecheck how to display password in frontend
-        email: email,
-        image: imageUrl,
-        imageId: imageId,
-        location: location,
-        introduction: introduction,
-        products: products
-      }
-    }, {
-      new: true // add this to return the updated
-    });
+    // Generate a salt and hash the user's password
+    // In this line below, we're using the bcrypt library to create a random value called "salt." The salt is added to the password before hashing it. It adds an extra layer of security by making it more difficult for attackers to use precomputed tables (rainbow tables) to crack passwords. The 10 in genSaltSync(10) represents the cost factor, which determines how computationally intensive the hashing process will be.
+    const salt = bcrypt.genSaltSync(10);
+
+    const hashedPassword = bcrypt.hashSync(password, salt);
+
+    // Upload image to Cloudinary if there is one in request
+    if (req.file) {
+      let imageUrl, imageId;
+      try {
+        const result = await cloudinary.uploader.upload(req.file.path);
+        imageUrl = result.url;
+        imageId = result.public_id;
+      } catch (uploadError) {
+        console.error("Cloudinary Upload Error:", uploadError);
+        // Set default image URL if upload fails
+        imageUrl = defaultProfileImage;
+        imageId = null;
+        // res.status(500).json({
+        //   success: false,
+        //   response: "Error uploading image to Cloudinary.",
+        //   error: uploadError,
+        // });
+      };
+      // Find a user in the database with the same ID and update the details
+      userToBeUpdated = await UserModel.findByIdAndUpdate(userId, {
+        $set: {
+          password: hashedPassword, // doublecheck how to display password in frontend
+          email: email,
+          image: imageUrl,
+          imageId: imageId,
+          location: location,
+          introduction: introduction,
+          products: products
+        }
+      }, {
+        new: true // add this to return the updated
+      });
+    } else {
+      // Find a user in the database with the same ID and update the details
+      userToBeUpdated = await UserModel.findByIdAndUpdate(userId, {
+        $set: {
+          password: hashedPassword, // doublecheck how to display password in frontend
+          email: email,
+          location: location,
+          introduction: introduction,
+          products: products
+        }
+      }, {
+        new: true // add this to return the updated
+      });
+    }    
 
     if (userToBeUpdated) {
       res.status(200).json({

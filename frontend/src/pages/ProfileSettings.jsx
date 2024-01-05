@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { userStore } from "../stores/userStore";
 import BackArrow from "../components/reusableComponents/BackArrow";
+import defaultProfileImage from "../assets/images/profile_icon.png";
 
 export const ProfileSettings = () => {
   const isLoggedin = userStore((state) => state.isLoggedin);
@@ -56,9 +57,14 @@ export const ProfileSettings = () => {
       <BackArrow />
       <div>
         <h1>Your settings</h1>
-        <img src={profileData.image} alt={username} />
+        {profileData.image ? (
+          <img src={profileData.image} alt={username} />
+        ) : (
+          <img src={defaultProfileImage} alt={username} />
+        )}
         <p>Username: {username}</p>
         <p>Password: {profileData.password}</p>
+        <p>Email: {profileData.email}</p>
         <p>Introduction: {profileData.introduction}</p>
         <p>Location: {profileData.location}</p>
         <p>Products: {profileData.products.join(", ")}</p>
