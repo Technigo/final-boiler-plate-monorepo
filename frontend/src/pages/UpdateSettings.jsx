@@ -37,6 +37,7 @@ export const UpdateSettings = () => {
         const profileData = await storeHandleProfileDisplay(isLoggedin, userId);
         if (profileData) {
           setProfileData(profileData);
+          setInputProducts(profileData.products.join(', '));
         }
       } catch (error) {
         console.error("Error fetching profile data:", error);
@@ -63,7 +64,12 @@ export const UpdateSettings = () => {
 
   const handleProductsUpdate = (e) => {
     e.preventDefault();
-    setInputProducts(e.target.value);
+    // Use split(',') to convert the comma-separated string to an array
+    if (e.target.value.length === 0) {
+      setInputProducts(profileData.products);
+    } else {
+      setInputProducts(e.target.value.split(',').map(product => product.trim()));
+    }
   };
 
   const handleIntroductionUpdate = (e) => {

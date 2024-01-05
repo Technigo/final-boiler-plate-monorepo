@@ -314,7 +314,7 @@ export const userStore = create((set) => ({
     formData.append("products", updatedProfileData.products);
   
     // Append image if it exists
-    if (updatedProfileData.image !== null && updatedProfileData.image !== undefined) {
+    if (updatedProfileData.image) {
       formData.append("image", updatedProfileData.image);
     }
 
@@ -326,9 +326,15 @@ export const userStore = create((set) => ({
 
       // Parse the response data as JSON.
       const data = await response.json();
+      console.log(data);
       if (data.success) {
         // Update relevant states
-        set(updatedProfileData);
+        set((state) => ({
+          ...state,
+          updatedProfileData,
+          password: data.response.password
+        })
+      );
         // Display a success alert
         Swal.fire({
           title: "Congratulations!",
@@ -342,7 +348,6 @@ export const userStore = create((set) => ({
           text: data.response || "User profile update failed",
           icon: "error"
         });
-        // alert(data.response || "User profile update failed");
       }
     } catch (error) {
       // Handle and log any login errors
