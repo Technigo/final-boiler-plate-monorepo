@@ -17,7 +17,6 @@ const HabitFront = ({ habitName, habitColor, containerClass }) => {
       </div>
       <div className="habitfront-footer">
         <span>Finished weeks: X</span>
-        <span>Longest streak: X</span>
       </div>
     </div>
   );
