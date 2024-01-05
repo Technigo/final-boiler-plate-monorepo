@@ -119,7 +119,7 @@ export const CreateTask = () => {
     ) {
       if (titleError || descriptionError) {
         // Don't proceed if there is a description error
-        window.alert("Please adjust the length of the text before submitting.");
+        // window.alert("Please adjust the length of the text before submitting.");
         return;
       }
 
