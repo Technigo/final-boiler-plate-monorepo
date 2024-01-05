@@ -1,10 +1,10 @@
 import { Map } from "../../components/Map/Map";
 import "./MapPage.css";
 
-export const MapPage = ({ stories }) => {
+export const MapPage = () => {
   return (
     <>
-      <Map stories={stories} />
+      <Map />
     </>
   );
 };

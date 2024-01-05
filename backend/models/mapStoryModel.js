@@ -56,29 +56,6 @@ const mapStorySchema = new Schema({
     type: Date,
     default: Date.now,
   },
-  // Add new fields
-  city: {
-    type: String,
-    required: false, // Set to true if city is a required field
-  },
-  image: {
-    type: String,
-    required: false,
-    enum: [
-      "image1.png",
-      "image2.png",
-      "image3.png",
-      "image4.png",
-      "image5.png",
-      "image6.png",
-      "image7.png",
-      "image8.png",
-      "image9.png",
-      "image10.png",
-      "image11.png",
-      "image12.png",
-    ],
-  },
 });
 
 export const mapStoryModel = mongoose.model("mapStoryModel", mapStorySchema);

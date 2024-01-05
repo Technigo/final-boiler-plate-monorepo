@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import PropTypes from "prop-types";
-import likeIcon from "../../../public/likeblack.svg";
+import likeIcon from "/likeblack.svg";
 import { timeSince } from "../utils/timeUtils";
 import "./StoryList.css";
 
@@ -57,8 +57,7 @@ export const StoryList = () => {
           <select
             className="dropdowns"
             value={filterType}
-            onChange={handleFilterTypeChange}
-          >
+            onChange={handleFilterTypeChange}>
             <option value="">Select Filter</option>
             <option value="ranking">Ranking</option>
             <option value="city">City</option>
@@ -70,8 +69,7 @@ export const StoryList = () => {
             <select
               className="dropdowns"
               value={selectedCity}
-              onChange={handleCityChange}
-            >
+              onChange={handleCityChange}>
               <option value="">Select City</option>
               {cities.map((city) => (
                 <option key={city} value={city}>
@@ -85,8 +83,7 @@ export const StoryList = () => {
             <select
               className="dropdowns"
               value={selectedCategory}
-              onChange={handleCategoryChange}
-            >
+              onChange={handleCategoryChange}>
               <option value="">Select Category</option>
               {categories.map((category) => (
                 <option key={category} value={category}>

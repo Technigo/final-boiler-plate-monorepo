@@ -5,7 +5,6 @@ import { Buttons } from "../Buttons/Buttons";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { enGB } from "date-fns/locale";
-
 import "./PostStory.css";
 
 const libraries = ["places"];
@@ -16,16 +15,18 @@ export const PostStory = () => {
   const [newHeading, setNewHeading] = useState("");
   const [newStory, setNewStory] = useState("");
   const [newCategory, setNewCategory] = useState("");
-  const [newWhere, setNewWhere] = useState("");
+
   const [selectedDate, setSelectedDate] = useState(new Date());
-  const [isCalendarVisible, setIsCalendarVisible] = useState(false);
+  // const [isCalendarVisible, setIsCalendarVisible] = useState(false);
   const [isImageModalOpen, setIsImageModalOpen] = useState(false);
   const [selectedImage, setSelectedImage] = useState("");
 
   const [autocomplete, setAutocomplete] = useState(null);
   const [locationName, setLocationName] = useState("");
+  const [latitude, setLatitude] = useState(null);
+  const [longitude, setLongitude] = useState(null);
 
-  const handleFormSubmit = (e) => {
+  const handleFormSubmit = async (e) => {
     e.preventDefault();
 
     if (newStory.length < 5 || newStory.length > 200) {
@@ -33,43 +34,50 @@ export const PostStory = () => {
       return;
     }
 
-    setNewStory("");
-
-    const handleCategoryChange = (e) => {
-      setNewCategory(e.target.value);
-    };
-
-    fetch("https://whisperwall.onrender.com/stories", {
-      method: "POST",
-      body: JSON.stringify({
+    try {
+      const newStoryData = {
         title: newHeading,
         content: newStory,
         createdAt: selectedDate,
-        location: newWhere,
+        location: {
+          lat: latitude, // Use the state variable
+          lng: longitude, // Use the state variable
+        }, // Add this line
         category: newCategory,
         image: selectedImage,
-      }),
-    })
-      .then((res) => res.json())
-      .then((newStory) => {
-        console.log("New story posted:", newStory);
-        console.log("Date:", selectedDate);
-        console.log("Category:", newCategory);
-        // Reload the page after a successful post
-        window.location.reload();
-      })
-      .catch((error) => {
-        console.error("Error posting the story", error);
+      };
+
+      const response = await fetch("http://localhost:3000/stories", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(newStoryData),
       });
+
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+
+      const postedStory = await response.json();
+      console.log("New story posted:", postedStory);
+      console.log("Date:", selectedDate);
+      console.log("Category:", newCategory);
+
+      // Reload the page after a successful post
+      window.location.reload();
+    } catch (error) {
+      console.error("Error posting the story", error);
+    }
   };
 
   const handleDateChange = (date) => {
     setSelectedDate(date);
   };
 
-  const handleCalendarClick = () => {
-    setIsCalendarVisible(!isCalendarVisible);
-  };
+  // const handleCalendarClick = () => {
+  //   setIsCalendarVisible(!isCalendarVisible);
+  // };
 
   const handleButtonClick = () => {
     console.log("Button clicked within PostStory component", newStory);
@@ -106,9 +114,9 @@ export const PostStory = () => {
     if (autocomplete !== null) {
       const place = autocomplete.getPlace();
       setLocationName(place.name);
-      // Optionally capture latitude and longitude
-      // const lat = place.geometry.location.lat();
-      // const lng = place.geometry.location.lng();
+      // Set the latitude and longitude
+      setLatitude(place.geometry.location.lat());
+      setLongitude(place.geometry.location.lng());
     } else {
       console.error("Autocomplete is not loaded yet!");
     }
