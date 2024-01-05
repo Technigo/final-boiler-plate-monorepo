@@ -4,7 +4,7 @@ import { create } from "zustand";
 // *** If we want to work in the localhost:
 // const api = "http://localhost:3001";
 
-const api = "https://ai-recipes-collin-dieden.onrender.com";
+const api = "https://ai-recipes-collin-dieden.onrender.com"
 
 // Define the recipeStore using Zustand's 'create' function
 export const recipeStore = create((set) => ({

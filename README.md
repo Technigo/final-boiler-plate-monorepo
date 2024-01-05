@@ -14,3 +14,4 @@ How to prompt where....
 Stage 2 (hm, eller ska vi köra veckor?)
 
 Libraries: react-icons
+GPT prompt: Rewriting this to get the result we want. Using low temperature. Next step would be to fine-tune the prompt. But maybe not necessary for such a specific task as this is.

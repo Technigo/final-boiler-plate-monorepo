@@ -15,19 +15,25 @@ const generateText = async (req, res) => {
   try {
     // Use the OpenAI API to generate text using the chat completions endpoint
     const response = await openai.chat.completions.create({
-      messages: [
-        // System message to define the assistant's role and purpose 
-        {
-          role: "system",
-          content: "You are a helpful assistant designed to output JSON."
-        },
-        // User message containing the provided prompt
-        { role: "user", content: `You will be creating a recipe based on 1-3 main ingredients the user will give you. The recipe should be designed to be cooked on a portable camping stove with one heater, no temperature control, consisting of one frying-pan and/or one saucepan.  Generate a recipe for a dish, that serves 2 people, with the following specifications: title: [Your Title Here] description: [Your Description Here] ingredients: [ ingredient: "amount" ] instructions: [Your Instructions Here]. All keywords must have a value. If an ingredient requires specific details like weight and amount, include that as well. Use grams and millilitres. Recipe should be designed for 2 people. These are the main ingredients: ${prompt}` },
-      ],
+      
+        messages: [
+          {
+            "role": "system",
+            "content": "You are a helpful assistant designed to output JSON. You will be creating a recipe based on 1-3 main ingredients the user will give you. The recipe should be designed to be cooked on a portable camping stove with one heater, no temperature control, consisting of one frying-pan and/or one saucepan. Generate a recipe for a dish, that serves 2 people, with the following specifications: title: [Your Title Here] description: [Your Description Here] ingredients: [ ingredient: \"amount\" ] instructions: [Your Instructions Here]. If an ingredient requires specific details like weight and amount, include that as well. Use grams and millilitres.  Don't include campfire, outdoor, one-pan or similar words in the title, as this is already implied. Use British English. If you don't recognise the user's ingredient input, give the response: 'I'm sorry, I didn't understand your input. Could you please provide 1-3 main ingredients that you would like to use for the recipe?'"
+          },
+          {
+            "role": "user",
+            "content": "These are the main ingredients: ${prompt}"
+          },
+          {
+            "role": "assistant",
+            "content": "{\n    \"title\": \"Creamy Mushroom and Spinach Pasta\",\n    \"description\": \"A simple and delicious pasta dish, perfect for cooking on a portable camping stove.\",\n    \"ingredients\": {\n      \"Pasta\": \"200g\",\n      \"Mushrooms\": \"200g\",\n      \"Spinach\": \"100g\",\n      \"Cream\": \"200ml\",\n      \"Salt\": \"to taste\",\n      \"Pepper\": \"to taste\",\n      \"Olive oil\": \"2 tbsp\",\n      \"Garlic\": \"2 cloves, minced\",\n      \"Parmesan cheese\": \"for garnish\"\n    },\n    \"instructions\": [\n      \"Boil the pasta in a saucepan according to package instructions. Drain and set aside.\",\n      \"Heat the olive oil in a frying pan over the camping stove.\",\n      \"Add the minced garlic and sauté until fragrant.\",\n      \"Add the sliced mushrooms and sauté until they are golden brown and tender.\",\n      \"Stir in the spinach and cook until wilted.\",\n      \"Pour in the cream and allow the mixture to simmer for a few minutes until the sauce thickens slightly.\",\n      \"Season with salt and pepper to taste.\",\n      \"Add the cooked pasta to the pan and toss to coat it evenly with the creamy mushroom and spinach sauce.\",\n      \"Serve the pasta in bowls, garnished with freshly grated parmesan cheese.\",\n      \"Enjoy your delicious camping stove pasta!\"\n    ]\n  }"
+          }
+        ],
       model: "gpt-3.5-turbo-1106",
       // Specify the response format as a JSON object
       response_format: { type: "json_object" },
-      temperature: 1, // Adjust this value based on your preference. Lower values (e.g., 0.2) will make the output more deterministic and focused, potentially reducing token usage.
+      temperature: 0.5, // Adjust this value based on your preference. Lower values (e.g., 0.2) will make the output more deterministic and focused, potentially reducing token usage.
     });
 
     // Extract the generated text from the API respons
