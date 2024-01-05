@@ -1,3 +1,7 @@
+/* Importing Fonts */
+@import url('https://fonts.googleapis.com/css?family=Open+Sans|Montserrat|Hind&display=swap');
+
+
 /*! HTML5 Boilerplate v6.1.0 | MIT License | https://html5boilerplate.com/ */
 
 /*
@@ -96,10 +100,6 @@ textarea {
 /* ==========================================================================
      Author's custom styles
      ========================================================================== */
-
-
-/* Importing Fonts */
-@import url('https://fonts.googleapis.com/css?family=Open+Sans|Montserrat|Hind&display=swap');
 
 * {
   margin: 0;
