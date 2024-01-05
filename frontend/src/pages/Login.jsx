@@ -3,7 +3,7 @@ import { userStore } from "../stores/userStore"; // Make sure this is correctly 
 // Import the 'useState' and 'useNavigate' hooks from 'react'.
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import BackArrow from "../components/BackArrow";
+import BackArrow from "../components/reusableComponents/BackArrow";
 import "../pages/login.css";
 
 // Define the 'Login' functional component.
@@ -19,13 +19,15 @@ export const Login = () => {
   const storeHandleLogin = userStore((state) => state.handleLogin);
 
   // Function to handle the click event of the login button.
-  const onLoginClick = async () => {
+  const onLoginClick = async (e) => {
+    e.preventDefault();
+
     // Call the 'handleLogin' function from 'userStore' with 'username' and 'password' parameters.
     await storeHandleLogin(username, password);
     // Get the 'isLoggedIn' state from 'userStore'.
-    const isLoggedIn = userStore.getState((state) => state.isLoggedIn);
+    const isLoggedin = userStore.getState((state) => state.isLoggedin);
 
-    if (isLoggedIn) {
+    if (isLoggedin) {
       // If the user is logged in, navigate to the "/home" route.
       navigate("/home");
     }

@@ -3,7 +3,7 @@ import { userStore } from "../stores/userStore";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
-import BackArrow from "../components/BackArrow";
+import BackArrow from "../components/reusableComponents/BackArrow";
 
 // Define the "Register" functional component.
 export const Register = () => {

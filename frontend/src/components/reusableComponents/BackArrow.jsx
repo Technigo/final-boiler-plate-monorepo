@@ -1,5 +1,5 @@
 // Import the back arrow logo image.
-import backArrow from "../assets/back-arrow.svg";
+import backArrow from "../../assets/back-arrow.svg";
 import "./backarrow.css";
 
 // Import the useNavigate hook from react-router-dom.
@@ -20,7 +20,7 @@ function BackArrow() {
         {/* Create a link to the previous page */}
         <a href="#" onClick={handleClick}>
           {/* Display the back arrow logo image with a CSS class 'logo'. */}
-          <img src={backArrow} className="logo" alt="Back arrow logo" />
+          <img src={backArrow} alt="Back arrow logo" />
         </a>
       </div>
     </div>

@@ -1,0 +1,67 @@
+.landing-adcard {
+  width: 250px;
+  height: 200px;
+  object-fit: cover;
+}
+
+.how-to {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 3em 0 3em 0;
+}
+
+.landing-list {
+  margin-top: 2em;
+}
+
+.landing-list img {
+  margin: 2em;
+  width: 50%;
+}
+
+.landing-heading {
+  font-size: 3.5em;
+  line-height: 1em;
+  color: var(--color-primary-text);
+}
+
+.breakline {
+  display: flex;
+  background-color: var(--color-secondary-background);
+  width: 100vw;
+  height: 2em;
+  margin-bottom: 2em;
+}
+
+.slider {
+  margin: 3em 0 6em 0;
+}
+
+@media (min-width: 840px) {
+  .how-to {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: var(--color-secondary-background);
+    width: 100vw;
+    margin: 3em 0 3em 0;
+    padding: 3em 0 3em 0;
+  }
+  .landing-list {
+    display: flex;
+    margin: 3em 0 3em 0;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 3em;
+  }
+  .landing-list h3 {
+    font-size: 1.5em;
+  }
+  .landing-subtitle h2 {
+    font-size: 2em;
+  }
+  .breakline {
+    display: none;
+  }
+}
