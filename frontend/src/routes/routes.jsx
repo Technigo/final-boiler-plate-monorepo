@@ -16,7 +16,8 @@ import { Search } from "../pages/Search";
 import AdDetails from "../pages/AdDetails";
 import { About } from "../pages/About";
 import { Policy } from "../pages/Policy";
-import { UpdateAd } from "../pages/UpdateAd";
+import { EditAd } from "../pages/EditAd";
+import { ManageYourAds } from "../pages/ManageYourAds";
 
 
 // Define the "routes" variable as a JSX expression.
@@ -45,7 +46,9 @@ const routes = (
     {/* Define a route for the "/create-ad" path that renders the "Create Ad" page */}
     <Route path="/create-ad" element={<CreateAd />} />
     {/* Define a route for the "/update-ad" path that renders the "Update Ad" page */}
-    <Route path="/update-ad" element={<UpdateAd />} />
+    <Route path="/update-ad" element={<EditAd />} />
+    {/* Define a route for the "/manage-your-ads" path that renders the "Manage Ads" page */}
+    <Route path="/manage-your-ads" element={<ManageYourAds />} />
     {/* Define a route for the "/search" path and renders the "Search" page */}
     <Route path="/search" element={<Search />} />
     {/* Define a catch-all route that matches any other path ("*") and renders the "NotFound" component. */}
