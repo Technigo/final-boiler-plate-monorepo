@@ -55,6 +55,7 @@ const addFavourite = asyncHandler(async (req, res) => {
   try {
     // Extract the task data from the request body
     const { plantID } = req.body;
+    console.log(plantID);
     // Extract the accessToken from the request object, but it is not going to be from the req.body but, its going to be from the req.header
     const accessToken = req.header("Authorization"); // we are requesting the Authorization key from the headerObject
     // get the user and matchIt with the user from the db - remmeber that we are using the accessToken to do so :)

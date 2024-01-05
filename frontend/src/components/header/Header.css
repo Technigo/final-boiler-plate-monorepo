@@ -10,12 +10,13 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 0.5rem;
 }
 
 .nav-sections {
   display: flex;
   align-items: center;
-  gap: 1.5rem;
+  gap: 0.5rem;
   font-size: 0.8rem;
   text-transform: uppercase;
   font-weight: 600;
@@ -29,10 +30,12 @@ header {
 .menu-icon {
   width: 1.5rem;
   height: 1.5rem;
+  cursor: pointer;
 }
 
 .logo-container {
-  width: 270px;
+  max-width: 300px;
+  width: 100%;
 }
 
 .heart-icon,
@@ -50,7 +53,6 @@ header {
 }
 
 /* HIDDEN MENU STYLING */
-
 
 .hidden-menu {
   z-index: 999;
@@ -95,17 +97,6 @@ ul {
 
 /* For medium devices */
 @media (min-width: 744px) {
-  .close-icon,
-  .menu-icon {
-    width: 2rem;
-    height: 2rem;
-    cursor: pointer;
-  }
-
-  .logo-container {
-    width: 300px;
-  }
-
   .heart-icon,
   .bag-icon,
   .search-icon {
@@ -116,4 +107,24 @@ ul {
 
 /* From mobile and for small devices */
 @media (min-width: 576px) {
+  header {
+    padding: 1rem 2rem;
+  }
+
+  .nav-sections {
+    gap: 1rem;
+  }
+
+  .close-icon,
+  .menu-icon {
+    width: 2rem;
+    height: 2rem;
+  }
+
+  .heart-icon,
+  .bag-icon,
+  .search-icon {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
 }

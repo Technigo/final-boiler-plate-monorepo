@@ -55,6 +55,7 @@ h6 {
   color: var(--charcoal);
   font-weight: 900;
   letter-spacing: 0.1375rem;
+  margin-bottom: 1rem;
 }
 
 .card-name {

@@ -1,10 +1,8 @@
 import { Link } from "react-router-dom";
-import { plantStore } from "../../../../stores/plantStore"
+import { plantStore } from "../../../../stores/plantStore";
 
 export const CharacterCard = () => {
-
-  const { selectedCategory } = plantStore()
-
+  const { selectedCategory } = plantStore();
 
   const cards = [
     {
@@ -12,28 +10,28 @@ export const CharacterCard = () => {
       heading: "Pet-Friendly",
       image: "pet-friendly.png",
       imgAlt: "Image of dog for category pet friendly",
-      url: "/plants/all-plants/pets"
+      url: "/plants/all-plants/pets",
     },
     {
       id: 2,
       heading: "Low-Maintenance",
       image: "low-maintenance.jpg",
       imgAlt: "Image of person watering plant for category low maintenance",
-      url: "/plants/all-plants/easy"
+      url: "/plants/all-plants/easy",
     },
     {
       id: 3,
       heading: "Shade-Loving",
       image: "shade-loving.png",
       imgAlt: "Image of a ZZ plant in shadow for category shade loving",
-      url: "/plants/all-plants/shady"
+      url: "/plants/all-plants/shady",
     },
     {
       id: 4,
       heading: "Something...",
       image: "low-maintenance.jpg",
       imgAlt: "",
-      url: "/plants/all-plants/popular"
+      url: "/plants/all-plants/popular",
     },
   ];
 
@@ -42,16 +40,13 @@ export const CharacterCard = () => {
       {cards.map((card) => {
         return (
           <Link to={card.url}>
-          <div
-            className="character-card-wrapper"
-            key={card.id}
-          >
-            <img src={card.image} alt={card.imgAlt} />
-            <div className="character-overlay">
-              <h3>{card.heading}</h3>
-              <p className="shop-now-link">SHOP NOW</p>
+            <div className="character-card-wrapper" key={card.id}>
+              <img src={card.image} alt={card.imgAlt} />
+              <div className="character-overlay">
+                <h3>{card.heading}</h3>
+                <p className="shop-now-link">SHOP NOW</p>
+              </div>
             </div>
-          </div>
           </Link>
         );
       })}

@@ -19,7 +19,7 @@ export const CartPage = () => {
   };
 
   return (
-    <section>
+    <section className="cart-page-section">
       <h2>Your Shopping Cart</h2>
       {cart.length === 0 && <p>Your cart is empty...</p>}
       {cart.map((item, index) => {
