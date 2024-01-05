@@ -28,11 +28,6 @@ export const registerUserController = asyncHandler(async (req, res) => {
       res
         .status(409)
         .json({ error: `User with username '${username}' already exists` }); // 409 is conflict, a user with the same username already exists.
-      // throw new Error(
-      //   `User with ${
-      //     existingUser.username === username ? "username" : "email"
-      //   } already exists`
-      // ); DETTA ÄR TECHNIGOS ORIGINALKOD
     }
 
     // Hash the user's password using bcrypt. GensaltSync generates a salt, which is a random string of characters that is used to hash the password. The salt is then used to hash the password using the hashSync method. The salt is stored in the database along with the hashed password.

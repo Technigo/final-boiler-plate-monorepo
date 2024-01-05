@@ -9,6 +9,7 @@ const CarouselContainer = styled.div`
   display: flex; /* Display review cards side by side */
   scroll-behavior: smooth;
   gap: 12px;
+  padding: 0 0 5px;
 
   /* Custom scrollbar styles */
   scrollbar-width: thin;

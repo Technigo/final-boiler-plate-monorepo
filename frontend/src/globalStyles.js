@@ -1,4 +1,8 @@
-* {
+import { createGlobalStyle } from "styled-components";
+
+export const GlobalStyle = createGlobalStyle`
+  
+  * {
   margin: 0;
   padding: 0;
   border: 0;
@@ -18,8 +22,8 @@ svg {
   display: block;
   max-width: 100%;
 }
-
-body {
+  
+  body {
   height: 100%;
   /*background: #f2f3f4;*/
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
@@ -31,42 +35,20 @@ body {
   -webkit-text-size-adjust: 100%;
   color: #213547;
   font-weight: 400;
-}
+  }
 
-/* Apply styles to the body when the modal is active */
+  /* Apply styles to the body when the modal is active */
 body.active-modal {
   overflow-y: hidden;
 }
 
-/* #root {
-  /* height: 100%; */
-/*} */
-
 :root {
-  /* Colors */
+/* Colors */
   --primaryColor: #9b6489;
   --secondaryColor: #64899b;
-
-  /* font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif; */
-  /* line-height: 1.5; */
-  /*font-weight: 400;
-  /* color-scheme: light dark; */
-  /* color: rgba(255, 255, 255, 0.87); */
-  /* background-color: #242424; */
-
-  /* font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-text-size-adjust: 100%; */
-
-  /* max-width: 1280px; Set maximum width for the content */
-  /* margin: 0 auto; Center align the content horizontally */
-  /* min-height: 100vh; */
-  /* Ensure a minimum height to cover the viewport */
 }
-
-main {
+  
+  main {
   /* height: 100%; */
   /* margin: 50px 15px 235px; */
   margin: 50px 15px;
@@ -99,3 +81,4 @@ main {
     margin: 100px 300px;
   }
 }
+`;

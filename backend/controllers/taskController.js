@@ -7,14 +7,18 @@ import jwt from "jsonwebtoken";
 export const getTasksController = asyncHandler(async (req, res) => {
   const userId = req.user._id; // Get the user ID from the request object
   try {
-    const tasks = await TaskModel.find()
-      .sort("-createdAt")
+    const tasks = await TaskModel.find() // Find all tasks in the database
+      .sort("-createdAt") // Sort the tasks by creation date
       .populate({
+        // Populate the user object
         path: "user",
+        //select: "username",
       })
       .populate({
+        // Populate the volunteers object
         path: "volunteers",
         match: { _id: { $ne: userId } }, // Exclude the creator from the volunteers
+        //select: "username",
       });
 
     console.log("tasks", tasks);
@@ -78,6 +82,7 @@ export const getVolunteeredTasksController = asyncHandler(async (req, res) => {
 // This controller handles the addition of new tasks. It extracts the task data from the request body and the user's authentication token from the request header. It then associates the task with the authenticated user and saves it to the database. The newly created task is sent back as a JSON response. This route is only accessible to authenticated users.
 export const addTaskController = asyncHandler(async (req, res) => {
   try {
+    // We are requesting the Authorization key from the headerObject
     const accessToken = req.header("Authorization");
     const decoded = jwt.verify(
       accessToken,
@@ -119,16 +124,20 @@ export const addTaskController = asyncHandler(async (req, res) => {
 //   }
 // });
 
+// This controller is responsible for adding a volunteer to a specific task.
+// It extracts the task ID from the request parameters, finds the task in the database, adds
+// the user ID to the task's volunteers array, and saves the task to the database.
+// The updated task is sent back as a JSON response. This route is only accessible to authenticated users.
 export const addVolunteerController = asyncHandler(async (req, res) => {
   try {
-    const taskId = req.params.id;
-    const task = await TaskModel.findById(taskId);
+    const taskId = req.params.id; // Extract the task ID from the request parameters
+    const task = await TaskModel.findById(taskId); // Find the task in the database
 
     if (!task) {
       return res.status(404).json({ message: "Need not found" });
     }
 
-    const userId = req.user._id;
+    const userId = req.user._id; // Get the user ID from the request object
 
     // Check if the user is already a volunteer for this task
     if (task.volunteers.includes(userId)) {
@@ -137,48 +146,16 @@ export const addVolunteerController = asyncHandler(async (req, res) => {
         .json({ message: "User is already a volunteer for this Need" });
     }
 
-    task.volunteers.push(userId);
-    const savedTask = await task.save();
-    res.json(savedTask);
+    task.volunteers.push(userId); // Add the user ID to the task's volunteers array
+    const savedTask = await task.save(); // Save the task to the database
+    res.json(savedTask); // Respond with the updated task in JSON format
   } catch (error) {
     console.error("Error in addVolunteerController:", error);
     res.status(500).json({ message: "Internal Server Error" });
   }
 });
 
-export const updateTaskController = asyncHandler(async (req, res) => {
-  const { id } = req.params;
-  try {
-    const updatedTask = await TaskModel.findByIdAndUpdate(
-      { _id: id },
-      { done: true },
-      { new: true }
-    );
-    res.json(updatedTask);
-  } catch (error) {
-    res.status(500).json(error);
-  }
-});
-
-// desciption: DELETE all tasks
-export const deleteAllTasksController = asyncHandler(async (req, res) => {
-  // Extract the accessToken from the request object, but it is not going to be from the req.body but, its going to be from the req.header
-  const accessToken = req.header("Authorization"); // we are requesting the Authorization key from the headerObject
-  // get the user and matchIt with the user from the db - remmeber that we are using the accessToken to do so :)
-  const userFromStorage = await UserModel.findOne({
-    accessToken: accessToken,
-  });
-  await TaskModel.deleteMany({ user: userFromStorage })
-    .then((result) =>
-      res.json({
-        message: "All tasks deleted",
-        deletedCount: result.deletedCount,
-      })
-    ) // Respond with a success message and the count of deleted tasks
-    .catch((err) => res.status(500).json(err)); // Handle any errors that occur during the operation
-});
-
-// desciption: DELETE task by its ID
+// DELETE task by its ID
 export const deleteSpecificTaskController = asyncHandler(async (req, res) => {
   // Extract the task ID from the request parameters
   const { id } = req.params;
@@ -195,5 +172,37 @@ export const deleteSpecificTaskController = asyncHandler(async (req, res) => {
         res.status(404).json({ message: "Task not found" }); // Respond with a 404 error if the task is not found
       }
     })
+    .catch((err) => res.status(500).json(err)); // Handle any errors that occur during the operation
+});
+
+export const updateTaskController = asyncHandler(async (req, res) => {
+  const { id } = req.params;
+  try {
+    const updatedTask = await TaskModel.findByIdAndUpdate(
+      { _id: id },
+      { done: true },
+      { new: true }
+    );
+    res.json(updatedTask);
+  } catch (error) {
+    res.status(500).json(error);
+  }
+});
+
+// DELETE all tasks
+export const deleteAllTasksController = asyncHandler(async (req, res) => {
+  // Extract the accessToken from the request object, but it is not going to be from the req.body but, its going to be from the req.header
+  const accessToken = req.header("Authorization"); // we are requesting the Authorization key from the headerObject
+  // get the user and matchIt with the user from the db - remmeber that we are using the accessToken to do so :)
+  const userFromStorage = await UserModel.findOne({
+    accessToken: accessToken,
+  });
+  await TaskModel.deleteMany({ user: userFromStorage })
+    .then((result) =>
+      res.json({
+        message: "All tasks deleted",
+        deletedCount: result.deletedCount,
+      })
+    ) // Respond with a success message and the count of deleted tasks
     .catch((err) => res.status(500).json(err)); // Handle any errors that occur during the operation
 });
