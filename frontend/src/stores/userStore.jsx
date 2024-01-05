@@ -151,12 +151,13 @@ export const userStore = create((set) => ({
       const data = await response.json();
       if (data.success) {
         // Update the state with username, userId, accessToken, and set isLoggedin to true.
-        set({
+        set((state) => ({
+          ...state,
           username,
           userId: data.response.id,
           accessToken: data.response.accessToken,
-          isLoggedin: true,
-        });
+          isLoggedin: true
+        }));
         // Store the accessToken and userId in the browser's localStorage.
         localStorage.setItem("accessToken", data.response.accessToken);
         localStorage.setItem("userId", data.response.id);
@@ -174,6 +175,7 @@ export const userStore = create((set) => ({
           text: data.response || "Log in failed",
           icon: "error"
         });
+        set({isLoggedin: false});
         return;
       }
     } catch (error) {
@@ -184,6 +186,7 @@ export const userStore = create((set) => ({
         text: "An error occurred during login",
         icon: "error"
       });
+      set({ isLoggedin: false });
     }
   },
 
