@@ -18,8 +18,10 @@
     font-weight: 400;
   
     color-scheme: light dark;
-    color: rgba(255, 255, 255, 0.87);
-    background-color: #242424;
+    /* color: rgba(255, 255, 255, 0.87); */
+    /* background-color: #242424; */
+    background-color: var(--background-color);
+    color: var(--font-color);
     
     font-synthesis: none;
     text-rendering: optimizeLegibility;
@@ -31,6 +33,9 @@
     --font-color: #F2F2F2;
     --primary-color: #7787A6;
     --secondary-color: #424859;
+    --screen-color: rgba(0, 0, 0, 0.1);
+    --screen-text-color: #777;
+    --selection-color: yellow;
   }
 
   *, *::after, *::before {
@@ -78,8 +83,20 @@
   
   @media (prefers-color-scheme: light) {
     :root {
-      color: inherit;
-      background-color: var(--font-color);
+      /* color: inherit; */
+      /* background-color: var(--font-color); */
+      --font-color: #262522;
+      --background-color: #F2F2F2;
+
+
+
+      /* --background-color: #262522;
+      --font-color: #F2F2F2;
+      --primary-color: #7787A6;
+      --secondary-color: #424859;
+      --screen-color: rgba(0, 0, 0, 0.1);
+      --screen-text-color: #777;
+      --selection-color: yellow; */
     }
     a:hover {
       color: var(--secondary-color);

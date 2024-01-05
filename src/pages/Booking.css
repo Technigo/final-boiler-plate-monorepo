@@ -1,0 +1,65 @@
+.the-screen {
+    background-color: var(--screen-color);
+    color: var(--screen-text-color);
+    width: 70%;
+    margin: 0 auto;
+}
+
+.seat-container {
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 10px;
+}
+
+.the-rows {
+    display: flex;
+}
+.seat {
+    background-color: var(--primary-color);
+    height: 15px;
+    width: 15px;
+    margin: 3px;
+    border-radius: 50%;
+}
+.seat.booked {
+    background-color: var(--secondary-color);
+}
+.seat.selected {
+    background-color: var(--selection-color);
+}
+
+.seat:not(.booked):hover {
+    cursor: default;
+    transform: scale(1.2);
+}
+.seat-legend:not(.booked):hover {
+    cursor: default;
+    transform: scale(1);
+}
+
+.seat-legend {
+    background-color: var(--screen-color);
+    padding: 5px 10px;
+    border-radius: 5px;
+    color: var(--screen-text-color);
+    list-style-type: none;
+    display: flex;
+    justify-content: space-between;
+}
+.seat-legend li {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 10px;
+}
+.seat-legend li span {
+    margin: 2px;
+}
+
+.ticket-container {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    gap: 15px;
+}

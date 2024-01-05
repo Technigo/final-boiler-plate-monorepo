@@ -1,6 +1,4 @@
-
 import { create } from 'zustand'
-
 
 const apiEnv = import.meta.env.VITE_BACKEND_API;
 
