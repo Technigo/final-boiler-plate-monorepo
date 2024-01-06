@@ -21,8 +21,6 @@ function BackArrow() {
         <a href="#" onClick={handleClick}>
           {/* Display the back arrow logo image with a CSS class 'logo'. */}
           <img className="back" src={backArrow} alt="Back arrow logo" />
-          <img className="back" src={backArrow} alt="Back arrow logo" />
-          <img className="back" src={backArrow} alt="Back arrow logo" />
         </a>
       </div>
     </div>

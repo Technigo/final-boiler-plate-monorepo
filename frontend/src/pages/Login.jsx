@@ -2,8 +2,12 @@
 import { userStore } from "../stores/userStore"; // Make sure this is correctly imported
 // Import the 'useState' and 'useNavigate' hooks from 'react'.
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
+import { Heading } from "../components/reusableComponents/Heading";
+import { Logo } from "../components/reusableComponents/Logo";
 import BackArrow from "../components/reusableComponents/BackArrow";
+import Lottie from "lottie-react";
+import loadingAnimation from "../assets/loading.json/";
 import "../pages/login.css";
 
 // Define the 'Login' functional component.
@@ -11,6 +15,7 @@ export const Login = () => {
   // Create state variables for 'username' and 'password' using 'useState'.
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [loading, setLoading] = useState(false);
 
   // Use the 'useNavigate' hook to programmatically navigate between routes.
   const navigate = useNavigate();
@@ -21,53 +26,67 @@ export const Login = () => {
   // Function to handle the click event of the login button.
   const onLoginClick = async (e) => {
     e.preventDefault();
-
+    // Set loading to true when starting the login process
+    setLoading(true);
     // Call the 'handleLogin' function from 'userStore' with 'username' and 'password' parameters.
-    await storeHandleLogin(username, password);
-    // Get the 'isLoggedIn' state from 'userStore'.
-    const isLoggedin = userStore.getState().isLoggedin;
-
-    if (isLoggedin) {
-      // If the user is logged in, navigate to the "/home" route.
-      navigate("/home");
+    try {
+      await storeHandleLogin(username, password);
+      // Get the 'isLoggedIn' state from 'userStore'.
+      const isLoggedin = userStore.getState().isLoggedin;
+      if (isLoggedin) {
+        // If the user is logged in, navigate to the "/home" route.
+        navigate("/home");
+      }
+    } catch (error) {
+      console.error("Login failed:", error);
+    } finally {
+      // Reset loading to false after the login process is completed (success or failure)
+      setLoading(false);
     }
   };
 
   // Render the component content.
   return (
-    <>
-      
+    <div className="container">
+      <div className="arrow-container">
         <BackArrow />
-
+        <Logo className={"login-logo"} />
+      </div>
       <div>
-        {/* Display the heading and paragraphs. */}
-
+        {/* Apply styling from app.css */}
         <div className="user-login">
+          <Heading level={1} text="Login" aria-label="Login" />
           {/* Create input fields for 'username' and 'password' and associate them with state variables. */}
-          <h2>Username</h2>
+          <label htmlFor="username">Username</label>
           <input
             type="text"
-            placeholder="Enter your username"
+            name="username"
+            id="username"
+            placeholder="Username"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
           />
-          <h2>Password</h2>
+          <label htmlFor="password">Password</label>
           <input
             type="password"
-            placeholder="Enter your password"
+            name="password"
+            id="password"
+            placeholder="Password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
-
-          <button className="login-btn" onClick={onLoginClick}>
-            Login
-          </button>
-          <h3>
-            Don&apos;t have an account? <a href="/register">Sign up</a>
-          </h3>
+          {loading && <Lottie animationData={loadingAnimation} />}
+          {!loading && (
+            <button className="login-btn" onClick={onLoginClick}>
+              Login
+            </button>
+          )}
+          <h4>
+            Don&apos;t have an account? <Link to="/register">Sign up</Link>
+          </h4>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

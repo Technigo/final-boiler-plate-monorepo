@@ -7,13 +7,13 @@
 .arrow-container {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   gap: 4em;
   padding-top: 3em;
 }
 
-.user-login {
+.user-registration {
   width: 100%;
   height: 100%;
   text-align: left;
@@ -22,13 +22,27 @@
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1), 0 5px 5px 0 rgba(0, 0, 0, 0.2);
 }
 
-.login-btn {
+.register-btn {
   margin: 1rem 0 1rem 0;
 }
 
+.tnc {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  font-size: 1em;
+}
+
+.tnc input {
+  height: auto;
+  width: 5%;
+}
+
 @media (min-width: 680px) {
-  .arrow-container {
-    justify-content: space-between;
+  .tnc input {
+    height: auto;
+    width: 5%;
+    padding: 0;
   }
 
   .container {

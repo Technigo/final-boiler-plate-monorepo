@@ -4,6 +4,8 @@ import "./contactForm.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import closeBtn from "../assets/close.svg";
 import Swal from "sweetalert2";
+import Lottie from "lottie-react";
+import loadingAnimation from "../assets/loading.json/";
 
 // Contact form
 
@@ -82,6 +84,9 @@ export const ContactForm = ({
       <button className="submit-btn" type="submit" value="Send">
         {loading ? "Sending..." : "Submit"}
       </button>
+      {loading && (
+        <Lottie animationData={loadingAnimation} height={100} width={100} />
+      )}
     </form>
   );
 };
