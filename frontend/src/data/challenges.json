@@ -1,31 +1,31 @@
 [
     {
-      "_id": "1",
+      "_id": 1,
       "title": "Swing as High as You Can",
       "description": "Pump your legs and swing as high as possible on the swings."
     },
     {
-      "_id": "2",
+      "_id": 2,
       "title": "Slide Down the Slide",
       "description": "Take a thrilling ride down the slide."
     },
     {
-      "_id": "3",
+      "_id": 3,
       "title": "Zip Line Adventure",
       "description": "Experience the excitement of riding the zip line across the playground."
     },
     {
-      "_id": "4",
+      "_id": 4,
       "title": "Race Across the Playground",
       "description": "Compete with friends to see who can race across the playground the fastest."
     },
     {
-      "_id": "5",
+      "_id": 5,
       "title": "Jump from Platform to Platform",
       "description": "Jump from one raised platform to another, testing your jumping skills."
     },
     {
-      "_id": "6",
+      "_id": 6,
       "title": "Spin on the Merry-Go-Round",
       "description": "Take a spin on the merry-go-round and enjoy the ride."
     }

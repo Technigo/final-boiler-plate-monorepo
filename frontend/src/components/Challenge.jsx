@@ -9,13 +9,14 @@ export const Challenge = ({ title, description, _id }) => {
         if (!completed) {
           try {
             const response = await fetch(`${import.meta.env.VITE_BACKEND_API}/complete-challenge`, {
-              method: 'POST',
-              headers: {
-                'Content-Type': 'application/json',
-                'Authorization': localStorage.getItem('token'),
-              },
-              body: JSON.stringify({ challengeId: _id }),
-            });
+                method: 'POST',
+                headers: {
+                  'Content-Type': 'application/json',
+                  'Authorization': localStorage.getItem('token'),
+                },
+                body: JSON.stringify({ challengeId: parseInt(_id) }), // Convert _id to a number
+              });
+              
       
             if (response.ok) {
               console.log('Challenge completed successfully!');
@@ -29,7 +30,7 @@ export const Challenge = ({ title, description, _id }) => {
           }
         }
       };
-      
+
     return (
       <div className={`challenge ${completed ? 'completed' : ''}`}>
         <h3>{title}</h3>

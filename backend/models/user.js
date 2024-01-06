@@ -20,7 +20,7 @@ const userSchema = new mongoose.Schema({
   },
   completedChallenges: [
     {
-      type: String,
+      type: Number,
       ref: 'Challenge',
     },
   ],

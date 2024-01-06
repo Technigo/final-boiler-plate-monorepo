@@ -93,32 +93,23 @@ router.post('/complete-challenge', authenticateToken, async (req, res) => {
       return res.status(400).send('Challenge ID is required');
     }
 
-    // Find the user based on the decoded userId from the token
-    const user = await User.findById(req.userId);
+    // Convert challengeId to a number
+    const challengeId = parseInt(req.body.challengeId);
+
+    // Use findOneAndUpdate to atomically add challengeId to completedChallenges array
+    const user = await User.findOneAndUpdate(
+      { _id: req.userId },
+      { $addToSet: { completedChallenges: challengeId } },
+      { new: true }
+    );
+
     if (!user) {
       return res.status(404).send('User not found');
     }
 
-    // Check if the challengeId is valid
-    const challenge = await Challenge.findById(req.body.challengeId);
-    if (!challenge) {
-      return res.status(404).send('Challenge not found');
-    }
-
-    // Check if the challenge is already completed by the user
-    if (user.completedChallenges.includes(req.body.challengeId)) {
-      return res.status(400).send('Challenge already completed by the user');
-    }
-
-    // Add the challengeId to the user's completedChallenges array
-    user.completedChallenges.push(req.body.challengeId);
-
-    // Save the updated user
-    await user.save();
-
     res.status(200).send('Challenge completed successfully');
   } catch (error) {
-    console.error(error);
+    console.error(error); 
     res.status(500).send(`Failed to complete the challenge: ${error.message}`);
   }
 });

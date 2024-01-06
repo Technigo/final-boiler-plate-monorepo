@@ -1,8 +1,8 @@
 const mongoose = require('mongoose');
 
 const challengeSchema = new mongoose.Schema({
-challengeId: {
-    type: String, // You can choose the type that fits your needs (String, Number, etc.)
+  challengeId: {
+    type: Number,
     required: true,
     unique: true,
       },
