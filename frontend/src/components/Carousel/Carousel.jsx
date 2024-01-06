@@ -13,14 +13,8 @@ import 'swiper/css/pagination';
 
 export const Carousel = () => {
 
-
-  
   const [stories, setStories] = useState([]);
   const [activeSlide, setActiveSlide] = useState(0); 
-  
-  // const handleRankUpdate = (updatedStory) => {
-  //   setStories(stories.map(story => story.id === updatedStory.id ? updatedStory : story));
-  // };
 
   const handleRankUpdate = (updatedStory) => {
     setStories(prevStories => 
@@ -67,7 +61,7 @@ const historicalStories = stories.filter(story => story.category === 'historical
 
 
   const onSlideChange = (swiper) => {
-    setActiveSlide(swiper.realIndex); // Update active slide index
+    setActiveSlide(swiper.realIndex); 
 
     // Reset z-index for all slides
     swiper.slides.forEach((slide) => {
