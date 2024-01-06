@@ -1,72 +1,44 @@
 import { useState } from 'react'
 import { Repertoire } from '../components/Repertoire'
 
+import moment from 'moment';
+
 import './Calendar.css'
 
-
-
 export const Calendar = () => {
-
   const [isOpen, setIsOpen] = useState(false)
 
   const handleDayClick = () => {
     setIsOpen((isOpen) => !isOpen) // Toggle isOpen between true and false
+  };
+
+  const generateCalendarDays = () => {
+    const currentDate = moment()
+    const currentDay = currentDate.day()
+    const daysOfWeek = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
+    const days = []
+
+    for (let i = 0; i < 7; i++) {
+      const dayDate = moment().add(i - currentDay, 'days')
+
+      const dayString = dayDate.format('MMM DD')
+      const dayOfWeekString = daysOfWeek[dayDate.day()]
+
+      days.push(
+        <div className='the-day' key={i} onClick={handleDayClick}>
+          <p>{dayString}</p>
+          <h2>{dayOfWeekString}</h2>
+        </div>
+      )
+    }
+
+    return days
   }
 
 
   return (
     <>
-      <div className=" the-row-calendar">
-        <div
-          className='the-day'
-          onClick={handleDayClick}>
-          <p>Jan 05</p>
-          <h2>Fri</h2>
-        </div>
-
-        <div
-          className='the-day'
-          onClick={handleDayClick}>
-          <p>Jan 06</p>
-          <h2>Sat</h2>
-        </div>
-
-        <div
-          className='the-day'
-          onClick={handleDayClick}>
-          <p>Jan 07</p>
-          <h2>Sun</h2>
-        </div>
-
-        <div
-          className='the-day'
-          onClick={handleDayClick}>
-          <p>Jan 08</p>
-          <h2>Mon</h2>
-        </div>
-
-        <div
-          className='the-day'
-          onClick={handleDayClick}>
-          <p>Jan 09</p>
-          <h2>Tus</h2>
-        </div>
-
-        <div
-          className='the-day'
-          onClick={handleDayClick}>
-          <p>Jan 10</p>
-          <h2>Wen</h2>
-        </div>
-
-        <div
-          className='the-day'
-          onClick={handleDayClick}>
-          <p>Jan 11</p>
-          <h2>Thu</h2>
-        </div>
-      </div>
-
+      <div className="the-row-calendar">{generateCalendarDays()}</div>
       {isOpen ? <Repertoire /> : null} {/* Render Repertoire component when isOpen is true */}
     </>
   )

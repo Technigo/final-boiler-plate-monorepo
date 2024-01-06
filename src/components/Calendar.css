@@ -11,3 +11,9 @@
 	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.7);
 	margin: 5px;
 }
+
+.the-day:hover {
+	opacity: 0.2;
+	transform: translate(0px, 5px);
+	-webkit-transform: translate(0px, 5px);
+}
