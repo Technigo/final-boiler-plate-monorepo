@@ -171,6 +171,11 @@
   text-decoration: underline;
 }
 
+.login-lottie-animation {
+  width: 400px;
+  margin-left: 90px;
+}
+
 
 /* Mobile */
 @media (max-width: 393px) {
@@ -179,6 +184,11 @@
     margin-left: 10px;
     margin-right: 10px;
     max-width: 390px;
+  }
+
+  .login-lottie-animation {
+    width: 250px;
+    margin-left: 20px;
   }
 
 }

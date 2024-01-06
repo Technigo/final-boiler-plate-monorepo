@@ -13,6 +13,8 @@ import { useMediaQuery } from "react-responsive";
 import { Link } from "react-router-dom";
 import "../components/css/habits.css";
 import { useTranslation } from 'react-i18next';
+import lottie from 'lottie-web';
+import logInAnimationData from "../data/login_animation.json";
 
 // Define the 'Habits' functional component.
 export const Habits = () => {
@@ -27,7 +29,26 @@ export const Habits = () => {
   useEffect(() => {
     fetchHabits();
     console.log('fetch');
+
+    const container = document.getElementById('login-lottie-container');
+
+    if (container) {
+      const animation = lottie.loadAnimation({
+        container,
+        renderer: 'svg',
+        loop: true,
+        autoplay: true,
+        animationData: logInAnimationData,
+      });
+
+      // Cleanup the animation on component unmount
+      return () => {
+        animation.destroy();
+      };
+    }
   }, []);
+
+
 
   const navigate = useNavigate();
 
@@ -80,7 +101,6 @@ export const Habits = () => {
     );
   };
 
-
   // Function to get the background class based on the habit index
   const getHabitBackgroundClass = (index) => {
     const classes = ['habit-bg-first', 'habit-bg-second', 'habit-bg-third', 'habit-bg-forth'];
@@ -124,6 +144,7 @@ export const Habits = () => {
         ) : (
           <div className="access-denied-container">
             <div className="message-box">
+              <div id="login-lottie-container" className="login-lottie-animation"></div>
               <h2>{t("Oops! You need to be logged in.")}</h2>
               <p>
                 {t("Access to My Page is exclusive to our members. Please")}
