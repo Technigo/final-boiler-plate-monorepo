@@ -16,6 +16,9 @@ const FMLogo = styled.img`
     height: 90px;
     width: auto;
   }
+  /* &:hover { Ändra till annan logga vid hover
+    content: url('')
+  } */
 `;
 
 const NavbarContainer = styled.nav`
@@ -55,7 +58,8 @@ const NavItem = styled.li`
     margin-right: 15px;
     text-decoration: none;
     &:hover {
-      text-decoration: underline;
+      text-decoration: none;
+      color: yellow;
     }
   }
   @media ${desktop} {
@@ -64,7 +68,8 @@ const NavItem = styled.li`
     font-family: "JosefinSans";
     text-decoration: none;
     &:hover {
-      text-decoration: underline;
+      text-decoration: none;
+      color: yellow;
     }
   }
 `;
@@ -79,7 +84,8 @@ const NavbarLink = styled(Link)`
     justify-content: space-around;
     text-decoration: none;
     &:hover {
-      text-decoration: underline;
+      text-decoration: none;
+      color: yellow;
     }
   }
   @media ${desktop} {
@@ -88,7 +94,8 @@ const NavbarLink = styled(Link)`
     font-family: "JosefinSans";
     text-decoration: none;
     &:hover {
-      text-decoration: underline;
+      text-decoration: none;
+      color: yellow;
     }
   }
 `;
@@ -97,7 +104,7 @@ const Navbar = () => {
   return (
     <NavbarContainer>
       <a href="/" target="_blank" rel="noopener noreferrer">
-        <FMLogo src="/public/Logo2.jpg" alt="Logo" />
+        <FMLogo src="src/assets/LogoNew.png" alt="Logo" />
       </a>
       <NavbarNav>
         <NavItem>

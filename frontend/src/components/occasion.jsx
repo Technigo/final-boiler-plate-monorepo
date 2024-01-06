@@ -5,7 +5,6 @@ import styled from "styled-components";
 import { useRestaurantStore } from "../stores/restaurantStore"; // Ensure the path is correct
 import { Link } from "react-router-dom";
 
-
 const PageContainer = styled.div`
   font-family: "JosefinSans";
   margin: 0 auto;
@@ -14,15 +13,15 @@ const PageContainer = styled.div`
   min-height: 100vh; /* Make sure it covers the full height of the viewport */
 `;
 
-const TitleContainer = styled.div`
-  text-align: center; /* Centers the title text */
-  font-family: "JosefinSans";
-  margin-bottom: 20px; /* Adds some space between the title and the buttons */
-  color: #01999a;
-`;
+// const TitleContainer = styled.div`
+//   text-align: center; /* Centers the title text */
+//   font-family: "JosefinSans";
+//   margin-bottom: 20px; /* Adds some space between the title and the buttons */
+//   color: #01999a;
+// `;
 
 const NextButton = styled.button`
-  background-color: #ffccd5;
+  background-color: green;
   color: #800f2f;
   padding: 10px 20px; /* Some padding */
   border: none; /* No border */
@@ -46,19 +45,20 @@ const NextButton = styled.button`
 `;
 
 const OccasionButton = styled.button`
-  background-color: #ffccd5;
-  color: #800f2f;
+  background-color: #fcabe3;
+  color: white;
+  border: solid white;
   padding: 10px 20px; /* Some padding */
-  border: none; /* No border */
-  border-radius: 5px; /* Rounded corners */
+  border-radius: 10px; /* Rounded corners */
   cursor: pointer; /* Pointer/hand icon */
   text-align: center; /* Center the text */
   text-decoration: none; /* No underline */
   display: inline-block; /* Inline block element */
-  font-size: 16px; /* Font size */
+  flex-direction: column;
+  font-size: 36px; /* Font size */
+  font-family: "JosefinSans";
   margin: 4px 2px; /* Margin around the button */
   transition-duration: 0.4s; /* Transition for hover effect */
-  background-color: ${(props) => (props.selected ? "#FF8FA3" : "#FFCCD5")};
 
   &:hover {
     background-color: #ff8fa3;
@@ -103,9 +103,9 @@ const OccasionSelector = () => {
     <>
       <PageContainer>
         <Navbar />
-        <TitleContainer>
+        {/* <TitleContainer>
           <h2>What's the occasion?</h2>
-        </TitleContainer>
+        </TitleContainer> */}
         <OccasionSelectorContainer>
           {occasions && occasions.length > 0 ? (
             occasions.map((occasion, index) => (

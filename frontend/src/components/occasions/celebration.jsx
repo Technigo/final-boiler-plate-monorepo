@@ -1,24 +1,26 @@
-import React from "react";
+import React, { useState } from "react";
 import Navbar from "../navbar"; // Ensure the path is correct
 import Footer from "../footer"; // Ensure the path is correct
 import styled from "styled-components";
-import { useRestaurantStore } from '../../stores/restaurantStore';
+import { useRestaurantStore } from "../../stores/restaurantStore";
 import { Link } from "react-router-dom";
 import { getCategoryRoute } from "../Home";
 
+const tablet = `(min-width: 640px)`;
+const desktop = `(min-width: 1007px)`;
 
 const PageContainer = styled.div`
   font-family: "JosefinSans";
   margin: 0 auto;
   padding: 20px;
-  background-color: white; /* Your chosen color */
-  min-height: 100vh; /* Make sure it covers the full height of the viewport */
+  background-color: white;
+  min-height: 100vh;
 `;
 
 const TitleContainer = styled.div`
-  text-align: center; /* Centers the title text */
+  text-align: center;
   font-family: "JosefinSans";
-  margin-bottom: 20px; /* Adds some space between the title and the buttons */
+  margin-bottom: 20px;
   color: #01999a;
 `;
 
@@ -106,15 +108,12 @@ const OccasionSelectorContainer = styled.div`
 `;
 
 const CelebrationSelector = () => {
-  const {
-    selectedOccasion,
-    setSelectedOccasion,
-  } = useRestaurantStore();
+  const { selectedOccasion, setSelectedOccasion } = useRestaurantStore();
 
   // Celebration occasions
   const celebrationOccasions = [
     "Celebrate a relationship anniversary",
-    "Celebrate you turning 28 again (honey, you ain't fooling anyone)"
+    "Celebrate you turning 28 again (honey, you ain't fooling anyone)",
   ];
 
   const handleOccasionSelect = (occasion) => {
@@ -125,7 +124,7 @@ const CelebrationSelector = () => {
   return (
     <>
       <PageContainer>
-      <Navbar/>
+        <Navbar />
         <TitleContainer>
           <h2>What's the celebration?</h2>
         </TitleContainer>
@@ -141,21 +140,19 @@ const CelebrationSelector = () => {
           ))}
         </OccasionSelectorContainer>
         <Link to="/">
-        <BackButton>
-          Back
-        </BackButton>
+          <BackButton>Back</BackButton>
         </Link>
         {selectedOccasion && (
           <Link
-          to={{
-            pathname: "/mood",
-            state: { occasionRoute: getCategoryRoute(selectedOccasion) }, 
-          }}
-        >
-          <NextButton>Next</NextButton>
-        </Link>
+            to={{
+              pathname: "/mood",
+              state: { occasionRoute: getCategoryRoute(selectedOccasion) },
+            }}
+          >
+            <NextButton>Next</NextButton>
+          </Link>
         )}
-        <Footer/>
+        <Footer />
       </PageContainer>
     </>
   );
