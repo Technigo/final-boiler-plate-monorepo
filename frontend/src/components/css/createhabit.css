@@ -23,10 +23,12 @@
 
 .habit-input {
     border-radius: 10px;
-    border: 1px grey solid;
+    border: #3EC3CE dotted 2px;
+    color: #3EC3CE;
     padding: 5px;
     font-family: 'Poppins', sans-serif;
-    font-size: 12px;
+    font-weight: bold; 
+    font-size: 15px;
     flex-grow: 1; 
 }
 
@@ -36,16 +38,21 @@
     align-items: center; 
     width: auto; 
     padding: 5px 10px; 
-    font-size: 13px;
+    padding-top: 1px;
+    font-size: 17px;
     border: none;
-    background-color: #f0e9dc; 
     cursor: pointer; 
     font-family: 'Poppins', sans-serif;
     font-weight: bold; 
+    border: #3EC3CE dotted 2px;
+    color: #3EC3CE;
 }
 
 .add-habit:hover {
-    background-color: #e0e0e0; 
+    background-color: #3EC3CE;
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    font-weight: bold;  
 }
 
 .plus {
