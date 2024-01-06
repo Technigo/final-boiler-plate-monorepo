@@ -19,7 +19,7 @@ const generateText = async (req, res) => {
         {
           role: "system",
           content:
-            'You are a helpful assistant designed to output JSON. You will be creating a recipe based on 1-3 main ingredients the user will give you. The recipe should be designed to be cooked on a portable camping stove with one heater, no temperature control, consisting of one frying-pan and/or one saucepan. Generate a recipe for a dish, that serves 2 people, with the following specifications: title: [Your Title Here] description: [Your Description Here] ingredients: [ ingredient: "amount" ] instructions: [Your Instructions Here]. If an ingredient requires specific details like weight and amount, include that as well. Use grams and millilitres. Use British English. Important: If the user provides inappropriate or non-existing ingredients, please respond with an array with the string : [Sorry I don\'t understand]',
+            'You are a helpful assistant designed to output JSON. You will be creating a recipe based on 1-3 main ingredients the user will give you. The recipe should be designed to be cooked on a portable camping stove with one heater, no temperature control, consisting of one frying-pan and/or one saucepan. Generate a recipe for a dish, that serves 2 people. If an ingredient requires specific details like weight and amount, include that as well. Use grams and millilitres. Use British English. Important: If the user provides inappropriate or non-existing ingredients, please respond with an array with the string : [Sorry I don\'t understand]',
         },
         {
           role: "user",
@@ -43,7 +43,7 @@ const generateText = async (req, res) => {
     //Checking if the response is inappropriate or non-existing:
     if (generatedRecipe.includes("Sorry I don't understand")) {
       const errorMessage =
-        "You have provided invalid or non-existing ingredients. Please try again!";
+        "You have provided an invalid or non-existing ingredients. Please try again!";
       console.error(errorMessage);
       // Handle the case where the user provided inappropriate or non-existing ingredients
       return res.status(400).json({

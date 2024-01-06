@@ -18,7 +18,7 @@ export const recipeStore = create((set) => ({
   isGenerating: false,
   // Function to set the new recipe in the state
   setNewRecipe: (newRecipe) => set({ newRecipe }),
-  inputRecipe: "",
+  inputRecipe: [],
   setInputRecipe: (inputRecipe) => set({ inputRecipe }),
   // Function to add a new recipe to the state
   addNewRecipe: (newRecipe) => {
@@ -27,7 +27,7 @@ export const recipeStore = create((set) => ({
       recipes: [...state.recipes, newRecipe],
     }));
   },
-  errorMessageGeneration: "Everything is ok", 
+  errorMessageGeneration: "", 
   setErrorMessageGeneration: (errorMessageGeneration) => set({errorMessageGeneration}),
 
   fetchNewRecipe: async () => {
