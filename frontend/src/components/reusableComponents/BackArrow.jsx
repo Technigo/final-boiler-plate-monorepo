@@ -15,15 +15,13 @@ function BackArrow() {
   };
 
   return (
-    <div>
-      <div>
-        {/* Create a link to the previous page */}
-        <a href="#" onClick={handleClick}>
-          {/* Display the back arrow logo image with a CSS class 'logo'. */}
-          <img src={backArrow} alt="Back arrow logo" />
-        </a>
-      </div>
-    </div>
+    <>
+      {/* Create a link to the previous page */}
+      <a href="#" onClick={handleClick}>
+        {/* Display the back arrow logo image with a CSS class 'logo'. */}
+        <img src={backArrow} alt="Back arrow logo" className="black-arrow" />
+      </a>
+    </>
   );
 }
 

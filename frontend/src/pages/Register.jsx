@@ -3,7 +3,12 @@ import { userStore } from "../stores/userStore";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
+import { Logo } from "../components/reusableComponents/Logo";
+import { Heading } from "../components/reusableComponents/Heading";
 import BackArrow from "../components/reusableComponents/BackArrow";
+import Lottie from "lottie-react";
+import loadingAnimation from "../assets/loading.json/";
+import "../pages/register.css";
 
 // Define the "Register" functional component.
 export const Register = () => {
@@ -12,6 +17,7 @@ export const Register = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [consent, setConsent] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   // Initialize the "navigate" function from React Router.
   const navigate = useNavigate();
@@ -22,26 +28,38 @@ export const Register = () => {
   // Function to handle the click event of the signup button.
   const onSignupClick = async (e) => {
     e.preventDefault();
+    // Set loading to true when starting the register process
+    setLoading(true);
+    try {
+      // Call the "handleSignup" function from "userStore" with "username", "password", "email" and "consent" parameters.
+      await storeHandleSignup(username, password, email, consent);
 
-    // Call the "handleSignup" function from "userStore" with "username", "password", "email" and "consent" parameters.
-    await storeHandleSignup(username, password, email, consent);
+      // When the user has signed up successfully, navigate to log in page
+      const isSignedup = userStore.getState((state) => state.isSignedup);
 
-    // When the user has signed up successfully, navigate to log in page
-    const isSignedup = userStore.getState((state) => state.isSignedup);
-
-    if (isSignedup) {
-      // If the signup is successful, navigate to the login route.
-      navigate("/login");
+      if (isSignedup) {
+        // If the signup is successful, navigate to the login route.
+        navigate("/login");
+      }
+    } catch (error) {
+      console.error("Register failed:", error);
+    } finally {
+      // Reset loading to false after the register process is completed (success or failure)
+      setLoading(false);
     }
   };
 
   // Render the component content.
   return (
-    <div>
+    <div className="container">
+      <div className="arrow-container">
         <BackArrow />
-    
-      <h1>Sign up</h1>
+        <Logo className={"login-logo"} />
+      </div>
+      {/* Apply styling from app.css */}
+
       <div className="user-registration">
+        <Heading level={1} text="Sign up" aria-label="Sign Up" />
         {/* Create input fields for "email", "username", "password", "consent" and associate them with state variables. */}
         <label htmlFor="username">Username</label>
         <input
@@ -68,25 +86,31 @@ export const Register = () => {
           type="text"
           name="password"
           id="password"
-          placeholder="password"
+          placeholder="Password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
-
-        <input
-          type="checkbox"
-          name="consent"
-          id="consent"
-          checked={consent}
-          onChange={() => setConsent(!consent)}
-        />
-        <label htmlFor="consent">I agree to terms and policy</label>
-
+        <div className="tnc">
+          <input
+            type="checkbox"
+            name="consent"
+            id="consent"
+            checked={consent}
+            onChange={() => setConsent(!consent)}
+          />
+          <label htmlFor="consent">I agree to terms and policy</label>
+        </div>
         {/* Create a button for signing up and attach the "onSignupClick" event handler. */}
-        <button onClick={onSignupClick}>Sign Up</button>
-
-        <p>Have an account?</p>
-        <Link to="/login">Log In</Link>
+        {loading && <Lottie animationData={loadingAnimation} />}
+        {!loading && (
+          <button className="register-btn" onClick={onSignupClick}>
+            Sign Up
+          </button>
+        )}
+        <h4>
+          Have an account?
+          <Link to="/login">Log In</Link>
+        </h4>
       </div>
     </div>
   );
