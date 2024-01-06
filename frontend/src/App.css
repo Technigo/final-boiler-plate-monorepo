@@ -58,49 +58,6 @@ body {
   min-height: 100vh;
 }
 
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-  color: var(--color-cta-text);
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}
-
-/* Apply styles to elements with the 'logo' class */
-.logo {
-  height: 2.5em; /* Set height for logo images */
-  padding: 1.5em; /* Add padding around logo images */
-  will-change: filter; /* Specify a CSS property that may change */
-  transition: filter 300ms; /* Apply a transition effect to the 'filter' property */
-}
-
-/* Apply styles to elements with either 'user-login' or 'user-registration' class */
-.user-login,
-.user-registration {
-  display: flex; /* Display elements as flex containers */
-  flex-direction: column; /* Stack child elements vertically */
-  justify-content: center; /* Center-align content vertically */
-}
-
-/* Apply styles to input elements within 'user-login' or 'user-registration' class */
-.user-login > input,
-.user-registration > input {
-  margin-bottom: 1em; /* Add space below input elements */
-  height: 2em; /* Set height for input elements */
-}
-
 /* Apply styles to elements with the 'not-found' class */
 .not-found {
   height: 100vh; /* Set the height to cover the viewport */
