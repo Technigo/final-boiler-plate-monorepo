@@ -17,6 +17,7 @@ export const Search = () => {
   const [filteredAds, setFilteredAds] = useState([]);
   const isLoggedin = userStore((state) => state.isLoggedin);
   const handleLogout = userStore((state) => state.handleLogout);
+  const [searchTerm, setSearchTerm] = useState("");
 
   useEffect(() => {
     if (!isLoggedin) {
@@ -40,8 +41,8 @@ export const Search = () => {
         navigate("/login")
         }}  ]}/>
         <BackArrow />
-      <SearchBar setFilteredAds={setFilteredAds}  />
-      <h1 className="search-result">Search Result</h1>
+      <SearchBar setFilteredAds={setFilteredAds} searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
+      {filteredAds.length > 0 && <h1 className="search-result">Search Result</h1>}
       <ul className="filtered-ads">
         {filteredAds.map((ad) => (
           <AdCard key={ad._id} ad={ad} />

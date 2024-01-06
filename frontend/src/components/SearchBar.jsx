@@ -3,12 +3,11 @@ import { adStore } from "../stores/adStore";
 import searchIcon from "../assets/search-icon.svg";
 import "./SearchBar.css"
 
-export const SearchBar = ({setFilteredAds}) => {
+export const SearchBar = ({setFilteredAds , searchTerm , setSearchTerm}) => {
     // Access the 'ads', 'getAllAds' from the 'advertStore'.
   const { ads, getAllAds } = adStore();
 
-  //Add search state
-  const [searchTerm, setSearchTerm] = useState("");
+
 
   const inputRef = useRef()
   
