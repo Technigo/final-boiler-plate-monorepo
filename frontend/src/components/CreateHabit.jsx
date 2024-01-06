@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { habitStore } from "../stores/habitStore";
 import "./css/createhabit.css";
+import { useTranslation } from 'react-i18next';
 
 // Define the 'Createhabit' functional component.
 export const CreateHabit = () => {
@@ -23,6 +24,8 @@ export const CreateHabit = () => {
     }
   };
 
+  const { t } = useTranslation();
+
   // Render the component content.
   return (
     <>
@@ -31,14 +34,14 @@ export const CreateHabit = () => {
         <input
           className="habit-input"
           type="text"
-          placeholder="enter new habit"
+          placeholder={t("enter new habit")}
           onChange={habitInput}
           value={habit}
         />
         {/* Create a button to trigger the 'addhabitLocal' function for adding the habit. */}
-        <button className="add-habit" onClick={addHabitLocal}><img className="plus" src="/plus.png" /><br />Add Habit</button>
+        <button className="add-habit" onClick={addHabitLocal}><img className="plus" src="/plus.png" /><br />{t("Add Habit")}</button>
         {/* Create a button to trigger the 'deleteAllHabits' function to delete all Habits from the server. */}
-        <button className="delete-habit" onClick={deleteAllHabits}><img className="delete-trash-icon" src="/trashcan.png" />Delete All My Habits</button>
+        <button className="delete-habit" onClick={deleteAllHabits}><img className="delete-trash-icon" src="/trashcan.png" />{t("Delete All My Habits")}</button>
       </div>
     </>
   );
