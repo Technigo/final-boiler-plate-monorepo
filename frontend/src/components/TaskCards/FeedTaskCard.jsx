@@ -14,6 +14,7 @@ import styled from "styled-components";
 const StyledFeedCardModal = styled.div`
   border: 1px solid #9eb7bf;
   border-radius: 20px 0 20px 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
   /* display: flex;
   flex-direction: column;
   justify-content: center;
@@ -122,23 +123,23 @@ export const FeedTaskCard = ({ task }) => {
 
   // Add current user as a volunteer to a specific task
   const addMyselfToTaskClick = () => {
-    console.log(task._id);
+    //console.log(task._id);
     addMyselfToTask(task._id);
   };
 
   useEffect(() => {
     // Add or remove 'active-modal' class to the body based on modal state
     if (isModalOpen) {
-      document.body.classList.add("active-modal");
+      document.body.classList.add("active-modal"); // Add class to body
     } else {
-      document.body.classList.remove("active-modal");
+      document.body.classList.remove("active-modal"); // Remove class from body
     }
 
     // Cleanup function to remove the class when the component is unmounted
     return () => {
-      document.body.classList.remove("active-modal");
+      document.body.classList.remove("active-modal"); // Remove class from body
     };
-  }, [isModalOpen]);
+  }, [isModalOpen]); // Run the effect when the modal state changes
 
   return (
     <>
@@ -169,18 +170,23 @@ export const FeedTaskCard = ({ task }) => {
       {/* Modal component */}
       <Modal
         isOpen={isModalOpen}
-        onRequestClose={closeModal}
-        contentLabel="Feed Task Modal"
+        preventScroll={true} // Prevent scrolling when modal is open
+        onRequestClose={closeModal} // Call closeModal when the user clicks on the overlay
+        contentLabel="Needs Modal Content"
+        aria={{
+          labelledby: "Needs Modal Content",
+          describedby: "full_description",
+        }}
         style={{
           content: {
-            inset: "120px",
+            inset: "300px",
             top: "50%",
             left: "50%",
             right: "auto",
             bottom: "auto",
             marginRight: "-50%",
             transform: "translate(-50%, -50%)",
-            width: "450px",
+            width: "350px",
             backgroundColor: "#FFE4E1",
             display: "flex",
             flexDirection: "column",

@@ -27,11 +27,6 @@ export const userStore = create((set, get) => ({
   // Define a function to set the isLoggedIn state.
   setIsLoggedIn: (isLoggedIn) => set({ isLoggedIn }),
 
-  // Initialize selectedGender state with "female".
-  selectedGender: "female",
-  // Define a function to set the selectedGender state.
-  setSelectedGender: (gender) => set({ selectedGender: gender }),
-
   // FUNCTION TO REGISTER USERS
   handleSignup: async (username, password) => {
     // Check if required fields are provided and display an alert if not.
@@ -124,10 +119,6 @@ export const userStore = create((set, get) => ({
       console.error("Login error:", error);
       alert("An error occurred during login");
     }
-  },
-
-  handleGenderChange: (gender) => {
-    set({ selectedGender: gender });
   },
 
   // Function to handle user logout.
