@@ -1,7 +1,11 @@
 import { useState, useEffect } from 'react';
 import { adStore } from "../stores/adStore";
+import BackArrow from '../components/reusableComponents/BackArrow';
+import { useParams } from 'react-router-dom';
 
-export const EditAd = ({ adId }) => {
+export const EditAd = () => {
+  const { id: adId } = useParams(); // Extract the ad ID from the URL
+
   const [image, setImage] = useState(null);
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
@@ -21,11 +25,11 @@ export const EditAd = ({ adId }) => {
         setTitle(adData.title);
         setDescription(adData.description);
         setProduct(adData.product);
-        setQuantity(adData.quantity.toString());
+        setQuantity(adData.quantity ? adData.quantity.toString() : '');
         setUnit(adData.unit);
         setAddress(adData.address);
         setObservation(adData.observation);
-        setPickupDate(adData.pickupDate.split('T')[0]); // Adjust date format if necessary
+        setPickupDate(adData.pickupDate ? adData.pickupDate.split('T')[0] : ''); // Adjust date format if necessary
       }
     };
 
@@ -43,12 +47,16 @@ export const EditAd = ({ adId }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      {/* Form fields for ad details */}
-      <input type="text" value={title} onChange={(e) => setTitle(e.target.value)} />
-      {/* ... Other form fields ... */}
-      <input type="file" onChange={(e) => setImage(e.target.files[0])} />
-      <button type="submit">Update Ad</button>
-    </form>
+    <>
+      <BackArrow />
+      <form onSubmit={handleSubmit}>
+        {/* Form fields for ad details */}
+        <input type="text" value={title} onChange={(e) => setTitle(e.target.value)} placeholder="Title" />
+        <textarea value={description} onChange={(e) => setDescription(e.target.value)} placeholder="Description"></textarea>
+        {/* ... Add other form fields for product, quantity, unit, etc. ... */}
+        <input type="file" onChange={(e) => setImage(e.target.files[0])} />
+        <button type="submit">Update Ad</button>
+      </form>
+    </>
   );
 };

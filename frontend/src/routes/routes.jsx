@@ -46,7 +46,7 @@ const routes = (
     {/* Define a route for the "/create-ad" path that renders the "Create Ad" page */}
     <Route path="/create-ad" element={<CreateAd />} />
     {/* Define a route for the "/update-ad" path that renders the "Update Ad" page */}
-    <Route path="/update-ad" element={<EditAd />} />
+    <Route path="/edit-ad/:id" element={<EditAd />} />
     {/* Define a route for the "/manage-your-ads" path that renders the "Manage Ads" page */}
     <Route path="/manage-your-ads" element={<ManageYourAds />} />
     {/* Define a route for the "/search" path and renders the "Search" page */}

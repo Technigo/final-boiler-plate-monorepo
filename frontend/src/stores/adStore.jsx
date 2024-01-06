@@ -13,6 +13,8 @@ console.log(apiEnv);
 export const adStore = create((set) => ({
   // Initialize the ad state with an empty array
   ads: [],
+  savedAds: [],
+  userAds: [],
   // Initialize the userId state by accessing it from the userStore
   userId: userStore.userId,
 
@@ -26,21 +28,30 @@ export const adStore = create((set) => ({
 
   // Function to fetch all saved ads for the current user
   fetchSavedAds: async () => {
-    try {
-      const userId = userStore.getState().userId; // Fetch the current user's ID from userStore
-      const response = await fetch(`${apiEnv}/getSavedAdsByUserId/${userId}`, {
-        headers: { Authorization: localStorage.getItem("accessToken") },
-      });
-      if (!response.ok) throw new Error('Failed to fetch saved ads');
+    const userId = userStore.getState().userId;
+    const url = `${apiEnv}/getSavedAdsByUserId/${userId}`;
+    console.log("Fetching saved ads for userId:", userId, "URL:", url); // Log the userId and URL
 
-      const savedAds = await response.json();
-      set({ ads: savedAds }); // Update the ads state with the fetched saved ads
-      Swal.fire('Success!', 'Saved ads fetched successfully', 'success');
+    try {
+      const response = await fetch(url, {
+        headers: {
+          Authorization: localStorage.getItem("accessToken"),
+        },
+      });
+      if (response.ok) {
+        const data = await response.json();
+        console.log("Fetched saved ads:", data);
+        set({ savedAds: data });
+      } else {
+        console.error('Error fetching saved ads:', response.status, response.statusText);
+        Swal.fire('Error!', 'Failed to fetch ads for the user', 'error');
+      }
     } catch (error) {
       console.error('Fetch Saved Ads Error:', error);
-      Swal.fire('Error!', 'Failed to fetch saved ads', 'error');
+      Swal.fire('Error!', 'An error occurred while fetching ads for the user', 'error');
     }
   },
+
 
   // Fetch all ads
   getAllAds: async () => {
@@ -268,11 +279,19 @@ export const adStore = create((set) => ({
         },
       });
       if (!response.ok) throw new Error('Failed to unsave ad');
+
+      // Update the state to remove the unsaved ad
+      set(state => {
+        const updatedSavedAds = state.savedAds.filter(ad => ad._id !== adId);
+        return { ...state, savedAds: updatedSavedAds };
+      });
+
       Swal.fire('Removed!', 'Ad unsaved successfully', 'success');
     } catch (error) {
       console.error('Unsave Ad Error:', error);
       Swal.fire('Error!', 'Failed to unsave ad', 'error');
     }
   },
+
 
 }));
