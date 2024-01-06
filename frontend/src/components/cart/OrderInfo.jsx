@@ -2,26 +2,19 @@ import { cartStore } from "../../stores/cartStore";
 import { useEffect } from "react";
 
 export const OrderInfo = () => {
-  const { total, calculateTotalPrice, freeDelivery } = cartStore();
+  const {  calculateTotalPrice, total, totalWithDelivery, deliveryCost } = cartStore();
 
   useEffect(() => {
     calculateTotalPrice();
   }, []);
 
+  console.log(totalWithDelivery);
+
   return (
     <>
       <div>Order Value €{total}</div>
-      {freeDelivery ? (
-        <>
-          <div>Delivery €0</div>
-          <div className="total-price">Total €{total}</div>
-        </>
-      ) : (
-        <>
-          <div>Delivery €9</div>
-          <div className="total-price">Total €{total + 9}</div>
-        </>
-      )}
+      <div>Delivery €{deliveryCost}</div>
+      <div className="total-price">Total €{totalWithDelivery}</div>
     </>
   );
 };

@@ -8,11 +8,15 @@ export const CartItem = ({
   botanicalName,
   quantity,
 }) => {
-  const { removeFromCart } = cartStore();
+  const { removeFromCart, addByIndexToCart } = cartStore();
 
   const handleRemoveFromCart = (index) => {
     removeFromCart(index);
     console.log(index);
+  };
+
+  const handleAddToCart = (index) => {
+    addByIndexToCart(index);
   };
 
   return (
@@ -24,6 +28,7 @@ export const CartItem = ({
         <p>€{price}</p>
         <p>Quantity {quantity}</p>
         <button onClick={() => handleRemoveFromCart(index)}>Remove</button>
+        <button onClick={() => handleAddToCart(index)}>Add Another</button>
       </div>
     </div>
   );

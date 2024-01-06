@@ -1,9 +1,10 @@
 import "./Input.css";
 
-export const Input = ({ type, placeholder, value, onChange, ariaLabel }) => {
+export const Input = ({ type, id, placeholder, value, onChange, ariaLabel }) => {
   return (
     <input
       type={type}
+      id={id}
       placeholder={placeholder}
       value={value}
       onChange={onChange}

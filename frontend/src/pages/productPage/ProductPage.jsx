@@ -30,6 +30,10 @@ export const ProductPage = () => {
     addToCart(singlePlant);
   };
 
+  useEffect(() => {
+    console.log("Cart Updated:", cart);
+  }, [cart]); 
+
   console.log("CART:", cart);
 
   return (

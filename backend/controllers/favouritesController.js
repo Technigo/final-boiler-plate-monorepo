@@ -6,10 +6,24 @@ import asyncHandler from "../utils/asyncHandler.js";
 const getFavourites = asyncHandler(async (req, res) => {
   const userId = req.user._id;
 
+  const accessToken = req.header("Authorization");
+    // Verify accessToken and find user
+    const userFromStorage = await UserModel.findOne({
+      accessToken: accessToken,
+    });
+
+    if (!userFromStorage) {
+      return res
+        .status(401)
+        .json({ message: "Unauthorized access or invalid token" });
+    }
+    console.log("User ID:", userFromStorage._id)
+
   try {
-    const favourites = await FavouriteModel.findOne({ user: userId }).populate(
+    const favourites = await FavouriteModel.findOne({  user: userFromStorage._id }).populate(
       "likedPlants"
     );
+  console.log("Favourites:", favourites)
 
     res.status(200).json(favourites.likedPlants);
   } catch (error) {
@@ -19,60 +33,6 @@ const getFavourites = asyncHandler(async (req, res) => {
 });
 
 const addFavourite = asyncHandler(async (req, res) => {
-  // const userId = req.user ? req.user._id : null;
-  // if (!userId) {
-  //   return res.status(401).json({ message: "No user"})
-  // }
-
-  // const { plantId } = req.body;
-
-  // try {
-
-  //   const user = await UserModel.findById(userId);
-  //   if (!user) {
-  //     return res.status(404).json({ message: 'User not found.' });
-  //   }
-
-  //   let favourites = await FavouriteModel.findOne({ user: userId });
-
-  //   if (!favourites) {
-  //     favourites = new FavouriteModel({ user: userId });
-  //   }
-
-  //   if (!favourites.likedPlants.includes(plantId)) {
-  //     favourites.likedPlants.push(plantId);
-  //   }
-
-  //   await favourites.save();
-
-  //   res.status(200).json({ message: "Plant added to favourites." });
-  // } catch (error) {
-  //   res.status(500).json({ message: "An error occurred." });
-  // }
-
-  // LAURA TESTAR KOMMENTERA UT START
-  //   try {
-  //     // Extract the task data from the request body
-  //     const { plantID } = req.body;
-  //     console.log(plantID);
-  //     // Extract the accessToken from the request object, but it is not going to be from the req.body but, its going to be from the req.header
-  //     const accessToken = req.header("Authorization"); // we are requesting the Authorization key from the headerObject
-  //     // get the user and matchIt with the user from the db - remmeber that we are using the accessToken to do so :)
-  //     const userFromStorage = await UserModel.findOne({
-  //       accessToken: accessToken,
-  //     });
-  //     // Define var to pass new task
-  //     const newFavourite = new FavouriteModel({
-  //       likedPlants: plantID,
-  //       user: userFromStorage,
-  //     }).save();
-  //     res.json(newFavourite);
-  //   } catch (error) {
-  //     res.status(500).json(error);
-  //   }
-  // });
-
-  // LAURA TESTAR KOMMENTERA UT  SLUT
 
   try {
     const { _id } = req.body;
@@ -90,6 +50,7 @@ const addFavourite = asyncHandler(async (req, res) => {
 
     let favourite = await FavouriteModel.findOne({ user: userFromStorage._id });
 
+    console.log("FAVOURITE:", favourite)
     if (!favourite) {
       // If no favourite list exists for this user, create a new one
       favourite = new FavouriteModel({
@@ -97,12 +58,15 @@ const addFavourite = asyncHandler(async (req, res) => {
         likedPlants: [],
       });
     }
-
+    console.log("Received plantID:", plantID);
     // Check for duplicate plantID
-    if (!favourite.likedPlants.includes(plantID)) {
+    if (plantID && !favourite.likedPlants.includes(plantID)) {
+      console.log("Before Adding:", favourite.likedPlants);
       favourite.likedPlants.push(plantID);
+      console.log("After Adding:", favourite.likedPlants);
     } else {
-      return res.status(400).json({ message: "Plant already in favourites" });
+      console.log("HELLO")
+      return res.status(400).json({ message: "Invalid plantID or plant already in favourites" });
     }
 
     await favourite.save();
@@ -112,53 +76,40 @@ const addFavourite = asyncHandler(async (req, res) => {
   }
 });
 
-export { addFavourite, getFavourites };
+const removeFavourite = asyncHandler (async (req, res) => {
+  try {
+    const { _id } = req.body;
+    const plantID = _id;
+    const accessToken = req.header("Authorization");
 
-// const getFavourites = asyncHandler(async (req, res) => {
-//   try {
-//     const user = await UserModel.findById(req.userId);
-//     const favourites = await FavouriteModel.find({ user: req.userId }).populate("likedPlants")
+    // Verify accessToken and find user
+    const userFromStorage = await UserModel.findOne({
+      accessToken: accessToken,
+    });
 
-//     if (!user) {
-//       return res.status(404).send("User not found");
-//     }
+    if (!userFromStorage) {
+      return res
+        .status(401)
+        .json({ message: "Unauthorized access or invalid token" });
+    }
 
-//     res.status(200).json(favourites);
+    let favourite = await FavouriteModel.findOne({ user: userFromStorage._id });
 
-//   } catch (error) {
-//     console.error(error);
-//     res.status(500).send("Something went wrong")
-//   }
-// })
+    if (!favourite || !favourite.likedPlants.includes(plantID)) {
+      return res.status(400).json({ message: "Plant not found in favourites" });
+    }
 
-// const addFavourite = asyncHandler(async (req, res) => {
-//   try {
-//     const user = await UserModel.findById(req.userId);
-//     const favourites = await FavouriteModel.find({ user: req.userId }).populate("likedPlants")
+    // Remove the plantID from the likedPlants array
+    favourite.likedPlants = favourite.likedPlants.filter(
+      (existingPlantID) => existingPlantID !== plantID
+    );
 
-//     if (!user) {
-//       return res.status(404).send("User not found");
-//     }
+    await favourite.save();
+    res.status(200).json({ message: "Plant removed from favourites." });
+  } catch (error) {
+    res.status(500).json({ message: "An error occurred: " + error.message });
+  }
 
-//     const existingFavourite = await FavouriteModel.findOne({
-//       user: req.userId,
-//       likedPlants: req.body.plantID,
-//     }
-//     );
+})
 
-//     if (existingFavourite) {
-//       return res.status(400).send("Plant is already in favourites");
-//     }
-
-//     const newFavourite = new FavouriteModel({ likedPlants: [req.body.plantID], user: req.userId, });
-//     await newFavourite.save();
-
-//     favourite.likedPlants.push(newFavourite._id);
-//     await user.save();
-
-//     res.status(201).json({ message: "Favourite added successfully." });
-//   } catch (error) {
-//     console.error(error);
-//     res.status(500).send("Something went wrong");
-//   }
-// });
+export { addFavourite, getFavourites, removeFavourite };

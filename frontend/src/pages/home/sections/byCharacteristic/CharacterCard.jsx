@@ -39,8 +39,8 @@ export const CharacterCard = () => {
     <div className="cards-container">
       {cards.map((card) => {
         return (
-          <Link to={card.url}>
-            <div className="character-card-wrapper" key={card.id}>
+          <Link key={card.id} to={card.url}>
+            <div className="character-card-wrapper" >
               <img src={card.image} alt={card.imgAlt} />
               <div className="character-overlay">
                 <h3>{card.heading}</h3>

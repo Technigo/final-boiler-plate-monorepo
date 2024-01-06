@@ -11,6 +11,7 @@ import { IoClose } from "react-icons/io5";
 import { CgSearch } from "react-icons/cg";
 import { IoHeart } from "react-icons/io5";
 import { HiShoppingBag } from "react-icons/hi2";
+import { FaUser } from "react-icons/fa";
 
 // NAVBAR COMPONENT
 export const Navbar = () => {
@@ -40,24 +41,27 @@ export const Navbar = () => {
           <div className="search-container">
             <CgSearch className="search-icon" />
           </div>
-          <div className="logo-container">
-            <Link to="/">
-              <img
-                src="./logo-sand.svg"
-                alt="Plants by Holm and Witting logotype"
-              />
-            </Link>
-          </div>
+        </div>
+        <div className="logo-container">
+          <Link to="/">
+            <img
+              src="./logo-sand.svg"
+              alt="Plants by Holm and Witting logotype"
+            />
+          </Link>
         </div>
         <div className="nav-sections">
-          <div className="wishlist-container">
-            <IoHeart className="heart-icon" />
-          </div>
-          <Link to="/cart">
-            <div className="bag-container">
-              <HiShoppingBag className="bag-icon" />
-            </div>
+          <Link to="/login">
+            <FaUser className="user-icon" />
           </Link>
+          <Link to="/wishlist">
+            <IoHeart className="heart-icon" />
+          </Link>
+          <Badge color="secondary" badgeContent={numberOfProducts} showZero>
+            <Link to="/cart">
+              <HiShoppingBag className="cart-icon" />
+            </Link>
+          </Badge>
         </div>
       </nav>
       {hiddenMenu && (
@@ -93,14 +97,12 @@ export const Navbar = () => {
         </div>
         <div className="nav-sections">
           <Link to="/login">Login</Link>
-          <Link to="/">
+          <Link to="/wishlist">
             <IoHeart className="heart-icon" />
           </Link>
           <Badge color="secondary" badgeContent={numberOfProducts} showZero>
             <Link to="/cart">
-              <div className="bag-container">
-                <HiShoppingBag className="bag-icon" />
-              </div>
+              <HiShoppingBag className="cart-icon" />
             </Link>
           </Badge>
         </div>

@@ -26,7 +26,7 @@ export const CartPage = () => {
 
   useEffect(() => {
     calculateTotalPrice();
-  }, []);
+  }, [cart]);
 
   //console.log("TOTAL:", total);
   console.log(numberOfProducts);
@@ -44,7 +44,7 @@ export const CartPage = () => {
               title={item.plant_title}
               botanicalName={item.botanical_name}
               price={item.price}
-              quantity={1}
+              quantity={item.quantity}
             />
           </div>
         );
