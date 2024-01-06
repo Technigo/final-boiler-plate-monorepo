@@ -4,7 +4,7 @@ const express = require('express');
 const bcrypt = require('bcryptjs'); // Library for hashing passwords
 const jwt = require('jsonwebtoken'); // JSON Web Token for user authentication
 const User = require('../models/user.js'); // Importing the User model
-const Challenge = require('../models/challenges.js');
+const Challenge = require('../models/challenge.js');
 const router = express.Router(); // Creating an instance of an Express router
 import { verify } from 'jsonwebtoken';
 
