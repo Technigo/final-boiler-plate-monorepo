@@ -172,6 +172,21 @@ export const FeedTaskCard = ({ task }) => {
         onRequestClose={closeModal}
         contentLabel="Feed Task Modal"
         style={{
+          content: {
+            inset: "120px",
+            top: "50%",
+            left: "50%",
+            right: "auto",
+            bottom: "auto",
+            marginRight: "-50%",
+            transform: "translate(-50%, -50%)",
+            width: "450px",
+            backgroundColor: "#FFE4E1",
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            alignItems: "center",
+          },
           overlay: {
             backgroundColor: "rgba(49, 49, 49, 0.8)", // Change overlay background color
             width: "100vw",
@@ -185,32 +200,46 @@ export const FeedTaskCard = ({ task }) => {
         }}
       >
         <StyledFeedCardModal>
-          {CategoryIcon && <CategoryIcon size={iconSize} />}
+          <div className="card-container">
+            <li key={_id}>
+              <div className="task-header">
+                {CategoryIcon && <CategoryIcon size={iconSize} />}
+                <p>{category}</p>
+                <Button
+                  onClick={closeModal}
+                  className="closeModal-btn"
+                  buttonName="X"
+                />
+              </div>
+              {/* Button to close the modal */}
 
-          {/* Button to close the modal */}
-          <Button
-            onClick={closeModal}
-            className="closeModal-btn"
-            buttonName="X"
-          />
-          {/* Modal content */}
-          <h3>{task.task}</h3>
-          <p>{category}</p>
-          <p>{area}</p>
-          <p>{task.description}</p>
-          <p>Posted: {formattedCreatedAt}</p>
-          <p>Created by: {task.user && task.user.username}</p>
-          {/* Button to offer help */}
-          <IconButton
-            onClick={() => {
-              addMyselfToTaskClick();
-              closeModal(); // Call closeModal after volunteer is added
-            }}
-            className="offer-help-button"
-            buttonName="Lend a helping hand"
-            iconAlt="Logo showing two shaking hands forming a heart"
-            src="/Logo-white.png"
-          />
+              <div className="area">
+                <h3>{task.task}</h3>
+                <p>{area}</p>
+              </div>
+
+              {/* Modal content */}
+              <div className="description">
+                <p>{task.description}</p>
+              </div>
+              <div className="task-footer">
+                <p>Created by: {task.user && task.user.username}</p>
+                <p>Posted: {formattedCreatedAt}</p>
+              </div>
+
+              {/* Button to offer help */}
+              <IconButton
+                onClick={() => {
+                  addMyselfToTaskClick();
+                  closeModal(); // Call closeModal after volunteer is added
+                }}
+                className="offer-help-button"
+                buttonName="Lend a helping hand"
+                iconAlt="Logo showing two shaking hands forming a heart"
+                src="/Logo-white.png"
+              />
+            </li>
+          </div>
         </StyledFeedCardModal>
       </Modal>
     </>

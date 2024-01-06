@@ -71,39 +71,37 @@ export const CreateTask = () => {
   const { addTaskToServer } = taskStore();
 
   // Function to update the 'task' state with the value entered in the input field.
-  // const taskTitle = (e) => {
-  //   setTask(e.target.value); // Update the 'task' state with the value entered in the input field.
-  // };
-
   const taskTitle = (e) => {
-    const newTitle = e.target.value;
-    setTask(newTitle);
+    const newTitle = e.target.value; // Get the value entered in the input field.
+    setTask(newTitle); // Update the 'task' state with the value entered in the input field.
 
     // Check the length of the title and update the error state
     if (newTitle.length < 3 || newTitle.length > 30) {
-      setTitleError("Title must be between 3 and 30 characters.");
+      // If the title is less than 3 or more than 30 characters
+      setTitleError("Title must be between 3 and 30 characters."); // Set the error message
     } else {
       setTitleError("");
     }
   };
 
   const taskCategory = (e) => {
+    // Get the value entered in the input field.
     setCategory(e.target.value); // Update the 'task' state with the value entered in the input field.
   };
   const taskArea = (e) => {
+    // Get the value entered in the input field.
     setArea(e.target.value); // Update the 'task' state with the value entered in the input field.
   };
-  // const taskDescription = (e) => {
-  //   setDescription(e.target.value); // Update the 'task' state with the value entered in the input field.
-  // };
 
   const taskDescription = (e) => {
-    const newDescription = e.target.value;
-    setDescription(newDescription);
+    // Get the value entered in the input field.
+    const newDescription = e.target.value; // Update the 'task' state with the value entered in the input field.
+    setDescription(newDescription); // Update the 'task' state with the value entered in the input field.
 
     // Check the length of the description and update the error state
     if (newDescription.length < 10 || newDescription.length > 300) {
-      setDescriptionError("Description must be between 10 and 300 characters.");
+      // If the description is less than 10 or more than 300 characters
+      setDescriptionError("Description must be between 10 and 300 characters."); // Set the error message
     } else {
       setDescriptionError("");
     }
@@ -112,17 +110,17 @@ export const CreateTask = () => {
   // Function to add a new task both locally and to the server.
   const addTaskLocal = async () => {
     if (
-      task.trim() !== "" &&
-      category !== "" &&
-      area !== "" &&
-      description !== ""
+      task.trim() !== "" && // Check if the task is not empty and
+      category !== "" && // Check if the category is not empty and
+      area !== "" && // Check if the area is not empty and
+      description !== "" // Check if the description is not empty
     ) {
       if (titleError || descriptionError) {
         // Don't proceed if there is a description error
         // window.alert("Please adjust the length of the text before submitting.");
         return;
       }
-
+      // Create a new task object.
       const newTask = {
         task: task,
         category: category,
@@ -130,6 +128,7 @@ export const CreateTask = () => {
         description: description,
       };
 
+      // Add the new task to the server.
       await addTaskToServer(newTask);
       setTask("");
       setCategory("");
