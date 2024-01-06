@@ -58,9 +58,21 @@ const generateText = async (req, res) => {
     const instructions = generatedRecipeObject.instructions;
     console.log(generatedRecipeObject);
 
+    const formatPrompt = (input) => {
+      const promptArray = input.split(',').map(ingredient => {
+          const trimmedIngredient = ingredient.trim();
+          return trimmedIngredient.charAt(0).toUpperCase() + trimmedIngredient.slice(1);
+      });
+  
+      return promptArray;
+  }
+
+  const formattedPrompt = formatPrompt(prompt)
+  console.log(formattedPrompt)
+
     // Create a new RecipeModel with the provided ingredients and generatedRecipe
     const newRecipe = new RecipeModel({
-      userInput: prompt,
+      userInput: formattedPrompt,
       title: title,
       description: description,
       ingredients: ingredients,

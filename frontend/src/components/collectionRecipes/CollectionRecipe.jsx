@@ -25,9 +25,11 @@ export const CollectionRecipe = ({ recipe, index }) => {
         </div>
         <h2>{recipe.title}</h2>
 
-        <p>
-         {recipe.userInput}
-        </p>
+        <div className="user-input-collection">
+          {recipe.userInput.map((ingredient, ingredientIndex) => (
+            <p key={ingredientIndex}>•{ingredient}</p>
+          ))}
+        </div>
       </section>
     </Link>
   );

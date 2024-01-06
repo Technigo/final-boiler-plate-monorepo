@@ -23,6 +23,10 @@
   margin: 0 5px 0 5px; 
 }
 
+.user-input-details {
+  display: flex; 
+}
+
 .recipe-details img {
   width: 100%;
   height: 100vw; /* Set the height to be equal to the viewport width */

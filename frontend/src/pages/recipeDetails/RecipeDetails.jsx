@@ -53,14 +53,11 @@ export const RecipeDetails = () => {
             <PiCookingPot /> <p className="georgia">Serves 2 people</p>
           </div>
           <span className="dot">•</span> {/* Add a dot here */}
-          <div className="users-input">
-            {console.log(foundRecipe.userInput)}
-            {/* {foundRecipe.userInput.map((item, index) => (
-              <p className="georgia" key={index}>
-                {item}
-              </p>
-            ))} WHY NOT WORKING????*/} 
-          </div>
+          <div className="user-input-details">
+          {foundRecipe.userInput.map((ingredient, ingredientIndex) => (
+            <p className="georgia"key={ingredientIndex}>•{ingredient}</p>
+          ))}
+        </div>
         </div>
         <img src="/recipe-imgs/campfire-896196_1280.jpg" alt="" />
           <SaveButtonBig/>

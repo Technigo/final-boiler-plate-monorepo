@@ -28,3 +28,8 @@
   height: 100%;
   object-fit: cover; /* This ensures the image covers the entire container */
 }
+
+.user-input-collection {
+  display: flex; 
+  gap: 3px; 
+}

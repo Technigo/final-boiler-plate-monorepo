@@ -81,16 +81,17 @@ export const recipeStore = create((set) => ({
   // From PromptForm.jsx
   generateRecipe: async (ingredients) => {
 
+    const formattedIngredients = ingredients.join(",")
+
     try {
       console.log("Sending post request!")
-      console.log(ingredients)
   
       //Setting the isGenerating state to true so that loading message can be rendered in Home.jsx
       set(() => ({isGenerating: true}))
 
       const response = await fetch(`${api}/openai/generateText`, {
         method: 'POST',
-        body: JSON.stringify({ prompt: ingredients }),
+        body: JSON.stringify({ prompt: formattedIngredients }),
         headers: { 'Content-Type': 'application/json' },
       })
 

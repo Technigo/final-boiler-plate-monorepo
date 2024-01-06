@@ -26,35 +26,33 @@ export const PromptForm = () => {
         } catch (error) {
             console.error("Error in handleFormSubmit", error)
         }
-
     };
+
+    const handleIngredientChange = (index, value) => {
+        const updatedInputRecipe = [...inputRecipe];
+        updatedInputRecipe[index] = value;
+        setInputRecipe(updatedInputRecipe);
+      };
 
     // Render the component. Form element
     return (
         <div className="promptform-wrapper">
             <h2>Generate a recipe for your next outdoor adventure!</h2>
             <form className="ingredient-form" onSubmit={handleFormSubmit}>
-                <textarea
-                    placeholder="Ingredient 1"
-                    value={inputRecipe}
-                    onChange={(e) => setInputRecipe(e.target.value)}
-                    required
-                ></textarea>
-                <textarea
-                    placeholder="Ingredient 2"
-                    value={inputRecipe}
-                    onChange={(e) => setInputRecipe(e.target.value)}
-                    required
-                ></textarea>
-                <textarea
-                    placeholder="Ingredient 3"
-                    value={inputRecipe}
-                    onChange={(e) => setInputRecipe(e.target.value)}
-                    required
-                ></textarea>
-                <p className="error-message">{errorMessageGeneration}</p>
-                <button className="generate-button"type="submit">Create recipe using AI</button>
-            </form>
+        {[1, 2, 3].map((index) => (
+          <textarea
+            key={index}
+            placeholder={`Ingredient ${index}`}
+            value={inputRecipe[index - 1] || ''}
+            onChange={(e) => handleIngredientChange(index - 1, e.target.value)}
+            required={index === 1} //only the first field is required
+          ></textarea>
+        ))}
+        <h2>{errorMessageGeneration}</h2>
+        <button className="generate-button" type="submit">
+          Create recipe using AI
+        </button>
+      </form>
         </div>
     );
 };
