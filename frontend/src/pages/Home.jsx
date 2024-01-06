@@ -7,7 +7,6 @@ import { SearchBar } from "../components/SearchBar";
 import { AdsList } from "../components/AdsList";
 import { Navbar } from "../components/Navbar";
 import Swal from "sweetalert2";
-import BackArrow from "../components/reusableComponents/BackArrow";
 
 // Define the 'Home' functional component.
 export const Home = () => {
@@ -35,7 +34,7 @@ export const Home = () => {
        <Navbar menuItems={[{path: "/search", name: "Search"} ,{path: "/setting", name: "Profile Setting"}, {path: "/manage-your-ads", name: "Your Products"}, {path: "/about", name: "About"} , {path: "/terms", name: "Terms"} ,{name: "Logout", onClick: () => {
         handleLogout()
         navigate("/login")
-        }} ]} menuDesks={[{path: "/settings", name: "Profile Settings"},{path: "/terms", name: "Terms"} , {path: "/about", name: "About"}, {name: "Logout", onClick: () => {
+        }} ]} menuDesks={[{path: "/settings", name: "Profile Settings"}, {path: "/manage-your-ads", name: "Your Products"}, {path: "/terms", name: "Terms"}, {path: "/about", name: "About"}, {name: "Logout", onClick: () => {
         handleLogout()
         navigate("/login")
         }} ]}/>

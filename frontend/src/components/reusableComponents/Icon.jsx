@@ -1,7 +1,22 @@
+import "./icon.css";
 
+export const Icon = ({ src, size = "medium", className = "", invert = false, style = {} }) => {
+  const iconSizeClasses = {
+    small: "icon-small",
+    medium: "icon-medium",
+    large: "icon-large",
+    button: "icon-button"
+  };
 
-export const Icon = () => {
+  const iconClass = `icon ${iconSizeClasses[size]} ${invert ? 'icon-inverted' : ''} ${className}`;
+
   return (
-    <div>Icon</div>
-  )
+    <img
+      src={src}
+      alt=""
+      className={iconClass}
+      style={style}
+      aria-hidden="true"
+    />
+  );
 }

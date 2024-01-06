@@ -1,0 +1,28 @@
+.icon-small {
+    width: 16px;
+    height: 16px;
+    margin-right: 5px;
+}
+
+.icon-medium {
+    width: 24px;
+    height: 24px;
+    margin-right: 5px;
+}
+
+.icon-large {
+    width: 32px;
+    height: 32px;
+    margin-right: 5px;
+}
+
+.icon-button {
+    width: 24px;
+    height: 24px;
+    margin-right: 5px;
+}
+
+.icon-inverted {
+    filter: invert(100%);
+    margin-right: 5px;
+}

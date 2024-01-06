@@ -14,7 +14,7 @@ export const AdCard = ({ ad }) => {
   useEffect(() => {
     console.log(ad)
     setIsSaved(ad.savedBy.includes(userId));
-  }, [ad.savedBy, userId]);
+  }, [ad, userId]);
 
   const handleSaveToggle = () => {
     if (isSaved) {
@@ -28,7 +28,7 @@ export const AdCard = ({ ad }) => {
   return (
     <div className="ad-card">
       <button onClick={handleSaveToggle} className="heart-icon-btn">
-        <img src={isSaved ? "/icons/filled-heart.svg" : "/icons/heart.svg"} alt="Heart Icon" />
+        <img src={isSaved ? "./src/assets/icons/filled-heart.svg" : "./src/assets/icons/heart.svg"} alt="Heart Icon" />
       </button>
       <Link to={`/ads/${ad._id}`}>
         <img src={ad.image} alt={`${ad.title}`} />

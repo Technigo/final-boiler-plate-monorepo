@@ -1,7 +1,9 @@
+// Button.jsx
 import { useNavigate } from 'react-router-dom';
-//import './button.css';
+import './button.css';
+import { Icon } from './Icon';
 
-export const Button = ({ icon, label, link, className, onClick, ariaLabel }) => {
+export const Button = ({ icon, iconSize = 'medium', label, link, className, onClick, ariaLabel, invertIcon }) => {
   const navigate = useNavigate(); // Hook for navigation
 
   const handleClick = () => {
@@ -16,21 +18,12 @@ export const Button = ({ icon, label, link, className, onClick, ariaLabel }) => 
     <button
       className={`button ${className || ''}`}
       onClick={handleClick}
-      aria-label={ariaLabel || label} // Allow custom aria-label
+      aria-label={ariaLabel || label}
     >
       {icon && (
-        <img
-          src={icon}
-          alt=""
-          className="icon"
-          aria-hidden="true" // Hide the icon from assistive technologies
-        />
+        <Icon src={icon} size={iconSize} invert={invertIcon} />
       )}
       <span className="label">{label}</span>
     </button>
   );
 };
-
-
-//Eaxmple use
-//<Button icon="/path/to/icon.svg" label="Go to Home" link="/" />

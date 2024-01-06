@@ -2,21 +2,22 @@ import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { adStore } from '../stores/adStore';
 import { userStore } from '../stores/userStore';
+import { Button } from './reusableComponents/Button';
 
 export const UserAds = () => {
-    const { ads, fetchAdsByUserId, deleteAdById } = adStore(state => ({
-      ads: state.ads,
-      fetchAdsByUserId: state.fetchAdsByUserId,
-      deleteAdById: state.deleteAdById
-    }));
-    const navigate = useNavigate();
-  
-    useEffect(() => {
-      const userId = userStore.getState().userId;
-      if (userId) {
-        fetchAdsByUserId(userId); // This should update the ads state in your store
-      }
-    }, [fetchAdsByUserId]);
+  const { ads, fetchAdsByUserId, deleteAdById } = adStore(state => ({
+    ads: state.ads,
+    fetchAdsByUserId: state.fetchAdsByUserId,
+    deleteAdById: state.deleteAdById
+  }));
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const userId = userStore.getState().userId;
+    if (userId) {
+      fetchAdsByUserId(userId); // This should update the ads state in your store
+    }
+  }, [fetchAdsByUserId]);
 
   const handleDelete = async (adId) => {
     await deleteAdById(adId);
@@ -28,13 +29,25 @@ export const UserAds = () => {
 
   return (
     <div className="user-ads-container">
-      {ads.map(ads => (
-        <div key={ads._id} className="user-ad">
-          <img src={ads.image} alt={ads.title} className="user-ad-image" />
-          <h3>{ads.title}</h3>
+      {ads.map(ad => ( // Change from 'ads' to 'ad'
+        <div key={ad._id} className="user-ad">
+          <img src={ad.image} alt={ad.title} className="user-ad-image" />
+          <h3>{ad.title}</h3>
           <div className="user-ad-actions">
-            <button onClick={() => handleEdit(ads._id)}>Edit</button>
-            <button onClick={() => handleDelete(ads._id)}>Delete</button>
+            <Button
+              icon="./src/assets/icons/edit.svg"
+              iconSize="button" 
+              label="Edit"
+              onClick={() => handleEdit(ad._id)}
+              invertIcon={true}
+            />
+            <Button
+              icon="./src/assets/icons/trash.svg"
+              iconSize="button" 
+              label="Delete"
+              onClick={() => handleDelete(ad._id)}
+              invertIcon={true}
+            />
           </div>
         </div>
       ))}
