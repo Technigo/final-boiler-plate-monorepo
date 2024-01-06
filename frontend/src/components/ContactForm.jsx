@@ -3,6 +3,7 @@ import emailjs from "@emailjs/browser";
 import "./contactForm.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import closeBtn from "../assets/close.svg";
+import Swal from "sweetalert2";
 
 // Contact form
 
@@ -12,24 +13,15 @@ export const ContactForm = ({
   adTitle,
   handleClose,
 }) => {
-  const [showMessage, setShowMessage] = useState(false);
-  // const [showErrorMesssage, setShowErrorMessage] = useState(false);
+  const [loading, setLoading] = useState(false);
   const form = useRef();
-
-  // Reset form
-  const resetForm = () => {
-    form.current.user_name.value = "";
-    form.current.user_email.value = "";
-    form.current.subject.value = "";
-    form.current.product_name.value = "";
-    form.current.message.value = "";
-  };
 
   const advertiserEmail = "greenbuddy.strawberry@gmail.com";
 
   // Send email
   const sendEmail = (e) => {
     e.preventDefault();
+    setLoading(true);
 
     // Set up template parameters
     const templateParams = {
@@ -53,46 +45,43 @@ export const ContactForm = ({
         (result) => {
           console.log(result.text);
           console.log("message sent");
-          setShowMessage(true);
+          // Display message once the form has been sent successfully
+          Swal.fire({
+            title: "Congratulations!",
+            text: "Your message has been sent successfully",
+            icon: "success",
+          }).then(() => {
+            handleClose();
+          });
         },
         (error) => {
           console.log(error.text);
         }
-      );
+      )
+      .finally(() => {
+        setLoading(false);
+      });
   };
 
   return (
     <form className="contact-form" ref={form} onSubmit={sendEmail}>
-      <img
-        src={closeBtn}
-        className="close-btn"
-        alt="search-icon"
-        onClick={handleClose}
-      />
-      <h1 className="contact-title">Contact Form</h1>
-      <label>
+      <div className="close-btn">
+        <img
+          src={closeBtn}
+          className="close-btn"
+          alt="search-icon"
+          onClick={handleClose}
+        />
+      </div>
+      <div>
+        <h1 className="contact-title">Contact Form</h1>
         <input placeholder="Your name" type="text" name="user_name" required />
-      </label>
-      <label>
         <input placeholder="E-mail" type="email" name="user_email" required />
-      </label>
-      <label>
         <textarea className="msg-box" placeholder="Message" name="message" />
-        <input className="submit-btn" type="submit" value="Send" />
-      </label>
-      {showMessage && (
-        <div className="message-sent">
-          <p>Your message has been sent!</p>
-          {/* {showErrorMesssage && (
-            <div className="error-message">
-              <p>Please fill in all the required fields!</p>
-            </div>
-          )} */}
-          <button type="button" onClick={resetForm}>
-            Reset form
-          </button>
-        </div>
-      )}
+      </div>
+      <button className="submit-btn" type="submit" value="Send">
+        {loading ? "Sending..." : "Submit"}
+      </button>
     </form>
   );
 };
