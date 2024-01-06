@@ -15,7 +15,7 @@ export const AboutContent = () => {
             <div className="vision-tech-info">
                 <div className="about-vision">
                     <div className="about-icons"><TbHealthRecognition /></div>
-                    <p>Vision: Our vision is to make it easier for people to connect with nature and enjoy delicious meals outdoors.</p>
+                    <p>Our vision is to make it easier for people to connect with nature and enjoy delicious meals outdoors.</p>
                 </div>
 
                 <div className="about-tech">
@@ -27,7 +27,7 @@ export const AboutContent = () => {
                 <div className="project-info">
                     <div className="about-icons"><IoTrailSignOutline /></div>
                     <p>
-                        Info: Navigate through the GitHub Read-me trail for a deeper exploration. KLICKBAR ANIMATION?
+                        Navigate through the GitHub README trail for more information and code for OpenAir Feast.
                     </p></div></div>
 
             <div className="cards-container">

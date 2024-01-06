@@ -1,10 +1,11 @@
 .collection-recipes {
-    padding: 1rem; /*Vill inte ändra till %, blir konstigt om det är dynamiskt*/
+    padding: 1rem;
+    /*Vill inte ändra till %, blir konstigt om det är dynamiskt*/
 }
 
 .collection-recipes h3 {
     font-size: 23px;
-    margin: 0 0 0.9em; 
+    margin: 0 0 0.9em;
 }
 
 .recipe-grid {
@@ -49,6 +50,10 @@
     .recipe-grid {
         grid-template-columns: repeat(3, 1fr);
     }
+
+    .spinner-container {
+        margin: 30%;
+    }
 }
 
 
@@ -56,5 +61,9 @@
 @media (min-width: 1025px) {
     .recipe-grid {
         grid-template-columns: repeat(4, 1fr);
+    }
+
+    .spinner-container {
+        margin: 5%;
     }
 }

@@ -21,6 +21,7 @@
 }
 
 .footer p a {
+    font-weight: bolder;
     color: white;
 }
 
@@ -36,7 +37,6 @@
 
 .footer-nav a {
     font-size: 3vh;
-    color: white;
 }
 
 .footer-nav svg {
@@ -48,40 +48,13 @@
     /* Changes how bold the strokes are in the react icons */
 }
 
-/**** Hover effects****/
-.footer-nav a {
-    background-image: linear-gradient(to right,
-            white,
-            #7bceb9 50%,
-            #286052 50%);
-    background-size: 200% 100%;
-    background-position: -100%;
-    display: inline-block;
-    padding: 5px 0;
-    position: relative;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    transition: all 0.3s ease-in-out;
+/* Hover effects */
+.footer p a:hover {
+    color: #86bca8;
 }
 
-.footer-nav a:before {
-    content: '';
-    background: white;
-    display: block;
-    position: absolute;
-    bottom: -3px;
-    left: 0;
-    width: 0;
-    height: 3px;
-    transition: all 0.3s ease-in-out;
-}
-
-.footer-nav a:hover {
-    background-position: 0;
-}
-
-.footer-nav a:hover::before {
-    width: 100%;
+.footer-nav svg:hover {
+    color: #86bca8;
 }
 
 /* ---------DESKTOP VIEW---------- */

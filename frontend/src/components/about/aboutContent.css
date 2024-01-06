@@ -99,8 +99,29 @@
 
 /* ---------DESKTOP VIEW---------- */
 @media (min-width: 1025px) {
-    .about-tech {
+    .about-container {
+        margin-top: 8%;
+        margin-bottom: 8%;
+        margin-left: 20%;
+        margin-right: 20%;
+    }
+
+    .about-vision,
+    .about-tech,
+    .project-info {
         display: flex;
         flex-direction: row;
+        gap: 12%;
+        max-width: 800px;
+    }
+
+    .project-info p {
+        margin-bottom: 14%;
+    }
+
+    .card img {
+        width: 20vw;
+        height: 30vh;
+        /* Adjust the aspect ratio (height/width) as needed */
     }
 }

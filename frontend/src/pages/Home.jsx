@@ -5,6 +5,8 @@ import { NewRecipe } from '../components/newRecipe/NewRecipe';
 import { CollectionRecipes } from "../components/collectionRecipes/CollectionRecipes"
 import { recipeStore } from '../stores/recipeStore';
 import { Footer } from '../components/footer/Footer';
+import "../components/collectionRecipes/collectionRecipes.css";
+import "../App.css";
 
 export const Home = () => {
   const { newRecipe, isGenerating } = recipeStore()
@@ -12,7 +14,8 @@ export const Home = () => {
     <>
       <Header />
       <HeroSection />
-      {isGenerating ? <p>Generating your delicious outdoor meal...</p> : (newRecipe && <NewRecipe />)} {/* Conditionally render NewRecipe only when newRecipe is truthy */}
+      {isGenerating ? <div className="spinner-container-new"> {/*CSS for spinner in App.jcss and collectionRecipes.css*/}
+        <div className="spinner"></div>Just a minute away from your AI-generated delicious meal!</div> : (newRecipe && <NewRecipe />)} {/* Conditionally render NewRecipe only when newRecipe is truthy */}
       <CollectionRecipes />
       <Footer />
     </>
