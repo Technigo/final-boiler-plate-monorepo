@@ -30,21 +30,26 @@ export const CreateHabit = () => {
   return (
     <>
       <div className="add-habits-container">
-        {/* Create an input field for entering the Habit description. */}
-        <input
-          className="habit-input"
-          type="text"
-          placeholder={t("enter new habit")}
-          onChange={habitInput}
-          value={habit}
-        />
-        {/* Create a button to trigger the 'addhabitLocal' function for adding the habit. */}
-        <button className="add-habit" onClick={addHabitLocal}><img className="plus" src="/plus.png" /><br />{t("Add Habit")}</button>
-        {/* Create a button to trigger the 'deleteAllHabits' function to delete all Habits from the server. */}
-        <button className="delete-habit" onClick={deleteAllHabits}><img className="delete-trash-icon" src="/trashcan.png" />{t("Delete All My Habits")}</button>
+        <div className="input-button-container">
+          {/* Input field and Add Habit button */}
+          <input
+            className="habit-input"
+            type="text"
+            placeholder={t("enter new habit")}
+            onChange={habitInput}
+            value={habit}
+          />
+          <button className="add-habit" onClick={addHabitLocal}>
+            <img className="plus" src="/plus.png" /><br />{t("Add Habit")}
+          </button>
+        </div>
+        {/* Delete All Habits button */}
+        <button className="delete-habit" onClick={deleteAllHabits}>
+          <img className="delete-trash-icon" src="/trashcan.png" />{t("Delete All My Habits")}
+        </button>
       </div>
     </>
   );
 };
 
-// SUMMARY
+

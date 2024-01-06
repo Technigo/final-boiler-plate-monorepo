@@ -1,10 +1,16 @@
 .add-habits-container {
     display: flex;
-    flex-direction: column;
+    flex-direction: column; 
     gap: 10px;
-    width: 250px;
     padding: 40px;
     padding-left: 0px;
+}
+
+.input-button-container {
+    display: flex;
+    flex-direction: row; 
+    align-items: center; 
+    gap: 10px; 
 }
 
 .add-habit {
@@ -21,22 +27,41 @@
     padding: 5px;
     font-family: 'Poppins', sans-serif;
     font-size: 12px;
+    flex-grow: 1; 
+}
+
+.add-habit {
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    width: auto; 
+    padding: 5px 10px; 
+    font-size: 13px;
+    border: none;
+    background-color: #f0e9dc; 
+    cursor: pointer; 
+    font-family: 'Poppins', sans-serif;
+    font-weight: bold;
 }
 
 .add-habit:hover {
-    border: none;
+    background-color: #e0e0e0; 
 }
 
 .plus {
-    width: 30px;
+    width: 15px; 
+    margin-right: 5px; 
 }
 
 .delete-habit {
-    border: red dotted 2px;
-    margin-top: 30px;
-    color: red;
+    border: #3EC3CE dotted 2px;
+    color: #3EC3CE;
     background-color: transparent;
     font-family: 'Poppins', sans-serif;
+    font-weight: bold;
+    padding: 5px 10px; 
+    width: auto; 
+    align-self: center; 
 }
 
 .delete-trash-icon {
