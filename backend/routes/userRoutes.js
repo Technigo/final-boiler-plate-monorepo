@@ -7,6 +7,7 @@ import {
   getAllUsersController,
   getUserProfileController,
   updateUserController,
+  updateImageController,
   deleteUserController
 } from "../controllers/userController"; // Import controller functions for user registration and login
 
@@ -23,10 +24,13 @@ router.post("/login", loginUserController); // When a POST request is made to /l
 router.get("/users", getAllUsersController);
 
 // DISPLAY PROFILE ROUTE: Handle user profile display
-router.get("/users/:userId", parser.single('image'), getUserProfileController);
+router.get("/users/:userId", parser.single("image"), getUserProfileController);
 
 // UPDATE ROUTE: Handle user profile update
-router.put("/users/:userId", parser.single('image'), updateUserController);
+router.put("/users/:userId", parser.single("image"), updateUserController);
+
+// UPDATE ROUTE: Handle user image update
+router.put("/update-image/:userId", parser.single("image"), updateImageController);
 
 // DELETE ROUTE: Hander user removal
 router.delete("/users/:userId", deleteUserController);

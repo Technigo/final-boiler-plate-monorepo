@@ -35,11 +35,10 @@ export const Home = () => {
        <Navbar menuItems={[{path: "/search", name: "Search"} ,{path: "/setting", name: "Profile Setting"}, {path: "/manage-your-ads", name: "Your Products"}, {path: "/about", name: "About"} , {path: "/terms", name: "Terms"} ,{name: "Logout", onClick: () => {
         handleLogout()
         navigate("/login")
-        }} ]} menuDesks={[{path: "/setting", name: "Profile Setting"},{path: "/terms", name: "Terms"} , {path: "/about", name: "About"}, {name: "Logout", onClick: () => {
+        }} ]} menuDesks={[{path: "/settings", name: "Profile Settings"},{path: "/terms", name: "Terms"} , {path: "/about", name: "About"}, {name: "Logout", onClick: () => {
         handleLogout()
         navigate("/login")
         }} ]}/>
-      <BackArrow />
       {/* Render the search bar */}
       <Link to="/search">
         <SearchBar />

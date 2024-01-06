@@ -27,8 +27,8 @@ export const userStore = create((set) => ({
   introduction: "",
   setIntroduction: (introduction) => set({ introduction }),
 
-  products: [],
-  setProducts: (products) => set({ products }),
+  // products: [],
+  // setProducts: (products) => set({ products }),
 
   image: defaultProfileImage,
   setImage: (image) => set({ image }),
@@ -221,7 +221,7 @@ export const userStore = create((set) => ({
             email: data.response.email,
             location: data.response.location,
             introduction: data.response.introduction,
-            products: data.response.products,
+            // products: data.response.products,
             image: data.response.image 
           }));
           // Return the profile data for further use in the component
@@ -269,7 +269,7 @@ export const userStore = create((set) => ({
           username: data.response.username,
           location: data.response.location,
           introduction: data.response.introduction,
-          products: data.response.products,
+          // products: data.response.products,
           image: data.response.image 
         }));
         // Return the profile data for further use in the component
@@ -296,8 +296,87 @@ export const userStore = create((set) => ({
     }
   },
 
-  // FUNCTION TO HANDLE USER'S OWN PROFILE UPDATE (for each user to update their own profile settings)
-  handleProfileUpdate: async (isLoggedin, userId, updatedProfileData) => {
+  // FUNCTION TO HANDLE USER'S OWN PROFILE UPDATE EXCEPT IMAGE (for each user to update their own profile settings)
+  // handleProfileUpdate: async (isLoggedin, userId,  => {
+  //   // Check if the user is logged in and display message if they are not
+  //   if (!isLoggedin) {
+  //     Swal.fire({
+  //       title: "Error!",
+  //       text: "Please log in to update your profile",
+  //       icon: "error"
+  //     });
+  //     return;
+  //   } 
+    
+  //   // If they are logged in, send a POST request to the update endpoint with user data. 
+  //   const formData = new FormData();
+  //   if (email) {
+  //     formData.append("email", email);
+  //   }
+
+  //   if (password) {
+  //     formData.append("password", password);
+  //   }
+
+  //   if (location) {
+  //     formData.append("location", location);
+  //   }
+
+  //   if (introduction) {
+  //     formData.append("introduction", introduction);
+  //   }
+
+
+  //   // formData.append("products", products);
+  
+  //   // Append image if it exists
+  //   if (image) {
+  //     formData.append("image", image);
+  //   }
+
+  //   try { 
+  //     const response = await fetch(`${apiEnv}/users/${userId}`, {
+  //       method: "PUT",
+  //       body: formData,
+  //     });
+
+  //     // Parse the response data as JSON.
+  //     const data = await response.json();
+  //     console.log(data);
+  //     if (data.success) {
+  //       // Update relevant states
+  //       set((state) => ({
+  //         ...state,
+  //         
+  //         // password: data.response.password
+  //       })
+  //     );
+  //       // Display a success alert
+  //       Swal.fire({
+  //         title: "Congratulations!",
+  //         text: "User profile update successful",
+  //         icon: "success"
+  //       });
+  //     } else {
+  //       // Display an error message from the server or a generic message
+  //       Swal.fire({
+  //         title: "Error!",
+  //         text: data.response || "User profile update failed",
+  //         icon: "error"
+  //       });
+  //     }
+  //   } catch (error) {
+  //     // Handle and log any login errors
+  //     console.error("Profile update error: ", error);
+  //     Swal.fire({
+  //       title: "Error!",
+  //       text: "An error occurred during profile update",
+  //       icon: "error"
+  //     });
+  //   }
+  // },
+
+  handleProfileUpdate: async (isLoggedin, userId, password, email, location, introduction) => {
     // Check if the user is logged in and display message if they are not
     if (!isLoggedin) {
       Swal.fire({
@@ -308,19 +387,26 @@ export const userStore = create((set) => ({
       return;
     } 
     
-    // If they are logged in, send a POST request to the update endpoint with user data. 
+    // If they are logged in, send a PUT request to the update endpoint with user data. 
     const formData = new FormData();
-    formData.append("email", updatedProfileData.email);
-    formData.append("password", updatedProfileData.password);
-    formData.append("location", updatedProfileData.location);
-    formData.append("introduction", updatedProfileData.introduction);
-    formData.append("products", updatedProfileData.products);
-  
-    // Append image if it exists
-    if (updatedProfileData.image) {
-      formData.append("image", updatedProfileData.image);
+    if (password) {
+      formData.append("password", password);
+    }
+    
+    if (email) {
+      formData.append("email", email);
     }
 
+    if (location) {
+      formData.append("location", location);
+    }
+
+    if (introduction) {
+      formData.append("introduction", introduction);
+    }
+
+    // formData.append("products", products);
+  
     try { 
       const response = await fetch(`${apiEnv}/users/${userId}`, {
         method: "PUT",
@@ -334,8 +420,11 @@ export const userStore = create((set) => ({
         // Update relevant states
         set((state) => ({
           ...state,
-          updatedProfileData,
-          password: data.response.password
+          password: data.response.password,
+          email: data.response.email,
+          location: data.response.location,
+          introduction: data.response.introduction
+          // image: image
         })
       );
         // Display a success alert
@@ -360,6 +449,58 @@ export const userStore = create((set) => ({
         text: "An error occurred during profile update",
         icon: "error"
       });
+    }
+  },
+
+  // FUNCTION TO HANDLE USER'S IMAGE UPDATE (for each user to update their own image)
+  handleImageUpdate: async (userId, selectedImage) => {
+    try {    
+      if (!selectedImage) {
+        // Handle case where no image is selected
+        console.error('No image selected for update');
+        return;
+      }
+
+      let imageUrl, imageId;
+      const formData = new FormData();
+      formData.append("image", selectedImage);
+
+      const imageResponse = await fetch(`${apiEnv}/update-image/${userId}`, {
+        method: "PUT",
+        body: formData,
+      });
+
+      // Parse the response data as JSON.
+      const imageData = await imageResponse.json();
+      console.log(imageData);
+      if (imageData.success) {
+        imageUrl = imageData.response.imageUrl;
+        imageId = imageData.response.imageId;
+        // Display a success alert
+        Swal.fire({
+          title: "Yay!",
+          text: "Image update successful",
+          icon: "success"
+        });
+        return imageUrl, imageId;
+      } else {
+        // Handle image upload failure
+        console.error('Image upload failed:', imageData.response || 'Unknown error');
+        Swal.fire({
+          title: "Error!",
+          text: imageData.response || "Unknown error",
+          icon: "error"
+        });
+        return null;
+      }        
+    } catch (error) {
+      console.error('Error updating image:', error);
+      Swal.fire({
+        title: "Error!",
+        text: "An error occurred during image update",
+        icon: "error"
+      });
+      return null;
     }
   },
 
@@ -405,7 +546,7 @@ export const userStore = create((set) => ({
           consent: false,
           location: "",
           introduction: "",
-          products: [],
+          // products: [],
           image: null,
           userId: null,
           accessToken: null, 
