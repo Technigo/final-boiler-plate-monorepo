@@ -170,3 +170,26 @@
 .message-box a:hover {
   text-decoration: underline;
 }
+
+
+/* Mobile */
+@media (max-width: 393px) {
+
+  .habits-container {
+    margin-left: 10px;
+    margin-right: 10px;
+    max-width: 390px;
+  }
+
+}
+
+/* Tablet */
+@media (min-width: 394px) and (max-width: 834px) {
+
+  .habits-container {
+    margin-left: 10px;
+    margin-right: 10px;
+    max-width: 800px;
+  }
+
+}

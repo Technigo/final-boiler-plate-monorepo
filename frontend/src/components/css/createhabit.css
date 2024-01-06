@@ -84,3 +84,12 @@
     width: 14px;
     padding-right: 8px;
 }
+
+/* Mobile */
+@media (max-width: 393px) {
+
+    .add-habits-container {
+        width: 100%;
+    }
+
+}
