@@ -18,7 +18,7 @@ const ArticlesFront = () => {
                     <Link key={index} to="/articles">
                         <div>
                             <img src={article.imageM} alt={article.name} />
-                            <h3>{article.name}</h3>
+                            <h3>{t(article.name)}</h3>
                         </div>
                     </Link>
                 ))}

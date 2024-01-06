@@ -18,8 +18,8 @@ const ArticlesFrontMobile = () => {
                     <Link key={index} to="/articles">
                         <div className='articles-displaymobile'>
                             <img src={article.imageS} alt={article.name} />
-                            <h3>{article.name}</h3>
-                            <p>{article.readmore}</p>
+                            <h3>{t(article.name)}</h3>
+                            <p>{t(article.readmore)}</p>
                             <hr />
                         </div>
                     </Link>

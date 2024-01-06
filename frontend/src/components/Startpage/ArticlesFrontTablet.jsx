@@ -18,8 +18,8 @@ const ArticlesFrontTablet = () => {
                     <Link key={index} to="/articles">
                         <div className='articles-displaytablet'>
                             <img src={article.imageL} alt={article.name} />
-                            <h3>{article.name}</h3>
-                            <p>{article.readmore}</p>
+                            <h3>{t(article.name)}</h3>
+                            <p>{t(article.readmore)}</p>
                             <hr />
                         </div>
                     </Link>

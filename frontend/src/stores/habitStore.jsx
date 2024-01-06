@@ -45,16 +45,17 @@ export const habitStore = create((set, get) => ({
   // New action to fetch habits
   fetchHabits: async () => {
     try {
-      // Send a GET request to the backend API to fetch Habits
+      // Indicate that data is being loaded
+      set({ loading: true });
+
       const response = await fetch(`${apiEnv}/get`, {
         method: "GET",
         headers: {
           Authorization: localStorage.getItem("accessToken"),
         },
       });
-      // Check if the request was successful
+
       if (response.ok) {
-        // Parse the response data and set it as the Habits state
         const data = await response.json();
         set({ habits: data });
       } else {
@@ -62,13 +63,16 @@ export const habitStore = create((set, get) => ({
       }
     } catch (error) {
       console.error(error);
+    } finally {
+      // Indicate that data loading is complete
+      set({ loading: false });
     }
   },
+
 
   // New action to add a habit to the server and then to the store
   addHabitToServer: async (habit) => {
     try {
-      // Send a POST request to the backend API to add a new habit
       const response = await fetch(`${apiEnv}/add`, {
         method: "POST",
         headers: {
@@ -77,12 +81,12 @@ export const habitStore = create((set, get) => ({
         },
         body: JSON.stringify({ habit: habit }),
       });
-      // Parse the response data
+
       const data = await response.json();
-      // Check if the request was successful
+
       if (response.ok) {
-        // Add the new habit to the habits state
-        set((state) => ({ habits: [...state.habits, data] }));
+        // Fetch updated habits after adding a new habit
+        await get().fetchHabits();
       } else {
         console.error("Failed to add habit");
       }
@@ -90,6 +94,7 @@ export const habitStore = create((set, get) => ({
       console.error(error);
     }
   },
+
 
   // New action to update the boolean isDone value in the store
   handleEdit: async (id) => {
@@ -120,44 +125,44 @@ export const habitStore = create((set, get) => ({
     }
   },
   // New action to update the boolean isDone value in the store
-markFinished: async (id, finished) => {
-  console.log('markfinished', id, finished);
-  try {
-    // Send a PUT request to the backend API to update a habit by its ID
-    const response = await fetch(`${apiEnv}/finished/${id}`, {
-      method: "PUT",
-      headers: {
-        Authorization: localStorage.getItem("accessToken"),
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ finished: finished }),
-    });
-    // Parse the updated habit data
-    const updatedHabit = await response.json();
-    // Check if the request was successful
-    if (response.ok) {
-      // Update the Habit in the Habits state
-      set((state) => ({
-        habits: state.habits.map((habit) =>
-          habit._id === id ? { ...habit, ...updatedHabit } : habit
-        ),
-      }));
+  markFinished: async (id, finished) => {
+    console.log('markfinished', id, finished);
+    try {
+      // Send a PUT request to the backend API to update a habit by its ID
+      const response = await fetch(`${apiEnv}/finished/${id}`, {
+        method: "PUT",
+        headers: {
+          Authorization: localStorage.getItem("accessToken"),
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ finished: finished }),
+      });
+      // Parse the updated habit data
+      const updatedHabit = await response.json();
+      // Check if the request was successful
+      if (response.ok) {
+        // Update the Habit in the Habits state
+        set((state) => ({
+          habits: state.habits.map((habit) =>
+            habit._id === id ? { ...habit, ...updatedHabit } : habit
+          ),
+        }));
 
-      // After updating, check if all days are finished
-      const updatedHabits = get().habits;
-      const habit = updatedHabits.find((h) => h._id === id);
+        // After updating, check if all days are finished
+        const updatedHabits = get().habits;
+        const habit = updatedHabits.find((h) => h._id === id);
 
-      // If all days are marked as finished, call the resetFinishedDays action
-      if (habit && habit.finished.length === 7) {
-        await get().resetFinishedDays(id);
+        // If all days are marked as finished, call the resetFinishedDays action
+        if (habit && habit.finished.length === 7) {
+          await get().resetFinishedDays(id);
+        }
+      } else {
+        console.error("Failed to update habit");
       }
-    } else {
-      console.error("Failed to update habit");
+    } catch (error) {
+      console.error(error);
     }
-  } catch (error) {
-    console.error(error);
-  }
-},
+  },
 
   // Action to reset finished days and increment the finished weeks counter
   resetFinishedDays: async (id) => {

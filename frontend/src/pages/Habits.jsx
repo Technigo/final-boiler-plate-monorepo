@@ -48,12 +48,12 @@ export const Habits = () => {
   const finishedComponent = (habit) => {
     var dayElements = [];
     var finished = habit.finished.map((i) => moment(i).dayOfYear());
-    
+
     for (var i = 1; i <= 7; i++) {
       const day = moment().day(i);
       const active = finished.includes(day.dayOfYear());
       const dayLabel = day.format('dddd');
-  
+
       dayElements.push(
         <div key={dayLabel} className="day-container">
           <button
@@ -69,17 +69,17 @@ export const Habits = () => {
         </div>
       );
     }
-    
+
     return (
       <div className="days-wrapper">
         {dayElements}
         <div className="finished-weeks">
-          Finished weeks: {habit.finishedWeeks || 0}
+          {t("Finished weeks:")} {habit.finishedWeeks || 0}
         </div>
       </div>
     );
   };
-  
+
 
   // Function to get the background class based on the habit index
   const getHabitBackgroundClass = (index) => {
@@ -106,13 +106,13 @@ export const Habits = () => {
                   <div className="one-habit">
                     <div className="habit-name-container">
                       <p>{habit.habit}</p>
-                    </div>  
+                    </div>
                     {finishedComponent(habit)}
                     <div className="trash-container">
                       <button className="trash" onClick={() => deleteHabitById(habit._id)}>
                         <img src="./trashcan.png" alt="delete" className="trash-icon" />
                       </button>
-                    </div>  
+                    </div>
                   </div>
                 </div>
               ))
@@ -124,7 +124,7 @@ export const Habits = () => {
         ) : (
           <div className="access-denied-container">
             <div className="message-box">
-              <h2>{t("Oops! You need to be logged in.")}</h2> 
+              <h2>{t("Oops! You need to be logged in.")}</h2>
               <p>
                 {t("Access to My Page is exclusive to our members. Please")}
                 <Link to="/">{t("log in")}</Link>
