@@ -118,7 +118,8 @@ router.post('/complete-challenge', authenticateToken, async (req, res) => {
 
     res.status(200).send('Challenge completed successfully');
   } catch (error) {
-    res.status(500).send('Something went wrong');
+    console.error(error);
+    res.status(500).send(`Failed to complete the challenge: ${error.message}`);
   }
 });
 

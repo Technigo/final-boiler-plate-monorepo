@@ -1,11 +1,16 @@
 const mongoose = require('mongoose');
 
 const challengeSchema = new mongoose.Schema({
-  title: {
+challengeId: {
+    type: String, // You can choose the type that fits your needs (String, Number, etc.)
+    required: true,
+    unique: true,
+      },
+title: {
     type: String,
     required: true,
   },
-  description: {
+description: {
     type: String,
     required: true,
   },
