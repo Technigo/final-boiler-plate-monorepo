@@ -11,7 +11,7 @@ export const taskStore = create((set) => ({
   tasks: [], // Array of tasks
   userTasks: [], // Array of tasks created by the user
   volunteeredTasks: [], // Array of tasks volunteered by the user
-
+  //filteredTasks: [], // Array of tasks filtered by category and area
   // Initialize the userId state by accessing it from the userStore
   userId: userStore.userId,
 
@@ -138,20 +138,23 @@ export const taskStore = create((set) => ({
   // Filter tasks by category and area
   filterTasksByCategoryAndArea: async (category, area) => {
     try {
+      console.log("Filtering tasks...");
       // Get tasks from the state
       const allTasks = await taskStore.getState().tasks;
-
+      console.log("All tasks:", allTasks);
       // Filter tasks based on category and area
       const filteredTasks = allTasks.filter(
         (task) =>
           (category === "" || task.category === category) &&
           (area === "" || task.area === area)
       );
-
+      console.log("Filtered tasks:", filteredTasks);
       // Set the filtered tasks in the state
       set({ tasks: filteredTasks });
+      //return filteredTasks; // Return the filtered tasks
     } catch (error) {
       console.error("Error filtering tasks:", error);
+      return []; // Return an empty array if there's an error
     }
   },
 

@@ -3,9 +3,10 @@ import { useEffect } from "react";
 import { taskStore } from "../stores/taskStore";
 import { userStore } from "../stores/userStore";
 import { useNavigate } from "react-router-dom";
-import { CreateTask } from "../components/CreateTask";
+// import { CreateTask } from "../components/CreateTask";
 import { FeedTaskCard } from "../components/TaskCards/FeedTaskCard";
-import { FilterTaskFeed } from "../components/FilterTaskFeed";
+// import { FilterTaskFeed } from "../components/FilterTaskFeed";
+import { HandleTaskTabs } from "../components/HandleTaskTabs";
 import styled from "styled-components";
 
 const StyledTaskPage = styled.div`
@@ -32,8 +33,8 @@ const StyledTaskFields = styled.div`
     flex-direction: row;
     align-items: flex-start;
     justify-content: center;
-    gap: 100px;
-    margin-bottom: 30px;
+    //gap: 100px;
+    //margin-bottom: 30px;
     width: 750px;
   }
 `;
@@ -43,7 +44,8 @@ const StyledTaskCreator = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 10px;
+  gap: 20px;
+  margin-bottom: 30px;
 `;
 
 const StyledTaskText = styled.div`
@@ -81,8 +83,10 @@ export const Tasks = () => {
   // Text content for the heading and paragraphs.
   const text = {
     heading: "In Need, In Deed",
-    intro: "Do you need an extra hand?",
-    p: "Share it with the community and get the assistance you need! ",
+    intro: "Do you need an extra hand? Or do you want to help someone?",
+    p: "Then Deed Hub is the place to be!",
+    // p: "Share it with the community and get the assistance you need!",
+    deeds: "Up-for-grabs",
   };
 
   // Access the 'tasks' and 'fetchTasks' functions from the 'taskStore'.
@@ -139,10 +143,12 @@ export const Tasks = () => {
             <p>{text.p}</p>
           </StyledTaskText>
           {/* Render the 'CreateTask' component to add new tasks. */}
-          <CreateTask />
+          {/* <CreateTask /> */}
+          <HandleTaskTabs />
         </StyledTaskCreator>
-        <FilterTaskFeed />
+        {/* <FilterTaskFeed /> */}
       </StyledTaskFields>
+      <h3>{text.deeds}</h3>
       <CardWrapper>
         {/* Conditional rendering based on the number of tasks. */}
         {tasks.length === 0 ? (

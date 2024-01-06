@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { taskStore } from "../stores/taskStore";
+import aHelpingHandLogotype from "/a-helping-hand-logotype.png";
 import styled from "styled-components";
 
 const StyledFilterTaskFeed = styled.div`
@@ -8,10 +9,32 @@ const StyledFilterTaskFeed = styled.div`
   align-items: center;
   text-align: center;
   gap: 10px;
-  margin-bottom: 30px;
+  /* margin-bottom: 30px; */
+  height: 400px;
+
+  @media screen and (min-width: 600px) {
+    height: 300px;
+  }
 
   @media screen and (min-width: 1000px) {
-    margin-top: 78px;
+    width: 700px;
+  }
+`;
+
+const StyledLogotype = styled.img`
+  width: 75px;
+`;
+
+const StyledFilters = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  margin-top: 20px;
+
+  @media screen and (min-width: 600px) {
+    flex-direction: row;
+    gap: 50px;
   }
 `;
 
@@ -28,17 +51,6 @@ const StyledSelects = styled.select`
   }
 `;
 
-const StyledFilters = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 10px;
-
-  @media screen and (min-width: 1000px) {
-    flex-direction: row;
-  }
-`;
-
 export const FilterTaskFeed = () => {
   const [category, setCategory] = useState("");
   const [area, setArea] = useState("");
@@ -52,19 +64,46 @@ export const FilterTaskFeed = () => {
     setFilteredTasks(tasks);
   };
 
+  // // Handler for category select change
+  // const handleCategoryChange = (e) => {
+  //   setCategory(e.target.value);
+  //   filterTasks(e.target.value, area); // Filter tasks based on new category
+  // };
+
+  // // Handler for area select change
+  // const handleAreaChange = (e) => {
+  //   setArea(e.target.value);
+  //   filterTasks(category, e.target.value); // Filter tasks based on new area
+  // };
+
   useEffect(() => {
     filterTasks(category, area);
   }, [category, area]);
 
   return (
     <StyledFilterTaskFeed>
-      <p>Or do you want to make a good deed and offer a helping hand?</p>
+      <p>
+        {/* Many in our community might need some sort of assistance. A Helping Hand
+        is all about connecting people. */}
+        A Helping Hand is all about connecting people. Take the opportunity to
+        make someone&apos;s day by offering a helping hand!
+      </p>
+      <StyledLogotype
+        src={aHelpingHandLogotype}
+        className="logotype"
+        alt="A Helping Hand Logotype"
+      />
+      <p>
+        You can find the deeds you have offered to volunteer to on your profile
+        page.
+      </p>
 
       <StyledFilters>
         {/* Filter tasks by category */}
         <StyledSelects
           className="category-select"
           type="select"
+          // onChange={handleCategoryChange}
           onChange={(e) => setCategory(e.target.value)}
           value={category}
         >
@@ -82,6 +121,7 @@ export const FilterTaskFeed = () => {
         <StyledSelects
           className="area-select"
           type="select"
+          // onChange={handleAreaChange}
           onChange={(e) => setArea(e.target.value)}
           value={area}
         >

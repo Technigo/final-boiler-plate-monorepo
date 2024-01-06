@@ -7,7 +7,17 @@ import styled from "styled-components";
 const StyledCreateTask = styled.div`
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 10px;
+  height: 400px;
+
+  @media screen and (min-width: 600px) {
+    height: 300px;
+  }
+
+  @media screen and (min-width: 1000px) {
+    width: 700px;
+  }
 `;
 
 const StyledTaskTitleInput = styled.input`
@@ -20,6 +30,10 @@ const StyledTaskTitleInput = styled.input`
 const CreateTaskSelects = styled.div`
   display: flex;
   gap: 10px;
+
+  @media screen and (min-width: 600px) {
+    gap: 50px;
+  }
 `;
 
 const StyledSelects = styled.select`
@@ -27,7 +41,7 @@ const StyledSelects = styled.select`
   width: 120px;
   border: 1px solid var(--secondaryColor);
   border-radius: 20px;
-  gap: 10px;
+  /* gap: 10px; */
   padding: 5px;
 `;
 
@@ -44,6 +58,11 @@ const StyledTaskInput = styled.textarea`
     word-wrap: break-word; /* Wrap long words */
     text-align: left; /* Align text to the left */
     vertical-align: top; /* Align text to the top */
+  }
+
+  @media screen and (min-width: 600px) {
+    width: 350px;
+    height: 100px;
   }
 `;
 
@@ -143,11 +162,15 @@ export const CreateTask = () => {
   // Render the component content.
   return (
     <StyledCreateTask>
+      <p>
+        Share your need with the community! After posting, you will see the
+        status of your post in your profile page.
+      </p>
       {/* Create an input field for entering the task description. */}
       <StyledTaskTitleInput
         className="task-input"
         type="text"
-        placeholder="Enter descriptive title"
+        placeholder="Enter a descriptive title"
         onChange={taskTitle}
         value={task}
       />
@@ -189,7 +212,7 @@ export const CreateTask = () => {
       <StyledTaskInput
         className="task-input"
         type="text"
-        placeholder="Give a clear and detailed description of the help you need"
+        placeholder="Give a clear and detailed description of the help you need."
         onChange={taskDescription}
         value={description}
       />

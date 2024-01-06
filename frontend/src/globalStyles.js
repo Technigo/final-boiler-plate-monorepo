@@ -25,6 +25,7 @@ svg {
   
   body {
   height: 100%;
+  /* background: floralwhite; */
   /*background: #f2f3f4;*/
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
