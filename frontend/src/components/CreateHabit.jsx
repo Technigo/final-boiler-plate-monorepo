@@ -40,7 +40,7 @@ export const CreateHabit = () => {
             value={habit}
           />
           <button className="add-habit" onClick={addHabitLocal}>
-            <img className="plus" src="/plus.png" /><br />{t("Add Habit")}
+            <img className="plus" src="/plus.png" />{t("Add Habit")}
           </button>
         </div>
         {/* Delete All Habits button */}

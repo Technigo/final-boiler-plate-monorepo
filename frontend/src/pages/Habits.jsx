@@ -83,7 +83,7 @@ export const Habits = () => {
 
   // Function to get the background class based on the habit index
   const getHabitBackgroundClass = (index) => {
-    const classes = ['habit-bg-first', 'habit-bg-second', 'habit-bg-third'];
+    const classes = ['habit-bg-first', 'habit-bg-second', 'habit-bg-third', 'habit-bg-forth'];
     return classes[index % classes.length];
   };
 
