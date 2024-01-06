@@ -99,7 +99,7 @@ export const recipeStore = create((set, get) => ({
 
       const response = await fetch(`${api}/openai/generateText`, {
         method: 'POST',
-        body: JSON.stringify({ prompt: `Ingredients: ${formattedIngredients}`}),
+        body: JSON.stringify({ prompt: `${formattedIngredients}`}),
         headers: { 'Content-Type': 'application/json' },
       })
 
