@@ -1,6 +1,3 @@
-//Create an admin registration function, which is either protected by an existing admin token or performed manually through scripts or directly in the database. - HOW?
-
-// Admin Registration Endpoint
 import { AdminModel } from '../models/AdminModel';
 import asyncHandler from 'express-async-handler';
 import bcrypt from 'bcrypt';
@@ -11,49 +8,6 @@ const generateToken = (id) => {
         expiresIn: '24h' // Token expires in 24 hours
     });
 };
-
-export const registerAdminController = asyncHandler(async (req, res) => {
-    const { username, password, email } = req.body;
-
-    try {
-        if (!username || !email || !password) {
-            res.status(400);
-            throw new Error("Please add all fields");
-        }
-
-        const existingAdmin = await AdminModel.findOne({ $or: [{ username }, { email }] });
-        if (existingAdmin) {
-            res.status(400);
-            throw new Error(`Admin with ${existingAdmin.username === username ? "username" : "email"} already exists`);
-        }
-
-        const salt = bcrypt.genSaltSync(10);
-        const hashedPassword = bcrypt.hashSync(password, salt);
-
-        const newAdmin = new AdminModel({
-            username,
-            email,
-            password: hashedPassword,
-        });
-
-        await newAdmin.save();
-
-        const token = generateToken(newAdmin._id);
-
-        res.status(201).json({
-            success: true,
-            response: {
-                username: newAdmin.username,
-                email: newAdmin.email,
-                id: newAdmin._id,
-                token
-            },
-        });
-    } catch (e) {
-        res.status(500).json({ success: false, response: e.message });
-    }
-});
-
 
 export const loginAdminController = asyncHandler(async (req, res) => {
     const { username, password } = req.body;

@@ -12,11 +12,7 @@ const generateToken = (id) => {
   });
 };
 
-// Actual Functions here
-
-// -----------------------
-// -----------------------
-
+// ? techigo code //
 // @desc    Register new user
 // @route   POST api/register
 // @access  Public
@@ -83,11 +79,7 @@ export const registerUserController = asyncHandler(async (req, res) => {
   }
 });
 
-// -----------------------
-// -----------------------
-// -----------------------
-// -----------------------
-// -----------------------
+
 
 // @desc    Login Existing User
 // @route   POST api/login

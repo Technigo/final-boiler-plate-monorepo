@@ -6,6 +6,12 @@
     "start": "babel-node server.js",
     "dev": "nodemon server.js --exec babel-node"
   },
+  {
+    "type": "module",
+    "scripts": {
+      "start": "node server.js"
+    },
+  }
   "author": "",
   "license": "ISC",
   "dependencies": {

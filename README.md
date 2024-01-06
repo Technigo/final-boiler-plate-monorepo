@@ -31,10 +31,3 @@ We chose to use MongoDB Atlas for storing our data as an API because the databas
 
 
 
-
-
-
-
-
-
-
