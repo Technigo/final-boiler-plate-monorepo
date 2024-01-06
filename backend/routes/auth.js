@@ -4,7 +4,7 @@ const express = require('express');
 const bcrypt = require('bcryptjs'); // Library for hashing passwords
 const jwt = require('jsonwebtoken'); // JSON Web Token for user authentication
 const User = require('../models/user.js'); // Importing the User model
-const Favorites = require('../models/favorites');
+const Challenge = require('../models/challenges.js');
 const router = express.Router(); // Creating an instance of an Express router
 import { verify } from 'jsonwebtoken';
 
@@ -85,104 +85,41 @@ router.post('/signin', async (req, res) => {
   }
 });
 
-
-// Add other authentication-related endpoints as needed
-
-// routes/playground.js
-//Create an endpoint to add a playground to favorites:
-//In your backend, create a new route to handle adding a playground to a user's favorites. Modify your routes accordingly:
-
-
-// Endpoint to add a playground to favorites
-// Endpoint to add a playground to favorites
-// router.post('/add-to-favorites',authenticateToken, async (req, res) => {
-//   try {
-//     // Check if the playground already exists in the user's favorites
-//     const user = await User.findById(req.userId).populate('favorites');
-
-//     // Check if the user was found
-//     if (!user) {
-//       return res.status(404).send('User not found');
-//     }
-
-//     const existingFavorite = user.favorites.find((fav) => fav.apiId === req.body.apiId);
-
-//     if (existingFavorite) {
-//       return res.status(400).send('Playground already in favorites');
-//     }
-
-//     // Create a new favorite and add it to the user's favorites
-//     const newFavorite = new Favorites({ apiId: req.body.apiId, like: true });
-//     await newFavorite.save();
-    
-//     user.favorites.push(newFavorite);
-//     await user.save();
-
-//     res.status(201).json({ message: 'Playground added to favorites successfully' });
-//   } catch (error) {
-//     console.error(error);
-//     res.status(500).send('Something went wrong');
-//   }
-// });
-
-// routes/playground.js
-
-// Endpoint to get all favorites for the authenticated user
-router.get('/get-my-favorites', authenticateToken, async (req, res) => {
+// Endpoint to complete a challenge
+router.post('/complete-challenge', authenticateToken, async (req, res) => {
   try {
-    // Find the user by ID and populate the favorites array
-    const user = await User.findById(req.userId).populate('favorites');
-
-    // Check if the user was found
-    if (!user) {
-      return res.status(404).send('User not found');
+    // Check if the challengeId is provided in the request body
+    if (!req.body.challengeId) {
+      return res.status(400).send('Challenge ID is required');
     }
 
-    // Send the favorites array in the response
-    res.status(200).json(user.favorites);
-  } catch (error) {
-    console.error(error);
-    res.status(500).send('Something went wrong');
-  }
-});
-
-// Add other playground-related endpoints as needed
-
-
-// New test-code
-router.post('/add-to-favorites', authenticateToken, async (req, res) => {
-  try {
-    // Check if the playground already exists in the user's favorites
+    // Find the user based on the decoded userId from the token
     const user = await User.findById(req.userId);
-
-    // Check if the user was found
     if (!user) {
       return res.status(404).send('User not found');
     }
 
-    const existingFavorite = user.favorites.find((fav) => fav.equals(req.body.apiId));
-
-    if (existingFavorite) {
-      return res.status(400).send('Playground already in favorites');
+    // Check if the challengeId is valid
+    const challenge = await Challenge.findById(req.body.challengeId);
+    if (!challenge) {
+      return res.status(404).send('Challenge not found');
     }
 
-    // Create a new favorite and add its ObjectId to the user's favorites
-    const newFavorite = new Favorites({ apiId: req.body.apiId, like: true });
-    await newFavorite.save();
+    // Check if the challenge is already completed by the user
+    if (user.completedChallenges.includes(req.body.challengeId)) {
+      return res.status(400).send('Challenge already completed by the user');
+    }
 
-    user.favorites.push(newFavorite._id);
+    // Add the challengeId to the user's completedChallenges array
+    user.completedChallenges.push(req.body.challengeId);
+
+    // Save the updated user
     await user.save();
 
-    res.status(201).json({ message: 'Playground added to favorites successfully' });
+    res.status(200).send('Challenge completed successfully');
   } catch (error) {
-    console.error(error);
     res.status(500).send('Something went wrong');
   }
 });
-
-
-
-// Add other playground-related endpoints as needed
-
 
 module.exports = router; // Exporting the router for use in other parts of the application
