@@ -7,8 +7,8 @@
     letter-spacing: 1px;
   } */
 
- button {
-    font-family: var(--josefin);
-    letter-spacing: 1px;
-    cursor: pointer;
-  }
+button {
+  font-family: var(--josefin);
+  letter-spacing: 1px;
+  cursor: pointer;
+}

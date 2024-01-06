@@ -1,23 +1,23 @@
 .register-wrapper {
-    height: 100vh;
-    font-family: var(--montserrat);
-  }
-  
-  .user-registration {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .user-registration .input-container {
-    margin-bottom: 2.8rem;
-  }
-  
-  .signup-btn {
-    background: var(--chalk);
-    backdrop-filter: blur(2px);
-    color: var(--forrest);
-  }
-  
-  .signup-btn:hover {
-    border: 2px solid var(--spring);
-  }
+  height: 100vh;
+  font-family: var(--montserrat);
+}
+
+.user-registration {
+  display: flex;
+  flex-direction: column;
+}
+
+.user-registration .input-container {
+  margin-bottom: 2.8rem;
+}
+
+.signup-btn {
+  background: var(--chalk);
+  backdrop-filter: blur(2px);
+  color: var(--forrest);
+}
+
+.signup-btn:hover {
+  border: 2px solid var(--spring);
+}

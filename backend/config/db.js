@@ -1,5 +1,5 @@
 import mongoose from "mongoose"; // Import the 'mongoose' library to work with MongoDB.
-import asyncHandler from "express-async-handler";
+import asyncHandler from "express-async-handler"; // Import the 'express-async-handler' library to handle errors.
 import dotenv from "dotenv"; // Import the 'dotenv' library to load environment variables from a .env file.
 
 // Load environment variables from the .env file.

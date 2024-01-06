@@ -1,7 +1,6 @@
-import mongoose from "mongoose";
-import crypto from "crypto"; // Imports the Node.js crypto library for generating secure random strings.
+import mongoose from "mongoose"; // Imports the mongoose dependency.
 
-const { Schema } = mongoose;
+const { Schema } = mongoose; // Destructures the Schema property from the mongoose object.
 
 // Creates a new Mongoose schema with the following fields:
 const userSchema = new Schema(
@@ -19,20 +18,15 @@ const userSchema = new Schema(
       required: true, // Indicates that 'password' is a required field.
       minlength: 6, // Sets a minimum length of 6 characters for 'password'.
     },
+    // Define the 'email' field with a String data type.
     email: {
-      type: String,
-      required: true,
-      unique: true,
+      type: String, // Specifies that 'email' should be a string.
+      required: true, // Indicates that 'email' is a required field.
+      unique: true, // Ensures that 'email' values are unique.
     },
-    // favourites: [
-    //   {
-    //     type: mongoose.Schema.Types.ObjectId,
-    //     ref: "Favourites",
-    //   },
-    // ],
     // Defines the 'role' field with a String data type.
     role: {
-      type: String,
+      type: String, // Specifies that 'role' should be a string.
       enum: ["user", "admin"], // Specifies that 'role' can only be either "user" or "admin".
       default: "user", // Sets the default value of 'role' to "user".
     },

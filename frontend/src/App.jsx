@@ -7,13 +7,12 @@ export const App = () => {
   return (
     <>
       <BrowserRouter>
-      <Header />
-      <main>
-        <Routes>{routes}</Routes>
-      </main>
-      <Footer/>
+        <Header />
+        <main>
+          <Routes>{routes}</Routes>
+        </main>
+        <Footer />
       </BrowserRouter>
     </>
   );
- 
 };

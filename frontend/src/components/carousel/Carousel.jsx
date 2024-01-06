@@ -1,9 +1,5 @@
-import React from 'react'
+import React from "react";
 
 export const Carousel = () => {
-  return (
-    <div className="carousel-wrapper">
-        
-    </div>
-  )
-}
+  return <div className="carousel-wrapper"></div>;
+};

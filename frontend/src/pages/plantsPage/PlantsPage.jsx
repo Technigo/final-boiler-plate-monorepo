@@ -1,15 +1,20 @@
 import { plantStore } from "../../stores/plantStore";
 import { useState, useEffect } from "react";
 
-import { Link, useParams } from "react-router-dom"
-import { FilteredNav } from "./FilteredNav"
-import { PlantCard } from "./PlantCard"
+import { Link, useParams } from "react-router-dom";
+import { FilteredNav } from "./FilteredNav";
+import { PlantCard } from "./PlantCard";
 
 import "./PlantsPage.css";
 
 export const PlantsPage = () => {
-
-  const allCategories = ["Shade-Loving", "Easy", "Pet-Friendly", "Climbing", "Popular"];
+  const allCategories = [
+    "Shade-Loving",
+    "Easy",
+    "Pet-Friendly",
+    "Climbing",
+    "Popular",
+  ];
 
   const { category } = useParams();
 
@@ -22,12 +27,11 @@ export const PlantsPage = () => {
     if (category) {
       fetchPlantsByCategory(category);
     } else {
-    fetchPlantsByCategory(null);
+      fetchPlantsByCategory(null);
     }
   }, [fetchPlantsByCategory, category]);
 
   console.log(category);
-
 
   return (
     <section className="categories-wrapper">
@@ -43,21 +47,20 @@ export const PlantsPage = () => {
         {/* <FilteredNav /> */}
         {allCategories.map((category) => {
           return (
-          <div key={category}>
-          <Link to={`/plants/all-plants/${category.toLowerCase()}`}>{category}</Link>
-          </div>
-          )
+            <div key={category}>
+              <Link to={`/plants/all-plants/${category.toLowerCase()}`}>
+                {category}
+              </Link>
+            </div>
+          );
         })}
-  <nav className="options-container">
-    
-    <Link to="/plants/all-plants">
-    <button>
-      Clear filters
-    </button>
-    </Link>
-  </nav>
+        <nav className="options-container">
+          <Link to="/plants/all-plants">
+            <button>Clear filters</button>
+          </Link>
+        </nav>
         <div className="products-wrapper">
-          <PlantCard plants={plants}/>
+          <PlantCard plants={plants} />
         </div>
       </div>
     </section>

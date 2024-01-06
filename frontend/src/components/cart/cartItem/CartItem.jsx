@@ -1,26 +1,30 @@
 import { cartStore } from "../../../stores/cartStore";
 
-export const CartItem = ({ index, img, title, price, botanicalName, quantity}) => {
+export const CartItem = ({
+  index,
+  img,
+  title,
+  price,
+  botanicalName,
+  quantity,
+}) => {
+  const { removeFromCart } = cartStore();
 
-    const { removeFromCart } = cartStore()
-
-    const handleRemoveFromCart = (index) => {
-        removeFromCart(index);
-        console.log(index);
-      };
+  const handleRemoveFromCart = (index) => {
+    removeFromCart(index);
+    console.log(index);
+  };
 
   return (
     <div className="cart-item" key={index}>
-            <img className="cart-img" src={img} alt="" />
-            <div className="cart-item-text">
-            <h3>{title}</h3>
-            <p>{botanicalName}</p>
-            <p>€{price}</p>
-            <p>Quantity {quantity}</p>
-            <button onClick={() => handleRemoveFromCart(index)}>
-              Remove
-            </button>
-            </div>
-          </div>
-  )
-}
+      <img className="cart-img" src={img} alt="" />
+      <div className="cart-item-text">
+        <h3>{title}</h3>
+        <p>{botanicalName}</p>
+        <p>€{price}</p>
+        <p>Quantity {quantity}</p>
+        <button onClick={() => handleRemoveFromCart(index)}>Remove</button>
+      </div>
+    </div>
+  );
+};

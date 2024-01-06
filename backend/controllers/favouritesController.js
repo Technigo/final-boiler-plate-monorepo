@@ -24,9 +24,7 @@ const addFavourite = asyncHandler(async (req, res) => {
   //   return res.status(401).json({ message: "No user"})
   // }
 
-
   // const { plantId } = req.body;
-  
 
   // try {
 
@@ -34,7 +32,6 @@ const addFavourite = asyncHandler(async (req, res) => {
   //   if (!user) {
   //     return res.status(404).json({ message: 'User not found.' });
   //   }
-
 
   //   let favourites = await FavouriteModel.findOne({ user: userId });
 
@@ -54,44 +51,51 @@ const addFavourite = asyncHandler(async (req, res) => {
   // }
 
   // LAURA TESTAR KOMMENTERA UT START
-//   try {
-//     // Extract the task data from the request body
-//     const { plantID } = req.body;
-//     console.log(plantID);
-//     // Extract the accessToken from the request object, but it is not going to be from the req.body but, its going to be from the req.header
-//     const accessToken = req.header("Authorization"); // we are requesting the Authorization key from the headerObject
-//     // get the user and matchIt with the user from the db - remmeber that we are using the accessToken to do so :)
-//     const userFromStorage = await UserModel.findOne({
-//       accessToken: accessToken,
-//     });
-//     // Define var to pass new task
-//     const newFavourite = new FavouriteModel({
-//       likedPlants: plantID,
-//       user: userFromStorage,
-//     }).save();
-//     res.json(newFavourite);
-//   } catch (error) {
-//     res.status(500).json(error);
-//   }
-// });
+  //   try {
+  //     // Extract the task data from the request body
+  //     const { plantID } = req.body;
+  //     console.log(plantID);
+  //     // Extract the accessToken from the request object, but it is not going to be from the req.body but, its going to be from the req.header
+  //     const accessToken = req.header("Authorization"); // we are requesting the Authorization key from the headerObject
+  //     // get the user and matchIt with the user from the db - remmeber that we are using the accessToken to do so :)
+  //     const userFromStorage = await UserModel.findOne({
+  //       accessToken: accessToken,
+  //     });
+  //     // Define var to pass new task
+  //     const newFavourite = new FavouriteModel({
+  //       likedPlants: plantID,
+  //       user: userFromStorage,
+  //     }).save();
+  //     res.json(newFavourite);
+  //   } catch (error) {
+  //     res.status(500).json(error);
+  //   }
+  // });
 
- // LAURA TESTAR KOMMENTERA UT  SLUT
+  // LAURA TESTAR KOMMENTERA UT  SLUT
 
   try {
     const { _id } = req.body;
     const plantID = _id;
     const accessToken = req.header("Authorization");
     // Verify accessToken and find user
-    const userFromStorage = await UserModel.findOne({ accessToken: accessToken });
+    const userFromStorage = await UserModel.findOne({
+      accessToken: accessToken,
+    });
     if (!userFromStorage) {
-      return res.status(401).json({ message: "Unauthorized access or invalid token" });
+      return res
+        .status(401)
+        .json({ message: "Unauthorized access or invalid token" });
     }
 
     let favourite = await FavouriteModel.findOne({ user: userFromStorage._id });
 
     if (!favourite) {
       // If no favourite list exists for this user, create a new one
-      favourite = new FavouriteModel({ user: userFromStorage._id, likedPlants: [] });
+      favourite = new FavouriteModel({
+        user: userFromStorage._id,
+        likedPlants: [],
+      });
     }
 
     // Check for duplicate plantID
@@ -107,7 +111,6 @@ const addFavourite = asyncHandler(async (req, res) => {
     res.status(500).json({ message: "An error occurred: " + error.message });
   }
 });
-
 
 export { addFavourite, getFavourites };
 

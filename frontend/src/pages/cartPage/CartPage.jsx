@@ -1,25 +1,31 @@
 import { cartStore } from "../../stores/cartStore";
 import { Link } from "react-router-dom";
-import { CartItem } from "../../components/cart/cartItem/cartItem";
-import { useEffect } from "react"
-import { OrderInfo } from "../../components/cart/OrderInfo"
+import { CartItem } from "../../components/cart/cartItem/CartItem";
+import { useEffect } from "react";
+import { OrderInfo } from "../../components/cart/OrderInfo";
 
 import "./CartPage.css";
 
 export const CartPage = () => {
-  const { cart, clearCart, total, calculateTotalPrice, freeDelivery, numberOfProducts } = cartStore();
+  const {
+    cart,
+    clearCart,
+    total,
+    calculateTotalPrice,
+    freeDelivery,
+    numberOfProducts,
+  } = cartStore();
 
-//   console.log("CART!:", cart);
-//   console.log("item-id's:", cart[0]._id);
-//   console.log("remove item id:", itemId);
-
+  //   console.log("CART!:", cart);
+  //   console.log("item-id's:", cart[0]._id);
+  //   console.log("remove item id:", itemId);
 
   const handleClearCart = () => {
     clearCart();
   };
 
   useEffect(() => {
-    calculateTotalPrice()
+    calculateTotalPrice();
   }, []);
 
   //console.log("TOTAL:", total);
@@ -32,14 +38,25 @@ export const CartPage = () => {
       {cart.map((item, index) => {
         return (
           <div key={index}>
-          <CartItem index={index} img={item.images.full_size_url} title={item.plant_title} botanicalName={item.botanical_name} price={item.price} quantity={1}/>
+            <CartItem
+              index={index}
+              img={item.images.full_size_url}
+              title={item.plant_title}
+              botanicalName={item.botanical_name}
+              price={item.price}
+              quantity={1}
+            />
           </div>
         );
       })}
       <OrderInfo />
       <button onClick={handleClearCart}>Clear Cart</button>
-      <Link to="/check-out" ><button>Proceed to checkout</button></Link>
-      <Link to="/plants/all-plants" ><button>continue shopping</button></Link>
+      <Link to="/check-out">
+        <button>Proceed to checkout</button>
+      </Link>
+      <Link to="/plants/all-plants">
+        <button>continue shopping</button>
+      </Link>
     </section>
   );
 };

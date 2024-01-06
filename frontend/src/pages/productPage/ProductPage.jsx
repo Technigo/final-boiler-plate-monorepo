@@ -15,7 +15,9 @@ export const ProductPage = () => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    setApiEndpoint(`https://plants-holm-witting-backend.onrender.com/api/plants/${id}`);
+    setApiEndpoint(
+      `https://plants-holm-witting-backend.onrender.com/api/plants/${id}`
+    );
     fetchSinglePlant().catch((error) => {
       console.error("Error fetching plant details", error);
       setError(error);
@@ -53,9 +55,14 @@ export const ProductPage = () => {
         <h4>Treatments & Facts</h4>
         <ul>
           <li>{singlePlant.careDetails && singlePlant.careDetails.watering}</li>
-          <li>{singlePlant.careDetails && singlePlant.careDetails.care_level}</li>
+          <li>
+            {singlePlant.careDetails && singlePlant.careDetails.care_level}
+          </li>
           <li>{singlePlant.careDetails && singlePlant.careDetails.light}</li>
-          <li>{singlePlant.careDetails && singlePlant.careDetails.care_description}</li>
+          <li>
+            {singlePlant.careDetails &&
+              singlePlant.careDetails.care_description}
+          </li>
         </ul>
       </div>
     </section>

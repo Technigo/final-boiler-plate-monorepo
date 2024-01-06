@@ -6,13 +6,13 @@ const favouriteSchema = new Schema({
   likedPlants: [
     {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "Plant"
+      ref: "Plant",
     },
   ],
   user: {
-    type: mongoose.Schema.Types.ObjectId, 
+    type: mongoose.Schema.Types.ObjectId,
     ref: "User",
-  }
+  },
 });
 
 export const FavouriteModel = mongoose.model("Favourite", favouriteSchema);
