@@ -1,14 +1,14 @@
 import { useEffect, useRef, useState, useCallback } from "react";
 import { adStore } from "../stores/adStore";
 import searchIcon from "../assets/search-icon.svg";
+import "./SearchBar.css"
 
-export const SearchBar = () => {
+export const SearchBar = ({setFilteredAds , searchTerm , setSearchTerm}) => {
     // Access the 'ads', 'getAllAds' from the 'advertStore'.
   const { ads, getAllAds } = adStore();
 
-  //Add search state
-  const [searchTerm, setSearchTerm] = useState("");
-  const [filteredAds, setFilteredAds] = useState([]);
+
+
   const inputRef = useRef()
   
   // Fetch ads when the component mounts
@@ -77,14 +77,6 @@ export const SearchBar = () => {
             onClick={handleSearch}
         />
       </div>
-        <div className="search-result">
-          {filteredAds.map((ad) => 
-            <div key={ad._id} className="search-item">
-              <img src={ad.image} alt={`${ad.title}`}/>
-              <div>{ad.title}</div>
-            </div>
-            )}
-        </div>
 
     </div>
   )

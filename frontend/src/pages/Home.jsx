@@ -38,6 +38,7 @@ export const Home = () => {
         handleLogout()
         navigate("/login")
         }} ]}/>
+
       {/* Render the search bar */}
       <Link to="/search">
         <SearchBar />

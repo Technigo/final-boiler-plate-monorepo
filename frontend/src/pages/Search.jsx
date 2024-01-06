@@ -1,6 +1,5 @@
 // Import necessary dependencies, components, and stores.
 import { useState } from "react";
-import "../pages/search.css";
 import { userStore } from "../stores/userStore";
 import { Footer } from "../components/Footer";
 import { AdCard } from "../components/AdCard";
@@ -9,6 +8,7 @@ import { Navbar } from "../components/Navbar";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import Swal from "sweetalert2";
+import BackArrow from "../components/reusableComponents/BackArrow";
 
 
 // Define the 'Search' functional component.
@@ -17,6 +17,7 @@ export const Search = () => {
   const [filteredAds, setFilteredAds] = useState([]);
   const isLoggedin = userStore((state) => state.isLoggedin);
   const handleLogout = userStore((state) => state.handleLogout);
+  const [searchTerm, setSearchTerm] = useState("");
 
   useEffect(() => {
     if (!isLoggedin) {
@@ -39,13 +40,15 @@ export const Search = () => {
         handleLogout()
         navigate("/login")
         }}  ]}/>
-      <SearchBar />
-      <h1 className="search-result">Search result</h1>
+        <BackArrow />
+      <SearchBar setFilteredAds={setFilteredAds} searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
+      {filteredAds.length > 0 && <h1 className="search-result">Search Result</h1>}
       <ul className="filtered-ads">
         {filteredAds.map((ad) => (
           <AdCard key={ad._id} ad={ad} />
         ))}
       </ul>
+      
       <Footer />
     </div>
     
