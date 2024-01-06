@@ -2,9 +2,9 @@
 import { create } from "zustand";
 
 // *** If we want to work in the localhost:
-// const api = "http://localhost:3001";
+const api = "http://localhost:3001";
 
-const api = "https://ai-recipes-collin-dieden.onrender.com"
+//const api = "https://ai-recipes-collin-dieden.onrender.com"
 
 // Define the recipeStore using Zustand's 'create' function
 export const recipeStore = create((set) => ({
@@ -27,6 +27,8 @@ export const recipeStore = create((set) => ({
       recipes: [...state.recipes, newRecipe],
     }));
   },
+  errorMessageGeneration: "Everything is ok", 
+  setErrorMessageGeneration: (errorMessageGeneration) => set({errorMessageGeneration}),
 
   fetchNewRecipe: async () => {
     try {
@@ -92,17 +94,21 @@ export const recipeStore = create((set) => ({
         headers: { 'Content-Type': 'application/json' },
       })
 
-      // Check if the response is not okay
-      if (!response.ok) {
-        throw new Error(`Error generating OpenAI completion. Status: ${response.status}`);
-      }
       const data = await response.json()
-
-      console.log(data.recipe)
-    
+      //Checking if data successful, otherwise showing the error message, written in openAiController
+      if (!data.success) {
+        console.error("Error generating OpenAI completion:", data.error);
+        //Updating the error message
+        set(() => ({ errorMessageGeneration: data.error || "An unexpected error occurred" }
+        ));
+      } else {
+         // Reset errorMessageGeneration if the generation was successful
+      set(() => ({ errorMessageGeneration: "" }));
+      }
 
     } catch (error) {
       console.error("Error generating OpenAI completion:", error);
+      set(() => ({ errorMessageGeneration: "An unexpected error occurred. Try again!" }));
     } finally {
       // Set isGenerating back to false once the operation is completed (either success or error)
       set(() => ({ isGenerating: false }));

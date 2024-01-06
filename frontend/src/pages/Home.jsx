@@ -15,7 +15,7 @@ export const Home = () => {
       <Header />
       <HeroSection />
       {isGenerating ? <div className="spinner-container-new"> {/*CSS for spinner in App.jcss and collectionRecipes.css*/}
-        <div className="spinner"></div>Just a minute away from your AI-generated delicious meal!</div> : (newRecipe && <NewRecipe />)} {/* Conditionally render NewRecipe only when newRecipe is truthy */}
+        <div className="spinner"></div><p>Just a minute away from your AI-generated delicious meal!</p></div> : (newRecipe && <NewRecipe />)} {/* Conditionally render NewRecipe only when newRecipe is truthy */}
       <CollectionRecipes />
       <Footer />
     </>

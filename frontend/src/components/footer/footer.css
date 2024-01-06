@@ -1,5 +1,5 @@
 .footer {
-    height: 16vh;
+    height: 17vh;
     padding: 1rem;
     background-color: #173e34;
     display: flex;
@@ -9,8 +9,12 @@
     gap: 5%;
 }
 
+.footer-logo {
+    width: 200px;  /*Provisorisk bredd jag satt*/
+}
+
 /* OBS! ÄNDRA DENNA NÄR ÄNDRAR TILL EV LOGO */
-.footer-title a {
+.footer-logo a {
     color: white;
 }
 

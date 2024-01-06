@@ -29,7 +29,7 @@ export const CollectionRecipes = () => {
   //loading state (Need to set this, so rendering doesn't happen BEFORE fetch!)
   if (loading) {
     return <div className="spinner-container">
-      <div className="spinner"></div>Loading AI-generated recipes. Be patient, this might take a minute or two!</div>;
+      <div className="spinner"></div><p>Loading AI-generated recipes. Be patient, this might take a minute or two!</p></div>;
   }
 
   // Slice the recipes array to get only the first 12 recipes

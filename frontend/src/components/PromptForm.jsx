@@ -5,7 +5,7 @@ import { recipeStore } from '../stores/recipeStore';
 // Define the PromptForm component
 export const PromptForm = () => {
     // Destructure the addNewRecipe function from the recipeStore
-    const { inputRecipe, setInputRecipe, fetchNewRecipe, generateRecipe } = recipeStore()
+    const { inputRecipe, setInputRecipe, fetchNewRecipe, generateRecipe,errorMessageGeneration } = recipeStore()
 
     //Handle userInput(ingredients) to make into array and split of 5 first words
     const handleUserInputToArray = (userInput) => {
@@ -48,6 +48,7 @@ export const PromptForm = () => {
                     onChange={(e) => setInputRecipe(e.target.value)}
                     required
                 ></textarea>
+                <h2>{errorMessageGeneration}</h2>
                 <button className="generate-button"type="submit">Create recipe using AI</button>
             </form>
         </div>
