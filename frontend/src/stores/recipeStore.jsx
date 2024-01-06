@@ -7,7 +7,7 @@ const api = "http://localhost:3001";
 //const api = "https://ai-recipes-collin-dieden.onrender.com"
 
 // Define the recipeStore using Zustand's 'create' function
-export const recipeStore = create((set) => ({
+export const recipeStore = create((set, get) => ({
   // Initialize the state with an empty array of recipes
   recipes: [],
   // Function to set the recipes in the state
@@ -29,6 +29,8 @@ export const recipeStore = create((set) => ({
   },
   errorMessageGeneration: "", 
   setErrorMessageGeneration: (errorMessageGeneration) => set({errorMessageGeneration}),
+  isVegetarian: false, 
+  setIsVegetarian: (isVegetarian) => set({isVegetarian}),
 
   fetchNewRecipe: async () => {
     try {
@@ -80,8 +82,8 @@ export const recipeStore = create((set) => ({
 
   // From PromptForm.jsx
   generateRecipe: async (ingredients) => {
-
     const formattedIngredients = ingredients.join(",")
+    const isVegetarian = get().isVegetarian
 
     try {
       console.log("Sending post request!")
@@ -89,9 +91,15 @@ export const recipeStore = create((set) => ({
       //Setting the isGenerating state to true so that loading message can be rendered in Home.jsx
       set(() => ({isGenerating: true}))
 
+  //     // Conditionally add information about being vegetarian to the prompt
+  //  const prompt = isVegetarian
+  //   ? `Ingredients: ${formattedIngredients}. Dish must be vegetarian.`
+  //   : `Ingredients: ${formattedIngredients}`;
+
+
       const response = await fetch(`${api}/openai/generateText`, {
         method: 'POST',
-        body: JSON.stringify({ prompt: formattedIngredients }),
+        body: JSON.stringify({ prompt: `Ingredients: ${formattedIngredients}`}),
         headers: { 'Content-Type': 'application/json' },
       })
 

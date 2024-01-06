@@ -5,7 +5,7 @@ import { recipeStore } from '../stores/recipeStore';
 // Define the PromptForm component
 export const PromptForm = () => {
     // Destructure the addNewRecipe function from the recipeStore
-    const { inputRecipe, setInputRecipe, fetchNewRecipe, generateRecipe,errorMessageGeneration } = recipeStore()
+    const { inputRecipe, setInputRecipe, fetchNewRecipe, generateRecipe,errorMessageGeneration, isVegetarian, setIsVegetarian } = recipeStore()
 
 
     // Define the form submission handler function
@@ -17,7 +17,6 @@ export const PromptForm = () => {
             console.log(inputRecipe)
              //Use the generateRecipe function from the recipeStore
             await generateRecipe(inputRecipe)
-
 
             //Clear inputRecipe and fetch new recipe data
             setInputRecipe([])
@@ -48,6 +47,18 @@ export const PromptForm = () => {
             required={index === 1} //only the first field is required
           ></textarea>
         ))}
+
+{/* <div className="checkbox-options">
+          <label>
+            <input 
+              type="checkbox" 
+              checked={isVegetarian} 
+              onChange={(e) => setIsVegetarian(e.target.checked)} 
+            />
+            Vegetarian
+          </label>
+        </div> */}{ /* TESTAR BARA LITE ATT LEKA MED PROMPTEN*/}
+
         <h2>{errorMessageGeneration}</h2>
         <button className="generate-button" type="submit">
           Create recipe using AI
