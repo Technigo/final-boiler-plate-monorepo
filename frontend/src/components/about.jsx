@@ -7,14 +7,14 @@ import ulrika from "../assets/ulrika.png";
 import malin from "../assets/newmalin.png";
 import Techlogo from "../assets/technigologosmall.png";
 
-const tablet = `(min-width: 768px)`;
-const desktop = `(min-width: 1024px)`;
+const tablet = `(min-width: 640px)`;
+const desktop = `(min-width: 1007px)`;
 
 const AboutWrapper = styled.div`
   margin: 0 auto;
   padding: 20px;
-  background-color: white; /* Your chosen color */
-  min-height: 100vh; /* Make sure it covers the full height of the viewport */
+  background-color: white;
+  min-height: 100vh;
 `;
 
 const IntroParagraph = styled.p`
@@ -92,8 +92,20 @@ const TeamMemberName = styled.h3`
 `;
 
 const TeamMemberDescription = styled.p`
-  font-size: 20px;
-  margin-bottom: 10px;
+  font-size: 12px;
+  margin-bottom: 5px;
+  margin-right: 5px;
+
+  @media ${tablet} {
+    font-size: 15px;
+    margin-bottom: 5px;
+    margin-right: 5px;
+  }
+  @media ${desktop} {
+    font-size: 15px;
+    margin-bottom: 5px;
+    margin-right: 5px;
+  }
 `;
 
 const PortfolioLink = styled.a`
@@ -102,8 +114,14 @@ const PortfolioLink = styled.a`
   color: #0e6e6e;
 `;
 
+const GithubLink = styled.a`
+  font-size: 16px;
+  text-decoration: none;
+  color: #0e6e6e;
+`;
+
 const TechnigoLogo = styled.img`
-  height: 40px;
+  height: 60px;
   width: auto;
 `;
 
@@ -113,21 +131,6 @@ const AboutPage = () => {
     <>
       <Navbar />
       <AboutWrapper>
-        <IntroParagraph>
-          Final project made for the <br></br>
-          <br></br>&nbsp;
-          <a
-            href="https://www.technigo.io/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <TechnigoLogo src={Techlogo} alt="Technigo Logo" />
-          </a>
-          &nbsp;<br></br>
-          Web Developer Bootcamp of Fall 2023 <br></br>
-          <br></br>This is a labour of sweat, tired knuckles and love - please
-          feel free to reach out to any of us!
-        </IntroParagraph>
         <TeamSection>
           <TeamMember>
             <a
@@ -135,9 +138,16 @@ const AboutPage = () => {
               target="_blank"
               rel="noopener noreferrer"
             >
-              <TeamMemberPhoto src={malin} alt="Malin Lundhe" />{" "}
+              <TeamMemberPhoto src={malin} alt="Malin Lundhe" />
             </a>
             <TeamMemberName>Malin Lunde</TeamMemberName>
+            <PortfolioLink
+              href="portfolio1-link"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Portfolio
+            </PortfolioLink>
             <TeamMemberDescription>
               Malin has an incredible brain comparable to a filing cabinet, she
               can bring out any comment made on a subject from three weeks ago
@@ -146,13 +156,6 @@ const AboutPage = () => {
               is an integral part of the team and this page would not exist
               without her!
             </TeamMemberDescription>
-            <PortfolioLink
-              href="portfolio1-link"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Portfolio
-            </PortfolioLink>
           </TeamMember>
 
           <TeamMember>
@@ -169,6 +172,13 @@ const AboutPage = () => {
               rel="noopener noreferrer"
             >
               <TeamMemberName>Ulrika Gålnander</TeamMemberName>
+              <GithubLink
+                href="https://github.com/Shiqwan"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Github
+              </GithubLink>
             </a>
             <TeamMemberDescription>
               The wrong enviroment or "mood" can kill any gourmet meal.<br></br>{" "}
@@ -178,13 +188,6 @@ const AboutPage = () => {
               vibe, apart from looking through endless reviews - this changes
               that!
             </TeamMemberDescription>
-            <PortfolioLink
-              href="https://github.com/Shiqwan"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Github
-            </PortfolioLink>
           </TeamMember>
           <TeamMember>
             <a
@@ -195,19 +198,6 @@ const AboutPage = () => {
               <TeamMemberPhoto src={alexandra} alt="Alexandra Meija" />
             </a>
             <TeamMemberName>Alexandra Meija</TeamMemberName>
-            <TeamMemberDescription>
-              For me a foodie is someone who really loves food, and not just the
-              high- end fancy pants restaurants, but just plain good food,
-              either it is an amazing fishcake you buy for 10 bahts from a
-              street vendor or having a seven course meal at Ekstedt. And for me
-              the experience is enhanced when you find that perfect spot that
-              suits you and the people you are with, that you can hold a
-              conversation and that it's cozy. I always look for dogfriendly
-              places so I can take with me my furrycompanion. I have a lot of
-              favorites, but if I had to pick one place it's Bar Doma, it works
-              for everything, and yes, it's dog friendly. An extra neat feature
-              is the dessertcart which gets rolled out after every meal.
-            </TeamMemberDescription>
             <PortfolioLink
               href="https://alexandrameijaportfolio.netlify.app"
               target="_blank"
@@ -215,8 +205,38 @@ const AboutPage = () => {
             >
               Portfolio
             </PortfolioLink>
+            <TeamMemberDescription>
+              For me a foodie is someone who really loves food, and not just the
+              high- end fancy pants restaurants, but just plain good food,
+              either it is an amazing fishcake you buy for 10 bahts from a
+              street vendor or having a seven course meal at Ekstedt. <br></br>{" "}
+              <br></br>
+              And for me the experience is enhanced when you find that perfect
+              spot that suits you and the people you are with, that you can hold
+              a conversation and that it's cozy. <br></br>I always look for
+              dogfriendly places so I can take with me my furry companion.
+              <br></br>I have a lot of favorites, but if I had to pick one place
+              it's Bar Doma, it works for everything, and yes, it's dog
+              friendly. <br></br>An extra neat feature is the dessert-cart which
+              gets rolled out after every meal.
+            </TeamMemberDescription>
           </TeamMember>
         </TeamSection>
+        <IntroParagraph>
+          Final project made for the <br></br>
+          <br></br>&nbsp;
+          <a
+            href="https://www.technigo.io/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <TechnigoLogo src={Techlogo} alt="Technigo Logo" />
+          </a>
+          &nbsp;<br></br> <br></br>
+          Web Developer Bootcamp of Fall 2023 <br></br>
+          <br></br>This is a labour of sweat, tired knuckles and love - please
+          feel free to reach out to any of us!
+        </IntroParagraph>
       </AboutWrapper>
       <Footer />
     </>

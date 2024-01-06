@@ -120,17 +120,17 @@ const StyledButton = styled.button`
     background-color: #fcabe3;
     color: white;
     border: solid white;
-    padding: 10px 20px; /* Some padding */
-    border-radius: 10px; /* Rounded corners */
-    cursor: pointer; /* Pointer/hand icon */
-    text-align: center; /* Center the text */
-    text-decoration: none; /* No underline */
-    display: inline-block; /* Inline block element */
+    padding: 10px 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
     flex-direction: column;
-    font-size: 45px; /* Font size */
+    font-size: 45px;
     font-family: "JosefinSans";
-    margin: 4px 2px; /* Margin around the button */
-    transition-duration: 0.4s; /* Transition for hover effect */
+    margin: 4px 2px;
+    transition-duration: 0.4s;
 
     &:hover {
       background-color: white;

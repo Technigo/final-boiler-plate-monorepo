@@ -2,8 +2,8 @@ import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
-const tablet = `(min-width: 768px)`;
-const desktop = `(min-width: 1024px)`;
+const tablet = `(min-width: 717px)`;
+const desktop = `(min-width: 1007px)`;
 
 const FMLogo = styled.img`
   height: 50px;
