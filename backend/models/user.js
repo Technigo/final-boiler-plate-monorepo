@@ -20,7 +20,7 @@ const userSchema = new mongoose.Schema({
   },
   completedChallenges: [
     {
-      type: mongoose.Schema.Types.ObjectId,
+      type: String,
       ref: 'Challenge',
     },
   ],
