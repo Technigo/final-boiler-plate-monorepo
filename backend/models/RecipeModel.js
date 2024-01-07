@@ -12,6 +12,11 @@ export const recipeSchema = new Schema(
             required: true,
         },
 
+        searchWords: {
+            type: String, 
+            required: true
+        },
+
         title: {
             type: String,
             required: true,
@@ -38,5 +43,8 @@ export const recipeSchema = new Schema(
         }
     }
 )
+
+// Create a text index on the userInput field for text searches
+recipeSchema.index({ userInput: 'text' });
 
 export const RecipeModel = mongoose.model("Recipe", recipeSchema);

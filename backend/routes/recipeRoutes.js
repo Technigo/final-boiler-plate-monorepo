@@ -3,7 +3,7 @@ import express from "express";
 import asyncHandler from "express-async-handler";
 import {
     getRecipeController,
-    postGenerateRecipeController
+    searchRecipesController
 } from "../controllers/recipeController";
 
 
@@ -21,9 +21,10 @@ router.get("/", asyncHandler(async (req, res) => {
     res.json(endpoints);
 }));
 
-router.post("/generate-recipe", postGenerateRecipeController);
+// router.post("/generate-recipe", postGenerateRecipeController);
 
 router.get("/recipes", getRecipeController);
+router.get("/recipes/search/:query", searchRecipesController)
 
 
 export default router

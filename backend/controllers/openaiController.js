@@ -9,8 +9,8 @@ const openai = new OpenAI({ key: process.env.OPENAI_API_KEY });
 // Define the generateText function, which handles text generation using the OpenAI API
 const generateText = async (req, res) => {
   // Extract the "prompt" from the request body
-  const { prompt } = req.body;
-  console.log(prompt);
+  const { prompt, isVegetarian, isGlutenFree, isLactoseFree } = req.body;
+  console.log(req.body);
 
   try {
     // Use the OpenAI API to generate text using the chat completions endpoint
@@ -19,11 +19,11 @@ const generateText = async (req, res) => {
         {
           role: "system",
           content:
-            'You are a helpful assistant designed to output JSON. You will be creating a recipe based on 1-3 main ingredients the user will give you. You can add a as many ingredients needed to make a flavourful dish. The recipe should be designed to be cooked on a portable camping stove with one heater, no temperature control, consisting of one frying-pan and/or one saucepan. Generate a recipe for a dish, that serves 2 people. If an ingredient requires specific details like weight and amount, include that as well. Use grams and millilitres. Use British English. Important: If the user provides inappropriate or non-existing ingredients, please respond with an array with the string : [Sorry I don\'t understand]',
+            'You are a helpful assistant designed to output JSON. You will be creating a recipe based on 1-3 main ingredients the user will give you. The user can also choose whether the recipe should be vegetarian, gluten-free and/or lactose-free. You can add a as many ingredients needed to make a flavourful dish. The recipe should be designed to be cooked on a portable camping stove with one heater, no temperature control, consisting of only one frying-pan and/or only one saucepan. Generate a recipe for a dish, that serves 2 people. All recipes should include some kind of carbohydrate rich ingredient. If an ingredient requires specific details like weight and amount, include that as well. Use grams and millilitres. Use British English. Important: If the user provides inappropriate or non-existing ingredients, please respond with an array with the string : [Sorry I don\'t understand]',
         },
         {
           role: "user",
-          content: `${prompt}`,
+          content: `${prompt} ${isVegetarian ? '\nVegetarian' : ''}${isGlutenFree ? '\nGluten-free' : ''}${isLactoseFree ? '\nLactose-free' : ''}`,
         },
         {
           role: "assistant",
@@ -69,10 +69,12 @@ const generateText = async (req, res) => {
 
   const formattedPrompt = formatPrompt(prompt)
   console.log(formattedPrompt)
+  console.log(prompt)
 
     // Create a new RecipeModel with the provided ingredients and generatedRecipe
     const newRecipe = new RecipeModel({
       userInput: formattedPrompt,
+      searchWords: prompt, 
       title: title,
       description: description,
       ingredients: ingredients,

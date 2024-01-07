@@ -31,6 +31,10 @@ export const recipeStore = create((set, get) => ({
   setErrorMessageGeneration: (errorMessageGeneration) => set({errorMessageGeneration}),
   isVegetarian: false, 
   setIsVegetarian: (isVegetarian) => set({isVegetarian}),
+  isGlutenFree: false, 
+  setIsGlutenFree: (isGlutenFree) => set({isGlutenFree}),
+  isLactoseFree: false, 
+  setIsLactoseFree: (isLactoseFree) => set({isLactoseFree}),
 
   fetchNewRecipe: async () => {
     try {
@@ -84,6 +88,8 @@ export const recipeStore = create((set, get) => ({
   generateRecipe: async (ingredients) => {
     const formattedIngredients = ingredients.join(",")
     const isVegetarian = get().isVegetarian
+    const isGlutenFree = get().isGlutenFree
+    const isLactoseFree = get().isLactoseFree
 
     try {
       console.log("Sending post request!")
@@ -91,15 +97,9 @@ export const recipeStore = create((set, get) => ({
       //Setting the isGenerating state to true so that loading message can be rendered in Home.jsx
       set(() => ({isGenerating: true}))
 
-  //     // Conditionally add information about being vegetarian to the prompt
-  //  const prompt = isVegetarian
-  //   ? `Ingredients: ${formattedIngredients}. Dish must be vegetarian.`
-  //   : `Ingredients: ${formattedIngredients}`;
-
-
       const response = await fetch(`${api}/openai/generateText`, {
         method: 'POST',
-        body: JSON.stringify({ prompt: `${formattedIngredients}`}),
+        body: JSON.stringify({ prompt: `${formattedIngredients}`, isVegetarian: isVegetarian, isGlutenFree: isGlutenFree, isLactoseFree: isLactoseFree}),
         headers: { 'Content-Type': 'application/json' },
       })
 

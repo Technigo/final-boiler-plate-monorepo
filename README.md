@@ -14,4 +14,4 @@ How to prompt where....
 Stage 2 (hm, eller ska vi köra veckor?)
 
 Libraries: react-icons
-GPT prompt: Rewriting this to get the result we want. Using low temperature. Next step would be to fine-tune the prompt. But maybe not necessary for such a specific task as this is.
+GPT prompt: Put effort into rewriting this to get the result we want. Next step would be to fine-tune the prompt. Good way to control if recipes are up to standard, preventing the GPT to add too many ingreidents, checking whether the dishes seem edible, and that the dishes contain appropriate ampunt of nutriants and carbs for and outdoor adventure. Fine-tuning is a good way to check that the GPT actually is following instructions, eg. using only one saucepan.

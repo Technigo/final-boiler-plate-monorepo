@@ -5,7 +5,7 @@ import { recipeStore } from '../stores/recipeStore';
 // Define the PromptForm component
 export const PromptForm = () => {
     // Destructure the addNewRecipe function from the recipeStore
-    const { inputRecipe, setInputRecipe, fetchNewRecipe, generateRecipe,errorMessageGeneration, isVegetarian, setIsVegetarian } = recipeStore()
+    const { inputRecipe, setInputRecipe, fetchNewRecipe, generateRecipe,errorMessageGeneration, isVegetarian, setIsVegetarian, isGlutenFree, setIsGlutenFree, isLactoseFree, setIsLactoseFree } = recipeStore()
 
 
     // Define the form submission handler function
@@ -48,7 +48,7 @@ export const PromptForm = () => {
           ></textarea>
         ))}
 
-{/* <div className="checkbox-options">
+ <div className="checkbox-options">
           <label>
             <input 
               type="checkbox" 
@@ -57,7 +57,25 @@ export const PromptForm = () => {
             />
             Vegetarian
           </label>
-        </div> */}{ /* TESTAR BARA LITE ATT LEKA MED PROMPTEN*/}
+
+          <label>
+            <input
+              type="checkbox"
+              checked={isGlutenFree}
+              onChange={(e) => setIsGlutenFree(e.target.checked)}
+            />
+            Gluten-free
+          </label>
+
+          <label>
+            <input
+              type="checkbox"
+              checked={isLactoseFree}
+              onChange={(e) => setIsLactoseFree(e.target.checked)}
+            />
+            Lactose-free
+          </label>
+        </div> 
 
         <h2>{errorMessageGeneration}</h2>
         <button className="generate-button" type="submit">

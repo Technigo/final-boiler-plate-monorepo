@@ -43,3 +43,8 @@ button {
   align-items: center;
   color: #286052;
 }
+
+label{
+  font-family: "Nunito", sans-serif;
+  color: white;
+}
