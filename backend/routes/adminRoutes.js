@@ -13,11 +13,12 @@ const router = express.Router();
 
 // REGISTER ROUTE: Handle admin registration
 router.post("/register", authenticateAdmin, registerAdminController);
+// (removed authenticateAdmin when creating the first admin)
 
 // LOGIN ROUTE: Handle admin login
 router.post("/login", loginAdminController);
 
-// Route for a list of all users
+// Route for a list of all users - STILL NEED TO FIND WHAT THIS IS FOR
 router.get("/users", authenticateAdmin, listUsersController);
 
 // New route for upgrading a user to an admin
