@@ -102,7 +102,7 @@ export const Profile = () => {
                   <TaskDescription>{task.description}</TaskDescription>
                   <VolunteersSection>
                     <strong>Volunteers: </strong>{" "}
-                    {task.volunteers.length > 0
+                    {task.volunteers && task.volunteers.length > 0
                       ? task.volunteers
                           .filter(
                             (volunteer) =>
