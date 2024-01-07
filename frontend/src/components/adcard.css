@@ -1,47 +1,47 @@
 .ad-card {
-    position: relative; /* Add relative positioning */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-    border: 1px solid #ddd;
-    padding: 10px;
-    margin: 10px;
-    width: 300px;
-    height: 340px;
-  }
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  border: 1px solid #ddd;
+  border-radius: var(--border-radius);
+  padding: 50px 10px 10px;
+  margin: 10px;
+  width: 300px;
+  height: 430px;
+  box-sizing: border-box; /* Include padding and border in the width and height */
+}
 
-  .ad-card a {
-    font-weight: 500;
-    color: var(--color-primary-text);
-    text-decoration: inherit;
-  }
-  .ad-card a:hover {
-    color: var(--color-primary-text);
-    cursor: pointer;
-  }
-  
-  .ad-card img {
-    width: 250px;
-    height: 200px;
-    object-fit: cover;
-  }
-  
-  .ad-card-content {
-    text-align: center;
-  }
-  
-  .heart-icon-btn {
-    position: absolute; /* Position the button absolutely within the ad-card */
-    top: 10px;  /* Distance from the top */
-    right: 10px; /* Distance from the right */
-    background: none; /* Remove default background */
-    border: none; /* Remove default border */
-    cursor: pointer; /* Change cursor to pointer */
-  }
-  
-  .heart-icon-btn img {
-    width: 25px; /* Set the size of the heart icon */
-    height: auto; /* Maintain aspect ratio */
-  }
-  
+.ad-card a {
+  font-family: var(--font-heading);
+  color: var(--primary-text);
+}
+
+.ad-card img {
+  width: 250px;
+  height: 200px;
+  object-fit: cover;
+  margin: 0 auto; /* Center the image */
+  border-radius: var(--border-radius);
+}
+
+.ad-card-content {
+  text-align: center;
+  width: 100%; /* Ensure content takes full width */
+}
+
+.heart-icon-btn {
+  position: absolute;
+  top: 15px;
+  right: 10px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  z-index: 1;
+}
+
+.heart-icon-btn img {
+  width: 25px;
+  height: auto;
+}

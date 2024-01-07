@@ -31,10 +31,13 @@ export const AdCard = ({ ad }) => {
         <img src={isSaved ? "./src/assets/icons/filled-heart.svg" : "./src/assets/icons/heart.svg"} alt="Heart Icon" />
       </button>
       <Link to={`/ads/${ad._id}`}>
-        <img src={ad.image} alt={`${ad.title}`} />
         <div className="ad-card-content">
-          <h3>{ad.title}</h3>
-          <p>Posted by: {ad.user?.username || "Unknown"}</p>
+          <img src={ad.image} alt={`${ad.title}`} />
+          <div className="ad-card-info">
+            <h3>{ad.title}</h3>
+            <p>Location: {ad.address}</p>
+            <p>Posted by: {ad.user?.username || "Unknown"}</p>
+          </div>
         </div>
       </Link>
     </div>
