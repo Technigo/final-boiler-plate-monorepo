@@ -9,6 +9,7 @@ import BackArrow from "../components/reusableComponents/BackArrow";
 import Lottie from "lottie-react";
 import loadingAnimation from "../assets/loading.json/";
 import "../pages/login.css";
+import { Button } from "../components/reusableComponents/Button";
 
 // Define the 'Login' functional component.
 export const Login = () => {
@@ -57,29 +58,36 @@ export const Login = () => {
         <div className="user-login">
           <Heading level={1} text="Login" aria-label="Login" />
           {/* Create input fields for 'username' and 'password' and associate them with state variables. */}
-          <label htmlFor="username">Username</label>
-          <input
-            type="text"
-            name="username"
-            id="username"
-            placeholder="Username"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-          />
-          <label htmlFor="password">Password</label>
-          <input
-            type="password"
-            name="password"
-            id="password"
-            placeholder="Password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
+          <div>
+            <label htmlFor="username">Username:</label>
+            <input
+              type="text"
+              name="username"
+              id="username"
+              placeholder="Username"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+            />
+          </div>
+          <div>
+            <label htmlFor="password">Password:</label>
+            <input
+              type="password"
+              name="password"
+              id="password"
+              placeholder="Password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+          </div>
           {loading && <Lottie animationData={loadingAnimation} />}
           {!loading && (
-            <button className="login-btn" onClick={onLoginClick}>
-              Login
-            </button>
+            <Button
+              iconSize="button"
+              label="Login"
+              onClick={onLoginClick}
+              className="button"
+            />
           )}
           <h4>
             Don&apos;t have an account? <Link to="/register">Sign up</Link>
