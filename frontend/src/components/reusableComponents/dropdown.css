@@ -1,0 +1,53 @@
+/* Dropdown.css */
+
+.dropdown-container {
+    margin: 10px;
+    width: 200px;
+    /* Adjust the width as needed */
+}
+
+select {
+    width: 100%;
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    font-size: 16px;
+    color: #333;
+    cursor: pointer;
+    appearance: none;
+    /* This disables the native dropdown styling */
+    -moz-appearance: none;
+    -webkit-appearance: none;
+}
+
+select:hover {
+    border-color: #888;
+}
+
+select:focus {
+    outline: none;
+    border-color: #646cff;
+    /* Color when the dropdown is focused */
+}
+
+/* Optional: Style for the down arrow indicator */
+select {
+    background-image: url('data:image/svg+xml;utf8,<svg fill="currentColor" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>');
+    background-repeat: no-repeat;
+    background-position: right 8px top 50%;
+    background-size: 12px;
+}
+
+option {
+    padding: 8px;
+    font-size: 16px;
+}
+
+/* Optional: Style to remove default appearance in Firefox */
+@-moz-document url-prefix() {
+    select {
+        padding-right: 14px;
+    }
+}
