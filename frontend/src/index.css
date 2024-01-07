@@ -1,114 +1,65 @@
-/* Importing Fonts */
-@import url('https://fonts.googleapis.com/css?family=Open+Sans|Montserrat|Hind&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;500;700;900&family=Poppins:wght@300;400;500;600;700&display=swap');
+
+/* ---------- CUSTOM PROPERTIES AND GLOBAL STYLING ---------- */
+:root {
+  /* Primary Colors */
+  --primary-text: #333333;
+  --primary-background: #ffffff;
+  --cta: #2a423a;
+  --cta-hover: #202322;
+  --cta-text: #e2e3ed;
+  --cta-hover-text: #;
+  --secondary-background: #f5f5f5;
+
+  /* Secondary Colors */
+  --secondary-text: #666666;
+  --accent: #3739cb;
+  --border: #dddddd;
+
+  /* Font Families */
+  --font-heading: 'Poppins', sans-serif;
+  --font-body: 'Lato', sans-serif;
+
+  /* Mobile Font Sizes */
+  --font-size-h1: 2.25rem;
+  /* 36px */
+  --font-size-h2: 1.875rem;
+  /* 30px */
+  --font-size-h3: 1.5rem;
+  /* 24px */
+  --font-size-h4: 1.125rem;
+  /* 18px */
+  --font-size-p: 1.125rem;
+  /* 18px for paragraph */
+  --font-size-label: 1.125rem;
+  /* 18px for label */
 
 
+  /* Other styles */
+  --border-radius: 8px;
 
-/*! HTML5 Boilerplate v6.1.0 | MIT License | https://html5boilerplate.com/ */
-
-/*
- * What follows is the result of much research on cross-browser styling.
- * Credit left inline and big thanks to Nicolas Gallagher, Jonathan Neal,
- * Kroc Camen, and the H5BP dev community and team.
- */
-
-/* ==========================================================================
-   Base styles: opinionated defaults
-   ========================================================================== */
-
-
-html {
-  color: #222;
-  font-size: 1em;
-  line-height: 1.4;
-}
-
-/*
-   * Remove text-shadow in selection highlight:
-   * https://twitter.com/miketaylr/status/12228805301
-   *
-   * Vendor-prefixed and regular ::selection selectors cannot be combined:
-   * https://stackoverflow.com/a/16982510/7133471
-   *
-   * Customize the background color to match your design.
-   */
-
-::-moz-selection {
-  background: #b3d4fc;
-  text-shadow: none;
-}
-
-::selection {
-  background: #b3d4fc;
-  text-shadow: none;
-}
-
-/*
-   * A better looking default horizontal rule
-   */
-
-hr {
-  display: block;
-  height: 1px;
-  border: 0;
-  border-top: 1px solid #ccc;
-  margin: 1em 0;
-  padding: 0;
-}
-
-/*
-   * Remove the gap between audio, canvas, iframes,
-   * images, videos and the bottom of their containers:
-   * https://github.com/h5bp/html5-boilerplate/issues/440
-   */
-
-audio,
-canvas,
-iframe,
-img,
-svg,
-video {
-  vertical-align: middle;
-}
-
-/*
-   * Remove default fieldset styles.
-   */
-
-fieldset {
-  border: 0;
-  margin: 0;
-  padding: 0;
-}
-
-/*
-   * Allow only vertical resizing of textareas.
-   */
-
-textarea {
-  resize: vertical;
-}
-
-/* ==========================================================================
-     Browser Upgrade Prompt
-     ========================================================================== */
-
-.browserupgrade {
-  margin: 0.2em 0;
-  background: #ccc;
-  color: #000;
-  padding: 0.2em 0;
-}
-
-/* ==========================================================================
-     Author's custom styles
-     ========================================================================== */
-
-
-* {
-  margin: 0;
-  padding: 0;
+  /* General settings */
+  font-family: var(--font-body);
+  background: var(--primary-background);
+  color: var(--primary-text);
+  font-weight: 400;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
   box-sizing: border-box;
 }
+
+/* Remove default margins */
+body,
+h1,
+h2,
+h3,
+p {
+  margin: 0;
+}
+
 
 /* Base Styles */
 html {
@@ -116,243 +67,188 @@ html {
 }
 
 body {
-  font-family: 'Open Sans', sans-serif;
+  font-family: var(--font-body);
   font-size: 1em;
   background-color: #FFFFFF;
-  /* Neutral white background */
+  color: var(--primary-text);
+  text-align: left;
   overflow-x: hidden;
 }
 
+/* Typography */
 h1,
-input {
-  font-family: 'Montserrat', sans-serif;
-}
-
 h2,
 h3,
-h4 {
-  font-family: 'Montserrat', sans-serif;
+h4,
+p,
+label {
+  font-family: var(--font-heading);
 }
 
-p {
-  font-family: 'Hind', sans-serif;
-}
-
-
-/* ---------- MOBILE ---------- */
 h1 {
-  font-size: 56px;
-  line-height: 43px;
+  font-size: var(--font-size-h1);
+  line-height: 4.3rem;
   font-weight: 700;
 }
 
 h2 {
-  font-size: 32px;
+  font-size: var(--font-size-h2);
   font-weight: 600;
 }
 
 h3 {
-  font-size: 24px;
+  font-size: var(--font-size-h3);
   font-weight: 600;
 }
 
-h4,
-.buttons,
-.cards {
-  font-size: 16px;
+h4 {
+  font-size: var(--font-size-h4);
   font-weight: 600;
 }
 
 p {
-  font-size: 18px;
-  line-height: 18px;
-  font-weight: 400;
+  font-size: var(--font-size-p);
+  line-height: 1.5;
 }
 
-.navigation {
-  font-size: 24px;
-  font-weight: 600;
+/* Lists */
+ul,
+ol {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
 }
 
-/* Global input style that affects all input types */
-input,
+/* Links */
+a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+label {
+  font-size: var(--font-size-label);
+  font-weight: 500;
+}
+
+/* Input fields */
+input[type="text"],
+input[type="password"],
+input[type="number"],
+input[type="datetime-local"],
+input[type="file"],
 select,
 textarea {
-  font-family: 'Open Sans', sans-serif;
-  /* Match the font style with your body font */
-  font-size: 1em;
-  /* Set font-size to match the base size */
-  padding: 0.5em;
-  /* Add padding inside the input fields */
-  border: 1px solid #ccc;
-  /* Add a border */
-  border-radius: 4px;
-  /* Optionally round the corners */
-  box-sizing: border-box;
-  /* Ensure padding does not affect overall size */
-  width: 100%;
-  /* Make sure input fields are full width */
-  margin-bottom: 0.5em;
-  /* Add some space below the input */
+  font-family: var(--font-heading);
+  font-size: 1.125rem;
+  /* 18px */
+  font-weight: 500;
+  /* Semi-bold */
+  border: 1px solid var(--border);
+  border-radius: var(--border-radius);
+  padding: 2px 5px;
 }
 
-/* Specific style for the file input type */
-input[type="file"] {
-  padding: 0.5em;
-  /* Adjust padding as needed */
+/* Images */
+img {
+  max-width: 100%;
+  height: auto;
 }
 
-/* Specific style for the date input type */
-input[type="date"],
-input[type="datetime-local"] {
-  padding: 0.5em;
-  /* Adjust padding as needed */
-  cursor: pointer;
-  /* Indicates the field is clickable */
+/* Containers */
+.container {
+  max-width: 90%;
+  margin: 0 auto;
+  padding: 0 15px;
 }
 
-/* Specific style for textarea */
-textarea {
-  height: 150px;
-  /* Adjust height as needed */
-  resize: vertical;
-  /* Only allow vertical resizing */
-}
-
-.address {
-  font-style: normal;
-}
-
-.about-icons {
-  font-size: 80px;
-}
-
-.social-media-icons {
-  font-size: 32px;
-}
-
-/* ---------- DESKTOP --------- */
-@media (min-width: 1120px) {
+/* Tablet styles */
+@media only screen and (min-width:768px) {
   h1 {
-    font-size: 80px;
+    font-size: 3rem;
+    /* 48px */
   }
 
   h2 {
-    font-size: 56px;
+    font-size: 2.25rem;
+    /* 36px */
   }
 
   h3 {
-    font-size: 32px;
+    font-size: 1.5rem;
+    /* 24px */
   }
 
-  input,
+  h4,
+  p {
+    font-size: 1.125rem;
+    /* 18px */
+  }
+
+  label {
+    font-size: 1.5rem;
+    /* 24px */
+  }
+
+  input[type="text"],
+  input[type="password"],
+  input[type="number"],
+  input[type="datetime-local"],
+  input[type="file"],
   select,
   textarea {
-    font-size: 1.125em;
-    /* Slightly larger font-size on desktop */
-    padding: 0.75em;
-    /* More padding on larger screens */
+    font-size: 1.5rem;
+    /* 24px */
   }
 
-  .navigation {
-    font-size: 32px;
-    font-weight: 600;
+  .container {
+    max-width: 680px;
+  }
+}
+
+/* Desktop styles */
+@media only screen and (min-width:1200px) {
+  h1 {
+    font-size: 3.5rem;
+    /* 56px */
+  }
+
+  h2 {
+    font-size: 2.25rem;
+    /* 36px */
+  }
+
+  h3 {
+    font-size: 1.875rem;
+    /* 30px */
+  }
+
+  h4 {
+    font-size: 1.5rem;
+    /* 24px */
   }
 
   p {
-    font-size: 18px;
+    font-size: 1.125rem;
+    /* 18px */
   }
-}
 
+  label {
+    font-size: 1.5rem;
+    /* 24px */
+  }
 
-/* ---------- CONTAINERS ---------- */
-@media (max-width: 1120px) {
+  input[type="text"],
+  input[type="password"],
+  input[type="number"],
+  input[type="datetime-local"],
+  input[type="file"],
+  select,
+  textarea {
+    font-size: 1.5rem;
+    /* 24px */
+  }
+
   .container {
-    max-width: 680px;
-    margin: 0 auto;
-  }
-}
-
-@media (max-width: 680px) {
-  .container {
-    max-width: 343px;
-    margin: 0 auto;
-  }
-}
-
-/* ==========================================================================
-   Print styles.
-   Inlined to avoid the additional HTTP request:
-   https://www.phpied.com/delay-loading-your-print-css/
-   ========================================================================== */
-
-@media print {
-
-  *,
-  *:before,
-  *:after {
-    background: transparent !important;
-    color: #000 !important;
-    /* Black prints faster */
-    -webkit-box-shadow: none !important;
-    box-shadow: none !important;
-    text-shadow: none !important;
-  }
-
-  a,
-  a:visited {
-    text-decoration: underline;
-  }
-
-  a[href]:after {
-    content: " (" attr(href) ")";
-  }
-
-  abbr[title]:after {
-    content: " (" attr(title) ")";
-  }
-
-  /*
-       * Don't show links that are fragment identifiers,
-       * or use the `javascript:` pseudo protocol
-       */
-  a[href^="#"]:after,
-  a[href^="javascript:"]:after {
-    content: "";
-  }
-
-  pre {
-    white-space: pre-wrap !important;
-  }
-
-  pre,
-  blockquote {
-    border: 1px solid #999;
-    page-break-inside: avoid;
-  }
-
-  /*
-       * Printing Tables:
-       * http://css-discuss.incutio.com/wiki/Printing_Tables
-       */
-  thead {
-    display: table-header-group;
-  }
-
-  tr,
-  img {
-    page-break-inside: avoid;
-  }
-
-  p,
-  h2,
-  h3 {
-    orphans: 3;
-    widows: 3;
-  }
-
-  h2,
-  h3 {
-    page-break-after: avoid;
+    max-width: 1120px;
   }
 }

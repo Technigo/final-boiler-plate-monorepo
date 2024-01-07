@@ -10,6 +10,16 @@
     width: 300px;
     height: 340px;
   }
+
+  .ad-card a {
+    font-weight: 500;
+    color: var(--color-primary-text);
+    text-decoration: inherit;
+  }
+  .ad-card a:hover {
+    color: var(--color-primary-text);
+    cursor: pointer;
+  }
   
   .ad-card img {
     width: 250px;

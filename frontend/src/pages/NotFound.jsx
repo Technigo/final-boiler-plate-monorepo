@@ -1,6 +1,7 @@
 import notFound from "../assets/404.json";
 import Lottie from "lottie-react";
 import { Button } from "../components/reusableComponents/Button";
+import "./notfound.css";
 
 export const NotFound = () => {
   // Render a div element with a CSS class 'not-found' containing the text 'NotFound'.
