@@ -91,11 +91,13 @@ export const Tasks = () => {
 
   // Access the 'tasks' and 'fetchTasks' functions from the 'taskStore'.
   const { tasks, fetchTasks } = taskStore();
-  // Access the 'accessToken' from the 'userStore'.
-  const { accessToken } = userStore();
+  // Access the 'accessToken' and 'isLoggedIn' from the 'userStore'.
+  const { accessToken, isLoggedIn } = userStore();
+  // Initialize the 'navigate' function from React Router.
+  const navigate = useNavigate();
 
   useEffect(() => {
-    console.log("useEffect", tasks);
+    //console.log("useEffect", tasks);
   }, [tasks]);
 
   // Use the 'useEffect' hook to fetch tasks when 'tasks' or 'accessToken' change.
@@ -104,13 +106,11 @@ export const Tasks = () => {
     fetchTasks();
   }, [fetchTasks, accessToken]);
 
-  // Initialize the 'navigate' function from React Router.
-  const navigate = useNavigate();
   // Access the 'handleLogout' function from the 'userStore'.
-  const storeHandleLogout = userStore((state) => state.handleLogout);
+  //const storeHandleLogout = userStore((state) => state.handleLogout);
 
   // Get 'isLoggedIn' and 'accessToken' from the 'userStore'.
-  const { isLoggedIn } = userStore();
+  //const { isLoggedIn } = userStore();
   //console.log(isLoggedIn);
   //console.log(accessToken);
 
@@ -119,7 +119,7 @@ export const Tasks = () => {
     if (!isLoggedIn) {
       // If the user is not logged in, show an alert and navigate to the login route.
       alert("You need to log in to see all the content");
-      navigate("/"); // You can change this to the login route
+      navigate("/login");
     }
   }, [isLoggedIn, navigate]);
 
