@@ -26,31 +26,37 @@ export const Home = () => {
         icon: "error"
       });
       navigate("/login");
-  }}, [isLoggedin, navigate]);
+    }
+  }, [isLoggedin, navigate]);
 
   // Render the component content.
   return (
     <>
-       <Navbar menuItems={[{path: "/search", name: "Search"} ,{path: "/setting", name: "Profile Setting"}, {path: "/manage-your-ads", name: "Your Products"}, {path: "/about", name: "About"} , {path: "/terms", name: "Terms"} ,{name: "Logout", onClick: () => {
-        handleLogout()
-        navigate("/login")
-        }} ]} menuDesks={[{path: "/settings", name: "Profile Settings"}, {path: "/manage-your-ads", name: "Your Products"}, {path: "/terms", name: "Terms"}, {path: "/about", name: "About"}, {name: "Logout", onClick: () => {
-        handleLogout()
-        navigate("/login")
-        }} ]}/>
-
-      {/* Render the search bar */}
-      <Link to="/search">
-        <SearchBar />
-      </Link>
-      {/* Render the recently added ads */}
-      <h1>Recently added</h1>
-      {isLoggedin && <AdsList fetchType="all" />}
-      {/* Render the user's ads */}
-      <h1>Your ads</h1>
-      {isLoggedin && <AdsList fetchType="user" />}
-      <Link to="/create-ad">+ Add a product</Link>
-      <Footer />
+      <Navbar menuItems={[{ path: "/search", name: "Search" }, { path: "/setting", name: "Profile Setting" }, { path: "/manage-your-ads", name: "Your Products" }, { path: "/about", name: "About" }, { path: "/terms", name: "Terms" }, {
+        name: "Logout", onClick: () => {
+          handleLogout()
+          navigate("/login")
+        }
+      }]} menuDesks={[{ path: "/settings", name: "Profile Settings" }, { path: "/manage-your-ads", name: "Your Products" }, { path: "/terms", name: "Terms" }, { path: "/about", name: "About" }, {
+        name: "Logout", onClick: () => {
+          handleLogout()
+          navigate("/login")
+        }
+      }]} />
+      <div className="container">
+        {/* Render the search bar */}
+        <Link to="/search">
+          <SearchBar />
+        </Link>
+        {/* Render the recently added ads */}
+        <h1>Recently added</h1>
+        {isLoggedin && <AdsList fetchType="all" />}
+        {/* Render the user's ads */}
+        <h1>Your ads</h1>
+        {isLoggedin && <AdsList fetchType="user" />}
+        <Link to="/create-ad">+ Add a product</Link>
+        <Footer />
+      </div>
     </>
   );
 };      
