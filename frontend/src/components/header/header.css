@@ -20,7 +20,6 @@
 }
 
 
-
 .header nav ul {
     display: flex;
     justify-content: center;
@@ -49,6 +48,7 @@
 @media (min-width: 667px) and (max-width: 1024px) {
     .header-logo {
         width: 300px;
+        padding-top: 4%;
         padding-left: 4%;
     }
 
@@ -62,7 +62,7 @@
 @media (min-width: 1025px) {
     .header-logo {
         width: 305px;
-        padding-bottom: 3%;
+        padding-bottom: 0%;
         padding-left: 8%;
         /*Adjust to get correct height as it is a logo*/
     }
@@ -70,6 +70,7 @@
     .header nav ul {
         gap: 70%;
         margin-right: 36%;
+        margin-top: 8%;
     }
 
     .header a {

@@ -1,15 +1,30 @@
 .hero {
-    display: flex; 
+    display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    position: relative; 
-    background-image: url("/src/assets/hero-image.jpg");
-    background-size: cover; 
-    height: 300px; 
-    width: 100%; 
-   /* background-attachment: fixed;  Fix the background image in place  */
-    background-position: 50% 70%; /* Adjust the percentage to move the visible part vertically */
-
+    position: relative;
+    background-image: url("/src/assets/hero-forest.jpg");
+    background-size: cover;
+    height: 350px;
+    width: 100%;
+    /* background-attachment: fixed;  Fix the background image in place  */
+    background-position: 50% 70%;
+    /* Adjust the percentage to move the visible part vertically */
 }
 
+
+/* ---------TABLET VIEW---------- */
+@media (min-width: 667px) and (max-width: 1024px) {
+    .hero {
+        height: 450px;
+    }
+}
+
+/* ---------DESKTOP VIEW---------- */
+@media (min-width: 1025px) {
+    .hero {
+        height: 450px;
+        background-position: 10% 55%;
+    }
+}

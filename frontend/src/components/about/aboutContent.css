@@ -6,11 +6,19 @@
 }
 
 
-.about-vision h3,
-.about-tech h3,
-.project-info h3 {
+.about-vision,
+.about-tech,
+.project-info {
     text-align: center;
     padding-bottom: 4%;
+}
+
+.about-icons svg {
+    font-size: 2.5vh;
+    color: white;
+    background: #173e34;
+    padding: 1.5%;
+    border-radius: 50%;
 }
 
 .about-vision p,
@@ -22,6 +30,15 @@
 .project-info p {
     margin-bottom: 24%;
     text-align: justify;
+}
+
+.project-info a {
+    font-weight: bold;
+    color: #173e34;
+}
+
+.project-info a:hover {
+    color: #86bca8;
 }
 
 .cards-container {
@@ -84,6 +101,11 @@
         gap: 12%;
     }
 
+    .about-icons svg {
+        font-size: 2.5vh;
+        padding: 15%;
+    }
+
     .about-container {
         margin-left: 12%;
         margin-right: 12%;
@@ -113,6 +135,11 @@
         flex-direction: row;
         gap: 12%;
         max-width: 800px;
+    }
+
+    .about-icons svg {
+        font-size: 3.5vh;
+        padding: 20%;
     }
 
     .project-info p {

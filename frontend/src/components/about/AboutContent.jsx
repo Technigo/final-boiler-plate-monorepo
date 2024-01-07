@@ -27,7 +27,7 @@ export const AboutContent = () => {
                 <div className="project-info">
                     <div className="about-icons"><IoTrailSignOutline /></div>
                     <p>
-                        Navigate through the GitHub README trail for more information and code for OpenAir Feast.
+                        Navigate through the <a href="https://github.com/IdahCollin/final-boiler-plate-monorepo/blob/main/README.md">GitHub README</a> trail for more information and code for OpenAir Feast.
                     </p></div></div>
 
             <div className="cards-container">

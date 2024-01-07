@@ -1,38 +1,57 @@
 .promptform-wrapper {
     display: flex;
     flex-direction: column;
+    text-align: center;
 }
 
 .promptform-wrapper h2 {
-    color: white;
+    color: #173e34;
     text-align: center;
     margin-left: 5%;
     margin-right: 5%;
-    margin-bottom: 3%;
+    margin-bottom: 10%;
     font-size: 2.5vh;
+}
+
+.instruction-text {
+    color: #173e34;
+    font-weight: bold;
 }
 
 .ingredient-form {
     display: flex;
     flex-direction: column;
     align-self: center;
-    width: 60%;
+    width: 83%;
 }
 
 .error-message {
-    color: white; 
+    color: white;
+}
+
+.textareas-container {
+    display: flex;
+    justify-content: space-between;
 }
 
 textarea {
     margin-bottom: 3%;
     border: 1px solid #286052;
     border-radius: 1.6rem;
+    width: 32%;
+    display: inline-block;
 }
 
 /* Adjusting placeholder text */
 textarea::placeholder {
     line-height: 1.7rem;
     padding-left: 1%;
+}
+
+.checkbox-options {
+    display: flex;
+    justify-content: space-between;
+
 }
 
 /* Ev flyttas. Om alla knappar ska se likadana ut så kan denna flyttas till app */
@@ -46,4 +65,48 @@ textarea::placeholder {
 
 button:hover {
     cursor: pointer;
+}
+
+/* ---------TABLET VIEW---------- */
+@media (min-width: 667px) and (max-width: 1024px) {
+    .ingredient-form {
+        width: 40%;
+    }
+
+    .promptform-wrapper h2 {
+        margin-bottom: 8%;
+    }
+
+    textarea {
+        width: 25%;
+    }
+
+    .instruction-text {
+        color: white;
+    }
+}
+
+
+/* ---------DESKTOP VIEW---------- */
+@media (min-width: 1025px) {
+    .promptform-wrapper {
+        width: 70%;
+    }
+
+    .promptform-wrapper h2 {
+        margin-bottom: 5%;
+        font-size: 4.5vh;
+    }
+
+    .ingredient-form {
+        width: 50%;
+    }
+
+    textarea {
+        width: 30%;
+    }
+
+    .instruction-text {
+        color: white;
+    }
 }

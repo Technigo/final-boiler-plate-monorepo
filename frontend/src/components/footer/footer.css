@@ -10,13 +10,9 @@
 }
 
 .footer-logo {
-    width: 200px;  /*Provisorisk bredd jag satt*/
+    width: 180px;
 }
 
-/* OBS! ÄNDRA DENNA NÄR ÄNDRAR TILL EV LOGO */
-.footer-logo a {
-    color: white;
-}
 
 .footer p {
     color: white;
@@ -61,9 +57,21 @@
     color: #86bca8;
 }
 
+
+/* ---------TABLET VIEW---------- */
+@media (min-width: 667px) and (max-width: 1024px) {
+    .footer-logo {
+        width: 200px;
+    }
+}
+
 /* ---------DESKTOP VIEW---------- */
 @media (min-width: 1025px) {
     .footer {
         flex-direction: row;
+    }
+
+    .footer-logo {
+        width: 200px;
     }
 }
