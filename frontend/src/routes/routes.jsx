@@ -19,7 +19,6 @@ import { Policy } from "../pages/Policy";
 import { EditAd } from "../pages/EditAd";
 import { ManageYourAds } from "../pages/ManageYourAds";
 
-
 // Define the "routes" variable as a JSX expression.
 const routes = (
   <>
@@ -32,15 +31,15 @@ const routes = (
     {/* Define a route for the "/home" path that renders the "Home" page */}
     <Route path="/home" element={<Home />} />
     {/* Define a route for the "/profile" path that renders the "Profile" page */}
-    <Route path="/profile/:userId" element={<Profile />} />    
+    <Route path="/profile/:userId" element={<Profile />} />
     {/* Define a route for the "/settings" path that renders the "Profile Settings" component. */}
-    <Route path="/settings" element={<ProfileSettings />} /> 
+    <Route path="/settings" element={<ProfileSettings />} />
     {/* Define a route for the "/update-settings" path that renders the "Update Settings" component. */}
-    <Route path="/update-settings" element={<UpdateSettings />} /> 
+    <Route path="/update-settings" element={<UpdateSettings />} />
     {/* Define a route for the "/about" path and renders the "About" page */}
     <Route path="/about" element={<About />} />
     {/* Define a route for the "/policy" path and renders the "Policy" page */}
-    <Route path="/policy" element={<Policy />} />
+    <Route path="/terms" element={<Policy />} />
     {/* Define a route for the '/ads/:id' path that renders the 'AdDe' component. */}
     <Route path="/ads/:id" element={<AdDetails />} />
     {/* Define a route for the "/create-ad" path that renders the "Create Ad" page */}
@@ -51,7 +50,7 @@ const routes = (
     <Route path="/manage-your-ads" element={<ManageYourAds />} />
     {/* Define a route for the "/search" path and renders the "Search" page */}
     <Route path="/search" element={<Search />} />
-    
+
     {/* Define a catch-all route that matches any other path ("*") and renders the "NotFound" component. */}
     <Route path="*" element={<NotFound />} />
   </>

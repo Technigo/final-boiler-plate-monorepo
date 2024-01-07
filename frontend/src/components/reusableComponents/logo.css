@@ -2,3 +2,10 @@
   cursor: pointer;
   height: 3em;
 }
+
+
+.logo-burger {
+  width: auto;
+  height: 90%;
+  margin-left: 15px;
+}

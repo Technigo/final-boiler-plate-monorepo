@@ -1,0 +1,17 @@
+/* Apply styles to elements with the 'not-found' class */
+.not-found {
+    height: 100vh;
+    /* Set the height to cover the viewport */
+    width: 100%;
+    /* Set the width to cover the viewport */
+    color: white;
+    /* Set text color to white */
+    background: rgb(83, 79, 79);
+    /* Set background color */
+    text-align: center;
+    /* Center-align text within the element */
+    margin: 0 auto;
+    /* Center-align element horizontally */
+    display: block;
+    /* Display element as a block-level */
+  }
