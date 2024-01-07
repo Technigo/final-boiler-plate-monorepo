@@ -6,11 +6,11 @@ import { Icon } from './Icon';
 export const Button = ({ icon, iconSize = 'medium', label, link, className, onClick, ariaLabel, invertIcon }) => {
   const navigate = useNavigate(); // Hook for navigation
 
-  const handleClick = () => {
+  const handleClick = (e) => {
     if (onClick) {
-      onClick(); // Custom click handler if provided
+      onClick(e); // Pass the event object to the onClick handler
     } else if (link) {
-      navigate(link); // Navigate to the link if provided
+      navigate(link);
     }
   };
 
