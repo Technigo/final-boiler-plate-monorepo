@@ -26,7 +26,10 @@ connectDB();
 const app = express(); // Creates an Express application.
 
 // MIDDLEWARES ---------------------------------------------
-app.use(cors()); // Enable CORS for all origins.
+app.use(cors({
+  origin: 'http://localhost:5173', // replace with the origin of your frontend
+  credentials: true,
+})); // Enable CORS for all origins.
 app.use(express.json()); // Parse incoming requests with JSON payloads.
 app.use(express.urlencoded({ extended: false })); // Parse incoming requests with urlencoded payloads.
 app.use(cookieParser()); // Parse cookie header and populate req.cookies with an object keyed by the cookie names.

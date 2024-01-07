@@ -4,17 +4,31 @@ import { useNavigate } from "react-router-dom";
 import { Input } from "../../components/inputs/Input";
 import { Button } from "../../components/buttons/Button";
 
-// Define the 'Register' functional component.
 export const Register = () => {
-  // Initialize state variables for 'username', 'email', and 'password' using 'useState'.
-  // const [username, setUsername] = useState("");
-  // const [password, setPassword] = useState("");
-  // const [email, setEmail] = useState("");
+  const register = userStore((state) => state.register);
+  const error = userStore((state) => state.error);
 
+  const navigate = useNavigate();
 
-  const { username, setUsername, password, setPassword, email, setEmail } = userStore();
-  // // Initialize the 'navigate' function from React Router.
-  // const navigate = useNavigate();
+  const handleRegister = async (e) => {
+    e.preventDefault();
+    try {
+      const username = e.target.elements.username.value;
+      const password = e.target.elements.password.value;
+      const email = e.target.elements.email.value; // Assuming you have an email field in your form
+
+      const response = await register(username, password, email);
+      console.log("Register result:", response);
+      if (response) {
+        // If the registration is successful, navigate to the login route ("/login").
+        navigate("/"); // Replace with your desired path
+      }
+    } catch (error) {
+      // Handle any errors that occur during registration and display an alert.
+      console.error("Registration error:", error);
+      alert("An error occurred during registration");
+    }
+  };
 
   // // Access the 'handleSignup' function from the 'userStore'.
   // const storeHandleSignup = userStore((state) => state.handleSignup);
@@ -40,15 +54,8 @@ export const Register = () => {
   //   }
   // };
 
-  const onSubmit = async (e) => {
-    e.preventDefault();
-
-    try {
-    } catch (error) {}
-  };
-
   return (
-    <form onSubmit={onSubmit}>
+    <form onSubmit={handleRegister}>
       <div className="input-container">
         <label htmlFor="username" className="visually-hidden">
           Username
@@ -57,8 +64,8 @@ export const Register = () => {
           type="text"
           id="username"
           placeholder="Username"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
+          // value={username}
+          // onChange={(e) => setUsername(e.target.value)}
           ariaLabel="Username input"
         />
       </div>
@@ -70,8 +77,8 @@ export const Register = () => {
           type="password"
           id="password"
           placeholder="Password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
+          // value={password}
+          // onChange={(e) => setPassword(e.target.value)}
           ariaLabel="Password input"
         />
       </div>
@@ -83,8 +90,8 @@ export const Register = () => {
           type="email"
           id="email"
           placeholder="Email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
+          // value={email}
+          // onChange={(e) => setEmail(e.target.value)}
           ariaLabel="Email input"
         />
       </div>

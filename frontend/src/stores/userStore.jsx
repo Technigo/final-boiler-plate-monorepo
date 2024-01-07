@@ -1,82 +1,171 @@
 import { create } from "zustand"; // Import the create function from the zustand library.
 
-const userApi = import.meta.env.USER_BACKEND_API; // Get the backend API endpoint from the environment variables.
+const userApi = import.meta.env.VITE_USER_API;
 
 export const userStore = create((set, get) => ({
-  // STATE VARIABLES
-  username: "",
-  setUsername: (username) => set({ username }),
-  email: "",
-  setEmail: (email) => set({ email }),
-  password: "",
-  setPassword: (password) => set({ password }),
-  isLoggedIn: false,
-  setIsLoggedIn: (isLoggedIn) => set({ isLoggedIn }),
+  user: null,
   error: null,
-  setError: (error) => set({ error }),
-
-  // REGISTER FUNCTION
+  isLoggedIn: false,
   register: async (username, password, email) => {
+    set({ error: null }); // Reset the error state
     try {
       const response = await fetch(`${userApi}/register`, {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ email, username, password }),
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ username, password, email }),
+        credentials: "include",
       });
 
       if (!response.ok) {
-        throw new Error("Failed to register");
+        throw new Error("Registration failed");
       }
 
-      set({ isLoggedIn: true, username, email });
+      const user = await response.json();
+      set({ user, isLoggedIn: true });
+      get().checkAuthentication(); // Call checkAuthentication after setting the state
+      return user; // Return the user data
     } catch (error) {
-      console.error("Failed to register", error);
       set({ error: error.message });
     }
   },
-
-  // LOGIN FUNCTION
   login: async (username, password) => {
+    set({ error: null }); // Reset the error state
     try {
       const response = await fetch(`${userApi}/login`, {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ username, password }),
+        credentials: "include",
       });
 
       if (!response.ok) {
-        throw new Error("Failed to log in");
+        throw new Error("Login failed");
       }
 
-      set({ isLoggedIn: true, username });
+      const user = await response.json();
+      set({ user, isLoggedIn: true });
+      get().checkAuthentication(); // Call checkAuthentication after setting the state
+      return user; // Return the user data
     } catch (error) {
-      console.error("Failed to log in:", error);
       set({ error: error.message });
     }
   },
-
-  // LOGOUT FUNCTION
   logout: async () => {
+    set({ error: null }); // Reset the error state
     try {
       const response = await fetch(`${userApi}/logout`, {
         method: "POST",
+        headers: { "Content-Type": "application/json" },
+        credentials: "include",
       });
 
       if (!response.ok) {
-        throw new Error("Failed to log out");
+        throw new Error("Logout failed");
       }
 
-      set({ isLoggedIn: false, username: "", password: "" });
+      set({ user: null, isLoggedIn: false });
+      return "Logout successful"; // Return a success message
     } catch (error) {
-      console.error("Failed to log out:", error);
+      set({ error: error.message });
+    }
+  },
+  checkAuthentication: async () => {
+    set({ error: null }); // Reset the error state
+    try {
+      const response = await fetch(`${userApi}/profile`, {
+        method: "GET",
+        headers: { "Content-Type": "application/json" },
+        credentials: "include",
+      });
+
+      if (!response.ok) {
+        throw new Error("Not authenticated");
+      }
+
+      const user = await response.json();
+      set({ user });
+      return user; // Return the user data
+    } catch (error) {
       set({ error: error.message });
     }
   },
 }));
+
+// username: "",
+// setUsername: (username) => set({ username }),
+// email: "",
+// setEmail: (email) => set({ email }),
+// password: "",
+// setPassword: (password) => set({ password }),
+
+// isLoggedIn: false,
+// setIsLoggedIn: (isLoggedIn) => set({ isLoggedIn }),
+// error: null,
+// setError: (error) => set({ error }),
+
+// // REGISTER FUNCTION
+// register: async (username, password, email) => {
+//   try {
+//     const response = await fetch(`${userApi}/register`, {
+//       method: "POST",
+//       headers: {
+//         "Content-Type": "application/json",
+//       },
+//       body: JSON.stringify({ email, username, password }),
+//     });
+
+//     if (!response.ok) {
+//       throw new Error("Failed to register");
+//     }
+
+//     set({ isLoggedIn: true, username, email });
+//   } catch (error) {
+//     console.error("Failed to register", error);
+//     set({ error: error.message });
+//   }
+// },
+
+// // LOGIN FUNCTION
+// login: async (username, password) => {
+//   try {
+//     const response = await fetch(`${userApi}/login`, {
+//       method: "POST",
+//       headers: {
+//         "Content-Type": "application/json",
+//       },
+//       body: JSON.stringify({ username, password }),
+//     });
+
+//     if (!response.ok) {
+//       throw new Error("Failed to log in");
+//     }
+
+//     set({ isLoggedIn: true, username });
+//     return true; // Login was successful
+//   } catch (error) {
+//     console.error("Failed to log in:", error);
+//     set({ error: error.message });
+//     return false; // Login failed
+//   }
+// },
+
+// // LOGOUT FUNCTION
+// logout: async () => {
+//   try {
+//     const response = await fetch(`${userApi}/logout`, {
+//       method: "POST",
+//     });
+
+//     if (!response.ok) {
+//       throw new Error("Failed to log out");
+//     }
+
+//     set({ isLoggedIn: false, username: "", password: "" });
+//   } catch (error) {
+//     console.error("Failed to log out:", error);
+//     set({ error: error.message });
+//   }
+// },
 
 //   // FUNCTION TO REGISTER USERS
 //   handleSignup: async (username, password, email) => {

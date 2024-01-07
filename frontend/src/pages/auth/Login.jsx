@@ -5,9 +5,9 @@ import { Input } from "../../components/inputs/Input";
 import { Button } from "../../components/buttons/Button";
 
 export const Login = () => {
-  const { username, setUsername, password, setPassword} = userStore();
-  const login = userStore(state => state.login);
-  const error = userStore(state => state.error);
+  //const { username, setUsername, password, setPassword } = userStore();
+  const login = userStore((state) => state.login);
+  const error = userStore((state) => state.error);
 
   // Use the 'useNavigate' hook to programmatically navigate between routes.
   const navigate = useNavigate();
@@ -15,9 +15,13 @@ export const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await login(username, password);
-      if (username && password) {
-        // If the signup is successful, navigate to the login route ("/").
+      const username = e.target.elements.username.value;
+      const password = e.target.elements.password.value;
+
+      const response = await login(username, password);
+      console.log("Login result:", response);
+      if (response) {
+        // If the login is successful, navigate to the login route ("/").
         navigate("/"); // Replace with your desired path
       }
     } catch (error) {
@@ -26,8 +30,6 @@ export const Login = () => {
       alert("An error occurred during login");
     }
   };
-
-
 
   // // Function to handle the click event of the login button.
   // const onLoginClick = async () => {
@@ -64,8 +66,8 @@ export const Login = () => {
             type="text"
             id="username"
             placeholder="Username"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
+            // value={username}
+            // onChange={(e) => setUsername(e.target.value)}
             ariaLabel="Username input"
           />
         </div>
@@ -77,8 +79,8 @@ export const Login = () => {
             type="password"
             id="password"
             placeholder="Password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
+            // value={password}
+            // onChange={(e) => setPassword(e.target.value)}
             ariaLabel="Password input"
           />
         </div>
