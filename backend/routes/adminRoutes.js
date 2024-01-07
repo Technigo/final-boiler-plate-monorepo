@@ -4,18 +4,18 @@ import {
     loginAdminController,
     listUsersController, // List of all users
     upgradeUserController // Upgrade user to admin
-} from "../controllers/adminController.js";
-import { authenticateAdmin } from "../middleware/authenticateAdmin.js"; // Import middleware to add for protection
+} from "../controllers/adminController";
+import { authenticateAdmin } from "../middleware/authenticateAdmin"; // Import middleware to add for protection
 
 
 // Create an instance of the Express router
 const router = express.Router();
 
 // REGISTER ROUTE: Handle admin registration
-router.post("/register", registerAdminController);
+router.post("/register", authenticateAdmin, registerAdminController);
 
 // LOGIN ROUTE: Handle admin login
-router.post("/login", authenticateAdmin, loginAdminController);
+router.post("/login", loginAdminController);
 
 // Route for a list of all users
 router.get("/users", authenticateAdmin, listUsersController);

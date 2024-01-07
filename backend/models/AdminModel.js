@@ -1,5 +1,5 @@
 import mongoose from 'mongoose';
-import crypto from "crypto"; //  Imports the Node.js crypto library for generating secure random strings.
+// import crypto from "crypto"; //  Imports the Node.js crypto library for generating secure random strings.
 
 const adminSchema = new mongoose.Schema({
     username: {
@@ -17,6 +17,15 @@ const adminSchema = new mongoose.Schema({
         type: String,
         required: true,
         minlength: 6,
+        validate: {
+            validator: function (password) {
+                const hasNumber = /[0-9]/.test(password);
+                const hasCapitalLetter = /[A-Z]/.test(password);
+                const hasSpecialSign = /[!@#\$%\^&\*]/.test(password);
+                return hasNumber && hasCapitalLetter && hasSpecialSign;
+            },
+            message: 'Password must contain at least one number, one capital letter, and one special character.'
+        }
     },
     role: {
         type: String,

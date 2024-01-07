@@ -97,17 +97,22 @@ export const listUsersController = asyncHandler(async (req, res) => {
 export const upgradeUserController = asyncHandler(async (req, res) => {
     const { userId } = req.body; // Get user ID from the request body
 
+    // Validate userId - Check if it's provided and a valid MongoDB ObjectId
+    if (!userId || !userId.match(/^[0-9a-fA-F]{24}$/)) {
+        return res.status(400).json({ success: false, message: 'Invalid or missing userId' });
+    }
+
     try {
         const user = await UserModel.findById(userId);
         if (!user) {
-            return res.status(404).json({ success: false, response: "User not found" });
+            return res.status(404).json({ success: false, message: "User not found" });
         }
 
         user.role = 'admin'; // Update the user's role to 'admin'
         await user.save();
 
-        res.status(200).json({ success: true, response: "User upgraded to admin successfully" });
+        res.status(200).json({ success: true, message: "User upgraded to admin successfully" });
     } catch (error) {
-        res.status(500).json({ success: false, response: error.message });
+        res.status(500).json({ success: false, message: error.message });
     }
 });

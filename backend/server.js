@@ -7,13 +7,13 @@ import dotenv from "dotenv"; // dotenv for loading environment variables from .e
 dotenv.config(); // Load and parse environment variables from the .env file
 
 // Importing custom route handlers
-// import taskRoutes from "./routes/taskRoutes.js"; // Routes for task-related API endpoints
-import userRoutes from "./routes/userRoutes.js"; // Routes for user-related API endpoints
-import adminRoutes from "./routes/adminRoutes.js"; // Routes for admin-related API endpoints
-import cocktailRoutes from "./routes/cocktailRoutes.js"; // Import routes for cocktail-related endpoints
+// import taskRoutes from "./routes/taskRoutes"; // Routes for task-related API endpoints
+import userRoutes from "./routes/userRoutes"; // Routes for user-related API endpoints
+import adminRoutes from "./routes/adminRoutes"; // Routes for admin-related API endpoints
+import cocktailRoutes from "./routes/cocktailRoutes"; // Import routes for cocktail-related endpoints
 
 // Import database connection function
-import { connectDB } from "./config/db.js"; // Function to connect to the MongoDB database
+import { connectDB } from "./config/db"; // Function to connect to the MongoDB database
 
 // Retrieve the port number from environment variables or set default
 const port = process.env.PORT || 3000; // Use the PORT environment variable or default to 3000
