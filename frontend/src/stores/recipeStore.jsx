@@ -53,6 +53,8 @@ export const recipeStore = create((set, get) => ({
 
       //Update the newRecipe state with the fetched newRecipe:
       set(() => ({ newRecipe: newRecipeVar }));
+
+
     } catch (error) {
       console.error("Error fetching new recipe:", error);
     }

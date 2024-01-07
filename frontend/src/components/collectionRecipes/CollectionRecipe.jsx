@@ -7,6 +7,7 @@ const imageUrls = [
   "/recipe-imgs/camping-cooker-1853680_1280.jpg",
   "/recipe-imgs/picnic-4246724_1280.jpg",
   "/recipe-imgs/pot-5901086_1280.jpg",
+  "/recipe-imgs/hero-image.jpg"
 ]; //These can be moved to a json-file later!
 
 export const CollectionRecipe = ({ recipe, index }) => {
