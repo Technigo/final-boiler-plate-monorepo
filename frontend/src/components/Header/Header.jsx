@@ -4,7 +4,7 @@ import styled from "styled-components";
 
 const StyledHeader = styled.div`
   display: flex;
-  align-items: center;
+  //align-items: center;
   justify-content: space-between;
   border-bottom: 2px solid #9eb7bf;
   border-radius: 0 0 20px 20px;

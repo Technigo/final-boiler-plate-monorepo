@@ -2,6 +2,7 @@ import Lottie from "lottie-react";
 import NotFound from "./NotFoundAnimation.json";
 import styled from "styled-components";
 
+// Styled component to contain and style the 'Not Found' Lottie animation
 const StyledNotFoundAnimation = styled.div`
   display: flex;
   justify-content: center;
@@ -18,7 +19,9 @@ const StyledNotFoundAnimation = styled.div`
   }
 `;
 
+// Component rendering the 'Not Found' Lottie animation
 export const NotFoundAnimation = () => {
+  // Options object to configure the Lottie animation
   const options = {
     animationData: NotFound,
     style: {

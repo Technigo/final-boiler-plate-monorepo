@@ -8,12 +8,12 @@ const StyledFilterTaskFeed = styled.div`
   flex-direction: column;
   align-items: center;
   text-align: center;
-  gap: 10px;
+  gap: 30px;
   /* margin-bottom: 30px; */
-  height: 400px;
+  height: 500px;
 
   @media screen and (min-width: 600px) {
-    height: 300px;
+    height: 400px;
   }
 
   @media screen and (min-width: 1000px) {
@@ -35,6 +35,7 @@ const StyledFilters = styled.div`
   @media screen and (min-width: 600px) {
     flex-direction: row;
     gap: 50px;
+    margin-top: 0;
   }
 `;
 

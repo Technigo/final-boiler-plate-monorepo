@@ -9,8 +9,8 @@ import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
 const StyledBurgerMenu = styled.div`
-  display: block;
-  flex-direction: column;
+  display: flex;
+  /* flex-direction: column; */
   max-width: 150px;
   padding: 20px;
   /*border: 1px solid #eeb885;
@@ -20,6 +20,7 @@ const StyledBurgerMenu = styled.div`
 const StyledToggleButton = styled.button`
   display: flex;
   justify-content: flex-end;
+  align-items: center;
   background: transparent;
   border: none;
   font-size: 20px;

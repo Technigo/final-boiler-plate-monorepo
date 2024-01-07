@@ -9,10 +9,10 @@ const StyledCreateTask = styled.div`
   flex-direction: column;
   align-items: center;
   gap: 10px;
-  height: 400px;
+  height: 500px;
 
   @media screen and (min-width: 600px) {
-    height: 300px;
+    height: 400px;
   }
 
   @media screen and (min-width: 1000px) {
@@ -61,19 +61,40 @@ const StyledTaskInput = styled.textarea`
   }
 
   @media screen and (min-width: 600px) {
-    width: 350px;
+    width: 400px;
     height: 100px;
   }
 `;
 
-const StyledDescriptionError = styled.p`
-  color: #ff0000;
-  margin-top: 5px;
+const ErrorCounterWrapper = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  //margin: 0 0 20px;
+  padding: 0;
+  gap: 25px;
+
+  width: 250px;
+
+  @media screen and (min-width: 600px) {
+    width: 400px;
+  }
+`;
+
+const StyledCharCounter = styled.span`
+  font-size: 12px;
+  color: #666;
+  text-align: left;
+  padding-right: 10px;
 `;
 
 const StyledTitleError = styled.p`
-  color: red;
-  margin-top: 5px;
+  color: #e70505;
+`;
+
+const StyledDescriptionError = styled.p`
+  color: #e70505;
+  padding-left: 10px;
+  text-align: left;
 `;
 
 // Define the 'CreateTask' functional component.
@@ -85,6 +106,7 @@ export const CreateTask = () => {
   const [description, setDescription] = useState("");
   const [titleError, setTitleError] = useState("");
   const [descriptionError, setDescriptionError] = useState("");
+  const [taskLength, setTaskLength] = useState(0); // State to track task length
 
   // Access the 'addTaskToServer' function from the 'taskStore'.
   const { addTaskToServer } = taskStore();
@@ -100,7 +122,7 @@ export const CreateTask = () => {
 
     // Check the length of the title and update the error state
     if (newTitle.length < 3 || newTitle.length > 30) {
-      setTitleError("Title must be between 3 and 30 characters.");
+      setTitleError("Title must be 3 to 30 characters.");
     } else {
       setTitleError("");
     }
@@ -119,6 +141,7 @@ export const CreateTask = () => {
   const taskDescription = (e) => {
     const newDescription = e.target.value;
     setDescription(newDescription);
+    setTaskLength(newDescription.length); // Update task length
 
     // Check the length of the description and update the error state
     if (newDescription.length < 10 || newDescription.length > 300) {
@@ -216,10 +239,16 @@ export const CreateTask = () => {
         onChange={taskDescription}
         value={description}
       />
-      {/* Description error message */}
-      {descriptionError && (
-        <StyledDescriptionError>{descriptionError}</StyledDescriptionError>
-      )}
+      <ErrorCounterWrapper>
+        {/* Description error message */}
+        {descriptionError && (
+          <StyledDescriptionError>{descriptionError}</StyledDescriptionError>
+        )}
+        {/* Character counter */}
+        <StyledCharCounter>
+          {taskLength}/300 {/* Maximum characters allowed */}
+        </StyledCharCounter>
+      </ErrorCounterWrapper>
       {/* Create a button to trigger the 'addTaskLocal' function for adding the task. */}
       <Button
         onClick={addTaskLocal}

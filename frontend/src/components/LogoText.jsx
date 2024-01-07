@@ -30,7 +30,7 @@ const StyledLogoDiv = styled.div`
   align-items: center;
 `;
 
-// Define the 'Logo' functional component.
+// Define the 'LogoText' functional component.
 function LogoText() {
   return (
     <StyledLogoDiv>
