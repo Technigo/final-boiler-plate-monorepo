@@ -1,4 +1,3 @@
-import { ProfilePhotoUser } from "../components/ProfilePhoto/ProfilePhotoUser";
 import { userStore } from "../stores/userStore";
 import { taskStore } from "../stores/taskStore";
 import styled from "styled-components";
