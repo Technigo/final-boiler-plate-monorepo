@@ -7,74 +7,249 @@ import { Link, useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import { getCategoryRoute } from "./Home";
 
-// Styled components, change to fit our stylingschema
+const tablet = `(min-width: 640px)`;
+const desktop = `(min-width: 1007px)`;
+
 const PageContainer = styled.div`
   margin: 0 auto;
   padding: 20px;
-  background-color: white; // Your chosen color: ;
-  min-height: 100vh; // Full height of the viewport
+  background-color: white;
+  min-height: 100vh;
 `;
+
 const TitleContainer = styled.div`
-  text-align: center; /* Centers the title text */
-  margin-bottom: 20px; /* Adds some space between the title and the buttons */
+  text-align: center;
+  margin-bottom: 25px;
   color: #01999a;
-  font-family: Montserrat, sans-serif;
+  font-family: "JosefinSans";
+
+  @media ${tablet} {
+    text-align: center;
+    margin-bottom: 35px;
+    color: #01999a;
+    font-size: 32px;
+    font-family: "JosefinSans";
+  }
+
+  @media ${desktop} {
+    text-align: center;
+    margin-bottom: 35px;
+    color: #01999a;
+    font-size: 32px;
+    font-family: "JosefinSans";
+  }
 `;
 const MoodSelectorContainer = styled.div`
-  display: flex; /* Enables Flexbox */
-  flex-wrap: wrap; /* Allows items to wrap to the next line */
-  justify-content: space-around; /* Distributes space around items */
-  align-items: flex-start; /* Aligns items to the start */
-  gap: 10px; /* Adds a gap between buttons */
-  width: 100%; /* Ensures the container takes full width */
-  max-width: 1200px; /* Sets a max-width for the container */
-  margin: 0 auto; /* Centers the container in the parent */
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 5px;
+  width: 100%;
+  max-width: 1200px;
+  margin-bottom: 15px;
+
+  @media ${tablet} {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 5px;
+    width: 100%;
+    max-width: 1200px;
+    margin-bottom: 35px;
+  }
+
+  @media ${desktop} {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 5px;
+    width: 100%;
+    max-width: 1200px;
+    margin-bottom: 40px;
+  }
 `;
 
 const MoodButton = styled.button`
-  background-color: #ffccd5;
-  color: #800f2f;
-  padding: 10px 20px; /* Some padding */
-  border: none; /* No border */
-  border-radius: 5px; /* Rounded corners */
-  cursor: pointer; /* Pointer/hand icon */
-  text-align: center; /* Center the text */
-  text-decoration: none; /* No underline */
-  display: inline-block; /* Inline block element */
-  font-size: 16px; /* Font size */
-  margin: 4px 2px; /* Margin around the button */
-  transition-duration: 0.4s; /* Transition for hover effect */
-  background-color: ${(props) => (props.selected ? "#FF8FA3" : "#FFCCD5")};
+  color: white;
+  border: solid white;
+  padding: 10px 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 4px;
+  transition-duration: 0.2s;
+  background-color: ${(props) => (props.selected ? "#01999A" : "#FCABE3")};
 
   &:hover {
-    background-color: #ff8fa3;
-    color: #590d22;
+    background-color: white;
+    color: #01999a;
+    /* border: solid #01999a; */
   }
 
   &:active {
     transform: translateY(1px);
   }
+
+  @media ${tablet} {
+    color: white;
+    border: solid white;
+    padding: 10px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 25px;
+    margin: 4px 4px;
+    transition-duration: 0.2s;
+    background-color: ${(props) => (props.selected ? "#01999A" : "#FCABE3")};
+
+    &:hover {
+      background-color: white;
+      color: #01999a;
+      /* border: solid #01999a; */
+      /* font-size: 25px; */
+    }
+
+    &:active {
+      transform: translateY(1px);
+    }
+  }
+  @media ${desktop} {
+    color: white;
+    border: solid white;
+    padding: 10px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 30px;
+    margin: 4px 4px;
+    transition-duration: 0.2s;
+    background-color: ${(props) => (props.selected ? "#01999A" : "#FCABE3")};
+
+    &:hover {
+      background-color: white;
+      color: #01999a;
+      /* border: solid #01999a; */
+      /* font-size: 32px; */
+    }
+
+    &:active {
+      transform: translateY(1px);
+    }
+  }
+`;
+
+const BackButton = styled.button`
+  background-color: white;
+  color: #01999a;
+  border: solid #01999a;
+  padding: 5px 10px;
+  border-radius: 10px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  flex-direction: column;
+  font-size: 16px;
+  font-family: "JosefinSans";
+  margin: 6px 2px;
+  transition-duration: 0.4s;
+
+  &:hover {
+    background-color: white;
+    border: solid #fcabe3;
+  }
+
+  &:active {
+    transform: translateY(1px);
+  }
+
+  @media ${tablet} {
+    background-color: white;
+    color: #01999a;
+    border: solid #01999a;
+    padding: 10px 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    flex-direction: column;
+    font-size: 25px;
+    font-family: "JosefinSans";
+    margin: 4px 2px;
+    transition-duration: 0.4s;
+
+    &:hover {
+      background-color: white;
+      border: solid #fcabe3;
+      font-size: 25px;
+    }
+
+    &:active {
+      transform: translateY(1px);
+    }
+  }
+
+  @media ${desktop} {
+    background-color: white;
+    color: #01999a;
+    border: solid #01999a;
+    padding: 10px 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    flex-direction: column;
+    font-size: 25px;
+    font-family: "JosefinSans";
+    margin: 4px 2px;
+    transition-duration: 0.4s;
+
+    &:hover {
+      background-color: white;
+      border: solid #fcabe3;
+      font-size: 25px;
+    }
+
+    &:active {
+      transform: translateY(1px);
+    }
+  }
 `;
 
 const ResultsButton = styled.button`
-  background-color: #ffccd5;
-  color: #800f2f;
-  padding: 10px 20px; /* Some padding */
-  border: none; /* No border */
-  border-radius: 5px; /* Rounded corners */
-  cursor: pointer; /* Pointer/hand icon */
-  text-align: center; /* Center the text */
-  text-decoration: none; /* No underline */
-  display: inline-block; /* Inline block element */
-  font-size: 16px; /* Font size */
-  margin: 4px 2px; /* Margin around the button */
-  transition-duration: 0.4s; /* Transition for hover effect */
-  background-color: ${(props) =>
-    props.$clicked ? "#SomeColorForClickedState" : "#FFCCD5"};
+  background-color: #fcabe3;
+  color: white;
+  border: solid yellow;
+  padding: 10px 15px;
+  border-radius: 10px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 18px;
+  margin: 2px 2px;
+  transition-duration: 0.4s;
 
   &:hover {
-    background-color: #ff8fa3;
-    color: #590d22;
+    background-color: white;
+    color: yellow;
+    border: solid #fcabe3;
+    font-size: 20px;
   }
 
   &:active {
@@ -118,22 +293,19 @@ const MoodSelector = () => {
   const location = useLocation();
   const navigate = useNavigate();
 
-  //Function to handle the back button click
   const handleBackButtonClick = () => {
     const { state } = location;
     const { occasionRoute } = state || {};
-  
 
-     // Navigate back to the relevant occasion-page using the occasionRoute
-     navigate(occasionRoute || "/");
+    // Navigate back to the relevant occasion-page using the occasionRoute
+    navigate(occasionRoute || "/");
   };
 
   return (
     <PageContainer>
       <Navbar />
       <TitleContainer>
-        <h2>Select your mood(s)</h2>
-        <p>You can select a minimum of one mood and a maximum of three moods</p>
+        <h2>Please select 1-3 moods</h2>
       </TitleContainer>
       <MoodSelectorContainer>
         {moods.map((mood) => (
@@ -146,20 +318,21 @@ const MoodSelector = () => {
           </MoodButton>
         ))}
       </MoodSelectorContainer>
-      <Link to={occasionRoute || "/"}>
-        <MoodButton onClick={handleBackButtonClick}>
-          Back to occasion
-        </MoodButton>
-      </Link>
-      <Link to="/result">
-        <ResultsButton
-          onClick={handleResultsButtonClick}
-          $clicked={resultsButtonClicked}
-        >
-          Give me my results
-        </ResultsButton>
-      </Link>
 
+      <div style={{ display: "flex", justifyContent: "space-between" }}>
+        <BackButton onClick={handleBackButtonClick}>
+          Back to Occasion
+        </BackButton>
+
+        <Link to="/result">
+          <ResultsButton
+            onClick={handleResultsButtonClick}
+            $clicked={resultsButtonClicked}
+          >
+            To Results
+          </ResultsButton>
+        </Link>
+      </div>
       <Footer />
     </PageContainer>
   );

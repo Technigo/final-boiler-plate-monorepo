@@ -28,6 +28,7 @@ const NavbarContainer = styled.nav`
   display: flex;
   justify-content: flex-start;
   padding: 10px 5px 0.1px 5px;
+
   @media ${tablet} {
     display: flex;
     justify-content: space-between;
@@ -100,6 +101,14 @@ const NavbarLink = styled(Link)`
   }
 `;
 
+const AboutLink = styled(NavbarLink)`
+  color: yellow;
+`;
+
+const RestaurantLink = styled(NavbarLink)`
+  color: #fcabe3;
+`;
+
 const Navbar = () => {
   return (
     <NavbarContainer>
@@ -111,10 +120,10 @@ const Navbar = () => {
           <NavbarLink to="/">Home</NavbarLink>
         </NavItem>
         <NavItem>
-          <NavbarLink to="/about">About</NavbarLink>
+          <AboutLink to="/about">About</AboutLink>
         </NavItem>
         <NavItem>
-          <NavbarLink to="/addrestaurant">Add Restaurant</NavbarLink>
+          <RestaurantLink to="/addrestaurant">Add Restaurant</RestaurantLink>
         </NavItem>
       </NavbarNav>
     </NavbarContainer>
