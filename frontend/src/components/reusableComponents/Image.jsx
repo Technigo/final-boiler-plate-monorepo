@@ -1,9 +1,20 @@
-//import "./image.css";
+import "./image.css";
 
-export const Image = ({ sectionClassName, elementClassName, link, ImageAltText }) => {
+export const Image = ({ src, alt, size = "medium", className = "", style = {} }) => {
+    const imageSizeClasses = {
+        small: "image-small",
+        medium: "image-medium",
+        large: "image-large",
+    };
+
+    const imageClass = `image ${imageSizeClasses[size]} ${className}`;
+
     return (
-        <section className={sectionClassName}>
-            <img className={elementClassName} src={link} alt={ImageAltText} />
-        </section>
-    )
-}
+        <img
+            src={src}
+            alt={alt}
+            className={imageClass}
+            style={style}
+        />
+    );
+};

@@ -208,6 +208,7 @@ img {
 
   .container {
     max-width: 680px;
+    margin-top: 30px;
   }
 }
 
@@ -256,5 +257,6 @@ img {
 
   .container {
     max-width: 1120px;
+    margin-top: 50px;
   }
 }
