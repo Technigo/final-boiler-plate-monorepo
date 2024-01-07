@@ -3,7 +3,6 @@
   "description": "Starter project to get up and running with your final quickly",
   "private": true,
   "version": "0.0.0",
-  "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "vite build",

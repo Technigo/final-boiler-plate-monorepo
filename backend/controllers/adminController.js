@@ -1,4 +1,5 @@
 import { AdminModel } from '../models/AdminModel';
+import { UserModel } from '../models/UserModel'; // For upgrading users to admin
 import asyncHandler from 'express-async-handler';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
@@ -9,6 +10,50 @@ const generateToken = (id) => {
     });
 };
 
+// Register Admin
+export const registerAdminController = asyncHandler(async (req, res) => {
+    const { username, password, email } = req.body;
+
+    try {
+        if (!username || !email || !password) {
+            res.status(400);
+            throw new Error("Please add all fields");
+        }
+
+        const existingAdmin = await AdminModel.findOne({ $or: [{ username }, { email }] });
+        if (existingAdmin) {
+            res.status(400);
+            throw new Error(`Admin with ${existingAdmin.username === username ? "username" : "email"} already exists`);
+        }
+
+        const salt = bcrypt.genSaltSync(10);
+        const hashedPassword = bcrypt.hashSync(password, salt);
+
+        const newAdmin = new AdminModel({
+            username,
+            email,
+            password: hashedPassword,
+        });
+
+        await newAdmin.save();
+
+        const token = generateToken(newAdmin._id);
+
+        res.status(201).json({
+            success: true,
+            response: {
+                username: newAdmin.username,
+                email: newAdmin.email,
+                id: newAdmin._id,
+                token
+            },
+        });
+    } catch (e) {
+        res.status(500).json({ success: false, response: e.message });
+    }
+});
+
+// Admin login
 export const loginAdminController = asyncHandler(async (req, res) => {
     const { username, password } = req.body;
 
@@ -35,5 +80,34 @@ export const loginAdminController = asyncHandler(async (req, res) => {
         });
     } catch (e) {
         res.status(500).json({ success: false, response: e.message });
+    }
+});
+
+// List all users
+export const listUsersController = asyncHandler(async (req, res) => {
+    try {
+        const users = await UserModel.find({}).select('-password'); // Excludes passwords from the result
+        res.json({ success: true, users });
+    } catch (error) {
+        res.status(500).json({ success: false, response: error.message });
+    }
+});
+
+// Upgrade a user to an admin
+export const upgradeUserController = asyncHandler(async (req, res) => {
+    const { userId } = req.body; // Get user ID from the request body
+
+    try {
+        const user = await UserModel.findById(userId);
+        if (!user) {
+            return res.status(404).json({ success: false, response: "User not found" });
+        }
+
+        user.role = 'admin'; // Update the user's role to 'admin'
+        await user.save();
+
+        res.status(200).json({ success: true, response: "User upgraded to admin successfully" });
+    } catch (error) {
+        res.status(500).json({ success: false, response: error.message });
     }
 });
