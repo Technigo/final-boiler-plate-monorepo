@@ -284,7 +284,8 @@ export const App = () => {
         }, 20000)
         const updateDandelion = async () => {
           try {
-            const response = await fetch("http://localhost:3000/up?updateDandelion=true", {
+            // const response = await fetch("http://localhost:3000/up?updateDandelion=true", {
+              const response = await fetch("https://two2-3ck1.onrender.com/up?updateDandelion=true", {
               method: "POST",
               headers: {
                 "Content-Type": "application/json",
@@ -351,7 +352,8 @@ useEffect(() => {
   const handleRegister = async () => {
     try {
       console.log("trying register:", username)
-      const response = await fetch("http://localhost:3000/register", {
+      // const response = await fetch("http://localhost:3000/register", {
+        const response = await fetch("https://two2-3ck1.onrender.com/register", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -398,7 +400,8 @@ useEffect(() => {
 
   const handleLogin = async () => {
     try {
-      const response = await fetch("http://localhost:3000/login", {
+      // const response = await fetch("http://localhost:3000/login", {
+        const response = await fetch("https://two2-3ck1.onrender.com/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -428,7 +431,8 @@ useEffect(() => {
   const checkTargetUserFound = async () => {
     try {
       // perform additional fetch if needed
-      const response = await fetch('http://localhost:3000/up', {
+      // const response = await fetch('http://localhost:3000/up', {
+        const response = await fetch('https://two2-3ck1.onrender.com/up', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -458,7 +462,8 @@ useEffect(() => {
   const handleUP = async () => {
     try {
       console.log('handleUP')
-      const response = await fetch('http://localhost:3000/up', {
+      // const response = await fetch('http://localhost:3000/up', {
+        const response = await fetch('https://two2-3ck1.onrender.com/up', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
