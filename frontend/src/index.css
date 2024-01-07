@@ -5,10 +5,10 @@
   /* Primary Colors */
   --primary-text: #333333;
   --primary-background: #ffffff;
-  --cta: #2a423a;
+  --cta: #333333;
   --cta-hover: #202322;
   --cta-text: #e2e3ed;
-  --cta-hover-text: #;
+  --cta-hover-text: #e2e3ed;
   --secondary-background: #f5f5f5;
 
   /* Secondary Colors */
