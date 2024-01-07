@@ -13,6 +13,10 @@ const StyledVision = styled.div`
   flex-direction: column;
   text-align: center;
   gap: 20px;
+
+  p {
+    text-align: left;
+  }
 `;
 
 const StyledFounderSection = styled.div`

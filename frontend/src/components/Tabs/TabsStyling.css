@@ -26,9 +26,17 @@
 .react-tabs__tab--selected {
   background: #fff;
   border-color: var(--secondaryColor);
-  color: #213547;
+  color: #fff;
   font-weight: 600;
   border-radius: 20px 0 0;
+  background: -webkit-linear-gradient(
+    45deg,
+    #633d57,
+    #9b6489,
+    #ad719a,
+    #9b6489,
+    #633d57
+  );
 }
 
 .react-tabs__tab--disabled {

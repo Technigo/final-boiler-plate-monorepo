@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { taskStore } from "../stores/taskStore";
+import { Button } from "./Buttons/Button";
 import aHelpingHandLogotype from "/a-helping-hand-logotype.png";
 import styled from "styled-components";
 
@@ -56,6 +57,7 @@ export const FilterTaskFeed = () => {
   const [category, setCategory] = useState("");
   const [area, setArea] = useState("");
   const [filteredTasks, setFilteredTasks] = useState([]);
+  const { fetchTasks } = taskStore();
 
   // Function to filter tasks by category and area
   const filterTasks = (selectedCategory, selectedArea) => {
@@ -65,27 +67,21 @@ export const FilterTaskFeed = () => {
     setFilteredTasks(tasks);
   };
 
-  // // Handler for category select change
-  // const handleCategoryChange = (e) => {
-  //   setCategory(e.target.value);
-  //   filterTasks(e.target.value, area); // Filter tasks based on new category
-  // };
-
-  // // Handler for area select change
-  // const handleAreaChange = (e) => {
-  //   setArea(e.target.value);
-  //   filterTasks(category, e.target.value); // Filter tasks based on new area
-  // };
-
   useEffect(() => {
+    console.log("Category:", category, "Area:", area);
     filterTasks(category, area);
   }, [category, area]);
+
+  // Function to reset filters
+  const handleReset = () => {
+    setCategory("");
+    setArea("");
+    fetchTasks(); // Reset tasks by invoking the fetchTasks action
+  };
 
   return (
     <StyledFilterTaskFeed>
       <p>
-        {/* Many in our community might need some sort of assistance. A Helping Hand
-        is all about connecting people. */}
         A Helping Hand is all about connecting people. Take the opportunity to
         make someone&apos;s day by offering a helping hand!
       </p>
@@ -137,6 +133,11 @@ export const FilterTaskFeed = () => {
           <option value="Veddige">Veddige</option>
         </StyledSelects>
       </StyledFilters>
+      <Button
+        onClick={handleReset}
+        className="filterReset-button"
+        buttonName="Reset and Show All Tasks"
+      />
     </StyledFilterTaskFeed>
   );
 };

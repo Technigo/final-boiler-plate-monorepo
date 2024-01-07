@@ -9,6 +9,7 @@ console.log(apiEnv);
 export const taskStore = create((set) => ({
   // Initialize the tasks state with an empty array
   tasks: [], // Array of tasks
+  //originalTasks: [], // Original array of tasks
   userTasks: [], // Array of tasks created by the user
   volunteeredTasks: [], // Array of tasks volunteered by the user
   //filteredTasks: [], // Array of tasks filtered by category and area
@@ -20,6 +21,9 @@ export const taskStore = create((set) => ({
 
   // Set the tasks state to a new array of tasks
   setTasks: (tasks) => set({ tasks }),
+
+  // Function to set the original tasks
+  setOriginalTasks: (tasks) => set({ originalTasks: tasks }),
 
   // New action to fetch all tasks
   fetchTasks: async () => {
@@ -39,6 +43,7 @@ export const taskStore = create((set) => ({
         console.log("Fetched tasks:", data);
 
         set({ tasks: data });
+        set({ originalTasks: data }); // Set originalTasks to fetched data
       } else {
         // Log the error status and response
         console.error("Failed to fetch tasks. Response:", response.status);
@@ -140,10 +145,11 @@ export const taskStore = create((set) => ({
     try {
       console.log("Filtering tasks...");
       // Get tasks from the state
-      const allTasks = await taskStore.getState().tasks;
-      console.log("All tasks:", allTasks);
+      const { originalTasks } = taskStore.getState(); // Get original tasks
+      // const allTasks = await taskStore.getState().tasks;
+      // console.log("All tasks:", allTasks);
       // Filter tasks based on category and area
-      const filteredTasks = allTasks.filter(
+      const filteredTasks = originalTasks.filter(
         (task) =>
           (category === "" || task.category === category) &&
           (area === "" || task.area === area)
@@ -157,6 +163,15 @@ export const taskStore = create((set) => ({
       return []; // Return an empty array if there's an error
     }
   },
+
+  // resetTasks: async () => {
+  //   try {
+  //     const { originalTasks } = taskStore.getState();
+  //     set({ tasks: originalTasks });
+  //   } catch (error) {
+  //     console.error("Error resetting tasks:", error);
+  //   }
+  // },
 
   // Volunteer for a task
   addMyselfToTask: async (taskId) => {

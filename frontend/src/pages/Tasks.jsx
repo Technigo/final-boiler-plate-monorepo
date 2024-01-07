@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 // import { CreateTask } from "../components/CreateTask";
 import { FeedTaskCard } from "../components/TaskCards/FeedTaskCard";
 // import { FilterTaskFeed } from "../components/FilterTaskFeed";
-import { HandleTaskTabs } from "../components/HandleTaskTabs";
+import { TaskTabs } from "../components/Tabs/TaskTabs";
 import styled from "styled-components";
 
 const StyledTaskPage = styled.div`
@@ -65,6 +65,10 @@ const CardWrapper = styled.div`
   justify-content: center; */
   gap: 10px;
 
+  p {
+    text-align: center;
+  }
+
   @media screen and (min-width: 600px) {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -86,7 +90,7 @@ export const Tasks = () => {
     intro: "Do you need an extra hand? Or do you want to help someone?",
     p: "Then Deed Hub is the place to be!",
     // p: "Share it with the community and get the assistance you need!",
-    deeds: "Up-for-grabs",
+    deeds: "Up for grabs",
   };
 
   // Access the 'tasks' and 'fetchTasks' functions from the 'taskStore'.
@@ -142,11 +146,8 @@ export const Tasks = () => {
             <p>{text.intro}</p>
             <p>{text.p}</p>
           </StyledTaskText>
-          {/* Render the 'CreateTask' component to add new tasks. */}
-          {/* <CreateTask /> */}
-          <HandleTaskTabs />
+          <TaskTabs />
         </StyledTaskCreator>
-        {/* <FilterTaskFeed /> */}
       </StyledTaskFields>
       <h3>{text.deeds}</h3>
       <CardWrapper>
@@ -164,4 +165,4 @@ export const Tasks = () => {
 
 // SUMMARY
 
-// This code defines the Tasks component, which handles the display of tasks, their creation, editing, and deletion. It imports necessary components, hooks, and stores, and it uses React Router to navigate between routes. The component also fetches tasks from the server using the fetchTasks function and updates the display based on the user's authentication status. Additionally, it renders text content and conditionally displays tasks or a message when there are no tasks.
+// This code defines the Tasks component, which handles the display of tasks, their creation, filtering through them and the possibility to volunteer. It imports necessary components, hooks, and stores, and it uses React Router to navigate between routes. The component also fetches tasks from the server using the fetchTasks function and updates the display based on the user's authentication status. Additionally, it renders text content and conditionally displays tasks or a message when there are no tasks.

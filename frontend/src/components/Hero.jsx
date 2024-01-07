@@ -44,8 +44,9 @@ const StyledButtonWrapper = styled.div`
 
 export const Hero = () => {
   const text = {
-    heading: "Welcome",
-    subheading: "We help people in Varberg connect with their community",
+    // heading: "Welcome",
+    // subheading: "We help people in Varberg connect with their community",
+    heading: "We help people in Varberg connect with their community",
     intro:
       "Join a community of compassion and generosity, connecting the people in Varberg through simple acts of kindness. Together, we build a world where every effort makes a meaningful difference.",
   };
@@ -54,7 +55,7 @@ export const Hero = () => {
     <StyledHero>
       <StyledHeroText>
         <h1 className="heading">{text.heading}</h1>
-        <h2>{text.subheading}</h2>
+        {/* <h2>{text.subheading}</h2> */}
         <p>{text.intro}</p>
         <StyledButtonWrapper>
           <LinkButton
