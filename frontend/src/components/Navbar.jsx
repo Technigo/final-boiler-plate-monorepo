@@ -51,7 +51,7 @@ export const Navbar = ({ menuItems, menuDesks }) => {
           <ul className="nav-list">
             <div className="navbar-logo">
               {/* Your logo goes here */}
-              <span>Logo</span>
+              <Logo className="logo-burger"/>
             </div>
 
             {menuItems.map((menuItem) => (
