@@ -6,9 +6,11 @@ export const Footer = () => {
             <div className={styles.mainContainer}>
                 <div className={styles.textContainer}>
                     <h2>RESCUE HELPER</h2>
-                    <p>admin@rescuehelper.com</p>
-                    <p>Final project @ Technigo Web Development Boot Camp</p>
-                    <p>ELIN OLAUSSON & OLGA LEPISTÖ 2023</p>
+                    <div className={styles.infoContainer}>
+                        <p>admin@rescuehelper.com</p>
+                        <p>Final project @ Technigo Web Development Boot Camp</p>
+                        <p>ELIN OLAUSSON & OLGA LEPISTÖ 2024</p>
+                    </div>
                 </div>
             </div>
         </>

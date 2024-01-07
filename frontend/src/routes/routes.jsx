@@ -1,25 +1,20 @@
-// Import the 'Route' component from the 'react-router-dom' library.
 import { Route } from "react-router-dom";
-// Import various page components used as route elements.
-import { Home } from '../components/Home.jsx'
-import { Register } from "../pages/Register";
-import { Tasks } from "../pages/Tasks";
-import { Login } from "../pages/Login";
-import { NotFound } from "../pages/NotFound";
+import { Home } from '../pages/Home.jsx'
+import { DogSearch } from '../pages/DogSearch.jsx'
+import { AboutUs } from '../pages/AboutUs.jsx'
+import { LogIn } from "../pages/LogIn.jsx";
 
 // Define the 'routes' variable as a JSX expression.
 const routes = (
   <>
-    {/* Define a route for the root path ('/') that renders the 'Login' component. */}
+    {/* Define a route for the root path ('/') that renders the 'Home' component. */}
     <Route path="/" element={<Home />} />
-    {/* Define a route for the '/home' path that renders the 'Home' component. */}
-    <Route path="/home" element={<Home />} />
-    {/* Define a route for the '/tasks' path that renders the 'Tasks' component. */}
-    <Route path="/tasks" element={<Tasks />} />
-    {/* Define a route for the '/register' path that renders the 'Register' component. */}
-    <Route path="/register" element={<Register />} />
-    {/* Define a catch-all route that matches any other path ('*') and renders the 'NotFound' component. */}
-    <Route path="*" element={<NotFound />} />
+    {/* Define a route for the '/dogsearch' path that renders the 'DogSearch' component. */}
+    <Route path="/dogsearch" element={<DogSearch />} />
+    {/* Define a route for the '/aboutus' path that renders the 'AboutUs' component. */}
+    <Route path="/aboutus" element={<AboutUs />} />
+    {/* Define a route for the '/login' path that renders the 'LogIn' component. */}
+    <Route path="/login" element={<LogIn />} />
   </>
 );
 

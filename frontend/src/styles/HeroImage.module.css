@@ -1,15 +1,26 @@
 .mainContainer {
     background-image: url('../assets/hero-dog.jpg');
+    background-position: left;
+    background-repeat: no-repeat;
+    background-color: #CDD6C1;
     display: flex;
+    margin: 0;
+    height: 35em;
+    background-size: 100%;
+    align-items: center;
 }
 
 .textContainer {
     display: flex;
+    padding-left: 2em;
+    width: 30%;
 }
 
 @media screen and (max-width: 667px) {
     .mainContainer {
         background-position: right;
+        background-size: 110%;
+        background-repeat: no-repeat;
         height: 20em;
         align-items: center;
         justify-content: left;
@@ -18,6 +29,23 @@
     .textContainer {
         max-width: 40%;
         text-align: left;
-        margin-left: 2em;
+        padding-left: 1em;
+    }
+}
+
+@media screen and (min-width: 668px) and (max-width: 1024px) {
+    .mainContainer {
+        background-position: right;
+        background-size: 110%;
+        background-repeat: no-repeat;
+        height: 25em;
+        align-items: center;
+        justify-content: left;
+    }
+
+    .textContainer {
+        max-width: 30%;
+        text-align: left;
+        padding-left: 1.5em;
     }
 }

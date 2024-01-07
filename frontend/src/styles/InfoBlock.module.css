@@ -2,20 +2,52 @@
     background-color: #CDD6C1;
     display: flex;
     flex-direction: column;
+    gap: 1em;
+    align-items: center;
+    justify-content: center;
+    height: 10em;
+}
+
+.emailWrapper {
+    display: flex;
+    flex-direction: row;
+    gap: 0.5em;
 }
 
 .whiteText {
     color: #FFFFFF;
-    margin: 0.2em;
+    font-size: 2em;
 }
 
 .greenText {
     color: #42531D;
+    font-size: 2em;
 }
 
 @media screen and (max-width: 667px) {
     .mainContainer {
-        height: 9em;
+        height: 10em;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    }
+
+    .whiteText {
+        font-size: 1.5em;
+    }
+    
+    .greenText {
+        font-size: 1.5em;
+    }
+
+    .emailWrapper {
+        flex-direction: column;
+    }
+}
+
+@media screen and (min-width: 668px) and (max-width: 1024px) {
+    .mainContainer {
+        height: 12em;
         justify-content: center;
     }
 }

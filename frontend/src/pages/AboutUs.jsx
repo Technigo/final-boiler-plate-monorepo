@@ -1,13 +1,9 @@
-import styles from '../styles/Home.module.css'
 import { Header } from '../components/Header.jsx'
 import { NavBar } from '../components/NavBar.jsx'
-import { HeroImage } from '../components/HeroImage.jsx'
-import { InfoBlock1 } from '../components/InfoBlock1.jsx'
-import { InfoImage } from '../components/InfoImage.jsx'
-import { InfoBlock2 } from '../components/InfoBlock2.jsx'
 import { Footer } from '../components/Footer.jsx'
+import styles from '../styles/AboutUs.module.css'
 
-export const Home = () => {
+export const AboutUs = () => {
     return (
         <>
             <div className={styles.siteContainer}>
@@ -16,10 +12,6 @@ export const Home = () => {
                         <Header />
                         <NavBar />
                     </div>
-                    <HeroImage />
-                    <InfoBlock1 />
-                    <InfoImage />
-                    <InfoBlock2 />
                     <Footer />
                 </div>
             </div>
@@ -27,4 +19,4 @@ export const Home = () => {
     )
 }
 
-export default Home
+export default AboutUs

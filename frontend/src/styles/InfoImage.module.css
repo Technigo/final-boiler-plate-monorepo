@@ -2,6 +2,16 @@
     background-image: url('../assets/info-dog.webp');
     background-position: center;
     display: flex;
+    height: 40em;
+}
+
+.textContainer {
+    max-width: 50%;
+    padding-left: 2em;
+    display: flex;
+    flex-direction: column;
+    gap: 2em;
+    justify-content: center;
 }
 
 @media screen and (max-width: 667px) {
@@ -9,6 +19,22 @@
         height: 25em;
         align-items: center;
         justify-content: left;
+        background-size: 120%;
+    }
+
+    .textContainer {
+        text-align: left;
+        max-width: 40%;
+        margin-left: 2em;
+    }
+}
+
+@media screen and (min-width: 668px) and (max-width: 1024px) {
+    .mainContainer {
+        height: 35em;
+        align-items: center;
+        justify-content: left;
+        background-size: 120%;
     }
 
     .textContainer {

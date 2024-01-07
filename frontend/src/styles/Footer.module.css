@@ -1,9 +1,28 @@
 .mainContainer {
     background-color: #42531D;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 12em;
+    line-height: 0;
+    text-align: center;
+}
+
+.textContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+
+.infoContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 2em;
 }
 
 @media screen and (max-width: 667px) {
     .mainContainer {
-        height: 15em;
+        height: 10em;
     }
 }

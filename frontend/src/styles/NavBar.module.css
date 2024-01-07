@@ -1,0 +1,20 @@
+.mainContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    text-align: right;
+    align-items: center;
+    gap: 3em;
+}
+
+.navLink {
+    text-decoration: none;
+}
+
+@media screen and (max-width: 667px) {
+    .mainContainer {
+        justify-content: center;
+        align-items: center;
+        line-height: 1;
+    }
+}

@@ -21,11 +21,6 @@
     .mainContainer {
         grid-column: 1 / 2;
     }
-
-    .headingContainer {
-        flex-direction: column;
-        gap: 0em;
-    }
 }
 
 @media screen and (min-width: 668px) and (max-width: 1024px) {
