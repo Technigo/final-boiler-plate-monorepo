@@ -297,85 +297,6 @@ export const userStore = create((set) => ({
   },
 
   // FUNCTION TO HANDLE USER'S OWN PROFILE UPDATE EXCEPT IMAGE (for each user to update their own profile settings)
-  // handleProfileUpdate: async (isLoggedin, userId,  => {
-  //   // Check if the user is logged in and display message if they are not
-  //   if (!isLoggedin) {
-  //     Swal.fire({
-  //       title: "Error!",
-  //       text: "Please log in to update your profile",
-  //       icon: "error"
-  //     });
-  //     return;
-  //   } 
-    
-  //   // If they are logged in, send a POST request to the update endpoint with user data. 
-  //   const formData = new FormData();
-  //   if (email) {
-  //     formData.append("email", email);
-  //   }
-
-  //   if (password) {
-  //     formData.append("password", password);
-  //   }
-
-  //   if (location) {
-  //     formData.append("location", location);
-  //   }
-
-  //   if (introduction) {
-  //     formData.append("introduction", introduction);
-  //   }
-
-
-  //   // formData.append("products", products);
-  
-  //   // Append image if it exists
-  //   if (image) {
-  //     formData.append("image", image);
-  //   }
-
-  //   try { 
-  //     const response = await fetch(`${apiEnv}/users/${userId}`, {
-  //       method: "PUT",
-  //       body: formData,
-  //     });
-
-  //     // Parse the response data as JSON.
-  //     const data = await response.json();
-  //     console.log(data);
-  //     if (data.success) {
-  //       // Update relevant states
-  //       set((state) => ({
-  //         ...state,
-  //         
-  //         // password: data.response.password
-  //       })
-  //     );
-  //       // Display a success alert
-  //       Swal.fire({
-  //         title: "Congratulations!",
-  //         text: "User profile update successful",
-  //         icon: "success"
-  //       });
-  //     } else {
-  //       // Display an error message from the server or a generic message
-  //       Swal.fire({
-  //         title: "Error!",
-  //         text: data.response || "User profile update failed",
-  //         icon: "error"
-  //       });
-  //     }
-  //   } catch (error) {
-  //     // Handle and log any login errors
-  //     console.error("Profile update error: ", error);
-  //     Swal.fire({
-  //       title: "Error!",
-  //       text: "An error occurred during profile update",
-  //       icon: "error"
-  //     });
-  //   }
-  // },
-
   handleProfileUpdate: async (isLoggedin, userId, password, email, location, introduction) => {
     // Check if the user is logged in and display message if they are not
     if (!isLoggedin) {
@@ -404,8 +325,6 @@ export const userStore = create((set) => ({
     if (introduction) {
       formData.append("introduction", introduction);
     }
-
-    // formData.append("products", products);
   
     try { 
       const response = await fetch(`${apiEnv}/users/${userId}`, {
@@ -424,9 +343,7 @@ export const userStore = create((set) => ({
           email: data.response.email,
           location: data.response.location,
           introduction: data.response.introduction
-          // image: image
-        })
-      );
+        }));
         // Display a success alert
         Swal.fire({
           title: "Congratulations!",

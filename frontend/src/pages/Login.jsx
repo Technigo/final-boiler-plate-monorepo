@@ -1,13 +1,16 @@
-// Import the 'userStore' from the 'userStore' module.
-import { userStore } from "../stores/userStore"; // Make sure this is correctly imported
 // Import the 'useState' and 'useNavigate' hooks from 'react'.
 import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
+// Import the 'userStore' from the 'userStore' module.
+import { userStore } from "../stores/userStore"; // Make sure this is correctly imported
 import { Heading } from "../components/reusableComponents/Heading";
 import { Logo } from "../components/reusableComponents/Logo";
 import BackArrow from "../components/reusableComponents/BackArrow";
 import Lottie from "lottie-react";
 import loadingAnimation from "../assets/loading.json/";
+import {Icon} from "react-icons-kit";
+import {eyeOff} from "react-icons-kit/feather/eyeOff";
+import {eye} from "react-icons-kit/feather/eye";
 import "../pages/login.css";
 
 // Define the 'Login' functional component.
@@ -17,11 +20,26 @@ export const Login = () => {
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
 
+  // Setting initial state for input type to be password and icon to be eyeOff so that the inputPassword will be hidden
+  const [type, setType] = useState("password");
+  const [icon, setIcon] = useState(eyeOff);
+
   // Use the 'useNavigate' hook to programmatically navigate between routes.
   const navigate = useNavigate();
 
   // Access the 'handleLogin' function from the 'userStore'.
   const storeHandleLogin = userStore((state) => state.handleLogin);
+
+  // Function to handle the toggle between the hide password (eyeOff icon) and the show password (eye icon)
+  const handleToggle = () => {
+    if (type ==="password") {
+      setIcon(eye);
+      setType("text");
+    } else {
+      setIcon(eyeOff);
+      setType("password");
+    }
+  };
 
   // Function to handle the click event of the login button.
   const onLoginClick = async (e) => {
@@ -67,14 +85,20 @@ export const Login = () => {
             onChange={(e) => setUsername(e.target.value)}
           />
           <label htmlFor="password">Password</label>
-          <input
-            type="password"
-            name="password"
-            id="password"
-            placeholder="Password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
+          <div className="password-input">
+            <input
+              type={type}
+              name="password"
+              id="password"
+              placeholder="Password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+            <span onClick={handleToggle}>
+              <Icon icon={icon} size={24}/>
+            </span>
+          </div>
+
           {loading && <Lottie animationData={loadingAnimation} />}
           {!loading && (
             <button className="login-btn" onClick={onLoginClick}>

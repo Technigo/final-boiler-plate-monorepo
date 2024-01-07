@@ -3,10 +3,13 @@ import { useParams } from "react-router-dom";
 import { userStore } from "../stores/userStore";
 import BackArrow from "../components/reusableComponents/BackArrow";
 import { AdsList } from "../components/AdsList";
-import { Modal, Button } from "react-bootstrap";
+import { Button } from "../components/reusableComponents/Button";
+import { Modal } from "react-bootstrap";
 // Import Bootstrap styles
 import "bootstrap/dist/css/bootstrap.min.css";
 import { ContactForm } from "../components/ContactForm";
+import defaultProfileImage from "../assets/images/profile_icon.png";
+import "./profile.css";
 
 // This component renders the advertiser's profile
 export const Profile = () => {
@@ -44,25 +47,38 @@ export const Profile = () => {
   }, [storeHandleAdvertiserProfile, userId]);
 
   return (
-    <>
-      <BackArrow />
-      <div>
-        <h1>{username}</h1>
-        <img src={profileData.image} alt={username} />
-        <p>Introduction: {profileData.introduction}</p>
-        <p>Location: {profileData.location}</p>
+    <div className="container">
+      <div className="arrow-wrapper">
+        <BackArrow />
       </div>
-      <h2>Recent ads</h2>
-      <AdsList fetchType="user" userId={userId} />
-      <Button onClick={handleShow}>Contact Advertiser</Button>
-      <Modal show={show} onHide={handleClose}>
-        <Modal.Body>
-          <ContactForm
-            advertiserName={username}
-            handleClose={handleClose}
-          />
-        </Modal.Body>
-      </Modal>
-    </>
+
+      <div className="profile-container">
+        <div className="profile-data">
+          <h1>{username}</h1>
+          {profileData.image ? (
+            <img src={profileData.image} alt={username} />
+          ) : (
+            <img src={defaultProfileImage} alt={username} />
+          )}
+          <p>Introduction: {profileData.introduction}</p>
+          <p>Location: {profileData.location}</p>
+        </div>
+
+        <div className="recent-ads">
+          <h2>Recent ads</h2>
+          <AdsList fetchType="user" userId={userId} />
+        </div>
+
+        <Button label="Contact Advertiser" onClick={handleShow} />
+        <Modal show={show} onHide={handleClose}>
+          <Modal.Body>
+            <ContactForm
+              advertiserName={username}
+              handleClose={handleClose}
+            />
+          </Modal.Body>
+        </Modal>
+      </div>
+    </div>
   );
 }

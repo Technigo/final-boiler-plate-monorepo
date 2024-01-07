@@ -1,86 +1,103 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { userStore } from "../stores/userStore";
 import BackArrow from "../components/reusableComponents/BackArrow";
-import { useNavigate } from "react-router-dom";
+import { Button } from "../components/reusableComponents/Button";
 import defaultProfileImage from "../assets/images/profile_icon.png";
+import {Icon} from "react-icons-kit";
+import {eyeOff} from "react-icons-kit/feather/eyeOff";
+import {eye} from "react-icons-kit/feather/eye";
+import Swal from "sweetalert2"; 
+import "./updateSettings.css";
 
 export const UpdateSettings = () => {
-    const navigate = useNavigate();
+  const navigate = useNavigate();
 
-    // For retrieving the updated user profile data later on
-    const [inputEmail, setInputEmail] = useState("");
-    const [inputPassword, setInputPassword] = useState("");
-    const [inputLocation, setInputLocation] = useState("");
-    const [inputIntroduction, setInputIntroduction] = useState("");
-    const [selectedImage, setSelectedImage] = useState(defaultProfileImage);
-  
-    // For fetching the current user profile data
-    const isLoggedin = userStore((state) => state.isLoggedin);
-    const userId = userStore((state) => state.userId);
-    const username = userStore((state) => state.username);
-    const storeHandleProfileDisplay = userStore((state) => state.handleProfileDisplay);
-    const storeHandleProfileUpdate = userStore((state) => state.handleProfileUpdate);
-    const storeHandleImageUpdate = userStore((state) => state.handleImageUpdate);
+  // For retrieving the updated user profile data later on
+  const [inputEmail, setInputEmail] = useState("");
+  const [inputPassword, setInputPassword] = useState("");
+  const [inputLocation, setInputLocation] = useState("");
+  const [inputIntroduction, setInputIntroduction] = useState("");
+  const [selectedImage, setSelectedImage] = useState(defaultProfileImage);
 
-    const [password, setPassword] = useState("");
-    const [email, setEmail] = useState("");
-    const [location, setLocation] = useState("");
-    const [introduction, setIntroduction] = useState("");
-    const [image, setImage] = useState(null);
- 
-    useEffect(() => {
-      const getProfileData = async () => {
-        try {
-          const profileData = await storeHandleProfileDisplay(isLoggedin, userId);
-          if (profileData) {
-            setPassword(profileData.password);
-            setEmail(profileData.email);
-            setLocation(profileData.location);
-            setIntroduction(profileData.introduction);
-            setImage(profileData.image || defaultProfileImage)
-          }
-        } catch (error) {
-          console.error("Error fetching profile data:", error);
-        }
-      };
-      getProfileData();
-    }, [storeHandleProfileDisplay, isLoggedin, userId]);
-  
-    // Handle changes in states based on user's inputs
-    const handlePasswordUpdate = (e) => {
-      e.preventDefault();
-      setInputPassword(e.target.value);
-    };
-  
-    const handleEmailUpdate = (e) => {
-      e.preventDefault();
-      setInputEmail(e.target.value);
-    };
-  
-    const handleLocationUpdate = (e) => {
-      e.preventDefault();
-      setInputLocation(e.target.value);
-    };
-   
-    const handleIntroductionUpdate = (e) => {
-      e.preventDefault();
-      setInputIntroduction(e.target.value);
-    };
-  
-    const handleImageUpdate = (e) => {
-      e.preventDefault();
-      if (e.target.files.length === 0) {
-        setSelectedImage(defaultProfileImage);
-      } else {
-        setSelectedImage(e.target.files[0]);
-      }
-    };
-  
-    const handleUpdateSubmit = async (e) => {
-      e.preventDefault();
+  // Setting initial state for input type to be password and icon to be eyeOff so that the inputPassword will be hidden
+  const [type, setType] = useState("password");
+  const [icon, setIcon] = useState(eyeOff);
 
-      const updatedImageData = await storeHandleImageUpdate(userId, selectedImage);
+  // For fetching the current user profile data
+  const isLoggedin = userStore((state) => state.isLoggedin);
+  const userId = userStore((state) => state.userId);
+  const storeHandleProfileUpdate = userStore((state) => state.handleProfileUpdate);
+  const storeHandleImageUpdate = userStore((state) => state.handleImageUpdate);
+
+  // Handle changes in states based on user's inputs
+  const handlePasswordUpdate = (e) => {
+    e.preventDefault();
+    setInputPassword(e.target.value);
+  };
+
+  // Function to handle the toggle between the hide password (eyeOff icon) and the show password (eye icon)
+  const handleToggle = () => {
+    if (type ==="password") {
+      setIcon(eye);
+      setType("text");
+    } else {
+      setIcon(eyeOff);
+      setType("password");
+    }
+  };
+
+  const handleEmailUpdate = (e) => {
+    e.preventDefault();
+    setInputEmail(e.target.value);
+  };
+
+  const handleLocationUpdate = (e) => {
+    e.preventDefault();
+    setInputLocation(e.target.value);
+  };
   
+  const handleIntroductionUpdate = (e) => {
+    e.preventDefault();
+    setInputIntroduction(e.target.value);
+  };
+
+  const handleImageUpdate = (e) => {
+    e.preventDefault();
+    if (e.target.files.length === 0) {
+      setSelectedImage(defaultProfileImage);
+    } else {
+      setSelectedImage(e.target.files[0]);
+    }
+  };
+
+  const handleUpdateSubmit = async (e) => {
+    e.preventDefault();
+    
+    if (!inputPassword && !inputEmail && !inputLocation && !inputIntroduction && selectedImage === defaultProfileImage) {
+      Swal.fire({
+        title: "Error!",
+        text: "Please fill in at least one field",
+        icon: "error"
+      });
+      return;
+    }
+
+    let updatedImageData;
+
+    // Handle profile update when no new image is uploaded
+    if (selectedImage === defaultProfileImage) {
+      await storeHandleProfileUpdate(
+        isLoggedin, 
+        userId, 
+        inputPassword,
+        inputEmail,
+        inputLocation,
+        inputIntroduction,
+      );
+    } else {
+      // Handle profile update when new image is uploaded
+      updatedImageData = await storeHandleImageUpdate(userId, selectedImage);
       await storeHandleProfileUpdate(
         isLoggedin, 
         userId, 
@@ -90,116 +107,102 @@ export const UpdateSettings = () => {
         inputIntroduction,
         updatedImageData
       );
+    }
 
-      // Reset the input fields to original state
-      setInputPassword("");
-      setInputEmail("");
-      setInputLocation("");
-      setInputIntroduction("");
-      setSelectedImage(defaultProfileImage);
+    // Reset the input fields to original state
+    setInputPassword("");
+    setInputEmail("");
+    setInputLocation("");
+    setInputIntroduction("");
+    setSelectedImage(defaultProfileImage);
+  };
 
-      // Navigate to settings when changes are saved
-      navigate("/settings");
-    };
-  
-    const handleCancelClick = () => {
-      navigate("/settings");
-    };
-  
-    return (
-      <div>
-        <BackArrow />
-        <h1>Update settings</h1>
-  
-        <form onSubmit={handleUpdateSubmit}>
-          {/* Form fields for user details */}
-          <div>
-            <p>Username &#40;cannot be updated&#41;:</p>
-            <p>{username}</p>
-          </div>
-  
-          <div>
-            <p>Current password:</p>
-            <p>{password}</p>
-          </div>
-  
-          <div>
-            <label htmlFor="password">New password:</label>
+  const handleCancelClick = () => {
+    navigate("/settings");
+  };
+
+  return (
+    <div>
+      <BackArrow />
+      <h1>Update settings</h1>
+
+      <form onSubmit={handleUpdateSubmit}>
+        {/* Form fields for user details */}
+        <div>
+          <label htmlFor="password">New password:</label>
+          <div className="password-input">
             <input
-              type="text"
+              type={type}
               name="password"
               id="password"
               placeholder="leave blank to keep the same"
               value={inputPassword}
               onChange={handlePasswordUpdate}
             />
+            <span onClick={handleToggle}>
+              <Icon icon={icon} size={24}/>
+            </span>
           </div>
-  
-          <div>
-            <p>Current email:</p>
-            <p>{email}</p>
-          </div>
-  
-          <div>
-            <label htmlFor="email">New email:</label>
-            <input
-              type="email"
-              name="email"
-              id="email"
-              placeholder="leave blank to keep the same"
-              value={inputEmail}
-              onChange={handleEmailUpdate}
-            />
-          </div>
-  
-          <div>
-            <p>Current location:</p>
-            <p>{location}</p>
-          </div>
-  
-          <div>
-            <label htmlFor="location">New location:</label>
-            <input
-              type="text"
-              name="location"
-              id="location"
-              placeholder="leave blank to keep the same"
-              value={inputLocation}
-              onChange={handleLocationUpdate}
-            />
-          </div>
-  
-          <div>
-            <p>Current introduction:</p>
-            <p>{introduction}</p>
-          </div>
-  
-          <div>
-            <label htmlFor="introduction">New introduction:</label>
-            <textarea
-              name="introduction"
-              id="introduction"
-              placeholder="leave blank to keep the same"
-              rows={4}
-              cols={50}
-              value={inputIntroduction}
-              onChange={handleIntroductionUpdate}
-            />
-          </div>
-  
-          <div>
-            <label htmlFor="image">Current profile image:</label>
-            <img src={image} alt={username} />
-          </div>
-          
-          <div>
-            <label htmlFor="image">Update profile image:</label>
-            <input type="file" onChange={handleImageUpdate} />
-          </div>
-  
-          <button type="submit">Save changes</button>
-          <button type="submit" onClick={handleCancelClick}>Cancel</button>
-        </form>
-      </div>
-    )
+        </div>
+
+        <div>
+          <label htmlFor="email">New email:</label>
+          <input
+            type="email"
+            name="email"
+            id="email"
+            placeholder="leave blank to keep the same"
+            value={inputEmail}
+            onChange={handleEmailUpdate}
+          />
+        </div>
+
+        <div>
+          <label htmlFor="location">New location:</label>
+          <input
+            type="text"
+            name="location"
+            id="location"
+            placeholder="leave blank to keep the same"
+            value={inputLocation}
+            onChange={handleLocationUpdate}
+          />
+        </div>
+
+        <div>
+          <label htmlFor="introduction">New introduction:</label>
+          <textarea
+            name="introduction"
+            id="introduction"
+            placeholder="leave blank to keep the same"
+            rows={4}
+            cols={50}
+            value={inputIntroduction}
+            onChange={handleIntroductionUpdate}
+          />
+        </div>
+
+        <div>
+          <label htmlFor="image">Update profile image:</label>
+          <input type="file" onChange={handleImageUpdate} />
+        </div>
+
+        <div className="update-actions">
+          <Button
+            icon="./src/assets/icons/save2.svg"
+            iconSize="button" 
+            label="Save changes"
+            invertIcon={true}
+          />
+          <Button
+            icon="./src/assets/icons/trash.svg"
+            iconSize="button" 
+            label="Cancel"
+            onClick={handleCancelClick}
+            invertIcon={true}
+          />
+        </div>
+      </form>
+    </div>
+  )
 }

@@ -8,6 +8,9 @@ import { Heading } from "../components/reusableComponents/Heading";
 import BackArrow from "../components/reusableComponents/BackArrow";
 import Lottie from "lottie-react";
 import loadingAnimation from "../assets/loading.json/";
+import {Icon} from "react-icons-kit";
+import {eyeOff} from "react-icons-kit/feather/eyeOff";
+import {eye} from "react-icons-kit/feather/eye";
 import "../pages/register.css";
 
 // Define the "Register" functional component.
@@ -19,11 +22,26 @@ export const Register = () => {
   const [consent, setConsent] = useState(false);
   const [loading, setLoading] = useState(false);
 
+  // Setting initial state for input type to be password and icon to be eyeOff so that the inputPassword will be hidden
+  const [type, setType] = useState("password");
+  const [icon, setIcon] = useState(eyeOff);
+
   // Initialize the "navigate" function from React Router.
   const navigate = useNavigate();
 
   // Access the "handleSignup" function from the "userStore".
   const storeHandleSignup = userStore((state) => state.handleSignup);
+
+  // Function to handle the toggle between the hide password (eyeOff icon) and the show password (eye icon)
+  const handleToggle = () => {
+    if (type ==="password") {
+      setIcon(eye);
+      setType("text");
+    } else {
+      setIcon(eyeOff);
+      setType("password");
+    }
+  };
 
   // Function to handle the click event of the signup button.
   const onSignupClick = async (e) => {
@@ -82,14 +100,20 @@ export const Register = () => {
         />
 
         <label htmlFor="password">Password</label>
-        <input
-          type="text"
-          name="password"
-          id="password"
-          placeholder="Password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
+        <div className="password-input">
+          <input
+            type={type}
+            name="password"
+            id="password"
+            placeholder="Password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+          <span onClick={handleToggle}>
+            <Icon icon={icon} size={24}/>
+          </span>
+        </div>
+
         <div className="tnc">
           <input
             type="checkbox"
