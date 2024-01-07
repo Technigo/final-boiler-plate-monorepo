@@ -34,7 +34,7 @@ export const App = () => {
   }
 
   useEffect(() => {
-    // document.body.style.textAlign = 'center'
+    // document.body.style.textAlign = 'center' 
     document.body.style.fontFamily = 'Roboto, sans-serif'
     document.body.style.fontSize = '24px'
     document.body.style.alignItems = 'center'
