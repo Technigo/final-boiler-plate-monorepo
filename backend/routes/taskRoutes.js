@@ -1,5 +1,5 @@
 import express from "express";
-import { authenticateUser } from "../middleware/authenticateUser"; // Import middleware for user authentication.
+import { authenticateUser } from "../middleware/authenticateUser";
 import {
   getTasksController,
   updateTaskController,
@@ -14,35 +14,32 @@ import {
 // Create an instance of the Express router.
 const router = express.Router();
 
-// Define a route for handling GET requests to retrieve all tasks. When a GET request is made to /get, authenticate the user using middleware and then execute the getTasksController function.
+// Create a route to handle GET requests for fetching all tasks. When a GET request is sent to /get, use middleware to authenticate the user, ensuring only authorized users can access the route, and then execute the getTasksController function to retrieve and respond with the tasks.
 router.get("/get", authenticateUser, getTasksController);
 
-// Define a route for handling POST requests to add a new task.  When a POST request is made to /add, authenticate the user using middleware and then execute the addTaskController function.
+// Set up a route to handle POST requests for adding a new task. When a POST request is sent to /add, employ middleware to authenticate the user, ensuring only authorized users can access the route. After authentication, execute the addTaskController function to process and handle the addition of a new task.
 router.post("/add", authenticateUser, addTaskController);
 
-// Define a route for handling GET requests to retrieve tasks for a specific user. When a GET request is made to /userTask, authenticate the user using middleware and then execute the getUserTasksController function.
+// Establish a route to handle GET requests for fetching tasks associated with a specific user. Upon receiving a GET request to /userTask, use middleware to authenticate the user, ensuring that only authorized users can access the route. Subsequently, execute the getUserTasksController function to retrieve and respond with tasks specifically associated with the authenticated user.
 router.get("/userTask", authenticateUser, getUserTasksController);
 
-// Define a route for handling GET requests to retrieve a specific task by ID. When a GET request is made to /get/:id, authenticate the user using middleware and then execute the getTasksController function.
+// Establish a route to handle GET requests for fetching a specific task by its ID. When a GET request is directed to /get/:id, utilize middleware to authenticate the user, ensuring that only authorized users can access the route. Subsequently, execute the getTasksController function to retrieve and respond with details of the specific task identified by the provided ID.
 router.get("/get/:id", authenticateUser, getTasksController);
 
-// Define a route for handling PUT requests to update a specific task by ID. When a PUT request is made to /update/:id, execute the updateTaskController function.
+// Set up a route to handle PUT requests for updating a specific task by its ID. Upon receiving a PUT request to /update/:id, execute the updateTaskController function to process and apply updates to the task identified by the provided ID.
 router.put("/update/:id", updateTaskController);
 
-// Define a route for handling PUT requests to add a volunteer to a specific task by ID. When a PUT request is made to /addVolunteer/:id, authenticate the user using middleware and then execute the addVolunteerController function.
+// Establish a route to handle PUT requests for adding a volunteer to a specific task by its ID. When a PUT request is sent to /addVolunteer/:id, use middleware to authenticate the user, ensuring that only authorized users can access the route. Subsequently, execute the addVolunteerController function to process and handle the addition of a volunteer to the task identified by the provided ID.
 router.put("/addVolunteer/:id", authenticateUser, addVolunteerController);
 
-// Define a route for handling GET requests to retrieve all tasks a specific user has volunteered to. When a GET request is made to /getVolunteeredTasks, authenticate the user using middleware and then execute the getVolunteeredTasksController function.
+// Set up a route to handle GET requests for fetching all tasks to which a specific user has volunteered. When a GET request is directed to /getVolunteeredTasks, use middleware to authenticate the user, ensuring that only authorized users can access the route. Subsequently, execute the getVolunteeredTasksController function to retrieve and respond with tasks that the authenticated user has volunteered for.
 router.get(
   "/getVolunteeredTasks",
   authenticateUser,
   getVolunteeredTasksController
 );
 
-// Define a route for handling DELETE requests to delete all tasks. When a DELETE request is made to /deleteAll, execute the deleteAllTasksController function.
-router.delete("/deleteAll", deleteAllTasksController);
-
-// Define a route for handling DELETE requests to delete a specific task by ID. When a DELETE request is made to /delete/:id, execute the deleteSpecificTaskController function.
+// Set up a route to handle DELETE requests for deleting a specific task by its ID. Upon receiving a DELETE request to /delete/:id, execute the deleteSpecificTaskController function to process and handle the deletion of the task identified by the provided ID.
 router.delete("/delete/:id", deleteSpecificTaskController);
 
 // Export the router for use in the main application

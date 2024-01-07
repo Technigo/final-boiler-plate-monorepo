@@ -3,7 +3,7 @@ import { authenticateUser } from "../middleware/authenticateUser.js";
 import {
   registerUserController,
   loginUserController,
-} from "../controllers/userController"; // Import controller functions for user registration and login
+} from "../controllers/userController";
 
 // Create an instance of the Express router
 const router = express.Router();
@@ -24,15 +24,15 @@ router.get("/profile", authenticateUser, (req, res) => {
   res.json({ profile: "This is your profile" });
 });
 
-// removed the authenticateUser middleware to be able to see all tasks
+// TASKS ROUTE: Handle tasks page (all needs) and add the authenticateUser middleware to the route to protect it
 router.get("/tasks", (req, res) => {
   res.json({ tasks: "This is all tasks" });
 });
 
+// UNIQUE TASKS ROUTE: Handle the unique task and add the authenticateUser middleware to the route to protect it
 router.get("/tasks/:id", authenticateUser, (req, res) => {
   res.json({ tasks: "This is a (private) task" });
 });
 
 // Export the router for use in the main application
-// export { router }; DETTA FANNS I VÅR KOD
 export default router;

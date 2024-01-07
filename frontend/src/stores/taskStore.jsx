@@ -23,7 +23,7 @@ export const taskStore = create((set) => ({
   setTasks: (tasks) => set({ tasks }),
 
   // Function to set the original tasks
-  setOriginalTasks: (tasks) => set({ originalTasks: tasks }),
+  //setOriginalTasks: (tasks) => set({ originalTasks: tasks }),
 
   // New action to fetch all tasks
   fetchTasks: async () => {

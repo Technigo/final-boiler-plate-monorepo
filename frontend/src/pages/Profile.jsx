@@ -67,8 +67,6 @@ export const Profile = () => {
     fetchVolunteeredTasks();
   }, [fetchUserTasks, fetchVolunteeredTasks]);
 
-  console.log(userTasks);
-
   const { deleteTaskById } = taskStore();
 
   // Filter tasks created by the current user
@@ -160,72 +158,3 @@ export const Profile = () => {
     </div>
   );
 };
-
-{
-  /* <div>
-        <h3>Tasks you have created:</h3>
-        <StyledList>
-          {userTasks.map((task) => (
-            <StyledListItem key={task._id}>
-              <TaskTitle>{task.task}</TaskTitle>
-              <TaskDescription>{task.description}</TaskDescription>
-              <VolunteersSection>
-                <strong>Volunteers: </strong>{" "}
-                {task.volunteers.length > 0
-                  ? task.volunteers
-                      .filter(
-                        (volunteer) =>
-                          volunteer &&
-                          (typeof volunteer === "object"
-                            ? volunteer._id
-                            : volunteer) &&
-                          task.user &&
-                          task.user._id &&
-                          (typeof volunteer === "object"
-                            ? volunteer._id.toString()
-                            : volunteer.toString()) !== task.user._id.toString()
-                      )
-                      // map over the volunteers array and return the username of each volunteer
-                      .map((volunteer) =>
-                        typeof volunteer === "object"
-                          ? volunteer.username
-                          : volunteer
-                      )
-                      .join(", ")
-                  : "No Volunteers"}
-              </VolunteersSection>
-              {/* Delete button for tasks you have created */
-}
-{
-  /* <Button
-                buttonName="Delete"
-                className="delete-button"
-                onClick={() => deleteTaskById(task._id)}
-              />
-            </StyledListItem>
-          ))}
-        </StyledList>
-      </div>
-
-      <TasksContainer>
-        <h3>Tasks you have volunteered to:</h3>
-        <StyledList>
-          {volunteeredTasks.map((task) => (
-            <StyledListItem key={task._id}>
-              <TaskTitle>{task.task}</TaskTitle>
-              <TaskDescription>{task.description}</TaskDescription>
-              <CreatedBySection>
-                <strong>Created by: </strong>
-                {task.user?.username || "Unknown User"}
-                {/* Show the name of the autor or Unknown user if the task is missing username */
-}
-{
-  /*</CreatedBySection>
-            </StyledListItem>
-          ))}
-        </StyledList>
-      </TasksContainer>
-    </div>
-  );
-}; */
-}
