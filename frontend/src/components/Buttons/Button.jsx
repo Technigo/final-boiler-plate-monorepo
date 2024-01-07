@@ -25,7 +25,7 @@ const StyledButton = styled.div`
   // />;
 }
 
-// Radera bilddelen om det aldrig kommer till användning!
+// Button component to be used in other components
 export const Button = ({ buttonName, className, onClick }) => {
   return (
     <StyledButton className={className} onClick={onClick}>

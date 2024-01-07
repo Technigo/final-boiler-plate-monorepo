@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 const StyledIconButton = styled.button`
   display: flex;
-  gap: 10px;
+  gap: 8px;
   align-items: center;
   background-color: #64899b;
   color: #fff;
@@ -40,8 +40,8 @@ export const IconButton = ({
 }) => {
   return (
     <>
-      <StyledIconButton onClick={onClick}>
-        <StyledIcon className={className} alt={iconAlt} src={src} />
+      <StyledIconButton onClick={onClick} className={className}>
+        <StyledIcon alt={iconAlt} src={src} />
         {buttonName}
       </StyledIconButton>
     </>
