@@ -20,11 +20,19 @@ export const userStore = create((set, get) => ({
   password: "",
   // Define a function to set the password state.
   setPassword: (password) => set({ password }),
-  
-  //Initialize user to chat with 
+
+  //Initialize user to chat with
   chatReceiver: "",
   // Define a function to set the chatReceiver state.
-  setChatReceiver: (chatReceiver) => set({chatReceiver}),
+  setChatReceiver: (chatReceiver) => set({ chatReceiver }),
+
+  //Log the userId of the logged in user from MongoDB
+  loggedInUserId: "",
+  setLoggedInUserId: (loggedInUserId) => set({ loggedInUserId }),
+
+  //Log the userId of the recipient of a message
+  recipientId: "",
+  setRecipientId: (recipientId) => set({ recipientId }),
 
   // Initialize accessToken state with null.
   accessToken: null,

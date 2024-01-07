@@ -9,9 +9,9 @@ router.get("/", UserController.checkAuthentication);
 router.post("/register", UserController.registerUser);
 router.get("/users", UserController.getAllUsers);
 router.get("/user/:user_id", UserController.getUserById);
+router.get("/messages/:userId", UserController.getUserMessages);
 
 export default router;
-
 
 // import express from "express";
 // import { UserModel } from "../models/UserModel";

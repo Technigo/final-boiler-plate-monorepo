@@ -67,4 +67,17 @@ export const UserController = {
       res.json({ error: error.message });
     }
   },
+
+  getUserMessages: async (req, res) => {
+    const { userId } = req.params;
+
+    //Might have to make up a solution for this part
+    //    const userData = await getUser
+    //const ourUserId = userData.userId;
+
+    const messages = await Message.find({
+      sender: { $in: [userId, ourUserId] },
+      recipient: { $in: [userId, ourUserId] },
+    }).sort({ createdAt: 1 });
+  },
 };
