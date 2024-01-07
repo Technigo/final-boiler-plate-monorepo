@@ -5,7 +5,6 @@ import mongoose from "mongoose";
 // Destructures the Schema class from the Mongoose library, allowing us to create a schema.
 const { Schema } = mongoose;
 
-// Create a new Mongoose schema named 'userSchema'
 // Creates a new Mongoose schema named userSchema that defines the structure of a user document in the MongoDB collection. It includes fields like username, password, and accessToken, specifying their data types, validation rules, and default values.
 const userSchema = new Schema(
   {
@@ -13,15 +12,16 @@ const userSchema = new Schema(
     username: {
       type: String, // Specifies that 'username' should be a string
       required: true, // Indicates that 'username' is a required field
-      minlength: 2, // Sets a minimum length of 2 characters for 'username'
-      unique: true,
+      minlength: 5, // Sets a minimum length
+      unique: true, // Make sure the username is unique in the database
     },
     // Define the 'password' field with a String data type
     password: {
-      type: String, // Specifies that 'password' should be a string
-      required: true, // Indicates that 'password' is a required field
-      minlength: 6, // Sets a minimum length of 6 characters for 'password'
+      type: String,
+      required: true,
+      minlength: 6,
       validate: {
+        // Password requirements added
         validator: function (password) {
           const hasNumber = /[0-9]/.test(password);
           const hasCapitalLetter = /[A-Z]/.test(password);

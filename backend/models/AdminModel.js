@@ -6,7 +6,7 @@ const adminSchema = new mongoose.Schema({
         type: String, // Specifies that 'username' should be a string
         required: true, // Indicates that 'username' is a required field
         unique: true, // Ensures that 'username' values are unique
-        minlength: 5, // Sets a minimum length of 2 characters for 'username'
+        minlength: 5, // Sets a minimum length 
     },
     email: {
         type: String,
@@ -18,6 +18,7 @@ const adminSchema = new mongoose.Schema({
         required: true,
         minlength: 6,
         validate: {
+            // Password requirements added
             validator: function (password) {
                 const hasNumber = /[0-9]/.test(password);
                 const hasCapitalLetter = /[A-Z]/.test(password);
