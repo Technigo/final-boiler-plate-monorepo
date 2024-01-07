@@ -1,11 +1,11 @@
 import BackArrow from '../components/reusableComponents/BackArrow';
-import { UserAds } from '../components/UsersAds';
+import { UserAds } from '../components/UserAds';
 import { SavedAds } from '../components/UsersSavedAds';
 
 export const ManageYourAds = () => {
  
   return (
-    <div>
+    <div className="container">
       <BackArrow />
       <UserAds />
       <h2>Saved Ads</h2>

@@ -1,0 +1,32 @@
+.user-ads-container {
+    display: grid;
+    grid-template-columns: 1fr; /* Single column layout by default */
+    grid-gap: 20px; /* Space between grid items */
+    padding: 20px;
+  }
+  
+  @media (min-width: 768px) { /* Tablet view */
+    .user-ads-container {
+      grid-template-columns: repeat(2, 1fr); /* Two columns layout */
+    }
+  }
+  
+  @media (min-width: 1200px) { /* Desktop view */
+    .user-ads-container {
+      grid-template-columns: repeat(3, 1fr); /* Three columns layout */
+    }
+  }
+  
+  .user-ad {
+    border: 1px solid #ccc; /* Optional: for styling each ad item */
+    padding: 10px;
+    border-radius: 5px;
+  }
+  
+  .user-ad-image {
+    width: 100%; /* Make image responsive */
+    height: auto;
+  }
+  
+  /* Additional styles for buttons and other elements can go here */
+  
