@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import { useState } from "react";
+import "./dropdown.css";
 
 export const Dropdown = ({ options, defaultOption }) => {
     const [selectedValue, setSelectedValue] = useState('');
@@ -10,7 +11,7 @@ export const Dropdown = ({ options, defaultOption }) => {
     return (
         <div>
             <select value={selectedValue} onChange={handleChange}>
-                <option value="">{defaultOption || 'Select an option'}</option>
+                <option value="">{defaultOption || "Select an option"}</option>
                 {options.map((option, index) => (
                     <option key={index} value={option.value}>
                         {option.label}

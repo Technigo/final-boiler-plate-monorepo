@@ -1,20 +1,30 @@
-import { useState } from 'react';
+import { useState } from "react";
 import { adStore } from "../stores/adStore";
-import BackArrow from '../components/reusableComponents/BackArrow';
+import BackArrow from "../components/reusableComponents/BackArrow";
 import "./createAd.css"
+import { Dropdown } from "../components/reusableComponents/Dropdown";
 
 export const CreateAd = () => {
   const [image, setImage] = useState(null);
-  const [title, setTitle] = useState('');
-  const [description, setDescription] = useState('');
-  const [product, setProduct] = useState('');
-  const [quantity, setQuantity] = useState('');
-  const [unit, setUnit] = useState('');
-  const [address, setAddress] = useState('');
-  const [observation, setObservation] = useState('');
-  const [pickupDate, setPickupDate] = useState('');
+  const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
+  const [product, setProduct] = useState("");
+  const [quantity, setQuantity] = useState("");
+  const [unit, setUnit] = useState("");
+  const [address, setAddress] = useState("");
+  const [observation, setObservation] = useState("");
+  const [pickupDate, setPickupDate] = useState("");
 
   const { createAd } = adStore();
+
+  // Define units for dropdown
+  const unitOptions = [
+    { label: "Kilogram (kg)", value: "kg" },
+    { label: "Meter (m)", value: "m" },
+    { label: "Square Meter (m²)", value: "m2" },
+    { label: "Liter (L)", value: "l" },
+    { label: "Milliliter (mL)", value: "ml" },
+  ];
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -62,8 +72,12 @@ export const CreateAd = () => {
           </div>
           <div>
             <label>Unit:</label>
-            <input type="text" value={unit} onChange={(e) => setUnit(e.target.value)} />
-          </div>
+            <Dropdown
+              options={unitOptions}
+              defaultOption="Select Unit"
+              onChange={(e) => setUnit(e.target.value)}
+              value={unit}
+            />          </div>
           <div>
             <label>Address:</label>
             <input type="text" value={address} onChange={(e) => setAddress(e.target.value)} />
