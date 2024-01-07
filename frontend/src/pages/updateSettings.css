@@ -1,6 +1,10 @@
+.password {
+    display: flex;
+    flex-direction: column;
+}
+
 .password-input {
     display: flex;
     flex-direction: row;
-    justify-content: center;
     align-items: center;
 }

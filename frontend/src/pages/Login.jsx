@@ -90,7 +90,7 @@ export const Login = () => {
           <div>
             <label htmlFor="password">Password:</label>
             <div className="password-input">
-            <input
+              <input
                 type={type}
                 name="password"
                 id="password"
@@ -98,10 +98,10 @@ export const Login = () => {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
               />
-          </div>
-            <span onClick={handleToggle}>
-              <Icon icon={icon} size={24}/>
-            </span>
+              <span onClick={handleToggle}>
+                <Icon icon={icon} size={24}/>
+              </span>
+            </div>          
           </div>
 
           {loading && <Lottie animationData={loadingAnimation} />}

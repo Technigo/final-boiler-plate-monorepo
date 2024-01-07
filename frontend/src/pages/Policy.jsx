@@ -30,36 +30,36 @@ export const Policy = () => {
             abide by these terms and conditions.
           </li>
           <li>
-            2. Intellectual Property: You must respect Green Buddy's
+            Intellectual Property: You must respect Green Buddy&apos;s
             intellectual property rights, and you are not allowed to reproduce
             the service elsewhere.
           </li>
           <li>
-            3. Content Posting: When creating an ad or sharing content on the
+            Content Posting: When creating an ad or sharing content on the
             Service, you must be entitled to post the content, either as the
-            owner or with the rights holder's permission. Content depicting
+            owner or with the rights holder&apos;s permission. Content depicting
             anything illegal is strictly prohibited.
           </li>
 
           <li>
-            4. Limited Responsibility: Green Buddy has limited responsibility
+            Limited Responsibility: Green Buddy has limited responsibility
             for the availability, performance, and correctness of information
             provided through the Service.
           </li>
           <li>
-            5. Privacy Policy: You should be aware that Green Buddy handles
+            Privacy Policy: You should be aware that Green Buddy handles
             personal information according to the current Privacy Policy.
           </li>
           <li>
-            6. Changes to Terms: Green Buddy reserves the right to update these
+            Changes to Terms: Green Buddy reserves the right to update these
             terms, and users will be notified of any changes.
           </li>
           <li>
-            7. Termination: Green Buddy reserves the right to terminate user
+            Termination: Green Buddy reserves the right to terminate user
             accounts for violations of these terms.
           </li>
           <li>
-            8. Dispute Resolution: Any disputes will be resolved through
+            Dispute Resolution: Any disputes will be resolved through
             arbitration in accordance with applicable laws.
           </li>
 

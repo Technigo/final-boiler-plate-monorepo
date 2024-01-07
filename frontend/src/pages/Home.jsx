@@ -31,7 +31,7 @@ export const Home = () => {
   // Render the component content.
   return (
     <>
-       <Navbar menuItems={[{path: "/search", name: "Search"} ,{path: "/setting", name: "Profile Setting"}, {path: "/manage-your-ads", name: "Your Products"}, {path: "/about", name: "About"} , {path: "/terms", name: "Terms"} ,{name: "Logout", onClick: () => {
+       <Navbar menuItems={[{path: "/search", name: "Search"} ,{path: "/settings", name: "Profile Settings"}, {path: "/manage-your-ads", name: "Your Products"}, {path: "/about", name: "About"} , {path: "/terms", name: "Terms"} ,{name: "Logout", onClick: () => {
         handleLogout()
         navigate("/login")
         }} ]} menuDesks={[{path: "/settings", name: "Profile Settings"}, {path: "/manage-your-ads", name: "Your Products"}, {path: "/terms", name: "Terms"}, {path: "/about", name: "About"}, {name: "Logout", onClick: () => {

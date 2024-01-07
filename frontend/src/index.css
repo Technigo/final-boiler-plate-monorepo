@@ -139,6 +139,7 @@ label {
 /* Input fields */
 input[type="text"],
 input[type="password"],
+input[type="email"],
 input[type="number"],
 input[type="datetime-local"],
 input[type="file"],
@@ -158,6 +159,12 @@ textarea {
 img {
   max-width: 100%;
   height: auto;
+}
+
+.profile-img {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
 }
 
 /* Containers */
@@ -197,6 +204,7 @@ img {
 
   input[type="text"],
   input[type="password"],
+  input[type="email"],
   input[type="number"],
   input[type="datetime-local"],
   input[type="file"],
@@ -245,6 +253,7 @@ img {
 
   input[type="text"],
   input[type="password"],
+  input[type="email"],
   input[type="number"],
   input[type="datetime-local"],
   input[type="file"],

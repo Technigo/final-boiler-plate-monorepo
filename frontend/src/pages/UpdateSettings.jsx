@@ -128,7 +128,7 @@ export const UpdateSettings = () => {
 
       <form onSubmit={handleUpdateSubmit}>
         {/* Form fields for user details */}
-        <div>
+        <div className="password">
           <label htmlFor="password">New password:</label>
           <div className="password-input">
             <input

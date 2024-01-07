@@ -54,14 +54,21 @@ export const Profile = () => {
 
       <div className="profile-container">
         <div className="profile-data">
-          <h1>{username}</h1>
           {profileData.image ? (
-            <img src={profileData.image} alt={username} />
+            <img src={profileData.image} alt={username} className="profile-img"/>
           ) : (
-            <img src={defaultProfileImage} alt={username} />
+            <img src={defaultProfileImage} alt={username} className="profile-img" />
           )}
-          <p>Introduction: {profileData.introduction}</p>
-          <p>Location: {profileData.location}</p>
+
+          <div className="profile-info">
+            <h1>{username}</h1>
+            <p>Introduction: {profileData.introduction}</p>
+            {profileData.location ? (
+              <p>Location: {profileData.location}</p>
+            ) : (
+              <p>Location: Sweden</p>
+            )}
+          </div>
         </div>
 
         <div className="recent-ads">
