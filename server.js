@@ -35,8 +35,10 @@ app.use('/movies', movieRoutes)
 //It uses the MONGO_URL (connection url) stored in the .env-file.
 const connectDB = async () => {
 	try {
-		const connected = await mongoose.connect(process.env.MONGO_URL)
-
+		const connected = await mongoose.connect(process.env.MONGO_URL, {
+			useNewUrlParser: true,
+			useUnifiedTopology: true,
+		})
 		console.log(`Mongo DB Connected: ${connected.connection.host}`)
 	} catch (error) {
 		console.log(error)
