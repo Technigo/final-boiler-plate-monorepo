@@ -25,7 +25,7 @@ const WhoAreWe = () => {
                 <img src="/Linnea.jpg" alt="picture of linnea" />
                 <div className="whoarewe-text">
                     <h3>{t("I'm")} Linnea Johansson</h3>
-                    <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web</p>
+                    <p>{t("With a background in customer service, I've always enjoyed solving problems and making connections. Now, I'm channeling that passion into a new career as a Frontend Developer. Transitioning into frontend development, I've found that the discipline of tracking my habits sharpens my focus and propels my learning. I'm excited for you to discover how tracking your habits can lead to your own version of success!")}</p>
                     <div className="icons">
                         <a href="https://github.com/JohanssonLinnea" className="icon" target="_blanc"><img className="icon" src="/github.png" alt="github" /></a>
                         <a href="https://www.linkedin.com/in/linnea-johansson-68886828a/" className="icon" target="_blanc"><img className="icon" src="/linkedin.png" alt="linkedin" /></a>
