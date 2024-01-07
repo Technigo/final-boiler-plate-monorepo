@@ -1,114 +1,225 @@
-import Navbar from './navbar'; // Ensure the path is correct
-import Footer from './footer'; // Ensure the path is correct
-import styled from 'styled-components';
-import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import { useRestaurantStore } from '../stores/restaurantStore'; 
+import Navbar from "./navbar"; // Ensure the path is correct
+import Footer from "./footer"; // Ensure the path is correct
+import styled from "styled-components";
+import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import { useRestaurantStore } from "../stores/restaurantStore";
 
-
+const tablet = `(min-width: 640px)`;
+const desktop = `(min-width: 1007px)`;
 
 const ResultsContainer = styled.div`
-  /* Style for your results container */
   margin: 0 auto;
   padding: 20px;
-  background-color: #FFF0F3; /* Your chosen color */
+  background-color: white;
 `;
 
 const NoResultsText = styled.p`
-  color: #800F2F; /* Dark red color */
-  font-family: Montserrat, sans-serif; /* Montserrat font */
-  text-align: center; /* Centers the title text */
-  margin-bottom: 20px; /* Adds some space between the title and the buttons */
+  color: #01999a;
+  font-family: "JosefinSans";
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 20px;
+
+  @media ${tablet} {
+    color: #01999a;
+    font-family: "JosefinSans";
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 35px;
+  }
+  @media ${desktop} {
+    color: #01999a;
+    font-family: "JosefinSans";
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 35px;
+  }
 `;
 
 const ResultCard = styled.div`
-  /* Style for each result card */
   margin-bottom: 20px;
-  margin-top: 20px;
+  margin-top: 5px;
   padding: 15px;
-  border: 1px solid #ddd;
-  border-radius: 20px;
-  border-color: #800F2F;
-  background-color: #FFF0F3; /* Your chosen color */
-  width: 60vw;
+  border: 1px solid #01999a;
+  border-radius: 10px;
+  background-color: #01999a;
+  color: white;
+  width: 80vw;
+  align-items: center;
+
+  @media ${tablet} {
+    margin-bottom: 20px;
+    margin-top: 15px;
+    /* margin: 15vh 15vh; */
+    padding: 15px;
+    border: 1px solid #01999a;
+    border-radius: 10px;
+    background-color: #01999a;
+    color: white;
+    width: 90vw;
+    align-items: center;
+  }
+
+  @media ${desktop} {
+    margin-bottom: 20px;
+    margin-top: 15px;
+    padding: 15px;
+    border: 1px solid #01999a;
+    border-radius: 10px;
+    background-color: #01999a;
+    color: white;
+    width: 92vw;
+    align-items: center;
+  }
 `;
 
-
 const StyledHeading = styled.h2`
-font-size: 20px;
-font-family: Arial, sans-serif; 
-color: #800F2F;
-font-family: Montserrat, sans-serif;
+  font-size: 25px;
+  font-family: Arial, sans-serif;
+  color: white;
+  font-family: "JosefinSans";
+
+  @media ${tablet} {
+    font-size: 35px;
+    font-family: Arial, sans-serif;
+    color: white;
+    font-family: "JosefinSans";
+  }
+
+  @media ${desktop} {
+    font-size: 35px;
+    font-family: Arial, sans-serif;
+    color: white;
+    font-family: "JosefinSans";
+  }
 `;
 
 const StyledParagraph = styled.p`
-font-size: 16px;
-color: #800F2F;
-font-family: Montserrat, sans-serif;
-  /* Your styles for intro paragraph */
+  font-size: 16px;
+  color: white;
+  font-family: "JosefinSans";
+
+  @media ${tablet} {
+    font-size: 20px;
+    color: white;
+    font-family: "JosefinSans";
+  }
+  @media ${desktop} {
+    font-size: 20px;
+    color: white;
+    font-family: "JosefinSans";
+  }
 `;
 
 const BackButton = styled.button`
-background-color: #FFCCD5;
-  color: #800F2F;
-  padding: 10px 20px; /* Some padding */
-  border: none; /* No border */
-  border-radius: 5px; /* Rounded corners */
-  cursor: pointer; /* Pointer/hand icon */
-  text-align: center; /* Center the text */
-  text-decoration: none; /* No underline */
-  display: inline-block; /* Inline block element */
-  font-size: 16px; /* Font size */
-  margin: 4px 2px; /* Margin around the button */
-  transition-duration: 0.4s; /* Transition for hover effect */
+  background-color: white;
+  color: #01999a;
+  padding: 6px 8px;
+  border: solid #01999a;
+  border-radius: 10px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 12px;
+  font-family: "JosefinSans";
+  /* margin: 2px 2px; */
+  transition-duration: 0.2s;
 
   &:hover {
-    background-color: #FF8FA3;
-    color: #590D22;
+    color: #fcabe3;
   }
 
   &:active {
     transform: translateY(1px);
+  }
+
+  @media ${tablet} {
+    background-color: white;
+    color: #01999a;
+    padding: 6px 8px;
+    border: solid #01999a;
+    border-radius: 10px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    font-family: "JosefinSans";
+    /* margin: 2px 2px; */
+    transition-duration: 0.2s;
+
+    &:hover {
+      color: #fcabe3;
+    }
+
+    &:active {
+      transform: translateY(1px);
+    }
+  }
+
+  @media ${desktop} {
+    background-color: white;
+    color: #01999a;
+    padding: 6px 8px;
+    border: solid #01999a;
+    border-radius: 10px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    font-family: "JosefinSans";
+    /* margin: 2px 2px; */
+    transition-duration: 0.2s;
+
+    &:hover {
+      color: #fcabe3;
+    }
+
+    &:active {
+      transform: translateY(1px);
+    }
   }
 `;
 
 const StyledButtonLink = styled(Link)`
-  background-color: #FFCCD5;
-  color: #800F2F;
-  padding: 10px 20px; // Some padding
-  border: none; // No border
-  border-radius: 5px; // Rounded corners
-  cursor: pointer; // Pointer/hand icon
-  text-align: center; // Center the text
-  text-decoration: none; // No underline
-  display: inline-block; // Inline block element
-  font-size: 16px; // Font size
-  margin: 4px 2px; // Margin around the button
-  transition-duration: 0.4s; // Transition for hover effect
+  background-color: #fcabe3;
+  color: white;
+  padding: 6px 6px;
+  border: solid white 2px;
+  border-radius: 10px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
 
   &:hover {
-    background-color: #FF8FA3;
-    color: #590D22;
+    color: #01999a;
   }
 
   &:active {
     transform: translateY(1px);
   }
 `;
-
-const FlexRow = styled.div`
-  display: flex;
-  align-items: center;
-`;
+//Ej aktiv?
+// const FlexRow = styled.div`
+//   display: flex;
+//   align-items: center;
+// `;
 
 const MoreLink = styled.a`
-  color: #FF8FA3;
+  color: yellow;
   cursor: pointer;
 `;
 
 const AgreeButton = styled.button`
-  background-color: #FFCCD5;
-  color: #800F2F;
+  background-color: white;
+  color: #01999a;
   padding: 5px 10px; /* Adjust padding as needed */
   border: none;
   border-radius: 5px;
@@ -118,8 +229,8 @@ const AgreeButton = styled.button`
   transition-duration: 0.4s;
 
   &:hover {
-    background-color: #FF8FA3;
-    color: #590D22;
+    background-color: yellow;
+    color: #01999a;
   }
 
   &:active {
@@ -127,11 +238,22 @@ const AgreeButton = styled.button`
   }
 `;
 
-const AgreeCount = styled.span`
-  font-size: 14px;
-  color: #800F2F;
+const StyleSelectCurtain = styled.select`
+  padding: 5px;
+  font-size: 12px;
+  border: 1px solid #01999a;
+  background-color: #01999a;
+  color: white;
+  border-radius: 10px;
+  margin-top: 5px;
+  font-family: "JosefinSans";
 `;
 
+//Ej aktiv?
+// const AgreeCount = styled.span`
+//   font-size: 14px;
+//   color: #800f2f;
+// `;
 
 const TruncatedText = ({ text, maxLength }) => {
   const [isTruncated, setIsTruncated] = useState(true);
@@ -140,14 +262,16 @@ const TruncatedText = ({ text, maxLength }) => {
     setIsTruncated(!isTruncated);
   };
 
-  const resultString = isTruncated ? `${text.substring(0, maxLength)}...` : text;
+  const resultString = isTruncated
+    ? `${text.substring(0, maxLength)}...`
+    : text;
 
   return (
     <>
       {resultString}
       {text.length > maxLength && (
         <MoreLink onClick={toggleTruncation}>
-          {isTruncated ? ' Read more' : ' Read less'}
+          {isTruncated ? " Read more" : " Read less"}
         </MoreLink>
       )}
     </>
@@ -160,10 +284,11 @@ function generateGoogleMapsUrl(address, city, country) {
 }
 
 const ResultsComponent = () => {
-  const { results, fetchResults, selectedOccasion, selectedMoods } = useRestaurantStore();
-  const [sortType, setSortType] = useState('restaurantName');
+  const { results, fetchResults, selectedOccasion, selectedMoods } =
+    useRestaurantStore();
+  const [sortType, setSortType] = useState("restaurantName");
   const [agreeCounts, setAgreeCounts] = useState(() => {
-    return JSON.parse(localStorage.getItem('agreeCounts')) || {};
+    return JSON.parse(localStorage.getItem("agreeCounts")) || {};
   });
 
   useEffect(() => {
@@ -173,34 +298,47 @@ const ResultsComponent = () => {
   }, [selectedOccasion, selectedMoods, fetchResults]);
 
   useEffect(() => {
-    localStorage.setItem('agreeCounts', JSON.stringify(agreeCounts));
+    localStorage.setItem("agreeCounts", JSON.stringify(agreeCounts));
   }, [agreeCounts]);
 
   const getSortedResults = () => {
     let sorted = [];
     switch (sortType) {
-      case 'restaurantName':
-        sorted = [...results].sort((a, b) => a.restaurantName.localeCompare(b.restaurantName));
+      case "restaurantName":
+        sorted = [...results].sort((a, b) =>
+          a.restaurantName.localeCompare(b.restaurantName)
+        );
         break;
-      case 'borough':
-        sorted = [...results].sort((a, b) => a.borough.localeCompare(b.borough));
+      case "borough":
+        sorted = [...results].sort((a, b) =>
+          a.borough.localeCompare(b.borough)
+        );
         break;
-      case 'cuisine':
-        sorted = [...results].sort((a, b) => a.cuisine.localeCompare(b.cuisine));
+      case "cuisine":
+        sorted = [...results].sort((a, b) =>
+          a.cuisine.localeCompare(b.cuisine)
+        );
         break;
       default:
         sorted = results;
         break;
     }
-    return sorted.map(restaurant => ({
+    return sorted.map((restaurant) => ({
       ...restaurant,
-      mapsUrl: generateGoogleMapsUrl(restaurant.address, restaurant.city, restaurant.country)
+      mapsUrl: generateGoogleMapsUrl(
+        restaurant.address,
+        restaurant.city,
+        restaurant.country
+      ),
     }));
   };
 
   const handleAgreeClick = (restaurantId) => {
-    setAgreeCounts(prevCounts => {
-      const newCounts = { ...prevCounts, [restaurantId]: (prevCounts[restaurantId] || 0) + 1 };
+    setAgreeCounts((prevCounts) => {
+      const newCounts = {
+        ...prevCounts,
+        [restaurantId]: (prevCounts[restaurantId] || 0) + 1,
+      };
       return newCounts;
     });
   };
@@ -210,15 +348,20 @@ const ResultsComponent = () => {
   return (
     <>
       <Navbar />
-      <select onChange={(e) => setSortType(e.target.value)} value={sortType}>
-        <option value="restaurantName">Sort by Restaurant Name</option>
-        <option value="borough">Sort by Borough</option>
-        <option value="cuisine">Sort by Cuisine Type</option>
-      </select>
+
       <ResultsContainer>
         <Link to="/mood">
           <BackButton>Go back to choose moods</BackButton>
         </Link>
+        <br></br>
+        <StyleSelectCurtain
+          onChange={(e) => setSortType(e.target.value)}
+          value={sortType}
+        >
+          <option value="restaurantName">Sort results by name</option>
+          <option value="borough">Sort results by borough</option>
+          <option value="cuisine">Sort results by cuisine</option>
+        </StyleSelectCurtain>
         {sortedResults.length > 0 ? (
           sortedResults.map((restaurant) => (
             <ResultCard key={restaurant._id}>
@@ -226,33 +369,53 @@ const ResultsComponent = () => {
               <StyledParagraph>Borough: {restaurant.borough}</StyledParagraph>
               <StyledParagraph>Cuisine: {restaurant.cuisine}</StyledParagraph>
               <StyledParagraph>
-                <TruncatedText text={`Occasion: ${restaurant.occasion.join(', ')}`} maxLength={100} />
+                <TruncatedText
+                  text={`Occasion: ${restaurant.occasion.join(", ")}`}
+                  maxLength={100}
+                />
               </StyledParagraph>
-              <StyledParagraph>Mood: {restaurant.mood.join(', ')}</StyledParagraph>
               <StyledParagraph>
-                <TruncatedText text={`Description: ${restaurant.description}`} maxLength={100} />
+                Mood: {restaurant.mood.join(", ")}
               </StyledParagraph>
               <StyledParagraph>
-                Address: <a href={restaurant.mapsUrl} target="_blank" rel="noopener noreferrer">
+                <TruncatedText
+                  text={`Description: ${restaurant.description}`}
+                  maxLength={100}
+                />
+              </StyledParagraph>
+              <StyledParagraph>
+                Address:{" "}
+                <a
+                  href={restaurant.mapsUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   {`${restaurant.address}, ${restaurant.zipcode} ${restaurant.city}`}
                 </a>
               </StyledParagraph>
-              <StyledButtonLink href={restaurant.url} target="_blank" rel="noopener noreferrer">
-                Visit the restaurant's website by clicking here
+              <StyledButtonLink
+                href={restaurant.url}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Website
               </StyledButtonLink>
               <br />
               <StyledButtonLink to="/suggestion">
-                If you have suggestions about the description, click here.
+                Want to add to the description? Click here!
               </StyledButtonLink>
               <StyledParagraph>
-              <AgreeButton onClick={() => handleAgreeClick(restaurant._id)}>
-              {agreeCounts[restaurant._id] || 0} 👍
+                <AgreeButton onClick={() => handleAgreeClick(restaurant._id)}>
+                  {agreeCounts[restaurant._id] || 0} 👍
                 </AgreeButton>
               </StyledParagraph>
             </ResultCard>
           ))
         ) : (
-          <NoResultsText>We are sad to say we cannot find anything that fits your needs. Please try again!</NoResultsText>
+          <NoResultsText>
+            We are sad to say we cannot find anything that fits your needs.
+            Please try again!
+          </NoResultsText>
         )}
       </ResultsContainer>
       <Footer />

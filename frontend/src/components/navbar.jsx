@@ -2,16 +2,23 @@ import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
-const tablet = `(min-width: 768px)`;
-const desktop = `(min-width: 1024px)`;
+const tablet = `(min-width: 750px)`;
+const desktop = `(min-width: 1007px)`;
 
 const FMLogo = styled.img`
-  height: 40px;
+  height: 50px;
   width: auto;
   @media ${tablet} {
-    height: 80px;
+    height: 90px;
     width: auto;
   }
+  @media ${desktop} {
+    height: 90px;
+    width: auto;
+  }
+  /* &:hover { Ändra till annan logga vid hover
+    content: url('')
+  } */
 `;
 
 const NavbarContainer = styled.nav`
@@ -19,8 +26,9 @@ const NavbarContainer = styled.nav`
   color: #66feff;
   border-radius: 5px;
   display: flex;
-  justify-content: space-between;
-  padding: 5px;
+  justify-content: flex-start;
+  padding: 10px 5px 0.1px 5px;
+
   @media ${tablet} {
     display: flex;
     justify-content: space-between;
@@ -44,23 +52,25 @@ const NavItem = styled.li`
   display: none;
   @media ${tablet} {
     color: #66feff;
-    font-size: 45px;
-    font-family: "Mercusuar";
+    font-size: 35px;
+    font-family: "JosefinSans";
     display: inline-block;
     justify-content: flex-end;
     margin-right: 15px;
     text-decoration: none;
     &:hover {
-      text-decoration: underline;
+      text-decoration: none;
+      color: yellow;
     }
   }
   @media ${desktop} {
     color: #66feff;
-    font-size: 45px;
-    font-family: "Mercusuar";
+    font-size: 35px;
+    font-family: "JosefinSans";
     text-decoration: none;
     &:hover {
-      text-decoration: underline;
+      text-decoration: none;
+      color: yellow;
     }
   }
 `;
@@ -69,39 +79,57 @@ const NavbarLink = styled(Link)`
   display: none;
   @media ${tablet} {
     color: #66feff;
-    font-size: 45px;
-    font-family: "Mercusuar";
+    font-size: 35px;
+    font-family: "JosefinSans";
     display: inline-block;
     justify-content: space-around;
     text-decoration: none;
     &:hover {
-      text-decoration: underline;
+      text-decoration: none;
+      color: white;
     }
   }
-  @media ${tablet} {
+  @media ${desktop} {
     color: #66feff;
-    font-size: 45px;
-    font-family: "Mercusuar";
+    font-size: 35px;
+    font-family: "JosefinSans";
     text-decoration: none;
     &:hover {
-      text-decoration: underline;
+      text-decoration: none;
+      color: white;
     }
+  }
+`;
+
+const AboutLink = styled(NavbarLink)`
+  color: yellow;
+  &:hover {
+    color: white;
+  }
+`;
+
+const RestaurantLink = styled(NavbarLink)`
+  color: #fcabe3;
+  &:hover {
+    color: white;
   }
 `;
 
 const Navbar = () => {
   return (
     <NavbarContainer>
-      <FMLogo src="/public/Logo2.jpg" alt="Logo" />
+      <a href="/" target="_blank" rel="noopener noreferrer">
+        <FMLogo src="src/assets/LogoNew.png" alt="Logo" />
+      </a>
       <NavbarNav>
         <NavItem>
           <NavbarLink to="/">Home</NavbarLink>
         </NavItem>
         <NavItem>
-          <NavbarLink to="/about">About </NavbarLink>
+          <AboutLink to="/about">About</AboutLink>
         </NavItem>
         <NavItem>
-          <NavbarLink to="/addrestaurant">Add Restaurant</NavbarLink>
+          <RestaurantLink to="/addrestaurant">Add Restaurant</RestaurantLink>
         </NavItem>
       </NavbarNav>
     </NavbarContainer>
