@@ -44,9 +44,13 @@ const connectDB = async () => {
 		process.exit(1) // Exit the Node.js process. Send exit code 1 which indicates an error
 	}
 }
-connectDB()
+//connectDB()
 
-app.get('/', (req, res) => {
+app.get('/', async (req, res) => {
+	// Connect to the MongoDB database
+	await connectDB()
+
+	// Handle the GET / route request
 	res.send(listEndpoints(app))
 })
 
