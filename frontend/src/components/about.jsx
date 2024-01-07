@@ -18,25 +18,19 @@ const AboutWrapper = styled.div`
 `;
 
 const IntroParagraph = styled.p`
-  font-size: 20px;
-  margin-bottom: 30px;
+  font-size: 15px;
+  margin-bottom: 5px;
+  padding: 5px;
   color: #01999a;
+  border: solid #01999a;
+  border-radius: 10px;
   text-align: center;
-  font-family: "JosefinSans";
 
   @media ${tablet} {
     font-size: 24px;
-    margin-bottom: 25px;
-    color: #01999a;
-    text-align: center;
-    font-family: "JosefinSans";
   }
   @media ${desktop} {
     font-size: 24px;
-    margin-bottom: 25px;
-    color: #01999a;
-    text-align: center;
-    font-family: "JosefinSans";
   }
 `;
 
@@ -44,6 +38,7 @@ const TeamSection = styled.section`
   display: flex;
   flex-direction: row;
   justify-content: center;
+
   @media ${tablet} {
     display: flex;
     flex-wrap: wrap;
@@ -61,7 +56,7 @@ const TeamMember = styled.div`
   margin-bottom: 20px;
   text-align: center;
   color: #01999a;
-  font-family: Montserrat, sans-serif;
+  font-family: "JosefinSans";
 `;
 
 const TeamMemberPhoto = styled.img`
@@ -166,20 +161,14 @@ const AboutPage = () => {
             >
               <TeamMemberPhoto src={ulrika} alt="Ulrika Gålnander" />
             </a>
-            <a
-              href="https://www.linkedin.com/in/ulrika-gålnander-076563134"
+            <TeamMemberName>Ulrika Gålnander</TeamMemberName>
+            <GithubLink
+              href="https://github.com/Shiqwan"
               target="_blank"
               rel="noopener noreferrer"
             >
-              <TeamMemberName>Ulrika Gålnander</TeamMemberName>
-              <GithubLink
-                href="https://github.com/Shiqwan"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Github
-              </GithubLink>
-            </a>
+              Github
+            </GithubLink>
             <TeamMemberDescription>
               The wrong enviroment or "mood" can kill any gourmet meal.<br></br>{" "}
               As soon as Alexandra mentioned her idea I was onboard as I
@@ -223,8 +212,7 @@ const AboutPage = () => {
           </TeamMember>
         </TeamSection>
         <IntroParagraph>
-          Final project made for the <br></br>
-          <br></br>&nbsp;
+          Final project made for the &nbsp;
           <a
             href="https://www.technigo.io/"
             target="_blank"
@@ -232,10 +220,10 @@ const AboutPage = () => {
           >
             <TechnigoLogo src={Techlogo} alt="Technigo Logo" />
           </a>
-          &nbsp;<br></br> <br></br>
-          Web Developer Bootcamp of Fall 2023 <br></br>
+          &nbsp; Web Developer Bootcamp of Fall 2023. <br></br>
           <br></br>This is a labour of sweat, tired knuckles and love - please
-          feel free to reach out to any of us!
+          feel free to reach out to us! <br></br> <br></br>
+          Insert email link here.
         </IntroParagraph>
       </AboutWrapper>
       <Footer />

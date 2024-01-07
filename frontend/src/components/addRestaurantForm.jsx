@@ -4,6 +4,9 @@ import Navbar from "./navbar";
 import Footer from "./footer";
 import { useRestaurantStore } from "../stores/restaurantStore";
 
+const tablet = `(min-width: 640px)`;
+const desktop = `(min-width: 1007px)`;
+
 const PageContainer = styled.div`
   margin: 0 auto;
   padding: 20px;
@@ -32,8 +35,8 @@ const StyledInput = styled.input`
   font-family: "JosefinSans";
   text-align: left;
   margin-top: 5px;
-  margin-bottom: 20px; /* Space below each input */
-  width: 100%;
+  margin-bottom: 20px;
+  width: 90%;
   padding: 8px;
   border: 2px solid #01999a;
   border-radius: 4px;
@@ -77,6 +80,18 @@ const StyledParagraph = styled.p`
   font-family: "JosefinSans";
   text-align: left;
   margin-bottom: 10px;
+`;
+
+const StyledOccasionsContainer = styled.div`
+  color: #01999a;
+  display: flex;
+  flex-direction: column;
+`;
+
+const StyledMoodsContainer = styled.div`
+  color: #01999a;
+  display: flex;
+  flex-direction: column;
 `;
 
 const AddRestaurantForm = () => {
@@ -183,42 +198,43 @@ const AddRestaurantForm = () => {
         />
 
         {/* Occasion checkboxes */}
-        <div>
-          <FormLabel>Occasion*:</FormLabel>
+        <StyledOccasionsContainer>
+          <FormLabel>
+            Tick the boxes with suiting occasions*: <br></br> <br></br>
+          </FormLabel>
           {occasions.map((option, index) => (
             <label key={index}>
               {option}
-              <StyledInput
+              <input
                 type="checkbox"
                 name="occasion"
                 value={option}
                 checked={formData.occasion.includes(option)}
                 onChange={handleChange}
                 required
-              />
+              ></input>
             </label>
           ))}
-        </div>
-
+        </StyledOccasionsContainer>
         {/* Mood checkboxes */}
-        <div>
-          <FormLabel>Mood*:</FormLabel>
+        <StyledMoodsContainer>
+          <FormLabel>Tick the boxes with suiting moods*:</FormLabel>
           {moods.map((option, index) => (
             <label key={index}>
               {option}
-              <StyledInput
+              <input
                 type="checkbox"
                 name="mood"
                 value={option}
                 checked={formData.mood.includes(option)}
                 onChange={handleChange}
                 required
-              />
+              ></input>
             </label>
           ))}
-        </div>
+        </StyledMoodsContainer>
 
-        <FormLabel>Description*:</FormLabel>
+        <FormLabel>Your description of the restaurant*:</FormLabel>
         <StyledInput
           type="text"
           name="description"

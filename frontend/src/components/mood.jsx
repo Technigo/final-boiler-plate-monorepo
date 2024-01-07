@@ -5,7 +5,6 @@ import styled from "styled-components";
 import { useRestaurantStore } from "../stores/restaurantStore"; // Ensure the path is correct
 import { Link, useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
-import { getCategoryRoute } from "./Home";
 
 const tablet = `(min-width: 640px)`;
 const desktop = `(min-width: 1007px)`;
@@ -187,7 +186,7 @@ const BackButton = styled.button`
     text-decoration: none;
     display: inline-block;
     flex-direction: column;
-    font-size: 25px;
+    font-size: 22px;
     font-family: "JosefinSans";
     margin: 4px 2px;
     transition-duration: 0.4s;
@@ -195,7 +194,7 @@ const BackButton = styled.button`
     &:hover {
       background-color: white;
       border: solid #fcabe3;
-      font-size: 25px;
+      font-size: 24px;
     }
 
     &:active {
@@ -214,7 +213,7 @@ const BackButton = styled.button`
     text-decoration: none;
     display: inline-block;
     flex-direction: column;
-    font-size: 25px;
+    font-size: 22px;
     font-family: "JosefinSans";
     margin: 4px 2px;
     transition-duration: 0.4s;
@@ -222,7 +221,7 @@ const BackButton = styled.button`
     &:hover {
       background-color: white;
       border: solid #fcabe3;
-      font-size: 25px;
+      font-size: 24px;
     }
 
     &:active {
@@ -254,6 +253,58 @@ const ResultsButton = styled.button`
 
   &:active {
     transform: translateY(1px);
+  }
+
+  @media ${tablet} {
+    background-color: #fcabe3;
+    color: white;
+    border: solid yellow;
+    padding: 10px 15px;
+    border-radius: 10px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 25px;
+    margin: 2px 2px;
+    transition-duration: 0.4s;
+
+    &:hover {
+      background-color: white;
+      color: yellow;
+      border: solid #fcabe3;
+      font-size: 27px;
+    }
+
+    &:active {
+      transform: translateY(1px);
+    }
+  }
+
+  @media ${desktop} {
+    background-color: #fcabe3;
+    color: white;
+    border: solid yellow;
+    padding: 10px 15px;
+    border-radius: 10px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 25px;
+    margin: 2px 2px;
+    transition-duration: 0.4s;
+
+    &:hover {
+      background-color: white;
+      color: yellow;
+      border: solid #fcabe3;
+      font-size: 27px;
+    }
+
+    &:active {
+      transform: translateY(1px);
+    }
   }
 `;
 

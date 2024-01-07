@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
-const tablet = `(min-width: 717px)`;
+const tablet = `(min-width: 750px)`;
 const desktop = `(min-width: 1007px)`;
 
 const FMLogo = styled.img`
@@ -86,7 +86,7 @@ const NavbarLink = styled(Link)`
     text-decoration: none;
     &:hover {
       text-decoration: none;
-      color: yellow;
+      color: white;
     }
   }
   @media ${desktop} {
@@ -96,17 +96,23 @@ const NavbarLink = styled(Link)`
     text-decoration: none;
     &:hover {
       text-decoration: none;
-      color: yellow;
+      color: white;
     }
   }
 `;
 
 const AboutLink = styled(NavbarLink)`
   color: yellow;
+  &:hover {
+    color: white;
+  }
 `;
 
 const RestaurantLink = styled(NavbarLink)`
   color: #fcabe3;
+  &:hover {
+    color: white;
+  }
 `;
 
 const Navbar = () => {
