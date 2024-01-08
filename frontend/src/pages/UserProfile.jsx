@@ -65,9 +65,9 @@ export const UserProfile = () => {
 
   useEffect(() => {
     const getUserDataFromMongo = async () => {
-      console.log(`${vite_backend}/user/${user.sub}`);
+      console.log(`${vite_backup}/user/${user.sub}`);
       try {
-        await fetch(`${vite_backend}/user/${user.sub}`)
+        await fetch(`${vite_backup}/user/${user.sub}`)
           .then((res) => res.json())
           .then((data) => {
             // console.log("data: " + JSON.stringify(data));
@@ -82,7 +82,7 @@ export const UserProfile = () => {
     };
 
     const getUsers = async () => {
-      const fetchUsers = await fetch(`${vite_backend}/users`);
+      const fetchUsers = await fetch(`${vite_backup}/users`);
       const jsonUsers = await fetchUsers.json();
       setUserList(jsonUsers);
       setUserLoading(!userLoading);

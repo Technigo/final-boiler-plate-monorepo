@@ -9,7 +9,8 @@ export const Chat = () => {
   const [messages, setMessages] = useState([]);
   const divUnderMessages = useRef();
 
-  console.log("username in chat: " + username);
+  // console.log("username in chat: " + username);
+
   // const userId = "23Abc14";
   //Usernames of sender and receiver
   // const userId = username;
@@ -80,12 +81,14 @@ export const Chat = () => {
 
   useEffect(() => {
     setSelectedUserId(recipientId);
-    console.log("selectedUserId: " + selectedUserId);
+    alert("selectedUserId: " + selectedUserId);
     if (selectedUserId) {
       fetch(
-        `${import.meta.env.VITE_BACKEND_API}/messages/` + selectedUserId
+        `${import.meta.env.VITE_BACKUP_API}/messages/` + selectedUserId
       ).then((res) => {
+        console.log("res.data: " + res.data);
         setMessages(res.data);
+        // console.log("messages: " + JSON.stringify(messages));
       });
     }
   }, [selectedUserId]);
@@ -103,7 +106,7 @@ export const Chat = () => {
         {/* {!!selectedUserId && ( */}
         <div className="relative h-full">
           <div className="overflow-y-scroll absolute top-0 left-0 right-0 bottom-2">
-            {messages.map((message) => (
+            {/* {messages.map((message) => (
               <div
                 key={message._id}
                 className={
@@ -123,7 +126,7 @@ export const Chat = () => {
               </div>
               // <div>{message.text}</div>
             ))}
-            <div ref={divUnderMessages}></div>
+            <div ref={divUnderMessages}></div> */}
           </div>
         </div>
         {/* )} */}

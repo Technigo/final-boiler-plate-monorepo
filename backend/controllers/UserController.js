@@ -1,4 +1,5 @@
 import { UserModel } from "../models/UserModel";
+import { MessageModel } from "../models/MessageModel";
 import bcrypt from "bcrypt";
 
 export const UserController = {
@@ -69,15 +70,19 @@ export const UserController = {
   },
 
   getUserMessages: async (req, res) => {
+    // console.log(req);
+    // res.json(req);
     const { userId } = req.params;
 
     //Might have to make up a solution for this part
     //    const userData = await getUser
     //const ourUserId = userData.userId;
+    const ourUserId = userId;
 
-    const messages = await Message.find({
+    const messages = await MessageModel.find({
       sender: { $in: [userId, ourUserId] },
       recipient: { $in: [userId, ourUserId] },
     }).sort({ createdAt: 1 });
+    res.json(messages);
   },
 };
