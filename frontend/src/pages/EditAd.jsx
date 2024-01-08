@@ -1,28 +1,28 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from "react";
 import { adStore } from "../stores/adStore";
-import BackArrow from '../components/reusableComponents/BackArrow';
-import { useParams } from 'react-router-dom';
-import { Image } from '../components/reusableComponents/Image'; // Import the Image component
+import BackArrow from "../components/reusableComponents/BackArrow";
+import { useParams } from "react-router-dom";
+import { Image } from "../components/reusableComponents/Image"; // Import the Image component
 import { Button } from "../components/reusableComponents/Button";
 import Lottie from "lottie-react";
 import loadingAnimation from "../assets/loading.json";
 import "./editAd.css";
 import { useSession } from "../context/SessionContext";
-import { Dropdown } from '../components/reusableComponents/Dropdown';
-import { useNavigate } from 'react-router-dom';
+import { Dropdown } from "../components/reusableComponents/Dropdown";
+import { useNavigate } from "react-router-dom";
 
 export const EditAd = () => {
   const { id: adId } = useParams(); // Extract the ad ID from the URL
 
   const [image, setImage] = useState(null);
-  const [title, setTitle] = useState('');
-  const [description, setDescription] = useState('');
-  const [product, setProduct] = useState('');
-  const [quantity, setQuantity] = useState('');
-  const [unit, setUnit] = useState('');
-  const [address, setAddress] = useState('');
-  const [observation, setObservation] = useState('');
-  const [pickupDate, setPickupDate] = useState('');
+  const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
+  const [product, setProduct] = useState("");
+  const [quantity, setQuantity] = useState("");
+  const [unit, setUnit] = useState("");
+  const [address, setAddress] = useState("");
+  const [observation, setObservation] = useState("");
+  const [pickupDate, setPickupDate] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false); // To track if the update was successful
 
@@ -36,11 +36,11 @@ export const EditAd = () => {
         setTitle(adData.title);
         setDescription(adData.description);
         setProduct(adData.product);
-        setQuantity(adData.quantity ? adData.quantity.toString() : '');
+        setQuantity(adData.quantity ? adData.quantity.toString() : "");
         setUnit(adData.unit);
         setAddress(adData.address);
         setObservation(adData.observation);
-        setPickupDate(adData.pickupDate ? adData.pickupDate.split('T')[0] : ''); // Adjust date format if necessary
+        setPickupDate(adData.pickupDate ? adData.pickupDate.split("T")[0] : ""); // Adjust date format if necessary
         setImage(adData.image); // Set the current image
       }
     };
@@ -60,21 +60,28 @@ export const EditAd = () => {
 
     try {
       const updatedAdData = {
-        title, description, product, quantity, unit, address, observation, pickupDate
+        title,
+        description,
+        product,
+        quantity,
+        unit,
+        address,
+        observation,
+        pickupDate,
       };
 
       await handleEdit(adId, updatedAdData, image);
       setIsSuccess(true); // Set update success flag
 
       // Reset form fields after submission (except image)
-      setTitle('');
-      setDescription('');
-      setProduct('');
-      setQuantity('');
-      setUnit('');
-      setAddress('');
-      setObservation('');
-      setPickupDate('');
+      setTitle("");
+      setDescription("");
+      setProduct("");
+      setQuantity("");
+      setUnit("");
+      setAddress("");
+      setObservation("");
+      setPickupDate("");
 
       // Redirect to the previous page
       navigate(-1); // This navigates back one step in the history stack
@@ -96,25 +103,46 @@ export const EditAd = () => {
           <BackArrow />
           {isLoading ? (
             <div className="loading-container">
-              <Lottie options={{ loop: true, autoplay: true, animationData: loadingAnimation }} />
+              <Lottie
+                options={{
+                  loop: true,
+                  autoplay: true,
+                  animationData: loadingAnimation,
+                }}
+              />
             </div>
           ) : (
             <form className="create-ad-form" onSubmit={handleSubmit}>
               <div>
                 <label>Title:</label>
-                <input type="text" value={title} onChange={(e) => setTitle(e.target.value)} />
+                <input
+                  type="text"
+                  value={title}
+                  onChange={(e) => setTitle(e.target.value)}
+                />
               </div>
               <div>
                 <label>Description:</label>
-                <textarea value={description} onChange={(e) => setDescription(e.target.value)} />
+                <textarea
+                  value={description}
+                  onChange={(e) => setDescription(e.target.value)}
+                />
               </div>
               <div>
                 <label>Product:</label>
-                <input type="text" value={product} onChange={(e) => setProduct(e.target.value)} />
+                <input
+                  type="text"
+                  value={product}
+                  onChange={(e) => setProduct(e.target.value)}
+                />
               </div>
               <div>
                 <label>Quantity:</label>
-                <input type="number" value={quantity} onChange={(e) => setQuantity(e.target.value)} />
+                <input
+                  type="number"
+                  value={quantity}
+                  onChange={(e) => setQuantity(e.target.value)}
+                />
               </div>
               <div>
                 <label>Unit:</label>
@@ -133,23 +161,40 @@ export const EditAd = () => {
               </div>
               <div>
                 <label>Location:</label>
-                <input type="text" value={address} onChange={(e) => setAddress(e.target.value)} />
+                <input
+                  type="text"
+                  value={address}
+                  onChange={(e) => setAddress(e.target.value)}
+                />
               </div>
               <div>
                 <label>Pickup Time:</label>
-                <input type="datetime-local" value={pickupDate} onChange={(e) => setPickupDate(e.target.value)} />
+                <input
+                  type="datetime-local"
+                  value={pickupDate}
+                  onChange={(e) => setPickupDate(e.target.value)}
+                />
               </div>
               <div>
                 <label>Observation:</label>
-                <input type="text" value={observation} onChange={(e) => setObservation(e.target.value)} />
+                <input
+                  type="text"
+                  value={observation}
+                  onChange={(e) => setObservation(e.target.value)}
+                />
               </div>
               <div>
                 <label>Current Image:</label>
-                {image && <Image src={image} alt="Current Ad Image" size="medium" />}
+                {image && (
+                  <Image src={image} alt="Current Ad Image" size="medium" />
+                )}
               </div>
               <div>
                 <label>New Image:</label>
-                <input type="file" onChange={(e) => setImage(e.target.files[0])} />
+                <input
+                  type="file"
+                  onChange={(e) => setImage(e.target.files[0])}
+                />
               </div>
               {isSuccess && (
                 <div className="success-message">

@@ -5,6 +5,7 @@ import { useNavigate, Link } from "react-router-dom";
 import { userStore } from "../stores/userStore"; // Make sure this is correctly imported
 import { Heading } from "../components/reusableComponents/Heading";
 import { Logo } from "../components/reusableComponents/Logo";
+import { Button } from "../components/reusableComponents/Button";
 import BackArrow from "../components/reusableComponents/BackArrow";
 import Lottie from "lottie-react";
 import loadingAnimation from "../assets/loading.json/";
@@ -12,7 +13,6 @@ import {Icon} from "react-icons-kit";
 import {eyeOff} from "react-icons-kit/feather/eyeOff";
 import {eye} from "react-icons-kit/feather/eye";
 import "../pages/login.css";
-import { Button } from "../components/reusableComponents/Button";
 
 // Define the 'Login' functional component.
 export const Login = () => {

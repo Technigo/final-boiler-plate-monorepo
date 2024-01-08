@@ -1,7 +1,7 @@
 import { useState } from "react";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 import { adStore } from "../stores/adStore";
-import Swal from 'sweetalert2';
+import Swal from "sweetalert2";
 import BackArrow from "../components/reusableComponents/BackArrow";
 import { Dropdown } from "../components/reusableComponents/Dropdown";
 import { Button } from "../components/reusableComponents/Button";
@@ -26,7 +26,6 @@ export const CreateAd = () => {
   const { createAd } = adStore();
   const { isSessionExpired } = useSession();
 
-
   // Define units for dropdown
   const unitOptions = [
     { label: "Kilogram (kg)", value: "kg" },
@@ -44,8 +43,16 @@ export const CreateAd = () => {
     e.preventDefault();
     setIsLoading(true); // Start loading
 
-
-    if (!image || !title || !description || !product || !quantity || !unit || !address || !pickupDate) {
+    if (
+      !image ||
+      !title ||
+      !description ||
+      !product ||
+      !quantity ||
+      !unit ||
+      !address ||
+      !pickupDate
+    ) {
       setIsLoading(false); // Stop loading if validation fails
       Swal.fire({
         title: "Oops!",
@@ -56,7 +63,19 @@ export const CreateAd = () => {
     }
 
     try {
-      await createAd({ title, description, product, quantity, unit, address, observation, pickupDate }, image);
+      await createAd(
+        {
+          title,
+          description,
+          product,
+          quantity,
+          unit,
+          address,
+          observation,
+          pickupDate,
+        },
+        image
+      );
       Swal.fire({
         title: "Success!",
         text: "Your ad has been created.",
@@ -86,7 +105,6 @@ export const CreateAd = () => {
     }
   };
 
-
   return (
     <>
       <div className="main-container">
@@ -101,25 +119,46 @@ export const CreateAd = () => {
 
             {isLoading ? (
               <div className="loading-container">
-                <Lottie options={{ loop: true, autoplay: true, animationData: loadingAnimation }} />
+                <Lottie
+                  options={{
+                    loop: true,
+                    autoplay: true,
+                    animationData: loadingAnimation,
+                  }}
+                />
               </div>
             ) : (
               <form className="create-ad-form" onSubmit={handleSubmit}>
                 <div>
                   <label>Title:</label>
-                  <input type="text" value={title} onChange={(e) => setTitle(e.target.value)} />
+                  <input
+                    type="text"
+                    value={title}
+                    onChange={(e) => setTitle(e.target.value)}
+                  />
                 </div>
                 <div>
                   <label>Description:</label>
-                  <textarea value={description} onChange={(e) => setDescription(e.target.value)} />
+                  <textarea
+                    value={description}
+                    onChange={(e) => setDescription(e.target.value)}
+                  />
                 </div>
                 <div>
                   <label>Product:</label>
-                  <input type="text" value={product} onChange={(e) => setProduct(e.target.value)} />
+                  <input
+                    type="text"
+                    value={product}
+                    onChange={(e) => setProduct(e.target.value)}
+                  />
                 </div>
                 <div>
                   <label>Quantity:</label>
-                  <input type="number" value={quantity} onChange={(e) => setQuantity(e.target.value)} />
+                  <input
+                    type="number"
+                    value={quantity}
+                    onChange={(e) => setQuantity(e.target.value)}
+                  />
                 </div>
                 <div>
                   <label>Unit:</label>
@@ -132,22 +171,37 @@ export const CreateAd = () => {
                 </div>
                 <div>
                   <label>Location:</label>
-                  <input type="text" value={address} onChange={(e) => setAddress(e.target.value)} />
+                  <input
+                    type="text"
+                    value={address}
+                    onChange={(e) => setAddress(e.target.value)}
+                  />
                 </div>
                 <div>
                   <label>Pickup Time:</label>
-                  <input type="datetime-local" value={pickupDate} onChange={(e) => setPickupDate(e.target.value)} />
+                  <input
+                    type="datetime-local"
+                    value={pickupDate}
+                    onChange={(e) => setPickupDate(e.target.value)}
+                  />
                 </div>
                 <div>
                   <label>Observation:</label>
-                  <input type="text" value={observation} onChange={(e) => setObservation(e.target.value)} />
+                  <input
+                    type="text"
+                    value={observation}
+                    onChange={(e) => setObservation(e.target.value)}
+                  />
                 </div>
                 <div>
                   <label>Image:</label>
-                  <input type="file" onChange={(e) => {
-                    console.log("File selected:", e.target.files[0]);
-                    setImage(e.target.files[0]);
-                  }} />
+                  <input
+                    type="file"
+                    onChange={(e) => {
+                      console.log("File selected:", e.target.files[0]);
+                      setImage(e.target.files[0]);
+                    }}
+                  />
                 </div>
                 <Button
                   label="Create Ad"
