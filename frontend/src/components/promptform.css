@@ -1,7 +1,8 @@
 .promptform-wrapper {
     display: flex;
     flex-direction: column;
-    text-align: center;
+    align-items: center;
+    margin: 5% 0 5% 0; 
 }
 
 .promptform-wrapper h2 {
@@ -9,37 +10,36 @@
     text-align: center;
     margin-left: 5%;
     margin-right: 5%;
-    margin-bottom: 10%;
-    font-size: 2.5vh;
+    margin-bottom: 1%;
+}
+
+.promptform-box {
+    margin: 10px;
+    padding: 30px; 
+    background-color: rgb(65,101,76, 0.65)
 }
 
 .instruction-text {
-    color: #173e34;
-    font-weight: bold;
+    text-align: center;
+    color: white; 
+    margin-bottom: 5px; 
 }
 
 .ingredient-form {
     display: flex;
     flex-direction: column;
-    align-self: center;
-    width: 83%;
 }
 
-.error-message {
-    color: white;
-}
 
 .textareas-container {
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
+    gap: 5px; 
 }
 
 textarea {
-    margin-bottom: 3%;
     border: 1px solid #286052;
     border-radius: 1.6rem;
-    width: 32%;
-    display: inline-block;
 }
 
 /* Adjusting placeholder text */
@@ -50,17 +50,21 @@ textarea::placeholder {
 
 .checkbox-options {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
+    gap: 10px; 
+    /* justify-content: space-between; */
 
 }
 
 /* Ev flyttas. Om alla knappar ska se likadana ut så kan denna flyttas till app */
 .generate-button {
+    font-size: 1.1rem;
     background-color: #173e34;
     color: white;
     border: 1px solid white;
     border-radius: 1.6rem;
     padding: 0.5rem;
+    margin-top: 0.5rem;
 }
 
 .generate-button:hover {
@@ -74,37 +78,31 @@ button:hover {
 
 /* ---------TABLET VIEW---------- */
 @media (min-width: 667px) and (max-width: 1024px) {
-    .ingredient-form {
-        width: 40%;
-    }
-
+    
     .promptform-wrapper h2 {
-        margin-bottom: 8%;
+        margin-bottom: 2%;
     }
 
-    textarea {
-        width: 25%;
+    .textareas-container {
+        flex-direction: row;
     }
 
-    .instruction-text {
-        color: white;
-    }
 }
-
 
 /* ---------DESKTOP VIEW---------- */
 @media (min-width: 1025px) {
-    .promptform-wrapper {
-        width: 70%;
+    .promptform-box {
+       width: 50%; 
     }
-
+ 
     .promptform-wrapper h2 {
-        margin-bottom: 5%;
+        margin-bottom: 2%;
         font-size: 4.5vh;
     }
 
-    .ingredient-form {
-        width: 50%;
+    .textareas-container {
+        flex-direction: row;
+        justify-content: space-around;
     }
 
     textarea {

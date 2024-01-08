@@ -84,7 +84,7 @@ export const RecipeDetails = () => {
           )}
         </ul>
 
-        <h3>Instructions:</h3>
+        <h3>Method:</h3>
         <ol>
           {foundRecipe.instructions.map((instruction, index) => (
             <li key={index}>{instruction}</li>

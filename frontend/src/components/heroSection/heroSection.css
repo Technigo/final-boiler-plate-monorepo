@@ -5,8 +5,8 @@
     align-items: center;
     position: relative;
     background-image: url("/src/assets/hero-forest.jpg");
-    background-size: cover;
-    height: 350px;
+    background-size: cover; 
+    /* height: 350px; */
     width: 100%;
     /* background-attachment: fixed;  Fix the background image in place  */
     background-position: 50% 70%;
@@ -24,7 +24,7 @@
 /* ---------DESKTOP VIEW---------- */
 @media (min-width: 1025px) {
     .hero {
-        height: 450px;
+        /* height: 450px; */
         background-position: 10% 55%;
     }
 }

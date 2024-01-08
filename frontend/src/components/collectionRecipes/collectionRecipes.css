@@ -5,7 +5,7 @@
 
 .collection-recipes h3 {
     font-size: 20px;
-    margin: 1em 0 1.9em;
+    margin: 0 0 1.9em 0;
     text-align: center;
 }
 
@@ -64,6 +64,10 @@
 
 /* ---------DESKTOP VIEW---------- */
 @media (min-width: 1025px) {
+.collection-recipes {
+    margin: 0 32px; 
+}
+
     .recipe-grid {
         grid-template-columns: repeat(4, 1fr);
     }

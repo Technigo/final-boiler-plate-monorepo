@@ -34,13 +34,14 @@ export const PromptForm = () => {
   };
 
   // Placeholder texts for each textarea
-  const placeholders = ["(e.g. pasta)", "(e.g. egg", "(e.g. basil)"];
+  const placeholders = ["(e.g. pasta)", "(e.g. egg)", "(e.g. basil)"];
 
   // Render the component. Form element
   return (
     <div className="promptform-wrapper">
       <h2>Generate a camping stove-friendly recipe for your outdoor adventure!</h2>
-      <p className="instruction-text">Input 1-3 ingredients of your choice:</p>
+      <div className="promptform-box">
+      <h3 className="instruction-text">Enter ingredients of your choice</h3>
       <form className="ingredient-form" onSubmit={handleFormSubmit}>
         <div className="textareas-container">
           {[1, 2, 3].map((index) => (
@@ -71,21 +72,22 @@ export const PromptForm = () => {
             />
             Gluten-free
           </label>
-
-          <label>
+          {/* <label>
             <input
               type="checkbox"
               checked={isLactoseFree}
               onChange={(e) => setIsLactoseFree(e.target.checked)}
             />
             Lactose-free
-          </label>
+          </label> */}
         </div>
 
         <button className="generate-button" type="submit">
-          Create recipe using AI
+          Generate Recipe
         </button>
       </form>
-    </div>
+      </div>
+      </div>
+
   );
 };

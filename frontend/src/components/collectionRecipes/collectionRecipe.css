@@ -8,6 +8,10 @@
   margin: 0.3em 0 0.7em 0; 
 }
 
+.collection-recipe-card h2:hover {
+  color: #86bca8;
+}
+
 .collection-recipe-card p {
   font-family: Georgia, 'Times New Roman', Times, serif;
   font-size: 13px; 
@@ -33,3 +37,4 @@
   display: flex; 
   gap: 3px; 
 }
+
