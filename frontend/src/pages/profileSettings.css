@@ -1,0 +1,7 @@
+/*Display current password as black dots*/
+.current-password {
+    -webkit-text-security: disc;
+}
+
+
+  

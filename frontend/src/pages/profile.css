@@ -5,23 +5,8 @@
     justify-content: center;
     align-items: center;
     gap: 2.5em;
-};
-
-.profile-data {
-    display: flex;
-    flex-direction: column;
-};
-
-@media only screen and (min-width:768px) {
-    .profile-container {
-        justify-content: flex-start;
-    };
-
-    .profile-data {
-        flex-direction: row;
-    }
 }
-    
+
 
 
 

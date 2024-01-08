@@ -122,11 +122,10 @@ export const UpdateSettings = () => {
   };
 
   return (
-    <div>
+    <div className="container">
       <BackArrow />
       <h1>Update settings</h1>
-
-      <form onSubmit={handleUpdateSubmit}>
+      <form onSubmit={handleUpdateSubmit} className="settings-form">
         {/* Form fields for user details */}
         <div className="password">
           <label htmlFor="password">New password:</label>
@@ -145,7 +144,7 @@ export const UpdateSettings = () => {
           </div>
         </div>
 
-        <div>
+        <div className="form-field">
           <label htmlFor="email">New email:</label>
           <input
             type="email"
@@ -157,7 +156,7 @@ export const UpdateSettings = () => {
           />
         </div>
 
-        <div>
+        <div className="form-field">
           <label htmlFor="location">New location:</label>
           <input
             type="text"
@@ -169,7 +168,7 @@ export const UpdateSettings = () => {
           />
         </div>
 
-        <div>
+        <div className="form-field">
           <label htmlFor="introduction">New introduction:</label>
           <textarea
             name="introduction"
@@ -182,12 +181,12 @@ export const UpdateSettings = () => {
           />
         </div>
 
-        <div>
+        <div className="form-field">
           <label htmlFor="image">Update profile image:</label>
           <input type="file" onChange={handleImageUpdate} />
         </div>
 
-        <div className="update-actions">
+        <div className="settings-actions">
           <Button
             icon="./src/assets/icons/save2.svg"
             iconSize="button" 

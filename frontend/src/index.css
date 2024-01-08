@@ -153,6 +153,7 @@ textarea {
   border: 1px solid var(--border);
   border-radius: var(--border-radius);
   padding: 2px 5px;
+  max-width: 100%;
 }
 
 /* Images */
@@ -165,6 +166,7 @@ img {
   width: 200px;
   height: 200px;
   border-radius: 50%;
+  object-fit: cover;
 }
 
 /* Containers */
@@ -266,4 +268,84 @@ img {
   .container {
     max-width: 1120px;
   }
+}
+
+/* STYLING FOR ADVERTISER'S PROFILE PAGE ("/PROFILE/:USERID") */
+.profile-data {
+  display: flex;
+  flex-direction: column;
+}
+
+.profile-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.recent-ads {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+@media only screen and (min-width:768px) {
+  .profile-data {
+    flex-direction: row;
+    gap: 2.5em;
+  }
+
+  .profile-info {
+    align-items: flex-start;
+  }
+}
+
+/* STYLING FOR USER'S PROFILE SETTINGS PAGE ("/SETTINGS") */
+.profile-text {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  margin-top: 2em;
+  margin-bottom: 2em;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+.password-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+
+.settings-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+
+@media only screen and (min-width:768px) {
+  .password-wrapper {
+    display: flex;
+    flex-direction: row;
+    gap: 0.5em
+  }
+
+  .settings-actions {
+    display: flex;
+    flex-direction: row;
+    gap: 1.5em;
+  }
+}
+
+/* STYLING FOR USER'S UPDATE SETTINGS PAGE ("/UPDATE-SETTINGS") */
+.settings-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  max-width: 100%;
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
 }

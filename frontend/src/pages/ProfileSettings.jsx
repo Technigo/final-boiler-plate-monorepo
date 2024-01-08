@@ -4,6 +4,7 @@ import { userStore } from "../stores/userStore";
 import BackArrow from "../components/reusableComponents/BackArrow";
 import { Button } from "../components/reusableComponents/Button";
 import defaultProfileImage from "../assets/images/profile_icon.png";
+import "./profileSettings.css";
 
 export const ProfileSettings = () => {
   // const [isEditing, setIsEditing] = useState(false);
@@ -53,21 +54,24 @@ export const ProfileSettings = () => {
   };
 
   return (
-    <>
+    <div className="container">
       <BackArrow />
-      <div>
-        <h1>Your settings</h1>
-        {profileData.image ? (
-          <img src={profileData.image} alt={username} />
-        ) : (
-          <img src={defaultProfileImage} alt={username} />
-        )}
+      <h1>Your settings</h1>
+      {profileData.image ? (
+        <img src={profileData.image} alt={username} className="profile-img" />
+      ) : (
+        <img src={defaultProfileImage} alt={username} className="profile-img" />
+      )}
+      <div className="profile-text">
         <p>Username: {username}</p>
-        <p>Password: {profileData.password}</p>
+        <div className="password-wrapper">
+          <p>Password: </p><p className="current-password">{profileData.password}</p>
+        </div>
         <p>Email: {profileData.email}</p>
         <p>Location: {profileData.location}</p>
         <p>Introduction: {profileData.introduction}</p>
       </div>
+
       <div className="settings-actions">
         <Button
           icon="./src/assets/icons/edit.svg"
@@ -84,6 +88,6 @@ export const ProfileSettings = () => {
           invertIcon={true}
         />
       </div>
-    </>
+    </div>
   );
 }
