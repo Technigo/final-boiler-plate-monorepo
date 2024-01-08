@@ -85,4 +85,13 @@ export const UserController = {
     }).sort({ createdAt: 1 });
     res.json(messages);
   },
+
+  getAllMessages: async (req, res) => {
+    const userId = req.params;
+
+    const messages = await MessageModel.find({
+      sender: { $in: userId },
+    }).sort({ createdAt: 1 });
+    res.json(messages);
+  },
 };

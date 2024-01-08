@@ -100,13 +100,16 @@ export const Chat = () => {
 
   return (
     <div className="flex h-80">
-      <div className="bg-green-100 w-1/3">Contacts</div>
+      <div className="bg-green-100 w-1/3">
+        Contacts
+        <button onClick={() => console.log(messages)}>Log messages</button>
+      </div>
       <div className="flex flex-col bg-green-200 w-2/3 p-2">
         <div className="flex-grow">Messages with selected person</div>
         {/* {!!selectedUserId && ( */}
         <div className="relative h-full">
           <div className="overflow-y-scroll absolute top-0 left-0 right-0 bottom-2">
-            {/* {messages.map((message) => (
+            {messages.map((message) => (
               <div
                 key={message._id}
                 className={
@@ -126,7 +129,7 @@ export const Chat = () => {
               </div>
               // <div>{message.text}</div>
             ))}
-            <div ref={divUnderMessages}></div> */}
+            <div ref={divUnderMessages}></div>
           </div>
         </div>
         {/* )} */}
