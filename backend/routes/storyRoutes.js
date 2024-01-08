@@ -62,7 +62,7 @@ router.post("/stories", async (req, res) => {
 
     // Add logic to check the sentiment score and handle negative content
     // Adjust the condition based on your requirements
-    if (analysisResult.documentSentiment.score < 0.5) {
+    if (analysisResult.documentSentiment.score < -0.5) {
       return res.status(400).json({ message: "Content is too negative" });
     }
 

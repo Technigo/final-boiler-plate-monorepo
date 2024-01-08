@@ -11,19 +11,75 @@ export const StoryList = () => {
   const [filterType, setFilterType] = useState("");
   const [selectedCity, setSelectedCity] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("");
+  const [selectedLanguage, setSelectedLanguage] = useState("en"); // default to English
+
+  const backendApiUrl = "http://localhost:3000";
+
+  // Function to update cities and categories based on fetched stories
+  const updateCitiesAndCategories = (storiesData) => {
+    setCities([...new Set(storiesData.map((story) => story.city))]);
+    setCategories([...new Set(storiesData.map((story) => story.category))]);
+  };
 
   useEffect(() => {
-    fetch("stories.json")
-      .then((response) => response.json())
-      .then((data) => {
-        setStories(data.stories);
-        setCities([...new Set(data.stories.map((story) => story.city))]);
-        setCategories([
-          ...new Set(data.stories.map((story) => story.category)),
-        ]);
-      })
-      .catch((error) => console.error("Error fetching stories:", error));
+    // Function to fetch stories from backend
+    const fetchStories = async () => {
+      try {
+        const response = await fetch(`${backendApiUrl}/stories`);
+        const data = await response.json();
+        setStories(data);
+        updateCitiesAndCategories(data);
+      } catch (error) {
+        console.error("Error fetching stories:", error);
+      }
+    };
+    fetchStories();
   }, []);
+
+  // useEffect(() => {
+  //   // Function to fetch stories from backend
+  //   const fetchStories = async () => {
+  //     try {
+  //       const response = await fetch(`${backendApiUrl}/stories`);
+  //       const data = await response.json();
+  //       setStories(data);
+  //       setCities([...new Set(data.map((story) => story.city))]);
+  //       setCategories([...new Set(data.map((story) => story.category))]);
+  //     } catch (error) {
+  //       console.error("Error fetching stories:", error);
+  //     }
+  //   };
+  //   fetchStories();
+  // }, []);
+
+  useEffect(() => {
+    // Function to fetch translated stories
+    const fetchTranslatedStories = async () => {
+      try {
+        const response = await fetch(
+          `${backendApiUrl}/stories?language=${selectedLanguage}`
+        );
+        const translatedData = await response.json();
+        setStories(translatedData);
+        updateCitiesAndCategories(translatedData);
+      } catch (error) {
+        console.error("Error fetching translated stories:", error);
+      }
+    };
+
+    if (selectedLanguage !== "en") {
+      fetchTranslatedStories();
+    } else {
+      // Fetch original stories when language is set to English
+      fetch(`${backendApiUrl}/stories`)
+        .then((response) => response.json())
+        .then((data) => {
+          setStories(data);
+          updateCitiesAndCategories(data);
+        })
+        .catch((error) => console.error("Error fetching stories:", error));
+    }
+  }, [selectedLanguage]);
 
   const handleFilterTypeChange = (e) => {
     setFilterType(e.target.value);
@@ -50,10 +106,23 @@ export const StoryList = () => {
     })
     .sort((a, b) => (filterType === "ranking" ? b.ranking - a.ranking : 0));
 
+  const handleLanguageChange = (e) => {
+    setSelectedLanguage(e.target.value);
+  };
+
   return (
     <div className="list-wrapper">
       <div className="story-list">
         <div className="filter-options">
+          <select
+            className="dropdowns"
+            value={selectedLanguage}
+            onChange={handleLanguageChange}
+          >
+            <option value="en">English</option>
+            <option value="sv">Swedish</option>
+          </select>
+
           <select
             className="dropdowns"
             value={filterType}
@@ -94,7 +163,7 @@ export const StoryList = () => {
           )}
         </div>
         {filteredStories.map((story) => (
-          <div key={story.id} className="story-card-list">
+          <div key={story._id} className="story-card-list">
             <div className="story-cards">
               <div className="story-image">
                 <img src={`/${story.image}`} alt={`${story.city} story`} />

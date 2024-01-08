@@ -15,7 +15,6 @@ export const PostStory = () => {
   const [newHeading, setNewHeading] = useState("");
   const [newStory, setNewStory] = useState("");
   const [newCategory, setNewCategory] = useState("");
-
   const [selectedDate, setSelectedDate] = useState(new Date());
   // const [isCalendarVisible, setIsCalendarVisible] = useState(false);
   const [isImageModalOpen, setIsImageModalOpen] = useState(false);
@@ -29,46 +28,67 @@ export const PostStory = () => {
   const handleFormSubmit = async (e) => {
     e.preventDefault();
 
-    if (newStory.length < 5 || newStory.length > 200) {
-      alert("The message can only contain 5-200 letters. Please try again! 💕");
+    if (newStory.length < 10) {
+      alert("The message is too short. Please try again! 💕");
       return;
     }
 
-    try {
-      const newStoryData = {
-        title: newHeading,
-        content: newStory,
-        createdAt: selectedDate,
-        location: {
-          lat: latitude, // Use the state variable
-          lng: longitude, // Use the state variable
-        }, // Add this line
-        category: newCategory,
-        image: selectedImage,
-      };
+    setNewStory("");
 
-      const response = await fetch("http://localhost:3000/stories", {
+    const handleCategoryChange = (e) => {
+      setNewCategory(e.target.value);
+    };
+
+    const googleApiPayload = {
+      document: {
+        content: newStory, // Set the content field with the story text
+        type: "PLAIN_TEXT",
+      },
+    };
+    console.log("Sending request to Google API with body:", googleApiPayload);
+
+    fetch(
+      `https://language.googleapis.com/v1/documents:analyzeSentiment?key=${
+        import.meta.env.VITE_GOOGLE_LANGUAGE_KEY
+      }`,
+      {
         method: "POST",
+        body: JSON.stringify(googleApiPayload),
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(newStoryData),
+      }
+    )
+      .then((res) => res.json())
+      .then((googleApiResponse) => {
+        console.log("Response from Google API:", googleApiResponse);
+      })
+      .catch((error) => {
+        console.error("Error calling Google API:", error);
       });
 
-      if (!response.ok) {
-        throw new Error("Network response was not ok");
-      }
-
-      const postedStory = await response.json();
-      console.log("New story posted:", postedStory);
-      console.log("Date:", selectedDate);
-      console.log("Category:", newCategory);
-
-      // Reload the page after a successful post
-      window.location.reload();
-    } catch (error) {
-      console.error("Error posting the story", error);
-    }
+    // fetch("http://localhost:3000/stories", {
+    //   method: "POST",
+    //   body: JSON.stringify({
+    //     title: newHeading,
+    //     content: newStory,
+    //     createdAt: selectedDate,
+    //     location: locationName,
+    //     category: newCategory,
+    //     image: selectedImage,
+    //   }),
+    // })
+    //   .then((res) => res.json())
+    //   .then((newStory) => {
+    //     console.log("New story posted:", newStory);
+    //     console.log("Date:", selectedDate);
+    //     console.log("Category:", newCategory);
+    //     // Reload the page after a successful post
+    //     // window.location.reload();
+    //   })
+    //   .catch((error) => {
+    //     console.error("Error posting the story", error);
+    //   });
   };
 
   const handleDateChange = (date) => {
@@ -96,14 +116,15 @@ export const PostStory = () => {
   };
 
   const handleImageSelect = (image) => {
-    import(`/${image}` /* @vite-ignore */)
+    import(`/${image}`)
       .then((module) => {
         setSelectedImage(module.default);
-        closeImageModal();
+        closeImageModal(true);
       })
       .catch((error) => {
         console.error("Error loading image:", error);
       });
+    console.log("Image chosen");
   };
 
   const onLoadAutocomplete = (autocomplete) => {
@@ -139,8 +160,7 @@ export const PostStory = () => {
           type="text"
           value={newStory}
           onChange={(e) => setNewStory(e.target.value)}
-          minLength="5"
-          maxLength="200"
+          minLength="10"
           placeholder="Please write your story here"
           className="input-field"
         />
@@ -171,7 +191,7 @@ export const PostStory = () => {
               />
             </Autocomplete>
           </LoadScript>
-          <p>Selected Location: {locationName}</p>
+          <p className="location">Selected Location: {locationName}</p>
         </div>
 
         <div>
@@ -238,3 +258,5 @@ export const PostStory = () => {
     </div>
   );
 };
+
+// ${import.meta.env.VITE_GOOGLE_LANGUAGE_KEY}

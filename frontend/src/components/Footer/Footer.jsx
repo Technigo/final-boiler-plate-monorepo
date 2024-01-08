@@ -14,9 +14,6 @@ export const Footer = () => {
           Final Project by Frida Lindskog, Carolina Luna, Sandra Gustafsson and
           Emmy Jansson. <br /> Technigo Web Developer Bootcamp Fall 2023
         </p>
-        <Link to="/about-us">
-          <Buttons buttonText="About Us" onClick={handleButtonClick} />
-        </Link>
       </div>
     </div>
   );

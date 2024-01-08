@@ -4,6 +4,9 @@
   z-index: 10 !important;
 }
 
+.outlet-wrapper {
+  margin-top: -42px;
+}
 .swiper-slide {
   transition: transform 0.3s ease-in-out, z-index 0.3s;
   z-index: 1; /* Default z-index for all slides */
