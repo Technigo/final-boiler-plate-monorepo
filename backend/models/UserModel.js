@@ -1,11 +1,10 @@
 import mongoose from "mongoose";
-import crypto from "crypto"; //  Imports the Node.js crypto library for generating secure random strings.
+//import crypto from "crypto"; //  Imports the Node.js crypto library for generating secure random strings.
 
 // Import the Schema class from the Mongoose library
 // Destructures the Schema class from the Mongoose library, allowing us to create a schema.
 const { Schema } = mongoose;
 
-// Create a new Mongoose schema named 'userSchema'
 // Creates a new Mongoose schema named userSchema that defines the structure of a user document in the MongoDB collection. It includes fields like username, password, and accessToken, specifying their data types, validation rules, and default values.
 const userSchema = new Schema(
   {
@@ -13,14 +12,24 @@ const userSchema = new Schema(
     username: {
       type: String, // Specifies that 'username' should be a string
       required: true, // Indicates that 'username' is a required field
-      unique: true, // Ensures that 'username' values are unique
-      minlength: 2, // Sets a minimum length of 2 characters for 'username'
+      minlength: 5, // Sets a minimum length
+      unique: true, // Make sure the username is unique in the database
     },
     // Define the 'password' field with a String data type
     password: {
-      type: String, // Specifies that 'password' should be a string
-      required: true, // Indicates that 'password' is a required field
-      minlength: 6, // Sets a minimum length of 6 characters for 'password'
+      type: String,
+      required: true,
+      minlength: 6,
+      validate: {
+        // Password requirements added
+        validator: function (password) {
+          const hasNumber = /[0-9]/.test(password);
+          const hasCapitalLetter = /[A-Z]/.test(password);
+          const hasSpecialSign = /[!@#\$%\^&\*]/.test(password);
+          return hasNumber && hasCapitalLetter && hasSpecialSign;
+        },
+        message: 'Password must contain at least one number, one capital letter, and one special character.'
+      }
     },
     email: {
       type: String,
@@ -31,11 +40,12 @@ const userSchema = new Schema(
       type: String,
       default: 'user',
     },
+    /* //NOT USED ANYWHERE IN THE APP AS THE REST OF THE APP USES JWT TOKENS? - COMMENT OUT FOR NOW
     //Define the 'accessToken' field with a String data type
     accessToken: {
       type: String, // Specifies that 'accessToken' should be a string
       default: () => crypto.randomBytes(128).toString("hex"), // Sets a default value using a cryptographic random string
-    },
+    },*/
   },
   {
     timestamps: true,

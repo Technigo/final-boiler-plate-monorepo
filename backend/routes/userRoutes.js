@@ -14,7 +14,7 @@ const router = express.Router();
 router.post("/register", registerUserController); // When a POST request is made to /register, execute the registerUserController function
 
 // LOGIN ROUTE: Handle user login
-router.post("/login", authenticateUser, loginUserController); // When a POST request is made to /login, execute the loginUserController function
+router.post("/login", loginUserController); // When a POST request is made to /login, execute the loginUserController function
 
 // Export the router for use in the main application
 export default router;

@@ -1,7 +1,5 @@
-//Create an admin registration function, which is either protected by an existing admin token or performed manually through scripts or directly in the database. - HOW?
-
-// Admin Registration Endpoint
 import { AdminModel } from '../models/AdminModel';
+import { UserModel } from '../models/UserModel'; // For upgrading users to admin
 import asyncHandler from 'express-async-handler';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
@@ -12,6 +10,7 @@ const generateToken = (id) => {
     });
 };
 
+// Register Admin
 export const registerAdminController = asyncHandler(async (req, res) => {
     const { username, password, email } = req.body;
 
@@ -54,7 +53,7 @@ export const registerAdminController = asyncHandler(async (req, res) => {
     }
 });
 
-
+// Admin login
 export const loginAdminController = asyncHandler(async (req, res) => {
     const { username, password } = req.body;
 
@@ -81,5 +80,39 @@ export const loginAdminController = asyncHandler(async (req, res) => {
         });
     } catch (e) {
         res.status(500).json({ success: false, response: e.message });
+    }
+});
+
+// List all users
+export const listUsersController = asyncHandler(async (req, res) => {
+    try {
+        const users = await UserModel.find({}).select('-password'); // Excludes passwords from the result
+        res.json({ success: true, users });
+    } catch (error) {
+        res.status(500).json({ success: false, response: error.message });
+    }
+});
+
+// Upgrade a user to an admin
+export const upgradeUserController = asyncHandler(async (req, res) => {
+    const { userId } = req.body; // Get user ID from the request body
+
+    // Validate userId - Check if it's provided and a valid MongoDB ObjectId
+    if (!userId || !userId.match(/^[0-9a-fA-F]{24}$/)) {
+        return res.status(400).json({ success: false, message: 'Invalid or missing userId' });
+    }
+
+    try {
+        const user = await UserModel.findById(userId);
+        if (!user) {
+            return res.status(404).json({ success: false, message: "User not found" });
+        }
+
+        user.role = 'admin'; // Update the user's role to 'admin'
+        await user.save();
+
+        res.status(200).json({ success: true, message: "User upgraded to admin successfully" });
+    } catch (error) {
+        res.status(500).json({ success: false, message: error.message });
     }
 });
