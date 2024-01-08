@@ -29,6 +29,7 @@
  }
  .story-card img {
    width: 100%;
+   height: auto;
    border-radius: 3px;
    margin-bottom: 0px;
    border: #242424 solid 1px;
@@ -42,6 +43,9 @@
    gap: 10px;
  }
  
+ .story-overlay h3 {
+  color: rgba(201, 134, 134, 0.9);
+ }
  .story-overlay {
    position: absolute;
  top: 0;
@@ -66,6 +70,7 @@
   background-color: none;
 }
 
+
  .story-card.active .story-overlay {
    display: block; /* Show overlay when card is active */
  }
@@ -74,6 +79,14 @@
    z-index: 100; /* Higher z-index for the active card */
  }
  
- 
+ @media (min-width: 900px) {
+  .story-card {
+    width: 300px;
+  }
+
+  .story-overlay {
+    max-height: 330px;
+  }
+}
  
  

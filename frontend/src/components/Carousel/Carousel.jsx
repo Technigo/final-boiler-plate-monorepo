@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { EffectCoverflow, Pagination } from 'swiper/modules';
@@ -14,7 +15,14 @@ import 'swiper/css/pagination';
 export const Carousel = () => {
 
   const [stories, setStories] = useState([]);
-  const [activeSlide, setActiveSlide] = useState(0); 
+  const [rumorStories, setRumorStories] = useState([]);
+  const [hearsayStories, setHearsayStories] = useState([]);
+  const [historicalStories, setHistoricalStories] = useState([]);
+  const [activeRumorSlide, setActiveRumorSlide] = useState(0);
+  const [activeHearsaySlide, setActiveHearsaySlide] = useState(0);
+  const [activeHistoricalSlide, setActiveHistoricalSlide] = useState(0);
+  const [viewportWidth, setViewportWidth] = useState(window.innerWidth);
+
 
   const handleRankUpdate = (updatedStory) => {
     setStories(prevStories => 
@@ -40,28 +48,55 @@ export const Carousel = () => {
   
 
   useEffect(() => {
+
     fetch('http://localhost:3000/stories')
-    .then(response => response.json())
-    .then(data => {
-      const formattedStories = data.map(story => ({
-        ...story,
-        id: story._id, 
-        city: story.city, 
-        image: story.image 
-      }));
-      setStories(formattedStories);
-    })
-    .catch(error => console.error('Error fetching stories:', error));
+      .then(response => response.json())
+      .then(data => {
+        setStories(data); // Set the fetched stories
+  
+        // Filter and set states for each category
+        setRumorStories(data.filter(story => story.category === 'rumor'));
+        setHearsayStories(data.filter(story => story.category === 'hearsay'));
+        setHistoricalStories(data.filter(story => story.category === 'historical'));
+      })
+      .catch(error => console.error('Error fetching stories:', error));
   }, []);
 
-  // Filter stories on category
-  const rumorStories = stories.filter(story => story.category === 'rumor');
-const hearsayStories = stories.filter(story => story.category === 'hearsay');
-const historicalStories = stories.filter(story => story.category === 'historical');
+
+  const onSlideChangeRumor = (swiper) => {
+    setActiveRumorSlide(swiper.realIndex);
+    
+    swiper.slides.forEach((slide) => {
+      slide.style.zIndex = 1;
+    });
+
+    // Increase z-index for the active slide
+    const activeSlideElement = swiper.slides[swiper.activeIndex];
+    if (activeSlideElement) {
+      activeSlideElement.style.zIndex = 100;
+    }
+  };
+
+  
+  const onSlideChangeHearsay = (swiper) => {
+    setActiveHearsaySlide(swiper.realIndex);
+    
+    // Reset z-index for all slides
+    swiper.slides.forEach((slide) => {
+      slide.style.zIndex = 1;
+    });
+
+    // Increase z-index for the active slide
+    const activeSlideElement = swiper.slides[swiper.activeIndex];
+    if (activeSlideElement) {
+      activeSlideElement.style.zIndex = 100;
+    }
+  };
 
 
-  const onSlideChange = (swiper) => {
-    setActiveSlide(swiper.realIndex); 
+  
+  const onSlideChangeHistorical = (swiper) => {
+    setActiveHistoricalSlide(swiper.realIndex);
 
     // Reset z-index for all slides
     swiper.slides.forEach((slide) => {
@@ -75,16 +110,36 @@ const historicalStories = stories.filter(story => story.category === 'historical
     }
   };
 
-  
+  useEffect(() => {
+    const handleResize = () => {
+      setViewportWidth(window.innerWidth);
+    };
+
+    window.addEventListener('resize', handleResize);
+    handleResize(); // Initial call to set the viewport width
+
+    // Cleanup function to remove event listener
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  // Determine the number of slides based on the viewport width
+  const slidesPerView = viewportWidth < 400 ? 2 :
+                        viewportWidth < 500 ? 2 : 
+                        viewportWidth < 700 ? 3 : 
+                        viewportWidth < 900 ? 3 : 4;
+
 
   return (
     <><Swiper
+      className="rumor-carousel"
+      slidesPerView={slidesPerView}
+      onSlideChange={onSlideChangeRumor}
       modules={[EffectCoverflow, Pagination]}
       effect="coverflow"
       centeredSlides={true}
-      slidesPerView={2}
-      loop={true}
-      initialSlide={0}
+      loop={false}
+      initialSlide={4}
+      //offsetBefore={-20}
       coverflowEffect={{
         rotate: 0,
         stretch: 20,
@@ -93,51 +148,21 @@ const historicalStories = stories.filter(story => story.category === 'historical
         slideShadows: true,
       }}
       pagination={{ clickable: true }}
-      onSlideChange={onSlideChange}
-      breakpoints={{
-        // when window width is >= 320px
-        320: {
-          slidesPerView: 2,
-          spaceBetween: 10
-        },
-        500: {
-          slidesPerView: 3,
-          spaceBetween: 20
-        },
-        700: {
-          slidesPerView: 4,
-          spaceBetween: 30
-        },
-        900: {
-          slidesPerView: 5,
-          spaceBetween: 30
-        },
-        1200: {
-          slidesPerView: 6,
-          spaceBetween: 30
-        },
-        1400: {
-          slidesPerView: 7,
-          spaceBetween: 30
-        },
-        1600: {
-          slidesPerView: 8,
-          spaceBetween: 30
-        }
-      }}
     >
       {rumorStories.map((story, index) => (
-        <SwiperSlide key={story.id}>
-          <StoryCard story={story} isActive={index === activeSlide} onRankUpdate={handleRankUpdate} onUpdateStories={updateStories} />
+        <SwiperSlide key={story._id}>
+          <StoryCard story={story} isActive={index === activeRumorSlide} onRankUpdate={handleRankUpdate} onUpdateStories={updateStories} />
         </SwiperSlide>
       ))}
     </Swiper><Swiper
+      className="hearsay-carousel"
+      slidesPerView={slidesPerView}
+      onSlideChange={onSlideChangeHearsay}
       modules={[EffectCoverflow, Pagination]}
       effect="coverflow"
       centeredSlides={true}
-      slidesPerView={2}
-      loop={true}
-      initialSlide={0}
+      loop={false}
+      initialSlide={4}
       coverflowEffect={{
         rotate: 0,
         stretch: 20,
@@ -146,51 +171,22 @@ const historicalStories = stories.filter(story => story.category === 'historical
         slideShadows: true,
       }}
       pagination={{ clickable: true }}
-      onSlideChange={onSlideChange}
-      breakpoints={{
-        // when window width is >= 320px
-        320: {
-          slidesPerView: 2,
-          spaceBetween: 10
-        },
-        500: {
-          slidesPerView: 3,
-          spaceBetween: 20
-        },
-        700: {
-          slidesPerView: 4,
-          spaceBetween: 30
-        },
-        900: {
-          slidesPerView: 5,
-          spaceBetween: 30
-        },
-        1200: {
-          slidesPerView: 6,
-          spaceBetween: 30
-        },
-        1400: {
-          slidesPerView: 7,
-          spaceBetween: 30
-        },
-        1600: {
-          slidesPerView: 8,
-          spaceBetween: 30
-        }
-      }}
     >
         {hearsayStories.map((story, index) => (
-          <SwiperSlide key={story.id}>
-            <StoryCard story={story} isActive={index === activeSlide} onRankUpdate={handleRankUpdate} onUpdateStories={updateStories} />
+          <SwiperSlide key={story._id}>
+            <StoryCard story={story} isActive={index === activeHearsaySlide} onRankUpdate={handleRankUpdate} onUpdateStories={updateStories} />
           </SwiperSlide>
         ))}
       </Swiper><Swiper
+        className="historical-carousel"
+        slidesPerView={slidesPerView}
+        onSlideChange={onSlideChangeHistorical}
         modules={[EffectCoverflow, Pagination]}
         effect="coverflow"
         centeredSlides={true}
-        slidesPerView={2}
-        loop={true}
-        initialSlide={0}
+        loop={false}
+        initialSlide={4}
+        // offsetAfter={20}
         coverflowEffect={{
           rotate: 0,
           stretch: 20,
@@ -199,42 +195,10 @@ const historicalStories = stories.filter(story => story.category === 'historical
           slideShadows: true,
         }}
         pagination={{ clickable: true }}
-        onSlideChange={onSlideChange}
-        breakpoints={{
-          // when window width is >= 320px
-          320: {
-            slidesPerView: 2,
-            spaceBetween: 10
-          },
-          500: {
-            slidesPerView: 3,
-            spaceBetween: 20
-          },
-          700: {
-            slidesPerView: 4,
-            spaceBetween: 30
-          },
-          900: {
-            slidesPerView: 5,
-            spaceBetween: 30
-          },
-          1200: {
-            slidesPerView: 6,
-            spaceBetween: 30
-          },
-          1400: {
-            slidesPerView: 7,
-            spaceBetween: 30
-          },
-          1600: {
-            slidesPerView: 8,
-            spaceBetween: 30
-          }
-        }}
       >
         {historicalStories.map((story, index) => (
-          <SwiperSlide key={story.id}>
-            <StoryCard story={story} isActive={index === activeSlide} onRankUpdate={handleRankUpdate} onUpdateStories={updateStories} />
+          <SwiperSlide key={story._id}>
+            <StoryCard story={story} isActive={index === activeHistoricalSlide} onRankUpdate={handleRankUpdate} onUpdateStories={updateStories} />
           </SwiperSlide>
         ))}
       </Swiper></>
