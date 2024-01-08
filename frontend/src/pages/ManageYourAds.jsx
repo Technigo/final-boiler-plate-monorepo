@@ -13,20 +13,22 @@ export const ManageYourAds = () => {
   };
 
   return (
-    <div className="container">
-      <div className="your-ads-container">
-        <div className="manage-nav">
-          <BackArrow />
-          <Button
-            iconSize="small"
-            label="Create ad"
-            onClick={handleCreateAd}
-            invertIcon={true}
-          />
-          <h2>Your Products</h2>
-          <UserAds />
-          <h2>Saved Products</h2>
-          <SavedAds />
+    <div className="main-container">
+      <div className="main-wrapper">
+        <div className="your-ads-container">
+          <div className="manage-nav">
+            <BackArrow />
+            <Button
+              iconSize="small"
+              label="Create ad"
+              onClick={handleCreateAd}
+              invertIcon={true}
+            />
+            <h2>Your Products</h2>
+            <UserAds />
+            <h2>Saved Products</h2>
+            <SavedAds />
+          </div>
         </div>
       </div>
     </div>
