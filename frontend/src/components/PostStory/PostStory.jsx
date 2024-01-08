@@ -33,62 +33,92 @@ export const PostStory = () => {
       return;
     }
 
+    // Prepare story data to send to the backend
+    const storyData = {
+      title: newHeading,
+      content: newStory,
+      category: newCategory,
+      ranking: 0,
+      lat: latitude,
+      lng: longitude,
+      city: locationName,
+      image: selectedImage,
+    };
+
     setNewStory("");
 
-    const handleCategoryChange = (e) => {
-      setNewCategory(e.target.value);
-    };
+    // const handleCategoryChange = (e) => {
+    //   setNewCategory(e.target.value);
+    // };
 
-    const googleApiPayload = {
-      document: {
-        content: newStory, // Set the content field with the story text
-        type: "PLAIN_TEXT",
-      },
-    };
-    console.log("Sending request to Google API with body:", googleApiPayload);
+    // Check if the language is supported for sentiment analysis
+    const supportedLanguagesForSentiment = ["en", "es", "ja", "pt"]; // Add more as supported
+    const languageCode = "sv"; // Set the language code dynamically based on the story's language
 
-    fetch(
-      `https://language.googleapis.com/v1/documents:analyzeSentiment?key=${
-        import.meta.env.VITE_GOOGLE_LANGUAGE_KEY
-      }`,
-      {
-        method: "POST",
-        body: JSON.stringify(googleApiPayload),
-        headers: {
-          "Content-Type": "application/json",
+    if (!supportedLanguagesForSentiment.includes(languageCode)) {
+      console.log("Sentiment analysis not supported for this language");
+      // Handle the case when language is not supported for sentiment analysis
+      // You can directly post the story without sentiment analysis
+    } else {
+      const googleApiPayload = {
+        document: {
+          content: newStory, // Set the content field with the story text
+          type: "PLAIN_TEXT",
+          language: languageCode, // Specify the language of the content
         },
-      }
-    )
-      .then((res) => res.json())
-      .then((googleApiResponse) => {
-        console.log("Response from Google API:", googleApiResponse);
+      };
+      console.log("Sending request to Google API with body:", googleApiPayload);
+
+      fetch(
+        `https://language.googleapis.com/v1/documents:analyzeSentiment?key=${
+          import.meta.env.VITE_GOOGLE_LANGUAGE_KEY
+        }`,
+        {
+          method: "POST",
+          body: JSON.stringify(googleApiPayload),
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      )
+        .then((res) => res.json())
+        .then((googleApiResponse) => {
+          console.log("Response from Google API:", googleApiResponse);
+          // Add logic to handle the response from sentiment analysis
+        })
+        .catch((error) => {
+          console.error("Error calling Google API:", error);
+        });
+    }
+
+    // Post the story to the backend
+    fetch("http://localhost:3000/stories", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(storyData),
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        return response.json();
+      })
+      .then((newStory) => {
+        console.log("New story posted:", newStory);
+        // Reset form fields
+        setNewHeading("");
+        setNewStory("");
+        setSelectedDate(new Date());
+        setLocationName("");
+        setNewCategory("");
+        setSelectedImage("");
+        // Optionally, you can redirect or refresh the page here
       })
       .catch((error) => {
-        console.error("Error calling Google API:", error);
+        console.error("Error posting the story", error);
       });
-
-    // fetch("http://localhost:3000/stories", {
-    //   method: "POST",
-    //   body: JSON.stringify({
-    //     title: newHeading,
-    //     content: newStory,
-    //     createdAt: selectedDate,
-    //     location: locationName,
-    //     category: newCategory,
-    //     image: selectedImage,
-    //   }),
-    // })
-    //   .then((res) => res.json())
-    //   .then((newStory) => {
-    //     console.log("New story posted:", newStory);
-    //     console.log("Date:", selectedDate);
-    //     console.log("Category:", newCategory);
-    //     // Reload the page after a successful post
-    //     // window.location.reload();
-    //   })
-    //   .catch((error) => {
-    //     console.error("Error posting the story", error);
-    //   });
   };
 
   const handleDateChange = (date) => {
@@ -169,9 +199,10 @@ export const PostStory = () => {
             className="category"
             value={newCategory}
             onChange={handleCategoryChange}
-            required>
+            required
+          >
             <option value="">Choose a category</option>
-            <option value="funny story">Funny story</option>
+            <option value="anecdote">Anecdote</option>
             <option value="rumor">Rumor</option>
             <option value="historical">Historical</option>
             <option value="hearsay">Hearsay</option>
@@ -180,14 +211,17 @@ export const PostStory = () => {
         <div>
           <LoadScript
             googleMapsApiKey={import.meta.env.VITE_GOOGLE_MAPS_API_KEY}
-            libraries={libraries}>
+            libraries={libraries}
+          >
             <Autocomplete
               onLoad={onLoadAutocomplete}
-              onPlaceChanged={onPlaceChanged}>
+              onPlaceChanged={onPlaceChanged}
+            >
               <input
                 className="search-input"
                 type="text"
                 placeholder="Search location"
+                required
               />
             </Autocomplete>
           </LoadScript>
@@ -195,7 +229,7 @@ export const PostStory = () => {
         </div>
 
         <div>
-          {newCategory === "funny story" && (
+          {newCategory === "anecdote" && (
             <DatePicker
               selected={selectedDate}
               onChange={handleDateChange}
@@ -204,7 +238,7 @@ export const PostStory = () => {
               className="input-field"
             />
           )}
-          {newCategory !== "funny story" && (
+          {newCategory !== "anecdote" && (
             <DatePicker
               selected={selectedDate}
               onChange={handleDateChange}
@@ -219,7 +253,8 @@ export const PostStory = () => {
           <button
             className="gallery-button"
             type="button"
-            onClick={openImageModal}>
+            onClick={openImageModal}
+          >
             Select Image
           </button>
         </div>
@@ -232,24 +267,28 @@ export const PostStory = () => {
           selected={selectedImage}
           className="gallery"
           isOpen={isImageModalOpen}
-          contentLabel="Select Image">
+          contentLabel="Select Image"
+        >
           <div className="gallery-images">
             <button
               className="image-buttons"
               type="button"
-              onClick={() => handleImageSelect("hero.png")}>
+              onClick={() => handleImageSelect("hero.png")}
+            >
               <img src={"aboutimg.jpg"} alt="Image 1" />
             </button>
             <button
               className="image-buttons"
               type="button"
-              onClick={() => handleImageSelect("./aboutimg.jpg")}>
+              onClick={() => handleImageSelect("./aboutimg.jpg")}
+            >
               <img src={"aboutimg.jpg"} alt="Image 2" />
             </button>
             <button
               className="image-buttons"
               type="button"
-              onClick={() => handleImageSelect("hero3.png")}>
+              onClick={() => handleImageSelect("hero3.png")}
+            >
               <img src={"hero3.png"} alt="Image 3" />
             </button>
           </div>
