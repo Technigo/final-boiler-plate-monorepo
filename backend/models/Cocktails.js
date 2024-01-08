@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const cocktailSchema = mongoose.Schema({
     name: String,
     primaryLiquor: String,
+    allLiquors: [String],
     ingredients: [String],
     instructions: String,
     category: String,
@@ -11,13 +12,14 @@ const cocktailSchema = mongoose.Schema({
     creator: String,
     occasion: [String],
     difficulty: String,
-    flavorProfile: String,
-    imageUrl: String,
+    flavorProfile: [String],
+    imageUrl: String, // THIS IS WHERE I NEED A WAY TO UPLOAD IMAGES FROM DEVICES VIA FRONTEND (ADMIN ONLY ACCES)
     servings: Number,
     prepTime: String,
     drinkware: String,
     strength: String,
-    tags: [String]
+    tags: [String],
+    description: String
 });
 
 module.exports = mongoose.model('Cocktail', cocktailSchema);
@@ -33,6 +35,7 @@ module.exports = mongoose.model('Cocktail', cocktailSchema);
 // {
 //     "name": "Margarita",
 //     "primaryLiquor": "Tequila",
+//      "allLiquors": ["Tequila", "Triple Sec"],
 //     "ingredients": ["Tequila", "Triple Sec", "Lime Juice", "Salt"],
 //     "instructions": "Rub the rim of the glass with the lime slice to make the salt stick to it...",
 //     "category": "Classic",
