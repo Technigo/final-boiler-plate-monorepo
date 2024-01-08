@@ -8,18 +8,22 @@
     /* Space between each field */
 }
 
-.create-ad-form label {
-    margin-bottom: 5px;
-    /* Space between label and input */
-}
-
-.create-ad-form textarea,
-.create-ad-form input[type="text"],
-.create-ad-form input[type="number"],
-.create-ad-form input[type="datetime-local"],
-.create-ad-form .dropdown {
+input[type="text"],
+input[type="password"],
+input[type="number"],
+input[type="datetime-local"],
+input[type="file"],
+select,
+.create-ad-form .dropdown select {
+    /* Adjust this selector based on your actual Dropdown structure */
+    font-family: var(--font-heading);
+    font-size: 1rem;
+    /* Adjusted font size */
+    font-weight: 500;
+    border: 1px solid var(--border);
+    border-radius: var(--border-radius);
+    padding: 2px 5px;
     width: 100%;
-    /* Full width for inputs */
 }
 
 /* Style for desktop */
@@ -44,6 +48,7 @@
     .create-ad-form input[type="text"],
     .create-ad-form input[type="number"],
     .create-ad-form input[type="datetime-local"],
+    .create-ad-form input[type="file"],
     .create-ad-form .dropdown {
         width: 70%;
         /* Adjust the width of inputs */
@@ -54,4 +59,13 @@
 .create-ad-form .description {
     flex-direction: column;
     /* Keep column layout for description */
+}
+
+
+/* Containers */
+.create-ad-container {
+    display: grid;
+    justify-content: center;
+    flex-direction: column;
+    gap: 20px;
 }

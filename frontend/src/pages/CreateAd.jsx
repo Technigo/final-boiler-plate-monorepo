@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from 'react-router-dom';
 import { adStore } from "../stores/adStore";
 import Swal from 'sweetalert2';
 import BackArrow from "../components/reusableComponents/BackArrow";
@@ -7,6 +8,7 @@ import { Dropdown } from "../components/reusableComponents/Dropdown";
 import { Button } from "../components/reusableComponents/Button";
 
 export const CreateAd = () => {
+  const navigate = useNavigate();
   const [image, setImage] = useState(null);
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
@@ -28,9 +30,15 @@ export const CreateAd = () => {
     { label: "Milliliter (mL)", value: "ml" },
   ];
 
-  const handleSubmit = async () => {
-    // Basic validation
+  const handleUnitChange = (event) => {
+    setUnit(event.target.value);
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
     if (!image || !title || !description || !product || !quantity || !unit || !address || !pickupDate) {
+      console.log("Validation failed. Here are the values:", { image, title, description, product, quantity, unit, address, pickupDate });
       Swal.fire({
         title: "Oops!",
         text: "All fields are required",
@@ -45,6 +53,8 @@ export const CreateAd = () => {
         title: "Success!",
         text: "Your ad has been created.",
         icon: "success",
+      }).then(() => {
+        navigate(-1);
       });
 
       // Reset form fields after submission
@@ -67,57 +77,63 @@ export const CreateAd = () => {
   };
 
 
-
   return (
     <>
       <div className="container">
-        <BackArrow />
-        <div className="create-ad-form">
-          <div>
-            <label>Title:</label>
-            <input type="text" value={title} onChange={(e) => setTitle(e.target.value)} />
-          </div>
-          <div>
-            <label>Description:</label>
-            <textarea value={description} onChange={(e) => setDescription(e.target.value)} />
-          </div>
-          <div>
-            <label>Product:</label>
-            <input type="text" value={product} onChange={(e) => setProduct(e.target.value)} />
-          </div>
-          <div>
-            <label>Quantity:</label>
-            <input type="number" value={quantity} onChange={(e) => setQuantity(e.target.value)} />
-          </div>
-          <div>
-            <label>Unit:</label>
-            <Dropdown
-              options={unitOptions}
-              defaultOption="Select Unit"
-              onChange={(e) => setUnit(e.target.value)}
-              value={unit}
-            />          </div>
-          <div>
-            <label>Address:</label>
-            <input type="text" value={address} onChange={(e) => setAddress(e.target.value)} />
-          </div>
-          <div>
-            <label>Pickup Time:</label>
-            <input type="datetime-local" value={pickupDate} onChange={(e) => setPickupDate(e.target.value)} />
-          </div>
-          <div>
-            <label>Observation:</label>
-            <input type="text" value={observation} onChange={(e) => setObservation(e.target.value)} />
-          </div>
-          <div>
-            <label>Image:</label>
-            <input type="file" onChange={(e) => setImage(e.target.files[0])} />
-          </div>
-          <Button
-            label="Create Ad"
-            iconSize="small"
-            onClick={handleSubmit}
-          />        </div>
+        <div className="create-ad-container">
+          <BackArrow />
+          <form className="create-ad-form" onSubmit={handleSubmit}>
+            <div>
+              <label>Title:</label>
+              <input type="text" value={title} onChange={(e) => setTitle(e.target.value)} />
+            </div>
+            <div>
+              <label>Description:</label>
+              <textarea value={description} onChange={(e) => setDescription(e.target.value)} />
+            </div>
+            <div>
+              <label>Product:</label>
+              <input type="text" value={product} onChange={(e) => setProduct(e.target.value)} />
+            </div>
+            <div>
+              <label>Quantity:</label>
+              <input type="number" value={quantity} onChange={(e) => setQuantity(e.target.value)} />
+            </div>
+            <div>
+              <label>Unit:</label>
+              <Dropdown
+                options={unitOptions}
+                value={unit}
+                onChange={handleUnitChange}
+                defaultOption="Select Unit"
+              />
+            </div>
+            <div>
+              <label>Location:</label>
+              <input type="text" value={address} onChange={(e) => setAddress(e.target.value)} />
+            </div>
+            <div>
+              <label>Pickup Time:</label>
+              <input type="datetime-local" value={pickupDate} onChange={(e) => setPickupDate(e.target.value)} />
+            </div>
+            <div>
+              <label>Observation:</label>
+              <input type="text" value={observation} onChange={(e) => setObservation(e.target.value)} />
+            </div>
+            <div>
+              <label>Image:</label>
+              <input type="file" onChange={(e) => {
+                console.log("File selected:", e.target.files[0]);
+                setImage(e.target.files[0]);
+              }} />
+            </div>
+            <Button
+              label="Create Ad"
+              className="button"
+              onClick={(e) => handleSubmit(e)}
+            />
+          </form>
+        </div>
       </div>
     </>
   );
