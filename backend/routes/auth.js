@@ -114,7 +114,6 @@ router.post('/complete-challenge', authenticateToken, async (req, res) => {
   }
 });
 
-// Example route to get user data
 router.get('/get-user-data', authenticateToken, async (req, res) => {
   try {
     const user = await User.findById(req.userId).populate('completedChallenges', 'challengeId');
@@ -130,9 +129,10 @@ router.get('/get-user-data', authenticateToken, async (req, res) => {
     });
   } catch (error) {
     console.error(error);
-    res.status(500).send(`Failed to get user data: ${error.message}`);
+    res.status(500).send(`Failed to get user profile data: ${error.message}`);
   }
 });
+
 
 
 module.exports = router; // Exporting the router for use in other parts of the application

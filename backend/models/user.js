@@ -18,9 +18,9 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  completedChallenges: [
+   completedChallenges: [
     {
-      type: Number,
+      type: mongoose.Schema.Types.ObjectId,
       ref: 'Challenge',
     },
   ],
