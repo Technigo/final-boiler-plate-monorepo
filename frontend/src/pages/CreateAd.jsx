@@ -7,9 +7,8 @@ import { Dropdown } from "../components/reusableComponents/Dropdown";
 import { Button } from "../components/reusableComponents/Button";
 import Lottie from "react-lottie";
 import loadingAnimation from "../assets/loading.json";
-import "./createAd.css"
-
-
+import "./createAd.css";
+import { useSession } from "../context/SessionContext";
 
 export const CreateAd = () => {
   const navigate = useNavigate();
@@ -25,6 +24,8 @@ export const CreateAd = () => {
   const [isLoading, setIsLoading] = useState(false);
 
   const { createAd } = adStore();
+  const { isSessionExpired } = useSession();
+
 
   // Define units for dropdown
   const unitOptions = [
@@ -89,6 +90,11 @@ export const CreateAd = () => {
   return (
     <>
       <div className="container">
+      {isSessionExpired && (
+        <div className="session-expired-message">
+          Your session has expired. Please log in again.
+        </div>
+      )}
         <div className="create-ad-container">
           <BackArrow />
 

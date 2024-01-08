@@ -3,6 +3,8 @@ import { create } from "zustand";
 // Import the userStore to access user-related data
 import { userStore } from "./userStore";
 import Swal from 'sweetalert2';
+import fetchWithSessionChecks from '../utils/fetchWithSessionChecks';
+
 
 
 // Get the backend API URL from the environment variable
@@ -27,17 +29,15 @@ export const adStore = create((set) => ({
   //FETCH AD FUNCTIONS
 
   // Function to fetch all saved ads for the current user
-  fetchSavedAds: async () => {
+  fetchSavedAds: async (onSessionExpire) => {
     const userId = userStore.getState().userId;
     const url = `${apiEnv}/getSavedAdsByUserId/${userId}`;
     console.log("Fetching saved ads for userId:", userId, "URL:", url); // Log the userId and URL
 
     try {
-      const response = await fetch(url, {
-        headers: {
-          Authorization: localStorage.getItem("accessToken"),
-        },
-      });
+      const response = await fetchWithSessionChecks(url, {
+        headers: { Authorization: localStorage.getItem("accessToken") },
+      }, onSessionExpire);
       if (response.ok) {
         const data = await response.json();
         console.log("Fetched saved ads:", data);
@@ -54,9 +54,9 @@ export const adStore = create((set) => ({
 
 
   // Fetch all ads
-  getAllAds: async () => {
+  getAllAds: async (onSessionExpire) => {
     try {
-      const response = await fetch(`${apiEnv}/getAllAds`);
+      const response = await fetchWithSessionChecks(`${apiEnv}/getAllAds`, {}, onSessionExpire);
       if (response.ok) {
         const data = await response.json();
         set({ ads: data });
@@ -77,11 +77,11 @@ export const adStore = create((set) => ({
   },
 
   // Fetch ads for the logged in user
-  fetchAds: async () => {
+  fetchAds: async (onSessionExpire) => {
     try {
-      const response = await fetch(`${apiEnv}/getAds`, {
+      const response = await fetchWithSessionChecks(`${apiEnv}/getAds`, {
         headers: { Authorization: localStorage.getItem("accessToken") },
-      });
+      }, onSessionExpire);
       if (response.ok) {
         const data = await response.json();
         set({ ads: data });
@@ -94,9 +94,9 @@ export const adStore = create((set) => ({
   },
 
   // Fetch a specific ad by ID
-  getAdById: async (id) => {
+  getAdById: async (id, onSessionExpire) => {
     try {
-      const response = await fetch(`${apiEnv}/getAd/${id}`);
+      const response = await fetchWithSessionChecks(`${apiEnv}/getAd/${id}`, {}, onSessionExpire);
       if (response.ok) {
         return await response.json();
       } {
@@ -108,9 +108,9 @@ export const adStore = create((set) => ({
   },
 
   // Fetch ads for a specific user by UserID
-  fetchAdsByUserId: async (userId) => {
+  fetchAdsByUserId: async (userId, onSessionExpire) => {
     try {
-      const response = await fetch(`${apiEnv}/getAdsByUserId/${userId}`);
+      const response = await fetchWithSessionChecks(`${apiEnv}/getAdsByUserId/${userId}`, {}, onSessionExpire);
       if (response.ok) {
         const data = await response.json();
         set({ ads: data });
@@ -126,7 +126,7 @@ export const adStore = create((set) => ({
 
   //CREATE AD FUNCTIONS
   // New action to add an ad to the server and then to the store
-  createAd: async (newAdData, imageFile) => {
+  createAd: async (newAdData, imageFile, onSessionExpire) => {
     console.log("imageFile:", imageFile); // Log the imageFile here
     try {
       const formData = new FormData();
@@ -143,15 +143,14 @@ export const adStore = create((set) => ({
       formData.append('image', imageFile);
 
       // Send the request to create a new ad with form data
-      const response = await fetch(`${apiEnv}/createAd`, {
+      const response = await fetchWithSessionChecks(`${apiEnv}/createAd`, {
         method: "POST",
         headers: {
           Authorization: localStorage.getItem("accessToken"),
-          // Do not set Content-Type when sending FormData
-          // 'Content-Type': 'multipart/form-data' should not be set manually
+          // Don't set Content-Type when sending FormData
         },
         body: formData,
-      });
+      }, onSessionExpire);
 
       const newAd = await response.json();
       console.log("Server response for new ad:", newAd);
@@ -172,16 +171,16 @@ export const adStore = create((set) => ({
   },
 
   // Action to save an ad
-  saveAd: async (adId) => {
+  saveAd: async (adId, onSessionExpire) => {
     try {
-      const response = await fetch(`${apiEnv}/saveAd`, {
+      const response = await fetchWithSessionChecks(`${apiEnv}/saveAd`, {
         method: "POST",
         headers: {
           'Content-Type': 'application/json',
           Authorization: localStorage.getItem("accessToken"),
         },
         body: JSON.stringify({ adId }),
-      });
+      }, onSessionExpire);
       if (!response.ok) throw new Error('Failed to save ad');
       Swal.fire('Saved!', 'Ad saved successfully', 'success');
     } catch (error) {
@@ -193,7 +192,7 @@ export const adStore = create((set) => ({
 
   //UPDATE AD FUNCTIONS
   // Action to update an existing ad
-  handleEdit: async (id, updatedAdData, imageFile) => {
+  handleEdit: async (id, updatedAdData, imageFile, onSessionExpire) => {
     const formData = new FormData();
     Object.entries(updatedAdData).forEach(([key, value]) => {
       formData.append(key, value);
@@ -202,11 +201,13 @@ export const adStore = create((set) => ({
       formData.append('image', imageFile);
     }
 
-    const response = await fetch(`${apiEnv}/update/${id}`, {
+    const response = await fetchWithSessionChecks(`${apiEnv}/update/${id}`, {
       method: "PUT",
-      headers: { Authorization: localStorage.getItem("accessToken") },
+      headers: {
+        Authorization: localStorage.getItem("accessToken"),
+      },
       body: formData,
-    });
+    }, onSessionExpire);
 
     if (response.ok) {
       const updatedAd = await response.json();
@@ -221,15 +222,14 @@ export const adStore = create((set) => ({
 
   //DELETE FUNCTIONS
   // New action to delete all ads of a specific user
-  deleteAllAds: async () => {
+  deleteAllAds: async (onSessionExpire) => {
     try {
-      // Send a DELETE request to the backend API to delete all ads
-      const response = await fetch(`${apiEnv}/deleteAll`, {
+      const response = await fetchWithSessionChecks(`${apiEnv}/deleteAll`, {
         method: "DELETE",
         headers: {
           Authorization: localStorage.getItem("accessToken"),
         },
-      });
+      }, onSessionExpire);
       // Check if the request was successful
       if (response.ok) {
         // Clear the ads in the state
@@ -244,15 +244,14 @@ export const adStore = create((set) => ({
   },
 
   // New action to delete a specific ad by its ID
-  deleteAdById: async (id) => {
+  deleteAdById: async (id, onSessionExpire) => {
     try {
-      // Send a DELETE request to the backend API to delete an ad by its ID
-      const response = await fetch(`${apiEnv}/delete/${id}`, {
+      const response = await fetchWithSessionChecks(`${apiEnv}/delete/${id}`, {
         method: "DELETE",
         headers: {
           Authorization: localStorage.getItem("accessToken"),
         },
-      });
+      }, onSessionExpire);
 
       // Check if the request was successful
       if (response.ok) {
@@ -270,14 +269,15 @@ export const adStore = create((set) => ({
   },
 
   // Action to unsave an ad
-  unsaveAd: async (adId) => {
+  unsaveAd: async (adId, onSessionExpire) => {
     try {
-      const response = await fetch(`${apiEnv}/unsaveAd/${adId}`, {
+      const response = await fetchWithSessionChecks(`${apiEnv}/unsaveAd/${adId}`, {
         method: "DELETE",
         headers: {
           Authorization: localStorage.getItem("accessToken"),
         },
-      });
+      }, onSessionExpire);
+
       if (!response.ok) throw new Error('Failed to unsave ad');
 
       // Update the state to remove the unsaved ad
