@@ -28,19 +28,25 @@ nav {
   flex-direction: column;
   position: absolute;
   top: 0;
-  right: -100%; /* Start off-screen to the right */
+  right: -100%;
+  /* Start off-screen to the right */
   bottom: 0;
   background-color: #333;
   width: 50%;
   text-align: center;
   overflow: hidden;
-  max-height: 100vh; /* Adjust based on your content height */
-  transition: right 0.5s ease-out; /* Animate from right to left */
+  max-height: 100vh;
+  /* Adjust based on your content height */
+  transition: right 0.5s ease-out;
+  /* Animate from right to left */
   z-index: 2;
 }
+
 .navbar-links.open {
-  right: 0; /* Move the menu back to the visible area */
-  transition: right 0.5s ease-in; /* Animate from left to right */
+  right: 0;
+  /* Move the menu back to the visible area */
+  transition: right 0.5s ease-in;
+  /* Animate from left to right */
   z-index: 2;
   height: 100vh;
 }
@@ -50,7 +56,8 @@ nav {
   cursor: pointer;
   position: absolute;
   top: 8px;
-  color: #fff; /* Set the color to white or your desired color */
+  color: #fff;
+  /* Set the color to white or your desired color */
   display: block;
   left: 20px;
 }
@@ -65,10 +72,12 @@ nav {
 .navbar-links a:hover {
   color: #f00;
 }
+
 .navbar.open .close-button {
   display: block;
   /* Display the close button when the menu is open */
 }
+
 .nav-list {
   margin: 80px 0 0 0;
   list-style: none;
@@ -78,14 +87,41 @@ nav {
   align-items: flex-start;
   gap: 17px;
 }
+
 .app-ul .app-li {
   display: none;
 }
+
 nav .app-ul {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
+
+.logout-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.sign-out-text {
+  margin-left: 10px;
+  /* Adjust spacing between icon and text */
+  color: #ffffff;
+  /* Same color as other navbar links */
+  font-weight: 600;
+  /* Same font weight as other navbar links */
+  text-decoration: none;
+  /* Same decoration as other navbar links */
+}
+
+.sign-out-text:hover {
+  color: red;
+  /* Same hover effect as other navbar links */
+}
+
+
 /* Media query for desktop devices */
 @media screen and (min-width: 1120px) {
   nav {
@@ -107,6 +143,7 @@ nav .app-ul {
   .close-button {
     display: none;
   }
+
   .nav-list {
     display: none;
   }
@@ -116,11 +153,13 @@ nav .app-ul {
     justify-content: center;
     align-items: center;
   }
+
   nav .app-ul .app-li a {
     color: black;
     font-weight: 600;
     align-items: center;
   }
+
   nav .app-ul .app-li a:hover {
     color: red;
   }
@@ -131,7 +170,18 @@ nav .app-ul {
     flex-shrink: 0;
     width: 11rem;
   }
+
   nav .app-ul .navbar-logo {
     flex: 1;
+  }
+
+  .sign-out-text {
+    color: #000000;
+    /* Adjust for desktop view */
+  }
+
+  .sign-out-text:hover {
+    color: red;
+    /* Adjust hover color for desktop view */
   }
 }

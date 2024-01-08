@@ -1,46 +1,71 @@
-.create-ad-form {
-    display: grid;
+.create-ad-form>div {
+    display: flex;
+    flex-direction: column;
+    /* Default layout for mobile */
+    align-items: flex-start;
+    /* Align items to the start */
+    margin-bottom: 10px;
+    /* Space between each field */
 }
 
-.create-ad-form label {
-    display: block;
-    /* Ensures the label is on a separate line */
-    margin-top: 10px;
-    /* Adds space above the label */
-}
-
-.create-ad-form input,
-.create-ad-form textarea,
-.create-ad-form button {
+input[type="text"],
+input[type="password"],
+input[type="number"],
+input[type="datetime-local"],
+input[type="file"],
+select,
+.create-ad-form .dropdown select {
+    /* Adjust this selector based on your actual Dropdown structure */
+    font-family: var(--font-heading);
+    font-size: 1rem;
+    /* Adjusted font size */
+    font-weight: 500;
+    border: 1px solid var(--border);
+    border-radius: var(--border-radius);
+    padding: 2px 5px;
     width: 100%;
-    /* Ensures full width */
-    margin-top: 5px;
-    /* Adds space above the input */
 }
 
-.create-ad-form textarea {
-    height: 150px;
-    /* Set a fixed height for the textarea */
+/* Style for desktop */
+@media (min-width: 992px) {
+    .create-ad-form>div {
+        flex-direction: row;
+        /* Labels beside inputs for desktop */
+        align-items: center;
+        /* Center align items */
+        justify-content: space-between;
+        /* Distribute space between label and input */
+    }
+
+    .create-ad-form label {
+        margin-bottom: 0;
+        /* Remove bottom margin for labels in row layout */
+        margin-right: 10px;
+        /* Space between label and input */
+    }
+
+    .create-ad-form textarea,
+    .create-ad-form input[type="text"],
+    .create-ad-form input[type="number"],
+    .create-ad-form input[type="datetime-local"],
+    .create-ad-form input[type="file"],
+    .create-ad-form .dropdown {
+        width: 70%;
+        /* Adjust the width of inputs */
+    }
 }
 
-@media (min-width: 1120px) {
-    /* ... existing styles ... */
+/* Specific style for the description field */
+.create-ad-form .description {
+    flex-direction: column;
+    /* Keep column layout for description */
+}
 
-    input[type="text"],
-    input[type="number"],
-    input[type="datetime-local"],
-    input[type="file"],
-    .input-text {
-        font-size: 20px;
-        /* Larger font size for better readability */
-        padding: 10px;
-        /* Larger padding for a bigger field */
-    }
 
-    textarea {
-        font-size: 20px;
-        /* Larger font size for better readability */
-        padding: 10px;
-        /* Larger padding for a bigger field */
-    }
+/* Containers */
+.create-ad-container {
+    display: grid;
+    justify-content: center;
+    flex-direction: column;
+    gap: 20px;
 }

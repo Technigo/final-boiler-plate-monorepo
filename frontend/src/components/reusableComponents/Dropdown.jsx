@@ -1,16 +1,9 @@
-import { useState } from "react";
 import "./dropdown.css";
 
-export const Dropdown = ({ options, defaultOption }) => {
-    const [selectedValue, setSelectedValue] = useState('');
-
-    const handleChange = (event) => {
-        setSelectedValue(event.target.value);
-    };
-
+export const Dropdown = ({ options, value, onChange, defaultOption }) => {
     return (
         <div>
-            <select value={selectedValue} onChange={handleChange}>
+            <select value={value} onChange={onChange}>
                 <option value="">{defaultOption || "Select an option"}</option>
                 {options.map((option, index) => (
                     <option key={index} value={option.value}>

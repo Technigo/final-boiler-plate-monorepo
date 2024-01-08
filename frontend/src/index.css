@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;500;700;900&family=Poppins:wght@300;400;500;600;700&display=swap');
 
+* {
+  box-sizing: border-box;
+}
+
 /* ---------- CUSTOM PROPERTIES AND GLOBAL STYLING ---------- */
 :root {
   /* Primary Colors */
@@ -21,19 +25,12 @@
   --font-body: 'Lato', sans-serif;
 
   /* Mobile Font Sizes */
-  --font-size-h1: 2.25rem;
-  /* 36px */
-  --font-size-h2: 1.875rem;
-  /* 30px */
-  --font-size-h3: 1.5rem;
-  /* 24px */
-  --font-size-h4: 1.125rem;
-  /* 18px */
-  --font-size-p: 1.125rem;
-  /* 18px for paragraph */
-  --font-size-label: 1.125rem;
-  /* 18px for label */
-
+  --font-size-h1: 1.875rem;
+  --font-size-h2: 1.5rem;
+  --font-size-h3: 1.125rem;
+  --font-size-h4: 1rem;
+  --font-size-p: 1rem;
+  --font-size-label: 1rem;
 
   /* Other styles */
   --border-radius: 8px;
@@ -56,6 +53,8 @@ body,
 h1,
 h2,
 h3,
+h4,
+label,
 p {
   margin: 0;
 }
@@ -87,7 +86,7 @@ label {
 
 h1 {
   font-size: var(--font-size-h1);
-  line-height: 4.3rem;
+  line-height: 2.25rem;
   font-weight: 700;
   margin: 1.5rem 0;
 }
@@ -145,15 +144,13 @@ input[type="datetime-local"],
 input[type="file"],
 select,
 textarea {
-  font-family: var(--font-heading);
-  font-size: 1.125rem;
-  /* 18px */
+  font-family: var(--font-body);
+  font-size: 1rem;
   font-weight: 500;
-  /* Semi-bold */
   border: 1px solid var(--border);
   border-radius: var(--border-radius);
   padding: 2px 5px;
-  max-width: 100%;
+  max-width: 90%;
 }
 
 /* Images */
@@ -170,9 +167,21 @@ img {
 }
 
 /* Containers */
-.container {
+.main-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.main-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
   max-width: 90%;
-  margin: 0 auto;
+  margin-top: 30px;
+  margin-bottom: 60px;
   padding: 0 15px;
 }
 
@@ -216,8 +225,10 @@ img {
     /* 24px */
   }
 
-  .container {
+  .main-wrapper {
     max-width: 680px;
+    margin-top: 40px;
+    margin-bottom: 80px;
   }
 }
 
@@ -265,8 +276,10 @@ img {
     /* 24px */
   }
 
-  .container {
+  .main-wrapper {
     max-width: 1120px;
+    margin-top: 50px;
+    margin-bottom: 100px;
   }
 }
 

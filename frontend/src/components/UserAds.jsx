@@ -3,6 +3,8 @@ import { useNavigate } from 'react-router-dom';
 import { adStore } from '../stores/adStore';
 import { userStore } from '../stores/userStore';
 import { Button } from './reusableComponents/Button';
+import "./userads.css";
+import { Image } from './reusableComponents/Image';
 
 export const UserAds = () => {
   const { ads, fetchAdsByUserId, deleteAdById } = adStore(state => ({
@@ -29,21 +31,26 @@ export const UserAds = () => {
 
   return (
     <div className="user-ads-container">
-      {ads.map(ad => ( // Change from 'ads' to 'ad'
+      {ads.map(ad => (
         <div key={ad._id} className="user-ad">
-          <img src={ad.image} alt={ad.title} className="user-ad-image" />
+          <Image
+            elementClassName="user-ad-image"
+            size="medium"
+            src={ad.image}
+            ImageAltText={ad.title}
+          />
           <h3>{ad.title}</h3>
           <div className="user-ad-actions">
             <Button
               icon="./src/assets/icons/edit.svg"
-              iconSize="button" 
+              iconSize="small"
               label="Edit"
               onClick={() => handleEdit(ad._id)}
               invertIcon={true}
             />
             <Button
               icon="./src/assets/icons/trash.svg"
-              iconSize="button" 
+              iconSize="small"
               label="Delete"
               onClick={() => handleDelete(ad._id)}
               invertIcon={true}

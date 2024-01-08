@@ -26,7 +26,8 @@ export const Home = () => {
         icon: "error"
       });
       navigate("/login");
-  }}, [isLoggedin, navigate]);
+    }
+  }, [isLoggedin, navigate]);
 
   // Render the component content.
   return (

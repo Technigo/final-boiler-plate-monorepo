@@ -1,0 +1,49 @@
+.user-ads-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 20px;
+}
+
+@media (min-width: 768px) {
+
+    /* Tablet view */
+    .user-ads-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 1200px) {
+
+    /* Desktop view */
+    .user-ads-container {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+.user-ad {
+    border: 1px solid #ccc;
+    padding: 20px 5px;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+    .user-ad-actions {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        margin-top: 10px;
+    }
+
+    
+}
+
+.user-ad-image {
+    width: 250px;
+    height: 200px;
+    object-fit: cover;
+    margin: 0 auto; /* Center the image */
+    border-radius: var(--border-radius);
+}
