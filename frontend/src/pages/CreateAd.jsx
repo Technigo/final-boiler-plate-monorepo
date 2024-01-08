@@ -5,7 +5,7 @@ import Swal from 'sweetalert2';
 import BackArrow from "../components/reusableComponents/BackArrow";
 import { Dropdown } from "../components/reusableComponents/Dropdown";
 import { Button } from "../components/reusableComponents/Button";
-import Lottie from "react-lottie";
+import Lottie from "lottie-react";
 import loadingAnimation from "../assets/loading.json";
 import "./createAd.css";
 import { useSession } from "../context/SessionContext";

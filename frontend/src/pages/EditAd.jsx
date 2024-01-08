@@ -4,7 +4,7 @@ import BackArrow from '../components/reusableComponents/BackArrow';
 import { useParams } from 'react-router-dom';
 import { Image } from '../components/reusableComponents/Image'; // Import the Image component
 import { Button } from "../components/reusableComponents/Button";
-import Lottie from "react-lottie";
+import Lottie from "lottie-react";
 import loadingAnimation from "../assets/loading.json";
 import "./editAd.css";
 import { useSession } from "../context/SessionContext";
