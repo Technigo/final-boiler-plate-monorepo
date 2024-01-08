@@ -66,8 +66,6 @@ export const Profile = () => {
     fetchVolunteeredTasks();
   }, [fetchUserTasks, fetchVolunteeredTasks]);
 
-  const { deleteTaskById } = taskStore();
-
   // Filter tasks created by the current user
 
   return (
