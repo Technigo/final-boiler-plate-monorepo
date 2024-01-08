@@ -1,4 +1,4 @@
-import ShowtimeModel from '../models/ShowtimeModel'
+import ShowtimeModel, { ShowTimeModel } from '../models/ShowtimeModel'
 import asyncHandler from 'express-async-handler'
 
 import data from '../json-files/showTime.json'
@@ -7,17 +7,23 @@ import data from '../json-files/showTime.json'
 // @route /
 // @access public
 export const getAllShowtime = asyncHandler(async (req, res) => {
-	res.json(data)
-	// try {
-	// 	const showTimes = await ShowtimeModel.find()
-	// 	if (showTimes.length > 0) {
-	// 		res.json(showTimes)
-	// 	} else {
-	// 		res.status(404).json({ error: 'No showtime found' })
-	// 	}
-	// } catch (error) {
-	// 	res.status(500).json({ message: error.message })
-	// }
+	
+	await ShowTimeModel.deleteMany({})
+	
+	data.forEach(showtime => {
+		new ShowTimeModel(showtime).save()
+	})
+	
+	try {
+		const showTimes = await ShowtimeModel.find()
+		if (showTimes.length > 0) {
+			res.json(showTimes)
+		} else {
+			res.status(404).json({ error: 'No showtime found' })
+		}
+	} catch (error) {
+		res.status(500).json({ message: error.message })
+	}
 })
 
 // @desc get showtime by ID
