@@ -5,27 +5,27 @@ import { Buttons } from "../Buttons/Buttons";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { enGB } from "date-fns/locale";
-
 import "./PostStory.css";
 
 const libraries = ["places"];
 
-// const apiKey = import.meta.env.VITE_GOOGLE_MAPS_API_KEY;
+
 
 export const PostStory = () => {
   const [newHeading, setNewHeading] = useState("");
   const [newStory, setNewStory] = useState("");
   const [newCategory, setNewCategory] = useState("");
-  // const [newWhere, setNewWhere] = useState("");
   const [selectedDate, setSelectedDate] = useState(new Date());
-  const [isCalendarVisible, setIsCalendarVisible] = useState(false);
+  // const [isCalendarVisible, setIsCalendarVisible] = useState(false);
   const [isImageModalOpen, setIsImageModalOpen] = useState(false);
   const [selectedImage, setSelectedImage] = useState("");
 
   const [autocomplete, setAutocomplete] = useState(null);
   const [locationName, setLocationName] = useState("");
+  const [latitude, setLatitude] = useState(null);
+  const [longitude, setLongitude] = useState(null);
 
-  const handleFormSubmit = (e) => {
+  const handleFormSubmit = async (e) => {
     e.preventDefault();
 
     if (newStory.length < 10) {
@@ -33,71 +33,101 @@ export const PostStory = () => {
       return;
     }
 
+    // Prepare story data to send to the backend
+    const storyData = {
+      title: newHeading,
+      content: newStory,
+      category: newCategory,
+      ranking: 0,
+      lat: latitude,
+      lng: longitude,
+      city: locationName,
+      image: selectedImage,
+    };
+
     setNewStory("");
 
-    const handleCategoryChange = (e) => {
-      setNewCategory(e.target.value);
-    };
 
-    const googleApiPayload = {
-      document: {
-        content: newStory, // Set the content field with the story text
-        type: "PLAIN_TEXT",
-      },
-    };
-    console.log("Sending request to Google API with body:", googleApiPayload);
+ 
 
-    fetch(
-      `https://language.googleapis.com/v1/documents:analyzeSentiment?key=${
-        import.meta.env.VITE_GOOGLE_LANGUAGE_KEY
-      }`,
-      {
-        method: "POST",
-        body: JSON.stringify(googleApiPayload),
-        headers: {
-          "Content-Type": "application/json",
+    // Check if the language is supported for sentiment analysis
+    const supportedLanguagesForSentiment = ["en", "es", "ja", "pt"]; // Add more as supported
+    const languageCode = "sv"; // Set the language code dynamically based on the story's language
+
+
+    if (!supportedLanguagesForSentiment.includes(languageCode)) {
+      console.log("Sentiment analysis not supported for this language");
+      // Handle the case when language is not supported for sentiment analysis
+      // You can directly post the story without sentiment analysis
+    } else {
+      const googleApiPayload = {
+        document: {
+          content: newStory, // Set the content field with the story text
+          type: "PLAIN_TEXT",
+          language: languageCode, // Specify the language of the content
         },
-      }
-    )
-      .then((res) => res.json())
-      .then((googleApiResponse) => {
-        console.log("Response from Google API:", googleApiResponse);
+      };
+      console.log("Sending request to Google API with body:", googleApiPayload);
+
+      fetch(
+        `https://language.googleapis.com/v1/documents:analyzeSentiment?key=${
+          import.meta.env.VITE_GOOGLE_LANGUAGE_KEY
+        }`,
+        {
+          method: "POST",
+          body: JSON.stringify(googleApiPayload),
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      )
+        .then((res) => res.json())
+        .then((googleApiResponse) => {
+          console.log("Response from Google API:", googleApiResponse);
+          // Add logic to handle the response from sentiment analysis
+        })
+        .catch((error) => {
+          console.error("Error calling Google API:", error);
+        });
+    }
+
+    // Post the story to the backend
+    fetch("http://localhost:3000/stories", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(storyData),
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        return response.json();
+      })
+      .then((newStory) => {
+        console.log("New story posted:", newStory);
+        // Reset form fields
+        setNewHeading("");
+        setNewStory("");
+        setSelectedDate(new Date());
+        setLocationName("");
+        setNewCategory("");
+        setSelectedImage("");
+        // Optionally, you can redirect or refresh the page here
       })
       .catch((error) => {
-        console.error("Error calling Google API:", error);
+        console.error("Error posting the story", error);
       });
-
-    // fetch("http://localhost:3000/stories", {
-    //   method: "POST",
-    //   body: JSON.stringify({
-    //     title: newHeading,
-    //     content: newStory,
-    //     createdAt: selectedDate,
-    //     location: locationName,
-    //     category: newCategory,
-    //     image: selectedImage,
-    //   }),
-    // })
-    //   .then((res) => res.json())
-    //   .then((newStory) => {
-    //     console.log("New story posted:", newStory);
-    //     console.log("Date:", selectedDate);
-    //     console.log("Category:", newCategory);
-    //     // Reload the page after a successful post
-    //     // window.location.reload();
-    //   })
-    //   .catch((error) => {
-    //     console.error("Error posting the story", error);
-    //   });
   };
 
   const handleDateChange = (date) => {
     setSelectedDate(date);
   };
 
-  const handleCalendarClick = () => {
-    setIsCalendarVisible(!isCalendarVisible);
-  };
+  // const handleCalendarClick = () => {
+  //   setIsCalendarVisible(!isCalendarVisible);
+  // };
 
   const handleButtonClick = () => {
     console.log("Button clicked within PostStory component", newStory);
@@ -116,14 +146,8 @@ export const PostStory = () => {
   };
 
   const handleImageSelect = (image) => {
-    import(`/${image}`)
-      .then((module) => {
-        setSelectedImage(module.default);
-        closeImageModal(true);
-      })
-      .catch((error) => {
-        console.error("Error loading image:", error);
-      });
+    setSelectedImage(image);
+    closeImageModal();
     console.log("Image chosen");
   };
 
@@ -135,13 +159,28 @@ export const PostStory = () => {
     if (autocomplete !== null) {
       const place = autocomplete.getPlace();
       setLocationName(place.name);
-      // Optionally capture latitude and longitude
-      // const lat = place.geometry.location.lat();
-      // const lng = place.geometry.location.lng();
+      // Set the latitude and longitude
+      setLatitude(place.geometry.location.lat());
+      setLongitude(place.geometry.location.lng());
     } else {
       console.error("Autocomplete is not loaded yet!");
     }
   };
+
+  const images = [
+    "image1.png",
+    "image2.png",
+    "image3.png",
+    "image4.png",
+    "image5.png",
+    "image6.png",
+    "image7.png",
+    "image8.png",
+    "image9.png",
+    "image10.png",
+    "image11.png",
+    "image12.png",
+  ];
 
   return (
     <div className="new-story-container">
@@ -172,7 +211,7 @@ export const PostStory = () => {
             required
           >
             <option value="">Choose a category</option>
-            <option value="funny story">Funny story</option>
+            <option value="anecdote">Anecdote</option>
             <option value="rumor">Rumor</option>
             <option value="historical">Historical</option>
             <option value="hearsay">Hearsay</option>
@@ -191,14 +230,14 @@ export const PostStory = () => {
                 className="search-input"
                 type="text"
                 placeholder="Search location"
+                required
               />
             </Autocomplete>
           </LoadScript>
           <p className="location">Selected Location: {locationName}</p>
         </div>
-
         <div>
-          {newCategory === "funny story" && (
+          {newCategory === "anecdote" && (
             <DatePicker
               selected={selectedDate}
               onChange={handleDateChange}
@@ -207,7 +246,7 @@ export const PostStory = () => {
               className="input-field"
             />
           )}
-          {newCategory !== "funny story" && (
+          {newCategory !== "anecdote" && (
             <DatePicker
               selected={selectedDate}
               onChange={handleDateChange}
@@ -233,38 +272,120 @@ export const PostStory = () => {
         {/* Image Modal */}
         <Modal
           appElement={document.getElementById("root")}
-          selected={selectedImage}
+          selectedImage={selectedImage}
           className="gallery"
           isOpen={isImageModalOpen}
           contentLabel="Select Image"
         >
           <div className="gallery-images">
-            <button
-              className="image-buttons"
-              type="button"
-              onClick={() => handleImageSelect("hero.png")}
-            >
-              <img src={"aboutimg.jpg"} alt="Image 1" />
-            </button>
-            <button
-              className="image-buttons"
-              type="button"
-              onClick={() => handleImageSelect("./aboutimg.jpg")}
-            >
-              <img src={"aboutimg.jpg"} alt="Image 2" />
-            </button>
-            <button
-              className="image-buttons"
-              type="button"
-              onClick={() => handleImageSelect("hero3.png")}
-            >
-              <img src={"hero3.png"} alt="Image 3" />
-            </button>
+            {images.map((image, index) => (
+              <button
+                key={index}
+                className="image-buttons"
+                type="button"
+                onClick={() => handleImageSelect(image)}
+              >
+                <img src={image} alt={`Image ${index + 1}`} />
+              </button>
+            ))}
           </div>
         </Modal>
+        {/* <div className="gallery-images">
+            <button
+              className="image-buttons"
+              type="button"
+              onClick={() => handleImageSelect("image1.png")}
+            >
+              <img src={"image1.png"} alt="Image 1" />
+            </button>
+            <button
+              className="image-buttons"
+              type="button"
+              onClick={() => handleImageSelect("./image2.png")}
+            >
+              <img src={"image2.png"} alt="Image 2" />
+            </button>
+            <button
+              className="image-buttons"
+              type="button"
+              onClick={() => handleImageSelect("image3.png")}
+            >
+              <img src={"image3.png"} alt="Image 3" />
+            </button>
+            <button
+              className="image-buttons"
+              type="button"
+              onClick={() => handleImageSelect("./image4.png")}
+            >
+              <img src={"image4.png"} alt="Image 4" />
+            </button>
+            <button
+              className="image-buttons"
+              type="button"
+              onClick={() => handleImageSelect("./image5.png")}
+            >
+              <img src={"image5.png"} alt="Image 5" />
+            </button>
+            <button
+              className="image-buttons"
+              type="button"
+
+              onClick={() => handleImageSelect("./image6.png")}
+            >
+              <img src={"image6.png"} alt="Image 6" />
+
+            </button>
+            <button
+              className="image-buttons"
+              type="button"
+
+              onClick={() => handleImageSelect("./image7.png")}
+            >
+              <img src={"image7.png"} alt="Image 7" />
+
+            </button>
+            <button
+              className="image-buttons"
+              type="button"
+
+              onClick={() => handleImageSelect("./image8.png")}
+            >
+              <img src={"image8.png"} alt="Image 8" />
+            </button>
+            <button
+              className="image-buttons"
+              type="button"
+              onClick={() => handleImageSelect("./image9.png")}
+            >
+              <img src={"image9.png"} alt="Image 9" />
+            </button>
+            <button
+              className="image-buttons"
+              type="button"
+              onClick={() => handleImageSelect("./image10.png")}
+            >
+              <img src={"image10.png"} alt="Image 10" />
+            </button>
+            <button
+              className="image-buttons"
+              type="button"
+              onClick={() => handleImageSelect("./image11.png")}
+            >
+              <img src={"image11.png"} alt="Image 11" />
+            </button>
+            <button
+              className="image-buttons"
+              type="button"
+              onClick={() => handleImageSelect("./image12.png")}
+            >
+              <img src={"image12.png"} alt="Image 12" />
+
+            </button>
+          </div>
+        </Modal> */}
       </form>
     </div>
   );
 };
 
-// ${import.meta.env.VITE_GOOGLE_LANGUAGE_KEY}
+

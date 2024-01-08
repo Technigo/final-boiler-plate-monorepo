@@ -1,8 +1,9 @@
 .my-map-container {
   width: 90%;
   height: 400px;
+  border-radius: 5px;
+  border: 10px solid #f1ede8;
 
-  border: 10px solid #fff;
   display: block;
   margin: 20px;
   display: flex;

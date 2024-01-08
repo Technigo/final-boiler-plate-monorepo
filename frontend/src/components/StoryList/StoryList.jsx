@@ -142,8 +142,9 @@ export const StoryList = () => {
               onChange={handleCityChange}
             >
               <option value="">Select City</option>
-              {cities.map((city) => (
-                <option key={city} value={city}>
+              {cities.map((city, index) => (
+                // Use a combination of city name and index as key
+                <option key={`city-${index}-${city}`} value={city}>
                   {city}
                 </option>
               ))}
@@ -157,8 +158,9 @@ export const StoryList = () => {
               onChange={handleCategoryChange}
             >
               <option value="">Select Category</option>
-              {categories.map((category) => (
-                <option key={category} value={category}>
+              {categories.map((category, index) => (
+                // Use a combination of category name and index as key
+                <option key={`category-${index}-${category}`} value={category}>
                   {category}
                 </option>
               ))}
