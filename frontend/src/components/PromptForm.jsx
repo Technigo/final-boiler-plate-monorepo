@@ -82,7 +82,6 @@ export const PromptForm = () => {
           </label>
         </div>
 
-        <h2>{errorMessageGeneration}</h2>
         <button className="generate-button" type="submit">
           Create recipe using AI
         </button>

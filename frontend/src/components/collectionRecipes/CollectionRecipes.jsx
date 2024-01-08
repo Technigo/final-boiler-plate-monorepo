@@ -8,7 +8,7 @@ import "./collectionRecipes.css";
 // Define the CollectionRecipes component
 export const CollectionRecipes = () => {
   // Destructure recipes and setRecipes from the recipeStore
-  const { recipes, fetchCollectionRecipes } = recipeStore();
+  const { recipes, fetchCollectionRecipes, errorMessageGeneration } = recipeStore();
   const [loading, setLoading] = useState(true);
 
   // Use the useEffect hook to fetch recipes when the component mounts
@@ -38,6 +38,7 @@ export const CollectionRecipes = () => {
   // Render the component with a list of recipes (map over the recipes and render each recipe's ingredients and instructions)
   return (
     <section className="collection-recipes">
+      <h3>{errorMessageGeneration}</h3>
       <h3>Previously AI generated recipes</h3>
       <div className="recipe-grid">
         {limitedRecipes.map((recipe, index) => (

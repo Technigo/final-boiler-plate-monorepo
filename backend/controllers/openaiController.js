@@ -43,7 +43,7 @@ const generateText = async (req, res) => {
     //Checking if the response is inappropriate or non-existing:
     if (generatedRecipe.includes("Sorry I don't understand")) {
       const errorMessage =
-        "You have provided an invalid or non-existing ingredients. Please try again!";
+        "You have provided an invalid or non-existing ingredient. Please try again!";
       console.error(errorMessage);
       // Handle the case where the user provided inappropriate or non-existing ingredients
       return res.status(400).json({
@@ -60,21 +60,21 @@ const generateText = async (req, res) => {
 
     const formatPrompt = (input) => {
       const promptArray = input.split(',').map(ingredient => {
-          const trimmedIngredient = ingredient.trim();
-          return trimmedIngredient.charAt(0).toUpperCase() + trimmedIngredient.slice(1);
+        const trimmedIngredient = ingredient.trim();
+        return trimmedIngredient.charAt(0).toUpperCase() + trimmedIngredient.slice(1);
       });
-  
-      return promptArray;
-  }
 
-  const formattedPrompt = formatPrompt(prompt)
-  console.log(formattedPrompt)
-  console.log(prompt)
+      return promptArray;
+    }
+
+    const formattedPrompt = formatPrompt(prompt)
+    console.log(formattedPrompt)
+    console.log(prompt)
 
     // Create a new RecipeModel with the provided ingredients and generatedRecipe
     const newRecipe = new RecipeModel({
       userInput: formattedPrompt,
-      searchWords: prompt, 
+      searchWords: prompt,
       title: title,
       description: description,
       ingredients: ingredients,

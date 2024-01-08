@@ -27,14 +27,14 @@ export const recipeStore = create((set, get) => ({
       recipes: [...state.recipes, newRecipe],
     }));
   },
-  errorMessageGeneration: "", 
-  setErrorMessageGeneration: (errorMessageGeneration) => set({errorMessageGeneration}),
-  isVegetarian: false, 
-  setIsVegetarian: (isVegetarian) => set({isVegetarian}),
-  isGlutenFree: false, 
-  setIsGlutenFree: (isGlutenFree) => set({isGlutenFree}),
-  isLactoseFree: false, 
-  setIsLactoseFree: (isLactoseFree) => set({isLactoseFree}),
+  errorMessageGeneration: "",
+  setErrorMessageGeneration: (errorMessageGeneration) => set({ errorMessageGeneration }),
+  isVegetarian: false,
+  setIsVegetarian: (isVegetarian) => set({ isVegetarian }),
+  isGlutenFree: false,
+  setIsGlutenFree: (isGlutenFree) => set({ isGlutenFree }),
+  isLactoseFree: false,
+  setIsLactoseFree: (isLactoseFree) => set({ isLactoseFree }),
 
   fetchNewRecipe: async () => {
     try {
@@ -75,12 +75,12 @@ export const recipeStore = create((set, get) => ({
       const data = await response.json();
       const recipes = data.recipes
       const reversedRecipes = recipes.reverse()
-      
+
       //Update the Recipes state with the fetched recipes
       set(() => ({ recipes: reversedRecipes }));
       // Update the newRecipe state to null initially
       set(() => ({ newRecipe: null }));
-      
+
     } catch (error) {
       console.error("Error fetching collection of recipes:", error);
     }
@@ -95,13 +95,13 @@ export const recipeStore = create((set, get) => ({
 
     try {
       console.log("Sending post request!")
-  
+
       //Setting the isGenerating state to true so that loading message can be rendered in Home.jsx
-      set(() => ({isGenerating: true}))
+      set(() => ({ isGenerating: true }))
 
       const response = await fetch(`${api}/openai/generateText`, {
         method: 'POST',
-        body: JSON.stringify({ prompt: `${formattedIngredients}`, isVegetarian: isVegetarian, isGlutenFree: isGlutenFree, isLactoseFree: isLactoseFree}),
+        body: JSON.stringify({ prompt: `${formattedIngredients}`, isVegetarian: isVegetarian, isGlutenFree: isGlutenFree, isLactoseFree: isLactoseFree }),
         headers: { 'Content-Type': 'application/json' },
       })
 
@@ -113,8 +113,8 @@ export const recipeStore = create((set, get) => ({
         set(() => ({ errorMessageGeneration: data.error || "An unexpected error occurred" }
         ));
       } else {
-         // Reset errorMessageGeneration if the generation was successful
-      set(() => ({ errorMessageGeneration: "" }));
+        // Reset errorMessageGeneration if the generation was successful
+        set(() => ({ errorMessageGeneration: "" }));
       }
 
     } catch (error) {

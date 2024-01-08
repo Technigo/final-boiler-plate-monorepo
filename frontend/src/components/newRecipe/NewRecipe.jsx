@@ -1,9 +1,31 @@
+import React, { useEffect } from "react";
 import "./newRecipe.css";
 import { recipeStore } from "../../stores/recipeStore";
 
 export const NewRecipe = () => {
-  const { newRecipe } = recipeStore();
+  // Destructure values from the recipeStore
+  const { newRecipe, fetchNewRecipe, errorMessageGeneration } = recipeStore();
 
+  useEffect(() => {
+    // Fetch a new recipe when the component mounts
+    fetchNewRecipe();
+  }, [fetchNewRecipe]);
+
+  // Check if there is an error message
+  if (errorMessageGeneration) {
+    return (
+      <div className="error-message">
+        <p>{errorMessageGeneration}</p>
+      </div>
+    );
+  }
+
+  // Check if there is no new recipe yet, and return null if true
+  if (!newRecipe) {
+    return null; // Don't render anything if there is no new recipe yet
+  }
+
+  // Render the new recipe details if there is no error and a new recipe is available
   return (
     <>
       <h2>Gear up for an outdoor escapade! Your AI-generated adventure-ready recipe:</h2>
