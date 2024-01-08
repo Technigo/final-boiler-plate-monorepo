@@ -19,6 +19,14 @@ const StyledH1 = styled.h1`
   margin-bottom: 20px;
   color: #01999a;
   font-family: "JosefinSans";
+
+  @media ${tablet} {
+    font-size: 40px;
+  }
+
+  @media ${desktop} {
+    font-size: 45px;
+  }
 `;
 
 const StyledH2 = styled.h2`
@@ -27,7 +35,15 @@ const StyledH2 = styled.h2`
   text-align: center;
   display: block;
   margin-bottom: 5px;
-  font-size: 25px;
+  font-size: 20px;
+
+  @media ${tablet} {
+    font-size: 25px;
+  }
+
+  @media ${desktop} {
+    font-size: 30px;
+  }
 `;
 
 const StyledInput = styled.input`
@@ -146,7 +162,6 @@ const AddRestaurantForm = () => {
           onChange={handleChange}
           required
         />
-
         <FormLabel>Address:</FormLabel>
         <StyledInput
           type="text"
@@ -154,7 +169,6 @@ const AddRestaurantForm = () => {
           value={formData.address}
           onChange={handleChange}
         />
-
         <FormLabel>Zipcode:</FormLabel>
         <StyledInput
           type="number"
@@ -162,7 +176,6 @@ const AddRestaurantForm = () => {
           value={formData.zipcode}
           onChange={handleChange}
         />
-
         <FormLabel>City*:</FormLabel>
         <StyledInput
           type="text"
@@ -171,7 +184,6 @@ const AddRestaurantForm = () => {
           onChange={handleChange}
           required
         />
-
         <FormLabel>Country:</FormLabel>
         <StyledInput
           type="text"
@@ -179,7 +191,6 @@ const AddRestaurantForm = () => {
           value={formData.country}
           onChange={handleChange}
         />
-
         <FormLabel>Borough:</FormLabel>
         <StyledInput
           type="text"
@@ -187,7 +198,6 @@ const AddRestaurantForm = () => {
           value={formData.borough}
           onChange={handleChange}
         />
-
         <FormLabel>Cuisine*:</FormLabel>
         <StyledInput
           type="text"
@@ -196,7 +206,6 @@ const AddRestaurantForm = () => {
           onChange={handleChange}
           required
         />
-
         {/* Occasion checkboxes */}
         <StyledOccasionsContainer>
           <FormLabel>
@@ -207,18 +216,20 @@ const AddRestaurantForm = () => {
               {option}
               <input
                 type="checkbox"
-                name="occasion"
+                name="mood"
                 value={option}
-                checked={formData.occasion.includes(option)}
+                checked={formData.mood.includes(option)}
                 onChange={handleChange}
                 required
-              ></input>
+              />
             </label>
           ))}
         </StyledOccasionsContainer>
-        {/* Mood checkboxes */}
+        <br></br> <br></br>
         <StyledMoodsContainer>
-          <FormLabel>Tick the boxes with suiting moods*:</FormLabel>
+          <FormLabel>
+            Tick the boxes with suiting moods*: <br></br> <br></br>
+          </FormLabel>
           {moods.map((option, index) => (
             <label key={index}>
               {option}
@@ -233,7 +244,7 @@ const AddRestaurantForm = () => {
             </label>
           ))}
         </StyledMoodsContainer>
-
+        <br></br> <br></br>
         <FormLabel>Your description of the restaurant*:</FormLabel>
         <StyledInput
           type="text"
@@ -242,7 +253,6 @@ const AddRestaurantForm = () => {
           onChange={handleChange}
           required
         />
-
         <FormLabel>Website URL:</FormLabel>
         <StyledInput
           type="text"
@@ -250,7 +260,6 @@ const AddRestaurantForm = () => {
           value={formData.url}
           onChange={handleChange}
         />
-
         <FormLabel>Your name:</FormLabel>
         <StyledInput
           type="text"
@@ -258,7 +267,6 @@ const AddRestaurantForm = () => {
           value={formData.name}
           onChange={handleChange}
         />
-
         <FormLabel>Your e-mail (in case we need some more info):</FormLabel>
         <StyledInput
           type="email"
@@ -266,10 +274,8 @@ const AddRestaurantForm = () => {
           value={formData.email}
           onChange={handleChange}
         />
-
         {/* Hidden input for redirection and multiple email addresses */}
         <input type="hidden" name="_cc" value="foodiemoodieappen@gmail.com" />
-
         <StyledParagraph>Fields marked with * are mandatory.</StyledParagraph>
         <Button type="submit">Submit</Button>
       </form>

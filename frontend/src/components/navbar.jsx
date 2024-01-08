@@ -16,7 +16,7 @@ const FMLogo = styled.img`
     height: 90px;
     width: auto;
   }
-  /* &:hover { Ändra till annan logga vid hover
+  /* &:hover { ev Ändra till annan logga vid hover
     content: url('')
   } */
 `;

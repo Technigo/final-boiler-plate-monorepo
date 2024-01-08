@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import Navbar from "./navbar"; // Ensure the path is correct
-import Footer from "./footer"; // Ensure the path is correct
+import Navbar from "./navbar";
+import Footer from "./footer";
 import styled from "styled-components";
-import { useRestaurantStore } from "../stores/restaurantStore"; // Ensure the path is correct
+import { useRestaurantStore } from "../stores/restaurantStore";
 import { Link, useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 

@@ -243,12 +243,12 @@ const MoreLink = styled.a`
 const AgreeButton = styled.button`
   background-color: white;
   color: #01999a;
-  padding: 5px 10px; /* Adjust padding as needed */
+  padding: 5px 10px;
   border: none;
   border-radius: 5px;
   cursor: pointer;
   font-size: 14px;
-  margin-right: 10px; /* Add margin to separate from count */
+  margin-right: 10px;
   transition-duration: 0.4s;
 
   &:hover {
@@ -417,12 +417,12 @@ const ResultsComponent = () => {
                 </a>
               </StyledParagraph>
               <StyledAnchorLink
-  href={restaurant.url}
-  target="_blank"
-  rel="noopener noreferrer"
->
-  Website
-</StyledAnchorLink>
+                href={restaurant.url}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Website
+              </StyledAnchorLink>
               <br />
               <StyledButtonLink to="/suggestion">
                 Want to add to the description? Click here!
