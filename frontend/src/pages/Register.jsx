@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { Logo } from "../components/reusableComponents/Logo";
 import { Heading } from "../components/reusableComponents/Heading";
+import { Button } from "../components/reusableComponents/Button";
 import BackArrow from "../components/reusableComponents/BackArrow";
 import Lottie from "lottie-react";
 import loadingAnimation from "../assets/loading.json/";
@@ -71,7 +72,7 @@ export const Register = () => {
           onChange={(e) => setUsername(e.target.value)}
         />
 
-        <label htmlFor="email">Email address</label>
+        <label htmlFor="email">Email</label>
         <input
           type="email"
           name="email"
@@ -103,9 +104,12 @@ export const Register = () => {
         {/* Create a button for signing up and attach the "onSignupClick" event handler. */}
         {loading && <Lottie animationData={loadingAnimation} />}
         {!loading && (
-          <button className="register-btn" onClick={onSignupClick}>
-            Sign Up
-          </button>
+          <Button
+            iconSize="button"
+            label="Sign Up"
+            onClick={onSignupClick}
+            className="button"
+          />
         )}
         <h4>
           Have an account?

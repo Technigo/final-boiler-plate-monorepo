@@ -6,7 +6,9 @@ import { Footer } from "../components/Footer";
 import { SearchBar } from "../components/SearchBar";
 import { AdsList } from "../components/AdsList";
 import { Navbar } from "../components/Navbar";
+import { Button } from "../components/reusableComponents/Button";
 import Swal from "sweetalert2";
+import "../pages/home.css";
 
 // Define the 'Home' functional component.
 export const Home = () => {
@@ -23,7 +25,7 @@ export const Home = () => {
       Swal.fire({
         title: "Error!",
         text: "Please log in to see the content",
-        icon: "error"
+        icon: "error",
       });
       navigate("/login");
     }
@@ -32,17 +34,35 @@ export const Home = () => {
   // Render the component content.
   return (
     <>
-      <Navbar menuItems={[{ path: "/search", name: "Search" }, { path: "/setting", name: "Profile Setting" }, { path: "/manage-your-ads", name: "Your Products" }, { path: "/about", name: "About" }, { path: "/terms", name: "Terms" }, {
-        name: "Logout", onClick: () => {
-          handleLogout()
-          navigate("/login")
-        }
-      }]} menuDesks={[{ path: "/settings", name: "Profile Settings" }, { path: "/manage-your-ads", name: "Your Products" }, { path: "/terms", name: "Terms" }, { path: "/about", name: "About" }, {
-        name: "Logout", onClick: () => {
-          handleLogout()
-          navigate("/login")
-        }
-      }]} />
+      <Navbar
+        menuItems={[
+          { path: "/search", name: "Search" },
+          { path: "/settings", name: "My Setting" },
+          { path: "/manage-your-ads", name: "My Products" },
+          { path: "/about", name: "About" },
+          { path: "/terms", name: "Terms" },
+          {
+            name: "Logout",
+            onClick: () => {
+              handleLogout();
+              navigate("/login");
+            },
+          },
+        ]}
+        menuDesks={[
+          { path: "/settings", name: "Settings" },
+          { path: "/manage-your-ads", name: "My Products" },
+          { path: "/terms", name: "Terms" },
+          { path: "/about", name: "About" },
+          {
+            name: "Logout",
+            onClick: () => {
+              handleLogout();
+              navigate("/login");
+            },
+          },
+        ]}
+      />
       <div className="container">
         {/* Render the search bar */}
         <Link to="/search">
@@ -54,9 +74,12 @@ export const Home = () => {
         {/* Render the user's ads */}
         <h1>Your ads</h1>
         {isLoggedin && <AdsList fetchType="user" />}
-        <Link to="/create-ad">+ Add a product</Link>
-        <Footer />
+        <div className="add-product">
+          <Link to="/create-ad">+ Add a product</Link>
+        </div>
+        <Button label="Manage your ads" link="/manage-your-ads" />
       </div>
+      <Footer />
     </>
   );
-};      
+};

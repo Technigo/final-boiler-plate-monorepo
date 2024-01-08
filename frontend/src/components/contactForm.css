@@ -24,11 +24,16 @@ form input {
 }
 
 .msg-box {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 500;
   background: #f2f2f2;
   width: 100%;
-  border: none;
-  margin: 0 0 15px;
-  padding: 15px;
+  height: 150px;
+  border: 1px solid var(--border);
+  border-radius: var(--border-radius);
+  margin: 0 0 15px 0;
+  padding: 2px 5px;
   box-sizing: border-box;
   font-size: 14px;
 }
@@ -38,6 +43,26 @@ form input {
 }
 
 .submit-btn {
-  padding: 1em;
+  border-radius: var(--border-radius);
+  border: 1px solid transparent;
+  padding: 0.25em 1em;
+  font-size: var(--font-size-label);
+  font-weight: 700;
+  font-family: inherit;
+  background-color: var(--cta);
   cursor: pointer;
+  transition: border-color 0.25s;
+  color: var(--cta-text);
+  margin: 0 5px;
+}
+
+.submit-btn:hover {
+  border-color: #646cff;
+  color: var(--cta-hover-text);
+  background-color: var(--cta-hover);
+}
+
+.submit-btn:focus,
+.submit-btn:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
 }

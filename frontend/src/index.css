@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;500;700;900&family=Poppins:wght@300;400;500;600;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@300;400;500;700;900&family=Poppins:wght@300;400;500;600;700&display=swap");
 
 * {
   box-sizing: border-box;
@@ -21,8 +21,8 @@
   --border: #dddddd;
 
   /* Font Families */
-  --font-heading: 'Poppins', sans-serif;
-  --font-body: 'Lato', sans-serif;
+  --font-heading: "Poppins", sans-serif;
+  --font-body: "Lato", sans-serif;
 
   /* Mobile Font Sizes */
   --font-size-h1: 1.875rem;
@@ -59,7 +59,6 @@ p {
   margin: 0;
 }
 
-
 /* Base Styles */
 html {
   font-size: 16px;
@@ -68,7 +67,7 @@ html {
 body {
   font-family: var(--font-body);
   font-size: 1em;
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   color: var(--primary-text);
   text-align: left;
   overflow-x: hidden;
@@ -95,7 +94,6 @@ h2 {
   font-size: var(--font-size-h2);
   font-weight: 600;
   margin: 1rem 0;
-
 }
 
 h3 {
@@ -113,7 +111,6 @@ h4 {
 p {
   font-size: var(--font-size-p);
   line-height: 1.5;
-
 }
 
 /* Lists */
@@ -138,6 +135,7 @@ label {
 /* Input fields */
 input[type="text"],
 input[type="password"],
+input[type="email"],
 input[type="number"],
 input[type="datetime-local"],
 input[type="file"],
@@ -178,7 +176,7 @@ img {
 }
 
 /* Tablet styles */
-@media only screen and (min-width:768px) {
+@media only screen and (min-width: 768px) {
   h1 {
     font-size: 3rem;
     /* 48px */
@@ -208,6 +206,7 @@ img {
   input[type="text"],
   input[type="password"],
   input[type="number"],
+  input[type="email"],
   input[type="datetime-local"],
   input[type="file"],
   select,
@@ -224,7 +223,7 @@ img {
 }
 
 /* Desktop styles */
-@media only screen and (min-width:1200px) {
+@media only screen and (min-width: 1200px) {
   h1 {
     font-size: 3.5rem;
     /* 56px */
@@ -258,6 +257,7 @@ img {
   input[type="text"],
   input[type="password"],
   input[type="number"],
+  input[type="email"],
   input[type="datetime-local"],
   input[type="file"],
   select,
