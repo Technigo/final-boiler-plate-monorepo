@@ -1,10 +1,6 @@
 import mongoose from "mongoose";
-
-
-
-const express = require('express');
-const mongoose = require('mongoose');
-const cors = require('cors');
+import express from "express";
+import cors from "cors";
 
 const app = express();
 const port = process.env.PORT || 4000;
@@ -18,13 +14,24 @@ mongoose.connect('mongodb+srv://Soygirt:Durkslag1@atlascluster.enkh5cp.mongodb.n
   useUnifiedTopology: true,
 });
 
-// Create a Dog model
-const Dog = mongoose.model('Dog', {
+// Create a dog schema
+const DogSchema = new mongoose.Schema({
   name: String,
   puppy: Boolean,
   special_adoption: Boolean,
   size: String,
 });
+
+const DogModel = mongoose.model("dogs", DogSchema)
+module.exports = DogModel
+
+// Create a Dog model
+/* const Dog = mongoose.model('Dog', {
+  name: String,
+  puppy: Boolean,
+  special_adoption: Boolean,
+  size: String,
+}); */
 
 // Define API endpoint for searching dogs
 app.get('/dogs', async (req, res) => {

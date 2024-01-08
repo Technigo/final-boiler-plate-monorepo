@@ -7,6 +7,7 @@ import taskRoutes from "./routes/taskRoutes"; // Import custom task controlled-r
 import userRoutes from "./routes/userRoutes"; // Import custom user routes
 import { connectDB } from "./config/db"; // Import database connection function (not used here)
 import mongoose from "mongoose";
+import DogModel from "./models/DogModel.js"
 
 const mongoUrl = process.env.MONGO_URL || "mongodb://127.0.0.1:27017/dogs"; //not sure if its supposed to say dogs here
 mongoose.connect(mongoUrl, {useNewUrlParser: true, useUnifiedTopology: true})
@@ -24,10 +25,15 @@ app.use(express.urlencoded({ extended: false })); // Parse URL-encoded data
 
 // Use the routes for handling API requests
 // ROUTES - These routes USE controller functions ;)
-//app.use(taskRoutes); // Use the task-controlled routes for task-related requests
-//app.use(userRoutes); // Use the user-controlled routes for user-related requests
+app.use(taskRoutes); // Use the task-controlled routes for task-related requests
+app.use(userRoutes); // Use the user-controlled routes for user-related requests
 
-
+// Get the list of dogs
+app.get('/findDogs', (req, res) => {
+  DogModel.find()
+  .then(dogs => res.json(dogs))
+  .catch(err => res.json(err))
+})
 
 // Connection to the database through Mongoose
 connectDB();
