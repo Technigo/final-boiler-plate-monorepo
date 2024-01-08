@@ -29,6 +29,8 @@ export const seedShowtimes = asyncHandler(async (req, res) => {
 	data.forEach(showtime => {
 		new ShowTimeModel(showtime).save()
 	})
+
+	res.json({status: 'success', message: 'Database of showtime seeded'})
 })
 
 // @desc get showtime by ID
