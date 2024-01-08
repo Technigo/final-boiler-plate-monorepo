@@ -27,8 +27,8 @@ const ShowtimeSchema = new Schema({
 		type: Number,
 		required: true,
 	},
-	seat: {
-		type: Number,
+	seats: {
+		type: Array,
 		required: true,
 	},
 })
