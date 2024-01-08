@@ -10,7 +10,7 @@ router.post("/register", UserController.registerUser);
 router.get("/users", UserController.getAllUsers);
 router.get("/user/:user_id", UserController.getUserById);
 router.get("/messages/:userId", UserController.getUserMessages);
-router.get("/getallmessages/:userId", UserController.getAllMessages);
+router.get("/getallmessages", UserController.getAllMessages);
 
 export default router;
 

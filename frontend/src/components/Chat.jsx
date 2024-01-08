@@ -11,7 +11,6 @@ export const Chat = () => {
 
   // console.log("username in chat: " + username);
 
-  // const userId = "23Abc14";
   //Usernames of sender and receiver
   // const userId = username;
   // const receiverId = chatReceiver;
@@ -29,7 +28,7 @@ export const Chat = () => {
   //------
   const handleMessage = (e) => {
     const messageData = JSON.parse(e.data);
-    console.log(e, messageData);
+    console.log({ e, messageData });
     if (messageData.sender === selectedUserId) {
       setMessages((prev) => [...prev, { ...messageData }]);
     }
@@ -81,7 +80,7 @@ export const Chat = () => {
 
   useEffect(() => {
     setSelectedUserId(recipientId);
-    alert("selectedUserId: " + selectedUserId);
+
     if (selectedUserId) {
       fetch(
         `${import.meta.env.VITE_BACKUP_API}/messages/` + selectedUserId

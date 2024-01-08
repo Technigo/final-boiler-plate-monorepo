@@ -70,7 +70,7 @@ export const UserProfile = () => {
         await fetch(`${vite_backup}/user/${user.sub}`)
           .then((res) => res.json())
           .then((data) => {
-            // console.log("data: " + JSON.stringify(data));
+            console.log("data: " + JSON.stringify(data));
             setMongoUsername(data.username);
             setLoggedInUserId(data._id);
             setEmail(data.email);
