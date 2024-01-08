@@ -1,4 +1,3 @@
-import React from 'react';
 import { Challenge } from '../../components/Challenge'; 
 import challengesData from '../../data/challenges.json'; 
 import './myfavorites.css';

@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+/* eslint-disable no-unused-vars */
+import { useState } from 'react';
 
 
 
@@ -41,3 +42,4 @@ export const Challenge = ({ title, description, _id }) => {
       </div>
     );
   };
+
