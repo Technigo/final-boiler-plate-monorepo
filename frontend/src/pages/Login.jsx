@@ -25,6 +25,7 @@ const StyledLoginField = styled.div`
   max-width: 500px;
   border: 1px solid var(--secondaryColor);
   border-radius: 20px 0 20px 20px;
+  background-color: #f0f0f0;
   padding: 20px;
   margin: 20px;
 
@@ -34,6 +35,7 @@ const StyledLoginField = styled.div`
     border-bottom: 1px solid var(--secondaryColor);
     width: 100%;
     padding-left: 5px;
+    background-color: #f0f0f0;
   }
 `;
 

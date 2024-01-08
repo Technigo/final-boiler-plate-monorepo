@@ -13,14 +13,7 @@ const StyledFooter = styled.div`
   position: -webkit-sticky;
   // bottom: 0;
   width: 100%;
-  background: -webkit-linear-gradient(
-    45deg,
-    #633d57,
-    #9b6489,
-    #ad719a,
-    #9b6489,
-    #633d57
-  );
+  background: -webkit-linear-gradient(45deg, #633d57, #9b6489, #633d57);
 
   a {
     font-size: 20px;

@@ -13,7 +13,9 @@ const StyledNav = styled.nav`
   justify-content: flex-end;
 
   a {
-    color: #213547;
+    color: floralwhite;
+    /* color: #213547; */
+    font-weight: 600;
   }
 
   a:hover {

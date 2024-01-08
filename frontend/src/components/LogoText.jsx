@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom"; // Ensure the correct import for Link
 // Import image assets for logo.
-import aHelpingHandLogo from "/a-helping-hand-logo.png";
+import aHelpingHandLogo from "/a-helping-hand-white.png";
 import styled from "styled-components";
 
 // STYLING I .LOGO I APP.CSS ÄR DET SOM TAR STYLINGEN, JUSTERA
