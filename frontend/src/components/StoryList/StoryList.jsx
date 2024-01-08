@@ -126,7 +126,8 @@ export const StoryList = () => {
           <select
             className="dropdowns"
             value={filterType}
-            onChange={handleFilterTypeChange}>
+            onChange={handleFilterTypeChange}
+          >
             <option value="">Select Filter</option>
             <option value="ranking">Ranking</option>
             <option value="city">City</option>
@@ -138,10 +139,12 @@ export const StoryList = () => {
             <select
               className="dropdowns"
               value={selectedCity}
-              onChange={handleCityChange}>
+              onChange={handleCityChange}
+            >
               <option value="">Select City</option>
-              {cities.map((city) => (
-                <option key={city} value={city}>
+              {cities.map((city, index) => (
+                // Use a combination of city name and index as key
+                <option key={`city-${index}-${city}`} value={city}>
                   {city}
                 </option>
               ))}
@@ -152,10 +155,12 @@ export const StoryList = () => {
             <select
               className="dropdowns"
               value={selectedCategory}
-              onChange={handleCategoryChange}>
+              onChange={handleCategoryChange}
+            >
               <option value="">Select Category</option>
-              {categories.map((category) => (
-                <option key={category} value={category}>
+              {categories.map((category, index) => (
+                // Use a combination of category name and index as key
+                <option key={`category-${index}-${category}`} value={category}>
                   {category}
                 </option>
               ))}

@@ -36,7 +36,7 @@ const mapStorySchema = new Schema({
   },
   image: {
     type: String,
-    required: true,
+    // required: true,
     enum: [
       "image1.png",
       "image2.png",
