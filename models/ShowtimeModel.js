@@ -12,15 +12,15 @@ const ShowtimeSchema = new Schema({
 		required: true,
 	},
 	date: {
-		type: Date,
+		type: String,
 		required: true,
 	},
 	startingTime: {
-		type: Date,
+		type: Number,
 		required: true,
 	},
-	endTime: {
-		type: Date,
+	duration: {
+		type: Number,
 		required: true,
 	},
 	price: {
