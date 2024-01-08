@@ -1,8 +1,10 @@
 import { CartItem } from "../../components/cart/cartItem/CartItem";
 import { Input } from "../../components/inputs/Input";
+import { Button } from "../../components/buttons/Button";
 import { OrderInfo } from "../../components/cart/OrderInfo";
 import { cartStore } from "../../stores/cartStore";
 import { useState } from "react";
+import emailjs from "@emailjs/browser"
 import Accordion from "@mui/material/Accordion";
 import AccordionSummary from "@mui/material/AccordionSummary";
 import AccordionDetails from "@mui/material/AccordionDetails";
@@ -14,52 +16,69 @@ export const CheckOut = () => {
 
   const { cart } = cartStore();
 
+  const sendEmail = (e) => {
+    e.preventDefault();
+    emailjs.sendForm("service_yl79s0f", "template_l1q27lx", e.target, "14TsPm9sc7yUWZT-s")
+  } 
+
   return (
     <section>
       <h2>Check Out</h2>
-      <p>Sign in or continue as guest</p>
-      <h3>Continue as guest</h3>
+      <p>Already have an account?</p>
+      <Button btnText={"Log in"}/> 
 
+      
+      <Button btnText={"Register"}/>
+      <h3>Continue as guest</h3>
+      <form className={"checkout-form"} onSubmit={sendEmail}>
       <Accordion>
         <AccordionSummary>
           <h3>YOUR INFORMATION</h3>
         </AccordionSummary>
         <AccordionDetails>
-          <Input
-            type="text"
-            placeholder="Your Full Name"
-            onChange={email}
-            ariaLabel="Name input."
-          />
-          <Input
-            type="number"
-            placeholder="+46000123"
-            onChange={email}
-            ariaLabel="Phone input."
-          />
-          <Input
+        <Input
             type="email"
+            name={"email_from"}
+            id={"emailFrom"}
             placeholder="your.email@email.com"
             onChange={email}
             ariaLabel="Email input."
+            labelTxt={"Please put in your email"}
           />
           <Input
             type="text"
-            placeholder="Street no. 1A"
+            placeholder="Daisy Evergreen"
+            onChange={email}
+            ariaLabel="Name input."
+            value={"Lily Landersen"}
+          />
+          <Input
+            type="text"
+            placeholder="+46 12 123 12 12"
+            onChange={email}
+            ariaLabel="Phone input."
+            value={"+46 12 123 12 12"}
+          />
+          <Input
+            type="text"
+            placeholder="Lily Lane 12"
             onChange={email}
             ariaLabel="Address input."
+            value={"Lily Lane 12"}
           />
           <Input
             type="text"
-            placeholder="ZIP"
+            placeholder="123 45"
             onChange={email}
             ariaLabel="ZIP input."
+            value={"123 45"}
           />
           <Input
             type="text"
-            placeholder="City Name"
+            placeholder="Gardenville"
             onChange={email}
             ariaLabel="City input."
+            value={"Lilytown"}
           />
         </AccordionDetails>
       </Accordion>
@@ -68,9 +87,9 @@ export const CheckOut = () => {
           <h3>DELIVERY DETAILS</h3>
         </AccordionSummary>
         <AccordionDetails>
-          <input type="radio" />
-          <p>delivery option 1</p>
-          <p>delivery option 2</p>
+          <Input type={"checkbox"} value={true} ariaLabel={"address-check"} labelTxt={"Same addess as above"} />
+          <Input type={"radio"} labelTxt={"Collect at Post Office"} /> 
+          <Input type={"radio"} labelTxt={"Home delivery"}/> 
         </AccordionDetails>
       </Accordion>
       <Accordion>
@@ -80,25 +99,30 @@ export const CheckOut = () => {
         <AccordionDetails>
           <ul>
             <li>
-              <p>Pay with Klarna</p>
+            <Input type={"radio"} labelTxt={"Pay with Klarna"} />
+            <ul>
+              <li>Safe and easy</li>
+              <li>Pay directly, with invoice or partial payments</li>
+              <li>Save your card and banc card</li>
+            </ul>
             </li>
             <li>
-              <p>Pay with Card</p>
+            <Input type={"radio"} labelTxt={"Pay with card"}/> 
               <Input
                 type="text"
-                placeholder="Card Holder"
+                placeholder="Lily Landersen"
                 onChange={email}
-                ariaLabel="Cart holder input."
+                ariaLabel="Card holder input."
               />
               <Input
                 type="number"
-                placeholder="Card Number"
+                placeholder="XXXX XXXX XXXX XXXX"
                 onChange={email}
                 ariaLabel="City input."
               />
               <Input
                 type="number"
-                placeholder="Date"
+                placeholder="MM/YY"
                 onChange={email}
                 ariaLabel="City input."
               />
@@ -131,12 +155,13 @@ export const CheckOut = () => {
         </AccordionDetails>
       </Accordion>
 
-      <button>Pay</button>
+      <Button type={"submit"} btnText={"Pay"} />
       <p>
-        *By pressing the pay button, you will get an email confirming our
-        purchase. Please remember, this is not an actual shop, but a demo shop,
-        so your purchase is not processed.{" "}
+        *By pressing the pay button, you will get an email with your plant buddies.
+        Please remember, this is <b>not</b> an actual shop, no money will be drawn,
+        and unfortunately no plants will be sent. But thank you for testing it out!{" "}
       </p>
+      </form>
     </section>
   );
 };

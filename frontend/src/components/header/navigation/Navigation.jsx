@@ -10,21 +10,21 @@ export const Navigation = () => {
           <Link to="/plants/all-plants">All plants</Link>
         </li>
         <li>
-          <Link to="/plants/popular">Most popular</Link>
+          <Link to="/plants/all-plants/popular">Most popular</Link>
         </li>
         <li>
-          <Link to="/plants/shady">Shade lovers</Link>
+          <Link to="/plants/all-plants/shade-loving">Shade lovers</Link>
         </li>
         <li>
-          <Link to="/plants/easy">Easy care</Link>
+          <Link to="/plants/all-plants/easy">Easy care</Link>
         </li>
         <li>
-          <Link to="/plants/pets">
+          <Link to="/plants/all-plants/pet-friendly">
             Pet friendly <PiPawPrintLight />
           </Link>
         </li>
         <li>
-          <Link to="/plants/easy">Hanging & climbing</Link>
+          <Link to="/plants/all-plants/climbing">Hanging & climbing</Link>
         </li>
       </ul>
       <hr />
