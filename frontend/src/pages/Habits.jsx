@@ -112,7 +112,7 @@ export const Habits = () => {
       {isMobile ? <NavbarMobile /> : isTablet ? <NavbarMobile /> : <Navbar />}
 
       <div className="habits-container">
-        {isLoggedIn && <h2>{t("Hi")} {username}{t(", welcome! Let's make the best of this day ☀️")}</h2>}
+        {isLoggedIn && <h2>{t("Hi")}{t(", welcome! Let's make the best of this day ☀️")}</h2>}
 
         {isLoggedIn ? (
           <>
