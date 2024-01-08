@@ -58,7 +58,7 @@ export const UserController = {
   getUserById: async (req, res) => {
     const user_id = req.params.user_id;
     try {
-      const user = await UserModel.findOne(user_id);
+      const user = await UserModel.findOne({ user_id });
       if (!user) {
         return res.status(404).json({ message: "User not found" });
       }
