@@ -29,7 +29,7 @@ const WhoAreWe = () => {
                     <div className="icons">
                         <a href="https://github.com/JohanssonLinnea" className="icon" target="_blanc"><img className="icon" src="/github.png" alt="github" /></a>
                         <a href="https://www.linkedin.com/in/linnea-johansson-68886828a/" className="icon" target="_blanc"><img className="icon" src="/linkedin.png" alt="linkedin" /></a>
-                        <a href="#" className="icon" target="_blanc"><img className="icon" src="/portfolio.png" alt="portfolio" /></a>
+                        <a href="https://linneajohansson-portfolio.netlify.app/" className="icon" target="_blanc"><img className="icon" src="/portfolio.png" alt="portfolio" /></a>
                     </div>
                 </div>
             </div>
