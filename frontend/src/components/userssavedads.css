@@ -1,0 +1,17 @@
+.saved-ads-wrapper {
+    display: grid;
+    grid-template-columns: 1fr; /* Single column for mobile */
+    grid-gap: 20px;
+}
+
+@media (min-width: 768px) { /* Tablet view */
+    .saved-ads-wrapper {
+        grid-template-columns: repeat(2, 1fr); /* Two columns for tablet */
+    }
+}
+
+@media (min-width: 1200px) { /* Desktop view */
+    .saved-ads-wrapper {
+        grid-template-columns: repeat(4, 1fr); /* Four columns for desktop */
+    }
+}

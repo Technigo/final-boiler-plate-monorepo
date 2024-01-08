@@ -1,17 +1,26 @@
 .image-small {
-    width: 50px;
-    height: 50px;
+    width: 125px;
+    height: 100px;
     object-fit: cover;
+    margin: 0 auto;
+    /* Center the image */
+    border-radius: var(--border-radius)
 }
 
 .image-medium {
-    width: auto;
-    height: 150px;
+    width: 250px;
+    height: 200px;
     object-fit: cover;
+    margin: 0 auto;
+    /* Center the image */
+    border-radius: var(--border-radius)
 }
 
 .image-large {
-    width: 150px;
-    height: 150px;
+    width: 500px;
+    height: 400px;
     object-fit: cover;
+    margin: 0 auto;
+    /* Center the image */
+    border-radius: var(--border-radius)
 }

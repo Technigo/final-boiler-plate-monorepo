@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { adStore } from '../stores/adStore';
 import { userStore } from '../stores/userStore';
 import { AdCard } from './AdCard';
+import "./userssavedads.css";
 
 export const SavedAds = () => {
   // Using useStore hook to subscribe to the savedAds state
@@ -16,15 +17,13 @@ export const SavedAds = () => {
   }, [fetchSavedAds]);
 
   return (
-    <div>
+    <div className="saved-ads-wrapper">
       {savedAds.length === 0 ? (
         <p>No saved ads to display</p>
       ) : (
-        <ul>
-          {savedAds.map(ad => (
-            <AdCard key={ad._id} ad={ad} />
-          ))}
-        </ul>
+        savedAds.map(ad => (
+          <AdCard key={ad._id} ad={ad} />
+        ))
       )}
     </div>
   );

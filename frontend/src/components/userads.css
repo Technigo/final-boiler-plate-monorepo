@@ -1,10 +1,7 @@
 .user-ads-container {
     display: grid;
     grid-template-columns: 1fr;
-    /* Single column layout by default */
     grid-gap: 20px;
-    /* Space between grid items */
-    padding: 20px;
 }
 
 @media (min-width: 768px) {
@@ -12,7 +9,6 @@
     /* Tablet view */
     .user-ads-container {
         grid-template-columns: repeat(2, 1fr);
-        /* Two columns layout */
     }
 }
 
@@ -21,13 +17,12 @@
     /* Desktop view */
     .user-ads-container {
         grid-template-columns: repeat(4, 1fr);
-        /* Three columns layout */
     }
 }
 
 .user-ad {
     border: 1px solid #ccc;
-    padding: 10px;
+    padding: 20px 5px;
     border-radius: 5px;
     display: flex;
     flex-direction: column;
@@ -41,4 +36,14 @@
         width: 100%;
         margin-top: 10px;
     }
+
+    
+}
+
+.user-ad-image {
+    width: 250px;
+    height: 200px;
+    object-fit: cover;
+    margin: 0 auto; /* Center the image */
+    border-radius: var(--border-radius);
 }

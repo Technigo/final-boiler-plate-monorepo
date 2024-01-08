@@ -1,8 +1,10 @@
 import { useState } from "react";
 import { adStore } from "../stores/adStore";
+import Swal from 'sweetalert2';
 import BackArrow from "../components/reusableComponents/BackArrow";
 import "./createAd.css"
 import { Dropdown } from "../components/reusableComponents/Dropdown";
+import { Button } from "../components/reusableComponents/Button";
 
 export const CreateAd = () => {
   const [image, setImage] = useState(null);
@@ -26,34 +28,51 @@ export const CreateAd = () => {
     { label: "Milliliter (mL)", value: "ml" },
   ];
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-
+  const handleSubmit = async () => {
     // Basic validation
     if (!image || !title || !description || !product || !quantity || !unit || !address || !pickupDate) {
-      alert("All fields are required");
+      Swal.fire({
+        title: "Oops!",
+        text: "All fields are required",
+        icon: "error",
+      });
       return;
     }
 
-    await createAd({ title, description, product, quantity, unit, address, observation, pickupDate }, image);
+    try {
+      await createAd({ title, description, product, quantity, unit, address, observation, pickupDate }, image);
+      Swal.fire({
+        title: "Success!",
+        text: "Your ad has been created.",
+        icon: "success",
+      });
 
-    // Reset form fields after submission
-    setImage(null);
-    setTitle("");
-    setDescription("");
-    setProduct("");
-    setQuantity("");
-    setUnit("");
-    setAddress("");
-    setObservation("");
-    setPickupDate("");
+      // Reset form fields after submission
+      setImage(null);
+      setTitle("");
+      setDescription("");
+      setProduct("");
+      setQuantity("");
+      setUnit("");
+      setAddress("");
+      setObservation("");
+      setPickupDate("");
+    } catch (error) {
+      Swal.fire({
+        title: "Failed!",
+        text: "There was a problem creating your ad.",
+        icon: "error",
+      });
+    }
   };
+
+
 
   return (
     <>
       <div className="container">
         <BackArrow />
-        <form className="create-ad-form" onSubmit={handleSubmit}>
+        <div className="create-ad-form">
           <div>
             <label>Title:</label>
             <input type="text" value={title} onChange={(e) => setTitle(e.target.value)} />
@@ -88,14 +107,17 @@ export const CreateAd = () => {
           </div>
           <div>
             <label>Observation:</label>
-            <input type="text" value={address} onChange={(e) => setObservation(e.target.value)} />
+            <input type="text" value={observation} onChange={(e) => setObservation(e.target.value)} />
           </div>
           <div>
             <label>Image:</label>
             <input type="file" onChange={(e) => setImage(e.target.files[0])} />
           </div>
-          <button type="submit">Create Ad</button>
-        </form>
+          <Button
+            label="Create Ad"
+            iconSize="small"
+            onClick={handleSubmit}
+          />        </div>
       </div>
     </>
   );
