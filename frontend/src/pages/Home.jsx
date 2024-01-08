@@ -5,7 +5,7 @@ export const Home = () => {
   return (
     <>
     <div className="text-center font-bold text-4xl tracking-tight text-primary bg-secondary sm:text-5xl md:text-6xl p-6">
-      <span className="text-green-500 mx-1 font-extrabold text-4xl relative inline-block stroke-current">
+      <span className="text-green-500 mx-1 font-extrabold text-4x1 relative inline-block stroke-current">
         simple
         <svg className="absolute -bottom-0.5 w-full max-h-1.5" viewBox="0 0 55 5" xmlns="http://www.w3.org/2000/svg"
             preserveAspectRatio="none">
@@ -13,7 +13,7 @@ export const Home = () => {
         </svg>
     </span>
       <p>and</p>
-      <span className="text-green-500 mx-1 font-extrabold text-4xl relative inline-block stroke-current">
+      <span className="text-green-500 mx-1 font-extrabold text-4x1 relative inline-block stroke-current">
         safe
         <svg className="absolute -bottom-0.5 w-full max-h-1.5" viewBox="0 0 55 5" xmlns="http://www.w3.org/2000/svg"
             preserveAspectRatio="none">

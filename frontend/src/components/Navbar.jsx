@@ -1,5 +1,5 @@
 import { Link, useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { LoginBtn } from "./LoginBtn";
 import { LogoutBtn } from "./LogoutBtn";
 import { useAuth0 } from "@auth0/auth0-react";
@@ -8,6 +8,7 @@ export const Navbar = () => {
   const { isAuthenticated } = useAuth0();
   const navigate = useNavigate();
   const [openMobileNav, setOpenMobileNav] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
 
   const onMobileNavClick = () => {
     setOpenMobileNav(!openMobileNav);
@@ -47,8 +48,23 @@ export const Navbar = () => {
       </ul>
     );
 
+  const handleScroll = () => {
+    // Check if the user has scrolled down more than 50 pixels
+    setIsScrolled(window.scrollY > 50);
+  };
+
+  useEffect(() => {
+    // Add a scroll event listener when the component mounts
+    window.addEventListener("scroll", handleScroll);
+    
+    // Remove the scroll event listener when the component unmounts
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   return (
-    <nav className="bg-gray-800 p-4">
+    <nav className={`bg-gray-800 p-4 ${isScrolled ? 'fixed top-0 w-full' : ''}`}>
       <div className="container mx-auto flex items-center justify-between">
         <div
           onClick={() => navigate("/")}
