@@ -16,7 +16,7 @@ const FMLogo = styled.img`
     height: 90px;
     width: auto;
   }
-  /* &:hover { Ändra till annan logga vid hover
+  /* &:hover { ev Ändra till annan logga vid hover
     content: url('')
   } */
 `;
@@ -42,14 +42,32 @@ const NavbarContainer = styled.nav`
 const NavbarNav = styled.ul`
   list-style: none;
   display: flex;
-  flex-direction: row;
-  margin: 20px;
-  padding: 10px;
+  flex-direction: column;
+  margin-left: auto;
+  margin-right: 5px;
+  margin-top: 2px;
+  padding: 1px;
+
+  @media ${tablet} {
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    margin: 20px;
+    padding: 10px;
+  }
+
+  @media ${desktop} {
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    margin: 20px;
+    padding: 10px;
+  }
 `;
 
 const NavItem = styled.li`
   margin: 2px;
-  display: none;
+
   @media ${tablet} {
     color: #66feff;
     font-size: 35px;
@@ -58,42 +76,37 @@ const NavItem = styled.li`
     justify-content: flex-end;
     margin-right: 15px;
     text-decoration: none;
-    &:hover {
-      text-decoration: none;
-      color: yellow;
-    }
   }
   @media ${desktop} {
     color: #66feff;
     font-size: 35px;
     font-family: "JosefinSans";
     text-decoration: none;
-    &:hover {
-      text-decoration: none;
-      color: yellow;
-    }
   }
 `;
 
 const NavbarLink = styled(Link)`
-  display: none;
+  font-size: 12px;
+  text-decoration: none;
+  color: #66feff;
+  font-family: "JosefinSans";
+  &:hover {
+    text-decoration: none;
+    color: white;
+  }
   @media ${tablet} {
-    color: #66feff;
     font-size: 35px;
-    font-family: "JosefinSans";
     display: inline-block;
     justify-content: space-around;
-    text-decoration: none;
     &:hover {
       text-decoration: none;
       color: white;
     }
   }
   @media ${desktop} {
-    color: #66feff;
     font-size: 35px;
-    font-family: "JosefinSans";
-    text-decoration: none;
+    display: inline-block;
+    justify-content: space-around;
     &:hover {
       text-decoration: none;
       color: white;

@@ -63,10 +63,9 @@ const Subheading = styled.h2`
     font-size: 30px;
   }
 `;
-//Jag vill ta bort denna men det går inte..
 const Intro = styled.p`
   font-size: 16px;
-  color: #800f2f;
+  color: #01999a;
   font-family: "JosefinSans";
   text-align: center;
 `;

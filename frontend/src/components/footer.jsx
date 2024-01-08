@@ -4,7 +4,6 @@ import styled from "styled-components";
 const tablet = `(min-width: 640px)`;
 const desktop = `(min-width: 1007px)`;
 
-// Create a styled component for the footer
 const FooterContainer = styled.footer`
   background-color: #01999a;
   padding: 2px;

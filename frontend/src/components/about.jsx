@@ -20,7 +20,7 @@ const AboutWrapper = styled.div`
 const IntroParagraph = styled.p`
   font-size: 15px;
   margin-bottom: 5px;
-  padding: 5px;
+  padding: 10px 5px 10px 5px;
   color: #01999a;
   border: solid #01999a;
   border-radius: 10px;
@@ -36,17 +36,15 @@ const IntroParagraph = styled.p`
 
 const TeamSection = styled.section`
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
 
   @media ${tablet} {
-    display: flex;
-    flex-wrap: wrap;
+    flex-direction: row;
     justify-content: space-between;
   }
   @media ${desktop} {
-    display: flex;
-    flex-wrap: wrap;
+    flex-direction: row;
     justify-content: space-between;
   }
 `;
@@ -64,6 +62,7 @@ const TeamMemberPhoto = styled.img`
   border-radius: 5px;
   height: 150px;
   width: auto;
+
   @media ${tablet} {
     max-width: 100%;
     border-radius: 5px;
@@ -136,13 +135,7 @@ const AboutPage = () => {
               <TeamMemberPhoto src={malin} alt="Malin Lundhe" />
             </a>
             <TeamMemberName>Malin Lunde</TeamMemberName>
-            <PortfolioLink
-              href="portfolio1-link"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Portfolio
-            </PortfolioLink>
+
             <TeamMemberDescription>
               Malin has an incredible brain comparable to a filing cabinet, she
               can bring out any comment made on a subject from three weeks ago
@@ -151,6 +144,14 @@ const AboutPage = () => {
               is an integral part of the team and this page would not exist
               without her!
             </TeamMemberDescription>
+            <br></br>
+            <PortfolioLink
+              href="https://malin-lunde-portfolio.netlify.app/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Portfolio
+            </PortfolioLink>
           </TeamMember>
 
           <TeamMember>
@@ -162,13 +163,7 @@ const AboutPage = () => {
               <TeamMemberPhoto src={ulrika} alt="Ulrika Gålnander" />
             </a>
             <TeamMemberName>Ulrika Gålnander</TeamMemberName>
-            <GithubLink
-              href="https://github.com/Shiqwan"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Github
-            </GithubLink>
+
             <TeamMemberDescription>
               The wrong enviroment or "mood" can kill any gourmet meal.<br></br>{" "}
               As soon as Alexandra mentioned her idea I was onboard as I
@@ -177,6 +172,23 @@ const AboutPage = () => {
               vibe, apart from looking through endless reviews - this changes
               that!
             </TeamMemberDescription>
+            <br></br>
+
+            <GithubLink
+              href="https://github.com/Shiqwan"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Github
+            </GithubLink>
+            <br></br>
+            <PortfolioLink
+              href="portfolio1-link"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Portfolio
+            </PortfolioLink>
           </TeamMember>
           <TeamMember>
             <a
@@ -187,13 +199,7 @@ const AboutPage = () => {
               <TeamMemberPhoto src={alexandra} alt="Alexandra Meija" />
             </a>
             <TeamMemberName>Alexandra Meija</TeamMemberName>
-            <PortfolioLink
-              href="https://alexandrameijaportfolio.netlify.app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Portfolio
-            </PortfolioLink>
+
             <TeamMemberDescription>
               For me a foodie is someone who really loves food, and not just the
               high- end fancy pants restaurants, but just plain good food,
@@ -209,6 +215,14 @@ const AboutPage = () => {
               friendly. <br></br>An extra neat feature is the dessert-cart which
               gets rolled out after every meal.
             </TeamMemberDescription>
+            <br></br>
+            <PortfolioLink
+              href="https://alexandrameijaportfolio.netlify.app"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Portfolio
+            </PortfolioLink>
           </TeamMember>
         </TeamSection>
         <IntroParagraph>
@@ -223,7 +237,8 @@ const AboutPage = () => {
           &nbsp; Web Developer Bootcamp of Fall 2023. <br></br>
           <br></br>This is a labour of sweat, tired knuckles and love - please
           feel free to reach out to us! <br></br> <br></br>
-          Insert email link here.
+          foodiemoodie@gmail.com
+          <br></br>
         </IntroParagraph>
       </AboutWrapper>
       <Footer />
