@@ -2,8 +2,17 @@ import styles from '../styles/DogSearch.module.css'
 import { Header } from '../components/Header.jsx'
 import { NavBar } from '../components/NavBar.jsx'
 import { Footer } from '../components/Footer.jsx'
+import { useEffect, useState } from 'react'
+import axios from 'axios'
 
 export const DogSearch = () => {
+    const [dogs, setDogs] = useState([])
+    useEffect(() => {
+        axios.get('http://localhost:3000/findDogs')
+            .then(dogs => setDogs(dogs.data))
+            .catch(err => console.log(err))
+    }, [])
+
     return (
         <>
             <div className={styles.siteContainer}>
@@ -14,12 +23,14 @@ export const DogSearch = () => {
                     </div>
                     <div className="searchbar">
                         <h1>Find your new furry friend here</h1>
-
-                        <button>small</button>
-                        <button>medium</button>
-                        <button>big</button>
-
-                        <button>Find dog</button>
+                        {dogs.map(dog => (
+                            <div className={styles.dogs}>
+                                <p>Name: {dog.name}</p>
+                                <p>Puppy: {dog.puppy}</p>
+                                <p>Special adoption {dog.special_adoption}</p>
+                                <p>Size: {dog.size}</p>
+                            </div>
+                        ))}
                     </div>
                     <Footer />
                 </div>
