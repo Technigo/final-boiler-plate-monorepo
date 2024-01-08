@@ -7,6 +7,7 @@ export const Chat = () => {
   const [selectedUserId, setSelectedUserId] = useState(null);
   const [newMessageText, setNewMessageText] = useState("");
   const [messages, setMessages] = useState([]);
+  const [messageHistory, setMessageHistory] = useState([]);
   const divUnderMessages = useRef();
 
   // console.log("username in chat: " + username);
@@ -92,6 +93,18 @@ export const Chat = () => {
     }
   }, [selectedUserId]);
 
+  useEffect(() => {
+    const ApiStuff = async () => {
+      const callAPI = await fetch(
+        `${import.meta.env.VITE_BACKUP_API}/getallmessages`
+      );
+      const jsonIT = await callAPI.json();
+      setMessageHistory(jsonIT);
+    };
+    ApiStuff();
+    console.log(JSON.stringify(messageHistory));
+  }, []);
+
   //----------------
   // const handleMessage = (e) => {
   //   console.log("New Message!", e);
@@ -109,6 +122,26 @@ export const Chat = () => {
         <div className="relative h-full">
           <div className="overflow-y-scroll absolute top-0 left-0 right-0 bottom-2">
             {messages.map((message) => (
+              <div
+                key={message._id}
+                className={
+                  message.sender === username ? "text-right" : "text-left"
+                }
+              >
+                <div
+                  className={
+                    "text-left inline-block p-2 my-2 rounded-md text-sm " +
+                    (message.sender === username
+                      ? "bg-blue-500 text-white"
+                      : "bg-white text-gray-500")
+                  }
+                >
+                  {message.text}
+                </div>
+              </div>
+              // <div>{message.text}</div>
+            ))}
+            {messageHistory.map((message) => (
               <div
                 key={message._id}
                 className={

@@ -72,7 +72,7 @@ export const UserController = {
   getUserMessages: async (req, res) => {
     // console.log(req);
     // res.json(req);
-    const { userId } = req.params;
+    const { userid } = req.params;
 
     //Might have to make up a solution for this part
     //    const userData = await getUser
@@ -80,10 +80,12 @@ export const UserController = {
     //const ourUserId = userId;
 
     const messages = await MessageModel.find({
-      sender: { $in: [userId, ourUserId] },
-      recipient: { $in: [userId, ourUserId] },
+      // sender: { $in: [userid, ourUserId] },
+      // recipient: { $in: [userid, ourUserId] },
+      sender: { $in: userid },
+      recipient: { $in: userid },
     })
-      .sort({ createdAt: 1 })
+      .sort({ createdAt: "ascending" })
       .exec();
     res.json(messages);
   },
@@ -91,7 +93,7 @@ export const UserController = {
   getAllMessages: async (req, res) => {
     try {
       const messages = await MessageModel.find()
-        .sort({ createdAt: "desc" })
+        .sort({ createdAt: "ascending" })
         .exec();
       res.json(messages);
     } catch (error) {
