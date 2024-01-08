@@ -1,6 +1,7 @@
 import { FaLinkedin, FaGithub, FaSlack } from "react-icons/fa";
 import styled from "styled-components";
 
+// Styled components for social media links
 const SocialButtonWrapper = styled.div`
   display: flex;
   gap: 24px;
@@ -31,6 +32,7 @@ const SrOnly = styled.span`
   border: 0;
 `;
 
+// Links for Anna's and Susanne's social media profiles
 const annaLinks = [
   {
     label: "LinkedIn",
@@ -67,11 +69,14 @@ const susanneLinks = [
   },
 ];
 
+// SocialMediaLinks component to display social media buttons
 export const SocialMediaLinks = ({ person, footerStyle }) => {
+  // Choose social media links based on the person (Anna or Susanne)
   const linksToDisplay = person === "Anna" ? annaLinks : susanneLinks;
 
   return (
     <SocialButtonWrapper>
+      {/* Display each social media button */}
       {linksToDisplay.map((link, index) => (
         <SocialButton
           key={index}
@@ -82,7 +87,9 @@ export const SocialMediaLinks = ({ person, footerStyle }) => {
           className={"social-link-${link.label.toLowerCase()}"}
           style={footerStyle}
         >
+          {/* Display social media icon */}
           {link.icon}
+          {/* Hide the label for screen readers */}
           <SrOnly>{link.label}</SrOnly>
         </SocialButton>
       ))}

@@ -1,5 +1,6 @@
 import styled from "styled-components";
 
+// Styled component for the button
 const StyledButton = styled.div`
   background-color: var(--secondaryColor);
   color: #fff;
@@ -15,15 +16,6 @@ const StyledButton = styled.div`
     background-color: #899b64;
   }
 `;
-
-// Mounta knappen enligt nedan där den behövs!
-{
-  // <Button
-  //   onClick={onClick}
-  //   className="YourClassName"
-  //   buttonName="YourButtonText"
-  // />;
-}
 
 // Button component to be used in other components
 export const Button = ({ buttonName, className, onClick }) => {

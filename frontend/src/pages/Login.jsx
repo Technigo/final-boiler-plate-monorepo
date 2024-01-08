@@ -1,7 +1,4 @@
-//import LogoText from "../components/LogoText";
-//import { Link } from "react-router-dom";
-import { userStore } from "../stores/userStore"; // Make sure this is correctly imported
-// Import the 'useState' and 'useNavigate' hooks from 'react'.
+import { userStore } from "../stores/userStore";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Button } from "../components/Buttons/Button";
@@ -11,7 +8,6 @@ const StyledIntro = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* margin: 0 30px 30px 30px; */
 
   p {
     display: flex;
@@ -33,10 +29,10 @@ const StyledLoginField = styled.div`
   margin: 20px;
 
   input {
-    margin-bottom: 10px; /* Add some space between the input fields */
-    height: 30px; /* Set the height of the input fields */
-    border-bottom: 1px solid var(--secondaryColor); /* Add a bottom border to the input fields */
-    width: 100%; /* Set the width of the input fields */
+    margin-bottom: 10px;
+    height: 30px;
+    border-bottom: 1px solid var(--secondaryColor);
+    width: 100%;
     padding-left: 5px;
   }
 `;
@@ -88,12 +84,12 @@ export const Login = () => {
   // Render the component content.
   return (
     <>
-      {/* <LogoText /> */}
+      {/* Display the introduction. */}
       <StyledIntro>
-        {/* Display the heading and paragraphs. */}
         <h2>{text.heading}</h2>
         <p>{text.intro}</p>
         <p>{text.p}</p>
+        {/* Create the login form */}
         <StyledLoginField>
           <div className="user-login">
             {/* Create input fields for 'username' and 'password' and associate them with state variables. */}
@@ -108,6 +104,12 @@ export const Login = () => {
               placeholder="Password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
+              onKeyDown={(e) => {
+                if (e.key === "Enter") {
+                  // If the user presses the 'Enter' key, call the 'onLoginClick' function.
+                  onLoginClick();
+                }
+              }}
             />
             {/* Create a button for logging in and attach the 'onLoginClick' event handler. */}
             <Button
@@ -124,4 +126,4 @@ export const Login = () => {
 
 // SUMMARY
 
-// This code defines the Login component, which handles user login functionality. It imports necessary components, hooks, and the user store, and it defines state variables for username and password. The component also provides a form for entering login credentials, handles the login button click event, and uses React Router to navigate between login and sign-up routes. Additionally, it renders text content and the 'LogoText' component.
+// The Login component handles user login functionality. It imports necessary components, hooks, and the user store. State variables manage username and password. The component renders a form for login credentials and handles the login button click event. React Router is used for navigation between routes. Additionally, it renders introductory text.

@@ -68,7 +68,6 @@ export const FilterTaskFeed = () => {
   };
 
   useEffect(() => {
-    console.log("Category:", category, "Area:", area);
     filterTasks(category, area);
   }, [category, area]);
 
