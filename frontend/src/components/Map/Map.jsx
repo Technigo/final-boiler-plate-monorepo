@@ -10,7 +10,6 @@ import {
   Autocomplete,
 } from "@react-google-maps/api";
 import markerIcon from "../../assets/marker.png";
-
 import "./Map.css";
 
 const libraries = ["places"];
@@ -23,6 +22,31 @@ const styles = {
       elementType: "labels.text.stroke",
       stylers: [{ color: "#f5f1e6" }],
     },
+    {
+      featureType: "poi",
+      stylers: [{ visibility: "off" }],
+    },
+    {
+      featureType: "poi.business",
+      stylers: [{ visibility: "off" }],
+    },
+    {
+      featureType: "poi.medical",
+      stylers: [{ visibility: "off" }],
+    },
+    {
+      featureType: "poi.place_of_worship",
+      stylers: [{ visibility: "off" }],
+    },
+    {
+      featureType: "poi.school",
+      stylers: [{ visibility: "off" }],
+    },
+    {
+      featureType: "poi.sports_complex",
+      stylers: [{ visibility: "off" }],
+    },
+
     {
       featureType: "administrative",
       elementType: "geometry.stroke",
