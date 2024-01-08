@@ -1,14 +1,15 @@
 .the-movie-list {
 	display: grid;
 	grid-template-columns: repeat(4, 1fr);
-	gap: 15px;
+	gap: 30px;
 	margin: 10px;
 }
 
 .the-movie-item {
-	border: 2px solid rgb(231, 224, 224);
 	width: 100%;
 	height: 100%;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.7);
+	padding: 10px;
 }
 .movie-item {
 	text-align: center;

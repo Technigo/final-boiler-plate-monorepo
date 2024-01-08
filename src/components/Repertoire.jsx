@@ -25,37 +25,35 @@ export const Repertoire = () => {
 
 
   return (
-    <div className="the-repertoire">
+    <div className='the-repertoire'>
       <h4>Repertoire</h4>
-      <div className="list">
-
-        {movies && movies.map((movie) => (
-          <div className="title" key={movie._id.$oid}>
-            {/* Movie Title */}
-            <ul>
-              <li >{movie.title} :</li>
-            </ul>
-          </div>
-        ))}
-
+      <div className='the-list'>
+        <div className='the-title'>
+          {movies && movies.map((movie) => (
+            <div key={movie._id.$oid}>
+              {/* Movie Title */}
+              <ul>
+                <li >{movie.title} :</li>
+              </ul>
+            </div>
+          ))}</div>
         {/* Showtimes */}
-        {showTimes && showTimes.map((showTime) => (
-          <div className='the-showtime' key={showTime._id.$oid}>
-            <ul>
-              <li className="time">
-                {showTime.startingTime.map((time, index) => (
-                  <span key={time}>
-                    {index > 0 && '\u00A0\u00A0\u00A0\u00A0'} {/* Dodaj 4 spacje przed godziną, jeśli to nie pierwsza godzina */}
-                    {time}:00
-                  </span>
-                ))}
-              </li>
-
-
-            </ul>
-          </div>
-        ))}
-
+        <div className='the-showtime'>
+          {showTimes && showTimes.map((showTime) => (
+            <div key={showTime._id.$oid}>
+              <ul>
+                <li>
+                  {showTime.startingTime.map((time, index) => (
+                    <span key={time}>
+                      {index > 0 && '\u00A0\u00A0\u00A0\u00A0'} {/*Add 4 spaces before the hour if it is not the first hour */}
+                      {time}:00
+                    </span>
+                  ))}
+                </li>
+              </ul>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   )

@@ -178,41 +178,5 @@
 		"rating": 3,
 		"IMDBRating": 7.258,
 		"__v": 0
-	},
-	{
-		"_id": {
-			"$oid": "6585c9ac7da48f52d68b575c"
-		},
-		"title": "Chicken Run: Dawn of the Nugget",
-		"director": "WHO?",
-		"duration": 100,
-		"description": "A band of fearless chickens flock together to save poultry-kind from a…",
-		"genre": ["Genre1", "Genre2"],
-		"releaseDate": {
-			"$date": "2023-12-08T00:00:00.000+00:00"
-		},
-		"posterUrl": "/exNtEY8QUuQh9e23wSQjkPxKIU3.jpg",
-		"backdropUrl": "/9jPoyxjiEYPylUIMI3Ntixf8z3M.jpg",
-		"rating": 3,
-		"IMDBRating": 7.635,
-		"__v": 0
-	},
-	{
-		"_id": {
-			"$oid": "6585c9ac7da48f52d68b5768"
-		},
-		"title": "The Marvels",
-		"director": "WHO?",
-		"duration": 100,
-		"description": "Carol Danvers, aka Captain Marvel, has reclaimed her identity from the…",
-		"genre": ["Genre1", "Genre2"],
-		"releaseDate": {
-			"$date": "2023-11-08T00:00:00.000+00:00"
-		},
-		"posterUrl": "/Ag3D9qXjhJ2FUkrlJ0Cv1pgxqYQ.jpg",
-		"backdropUrl": "/feSiISwgEpVzR1v3zv2n2AU4ANJ.jpg",
-		"rating": 3,
-		"IMDBRating": 6.476,
-		"__v": 0
 	}
 ]
