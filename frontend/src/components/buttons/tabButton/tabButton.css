@@ -2,17 +2,18 @@
     display: inline-flex;
     background-color: #dbdbdb;
     border-radius: 50px;
+    margin-top: 15px;
 }
 
 .tab-button-ingredients {
-    border: none; 
+    border: none;
     background: transparent;
     border-right: solid white 5px;
-    padding: 1em; 
+    padding: 1em;
 }
 
 .tab-button-method {
-    border: none; 
+    border: none;
     background: transparent;
-    padding: 1em; 
+    padding: 1em;
 }

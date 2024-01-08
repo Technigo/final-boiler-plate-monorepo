@@ -5,7 +5,7 @@ import { recipeStore } from '../stores/recipeStore';
 // Define the PromptForm component
 export const PromptForm = () => {
   // Destructure the addNewRecipe function from the recipeStore
-  const { inputRecipe, setInputRecipe, fetchNewRecipe, generateRecipe, errorMessageGeneration, isVegetarian, setIsVegetarian, isGlutenFree, setIsGlutenFree, isLactoseFree, setIsLactoseFree } = recipeStore()
+  const { inputRecipe, setInputRecipe, fetchNewRecipe, generateRecipe, isVegetarian, setIsVegetarian, isGlutenFree, setIsGlutenFree, isLactoseFree, setIsLactoseFree } = recipeStore()
 
 
   // Define the form submission handler function

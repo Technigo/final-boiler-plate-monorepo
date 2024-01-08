@@ -3,7 +3,7 @@ import { Route } from "react-router-dom";
 // Import various page components used as route elements.
 import { Home } from "../pages/Home";
 import { About } from "../pages/About";
-import {RecipeDetails} from "../pages/recipeDetails/RecipeDetails"
+import { RecipeDetails } from "../pages/recipeDetails/RecipeDetails"
 import { NotFound } from "../pages/NotFound";
 
 // Define the 'routes' variable as a JSX expression.
