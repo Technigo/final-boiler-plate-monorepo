@@ -44,13 +44,6 @@ export const taskSchema = new Schema(
     volunteers: {
       type: [{ type: Schema.Types.ObjectId, ref: "user" }], //  The user's task ids
     },
-
-    // volunteers: [
-    //   {
-    //     user: { type: Schema.Types.ObjectId, ref: "user" },
-    //     username: String,
-    //   },
-    // ],
   },
   {
     timestamps: true,

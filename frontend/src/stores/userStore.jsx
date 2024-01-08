@@ -17,6 +17,9 @@ export const userStore = create((set, get) => ({
   // Define a function to set the password state.
   setPassword: (password) => set({ password }),
 
+  email: "",
+  setEmail: (email) => set({ email }),
+
   // Initialize accessToken state with null.
   accessToken: localStorage.getItem("accessToken") || null,
   // Define a function to set the accessToken state.
@@ -28,10 +31,10 @@ export const userStore = create((set, get) => ({
   setIsLoggedIn: (isLoggedIn) => set({ isLoggedIn }),
 
   // FUNCTION TO REGISTER USERS
-  handleSignup: async (username, password) => {
+  handleSignup: async (username, password, email) => {
     // Check if required fields are provided and display an alert if not.
-    if (!username || !password) {
-      alert("Please enter username and password");
+    if (!username || !password || !email) {
+      alert("Please enter username, password and email");
       return;
     }
 
@@ -42,7 +45,7 @@ export const userStore = create((set, get) => ({
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ username, password }),
+        body: JSON.stringify({ username, password, email }),
       });
 
       // Parse the response data as JSON.
@@ -52,6 +55,7 @@ export const userStore = create((set, get) => ({
 
         set({
           username,
+          email,
           accessToken: data.response.accessToken,
           isLoggedIn: true,
         });
@@ -59,10 +63,8 @@ export const userStore = create((set, get) => ({
         localStorage.setItem("accessToken", data.response.accessToken);
         localStorage.setItem("username", username);
         // Display a success alert.
-        console.log("Signing up with:", username, password);
-        alert("Signup successful!");
 
-        //console.log("Signing up with:", username);
+        alert("Signup successful!");
       } else {
         // Display an error message from the server or a generic message.
         alert(data.response || "Signup failed");

@@ -13,13 +13,13 @@ const generateToken = (user) => {
 
 // Register a new user in the database
 export const registerUserController = asyncHandler(async (req, res) => {
-  const { username, password } = req.body;
+  const { username, password, email } = req.body;
 
   try {
-    // Check if the username or password is missing
-    if (!username || !password) {
+    // Check if the username, password or email is missing
+    if (!username || !password || !email) {
       // if so, set http status to a 401 code
-      res.status(401).json({ error: "Missing username or password" }); // 401 is unauthorized
+      res.status(401).json({ error: "Missing username, password or email" }); // 401 is unauthorized
     }
 
     // Check if the username already exists in the database
@@ -30,6 +30,14 @@ export const registerUserController = asyncHandler(async (req, res) => {
         .json({ error: `User with username '${username}' already exists` });
     }
 
+    // Check if the email already exists in the database
+    const existingEmail = await UserModel.findOne({ email });
+    if (existingEmail) {
+      res
+        .status(409) // 409 is conflict, a user with the same username already exists.
+        .json({ error: `User with email '${email}' already exists` });
+    }
+
     // Hash the user's password using bcrypt. GensaltSync generates a salt, which is a random string of characters that is used to hash the password. The salt is then used to hash the password using the hashSync method. The salt is stored in the database along with the hashed password.
     const salt = bcrypt.genSaltSync(10);
     const hashedPassword = bcrypt.hashSync(password, salt);
@@ -38,6 +46,7 @@ export const registerUserController = asyncHandler(async (req, res) => {
     const newUser = new UserModel({
       username,
       password: hashedPassword,
+      email,
     });
     console.log("New User Object:", newUser);
     // Save the new user in the database
@@ -48,6 +57,7 @@ export const registerUserController = asyncHandler(async (req, res) => {
       success: true,
       response: {
         username: newUser.username, // The username is sent back to the client
+        email: newUser.email,
         id: newUser._id, // The user's id is sent back to the client
         accessToken: generateToken(newUser._id), // A JWT token is generated and sent back to the client
       },

@@ -12,13 +12,12 @@ export const getTasksController = asyncHandler(async (req, res) => {
       .populate({
         // Populate the user object
         path: "user",
-        //select: "username",
       })
       .populate({
         // Populate the volunteers object
         path: "volunteers",
         match: { _id: { $ne: userId } }, // Exclude the creator from the volunteers
-        //select: "username",
+        select: "username email",
       });
 
     //console.log("tasks", tasks);
@@ -48,7 +47,13 @@ export const getUserTasksController = asyncHandler(async (req, res) => {
       .populate({
         path: "user", // populate the user object
         match: { _id: userId }, // match the user id with the user id from the db
+      })
+      .populate({
+        // Populate the volunteers object
+        path: "volunteers",
+        select: "username email",
       });
+
     const userTasks = tasks.filter((task) => task.user !== null); // Filter out tasks that is not connected to a user
 
     res.json(userTasks);
@@ -70,6 +75,11 @@ export const getVolunteeredTasksController = asyncHandler(async (req, res) => {
       .populate({
         path: "user",
         select: "username",
+      })
+      .populate({
+        // Populate the volunteers object
+        path: "volunteers",
+        select: "username email",
       });
 
     res.json(tasks);
@@ -121,17 +131,7 @@ export const addVolunteerController = asyncHandler(async (req, res) => {
     }
 
     const userId = req.user._id; // Get the user ID from the request object
-    //const username = req.user.username; // Get the username from the user object
-
-    // const isVolunteer = task.volunteers.some(
-    //   (volunteer) => volunteer.user.toString() === userId.toString()
-    // );
-
-    // if (isVolunteer) {
-    //   return res
-    //     .status(400)
-    //     .json({ message: "User is already a volunteer for this Need" });
-    // }
+    const user = await UserModel.findById(userId);
 
     //Check if the user is already a volunteer for this task
     if (task.volunteers.includes(userId)) {
@@ -140,7 +140,7 @@ export const addVolunteerController = asyncHandler(async (req, res) => {
         .json({ message: "User is already a volunteer for this Need" });
     }
 
-    task.volunteers.push({ user: userId, username }); // Add user and username to the volunteers array
+    task.volunteers.push(user); // Add user and username to the volunteers array
     const savedTask = await task.save(); // Save the task to the database
     res.json(savedTask); // Respond with the updated task in JSON format
   } catch (error) {

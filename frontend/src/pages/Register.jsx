@@ -57,6 +57,9 @@ export const Register = () => {
   const [username, setUsername] = useState("");
 
   const [password, setPassword] = useState("");
+
+  const [email, setEmail] = useState("");
+
   // Initialize the 'navigate' function from React Router.
   const navigate = useNavigate();
 
@@ -65,15 +68,15 @@ export const Register = () => {
 
   // Function to handle the click event of the signup button.
   const onSignupClick = async () => {
-    if (!username || !password) {
+    if (!username || !password || !email) {
       // Display an alert if any of the required fields are empty.
-      alert("Please enter username and password");
+      alert("Please enter username, password and email");
       return;
     }
     try {
       // Call the 'handleSignup' function from 'userStore' with 'username' and 'password' parameters.
-      await storeHandleSignup(username, password);
-      if (username && password) {
+      await storeHandleSignup(username, password, email);
+      if (username && password && email) {
         // If the signup is successful, navigate to the task route ("/tasks").
         console.log("navigate");
         navigate("/tasks"); // Replace with your desired path
@@ -120,6 +123,13 @@ export const Register = () => {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
+            <input
+              type="email"
+              placeholder="Email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+
             {/* Create a button for signing up and attach the 'onSignupClick' event handler. */}
             <Button
               onClick={onSignupClick}
