@@ -1,18 +1,18 @@
 import { SocialMediaLinks } from "./SocialMediaLinks";
 import styled from "styled-components";
 
-/* Styling for the footer */
+// Styling for the footer
 const StyledFooter = styled.div`
   display: flex;
   justify-content: center;
   flex-direction: column;
   padding: 20px 0;
   text-align: center;
-  /* position: sticky; */
+  // position: fixed;
+  // position: sticky;
   position: -webkit-sticky;
-  /* bottom: 0; */
+  // bottom: 0;
   width: 100%;
-
   background: -webkit-linear-gradient(
     45deg,
     #633d57,
@@ -31,7 +31,6 @@ const FooterText = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* color: #f8f8f8; */
   color: #fff;
   font-size: 16px;
 
@@ -50,23 +49,6 @@ const Contact = styled.div`
   gap: 10px;
   margin: 10px 0;
 `;
-
-// const Copyright = styled.div`
-//   display: flex;
-//   flex-direction: column;
-//   text-align: center;
-//   gap: 4px;
-
-//   p {
-//     display: flex;
-//   }
-
-//   img.logo-small {
-//     min-width: 40px;
-//     max-width: 45px;
-//     padding-left: 7px;
-//   }
-// `;
 
 // Define the Footer component as a functional component.
 export const Footer = () => {
@@ -90,17 +72,7 @@ export const Footer = () => {
             </Contact>
           </div>
         </div>
-        {/* <Copyright> */}
         <p>Web Development students at Technigo | January 2024</p>
-        {/* <a
-            href="https://www.technigo.io"
-            target="_blank"
-            title="Technigo"
-            rel="noreferrer" 
-          >*/}
-        {/* <img className="logo-small" src={logo} alt="Technigo logo" /> */}
-        {/* </a> */}
-        {/* </Copyright> */}
       </FooterText>
     </StyledFooter>
   );

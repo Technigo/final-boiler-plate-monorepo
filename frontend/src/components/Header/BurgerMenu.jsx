@@ -57,7 +57,6 @@ export const BurgerMenu = () => {
 
   // Function to handle the click event of the logout button.
   const onLogoutClick = () => {
-    console.log("Logout button clicked"); // For debugging
     storeHandleLogout();
     // Additional logic after logout can be added here.
     alert("Log out successful");

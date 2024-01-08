@@ -1,5 +1,6 @@
 import styled from "styled-components";
 
+// Styled button with an icon
 const StyledIconButton = styled.button`
   display: flex;
   gap: 8px;
@@ -23,14 +24,7 @@ const StyledIcon = styled.img`
   height: 25px;
 `;
 
-// Mounta knappen enligt nedan där den behövs!
-// <Button
-//   className="YourClassName"
-//   buttonName="YourButtonText"
-//   iconAlt="YourAltText"
-// />;
-
-// Radera bilddelen om det aldrig kommer till användning!
+// IconButton component combining the button and icon
 export const IconButton = ({
   buttonName,
   iconAlt,

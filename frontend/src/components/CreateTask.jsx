@@ -1,4 +1,3 @@
-// Import necessary dependencies and the 'taskStore' from the store.
 import { useState } from "react";
 import { taskStore } from "../stores/taskStore";
 import { Button } from "../components/Buttons/Button";
@@ -41,7 +40,6 @@ const StyledSelects = styled.select`
   width: 120px;
   border: 1px solid var(--secondaryColor);
   border-radius: 20px;
-  /* gap: 10px; */
   padding: 5px;
 `;
 
@@ -55,9 +53,9 @@ const StyledTaskInput = styled.textarea`
   overflow-y: auto; /* Enable vertical scrollbar when content exceeds height */
 
   &::placeholder {
-    word-wrap: break-word; /* Wrap long words */
-    text-align: left; /* Align text to the left */
-    vertical-align: top; /* Align text to the top */
+    word-wrap: break-word;
+    text-align: left;
+    vertical-align: top;
   }
 
   @media screen and (min-width: 600px) {
@@ -69,7 +67,6 @@ const StyledTaskInput = styled.textarea`
 const ErrorCounterWrapper = styled.div`
   display: flex;
   justify-content: flex-end;
-  //margin: 0 0 20px;
   padding: 0;
   gap: 25px;
 
@@ -99,14 +96,14 @@ const StyledDescriptionError = styled.p`
 
 // Define the 'CreateTask' functional component.
 export const CreateTask = () => {
-  // Initialize state variable 'task' using 'useState' to store the task input.
+  // State variables to handle task creation
   const [task, setTask] = useState("");
   const [category, setCategory] = useState("");
   const [area, setArea] = useState("");
   const [description, setDescription] = useState("");
   const [titleError, setTitleError] = useState("");
   const [descriptionError, setDescriptionError] = useState("");
-  const [taskLength, setTaskLength] = useState(0); // State to track task length
+  const [taskLength, setTaskLength] = useState(0);
 
   // Access the 'addTaskToServer' function from the 'taskStore'.
   const { addTaskToServer } = taskStore();
@@ -114,7 +111,7 @@ export const CreateTask = () => {
   // Function to update the 'task' state with the value entered in the input field.
   const taskTitle = (e) => {
     const newTitle = e.target.value; // Get the value entered in the input field.
-    setTask(newTitle); // Update the 'task' state with the value entered in the input field.
+    setTask(newTitle);
 
     // Check the length of the title and update the error state
     if (newTitle.length < 3 || newTitle.length > 30) {
@@ -125,6 +122,7 @@ export const CreateTask = () => {
     }
   };
 
+  // Functions to handle category and area selection
   const taskCategory = (e) => {
     // Get the value entered in the input field.
     setCategory(e.target.value); // Update the 'task' state with the value entered in the input field.
@@ -134,9 +132,9 @@ export const CreateTask = () => {
     setArea(e.target.value); // Update the 'task' state with the value entered in the input field.
   };
 
+  // Function to handle task description input
   const taskDescription = (e) => {
-    // Get the value entered in the input field.
-    const newDescription = e.target.value; // Update the 'task' state with the value entered in the input field.
+    const newDescription = e.target.value; // Get the value entered in the input field.
     setDescription(newDescription); // Update the 'task' state with the value entered in the input field.
     setTaskLength(newDescription.length); // Update task length
 
@@ -159,7 +157,6 @@ export const CreateTask = () => {
     ) {
       if (titleError || descriptionError) {
         // Don't proceed if there is a description error
-        // window.alert("Please adjust the length of the text before submitting.");
         return;
       }
       // Create a new task object.
@@ -188,7 +185,7 @@ export const CreateTask = () => {
         Share your need with the community! After posting, you will see the
         status of your post in your profile page.
       </p>
-      {/* Create an input field for entering the task description. */}
+      {/* Create an input field for entering the task title. */}
       <StyledTaskTitleInput
         className="task-input"
         type="text"
@@ -199,6 +196,7 @@ export const CreateTask = () => {
       {/* Title error message */}
       {titleError && <StyledTitleError>{titleError}</StyledTitleError>}
       <CreateTaskSelects>
+        {/* Create dropdowns for choosing category and area. */}
         <StyledSelects
           className="task-select"
           type="select"

@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
+// Styled Link as a button
 const StyledButton = styled(Link)`
   background-color: var(--secondaryColor);
   color: #fff;
@@ -16,14 +17,7 @@ const StyledButton = styled(Link)`
   }
 `;
 
-// Mounta knappen enligt nedan där den behövs!
-// <LinkButton
-//   to = "/YourRoute";
-//   className="YourClassName"
-//   buttonName="YourButtonText"
-// />;
-
-// Radera bilddelen om det aldrig kommer till användning!
+// LinkButton component using the styled Link as a button
 export const LinkButton = ({ to, buttonName, className, onClick }) => {
   return (
     <StyledButton to={to} className={className} onClick={onClick}>

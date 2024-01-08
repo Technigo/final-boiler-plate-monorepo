@@ -3,9 +3,7 @@ import { useEffect } from "react";
 import { taskStore } from "../stores/taskStore";
 import { userStore } from "../stores/userStore";
 import { useNavigate } from "react-router-dom";
-// import { CreateTask } from "../components/CreateTask";
 import { FeedTaskCard } from "../components/TaskCards/FeedTaskCard";
-// import { FilterTaskFeed } from "../components/FilterTaskFeed";
 import { TaskTabs } from "../components/Tabs/TaskTabs";
 import styled from "styled-components";
 
@@ -110,14 +108,6 @@ export const Tasks = () => {
     fetchTasks();
   }, [fetchTasks, accessToken]);
 
-  // Access the 'handleLogout' function from the 'userStore'.
-  //const storeHandleLogout = userStore((state) => state.handleLogout);
-
-  // Get 'isLoggedIn' and 'accessToken' from the 'userStore'.
-  //const { isLoggedIn } = userStore();
-  //console.log(isLoggedIn);
-  //console.log(accessToken);
-
   // useEffect hook to check user authentication status.
   useEffect(() => {
     if (!isLoggedIn) {
@@ -126,14 +116,6 @@ export const Tasks = () => {
       navigate("/login");
     }
   }, [isLoggedIn, navigate]);
-
-  // // Function to handle the click event of the logout button.
-  // const onLogoutClick = () => {
-  //   storeHandleLogout();
-  //   // Additional logic after logout can be added here.
-  //   alert("Log out successful");
-  //   navigate("/"); // You can change this to the login route
-  // };
 
   // Render the component content.
   return (

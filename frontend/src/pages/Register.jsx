@@ -1,12 +1,10 @@
-// Import necessary components, hooks, and stores.
-//import LogoText from "../components/LogoText";
 import { userStore } from "../stores/userStore";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-//import { Link } from "react-router-dom";
 import { Button } from "../components/Buttons/Button";
 import styled from "styled-components";
 
+// Styling for the Register component
 const StyledRegister = styled.div`
   display: flex;
   flex-direction: column;
@@ -16,7 +14,6 @@ const StyledRegister = styled.div`
 
 const StyledIntroReg = styled.div`
   text-align: center;
-  /* margin: 0 30px 30px 30px; */
 
   h2 {
     text-align: center;
@@ -43,19 +40,18 @@ const StyledRegField = styled.div`
   margin: 20px;
 
   input {
-    margin-bottom: 10px; /* Add some space between the input fields */
-    height: 30px; /* Set the height of the input fields */
-    border-bottom: 1px solid var(--secondaryColor); /* Add a bottom border to the input fields */
-    width: 100%; /* Set the width of the input fields */
+    margin-bottom: 10px;
+    height: 30px;
+    border-bottom: 1px solid var(--secondaryColor);
+    width: 100%;
     padding-left: 5px;
   }
 `;
 
 // Define the 'Register' functional component.
 export const Register = () => {
-  // Initialize state variables for 'username', and 'password' using 'useState'.
+  // Initialize state variables for 'username' and 'password' using 'useState'.
   const [username, setUsername] = useState("");
-
   const [password, setPassword] = useState("");
 
   const [email, setEmail] = useState("");
@@ -78,12 +74,10 @@ export const Register = () => {
       await storeHandleSignup(username, password, email);
       if (username && password && email) {
         // If the signup is successful, navigate to the task route ("/tasks").
-        console.log("navigate");
-        navigate("/tasks"); // Replace with your desired path
+        navigate("/tasks");
       }
     } catch (error) {
       // Handle any errors that occur during signup and display an alert.
-      console.error("Signup error:", error);
       alert("An error occurred during signup");
     }
   };
@@ -98,51 +92,53 @@ export const Register = () => {
 
   // Render the component content.
   return (
-    <>
-      <StyledRegister>
-        {/* Render the 'LogoText' component. */}
-        {/* <LogoText /> */}
-        <StyledIntroReg>
-          {/* Display the heading and paragraphs. */}
-          <h2>{text.heading}</h2>
-          <p>{text.intro}</p>
-          <p>{text.p}</p>
-        </StyledIntroReg>
-        <StyledRegField>
-          <div className="user-registration">
-            {/* Create input fields for 'username' and 'password' and associate them with state variables. */}
-            <input
-              type="text"
-              placeholder="Username"
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
-            />
-            <input
-              type="password"
-              placeholder="Password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            />
-            <input
-              type="email"
-              placeholder="Email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            />
+    <StyledRegister>
+      <StyledIntroReg>
+        {/* Display the heading and paragraphs. */}
+        <h2>{text.heading}</h2>
+        <p>{text.intro}</p>
+        <p>{text.p}</p>
+      </StyledIntroReg>
+      <StyledRegField>
+        <div className="user-registration">
+          {/* Create input fields for 'username' and 'password' and associate them with state variables. */}
+          <input
+            type="text"
+            placeholder="Username"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+          />
+          <input
+            type="password"
+            placeholder="Password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            onKeyDown={(e) => {
+              if (e.key === "Enter") {
+                // Trigger signup on pressing 'Enter' key.
+                onSignupClick();
+              }
+            }}
+          />
+          <input
+            type="email"
+            placeholder="Email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
 
-            {/* Create a button for signing up and attach the 'onSignupClick' event handler. */}
-            <Button
-              onClick={onSignupClick}
-              className="signUp-btn"
-              buttonName="Create profile"
-            />
-          </div>
-        </StyledRegField>
-      </StyledRegister>
-    </>
+          {/* Create a button for signing up and attach the 'onSignupClick' event handler. */}
+          <Button
+            onClick={onSignupClick}
+            className="signUp-btn"
+            buttonName="Create profile"
+          />
+        </div>
+      </StyledRegField>
+    </StyledRegister>
   );
 };
 
 // SUMMARY
 
-// This code defines the Register component, which handles user registration functionality. It imports necessary components, hooks, and the user store, and it defines state variables for email, username, and password. The component provides a form for entering registration details, handles the signup button click event, and uses React Router to navigate between login and sign-up routes. Additionally, it renders text content and the 'LogoText' component.
+// The Register component handles user registration functionality. It imports necessary components, hooks, and the user store. State variables manage username and password. The component renders a form for registration details and handles the signup button click event. React Router is used for navigation between routes. Additionally, it renders introductory text.

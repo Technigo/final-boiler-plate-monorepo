@@ -9,7 +9,7 @@ export const TaskTabs = () => {
   const { fetchTasks } = taskStore();
 
   const handleReset = () => {
-    fetchTasks(); // Reset tasks by invoking the resetTasks action
+    fetchTasks(); // Fetch tasks from server
   };
 
   return (

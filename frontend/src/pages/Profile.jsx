@@ -1,29 +1,25 @@
 import { userStore } from "../stores/userStore";
 import { taskStore } from "../stores/taskStore";
-import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import { useEffect } from "react";
+import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import { Button } from "../components/Buttons/Button";
 import styled from "styled-components";
 import "../components/Tabs/TabsStyling.css";
 
-// Styled component for the header container
 const HeaderContainer = styled.div`
   padding: 20px;
 `;
 
-// Styled component for the task container div
 const TasksContainer = styled.div`
   margin-top: 20px;
 `;
 
-// Styled component for the unordered list
 const StyledList = styled.ul`
   list-style-type: none;
   padding: 0;
   margin: 0;
 `;
 
-// Styled component for list items
 const StyledListItem = styled.li`
   background-color: #f8f8f8;
   border: 1px solid #ddd;
@@ -33,35 +29,38 @@ const StyledListItem = styled.li`
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 `;
 
-// Styled component for task title
 const TaskTitle = styled.div`
   font-size: 18px;
   font-weight: bold;
   margin-bottom: 5px;
 `;
 
-// Styled component for task description
 const TaskDescription = styled.div`
   color: #555;
   margin-bottom: 10px;
 `;
 
-// Styled component for "Created by" section
 const CreatedBySection = styled.div`
   font-weight: bold;
   color: #333;
 `;
 
-// Styled component for "Volunteers" section
 const VolunteersSection = styled.div`
   color: #555;
 `;
 
 export const Profile = () => {
-  const { username } = userStore(); // Destructure username from Zustand store
-  const { userTasks, fetchUserTasks, volunteeredTasks, fetchVolunteeredTasks } =
-    taskStore();
+  // Accessing data from Zustand stores
+  const { username } = userStore();
+  const {
+    userTasks,
+    fetchUserTasks,
+    volunteeredTasks,
+    fetchVolunteeredTasks,
+    deleteTaskById,
+  } = taskStore();
 
+  // Fetch user's tasks and volunteered tasks on component mount
   useEffect(() => {
     fetchUserTasks();
     fetchVolunteeredTasks();
@@ -74,7 +73,7 @@ export const Profile = () => {
   return (
     <div>
       <HeaderContainer>
-        <h2>Hi {username}!</h2>
+        <h1>Hi {username}!</h1>
         <p>
           Here you can find an overview over all the Needs you&apos;ve created
           and those you have volunteered for. Keep an eye on the{" "}
@@ -85,6 +84,7 @@ export const Profile = () => {
         </p>
       </HeaderContainer>
 
+      {/* Tabs to display different sections */}
       <Tabs>
         <TabList>
           <Tab>Your Needs</Tab>
@@ -129,16 +129,18 @@ export const Profile = () => {
 
         <TabPanel>
           <TasksContainer>
-            {/* <h3>Tasks you have volunteered to:</h3> */}
+            {/* List of tasks the user volunteered for */}
             <StyledList>
               {volunteeredTasks.map((task) => (
                 <StyledListItem key={task._id}>
+                  {/* Task details */}
                   <TaskTitle>{task.task}</TaskTitle>
                   <TaskDescription>{task.description}</TaskDescription>
                   <CreatedBySection>
+                    {/* Display task creator's username */}
                     <strong>Created by: </strong>
                     {task.user?.username || "Unknown User"}
-                    {/* Show the name of the autor or Unknown user if the task is missing username */}
+                    {/* Show the name of the author or 'Unknown User' if the task is missing username */}
                   </CreatedBySection>
                 </StyledListItem>
               ))}

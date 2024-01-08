@@ -9,10 +9,8 @@ console.log(apiEnv);
 export const taskStore = create((set) => ({
   // Initialize the tasks state with an empty array
   tasks: [], // Array of tasks
-  //originalTasks: [], // Original array of tasks
   userTasks: [], // Array of tasks created by the user
   volunteeredTasks: [], // Array of tasks volunteered by the user
-  //filteredTasks: [], // Array of tasks filtered by category and area
   // Initialize the userId state by accessing it from the userStore
   userId: userStore.userId,
 
@@ -21,9 +19,6 @@ export const taskStore = create((set) => ({
 
   // Set the tasks state to a new array of tasks
   setTasks: (tasks) => set({ tasks }),
-
-  // Function to set the original tasks
-  //setOriginalTasks: (tasks) => set({ originalTasks: tasks }),
 
   // New action to fetch all tasks
   fetchTasks: async () => {
@@ -164,15 +159,6 @@ export const taskStore = create((set) => ({
     }
   },
 
-  // resetTasks: async () => {
-  //   try {
-  //     const { originalTasks } = taskStore.getState();
-  //     set({ tasks: originalTasks });
-  //   } catch (error) {
-  //     console.error("Error resetting tasks:", error);
-  //   }
-  // },
-
   // Volunteer for a task
   addMyselfToTask: async (taskId) => {
     try {
@@ -254,8 +240,17 @@ export const taskStore = create((set) => ({
   deleteTaskById: async (id) => {
     try {
       console.log("Deleting task:", id);
-      // Remove the task from the tasks state immediately
 
+      const confirmed = window.confirm(
+        "Are you sure you want to delete this Need?"
+      );
+
+      if (!confirmed) {
+        console.log("Deletion canceled");
+        return; // If user cancels, exit the function
+      }
+
+      // Remove the task from the tasks state immediately
       set((state) => ({
         tasks: state.tasks.filter(
           (task) => task._id.toString() !== id.toString()
