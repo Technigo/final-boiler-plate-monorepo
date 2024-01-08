@@ -122,86 +122,92 @@ export const UpdateSettings = () => {
   };
 
   return (
-    <div className="container">
-      <BackArrow />
-      <h1>Update settings</h1>
-      <form onSubmit={handleUpdateSubmit} className="settings-form">
-        {/* Form fields for user details */}
-        <div className="password">
-          <label htmlFor="password">New password:</label>
-          <div className="password-input">
-            <input
-              type={type}
-              name="password"
-              id="password"
-              placeholder="leave blank to keep the same"
-              value={inputPassword}
-              onChange={handlePasswordUpdate}
-            />
-            <span onClick={handleToggle}>
-              <Icon icon={icon} size={24}/>
-            </span>
-          </div>
-        </div>
+    <div className="main-container">
+      <div className="main-wrapper">
+        <BackArrow />
+        <div className="update-settings">
+          <h1>Update settings</h1>
+          <form onSubmit={handleUpdateSubmit} className="settings-form">
+            {/* Form fields for user details */}
+            <div className="password">
+              <label htmlFor="password">New password:</label>
+              <div className="password-input">
+                <input
+                  type={type}
+                  name="password"
+                  id="password"
+                  placeholder="leave blank to keep the same"
+                  value={inputPassword}
+                  onChange={handlePasswordUpdate}
+                />
+                <span onClick={handleToggle}>
+                  <Icon icon={icon} size={24}/>
+                </span>
+              </div>
+            </div>
 
-        <div className="form-field">
-          <label htmlFor="email">New email:</label>
-          <input
-            type="email"
-            name="email"
-            id="email"
-            placeholder="leave blank to keep the same"
-            value={inputEmail}
-            onChange={handleEmailUpdate}
-          />
-        </div>
+            <div className="form-field">
+              <label htmlFor="email">New email:</label>
+              <input
+                type="email"
+                name="email"
+                id="email"
+                placeholder="leave blank to keep the same"
+                value={inputEmail}
+                onChange={handleEmailUpdate}
+              />
+            </div>
 
-        <div className="form-field">
-          <label htmlFor="location">New location:</label>
-          <input
-            type="text"
-            name="location"
-            id="location"
-            placeholder="leave blank to keep the same"
-            value={inputLocation}
-            onChange={handleLocationUpdate}
-          />
-        </div>
+            <div className="form-field">
+              <label htmlFor="location">New location:</label>
+              <input
+                type="text"
+                name="location"
+                id="location"
+                placeholder="leave blank to keep the same"
+                value={inputLocation}
+                onChange={handleLocationUpdate}
+              />
+            </div>
 
-        <div className="form-field">
-          <label htmlFor="introduction">New introduction:</label>
-          <textarea
-            name="introduction"
-            id="introduction"
-            placeholder="leave blank to keep the same"
-            rows={4}
-            cols={50}
-            value={inputIntroduction}
-            onChange={handleIntroductionUpdate}
-          />
-        </div>
+            <div className="form-field">
+              <label htmlFor="introduction">New introduction:</label>
+              <textarea
+                name="introduction"
+                id="introduction"
+                placeholder="leave blank to keep the same"
+                rows={4}
+                cols={50}
+                value={inputIntroduction}
+                onChange={handleIntroductionUpdate}
+              />
+            </div>
 
-        <div className="form-field">
-          <label htmlFor="image">Update profile image:</label>
-          <input type="file" onChange={handleImageUpdate} />
-        </div>
+            <div className="form-field">
+              <label htmlFor="image">Update profile image:</label>
+              <input type="file" onChange={handleImageUpdate} />
+            </div>
 
-        <div className="settings-actions">
-          <Button
-            icon="./src/assets/icons/save2.svg"
-            iconSize="button" 
-            label="Save changes"
-            invertIcon={true}
-          />
-          <Button
-            icon="./src/assets/icons/trash.svg"
-            iconSize="button" 
-            label="Cancel"
-            onClick={handleCancelClick}
-            invertIcon={true}
-          />
+            <div className="settings-actions">
+              <Button
+                icon="./src/assets/icons/save2.svg"
+                iconSize="button" 
+                label="Save changes"
+                invertIcon={true}
+              />
+              <Button
+                icon="./src/assets/icons/trash.svg"
+                iconSize="button" 
+                label="Cancel"
+                onClick={handleCancelClick}
+                invertIcon={true}
+              />
+            </div>
+          </form>
         </div>
-      </form>
+        
+      </div>
+      
     </div>
   )
 }

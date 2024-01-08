@@ -54,39 +54,43 @@ export const ProfileSettings = () => {
   };
 
   return (
-    <div className="container">
-      <BackArrow />
-      <h1>Your settings</h1>
-      {profileData.image ? (
-        <img src={profileData.image} alt={username} className="profile-img" />
-      ) : (
-        <img src={defaultProfileImage} alt={username} className="profile-img" />
-      )}
-      <div className="profile-text">
-        <p>Username: {username}</p>
-        <div className="password-wrapper">
-          <p>Password: </p><p className="current-password">{profileData.password}</p>
-        </div>
-        <p>Email: {profileData.email}</p>
-        <p>Location: {profileData.location}</p>
-        <p>Introduction: {profileData.introduction}</p>
-      </div>
+    <div className="main-container">
+      <div className="main-wrapper">
+        <BackArrow />
+        <div className="profile-settings">
+          <h1>Your settings</h1>
+          {profileData.image ? (
+            <img src={profileData.image} alt={username} className="profile-img" />
+          ) : (
+            <img src={defaultProfileImage} alt={username} className="profile-img" />
+          )}
+          <div className="profile-text">
+            <p>Username: {username}</p>
+            <div className="password-wrapper">
+              <p>Password: </p><p className="current-password">{profileData.password}</p>
+            </div>
+            <p>Email: {profileData.email}</p>
+            <p>Location: {profileData.location}</p>
+            <p>Introduction: {profileData.introduction}</p>
+          </div>
 
-      <div className="settings-actions">
-        <Button
-          icon="./src/assets/icons/edit.svg"
-          iconSize="button" 
-          label="Edit settings"
-          onClick={handleUpdateClick}
-          invertIcon={true}
-        />
-        <Button
-          icon="./src/assets/icons/trash.svg"
-          iconSize="button" 
-          label="Delete account"
-          onClick={handleDeleteClick}
-          invertIcon={true}
-        />
+          <div className="settings-actions">
+            <Button
+              icon="./src/assets/icons/edit.svg"
+              iconSize="button" 
+              label="Edit settings"
+              onClick={handleUpdateClick}
+              invertIcon={true}
+            />
+            <Button
+              icon="./src/assets/icons/trash.svg"
+              iconSize="button" 
+              label="Delete account"
+              onClick={handleDeleteClick}
+              invertIcon={true}
+            />
+          </div>
+        </div>
       </div>
     </div>
   );

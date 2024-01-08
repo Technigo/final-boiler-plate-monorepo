@@ -47,45 +47,48 @@ export const Profile = () => {
   }, [storeHandleAdvertiserProfile, userId]);
 
   return (
-    <div className="container">
-      <div className="arrow-wrapper">
-        <BackArrow />
-      </div>
+    <div className="main-container">
+      <div className="main-wrapper">
+        <div className="arrow-wrapper">
+          <BackArrow />
+        </div>
 
-      <div className="profile-container">
-        <div className="profile-data">
-          {profileData.image ? (
-            <img src={profileData.image} alt={username} className="profile-img"/>
-          ) : (
-            <img src={defaultProfileImage} alt={username} className="profile-img" />
-          )}
-
-          <div className="profile-info">
-            <h1>{username}</h1>
-            <p>Introduction: {profileData.introduction}</p>
-            {profileData.location ? (
-              <p>Location: {profileData.location}</p>
+        <div className="profile-container">
+          <div className="profile-data">
+            {profileData.image ? (
+              <img src={profileData.image} alt={username} className="profile-img"/>
             ) : (
-              <p>Location: Sweden</p>
+              <img src={defaultProfileImage} alt={username} className="profile-img" />
             )}
+
+            <div className="profile-info">
+              <h1>{username}</h1>
+              <p>{profileData.introduction}</p>
+              {profileData.location ? (
+                <p>Location: {profileData.location}</p>
+              ) : (
+                <p>Location: Sweden</p>
+              )}
+            </div>
           </div>
-        </div>
 
-        <div className="recent-ads">
-          <h2>Recent ads</h2>
-          <AdsList fetchType="user" userId={userId} />
-        </div>
+          <div className="recent-ads">
+            <h2>Recent ads</h2>
+            <AdsList fetchType="user" userId={userId} />
+          </div>
 
-        <Button label="Contact Advertiser" onClick={handleShow} />
-        <Modal show={show} onHide={handleClose}>
-          <Modal.Body>
-            <ContactForm
-              advertiserName={username}
-              handleClose={handleClose}
-            />
-          </Modal.Body>
-        </Modal>
+          <Button label="Contact Advertiser" onClick={handleShow} />
+          <Modal show={show} onHide={handleClose}>
+            <Modal.Body>
+              <ContactForm
+                advertiserName={username}
+                handleClose={handleClose}
+              />
+            </Modal.Body>
+          </Modal>
+        </div>
       </div>
+      
     </div>
   );
 }
