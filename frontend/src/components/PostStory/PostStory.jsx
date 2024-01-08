@@ -9,7 +9,7 @@ import "./PostStory.css";
 
 const libraries = ["places"];
 
-// const apiKey = import.meta.env.VITE_GOOGLE_MAPS_API_KEY;
+
 
 export const PostStory = () => {
   const [newHeading, setNewHeading] = useState("");
@@ -47,13 +47,13 @@ export const PostStory = () => {
 
     setNewStory("");
 
-    // const handleCategoryChange = (e) => {
-    //   setNewCategory(e.target.value);
-    // };
+
+ 
 
     // Check if the language is supported for sentiment analysis
     const supportedLanguagesForSentiment = ["en", "es", "ja", "pt"]; // Add more as supported
     const languageCode = "sv"; // Set the language code dynamically based on the story's language
+
 
     if (!supportedLanguagesForSentiment.includes(languageCode)) {
       console.log("Sentiment analysis not supported for this language");
@@ -146,14 +146,8 @@ export const PostStory = () => {
   };
 
   const handleImageSelect = (image) => {
-    import(`/${image}`)
-      .then((module) => {
-        setSelectedImage(module.default);
-        closeImageModal(true);
-      })
-      .catch((error) => {
-        console.error("Error loading image:", error);
-      });
+    setSelectedImage(image);
+    closeImageModal();
     console.log("Image chosen");
   };
 
@@ -172,6 +166,21 @@ export const PostStory = () => {
       console.error("Autocomplete is not loaded yet!");
     }
   };
+
+  const images = [
+    "image1.png",
+    "image2.png",
+    "image3.png",
+    "image4.png",
+    "image5.png",
+    "image6.png",
+    "image7.png",
+    "image8.png",
+    "image9.png",
+    "image10.png",
+    "image11.png",
+    "image12.png",
+  ];
 
   return (
     <div className="new-story-container">
@@ -227,7 +236,6 @@ export const PostStory = () => {
           </LoadScript>
           <p className="location">Selected Location: {locationName}</p>
         </div>
-
         <div>
           {newCategory === "anecdote" && (
             <DatePicker
@@ -264,38 +272,120 @@ export const PostStory = () => {
         {/* Image Modal */}
         <Modal
           appElement={document.getElementById("root")}
-          selected={selectedImage}
+          selectedImage={selectedImage}
           className="gallery"
           isOpen={isImageModalOpen}
           contentLabel="Select Image"
         >
           <div className="gallery-images">
-            <button
-              className="image-buttons"
-              type="button"
-              onClick={() => handleImageSelect("hero.png")}
-            >
-              <img src={"aboutimg.jpg"} alt="Image 1" />
-            </button>
-            <button
-              className="image-buttons"
-              type="button"
-              onClick={() => handleImageSelect("./aboutimg.jpg")}
-            >
-              <img src={"aboutimg.jpg"} alt="Image 2" />
-            </button>
-            <button
-              className="image-buttons"
-              type="button"
-              onClick={() => handleImageSelect("hero3.png")}
-            >
-              <img src={"hero3.png"} alt="Image 3" />
-            </button>
+            {images.map((image, index) => (
+              <button
+                key={index}
+                className="image-buttons"
+                type="button"
+                onClick={() => handleImageSelect(image)}
+              >
+                <img src={image} alt={`Image ${index + 1}`} />
+              </button>
+            ))}
           </div>
         </Modal>
+        {/* <div className="gallery-images">
+            <button
+              className="image-buttons"
+              type="button"
+              onClick={() => handleImageSelect("image1.png")}
+            >
+              <img src={"image1.png"} alt="Image 1" />
+            </button>
+            <button
+              className="image-buttons"
+              type="button"
+              onClick={() => handleImageSelect("./image2.png")}
+            >
+              <img src={"image2.png"} alt="Image 2" />
+            </button>
+            <button
+              className="image-buttons"
+              type="button"
+              onClick={() => handleImageSelect("image3.png")}
+            >
+              <img src={"image3.png"} alt="Image 3" />
+            </button>
+            <button
+              className="image-buttons"
+              type="button"
+              onClick={() => handleImageSelect("./image4.png")}
+            >
+              <img src={"image4.png"} alt="Image 4" />
+            </button>
+            <button
+              className="image-buttons"
+              type="button"
+              onClick={() => handleImageSelect("./image5.png")}
+            >
+              <img src={"image5.png"} alt="Image 5" />
+            </button>
+            <button
+              className="image-buttons"
+              type="button"
+
+              onClick={() => handleImageSelect("./image6.png")}
+            >
+              <img src={"image6.png"} alt="Image 6" />
+
+            </button>
+            <button
+              className="image-buttons"
+              type="button"
+
+              onClick={() => handleImageSelect("./image7.png")}
+            >
+              <img src={"image7.png"} alt="Image 7" />
+
+            </button>
+            <button
+              className="image-buttons"
+              type="button"
+
+              onClick={() => handleImageSelect("./image8.png")}
+            >
+              <img src={"image8.png"} alt="Image 8" />
+            </button>
+            <button
+              className="image-buttons"
+              type="button"
+              onClick={() => handleImageSelect("./image9.png")}
+            >
+              <img src={"image9.png"} alt="Image 9" />
+            </button>
+            <button
+              className="image-buttons"
+              type="button"
+              onClick={() => handleImageSelect("./image10.png")}
+            >
+              <img src={"image10.png"} alt="Image 10" />
+            </button>
+            <button
+              className="image-buttons"
+              type="button"
+              onClick={() => handleImageSelect("./image11.png")}
+            >
+              <img src={"image11.png"} alt="Image 11" />
+            </button>
+            <button
+              className="image-buttons"
+              type="button"
+              onClick={() => handleImageSelect("./image12.png")}
+            >
+              <img src={"image12.png"} alt="Image 12" />
+
+            </button>
+          </div>
+        </Modal> */}
       </form>
     </div>
   );
 };
 
-// ${import.meta.env.VITE_GOOGLE_LANGUAGE_KEY}
+

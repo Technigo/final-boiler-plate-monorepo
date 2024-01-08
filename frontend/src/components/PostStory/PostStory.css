@@ -43,15 +43,15 @@
 
 .gallery {
   position: absolute;
-  width: 50%;
-  height: 30%;
+  width: 70%;
+  height: 60%;
   display: flex;
   justify-content: center;
   padding: 3%;
   background-color: black;
   border: 5px solid rgba(2, 108, 124, 0.7);
   border-radius: 20px;
-  margin: 50% 0 15% 26%;
+  margin: 10%;
   z-index: 400;
 }
 
@@ -65,8 +65,8 @@
   background-color: black;
   border-color: none;
   padding: 0;
-  width: 20%;
-  margin: 2%;
+  width: 15%;
+  margin: 0%;
   z-index: 400;
 }
 
