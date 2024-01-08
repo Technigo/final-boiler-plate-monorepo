@@ -1,6 +1,6 @@
 import { create } from 'zustand'
 
-const apiEnv = import.meta.env.VITE_BACKEND_API;
+const apiEnv = import.meta.env.VITE_BACKEND_API
 
 export const userStore = create((set) => ({
 
@@ -52,8 +52,6 @@ export const userStore = create((set) => ({
   },
 
   //LOGIN USER
-
-
   handleLogin: async (username, password) => {
     if (!username || !password) {
       alert('Please enter username and password again')

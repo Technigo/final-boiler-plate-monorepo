@@ -1,9 +1,8 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { userStore } from '../store/userStore'
+import { bookingStore } from '../store/bookingStore'
 import { SelectedTicket } from '../components/SelectedTicket'
-
-import data from '../showTime.json'
 
 import './Booking.css'
 
@@ -18,9 +17,15 @@ const compareArrays = (arrayOne, arrayTwo) => {
 
 export const Booking = () => {
 	const [ selectedSeats, setSelectedSeats ] = useState([])
+	// console.log(selectedSeats)
 	const isLoggedIn = userStore.getState().isLoggedIn
+	
+	const fetchShows = bookingStore((state) => (state.fetchAllShowTimes))
+	fetchShows()
+	
+	const allShowTimes = bookingStore.getState().allShowTimes
 
-	const thisShowTime = data[1]
+	const thisShowTime = allShowTimes[1]
 	const cinemaHall = thisShowTime.cinemaHall
 	const movieTitle = thisShowTime.movieTitle
 	const seatInfo = thisShowTime.seats
@@ -54,8 +59,8 @@ export const Booking = () => {
 		}
 	}
 
-	useEffect( () => console.log(selectedSeats)
-		,[selectedSeats])
+	// useEffect(() => console.log(selectedSeats)
+	// 	,[selectedSeats])
 	
 	return (
 		<>

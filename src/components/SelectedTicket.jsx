@@ -1,7 +1,6 @@
 import './SelectedTicket.css'
 
 export const SelectedTicket = ({ row, seat }) => {
-    console.log('SELECTED')
     return(
         <>
             <div className="a-ticket">
