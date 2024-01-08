@@ -7,13 +7,6 @@ import data from '../json-files/showTime.json'
 // @route /
 // @access public
 export const getAllShowtime = asyncHandler(async (req, res) => {
-	
-	await ShowTimeModel.deleteMany({})
-	
-	data.forEach(showtime => {
-		new ShowTimeModel(showtime).save()
-	})
-	
 	try {
 		const showTimes = await ShowtimeModel.find()
 		if (showTimes.length > 0) {
@@ -24,6 +17,18 @@ export const getAllShowtime = asyncHandler(async (req, res) => {
 	} catch (error) {
 		res.status(500).json({ message: error.message })
 	}
+})
+
+// @desc seed showtimes from json-file
+// @route /seedshowtime
+// @access public
+
+export const seedShowtimes = asyncHandler(async (req, res) => {
+	await ShowTimeModel.deleteMany({})
+	
+	data.forEach(showtime => {
+		new ShowTimeModel(showtime).save()
+	})
 })
 
 // @desc get showtime by ID
