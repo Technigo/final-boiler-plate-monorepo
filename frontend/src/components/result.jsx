@@ -206,6 +206,29 @@ const StyledButtonLink = styled(Link)`
     transform: translateY(1px);
   }
 `;
+
+const StyledAnchorLink = styled.a`
+  background-color: #fcabe3;
+  color: white;
+  padding: 6px 6px;
+  border: solid white 2px;
+  border-radius: 10px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+
+  &:hover {
+    color: #01999a;
+  }
+
+  &:active {
+    transform: translateY(1px);
+  }
+`;
 //Ej aktiv?
 // const FlexRow = styled.div`
 //   display: flex;
@@ -393,13 +416,13 @@ const ResultsComponent = () => {
                   {`${restaurant.address}, ${restaurant.zipcode} ${restaurant.city}`}
                 </a>
               </StyledParagraph>
-              <StyledButtonLink
-                href={restaurant.url}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Website
-              </StyledButtonLink>
+              <StyledAnchorLink
+  href={restaurant.url}
+  target="_blank"
+  rel="noopener noreferrer"
+>
+  Website
+</StyledAnchorLink>
               <br />
               <StyledButtonLink to="/suggestion">
                 Want to add to the description? Click here!
