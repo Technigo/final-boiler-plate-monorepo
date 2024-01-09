@@ -28,7 +28,8 @@ export const Carousel = () => {
   };
 
   const updateStories = () => {
-    fetch("https://whisperwall.onrender.com/stories")
+    const apiUrl = import.meta.env.VITE_BACKEND_API || "http://localhost:3000";
+    fetch(`${apiUrl}/stories`)
       .then((response) => response.json())
       .then((data) => {
         setStories(
@@ -146,8 +147,7 @@ export const Carousel = () => {
           modifier: 1,
           slideShadows: true,
         }}
-        pagination={{ clickable: true }}
-      >
+        pagination={{ clickable: true }}>
         {rumorStories.map((story, index) => (
           <SwiperSlide key={story._id}>
             <StoryCard
@@ -175,8 +175,7 @@ export const Carousel = () => {
           modifier: 1,
           slideShadows: true,
         }}
-        pagination={{ clickable: true }}
-      >
+        pagination={{ clickable: true }}>
         {hearsayStories.map((story, index) => (
           <SwiperSlide key={story._id}>
             <StoryCard
@@ -205,8 +204,7 @@ export const Carousel = () => {
           modifier: 1,
           slideShadows: true,
         }}
-        pagination={{ clickable: true }}
-      >
+        pagination={{ clickable: true }}>
         {historicalStories.map((story, index) => (
           <SwiperSlide key={story._id}>
             <StoryCard
