@@ -29,7 +29,7 @@ export const Trips = () => {
   return (
     <>
       {trips.length > 0 && (
-        <div className="mt-8 space-y-4 mx-auto max-w-screen-lg">
+        <div className="mt-8 space-y-4 mx-auto max-w-screen-lg p-2">
           <h1 className="text-lg font-md">Trips.jsx</h1>
           {trips.reverse().map((trip) => (
             <div

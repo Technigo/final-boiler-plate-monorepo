@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { LoginBtn } from "./LoginBtn";
 import { LogoutBtn } from "./LogoutBtn";
 import { useAuth0 } from "@auth0/auth0-react";
+import { Trips } from "./Trips";
 
 export const Navbar = () => {
   const { isAuthenticated } = useAuth0();
@@ -16,7 +17,8 @@ export const Navbar = () => {
 
   const navlinks = [
     // { linkName: "Search", linkRoute: "/search" },
-    { linkName: "Post Trip", linkRoute: "/posttrip" },
+    { linkName: "Create trip", linkRoute: "/createtrip" },
+    { linkName: "Trips", linkRoute: "/trips" },
     { linkName: "About", linkRoute: "/about" },
     // { linkName: "Register", linkRoute: "/register" },
   ];
@@ -24,7 +26,8 @@ export const Navbar = () => {
   const navlinksLoggedIn = [
     // { linkName: "Search", linkRoute: "/search" },
     // { linkName: "Messages", linkRoute: "/messages" },
-    { linkName: "Post Trip", linkRoute: "/posttrip" },
+    { linkName: "Create trip", linkRoute: "/createtrip" },
+    { linkName: "Trips", linkRoute: "/trips" },
     { linkName: "My Account", linkRoute: "/account" },
     { linkName: "About", linkRoute: "/about" },
   ];
@@ -47,7 +50,7 @@ export const Navbar = () => {
         ))}
       </ul>
     );
-  
+
   const handleScroll = () => {
     // Check if the user has scrolled down more than 50 pixels
     setIsScrolled(window.scrollY > 50);
@@ -56,7 +59,7 @@ export const Navbar = () => {
   useEffect(() => {
     // Add a scroll event listener when the component mounts
     window.addEventListener("scroll", handleScroll);
-    
+
     // Remove the scroll event listener when the component unmounts
     return () => {
       window.removeEventListener("scroll", handleScroll);
@@ -64,12 +67,14 @@ export const Navbar = () => {
   }, []);
 
   return (
-    <nav className={`bg-gray-800 p-4 z-10 ${isScrolled ? 'fixed top-0 w-full' : ''}`}>
+    <nav
+      className={`bg-gray-800 p-4 z-10 ${
+        isScrolled ? "fixed top-0 w-full" : ""
+      }`}>
       <div className="container mx-auto flex items-center justify-between">
         <div
           onClick={() => navigate("/")}
-          className="text-white font-bold text-xl cursor-pointer"
-        >
+          className="text-white font-bold text-xl cursor-pointer">
           Piggyback
         </div>
         {!isAuthenticated && (

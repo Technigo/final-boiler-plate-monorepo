@@ -172,143 +172,144 @@ export const TripGenerator = () => {
             setFormData={setFormData}
           />
 
-<div className="flex space-x-4">
-  <div className="w-1/2">
-    <label
-      htmlFor="date"
-      className="block text-sm font-md text-gray-700">
-      Date
-    </label>
-    <input
-      type="date"
-      id="date"
-      name="date"
-      value={formData.date}
-      onChange={handleChange}
-      className="input-field border p-2 rounded-md w-full h-10"
-    />
-  </div>
+          <div className="flex space-x-4">
+            <div className="w-1/2">
+              <label
+                htmlFor="date"
+                className="block text-sm font-md text-gray-700">
+                Date
+              </label>
+              <input
+                type="date"
+                id="date"
+                name="date"
+                value={formData.date}
+                onChange={handleChange}
+                className="input-field border p-2 rounded-md w-full h-10"
+              />
+            </div>
 
-  <div className="w-1/2">
-    <label
-      htmlFor="time"
-      className="block text-sm font-md text-gray-700">
-      Time
-    </label>
-    <select
-      id="time"
-      name="time"
-      value={formData.time}
-      onChange={handleTimeChange}
-      className="input-field border p-2 rounded-md w-full h-10">
-      {timeOptions}
-    </select>
-  </div>
-</div>
+            <div className="w-1/2">
+              <label
+                htmlFor="time"
+                className="block text-sm font-md text-gray-700">
+                Time
+              </label>
+              <select
+                id="time"
+                name="time"
+                value={formData.time}
+                onChange={handleTimeChange}
+                className="input-field border p-2 rounded-md w-full h-10">
+                {timeOptions}
+              </select>
+            </div>
+          </div>
 
-<div className="flex space-x-4">
-  <div className="w-1/2">
-    <label
-      htmlFor="make"
-      className="block text-sm font-md text-gray-700">
-      Make
-    </label>
-    <select
-      id="make"
-      name="make"
-      value={formData.make}
-      onChange={(e) =>
-        handleChange({
-          target: { name: e.target.name, value: e.target.value },
-        })
-      }
-      className="input-field border p-2 rounded-md w-full h-10"> {/* Set height to 10 */}
-      <option value="" disabled>
-        Make
-      </option>
-      {makes.map((make) => (
-        <option key={make} value={make}>
-          {make}
-        </option>
-      ))}
-    </select>
-  </div>
-  <div className="w-1/2">
-    <label
-      htmlFor="model"
-      className="block text-sm font-md text-gray-700">
-      Model
-    </label>
-    <select
-      id="model"
-      name="model"
-      value={formData.model}
-      onChange={handleChange}
-      className="input-field border p-2 rounded-md w-full h-10"> {/* Set height to 10 */}
-      <option value="" disabled>
-        Model
-      </option>
-      {formData.make &&
-        models[formData.make].map((model) => (
-          <option key={model} value={model}>
-            {model}
-          </option>
-        ))}
-    </select>
-  </div>
-</div>
+          <div className="flex space-x-4">
+            <div className="w-1/2">
+              <label
+                htmlFor="make"
+                className="block text-sm font-md text-gray-700">
+                Make
+              </label>
+              <select
+                id="make"
+                name="make"
+                value={formData.make}
+                onChange={(e) =>
+                  handleChange({
+                    target: { name: e.target.name, value: e.target.value },
+                  })
+                }
+                className="input-field border p-2 rounded-md w-full h-10">
+                {" "}
+                <option value="" disabled>
+                  Make
+                </option>
+                {makes.map((make) => (
+                  <option key={make} value={make}>
+                    {make}
+                  </option>
+                ))}
+              </select>
+            </div>
+            <div className="w-1/2">
+              <label
+                htmlFor="model"
+                className="block text-sm font-md text-gray-700">
+                Model
+              </label>
+              <select
+                id="model"
+                name="model"
+                value={formData.model}
+                onChange={handleChange}
+                className="input-field border p-2 rounded-md w-full h-10">
+                {" "}
+                <option value="" disabled>
+                  Model
+                </option>
+                {formData.make &&
+                  models[formData.make].map((model) => (
+                    <option key={model} value={model}>
+                      {model}
+                    </option>
+                  ))}
+              </select>
+            </div>
+          </div>
 
-<div className="flex space-x-4 mb-4">
-  <div className="w-1/2">
-    <label
-      htmlFor="reg"
-      className="block text-sm font-md text-gray-700">
-      Reg. no
-    </label>
-    <input
-      type="text"
-      id="reg"
-      name="reg"
-      value={formData.reg}
-      onChange={handleChange}
-      className="input-field border p-2 rounded-md w-full"
-      maxLength={6}
-      pattern="[a-zA-Z]{3}\d{2}[a-zA-Z\d]{1}"
-      title="Please follow the patterns ABC123/ABC12X"
-      placeholder="e.g. ABC123"
-    />
-  </div>
+          <div className="flex space-x-4 mb-4">
+            <div className="w-1/2">
+              <label
+                htmlFor="reg"
+                className="block text-sm font-md text-gray-700">
+                Reg. no
+              </label>
+              <input
+                type="text"
+                id="reg"
+                name="reg"
+                value={formData.reg}
+                onChange={handleChange}
+                className="input-field border p-2 rounded-md w-full"
+                maxLength={6}
+                pattern="[a-zA-Z]{3}\d{2}[a-zA-Z\d]{1}"
+                title="Please follow the patterns ABC123/ABC12X"
+                placeholder="e.g. ABC123"
+              />
+            </div>
 
-  <div className="w-1/2">
-    <label
-      htmlFor="availableSeats"
-      className="block text-sm font-md text-gray-700">
-      Available Seats
-    </label>
-    <input
-      type="number"
-      id="availableSeats"
-      name="availableSeats"
-      value={formData.availableSeats}
-      onChange={(e) => {
-        const value = parseInt(e.target.value, 10);
-        handleChange({
-          target: {
-            name: e.target.name,
-            value: value > 0 ? value : 1,
-          },
-        });
-      }}
-      className="input-field border p-2 rounded-md w-full"
-      min={1}
-      max={8}
-      maxLength={1}
-      pattern="[1-8]"
-      placeholder="Max 8"
-    />
-  </div>
-</div>
-
+            <div className="w-1/2">
+              <label
+                htmlFor="availableSeats"
+                className="block text-sm font-md text-gray-700">
+                Available Seats
+              </label>
+              <input
+                type="number"
+                id="availableSeats"
+                name="availableSeats"
+                value={formData.availableSeats}
+                onChange={(e) => {
+                  const value = parseInt(e.target.value, 10);
+                  handleChange({
+                    target: {
+                      name: e.target.name,
+                      value: value > 0 ? value : 1,
+                    },
+                  });
+                }}
+                className="input-field border p-2 rounded-md w-full"
+                min={1}
+                max={8}
+                maxLength={1}
+                pattern="[1-8]"
+                placeholder="Max 8"
+              />
+            </div>
+          </div>
 
           <div className="mb-4">
             <label
@@ -344,23 +345,25 @@ export const TripGenerator = () => {
 
         {trips.length > 0 && (
           <div className="mt-8 space-y-4">
-
             {trips.reverse().map((trip) => (
               <div
                 key={trip.id}
                 className="grid grid-cols-12 gap-2 p-4 bg-violet-100 rounded-lg relative">
                 <div className="col-span-12 text-md text-gray-900 sm:text-xl">
-                 You have created a trip from {trip.from} to {trip.to} on {trip.date} starting at {trip.time}. Your vehicle of choice is a {trip.make} {trip.model} with {trip.reg} plates. You have {trip.availableSeats} free seats and your message to potential friends is: {trip.message}
+                  You have created a trip from {trip.from} to {trip.to} on{" "}
+                  {trip.date} starting at {trip.time}. Your vehicle of choice is
+                  a {trip.make} {trip.model} with {trip.reg} plates. You have{" "}
+                  {trip.availableSeats} free seats and your message to potential
+                  friends is: {trip.message}
                 </div>
 
-               
                 <div className="col-span-12 flex items-center justify-center">
-  <a href="#" className="text-amber-500 hover:text-amber-700 focus:outline-none focus:ring focus:border-blue-300">
-    See list of trips
-  </a>
-</div>
-
-
+                  <a
+                    href="#"
+                    className="text-amber-500 hover:text-amber-700 focus:outline-none focus:ring focus:border-blue-300">
+                    See list of trips
+                  </a>
+                </div>
               </div>
             ))}
           </div>
