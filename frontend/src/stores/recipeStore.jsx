@@ -44,19 +44,18 @@ export const recipeStore = create((set, get) => ({
       });
 
       if (!response.ok) {
+        // set(() => ({ newRecipe: null }));//TEST
         // Handle non-successful response (e.g., 404 Not Found, 500 Internal Server Error)
         throw new Error(`Failed to fetch recipes. Status: ${response.status}`);
+
       }
       const data = await response.json();
       const recipes = data.recipes;
       const newRecipeVar = recipes[recipes.length - 1];
+      console.log(newRecipeVar)
 
       //Update the newRecipe state with the fetched newRecipe:
-      set(() => ({
-        newRecipe: newRecipeVar,
-        // recipes: [...state.recipes, newRecipeVar]
-      }));
-
+      set(() => ({ newRecipe: newRecipeVar }));
 
     } catch (error) {
       console.error("Error fetching new recipe:", error);
@@ -82,7 +81,7 @@ export const recipeStore = create((set, get) => ({
       //Update the Recipes state with the fetched recipes
       set(() => ({ recipes: reversedRecipes }));
       // Update the newRecipe state to null initially
-      set(() => ({ newRecipe: null }));
+      // set(() => ({ newRecipe: null })); TEST
 
     } catch (error) {
       console.error("Error fetching collection of recipes:", error);

@@ -4,26 +4,32 @@ import { recipeStore } from "../../stores/recipeStore";
 
 export const NewRecipe = () => {
   // Destructure values from the recipeStore
-  const { newRecipe, fetchNewRecipe, errorMessageGeneration } = recipeStore();
+  const { newRecipe, fetchNewRecipe, errorMessageGeneration, fetchCollectionRecipes } = recipeStore();
+
+  // useEffect(() => {
+  //   // Fetch a new recipe when the component mounts
+  //   fetchNewRecipe();
+  // }, [fetchNewRecipe]);
 
   useEffect(() => {
     // Fetch a new recipe when the component mounts
-    fetchNewRecipe();
-  }, [fetchNewRecipe]);
+    fetchCollectionRecipes();
+  }, []);
 
   // Check if there is an error message
   if (errorMessageGeneration) {
-    return (
-      <div className="error-message">
-        <p>{errorMessageGeneration}</p>
-      </div>
-    );
+    return null
+    //   return (
+    //     <div className="error-message">
+    //       <p>{errorMessageGeneration}</p>
+    //     </div>
+    //   );
   }
 
   // Check if there is no new recipe yet, and return null if true
-  if (!newRecipe) {
-    return null; // Don't render anything if there is no new recipe yet
-  }
+  // if (!newRecipe) {
+  //   return null; // Don't render anything if there is no new recipe yet
+  // }
 
   // Render the new recipe details if there is no error and a new recipe is available
   return (

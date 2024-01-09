@@ -4,8 +4,8 @@ import { recipeStore } from '../stores/recipeStore';
 
 // Define the PromptForm component
 export const PromptForm = () => {
-  // Destructure the functions from the recipeStore
-  const { inputRecipe, setInputRecipe, fetchNewRecipe, generateRecipe, fetchCollectionRecipes, isVegetarian, setIsVegetarian, isGlutenFree, setIsGlutenFree } = recipeStore()
+  // Destructure the addNewRecipe function from the recipeStore
+  const { inputRecipe, setInputRecipe, fetchNewRecipe, generateRecipe, isVegetarian, setIsVegetarian, isGlutenFree, setIsGlutenFree } = recipeStore()
 
 
   // Define the form submission handler function
@@ -19,7 +19,6 @@ export const PromptForm = () => {
       //Clear inputRecipe and fetch new recipe data
       setInputRecipe([])
       fetchNewRecipe()
-
 
     } catch (error) {
       console.error("Error in handleFormSubmit", error)
