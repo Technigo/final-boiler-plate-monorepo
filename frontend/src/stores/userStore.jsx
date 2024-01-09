@@ -143,7 +143,7 @@ export const userStore = create((set, get) => ({
       }
 
       const data = await response.json();
-      console.log("data from store: " + data);
+      console.log("data from store: " + JSON.stringify(data));
 
       set({ chatMessages: data });
       // console.log("chatMessages from Store: " + chatMessages);
