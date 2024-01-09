@@ -3,7 +3,7 @@ import { Button } from '../components/reusableComponents/Button';
 import { UserAds } from '../components/UserAds';
 import { SavedAds } from '../components/UsersSavedAds';
 import { useNavigate } from 'react-router-dom';
-import "./manageyourads.css";
+import "./manageYourAds.css";
 
 export const ManageYourAds = () => {
   const navigate = useNavigate();
