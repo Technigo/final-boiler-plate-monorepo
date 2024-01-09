@@ -5,15 +5,18 @@ const challengeSchema = new mongoose.Schema({
     type: Number,
     required: true,
     unique: true,
-      },
-title: {
+  },
+      
+  title: {
     type: String,
     required: true,
   },
-description: {
+
+  description: {
     type: String,
     required: true,
   },
+
 });
 
 const Challenge = mongoose.model('Challenge', challengeSchema);
