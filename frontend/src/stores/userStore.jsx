@@ -13,7 +13,6 @@ export const userStore = create((set, get) => ({
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ username, password, email }),
-        credentials: "include",
       });
 
       if (!response.ok) {
@@ -22,7 +21,6 @@ export const userStore = create((set, get) => ({
 
       const user = await response.json();
       set({ user, isLoggedIn: true });
-      get().checkAuthentication(); // Call checkAuthentication after setting the state
       return user; // Return the user data
     } catch (error) {
       set({ error: error.message });
@@ -35,7 +33,6 @@ export const userStore = create((set, get) => ({
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ username, password }),
-        credentials: "include",
       });
 
       if (!response.ok) {
@@ -44,7 +41,6 @@ export const userStore = create((set, get) => ({
 
       const user = await response.json();
       set({ user, isLoggedIn: true });
-      get().checkAuthentication(); // Call checkAuthentication after setting the state
       return user; // Return the user data
     } catch (error) {
       set({ error: error.message });
@@ -56,7 +52,6 @@ export const userStore = create((set, get) => ({
       const response = await fetch(`${userApi}/logout`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        credentials: "include",
       });
 
       if (!response.ok) {
@@ -65,26 +60,6 @@ export const userStore = create((set, get) => ({
 
       set({ user: null, isLoggedIn: false });
       return "Logout successful"; // Return a success message
-    } catch (error) {
-      set({ error: error.message });
-    }
-  },
-  checkAuthentication: async () => {
-    set({ error: null }); // Reset the error state
-    try {
-      const response = await fetch(`${userApi}/profile`, {
-        method: "GET",
-        headers: { "Content-Type": "application/json" },
-        credentials: "include",
-      });
-
-      if (!response.ok) {
-        throw new Error("Not authenticated");
-      }
-
-      const user = await response.json();
-      set({ user });
-      return user; // Return the user data
     } catch (error) {
       set({ error: error.message });
     }

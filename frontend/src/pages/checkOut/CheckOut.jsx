@@ -15,8 +15,13 @@ import AccordionDetails from "@mui/material/AccordionDetails";
 
 import "./CheckOut.css";
 
+const serviceId = import.meta.env.REACT_APP_SERVICE_ID;
+const templateId = import.meta.env.REACT_APP_TEMPLATE_ID;
+const publicKey = import.meta.env.REACT_APP_PUBLIC_KEY;
+
 
 export const CheckOut = () => {
+  
   const [email, setEmail] = useState();
   const [activeStep, setActiveStep] = useState(0);
   const [show, toggleShow] = useState(false);
@@ -31,9 +36,23 @@ export const CheckOut = () => {
     setActiveStep((prevStep) => prevStep - 1 );
   };
 
+  
+
   const sendEmail = (e) => {
     e.preventDefault();
-    emailjs.sendForm(import.meta.env.REACT_APP_SERVICE_ID, import.meta.env.REACT_APP_TEMPLATE_ID, e.target, import.meta.env.REACT_APP_PUBLIC_KEY)
+    
+    const templateParams = {
+      to_email: "", 
+      order: "Thank YOU",
+    };
+    
+    emailjs.send(serviceId, templateId, templateParams, publicKey)
+    .then((response) => {
+      console.log('Email sent successfully:', response);
+    })
+    .catch((error) => {
+      console.error('Email could not be sent:', error);
+    });
   } 
 
   return (
@@ -99,6 +118,7 @@ export const CheckOut = () => {
               />
             );
           })}
+          <Button btnText={"Back"} onClick={handleBack}/>
         </AccordionDetails>
       </Accordion>
 
