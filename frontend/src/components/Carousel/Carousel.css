@@ -1,38 +1,61 @@
 
-.carousel-wrapper {
+
+/* .carousel-wrapper {
   position: relative;
   z-index: 10 !important;
-}
+} */
 
-.outlet-wrapper {
+/* .outlet-wrapper {
   margin-top: -42px;
+} */
+
+/* .rumor-carousel .swiper-slide, 
+.hearsay-carousel .swiper-slide, 
+.historical-carousel .swiper-slide {
+  width: 150px; 
+} */
+.swiper-slide .swiper-slide-visible .swiper-fully-visible .swiper-slide-active {
+ width: 100vw;
+}
+ .rumor-carousel .swiper-wrapper, 
+.hearsay-carousel .swiper-wrapper, 
+.historical-carousel .swiper-wrapper {
+  width: 250px;
+  margin-bottom: 10px;
+}; 
+
+.rumor-carousel .story-card .story-overlay h3 {
+  color: blanchedalmond;
 }
 .swiper-slide {
   transition: transform 0.3s ease-in-out, z-index 0.3s;
-  z-index: 1; /* Default z-index for all slides */
+  z-index: 1; 
 }
 
 .swiper-slide-active {
   transform: scale(1);
-  z-index: 100; /* Higher z-index for active slide */
+  z-index: 100; 
 }
 
-/* Styles for larger screens */
+
+
+
+
 @media (min-width: 600px) {
   .story-card {
-    width: 200px; /* Larger width on desktop */
-    /* Other styles... */
+    width: 200px; 
   }
 }
 @media (min-width: 768px) {
   .story-card {
-    width: 300px; /* Larger width on desktop */
-    /* Other styles... */
+    width: 300px; 
+    
   }
 }
 @media (min-width: 1024px) {
   .story-card {
-    width: 400px; /* Larger width on desktop */
-    /* Other styles... */
+    width: 400px;
   }
-}
+
+  
+} 

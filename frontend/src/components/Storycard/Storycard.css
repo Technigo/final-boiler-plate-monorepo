@@ -27,6 +27,7 @@ button.like-button img {
 .like-button-icon {
   background-color: none;
 }
+
 .story-card img {
   width: 100%;
   border-radius: 3px;
@@ -106,4 +107,14 @@ button.like-button img {
 
 .story-card.active {
   z-index: 100; /* Higher z-index for the active card */
+}
+
+@media (min-width: 900px) {
+  .story-card {
+    width: 300px;
+  }
+
+  .story-overlay {
+    max-height: 330px;
+  }
 }

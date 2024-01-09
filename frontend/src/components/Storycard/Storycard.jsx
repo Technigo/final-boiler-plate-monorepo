@@ -12,21 +12,7 @@ export const StoryCard = ({ story, isActive, onUpdateStories }) => {
     position: 'relative',
   };
 
-  // const handleLikeClick = () => {
-  //   fetch(`http://localhost:3000/stories/${story._id}/rank`, {
-  //     method: 'PUT',
-  //     headers: {
-  //       'Content-Type': 'application/json',
-  //     }
-  //   })
-  //   .then(response => response.json())
-  //   .then(updatedStory => {
-  //     if (onRankUpdate) { 
-  //       onRankUpdate(updatedStory);
-  //     }
-  //   })
-  //   .catch(error => console.error('Error updating story ranking:', error));
-  // };
+  
 
   const handleLikeClick = () => {
     fetch(`http://localhost:3000/stories/${story._id}/rank`, {
@@ -72,7 +58,7 @@ export const StoryCard = ({ story, isActive, onUpdateStories }) => {
 
 StoryCard.propTypes = {
   story: PropTypes.shape({
-    id: PropTypes.string.isRequired,
+    _id: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
     content: PropTypes.string.isRequired,
     category: PropTypes.string.isRequired,
