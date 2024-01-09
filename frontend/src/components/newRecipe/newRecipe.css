@@ -1,5 +1,28 @@
+.new-recipe-section {
+    padding: 1rem; 
+}
+
+.new-recipe-section h3 {
+   margin: 20px 0; 
+   text-align: center;
+}
+
 .new-recipe-wrapper {
     padding: 20px;
-    margin: 20px;
     background-color: rgba(84, 101, 65, 0.5);
+}
+
+/* ---------TABLET VIEW---------- */
+@media (min-width: 667px) and (max-width: 1024px) {
+    .new-recipe-section h3 {
+        text-align: left;
+     }
+}
+
+
+/* ---------DESKTOP VIEW---------- */
+@media (min-width: 1025px) {
+    .new-recipe-section h3 {
+        text-align: left;
+     }
 }

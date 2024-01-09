@@ -1,8 +1,6 @@
 import "./recipeDetails.css";
 import { useParams, useNavigate } from "react-router-dom";
 import { useEffect } from "react";
-import { Header } from "../../components/header/Header";
-import { Footer } from "../../components/footer/Footer";
 // import { SaveButtonBig } from "../../components/buttons/saveButtonBig/SaveButtonBig" (preppet for later)
 import { TabButton } from "../../components/buttons/tabButton/TabButton";
 import { recipeStore } from "../../stores/recipeStore";
@@ -19,7 +17,7 @@ export const RecipeDetails = () => {
   const foundRecipe = recipes.find((recipe) => recipe._id === id);
 
 
-  // ANVÄNDS DENNA???
+  // ANVÄNDS DENNA??? SVAR: JA
   // This is to make the page scroll up to top automatically
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -36,12 +34,6 @@ export const RecipeDetails = () => {
   //   return null;
   // }
 
-
-  // Function to capitalise the first letter of a word in array
-  const capitaliseFirstLetter = (word) => {
-    return word.charAt(0).toUpperCase() + word.slice(1);
-  };
-
   // Function to capitalise the first letter of a word in object
   const capitalizeKeys = (obj) => {
     const newObj = {};
@@ -56,7 +48,7 @@ export const RecipeDetails = () => {
 
   return (
     <>
-      <Header />
+      {/* <Header /> */}
       <section className="recipe-details">
         <h1>{foundRecipe.title}</h1>
 
@@ -89,14 +81,14 @@ export const RecipeDetails = () => {
           )}
         </ul>
 
-        <h3>Method:</h3>
+        <h3>Method</h3>
         <ol>
           {foundRecipe.instructions.map((instruction, index) => (
             <li key={index}>{instruction}</li>
           ))}
         </ol>
       </section>
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 };
