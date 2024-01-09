@@ -76,37 +76,36 @@ export const addShowtime = asyncHandler(async (req, res) => {
 }
 })
 
+// @desc update booked-element in seats in the Showtime
+// @route /showtime/:id
+// @access public
 export const bookSeats = asyncHandler(async (req, res) => {
-	// res.json(200).json({message: 'SEATS BOOKED'})
 	try{
 		// Extract data from the PUT request body
-		const { row, seat, showTimeId } = req.body
+		const { seat, showTimeId, bookingId } = req.body
+		console.log(seat, showTimeId, bookingId)
 		
 		const existingShowtime = await ShowTimeModel.findOneAndUpdate(
-				{ _id: showTimeId },
+				{ 
+					_id: showTimeId,
+				},
 				{ $set : {
-					'seats' : ['HELLO']
-					// 'seats.$[xxx].seats.$[yyy].booked': true
+					'seats.$[].$[xxx].booked' : true,
+					'seats.$[].$[xxx].bookingID' : bookingId
 				}},
 				{arrayFilters: [
-					{'xxx.rowIndex' : row},
-					{'yyy.seatIndex': seat}
-				]}
-			)
-		console.log(existingShowtime)
-		// if (!existingShowtime) {
-		// 	return res.status(404).json({error: `Cannot find the showtime with id ${showTimeId}`})
-		// }
+					{
+						'xxx.seatIndex': seat
+					}
+				]
+			}
+		)
 
-		// // Update the showtime data
-
-		// existingShowtime.seats[row].find({ seats: seatNumber })
+		if (!existingShowtime) {
+			return res.status(404).json({error: `Cannot find the showtime with id ${showTimeId}`})
+		}
 		
-		// // Save the updated showtime to the database
-		// const updatedShowtime = await existingShowtime.save()
-		
-		// // Respond with the updated showtime
-		// res.status(202).json(updatedShowtime)
+		// Respond with the updated showtime
 		res.status(200).json(existingShowtime)
 	} catch (error) {
 		// Handle errors that occurred during the request processing
