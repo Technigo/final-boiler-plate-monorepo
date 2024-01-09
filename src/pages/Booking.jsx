@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { userStore } from '../store/userStore'
 import { bookingStore } from '../store/bookingStore'
@@ -9,6 +9,8 @@ import './Booking.css'
 const compareArrays = (arrayOne, arrayTwo) => {
 	let isSame = true
 
+	console.log('array one and two', arrayOne, arrayTwo)
+
 	if (arrayOne.length !== arrayTwo.length) return false
 	arrayOne.map((element, index) => isSame = isSame && (element === arrayTwo[index]))
 
@@ -16,51 +18,60 @@ const compareArrays = (arrayOne, arrayTwo) => {
 }
 
 export const Booking = () => {
-	const [ selectedSeats, setSelectedSeats ] = useState([])
-	// console.log(selectedSeats)
-	const isLoggedIn = userStore.getState().isLoggedIn
-	
 	const fetchShows = bookingStore((state) => (state.fetchAllShowTimes))
 	fetchShows()
-	
-	const allShowTimes = bookingStore.getState().allShowTimes
 
+	const stateSeats = bookingStore((state) => state.selectedSeats)
+	const isLoggedIn = userStore.getState().isLoggedIn
+
+	const setStateSeats = bookingStore((state) => state.setSelectedSeats)
+	const updateStateSeats = bookingStore((state) => (state.updateSelectedSeats))
+
+	const allShowTimes = bookingStore.getState().allShowTimes
+	console.log(allShowTimes)
+
+	// const [ selectedSeats, setSelectedSeats ] = useState(stateSeats)
+	// console.log(chosenSeats)
+	
 	const thisShowTime = allShowTimes[1]
+	console.log(thisShowTime)
 	const cinemaHall = thisShowTime.cinemaHall
 	const movieTitle = thisShowTime.movieTitle
 	const seatInfo = thisShowTime.seats
 
-	const handleSeatClick = (event, row, seat) => {
-		const newSelection = [row, seat]
+	useEffect(() => console.log('selectedSeats', stateSeats, 'stateSeats'), [stateSeats])
+
+	const handleSeatClick = (event, row, seatIndex) => {
+		const newSelection = [row, seatIndex]
 
 		const removeSelected = (event) => {
 			event.target.classList.remove('selected')
-			let filteredArray = selectedSeats.filter(item => !compareArrays(item, newSelection))
-			setSelectedSeats(filteredArray)
+			let filteredArray = stateSeats.filter(item => !compareArrays(item, newSelection))
+			// setSelectedSeats(filteredArray)
+			setStateSeats(filteredArray)
 		}
 
 		const addSelected = (event) => {
 			event.target.classList.add('selected')
-			setSelectedSeats((selectedSeats) => [...selectedSeats, newSelection])
+			// setSelectedSeats([...selectedSeats, newSelection])
+			updateStateSeats(newSelection)
 		}
 
 		if (event.target.classList.contains('booked')) return null
-		if (selectedSeats !== null && selectedSeats.length > 0) {
+		if (stateSeats !== null && stateSeats.length > 0) {
 			let existsAlready = false
 
-			selectedSeats.map((seats) => {
+			stateSeats.map((seats) => {
 				compareArrays(seats, newSelection) ? existsAlready = !existsAlready : false
 			})
 
 			existsAlready ? removeSelected(event) : addSelected(event)
 		} else {
-			setSelectedSeats([newSelection])
+			// setSelectedSeats([newSelection])
+			setStateSeats([newSelection])
 			event.target.classList.add('selected')
 		}
 	}
-
-	// useEffect(() => console.log(selectedSeats)
-	// 	,[selectedSeats])
 	
 	return (
 		<>
@@ -69,18 +80,20 @@ export const Booking = () => {
 			<section className="cinema-container">
 				<div className="the-screen">Screen</div>
 				<div className="seat-container">
-					{seatInfo.map(row => (
-						<div className="the-rows" key={row.rowIndex}>
-							<label>{row.rowIndex}</label>
-							{row.seats.map((seat, index) => (
+					{seatInfo.map((row, index) =>(
+						<div className="the-rows" key={index}>
+							<label>{index + 1}</label>
+							{row.map(seat => (
 								<div 
 									className={`seat ${seat.booked ? "booked" : ""}`} 
-									key={index}
-									onClick={(event) => {
-											handleSeatClick(event, row.rowIndex, index)
+									key={seat.seatIndex} 
+									onClick={event => {
+											handleSeatClick(event, seat.rowIndex, seat.seatIndex)
 										}}>
+
 								</div>
 							))}
+
 						</div>
 					))}
 				</div>
@@ -100,23 +113,23 @@ export const Booking = () => {
 				</ul>
 			</section>
 
-			{selectedSeats && (
+			{stateSeats && (
 				<div className="ticket-container">
-					{selectedSeats.map(item => <SelectedTicket key={item[1]} row={item[0]} seat={item[1]} />)}
+					{stateSeats.map(item => <SelectedTicket key={item[1]} row={item[0]} seat={item[1]} />)}
 				</div>
 			)}
 
 			{isLoggedIn ? (
 				<>
 					<div className="button-container">
-						<Link to={`/bookingForm/user`} state={{ seats: selectedSeats }}><button>BOOK</button></Link>
+						<Link to={`/bookingForm/user`} state={{ seats: stateSeats }}><button>BOOK</button></Link>
 					</div>
 				</>
 			) : (
 				<>
 					<div className="button-container">
-						<Link to={`/bookingForm/guest`} state={{ seats: selectedSeats }}><button>Book as a guest</button></Link>
-						<Link to={`/bookingForm/register`} state={{ seats: selectedSeats }}><button>Sign up/Log in to book</button></Link>
+						<Link to={`/bookingForm/guest`} state={{ seats: stateSeats }}><button>Book as a guest</button></Link>
+						<Link to={`/bookingForm/register`} state={{ seats: stateSeats }}><button>Sign up/Log in to book</button></Link>
 					</div>
 				</>
 			)}
