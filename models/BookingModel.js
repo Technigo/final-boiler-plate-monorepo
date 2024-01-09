@@ -6,8 +6,19 @@ const bookingSchema = new Schema({
 	userId: {
 		type: mongoose.Schema.Types.ObjectId,
 		ref: 'User',
-		required: true,
+		// required: true,
 	},
+	email: {
+		type: String,
+		required: true,
+		unique: true,
+		validate: {
+		  validator: function (value) {
+			return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+		  },
+		  message: 'Invalid email address format',
+		},
+	  },
 	movieId: {
 		type: mongoose.Schema.Types.ObjectId,
 		ref: 'Movie',
@@ -17,15 +28,19 @@ const bookingSchema = new Schema({
 		type: Date,
 		default: Date.now,
 	},
-	price: {
-		type: Number,
-		required: true,
-	},
 	showtimeId: {
 		type: mongoose.Schema.Types.ObjectId,
 		ref: 'ShowTime',
 		required: true,
 	},
+	price: {
+		type: Number,
+		required: true,
+	},
+	seat: {
+		type: Array,
+		required: true,
+	}
 })
 
 export const BookingModel = mongoose.model('Booking', bookingSchema)

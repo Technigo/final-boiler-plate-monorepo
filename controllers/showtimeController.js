@@ -115,7 +115,6 @@ export const bookSeats = asyncHandler(async (req, res) => {
 	try{
 		// Extract data from the PUT request body
 		const { seat, showTimeId, bookingId } = req.body
-		console.log(seat, showTimeId, bookingId)
 		
 		const existingShowtime = await ShowTimeModel.findOneAndUpdate(
 				{ 
