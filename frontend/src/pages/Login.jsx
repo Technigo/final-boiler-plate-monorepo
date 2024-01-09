@@ -65,11 +65,10 @@ export const Login = () => {
         // If the user is logged in, navigate to the "/tasks" route.
         navigate("/tasks");
       }
-      // Additional logic after successful login can be added here.
     } catch (error) {
       // Handle any errors that occur during login and display an alert.
+      alert("An error occurred during login. Please try again.");
       console.error("Login error:", error);
-      alert("An error occurred during login");
     }
   };
 
@@ -123,7 +122,3 @@ export const Login = () => {
     </>
   );
 };
-
-// SUMMARY
-
-// The Login component handles user login functionality. It imports necessary components, hooks, and the user store. State variables manage username and password. The component renders a form for login credentials and handles the login button click event. React Router is used for navigation between routes. Additionally, it renders introductory text.

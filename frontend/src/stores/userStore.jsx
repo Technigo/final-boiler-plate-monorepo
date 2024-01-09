@@ -72,8 +72,8 @@ export const userStore = create((set, get) => ({
       }
     } catch (error) {
       // Handle and log any signup errors.
+      alert("An error occurred during signup. Please try again.");
       console.error("Signup error:", error);
-      alert("An error occurred during signup");
     }
   },
 
@@ -108,16 +108,14 @@ export const userStore = create((set, get) => ({
         // Store the accessToken in the browser's localStorage.
         localStorage.setItem("accessToken", data.response.accessToken);
         localStorage.setItem("username", username);
-        // Display a success alert.
-        //alert("Login successful!");
       } else {
         // Display an error message from the server or a generic message.
         alert(data.response || "Login failed");
       }
     } catch (error) {
       // Handle and log any login errors.
+      alert("An error occurred during login. Please try again.");
       console.error("Login error:", error);
-      alert("An error occurred during login");
     }
   },
 

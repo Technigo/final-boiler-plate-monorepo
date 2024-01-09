@@ -98,13 +98,10 @@ export const Tasks = () => {
   // Initialize the 'navigate' function from React Router.
   const navigate = useNavigate();
 
-  useEffect(() => {
-    //console.log("useEffect", tasks);
-  }, [tasks]);
+  useEffect(() => {}, [tasks]);
 
   // Use the 'useEffect' hook to fetch tasks when 'tasks' or 'accessToken' change.
   useEffect(() => {
-    //console.log("useEffect", accessToken);
     fetchTasks();
   }, [fetchTasks, accessToken]);
 

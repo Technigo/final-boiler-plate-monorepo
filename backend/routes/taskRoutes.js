@@ -25,9 +25,6 @@ router.get("/userTask", authenticateUser, getUserTasksController);
 // Establish a route to handle GET requests for fetching a specific task by its ID. When a GET request is directed to /get/:id, utilize middleware to authenticate the user, ensuring that only authorized users can access the route. Subsequently, execute the getTasksController function to retrieve and respond with details of the specific task identified by the provided ID.
 router.get("/get/:id", authenticateUser, getTasksController);
 
-// Set up a route to handle PUT requests for updating a specific task by its ID. Upon receiving a PUT request to /update/:id, execute the updateTaskController function to process and apply updates to the task identified by the provided ID.
-router.put("/update/:id", updateTaskController);
-
 // Establish a route to handle PUT requests for adding a volunteer to a specific task by its ID. When a PUT request is sent to /addVolunteer/:id, use middleware to authenticate the user, ensuring that only authorized users can access the route. Subsequently, execute the addVolunteerController function to process and handle the addition of a volunteer to the task identified by the provided ID.
 router.put("/addVolunteer/:id", authenticateUser, addVolunteerController);
 

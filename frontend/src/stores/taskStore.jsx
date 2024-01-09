@@ -42,7 +42,7 @@ export const taskStore = create((set) => ({
         console.error("Failed to fetch tasks. Response:", response.status);
 
         // Parse and log the error response
-        const errorResponse = await response.json();
+        const errorResponse = await response.json(); // Parse response as JSON
         console.error("Error response:", errorResponse);
       }
     } catch (error) {
@@ -66,10 +66,11 @@ export const taskStore = create((set) => ({
         const data = await response.json();
         set({ userTasks: data });
       } else {
+        alert("Failed to fetch Needs. Please reload the page.");
         console.error("Failed to fetch tasks. Response:", response);
       }
     } catch (error) {
-      console.error("Error during fetchTasks:", error);
+      console.error("Error during fetchTasks:", error); // Log any errors to the console for debugging
     }
   },
 
@@ -90,6 +91,9 @@ export const taskStore = create((set) => ({
         // Update the volunteeredTasks state
         set({ volunteeredTasks: data });
       } else {
+        alert(
+          "Something went wrong when trying to fetch Needs. Please reload the page."
+        );
         console.error("Failed to fetch tasks. Response:", response);
       }
     } catch (error) {
@@ -124,17 +128,17 @@ export const taskStore = create((set) => ({
         // Add the new task to the tasks state
         set((state) => ({ tasks: [data, ...state.tasks] }));
       } else {
+        alert("Failed to add Need. Please try again.");
         console.error("Failed to add task");
       }
     } catch (error) {
-      console.error(error);
+      console.error(error); // Log any errors to the console for debugging
     }
   },
 
   // Filter tasks by category and area
   filterTasksByCategoryAndArea: async (category, area) => {
     try {
-      console.log("Filtering tasks...");
       // Get tasks from the state
       const { originalTasks } = taskStore.getState(); // Get original tasks
       // const allTasks = await taskStore.getState().tasks;
@@ -145,12 +149,11 @@ export const taskStore = create((set) => ({
           (category === "" || task.category === category) &&
           (area === "" || task.area === area)
       );
-      console.log("Filtered tasks:", filteredTasks);
-      // Set the filtered tasks in the state
+      // Set the tasks state to the filtered tasks
       set({ tasks: filteredTasks });
-      //return filteredTasks; // Return the filtered tasks
     } catch (error) {
-      console.error("Error filtering tasks:", error);
+      alert("Error filtering Needs. Please try again.");
+      console.error("Error filtering tasks:", error); // Log any errors to the console for debugging
       return []; // Return an empty array if there's an error
     }
   },
@@ -170,45 +173,18 @@ export const taskStore = create((set) => ({
       // Check if the request was successful
       if (response.ok) {
         alert(
-          "Thank you for volunteering! Your contact information will be shared with the creater of the post and you will be contacted if they choose you."
+          "Thank you for volunteering! Your contact information will be shared with the creator of the post and you will be contacted if they choose you."
         );
         window.scrollTo({ top: 0, behavior: "smooth" }); // Scroll to top of page
       } else {
         alert("You have already volunteered for this Need!");
-        //console.error("User already added as volunteer");
+        console.error(
+          "Failed to add user to task, user already volunteered for this task."
+        );
       }
     } catch (error) {
       alert("Error adding yourself as volunteer. Please try again.");
       console.error("Error adding user as volunteer:", error);
-    }
-  },
-
-  // New action to update the boolean isDone value in the store
-  handleEdit: async (id) => {
-    try {
-      // Send a PUT request to the backend API to update a task by its ID
-      const response = await fetch(`${apiEnv}/update/${id}`, {
-        method: "PUT",
-        headers: {
-          Authorization: localStorage.getItem("accessToken"),
-          "Content-Type": "application/json",
-        },
-      });
-      // Parse the updated task data
-      const updatedTask = await response.json();
-      // Check if the request was successful
-      if (response.ok) {
-        // Update the task in the tasks state
-        set((state) => ({
-          tasks: state.tasks.map((task) =>
-            task._id === id ? { ...task, ...updatedTask } : task
-          ),
-        }));
-      } else {
-        console.error("Failed to update task");
-      }
-    } catch (error) {
-      console.error(error);
     }
   },
 
@@ -245,10 +221,11 @@ export const taskStore = create((set) => ({
 
       // Check if the request was successful
       if (!response.ok) {
+        alert("Failed to delete task. Please try again.");
         console.error("Failed to delete task");
       }
     } catch (error) {
-      console.error("Error deleting task:", error);
+      console.error("Error deleting task:", error); // Log any errors to the console for debugging
     }
   },
 }));

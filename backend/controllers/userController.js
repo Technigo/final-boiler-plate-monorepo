@@ -76,19 +76,21 @@ export const loginUserController = asyncHandler(async (req, res) => {
     // Find a user with the provided username in the database
     const user = await UserModel.findOne({ username });
     if (!user) {
-      // If no user is found with the provided username, respond with a 401 Unauthorized and a user not found message
-      return res
-        .status(401)
-        .json({ success: false, response: "User not found" });
+      // If no user is found with the provided username, respond with a 401 Unauthorized and a username not found message
+      return res.status(401).json({
+        success: false,
+        response: "Username not found. Please try again.",
+      });
     }
 
     // Compare the provided password with the hashed password in the database
     const isMatch = await bcrypt.compare(password, user.password);
     if (!isMatch) {
       // If the provided password doesn't match the stored password, respond with a 401 Unauthorized and an incorrect password message
-      return res
-        .status(401)
-        .json({ success: false, response: "Incorrect password" });
+      return res.status(401).json({
+        success: false,
+        response: "Incorrect password. Please try again.",
+      });
     }
     // Respond with a success message, user details, and the JWT token
     res.status(200).json({
