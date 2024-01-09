@@ -11,7 +11,7 @@ const cinemaHallSchema = new Schema({
 		type: Number,
 		required: true,
 	},
-	rows: {
+	rowsThenSeats: {
 		type: Array,
 		required: true,
 	},

@@ -7,7 +7,12 @@
         "duration": 100,
         "price": 100,
         "seats": [
-            [{"booked": false, "bookingID": null, "rowIndex": 1, "seatIndex": 1}, {"booked": false, "bookingID": null, "rowIndex": 1, "seatIndex": 2}, {"booked": false, "bookingID": null, "rowIndex": 1, "seatIndex": 3}, {"booked": false, "bookingID": null, "rowIndex": 1, "seatIndex": 4}],
+            [
+                {"booked": false, "bookingID": null, "rowIndex": 1, "seatIndex": 1}, 
+                {"booked": false, "bookingID": null, "rowIndex": 1, "seatIndex": 2}, 
+                {"booked": false, "bookingID": null, "rowIndex": 1, "seatIndex": 3}, 
+                {"booked": false, "bookingID": null, "rowIndex": 1, "seatIndex": 4}
+            ],
             [{"booked": false, "bookingID": null, "rowIndex": 2, "seatIndex": 5}, {"booked": false, "bookingID": null, "rowIndex": 2, "seatIndex": 6}, {"booked": false, "bookingID": null, "rowIndex": 2, "seatIndex": 7}, {"booked": false, "bookingID": null, "rowIndex": 2, "seatIndex": 8}],
             [{"booked": false, "bookingID": null, "rowIndex": 3, "seatIndex": 9}, {"booked": false, "bookingID": null, "rowIndex": 3, "seatIndex": 10}, {"booked": false, "bookingID": null, "rowIndex": 3, "seatIndex": 11}, {"booked": false, "bookingID": null, "rowIndex": 3, "seatIndex": 12}],
             [{"booked": false, "bookingID": null, "rowIndex": 4, "seatIndex": 13}, {"booked": false, "bookingID": null, "rowIndex": 4, "seatIndex": 14}, {"booked": false, "bookingID": null, "rowIndex": 4, "seatIndex": 15}, {"booked": false, "bookingID": null, "rowIndex": 4, "seatIndex": 16}],

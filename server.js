@@ -27,7 +27,7 @@ app.use(errorHandler)
 
 app.use('/users', userRoutes)
 app.use('/bookings', bookingRoutes)
-app.use('/cinema-halls', cinemaHallRoutes)
+app.use('/cinemahalls', cinemaHallRoutes)
 app.use('/showtimes', showtimeRoutes)
 app.use('/movies', movieRoutes)
 
