@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { LocationInput } from "./LocationInput";
 import { makes, models } from "./CarData";
 
@@ -358,11 +359,11 @@ export const TripGenerator = () => {
                 </div>
 
                 <div className="col-span-12 flex items-center justify-center">
-                  <a
-                    href="#"
+                  <Link
+                    to="/trips"
                     className="text-amber-500 hover:text-amber-700 focus:outline-none focus:ring focus:border-blue-300">
                     See list of trips
-                  </a>
+                  </Link>
                 </div>
               </div>
             ))}
