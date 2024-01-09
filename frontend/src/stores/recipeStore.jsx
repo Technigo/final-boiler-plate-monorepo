@@ -100,6 +100,8 @@ export const recipeStore = create((set, get) => ({
 
       //Setting the isGenerating state to true so that loading message can be rendered in Home.jsx
       set(() => ({ isGenerating: true }))
+      //Removes old error message when a new recipe is generated
+      set(() => ({ errorMessageGeneration: "" }));
 
       const response = await fetch(`${api}/openai/generateText`, {
         method: 'POST',

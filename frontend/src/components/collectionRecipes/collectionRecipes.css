@@ -5,7 +5,7 @@
 
 .collection-recipes h3 {
     font-size: 20px;
-    margin: 0 0 1.9em 0;
+    margin: 1em 0 1em 0;
     text-align: center;
 }
 
@@ -13,6 +13,19 @@
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 1rem;
+}
+
+.error-message-container {
+    display: flex;
+    justify-content: center;
+}
+
+.error-message-generation {
+    display: inline-flex;
+    background-color: #173e34;
+    color: white;
+    padding: 10px;
+    font-weight: 300;
 }
 
 /* Loading-Spinner */
@@ -64,9 +77,9 @@
 
 /* ---------DESKTOP VIEW---------- */
 @media (min-width: 1025px) {
-.collection-recipes {
-    margin: 0 32px; 
-}
+    .collection-recipes {
+        margin: 0 32px;
+    }
 
     .recipe-grid {
         grid-template-columns: repeat(4, 1fr);
