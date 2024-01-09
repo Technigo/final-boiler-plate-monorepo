@@ -34,14 +34,14 @@
     height: 60px;
 }
 
-.navBlackSvgBackground {
+/* .navBlackSvgBackground {
     position: absolute;
     top: 0;
     right: 0;
     width: 100%;
     height: auto;
     z-index: 0;
-}
+} */
 
 .navLinks {
     display: none;
@@ -82,11 +82,11 @@
     z-index: 1;
 } */
 
-.menuIcon {
+/* .menuIcon {
     cursor: pointer;
     display: block;
     z-index: 1;
-}
+} */
 
 .bar {
     display: block;
@@ -116,11 +116,11 @@
     /* Remove display: block; if it's here */
     /* Other styles here */
     z-index: 2;
-    font-family: 'Avenir Next', sans-serif;
+    font-family: 'Tenor Sans', sans-serif;
+    letter-spacing: 1px;
     font-size: 20px;
     font-weight: 400;
     line-height: 131%;
-    letter-spacing: -0.44px;
     padding: 20px 18px;
     /* Consolidated padding */
     display: block;
@@ -131,6 +131,16 @@
     display: none;
 }
 
+.bar {
+    display: block;
+    width: 25px;
+    height: 1px;
+    margin: 7px auto;
+    background-color: #1D1C25;
+    transition: all 0.3s ease;
+    border-radius: 13px;
+}
+
 /* .navLink:hover::after {
     background-color: hotpink;
 }
@@ -138,39 +148,43 @@
 
 /* iPad Pro 11" */
 @media (min-width: 767px) and (max-width: 1028px) {
-    .navBlackSvgBackground {
+
+    /* .navBlackSvgBackground {
         position: absolute;
         transform: translateY(-20%);
         width: 110%;
         z-index: 0;
 
+    } */
+    .nav {
+        height: 90px;
     }
 
     .menuIcon {
         padding-top: 35px;
-        padding-right: 35px;
+        padding-right: 40px;
     }
 
     .navLink {
-        top: 8vh;
+        top: 2vh;
         left: 88%;
     }
 
-    .navSvgBackground {
+    /* .navSvgBackground {
         position: absolute;
         top: 0vh;
         right: 0;
         width: 38%;
         height: auto;
         z-index: 0;
-    }
+    } */
 
     .bar {
         display: block;
         width: 41px;
         height: 2px;
         margin: 9px auto;
-        background-color: #FFD075;
+        background-color: #1D1C25;
         transition: all 0.3s ease;
     }
 
@@ -180,9 +194,9 @@
 }
 
 @media (min-width: 1028px) {
-    .navBlackSvgBackground {
+    /* .navBlackSvgBackground {
         transform: translateY(-20%);
-    }
+    } */
 
     /* .imgsWrapper {
         display: flex;
@@ -230,6 +244,9 @@
         /* Add any other styles for desktop here */
     }
 
+    .navLink {
+        padding: 0px 18px;
+    }
 
     .navLink:last-of-type {
         padding: 0;
@@ -237,16 +254,7 @@
     }
 
     .navLink:last-of-type::after {
-        content: '';
         display: none;
-        height: 1px;
-        background-color: #FFD075;
-        width: 70%;
-        position: absolute;
-        bottom: 0;
-        left: 20px;
-        transform: translateX(-8%);
-
     }
 
     .navLink:hover {
@@ -257,7 +265,6 @@
     .navSvgBackground {
         display: none;
     }
-
 
     .navLink.dropdown {
         pointer-events: none;

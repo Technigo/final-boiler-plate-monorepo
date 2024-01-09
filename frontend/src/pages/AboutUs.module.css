@@ -1,0 +1,82 @@
+.wrapper {
+    background-color: #ffffff;
+    height: fit-content;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 10px;
+    padding: 40px 0;
+}
+
+.h1 {
+    color: #1D1C25;
+    justify-self: center;
+    grid-column: span 2;
+}
+
+.AboutusText {
+    grid-column: span 2;
+    justify-self: center;
+    width: 70%;
+}
+
+.p {
+    padding: 10px 0;
+    text-align: left;
+}
+
+/* .WrapMembers {
+    padding-left: 40px;
+} */
+.membersBruun {
+    grid-column: 1/2;
+    text-align: left;
+    padding: 40px 10px 20px 30px;
+    justify-self: right;
+}
+
+.membersMima {
+    grid-column: 2/3;
+    text-align: left;
+    padding: 40px 30px 20px 10px;
+    justify-self: left;
+}
+
+.membersFulba {
+    grid-column: 1/2;
+    text-align: left;
+    padding: 20px 10px 40px 30px;
+    justify-self: right;
+}
+
+.membersIneMy {
+    grid-column: 2/3;
+    text-align: left;
+    padding: 20px 30px 40px 10px;
+    justify-self: left;
+}
+
+@media (min-width: 1028px) {
+    .wrapper {
+        padding: 80px 0 60px 0;
+    }
+
+    .membersBruun {
+        padding: 40px 10px 20px 0px;
+        justify-self: right;
+    }
+
+    .membersMima {
+        padding: 40px 0px 20px 10px;
+        justify-self: left;
+    }
+
+    .membersFulba {
+        padding: 20px 10px 40px 0px;
+        justify-self: right;
+    }
+
+    .membersIneMy {
+        padding: 20px 0px 40px 10px;
+        justify-self: left;
+    }
+}
