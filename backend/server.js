@@ -11,7 +11,7 @@ import adminRoutes from "./routes/adminRoutes";
 import cocktailRoutes from "./routes/cocktailRoutes";
 
 // Import database connection functions
-import { connectDB, connectAtlasDB } from "./config/db";
+import { connectAtlasDB } from "./config/db";
 
 // Retrieve the port number from environment variables or set default
 const port = process.env.PORT || 3000;
@@ -30,11 +30,16 @@ app.use('/admin', adminRoutes);
 app.use('/cocktails', cocktailRoutes);
 
 // Choose which database to connect based on an environment variable
-if (process.env.USE_LOCAL_DB === 'true') {
+/*if (process.env.USE_LOCAL_DB === 'true') {
   connectDB(); // Connects to local MongoDB
+  console.log("Testing connecting to locally");
 } else {
+  console.log("Testing connecting to atlas");
   connectAtlasDB(); // Connects to MongoDB Atlas
-}
+}*/
+
+// Connecting to Mongo DB ATlas Instance
+connectAtlasDB(); // Connects to MongoDB Atlas
 
 // Start the server and listen for incoming requests
 app.listen(port, () => {
