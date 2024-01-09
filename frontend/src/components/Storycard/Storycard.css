@@ -54,8 +54,8 @@ button.like-button img {
   padding: 20px;
   overflow-y: auto;
   display: flex;
-  align-items: center;
-  text-align: center;
+  align-items: flex-start;
+  text-align: left;
   flex-direction: column;
   overflow-y: auto;
   max-height: 295px;
@@ -95,10 +95,27 @@ button.like-button img {
   max-height: 295px;
 }
 
+.story-overlay-content h3 {
+  margin-top: -7px; 
+  color: rgba(201, 134, 134, 0.9);
+}
+
+.story-overlay .story-overlay-content {
+  overflow-y: auto;
+  height: 100%; 
+}
+
+.story-overlay-content p {
+  color: white;
+}
 .overlay-date-icon img {
   width: 30px;
   margin-bottom: -5px;
   background-color: none;
+}
+
+.overlay-date-icon {
+  margin-bottom: -15px;
 }
 
 .story-card.active .story-overlay {

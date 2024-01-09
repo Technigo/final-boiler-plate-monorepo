@@ -18,17 +18,29 @@ export const Carousel = () => {
   const [activeHearsaySlide, setActiveHearsaySlide] = useState(0);
   const [activeHistoricalSlide, setActiveHistoricalSlide] = useState(0);
   const [viewportWidth, setViewportWidth] = useState(window.innerWidth);
+  const apiUrl = import.meta.env.VITE_BACKEND_API || "http://localhost:3000";
+
+  // const handleRankUpdate = (updatedStory) => {
+  //   setStories((prevStories) =>
+  //     prevStories.map((story) =>
+  //       story._id === updatedStory._id ? updatedStory : story
+  //     )
+  //   );
+  // };
 
   const handleRankUpdate = (updatedStory) => {
-    setStories((prevStories) =>
-      prevStories.map((story) =>
+    const updateStateArray = (array) =>
+      array.map((story) =>
         story._id === updatedStory._id ? updatedStory : story
-      )
-    );
+      );
+
+    setStories((prev) => updateStateArray(prev));
+    setRumorStories((prev) => updateStateArray(prev));
+    setHearsayStories((prev) => updateStateArray(prev));
+    setHistoricalStories((prev) => updateStateArray(prev));
   };
 
   const updateStories = () => {
-    const apiUrl = import.meta.env.VITE_BACKEND_API || "http://localhost:3000";
     fetch(`${apiUrl}/stories`)
       .then((response) => response.json())
       .then((data) => {
@@ -45,7 +57,7 @@ export const Carousel = () => {
   };
 
   useEffect(() => {
-    fetch("https://whisperwall.onrender.com/stories")
+    fetch(`${apiUrl}/stories`)
       .then((response) => response.json())
       .then((data) => {
         setStories(data); // Set the fetched stories
@@ -147,13 +159,14 @@ export const Carousel = () => {
           modifier: 1,
           slideShadows: true,
         }}
-        pagination={{ clickable: true }}>
+        // pagination={{ clickable: true }}
+      >
         {rumorStories.map((story, index) => (
           <SwiperSlide key={story._id}>
             <StoryCard
               story={story}
               isActive={index === activeRumorSlide}
-              onRankUpdate={handleRankUpdate}
+              handleRankUpdate={handleRankUpdate}
               onUpdateStories={updateStories}
             />
           </SwiperSlide>
@@ -175,13 +188,14 @@ export const Carousel = () => {
           modifier: 1,
           slideShadows: true,
         }}
-        pagination={{ clickable: true }}>
+        // pagination={{ clickable: true }}
+      >
         {hearsayStories.map((story, index) => (
           <SwiperSlide key={story._id}>
             <StoryCard
               story={story}
               isActive={index === activeHearsaySlide}
-              onRankUpdate={handleRankUpdate}
+              handleRankUpdate={handleRankUpdate}
               onUpdateStories={updateStories}
             />
           </SwiperSlide>
@@ -204,13 +218,14 @@ export const Carousel = () => {
           modifier: 1,
           slideShadows: true,
         }}
-        pagination={{ clickable: true }}>
+        // pagination={{ clickable: true }}
+      >
         {historicalStories.map((story, index) => (
           <SwiperSlide key={story._id}>
             <StoryCard
               story={story}
               isActive={index === activeHistoricalSlide}
-              onRankUpdate={handleRankUpdate}
+              handleRankUpdate={handleRankUpdate}
               onUpdateStories={updateStories}
             />
           </SwiperSlide>
