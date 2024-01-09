@@ -259,7 +259,6 @@ export const Map = () => {
         mapContainerClassName="my-map-container"
         center={mapCenter}
         zoom={4}
-        // onClick={onMapClick}
         options={{ styles: styles.retro, streetViewControl: false }}>
         {markers.map((marker, index) => (
           <Marker
