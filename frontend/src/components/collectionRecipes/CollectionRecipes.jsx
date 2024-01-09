@@ -17,6 +17,7 @@ export const CollectionRecipes = () => {
       try {
         await fetchCollectionRecipes();
         setLoading(false);
+        console.log(recipes)
       } catch (error) {
         console.error("Error fetching data:", error);
         setLoading(false);

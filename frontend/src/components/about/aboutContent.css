@@ -38,7 +38,8 @@
 }
 
 .project-info a:hover {
-    color: #86bca8;
+    color: rgba(84, 101, 65, 0.5);
+    ;
 }
 
 .cards-container {
@@ -86,7 +87,7 @@
 /* Change icon color on hover */
 .contact-idah a:hover,
 .contact-emmy a:hover {
-    color: #86bca8;
+    color: rgba(84, 101, 65, 0.5);
 }
 
 

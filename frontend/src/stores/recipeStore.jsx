@@ -52,7 +52,10 @@ export const recipeStore = create((set, get) => ({
       const newRecipeVar = recipes[recipes.length - 1];
 
       //Update the newRecipe state with the fetched newRecipe:
-      set(() => ({ newRecipe: newRecipeVar }));
+      set(() => ({
+        newRecipe: newRecipeVar,
+        // recipes: [...state.recipes, newRecipeVar]
+      }));
 
 
     } catch (error) {

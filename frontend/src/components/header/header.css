@@ -3,7 +3,7 @@
     padding-left: 1rem;
     padding-right: 1rem;
     /* background-color: #86bca8; */
-    background-color: rgba(84, 101, 65, 0.5); 
+    background-color: rgba(84, 101, 65, 0.5);
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -16,8 +16,8 @@
 
 .header-logo {
     width: 230px;
-    margin-top: 10px; 
-    margin-bottom: 10px; 
+    margin-top: 10px;
+    margin-bottom: 10px;
     /* padding-bottom: 5%; */
     /*Adjust to get correct height as it is a logo*/
 }
@@ -43,7 +43,7 @@
 
 /* Hover effects */
 .header-nav svg:hover {
-    color: #86bca8;
+    color: rgba(84, 101, 65, 0.5);
 }
 
 

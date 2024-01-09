@@ -14,6 +14,7 @@ export const RecipeDetails = () => {
   // Getting the recipe state from recipeStore
   const { recipes } = recipeStore();
 
+
   // Find the recipe with the matching 'id' from the 'recipes' array
   const foundRecipe = recipes.find((recipe) => recipe._id === id);
 
@@ -25,14 +26,17 @@ export const RecipeDetails = () => {
   }, []);
 
 
-  // DETTA FUNGERAR EJ, testa att byta ut en bokstav på ett recept. Sidan blir blank.
-  // Check if a recipe was found
-  if (foundRecipe === undefined) {
-    navigate("/*");
-     // Render nothing if recipe not found
-  }
+  // // DETTA FUNGERAR EJ, testa att byta ut en bokstav på ett recept. Sidan blir blank.
+  // // Check if a recipe was found
+  // // Check if a recipe was found
+  // if (!foundRecipe) {
+  //   // Redirect to a not-found page or handle appropriately
+  //   navigate("/not-found");
+  //   // Render nothing if recipe not found
+  //   return null;
+  // }
 
-  
+
   // Function to capitalise the first letter of a word in array
   const capitaliseFirstLetter = (word) => {
     return word.charAt(0).toUpperCase() + word.slice(1);
@@ -55,24 +59,28 @@ export const RecipeDetails = () => {
       <Header />
       <section className="recipe-details">
         <h1>{foundRecipe.title}</h1>
+
         <div className="recipe-info">
           <div className="servings">
             <PiCookingPot /> <p>Serves 2 people</p>
           </div>
           <div className="user-input-details">
             {foundRecipe.userInput.map((ingredient, ingredientIndex) => (
-              <div className="input-tag-details"key={ingredientIndex}>{ingredient}</div>
+              <div className="input-tag-details" key={ingredientIndex}>{ingredient}</div>
             ))}
           </div>
         </div>
+
         <img src="/recipe-imgs/campfire-896196_1280.jpg" alt="" />
         {/* Prepped for later <div className="save-recipe"><SaveButtonBig /></div> */}
+
         <p className="description">{foundRecipe.description}</p>
 
         <TabButton />
 
         <h3>Ingredients</h3>
         {/*Mapping the ingredients: */}
+
         <ul>
           {Object.entries(capitalizeKeys(foundRecipe.ingredients)).map(
             ([ingredient, quantity], i) => (
