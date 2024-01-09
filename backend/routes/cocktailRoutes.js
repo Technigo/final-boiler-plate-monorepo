@@ -14,14 +14,16 @@ import {
 // Connect to MongoDB Atlas for cocktail-related data
 //connectAtlasDB(); // MIRELA
 
-// Set up multer for file uploads
+
+// Set up multer for file uploads with updated storage configuration
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
-        cb(null, 'uploads/'); // Ensure the 'uploads/' directory exists
+        // Make sure the directory 'uploads/' exists
+        cb(null, 'uploads/');
     },
     filename: function (req, file, cb) {
-        // Append the timestamp to the original filename to avoid name conflicts
-        cb(null, Date.now() + path.extname(file.originalname));
+        // Append the timestamp and the original filename
+        cb(null, `${Date.now()}-${file.originalname}`);
     }
 });
 
@@ -29,17 +31,16 @@ const upload = multer({ storage: storage });
 
 const router = express.Router();
 
-// Routes that handle image uploads
+// Routes that handle image uploads with the updated multer middleware
 router.post('/', upload.single('image'), addCocktailController);
 router.put('/:id', upload.single('image'), updateCocktailController);
 
-// Routes that do not handle image uploads
+// Routes that do not handle image uploads remain the same
 router.get('/', getCocktailsController);
 router.get('/:id', getCocktailByIdController);
 router.delete('/:id', deleteCocktailController);
 
 export default router;
-
 
 // import express from "express";
 // // Uncomment and use this when the middleware is ready
