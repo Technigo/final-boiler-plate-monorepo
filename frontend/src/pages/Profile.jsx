@@ -97,7 +97,7 @@ export const Profile = () => {
                   <TaskTitle>{task.task}</TaskTitle>
                   <TaskDescription>{task.description}</TaskDescription>
                   <VolunteersSection>
-                    <strong>Volunteers: </strong>{" "}
+                    <strong>Volunteers: </strong>
                     {task.volunteers && task.volunteers.length > 0
                       ? task.volunteers
                           .filter(
@@ -105,7 +105,7 @@ export const Profile = () => {
                               volunteer._id.toString() !==
                               task.user._id.toString()
                           )
-                          // map over the volunteers array and return the username of each volunteer
+                          // map over the volunteers array and return the username and email of each volunteer
                           .map(
                             (volunteer) =>
                               `${volunteer.username} (${volunteer.email})`

@@ -182,19 +182,3 @@ export const updateTaskController = asyncHandler(async (req, res) => {
     res.status(500).json(error);
   }
 });
-
-// DELETE all tasks
-//export const deleteAllTasksController = asyncHandler(async (req, res) => {
-//  const accessToken = req.header("Authorization");
-//  const userFromStorage = await UserModel.findOne({
-//    accessToken: accessToken,
-//  });
-//  await TaskModel.deleteMany({ user: userFromStorage })
-//    .then((result) =>
-//      res.json({
-//        message: "All tasks deleted",
-//        deletedCount: result.deletedCount,
-//      })
-//    )
-//    .catch((err) => res.status(500).json(err));
-//});

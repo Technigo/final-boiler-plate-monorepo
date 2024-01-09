@@ -31,7 +31,7 @@ export const taskSchema = new Schema(
     description: {
       type: String,
       required: true,
-      //minlength: 10,
+      minlength: 10,
       maxlength: 300,
     },
 

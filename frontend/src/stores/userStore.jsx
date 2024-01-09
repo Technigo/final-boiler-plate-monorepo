@@ -1,4 +1,3 @@
-// Import the 'create' function from the 'zustand' library.
 import { create } from "zustand";
 
 // Get the backend API endpoint from the environment variables.
@@ -6,7 +5,7 @@ const apiEnv = import.meta.env.VITE_BACKEND_API;
 
 // Create a Zustand store for user-related state and actions.
 export const userStore = create((set, get) => ({
-  // Initialize username state.
+  // Get the username from localStorage if it exists.
   username: localStorage.getItem("username") || "",
 
   // Define a function to set the username state.
@@ -17,7 +16,9 @@ export const userStore = create((set, get) => ({
   // Define a function to set the password state.
   setPassword: (password) => set({ password }),
 
+  // Initialize email state.
   email: "",
+  // Define a function to set the email state.
   setEmail: (email) => set({ email }),
 
   // Initialize accessToken state with null.
@@ -45,7 +46,7 @@ export const userStore = create((set, get) => ({
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ username, password, email }),
+        body: JSON.stringify({ username, password, email }), // Send user data as JSON string
       });
 
       // Parse the response data as JSON.
@@ -86,7 +87,6 @@ export const userStore = create((set, get) => ({
 
     try {
       // Send a POST request to the login endpoint with user data.
-
       const response = await fetch(`${apiEnv}/login`, {
         method: "POST",
         headers: {
@@ -104,14 +104,12 @@ export const userStore = create((set, get) => ({
           accessToken: data.response.accessToken,
           isLoggedIn: true,
         });
-        // Set the loggedInUserId in the store.
-        // set({ loggedInUserId: data.response.id });
+
         // Store the accessToken in the browser's localStorage.
         localStorage.setItem("accessToken", data.response.accessToken);
         localStorage.setItem("username", username);
         // Display a success alert.
-        alert("Login successful!");
-        //console.log("Logging in with:", username, password);
+        //alert("Login successful!");
       } else {
         // Display an error message from the server or a generic message.
         alert(data.response || "Login failed");
@@ -125,15 +123,10 @@ export const userStore = create((set, get) => ({
 
   // Function to handle user logout.
   handleLogout: () => {
-    console.log("Logging out..."); // Log statement to check if this function is invoked
     // Clear user information and set isLoggedIn to false.
     set({ username: "", accessToken: null, isLoggedIn: false });
     // Remove the accessToken from localStorage.
     localStorage.removeItem("accessToken");
     localStorage.removeItem("username");
-    // Additional logout logic can be added here if needed.
   },
 }));
-
-// SUMMARY
-// This file serves as the core of a React application's user authentication and state management system. It utilizes the Zustand library to create a centralized store that handles user-related data and actions. The store includes state variables such as username, email, password, accessToken, and isLoggedIn, each with corresponding functions to modify their values. The handleSignup function allows users to register by sending their information to a server-side registration endpoint, displaying alerts for success or failure. Similarly, the handleLogin function facilitates user login, updating the state with the user's credentials and access token upon success, and storing the token in the browser's local storage. Additionally, it handles the user's logout by clearing user information and local storage data. Overall, this file provides a robust framework for user authentication and state management in the React application, enhancing user registration, login, and logout processes.
