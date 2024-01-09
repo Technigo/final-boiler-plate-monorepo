@@ -81,7 +81,6 @@ export const Navbar = () => {
 
   // Function to handle the click event of the logout button.
   const onLogoutClick = () => {
-    console.log("Logout button clicked"); // For debugging
     storeHandleLogout();
     // Additional logic after logout can be added here.
     alert("Log out successful");
@@ -90,7 +89,7 @@ export const Navbar = () => {
 
   return (
     <StyledNav>
-      {burgerMenuVisible ? (
+      {burgerMenuVisible ? ( // Conditionally render burger menu or regular menu
         <BurgerMenu />
       ) : (
         <ul>
@@ -104,26 +103,31 @@ export const Navbar = () => {
               Home
             </Link>
           </li>
-          <li className={activePage === "login" ? "active" : ""}>
-            <Link
-              to="/login"
-              onClick={() => {
-                setActivePage("login");
-              }}
-            >
-              Log in
-            </Link>
-          </li>
-          <li className={activePage === "register" ? "active" : ""}>
-            <Link
-              to="/register"
-              onClick={() => {
-                setActivePage("register");
-              }}
-            >
-              Register
-            </Link>
-          </li>
+          {/* Conditionally render "Log in" and "Register" links */}
+          {isLoggedIn ? null : (
+            <>
+              <li className={activePage === "login" ? "active" : ""}>
+                <Link
+                  to="/login"
+                  onClick={() => {
+                    setActivePage("login");
+                  }}
+                >
+                  Log in
+                </Link>
+              </li>
+              <li className={activePage === "register" ? "active" : ""}>
+                <Link
+                  to="/register"
+                  onClick={() => {
+                    setActivePage("register");
+                  }}
+                >
+                  Register
+                </Link>
+              </li>
+            </>
+          )}
           <li className={activePage === "tasks" ? "active" : ""}>
             <Link
               to="/tasks"
