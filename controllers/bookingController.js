@@ -19,29 +19,8 @@ export const getAllBookings = asyncHandler(async (req, res) => {
 	}
 })
 
-// @desc get booking by ID
-// @route /:id
-// @access public
-export const getBookingById = asyncHandler(async (req, res) => {
-	try {
-		const bookingId = +req.params.id
-		const booking = await BookingModel.findById(bookingId)
-		if (booking) {
-			res.json(booking)
-		} else {
-			res.status(404).json({
-				error: `Booking with id ${bookingId} not found.`,
-			})
-		}
-	} catch (error) {
-		res.status(500).json({
-			error: 'Something went wrong, please try again.',
-		})
-	}
-})
-
 // @desc add a new booking
-// @route /add
+// @route /
 // @access public
 export const addBooking = asyncHandler(async (req, res) => {
 	try {
@@ -92,3 +71,25 @@ export const addBooking = asyncHandler(async (req, res) => {
 		res.status(500).json({ message: error.message })
 	}
 })
+
+// @desc get booking by ID
+// @route /:id
+// @access public
+export const getBookingById = asyncHandler(async (req, res) => {
+	try {
+		const bookingId = +req.params.id
+		const booking = await BookingModel.findById(bookingId)
+		if (booking) {
+			res.json(booking)
+		} else {
+			res.status(404).json({
+				error: `Booking with id ${bookingId} not found.`,
+			})
+		}
+	} catch (error) {
+		res.status(500).json({
+			error: 'Something went wrong, please try again.',
+		})
+	}
+})
+
