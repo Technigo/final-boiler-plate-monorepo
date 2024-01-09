@@ -136,7 +136,7 @@ export const UpdateSettings = () => {
                   type={type}
                   name="password"
                   id="password"
-                  placeholder="leave blank to keep the same"
+                  placeholder="leave blank if no change"
                   value={inputPassword}
                   onChange={handlePasswordUpdate}
                 />
@@ -152,7 +152,7 @@ export const UpdateSettings = () => {
                 type="email"
                 name="email"
                 id="email"
-                placeholder="leave blank to keep the same"
+                placeholder="leave blank if no change"
                 value={inputEmail}
                 onChange={handleEmailUpdate}
               />
@@ -164,7 +164,7 @@ export const UpdateSettings = () => {
                 type="text"
                 name="location"
                 id="location"
-                placeholder="leave blank to keep the same"
+                placeholder="leave blank if no change"
                 value={inputLocation}
                 onChange={handleLocationUpdate}
               />
@@ -175,7 +175,7 @@ export const UpdateSettings = () => {
               <textarea
                 name="introduction"
                 id="introduction"
-                placeholder="leave blank to keep the same"
+                placeholder="leave blank if no change"
                 rows={4}
                 cols={50}
                 value={inputIntroduction}
@@ -190,13 +190,13 @@ export const UpdateSettings = () => {
 
             <div className="settings-actions">
               <Button
-                icon="./src/assets/icons/save2.svg"
+                icon="./src/assets/save2.svg"
                 iconSize="button" 
                 label="Save changes"
                 invertIcon={true}
               />
               <Button
-                icon="./src/assets/icons/trash.svg"
+                icon="./src/assets/trash.svg"
                 iconSize="button" 
                 label="Cancel"
                 onClick={handleCancelClick}

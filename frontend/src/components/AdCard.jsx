@@ -28,7 +28,7 @@ export const AdCard = ({ ad }) => {
   return (
     <div className="ad-card">
       <button onClick={handleSaveToggle} className="heart-icon-btn">
-        <img src={isSaved ? "./src/assets/icons/filled-heart.svg" : "./src/assets/icons/heart.svg"} alt="Heart Icon" />
+        <img src={isSaved ? "./src/assets/filled-heart.svg" : "./src/assets/heart.svg"} alt="Heart Icon" />
       </button>
       <Link to={`/ads/${ad._id}`}>
         <div className="ad-card-content">

@@ -76,14 +76,14 @@ export const ProfileSettings = () => {
 
           <div className="settings-actions">
             <Button
-              icon="./src/assets/icons/edit.svg"
+              icon="./src/assets/edit.svg"
               iconSize="button" 
               label="Edit settings"
               onClick={handleUpdateClick}
               invertIcon={true}
             />
             <Button
-              icon="./src/assets/icons/trash.svg"
+              icon="./src/assets/trash.svg"
               iconSize="button" 
               label="Delete account"
               onClick={handleDeleteClick}

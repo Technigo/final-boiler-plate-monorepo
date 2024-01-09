@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState, useCallback } from "react";
+import { useEffect, useRef, useCallback } from "react";
 import { adStore } from "../stores/adStore";
 import searchIcon from "../assets/search-icon.svg";
 import "./SearchBar.css"
