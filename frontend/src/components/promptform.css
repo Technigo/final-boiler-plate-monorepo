@@ -16,7 +16,7 @@
 .promptform-box {
     margin: 10px;
     padding: 30px; 
-    background-color: rgb(65,101,76, 0.65)
+    background-color: rgb(65,101,76, 0.5)
 }
 
 .instruction-text {
@@ -44,8 +44,10 @@ textarea {
 
 /* Adjusting placeholder text */
 textarea::placeholder {
+    font-size: 16px;
     line-height: 1.7rem;
     padding-left: 1%;
+    font-family: Raleway;
 }
 
 .checkbox-options {
@@ -92,7 +94,8 @@ button:hover {
 /* ---------DESKTOP VIEW---------- */
 @media (min-width: 1025px) {
     .promptform-box {
-       width: 50%; 
+        margin: 50px 0; 
+       /* width: 50%;  */
     }
  
     .promptform-wrapper h2 {

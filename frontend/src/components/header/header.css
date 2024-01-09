@@ -1,21 +1,24 @@
 .header {
-    height: 12vh;
+    /* height: 12vh; */
     padding-left: 1rem;
     padding-right: 1rem;
-    background-color: #86bca8;
+    /* background-color: #86bca8; */
+    background-color: rgba(84, 101, 65, 0.5); 
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
 .header a {
-    font-size: 3vh;
+    /* font-size: 3vh; */
     color: #286052;
 }
 
 .header-logo {
-    width: 200px;
-    padding-bottom: 5%;
+    width: 230px;
+    margin-top: 10px; 
+    margin-bottom: 10px; 
+    /* padding-bottom: 5%; */
     /*Adjust to get correct height as it is a logo*/
 }
 
@@ -47,13 +50,13 @@
 /* ---------TABLET VIEW---------- */
 @media (min-width: 667px) and (max-width: 1024px) {
     .header-logo {
-        width: 300px;
-        padding-top: 4%;
-        padding-left: 4%;
+        width: 250px;
+        /* padding-top: 4%;
+        padding-left: 4%; */
     }
 
     .header nav ul {
-        gap: 30%;
+        gap: 70%;
         margin-right: 24%;
     }
 }

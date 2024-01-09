@@ -34,14 +34,14 @@ export const PromptForm = () => {
   };
 
   // Placeholder texts for each textarea
-  const placeholders = ["(e.g. pasta)", "(e.g. egg)", "(e.g. basil)"];
+  const placeholders = ["E.g. Pasta", "E.g. Egg", "E.g. Basil"];
 
   // Render the component. Form element
   return (
     <div className="promptform-wrapper">
-      <h2>Generate a camping stove-friendly recipe for your outdoor adventure!</h2>
+      {/* <h2>Generate a camping stove-friendly recipe for your outdoor adventure!</h2> */}
       <div className="promptform-box">
-      <h3 className="instruction-text">Enter ingredients of your choice</h3>
+      <h3 className="instruction-text">Enter ingredients of your choice and let AI do the rest:</h3>
       <form className="ingredient-form" onSubmit={handleFormSubmit}>
         <div className="textareas-container">
           {[1, 2, 3].map((index) => (

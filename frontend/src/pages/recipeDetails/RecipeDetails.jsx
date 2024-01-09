@@ -17,23 +17,22 @@ export const RecipeDetails = () => {
   // Find the recipe with the matching 'id' from the 'recipes' array
   const foundRecipe = recipes.find((recipe) => recipe._id === id);
 
-  //!!! ANVÄNDS DENNA? !!! Ta bort annars
-  //This is to make the page scroll up to top automatically
+
+  // ANVÄNDS DENNA???
+  // This is to make the page scroll up to top automatically
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
-  //
 
 
-  // //HÄR ÄR DET NÅGOT FEL!!! Just nu testas med navigate (se även import samt rad 13)
-  // // Check if a recipe was found
-  // if (!foundRecipe) {
-  //   navigate("/*");
-  // }
-  // //
+  // DETTA FUNGERAR EJ, testa att byta ut en bokstav på ett recept. Sidan blir blank.
+  // Check if a recipe was found
+  if (foundRecipe === undefined) {
+    navigate("/*");
+     // Render nothing if recipe not found
+  }
 
-
-
+  
   // Function to capitalise the first letter of a word in array
   const capitaliseFirstLetter = (word) => {
     return word.charAt(0).toUpperCase() + word.slice(1);

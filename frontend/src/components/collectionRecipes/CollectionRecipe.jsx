@@ -22,7 +22,9 @@ export const CollectionRecipe = ({ recipe, index }) => {
     >
       <section className="collection-recipe-card">
         <div className="collection-recipe-image-container">
+        
           <img src={selectedImageUrl} alt={recipe.title} />
+          <div className="gradient-overlay"></div> {/* Add this overlay div for the gradient */}
         </div>
         <h2>{recipe.title}</h2>
 
