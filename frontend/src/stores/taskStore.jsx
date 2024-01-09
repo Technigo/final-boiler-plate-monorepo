@@ -23,7 +23,6 @@ export const taskStore = create((set) => ({
   // New action to fetch all tasks
   fetchTasks: async () => {
     try {
-      console.log("Before fetching tasks...");
       // Send a GET request to the backend API to fetch tasks
       const response = await fetch(`${apiEnv}/get`, {
         method: "GET",
@@ -35,7 +34,6 @@ export const taskStore = create((set) => ({
       if (response.ok) {
         // Parse the response data and convert it to a JS array
         const data = await response.json();
-        console.log("Fetched tasks:", data);
 
         set({ tasks: data });
         set({ originalTasks: data }); // Set originalTasks to fetched data
@@ -55,7 +53,6 @@ export const taskStore = create((set) => ({
   // Fetch tasks created by the user
   fetchUserTasks: async () => {
     try {
-      console.log("Before fetching user tasks...");
       // Send a GET request to fetch tasks created by the user
       const response = await fetch(`${apiEnv}/userTask`, {
         method: "GET",
@@ -79,7 +76,6 @@ export const taskStore = create((set) => ({
   // Fetch tasks the user volunteered for
   fetchVolunteeredTasks: async () => {
     try {
-      console.log("Before fetching volunteered tasks...");
       // Send a GET request to the backend API to fetch tasks
       const response = await fetch(`${apiEnv}/getVolunteeredTasks`, {
         method: "GET",
@@ -101,7 +97,7 @@ export const taskStore = create((set) => ({
     }
   },
 
-  // // Add a/the new task to the server/store
+  // Add the new task to the server/store
   addTaskToServer: async (task) => {
     try {
       // Send a POST request to the backend API to add a new task
@@ -120,7 +116,7 @@ export const taskStore = create((set) => ({
           description: task.description,
         }),
       });
-      console.log("Authorization Header:", localStorage.getItem("accessToken"));
+
       // Parse the response data
       const data = await response.json();
       // Check if the request was successful
@@ -142,7 +138,7 @@ export const taskStore = create((set) => ({
       // Get tasks from the state
       const { originalTasks } = taskStore.getState(); // Get original tasks
       // const allTasks = await taskStore.getState().tasks;
-      // console.log("All tasks:", allTasks);
+
       // Filter tasks based on category and area
       const filteredTasks = originalTasks.filter(
         (task) =>
@@ -170,15 +166,19 @@ export const taskStore = create((set) => ({
           "Content-Type": "application/json",
         },
       });
-      console.log("Authorization Header:", localStorage.getItem("accessToken"));
 
       // Check if the request was successful
       if (response.ok) {
+        alert(
+          "Thank you for volunteering! Your contact information will be shared with the creater of the post and you will be contacted if they choose you."
+        );
+        window.scrollTo({ top: 0, behavior: "smooth" }); // Scroll to top of page
       } else {
         alert("You have already volunteered for this Need!");
-        console.error("User already added as volunteer");
+        //console.error("User already added as volunteer");
       }
     } catch (error) {
+      alert("Error adding yourself as volunteer. Please try again.");
       console.error("Error adding user as volunteer:", error);
     }
   },
@@ -212,41 +212,13 @@ export const taskStore = create((set) => ({
     }
   },
 
-  // New action to delete a specific task by its ID
-  // deleteTaskById: async (id) => {
-  //   try {
-  //     // Send a DELETE request to the backend API to delete a task by its ID
-  //     const response = await fetch(`${apiEnv}/delete/${id}`, {
-  //       method: "DELETE",
-  //       headers: {
-  //         Authorization: localStorage.getItem("accessToken"),
-  //       },
-  //     });
-
-  //     // Check if the request was successful
-  //     if (response.ok) {
-  //       // Remove the task from the tasks state
-  //       set((state) => ({
-  //         tasks: state.tasks.filter((task) => task._id !== id),
-  //       }));
-  //     } else {
-  //       console.error("Failed to delete task");
-  //     }
-  //   } catch (error) {
-  //     console.error("Error deleting task:", error);
-  //   }
-  // },
-
   deleteTaskById: async (id) => {
     try {
-      console.log("Deleting task:", id);
-
       const confirmed = window.confirm(
         "Are you sure you want to delete this Need?"
       );
 
       if (!confirmed) {
-        console.log("Deletion canceled");
         return; // If user cancels, exit the function
       }
 
@@ -270,35 +242,13 @@ export const taskStore = create((set) => ({
           Authorization: localStorage.getItem("accessToken"),
         },
       });
-      console.log("Delete request completed:", response);
+
       // Check if the request was successful
       if (!response.ok) {
         console.error("Failed to delete task");
       }
     } catch (error) {
       console.error("Error deleting task:", error);
-    }
-  },
-
-  // New action to delete all tasks
-  deleteAllTasks: async () => {
-    try {
-      // Send a DELETE request to the backend API to delete all tasks
-      const response = await fetch(`${apiEnv}/deleteAll`, {
-        method: "DELETE",
-        headers: {
-          Authorization: localStorage.getItem("accessToken"),
-        },
-      });
-      // Check if the request was successful
-      if (response.ok) {
-        // Clear the tasks in the state
-        set({ tasks: [] });
-      } else {
-        console.error("Failed to delete tasks");
-      }
-    } catch (error) {
-      console.error(error);
     }
   },
 }));

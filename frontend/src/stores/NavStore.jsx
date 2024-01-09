@@ -1,5 +1,6 @@
 import { create } from "zustand";
 
+// Zustand store for navigation
 export const useNavStore = create((set) => ({
   activePage: "home",
   setActivePage: (page) => set({ activePage: page }),

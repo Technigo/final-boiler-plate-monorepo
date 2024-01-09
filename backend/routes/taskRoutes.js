@@ -3,7 +3,6 @@ import { authenticateUser } from "../middleware/authenticateUser";
 import {
   getTasksController,
   updateTaskController,
-  deleteAllTasksController,
   deleteSpecificTaskController,
   addTaskController,
   getUserTasksController,
