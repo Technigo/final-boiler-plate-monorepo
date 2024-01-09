@@ -1,24 +1,33 @@
 import { useAuth0 } from "@auth0/auth0-react";
 import { useState, useEffect } from "react";
-import {userStore} from "../stores/userStore";
+import { userStore } from "../stores/userStore";
 
 export const UserProfile = () => {
   const { user, isAuthenticated, isLoading, getAccessTokenSilently } =
     useAuth0();
-    const {chatReceiver, setChatReceiver, username, setUsername} = userStore();
+  const {
+    chatReceiver,
+    setChatReceiver,
+    username,
+    setUsername,
+    setRecipientId,
+    recipientId,
+    setLoggedInUserId,
+    loggedInUserId,
+  } = userStore();
   // const [userMetadata, setUserMetadata] = useState(null);
   // const domain = import.meta.env.VITE_AUTH0_DOMAIN;
   const vite_backend = import.meta.env.VITE_BACKEND_API;
   const vite_backup = import.meta.env.VITE_BACKUP_API;
 
-  const [mongoUsername, setMongoUsername] = useState(null);
-  const [email, setEmail] = useState(null);
+  const [mongoUsername, setMongoUsername] = useState("");
+  const [email, setEmail] = useState("");
   const [loading, setLoading] = useState(true);
   const [userLoading, setUserLoading] = useState(true);
   const [userList, setUserList] = useState(null);
   // console.log("username: " + username);
   console.log("user:", user);
-  console.log("mongoUsername: " + mongoUsername)
+  console.log("mongoUsername: " + mongoUsername);
 
   //#REGION USER_METADATA
   // console.log(useAuth0());
@@ -56,15 +65,16 @@ export const UserProfile = () => {
 
   useEffect(() => {
     const getUserDataFromMongo = async () => {
-      console.log(`${vite_backend}/user/${user.sub}`);
+      console.log(`${vite_backup}/user/${user.sub}`);
       try {
-        await fetch(`${vite_backend}/user/${user.sub}`)
+        await fetch(`${vite_backup}/user/${user.sub}`)
           .then((res) => res.json())
           .then((data) => {
+            console.log("data: " + JSON.stringify(data));
             setMongoUsername(data.username);
+            setLoggedInUserId(data._id);
             setEmail(data.email);
             setLoading(!loading);
-            
           });
       } catch (error) {
         console.log(error);
@@ -72,7 +82,7 @@ export const UserProfile = () => {
     };
 
     const getUsers = async () => {
-      const fetchUsers = await fetch(`${vite_backend}/users`);
+      const fetchUsers = await fetch(`${vite_backup}/users`);
       const jsonUsers = await fetchUsers.json();
       setUserList(jsonUsers);
       setUserLoading(!userLoading);
@@ -104,11 +114,18 @@ export const UserProfile = () => {
         )}
         {!userLoading && (
           <ul>
-            {userList.map((user, index) => (
-              <li key = {index}
+            {userList.map((user) => (
+              <li
+                key={user._id}
                 className="cursor-pointer"
-                onClick={() => {console.log(user._id); setChatReceiver(user.username);
-                  setUsername(mongoUsername);}}
+                onClick={() => {
+                  console.log(user._id);
+                  setChatReceiver(user.username);
+                  setUsername(mongoUsername);
+                  setRecipientId(user._id);
+                  console.log("The recipient id is: " + recipientId);
+                  console.log("The sender id is: " + loggedInUserId);
+                }}
               >
                 {user.username}
               </li>

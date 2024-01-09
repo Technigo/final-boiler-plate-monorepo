@@ -1,4 +1,5 @@
 import { UserModel } from "../models/UserModel";
+import { MessageModel } from "../models/MessageModel";
 import bcrypt from "bcrypt";
 
 export const UserController = {
@@ -57,7 +58,7 @@ export const UserController = {
   getUserById: async (req, res) => {
     const user_id = req.params.user_id;
     try {
-      const user = await UserModel.findById(user_id);
+      const user = await UserModel.findOne({ user_id });
       if (!user) {
         return res.status(404).json({ message: "User not found" });
       }
@@ -65,6 +66,41 @@ export const UserController = {
       res.json(user);
     } catch (error) {
       res.json({ error: error.message });
+    }
+  },
+
+  getUserMessages: async (req, res) => {
+    // console.log(req);
+    // res.json(req);
+    const { senderId, recipientId } = req.params;
+
+    //Might have to make up a solution for this part
+    //    const userData = await getUser
+    //const ourUserId = userData.userId;
+    //const ourUserId = userId;
+    try {
+      const messages = await MessageModel.find({
+        //  sender: { $in: [userid, ourUserId] },
+        //  recipient: { $in: [userid, ourUserId] },
+        sender: { $in: [senderId, recipientId] },
+        recipient: { $in: [senderId, recipientId] },
+      })
+        .sort({ createdAt: "ascending" })
+        .exec();
+      res.json(messages);
+    } catch (error) {
+      res.status(500).json({ message: error.message });
+    }
+  },
+
+  getAllMessages: async (req, res) => {
+    try {
+      const messages = await MessageModel.find()
+        .sort({ createdAt: "ascending" })
+        .exec();
+      res.json(messages);
+    } catch (error) {
+      res.json(error);
     }
   },
 };

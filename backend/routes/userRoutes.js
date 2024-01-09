@@ -1,5 +1,6 @@
 import express from "express";
-import { UserController } from "../controllers/Usercontroller";
+import { UserController } from "../controllers/UserController";
+const { requiresAuth } = require("express-openid-connect");
 
 
 
@@ -11,9 +12,10 @@ router.get("/", UserController.checkAuthentication);
 router.post("/register", UserController.registerUser);
 router.get("/users", UserController.getAllUsers);
 router.get("/user/:user_id", UserController.getUserById);
+router.get("/messages/", UserController.getUserMessages);
+router.get("/getallmessages", UserController.getAllMessages);
 
 export default router;
-
 
 // import express from "express";
 // import { UserModel } from "../models/UserModel";
