@@ -5,7 +5,7 @@ import { Logo } from "../components/reusableComponents/Logo";
 import { Icon } from "../components/reusableComponents/Icon";
 import logoutIcon from "../assets/logout.svg";
 
-export const Navbar = ({ menuItems, menuDesks }) => {
+export const Navbar = ({ menuItems, menuDesks, logoRedirectPath = "/" }) => {
   const [isMenuOpen, setMenuOpen] = useState(false);
 
   const toggleMenu = () => {
@@ -17,7 +17,7 @@ export const Navbar = ({ menuItems, menuDesks }) => {
       <nav>
         <ul className="app-ul">
           <div className="navbar-logo">
-            <Logo color="white"/>
+            <Logo color="white" redirectPath={logoRedirectPath} />
           </div>
           <div className="hamburger-menu" onClick={toggleMenu}>
             <div className={`bar ${isMenuOpen ? "open" : ""}`} />
