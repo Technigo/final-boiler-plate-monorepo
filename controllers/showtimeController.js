@@ -19,19 +19,6 @@ export const getAllShowtime = asyncHandler(async (req, res) => {
 	}
 })
 
-// @desc seed showtimes from json-file
-// @route /seedshowtime
-// @access public
-
-export const seedShowtimes = asyncHandler(async (req, res) => {
-	await ShowTimeModel.deleteMany({})
-	
-	data.forEach(showtime => {
-		new ShowTimeModel(showtime).save()
-	})
-
-	res.json({status: 'success', message: 'Database of showtime seeded'})
-})
 
 // @desc get showtime by ID
 // @route /:id
@@ -56,36 +43,74 @@ export const getShowtimeById = asyncHandler(async (req, res) => {
 export const addShowtime = asyncHandler(async (req, res) => {
 	try {
 		const { movieTitle, cinemaHall, date, startingTime, endTime, price, seat } = req.body
-
+		
 		// Check for missing required information
 		if (!movieTitle || !cinemaHall || !date || !startingTime || !endTime || !price || !seat)
-			return res.status(400).json({ error: 'Missing required information' })
+		return res.status(400).json({ error: 'Missing required information' })
+	
+	// Transform startingTime and endTime from strings to Date objects
+	const startTimeParts = startingTime.split(':').map(Number)
+	const endTimeParts = endTime.split(':').map(Number)
+	
+	// Create Date objects for startingTime and endTime
+	const startDateTime = new Date(date)
+	startDateTime.setHours(startTimeParts[0], startTimeParts[1], 0, 0)
+	
+	const endDateTime = new Date(date)
+	endDateTime.setHours(endTimeParts[0], endTimeParts[1], 0, 0)
+	
+	const newShowtime = new ShowtimeModel({
+		movieTitle: movieTitle,
+		cinemaHall: cinemaHall,
+		date: date,
+		startingTime: startDateTime,
+		endTime: endDateTime,
+		price: price,
+		seat: seat,
+	})
+	const saveShowtime = await newShowtime.save()
+	
+	res.status(201).json(saveShowtime)
+} catch (error) {
+	res.status(500).json({ message: error.message })
+}
+})
 
-		// Transform startingTime and endTime from strings to Date objects
-		const startTimeParts = startingTime.split(':').map(Number)
-		const endTimeParts = endTime.split(':').map(Number)
+export const bookSeats = asyncHandler(async (req, res) => {
+	// res.json(200).json({message: 'SEATS BOOKED'})
+	try{
+		// Extract data from the PUT request body
+		const { row, seat, showTimeId } = req.body
+		
+		const existingShowtime = await ShowTimeModel.findOneAndUpdate(
+				{ _id: showTimeId },
+				{ $set : {
+					'seats' : ['HELLO']
+					// 'seats.$[xxx].seats.$[yyy].booked': true
+				}},
+				{arrayFilters: [
+					{'xxx.rowIndex' : row},
+					{'yyy.seatIndex': seat}
+				]}
+			)
+		console.log(existingShowtime)
+		// if (!existingShowtime) {
+		// 	return res.status(404).json({error: `Cannot find the showtime with id ${showTimeId}`})
+		// }
 
-		// Create Date objects for startingTime and endTime
-		const startDateTime = new Date(date)
-		startDateTime.setHours(startTimeParts[0], startTimeParts[1], 0, 0)
+		// // Update the showtime data
 
-		const endDateTime = new Date(date)
-		endDateTime.setHours(endTimeParts[0], endTimeParts[1], 0, 0)
-
-		const newShowtime = new ShowtimeModel({
-			movieTitle: movieTitle,
-			cinemaHall: cinemaHall,
-			date: date,
-			startingTime: startDateTime,
-			endTime: endDateTime,
-			price: price,
-			seat: seat,
-		})
-		const saveShowtime = await newShowtime.save()
-
-		res.status(201).json(saveShowtime)
+		// existingShowtime.seats[row].find({ seats: seatNumber })
+		
+		// // Save the updated showtime to the database
+		// const updatedShowtime = await existingShowtime.save()
+		
+		// // Respond with the updated showtime
+		// res.status(202).json(updatedShowtime)
+		res.status(200).json(existingShowtime)
 	} catch (error) {
-		res.status(500).json({ message: error.message })
+		// Handle errors that occurred during the request processing
+		res.status(500).json({ error: 'Something went wrong, please try again.' })
 	}
 })
 
@@ -96,17 +121,17 @@ export const updateShowtime = asyncHandler(async (req, res) => {
 	try {
 		// Extract the showtime ID from the request parameters
 		const showtimeId = req.params.id
-
+		
 		// Check if the showtime exists in the database
 		const existingShowtime = await ShowTimeModel.findById(showtimeId)
 		if (!existingShowtime) {
 			// If not found, return a 404 error
 			return res.status(404).json({ error: `ShowTime with id ${showtimeId} not found.` })
 		}
-
+		
 		// Extract data from the PUT request body
 		const { movieTitle, cinemaHall, date, startingTime, endTime, price, seat } = req.body
-
+		
 		// Update the showtime data
 		existingShowtime.movieTitle = movieTitle
 		existingShowtime.cinemaHall = cinemaHall
@@ -115,14 +140,28 @@ export const updateShowtime = asyncHandler(async (req, res) => {
 		existingShowtime.endTime = endTime
 		existingShowtime.price = price
 		existingShowtime.seat = seat
-
+		
 		// Save the updated showtime to the database
 		const updatedShowtime = await existingShowtime.save()
-
+		
 		// Respond with the updated showtime
 		res.status(202).json(updatedShowtime)
 	} catch (error) {
 		// Handle errors that occurred during the request processing
 		res.status(500).json({ error: 'Something went wrong, please try again.' })
 	}
+})
+
+// @desc seed showtimes from json-file
+// @route /seedshowtime
+// @access public
+
+export const seedShowtimes = asyncHandler(async (req, res) => {
+	await ShowTimeModel.deleteMany({})
+	
+	data.forEach(showtime => {
+		new ShowTimeModel(showtime).save()
+	})
+
+	res.json({status: 'success', message: 'Database of showtime seeded'})
 })

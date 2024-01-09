@@ -7,11 +7,11 @@
         "duration": 100,
         "price": 100,
         "seats": [
-            {"rowIndex": 1, "seats": [{"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}]},
-            {"rowIndex": 2, "seats": [{"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}]},
-            {"rowIndex": 3, "seats": [{"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}]},
-            {"rowIndex": 4, "seats": [{"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}]},
-            {"rowIndex": 5, "seats": [{"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}]}
+            {"rowIndex": 1, "seats": [{"booked": false, "bookingID": null, "seatIndex": 0}, {"booked": false, "bookingID": null, "seatIndex": 1}, {"booked": false, "bookingID": null, "seatIndex": 2}, {"booked": false, "bookingID": null, "seatIndex": 3}]},
+            {"rowIndex": 2, "seats": [{"booked": false, "bookingID": null, "seatIndex": 0}, {"booked": false, "bookingID": null, "seatIndex": 1}, {"booked": false, "bookingID": null, "seatIndex": 2}, {"booked": false, "bookingID": null, "seatIndex": 3}]},
+            {"rowIndex": 3, "seats": [{"booked": false, "bookingID": null, "seatIndex": 0}, {"booked": false, "bookingID": null, "seatIndex": 1}, {"booked": false, "bookingID": null, "seatIndex": 2}, {"booked": false, "bookingID": null, "seatIndex": 3}]},
+            {"rowIndex": 4, "seats": [{"booked": false, "bookingID": null, "seatIndex": 0}, {"booked": false, "bookingID": null, "seatIndex": 1}, {"booked": false, "bookingID": null, "seatIndex": 2}, {"booked": false, "bookingID": null, "seatIndex": 3}]},
+            {"rowIndex": 5, "seats": [{"booked": false, "bookingID": null, "seatIndex": 0}, {"booked": false, "bookingID": null, "seatIndex": 1}, {"booked": false, "bookingID": null, "seatIndex": 2}, {"booked": false, "bookingID": null, "seatIndex": 3}]}
         ]
     },
     {
@@ -22,11 +22,11 @@
         "duration": 100,
         "price": 100,
         "seats": [
-            {"rowIndex": 1, "seats": [{"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}]},
-            {"rowIndex": 2, "seats": [{"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}]},
-            {"rowIndex": 3, "seats": [{"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}]},
-            {"rowIndex": 4, "seats": [{"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}, {"booked": true, "bookingID": {"$oid": "1585c91e06618a9dee3c493c"}}, {"booked": false, "bookingID": null}]},
-            {"rowIndex": 5, "seats": [{"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}]}
+            {"rowIndex": 1, "seats": [{"booked": false, "bookingID": null, "seatIndex": 0}, {"booked": false, "bookingID": null, "seatIndex": 1}, {"booked": false, "bookingID": null, "seatIndex": 2}, {"booked": false, "bookingID": null, "seatIndex": 3}]},
+            {"rowIndex": 2, "seats": [{"booked": false, "bookingID": null, "seatIndex": 0}, {"booked": false, "bookingID": null, "seatIndex": 1}, {"booked": false, "bookingID": null, "seatIndex": 2}, {"booked": false, "bookingID": null, "seatIndex": 3}]},
+            {"rowIndex": 3, "seats": [{"booked": false, "bookingID": null, "seatIndex": 0}, {"booked": false, "bookingID": null, "seatIndex": 1}, {"booked": false, "bookingID": null, "seatIndex": 2}, {"booked": false, "bookingID": null, "seatIndex": 3}]},
+            {"rowIndex": 4, "seats": [{"booked": false, "bookingID": null, "seatIndex": 0}, {"booked": false, "bookingID": null, "seatIndex": 1}, {"booked": true, "bookingID": {"$oid": "1585c91e06618a9dee3c493c"}, "seatIndex": 2}, {"booked": false, "bookingID": null, "seatIndex": 3}]},
+            {"rowIndex": 5, "seats": [{"booked": false, "bookingID": null, "seatIndex": 0}, {"booked": false, "bookingID": null, "seatIndex": 1}, {"booked": false, "bookingID": null, "seatIndex": 2}, {"booked": false, "bookingID": null, "seatIndex": 3}]}
         ]
     },
     {
@@ -37,11 +37,11 @@
         "duration": 100,
         "price": 100,
         "seats": [
-            {"rowIndex": 1, "seats": [{"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}]},
-            {"rowIndex": 2, "seats": [{"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}]},
-            {"rowIndex": 3, "seats": [{"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}]},
-            {"rowIndex": 4, "seats": [{"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}]},
-            {"rowIndex": 5, "seats": [{"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}]}
+            {"rowIndex": 1, "seats": [{"booked": false, "bookingID": null, "seatIndex": 0}, {"booked": false, "bookingID": null, "seatIndex": 1}, {"booked": false, "bookingID": null, "seatIndex": 2}, {"booked": false, "bookingID": null, "seatIndex": 3}]},
+            {"rowIndex": 2, "seats": [{"booked": false, "bookingID": null, "seatIndex": 0}, {"booked": false, "bookingID": null, "seatIndex": 1}, {"booked": false, "bookingID": null, "seatIndex": 2}, {"booked": false, "bookingID": null, "seatIndex": 3}]},
+            {"rowIndex": 3, "seats": [{"booked": false, "bookingID": null, "seatIndex": 0}, {"booked": false, "bookingID": null, "seatIndex": 1}, {"booked": false, "bookingID": null, "seatIndex": 2}, {"booked": false, "bookingID": null, "seatIndex": 3}]},
+            {"rowIndex": 4, "seats": [{"booked": false, "bookingID": null, "seatIndex": 0}, {"booked": false, "bookingID": null, "seatIndex": 1}, {"booked": false, "bookingID": null, "seatIndex": 2}, {"booked": false, "bookingID": null, "seatIndex": 3}]},
+            {"rowIndex": 5, "seats": [{"booked": false, "bookingID": null, "seatIndex": 0}, {"booked": false, "bookingID": null, "seatIndex": 1}, {"booked": false, "bookingID": null, "seatIndex": 2}, {"booked": false, "bookingID": null, "seatIndex": 3}]}
         ]
     },
     {
@@ -52,11 +52,11 @@
         "duration": 100,
         "price": 100,
         "seats": [
-            {"rowIndex": 1, "seats": [{"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}]},
-            {"rowIndex": 2, "seats": [{"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}]},
-            {"rowIndex": 3, "seats": [{"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}]},
-            {"rowIndex": 4, "seats": [{"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}]},
-            {"rowIndex": 5, "seats": [{"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}]}
+            {"rowIndex": 1, "seats": [{"booked": false, "bookingID": null, "seatIndex": 0}, {"booked": false, "bookingID": null, "seatIndex": 1}, {"booked": false, "bookingID": null, "seatIndex": 2}, {"booked": false, "bookingID": null, "seatIndex": 3}]},
+            {"rowIndex": 2, "seats": [{"booked": false, "bookingID": null, "seatIndex": 0}, {"booked": false, "bookingID": null, "seatIndex": 1}, {"booked": false, "bookingID": null, "seatIndex": 2}, {"booked": false, "bookingID": null, "seatIndex": 3}]},
+            {"rowIndex": 3, "seats": [{"booked": false, "bookingID": null, "seatIndex": 0}, {"booked": false, "bookingID": null, "seatIndex": 1}, {"booked": false, "bookingID": null, "seatIndex": 2}, {"booked": false, "bookingID": null, "seatIndex": 3}]},
+            {"rowIndex": 4, "seats": [{"booked": false, "bookingID": null, "seatIndex": 0}, {"booked": false, "bookingID": null, "seatIndex": 1}, {"booked": false, "bookingID": null, "seatIndex": 2}, {"booked": false, "bookingID": null, "seatIndex": 3}]},
+            {"rowIndex": 5, "seats": [{"booked": false, "bookingID": null, "seatIndex": 0}, {"booked": false, "bookingID": null, "seatIndex": 1}, {"booked": false, "bookingID": null, "seatIndex": 2}, {"booked": false, "bookingID": null, "seatIndex": 3}]}
         ]
     },
     {
@@ -67,11 +67,11 @@
         "duration": 100,
         "price": 100,
         "seats": [
-            {"rowIndex": 1, "seats": [{"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}]},
-            {"rowIndex": 2, "seats": [{"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}]},
-            {"rowIndex": 3, "seats": [{"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}]},
-            {"rowIndex": 4, "seats": [{"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}]},
-            {"rowIndex": 5, "seats": [{"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}]}
+            {"rowIndex": 1, "seats": [{"booked": false, "bookingID": null, "seatIndex": 0}, {"booked": false, "bookingID": null, "seatIndex": 1}, {"booked": false, "bookingID": null, "seatIndex": 2}, {"booked": false, "bookingID": null, "seatIndex": 3}]},
+            {"rowIndex": 2, "seats": [{"booked": false, "bookingID": null, "seatIndex": 0}, {"booked": false, "bookingID": null, "seatIndex": 1}, {"booked": false, "bookingID": null, "seatIndex": 2}, {"booked": false, "bookingID": null, "seatIndex": 3}]},
+            {"rowIndex": 3, "seats": [{"booked": false, "bookingID": null, "seatIndex": 0}, {"booked": false, "bookingID": null, "seatIndex": 1}, {"booked": false, "bookingID": null, "seatIndex": 2}, {"booked": false, "bookingID": null, "seatIndex": 3}]},
+            {"rowIndex": 4, "seats": [{"booked": false, "bookingID": null, "seatIndex": 0}, {"booked": false, "bookingID": null, "seatIndex": 1}, {"booked": false, "bookingID": null, "seatIndex": 2}, {"booked": false, "bookingID": null, "seatIndex": 3}]},
+            {"rowIndex": 5, "seats": [{"booked": false, "bookingID": null, "seatIndex": 0}, {"booked": false, "bookingID": null, "seatIndex": 1}, {"booked": false, "bookingID": null, "seatIndex": 2}, {"booked": false, "bookingID": null, "seatIndex": 3}]}
         ]
     },
     {
@@ -82,11 +82,11 @@
         "duration": 100,
         "price": 100,
         "seats": [
-            {"rowIndex": 1, "seats": [{"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}]},
-            {"rowIndex": 2, "seats": [{"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}]},
-            {"rowIndex": 3, "seats": [{"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}]},
-            {"rowIndex": 4, "seats": [{"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}]},
-            {"rowIndex": 5, "seats": [{"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}]}
+            {"rowIndex": 1, "seats": [{"booked": false, "bookingID": null, "seatIndex": 0}, {"booked": false, "bookingID": null, "seatIndex": 1}, {"booked": false, "bookingID": null, "seatIndex": 2}, {"booked": false, "bookingID": null, "seatIndex": 3}]},
+            {"rowIndex": 2, "seats": [{"booked": false, "bookingID": null, "seatIndex": 0}, {"booked": false, "bookingID": null, "seatIndex": 1}, {"booked": false, "bookingID": null, "seatIndex": 2}, {"booked": false, "bookingID": null, "seatIndex": 3}]},
+            {"rowIndex": 3, "seats": [{"booked": false, "bookingID": null, "seatIndex": 0}, {"booked": false, "bookingID": null, "seatIndex": 1}, {"booked": false, "bookingID": null, "seatIndex": 2}, {"booked": false, "bookingID": null, "seatIndex": 3}]},
+            {"rowIndex": 4, "seats": [{"booked": false, "bookingID": null, "seatIndex": 0}, {"booked": false, "bookingID": null, "seatIndex": 1}, {"booked": false, "bookingID": null, "seatIndex": 2}, {"booked": false, "bookingID": null, "seatIndex": 3}]},
+            {"rowIndex": 5, "seats": [{"booked": false, "bookingID": null, "seatIndex": 0}, {"booked": false, "bookingID": null, "seatIndex": 1}, {"booked": false, "bookingID": null, "seatIndex": 2}, {"booked": false, "bookingID": null, "seatIndex": 3}]}
         ]
     },
     {
@@ -97,11 +97,11 @@
         "duration": 100,
         "price": 100,
         "seats": [
-            {"rowIndex": 1, "seats": [{"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}]},
-            {"rowIndex": 2, "seats": [{"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}]},
-            {"rowIndex": 3, "seats": [{"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}]},
-            {"rowIndex": 4, "seats": [{"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}]},
-            {"rowIndex": 5, "seats": [{"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}]}
+            {"rowIndex": 1, "seats": [{"booked": false, "bookingID": null, "seatIndex": 0}, {"booked": false, "bookingID": null, "seatIndex": 1}, {"booked": false, "bookingID": null, "seatIndex": 2}, {"booked": false, "bookingID": null, "seatIndex": 3}]},
+            {"rowIndex": 2, "seats": [{"booked": false, "bookingID": null, "seatIndex": 0}, {"booked": false, "bookingID": null, "seatIndex": 1}, {"booked": false, "bookingID": null, "seatIndex": 2}, {"booked": false, "bookingID": null, "seatIndex": 3}]},
+            {"rowIndex": 3, "seats": [{"booked": false, "bookingID": null, "seatIndex": 0}, {"booked": false, "bookingID": null, "seatIndex": 1}, {"booked": false, "bookingID": null, "seatIndex": 2}, {"booked": false, "bookingID": null, "seatIndex": 3}]},
+            {"rowIndex": 4, "seats": [{"booked": false, "bookingID": null, "seatIndex": 0}, {"booked": false, "bookingID": null, "seatIndex": 1}, {"booked": false, "bookingID": null, "seatIndex": 2}, {"booked": false, "bookingID": null, "seatIndex": 3}]},
+            {"rowIndex": 5, "seats": [{"booked": false, "bookingID": null, "seatIndex": 0}, {"booked": false, "bookingID": null, "seatIndex": 1}, {"booked": false, "bookingID": null, "seatIndex": 2}, {"booked": false, "bookingID": null, "seatIndex": 3}]}
         ]
     },
     {
@@ -112,11 +112,11 @@
         "duration": 100,
         "price": 100,
         "seats": [
-            {"rowIndex": 1, "seats": [{"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}]},
-            {"rowIndex": 2, "seats": [{"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}]},
-            {"rowIndex": 3, "seats": [{"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}]},
-            {"rowIndex": 4, "seats": [{"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}]},
-            {"rowIndex": 5, "seats": [{"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}]}
+            {"rowIndex": 1, "seats": [{"booked": false, "bookingID": null, "seatIndex": 0}, {"booked": false, "bookingID": null, "seatIndex": 1}, {"booked": false, "bookingID": null, "seatIndex": 2}, {"booked": false, "bookingID": null, "seatIndex": 3}]},
+            {"rowIndex": 2, "seats": [{"booked": false, "bookingID": null, "seatIndex": 0}, {"booked": false, "bookingID": null, "seatIndex": 1}, {"booked": false, "bookingID": null, "seatIndex": 2}, {"booked": false, "bookingID": null, "seatIndex": 3}]},
+            {"rowIndex": 3, "seats": [{"booked": false, "bookingID": null, "seatIndex": 0}, {"booked": false, "bookingID": null, "seatIndex": 1}, {"booked": false, "bookingID": null, "seatIndex": 2}, {"booked": false, "bookingID": null, "seatIndex": 3}]},
+            {"rowIndex": 4, "seats": [{"booked": false, "bookingID": null, "seatIndex": 0}, {"booked": false, "bookingID": null, "seatIndex": 1}, {"booked": false, "bookingID": null, "seatIndex": 2}, {"booked": false, "bookingID": null, "seatIndex": 3}]},
+            {"rowIndex": 5, "seats": [{"booked": false, "bookingID": null, "seatIndex": 0}, {"booked": false, "bookingID": null, "seatIndex": 1}, {"booked": false, "bookingID": null, "seatIndex": 2}, {"booked": false, "bookingID": null, "seatIndex": 3}]}
         ]
     },
     {
@@ -127,11 +127,11 @@
         "duration": 100,
         "price": 100,
         "seats": [
-            {"rowIndex": 1, "seats": [{"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}]},
-            {"rowIndex": 2, "seats": [{"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}]},
-            {"rowIndex": 3, "seats": [{"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}]},
-            {"rowIndex": 4, "seats": [{"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}]},
-            {"rowIndex": 5, "seats": [{"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}]}
+            {"rowIndex": 1, "seats": [{"booked": false, "bookingID": null, "seatIndex": 0}, {"booked": false, "bookingID": null, "seatIndex": 1}, {"booked": false, "bookingID": null, "seatIndex": 2}, {"booked": false, "bookingID": null, "seatIndex": 3}]},
+            {"rowIndex": 2, "seats": [{"booked": false, "bookingID": null, "seatIndex": 0}, {"booked": false, "bookingID": null, "seatIndex": 1}, {"booked": false, "bookingID": null, "seatIndex": 2}, {"booked": false, "bookingID": null, "seatIndex": 3}]},
+            {"rowIndex": 3, "seats": [{"booked": false, "bookingID": null, "seatIndex": 0}, {"booked": false, "bookingID": null, "seatIndex": 1}, {"booked": false, "bookingID": null, "seatIndex": 2}, {"booked": false, "bookingID": null, "seatIndex": 3}]},
+            {"rowIndex": 4, "seats": [{"booked": false, "bookingID": null, "seatIndex": 0}, {"booked": false, "bookingID": null, "seatIndex": 1}, {"booked": false, "bookingID": null, "seatIndex": 2}, {"booked": false, "bookingID": null, "seatIndex": 3}]},
+            {"rowIndex": 5, "seats": [{"booked": false, "bookingID": null, "seatIndex": 0}, {"booked": false, "bookingID": null, "seatIndex": 1}, {"booked": false, "bookingID": null, "seatIndex": 2}, {"booked": false, "bookingID": null, "seatIndex": 3}]}
         ]
     },
     {
@@ -142,11 +142,11 @@
         "duration": 100,
         "price": 100,
         "seats": [
-            {"rowIndex": 1, "seats": [{"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}]},
-            {"rowIndex": 2, "seats": [{"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}]},
-            {"rowIndex": 3, "seats": [{"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}]},
-            {"rowIndex": 4, "seats": [{"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}]},
-            {"rowIndex": 5, "seats": [{"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}]}
+            {"rowIndex": 1, "seats": [{"booked": false, "bookingID": null, "seatIndex": 0}, {"booked": false, "bookingID": null, "seatIndex": 1}, {"booked": false, "bookingID": null, "seatIndex": 2}, {"booked": false, "bookingID": null, "seatIndex": 3}]},
+            {"rowIndex": 2, "seats": [{"booked": false, "bookingID": null, "seatIndex": 0}, {"booked": false, "bookingID": null, "seatIndex": 1}, {"booked": false, "bookingID": null, "seatIndex": 2}, {"booked": false, "bookingID": null, "seatIndex": 3}]},
+            {"rowIndex": 3, "seats": [{"booked": false, "bookingID": null, "seatIndex": 0}, {"booked": false, "bookingID": null, "seatIndex": 1}, {"booked": false, "bookingID": null, "seatIndex": 2}, {"booked": false, "bookingID": null, "seatIndex": 3}]},
+            {"rowIndex": 4, "seats": [{"booked": false, "bookingID": null, "seatIndex": 0}, {"booked": false, "bookingID": null, "seatIndex": 1}, {"booked": false, "bookingID": null, "seatIndex": 2}, {"booked": false, "bookingID": null, "seatIndex": 3}]},
+            {"rowIndex": 5, "seats": [{"booked": false, "bookingID": null, "seatIndex": 0}, {"booked": false, "bookingID": null, "seatIndex": 1}, {"booked": false, "bookingID": null, "seatIndex": 2}, {"booked": false, "bookingID": null, "seatIndex": 3}]}
         ]
     }
 ]
