@@ -1,3 +1,11 @@
+import { Profile } from "../components/profile"
+
+
+
 export const Account = () => {
-  return <div>User account details and settings</div>;
+
+  return (
+    <Profile/>
+    )
+    
 };

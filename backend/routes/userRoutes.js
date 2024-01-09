@@ -1,8 +1,5 @@
 import express from "express";
 import { UserController } from "../controllers/UserController";
-const { requiresAuth } = require("express-openid-connect");
-
-
 
 const { requiresAuth } = require("express-openid-connect");
 const router = express.Router();

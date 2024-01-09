@@ -75,6 +75,7 @@ export const UserProfile = () => {
             setLoggedInUserId(data._id);
             setEmail(data.email);
             setLoading(!loading);
+            console.log(email, mongoUsername)
           });
       } catch (error) {
         console.log(error);
