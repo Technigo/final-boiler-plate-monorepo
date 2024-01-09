@@ -9,8 +9,6 @@ import "./PostStory.css";
 
 const libraries = ["places"];
 
-
-
 export const PostStory = () => {
   const [newHeading, setNewHeading] = useState("");
   const [newStory, setNewStory] = useState("");
@@ -47,24 +45,18 @@ export const PostStory = () => {
 
     setNewStory("");
 
-
- 
-
     // Check if the language is supported for sentiment analysis
-    const supportedLanguagesForSentiment = ["en", "es", "ja", "pt"]; // Add more as supported
-    const languageCode = "sv"; // Set the language code dynamically based on the story's language
-
+    const supportedLanguagesForSentiment = ["en", "es", "ja", "pt"];
+    const languageCode = "sv";
 
     if (!supportedLanguagesForSentiment.includes(languageCode)) {
       console.log("Sentiment analysis not supported for this language");
-      // Handle the case when language is not supported for sentiment analysis
-      // You can directly post the story without sentiment analysis
     } else {
       const googleApiPayload = {
         document: {
-          content: newStory, // Set the content field with the story text
+          content: newStory,
           type: "PLAIN_TEXT",
-          language: languageCode, // Specify the language of the content
+          language: languageCode,
         },
       };
       console.log("Sending request to Google API with body:", googleApiPayload);
@@ -387,5 +379,3 @@ export const PostStory = () => {
     </div>
   );
 };
-
-
