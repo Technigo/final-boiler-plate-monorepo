@@ -1,5 +1,6 @@
 /* eslint-disable react-refresh/only-export-components */
 /* eslint-disable no-undef */
+import { Link } from 'react-router-dom';
 
 import { useState, useCallback, memo, useEffect } from "react";
 import {
@@ -173,9 +174,10 @@ export const Map = () => {
   const [autocomplete, setAutocomplete] = useState(null);
   const [customMarkerIcon, setCustomMarkerIcon] = useState(null);
 
+
   // Fetch stories when the component mounts
   useEffect(() => {
-    fetch("https://whisperwall.onrender.com/stories")
+    fetch("http://localhost:3000/stories")
       .then((response) => response.json())
       .then((data) => {
         if (data.length > 0) {
@@ -279,7 +281,8 @@ export const Map = () => {
             <div>
               <h3 className="marker-title">{selectedMarker.title}</h3>
               <p className="marker-text">{selectedMarker.description}</p>
-              <a href={`/stories/${selectedMarker.id}`}>Follow the whisper</a>
+              <a href={`/stories/${selectedMarker.id}`}>Follow the wwhisper</a>
+              <Link href={`/stories/${selectedMarker.id}`}>Follow the whisper</Link>
             </div>
           </InfoWindow>
         )}
