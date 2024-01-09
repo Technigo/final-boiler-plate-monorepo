@@ -46,10 +46,6 @@ export const Navbar = ({ menuItems, menuDesks }) => {
             </div>
           )}
           <ul className="nav-list">
-            <div className="navbar-logo">
-              <Logo className="logo-burger" />
-            </div>
-
             {menuItems.map((menuItem, index) => (
               <li key={menuItem.path || `item-${index}`} className="app-li">
                 {menuItem.path ? (

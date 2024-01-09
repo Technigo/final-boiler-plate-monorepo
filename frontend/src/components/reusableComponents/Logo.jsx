@@ -1,4 +1,4 @@
-import logo from "../../assets/green-buddy-logo.png";
+import logo from "../../assets/green-buddy-logo-white.svg";
 import "../reusableComponents/logo.css";
 import { useNavigate } from "react-router-dom";
 

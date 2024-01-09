@@ -1,8 +1,8 @@
 nav {
-  background-color: #a09d9d;
-  color: #000000;
+  background-color: var(--secondary-background);
+  color: var(--secondary-text);
   margin: 0 0 2rem 0;
-  padding: 10px 10px 0 10px;
+  padding: 20px 10px 0 10px;
   height: 5rem;
 }
 
@@ -12,16 +12,24 @@ nav {
   height: 3em;
 }
 
+.navbar-logo img {
+  margin-left: 30px;
+  /* Increased margin-left for the logo */
+}
+
 .hamburger-menu {
   display: block;
+  margin-left: 20px;
+  margin-right: 15px;
 }
 
 .bar {
   width: 25px;
   height: 3px;
-  background-color: #1e1e1e;
+  background-color: var(--primary-background);
   margin: 5px 0;
   transition: 0.4s;
+  border-radius: 10px;
 }
 
 .navbar-links {
@@ -29,24 +37,21 @@ nav {
   position: absolute;
   top: 0;
   right: -100%;
-  /* Start off-screen to the right */
   bottom: 0;
-  background-color: #333;
+  background-color: var(--primary-background-black);
   width: 50%;
   text-align: center;
   overflow: hidden;
   max-height: 100vh;
-  /* Adjust based on your content height */
   transition: right 0.5s ease-out;
-  /* Animate from right to left */
   z-index: 2;
 }
 
 .navbar-links.open {
+  font-family: var(--font-heading);
+  font-weight: 600;
   right: 0;
-  /* Move the menu back to the visible area */
   transition: right 0.5s ease-in;
-  /* Animate from left to right */
   z-index: 2;
   height: 100vh;
 }
@@ -57,7 +62,6 @@ nav {
   position: absolute;
   top: 8px;
   color: #fff;
-  /* Set the color to white or your desired color */
   display: block;
   left: 20px;
 }
@@ -70,12 +74,7 @@ nav {
 }
 
 .navbar-links a:hover {
-  color: #f00;
-}
-
-.navbar.open .close-button {
-  display: block;
-  /* Display the close button when the menu is open */
+  color: var(--nav-hover-text);
 }
 
 .nav-list {
@@ -89,6 +88,7 @@ nav {
 }
 
 .app-ul .app-li {
+  font-family: var(--font-heading);
   display: none;
 }
 
@@ -103,85 +103,85 @@ nav .app-ul {
   align-items: center;
   justify-content: center;
   cursor: pointer;
+  margin: 0 15px;
 }
 
 .sign-out-text {
-  margin-left: 10px;
-  /* Adjust spacing between icon and text */
-  color: #ffffff;
-  /* Same color as other navbar links */
+  font-family: var(--font-heading);
+  color: var(--secondary-text);
   font-weight: 600;
-  /* Same font weight as other navbar links */
   text-decoration: none;
-  /* Same decoration as other navbar links */
 }
 
 .sign-out-text:hover {
-  color: red;
-  /* Same hover effect as other navbar links */
+  color: var(--nav-hover-text);
 }
-
 
 /* Media query for desktop devices */
 @media screen and (min-width: 1120px) {
   nav {
-    background-color: #a09d9d;
-    color: #000000;
-    margin: 0 0 2rem 0;
-    padding: 10px 10px 0 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     height: 5rem;
+    margin: 0;
+    padding: 10px;
   }
 
-  .hamburger-menu {
-    display: none;
+  .navbar-logo {
+    margin-right: auto;
   }
 
-  .navbar-links {
-    display: none;
-  }
-
-  .close-button {
-    display: none;
-  }
-
-  .nav-list {
-    display: none;
+  .app-ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    list-style: none;
+    width: 100%;
+    padding: 0;
+    margin: 0;
   }
 
   .app-ul .app-li {
     display: flex;
     justify-content: center;
     align-items: center;
+    margin: 0 20px;
   }
 
-  nav .app-ul .app-li a {
-    color: black;
-    font-weight: 600;
-    align-items: center;
+  .app-ul .app-li a {
+    color: var(--secondary-text);
+    font-weight: 700;
+    text-decoration: none;
+    transition: color 0.4s;
   }
 
-  nav .app-ul .app-li a:hover {
-    color: red;
+  .app-ul .app-li a:hover {
+    color: var(--cta-hover);
   }
 
-  nav .app-ul .app-li {
-    margin: 0;
-    flex-grow: 0;
-    flex-shrink: 0;
-    width: 11rem;
+  .logout-container {
+    margin-left: auto;
+    transition: color 0.4s;
   }
 
-  nav .app-ul .navbar-logo {
-    flex: 1;
-  }
-
-  .sign-out-text {
-    color: #000000;
-    /* Adjust for desktop view */
+  .logout-container:hover {
+    color: var(--cta-hover);
   }
 
   .sign-out-text:hover {
-    color: red;
-    /* Adjust hover color for desktop view */
+    color: var(--cta-hover);
+  }
+
+  .hamburger-menu,
+  .navbar-links,
+  .close-button,
+  .nav-list {
+    display: none;
+  }
+
+  .navbar-logo img {
+    padding: 0;
+    margin-left: 50px;
   }
 }

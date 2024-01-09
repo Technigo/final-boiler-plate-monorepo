@@ -1,7 +1,7 @@
 .button, 
 button.button { 
     border-radius: var(--border-radius);
-    border: 1px solid transparent;
+    border: 2px solid transparent;
     padding: 0.25em 1em;
     font-size: var(--font-size-label);
     font-weight: 700;
@@ -15,7 +15,7 @@ button.button {
 
 .button:hover, 
 button.button:hover {
-    border-color: #646cff;
+    border-color: var(--cta-hover-border);
     color: var(--cta-hover-text);
     background-color: var(--cta-hover);
 }

@@ -8,15 +8,19 @@
 :root {
   /* Primary Colors */
   --primary-text: #333333;
-  --primary-background: #ffffff;
+  --primary-background: #F5F5F5;
+  --primary-background-black: #333333;
   --cta: #333333;
   --cta-hover: #202322;
-  --cta-text: #e2e3ed;
-  --cta-hover-text: #e2e3ed;
-  --secondary-background: #f5f5f5;
+  --cta-hover-border: #333333;
+  --cta-text: #F5F5F5;
+  --cta-hover-text: #F5F5F5;
+  --nav-hover-text: #E76F51;
 
   /* Secondary Colors */
-  --secondary-text: #666666;
+  --secondary-background: #528365;
+  --secondary-text: #F5F5F5;
+  --other-text: #666666;
   --accent: #3739cb;
   --border: #dddddd;
 
