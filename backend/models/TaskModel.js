@@ -33,7 +33,7 @@ export const taskSchema = new Schema(
         "Tvååker",
         "Tångaberg",
         "Valinge",
-        "Varberg city",
+        "Varberg City",
         "Veddige",
         "Väröbacka",
         "Årnäs",

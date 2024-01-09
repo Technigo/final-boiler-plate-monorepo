@@ -32,6 +32,11 @@ const StyledNav = styled.nav`
     width: 150px;
   }
 
+  li.active a {
+    text-decoration-line: underline;
+    border-bottom: 5px;
+  }
+
   @media (min-width: 1100px) {
     ul {
       display: flex;

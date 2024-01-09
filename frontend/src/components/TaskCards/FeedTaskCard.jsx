@@ -17,6 +17,8 @@ const StyledFeedCardModal = styled.div`
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
   width: 260px;
   height: auto;
+  color: #213547;
+  background-color: #f8f8f8;
 
   // Styling for the Need card
   .card-container {
@@ -96,23 +98,23 @@ const iconSize = "40px";
 const categoryStyle = {
   Garden: {
     icon: GiGardeningShears,
-    backgroundColor: "#eaffec",
+    //backgroundColor: "#eaffec",
   },
   Pets: {
     icon: MdPets,
-    backgroundColor: "#ffeafd",
+    //backgroundColor: "#ffeafd",
   },
   Shopping: {
     icon: TiShoppingCart,
-    backgroundColor: "#ffecea",
+    //backgroundColor: "#ffecea",
   },
   Repairs: {
     icon: GiHammerNails,
-    backgroundColor: "#eafdff",
+    //backgroundColor: "#eafdff",
   },
   Other: {
     icon: MdMiscellaneousServices,
-    backgroundColor: "#eaf3ff",
+    //backgroundColor: "#eaf3ff",
   },
 };
 

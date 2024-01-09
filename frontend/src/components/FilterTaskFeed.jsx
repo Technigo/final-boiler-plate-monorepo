@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { taskStore } from "../stores/taskStore";
 import { Button } from "./Buttons/Button";
-import aHelpingHandLogotype from "/a-helping-hand-logotype.png";
+import aHelpingHandLogotype from "/Logo-white.png";
 import styled from "styled-components";
 
 const StyledFilterTaskFeed = styled.div`
@@ -56,15 +56,16 @@ const StyledSelects = styled.select`
 export const FilterTaskFeed = () => {
   const [category, setCategory] = useState("");
   const [area, setArea] = useState("");
-  const [filteredTasks, setFilteredTasks] = useState([]);
+  //const [filteredTasks, setFilteredTasks] = useState([]);
   const { fetchTasks } = taskStore();
 
   // Function to filter tasks by category and area
   const filterTasks = (selectedCategory, selectedArea) => {
-    const tasks = taskStore
+    // const tasks = taskStore
+    taskStore
       .getState()
       .filterTasksByCategoryAndArea(selectedCategory, selectedArea);
-    setFilteredTasks(tasks);
+    //setFilteredTasks(tasks);
   };
 
   useEffect(() => {
@@ -138,7 +139,7 @@ export const FilterTaskFeed = () => {
           <option value="Tvååker">Tvååker</option>
           <option value="Tångaberg">Tångaberg</option>
           <option value="Valinge">Valinge</option>
-          <option value="Varberg city">Varberg city</option>
+          <option value="Varberg City">Varberg City</option>
           <option value="Veddige">Veddige</option>
           <option value="Väröbacka">Väröbacka</option>
           <option value="Årnäs">Årnäs</option>

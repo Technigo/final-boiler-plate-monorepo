@@ -28,7 +28,7 @@ const StyledTaskTitleInput = styled.input`
 
 const CreateTaskSelects = styled.div`
   display: flex;
-  gap: 10px;
+  gap: 4px;
 
   @media screen and (min-width: 600px) {
     gap: 50px;
@@ -37,7 +37,7 @@ const CreateTaskSelects = styled.div`
 
 const StyledSelects = styled.select`
   display: flex;
-  width: 120px;
+  width: 123px;
   border: 1px solid var(--secondaryColor);
   border-radius: 20px;
   padding: 5px;
@@ -79,7 +79,7 @@ const ErrorCounterWrapper = styled.div`
 
 const StyledCharCounter = styled.span`
   font-size: 12px;
-  color: #666;
+  color: floralwhite;
   text-align: left;
   padding-right: 10px;
 `;
@@ -235,7 +235,7 @@ export const CreateTask = () => {
           <option value="Tvååker">Tvååker</option>
           <option value="Tångaberg">Tångaberg</option>
           <option value="Valinge">Valinge</option>
-          <option value="Varberg city">Varberg city</option>
+          <option value="Varberg City">Varberg City</option>
           <option value="Veddige">Veddige</option>
           <option value="Väröbacka">Väröbacka</option>
           <option value="Årnäs">Årnäs</option>

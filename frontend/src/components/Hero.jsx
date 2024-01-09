@@ -74,7 +74,7 @@ const HeroTextWrapper = styled.div`
 const StyledP = styled.div`
   p {
     width: 80%;
-    color: #213547;
+    color: floralwhite;
   }
 `;
 
@@ -121,7 +121,6 @@ export const Hero = () => {
         <HeroTextWrapper>
           <h1 className="heading">{text.heading}</h1>
           <h2>{text.subheading}</h2>
-          {/* <h2>{text.subheading}</h2> */}
         </HeroTextWrapper>
       </Container>
       <StyledP>

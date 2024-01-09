@@ -12,6 +12,10 @@ const StyledTaskPage = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+
+  h3 {
+    margin-bottom: 20px;
+  }
 `;
 
 const StyledTaskFields = styled.div`
@@ -63,16 +67,21 @@ const CardWrapper = styled.div`
   justify-content: center; */
   gap: 10px;
 
-  p {
-    text-align: center;
-  }
-
   @media screen and (min-width: 600px) {
     grid-template-columns: repeat(2, 1fr);
+
+    p {
+      grid-column: 1 / 3;
+      text-align: center;
+    }
   }
 
   @media screen and (min-width: 1000px) {
     grid-template-columns: repeat(3, 1fr);
+
+    p {
+      grid-column: 1 / 5;
+    }
   }
 
   @media screen and (min-width: 1400px) {
@@ -85,7 +94,7 @@ export const Tasks = () => {
   // Text content for the heading and paragraphs.
   const text = {
     heading: "In Need, In Deed",
-    intro: "Do you need an extra hand? Or do you want to help someone?",
+    intro: "Do you need a helping hand? Or do you want to help someone?",
     p: "Then Deed Hub is the place to be!",
     // p: "Share it with the community and get the assistance you need!",
     deeds: "Up for grabs",
