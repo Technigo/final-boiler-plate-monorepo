@@ -21,6 +21,27 @@ export const StoryList = () => {
     setCategories([...new Set(storiesData.map((story) => story.category))]);
   };
 
+  // Function to handle like clicks
+  const handleLikeClick = async (storyId) => {
+    try {
+      const response = await fetch(`${apiUrl}/stories/${storyId}/rank`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      const updatedStory = await response.json();
+
+      setStories((prevStories) =>
+        prevStories.map((story) =>
+          story._id === storyId ? updatedStory : story
+        )
+      );
+    } catch (error) {
+      console.error("Error updating story ranking:", error);
+    }
+  };
+
   useEffect(() => {
     // Function to fetch stories from backend
     const fetchStories = async () => {
@@ -34,7 +55,7 @@ export const StoryList = () => {
       }
     };
     fetchStories();
-  }, []);
+  }, [apiUrl]);
 
   // useEffect(() => {
   //   // Function to fetch stories from backend
@@ -79,7 +100,7 @@ export const StoryList = () => {
         })
         .catch((error) => console.error("Error fetching stories:", error));
     }
-  }, [selectedLanguage]);
+  }, [apiUrl, selectedLanguage]);
 
   const handleFilterTypeChange = (e) => {
     setFilterType(e.target.value);
@@ -117,7 +138,8 @@ export const StoryList = () => {
           <select
             className="dropdowns"
             value={selectedLanguage}
-            onChange={handleLanguageChange}>
+            onChange={handleLanguageChange}
+          >
             <option value="en">English</option>
             <option value="sv">Swedish</option>
           </select>
@@ -125,7 +147,8 @@ export const StoryList = () => {
           <select
             className="dropdowns"
             value={filterType}
-            onChange={handleFilterTypeChange}>
+            onChange={handleFilterTypeChange}
+          >
             <option value="">Select Filter</option>
             <option value="ranking">Ranking</option>
             <option value="city">City</option>
@@ -137,7 +160,8 @@ export const StoryList = () => {
             <select
               className="dropdowns"
               value={selectedCity}
-              onChange={handleCityChange}>
+              onChange={handleCityChange}
+            >
               <option value="">Select City</option>
               {cities.map((city, index) => (
                 // Use a combination of city name and index as key
@@ -152,7 +176,8 @@ export const StoryList = () => {
             <select
               className="dropdowns"
               value={selectedCategory}
-              onChange={handleCategoryChange}>
+              onChange={handleCategoryChange}
+            >
               <option value="">Select Category</option>
               {categories.map((category, index) => (
                 // Use a combination of category name and index as key
@@ -169,19 +194,25 @@ export const StoryList = () => {
               <div className="story-image">
                 <img src={`/${story.image}`} alt={`${story.city} story`} />
               </div>
-              <div className="story-footer">
-                {timeSince(story.createdAt)}
-                <img className="like-icon" src={likeIcon} alt="Like" />
-                <span className="like-count">{story.ranking}</span>
+              <div className="story-info">
+                <h3>
+                  {story.category} {story.city}
+                </h3>
               </div>
             </div>
             <div className="story-content">
-              <div className="story-info">
-                <h3>
-                  {story.category} - {story.city}
-                </h3>
-              </div>
+              <h3>{story.title}</h3>
               <p>{story.content}</p>
+              <div className="story-footer">
+                {timeSince(story.createdAt)}
+                <img
+                  className="like-icon"
+                  src={likeIcon}
+                  alt="Like"
+                  onClick={() => handleLikeClick(story._id)}
+                />
+                <span className="like-count">{story.ranking}</span>
+              </div>
             </div>
           </div>
         ))}
