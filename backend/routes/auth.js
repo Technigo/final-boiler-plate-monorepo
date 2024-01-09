@@ -134,5 +134,30 @@ router.get('/get-user-data', authenticateToken, async (req, res) => {
 });
 
 
+// Endpoint to get completed challenges for a user
+router.get('/completed-challenges', authenticateToken, async (req, res) => {
+  try {
+    // Find the user by ID and populate the completedChallenges array with challenge details
+    const user = await User.findById(req.userId).populate('completedChallenges');
+
+    if (!user) {
+      return res.status(404).send('User not found');
+    }
+
+    // Extract challenge details from the populated completedChallenges array
+    const completedChallenges = user.completedChallenges.map(challenge => ({
+      challengeId: challenge._id,
+      challengeName: challenge.name, // Assuming there's a 'name' field in your Challenge model
+      // Add other relevant challenge details as needed
+    }));
+
+    res.status(200).json(completedChallenges);
+  } catch (error) {
+    console.error(error);
+    res.status(500).send(`Failed to retrieve completed challenges: ${error.message}`);
+  }
+});
+
+
 
 module.exports = router; // Exporting the router for use in other parts of the application

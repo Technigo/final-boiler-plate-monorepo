@@ -39,6 +39,7 @@ const authenticateToken = (req, res, next) => {
 // Use the authentication routes directly
 app.use('/api', authRoutes);
 
+
 // Authenticated endpoint (example)
 app.get('/api/protected', authenticateToken, (req, res) => {
   res.status(200).json({ message: 'Welcome to the protected resource', user: req.userId });
