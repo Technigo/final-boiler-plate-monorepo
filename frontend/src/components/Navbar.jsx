@@ -17,7 +17,7 @@ export const Navbar = ({ menuItems, menuDesks }) => {
       <nav>
         <ul className="app-ul">
           <div className="navbar-logo">
-            <Logo />
+            <Logo color="white"/>
           </div>
           <div className="hamburger-menu" onClick={toggleMenu}>
             <div className={`bar ${isMenuOpen ? "open" : ""}`} />

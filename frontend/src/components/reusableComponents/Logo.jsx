@@ -1,12 +1,30 @@
-import logo from "../../assets/green-buddy-logo-white.svg";
+import logoWhite from "../../assets/green-buddy-logo-white.svg";
+import logoGreen from "../../assets/green-buddy-logo-green.svg";
+import logoBlack from "../../assets/green-buddy-logo-black.svg";
 import "../reusableComponents/logo.css";
 import { useNavigate } from "react-router-dom";
 
-export const Logo = ({ className }) => {
+export const Logo = ({ className, color }) => {
   const navigate = useNavigate();
   const handleClick = () => {
     navigate("/");
   };
+
+  let logo;
+  switch (color) {
+    case 'white':
+      logo = logoWhite;
+      break;
+    case 'green':
+      logo = logoGreen;
+      break;
+    case 'black':
+      logo = logoBlack;
+      break;
+    default:
+      logo = logoWhite; 
+  }
+
   return (
     <>
       <img
@@ -18,3 +36,7 @@ export const Logo = ({ className }) => {
     </>
   );
 };
+
+
+//HOW TO USE IT
+//<Logo className="your-class-name" color="green" />
