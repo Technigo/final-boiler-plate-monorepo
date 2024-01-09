@@ -3,7 +3,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import { Header } from "../../components/header/Header";
 import { Footer } from "../../components/footer/Footer";
-import { SaveButtonBig } from "../../components/buttons/saveButtonBig/SaveButtonBig";
+// import { SaveButtonBig } from "../../components/buttons/saveButtonBig/SaveButtonBig" (preppet for later)
 import { TabButton } from "../../components/buttons/tabButton/TabButton";
 import { recipeStore } from "../../stores/recipeStore";
 import { PiCookingPot } from "react-icons/pi";
@@ -57,18 +57,16 @@ export const RecipeDetails = () => {
         <h1>{foundRecipe.title}</h1>
         <div className="recipe-info">
           <div className="servings">
-            {" "}
-            <PiCookingPot /> <p className="georgia">Serves 2 people</p>
+            <PiCookingPot /> <p>Serves 2 people</p>
           </div>
-          <span className="dot">•</span>
           <div className="user-input-details">
             {foundRecipe.userInput.map((ingredient, ingredientIndex) => (
-              <p className="georgia" key={ingredientIndex}>{ingredient}</p>
+              <div className="input-tag-details"key={ingredientIndex}>{ingredient}</div>
             ))}
           </div>
         </div>
         <img src="/recipe-imgs/campfire-896196_1280.jpg" alt="" />
-        <div className="save-recipe"><SaveButtonBig /></div>
+        {/* Prepped for later <div className="save-recipe"><SaveButtonBig /></div> */}
         <p className="description">{foundRecipe.description}</p>
 
         <TabButton />

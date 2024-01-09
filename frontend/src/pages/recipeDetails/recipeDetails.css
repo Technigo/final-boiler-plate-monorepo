@@ -15,12 +15,27 @@
 .servings {
   display: flex;
   gap: 5px;
-  margin-bottom: 12px;
-  /*% här är fult!*/
+}
+
+.servings svg {
+  color: white; 
+    background: #173e34;
+    padding: 3px; 
+    border-radius: 50%;
+    stroke-width: 0.5;
+}
+
+.servings p {
+  display: flex; 
+  align-items: center;
+  font-size: 12px;
+  
 }
 
 .recipe-info {
-  display: flex;
+  display: flex; 
+  margin-bottom: 10px; 
+  gap: 10px; 
 }
 
 .dot {
@@ -29,7 +44,21 @@
 
 .user-input-details {
   display: flex;
+  gap: 3px; 
 }
+
+.input-tag-details {
+  display: flex; 
+  align-items: center;
+  background-color: #173e34;
+  color: #fff;
+  font-family: Raleway;
+  font-size: 12px;
+  border-radius: 3px;
+  padding-left: 3px; 
+  padding-right: 3px; 
+}
+
 
 .recipe-details img {
   width: 100%;
@@ -51,4 +80,55 @@
 
 .recipe-details h3 {
   margin-top: 15px;
+}
+
+
+
+/* ---------TABLET VIEW---------- */
+@media (min-width: 667px) and (max-width: 1024px) { 
+  
+}
+
+/* ---------DESKTOP VIEW---------- */
+@media (min-width: 1025px) {
+  .recipe-details {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, auto);
+    column-gap: 20px; /* Adjust the gap as needed */
+  }
+
+  .recipe-details img {
+    grid-column: 1 / 2;
+    grid-row: 1 / 2;
+    width: 100%;
+    height: auto;
+  }
+
+  .recipe-info {
+    grid-column: 2 / 3;
+    grid-row: 1 / 2;
+    display: flex;
+    flex-direction: column;
+    padding-left: 20px; /* Add space between the image and text */
+  }
+
+  .recipe-info h1,
+  .recipe-info .servings,
+  .recipe-info .user-input-details,
+  .recipe-info .description {
+    margin-bottom: 20px;
+  }
+
+  .ingredients-method {
+    grid-column: 1 / -1;
+    grid-row: 2 / 3;
+    display: flex;
+    column-gap: 20px;
+  }
+
+  .ingredients,
+  .method {
+    flex: 1;
+  }
 }
