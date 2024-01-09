@@ -66,6 +66,8 @@ export const Profile = () => {
     fetchVolunteeredTasks();
   }, [fetchUserTasks, fetchVolunteeredTasks]);
 
+  // Filter tasks created by the current user
+
   return (
     <div>
       <HeaderContainer>
@@ -87,49 +89,40 @@ export const Profile = () => {
           <Tab>Your Deeds</Tab>
         </TabList>
         <TabPanel>
-          {/* List of user's created tasks */}
-          <StyledList>
-            {userTasks.map((task) => (
-              <StyledListItem key={task._id}>
-                {/* Task details */}
-                <TaskTitle>{task.task}</TaskTitle>
-                <TaskDescription>{task.description}</TaskDescription>
-                <VolunteersSection>
-                  {/* Display volunteers for the task */}
-                  <strong>Volunteers: </strong>{" "}
-                  {task.volunteers && task.volunteers.length > 0
-                    ? task.volunteers
-                        .filter(
-                          (volunteer) =>
-                            volunteer &&
-                            (typeof volunteer === "object"
-                              ? volunteer._id
-                              : volunteer) &&
-                            task.user &&
-                            task.user._id &&
-                            (typeof volunteer === "object"
-                              ? volunteer._id.toString()
-                              : volunteer.toString()) !==
+          <div>
+            {/* <h3>Tasks you have created:</h3> */}
+            <StyledList>
+              {userTasks.map((task) => (
+                <StyledListItem key={task._id}>
+                  <TaskTitle>{task.task}</TaskTitle>
+                  <TaskDescription>{task.description}</TaskDescription>
+                  <VolunteersSection>
+                    <strong>Volunteers: </strong>
+                    {task.volunteers && task.volunteers.length > 0
+                      ? task.volunteers
+                          .filter(
+                            (volunteer) =>
+                              volunteer._id.toString() !==
                               task.user._id.toString()
-                        )
-                        // Map over the volunteers array and return the username of each volunteer
-                        .map((volunteer) =>
-                          typeof volunteer === "object"
-                            ? volunteer.username
-                            : volunteer
-                        )
-                        .join(", ")
-                    : "No Volunteers"}
-                </VolunteersSection>
-                {/* Delete button for tasks created by the user */}
-                <Button
-                  buttonName="Delete"
-                  className="delete-button"
-                  onClick={() => deleteTaskById(task._id)}
-                />
-              </StyledListItem>
-            ))}
-          </StyledList>
+                          )
+                          // map over the volunteers array and return the username and email of each volunteer
+                          .map(
+                            (volunteer) =>
+                              `${volunteer.username} (${volunteer.email})`
+                          )
+                          .join(", ")
+                      : "No Volunteers"}
+                  </VolunteersSection>
+                  {/* Delete button for tasks you have created */}
+                  <Button
+                    buttonName="Delete"
+                    className="delete-button"
+                    onClick={() => deleteTaskById(task._id)}
+                  />
+                </StyledListItem>
+              ))}
+            </StyledList>
+          </div>
         </TabPanel>
 
         <TabPanel>

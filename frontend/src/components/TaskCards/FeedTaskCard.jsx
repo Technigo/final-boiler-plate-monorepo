@@ -18,15 +18,15 @@ const StyledFeedCardModal = styled.div`
   width: 260px;
   height: auto;
 
+  // Styling for the Need card
   .card-container {
     width: 100%;
     display: flex;
     flex-direction: column;
-    //align-items: center;
-    //justify-content: center;
     padding: 5px;
   }
 
+  // Styling for the Need card header
   .task-header {
     display: flex;
     align-items: center;
@@ -35,6 +35,7 @@ const StyledFeedCardModal = styled.div`
     justify-content: flex-start;
   }
 
+  // Styling for the Need card location and title
   .area {
     display: flex;
     flex-direction: column;
@@ -42,6 +43,7 @@ const StyledFeedCardModal = styled.div`
     margin: 10px;
   }
 
+  // Styling for the Need card footer
   .task-footer {
     display: flex;
     flex-direction: column;
@@ -87,10 +89,11 @@ const StyledFeedCardModal = styled.div`
   }
 `;
 
-const iconSize = "40px"; // Define the icon size
+// Define the icon size
+const iconSize = "40px";
 
+// Define the category style
 const categoryStyle = {
-  // Define the category style
   Garden: {
     icon: GiGardeningShears,
     backgroundColor: "#eaffec",
@@ -113,10 +116,9 @@ const categoryStyle = {
   },
 };
 
+// Define the FeedTaskCard component
 export const FeedTaskCard = ({ task }) => {
-  // Define the FeedTaskCard component
   const { _id, category, area } = task; // Destructure the task object
-
   const { icon: CategoryIcon, backgroundColor } = categoryStyle[category] || {
     icon: null, // Set the icon to null if it doesn't exist
     backgroundColor: "#ffffff",

@@ -12,16 +12,15 @@ export const getTasksController = asyncHandler(async (req, res) => {
       .populate({
         // Populate the user object
         path: "user",
-        //select: "username",
       })
       .populate({
         // Populate the volunteers object
         path: "volunteers",
         match: { _id: { $ne: userId } }, // Exclude the creator from the volunteers
-        //select: "username",
+        select: "username email",
       });
 
-    console.log("tasks", tasks);
+    //console.log("tasks", tasks);
     // Filter out tasks where the creator is the only volunteer
     const filteredTasks = tasks.filter((task) => {
       const creatorId = task.user && task.user._id.toString();
@@ -40,7 +39,7 @@ export const getTasksController = asyncHandler(async (req, res) => {
 // This controller is responsible for fetching tasks for a specific user. It uses the TaskModel to retrieve tasks from the database, sorts them by creation date, finds all tasks in the database and add the user object to the task object, filters out tasks that is not connected to a user and in the end responds with the list of tasks in JSON format. Access to this route is restricted to authenticated users.
 export const getUserTasksController = asyncHandler(async (req, res) => {
   const userId = req.user._id;
-  console.log("userId", userId);
+  //console.log("userId", userId);
   try {
     // Assuming userStorage contains the user details
     const tasks = await TaskModel.find()
@@ -48,7 +47,13 @@ export const getUserTasksController = asyncHandler(async (req, res) => {
       .populate({
         path: "user", // populate the user object
         match: { _id: userId }, // match the user id with the user id from the db
+      })
+      .populate({
+        // Populate the volunteers object
+        path: "volunteers",
+        select: "username email",
       });
+
     const userTasks = tasks.filter((task) => task.user !== null); // Filter out tasks that is not connected to a user
 
     res.json(userTasks);
@@ -70,6 +75,11 @@ export const getVolunteeredTasksController = asyncHandler(async (req, res) => {
       .populate({
         path: "user",
         select: "username",
+      })
+      .populate({
+        // Populate the volunteers object
+        path: "volunteers",
+        select: "username email",
       });
 
     res.json(tasks);
@@ -88,7 +98,7 @@ export const addTaskController = asyncHandler(async (req, res) => {
       accessToken,
       process.env.JWT_SECRET || "default_secret"
     );
-    console.log("accessToken", accessToken);
+    //console.log("accessToken", accessToken);
     const userFromStorage = await UserModel.findById(decoded.id); // get the user and matchIt with the user from the db.
 
     // Create a new task object using the TaskModel
@@ -111,24 +121,6 @@ export const addTaskController = asyncHandler(async (req, res) => {
 
 // This controller is responsible for adding a volunteer to a specific task. It extracts the task ID from the request parameters, finds the task in the database, adds the user ID to the task's volunteers array, and saves the task to the database. The updated task is sent back as a JSON response. This route is only accessible to authenticated users.
 
-// export const addVolunteerController = asyncHandler(async (req, res) => {
-//   try {
-//     const taskId = req.params.id;
-//     const task = await TaskModel.findById(taskId);
-//     task.volunteers.push(req.user._id);
-
-//     const savedTask = await task.save();
-//     res.json(savedTask);
-//   } catch (error) {
-//     console.error("Error in addVolunteerController:", error);
-//     res.status(500).json(error);
-//   }
-// });
-
-// This controller is responsible for adding a volunteer to a specific task.
-// It extracts the task ID from the request parameters, finds the task in the database, adds
-// the user ID to the task's volunteers array, and saves the task to the database.
-// The updated task is sent back as a JSON response. This route is only accessible to authenticated users.
 export const addVolunteerController = asyncHandler(async (req, res) => {
   try {
     const taskId = req.params.id; // Extract the task ID from the request parameters
@@ -139,16 +131,16 @@ export const addVolunteerController = asyncHandler(async (req, res) => {
     }
 
     const userId = req.user._id; // Get the user ID from the request object
+    const user = await UserModel.findById(userId);
 
-    // Check if the user is already a volunteer for this task
+    //Check if the user is already a volunteer for this task
     if (task.volunteers.includes(userId)) {
       return res
         .status(400)
         .json({ message: "User is already a volunteer for this Need" });
     }
 
-    // task.volunteers.push(userId);
-    task.volunteers.push(req.user._id); // Add the user ID to the task's volunteers array
+    task.volunteers.push(user); // Add user and username to the volunteers array
     const savedTask = await task.save(); // Save the task to the database
     res.json(savedTask); // Respond with the updated task in JSON format
   } catch (error) {
@@ -189,22 +181,4 @@ export const updateTaskController = asyncHandler(async (req, res) => {
   } catch (error) {
     res.status(500).json(error);
   }
-});
-
-// DELETE all tasks
-export const deleteAllTasksController = asyncHandler(async (req, res) => {
-  // Extract the accessToken from the request object, but it is not going to be from the req.body but, its going to be from the req.header
-  const accessToken = req.header("Authorization"); // we are requesting the Authorization key from the headerObject
-  // get the user and matchIt with the user from the db - remmeber that we are using the accessToken to do so :)
-  const userFromStorage = await UserModel.findOne({
-    accessToken: accessToken,
-  });
-  await TaskModel.deleteMany({ user: userFromStorage })
-    .then((result) =>
-      res.json({
-        message: "All tasks deleted",
-        deletedCount: result.deletedCount,
-      })
-    ) // Respond with a success message and the count of deleted tasks
-    .catch((err) => res.status(500).json(err)); // Handle any errors that occur during the operation
 });
