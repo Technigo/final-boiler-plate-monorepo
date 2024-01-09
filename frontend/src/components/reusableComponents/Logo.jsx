@@ -1,6 +1,6 @@
-import logoWhite from "../../assets/green-buddy-logo-white.svg";
-import logoGreen from "../../assets/green-buddy-logo-green.svg";
-import logoBlack from "../../assets/green-buddy-logo-black.svg";
+import logoWhite from "../../assets/logo/green-buddy-logo-white.svg";
+import logoGreen from "../../assets/logo/green-buddy-logo-green.svg";
+import logoBlack from "../../assets/logo/green-buddy-logo-black.svg";
 import "../reusableComponents/logo.css";
 import { useNavigate } from "react-router-dom";
 
