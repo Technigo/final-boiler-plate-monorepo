@@ -138,8 +138,10 @@ export const FilterTaskFeed = () => {
           <option value="Tvååker">Tvååker</option>
           <option value="Tångaberg">Tångaberg</option>
           <option value="Valinge">Valinge</option>
+          <option value="Varberg city">Varberg city</option>
           <option value="Veddige">Veddige</option>
           <option value="Väröbacka">Väröbacka</option>
+          <option value="Årnäs">Årnäs</option>
           <option value="Åsby (Derome)">Åsby (Derome)</option>
         </StyledSelects>
       </StyledFilters>
