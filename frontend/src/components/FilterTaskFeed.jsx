@@ -124,12 +124,23 @@ export const FilterTaskFeed = () => {
           <option disabled default value="">
             Filter by area
           </option>
-          <option value="Varberg City">Varberg City</option>
+          <option value="Bua">Bua</option>
+          <option value="Getterön">Getterön</option>
           <option value="Himle">Himle</option>
+          <option value="Hunnestad">Hunnestad</option>
+          <option value="Källstorp">Källstorp</option>
           <option value="Kungsäter">Kungsäter</option>
           <option value="Rolfstorp">Rolfstorp</option>
+          <option value="Skällinge">Skällinge</option>
+          <option value="Tofta">Tofta</option>
+          <option value="Torpa">Torpa</option>
+          <option value="Trönningenäs">Trönningenäs</option>
           <option value="Tvååker">Tvååker</option>
+          <option value="Tångaberg">Tångaberg</option>
+          <option value="Valinge">Valinge</option>
           <option value="Veddige">Veddige</option>
+          <option value="Väröbacka">Väröbacka</option>
+          <option value="Åsby (Derome)">Åsby (Derome)</option>
         </StyledSelects>
       </StyledFilters>
       <Button
