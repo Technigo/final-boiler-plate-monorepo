@@ -1,5 +1,6 @@
 import NewsLetter from '../models/NewsLetterModel';
 import { handleErrors } from './commonController';
+import nodemailer from 'nodemailer';
 
 // Subscribe to newsletter
 export const subscribeToNewsletter = async (req, res) => {
@@ -10,11 +11,35 @@ export const subscribeToNewsletter = async (req, res) => {
         // Save the new subscriber to the database
         await newSubscriber.save();
 
+        // Send automatic response
+        await sendAutomaticResponse(newSubscriber.email);
+
         // Respond with a success message
         res.status(201).json({ message: 'Subscriber added successfully' });
     } catch (error) {
         // Handle errors and send an appropriate response
         handleErrors(res, error);
+    }
+};
+
+const sendAutomaticResponse = async (userEmail) => {
+    try {
+        const transporter = nodemailer.createTransport({
+            // Your nodemailer transporter configuration
+        });
+
+        const mailOptions = {
+            from: 'izza.R@hotmail.com',
+            to: userEmail,
+            subject: 'Thank you for subscribing!',
+            text: 'Thank you for subscribing to our newsletter. We appreciate your interest!',
+        };
+
+        await transporter.sendMail(mailOptions);
+
+        console.log('Automatic response sent successfully');
+    } catch (error) {
+        console.error('Error sending automatic response:', error);
     }
 };
 

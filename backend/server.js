@@ -5,16 +5,18 @@ import dotenv from "dotenv"; // Import dotenv for environment variables
 import listEndpoints from "express-list-endpoints"; // Import listEndpoints to get a list of available endpoints
 import bookingRouter from './routes/bookingRoutes'; // Import the bookingRouter
 import newsletterRoutes from "./routes/newsLetterRoutes";
+const compression = require('compression');
 import userRoutes from "./routes/userRoutes"; // Import custom user routes
 import { connectDB } from "./config/db"; // Import database connection function (not used here)
 import { handleErrors } from "./controllers/commonController"; // Import the handleErrors function
-
+const app = express(); // Create an instance of the Express application
+app.use(compression());
 // Load environment variables from the .env file
 dotenv.config();
 
 // Define the port the app will run on. Defaults to 8080, but can be overridden
 const port = process.env.PORT || 8080; // Set the port number for the server
-const app = express(); // Create an instance of the Express application
+
 
 // Define root endpoint to display all available endpoints
 app.get('/', (req, res) => {
