@@ -3,7 +3,13 @@ import { userStore } from "../stores/userStore";
 
 export const Chat = () => {
   const [ws, setWs] = useState();
-  const { chatReceiver, username, recipientId, loggedInUserId } = userStore();
+  const {
+    username,
+    recipientId,
+    loggedInUserId,
+    chatMessages,
+    handleChatHistory,
+  } = userStore();
   const [selectedUserId, setSelectedUserId] = useState(null);
   const [newMessageText, setNewMessageText] = useState("");
   const [messages, setMessages] = useState([]);
@@ -101,9 +107,18 @@ export const Chat = () => {
       const jsonIT = await callAPI.json();
       setMessageHistory(jsonIT);
     };
+
     ApiStuff();
     console.log(JSON.stringify(messageHistory));
   }, []);
+
+  useEffect(() => {
+    const userMessages = async () => {
+      handleChatHistory(loggedInUserId, recipientId);
+    };
+
+    userMessages();
+  }, [loggedInUserId, recipientId, handleChatHistory]);
 
   //----------------
   // const handleMessage = (e) => {
