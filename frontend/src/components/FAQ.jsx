@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import faqData from '../data/faq.json';
+import { useState } from "react";
+import faqData from "../data/faq.json";
 
 export const FAQ = () => {
   const [openIndex, setOpenIndex] = useState(null);
@@ -10,17 +10,20 @@ export const FAQ = () => {
 
   return (
     <div className="accordion">
-        <h1 className="text-lg font-md">FAQ</h1>
+      <h1 className="text-lg font-md">FAQ.jsx</h1>
       {faqData.faq.map((faq, index) => (
         <div key={index} className="faq-item border-b">
-          <div className="faq-title cursor-pointer flex justify-between items-center p-4 bg-emerald-200" onClick={() => toggleAccordion(index)}>
+          <div
+            className="faq-title cursor-pointer flex justify-between items-center p-4 bg-emerald-200"
+            onClick={() => toggleAccordion(index)}>
             <span>{faq.question}</span>
-            <span>{openIndex === index ? '-' : '+'}</span>
+            <span>{openIndex === index ? "-" : "+"}</span>
           </div>
-          {openIndex === index && <div className="faq-content p-4 bg-emerald-100">{faq.answer}</div>}
+          {openIndex === index && (
+            <div className="faq-content p-4 bg-emerald-100">{faq.answer}</div>
+          )}
         </div>
       ))}
     </div>
   );
 };
-

@@ -1,17 +1,24 @@
 {
-    "faq": [
-      {
-        "question": "Is it safe to carpool with strangers?",
-        "answer": "No."
-      },
-      {
-        "question": "Is there a rating or feedback system for users?",
-        "answer": "Maybe."
-      },
-      {
-        "question": "How can I contact customer support for assistance or inquiries?",
-        "answer": "Find us on MySpace."
-      }
-    ]
-  }
-  
+  "faq": [
+    {
+      "question": "How does it work?",
+      "answer": "Get a ride with others to save money and reduce your carbon footprint!"
+    },
+    {
+      "question": "Is it safe with strangers?",
+      "answer": "We make sure everyone's okay, so you can feel secure traveling with new folks."
+    },
+    {
+      "question": "What benefits do I get?",
+      "answer": "Save money and earn good karma points by sharing rides."
+    },
+    {
+      "question": "User ratings?",
+      "answer": "Give high-fives or thumbs down – let the stars speak for themselves."
+    },
+    {
+      "question": "Customer support?",
+      "answer": "Call us or send a message – we're here to help however you like!"
+    }
+  ]
+}
