@@ -30,16 +30,16 @@ export const Navigation = () => {
       <hr />
       <ul>
         <li>
-          <Link to="">My account</Link>
+          <Link to="/wishlist">My account</Link>
         </li>
         <li>
-          <Link to="">Register</Link>
+          <Link to="/register">Register</Link>
         </li>
         <li>
-          <Link to="">About us</Link>
+          <Link to="/about">About us</Link>
         </li>
         <li>
-          <Link to="">Contact</Link>
+          <Link to="/about">Contact</Link>
         </li>
       </ul>
       <Link to="/">

@@ -1,7 +1,7 @@
 import { UserModel } from "../models/userModel.js"; // Import the UserModel from the userModel.js file.
 import asyncHandler from "../utils/asyncHandler.js"; // Import the asyncHandler function from the asyncHandler.js file.
 import bcrypt from "bcrypt"; // Use bcrypt to securely hash and store passwords in our database.
-import { generateToken } from "../utils/generateToken.js"; // Import the generateToken function from the generateToken.js file.
+import { generateAccessToken, generateRefreshToken } from "../utils/generateToken.js"; // Import the generateToken function from the generateToken.js file.
 
 // ADMIN ONLY - GET ALL USERS ---------------------------------------------
 const getAllUsers = asyncHandler(async (req, res) => {
@@ -49,7 +49,12 @@ const registerUser = asyncHandler(async (req, res) => {
   try {
     // Try to save the new user to the database.
     await newUser.save();
-    generateToken(res, newUser._id); // Generate a JWT token and send it to the client. The token is stored in an HTTP-only cookie. The cookie is sent only to the same site as the request. This prevents the cookie from being sent when making cross-origin requests. This is to prevent CSRF attacks.
+    // Generate tokens and send them to the client.
+    const accessToken = generateAccessToken(newUser._id);
+    const refreshToken = generateRefreshToken(newUser._id);
+
+    newUser.refresh_token = refreshToken;
+    await newUser.save();
 
     // Send the user's information to the client.
     res.status(201).json({
@@ -57,6 +62,8 @@ const registerUser = asyncHandler(async (req, res) => {
       username: newUser.username, // Send the user's username.
       email: newUser.email, // Send the user's email.
       role: newUser.role, // Send the user's role.
+      accessToken,
+      refreshToken,
     });
   } catch (error) {
     // If there's an error, send an error message.
@@ -71,42 +78,85 @@ const loginUser = asyncHandler(async (req, res) => {
 
   // Check if it's already an existing user with the provided username in the database.
   const existingUser = await UserModel.findOne({ username });
-
-  // If there's a user, check if the password provided by the user matches the hashed password stored in the database.
-  if (existingUser) {
-    const passwordMatch = await bcrypt.compare(password, existingUser.password); // Compare the password provided by the user with the hashed password stored in the database.
-
-    // If the passwords match, generate a JWT token and send it to the client.
-    if (passwordMatch) {
-      generateToken(res, existingUser._id); // Generate a JWT token and send it to the client. The token is stored in an HTTP-only cookie. The cookie is sent only to the same site as the request. This prevents the cookie from being sent when making cross-origin requests. This is to prevent CSRF attacks.
-
-      // Send the user's information to the client.
-      res.status(201).json({
-        _id: existingUser._id, // Send the user's ID.
-        username: existingUser.username, // Send the user's username.
-        email: existingUser.email, // Send the user's email.
-        role: existingUser.role, // Send the user's role.
-      });
-      return; // Exit the function after sending the response.
-    } else {
-      // If the passwords don't match, send an error message.
-      return res.status(401).json({ message: "Invalid password." });
-    }
-  } else {
-    // If there's no user, send an error message.
+  if (!existingUser) {
     return res.status(401).json({ message: "User not found." });
   }
-});
 
-// LOGOUT AS A USER ---------------------------------------------
+  const passwordMatch = await bcrypt.compare(password, existingUser.password);
+
+  // If the passwords match, generate a JWT token and send it to the client.
+  if (passwordMatch) {
+    const accessToken = generateAccessToken(existingUser._id);
+    const refreshToken = generateRefreshToken(existingUser._id);
+
+    existingUser.refresh_token = refreshToken;
+    await existingUser.save();
+
+    // Send the user's information to the client.
+    res.status(201).json({
+      _id: existingUser._id, // Send the user's ID.
+      username: existingUser.username, // Send the user's username.
+      email: existingUser.email, // Send the user's email.
+      role: existingUser.role, // Send the user's role.
+      accessToken,
+      refreshToken,
+    });
+    return; // Exit the function after sending the response.
+  } else {
+    // If the passwords don't match, send an error message.
+    return res.status(401).json({ message: "Invalid password." });
+  }
+
+//   // If there's a user, check if the password provided by the user matches the hashed password stored in the database.
+//   if (existingUser) {
+//     const passwordMatch = await bcrypt.compare(password, existingUser.password); // Compare the password provided by the user with the hashed password stored in the database.
+
+//     // If the passwords match, generate a JWT token and send it to the client.
+//     if (passwordMatch) {
+//       generateToken(res, existingUser._id); // Generate a JWT token and send it to the client. The token is stored in an HTTP-only cookie. The cookie is sent only to the same site as the request. This prevents the cookie from being sent when making cross-origin requests. This is to prevent CSRF attacks.
+
+//       // Send the user's information to the client.
+//       res.status(201).json({
+//         _id: existingUser._id, // Send the user's ID.
+//         username: existingUser.username, // Send the user's username.
+//         email: existingUser.email, // Send the user's email.
+//         role: existingUser.role, // Send the user's role.
+//       });
+//       return; // Exit the function after sending the response.
+//     } else {
+//       // If the passwords don't match, send an error message.
+//       return res.status(401).json({ message: "Invalid password." });
+//     }
+//   } else {
+//     // If there's no user, send an error message.
+//     return res.status(401).json({ message: "User not found." });
+//   }
+ });
+
+// // LOGOUT AS A USER ---------------------------------------------
+// const logoutUser = asyncHandler(async (req, res) => {
+//   res.cookie("jwt", "", {
+//     // Set the cookie to an empty string.
+//     // Clear the cookie.
+//     httpOnly: true, // Prevents client-side JavaScript from accessing the cookie. This is to prevent XSS attacks.
+//     expires: new Date(0), // Sets the cookie to expire immediately. This will delete the cookie.
+//   });
+//   res.status(200).json({ message: "Logged out successfully" }); // Send a success message.
+// });
+
+// LOGOUT USER ---------------------------------------------
 const logoutUser = asyncHandler(async (req, res) => {
-  res.cookie("jwt", "", {
-    // Set the cookie to an empty string.
-    // Clear the cookie.
-    httpOnly: true, // Prevents client-side JavaScript from accessing the cookie. This is to prevent XSS attacks.
-    expires: new Date(0), // Sets the cookie to expire immediately. This will delete the cookie.
-  });
-  res.status(200).json({ message: "Logged out successfully" }); // Send a success message.
+  const user = req.user;
+
+  if (user) {
+    // Revoke the refresh token on the server side (e.g., remove it from the user's record).
+    user.refresh_token = undefined;
+    await user.save();
+
+    res.status(200).json({ message: "Logout successful" });
+  } else {
+    res.status(401).json({ message: "Not authorized" });
+  }
 });
 
 // USER PROFILE ---------------------------------------------

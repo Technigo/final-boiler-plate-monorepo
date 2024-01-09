@@ -1,6 +1,10 @@
 import { CartItem } from "../../components/cart/cartItem/CartItem";
 import { Input } from "../../components/inputs/Input";
+import { InputReadOnly } from "../../components/inputs/InputReadOnly";
 import { Button } from "../../components/buttons/Button";
+import { PersonalInfo } from "../../components/checkout/PersonalInfo";
+import { DeliveryDetails } from "../../components/checkout/DeliveryDetails";
+import { PaymentInfo } from "../../components/checkout/PaymentInfo";
 import { OrderInfo } from "../../components/cart/OrderInfo";
 import { cartStore } from "../../stores/cartStore";
 import { useState } from "react";
@@ -11,134 +15,77 @@ import AccordionDetails from "@mui/material/AccordionDetails";
 
 import "./CheckOut.css";
 
+
 export const CheckOut = () => {
   const [email, setEmail] = useState();
+  const [activeStep, setActiveStep] = useState(0);
+  const [show, toggleShow] = useState(false);
 
   const { cart } = cartStore();
 
+  const handleNext = () => {
+    setActiveStep((prevStep) => prevStep + 1 );
+  };
+
+  const handleBack = () => {
+    setActiveStep((prevStep) => prevStep - 1 );
+  };
+
   const sendEmail = (e) => {
     e.preventDefault();
-    emailjs.sendForm("service_yl79s0f", "template_l1q27lx", e.target, "14TsPm9sc7yUWZT-s")
+    emailjs.sendForm(import.meta.env.REACT_APP_SERVICE_ID, import.meta.env.REACT_APP_TEMPLATE_ID, e.target, import.meta.env.REACT_APP_PUBLIC_KEY)
   } 
 
   return (
     <section>
       <h2>Check Out</h2>
-      <p>Already have an account?</p>
-      <Button btnText={"Log in"}/> 
-
       
-      <Button btnText={"Register"}/>
-      <h3>Continue as guest</h3>
       <form className={"checkout-form"} onSubmit={sendEmail}>
-      <Accordion>
+      <Accordion className="personal-info-accordion" defaultExpanded>
         <AccordionSummary>
-          <h3>YOUR INFORMATION</h3>
+          <Button btnText={"YOUR INFORMATION"}/>
         </AccordionSummary>
-        <AccordionDetails>
-        <Input
-            type="email"
-            name={"email_from"}
-            id={"emailFrom"}
-            placeholder="your.email@email.com"
-            onChange={email}
-            ariaLabel="Email input."
-            labelTxt={"Please put in your email"}
-          />
-          <Input
-            type="text"
-            placeholder="Daisy Evergreen"
-            onChange={email}
-            ariaLabel="Name input."
-            value={"Lily Landersen"}
-          />
-          <Input
-            type="text"
-            placeholder="+46 12 123 12 12"
-            onChange={email}
-            ariaLabel="Phone input."
-            value={"+46 12 123 12 12"}
-          />
-          <Input
-            type="text"
-            placeholder="Lily Lane 12"
-            onChange={email}
-            ariaLabel="Address input."
-            value={"Lily Lane 12"}
-          />
-          <Input
-            type="text"
-            placeholder="123 45"
-            onChange={email}
-            ariaLabel="ZIP input."
-            value={"123 45"}
-          />
-          <Input
-            type="text"
-            placeholder="Gardenville"
-            onChange={email}
-            ariaLabel="City input."
-            value={"Lilytown"}
-          />
+        <AccordionDetails className="accordion-detail-wrapper">
+          <div className="acc-step-container">
+            <p>Already have an account?</p>
+            <Button btnText={"Log in"}/> 
+            <Button btnText={"Register"}/>
+            <Button btnText={"Continue as guest"} onClick={() => toggleShow(!show)}/>
+            {show && <PersonalInfo />}
+            <Button btnText={"Next"} onClick={handleNext}/>
+          </div>
+          <p>STEP 1/3</p>
         </AccordionDetails>
       </Accordion>
-      <Accordion>
+      <Accordion expanded={activeStep === 1}>
         <AccordionSummary>
-          <h3>DELIVERY DETAILS</h3>
+          <Button btnText={"DELIVERY DETAILS"}/>
         </AccordionSummary>
-        <AccordionDetails>
-          <Input type={"checkbox"} value={true} ariaLabel={"address-check"} labelTxt={"Same addess as above"} />
-          <Input type={"radio"} labelTxt={"Collect at Post Office"} /> 
-          <Input type={"radio"} labelTxt={"Home delivery"}/> 
+        <AccordionDetails className="accordion-detail-wrapper">
+          <div className="acc-step-container">
+            <DeliveryDetails />
+            <Button btnText={"Back"} onClick={handleBack}/>
+            <Button btnText={"Next"} onClick={handleNext}/>      
+          </div>
+          <p>STEP 2/3</p>
         </AccordionDetails>
       </Accordion>
-      <Accordion>
+      <Accordion expanded={activeStep === 2}>
         <AccordionSummary>
-          <h3>PAYMENT INFORMATION</h3>
+          <Button btnText={"PAYMENT INFORMATION"}/>
         </AccordionSummary>
-        <AccordionDetails>
-          <ul>
-            <li>
-            <Input type={"radio"} labelTxt={"Pay with Klarna"} />
-            <ul>
-              <li>Safe and easy</li>
-              <li>Pay directly, with invoice or partial payments</li>
-              <li>Save your card and banc card</li>
-            </ul>
-            </li>
-            <li>
-            <Input type={"radio"} labelTxt={"Pay with card"}/> 
-              <Input
-                type="text"
-                placeholder="Lily Landersen"
-                onChange={email}
-                ariaLabel="Card holder input."
-              />
-              <Input
-                type="number"
-                placeholder="XXXX XXXX XXXX XXXX"
-                onChange={email}
-                ariaLabel="City input."
-              />
-              <Input
-                type="number"
-                placeholder="MM/YY"
-                onChange={email}
-                ariaLabel="City input."
-              />
-              <Input
-                type="number"
-                placeholder="CVC"
-                onChange={email}
-                ariaLabel="City input."
-              />
-            </li>
-          </ul>
+        <AccordionDetails className="accordion-detail-wrapper">
+          <div className="acc-step-container">
+            <PaymentInfo />
+            <Button btnText={"Back"} onClick={handleBack}/>
+            <Button btnText={"Next"} onClick={handleNext}/>
+          </div>
+          <p>STEP 3/3</p>
         </AccordionDetails>
       </Accordion>
-      <Accordion>
+      <Accordion expanded={activeStep === 3}>
         <AccordionSummary>
-          <h3>YOUR ORDER</h3>
+          <Button btnText={"YOUR ORDER"}/>
         </AccordionSummary>
         <AccordionDetails>
           <OrderInfo />

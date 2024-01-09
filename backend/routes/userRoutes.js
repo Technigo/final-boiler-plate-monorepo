@@ -11,7 +11,7 @@ import { authenticateUser, authorizedAdmin } from "../middlewares/auth.js"; // I
 
 const router = express.Router(); // Creates a new router object.
 
-// ROUTES ---------------------------------------------
+// USERS ROUTES ---------------------------------------------
 
 // ALL USERS ROUTE: List of all users
 router.get("/", authenticateUser, authorizedAdmin(["admin"]), getAllUsers); // When a GET request is made to /, execute the getAllUsers function. The user must be authenticated and authorized as an admin.
@@ -23,7 +23,7 @@ router.post("/register", registerUser); // When a POST request is made to /regis
 router.post("/login", loginUser); // When a POST request is made to /login, execute the loginUser function.
 
 // LOGOUT ROUTE: Handle user logout
-router.post("/logout", logoutUser); // When a POST request is made to /logout, execute the logoutUser function.
+router.post("/logout", authenticateUser, logoutUser); // When a POST request is made to /logout, execute the logoutUser function.
 
 // USER PROFILE ROUTE: Handle users profile.
 router

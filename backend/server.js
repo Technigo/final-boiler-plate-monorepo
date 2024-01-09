@@ -3,7 +3,6 @@ import express from "express"; // A minimal and flexible Node.js web application
 import cors from "cors"; // A package for providing a Connect/Express middleware that can be used to enable CORS with various options.
 import dotenv from "dotenv"; // A package that loads environment variables from a .env file into process.env.
 import mongoose from "mongoose"; // A package for modeling your application data and includes built-in type casting, validation, query building, business logic hooks and more, out of the box.
-import cookieParser from "cookie-parser"; // A package that parses cookies and populates req.cookies with an object keyed by the cookie names.
 import listEndpoints from "express-list-endpoints"; // A package that lists all the endpoints of the server.
 
 // Utils
@@ -26,13 +25,9 @@ connectDB();
 const app = express(); // Creates an Express application.
 
 // MIDDLEWARES ---------------------------------------------
-app.use(cors({
-  origin: 'http://localhost:5173', // replace with the origin of your frontend
-  credentials: true,
-})); // Enable CORS for all origins.
+app.use(cors()); // Enable CORS for all origins.
 app.use(express.json()); // Parse incoming requests with JSON payloads.
 app.use(express.urlencoded({ extended: false })); // Parse incoming requests with urlencoded payloads.
-app.use(cookieParser()); // Parse cookie header and populate req.cookies with an object keyed by the cookie names.
 
 // Checks the state of your MongoDB connection. If the database is not connected/ready, a 503 Service Unavailable status code returns.
 app.use((req, res, next) => {

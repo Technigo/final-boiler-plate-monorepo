@@ -8,6 +8,7 @@ import { PlantsPage } from "../pages/plantsPage/PlantsPage";
 import { FavouritesPage } from "../pages/favouritesPage/FavouritesPage";
 import { CartPage } from "../pages/cartPage/CartPage";
 import { CheckOut } from "../pages/checkOut/CheckOut";
+import { About } from "../pages/about/About";
 
 const routes = (
   <>
@@ -32,6 +33,9 @@ const routes = (
     {/* CART PAGES */}
     <Route path="/cart" element={<CartPage />} />
     <Route path="/check-out" element={<CheckOut />} />
+
+    {/* ABOUT AND CONTACT */}
+    <Route path="/about" element={<About />} />
     
   </>
 );

@@ -7,8 +7,7 @@ export const PlantCard = ({ plants }) => {
     <>
       {plants.map((plant) => {
         return (
-          <Link to={`/plants/${plant._id}`}>
-            <div key={plant._id}>
+          <Link to={`/plants/${plant._id}`} key={plant._id}>
               <div className="plant-card">
                 <img
                   className="preview-plant-img"
@@ -35,7 +34,6 @@ export const PlantCard = ({ plants }) => {
                   </div>
                 </div>
               </div>
-            </div>
           </Link>
         );
       })}

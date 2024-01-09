@@ -32,6 +32,10 @@ const userSchema = new Schema(
     },
   },
   {
+    // Additional field for storing refresh token
+    refresh_token: String,
+  },
+  {
     timestamps: true, // Adds timestamps to the document: createdAt and updatedAt.
   }
 );
