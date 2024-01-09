@@ -89,13 +89,17 @@ export const Chat = () => {
     setSelectedUserId(recipientId);
 
     if (selectedUserId) {
+      // fetch(`${import.meta.env.VITE_BACKUP_API}/messages/` + selectedUserId)
       fetch(
-        `${import.meta.env.VITE_BACKUP_API}/messages/` + selectedUserId
-      ).then((res) => {
-        console.log("res.data: " + res.data);
-        setMessages(res.data);
-        // console.log("messages: " + JSON.stringify(messages));
-      });
+        `${
+          import.meta.env.VITE_BACKUP_API
+        }/messages/${loggedInUserId}/${selectedUserId}`
+      )
+        .then((res) => res.json())
+        .then((data) => {
+          console.log("chaHistoryData: " + data);
+          setMessages(data);
+        });
     }
   }, [selectedUserId]);
 
@@ -106,19 +110,21 @@ export const Chat = () => {
       );
       const jsonIT = await callAPI.json();
       setMessageHistory(jsonIT);
+      console.log("messageHistory: ", messageHistory);
     };
 
     ApiStuff();
-    console.log(JSON.stringify(messageHistory));
+    // console.log(JSON.stringify(messageHistory));
   }, []);
 
   useEffect(() => {
     const userMessages = async () => {
-      handleChatHistory(loggedInUserId, recipientId);
+      await handleChatHistory(loggedInUserId, recipientId);
+      console.log("chatMessages: ", chatMessages);
     };
 
     userMessages();
-  }, [loggedInUserId, recipientId, handleChatHistory]);
+  }, [recipientId, handleChatHistory]);
 
   //----------------
   // const handleMessage = (e) => {
@@ -132,7 +138,7 @@ export const Chat = () => {
         <button onClick={() => console.log(messages)}>Log messages</button>
       </div>
       <div className="flex flex-col bg-green-200 w-2/3 p-2">
-        <div className="flex-grow">Messages with selected person</div>
+        <div className="flex-grow">Messages with {recipientId}</div>
         {/* {!!selectedUserId && ( */}
         <div className="relative h-full">
           <div className="overflow-y-scroll absolute top-0 left-0 right-0 bottom-2">
@@ -156,26 +162,35 @@ export const Chat = () => {
               </div>
               // <div>{message.text}</div>
             ))}
-            {messageHistory.map((message) => (
-              <div
-                key={message._id}
-                className={
-                  message.sender === loggedInUserId ? "text-right" : "text-left"
-                }
-              >
-                <div
-                  className={
-                    "text-left inline-block p-2 my-2 rounded-md text-sm " +
-                    (message.sender === loggedInUserId
-                      ? "bg-blue-500 text-white"
-                      : "bg-white text-gray-500")
-                  }
-                >
-                  {message.text}
-                </div>
-              </div>
+            {messageHistory.map(
+              (message) =>
+                (message.sender === loggedInUserId ||
+                  message.recipient === loggedInUserId) &&
+                (message.sender === recipientId ||
+                  message.recipient === recipientId) && (
+                  <div
+                    key={message._id}
+                    className={
+                      message.sender === loggedInUserId
+                        ? "text-right"
+                        : "text-left"
+                    }
+                  >
+                    <div
+                      className={
+                        "text-left inline-block p-2 my-2 rounded-md text-sm " +
+                        (message.sender === loggedInUserId
+                          ? "bg-blue-500 text-white"
+                          : "bg-white text-gray-500")
+                      }
+                    >
+                      {message.text}
+                    </div>
+                  </div>
+                )
+
               // <div>{message.text}</div>
-            ))}
+            )}
             <div ref={divUnderMessages}></div>
           </div>
         </div>
