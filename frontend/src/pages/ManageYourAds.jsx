@@ -32,7 +32,7 @@ export const ManageYourAds = () => {
           },
         ]}
         menuDesks={[
-          { path: "/settings", name: "Settings" },
+          { path: "/search", name: "Search" },
           { path: "/settings", name: "Settings" },
           {
             name: "Logout",

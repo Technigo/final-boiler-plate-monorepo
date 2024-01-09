@@ -4,7 +4,7 @@
     object-fit: cover;
     margin: 0 auto;
     /* Center the image */
-    border-radius: var(--border-radius)
+    border-radius: var(--border-radius);
 }
 
 .image-medium {
@@ -13,7 +13,7 @@
     object-fit: cover;
     margin: 0 auto;
     /* Center the image */
-    border-radius: var(--border-radius)
+    border-radius: var(--border-radius);
 }
 
 .image-large {
@@ -22,5 +22,5 @@
     object-fit: cover;
     margin: 0 auto;
     /* Center the image */
-    border-radius: var(--border-radius)
+    border-radius: var(--border-radius);
 }
