@@ -1,6 +1,6 @@
 export const TripDetails = ({ selectedTrip, onClose }) => {
   return (
-    <div className="container rounded-lg p-4 bg-gray-100 mt-8 space-y-4 mx-auto max-w-screen-lg">
+    <div className="container rounded-lg p-4 bg-gray-100 mt-8 space-y-4 mx-auto max-w-screen-lg mb-8">
       <div className="mb-4 p-2">
         <div className="grid grid-cols-12 gap-4">
           <div className="col-span-6 text-xs">From</div>

@@ -29,12 +29,12 @@ export const Trips = () => {
   return (
     <>
       {trips.length > 0 && (
-        <div className="mt-8 space-y-4 mx-auto max-w-screen-lg p-2">
-          <h1 className="text-lg font-md">Trips.jsx</h1>
+        <div className="mt-8 space-y-4 mx-auto max-w-screen-lg mb-8">
+          <h1 className="text-lg font-md">Available trips</h1>
           {trips.reverse().map((trip) => (
             <div
               key={trip.id}
-              className="grid grid-cols-12 gap-2 p-4 bg-yellow-100 rounded-lg relative">
+              className="grid grid-cols-12 gap-2 p-4 bg-rose-100 rounded-lg relative">
               <div className="col-span-4 text-md text-gray-900 sm:text-xl">
                 {trip.from}
               </div>

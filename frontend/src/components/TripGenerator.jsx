@@ -156,7 +156,7 @@ export const TripGenerator = () => {
   return (
     <>
       <div className="mt-8 max-w-2xl mx-auto p-2">
-        <h1 className="text-lg font-md">TripGenerator.jsx</h1>
+        <h1 className="text-lg font-md">Create trip</h1>
         <form onSubmit={handleSubmit} className="flex flex-col space-y-2 p-2">
           <LocationInput
             label="From"
@@ -349,13 +349,13 @@ export const TripGenerator = () => {
             {trips.reverse().map((trip) => (
               <div
                 key={trip.id}
-                className="grid grid-cols-12 gap-2 p-4 bg-violet-100 rounded-lg relative">
+                className="grid grid-cols-12 gap-2 p-4 bg-blue-100 rounded-lg relative">
                 <div className="col-span-12 text-md text-gray-900 sm:text-xl">
                   You have created a trip from {trip.from} to {trip.to} on{" "}
                   {trip.date} starting at {trip.time}. Your vehicle of choice is
                   a {trip.make} {trip.model} with {trip.reg} plates. You have{" "}
-                  {trip.availableSeats} free seats and your message to potential
-                  friends is: {trip.message}
+                  {trip.availableSeats} free seat(s) and your message is:{" "}
+                  {trip.message}
                 </div>
 
                 <div className="col-span-12 flex items-center justify-center">
