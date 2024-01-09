@@ -1,5 +1,5 @@
 .update-settings {
-    max-width: 100%;
+    max-width: 90%;
 }
 
 .settings-form {
@@ -22,5 +22,5 @@
 .password-input {
     display: flex;
     flex-direction: row;
-    align-items: center;
+    align-items: flex-start;
 }

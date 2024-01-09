@@ -141,7 +141,7 @@ export const UpdateSettings = () => {
                   onChange={handlePasswordUpdate}
                 />
                 <span onClick={handleToggle}>
-                  <Icon icon={icon} size={24}/>
+                  <Icon icon={icon} size={22}/>
                 </span>
               </div>
             </div>
