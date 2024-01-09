@@ -128,26 +128,32 @@ export const Navbar = () => {
               </li>
             </>
           )}
-          <li className={activePage === "tasks" ? "active" : ""}>
-            <Link
-              to="/tasks"
-              onClick={() => {
-                setActivePage("tasks");
-              }}
-            >
-              Deed Hub
-            </Link>
-          </li>
-          <li className={activePage === "profile" ? "active" : ""}>
-            <Link
-              to="/profile"
-              onClick={() => {
-                setActivePage("profile");
-              }}
-            >
-              Profile
-            </Link>
-          </li>
+          {/* Conditionally render "Deed Hub" link only when logged in */}
+          {isLoggedIn ? (
+            <li className={activePage === "tasks" ? "active" : ""}>
+              <Link
+                to="/tasks"
+                onClick={() => {
+                  setActivePage("tasks");
+                }}
+              >
+                Deed Hub
+              </Link>
+            </li>
+          ) : null}
+          {/* Conditionally render "Profile" link only when logged in */}
+          {isLoggedIn ? (
+            <li className={activePage === "profile" ? "active" : ""}>
+              <Link
+                to="/profile"
+                onClick={() => {
+                  setActivePage("profile");
+                }}
+              >
+                Profile
+              </Link>
+            </li>
+          ) : null}
           <li className={activePage === "about" ? "active" : ""}>
             <Link
               to="/about"

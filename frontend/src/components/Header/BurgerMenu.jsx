@@ -94,50 +94,61 @@ export const BurgerMenu = () => {
               Home
             </Link>
           </li>
-          <li className={activePage === "login" ? "active" : ""}>
-            <Link
-              to="/login"
-              onClick={() => {
-                setActivePage("login");
-                closeBurgerMenu();
-              }}
-            >
-              Log in
-            </Link>
-          </li>
-          <li className={activePage === "register" ? "active" : ""}>
-            <Link
-              to="/register"
-              onClick={() => {
-                setActivePage("register");
-                closeBurgerMenu();
-              }}
-            >
-              Register
-            </Link>
-          </li>
-          <li className={activePage === "tasks" ? "active" : ""}>
-            <Link
-              to="/tasks"
-              onClick={() => {
-                setActivePage("tasks");
-                closeBurgerMenu();
-              }}
-            >
-              Deed Hub
-            </Link>
-          </li>
-          <li className={activePage === "profile" ? "active" : ""}>
-            <Link
-              to="/profile"
-              onClick={() => {
-                setActivePage("profile");
-                closeBurgerMenu();
-              }}
-            >
-              Profile
-            </Link>
-          </li>
+          {/* Conditionally render "Log in" and "Register" links */}
+          {isLoggedIn ? null : (
+            <>
+              <li className={activePage === "login" ? "active" : ""}>
+                <Link
+                  to="/login"
+                  onClick={() => {
+                    setActivePage("login");
+                    closeBurgerMenu();
+                  }}
+                >
+                  Log in
+                </Link>
+              </li>
+              <li className={activePage === "register" ? "active" : ""}>
+                <Link
+                  to="/register"
+                  onClick={() => {
+                    setActivePage("register");
+                    closeBurgerMenu();
+                  }}
+                >
+                  Register
+                </Link>
+              </li>
+            </>
+          )}
+          {/* Conditionally render "Deed Hub" link only when logged in */}
+          {isLoggedIn ? (
+            <li className={activePage === "tasks" ? "active" : ""}>
+              <Link
+                to="/tasks"
+                onClick={() => {
+                  setActivePage("tasks");
+                  closeBurgerMenu();
+                }}
+              >
+                Deed Hub
+              </Link>
+            </li>
+          ) : null}
+          {/* Conditionally render "Profile" link only when logged in */}
+          {isLoggedIn ? (
+            <li className={activePage === "profile" ? "active" : ""}>
+              <Link
+                to="/profile"
+                onClick={() => {
+                  setActivePage("profile");
+                  closeBurgerMenu();
+                }}
+              >
+                Profile
+              </Link>
+            </li>
+          ) : null}
           <li className={activePage === "about" ? "active" : ""}>
             <Link
               to="/about"
