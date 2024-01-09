@@ -323,7 +323,10 @@ export const PostBookingComponent = () => {
                 <div className="flex justify-center items-center h-auto m-4 text-s font-josefin-sans">
                     <div className="w-full max-w-md rounded-md border-4 border-customPink p-4 px-10 rounded">
                         <div className="mb-2">
-                            <label className="mr-2">Number of People*</label>
+
+                            <label htmlFor="numberOfPeople" className="mr-2">
+                                Number of People*
+                            </label>
 
                             {/* select number of people */}
                             <select

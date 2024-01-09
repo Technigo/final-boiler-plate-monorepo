@@ -1,6 +1,7 @@
 //Import relevant library
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
+import { Helmet } from 'react-helmet-async';
 
 //Import relevant components
 import { NavigationMenu } from "../components/Common/NavigationMenu";
@@ -45,6 +46,11 @@ export const SurfLessons = () => {
 
         <div className="bg-backgroundPink">
 
+            {/* Set meta description dynamically */}
+            <Helmet>
+                <meta name="description" content="Experience personalized surf lessons at Playa Samara with Tuanis Surf School. Group and private lessons available. Book now!" />
+            </Helmet>
+
             <NavigationMenu />
 
             <div className="h-3/6 md:h-5/6 lg:h-screen rounded-b-full" style={backgroundImageStyle}>
@@ -66,17 +72,17 @@ export const SurfLessons = () => {
 
                     <SubHeadingComponent text="Surf-board" />
                     <div className="flex justify-center items-center">
-                        <PhotoComponent className="h-14" src={ssurfboardIcon} />
+                        <PhotoComponent className="h-14" src={ssurfboardIcon} alt="Surfboard icon" />
                     </div>
 
                     <SubHeadingComponent text="Rash-guard" />
                     <div className="flex justify-center items-center">
-                        <PhotoComponent className="h-14" src={rashGuardIcon} />
+                        <PhotoComponent className="h-14" src={rashGuardIcon} alt="Rash guard icon" />
                     </div>
 
                     <SubHeadingComponent text="Leash" />
                     <div className="flex justify-center items-center">
-                        <PhotoComponent className="h-14" src={LeashIcon} />
+                        <PhotoComponent className="h-14" src={LeashIcon} alt="Leash icon" />
                     </div>
                 </div>
 
@@ -91,7 +97,7 @@ export const SurfLessons = () => {
                         <ParagraphComponent text="One groupe lesson $55 (a minimum of 2 people)." />
                         <ParagraphComponent text="One private lesson: $75f-board" />
                         <div className="flex justify-center items-center">
-                            <PhotoComponent src={GiftIcon} />
+                            <PhotoComponent src={GiftIcon} alt="Gift icon" />
                         </div>
                     </div>
 
@@ -100,7 +106,7 @@ export const SurfLessons = () => {
                         <ParagraphComponent text="3 group lessons: $45x3 = $135 in total." />
                         <ParagraphComponent text="3 private lessons: $65x3 = $195 in total" />
                         <div className="flex justify-center items-center">
-                            <PhotoComponent src={GiftIcon} />
+                            <PhotoComponent src={GiftIcon} alt="Gift icon" />
                         </div>
                     </div>
 
@@ -109,7 +115,7 @@ export const SurfLessons = () => {
                         <ParagraphComponent className="" text="6 group lessons: $35x6 = $210 in total." />
                         <ParagraphComponent className="" text="6 Private Lessons: $55x6 = $330 in total" />
                         <div className="flex justify-center items-center">
-                            <PhotoComponent src={GiftIcon} />
+                            <PhotoComponent src={GiftIcon} alt="Gift icon" />
                         </div>
                     </div>
 
@@ -123,7 +129,7 @@ export const SurfLessons = () => {
 
             <FooterComponent />
         </div>
-        // </FadeWrapper>
+
 
     )
 }

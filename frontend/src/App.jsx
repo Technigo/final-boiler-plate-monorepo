@@ -1,6 +1,7 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import routes from './routes/routes';
 import { Fade } from 'react-awesome-reveal';
+import { HelmetProvider } from 'react-helmet-async';
 import './App.css';
 
 export const App = () => {

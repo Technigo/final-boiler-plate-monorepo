@@ -128,11 +128,13 @@ export const FormComponent = ({ form, index, setForms, minDate, errors, disabled
                 error={errors.height}
             />
 
-            {/* Checkbox Film */}
-            <label htmlFor={filmId} className="mr-2">
-                Would you like any documentation?
-            </label>
+            {/* Documentation checkboxes */}
             <div className="mb-2">
+                <label htmlFor={filmId} className="mr-2">
+                    Would you like any documentation?
+                </label>
+
+                {/* Checkbox Film */}
                 <Checkbox
                     label="Film"
                     id={filmId}
@@ -145,8 +147,8 @@ export const FormComponent = ({ form, index, setForms, minDate, errors, disabled
                 />
             </div>
 
-            {/* Checkbox Dronevideos */}
             <div className="mb-2">
+                {/* Checkbox Drone Videos */}
                 <Checkbox
                     label="Drone Videos"
                     id={droneVideosId}
@@ -159,8 +161,8 @@ export const FormComponent = ({ form, index, setForms, minDate, errors, disabled
                 />
             </div>
 
-            {/* Checkbox Photos */}
             <div className="mb-2">
+                {/* Checkbox Photo */}
                 <Checkbox
                     label="Photo"
                     id={photoId}
@@ -188,48 +190,56 @@ export const FormComponent = ({ form, index, setForms, minDate, errors, disabled
                 excludeDates={disabledDates}
             />
 
-            {/* Checkbox Surf Level 1 */}
-            <ParagraphComponent className="mb-2 pl-0 text-s" text={`Have you surfed before? `} />
-            <Checkbox
-                id={beginnerId}
-                label="I'm a beginner"
-                checked={form.beginner}
-                onChange={() =>
-                    setForms((prevForms) =>
-                        prevForms.map((f, i) => (i === index ? { ...f, beginner: !f.beginner } : f))
-                    )
-                }
-                disabled={form.intermediate || form.advanced}
-                error={errors.surfLevel}
-            />
+            {/* Checkbox Surf Level beginner */}
+            <div className="mb-2">
+                <label htmlFor={beginnerId}>
+                    <ParagraphComponent className="mb-2 pl-0 text-s" text={`Have you surfed before? `} />
+                </label>
+                <Checkbox
+                    id={beginnerId}
+                    label="I'm a beginner"
+                    checked={form.beginner}
+                    onChange={() =>
+                        setForms((prevForms) =>
+                            prevForms.map((f, i) => (i === index ? { ...f, beginner: !f.beginner } : f))
+                        )
+                    }
+                    disabled={form.intermediate || form.advanced}
+                    error={errors.surfLevel}
+                />
+            </div>
 
-            {/* Checkbox Surf Level 2 */}
-            <Checkbox
-                id={intermediateId}
-                label="I'm intermediate"
-                checked={form.intermediate}
-                onChange={() =>
-                    setForms((prevForms) =>
-                        prevForms.map((f, i) => (i === index ? { ...f, intermediate: !f.intermediate } : f))
-                    )
-                }
-                disabled={form.beginner || form.advanced}
-                error={errors.surfLevel}
-            />
+            {/* Checkbox Surf Level intermediate */}
+            <div className="mb-2">
+                <Checkbox
+                    id={intermediateId}
+                    label="I'm intermediate"
+                    checked={form.intermediate}
+                    onChange={() =>
+                        setForms((prevForms) =>
+                            prevForms.map((f, i) => (i === index ? { ...f, intermediate: !f.intermediate } : f))
+                        )
+                    }
+                    disabled={form.beginner || form.advanced}
+                    error={errors.surfLevel}
+                />
+            </div>
 
-            {/* Checkbox Surf Level 3 */}
-            <Checkbox
-                id={advancedId}
-                label="I'm advanced"
-                checked={form.advanced}
-                onChange={() =>
-                    setForms((prevForms) =>
-                        prevForms.map((f, i) => (i === index ? { ...f, advanced: !f.advanced } : f))
-                    )
-                }
-                disabled={form.beginner || form.intermediate}
-                error={errors.surfLevel}
-            />
+            {/* Checkbox Surf Level advanced */}
+            <div className="mb-2">
+                <Checkbox
+                    id={advancedId}
+                    label="I'm advanced"
+                    checked={form.advanced}
+                    onChange={() =>
+                        setForms((prevForms) =>
+                            prevForms.map((f, i) => (i === index ? { ...f, advanced: !f.advanced } : f))
+                        )
+                    }
+                    disabled={form.beginner || form.intermediate}
+                    error={errors.surfLevel}
+                />
+            </div>
 
             {/* Display the error message for Surf Levels */}
             <ParagraphComponent className="text-red-500">{errors.surfLevel}</ParagraphComponent>
@@ -256,7 +266,7 @@ export const FormComponent = ({ form, index, setForms, minDate, errors, disabled
             <p className="mb-2 text-red-500">{errors.newPost}</p>
 
             {/* Display the combined character count */}
-            <p className={`mb-2 text-sm ${newPostCharacterCount > 140 ? 'text-red-500' : 'text-gray-500'}`}>
+            <p className={`mb-2 text-sm ${newPostCharacterCount > 140 ? 'text-red-500' : 'text-black'}`}>
                 {newPostCharacterCount}/140
             </p>
 

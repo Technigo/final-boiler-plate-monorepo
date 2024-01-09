@@ -3,8 +3,7 @@ import { BtnComponent } from "../Reusables/BtnComonent";
 import { ParagraphComponent } from "../Reusables/ParagraphComponent";
 import { format, isValid } from 'date-fns';
 import { SubHeadingComponent } from "../Reusables/SubHeadingComponent";
-import { Link, useNavigate } from "react-router-dom";
-import { MyDatePicker } from "../Reusables/MyDatePicker";
+import { useNavigate } from "react-router-dom";
 import useBookingStore from '../../stores/bookingStore';
 
 // Define the functional component for displaying bookings
@@ -112,7 +111,7 @@ export const BookingListComponent = ({ fetchAllBookings, fetchUnHandledBookings 
 
                         {bookingsInGroup.map((booking, index) => (
                             <div key={index} className="m-10 flex justify-center items-center h-auto">
-                                <div className="rounded-md bg-backgroundPink border-solid border-2 border-customPink px-4">
+                                <div className="rounded-md border-solid border-2 border-customPink px-4">
                                     <div>
 
                                         {/* Display various details about the booking */}

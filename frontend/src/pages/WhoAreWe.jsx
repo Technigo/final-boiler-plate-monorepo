@@ -1,6 +1,8 @@
 //import relavant library
 import { NavigationMenu } from "../components/Common/NavigationMenu";
 import { useEffect } from "react";
+import { Helmet } from 'react-helmet-async';
+import { Fade } from "react-awesome-reveal";
 
 //import relevant components
 import { HeadingComponent } from "../components/Reusables/HeadingComponent";
@@ -9,10 +11,10 @@ import { SubHeadingComponent } from '../components/Reusables/SubHeadingComponent
 import { ParagraphComponent } from "../components/Reusables/ParagraphComponent";
 import { PostNewsletter } from "../components/Newsletter/PostNewsletter";
 
-//import media 
+//import relevant media 
 import Video from "../assets/backgroundFilm.mp4"
 import WhoAreWePhoto from "../assets/WhoAreWe.webp";
-import { Fade } from "react-awesome-reveal";
+
 
 
 export const WhoAreWe = () => {
@@ -32,6 +34,11 @@ export const WhoAreWe = () => {
 
     return (
         <>
+            {/* Set meta description dynamically */}
+            <Helmet>
+                <meta name="description" content="Learn about Tuanis Surf School and our passion for surfing. Discover our family-friendly surf lessons in Playa Samara, Costa Rica. Join us for an unforgettable surfing experience." />
+            </Helmet>
+
             <div className="bg-backgroundPink">
                 <NavigationMenu />
                 <div className="lg:h-screen rounded-b-full" style={backgroundImageStyle}>
@@ -60,7 +67,7 @@ export const WhoAreWe = () => {
 
                         {/* Video */}
                         <Fade>
-                            <video autoPlay muted loop className="w-56 h-auto pt-0 rounded-full lg:rounded-full lg:w-96 lg:h-96 lg:object-cover">
+                            <video autoPlay muted loop playsInline controls={false} className="w-56 h-auto pt-0 rounded-full lg:rounded-full lg:w-96 lg:h-96 lg:object-cover">
                                 <source src={Video} type="video/mp4" />
                                 Your browser does not support the video tag.
                             </video>

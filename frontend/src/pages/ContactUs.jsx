@@ -1,14 +1,18 @@
-import { NavigationMenu } from "../components/Common/NavigationMenu";
+
 import { Fade } from "react-awesome-reveal";
-import ContactUsBackground from "../assets/ContactUs.webp";
+import { useEffect } from "react";
+import { Helmet } from 'react-helmet-async';
+
+//import relevant components
+import { NavigationMenu } from "../components/Common/NavigationMenu";
 import { HeadingComponent } from "../components/Reusables/HeadingComponent";
 import { FooterComponent } from '../components/Common/FooterComponent';
 import { SubHeadingComponent } from '../components/Reusables/SubHeadingComponent';
-import { ParagraphComponent } from "../components/Reusables/ParagraphComponent";
-import { useEffect } from "react";
 import { PostNewsletter } from "../components/Newsletter/PostNewsletter";
 import { PhotoComponent } from "../components/Reusables/PhotoComponent";
 
+//import relevant media
+import ContactUsBackground from "../assets/ContactUs.webp";
 import phoneIcon from "../assets/icons/phoneIcon.webp";
 import emailIcon from "../assets/icons/emailIcon.webp";
 import instagramLogo from "../assets/icons/instagramLogo.webp";
@@ -31,6 +35,12 @@ export const ContactUs = () => {
 
     return (
         <div className="bg-backgroundPink">
+
+            {/* Set meta description dynamically */}
+            <Helmet>
+                <meta name="description" content="Contact Tuanis Surf School with your questions. Get in touch via phone or email. Check out our reviews on TripAdvisor and follow us on Facebook and Instagram." />
+            </Helmet>
+
             <NavigationMenu />
 
             <div className="h-3/6 md:h-5/6 lg:h-screen rounded-b-full" style={backgroundImageStyle}>
@@ -50,19 +60,19 @@ export const ContactUs = () => {
 
                             <div className="flex flex-col items-center justify-center">
                                 <div className="flex flex-row items-center">
-                                    <PhotoComponent className="h-6 pr-2" src={phoneIcon} />
+                                    <PhotoComponent className="h-6 pr-2" src={phoneIcon} alt="Phone icon" />
                                     <a href="tel:+50661407609">+50661407609</a>
                                 </div>
 
                                 <div className="pt-2 flex flex-row items-center">
-                                    <PhotoComponent className="h-6 pr-2" src={emailIcon} />
+                                    <PhotoComponent className="h-6 pr-2" src={emailIcon} alt="Phone icon" />
                                     <a href="mailto:tuanissurfschool@gmail.com"> tuanissurfschool@gmail.com</a>
                                 </div>
                             </div>
 
                             <div className="flex flex-col items-center justify-center">
                                 <div className="pt-2 flex flex-row items-center">
-                                    <PhotoComponent className="h-6 pr-2" src={tripAdvisorLogo} />
+                                    <PhotoComponent className="h-6 pr-2" src={tripAdvisorLogo} alt="Phone icon" />
                                     <a href="https://www.tripadvisor.com/Attraction_Review-g309247-d19787493-Reviews-Tuanis_Surf_School_CR-Playa_Samara_Province_of_Guanacaste.html">Check us out on TRIP ADVISOR: Tuanis Surf School CR </a>
                                 </div>
                             </div>

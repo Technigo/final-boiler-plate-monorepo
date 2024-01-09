@@ -7,7 +7,7 @@ import tripAdvisorLogo from "../../assets/icons/tripAdvisorLogo.webp";
 import facebookLogo from "../../assets/icons/facebookLogo.webp";
 import instagramLogo from "../../assets/icons/instagramLogo.webp";
 
-export const FooterComponent = ({ className }) => {
+export const FooterComponent = () => {
 
     return (
         <Fade>
@@ -22,8 +22,10 @@ export const FooterComponent = ({ className }) => {
                 </div>
 
                 <div className="items-center flex flex-col lg:flex-row md:container justify-center items-center">
+
                     <ParagraphComponent className="pb-0 lg:" text="Email: tuanissurfschool@gmail.com" />
                     <ParagraphComponent className="pt-0 pb-10 lg:" text="Phone: +506 6140-7609" />
+
                 </div>
             </div>
         </Fade>
