@@ -4,8 +4,8 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 //Import relevant comonents
-import { SubHeadingComponent } from "../components/SubHeadingComponent";
-import { BtnComponent } from "../components/BtnComonent";
+import { SubHeadingComponent } from "../components/Reusables/SubHeadingComponent";
+import { BtnComponent } from "../components/Reusables/BtnComonent";
 
 // Define the 'Login' functional component.
 export const Login = () => {

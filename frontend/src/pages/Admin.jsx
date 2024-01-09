@@ -1,10 +1,10 @@
 import React, { useEffect } from "react";
 import { userStore } from "../stores/userStore";
 import { useNavigate } from "react-router-dom";
-import { BookingListComponent } from "../components/BookingListComponent";
-import { BtnComponent } from "../components/BtnComonent";
-import { DropDownComponent } from "../components/DropDownComponent";
-import { SubHeadingComponent } from "../components/SubHeadingComponent";
+import { BookingListComponent } from "../components/Bookings/BookingListComponent";
+import { BtnComponent } from "../components/Reusables/BtnComonent";
+import { DropDownComponent } from "../components/Common/DropDownComponent";
+import { SubHeadingComponent } from "../components/Reusables/SubHeadingComponent";
 //import relevant store
 import useBookingStore from '../stores/bookingStore';
 

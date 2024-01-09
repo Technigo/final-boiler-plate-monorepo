@@ -3,8 +3,8 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 //Import components
-import { SubHeadingComponent } from "../components/SubHeadingComponent";
-import { BtnComponent } from "../components/BtnComonent";
+import { SubHeadingComponent } from "../components/Reusables/SubHeadingComponent";
+import { BtnComponent } from "../components/Reusables/BtnComonent";
 
 // Define the 'Register' functional component.
 export const Register = () => {

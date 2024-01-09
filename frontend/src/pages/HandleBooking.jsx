@@ -1,8 +1,8 @@
 import React from 'react';
-import { DropDownComponent } from '../components/DropDownComponent';
-import { BookingListComponent } from "../components/BookingListComponent";
-import { SubHeadingComponent } from "../components/SubHeadingComponent"
-import { BtnComponent } from '../components/BtnComonent';
+import { DropDownComponent } from '../components/Common/DropDownComponent';
+import { BookingListComponent } from "../components/Bookings/BookingListComponent";
+import { SubHeadingComponent } from "../components/Reusables/SubHeadingComponent"
+import { BtnComponent } from '../components/Reusables/BtnComonent';
 import { userStore } from "../stores/userStore";
 import { useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';

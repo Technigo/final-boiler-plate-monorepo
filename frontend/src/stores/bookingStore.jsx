@@ -20,6 +20,78 @@ const useBookingStore = create((set) => ({
         set({ isAuthenticated: userStore.isAuthenticated });
     },
 
+    // Action to handle the submission of bookings
+    submitBookings: async (forms, isGroupBooking, groupID) => {
+        try {
+            const startTime = Date.now();
+
+            // Use Promise.all to await all form submissions concurrently
+            const responses = await Promise.all(
+                forms.map(async (form) => {
+                    try {
+                        const response = await fetch(`${import.meta.env.VITE_API_URL}/booking`, {
+                            method: "POST",
+                            headers: {
+                                "Content-Type": "application/json",
+                            },
+                            body: JSON.stringify({
+                                name: form.name,
+                                age: form.age,
+                                weight: form.weight,
+                                height: form.height,
+                                film: form.film,
+                                droneVideos: form.droneVideos,
+                                photo: form.photo,
+                                email: form.email,
+                                phonenumber: form.phonenumber,
+                                message: form.newPost,
+                                date: form.date.toISOString(),
+                                beginner: form.beginner,
+                                intermediate: form.intermediate,
+                                advanced: form.advanced,
+                                errorMessage: "",
+                                createdAt: Date.now(),
+                                groupID: isGroupBooking ? groupID : null,
+                            }),
+                        });
+
+                        if (!response.ok) {
+                            throw new Error(`Network response was not ok. Status: ${response.status}`);
+                        }
+
+                        const data = await response.json();
+                        return data;
+                    } catch (error) {
+                        console.error("Error submitting form:", error);
+                        // Handle form submission error, e.g., return a placeholder error response
+                        return { error: true };
+                    }
+                })
+            );
+
+            const endTime = Date.now();
+            const actualLoadingTime = endTime - startTime;
+            const minLoadingTime = 4000;
+            const delay = Math.max(minLoadingTime, actualLoadingTime);
+
+            setTimeout(() => {
+                set((state) => ({
+                    ...state,
+                    bookings: [],  // Update this with the new bookings if needed
+                }));
+            }, delay);
+
+            // Return the array of responses to the caller
+            return responses;
+        } catch (error) {
+            console.error("Error submitting forms:", error);
+            // Show a general error message to the user
+            alert("Unable to send request now. Please try again later!");
+            // Return an empty array to indicate an error
+            return [];
+        }
+    },
+
     // Action to handle the click event when marking a booking as handled or unhandled
     bookingIsHandledClick: async (bookingId, currentHandledState) => {
         try {

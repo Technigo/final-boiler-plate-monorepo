@@ -1,6 +1,5 @@
 import React from "react";
 import { Route } from "react-router-dom";
-import { Fade } from "react-awesome-reveal";
 
 //import pages
 import { Admin } from "../pages/Admin";

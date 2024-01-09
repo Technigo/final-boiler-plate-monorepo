@@ -1,18 +1,18 @@
-import { NavigationMenu } from "../components/NavigationMenu"
-import { FooterComponent } from "../components/FooterComponent"
-import { PostBookingComponent } from "../components/PostBookingComponent"
-import { HeadingComponent } from "../components/HeadingComponent"
+import { NavigationMenu } from "../components/Common/NavigationMenu"
+import { FooterComponent } from "../components/Common/FooterComponent"
+import { PostBookingComponent } from "../components/Bookings/PostBookingComponent"
+import { HeadingComponent } from "../components/Reusables/HeadingComponent"
 import { useEffect } from "react";
 
 //import media 
-import WhoAreWePhoto from "../assets/SL2.jpg";
+import WhoAreWePhoto from "../assets/SL2.webp";
 
 export const BookNow = () => {
 
     useEffect(() => {
-        window.scrollTo(0, 0); // Scroll to the top of the page when the About component mounts
+        console.log("Scrolling to the top");
+        window.scrollTo(0, 0);
     }, []);
-
 
     const backgroundImageStyle = {
         backgroundImage: `url(${WhoAreWePhoto})`,

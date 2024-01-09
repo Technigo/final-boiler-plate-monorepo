@@ -1,7 +1,7 @@
-import { NewsLetterListComponent } from "../components/NewsLetterListComponent"
-import { DropDownComponent } from "../components/DropDownComponent"
-import { BtnComponent } from "../components/BtnComonent"
-import { SubHeadingComponent } from "../components/SubHeadingComponent"
+import { NewsLetterListComponent } from "../components/Newsletter/NewsLetterListComponent"
+import { DropDownComponent } from "../components/Common/DropDownComponent"
+import { BtnComponent } from "../components/Reusables/BtnComonent"
+import { SubHeadingComponent } from "../components/Reusables/SubHeadingComponent"
 import { useNavigate } from "react-router-dom"
 import { useEffect } from "react"
 import { userStore } from "../stores/userStore";
