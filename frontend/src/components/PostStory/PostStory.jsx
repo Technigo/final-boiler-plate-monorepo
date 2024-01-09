@@ -14,6 +14,7 @@ export const PostStory = () => {
   const [newStory, setNewStory] = useState("");
   const [newCategory, setNewCategory] = useState("");
   const [selectedDate, setSelectedDate] = useState(new Date());
+  // const [isCalendarVisible, setIsCalendarVisible] = useState(false);
   const [isImageModalOpen, setIsImageModalOpen] = useState(false);
   const [selectedImage, setSelectedImage] = useState("");
 
@@ -24,8 +25,6 @@ export const PostStory = () => {
 
   const handleFormSubmit = async (e) => {
     e.preventDefault();
-
-    setNewStory("");
 
     if (newStory.length < 10) {
       alert("The message is too short. Please try again! 💕");
@@ -47,19 +46,17 @@ export const PostStory = () => {
     setNewStory("");
 
     // Check if the language is supported for sentiment analysis
-    const supportedLanguagesForSentiment = ["en", "es", "ja", "pt"]; // Add more as supported
-    const languageCode = "sv"; // Set the language code dynamically based on the story's language
+    const supportedLanguagesForSentiment = ["en", "es", "ja", "pt"];
+    const languageCode = "sv";
 
     if (!supportedLanguagesForSentiment.includes(languageCode)) {
       console.log("Sentiment analysis not supported for this language");
-      // Handle the case when language is not supported for sentiment analysis
-      // You can directly post the story without sentiment analysis
     } else {
       const googleApiPayload = {
         document: {
-          content: newStory, // Set the content field with the story text
+          content: newStory,
           type: "PLAIN_TEXT",
-          language: languageCode, // Specify the language of the content
+          language: languageCode,
         },
       };
       console.log("Sending request to Google API with body:", googleApiPayload);
@@ -87,7 +84,7 @@ export const PostStory = () => {
     }
 
     // Post the story to the backend
-    fetch("http://localhost:3000/stories", {
+    fetch("https://whisperwall.onrender.com/stories", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -203,7 +200,8 @@ export const PostStory = () => {
             className="category"
             value={newCategory}
             onChange={handleCategoryChange}
-            required>
+            required
+          >
             <option value="">Choose a category</option>
             <option value="anecdote">Anecdote</option>
             <option value="rumor">Rumor</option>
@@ -214,10 +212,12 @@ export const PostStory = () => {
         <div>
           <LoadScript
             googleMapsApiKey={import.meta.env.VITE_GOOGLE_MAPS_API_KEY}
-            libraries={libraries}>
+            libraries={libraries}
+          >
             <Autocomplete
               onLoad={onLoadAutocomplete}
-              onPlaceChanged={onPlaceChanged}>
+              onPlaceChanged={onPlaceChanged}
+            >
               <input
                 className="search-input"
                 type="text"
@@ -253,7 +253,8 @@ export const PostStory = () => {
           <button
             className="gallery-button"
             type="button"
-            onClick={openImageModal}>
+            onClick={openImageModal}
+          >
             Select Image
           </button>
         </div>
@@ -266,14 +267,16 @@ export const PostStory = () => {
           selectedImage={selectedImage}
           className="gallery"
           isOpen={isImageModalOpen}
-          contentLabel="Select Image">
+          contentLabel="Select Image"
+        >
           <div className="gallery-images">
             {images.map((image, index) => (
               <button
                 key={index}
                 className="image-buttons"
                 type="button"
-                onClick={() => handleImageSelect(image)}>
+                onClick={() => handleImageSelect(image)}
+              >
                 <img src={image} alt={`Image ${index + 1}`} />
               </button>
             ))}

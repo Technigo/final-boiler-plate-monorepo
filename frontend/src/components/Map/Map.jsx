@@ -175,7 +175,7 @@ export const Map = () => {
 
   // Fetch stories when the component mounts
   useEffect(() => {
-    fetch("http://localhost:3000/stories")
+    fetch("https://whisperwall.onrender.com/stories")
       .then((response) => response.json())
       .then((data) => {
         if (data.length > 0) {
@@ -244,7 +244,8 @@ export const Map = () => {
   return (
     <LoadScript
       googleMapsApiKey={import.meta.env.VITE_GOOGLE_MAPS_API_KEY}
-      libraries={libraries}>
+      libraries={libraries}
+    >
       <Autocomplete onLoad={onLoadAutocomplete} onPlaceChanged={onPlaceChanged}>
         {/* // types={["(cities)", "address"]} */}
         <input
@@ -260,7 +261,8 @@ export const Map = () => {
         center={mapCenter}
         zoom={4}
         // onClick={onMapClick}
-        options={{ styles: styles.retro, streetViewControl: false }}>
+        options={{ styles: styles.retro, streetViewControl: false }}
+      >
         {markers.map((marker, index) => (
           <Marker
             key={index}
@@ -272,7 +274,8 @@ export const Map = () => {
         {selectedMarker && (
           <InfoWindow
             position={{ lat: selectedMarker.lat, lng: selectedMarker.lng }}
-            onCloseClick={() => setSelectedMarker(null)}>
+            onCloseClick={() => setSelectedMarker(null)}
+          >
             <div>
               <h3 className="marker-title">{selectedMarker.title}</h3>
               <p className="marker-text">{selectedMarker.description}</p>

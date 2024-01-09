@@ -13,7 +13,8 @@ export const StoryList = () => {
   const [selectedCategory, setSelectedCategory] = useState("");
   const [selectedLanguage, setSelectedLanguage] = useState("en"); // default to English
 
-  const backendApiUrl = "http://localhost:3000";
+  // const backendApiUrl = "http://localhost:3000";
+  const backendApiUrl = "https://whisperwall.onrender.com";
 
   // Function to update cities and categories based on fetched stories
   const updateCitiesAndCategories = (storiesData) => {
