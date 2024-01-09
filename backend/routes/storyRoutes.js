@@ -84,6 +84,21 @@ router.post("/stories", async (req, res) => {
   }
 });
 
+// GET endpoint to retrieve a specific story by ID
+router.get("/stories/:id", async (req, res) => {
+  try {
+    const storyId = req.params.id; // Extract the ID from the URL
+    const story = await mapStoryModel.findById(storyId); // Find the story by ID
+
+    if (!story) {
+      return res.status(404).json({ message: "Story not found" });
+    }
+
+    res.json(story); // Send the found story back in the response
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+});
 // //route for rank/like
 // router.put("/stories/:id/rank", async (req, res) => {
 //   const storyId = req.params.id;

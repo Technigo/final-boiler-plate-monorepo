@@ -1,5 +1,3 @@
-import { Link } from "react-router-dom";
-import { Buttons } from "../Buttons/Buttons";
 import "./Footer.css";
 
 // import linkedinIcon from "../assets/linkedin.png";

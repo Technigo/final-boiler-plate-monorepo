@@ -24,13 +24,10 @@ button.like-button img {
   margin-right: 5px;
 }
 
-
 .like-button-icon {
   background-color: none;
-
- }
-
 }
+
 .story-card img {
   width: 100%;
   border-radius: 3px;
@@ -104,17 +101,15 @@ button.like-button img {
   background-color: none;
 }
 
+.story-card.active .story-overlay {
+  display: block; /* Show overlay when card is active */
+}
 
+.story-card.active {
+  z-index: 100; /* Higher z-index for the active card */
+}
 
- .story-card.active .story-overlay {
-   display: block; /* Show overlay when card is active */
- }
-
- .story-card.active {
-   z-index: 100; /* Higher z-index for the active card */
- }
- 
- @media (min-width: 900px) {
+@media (min-width: 900px) {
   .story-card {
     width: 300px;
   }
@@ -123,6 +118,3 @@ button.like-button img {
     max-height: 330px;
   }
 }
- 
- 
-
