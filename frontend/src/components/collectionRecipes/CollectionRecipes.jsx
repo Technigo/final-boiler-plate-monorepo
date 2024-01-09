@@ -22,7 +22,6 @@ export const CollectionRecipes = () => {
         setLoading(false);
       }
     };
-
     fetchData();
   }, []);
 

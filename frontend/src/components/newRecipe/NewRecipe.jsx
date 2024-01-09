@@ -16,14 +16,9 @@ export const NewRecipe = () => {
     fetchCollectionRecipes();
   }, []);
 
-  // Check if there is an error message
+  // Check if there is an error message, stop render of newRecipe
   if (errorMessageGeneration) {
     return null
-    //   return (
-    //     <div className="error-message">
-    //       <p>{errorMessageGeneration}</p>
-    //     </div>
-    //   );
   }
 
   // Check if there is no new recipe yet, and return null if true

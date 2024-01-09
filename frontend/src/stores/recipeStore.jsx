@@ -81,7 +81,7 @@ export const recipeStore = create((set, get) => ({
       //Update the Recipes state with the fetched recipes
       set(() => ({ recipes: reversedRecipes }));
       // Update the newRecipe state to null initially
-      // set(() => ({ newRecipe: null })); TEST
+      // set(() => ({ newRecipe: null })); //TA BORT?? 
 
     } catch (error) {
       console.error("Error fetching collection of recipes:", error);
