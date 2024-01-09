@@ -118,6 +118,10 @@ export const getCocktailByIdController = async (req, res) => {
 export const addCocktailController = [
     upload.single('image'),//multer should be used directly here
     async (req, res) => {
+        //check admin role:
+        if (req.admin.role !== 'admin') {
+            return res.status(403).json({ message: 'Access denied' });
+        }
         console.log(req.body); // Log the body to see the form data
         console.log(req.file); // Log the file to see the image data
 
@@ -162,6 +166,10 @@ export const addCocktailController = [
   
 // Update a cocktail by ID with image upload
 export const updateCocktailController = [addImageToCocktail, async (req, res) => {
+    // Check admin role:
+    if (req.admin.role !== 'admin') {
+        return res.status(403).json({ message: 'Access denied' });
+    }
     try {
         const updatedCocktail = await Cocktails.findByIdAndUpdate(req.params.id, req.body, { new: true });
         if (!updatedCocktail) {
@@ -175,6 +183,10 @@ export const updateCocktailController = [addImageToCocktail, async (req, res) =>
 
 // Delete a cocktail by ID
 export const deleteCocktailController = async (req, res) => {
+    // Check admin role:
+    if (req.admin.role !== 'admin') {
+        return res.status(403).json({ message: 'Access denied' });
+    }
     try {
         const cocktail = await Cocktails.findByIdAndDelete(req.params.id);
         if (!cocktail) {

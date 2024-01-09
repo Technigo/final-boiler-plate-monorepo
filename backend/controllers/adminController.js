@@ -12,6 +12,13 @@ const generateToken = (id) => {
 
 // Register Admin
 export const registerAdminController = asyncHandler(async (req, res) => {
+    const adminRole = req.admin.role;
+
+    // Check if the role is 'admin'
+    if (adminRole !== 'admin') {
+        // If not an admin, return a 403 Forbidden response
+        return res.status(403).json({ success: false, message: 'Access denied' });
+    }
     const { username, password, email } = req.body;
 
     try {
@@ -85,6 +92,13 @@ export const loginAdminController = asyncHandler(async (req, res) => {
 
 // List all users
 export const listUsersController = asyncHandler(async (req, res) => {
+    const adminRole = req.admin.role;
+
+    // Check if the role is 'admin'
+    if (adminRole !== 'admin') {
+        // If not an admin, return a 403 Forbidden response
+        return res.status(403).json({ success: false, message: 'Access denied' });
+    }
     try {
         const users = await UserModel.find({}).select('-password'); // Excludes passwords from the result
         res.json({ success: true, users });
@@ -95,6 +109,13 @@ export const listUsersController = asyncHandler(async (req, res) => {
 
 // Upgrade a user to an admin
 export const upgradeUserController = asyncHandler(async (req, res) => {
+    const adminRole = req.admin.role;
+
+    // Check if the role is 'admin'
+    if (adminRole !== 'admin') {
+        // If not an admin, return a 403 Forbidden response
+        return res.status(403).json({ success: false, message: 'Access denied' });
+    }
     const { userId } = req.body; // Get user ID from the request body
 
     // Validate userId - Check if it's provided and a valid MongoDB ObjectId

@@ -1,7 +1,7 @@
 import express from 'express';
 import multer from 'multer';
 import path from 'path';
-//import { connectAtlasDB } from "../config/db"; // MIRELA
+import { authenticateAdmin } from '../middleware/authenticateAdmin'; // Import middleware to add for protection
 import {
     getCocktailsController,
     getCocktailByIdController,
@@ -9,10 +9,6 @@ import {
     updateCocktailController,
     deleteCocktailController
 } from '../controllers/cocktailController';
-
-
-// Connect to MongoDB Atlas for cocktail-related data
-//connectAtlasDB(); // MIRELA
 
 
 // Set up multer for file uploads with updated storage configuration
@@ -32,13 +28,13 @@ const upload = multer({ storage: storage });
 const router = express.Router();
 
 // Routes that handle image uploads with the updated multer middleware
-router.post('/', upload.single('image'), addCocktailController);
-router.put('/:id', upload.single('image'), updateCocktailController);
+router.post('/', authenticateAdmin, upload.single('image'), addCocktailController);
+router.put('/:id', authenticateAdmin, upload.single('image'), updateCocktailController);
 
 // Routes that do not handle image uploads remain the same
 router.get('/', getCocktailsController);
 router.get('/:id', getCocktailByIdController);
-router.delete('/:id', deleteCocktailController);
+router.delete('/:id', authenticateAdmin, deleteCocktailController);
 
 export default router;
 
