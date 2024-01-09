@@ -134,16 +134,12 @@ export const userStore = create((set, get) => ({
         `${backupApiEnv}/messages/${senderId}/${recipientId}`
       );
 
-      if (response.ok) {
-        console.log(JSON.stringify(response));
-      }
-
       if (!response.ok) {
         throw new Error(`Error fetching messages: ${response.statusText}`);
       }
 
       const data = await response.json();
-      console.log("data from store: " + JSON.stringify(data));
+      // console.log("data from store: " + JSON.stringify(data));
 
       set({ chatMessages: data });
       // console.log("chatMessages from Store: " + chatMessages);
