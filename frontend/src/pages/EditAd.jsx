@@ -7,7 +7,6 @@ import { Button } from "../components/reusableComponents/Button";
 import Lottie from "lottie-react";
 import loadingAnimation from "../assets/loading.json";
 import "./editAd.css";
-import { useSession } from "../context/SessionContext";
 import { Dropdown } from "../components/reusableComponents/Dropdown";
 import { useNavigate } from "react-router-dom";
 
@@ -27,7 +26,6 @@ export const EditAd = () => {
   const [isSuccess, setIsSuccess] = useState(false); // To track if the update was successful
 
   const { getAdById, handleEdit } = adStore();
-  const { isSessionExpired } = useSession();
 
   useEffect(() => {
     const fetchAdData = async () => {
@@ -94,11 +92,6 @@ export const EditAd = () => {
   return (
     <div className="main-container">
       <div className="main-wrapper">
-        {isSessionExpired && (
-          <div className="session-expired-message">
-            Your session has expired. Please log in again.
-          </div>
-        )}
         <div className="create-ad-container">
           <BackArrow />
           {isLoading ? (

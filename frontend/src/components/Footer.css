@@ -1,8 +1,6 @@
 .footer {
   background-color: var(--secondary-background);
   color: var(--secondary-text);
-  margin-top: 40px;
-
 }
 
 .footer-container {

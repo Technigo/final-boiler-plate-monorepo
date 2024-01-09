@@ -4,10 +4,11 @@ import logoBlack from "../../assets/logo/green-buddy-logo-black.svg";
 import "../reusableComponents/logo.css";
 import { useNavigate } from "react-router-dom";
 
-export const Logo = ({ className, color }) => {
+export const Logo = ({ className, color, redirectPath = "/" }) => {
   const navigate = useNavigate();
+
   const handleClick = () => {
-    navigate("/");
+    navigate(redirectPath);
   };
 
   let logo;
@@ -22,21 +23,18 @@ export const Logo = ({ className, color }) => {
       logo = logoBlack;
       break;
     default:
-      logo = logoWhite; 
+      logo = logoWhite;
   }
 
   return (
-    <>
-      <img
-        src={logo}
-        alt="logo"
-        onClick={handleClick}
-        className={className}
-      ></img>
-    </>
+    <img
+      src={logo}
+      alt="logo"
+      onClick={handleClick}
+      className={className}
+    />
   );
 };
 
-
-//HOW TO USE IT
-//<Logo className="your-class-name" color="green" />
+// How to use it:
+// <Logo className="your-class-name" color="green" redirectPath="/your-path" />
