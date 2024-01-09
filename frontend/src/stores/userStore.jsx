@@ -221,7 +221,6 @@ export const userStore = create((set) => ({
             email: data.response.email,
             location: data.response.location,
             introduction: data.response.introduction,
-            // products: data.response.products,
             image: data.response.image 
           }));
           // Return the profile data for further use in the component
@@ -234,7 +233,6 @@ export const userStore = create((set) => ({
             icon: "error"
           });
           return null;
-          // alert(data.response || "User profile display failed");
         }
       } catch (error) {
         // Handle and log any errors.
@@ -269,7 +267,6 @@ export const userStore = create((set) => ({
           username: data.response.username,
           location: data.response.location,
           introduction: data.response.introduction,
-          // products: data.response.products,
           image: data.response.image 
         }));
         // Return the profile data for further use in the component
@@ -433,7 +430,6 @@ export const userStore = create((set) => ({
     // Remove the accessToken from localStorage.
     localStorage.removeItem("accessToken");
     localStorage.removeItem("userId");
-    // Additional logout logic can be added here if needed.
   },
 
   // FUNCTION TO HANDLE USER ACCOUNT DELETION
@@ -455,7 +451,7 @@ export const userStore = create((set) => ({
       reverseButtons: true
     }).then((result) => {
       if (result.isConfirmed) {
-        // Clear user information - to be doublechecked if this is deletion or just deactivation
+        // Clear user information
         set({ 
           username: "", 
           email: "",
@@ -463,7 +459,7 @@ export const userStore = create((set) => ({
           consent: false,
           location: "",
           introduction: "",
-          // products: [],
+          products: [],
           image: null,
           userId: null,
           accessToken: null, 
@@ -479,7 +475,7 @@ export const userStore = create((set) => ({
           icon: "success"
         });
       } else if (
-        /* Read more about handling dismissals below */
+        /* Display dismissal message */
         result.dismiss === Swal.DismissReason.cancel
       ) {
         swalWithBootstrapButtons.fire({
@@ -490,25 +486,6 @@ export const userStore = create((set) => ({
       }
     });
   }
-
-  // Original code
-    // Clear user information - to be doublechecked if this is deletion or just deactivation
-    // set({ 
-    //   username: "", 
-    //   email: "",
-    //   password: "",
-    //   consent: false,
-    //   location: "",
-    //   introduction: "",
-    //   products: [],
-    //   userId: null,
-    //   accessToken: null, 
-    //   isLoggedin: false 
-    // });
-    // Remove the accessToken from localStorage.
-    // localStorage.removeItem("accessToken");
-    // Display confirmation message
-    // alert("Your account has been deleted. Feel free to create a new account anytime!");
 }));
 
 // SUMMARY
