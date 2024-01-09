@@ -64,13 +64,21 @@ export const addShowtime = asyncHandler(async (req, res) => {
 		const movieDetails = await MovieModel.find(
 			{ "_id": movieId }
 		)
-		const movieTitle = movieDetails[0].title
+		if (!movieDetails) {
+			return res.status(404).json({ error: 'Movie not found' });
+		} else {
+			const movieTitle = movieDetails[0].title
+		}
 		
 		const hallDetails = await CinemaHallModel.find(
 			{ "name": cinemaHall }, 
 			{ "rowsThenSeats": 1, "_id": 0 }
 		)
-		const [ numRows, numSeats ] = hallDetails[0].rowsThenSeats
+		if (!hallDetails) {
+			return res.status(404).json({ error: 'The cinemahall is not found' });
+		} else {
+			const [ numRows, numSeats ] = hallDetails[0].rowsThenSeats
+		}
 
 		const seats = []
 		for (let i = 0; i < numRows; i++) {
