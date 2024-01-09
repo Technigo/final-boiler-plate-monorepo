@@ -8,7 +8,7 @@ export const LogoutBtn = () => {
         onClick={() =>
           logout({ logoutParams: { returnTo: window.location.origin } })
         }
-        className="bg-black rounded-full cursor-pointer hover:bg-white hover:text-black text-white px-5 py-2 font-semibold"
+        className="bg-red-600 rounded-full cursor-pointer hover:bg-white hover:text-black text-white px-5 py-2 font-semibold"
       >
         Log out
       </button>

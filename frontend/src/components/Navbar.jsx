@@ -15,18 +15,18 @@ export const Navbar = () => {
   };
 
   const navlinks = [
-    { linkName: "Search", linkRoute: "/search" },
+    // { linkName: "Search", linkRoute: "/search" },
     { linkName: "Post Trip", linkRoute: "/posttrip" },
     { linkName: "About", linkRoute: "/about" },
-    { linkName: "Register", linkRoute: "/register" },
+    // { linkName: "Register", linkRoute: "/register" },
   ];
 
   const navlinksLoggedIn = [
-    { linkName: "About", linkRoute: "/about" },
-    { linkName: "Search", linkRoute: "/search" },
-    { linkName: "Messages", linkRoute: "/messages" },
+    // { linkName: "Search", linkRoute: "/search" },
+    // { linkName: "Messages", linkRoute: "/messages" },
     { linkName: "Post Trip", linkRoute: "/posttrip" },
     { linkName: "My Account", linkRoute: "/account" },
+    { linkName: "About", linkRoute: "/about" },
   ];
 
   const renderMenuItems = () =>
@@ -47,7 +47,7 @@ export const Navbar = () => {
         ))}
       </ul>
     );
-
+  
   const handleScroll = () => {
     // Check if the user has scrolled down more than 50 pixels
     setIsScrolled(window.scrollY > 50);
@@ -64,7 +64,7 @@ export const Navbar = () => {
   }, []);
 
   return (
-    <nav className={`bg-gray-800 p-4 ${isScrolled ? 'fixed top-0 w-full' : ''}`}>
+    <nav className={`bg-gray-800 p-4 z-10 ${isScrolled ? 'fixed top-0 w-full' : ''}`}>
       <div className="container mx-auto flex items-center justify-between">
         <div
           onClick={() => navigate("/")}

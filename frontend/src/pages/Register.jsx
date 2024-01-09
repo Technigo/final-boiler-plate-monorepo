@@ -49,7 +49,6 @@ export const Register = () => {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
-
         <label>Confirm password:</label>
         <input
           type="password"
