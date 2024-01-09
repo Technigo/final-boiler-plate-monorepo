@@ -23,7 +23,7 @@ const StyledFeedCardModal = styled.div`
     width: 100%;
     display: flex;
     flex-direction: column;
-    padding: 5px;
+    padding: 6px;
   }
 
   // Styling for the Need card header
@@ -33,6 +33,13 @@ const StyledFeedCardModal = styled.div`
     gap: 10px;
     margin: 10px;
     justify-content: flex-start;
+  }
+
+  .cardBody-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
   }
 
   // Styling for the Need card location and title
@@ -51,12 +58,6 @@ const StyledFeedCardModal = styled.div`
     margin: 10px;
   }
 
-  // Styling for the show more button
-  .show-more-btn {
-    display: flex;
-    align-self: center;
-  }
-
   // Styling for the description in the card when the modal is open
   .description {
     margin: 30px 15px;
@@ -72,9 +73,10 @@ const StyledFeedCardModal = styled.div`
     border: none;
     border-radius: 10px;
     color: #000000;
+    font-weight: bold;
     cursor: pointer;
 
-    // Styling for the buttin when hovering over it
+    // Styling for the button when hovering over it
     &:hover {
       background-color: #899b64;
     }
@@ -86,6 +88,10 @@ const StyledFeedCardModal = styled.div`
     flex-direction: column;
     align-items: center;
     margin: 10px;
+  }
+
+  .offer-help-button-modal {
+    margin: 15px 0 10px;
   }
 `;
 
@@ -182,22 +188,24 @@ export const FeedTaskCard = ({ task }) => {
               {/* Render the icon if it exists */}
               <p>{category}</p> {/* Render the category */}
             </div>
-            <div className="area">
-              <h3>{task.task}</h3> {/* Render the Need */}
-              <p>{area}</p>{" "}
-              {/* Render the location where the Need is to be performed */}
+            <div className="cardBody-container">
+              <div className="area">
+                <h3>{task.task}</h3> {/* Render the Need */}
+                <p>{area}</p>{" "}
+                {/* Render the location where the Need is to be performed */}
+              </div>
+              <div className="task-footer">
+                <p>Created by: {task.user && task.user.username}</p>{" "}
+                {/* Render the username of the user who created the Need */}
+                <p>Posted: {formattedCreatedAt}</p>{" "}
+                {/* Render the date when the Need was created */}
+              </div>
+              <Button
+                onClick={openModal}
+                className="show-more-btn"
+                buttonName="Show more"
+              />
             </div>
-            <div className="task-footer">
-              <p>Created by: {task.user && task.user.username}</p>{" "}
-              {/* Render the username of the user who created the Need */}
-              <p>Posted: {formattedCreatedAt}</p>{" "}
-              {/* Render the date when the Need was created */}
-            </div>
-            <Button
-              onClick={openModal}
-              className="show-more-btn"
-              buttonName="Show more"
-            />
           </li>
         </div>
       </StyledFeedCardModal>
@@ -221,7 +229,7 @@ export const FeedTaskCard = ({ task }) => {
             bottom: "auto",
             marginRight: "-50%",
             transform: "translate(-50%, -50%)",
-            backgroundColor: "#eae6ca",
+            backgroundColor: "#f8f8f8",
             display: "flex",
             flexDirection: "column",
             justifyContent: "center",
@@ -256,38 +264,39 @@ export const FeedTaskCard = ({ task }) => {
                   buttonName="X"
                 />
               </div>
+              <div classname="cardBody-container">
+                <div className="area-modal">
+                  {" "}
+                  {/* Render the Need and the location where the Need is to be performed */}
+                  <h3>{task.task}</h3> {/* Render the title of the Need */}
+                  <p>{area}</p>{" "}
+                  {/* Render the location where the Need is to be performed */}
+                </div>
 
-              <div className="area-modal">
-                {" "}
-                {/* Render the Need and the location where the Need is to be performed */}
-                <h3>{task.task}</h3> {/* Render the title of the Need */}
-                <p>{area}</p>{" "}
-                {/* Render the location where the Need is to be performed */}
-              </div>
+                {/* Modal content */}
+                <div className="description">
+                  <p>{task.description}</p>{" "}
+                  {/* Render the description of the Need */}
+                </div>
+                <div className="task-footer">
+                  <p>Created by: {task.user && task.user.username}</p>{" "}
+                  {/* Render the username of the user who created the Need */}
+                  <p>Posted: {formattedCreatedAt}</p>{" "}
+                  {/* Render the date when the Need was created */}
+                </div>
 
-              {/* Modal content */}
-              <div className="description">
-                <p>{task.description}</p>{" "}
-                {/* Render the description of the Need */}
+                {/* Button to offer help */}
+                <IconButton
+                  onClick={() => {
+                    addMyselfToTaskClick(); // Call addMyselfToTaskClick when the user clicks on the button
+                    closeModal(); // Call closeModal after volunteer is added
+                  }}
+                  className="offer-help-button-modal"
+                  buttonName="Lend a helping hand"
+                  iconAlt="Logo showing two shaking hands forming a heart"
+                  src="/Logo-white.png"
+                />
               </div>
-              <div className="task-footer">
-                <p>Created by: {task.user && task.user.username}</p>{" "}
-                {/* Render the username of the user who created the Need */}
-                <p>Posted: {formattedCreatedAt}</p>{" "}
-                {/* Render the date when the Need was created */}
-              </div>
-
-              {/* Button to offer help */}
-              <IconButton
-                onClick={() => {
-                  addMyselfToTaskClick(); // Call addMyselfToTaskClick when the user clicks on the button
-                  closeModal(); // Call closeModal after volunteer is added
-                }}
-                className="offer-help-button-modal"
-                buttonName="Lend a helping hand"
-                iconAlt="Logo showing two shaking hands forming a heart"
-                src="/Logo-white.png"
-              />
             </li>
           </div>
         </StyledFeedCardModal>

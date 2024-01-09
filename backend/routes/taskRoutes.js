@@ -2,7 +2,6 @@ import express from "express";
 import { authenticateUser } from "../middleware/authenticateUser";
 import {
   getTasksController,
-  updateTaskController,
   deleteSpecificTaskController,
   addTaskController,
   getUserTasksController,
