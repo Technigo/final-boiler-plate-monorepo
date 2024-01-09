@@ -1,5 +1,6 @@
 import { ShowTimeModel } from '../models/ShowtimeModel'
 import { CinemaHallModel } from '../models/CinemaHallModel'
+import { MovieModel } from '../models/MovieModel'
 import asyncHandler from 'express-async-handler'
 
 import data from '../json-files/showTime.json'
@@ -44,58 +45,59 @@ export const getShowtimeById = asyncHandler(async (req, res) => {
 // @access public
 export const addShowtime = asyncHandler(async (req, res) => {
 	try {
-		const { movieTitle, cinemaHall, date, startingTime, duration, price } = req.body
+		const { movieId, cinemaHall, date, startingTime, duration, price } = req.body
 		
 		// Check for missing required information
-		if (!movieTitle || !cinemaHall || !date || !startingTime || !duration || !price)
-		return res.status(400).json({ error: 'Missing required information' })
+		if (!movieId || !cinemaHall || !date || !startingTime || !duration || !price) return res.status(400).json({ error: 'Missing required information' })
 	
-	// Transform startingTime and endTime from strings to Date objects
-	// const startTimeParts = startingTime.split(':').map(Number)
-	// const endTimeParts = endTime.split(':').map(Number)
-	
-	// Create Date objects for startingTime and endTime
-	// const startDateTime = new Date(date)
-	// startDateTime.setHours(startTimeParts[0], startTimeParts[1], 0, 0)
-	
-	// const endDateTime = new Date(date)
-	// endDateTime.setHours(endTimeParts[0], endTimeParts[1], 0, 0)
+		// Transform startingTime and endTime from strings to Date objects
+		// const startTimeParts = startingTime.split(':').map(Number)
+		// const endTimeParts = endTime.split(':').map(Number)
+		
+		// Create Date objects for startingTime and endTime
+		// const startDateTime = new Date(date)
+		// startDateTime.setHours(startTimeParts[0], startTimeParts[1], 0, 0)
+		
+		// const endDateTime = new Date(date)
+		// endDateTime.setHours(endTimeParts[0], endTimeParts[1], 0, 0)
 
-	const hallDetails = await CinemaHallModel.find(
-		{ "name": cinemaHall }, 
-		{ "rowsThenSeats": 1, "_id": 0 }
-	)
-	const [ numRows, numSeats ] = hallDetails[1].rowsThenSeats
+		const movieDetails = await MovieModel.find(
+			{ "_id": movieId }
+		)
+		const movieTitle = movieDetails[0].title
+		
+		const hallDetails = await CinemaHallModel.find(
+			{ "name": cinemaHall }, 
+			{ "rowsThenSeats": 1, "_id": 0 }
+		)
+		const [ numRows, numSeats ] = hallDetails[0].rowsThenSeats
 
-	console.log('NumRows', numRows, 'NumSeats', numSeats)
-
-	const seats = []
-
-	for (let i = 0; i < numRows; i++) {
-		const row = []
-		for (let j=0; j < numSeats; j++) {
-			let seatIndex = (numSeats*i) + j
-			row.push({ booked: false, bookingID: null, rowIndex: i + 1, seatIndex: seatIndex + 1 })
+		const seats = []
+		for (let i = 0; i < numRows; i++) {
+			const row = []
+			for (let j=0; j < numSeats; j++) {
+				let seatIndex = (numSeats*i) + j
+				row.push({ booked: false, bookingID: null, rowIndex: i + 1, seatIndex: seatIndex + 1 })
+			}
+			seats.push(row)
 		}
-		seats.push(row)
+		
+		const newShowtime = new ShowTimeModel({
+			movieTitle: movieTitle,
+			cinemaHall: cinemaHall,
+			date: date,
+			// startingTime: startDateTime,
+			startingTime: startingTime,
+			duration: duration,
+			price: price,
+			seats: seats,
+		})
+		const saveShowtime = await newShowtime.save()
+		
+		res.status(201).json(saveShowtime)
+	} catch (error) {
+		res.status(500).json({ message: error.message })
 	}
-	
-	const newShowtime = new ShowTimeModel({
-		movieTitle: movieTitle,
-		cinemaHall: cinemaHall,
-		date: date,
-		// startingTime: startDateTime,
-		startingTime: startingTime,
-		duration: duration,
-		price: price,
-		seats: seats,
-	})
-	const saveShowtime = await newShowtime.save()
-	
-	res.status(201).json(saveShowtime)
-} catch (error) {
-	res.status(500).json({ message: error.message })
-}
 })
 
 // @desc update booked-element in seats in the Showtime
