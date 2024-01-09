@@ -3,9 +3,6 @@ import { create } from "zustand";
 // Import the userStore to access user-related data
 import { userStore } from "./userStore";
 import Swal from 'sweetalert2';
-import fetchWithSessionChecks from '../utils/fetchWithSessionChecks';
-
-
 
 // Get the backend API URL from the environment variable
 const apiEnv = import.meta.env.VITE_BACKEND_API;
@@ -29,59 +26,49 @@ export const adStore = create((set) => ({
   //FETCH AD FUNCTIONS
 
   // Function to fetch all saved ads for the current user
-  fetchSavedAds: async (onSessionExpire) => {
+  fetchSavedAds: async () => {
     const userId = userStore.getState().userId;
     const url = `${apiEnv}/getSavedAdsByUserId/${userId}`;
-    console.log("Fetching saved ads for userId:", userId, "URL:", url); // Log the userId and URL
 
     try {
-      const response = await fetchWithSessionChecks(url, {
+      const response = await fetch(url, {
         headers: { Authorization: localStorage.getItem("accessToken") },
-      }, onSessionExpire);
+      });
       if (response.ok) {
         const data = await response.json();
-        console.log("Fetched saved ads:", data);
         set({ savedAds: data });
       } else {
-        console.error('Error fetching saved ads:', response.status, response.statusText);
         Swal.fire('Error!', 'Failed to fetch ads for the user', 'error');
       }
     } catch (error) {
-      console.error('Fetch Saved Ads Error:', error);
       Swal.fire('Error!', 'An error occurred while fetching ads for the user', 'error');
     }
   },
 
 
   // Fetch all ads
-  getAllAds: async (onSessionExpire) => {
+  getAllAds: async () => {
     try {
-      const response = await fetchWithSessionChecks(`${apiEnv}/getAllAds`, {}, onSessionExpire);
+      const response = await fetch(`${apiEnv}/getAllAds`, {
+        headers: { Authorization: localStorage.getItem("accessToken") },
+      });
       if (response.ok) {
         const data = await response.json();
         set({ ads: data });
       } else {
-        Swal.fire({
-          title: 'Error!',
-          text: 'Failed to fetch ads',
-          icon: 'error'
-        });
+        Swal.fire('Error!', 'Failed to fetch ads', 'error');
       }
     } catch (error) {
-      Swal.fire({
-        title: 'Error!',
-        text: 'An error occurred while fetching ads',
-        icon: 'error'
-      });
+      Swal.fire('Error!', 'An error occurred while fetching ads', 'error');
     }
   },
 
   // Fetch ads for the logged in user
-  fetchAds: async (onSessionExpire) => {
+  fetchAds: async () => {
     try {
-      const response = await fetchWithSessionChecks(`${apiEnv}/getAds`, {
+      const response = await fetch(`${apiEnv}/getAds`, {
         headers: { Authorization: localStorage.getItem("accessToken") },
-      }, onSessionExpire);
+      });
       if (response.ok) {
         const data = await response.json();
         set({ ads: data });
@@ -94,9 +81,9 @@ export const adStore = create((set) => ({
   },
 
   // Fetch a specific ad by ID
-  getAdById: async (id, onSessionExpire) => {
+  getAdById: async (id) => {
     try {
-      const response = await fetchWithSessionChecks(`${apiEnv}/getAd/${id}`, {}, onSessionExpire);
+      const response = await fetch(`${apiEnv}/getAd/${id}`, {});
       if (response.ok) {
         return await response.json();
       } {
@@ -108,9 +95,9 @@ export const adStore = create((set) => ({
   },
 
   // Fetch ads for a specific user by UserID
-  fetchAdsByUserId: async (userId, onSessionExpire) => {
+  fetchAdsByUserId: async (userId) => {
     try {
-      const response = await fetchWithSessionChecks(`${apiEnv}/getAdsByUserId/${userId}`, {}, onSessionExpire);
+      const response = await fetch(`${apiEnv}/getAdsByUserId/${userId}`, {});
       if (response.ok) {
         const data = await response.json();
         set({ ads: data });
@@ -126,7 +113,7 @@ export const adStore = create((set) => ({
 
   //CREATE AD FUNCTIONS
   // New action to add an ad to the server and then to the store
-  createAd: async (newAdData, imageFile, onSessionExpire) => {
+  createAd: async (newAdData, imageFile) => {
     console.log("imageFile:", imageFile); // Log the imageFile here
     try {
       const formData = new FormData();
@@ -143,14 +130,14 @@ export const adStore = create((set) => ({
       formData.append('image', imageFile);
 
       // Send the request to create a new ad with form data
-      const response = await fetchWithSessionChecks(`${apiEnv}/createAd`, {
+      const response = await fetch(`${apiEnv}/createAd`, {
         method: "POST",
         headers: {
           Authorization: localStorage.getItem("accessToken"),
           // Don't set Content-Type when sending FormData
         },
         body: formData,
-      }, onSessionExpire);
+      });
 
       const newAd = await response.json();
       console.log("Server response for new ad:", newAd);
@@ -171,16 +158,16 @@ export const adStore = create((set) => ({
   },
 
   // Action to save an ad
-  saveAd: async (adId, onSessionExpire) => {
+  saveAd: async (adId) => {
     try {
-      const response = await fetchWithSessionChecks(`${apiEnv}/saveAd`, {
+      const response = await fetch(`${apiEnv}/saveAd`, {
         method: "POST",
         headers: {
           'Content-Type': 'application/json',
           Authorization: localStorage.getItem("accessToken"),
         },
         body: JSON.stringify({ adId }),
-      }, onSessionExpire);
+      });
       if (!response.ok) throw new Error('Failed to save ad');
       Swal.fire('Saved!', 'Ad saved successfully', 'success');
     } catch (error) {
@@ -192,7 +179,7 @@ export const adStore = create((set) => ({
 
   //UPDATE AD FUNCTIONS
   // Action to update an existing ad
-  handleEdit: async (id, updatedAdData, imageFile, onSessionExpire) => {
+  handleEdit: async (id, updatedAdData, imageFile) => {
     const formData = new FormData();
     Object.entries(updatedAdData).forEach(([key, value]) => {
       formData.append(key, value);
@@ -201,13 +188,13 @@ export const adStore = create((set) => ({
       formData.append('image', imageFile);
     }
 
-    const response = await fetchWithSessionChecks(`${apiEnv}/update/${id}`, {
+    const response = await fetch(`${apiEnv}/update/${id}`, {
       method: "PUT",
       headers: {
         Authorization: localStorage.getItem("accessToken"),
       },
       body: formData,
-    }, onSessionExpire);
+    });
 
     if (response.ok) {
       const updatedAd = await response.json();
@@ -222,14 +209,14 @@ export const adStore = create((set) => ({
 
   //DELETE FUNCTIONS
   // New action to delete all ads of a specific user
-  deleteAllAds: async (onSessionExpire) => {
+  deleteAllAds: async () => {
     try {
-      const response = await fetchWithSessionChecks(`${apiEnv}/deleteAll`, {
+      const response = await fetch(`${apiEnv}/deleteAll`, {
         method: "DELETE",
         headers: {
           Authorization: localStorage.getItem("accessToken"),
         },
-      }, onSessionExpire);
+      });
       // Check if the request was successful
       if (response.ok) {
         // Clear the ads in the state
@@ -244,14 +231,14 @@ export const adStore = create((set) => ({
   },
 
   // New action to delete a specific ad by its ID
-  deleteAdById: async (id, onSessionExpire) => {
+  deleteAdById: async (id) => {
     try {
-      const response = await fetchWithSessionChecks(`${apiEnv}/delete/${id}`, {
+      const response = await fetch(`${apiEnv}/delete/${id}`, {
         method: "DELETE",
         headers: {
           Authorization: localStorage.getItem("accessToken"),
         },
-      }, onSessionExpire);
+      });
 
       // Check if the request was successful
       if (response.ok) {
@@ -269,14 +256,14 @@ export const adStore = create((set) => ({
   },
 
   // Action to unsave an ad
-  unsaveAd: async (adId, onSessionExpire) => {
+  unsaveAd: async (adId) => {
     try {
-      const response = await fetchWithSessionChecks(`${apiEnv}/unsaveAd/${adId}`, {
+      const response = await fetch(`${apiEnv}/unsaveAd/${adId}`, {
         method: "DELETE",
         headers: {
           Authorization: localStorage.getItem("accessToken"),
         },
-      }, onSessionExpire);
+      });
 
       if (!response.ok) throw new Error('Failed to unsave ad');
 

@@ -1,5 +1,5 @@
 // Import the back arrow logo image.
-import backArrow from "../../assets/back-arrow.svg";
+import backArrow from "../../assets/icons/return.svg";
 import "./backarrow.css";
 
 // Import the useNavigate hook from react-router-dom.
