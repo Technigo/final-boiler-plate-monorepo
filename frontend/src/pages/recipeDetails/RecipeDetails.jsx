@@ -25,12 +25,12 @@ export const RecipeDetails = () => {
   //
 
 
-  //HÄR ÄR DET NÅGOT FEL!!! Just nu testas med navigate (se även import samt rad 13)
-  // Check if a recipe was found
-  if (!foundRecipe) {
-    navigate("/NotFound");
-  }
-  //
+  // //HÄR ÄR DET NÅGOT FEL!!! Just nu testas med navigate (se även import samt rad 13)
+  // // Check if a recipe was found
+  // if (!foundRecipe) {
+  //   navigate("/*");
+  // }
+  // //
 
 
 
