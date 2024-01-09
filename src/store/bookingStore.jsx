@@ -5,6 +5,7 @@ const apiEnv = import.meta.env.VITE_BACKEND_API
 export const bookingStore = create((set) => ({
     allShowTimes: [],
     selectedSeats: [],
+    selectedShowtime: "",
 
     fetchAllShowTimes: async () => {
         try {
@@ -19,6 +20,8 @@ export const bookingStore = create((set) => ({
         }
     },
 
+    setSelectedShowtime: ( input ) => set( () => ({ selectedShowtime: input })),
+
     setSelectedSeats: ( newSeats ) => set(
         () => ({ 
             selectedSeats: 
@@ -31,16 +34,16 @@ export const bookingStore = create((set) => ({
         })
     ),
 
-    makeAReservation: async (selectedSeat, showTimeId) => {
+    makeAReservation: async (selectedSeat, showTimeId, email) => {
         try {
-            const response = await fetch(`${apiEnv}/showtimes/bookSeat`, {
-                method: 'PUT',
+            const response = await fetch(`${apiEnv}/bookings`, {
+                method: 'POST',
                 headers: {
                     "Content-Type": "application/json",
                 },
                 body: JSON.stringify({ 
-                    row: selectedSeat[0], 
-                    seat: selectedSeat[1], 
+                    email: email,
+                    seat: selectedSeat,
                     showTimeId: showTimeId 
                 })
             })

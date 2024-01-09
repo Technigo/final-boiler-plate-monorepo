@@ -30,16 +30,22 @@ export const Booking = () => {
 	const allShowTimes = bookingStore.getState().allShowTimes
 	console.log(allShowTimes)
 
-	// const [ selectedSeats, setSelectedSeats ] = useState(stateSeats)
-	// console.log(chosenSeats)
+	const selectedShowtime = bookingStore((state) => state.selectedShowtime)
+	const setSelectedShowtime = bookingStore((state) => state.setSelectedShowtime)
 	
 	const thisShowTime = allShowTimes[1]
-	console.log(thisShowTime)
+	// setSelectedShowtime(thisShowTime._id)
+	// console.log(selectedShowtime)
 	const cinemaHall = thisShowTime.cinemaHall
 	const movieTitle = thisShowTime.movieTitle
 	const seatInfo = thisShowTime.seats
-
+	
 	useEffect(() => console.log('selectedSeats', stateSeats, 'stateSeats'), [stateSeats])
+	useEffect(() => {
+		setSelectedShowtime(thisShowTime._id)
+		console.log(selectedShowtime)
+		console.log(thisShowTime)
+	}, [])
 
 	const handleSeatClick = (event, row, seatIndex) => {
 		const newSelection = [row, seatIndex]
@@ -85,7 +91,7 @@ export const Booking = () => {
 							<label>{index + 1}</label>
 							{row.map(seat => (
 								<div 
-									className={`seat ${seat.booked ? "booked" : ""}`} 
+									className={`seat ${seat.booked ? "booked" : ""} `} 
 									key={seat.seatIndex} 
 									onClick={event => {
 											handleSeatClick(event, seat.rowIndex, seat.seatIndex)
@@ -113,23 +119,19 @@ export const Booking = () => {
 				</ul>
 			</section>
 
-			{stateSeats && (
-				<div className="ticket-container">
-					{stateSeats.map(item => <SelectedTicket key={item[1]} row={item[0]} seat={item[1]} />)}
-				</div>
-			)}
+			{stateSeats && (<SelectedTicket />)}
 
 			{isLoggedIn ? (
 				<>
 					<div className="button-container">
-						<Link to={`/bookingForm/user`} state={{ seats: stateSeats }}><button>BOOK</button></Link>
+						<Link to={`/bookingForm/user`}><button>BOOK</button></Link>
 					</div>
 				</>
 			) : (
 				<>
 					<div className="button-container">
-						<Link to={`/bookingForm/guest`} state={{ seats: stateSeats }}><button>Book as a guest</button></Link>
-						<Link to={`/bookingForm/register`} state={{ seats: stateSeats }}><button>Sign up/Log in to book</button></Link>
+						<Link to={`/bookingForm/guest`}><button>Book as a guest</button></Link>
+						<Link to={`/bookingForm/register`}><button>Sign up/Log in to book</button></Link>
 					</div>
 				</>
 			)}
