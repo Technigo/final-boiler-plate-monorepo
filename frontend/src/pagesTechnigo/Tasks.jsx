@@ -1,7 +1,7 @@
 // Import necessary dependencies, components, and stores.
 import { useEffect } from "react";
-import Logos from "../components/Logos";
-import { CreateTask } from "../components/CreateTask";
+import Logos from "../componentsTechnigo/Logos";
+import { CreateTask } from "../componentsTechnigo/CreateTask";
 import { taskStore } from "../stores/taskStore";
 import { userStore } from "../stores/userStore";
 import { useNavigate } from "react-router-dom";
@@ -76,9 +76,8 @@ export const Tasks = () => {
           tasks.map((task) => (
             <div key={task._id} className="card-wrapper">
               <div
-                className={`card-container ${
-                  task.done ? "green-border" : "red-border"
-                }`}
+                className={`card-container ${task.done ? "green-border" : "red-border"
+                  }`}
                 onClick={() => handleEdit(task._id)}
               >
                 <p>{task.task}</p>

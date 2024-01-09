@@ -1,0 +1,131 @@
+/* Base styles (Mobile-first design) */
+/* Applicable to small screens (smartphones) by default */
+
+.H1 {
+    font-size: 32px;
+    /* Larger size for primary headings */
+    font-weight: 800;
+    /* Bold font weight for emphasis */
+    line-height: 130%;
+    /* Adequate line spacing for readability */
+    letter-spacing: 0.36px;
+    /* Slight letter spacing for clarity */
+    font-family: 'Nunito Sans', sans-serif;
+    /* Sans-serif for modern look */
+}
+
+.H2 {
+    font-size: 29px;
+    /* Slightly smaller than .H1 for hierarchy */
+    font-weight: 800;
+    /* Consistent bold style with .H1 */
+    line-height: 130%;
+    letter-spacing: 0.36px;
+    font-family: 'Nunito Sans', sans-serif;
+}
+
+.subheading {
+    font-size: 32px;
+    /* Same size as .H1 but lighter weight */
+    font-weight: 400;
+    /* Normal weight for less emphasis */
+    line-height: 104%;
+    letter-spacing: 0.32px;
+    font-family: 'Nunito Sans', sans-serif;
+}
+
+.yogaCenterName {
+    font-size: 40px;
+    /* Largest size for prominent elements like logos */
+    font-weight: 200;
+    /* Light weight for a refined look */
+    line-height: 104%;
+    font-family: 'Nunito Sans', sans-serif;
+}
+
+.bodyText {
+    font-size: 17px;
+    /* Comfortable reading size for body text */
+    font-weight: 400;
+    line-height: 104%;
+    letter-spacing: 0.17px;
+    font-family: 'Readex Pro', sans-serif;
+    /* Different font for variety */
+}
+
+.ctaCaption {
+    font-size: 16px;
+    /* Slightly smaller than body text for secondary info */
+    font-weight: 400;
+    line-height: 104%;
+    letter-spacing: 0.16px;
+    font-family: 'Readex Pro', sans-serif;
+}
+
+/* Tablet-sized devices (e.g., iPad) */
+@media (min-width: 768px) {
+    .H1 {
+        font-size: 48px;
+        /* Increase size for larger screens */
+        letter-spacing: 0.48px;
+    }
+
+    .H2 {
+        font-size: 38px;
+        /* Proportionally increase from mobile size */
+        letter-spacing: 0.38px;
+    }
+
+    .subheading {
+        font-size: 36px;
+        /* Adjust for better hierarchy */
+        letter-spacing: 0.36px;
+    }
+
+    .yogaCenterName {
+        font-size: 50px;
+        /* More prominent on larger screens */
+        letter-spacing: 0.5px;
+    }
+
+    .bodyText,
+    .ctaCaption {
+        /* Slight increase in size for readability */
+        font-size: 18px;
+        letter-spacing: 0.18px;
+    }
+}
+
+/* Laptop and desktops */
+@media (min-width: 1024px) {
+    .H1 {
+        font-size: 64px;
+        /* Much larger for desktop readability */
+        letter-spacing: 0.64px;
+    }
+
+    .H2 {
+        font-size: 48px;
+        /* Keep the hierarchy consistent */
+        letter-spacing: 0.48px;
+    }
+
+    .subheading {
+        font-size: 42px;
+        /* Balance between .H1 and .H2 */
+        letter-spacing: 0.42px;
+    }
+
+    .yogaCenterName {
+        font-size: 60px;
+        /* Very prominent for branding */
+        letter-spacing: 0.6px;
+    }
+
+    .bodyText,
+    .ctaCaption {
+        font-size: 20px;
+        /* Larger for desktop readability */
+        letter-spacing: 0.2px;
+    }
+}

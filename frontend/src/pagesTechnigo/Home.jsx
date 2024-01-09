@@ -2,7 +2,7 @@
 import { useEffect } from "react";
 import { userStore } from "../stores/userStore";
 import { useNavigate } from "react-router-dom";
-import Logos from "../components/Logos";
+import Logos from "../componentsTechnigo/Logos";
 import { Link } from "react-router-dom";
 
 // Define the 'Home' functional component.
