@@ -78,7 +78,13 @@ export const UserController = {
     //const ourUserId = userId;
     try {
       const messages = await MessageModel.find({
-        sender: senderid,
+        sender: {
+          $or: [senderid, recipientid],
+        },
+        recipient: {
+          $or: [senderid, recipientid],
+        },
+
         // sender: { $in: [senderid, recipientid] },
         // recipient: { $in: [senderid, recipientid] },
       })

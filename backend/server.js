@@ -31,36 +31,13 @@ app.use(userRoutes);
 // Connection to the database through Mongoose
 connectDB();
 
-// Start the server and listen for incoming requests on the specified port
-// app.listen(port, () => {
-//   console.log(`Server running on http://localhost:${port}`); // Display a message when the server is successfully started
-// });
-
 //#REGION Websocket stuff
+// Start the server and listen for incoming requests on the specified port
 const server = app.listen(port, () => {
   console.log(`Server running on http://localhost:${port}`); // Display a message when the server is successfully started
 });
 
 const wss = new ws.WebSocketServer({ server });
-// wss.on("connection", (connection, req) => {
-
-//   const cookies = req.headers.cookie;
-//   console.log(req._events);
-//   if (cookies) {
-//     const cookieString = cookies
-//       .split(";")
-//       .find((str) => str.startsWith("_legacy"));
-//     // console.log(cookieString);
-//     if (cookieString) {
-//       const properCookie = cookieString.split(".")[1];
-//       if (properCookie) {
-//         // console.log(properCookie);
-//       }
-//     }
-//   }
-//   // console.log([...wss.clients].map((x) => x.username));
-//   // console.log([...wss.clients].length);
-// });
 
 wss.on("connection", (ws) => {
   ws.on("message", async (message) => {
