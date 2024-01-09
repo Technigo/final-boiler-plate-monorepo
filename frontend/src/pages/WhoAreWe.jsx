@@ -67,7 +67,7 @@ export const WhoAreWe = () => {
 
                         {/* Video */}
                         <Fade>
-                            <video autoPlay muted loop playsInline controls={false} className="w-56 h-auto pt-0 rounded-full lg:rounded-full lg:w-96 lg:h-96 lg:object-cover">
+                            <video autoPlay muted loop playsInline controls={false} className="w-full h-auto p-4 rounded-full lg:rounded-full lg:w-96 lg:h-96 lg:object-cover">
                                 <source src={Video} type="video/mp4" />
                                 Your browser does not support the video tag.
                             </video>

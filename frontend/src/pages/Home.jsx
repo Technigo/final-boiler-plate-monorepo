@@ -44,7 +44,7 @@ export const Home = () => {
                 <div className="relative h-screen lg:h-full flex items-center md:justify-center rounded-full overflow-hidden">
                     {/* Video */}
 
-                    <video autoPlay muted loop playsInline controls={false} className="rounded-full object-cover w-full h-full lg:w-4/6 lg:h-4/6 md:p-10">
+                    <video autoPlay muted loop playsInline controls={false} className="py-2 rounded-full object-cover w-full h-full lg:w-4/6 lg:h-4/6 md:p-10">
                         <source src={HomeSurfing} type="video/mp4" />
                         Your browser does not support the video tag.
                     </video>
