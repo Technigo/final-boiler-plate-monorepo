@@ -1,12 +1,6 @@
-import { Link } from "react-router-dom";
-import { Buttons } from "../Buttons/Buttons";
 import "./Footer.css";
 
 export const Footer = () => {
-  const handleButtonClick = () => {
-    console.log("About us button clicked");
-  };
-
   return (
     <div className="footer">
       <div className="footer-text">

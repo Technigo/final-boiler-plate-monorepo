@@ -9,14 +9,11 @@ import "./PostStory.css";
 
 const libraries = ["places"];
 
-// const apiKey = import.meta.env.VITE_GOOGLE_MAPS_API_KEY;
-
 export const PostStory = () => {
   const [newHeading, setNewHeading] = useState("");
   const [newStory, setNewStory] = useState("");
   const [newCategory, setNewCategory] = useState("");
   const [selectedDate, setSelectedDate] = useState(new Date());
-  // const [isCalendarVisible, setIsCalendarVisible] = useState(false);
   const [isImageModalOpen, setIsImageModalOpen] = useState(false);
   const [selectedImage, setSelectedImage] = useState("");
 
@@ -27,6 +24,8 @@ export const PostStory = () => {
 
   const handleFormSubmit = async (e) => {
     e.preventDefault();
+
+    setNewStory("");
 
     if (newStory.length < 10) {
       alert("The message is too short. Please try again! 💕");
@@ -62,6 +61,32 @@ export const PostStory = () => {
       .then((res) => res.json())
       .then((googleApiResponse) => {
         console.log("Response from Google API:", googleApiResponse);
+        if (googleApiResponse.documentSentiment.score > -0.5) {
+          // Post the story if the sentiment score is acceptable
+          return fetch("http://localhost:3000/stories", {
+            method: "POST",
+            body: JSON.stringify({
+              title: newHeading,
+              content: newStory,
+              createdAt: selectedDate,
+              location: { lat: latitude, lng: longitude },
+              category: newCategory,
+              image: selectedImage,
+            }),
+            headers: {
+              "Content-Type": "application/json",
+            },
+          });
+        } else {
+          // Handle negative sentiment
+          alert("The story seems too negative. Please revise it.");
+          throw new Error("Negative sentiment detected.");
+        }
+      })
+      .then((res) => res.json())
+      .then((newStoryResponse) => {
+        console.log("New story posted:", newStoryResponse);
+        window.location.reload();
       })
       .catch((error) => {
         console.error("Error calling Google API:", error);
@@ -116,7 +141,7 @@ export const PostStory = () => {
   };
 
   const handleImageSelect = (image) => {
-    import(`/${image}`)
+    import(`/${image}` /*@vite ignore*/)
       .then((module) => {
         setSelectedImage(module.default);
         closeImageModal(true);
@@ -171,7 +196,7 @@ export const PostStory = () => {
             onChange={handleCategoryChange}
             required>
             <option value="">Choose a category</option>
-            <option value="funny story">Funny story</option>
+            <option value="anecdote">Anecdote</option>
             <option value="rumor">Rumor</option>
             <option value="historical">Historical</option>
             <option value="hearsay">Hearsay</option>
@@ -195,7 +220,7 @@ export const PostStory = () => {
         </div>
 
         <div>
-          {newCategory === "funny story" && (
+          {newCategory === "anecdote" && (
             <DatePicker
               selected={selectedDate}
               onChange={handleDateChange}
@@ -204,7 +229,7 @@ export const PostStory = () => {
               className="input-field"
             />
           )}
-          {newCategory !== "funny story" && (
+          {newCategory !== "anecdote" && (
             <DatePicker
               selected={selectedDate}
               onChange={handleDateChange}
