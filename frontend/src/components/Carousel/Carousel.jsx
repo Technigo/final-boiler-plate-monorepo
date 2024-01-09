@@ -44,7 +44,7 @@ export const Carousel = () => {
   };
 
   useEffect(() => {
-    fetch("http://localhost:3000/stories")
+    fetch("https://whisperwall.onrender.com/stories")
       .then((response) => response.json())
       .then((data) => {
         setStories(data); // Set the fetched stories
