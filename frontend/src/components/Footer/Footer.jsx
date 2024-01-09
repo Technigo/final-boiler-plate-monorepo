@@ -2,8 +2,8 @@ import { Link } from "react-router-dom";
 import { Buttons } from "../Buttons/Buttons";
 import "./Footer.css";
 
-// import linkedinIcon from "../assets/linkedin.png";
-// import githubIcon from "../assets/github.png";
+import linkedinIcon from "../assets/linkedin.png";
+import githubIcon from "../assets/github.png";
 
 export const Footer = () => {
   const handleButtonClick = () => {
@@ -15,7 +15,7 @@ export const Footer = () => {
       <div className="footer-text">
         <p>
           Technigo Web Developer Bootcamp Fall 2023 Final Project <br />
-          {/* <span>
+          <span>
             Frida Lindskog
             <a
               href="https://www.linkedin.com/in/"
@@ -82,7 +82,7 @@ export const Footer = () => {
             >
               <img src={githubIcon} alt="GitHub" />
             </a>
-          </span> */}
+          </span>
         </p>
       </div>
     </div>
