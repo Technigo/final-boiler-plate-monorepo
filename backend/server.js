@@ -3,9 +3,10 @@ import express from "express"; // Import the Express.js framework
 import cors from "cors"; // Import the CORS middleware
 import dotenv from "dotenv"; // Import dotenv for environment variables
 dotenv.config(); // Load environment variables from the .env file
-import { connectDB } from "./config/db"; // Import database connection function (not used here)
+import { connectDB } from "./config/db"; // Import database connection function
 import { auth0Config } from "./config/Auth0";
 import userRoutes from "./routes/userRoutes";
+import { MessageModel } from "./models/MessageModel";
 
 //Websocket
 import ws from "ws";
@@ -62,16 +63,28 @@ const wss = new ws.WebSocketServer({ server });
 // });
 
 wss.on("connection", (ws) => {
-  ws.on("message", (message) => {
+  ws.on("message", async (message) => {
     const data = JSON.parse(message);
+    const { sender, recipient, text } = data;
 
     if (data.type === "setUserId") {
       // Associate the user ID with the WebSocket connection
       ws.userId = data.userId;
       console.log(`User ${ws.userId} connected.`);
-    } else if(data.type === "setReceiverId"){
+    } else if (data.type === "setReceiverId") {
       ws.receiverId = data.receiverId;
-      console.log(`User ${ws.userId} will send chat messages to ${ws.receiverId}.`);
+      console.log(
+        `User ${ws.userId} will send chat messages to ${ws.receiverId}.`
+      );
+    } else if (recipient && text) {
+      const messageDoc = await MessageModel.create({
+        sender,
+        recipient,
+        text,
+      });
+      console.log("created message");
+      console.log(messageDoc);
+      console.log(sender);
     } else {
       // Handle other message types
     }

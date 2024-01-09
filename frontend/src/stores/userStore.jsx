@@ -3,6 +3,7 @@ import { create } from "zustand";
 
 // Get the backend API endpoint from the environment variables.
 const apiEnv = import.meta.env.VITE_BACKEND_API;
+const backupApiEnv = import.meta.env.VITE_BACKUP_API;
 
 // Create a Zustand store for user-related state and actions.
 export const userStore = create((set, get) => ({
@@ -20,11 +21,19 @@ export const userStore = create((set, get) => ({
   password: "",
   // Define a function to set the password state.
   setPassword: (password) => set({ password }),
-  
-  //Initialize user to chat with 
+
+  //Initialize user to chat with
   chatReceiver: "",
   // Define a function to set the chatReceiver state.
-  setChatReceiver: (chatReceiver) => set({chatReceiver}),
+  setChatReceiver: (chatReceiver) => set({ chatReceiver }),
+
+  //Log the userId of the logged in user from MongoDB
+  loggedInUserId: "",
+  setLoggedInUserId: (loggedInUserId) => set({ loggedInUserId }),
+
+  //Log the userId of the recipient of a message
+  recipientId: "",
+  setRecipientId: (recipientId) => set({ recipientId }),
 
   // Initialize accessToken state with null.
   accessToken: null,
@@ -35,6 +44,9 @@ export const userStore = create((set, get) => ({
   isLoggedIn: false,
   // Define a function to set the isLoggedIn state.
   setIsLoggedIn: (isLoggedIn) => set({ isLoggedIn }),
+
+  // Initialize the user's messaging history
+  chatMessages: [],
 
   // FUNCTION TO REGISTER USERS
   handleSignup: async (username, password, email) => {
@@ -113,6 +125,21 @@ export const userStore = create((set, get) => ({
       // Handle and log any login errors.
       console.error("Login error:", error);
       alert("An error occurred during login");
+    }
+  },
+
+  handleChatHistory: async (senderId, recipientId) => {
+    try {
+      const response = await fetch(
+        `${backupApiEnv}/messages?sender=${senderId}&recipient=${recipientId}`
+      );
+
+      const data = await response.json();
+      if (data.success) {
+        set({ chatMessages: data });
+      }
+    } catch (error) {
+      console.error("Error fetching messages: ", error.message);
     }
   },
 
