@@ -1,6 +1,6 @@
 <p align="center"><img src="https://openair-feast.netlify.app/logo11.png" alt="Logo" width="80%"></p><br>
 
-As part of the Technigo Web Dev Bootcamp, this project was created as the Final Project by Emmy Dieden and Idah Collin. It includes an API, containting several different routes as well as a frontend handling all user interactions.
+As part of the Technigo Web Dev Bootcamp, this project was created as the Final Project by Emmy Dieden and Idah Collin. It includes an API, containting several different routes as well as a frontend handling all user interactions and design.
 
 Our vision is to make it easier for people to connect with nature and enjoy delicious meals outdoors. Open AIr Feast generates camping stove-friendly recipes using AI. The recipes are based upon the user's input of 1-3 ingredients.<br><br>
 

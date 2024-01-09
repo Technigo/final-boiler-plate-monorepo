@@ -30,7 +30,6 @@
     flex-direction: column;
 }
 
-
 .textareas-container {
     display: flex;
     flex-direction: column;
@@ -57,7 +56,36 @@ textarea::placeholder {
     gap: 10px;
     margin-bottom: 25px;
     /* justify-content: space-between; */
+}
 
+.checkbox-options input[type="checkbox"] {
+    position: absolute;
+    opacity: 0;
+}
+
+.checkbox-options label {
+    position: relative;
+    padding-left: 25px;
+    /* Adjust as needed */
+    cursor: pointer;
+    color: white;
+}
+
+.checkbox-options label::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 16px;
+    height: 16px;
+    border: 2px solid #286052;
+    border-radius: 4px;
+    background-color: transparent;
+}
+
+.checkbox-options input[type="checkbox"]:checked+label::before {
+    background-color: darkgreen;
+    border-color: darkgreen;
 }
 
 /* Ev flyttas. Om alla knappar ska se likadana ut så kan denna flyttas till app */

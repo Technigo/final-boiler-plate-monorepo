@@ -29,7 +29,7 @@ export const NewRecipe = () => {
   // Render the new recipe details if there is no error and a new recipe is available
   return (
     <>
-      <h2>Gear up for an outdoor escapade! Your AI-generated adventure-ready recipe:</h2>
+      <h3>Gear up for an outdoor escapade!</h3> <h3>Your AI-generated adventure-ready recipe:</h3>
       <div className="new-recipe-wrapper">
         <h3>{newRecipe.title}</h3>
         <p><strong>Your input:</strong> {newRecipe.userInput}</p>

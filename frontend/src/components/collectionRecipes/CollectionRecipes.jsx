@@ -8,8 +8,10 @@ import "./collectionRecipes.css";
 // Define the CollectionRecipes component
 export const CollectionRecipes = () => {
   // Destructure recipes and setRecipes from the recipeStore
-  const { recipes, fetchCollectionRecipes, errorMessageGeneration } = recipeStore();
+  const { recipes, fetchCollectionRecipes, errorMessageGeneration, setErrorMessageGeneration, setNewRecipe } = recipeStore();
   const [loading, setLoading] = useState(true);
+
+  // setErrorMessageGeneration() TEST!!
 
   // Use the useEffect hook to fetch recipes when the component mounts
   useEffect(() => {
@@ -17,6 +19,8 @@ export const CollectionRecipes = () => {
       try {
         await fetchCollectionRecipes();
         setLoading(false);
+        setErrorMessageGeneration("") //TEST!!
+        setNewRecipe(false) //TEST
       } catch (error) {
         console.error("Error fetching data:", error);
         setLoading(false);
@@ -37,7 +41,7 @@ export const CollectionRecipes = () => {
   // Render the component with a list of recipes (map over the recipes and render each recipe's ingredients and instructions)
   return (
     <section className="collection-recipes">
-      {errorMessageGeneration && <div className="error-message-container"><h3 className="error-message-generation">{errorMessageGeneration}</h3></div>}
+      {errorMessageGeneration && <div className="error-message-container"><p className="error-message-generation">{errorMessageGeneration}</p></div>}
       <h3>Latest AI-Generated Recipes</h3>
       <div className="recipe-grid">
         {limitedRecipes.map((recipe, index) => (
