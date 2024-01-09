@@ -5,9 +5,9 @@ const DogSchema = new mongoose.Schema({
   name: String,
   puppy: Boolean,
   special_adoption: Boolean,
-  size: String,
+  size: String
 });
 
-const DogModel = mongoose.model("Dog", DogSchema)
+const DogModel = mongoose.model("DogModel", DogSchema)
 
 export default DogModel

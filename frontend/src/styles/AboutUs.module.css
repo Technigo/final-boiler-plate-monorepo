@@ -13,6 +13,26 @@
     gap: 5em;
 }
 
+.headerImage {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    background-image: url('../assets/aboutus.png');
+    background-size: 100%;
+    background-position: bottom;
+    height: 10em;
+    padding-left: 2em;
+}
+
+.textWrapper {
+    height: 20em;
+    display: flex;
+    flex-direction: column;
+    gap: 2em;
+    justify-content: center;
+    padding-left: 2em;
+}
+
 @media screen and (max-width: 667px) {
     .siteContainer {
         grid-template-columns: 1fr;

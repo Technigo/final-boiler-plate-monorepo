@@ -13,6 +13,31 @@
     gap: 5em;
 }
 
+.headerImage {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    background-image: url('../assets/login.jpg');
+    background-size: 100%;
+    background-position: center;
+    height: 10em;
+    padding-left: 2em;
+}
+
+.formWrapper {
+    height: 15em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+input {
+    border-radius: 5px;
+    color: #42531D;
+    font-family: 'Lexend';
+    height: 2em;
+}
+
 @media screen and (max-width: 667px) {
     .siteContainer {
         grid-template-columns: 1fr;
