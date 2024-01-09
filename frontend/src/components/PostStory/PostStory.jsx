@@ -87,7 +87,7 @@ export const PostStory = () => {
     }
 
     // Post the story to the backend
-    fetch("http://localhost:3000/stories", {
+    fetch("https://whisperwall.onrender.com/stories", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

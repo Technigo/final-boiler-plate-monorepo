@@ -175,7 +175,7 @@ export const Map = () => {
 
   // Fetch stories when the component mounts
   useEffect(() => {
-    fetch("http://localhost:3000/stories")
+    fetch("https://whisperwall.onrender.com/stories")
       .then((response) => response.json())
       .then((data) => {
         if (data.length > 0) {
@@ -205,7 +205,7 @@ export const Map = () => {
     setCustomMarkerIcon(customMarker);
   }, []);
 
-  const markers = stories.map((story, index) => ({
+  const markers = stories.map((story) => ({
     lat: Number(story.location.lat),
     lng: Number(story.location.lng),
     title: story.title,

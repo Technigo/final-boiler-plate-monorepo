@@ -13,7 +13,7 @@ export const StoryList = () => {
   const [selectedCategory, setSelectedCategory] = useState("");
   const [selectedLanguage, setSelectedLanguage] = useState("en"); // default to English
 
-  const backendApiUrl = "http://localhost:3000";
+  const backendApiUrl = "https://whisperwall.onrender.com/";
 
   // Function to update cities and categories based on fetched stories
   const updateCitiesAndCategories = (storiesData) => {
@@ -117,8 +117,7 @@ export const StoryList = () => {
           <select
             className="dropdowns"
             value={selectedLanguage}
-            onChange={handleLanguageChange}
-          >
+            onChange={handleLanguageChange}>
             <option value="en">English</option>
             <option value="sv">Swedish</option>
           </select>
@@ -126,8 +125,7 @@ export const StoryList = () => {
           <select
             className="dropdowns"
             value={filterType}
-            onChange={handleFilterTypeChange}
-          >
+            onChange={handleFilterTypeChange}>
             <option value="">Select Filter</option>
             <option value="ranking">Ranking</option>
             <option value="city">City</option>
@@ -139,8 +137,7 @@ export const StoryList = () => {
             <select
               className="dropdowns"
               value={selectedCity}
-              onChange={handleCityChange}
-            >
+              onChange={handleCityChange}>
               <option value="">Select City</option>
               {cities.map((city, index) => (
                 // Use a combination of city name and index as key
@@ -155,8 +152,7 @@ export const StoryList = () => {
             <select
               className="dropdowns"
               value={selectedCategory}
-              onChange={handleCategoryChange}
-            >
+              onChange={handleCategoryChange}>
               <option value="">Select Category</option>
               {categories.map((category, index) => (
                 // Use a combination of category name and index as key
