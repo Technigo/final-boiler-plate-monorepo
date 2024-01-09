@@ -30,7 +30,7 @@ export const CollectionRecipe = ({ recipe, index }) => {
 
         <div className="user-input-collection">
           {recipe.userInput.map((ingredient, ingredientIndex) => (
-            <p key={ingredientIndex}>•{ingredient}</p>
+            <div className="recipe-tag" key={ingredientIndex}>{ingredient}</div>
           ))}
         </div>
       </section>
