@@ -172,142 +172,143 @@ export const TripGenerator = () => {
             setFormData={setFormData}
           />
 
-          <div className="flex space-x-4">
-            <div className="w-1/2">
-              <label
-                htmlFor="date"
-                className="block text-sm font-md text-gray-700">
-                Date
-              </label>
-              <input
-                type="date"
-                id="date"
-                name="date"
-                value={formData.date}
-                onChange={handleChange}
-                className="input-field border p-2 rounded-md w-full h-10"
-              />
-            </div>
+<div className="flex space-x-4">
+  <div className="w-1/2">
+    <label
+      htmlFor="date"
+      className="block text-sm font-md text-gray-700">
+      Date
+    </label>
+    <input
+      type="date"
+      id="date"
+      name="date"
+      value={formData.date}
+      onChange={handleChange}
+      className="input-field border p-2 rounded-md w-full h-10"
+    />
+  </div>
 
-            <div className="w-1/2">
-              <label
-                htmlFor="time"
-                className="block text-sm font-md text-gray-700">
-                Time
-              </label>
-              <select
-                id="time"
-                name="time"
-                value={formData.time}
-                onChange={handleTimeChange}
-                className="input-field border p-2 rounded-md w-full h-10">
-                {timeOptions}
-              </select>
-            </div>
-          </div>
+  <div className="w-1/2">
+    <label
+      htmlFor="time"
+      className="block text-sm font-md text-gray-700">
+      Time
+    </label>
+    <select
+      id="time"
+      name="time"
+      value={formData.time}
+      onChange={handleTimeChange}
+      className="input-field border p-2 rounded-md w-full h-10">
+      {timeOptions}
+    </select>
+  </div>
+</div>
 
-          <div className="flex space-x-4">
-            <div className="w-1/2">
-              <label
-                htmlFor="make"
-                className="block text-sm font-md text-gray-700">
-                Make
-              </label>
-              <select
-                id="make"
-                name="make"
-                value={formData.make}
-                onChange={(e) =>
-                  handleChange({
-                    target: { name: e.target.name, value: e.target.value },
-                  })
-                }
-                className="input-field border p-2 rounded-md w-full">
-                <option value="" disabled>
-                  Make
-                </option>
-                {makes.map((make) => (
-                  <option key={make} value={make}>
-                    {make}
-                  </option>
-                ))}
-              </select>
-            </div>
-            <div className="w-1/2">
-              <label
-                htmlFor="model"
-                className="block text-sm font-md text-gray-700">
-                Model
-              </label>
-              <select
-                id="model"
-                name="model"
-                value={formData.model}
-                onChange={handleChange}
-                className="input-field border p-2 rounded-md w-full">
-                <option value="" disabled>
-                  Model
-                </option>
-                {formData.make &&
-                  models[formData.make].map((model) => (
-                    <option key={model} value={model}>
-                      {model}
-                    </option>
-                  ))}
-              </select>
-            </div>
-          </div>
+<div className="flex space-x-4">
+  <div className="w-1/2">
+    <label
+      htmlFor="make"
+      className="block text-sm font-md text-gray-700">
+      Make
+    </label>
+    <select
+      id="make"
+      name="make"
+      value={formData.make}
+      onChange={(e) =>
+        handleChange({
+          target: { name: e.target.name, value: e.target.value },
+        })
+      }
+      className="input-field border p-2 rounded-md w-full h-10"> {/* Set height to 10 */}
+      <option value="" disabled>
+        Make
+      </option>
+      {makes.map((make) => (
+        <option key={make} value={make}>
+          {make}
+        </option>
+      ))}
+    </select>
+  </div>
+  <div className="w-1/2">
+    <label
+      htmlFor="model"
+      className="block text-sm font-md text-gray-700">
+      Model
+    </label>
+    <select
+      id="model"
+      name="model"
+      value={formData.model}
+      onChange={handleChange}
+      className="input-field border p-2 rounded-md w-full h-10"> {/* Set height to 10 */}
+      <option value="" disabled>
+        Model
+      </option>
+      {formData.make &&
+        models[formData.make].map((model) => (
+          <option key={model} value={model}>
+            {model}
+          </option>
+        ))}
+    </select>
+  </div>
+</div>
 
-          <div className="flex space-x-4 mb-4">
-            <div className="w-1/2">
-              <label
-                htmlFor="reg"
-                className="block text-sm font-md text-gray-700">
-                Reg. no
-              </label>
-              <input
-                type="text"
-                id="reg"
-                name="reg"
-                value={formData.reg}
-                onChange={handleChange}
-                className="input-field border p-2 rounded-md w-full"
-                maxLength={6}
-                pattern="[a-zA-Z]{3}\d{2}[a-zA-Z\d]{1}"
-                title="Please follow the patterns ABC123/ABC12X"
-                placeholder="e.g. ABC123"
-              />
-            </div>
+<div className="flex space-x-4 mb-4">
+  <div className="w-1/2">
+    <label
+      htmlFor="reg"
+      className="block text-sm font-md text-gray-700">
+      Reg. no
+    </label>
+    <input
+      type="text"
+      id="reg"
+      name="reg"
+      value={formData.reg}
+      onChange={handleChange}
+      className="input-field border p-2 rounded-md w-full"
+      maxLength={6}
+      pattern="[a-zA-Z]{3}\d{2}[a-zA-Z\d]{1}"
+      title="Please follow the patterns ABC123/ABC12X"
+      placeholder="e.g. ABC123"
+    />
+  </div>
 
-            <div className="w-1/2">
-              <label
-                htmlFor="availableSeats"
-                className="block text-sm font-md text-gray-700">
-                Available Seats
-              </label>
-              <input
-                type="number"
-                id="availableSeats"
-                name="availableSeats"
-                value={formData.availableSeats}
-                onChange={(e) => {
-                  const value = parseInt(e.target.value, 10);
-                  handleChange({
-                    target: {
-                      name: e.target.name,
-                      value: value > 0 ? value : 1,
-                    },
-                  });
-                }}
-                className="input-field border p-2 rounded-md w-full"
-                min={1}
-                max={8}
-                maxLength={1}
-                pattern="[1-8]"
-                placeholder="Max 8"
-              />
-            </div>
-          </div>
+  <div className="w-1/2">
+    <label
+      htmlFor="availableSeats"
+      className="block text-sm font-md text-gray-700">
+      Available Seats
+    </label>
+    <input
+      type="number"
+      id="availableSeats"
+      name="availableSeats"
+      value={formData.availableSeats}
+      onChange={(e) => {
+        const value = parseInt(e.target.value, 10);
+        handleChange({
+          target: {
+            name: e.target.name,
+            value: value > 0 ? value : 1,
+          },
+        });
+      }}
+      className="input-field border p-2 rounded-md w-full"
+      min={1}
+      max={8}
+      maxLength={1}
+      pattern="[1-8]"
+      placeholder="Max 8"
+    />
+  </div>
+</div>
+
 
           <div className="mb-4">
             <label
@@ -343,43 +344,23 @@ export const TripGenerator = () => {
 
         {trips.length > 0 && (
           <div className="mt-8 space-y-4">
-            <h1 className="text-lg font-md">Available Trips</h1>
+
             {trips.reverse().map((trip) => (
               <div
                 key={trip.id}
-                className="grid grid-cols-12 gap-2 p-4 bg-gray-100 rounded-lg relative">
-                <div className="col-span-4 text-md text-gray-900 sm:text-xl">
-                  {trip.from}
+                className="grid grid-cols-12 gap-2 p-4 bg-violet-100 rounded-lg relative">
+                <div className="col-span-12 text-md text-gray-900 sm:text-xl">
+                 You have created a trip from {trip.from} to {trip.to} on {trip.date} starting at {trip.time}. Your vehicle of choice is a {trip.make} {trip.model} with {trip.reg} plates. You have {trip.availableSeats} free seats and your message to potential friends is: {trip.message}
                 </div>
 
-                <div className="col-span-1 text-md text-gray-900 text-center sm:text-xl">
-                  →
-                </div>
+               
+                <div className="col-span-12 flex items-center justify-center">
+  <a href="#" className="text-amber-500 hover:text-amber-700 focus:outline-none focus:ring focus:border-blue-300">
+    See list of trips
+  </a>
+</div>
 
-                <div className="col-span-4 text-md text-gray-900 sm:text-xl">
-                  {trip.to}
-                </div>
 
-                <div className="col-span-3"></div>
-
-                <div className="col-span-3 text-xs text-gray-900 sm:text-lg">
-                  {trip.date}
-                </div>
-                <div className="col-span-2 text-xs text-gray-900 sm:text-lg">
-                  {trip.time}
-                </div>
-                <div className="col-span-4 text-xs text-gray-900 sm:text-lg">
-                  User456789012
-                </div>
-                <div className="col-span-3"></div>
-
-                <div className="col-span-3 absolute right-4 top-1/2 transform -translate-y-1/2 h-full flex items-center justify-center">
-                  <button
-                    type="button"
-                    className=" bg-rose-500 text-white px-4 py-2 rounded-full hover:bg-rose-700 focus:outline-none focus:ring focus:border-blue-300">
-                    Details
-                  </button>
-                </div>
               </div>
             ))}
           </div>

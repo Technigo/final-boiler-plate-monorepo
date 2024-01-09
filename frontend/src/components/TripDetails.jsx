@@ -1,6 +1,6 @@
 export const TripDetails = ({ selectedTrip, onClose }) => {
   return (
-    <div className="container rounded-lg p-4 bg-gray-100 mt-8 space-y-4 mx-auto">
+    <div className="container rounded-lg p-4 bg-gray-100 mt-8 space-y-4 mx-auto max-w-screen-lg">
       <div className="mb-4 p-2">
         <div className="grid grid-cols-12 gap-4">
           <div className="col-span-6 text-xs">From</div>
@@ -61,24 +61,6 @@ export const TripDetails = ({ selectedTrip, onClose }) => {
         <div className="grid grid-cols-12 gap-4">
           <div className="col-span-12 text-xs">Message</div>
           <div className="col-span-12 sm:text-lg">{selectedTrip.message}</div>
-        </div>
-      </div>
-
-      <div className="mb-4 p-2">
-        <div className="grid grid-cols-12 gap-2">
-          <div className="col-span-12 text-xs">Chat</div>
-          <div className="col-span-3 flex items-center justify-center text-xs sm:text-lg">
-            USER
-          </div>
-          <div className="col-span-9 sm:text-lg bg-gray-300 p-4 rounded-2xl">
-            TEXT
-          </div>
-          <div className="col-span-9 sm:text-lg bg-gray-200 p-4 rounded-2xl">
-            TEXT
-          </div>
-          <div className="col-span-3 flex items-center justify-center text-xs sm:text-lg">
-            USER 2
-          </div>
         </div>
       </div>
 

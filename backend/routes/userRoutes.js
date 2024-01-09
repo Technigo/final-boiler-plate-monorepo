@@ -7,10 +7,10 @@ const router = express.Router();
 router.get("/profile", requiresAuth(), UserController.getProfile);
 router.get("/", UserController.checkAuthentication);
 router.post("/register", UserController.registerUser);
-router.get("/users", UserController.getAllUsers);
-router.get("/user/:user_id", UserController.getUserById);
-router.get("/messages/", UserController.getUserMessages);
-router.get("/getallmessages", UserController.getAllMessages);
+router.get("/users", requiresAuth(), UserController.getAllUsers);
+router.get("/user/:user_id", requiresAuth(), UserController.getUserById);
+router.get("/messages/", requiresAuth(), UserController.getUserMessages);
+router.get("/getallmessages", requiresAuth(),UserController.getAllMessages);
 
 export default router;
 
