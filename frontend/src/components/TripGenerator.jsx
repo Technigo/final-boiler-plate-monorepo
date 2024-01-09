@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { LocationInput } from "./LocationInput";
 import { makes, models } from "./CarData";
 
@@ -15,15 +15,8 @@ export const TripGenerator = () => {
     reg: "",
   });
 
-  const [trips, setTrips] = useState(() => {
-    const storedTrips = localStorage.getItem("trips");
-    return storedTrips ? JSON.parse(storedTrips) : [];
-  });
+  const [trips, setTrips] = useState([]);
   const [loading, setLoading] = useState(false);
-
-  useEffect(() => {
-    localStorage.setItem("trips", JSON.stringify(trips));
-  }, [trips]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -79,14 +72,8 @@ export const TripGenerator = () => {
     setFormData((prevData) => ({ ...prevData, [name]: formattedTime }));
   };
 
-  const clearLocalStorage = () => {
-    localStorage.clear();
-    setTrips([]);
-  };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     setLoading(true);
 
     const newTrip = {
@@ -102,24 +89,37 @@ export const TripGenerator = () => {
       reg: formData.reg,
     };
 
-    await new Promise((resolve) => setTimeout(resolve, 1000));
+    try {
+      await fetch("http://localhost:3000/trip", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(newTrip),
+      });
 
-    setTrips((prevTrips) => [...prevTrips, newTrip]);
+      await new Promise((resolve) => setTimeout(resolve, 1000));
 
-    setFormData((prevData) => ({
-      ...prevData,
-      from: "",
-      to: "",
-      message: "",
-      date: "",
-      time: "",
-      make: "",
-      model: "",
-      availableSeats: "",
-      reg: "",
-    }));
+      setTrips((prevTrips) => [...prevTrips, newTrip]);
 
-    setLoading(false);
+      setFormData((prevData) => ({
+        ...prevData,
+        from: "",
+        to: "",
+        message: "",
+        date: "",
+        time: "",
+        make: "",
+        model: "",
+        availableSeats: "",
+        reg: "",
+      }));
+    } catch (error) {
+      console.error("Error creating trip:", error);
+      alert(`Failed to create trip. Error: ${error.message}`);
+    } finally {
+      setLoading(false);
+    }
   };
 
   const timeOptions = Array.from({ length: 24 * 4 }, (_, index) => {
@@ -155,6 +155,7 @@ export const TripGenerator = () => {
   return (
     <>
       <div className="mt-8 max-w-2xl mx-auto p-2">
+        <h1 className="text-lg font-md">TripGenerator.jsx</h1>
         <form onSubmit={handleSubmit} className="flex flex-col space-y-2 p-2">
           <LocationInput
             label="From"
@@ -325,28 +326,20 @@ export const TripGenerator = () => {
             />
           </div>
           <div className="flex justify-center items-center">
-  <button
-    type="submit"
-    className={`submit-button ${
-      loading
-        ? "bg-gray-100"
-        : formDataIsIncomplete()
-        ? "bg-gray-100"
-        : "bg-rose-500 hover:bg-rose-700"
-    } text-white p-4 py-2 rounded-full focus:outline-none focus:ring focus:border-blue-300`}
-    disabled={loading || formDataIsIncomplete()}
-  >
-    {loading ? "Generating..." : "Create Trip"}
-  </button>
-</div>
-
+            <button
+              type="submit"
+              className={`submit-button ${
+                loading
+                  ? "bg-gray-100"
+                  : formDataIsIncomplete()
+                  ? "bg-gray-100"
+                  : "bg-rose-500 hover:bg-rose-700"
+              } text-white p-4 py-2 rounded-full focus:outline-none focus:ring focus:border-blue-300`}
+              disabled={loading || formDataIsIncomplete()}>
+              {loading ? "Generating..." : "Create Trip"}
+            </button>
+          </div>
         </form>
-
-        <button
-          onClick={clearLocalStorage}
-          className="clear-button bg-lime-500 text-white px-4 py-2 mt-4 rounded-full hover:bg-lime-700 focus:outline-none focus:ring focus:border-red-300">
-          Clear Local Storage
-        </button>
 
         {trips.length > 0 && (
           <div className="mt-8 space-y-4">
