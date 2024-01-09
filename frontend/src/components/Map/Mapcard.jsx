@@ -1,11 +1,11 @@
 import { useParams } from "react-router-dom";
-import { useState, useCallback, memo, useEffect } from "react";
+import { useEffect } from "react";
 
 export const Mapcard = () => {
   // eslint-disable-next-line no-undef
-  const { id } = useParams();
+  const { _id } = useParams();
 
-  console.log(id);
+  console.log(_id);
 
   // calling fetch
   useEffect(() => {

@@ -13,8 +13,7 @@ export const StoryList = () => {
   const [selectedCategory, setSelectedCategory] = useState("");
   const [selectedLanguage, setSelectedLanguage] = useState("en"); // default to English
 
-  // const backendApiUrl = "http://localhost:3000";
-  const backendApiUrl = "https://whisperwall.onrender.com";
+  const apiUrl = import.meta.env.VITE_BACKEND_API || "http://localhost:3000";
 
   // Function to update cities and categories based on fetched stories
   const updateCitiesAndCategories = (storiesData) => {
@@ -26,7 +25,7 @@ export const StoryList = () => {
     // Function to fetch stories from backend
     const fetchStories = async () => {
       try {
-        const response = await fetch(`${backendApiUrl}/stories`);
+        const response = await fetch(`${apiUrl}/stories`);
         const data = await response.json();
         setStories(data);
         updateCitiesAndCategories(data);
@@ -58,7 +57,7 @@ export const StoryList = () => {
     const fetchTranslatedStories = async () => {
       try {
         const response = await fetch(
-          `${backendApiUrl}/stories?language=${selectedLanguage}`
+          `${apiUrl}/stories?language=${selectedLanguage}`
         );
         const translatedData = await response.json();
         setStories(translatedData);
@@ -72,7 +71,7 @@ export const StoryList = () => {
       fetchTranslatedStories();
     } else {
       // Fetch original stories when language is set to English
-      fetch(`${backendApiUrl}/stories`)
+      fetch(`${apiUrl}/stories`)
         .then((response) => response.json())
         .then((data) => {
           setStories(data);
