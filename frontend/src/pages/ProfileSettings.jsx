@@ -7,9 +7,14 @@ import defaultProfileImage from "../assets/images/profile_icon.png";
 import { Navbar } from "../components/Navbar";
 import { Footer } from "../components/Footer";
 import Swal from "sweetalert2";
+import Lottie from "lottie-react";
+import loadingAnimation from "../assets/loading.json";
 import "./profileSettings.css";
 
 export const ProfileSettings = () => {
+  const [isLoading, setIsLoading] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false); // To track if the data fetching was successful
+
   const isLoggedin = userStore((state) => state.isLoggedin);
   const handleLogout = userStore((state) => state.handleLogout);
   const userId = userStore((state) => state.userId);
@@ -47,6 +52,7 @@ export const ProfileSettings = () => {
 
   useEffect(() => {
     const getProfileData = async () => {
+      setIsLoading(true);
       try {
         const profileData = await storeHandleProfileDisplay(isLoggedin, userId);
         if (profileData) {
@@ -57,9 +63,13 @@ export const ProfileSettings = () => {
             location: profileData.location,
             image: profileData.image,
           });
+          setIsLoading(false);
+          setIsSuccess(true);
         }
       } catch (error) {
         console.error("Error fetching profile data:", error);
+        setIsLoading(false);
+        setIsSuccess(false);
       }
     };
     getProfileData();
@@ -79,7 +89,6 @@ export const ProfileSettings = () => {
         menuItems={[
           { path: "/home", name: "Home" },
           { path: "/search", name: "Search" },
-          { path: "/settings", name: "My Settings" },
           { path: "/manage-your-ads", name: "My Products" },
           { path: "/about", name: "About" },
           { path: "/terms", name: "Terms" },
@@ -94,7 +103,6 @@ export const ProfileSettings = () => {
         menuDesks={[
           { path: "/home", name: "Home" },
           { path: "/search", name: "Search" },
-          { path: "/settings", name: "My Settings" },
           { path: "/manage-your-ads", name: "My Products" },
           { path: "/about", name: "About" },
           { path: "/terms", name: "Terms" },
@@ -114,46 +122,60 @@ export const ProfileSettings = () => {
           </div>
           <div className="profile-settings">
             <h1>My settings</h1>
-            {profileData.image ? (
-              <img
-                src={profileData.image}
-                alt={username}
-                className="profile-img"
+            {isLoading ? (
+            <div className="loading-container">
+              <Lottie
+                options={{
+                  loop: true,
+                  autoplay: true,
+                  animationData: loadingAnimation,
+                }}
               />
+            </div>
             ) : (
-              <img
-                src={defaultProfileImage}
-                alt={username}
-                className="profile-img"
-              />
-            )}
-            <div className="profile-text">
-              <p>Username: {username}</p>
-              <div className="password-wrapper">
-                <p>Password: </p>
-                <p className="current-password">{profileData.password}</p>
-              </div>
-              <p>Email: {profileData.email}</p>
-              <p>Location: {profileData.location}</p>
-              <p>Introduction: {profileData.introduction}</p>
-            </div>
+              <>
+                {profileData.image ? (
+                  <img
+                    src={profileData.image}
+                    alt={username}
+                    className="profile-img"
+                  />
+                ) : (
+                  <img
+                    src={defaultProfileImage}
+                    alt={username}
+                    className="profile-img"
+                  />
+                )}
+                <div className="profile-text">
+                  <p>Username: {username}</p>
+                  <div className="password-wrapper">
+                    <p>Password: </p>
+                    <p className="current-password">{profileData.password}</p>
+                  </div>
+                  <p>Email: {profileData.email}</p>
+                  <p>Location: {profileData.location}</p>
+                  <p>Introduction: {profileData.introduction}</p>
+                </div>
 
-            <div className="settings-actions">
-              <Button
-                icon="./src/assets/edit.svg"
-                iconSize="button"
-                label="Edit settings"
-                onClick={handleUpdateClick}
-                invertIcon={true}
-              />
-              <Button
-                icon="./src/assets/trash.svg"
-                iconSize="button"
-                label="Delete account"
-                onClick={handleDeleteClick}
-                invertIcon={true}
-              />
-            </div>
+                <div className="settings-actions">
+                  <Button
+                    icon="./src/assets/edit.svg"
+                    iconSize="button"
+                    label="Edit settings"
+                    onClick={handleUpdateClick}
+                    invertIcon={true}
+                  />
+                  <Button
+                    icon="./src/assets/trash.svg"
+                    iconSize="button"
+                    label="Delete account"
+                    onClick={handleDeleteClick}
+                    invertIcon={true}
+                  />
+                </div>
+              </>
+            )}
           </div>
         </div>
       </div>

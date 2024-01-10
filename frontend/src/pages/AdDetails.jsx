@@ -9,7 +9,6 @@ import BackArrow from "../components/reusableComponents/BackArrow";
 import { Button } from "../components/reusableComponents/Button"; // Import the Button component
 import { Image } from "../components/reusableComponents/Image"; // Import the Image component
 import { Navbar } from "../components/Navbar";
-import { Footer } from "../components/Footer";
 import Swal from "sweetalert2";
 
 const AdDetails = () => {
@@ -55,7 +54,7 @@ const AdDetails = () => {
         menuItems={[
           { path: "/home", name: "Home" },
           { path: "/search", name: "Search" },
-          { path: "/settings", name: "My Setting" },
+          { path: "/settings", name: "My Settings" },
           { path: "/manage-your-ads", name: "My Products" },
           { path: "/about", name: "About" },
           { path: "/terms", name: "Terms" },
@@ -70,7 +69,7 @@ const AdDetails = () => {
         menuDesks={[
           { path: "/home", name: "Home" },
           { path: "/search", name: "Search" },
-          { path: "/settings", name: "My Setting" },
+          { path: "/settings", name: "My Settings" },
           { path: "/manage-your-ads", name: "My Products" },
           { path: "/about", name: "About" },
           { path: "/terms", name: "Terms" },
