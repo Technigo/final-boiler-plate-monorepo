@@ -1,1 +1,0 @@
-•	// Ensure it's not publicly linked; accessible only by direct URL or from an admin portal.
