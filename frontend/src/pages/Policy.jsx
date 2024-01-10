@@ -10,12 +10,12 @@ export const Policy = () => {
         menuItems={[
           { path: "/login", name: "Login" },
           { path: "/register", name: "Signup" },
-          { path: "/terms", name: "Terms" },
+          { path: "/about", name: "About" },
         ]}
         menuDesks={[
           { path: "/login", name: "Login" },
           { path: "/register", name: "Signup" },
-          { path: "/terms", name: "Terms" },
+          { path: "/about", name: "About" },
         ]}
       />
       <div className="main-container">

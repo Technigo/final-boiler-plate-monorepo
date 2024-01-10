@@ -1,7 +1,46 @@
-.about {
-  color: var(--color-primary-text);
+.about-container p {
+  line-height: 1.5em;
+  margin-bottom: 20px;
 }
 
-.container p {
-  line-height: 1.5em;
+
+.about-container h2 {
+  line-height: 2.5rem;
+  margin-bottom: 0px;
+}
+
+.about-container h1 {
+  line-height: 2.5rem;
+  margin: 10px 0;
+}
+
+.button.about-btn {
+  margin: 15px 0;
+}
+
+@media only screen and (min-width: 768px) {
+  .about-container h2 {
+    line-height: 3rem;
+    margin-bottom: 10px;
+  }
+
+  .about-container p {
+    line-height: 1.5em;
+    margin-bottom: 40px;
+  }
+
+}
+
+
+@media only screen and (min-width: 1200px) {
+  .about-container h2 {
+    line-height: 2.5rem;
+    margin-bottom: 10px;
+  }
+
+  .about-container p {
+    line-height: 1.5em;
+    margin-bottom: 40px;
+  }
+
 }

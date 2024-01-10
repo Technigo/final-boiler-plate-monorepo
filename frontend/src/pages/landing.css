@@ -20,12 +20,6 @@
   width: 50%;
 }
 
-.landing-heading {
-  font-size: 3.5em;
-  line-height: 1em;
-  color: var(--color-primary-text);
-}
-
 .breakline {
   display: flex;
   background-color: var(--color-secondary-background);
@@ -47,6 +41,7 @@
     margin: 3em 0 3em 0;
     padding: 3em 0 3em 0;
   }
+
   .landing-list {
     display: flex;
     margin: 3em 0 3em 0;
@@ -54,12 +49,7 @@
     align-items: flex-start;
     gap: 3em;
   }
-  .landing-list h3 {
-    font-size: 1.5em;
-  }
-  .landing-subtitle h2 {
-    font-size: 2em;
-  }
+
   .breakline {
     display: none;
   }

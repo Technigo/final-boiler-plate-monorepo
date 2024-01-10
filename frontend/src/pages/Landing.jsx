@@ -86,36 +86,39 @@ export const Landing = () => {
           { path: "/about", name: "About" },
         ]}
       />
-      <div className="container">
-        <div className="hero">
-          <h1 className="landing-heading">Stop the waste!</h1>
-          <h3>Help yourself by helping others and the environment!</h3>
-          <Lottie animationData={shareAnimation} />
-        </div>
-        <Button label="Get started" link="/login" />
-        <div className="how-to">
-          <h1>How it works</h1>
-          <div className="landing-list">
-            <div>
-              <h3>Share online</h3>
-              <img src={picture} alt="share-online" />
+      <div className="main-container">
+        <div className="main-wrapper">
+          <div className="landing-container">
+            <div className="hero">
+              <h1 className="landing-heading">Stop the waste!</h1>
+              <h3>Help yourself by helping others and the environment!</h3>
+              <Lottie animationData={shareAnimation} />
             </div>
-            <div>
-              <h3>Get contacted</h3>
-              <img src={contact} alt="contact" />
+            <Button label="Get started" link="/login" />
+            <div className="how-to">
+              <h1>How it works</h1>
+              <div className="landing-list">
+                <div>
+                  <h3>Share online</h3>
+                  <img src={picture} alt="share-online" />
+                </div>
+                <div>
+                  <h3>Get contacted</h3>
+                  <img src={contact} alt="contact" />
+                </div>
+                <div>
+                  <h3>Give it away</h3>
+                  <img src={giveAway} alt="give-away" />
+                </div>
+              </div>
+              <div className="breakline"></div>
             </div>
-            <div>
-              <h3>Give it away</h3>
-              <img src={giveAway} alt="give-away" />
+            <div className="landing-subtitle">
+              <h2>What others have given away...</h2>
             </div>
           </div>
-          <div className="breakline"></div>
-        </div>
-        <div className="landing-subtitle">
-          <h2>What others have given away...</h2>
         </div>
       </div>
-      {/* <AdsList fetchType="all" /> */}
       <div className="slider">
         <Slider {...settings}>
           {sliderImages.map((image, index) => (

@@ -1,6 +1,6 @@
 .heading-terms {
     margin: 5px 10px;
-    text-align: center;
+    text-align: left;
 }
 
 .terms-wrapper {
@@ -21,8 +21,7 @@
 
 @media only screen and (min-width: 1200px) {
     .heading-terms {
-        margin: 10px 0;
-        text-align: center;
+        margin: 10px 10px;
     }
     .terms-wrapper ul li {
         font-size: 18px;

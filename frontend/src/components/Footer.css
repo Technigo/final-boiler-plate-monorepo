@@ -1,6 +1,7 @@
 .footer {
   background-color: var(--secondary-background);
   color: var(--secondary-text);
+  padding: 20px;
 }
 
 .footer-container {
