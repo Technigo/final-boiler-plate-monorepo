@@ -74,7 +74,7 @@ export const Profile = () => {
 
           <div className="recent-ads">
             <h2>Recent ads</h2>
-            <AdsList fetchType="user" userId={userId} />
+            <AdsList fetchType="user" userId={userId} displayGrid={true} />
           </div>
 
           <Button label="Contact Advertiser" onClick={handleShow} />

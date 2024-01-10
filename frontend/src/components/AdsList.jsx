@@ -40,7 +40,7 @@ export const AdsList = ({ fetchType, userId, displayGrid = false, initialDisplay
       setAds(sortedAds.slice(0, maxDisplayCount)); // Only get the first 20
     }
     fetchData();
-  }, [getAllAds, fetchAds, fetchAdsByUserId, fetchType, userId]);
+  }, [getAllAds, fetchAds, fetchAdsByUserId, fetchType, userId, maxDisplayCount]);
   // Add fetchType to dependency array
 
 

@@ -56,7 +56,9 @@ export const ProfileSettings = () => {
   return (
     <div className="main-container">
       <div className="main-wrapper">
-        <BackArrow />
+        <div className="arrow-wrapper">
+          <BackArrow />          
+        </div>
         <div className="profile-settings">
           <h1>Your settings</h1>
           {profileData.image ? (

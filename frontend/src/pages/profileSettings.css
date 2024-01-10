@@ -3,12 +3,18 @@
     -webkit-text-security: disc;
 }
 
+.arrow-wrapper {
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+}
+
 .profile-settings {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 1.5em;
-    max-width: 90%;
+    max-width: 100%;
 }
 
 .profile-text {
@@ -34,6 +40,10 @@
 }
 
 @media only screen and (min-width:768px) {
+    .profile-settings {
+        align-items: flex-start;
+    }
+
     .password-wrapper {
         display: flex;
         flex-direction: row;

@@ -1,5 +1,11 @@
 .update-settings {
-    max-width: 90%;
+    max-width: 100%;
+}
+
+.arrow-wrapper {
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
 }
 
 .settings-form {

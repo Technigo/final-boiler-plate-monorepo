@@ -19,6 +19,12 @@
     align-items: center;
 }
 
+.arrow-wrapper {
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+}
+
 .recent-ads {
     display: flex;
     flex-direction: column;
@@ -26,13 +32,13 @@
 }
 
 @media only screen and (min-width:768px) {
+    .profile-container, .profile-info, .recent-ads {
+        align-items: flex-start;
+    }
+
     .profile-data {
         flex-direction: row;
         gap: 2.5em;
-    }
-
-    .profile-info {
-        align-items: flex-start;
     }
 }
 

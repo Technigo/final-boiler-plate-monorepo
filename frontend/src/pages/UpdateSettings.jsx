@@ -124,7 +124,9 @@ export const UpdateSettings = () => {
   return (
     <div className="main-container">
       <div className="main-wrapper">
-        <BackArrow />
+        <div className="arrow-wrapper">
+          <BackArrow />          
+        </div>
         <div className="update-settings">
           <h1>Update settings</h1>
           <form onSubmit={handleUpdateSubmit} className="settings-form">
