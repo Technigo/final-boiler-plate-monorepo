@@ -25,10 +25,10 @@ export const Booking = () => {
 
 	const { 
 		fetchSelectedShowtime,
+		selectedShowtime,
 		selectedSeats,
 		setSelectedSeats,
-		updateSelectedSeats,
-		selectedShowtime
+		updateSelectedSeats
 	} = bookingStore() 
 
 	const isLoggedIn = userStore.getState().isLoggedIn

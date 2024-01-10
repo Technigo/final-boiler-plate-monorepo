@@ -46,7 +46,7 @@ export const bookingStore = create((set) => ({
         })
     ),
 
-    makeAReservation: async (selectedSeat, showTimeId, email) => {
+    makeAReservation: async ({ selectedSeat, email, showTimeId }) => {
         try {
             const response = await fetch(`${apiEnv}/bookings`, {
                 method: 'POST',
@@ -56,11 +56,12 @@ export const bookingStore = create((set) => ({
                 body: JSON.stringify({ 
                     email: email,
                     seat: selectedSeat,
-                    showTimeId: showTimeId 
+                    showtimeId: showTimeId 
                 })
             })
             const data = await response.json()
             console.log(data)
+            return data
         } catch (error) {
             console.log(error)
         }
