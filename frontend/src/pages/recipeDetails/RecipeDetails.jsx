@@ -79,12 +79,16 @@ export const RecipeDetails = () => {
           </>
         ) : (
           <div className="details-desktop-container">
-            <ImageDetails src="/recipe-imgs/campfire-896196_1280.jpg" alt="outdoor cooking" />
+            <div className="details-image-container"></div>
+            {/* <ImageDetails src="/recipe-imgs/campfire-896196_1280.jpg" alt="outdoor cooking" /> */}
             <div className="details-text-container">
               <HeadingDetails title={foundRecipe.title} />
               <RecipeInfoDetails userInput={foundRecipe.userInput} />
               <DescriptionDetails description={foundRecipe.description} />
               <TabButton ingredients={foundRecipe.ingredients} instructions={foundRecipe.instructions} />
+              {/* <h1>Hej</h1>
+              <h1>Hej</h1>
+              <h1>Hej</h1> */}
             </div>
           </div>
         )}

@@ -7,7 +7,7 @@
 .recipe-details h1 {
   font-size: 1.8rem;
   font-weight: 400;
-  margin-top: 1rem;
+  /* margin-top: 1rem; */
   margin-bottom: 1rem;
 }
 
@@ -80,10 +80,12 @@
 
 .details-desktop-container {
   display: flex;
+  /*Talign-items: center; Tyvärr inte snyggt när man byter mellan ingredients och method */
+ 
 }
 
 .details-text-container {
-
+width: 50%; 
   padding: 0 50px;
 }
 
@@ -107,9 +109,17 @@
   }
 
   .recipe-details img {
-    width: 45%;
-    height: 100%;
+    width: 600px; 
+    height: 700px;
     object-fit: cover;
+  }
+
+  .details-image-container {
+    background-image: linear-gradient(to top, rgb(55,95,74, 0.7) 5%,rgb(240,234,208, 0.1) 80%), url("/public/recipe-imgs/campfire-896196_1280.jpg");
+    background-size: cover; 
+    height: 700px; 
+    width: 50%; 
+    background-position: 30%; 
   }
 
   .recipe-details h1 {
