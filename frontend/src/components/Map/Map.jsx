@@ -174,26 +174,30 @@ export const Map = () => {
 
   // Fetch stories when the component mounts
   useEffect(() => {
-    const apiUrl = import.meta.env.VITE_BACKEND_API || "http://localhost:3000";
-    fetch(`${apiUrl}/stories`)
-      .then((response) => response.json())
-      .then((data) => {
-        if (data.length > 0) {
-          console.log("Example story structure:", data[0]);
-        }
-        console.log("Fetched stories:", data);
+    const fetchStories = () => {
+      const apiUrl =
+        import.meta.env.VITE_BACKEND_API || "http://localhost:3000";
+      fetch(`${apiUrl}/stories`)
+        .then((response) => response.json())
+        .then((data) => {
+          if (data.length > 0) {
+            console.log("Example story structure:", data[0]);
+          }
+          console.log("Fetched stories:", data);
 
-        const validStories = data.filter(
-          (story) =>
-            story.location &&
-            !isNaN(story.location.lat) &&
-            !isNaN(story.location.lng)
-        );
-        setStories(validStories);
-      })
-      .catch((error) => {
-        console.error("Error fetching stories:", error);
-      });
+          const validStories = data.filter(
+            (story) =>
+              story.location &&
+              !isNaN(story.location.lat) &&
+              !isNaN(story.location.lng)
+          );
+          setStories(validStories);
+        })
+        .catch((error) => {
+          console.error("Error fetching stories:", error);
+        });
+    };
+    fetchStories(); // fetch immediately on mount
   }, []);
 
   const onMapLoad = useCallback((mapInstance) => {
