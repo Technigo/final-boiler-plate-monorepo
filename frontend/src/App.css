@@ -21,7 +21,6 @@
   -webkit-text-size-adjust: 100%;
 }
 
-
 *,
 *:after,
 *:before {
@@ -29,6 +28,7 @@
   padding: 0;
   box-sizing: border-box;
 }
+
 
 
 /* Original Colors */

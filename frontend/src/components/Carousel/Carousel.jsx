@@ -68,6 +68,7 @@ export const Carousel = () => {
 
   // Fetching stories on component mount
   useEffect(() => {
+
     fetch(`${apiUrl}/stories`)
       .then((response) => response.json())
       .then((data) => {

@@ -55,6 +55,7 @@ export const StoryList = () => {
   };
 
   useEffect(() => {
+
     // Function to fetch stories from backend
     const fetchStories = async () => {
       try {
@@ -70,6 +71,7 @@ export const StoryList = () => {
   }, [apiUrl, updateCitiesAndCategories]);
 
   useEffect(() => {
+
     // Function to fetch translated stories
     const fetchTranslatedStories = async () => {
       try {

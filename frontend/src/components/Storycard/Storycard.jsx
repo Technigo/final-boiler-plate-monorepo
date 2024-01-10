@@ -15,7 +15,9 @@ export const StoryCard = ({ story, isActive, handleRankUpdate }) => {
     position: "relative",
   };
 
+
   // Function to handle like button click, updates story ranking
+
   const handleLikeClick = () => {
     fetch(`${apiUrl}/stories/${story._id}/rank`, {
       method: "PUT",

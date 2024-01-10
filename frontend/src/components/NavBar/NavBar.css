@@ -7,13 +7,16 @@
   padding-left: 20px;
   padding-right: 20px;
   padding-top: 20px;
+  width: 100%;
 }
 
 .logo {
   fill: #faebd7;
   height: 100px;
+  width: auto;
   filter: invert(1);
   margin-bottom: -42px;
+  margin-left: 0;
   z-index: 10;
 }
 
@@ -22,6 +25,7 @@
   height: 30px;
   padding-right: 20px;
   margin-bottom: -23px;
+  width: 10%;
 }
 
 .dropdown {

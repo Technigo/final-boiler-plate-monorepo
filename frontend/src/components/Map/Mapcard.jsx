@@ -5,14 +5,18 @@ export const Mapcard = () => {
   // eslint-disable-next-line no-undef
   const { id } = useParams();
   const [story, setStory] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   console.log(id);
 
   // Calling fetch
   useEffect(() => {
-    fetch("http://localhost:3000/stories/${id}")
+    const apiUrl = import.meta.env.VITE_BACKEND_API || "http://localhost:3000";
+    fetch(`${apiUrl}/stories/${id}`)
       .then((response) => response.json())
       .then((data) => {
+        setStory(data);
+        setLoading(false);
         console.log(data);
       })
       .catch((error) => {
@@ -20,8 +24,12 @@ export const Mapcard = () => {
       });
   }, [id]);
 
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
   if (!story) {
-    return <div>Loading...</div>; // or any other loading state representation
+    return <div>Story not found.</div>;
   }
 
   return (
