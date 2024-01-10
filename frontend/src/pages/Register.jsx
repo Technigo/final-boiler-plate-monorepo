@@ -8,11 +8,12 @@ import { Heading } from "../components/reusableComponents/Heading";
 import { Button } from "../components/reusableComponents/Button";
 import BackArrow from "../components/reusableComponents/BackArrow";
 import Lottie from "lottie-react";
-import loadingAnimation from "../assets/loading.json/";
+import loadingAnimation from "../assets/loading.json";
 import { Icon } from "react-icons-kit";
 import { eyeOff } from "react-icons-kit/feather/eyeOff";
 import { eye } from "react-icons-kit/feather/eye";
 import "../pages/register.css";
+import Swal from 'sweetalert2';
 
 // Define the "Register" functional component.
 export const Register = () => {
@@ -33,6 +34,11 @@ export const Register = () => {
   // Access the "handleSignup" function from the "userStore".
   const storeHandleSignup = userStore((state) => state.handleSignup);
 
+  // Function for basic email validation
+  const isValidEmail = (email) => {
+    return /\S+@\S+\.\S+/.test(email);
+  };
+
   // Function to handle the toggle between the hide password (eyeOff icon) and the show password (eye icon)
   const handleToggle = () => {
     if (type === "password") {
@@ -47,23 +53,37 @@ export const Register = () => {
   // Function to handle the click event of the signup button.
   const onSignupClick = async (e) => {
     e.preventDefault();
-    // Set loading to true when starting the register process
     setLoading(true);
+
+    if (!isValidEmail(email)) {
+      setLoading(false);
+      Swal.fire('Error', 'Please enter a valid email address', 'error');
+      return;
+    }
+
+    if (username.length < 5) {
+      setLoading(false);
+      Swal.fire('Error', 'Username must be at least 5 characters long', 'error');
+      return;
+    }
+
+    if (password.length < 8) {
+      setLoading(false);
+      Swal.fire('Error', 'Password must be at least 8 characters long', 'error');
+      return;
+    }
+
     try {
-      // Call the "handleSignup" function from "userStore" with "username", "password", "email" and "consent" parameters.
-      await storeHandleSignup(username, password, email, consent);
-
-      // When the user has signed up successfully, navigate to log in page
-      const isSignedup = userStore.getState((state) => state.isSignedup);
-
-      if (isSignedup) {
-        // If the signup is successful, navigate to the login route.
-        navigate("/login");
+      const response = await storeHandleSignup(username, password, email, consent);
+      if (response.success) {
+        navigate("/home");
+      } else {
+        Swal.fire('Error', response.message || 'Signup failed. Please try again.', 'error');
       }
     } catch (error) {
       console.error("Register failed:", error);
+      Swal.fire('Error', 'An unexpected error occurred.', 'error');
     } finally {
-      // Reset loading to false after the register process is completed (success or failure)
       setLoading(false);
     }
   };
@@ -77,8 +97,6 @@ export const Register = () => {
             <BackArrow />
             <Logo className={"login-logo"} color="green" />
           </div>
-          {/* Apply styling from app.css */}
-
           <div className="user-registration">
             <Heading level={1} text="Sign up" aria-label="Sign Up" />
             {/* Create input fields for "email", "username", "password", "consent" and associate them with state variables. */}
@@ -144,7 +162,7 @@ export const Register = () => {
               />
             )}
             <h4>
-              Have an account? 
+              Have an account?
               <Link to="/login"> Log In</Link>
             </h4>
           </div>

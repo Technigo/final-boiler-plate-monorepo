@@ -1,7 +1,7 @@
 // Import the 'create' function from the 'zustand' library.
 import { create } from "zustand";
 import validator from "validator";
-import Swal from "sweetalert2"; 
+import Swal from "sweetalert2";
 import defaultProfileImage from "../assets/images/profile_icon.png";
 
 // Get the backend API endpoint from the environment variables.
@@ -76,7 +76,7 @@ export const userStore = create((set) => ({
         icon: "error"
       });
       return;
-    } 
+    }
 
     try {
       // Send a POST request to the registration endpoint with user data.
@@ -93,11 +93,12 @@ export const userStore = create((set) => ({
       if (data.success) {
         // Update the username state
         set({
-          username, 
+          username,
           email,
-          password, 
+          password,
           consent,
-          isSignedup: true
+          isSignedup: true,
+          isLoggedin: true
         });
         // Display a success alert
         Swal.fire({
@@ -105,26 +106,17 @@ export const userStore = create((set) => ({
           text: "Sign up successful",
           icon: "success"
         });
-        console.log("Signing up with: ", username);
+        Swal.fire('Congratulations!', 'Sign up successful', 'success');
+        return { success: true };
       } else {
-        // Handle the case where the server responds with an error or user exists
-        Swal.fire({
-          title: "Error!",
-          text: data.response || "Sign up failed",
-          icon: "error"
-        }); 
-        // alert(data.response || "Sign up failed");
+        return { success: false, message: data.response || "Sign up failed" };
       }
     } catch (error) {
-      // Handle and log any signup errors
       console.error("Sign up error: ", error);
-      Swal.fire({
-        title: "Error!",
-        text: "An error occurred during signup",
-        icon: "error"
-      });
+      return { success: false, message: "An error occurred during signup" };
     }
   },
+
 
   // FUNCTION TO HANDLE USER LOGIN
   handleLogin: async (username, password) => {
@@ -176,7 +168,7 @@ export const userStore = create((set) => ({
           text: data.response || "Log in failed",
           icon: "error"
         });
-        set({isLoggedin: false});
+        set({ isLoggedin: false });
         return;
       }
     } catch (error) {
@@ -210,7 +202,7 @@ export const userStore = create((set) => ({
             "Content-Type": "application/json",
           },
         });
-  
+
         // Parse the response data as JSON.
         const data = await response.json();
         if (data.success) {
@@ -221,7 +213,7 @@ export const userStore = create((set) => ({
             email: data.response.email,
             location: data.response.location,
             introduction: data.response.introduction,
-            image: data.response.image 
+            image: data.response.image
           }));
           // Return the profile data for further use in the component
           return data.response;
@@ -267,7 +259,7 @@ export const userStore = create((set) => ({
           username: data.response.username,
           location: data.response.location,
           introduction: data.response.introduction,
-          image: data.response.image 
+          image: data.response.image
         }));
         // Return the profile data for further use in the component
         return data.response;
@@ -303,14 +295,14 @@ export const userStore = create((set) => ({
         icon: "error"
       });
       return;
-    } 
-    
+    }
+
     // If they are logged in, send a PUT request to the update endpoint with user data. 
     const formData = new FormData();
     if (password) {
       formData.append("password", password);
     }
-    
+
     if (email) {
       formData.append("email", email);
     }
@@ -322,8 +314,8 @@ export const userStore = create((set) => ({
     if (introduction) {
       formData.append("introduction", introduction);
     }
-  
-    try { 
+
+    try {
       const response = await fetch(`${apiEnv}/users/${userId}`, {
         method: "PUT",
         body: formData,
@@ -368,7 +360,7 @@ export const userStore = create((set) => ({
 
   // FUNCTION TO HANDLE USER'S IMAGE UPDATE (for each user to update their own image)
   handleImageUpdate: async (userId, selectedImage) => {
-    try {    
+    try {
       if (!selectedImage) {
         // Handle case where no image is selected
         console.error('No image selected for update');
@@ -406,7 +398,7 @@ export const userStore = create((set) => ({
           icon: "error"
         });
         return null;
-      }        
+      }
     } catch (error) {
       console.error('Error updating image:', error);
       Swal.fire({
@@ -421,11 +413,11 @@ export const userStore = create((set) => ({
   // FUNCTION TO HANDLE USER LOGOUT
   handleLogout: () => {
     // Clear user information and set isLoggedin to false.
-    set({ 
-      username: "", 
-      accessToken: null, 
-      userId: null, 
-      isLoggedin: false 
+    set({
+      username: "",
+      accessToken: null,
+      userId: null,
+      isLoggedin: false
     });
     // Remove the accessToken from localStorage.
     localStorage.removeItem("accessToken");
@@ -452,8 +444,8 @@ export const userStore = create((set) => ({
     }).then((result) => {
       if (result.isConfirmed) {
         // Clear user information
-        set({ 
-          username: "", 
+        set({
+          username: "",
           email: "",
           password: "",
           consent: false,
@@ -462,8 +454,8 @@ export const userStore = create((set) => ({
           products: [],
           image: null,
           userId: null,
-          accessToken: null, 
-          isLoggedin: false 
+          accessToken: null,
+          isLoggedin: false
         });
         // Remove the accessToken from localStorage and userId.
         localStorage.removeItem("accessToken");
