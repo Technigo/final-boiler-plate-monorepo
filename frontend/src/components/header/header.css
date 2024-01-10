@@ -51,6 +51,8 @@
 @media (min-width: 667px) and (max-width: 1024px) {
     .header-logo {
         width: 250px;
+        margin-left: 15px;
+        /*så att den kommer i linje med receptet*/
         /* padding-top: 4%;
         padding-left: 4%; */
     }

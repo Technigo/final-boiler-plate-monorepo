@@ -38,16 +38,18 @@
 }
 
 textarea {
-    border: 1px solid #286052;
+    border: 1px solid #173e34;
     border-radius: 1.6rem;
+    font-family: Raleway;
+    padding-left: 2%;
+    padding-top: 2%;
+    line-height: 0.8rem;
 }
 
-/* Adjusting placeholder text */
-textarea::placeholder {
-    font-size: 16px;
-    line-height: 1.7rem;
-    padding-left: 1%;
-    font-family: Raleway;
+textarea:focus {
+    border-color: #173e34;
+    outline: none;
+    box-shadow: 0 0 10px #173e34;
 }
 
 .checkbox-options {
@@ -66,12 +68,17 @@ input[type='checkbox']:checked {
 input[type='checkbox']:checked:after {
     content: '\2713';
     color: white;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 input[type='checkbox'] {
     /* text-align: center; */
     /* display: table-cell; */
     vertical-align: middle;
+    position: relative;
     width: 20px !important;
     height: 20px !important;
     margin-right: 3px;
@@ -91,15 +98,14 @@ input[type='checkbox'] {
     font-size: 1.1rem;
     background-color: #173e34;
     color: white;
-    border: 1px solid white;
+    border: none;
     border-radius: 1.6rem;
     padding: 0.5rem;
     margin-top: 0.5rem;
 }
 
 .generate-button:hover {
-    color: rgba(84, 101, 65, 0.5);
-    border: 1px solid rgba(84, 101, 65, 0.5);
+    border: 1px solid white;
 }
 
 button:hover {

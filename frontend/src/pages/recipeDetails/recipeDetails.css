@@ -63,6 +63,22 @@
   /* Maintain aspect ratio and cover the container */
 }
 
+.details-image-container {
+  overflow: hidden;
+  position: relative;
+}
+
+.details-image-gradient-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to top, rgb(55, 95, 74, 0.7) 5%, rgb(240, 234, 208, 0.1) 80%);
+  pointer-events: none;
+  /* Allows clicks to pass through the overlay to the image */
+}
+
 .save-recipe {
   display: flex;
   justify-content: center;
@@ -81,12 +97,30 @@
 .details-desktop-container {
   display: flex;
   /*Talign-items: center; Tyvärr inte snyggt när man byter mellan ingredients och method */
- 
+
 }
 
 .details-text-container {
-width: 50%; 
+  width: 50%;
   padding: 0 50px;
+}
+
+.recipe-loader-container {
+  margin: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #286052;
+}
+
+.recipe-loader {
+  border: 4px solid #286052;
+  border-top: 4px solid #86bca8;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: spin 1s linear infinite;
+  margin-bottom: 5%;
 }
 
 /* ---------TABLET VIEW---------- */
@@ -100,6 +134,10 @@ width: 50%;
     width: 100%;
     height: 50vw;
   }
+
+  .recipe-loader-container {
+    margin: 43%;
+  }
 }
 
 /* ---------DESKTOP VIEW----------*/
@@ -109,21 +147,25 @@ width: 50%;
   }
 
   .recipe-details img {
-    width: 600px; 
+    width: 600px;
     height: 700px;
     object-fit: cover;
   }
 
   .details-image-container {
-    background-image: linear-gradient(to top, rgb(55,95,74, 0.7) 5%,rgb(240,234,208, 0.1) 80%), url("/public/recipe-imgs/campfire-896196_1280.jpg");
-    background-size: cover; 
-    height: 700px; 
-    width: 50%; 
-    background-position: 30%; 
+    background-image: linear-gradient(to top, rgb(55, 95, 74, 0.7) 5%, rgb(240, 234, 208, 0.1) 80%), url("/public/recipe-imgs/campfire-896196_1280.jpg");
+    background-size: cover;
+    height: 700px;
+    width: 50%;
+    background-position: 30%;
   }
 
   .recipe-details h1 {
     font-size: 2.5rem;
+  }
+
+  .recipe-loader-container {
+    margin: 40%;
   }
 }
 

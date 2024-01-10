@@ -46,7 +46,7 @@ export const recipeStore = create((set, get) => ({
       if (!response.ok) {
         // set(() => ({ newRecipe: null }));//TEST
         // Handle non-successful response (e.g., 404 Not Found, 500 Internal Server Error)
-        throw new Error(`Failed to fetch recipes. Status: ${response.status}`);
+        throw new Error(`Status: ${response.status}`);
 
       }
       const data = await response.json();
@@ -59,6 +59,7 @@ export const recipeStore = create((set, get) => ({
 
     } catch (error) {
       console.error("Error fetching new recipe:", error);
+      set(() => ({ errorMessageGeneration: "Error fetching new recipe!" }));
     }
   },
 
@@ -85,6 +86,7 @@ export const recipeStore = create((set, get) => ({
 
     } catch (error) {
       console.error("Error fetching collection of recipes:", error);
+      set(() => ({ errorMessageGeneration: "XXError fetching collection of recipes" }));
     }
   },
 

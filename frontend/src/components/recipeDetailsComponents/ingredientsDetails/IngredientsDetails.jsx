@@ -1,4 +1,4 @@
-import "./ingredientsDetails.css"
+
 
 export const IngredientsDetails = ({ ingredients }) => {
 

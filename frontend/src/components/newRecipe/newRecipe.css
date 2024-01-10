@@ -1,10 +1,11 @@
 .new-recipe-section {
-    padding: 1rem; 
+    padding: 1rem;
 }
 
 .new-recipe-section h3 {
-   margin: 20px 0; 
-   text-align: center;
+    margin: 20px 0;
+    text-align: left;
+    background-color: ;
 }
 
 .new-recipe-wrapper {
@@ -16,7 +17,7 @@
 @media (min-width: 667px) and (max-width: 1024px) {
     .new-recipe-section h3 {
         text-align: left;
-     }
+    }
 }
 
 
@@ -24,5 +25,5 @@
 @media (min-width: 1025px) {
     .new-recipe-section h3 {
         text-align: left;
-     }
+    }
 }
