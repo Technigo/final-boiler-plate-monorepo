@@ -38,16 +38,8 @@ export const taskStore = create((set) => ({
         set({ tasks: data });
         set({ originalTasks: data }); // Set originalTasks to fetched data
       } else {
-        // Log the error status and response
-        console.error("Failed to fetch tasks. Response:", response.status);
-
-        // Parse and log the error response
-        const errorResponse = await response.json(); // Parse response as JSON
-        console.error("Error response:", errorResponse);
       }
-    } catch (error) {
-      console.error("Error during fetchTasks:", error);
-    }
+    } catch (error) {}
   },
 
   // Fetch tasks created by the user
@@ -67,11 +59,8 @@ export const taskStore = create((set) => ({
         set({ userTasks: data });
       } else {
         alert("Failed to fetch Needs. Please reload the page.");
-        console.error("Failed to fetch tasks. Response:", response);
       }
-    } catch (error) {
-      console.error("Error during fetchTasks:", error); // Log any errors to the console for debugging
-    }
+    } catch (error) {}
   },
 
   // Fetch tasks the user volunteered for
@@ -94,11 +83,8 @@ export const taskStore = create((set) => ({
         alert(
           "Something went wrong when trying to fetch Needs. Please reload the page."
         );
-        console.error("Failed to fetch tasks. Response:", response);
       }
-    } catch (error) {
-      console.error("Error during fetchTasks:", error);
-    }
+    } catch (error) {}
   },
 
   // Add the new task to the server/store
@@ -129,11 +115,8 @@ export const taskStore = create((set) => ({
         set((state) => ({ tasks: [data, ...state.tasks] }));
       } else {
         alert("Failed to add Need. Please try again.");
-        console.error("Failed to add task");
       }
-    } catch (error) {
-      console.error(error); // Log any errors to the console for debugging
-    }
+    } catch (error) {}
   },
 
   // Filter tasks by category and area
@@ -153,7 +136,6 @@ export const taskStore = create((set) => ({
       set({ tasks: filteredTasks });
     } catch (error) {
       alert("Error filtering Needs. Please try again.");
-      console.error("Error filtering tasks:", error); // Log any errors to the console for debugging
       return []; // Return an empty array if there's an error
     }
   },
@@ -175,16 +157,11 @@ export const taskStore = create((set) => ({
         alert(
           "Thank you for volunteering! Your contact information will be shared with the creator of the post and you will be contacted if they choose you."
         );
-        window.scrollTo({ top: 0, behavior: "smooth" }); // Scroll to top of page
       } else {
         alert("You have already volunteered for this Need!");
-        console.error(
-          "Failed to add user to task, user already volunteered for this task."
-        );
       }
     } catch (error) {
-      alert("Error adding yourself as volunteer. Please try again.");
-      console.error("Error adding user as volunteer:", error);
+      alert("Error adding yoursself as volunteer. Please try again.");
     }
   },
 
@@ -222,10 +199,7 @@ export const taskStore = create((set) => ({
       // Check if the request was successful
       if (!response.ok) {
         alert("Failed to delete task. Please try again.");
-        console.error("Failed to delete task");
       }
-    } catch (error) {
-      console.error("Error deleting task:", error); // Log any errors to the console for debugging
-    }
+    } catch (error) {}
   },
 }));

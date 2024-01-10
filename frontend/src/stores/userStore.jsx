@@ -71,9 +71,8 @@ export const userStore = create((set, get) => ({
         alert(data.response || "Signup failed");
       }
     } catch (error) {
-      // Handle and log any signup errors.
+      // Handle any signup errors.
       alert("An error occurred during signup. Please try again.");
-      console.error("Signup error:", error);
     }
   },
 
@@ -113,9 +112,8 @@ export const userStore = create((set, get) => ({
         alert(data.response || "Login failed");
       }
     } catch (error) {
-      // Handle and log any login errors.
+      // Handle any login errors.
       alert("An error occurred during login. Please try again.");
-      console.error("Login error:", error);
     }
   },
 

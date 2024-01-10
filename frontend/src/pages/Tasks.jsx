@@ -18,8 +18,6 @@ const StyledTaskFields = styled.div`
   display: flex;
   flex-direction: column;
   text-align: center;
-  /* align-items: center; */
-  /*justify-content: center; */
   width: 250px;
   gap: 10px;
 
@@ -31,8 +29,6 @@ const StyledTaskFields = styled.div`
     flex-direction: row;
     align-items: flex-start;
     justify-content: center;
-    //gap: 100px;
-    //margin-bottom: 30px;
     width: 750px;
   }
 `;
@@ -52,15 +48,11 @@ const StyledTaskText = styled.div`
   align-items: center;
   justify-content: center;
   gap: 10px;
-  //margin-bottom: 20px;
 `;
 
 const CardWrapper = styled.div`
   display: grid;
   grid-template-columns: 1fr;
-  /* width: 250px; */
-  /* align-items: center;
-  justify-content: center; */
   gap: 10px;
 
   p {

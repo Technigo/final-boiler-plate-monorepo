@@ -46,8 +46,9 @@ const StyledFeedCardModal = styled.div`
   .area {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    overflow-wrap: break-word;
     margin: 10px;
+    text-align: center;
   }
 
   // Styling for the Need card footer
@@ -62,6 +63,7 @@ const StyledFeedCardModal = styled.div`
   .description {
     margin: 30px 15px;
     text-align: center;
+    overflow-wrap: break-word;
   }
 
   // Styling for the button to close the open modal
@@ -86,7 +88,8 @@ const StyledFeedCardModal = styled.div`
   .area-modal {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    overflow-wrap: break-word;
+    text-align: center;
     margin: 10px;
   }
 

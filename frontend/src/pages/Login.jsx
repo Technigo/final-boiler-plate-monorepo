@@ -68,7 +68,6 @@ export const Login = () => {
     } catch (error) {
       // Handle any errors that occur during login and display an alert.
       alert("An error occurred during login. Please try again.");
-      console.error("Login error:", error);
     }
   };
 
