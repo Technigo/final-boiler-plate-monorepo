@@ -6,7 +6,7 @@
   border-radius: 5px;
   transition: all 0.3s ease;
   cursor: pointer;
-  width: 200px; /* Adjust as needed */
+  width: 200px; 
   text-align: center;
   overflow: hidden;
 }
@@ -16,6 +16,7 @@ button.like-button {
   border: none;
   padding: 0;
   margin: 0;
+  transition: transform 0.3s ease;
 }
 
 button.like-button img {
@@ -26,6 +27,9 @@ button.like-button img {
 
 .like-button-icon {
   background-color: none;
+}
+.like-button:hover {
+  transform: scale(1.3); 
 }
 
 .story-card img {
@@ -49,8 +53,8 @@ button.like-button img {
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent black background */
-  color: white; /* White text */
+  background-color: rgba(0, 0, 0, 0.7); 
+  color: white; 
   padding: 20px;
   overflow-y: auto;
   display: flex;
@@ -82,8 +86,8 @@ button.like-button img {
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent black background */
-  color: white; /* White text */
+  background-color: rgba(0, 0, 0, 0.75); 
+  color: white;
   padding: 20px;
   overflow-y: auto;
   display: flex;
@@ -96,8 +100,8 @@ button.like-button img {
 }
 
 .story-overlay-content h3 {
-  margin-top: -7px; 
-  color: rgba(201, 134, 134, 0.9);
+  margin-top: -5px; 
+  color: rgba(201, 134, 134, 1);
 }
 
 .story-overlay .story-overlay-content {
@@ -119,11 +123,11 @@ button.like-button img {
 }
 
 .story-card.active .story-overlay {
-  display: block; /* Show overlay when card is active */
+  display: block; 
 }
 
 .story-card.active {
-  z-index: 100; /* Higher z-index for the active card */
+  z-index: 100; 
 }
 
 @media (min-width: 900px) {
@@ -132,6 +136,10 @@ button.like-button img {
   }
 
   .story-overlay {
-    max-height: 330px;
+    max-height: 334px;
+  }
+  .story-overlay-content h3 {
+    font-size: 20px;
+    padding: 5px;
   }
 }

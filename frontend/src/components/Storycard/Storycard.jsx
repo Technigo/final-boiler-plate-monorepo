@@ -4,8 +4,10 @@ import { timeSince } from "../utils/timeUtils";
 import likeIcon from "../../assets/like.svg";
 
 export const StoryCard = ({ story, isActive, handleRankUpdate }) => {
+  // API URL from environment variables or default
   const apiUrl = import.meta.env.VITE_BACKEND_API || "http://localhost:3000";
 
+  // Style object for the card, adjusts scale and z-index based on isActive prop
   const cardStyle = {
     transform: isActive ? "scale(1)" : "scale(1)",
     transition: "transform 0.3s ease-in-out",
@@ -13,6 +15,7 @@ export const StoryCard = ({ story, isActive, handleRankUpdate }) => {
     position: "relative",
   };
 
+  // Function to handle like button click, updates story ranking
   const handleLikeClick = () => {
     fetch(`${apiUrl}/stories/${story._id}/rank`, {
       method: "PUT",
@@ -35,9 +38,8 @@ export const StoryCard = ({ story, isActive, handleRankUpdate }) => {
         <img src={`/${story.image}`} alt={`${story.city} story`} />
       )}
       <div className="story-info">
-        <h4>
-          {story.category} {story.city}
-        </h4>
+        <h4>{story.category}</h4>
+        <h3>{story.city}</h3>
       </div>
       {isActive && (
         <div className="story-overlay">
@@ -58,6 +60,7 @@ export const StoryCard = ({ story, isActive, handleRankUpdate }) => {
   );
 };
 
+// PropTypes for type checking props passed to StoryCard
 StoryCard.propTypes = {
   story: PropTypes.shape({
     _id: PropTypes.string.isRequired,
@@ -67,7 +70,7 @@ StoryCard.propTypes = {
     ranking: PropTypes.number.isRequired,
     createdAt: PropTypes.string.isRequired,
     city: PropTypes.string,
-    image: PropTypes.string, // Image is optional for now
+    image: PropTypes.string,
   }).isRequired,
   isActive: PropTypes.bool,
   handleRankUpdate: PropTypes.func,

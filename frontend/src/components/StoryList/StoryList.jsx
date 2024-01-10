@@ -1,10 +1,12 @@
 import { useState, useEffect } from "react";
+import { useCallback } from "react";
 import PropTypes from "prop-types";
 import likeIcon from "/likeblack.svg";
 import { timeSince } from "../utils/timeUtils";
 import "./StoryList.css";
 
 export const StoryList = () => {
+  // State declarations
   const [stories, setStories] = useState([]);
   const [cities, setCities] = useState([]);
   const [categories, setCategories] = useState([]);
@@ -13,13 +15,23 @@ export const StoryList = () => {
   const [selectedCategory, setSelectedCategory] = useState("");
   const [selectedLanguage, setSelectedLanguage] = useState("en"); // default to English
 
+  // API URL from environment variables or default
   const apiUrl = import.meta.env.VITE_BACKEND_API || "http://localhost:3000";
 
-  // Function to update cities and categories based on fetched stories
-  const updateCitiesAndCategories = (storiesData) => {
-    setCities([...new Set(storiesData.map((story) => story.city))]);
-    setCategories([...new Set(storiesData.map((story) => story.category))]);
+  // Function to capitalize the first letter of a string
+  const capitalizeFirstLetter = (string) => {
+    return string.charAt(0).toUpperCase() + string.slice(1);
   };
+
+  // Function to update cities and categories based on fetched stories
+  const updateCitiesAndCategories = useCallback((storiesData) => {
+    setCities([...new Set(storiesData.map((story) => story.city))]);
+    setCategories([
+      ...new Set(
+        storiesData.map((story) => capitalizeFirstLetter(story.category))
+      ),
+    ]);
+  }, []);
 
   // Function to handle like clicks
   const handleLikeClick = async (storyId) => {
@@ -31,7 +43,7 @@ export const StoryList = () => {
         },
       });
       const updatedStory = await response.json();
-
+      // Update the stories state with the new ranking
       setStories((prevStories) =>
         prevStories.map((story) =>
           story._id === storyId ? updatedStory : story
@@ -55,23 +67,7 @@ export const StoryList = () => {
       }
     };
     fetchStories();
-  }, [apiUrl]);
-
-  // useEffect(() => {
-  //   // Function to fetch stories from backend
-  //   const fetchStories = async () => {
-  //     try {
-  //       const response = await fetch(`${backendApiUrl}/stories`);
-  //       const data = await response.json();
-  //       setStories(data);
-  //       setCities([...new Set(data.map((story) => story.city))]);
-  //       setCategories([...new Set(data.map((story) => story.category))]);
-  //     } catch (error) {
-  //       console.error("Error fetching stories:", error);
-  //     }
-  //   };
-  //   fetchStories();
-  // }, []);
+  }, [apiUrl, updateCitiesAndCategories]);
 
   useEffect(() => {
     // Function to fetch translated stories
@@ -100,8 +96,9 @@ export const StoryList = () => {
         })
         .catch((error) => console.error("Error fetching stories:", error));
     }
-  }, [apiUrl, selectedLanguage]);
+  }, [apiUrl, selectedLanguage, updateCitiesAndCategories]);
 
+  // Event handlers for select elements
   const handleFilterTypeChange = (e) => {
     setFilterType(e.target.value);
     setSelectedCity("");
@@ -113,9 +110,10 @@ export const StoryList = () => {
   };
 
   const handleCategoryChange = (e) => {
-    setSelectedCategory(e.target.value);
+    setSelectedCategory(e.target.value.toLowerCase());
   };
 
+  // Filter and sort stories based on selected filter criteria
   const filteredStories = stories
     .filter((story) => {
       if (filterType === "city" && selectedCity) {
@@ -127,6 +125,7 @@ export const StoryList = () => {
     })
     .sort((a, b) => (filterType === "ranking" ? b.ranking - a.ranking : 0));
 
+  // Handler for language change
   const handleLanguageChange = (e) => {
     setSelectedLanguage(e.target.value);
   };
@@ -164,7 +163,6 @@ export const StoryList = () => {
             >
               <option value="">Select City</option>
               {cities.map((city, index) => (
-                // Use a combination of city name and index as key
                 <option key={`city-${index}-${city}`} value={city}>
                   {city}
                 </option>
@@ -180,7 +178,6 @@ export const StoryList = () => {
             >
               <option value="">Select Category</option>
               {categories.map((category, index) => (
-                // Use a combination of category name and index as key
                 <option key={`category-${index}-${category}`} value={category}>
                   {category}
                 </option>
@@ -195,9 +192,8 @@ export const StoryList = () => {
                 <img src={`/${story.image}`} alt={`${story.city} story`} />
               </div>
               <div className="story-info">
-                <h3>
-                  {story.category} {story.city}
-                </h3>
+                <h4>{capitalizeFirstLetter(story.category)}</h4>
+                <h3>{story.city}</h3>
               </div>
             </div>
             <div className="story-content">
