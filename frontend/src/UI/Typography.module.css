@@ -6,9 +6,9 @@
     /* Scaled down from desktop */
     font-weight: 400;
     line-height: 130%;
-    letter-spacing: 0.24px;
+    letter-spacing: 1px;
     font-family: 'Tenor Sans', sans-serif;
-    color: #1D1C25;
+    color: #1d1c25d2;
 }
 
 .H2 {
@@ -16,19 +16,18 @@
     /* Slightly smaller than .H1 */
     font-weight: 400;
     line-height: 130%;
-    letter-spacing: 0.22px;
+    letter-spacing: 1px;
     font-family: 'Tenor Sans', sans-serif;
-    color: #1D1C25;
+    color: #1d1c25d2;
 }
 
 .H3 {
-    font-size: 18px;
-    /* Lighter weight and smaller size */
+    font-size: 13px;
     font-weight: 400;
     line-height: 104%;
-    letter-spacing: 0.18px;
+    letter-spacing: 1px;
     font-family: 'Tenor Sans', sans-serif;
-    color: #1D1C25;
+    color: #1d1c25d2;
 }
 
 .bodyText {
@@ -86,7 +85,7 @@
     .H1 {
         font-size: 33px;
         /* Much larger for desktop readability */
-        letter-spacing: 0.64px;
+        letter-spacing: 1.3px;
     }
 
     .H2 {
@@ -96,9 +95,9 @@
     }
 
     .H3 {
-        font-size: 20px;
+        font-size: 24px;
         /* Balance between .H1 and .H2 */
-        letter-spacing: 0.42px;
+        letter-spacing: 1.3px;
     }
 
     .bodyText {

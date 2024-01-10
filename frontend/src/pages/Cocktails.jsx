@@ -19,27 +19,19 @@ export const Cocktails = () => {
 
     return (
         <div className={styles.wrapper}>
-            <Text type="H1" className={styles.h1}>LATEST COCKTAILS</Text>
-            {cocktails.map(cocktail => (
-                <div key={cocktail._id}>
-                    {cocktail.imageUrl && (
-                        <img src={`https://cbc-uvko.onrender.com/${cocktail.imageUrl}`} alt={cocktail.name} className={styles.cocktailImage} />
-                    )}
-                    <h2>{cocktail.name}</h2>
-                    <p>Primary Liquor: {cocktail.primaryLiquor}</p>
-                    <p>Ingredients: {cocktail.ingredients.join(', ')}</p>
-                    <p>Ingredients Count: {cocktail.ingredientsCount}</p>
-                    <p>Difficulty: {cocktail.difficulty}</p>
-                    <p>Instructions: {cocktail.instructions}</p>
-                    <p>Category: {cocktail.category}</p>
-                    <p>Occasions: {cocktail.occasion.join(', ')}</p>
-                    <p>Creator: {cocktail.creator}</p>
-                    <p>Servings: {cocktail.servings}</p>
-                    <p>Prep Time: {cocktail.prepTime}</p>
-                    <p>Description: {cocktail.description}</p>
-                    <p>Strength: {cocktail.strength}</p>
-                </div>
-            ))}
+            <Text type="SbodyText" className={styles.SbodyText}>LATEST COCKTAILS</Text>
+            <div className={styles.gridContainer}>
+                {cocktails.map(cocktail => (
+                    <div key={cocktail._id}>
+                        {cocktail.imageUrl && (
+                            <img src={`https://cbc-uvko.onrender.com/${cocktail.imageUrl}`} alt={cocktail.name} className={styles.cocktailImage} />
+                        )}
+                        <Text type="H3" className={styles.h3}>{cocktail.name}</Text>
+                        <Text type="SbodyText" className={styles.SbodyText}>⏲️: {cocktail.prepTime} | 🌟: {cocktail.strength}</Text>
+                        <Text type="SbodyText" className={styles.SbodyText}>⚡: {cocktail.strength} | 🏷️ : {cocktail.tags.join(', ')}</Text>
+                    </div>
+                ))}
+            </div>
         </div>
     );
 };

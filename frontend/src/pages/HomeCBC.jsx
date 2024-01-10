@@ -5,7 +5,7 @@ import React, { useState, useEffect } from 'react';
 export const HomeCBC = () => {
     const [featuredCocktails, setFeaturedCocktails] = useState([]);
     // Replace with the actual IDs of the cocktails you want to feature
-    const featuredIds = ['659d4d45faca05d6df658656', '6597a5cc65dea63aba7e1999'];
+    const featuredIds = ['659d4d45faca05d6df658656', '6597a5cc65dea63aba7e1999', '5f50c31e1234567890123456'];
 
     useEffect(() => {
         fetch('https://cbc-uvko.onrender.com/cocktails')
@@ -23,20 +23,20 @@ export const HomeCBC = () => {
 
     return (
         <div className={styles.wrapper}>
-            <Text type="H1" className={styles.h1}>Featured Cocktails</Text>
-            {featuredCocktails.map(cocktail => (
-                <div key={cocktail._id} className={styles.cocktail}>
-                    {cocktail.imageUrl && (
-                        <img src={`https://cbc-uvko.onrender.com/${cocktail.imageUrl}`} alt={cocktail.name} className={styles.cocktailImage} />
-                    )}
-                    <h2>{cocktail.name}</h2>
-                    <p>⏲️: {cocktail.prepTime}</p>
-                    <p>🌟: {cocktail.strength}</p>
-                    <p>⚡: {cocktail.strength}</p>
-                    <p>🏷️ : {cocktail.tags}</p>
-                </div>
-            ))}
-        </div>
+            <Text type="H1" className={styles.h1}>FEATURED COCKTAILS</Text>
+            <div className={styles.gridContainer}>
+                {featuredCocktails.map(cocktail => (
+                    <div key={cocktail._id} className={styles.cocktail}>
+                        {cocktail.imageUrl && (
+                            <img src={`https://cbc-uvko.onrender.com/${cocktail.imageUrl}`} alt={cocktail.name} className={styles.cocktailImage} />
+                        )}
+                        <Text type="H3" className={styles.h3}>{cocktail.name}</Text>
+                        <Text type="SbodyText" className={styles.SbodyText}>⏲️: {cocktail.prepTime} | 🌟: {cocktail.strength}</Text>
+                        <Text type="SbodyText" className={styles.SbodyText}>⚡: {cocktail.strength} | 🏷️ : {cocktail.tags.join(', ')}</Text>
+                    </div>
+                ))}
+            </div>
+        </div >
     );
 };
 
