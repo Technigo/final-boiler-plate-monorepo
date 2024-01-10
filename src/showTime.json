@@ -1,182 +1,582 @@
 [
-    {
-        "_id": {
-            "$oid": "6585c91e06618a9dee3c493d"
-          },
-        "movieTitle": "Aquaman and the Lost Kingdom",
-        "cinemaHall": "Room 1",
-        "date": "3th jan",
-        "startingTime": 14,
-        "duration": 100,
-        "price": 100,
-        "seats": [
-            {"rowIndex": 1, "seats": [{"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}]},
-            {"rowIndex": 2, "seats": [{"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}]},
-            {"rowIndex": 3, "seats": [{"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}]},
-            {"rowIndex": 4, "seats": [{"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}]},
-            {"rowIndex": 5, "seats": [{"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}]}
-        ]
-    },
-    {
-        "_id": {
-            "$oid": "6585c91e06618a9dee3c493e"
-          },
-        "movieTitle": "Killers of the Flower Moon",
-        "cinemaHall": "Room 1",
-        "date": "4th jan",
-        "startingTime": 14,
-        "duration": 100,
-        "price": 100,
-        "seats": [
-            {"rowIndex": 1, "seats": [{"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}]},
-            {"rowIndex": 2, "seats": [{"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}]},
-            {"rowIndex": 3, "seats": [{"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}]},
-            {"rowIndex": 4, "seats": [{"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}, {"booked": true, "bookingID": {"$oid": "1585c91e06618a9dee3c493c"}}, {"booked": false, "bookingID": null}]},
-            {"rowIndex": 5, "seats": [{"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}]}
-        ]
-    },
-    {
-        "_id": {
-            "$oid": "6585c91e06618a9dee3c493f"
-          },
-        "movieTitle": "Trolls Band Together",
-        "cinemaHall": "Room 1",
-        "date": "5th jan",
-        "startingTime": 14,
-        "duration": 100,
-        "price": 100,
-        "seats": [
-            {"rowIndex": 1, "seats": [{"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}]},
-            {"rowIndex": 2, "seats": [{"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}]},
-            {"rowIndex": 3, "seats": [{"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}]},
-            {"rowIndex": 4, "seats": [{"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}]},
-            {"rowIndex": 5, "seats": [{"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}]}
-        ]
-    },
-    {
-        "_id": {
-            "$oid": "6585c91e06618a9dee3c493g"
-          },
-        "movieTitle": "Freelance",
-        "cinemaHall": "Room 1",
-        "date": "6th jan",
-        "startingTime": 14,
-        "duration": 100,
-        "price": 100,
-        "seats": [
-            {"rowIndex": 1, "seats": [{"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}]},
-            {"rowIndex": 2, "seats": [{"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}]},
-            {"rowIndex": 3, "seats": [{"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}]},
-            {"rowIndex": 4, "seats": [{"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}]},
-            {"rowIndex": 5, "seats": [{"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}]}
-        ]
-    },
-    {
-        "_id": {
-            "$oid": "6585c91e06618a9dee3c493h"
-          },
-        "movieTitle": "Leo",
-        "cinemaHall": "Room 1",
-        "date": "7th jan",
-        "startingTime": 14,
-        "duration": 100,
-        "price": 100,
-        "seats": [
-            {"rowIndex": 1, "seats": [{"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}]},
-            {"rowIndex": 2, "seats": [{"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}]},
-            {"rowIndex": 3, "seats": [{"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}]},
-            {"rowIndex": 4, "seats": [{"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}]},
-            {"rowIndex": 5, "seats": [{"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}]}
-        ]
-    },
-    {
-        "_id": {
-            "$oid": "6585c91e06618a9dee3c493i"
-          },
-        "movieTitle": "Leave the World Behind",
-        "cinemaHall": "Room 1",
-        "date": "8th jan",
-        "startingTime": 14,
-        "duration": 100,
-        "price": 100,
-        "seats": [
-            {"rowIndex": 1, "seats": [{"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}]},
-            {"rowIndex": 2, "seats": [{"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}]},
-            {"rowIndex": 3, "seats": [{"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}]},
-            {"rowIndex": 4, "seats": [{"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}]},
-            {"rowIndex": 5, "seats": [{"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}]}
-        ]
-    },
-    {
-        "_id": {
-            "$oid": "6585c91e06618a9dee3c493j"
-          },
-        "movieTitle": "Good Boy",
-        "cinemaHall": "Room 1",
-        "date": "9th jan",
-        "startingTime": 14,
-        "duration": 100,
-        "price": 100,
-        "seats": [
-            {"rowIndex": 1, "seats": [{"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}]},
-            {"rowIndex": 2, "seats": [{"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}]},
-            {"rowIndex": 3, "seats": [{"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}]},
-            {"rowIndex": 4, "seats": [{"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}]},
-            {"rowIndex": 5, "seats": [{"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}]}
-        ]
-    },
-    {
-        "_id": {
-            "$oid": "6585c91e06618a9dee3c493k"
-          },
-        "movieTitle": "Thanksgiving",
-        "cinemaHall": "Room 1",
-        "date": "10th jan",
-        "startingTime": 14,
-        "duration": 100,
-        "price": 100,
-        "seats": [
-            {"rowIndex": 1, "seats": [{"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}]},
-            {"rowIndex": 2, "seats": [{"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}]},
-            {"rowIndex": 3, "seats": [{"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}]},
-            {"rowIndex": 4, "seats": [{"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}]},
-            {"rowIndex": 5, "seats": [{"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}]}
-        ]
-    },
-    {
-        "_id": {
-            "$oid": "6585c91e06618a9dee3c493l"
-          },
-        "movieTitle": "Wonka",
-        "cinemaHall": "Room 1",
-        "date": "11th jan",
-        "startingTime": 14,
-        "duration": 100,
-        "price": 100,
-        "seats": [
-            {"rowIndex": 1, "seats": [{"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}]},
-            {"rowIndex": 2, "seats": [{"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}]},
-            {"rowIndex": 3, "seats": [{"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}]},
-            {"rowIndex": 4, "seats": [{"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}]},
-            {"rowIndex": 5, "seats": [{"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}]}
-        ]
-    },
-    {
-        "_id": {
-            "$oid": "6585c91e06618a9dee3c493m"
-          },
-        "movieTitle": "The Hunger Games: The Ballad of Songbirds & Snakes",
-        "cinemaHall": "Room 1",
-        "date": "12th jan",
-        "startingTime": 14,
-        "duration": 100,
-        "price": 100,
-        "seats": [
-            {"rowIndex": 1, "seats": [{"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}]},
-            {"rowIndex": 2, "seats": [{"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}]},
-            {"rowIndex": 3, "seats": [{"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}]},
-            {"rowIndex": 4, "seats": [{"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}]},
-            {"rowIndex": 5, "seats": [{"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}, {"booked": false, "bookingID": null}]}
-        ]
-    }
+	{
+		"_id": {
+			"$oid": "6585c91e06618a9dee3c493c"
+		},
+		"movieTitle": "Aquaman and the Lost Kingdom",
+		"cinemaHall": "Room 1",
+		"date": "3th jan",
+		"startingTime": [14, 15, 16, 20],
+		"duration": 100,
+		"price": 100,
+		"seats": [
+			{
+				"rowIndex": 1,
+				"seats": [
+					{ "booked": false, "bookingID": null },
+					{ "booked": false, "bookingID": null },
+					{ "booked": false, "bookingID": null },
+					{ "booked": false, "bookingID": null }
+				]
+			},
+			{
+				"rowIndex": 2,
+				"seats": [
+					{ "booked": false, "bookingID": null },
+					{ "booked": false, "bookingID": null },
+					{ "booked": false, "bookingID": null },
+					{ "booked": false, "bookingID": null }
+				]
+			},
+			{
+				"rowIndex": 3,
+				"seats": [
+					{ "booked": false, "bookingID": null },
+					{ "booked": false, "bookingID": null },
+					{ "booked": false, "bookingID": null },
+					{ "booked": false, "bookingID": null }
+				]
+			},
+			{
+				"rowIndex": 4,
+				"seats": [
+					{ "booked": false, "bookingID": null },
+					{ "booked": false, "bookingID": null },
+					{ "booked": false, "bookingID": null },
+					{ "booked": false, "bookingID": null }
+				]
+			},
+			{
+				"rowIndex": 5,
+				"seats": [
+					{ "booked": false, "bookingID": null },
+					{ "booked": false, "bookingID": null },
+					{ "booked": false, "bookingID": null },
+					{ "booked": false, "bookingID": null }
+				]
+			}
+		]
+	},
+	{
+		"_id": {
+			"$oid": "6585c91e06618a9dee3c493e"
+		},
+		"movieTitle": "Killers of the Flower Moon",
+		"cinemaHall": "Room 1",
+		"date": "4th jan",
+		"startingTime": [14, 16, 19],
+		"duration": 100,
+		"price": 100,
+		"seats": [
+			{
+				"rowIndex": 1,
+				"seats": [
+					{ "booked": false, "bookingID": null },
+					{ "booked": false, "bookingID": null },
+					{ "booked": false, "bookingID": null },
+					{ "booked": false, "bookingID": null }
+				]
+			},
+			{
+				"rowIndex": 2,
+				"seats": [
+					{ "booked": false, "bookingID": null },
+					{ "booked": false, "bookingID": null },
+					{ "booked": false, "bookingID": null },
+					{ "booked": false, "bookingID": null }
+				]
+			},
+			{
+				"rowIndex": 3,
+				"seats": [
+					{ "booked": false, "bookingID": null },
+					{ "booked": false, "bookingID": null },
+					{ "booked": false, "bookingID": null },
+					{ "booked": false, "bookingID": null }
+				]
+			},
+			{
+				"rowIndex": 4,
+				"seats": [
+					{ "booked": false, "bookingID": null },
+					{ "booked": false, "bookingID": null },
+					{ "booked": true, "bookingID": { "$oid": "1585c91e06618a9dee3c493c" } },
+					{ "booked": false, "bookingID": null }
+				]
+			},
+			{
+				"rowIndex": 5,
+				"seats": [
+					{ "booked": false, "bookingID": null },
+					{ "booked": false, "bookingID": null },
+					{ "booked": false, "bookingID": null },
+					{ "booked": false, "bookingID": null }
+				]
+			}
+		]
+	},
+	{
+		"_id": {
+			"$oid": "6585c91e06618a9dee3c493f"
+		},
+		"movieTitle": "Trolls Band Together",
+		"cinemaHall": "Room 1",
+		"date": "5th jan",
+		"startingTime": [13, 15, 16],
+		"duration": 100,
+		"price": 100,
+		"seats": [
+			{
+				"rowIndex": 1,
+				"seats": [
+					{ "booked": false, "bookingID": null },
+					{ "booked": false, "bookingID": null },
+					{ "booked": false, "bookingID": null },
+					{ "booked": false, "bookingID": null }
+				]
+			},
+			{
+				"rowIndex": 2,
+				"seats": [
+					{ "booked": false, "bookingID": null },
+					{ "booked": false, "bookingID": null },
+					{ "booked": false, "bookingID": null },
+					{ "booked": false, "bookingID": null }
+				]
+			},
+			{
+				"rowIndex": 3,
+				"seats": [
+					{ "booked": false, "bookingID": null },
+					{ "booked": false, "bookingID": null },
+					{ "booked": false, "bookingID": null },
+					{ "booked": false, "bookingID": null }
+				]
+			},
+			{
+				"rowIndex": 4,
+				"seats": [
+					{ "booked": false, "bookingID": null },
+					{ "booked": false, "bookingID": null },
+					{ "booked": false, "bookingID": null },
+					{ "booked": false, "bookingID": null }
+				]
+			},
+			{
+				"rowIndex": 5,
+				"seats": [
+					{ "booked": false, "bookingID": null },
+					{ "booked": false, "bookingID": null },
+					{ "booked": false, "bookingID": null },
+					{ "booked": false, "bookingID": null }
+				]
+			}
+		]
+	},
+	{
+		"_id": {
+			"$oid": "6585c91e06618a9dee3c493g"
+		},
+		"movieTitle": "Freelance",
+		"cinemaHall": "Room 1",
+		"date": "6th jan",
+		"startingTime": [13, 15, 16, 18, 20],
+		"duration": 100,
+		"price": 100,
+		"seats": [
+			{
+				"rowIndex": 1,
+				"seats": [
+					{ "booked": false, "bookingID": null },
+					{ "booked": false, "bookingID": null },
+					{ "booked": false, "bookingID": null },
+					{ "booked": false, "bookingID": null }
+				]
+			},
+			{
+				"rowIndex": 2,
+				"seats": [
+					{ "booked": false, "bookingID": null },
+					{ "booked": false, "bookingID": null },
+					{ "booked": false, "bookingID": null },
+					{ "booked": false, "bookingID": null }
+				]
+			},
+			{
+				"rowIndex": 3,
+				"seats": [
+					{ "booked": false, "bookingID": null },
+					{ "booked": false, "bookingID": null },
+					{ "booked": false, "bookingID": null },
+					{ "booked": false, "bookingID": null }
+				]
+			},
+			{
+				"rowIndex": 4,
+				"seats": [
+					{ "booked": false, "bookingID": null },
+					{ "booked": false, "bookingID": null },
+					{ "booked": false, "bookingID": null },
+					{ "booked": false, "bookingID": null }
+				]
+			},
+			{
+				"rowIndex": 5,
+				"seats": [
+					{ "booked": false, "bookingID": null },
+					{ "booked": false, "bookingID": null },
+					{ "booked": false, "bookingID": null },
+					{ "booked": false, "bookingID": null }
+				]
+			}
+		]
+	},
+	{
+		"_id": {
+			"$oid": "6585c91e06618a9dee3c493h"
+		},
+		"movieTitle": "Leo",
+		"cinemaHall": "Room 1",
+		"date": "7th jan",
+		"startingTime": [11, 15, 16, 17],
+		"duration": 100,
+		"price": 100,
+		"seats": [
+			{
+				"rowIndex": 1,
+				"seats": [
+					{ "booked": false, "bookingID": null },
+					{ "booked": false, "bookingID": null },
+					{ "booked": false, "bookingID": null },
+					{ "booked": false, "bookingID": null }
+				]
+			},
+			{
+				"rowIndex": 2,
+				"seats": [
+					{ "booked": false, "bookingID": null },
+					{ "booked": false, "bookingID": null },
+					{ "booked": false, "bookingID": null },
+					{ "booked": false, "bookingID": null }
+				]
+			},
+			{
+				"rowIndex": 3,
+				"seats": [
+					{ "booked": false, "bookingID": null },
+					{ "booked": false, "bookingID": null },
+					{ "booked": false, "bookingID": null },
+					{ "booked": false, "bookingID": null }
+				]
+			},
+			{
+				"rowIndex": 4,
+				"seats": [
+					{ "booked": false, "bookingID": null },
+					{ "booked": false, "bookingID": null },
+					{ "booked": false, "bookingID": null },
+					{ "booked": false, "bookingID": null }
+				]
+			},
+			{
+				"rowIndex": 5,
+				"seats": [
+					{ "booked": false, "bookingID": null },
+					{ "booked": false, "bookingID": null },
+					{ "booked": false, "bookingID": null },
+					{ "booked": false, "bookingID": null }
+				]
+			}
+		]
+	},
+	{
+		"_id": {
+			"$oid": "6585c91e06618a9dee3c493i"
+		},
+		"movieTitle": "Leave the World Behind",
+		"cinemaHall": "Room 1",
+		"date": "8th jan",
+		"startingTime": [13, 15, 16, 21],
+		"duration": 100,
+		"price": 100,
+		"seats": [
+			{
+				"rowIndex": 1,
+				"seats": [
+					{ "booked": false, "bookingID": null },
+					{ "booked": false, "bookingID": null },
+					{ "booked": false, "bookingID": null },
+					{ "booked": false, "bookingID": null }
+				]
+			},
+			{
+				"rowIndex": 2,
+				"seats": [
+					{ "booked": false, "bookingID": null },
+					{ "booked": false, "bookingID": null },
+					{ "booked": false, "bookingID": null },
+					{ "booked": false, "bookingID": null }
+				]
+			},
+			{
+				"rowIndex": 3,
+				"seats": [
+					{ "booked": false, "bookingID": null },
+					{ "booked": false, "bookingID": null },
+					{ "booked": false, "bookingID": null },
+					{ "booked": false, "bookingID": null }
+				]
+			},
+			{
+				"rowIndex": 4,
+				"seats": [
+					{ "booked": false, "bookingID": null },
+					{ "booked": false, "bookingID": null },
+					{ "booked": false, "bookingID": null },
+					{ "booked": false, "bookingID": null }
+				]
+			},
+			{
+				"rowIndex": 5,
+				"seats": [
+					{ "booked": false, "bookingID": null },
+					{ "booked": false, "bookingID": null },
+					{ "booked": false, "bookingID": null },
+					{ "booked": false, "bookingID": null }
+				]
+			}
+		]
+	},
+	{
+		"_id": {
+			"$oid": "6585c91e06618a9dee3c493j"
+		},
+		"movieTitle": "Good Boy",
+		"cinemaHall": "Room 1",
+		"date": "9th jan",
+		"startingTime": [15, 17],
+		"duration": 100,
+		"price": 100,
+		"seats": [
+			{
+				"rowIndex": 1,
+				"seats": [
+					{ "booked": false, "bookingID": null },
+					{ "booked": false, "bookingID": null },
+					{ "booked": false, "bookingID": null },
+					{ "booked": false, "bookingID": null }
+				]
+			},
+			{
+				"rowIndex": 2,
+				"seats": [
+					{ "booked": false, "bookingID": null },
+					{ "booked": false, "bookingID": null },
+					{ "booked": false, "bookingID": null },
+					{ "booked": false, "bookingID": null }
+				]
+			},
+			{
+				"rowIndex": 3,
+				"seats": [
+					{ "booked": false, "bookingID": null },
+					{ "booked": false, "bookingID": null },
+					{ "booked": false, "bookingID": null },
+					{ "booked": false, "bookingID": null }
+				]
+			},
+			{
+				"rowIndex": 4,
+				"seats": [
+					{ "booked": false, "bookingID": null },
+					{ "booked": false, "bookingID": null },
+					{ "booked": false, "bookingID": null },
+					{ "booked": false, "bookingID": null }
+				]
+			},
+			{
+				"rowIndex": 5,
+				"seats": [
+					{ "booked": false, "bookingID": null },
+					{ "booked": false, "bookingID": null },
+					{ "booked": false, "bookingID": null },
+					{ "booked": false, "bookingID": null }
+				]
+			}
+		]
+	},
+	{
+		"_id": {
+			"$oid": "6585c91e06618a9dee3c493k"
+		},
+		"movieTitle": "Thanksgiving",
+		"cinemaHall": "Room 1",
+		"date": "10th jan",
+		"startingTime": [12, 15, 17],
+		"duration": 100,
+		"price": 100,
+		"seats": [
+			{
+				"rowIndex": 1,
+				"seats": [
+					{ "booked": false, "bookingID": null },
+					{ "booked": false, "bookingID": null },
+					{ "booked": false, "bookingID": null },
+					{ "booked": false, "bookingID": null }
+				]
+			},
+			{
+				"rowIndex": 2,
+				"seats": [
+					{ "booked": false, "bookingID": null },
+					{ "booked": false, "bookingID": null },
+					{ "booked": false, "bookingID": null },
+					{ "booked": false, "bookingID": null }
+				]
+			},
+			{
+				"rowIndex": 3,
+				"seats": [
+					{ "booked": false, "bookingID": null },
+					{ "booked": false, "bookingID": null },
+					{ "booked": false, "bookingID": null },
+					{ "booked": false, "bookingID": null }
+				]
+			},
+			{
+				"rowIndex": 4,
+				"seats": [
+					{ "booked": false, "bookingID": null },
+					{ "booked": false, "bookingID": null },
+					{ "booked": false, "bookingID": null },
+					{ "booked": false, "bookingID": null }
+				]
+			},
+			{
+				"rowIndex": 5,
+				"seats": [
+					{ "booked": false, "bookingID": null },
+					{ "booked": false, "bookingID": null },
+					{ "booked": false, "bookingID": null },
+					{ "booked": false, "bookingID": null }
+				]
+			}
+		]
+	},
+	{
+		"_id": {
+			"$oid": "6585c91e06618a9dee3c493l"
+		},
+		"movieTitle": "Wonka",
+		"cinemaHall": "Room 1",
+		"date": "11th jan",
+		"startingTime": [13, 15, 16, 17, 19, 21],
+		"duration": 100,
+		"price": 100,
+		"seats": [
+			{
+				"rowIndex": 1,
+				"seats": [
+					{ "booked": false, "bookingID": null },
+					{ "booked": false, "bookingID": null },
+					{ "booked": false, "bookingID": null },
+					{ "booked": false, "bookingID": null }
+				]
+			},
+			{
+				"rowIndex": 2,
+				"seats": [
+					{ "booked": false, "bookingID": null },
+					{ "booked": false, "bookingID": null },
+					{ "booked": false, "bookingID": null },
+					{ "booked": false, "bookingID": null }
+				]
+			},
+			{
+				"rowIndex": 3,
+				"seats": [
+					{ "booked": false, "bookingID": null },
+					{ "booked": false, "bookingID": null },
+					{ "booked": false, "bookingID": null },
+					{ "booked": false, "bookingID": null }
+				]
+			},
+			{
+				"rowIndex": 4,
+				"seats": [
+					{ "booked": false, "bookingID": null },
+					{ "booked": false, "bookingID": null },
+					{ "booked": false, "bookingID": null },
+					{ "booked": false, "bookingID": null }
+				]
+			},
+			{
+				"rowIndex": 5,
+				"seats": [
+					{ "booked": false, "bookingID": null },
+					{ "booked": false, "bookingID": null },
+					{ "booked": false, "bookingID": null },
+					{ "booked": false, "bookingID": null }
+				]
+			}
+		]
+	},
+	{
+		"_id": {
+			"$oid": "6585c91e06618a9dee3c493m"
+		},
+		"movieTitle": "The Hunger Games: The Ballad of Songbirds & Snakes",
+		"cinemaHall": "Room 1",
+		"date": "12th jan",
+		"startingTime": [13, 14, 20],
+		"duration": 100,
+		"price": 100,
+		"seats": [
+			{
+				"rowIndex": 1,
+				"seats": [
+					{ "booked": false, "bookingID": null },
+					{ "booked": false, "bookingID": null },
+					{ "booked": false, "bookingID": null },
+					{ "booked": false, "bookingID": null }
+				]
+			},
+			{
+				"rowIndex": 2,
+				"seats": [
+					{ "booked": false, "bookingID": null },
+					{ "booked": false, "bookingID": null },
+					{ "booked": false, "bookingID": null },
+					{ "booked": false, "bookingID": null }
+				]
+			},
+			{
+				"rowIndex": 3,
+				"seats": [
+					{ "booked": false, "bookingID": null },
+					{ "booked": false, "bookingID": null },
+					{ "booked": false, "bookingID": null },
+					{ "booked": false, "bookingID": null }
+				]
+			},
+			{
+				"rowIndex": 4,
+				"seats": [
+					{ "booked": false, "bookingID": null },
+					{ "booked": false, "bookingID": null },
+					{ "booked": false, "bookingID": null },
+					{ "booked": false, "bookingID": null }
+				]
+			},
+			{
+				"rowIndex": 5,
+				"seats": [
+					{ "booked": false, "bookingID": null },
+					{ "booked": false, "bookingID": null },
+					{ "booked": false, "bookingID": null },
+					{ "booked": false, "bookingID": null }
+				]
+			}
+		]
+	}
 ]

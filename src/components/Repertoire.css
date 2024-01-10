@@ -1,0 +1,24 @@
+.the-list {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+	margin: 10px;
+}
+
+ul {
+	list-style: none;
+}
+
+li {
+	border-bottom: 1px solid white;
+	margin-bottom: 5px;
+	padding-bottom: 5px;
+}
+
+.the-title,
+.the-showtime {
+	text-align: start;
+}
+.the-title {
+	color: var(--primary-color);
+}

@@ -39,7 +39,6 @@ export const userStore = create((set) => ({
 
       if (data.success) {
         set({ username })
-        alert('Signup successful')
         console.log("Signing up with:", username)
       } else {
         alert(JSON.stringify(data.response) || 'Signup failed')
@@ -78,7 +77,6 @@ export const userStore = create((set) => ({
           isLoggedIn: true,
         })
         localStorage.setItem('accessToken', data.response.accessToken)
-        alert('Login successful');
         console.log("Logging in with:", username, password)
       } else {
         alert(JSON.stringify(data.response) || "Login failed")
