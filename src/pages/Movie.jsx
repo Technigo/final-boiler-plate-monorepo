@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { movieStore } from '../store/movieStore';
 import { MovieDetails } from '../components/MovieDetails';
-import { useParams, Link } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 
 export const Movie = () => {
   const [movieData, setMovieData] = useState(null);
@@ -33,11 +33,11 @@ export const Movie = () => {
 
   return (
     <>
-      {!isLoading && movieData && (
+      {/* {!isLoading && movieData && (
         <Link className="back-arrow" to="/">
           Back to home page
         </Link>
-      )}
+      )} */}
       {!isLoading && movieData && <MovieDetails movie={movieData} />}
     </>
   );

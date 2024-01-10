@@ -16,6 +16,11 @@ export const MovieList = () => {
     fetchMovies()
   }, [fetchMovies])
 
+
+  const formatReleaseDate = (fullDate) => {
+    return moment(fullDate).format("MMM Do YY")
+  }
+
   return (
     <div className="the-movie-list" id="app-container">
       {movies && movies.slice(0, 20).map((movie) => (
@@ -31,8 +36,4 @@ export const MovieList = () => {
       ))}
     </div>
   )
-}
-
-const formatReleaseDate = (fullDate) => {
-  return moment(fullDate).format("MMM Do YY")
 }

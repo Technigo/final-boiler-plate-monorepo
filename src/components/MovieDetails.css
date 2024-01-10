@@ -1,7 +1,7 @@
-.background-poster {
+/* .background-poster {
 	position: relative;
-}
-
+} */
+/* 
 .background-poster img {
 	position: fixed;
 	top: 0;
@@ -10,28 +10,29 @@
 	height: 100%;
 	object-fit: cover;
 	z-index: -1;
-}
+} */
 
 .detail-page {
 	display: flex;
 	position: relative;
-	justify-content: center;
-	align-items: flex-end;
+	justify-content: center !important;
+	align-items: center;
 	height: 100vh;
 	width: 100vw;
-	background: linear-gradient(to top, rgba(0, 0, 0, 0.6) 20%, transparent 100%);
+	/* background: linear-gradient(to top, rgba(0, 0, 0, 0.6) 20%, transparent 100%); */
 }
 
 .summary {
 	display: flex;
 	flex-direction: column;
+	justify-content: center;
+	align-items: center !important;
 	padding: 50px;
 	color: white;
 	text-align: start;
 	z-index: 1;
 	width: 100%;
 	margin-bottom: 50px;
-	/* border: solid red 3px; */
 }
 
 .summary img {
@@ -66,6 +67,7 @@
 	font-size: 14px;
 	margin: 16px 0;
 	line-height: 1;
+	border: 2px soli red;
 }
 
 @media (min-width: 577px) {
