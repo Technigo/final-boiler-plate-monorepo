@@ -17,6 +17,16 @@ const challengeSchema = new mongoose.Schema({
     required: true,
   },
 
+  completed: {
+    type: Boolean,
+    default: false
+  },
+
+  user: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "User",
+  }
+
 });
 
 const Challenge = mongoose.model('Challenge', challengeSchema);

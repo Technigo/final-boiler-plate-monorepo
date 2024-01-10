@@ -18,12 +18,12 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  completedChallenges: [
-    {
-      type: Number,
-      ref: 'Challenge',
-    },
-  ],
+  // completedChallenges: [
+  //   {
+  //     type: Number,
+  //     ref: 'Challenge',
+  //   },
+  // ],
   createdAt: {
     type: Date,
     default: () => new Date()

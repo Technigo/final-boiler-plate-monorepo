@@ -7,6 +7,9 @@ const User = require('../models/user.js'); // Importing the User model
 const Challenge = require('../models/challenge.js');
 const router = express.Router(); // Creating an instance of an Express router
 import { verify } from 'jsonwebtoken';
+import challenges from './data/challenges.json';
+
+
 
 const authenticateToken = (req, res, next) => {
   const token = req.header('Authorization');
@@ -25,6 +28,58 @@ const authenticateToken = (req, res, next) => {
     next();
   });
 };
+
+const seedChallenges = async () => {
+  try {
+    // Remove existing challenges in the database
+    await Challenge.deleteMany();
+
+    // Insert new challenges from the JSON file
+    await Challenge.insertMany(challengesData);
+
+    console.log('Data seeded successfully');
+  } catch (error) {
+    console.error('Error seeding data:', error);
+  } finally {
+    // Close the connection to the database
+    mongoose.connection.close();
+  }
+};
+
+seedChallenges();
+
+router.get('/challenges', authenticateToken, (req, res) => {
+  try {
+    res.json(challenges);
+  } catch (error) {
+    console.error(error);
+    res.status(500).send('Failed to fetch challenges');
+  }
+});
+
+router.put('/update/:id', async (req, res) => {
+  try {
+    const token = req.header("Authorization");
+    
+    // Find the user based on the access token
+    const user = await UserModel.findOne({ token: token });
+    
+    // Find the challenges associated with the user and respond with them (if needed)
+    const userChallenges = await Challenge.find({ user: user }).sort("challengeId");
+    res.json(userChallenges);
+
+    // Update the specific challenge to mark it as completed
+    const { id } = req.params;
+    const updatedChallenge = await Challenge.findByIdAndUpdate(id, { completed: true }, { new: true });
+    
+    // Respond with the updated challenge
+    res.json(updatedChallenge);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Failed to update challenge' });
+  }
+});
+
 
 
 // Endpoint for user registration
