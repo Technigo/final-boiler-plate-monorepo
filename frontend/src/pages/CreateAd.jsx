@@ -145,8 +145,7 @@ export const CreateAd = () => {
           { path: "/search", name: "Search" },
           { path: "/settings", name: "My Setting" },
           { path: "/manage-your-ads", name: "My Products" },
-          { path: "/about", name: "About" },
-          { path: "/terms", name: "Terms" },
+
           {
             name: "Logout",
             onClick: () => {

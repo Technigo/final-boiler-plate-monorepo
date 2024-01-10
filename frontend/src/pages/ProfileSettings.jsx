@@ -79,7 +79,7 @@ export const ProfileSettings = () => {
         menuItems={[
           { path: "/home", name: "Home" },
           { path: "/search", name: "Search" },
-          { path: "/settings", name: "My Settings" },
+          { path: "/settings", name: "Settings" },
           { path: "/manage-your-ads", name: "My Products" },
           { path: "/about", name: "About" },
           { path: "/terms", name: "Terms" },
@@ -94,10 +94,8 @@ export const ProfileSettings = () => {
         menuDesks={[
           { path: "/home", name: "Home" },
           { path: "/search", name: "Search" },
-          { path: "/settings", name: "My Settings" },
           { path: "/manage-your-ads", name: "My Products" },
-          { path: "/about", name: "About" },
-          { path: "/terms", name: "Terms" },
+
           {
             name: "Logout",
             onClick: () => {
