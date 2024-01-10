@@ -1,30 +1,38 @@
-// import { BsPlus, BsFillLightningFill, BsGearFill } from "react-bootstrap-icons";
-// import { FaSquareXTwitter } from "react-icons/fa6";
-// import { FaFacebookSquare } from "react-icons/fa";
-// import { FaLinkedin } from "react-icons/fa6";
+import React from 'react';
 
 export const Contact = () => {
   return (
     <div
       className="text-center text-primary
-    font-bold
-    left-0 h-screen w-50 m-0
-    flex flex-col
-    bg-secondary
-    "
+      font-bold
+      left-0 h-screen w-50 m-0
+      flex flex-col
+      bg-secondary
+      space-y-4
+      justify-center"
     >
-      <i>Email us at: info@piggyback.com</i>
-      <i>Call us at: 126 555 78</i>
-      <i>Contact us through: Facebook, X, or Linkedin</i>
-      <i>Want a job? Click Here for more information</i>
+      Email us:
+      <a href="mailto:info@piggyback.com" className="text-green-900 hover:underline ">
+        <i>info@piggyback.com</i>
+      </a>
+      <div className="flex space-x-2 justify-center">
+      <p>Follow us</p>
+        <a href="https://www.facebook.com"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="text-blue-500 hover:underline">
+        Facebook
+        </a>
+        <a href="https://www.linkedin.com"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="text-blue-700 hover:underline">
+          Linkedin
+        </a>
+        {/* Add links for other social media platforms as needed */}
+      </div>
+      <i>Call us: 126 555 78</i>
     </div>
   );
 };
 
-// const SocialMediaIcons = ({ icon }) => (
-//   <div className="sidebar-icon">{icon}</div>
-// );
-// <FaLinkedin />
-// <FaFacebookSquare />
-// <FaSquareXTwitter />
-// export default SocialMediaIcons

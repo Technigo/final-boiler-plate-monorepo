@@ -1,3 +1,5 @@
+import { LoginBtn } from "./LoginBtn";
+
 export const Hero = () => {
   return (
     <div className="relative bg-cover bg-center h-screen flex items-center justify-center p-8">
@@ -7,13 +9,7 @@ export const Hero = () => {
           Be the driver of positive change. Discover an efficient way to travel,
           connect, and save.{" "}
         </h1>
-        <p>
-          <button
-            type="button"
-            className="submit-button bg-rose-500 text-white px-4 py-2 rounded-full hover:bg-rose-700 focus:outline-none focus:ring focus:border-blue-300 text-xl">
-            Join us
-          </button>
-        </p>
+        <LoginBtn />
       </div>
     </div>
   );

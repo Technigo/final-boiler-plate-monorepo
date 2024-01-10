@@ -10,7 +10,7 @@ export const FAQ = () => {
 
   return (
     <div className="accordion">
-      <h1 className="text-lg font-md">FAQ.jsx</h1>
+      <h1 className="text-lg font-md">FAQ</h1>
       {faqData.faq.map((faq, index) => (
         <div key={index} className="faq-item">
           <div
