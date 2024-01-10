@@ -1,4 +1,7 @@
+
+
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom'; //for SingleCoctail
 import styles from './Cocktails.module.css';
 import { Text } from '../UI/Typography';
 
@@ -70,14 +73,17 @@ export const Cocktails = () => {
             <Text type="H1" className={styles.h1}>OUR RECENT COCKTAILS</Text>
             <div className={styles.gridContainer}>
                 {displayedCocktails.map(cocktail => (
-                    <div key={cocktail._id}>
-                        {cocktail.imageUrl && (
-                            <img src={`https://cbc-uvko.onrender.com/${cocktail.imageUrl}`} alt={cocktail.name} className={styles.cocktailImage} />
-                        )}
-                        <Text type="H3" className={styles.h3}>{cocktail.name}</Text>
-                        <Text type="SbodyText" className={styles.SbodyText}>⏲️: {cocktail.prepTime} | 🌟: {cocktail.strength}</Text>
-                        <Text type="SbodyText" className={styles.SbodyText}>⚡: {cocktail.strength} | 🏷️ : {cocktail.tags.join(', ')}</Text>
-                    </div>
+                    // Wrap each cocktail with Link
+                    <Link to={`/cocktail/${cocktail._id}`} key={cocktail._id} className={styles.cocktailLink}>
+                        <div>
+                            {cocktail.imageUrl && (
+                                <img src={`https://cbc-uvko.onrender.com/${cocktail.imageUrl}`} alt={cocktail.name} className={styles.cocktailImage} />
+                            )}
+                            <Text type="H3" className={styles.h3}>{cocktail.name}</Text>
+                            <Text type="SbodyText" className={styles.SbodyText}>⏲️: {cocktail.prepTime} | 🌟: {cocktail.strength}</Text>
+                            <Text type="SbodyText" className={styles.SbodyText}>⚡: {cocktail.strength} | 🏷️ : {cocktail.tags.join(', ')}</Text>
+                        </div>
+                    </Link>
                 ))}
             </div>
 
@@ -92,3 +98,14 @@ export const Cocktails = () => {
         </div>
     );
 };
+
+{/* <Link to="/sin-cocktail" key={cocktail._id}>
+<div>
+    {cocktail.imageUrl && (
+        <img src={`https://cbc-uvko.onrender.com/${cocktail.imageUrl}`} alt={cocktail.name} className={styles.cocktailImage} />
+    )}
+    <Text type="H3" className={styles.h3}>{cocktail.name}</Text>
+    <Text type="SbodyText" className={styles.SbodyText}>⏲️: {cocktail.prepTime} | 🌟: {cocktail.strength}</Text>
+    <Text type="SbodyText" className={styles.SbodyText}>⚡: {cocktail.strength} | 🏷️ : {cocktail.tags.join(', ')}</Text>
+</div>
+</Link> */}
