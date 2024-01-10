@@ -27,7 +27,7 @@ export const getAllShowtime = asyncHandler(async (req, res) => {
 // @access public
 export const getShowtimeById = asyncHandler(async (req, res) => {
 	try {
-		const showtimeId = +req.params.id
+		const showtimeId = req.params.id
 		const showtime = await ShowTimeModel.findById(showtimeId)
 		if (showtime) {
 			res.json(showtime)
