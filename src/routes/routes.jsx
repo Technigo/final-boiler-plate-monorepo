@@ -23,7 +23,7 @@ const routes = (
       element={<Register />}
     />
     <Route
-      path="/booking"
+      path="/booking/:showtimeID"
       element={<Booking />}
     />
     <Route

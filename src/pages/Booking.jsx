@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-// import { useParams } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import { Link } from 'react-router-dom'
 import { userStore } from '../store/userStore'
 import { bookingStore } from '../store/bookingStore'
@@ -19,49 +19,51 @@ const compareArrays = (arrayOne, arrayTwo) => {
 }
 
 export const Booking = () => {
-	const [ thisShowTime, setThisShowTime ] = useState()
+	// const [ thisShowTime, setThisShowTime ] = useState()
 	const [ cinemaHall, setCinemahall ] = useState()
 	const [ movieTitle, setMovieTitle ] = useState()
 	const [ seatInfo, setSeatInfo ] = useState()
 
 	const { 
-		fetchAllShowTimes, 
-		allShowTimes,
+		fetchSelectedShowtime,
 		selectedSeats,
 		setSelectedSeats,
 		updateSelectedSeats,
-		selectedShowtime,
-		setSelectedShowtime
+		selectedShowtime
 	} = bookingStore() 
 
 	const isLoggedIn = userStore.getState().isLoggedIn
 
-	// const showtimeParam = useParams()
-	// console.log(showtimeParam)
+	const { showtimeID } = useParams()
+
+	// useEffect(() => {
+	// 	fetchAllShowTimes()
+	// }, [])
 
 	useEffect(() => {
-		fetchAllShowTimes()
-	}, [])
+		if (showtimeID != null) fetchSelectedShowtime(showtimeID)
+	}, [showtimeID])
+
+	// useEffect(() => {
+	// 	if(allShowTimes != null && allShowTimes.length > 0) {
+	// 		const thisShowTime = allShowTimes[9]
+	// 		setThisShowTime(thisShowTime)
+	// 		// setSelectedShowtime(thisShowTime)
+	// 	}
+	// }, [allShowTimes])
+
 
 	useEffect(() => {
-		if(allShowTimes != null && allShowTimes.length > 0) {
-			const thisShowTime = allShowTimes[9]
-			setThisShowTime(thisShowTime)
-			setSelectedShowtime(thisShowTime)
-		}
-	}, [allShowTimes])
-
-	useEffect(() => {
-		if (thisShowTime != null) {
-			const cinemaHall = thisShowTime.cinemaHall
-			const movieTitle = thisShowTime.movieTitle
-			const seatInfo = thisShowTime.seats
+		if (selectedShowtime != null) {
+			const cinemaHall = selectedShowtime.cinemaHall
+			const movieTitle = selectedShowtime.movieTitle
+			const seatInfo = selectedShowtime.seats
 
 			setCinemahall(cinemaHall)
 			setMovieTitle(movieTitle)
 			setSeatInfo(seatInfo)
 		}
-	}, [thisShowTime])
+	}, [selectedShowtime])
 
 	useEffect(() => console.log('selectedSeats', selectedSeats, 'stateSeats'), [selectedSeats])
 

@@ -5,8 +5,11 @@
 import { Calendar } from '../components/Calendar'
 import { MovieList } from '../components/MovieList'
 import { Hero } from '../components/Hero'
+import { bookingStore } from '../store/bookingStore'
 // // Define the 'Home' functional component.
 export const Home = () => {
+  const fetchShows = bookingStore((state) => (state.fetchAllShowTimes))
+  fetchShows()
   //   // Define text content for the heading and subheading.
   //   const text = {
   //     heading: "Vite + React + React Router + Minimal CSS",
