@@ -89,7 +89,9 @@ export const getCocktailsController = async (req, res) => {
                     { drinkware: regexSearch },
                     { strength: regexSearch },
                     { tags: { $in: [regexSearch] } },
+                    { creator: regexSearch },
                     { description: regexSearch },
+                    {InspiredByCreator: { $in: [regexSearch] } },
                 ]
             });
         }
@@ -130,6 +132,9 @@ export const addCocktailController = [
         if (req.file) {
           req.body.imageUrl = req.file.path; // Save the path of the uploaded file in the imageUrl field
         }
+
+        //Add time and date to the reicpe
+        req.body.date = new Date();
   
         const newCocktail = new Cocktails(req.body);
         await newCocktail.save();

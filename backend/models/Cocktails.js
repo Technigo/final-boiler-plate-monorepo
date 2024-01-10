@@ -10,6 +10,7 @@ const cocktailSchema = mongoose.Schema({
     color: String,
     ingredientsCount: Number,
     creator: String,
+    InspiredByCreator: [String],
     occasion: [String],
     difficulty: String,
     flavorProfile: [String],
@@ -19,17 +20,14 @@ const cocktailSchema = mongoose.Schema({
     drinkware: String,
     strength: String,
     tags: [String],
-    description: String
+    description: String,
+    date: {
+        type: Date,
+        default: Date.now
+    }
 });
 
 module.exports = mongoose.model('Cocktail', cocktailSchema);
-
-
-//Set Up Route Handlers:
-// In your server.js file or a separate routes directory, define routes for handling CRUD operations.
-// Use Express to set up routes like GET /cocktails, POST /cocktails, etc.
-
-
 
 // eksempel:
 // {
