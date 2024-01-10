@@ -68,8 +68,8 @@ export const Navbar = () => {
 
   return (
     <nav
-      className={`bg-gray-800 p-4 z-10 ${
-        isScrolled ? "fixed top-0 w-full" : ""
+      className={`bg-gray-800 p-4 z-10 sticky top-0 ${
+        isScrolled ? "" : ""
       }`}>
       <div className="container mx-auto flex items-center justify-between">
         <div
@@ -114,7 +114,7 @@ export const Navbar = () => {
           <button className="text-white pl-5" onClick={onMobileNavClick}>
             {/* Add a responsive menu icon, e.g., a hamburger icon */}
             {openMobileNav ? <>&#x2715;</> : <>&#9776; </>}
-          </button>
+          </button >
           {/* Display the menu if openMobileNav is true */}
           {openMobileNav && renderMenuItems()}
         </div>
