@@ -10,7 +10,7 @@ import './Booking.css'
 const compareArrays = (arrayOne, arrayTwo) => {
 	let isSame = true
 
-	console.log('array one and two', arrayOne, arrayTwo)
+	// console.log('array one and two', arrayOne, arrayTwo)
 
 	if (arrayOne.length !== arrayTwo.length) return false
 	arrayOne.map((element, index) => isSame = isSame && (element === arrayTwo[index]))
@@ -98,10 +98,14 @@ export const Booking = () => {
 	}
 	
 	return (
-		<>
-			<h2>{movieTitle}</h2>
-			<h3>{cinemaHall}</h3>
+		<div className="booking-container page-section">
+			<section className="booking-movie-info">
+				<h2>{movieTitle}</h2>
+				{selectedSeats && (<SelectedTicket />)}
+			</section>
+			
 			<section className="cinema-container">
+				<h3>{cinemaHall}</h3>
 				<div className="the-screen">Screen</div>
 				<div className="seat-container">
 					{seatInfo && seatInfo.map((row, index) =>(
@@ -137,8 +141,6 @@ export const Booking = () => {
 				</ul>
 			</section>
 
-			{selectedSeats && (<SelectedTicket />)}
-
 			{isLoggedIn ? (
 				<>
 					<div className="button-container">
@@ -153,6 +155,6 @@ export const Booking = () => {
 					</div>
 				</>
 			)}
-		</>
+		</div>
 	)
 }

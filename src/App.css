@@ -11,7 +11,7 @@
     justify-content: center;
     align-items: center;
 }
-.page-section:not(.the-hero) {
+.page-section:not(.the-hero):not(.the-footer) {
     margin: 0 var(--big-padding);
 }
 /* .page-section.the-calender {
@@ -24,4 +24,10 @@
     justify-content: center;
     align-items: center;
     gap: 20px;
+}
+
+@media (max-width: 1025px) {
+    .page-section:not(.the-hero):not(.the-footer) {
+        margin: 0 var(--small-padding);
+    }
 }
