@@ -2,11 +2,12 @@ import React, { useState, useEffect } from 'react';
 import styles from './Cocktails.module.css';
 import { Text } from '../UI/Typography';
 
-
 export const Cocktails = () => {
     const [cocktails, setCocktails] = useState([]);
+    const [displayedCocktails, setDisplayedCocktails] = useState([]);
     const [searchTerm, setSearchTerm] = useState('');
     const [selectedFilter, setSelectedFilter] = useState('');
+    const [itemsToDisplay, setItemsToDisplay] = useState(6); // Initial number of cocktails to display
 
     const filters = {
         'Occasion': ['Summer', 'Christmas', 'Fall', 'Spring', 'Halloween'],
@@ -25,11 +26,15 @@ export const Cocktails = () => {
         fetch(`https://cbc-uvko.onrender.com/cocktails${query ? '?' + query : ''}`)
             .then(response => response.json())
             .then(data => {
-                // Display only the last 6 cocktails if no filters are applied
-                setCocktails((!searchTerm && !selectedFilter) ? data.slice(0, 6) : data);
+                setCocktails(data);
+                setDisplayedCocktails(data.slice(0, itemsToDisplay));
             })
             .catch(error => console.error('Error fetching cocktails:', error));
-    }, [searchTerm, selectedFilter]);
+    }, [searchTerm, selectedFilter, itemsToDisplay]);
+
+    const loadMoreCocktails = () => {
+        setItemsToDisplay(prev => prev + 6);
+    };
 
     return (
         <div className={styles.wrapper}>
@@ -60,10 +65,9 @@ export const Cocktails = () => {
                 </select>
             </div>
 
-            <Text type="H1" className={styles.h1}>OUR RECENT COCKTAILS</Text>
+            <Text type="H1" className={styles.h1}>EXPLORE COCKTAILS</Text>
             <div className={styles.gridContainer}>
-                {cocktails.map(cocktail => (
-
+                {displayedCocktails.map(cocktail => (
                     <div key={cocktail._id}>
                         {cocktail.imageUrl && (
                             <img src={`https://cbc-uvko.onrender.com/${cocktail.imageUrl}`} alt={cocktail.name} className={styles.cocktailImage} />
@@ -74,9 +78,17 @@ export const Cocktails = () => {
                     </div>
                 ))}
             </div>
+
+            {/* Load More Button */}
+            <div className={styles.loadMoreButtonContainer}>
+                <button onClick={loadMoreCocktails} className={styles.loadMoreButton}>
+                    Load More
+                </button>
+            </div>
         </div>
     );
 };
+
 
 
 {/* <Link to={`/cocktail/${cocktail._id}`} key={cocktail._id}>
