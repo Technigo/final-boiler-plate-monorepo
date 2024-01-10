@@ -128,24 +128,24 @@
 /*Macbook Air*/
 @media (min-width: 1028px) {
     .wrapper {
-        padding: 80px 0 60px 0;
+        padding: 80px 0 90px 0;
         grid-gap: 30px;
     }
 
     .imgBruun {
         padding: 40px 40px 0 0;
-        width: 60%;
+        width: 50%;
         justify-self: end;
     }
 
     .membersBruun {
-        padding: 0px calc(10vw + 20px) 20px 0px;
+        padding: 0px 5vw 20px 0px;
         justify-self: right;
     }
 
     .imgMima {
         padding: 40px 0 0 40px;
-        width: 60%;
+        width: 50%;
         justify-self: start;
     }
 
@@ -156,23 +156,30 @@
 
     .imgFulba {
         padding: 0px 40px 0 0;
-        width: 59%;
+        width: 49%;
         justify-self: end;
     }
 
     .membersFulba {
-        padding: 0px calc(10vw + 20px) 20px 0px;
+        padding: 0px 5vw 60px 0px;
         justify-self: right;
     }
 
     .imgInemy {
         padding: 0px 0 0 40px;
-        width: 60%;
+        width: 50%;
         justify-self: start;
     }
 
     .membersIneMy {
-        padding: 0 0 0 6vw;
+        padding: 0 0 60px 6vw;
         justify-self: left;
+    }
+
+    .p {
+        padding: 10px 0;
+        text-align: left;
+        max-width: 700px;
+        margin: 0 auto;
     }
 }

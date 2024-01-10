@@ -23,7 +23,7 @@ export const HomeCBC = () => {
 
     return (
         <div className={styles.wrapper}>
-            <Text type="H1" className={styles.h1}>FEATURED COCKTAILS</Text>
+            <Text type="H1" className={styles.h1}>OUR CURRENT FAVOURITES</Text>
             <div className={styles.gridContainer}>
                 {featuredCocktails.map(cocktail => (
                     <div key={cocktail._id} className={styles.cocktail}>
