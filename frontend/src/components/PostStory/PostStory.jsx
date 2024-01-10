@@ -48,42 +48,35 @@ export const PostStory = () => {
     setNewStory("");
 
     // Check if the language is supported for sentiment analysis
-    const supportedLanguagesForSentiment = ["en", "es", "ja", "pt"];
-    const languageCode = "sv";
+    const googleApiPayload = {
+      document: {
+        content: newStory,
+        type: "PLAIN_TEXT",
+      },
+    };
 
-    if (!supportedLanguagesForSentiment.includes(languageCode)) {
-      console.log("Sentiment analysis not supported for this language");
-    } else {
-      const googleApiPayload = {
-        document: {
-          content: newStory,
-          type: "PLAIN_TEXT",
-          language: languageCode,
+    console.log("Sending request to Google API with body:", googleApiPayload);
+
+    fetch(
+      `https://language.googleapis.com/v1/documents:analyzeSentiment?key=${
+        import.meta.env.VITE_GOOGLE_LANGUAGE_KEY
+      }`,
+      {
+        method: "POST",
+        body: JSON.stringify(googleApiPayload),
+        headers: {
+          "Content-Type": "application/json",
         },
-      };
-      console.log("Sending request to Google API with body:", googleApiPayload);
-
-      fetch(
-        `https://language.googleapis.com/v1/documents:analyzeSentiment?key=${
-          import.meta.env.VITE_GOOGLE_LANGUAGE_KEY
-        }`,
-        {
-          method: "POST",
-          body: JSON.stringify(googleApiPayload),
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      )
-        .then((res) => res.json())
-        .then((googleApiResponse) => {
-          console.log("Response from Google API:", googleApiResponse);
-          // Add logic to handle the response from sentiment analysis
-        })
-        .catch((error) => {
-          console.error("Error calling Google API:", error);
-        });
-    }
+      }
+    )
+      .then((res) => res.json())
+      .then((googleApiResponse) => {
+        console.log("Response from Google API:", googleApiResponse);
+        // Add logic to handle the response from sentiment analysis
+      })
+      .catch((error) => {
+        console.error("Error calling Google API:", error);
+      });
 
     // Post the story to the backend
     fetch(`http://localhost:3000/stories`, {
