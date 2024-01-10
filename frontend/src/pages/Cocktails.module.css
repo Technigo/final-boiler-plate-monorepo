@@ -1,6 +1,6 @@
 .wrapper {
     background-color: #ffff;
-    height: 400px
+    height: fit-content;
 }
 
 .h1 {
