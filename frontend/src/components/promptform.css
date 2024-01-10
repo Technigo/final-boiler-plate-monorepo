@@ -23,6 +23,7 @@
     text-align: center;
     color: white;
     margin-bottom: 20px;
+    font-weight: normal;
 }
 
 .ingredient-form {
@@ -144,9 +145,5 @@ button:hover {
 
     textarea {
         width: 30%;
-    }
-
-    .instruction-text {
-        color: white;
     }
 }

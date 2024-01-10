@@ -129,7 +129,7 @@ export const recipeStore = create((set, get) => ({
 
     } catch (error) {
       console.error("Error generating OpenAI completion:", error);
-      set(() => ({ errorMessageGeneration: "An unexpected error occurred. Try again!" }));
+      set(() => ({ errorMessageGeneration: "Error when connecting and generating OpenAI. Try again later!" }));
     } finally {
       // Set isGenerating back to false once the operation is completed (either success or error)
       set(() => ({ isGenerating: false }));

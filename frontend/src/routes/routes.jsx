@@ -12,7 +12,6 @@ const routes = (
     <Route path="/" element={<Home />} />
     <Route path="/about" element={<About />} />
     <Route path="/recipe-details/:id" element={<RecipeDetails />} />
-    <Route path="/not-found" element={<NotFound />} />
     <Route path="*" element={<NotFound />} />
   </>
 );

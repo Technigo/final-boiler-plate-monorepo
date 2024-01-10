@@ -53,7 +53,7 @@ export const RecipeDetails = () => {
 
   //Shows the NotFound-page
   if (!foundRecipe) {
-    navigate("not-found");
+    navigate("*");
     return null;
   }
 

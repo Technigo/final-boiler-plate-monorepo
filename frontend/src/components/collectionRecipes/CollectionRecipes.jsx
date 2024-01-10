@@ -49,7 +49,10 @@ export const CollectionRecipes = () => {
           <p className="error-message-generation">{errorMessageFetchAll}</p>
         </div>)}
 
-      <h3>Latest AI-Generated Recipes</h3>
+      {/* Conditionally render the heading only when it is no error message for fetching all recipes */}
+      {!errorMessageFetchAll && (
+        <h3>Latest AI-Generated Recipes</h3>)}
+
       <div className="recipe-grid">
         {limitedRecipes.map((recipe, index) => (
           <CollectionRecipe key={recipe._id} recipe={recipe} index={index} />
