@@ -92,8 +92,9 @@ export const EditAd = () => {
   return (
     <div className="main-container">
       <div className="main-wrapper">
-        <div className="create-ad-container">
+        <div className="edit-ad-container">
           <BackArrow />
+          <h1>Make edits here</h1>
           {isLoading ? (
             <div className="loading-container">
               <Lottie
@@ -105,7 +106,7 @@ export const EditAd = () => {
               />
             </div>
           ) : (
-            <form className="create-ad-form" onSubmit={handleSubmit}>
+            <form className="edit-ad-form" onSubmit={handleSubmit}>
               <div>
                 <label>Title:</label>
                 <input
@@ -142,14 +143,19 @@ export const EditAd = () => {
                 <Dropdown
                   options={[
                     { label: "Kilogram (kg)", value: "kg" },
-                    { label: "Meter (m)", value: "m" },
-                    { label: "Square Meter (m²)", value: "m2" },
+                    { label: "Grams (g)", value: "g" },
                     { label: "Liter (L)", value: "l" },
                     { label: "Milliliter (mL)", value: "ml" },
+                    { label: "Units (u)", value: "u" },
+                    { label: "Meter (m)", value: "m" },
+                    { label: "Centimeters (cm)", value: "cm" },
+                    { label: "Square Meter (m²)", value: "m2" },
+
                   ]}
                   value={unit}
                   onChange={handleUnitChange}
                   defaultOption="Select Unit"
+                  className="dropdown-style"
                 />
               </div>
               <div>

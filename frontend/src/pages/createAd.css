@@ -4,7 +4,7 @@
     /* Default layout for mobile */
     align-items: flex-start;
     /* Align items to the start */
-    margin-bottom: 10px;
+    margin-bottom: 20px;
     /* Space between each field */
 }
 
@@ -67,5 +67,5 @@ select,
     display: grid;
     justify-content: center;
     flex-direction: column;
-    gap: 20px;
+    gap: 10px;
 }

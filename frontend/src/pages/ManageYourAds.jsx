@@ -1,9 +1,8 @@
 import BackArrow from '../components/reusableComponents/BackArrow';
 import { userStore } from "../stores/userStore";
-import { Button } from '../components/reusableComponents/Button';
 import { UserAds } from '../components/UserAds';
 import { SavedAds } from '../components/UsersSavedAds';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from "react-router-dom";
 import { Footer } from "../components/Footer";
 import "./manageYourAds.css";
 import { Navbar } from '../components/Navbar';
@@ -12,10 +11,6 @@ export const ManageYourAds = () => {
   const navigate = useNavigate();
 
   const handleLogout = userStore((state) => state.handleLogout);
-
-  const handleCreateAd = () => {
-    navigate('/create-ad');
-  };
 
   return (
     <>
@@ -49,17 +44,18 @@ export const ManageYourAds = () => {
           <div className="your-ads-container">
             <div className="manage-nav">
               <BackArrow />
-              <Button
-                iconSize="small"
-                label="Create ad"
-                onClick={handleCreateAd}
-                invertIcon={true}
-              />
-              <h2>Your Products</h2>
-              <UserAds />
-              <h2>Saved Products</h2>
-              <SavedAds />
             </div>
+              <div className="manage-content">
+                <h1>Your Products</h1>
+                <div className="add-btn">
+                  <Link to="/create-ad">+ Add a product</Link>
+                </div>
+                <UserAds />
+              </div>
+              <div>
+                <h2>Your Saved Products</h2>
+                <SavedAds />
+              </div>
           </div>
         </div>
       </div>

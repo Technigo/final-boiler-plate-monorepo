@@ -91,7 +91,7 @@ h1 {
   font-size: var(--font-size-h1);
   line-height: 2.25rem;
   font-weight: 700;
-  margin: 1.5rem 0;
+  margin: 1rem 0;
 }
 
 h2 {
@@ -150,8 +150,9 @@ textarea {
   font-weight: 500;
   border: 1px solid var(--border);
   border-radius: var(--border-radius);
-  padding: 2px 5px;
-  max-width: 90%;
+  padding: 5px 10px;
+  max-width: 100%;
+  margin: 0;
 }
 
 /* Images */
@@ -183,7 +184,7 @@ img {
   max-width: 90%;
   margin-top: 30px;
   margin-bottom: 60px;
-  padding: 0 15px;
+  padding: 0;
 }
 
 /* Tablet styles */
@@ -210,7 +211,7 @@ img {
   }
 
   label {
-    font-size: 1.5rem;
+    font-size: 1.125rem;
     /* 24px */
   }
 
@@ -223,7 +224,7 @@ img {
   input[type="file"],
   select,
   textarea {
-    font-size: 1.5rem;
+    font-size: 1.125rem;
     /* 24px */
   }
 
@@ -238,6 +239,7 @@ img {
 @media only screen and (min-width: 1200px) {
   h1 {
     font-size: 3.5rem;
+    margin: 1.5rem 0;
     /* 56px */
   }
 
@@ -262,7 +264,7 @@ img {
   }
 
   label {
-    font-size: 1.5rem;
+    font-size: 1.125rem;
     /* 24px */
   }
 
@@ -275,7 +277,7 @@ img {
   input[type="file"],
   select,
   textarea {
-    font-size: 1.5rem;
+    font-size: 1.125rem;
     /* 24px */
   }
 
