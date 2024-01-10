@@ -89,34 +89,36 @@ export const Landing = () => {
       />
       <div className="main-container">
         <div className="main-wrapper">
-          <div className="landing-container">
-            <div className="hero">
-              <h1 className="landing-heading">Stop the waste!</h1>
-              <h3>Help yourself by helping others and the environment!</h3>
+          <div className="hero">
+            <h1 className="landing-heading">Stop the waste!</h1>
+            <h3>Help yourself by helping others and the environment!</h3>
+            <div className="lottie-container">
               <Lottie animationData={shareAnimation} />
             </div>
+          </div>
+          <div className="button-wrapper">
             <Button label="Get started" link="/login" />
-            <div className="how-to">
-              <h1>How it works</h1>
-              <div className="landing-list">
-                <div>
-                  <h3>Share online</h3>
-                  <img src={picture} alt="share-online" />
-                </div>
-                <div>
-                  <h3>Get contacted</h3>
-                  <img src={contact} alt="contact" />
-                </div>
-                <div>
-                  <h3>Give it away</h3>
-                  <img src={giveAway} alt="give-away" />
-                </div>
+          </div>
+          <div className="how-to">
+            <h1>How it works</h1>
+            <div className="landing-list">
+              <div>
+                <h3>Share online</h3>
+                <img src={picture} alt="share-online" />
               </div>
-              <div className="breakline"></div>
+              <div>
+                <h3>Get contacted</h3>
+                <img src={contact} alt="contact" />
+              </div>
+              <div>
+                <h3>Give it away</h3>
+                <img src={giveAway} alt="give-away" />
+              </div>
             </div>
-            <div className="landing-subtitle">
-              <h2>What others have given away...</h2>
-            </div>
+            <div className="breakline"></div>
+          </div>
+          <div className="landing-subtitle">
+            <h2>What others have given away...</h2>
           </div>
         </div>
       </div>

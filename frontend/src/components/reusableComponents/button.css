@@ -10,7 +10,6 @@ button.button {
     cursor: pointer;
     transition: border-color 0.25s;
     color: var(--cta-text);
-    margin: 0 5px;
 }
 
 .button:hover,

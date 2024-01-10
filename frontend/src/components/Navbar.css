@@ -13,14 +13,13 @@ nav {
 }
 
 .navbar-logo img {
-  margin-left: 30px;
-  /* Increased margin-left for the logo */
+  margin-left: 10px;
 }
 
 .hamburger-menu {
   display: block;
   margin-left: 20px;
-  margin-right: 15px;
+  margin-right: 10px;
 }
 
 .bar {
@@ -120,8 +119,20 @@ nav .app-ul {
   color: var(--nav-hover-text);
 }
 
+@media screen and (min-width: 768px) {
+  .navbar-logo img {
+    margin-left: 30px;
+  }
+  
+  .hamburger-menu {
+    display: block;
+    margin-left: 20px;
+    margin-right: 30px;
+  }
+}
+
 /* Media query for desktop devices */
-@media screen and (min-width: 1120px) {
+@media screen and (min-width: 1200px) {
   nav {
     display: flex;
     justify-content: center;
@@ -142,7 +153,7 @@ nav .app-ul {
     list-style: none;
     width: 100%;
     padding: 0;
-    margin: 0;
+    margin-right: 50px;
   }
 
   .app-ul .app-li {
