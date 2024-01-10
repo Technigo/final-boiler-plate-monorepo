@@ -1,13 +1,10 @@
 import { useEffect, useState } from "react";
 import { AdCard } from "./AdCard";
 import { adStore } from "../stores/adStore";
-import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
 import "./adslist.css";
 import { Button } from "./reusableComponents/Button";
 
-export const AdsList = ({ fetchType, userId, displayGrid = false, initialDisplayCount = 4, maxDisplayCount = 20 }) => {
+export const AdsList = ({ fetchType, userId, initialDisplayCount = 4, maxDisplayCount = 20 }) => {
   const [ads, setAds] = useState([]);
   const [displayCount, setDisplayCount] = useState(initialDisplayCount);
   const getAllAds = adStore((state) => state.getAllAds);
@@ -43,52 +40,6 @@ export const AdsList = ({ fetchType, userId, displayGrid = false, initialDisplay
   }, [getAllAds, fetchAds, fetchAdsByUserId, fetchType, userId, maxDisplayCount]);
   // Add fetchType to dependency array
 
-
-  // Settings for the carousel
-  const settings = {
-    dots: true,
-    arrows: true,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 4,
-    slidesToScroll: 2,
-    autoplay: true,
-    pauseOnHover: true,
-    responsive: [
-      {
-        breakpoint: 2000,
-        settings: {
-          slidesToShow: 4,
-          slidesToScroll: 3,
-          initialSlide: 3,
-        },
-      },
-      {
-        breakpoint: 1440,
-        settings: {
-          slidesToShow: 3,
-          slidesToScroll: 3,
-          initialSlide: 3,
-        },
-      },
-      {
-        breakpoint: 834,
-        settings: {
-          slidesToShow: 2,
-          slidesToScroll: 2,
-          initialSlide: 2,
-        },
-      },
-      {
-        breakpoint: 393,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-        },
-      },
-    ],
-  };
-
   const renderAdsGrid = () => (
     <div className="ads-grid">
       {ads.slice(0, displayCount).map((ad) => (
@@ -100,65 +51,23 @@ export const AdsList = ({ fetchType, userId, displayGrid = false, initialDisplay
   );
 
   return (
-    <>
-      {fetchType === "all" ? (
-        // Display all ads in a carousel
-        <div className="ads-outer-wrapper">
-          {displayGrid ? renderAdsGrid() : (
-            <Slider {...settings}>
-              {ads.map((ad, index) => (
-                <div className={`ads-inner-wrapper ${index < displayCount ? '' : 'hidden'}`} key={ad._id}>
-                  <AdCard ad={ad} />
-                </div>
-              ))}
-            </Slider>
-          )}
-        </div>
+    <div className="ads-outer-wrapper">
+      {ads.length === 0 ? (
+        <p>{userId ? "This user doesn't have any ads." : "You don't have any ads."}</p>
       ) : (
-        // Display user-specific ads (either logged-in user or a specific user)
-        <div className="ads-outer-wrapper">
-          {ads.length === 0 ? (
-            // No ads found message
-            <p>
-              {userId
-                ? "This user doesn't have any ads."
-                : "You don't have any ads."}
-            </p>
-          ) : ads.length > 0 && ads.length < 4 ? (
-            // If the users have fewer than 4 ads, render them in a row
-            <div className="ads-outer-wrapper-user">
-              {ads.map((ad) => (
-                <div className="ads-inner-wrapper" key={ad._id}>
-                  <AdCard ad={ad} />
-                </div>
-              ))}
-            </div>
-          ) : (
-            // Display user's ads in carousel if user has four or more ads
-            <div className="ads-outer-wrapper">
-              {displayGrid ? renderAdsGrid() : (
-                <Slider {...settings}>
-                  {ads.map((ad) => (
-                    <div className="ads-inner-wrapper" key={ad._id}>
-                      <AdCard ad={ad} />
-                    </div>
-                  ))}
-                </Slider>
-              )}
-            </div>
-          )}
-        </div>
+        renderAdsGrid()
       )}
       {ads.length > initialDisplayCount && (
-        <Button
-          label={displayCount === maxDisplayCount ? "Show Less" : "Show More"}
-          onClick={displayCount === maxDisplayCount ? showLessAds : showMoreAds}
-        />
+        <div className="show-more">
+          <Button
+            label={displayCount === maxDisplayCount ? "Show Less" : "Show More"}
+            onClick={displayCount === maxDisplayCount ? showLessAds : showMoreAds}
+          />
+        </div>
       )}
-    </>
+    </div>
   );
 };
-
 //THIS IS HOW TO USE IT IN YOUR PAGE/COMPONENT
 // Usage examples:
 // <AdsList fetchType="all" />  // For all ads
