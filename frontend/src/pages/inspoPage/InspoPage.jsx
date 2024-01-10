@@ -15,19 +15,34 @@ export const InspoPage = () => {
 
   const buttonCoordinates = [
     { x: 10, y: 30, plantIndex: 2 }, // Example coordinates, adjust based on your image
-    { x: 65, y: 65, plantIndex: 1 },
-    { x: 90, y: 55, plantIndex: 0 },
+    { x: 65, y: 45, plantIndex: 1 },
+    { x: 90, y: 35, plantIndex: 0 },
     // Add more coordinates as needed
   ];
 
+  // const handleButtonClick = (plantIndex) => {
+  //   setSelectedPlantIndexes((prevIndexes) => [...prevIndexes, plantIndex]);
+  // };
+
   const handleButtonClick = (plantIndex) => {
-    setSelectedPlantIndexes((prevIndexes) => [...prevIndexes, plantIndex]);
+    setSelectedPlantIndexes((prevIndexes) => {
+      if (prevIndexes.includes(plantIndex)) {
+        // Deselect the plant if already selected
+        return [];
+      } else {
+        // Select the clicked plant
+        return [plantIndex];
+      }
+    });
   };
+
+  console.log("p", plants)
+  console.log("pi", selectedPlantIndexes)
 
   return (
     <section>
       <h2 className="section-title">Plant Dreams</h2>
-      <img
+      <img className="inspo-img"
         src="./inspo-bedroom-mixed.jpg"
         alt="A picture of a modern bedroom with plants."
       />
@@ -44,7 +59,7 @@ export const InspoPage = () => {
       ))}
 
       {/* Render PlantCard based on selectedPlantIndex */}
-      {selectedPlantIndexes !== null && (
+      {selectedPlantIndexes !== null && plants.length > 0 && (
         <PlantCard plants={selectedPlantIndexes.map((index) => plants[index])} />
       )}
     </section>

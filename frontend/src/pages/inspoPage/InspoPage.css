@@ -1,9 +1,10 @@
 section {
+  position: relative;
   width: 100%;
   height: auto;
 }
 
-img {
+.inspo-img {
     position: relative;
   width: 100%;
   height: auto;

@@ -13,16 +13,16 @@ export const plantStore = create((set, get) => ({
   plants: [],
   singlePlant: {},
 
-  apiEndpoint: `${apiEnv}`, // Default API endpoint
+  //apiEndpoint: `${apiEnv}`, // Default API endpoint
   selectedCategory: null,
 
   setPlants: (plants) => set({ plants }),
   setSinglePlant: (singlePlant) => set({ singlePlant }),
   setApiEndpoint: (endpoint) => set({ apiEndpoint: endpoint }),
 
-  fetchPlants: async () => {
+  fetchPlants: async (endpoint) => {
     try {
-      const response = await fetch(get().apiEndpoint, {
+      const response = await fetch(apiEnv + endpoint, {
         method: "GET",
       });
       if (response.ok) {
@@ -40,28 +40,30 @@ export const plantStore = create((set, get) => ({
     let endpoint;
     switch (category) {
       case "shade-loving":
-        endpoint = `${apiEnv}/category/shade-loving`;
+        endpoint = `/category/shade-loving`;
         break;
       case "easy":
-        endpoint = `${apiEnv}/category/easy`;
+        endpoint = `/category/easy`;
         break;
       case "pet-friendly":
-        endpoint = `${apiEnv}/category/pet-friendly`;
+        endpoint = `/category/pet-friendly`;
         break;
       case "climbing":
-        endpoint = `${apiEnv}/category/climbing`;
+        endpoint = `/category/climbing`;
         break;
       case "popular":
-        endpoint = `${apiEnv}/category/popular`;
+        endpoint = `/category/popular`;
         break;
       default:
-        endpoint = `${apiEnv}`;
+        endpoint = ``;
     }
 
-    set({ selectedCategory: category, apiEndpoint: endpoint });
+    set({ selectedCategory: category, 
+    //  apiEndpoint: endpoint 
+    });
 
     try {
-      await get().fetchPlants();
+      await get().fetchPlants(endpoint);
     } catch (error) {
       console.error("Error fetching plants", error);
     }
@@ -83,7 +85,7 @@ export const plantStore = create((set, get) => ({
   fetchPlantsByIds: async (plantIds) => {
     try {
       // Ensure that fetchPlants is completed before proceeding
-      await get().fetchPlants();
+      await get().fetchPlants("");
 
       const allPlants = get().plants;
 

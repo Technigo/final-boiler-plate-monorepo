@@ -52,17 +52,17 @@ app.use("/api/users", userRoutes); // All the routes in userRoutes.js will be pr
 app.use("/api/plants", plantRoutes); // All the routes in plantRoutes.js will be prefixed with /api/plants.
 app.use("/api/favourites", favouriteRoutes); // All the routes in favouriteRoutes.js will be prefixed with /api/favourites.
 
-// Seeding the database with the plant data.
-// const seedDatabase = async () => {
-//   try {
-//     await PlantModel.deleteMany({});
-//     await PlantModel.insertMany(data);
-//     console.log("Database has been seeded");
-//   } catch (error) {
-//     console.error("Error resetting the database:", error.message);
-//   }
-// };
-// seedDatabase();
+//Seeding the database with the plant data.
+const seedDatabase = async () => {
+  try {
+    await PlantModel.deleteMany({});
+    await PlantModel.insertMany(data);
+    console.log("Database has been seeded");
+  } catch (error) {
+    console.error("Error resetting the database:", error.message);
+  }
+};
+//seedDatabase();
 
 // General error handling middleware
 // app.use((err, req, res, next) => {

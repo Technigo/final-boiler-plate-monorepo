@@ -3,6 +3,7 @@ import { PiHeartStraightFill } from "react-icons/pi";
 import { Button } from "../../components/buttons/Button";
 
 export const PlantCard = ({ plants }) => {
+  console.log("plants", plants)
   return (
     <>
       {plants.map((plant) => {
