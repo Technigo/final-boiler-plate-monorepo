@@ -201,7 +201,7 @@ export const EditAd = () => {
                 </div>
               )}
               <Button
-                label="Update Ad"
+                label="Save changes"
                 className="button"
                 onClick={(e) => handleSubmit(e)}
               />
