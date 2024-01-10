@@ -77,7 +77,6 @@ export const userStore = create((set) => ({
           isLoggedIn: true,
         })
         localStorage.setItem('accessToken', data.response.accessToken)
-        alert('Login successful');
         console.log("Logging in with:", username, password)
       } else {
         alert(JSON.stringify(data.response) || "Login failed")

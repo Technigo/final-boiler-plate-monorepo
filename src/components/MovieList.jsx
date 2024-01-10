@@ -17,7 +17,7 @@ export const MovieList = () => {
   }, [fetchMovies])
 
   return (
-    <div className="the-movie-list">
+    <div className="the-movie-list" id="app-container">
       {movies && movies.slice(0, 20).map((movie) => (
         <Link
           to={`/movie/${movie._id}`}

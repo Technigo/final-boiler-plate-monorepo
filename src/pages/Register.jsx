@@ -22,7 +22,7 @@ export const Register = () => {
 
       if (username && password) {
         const appContainer = document.getElementById('app-container');
-        appContainer.innerText = `Registration successful`;
+        appContainer.innerText = `Registration successful click on HOME`;
         navigate('/');
       }
     } catch (error) {

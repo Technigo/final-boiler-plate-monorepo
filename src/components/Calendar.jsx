@@ -35,7 +35,12 @@ export const Calendar = () => {
   }, []);
 
   const handleDateClick = (date) => {
-    setSelectedDate(date)
+    if (selectedDate && selectedDate === date) {
+      setSelectedDate(null)
+    } else {
+      setSelectedDate(date)
+    }
+
   };
 
   // setting for slider slick-carousel
