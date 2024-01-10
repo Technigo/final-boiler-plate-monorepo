@@ -1,4 +1,5 @@
-import { useEffect } from 'react'
+import { useState, useEffect } from 'react'
+// import { useParams } from 'react-router-dom'
 import { Link } from 'react-router-dom'
 import { userStore } from '../store/userStore'
 import { bookingStore } from '../store/bookingStore'
@@ -18,8 +19,16 @@ const compareArrays = (arrayOne, arrayTwo) => {
 }
 
 export const Booking = () => {
+	const [ thisShowTime, setThisShowTime ] = useState()
+	const [ cinemaHall, setCinemahall ] = useState()
+	const [ movieTitle, setMovieTitle ] = useState()
+	const [ seatInfo, setSeatInfo ] = useState()
+
 	const fetchShows = bookingStore((state) => (state.fetchAllShowTimes))
 	fetchShows()
+
+	// const showtimeParam = useParams()
+	// console.log(showtimeParam)
 
 	const stateSeats = bookingStore((state) => state.selectedSeats)
 	const isLoggedIn = userStore.getState().isLoggedIn
@@ -33,17 +42,25 @@ export const Booking = () => {
 	const selectedShowtime = bookingStore((state) => state.selectedShowtime)
 	const setSelectedShowtime = bookingStore((state) => state.setSelectedShowtime)
 	
-	const thisShowTime = allShowTimes[1]
-	// setSelectedShowtime(thisShowTime._id)
-	// console.log(selectedShowtime)
-	const cinemaHall = thisShowTime.cinemaHall
-	const movieTitle = thisShowTime.movieTitle
-	const seatInfo = thisShowTime.seats
+	// const thisShowTime = allShowTimes[1]
+	// // setSelectedShowtime(thisShowTime._id)
+	// // console.log(selectedShowtime)
+	// const cinemaHall = thisShowTime.cinemaHall
+	// const movieTitle = thisShowTime.movieTitle
+	// const seatInfo = thisShowTime.seats
 	
 	useEffect(() => console.log('selectedSeats', stateSeats, 'stateSeats'), [stateSeats])
 	useEffect(() => {
+		setThisShowTime(allShowTimes[1])
+		setCinemahall(thisShowTime.cinemaHall)
+		setMovieTitle(thisShowTime.movieTitle)
+		setSeatInfo(thisShowTime.seats)
+	}, [allShowTimes])
+	useEffect(() => {
 		setSelectedShowtime(thisShowTime._id)
 		console.log(selectedShowtime)
+
+
 		console.log(thisShowTime)
 	}, [])
 
