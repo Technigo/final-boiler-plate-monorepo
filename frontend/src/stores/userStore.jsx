@@ -4,6 +4,7 @@ const userApi = import.meta.env.VITE_USER_API;
 
 export const userStore = create((set, get) => ({
   user: null,
+  setUser: (user) => set({ user }),
   error: null,
   isLoggedIn: false,
   register: async (username, password, email) => {
@@ -15,13 +16,16 @@ export const userStore = create((set, get) => ({
         body: JSON.stringify({ username, password, email }),
       });
 
-      if (!response.ok) {
-        throw new Error("Registration failed");
-      }
-
       const user = await response.json();
-      set({ user, isLoggedIn: true });
-      return user; // Return the user data
+      if (user.success) {
+        set({ user, isLoggedIn: true });
+        // Redirect or update UI
+        alert("Signup successful!");
+        console.log("Signing up with:", username);
+      } else {
+        // Display error message from server
+        alert(user.response || "Signup failed");
+      }
     } catch (error) {
       set({ error: error.message });
     }
