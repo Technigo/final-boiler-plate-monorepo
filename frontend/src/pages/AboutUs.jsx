@@ -1,4 +1,3 @@
-import React from 'react';
 import { Text } from '../UI/Typography'; // Adjust the path as needed
 import styles from './AboutUs.module.css';
 
