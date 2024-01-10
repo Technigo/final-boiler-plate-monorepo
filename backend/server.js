@@ -26,12 +26,18 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 // Middleware to serve static files from the 'uploads' directory
-app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+app.use('/uploads', express.static('uploads'));
 
 // Registering API routes with the Express application
 app.use('/', userRoutes);
 app.use('/admin', adminRoutes);
 app.use('/cocktails', cocktailRoutes);
+
+// Error handling middleware
+app.use(function (err, req, res, next) {
+  console.error(err.stack);
+  res.status(500).send('Something broke!');
+});
 
 // Connecting to Mongo DB Atlas Instance
 connectAtlasDB(); // Connects to MongoDB Atlas
