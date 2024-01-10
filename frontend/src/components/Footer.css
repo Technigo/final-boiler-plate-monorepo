@@ -35,6 +35,25 @@
   text-align: center;
 }
 
+.footer-about a,
+.footer-terms a {
+  color: var(--secondary-text);
+  text-decoration: none;
+  margin: 0 15px;
+  transition: color 0.4s;
+}
+
+.footer-about a:hover,
+.footer-terms a:hover {
+  color: var(--cta-hover);
+}
+
+.footer-sub-section {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
 .team-container {
   display: flex;
   justify-content: space-around;
@@ -94,5 +113,4 @@
     width: 60px;
     height: auto;
   }
-
 }

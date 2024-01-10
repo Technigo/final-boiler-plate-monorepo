@@ -10,7 +10,6 @@ import { useEffect } from "react";
 import Swal from "sweetalert2";
 import BackArrow from "../components/reusableComponents/BackArrow";
 
-
 // Define the 'Search' functional component.
 export const Search = () => {
   const navigate = useNavigate();
@@ -25,32 +24,59 @@ export const Search = () => {
       Swal.fire({
         title: "Error!",
         text: "Please log in to see the content",
-        icon: "error"
+        icon: "error",
       });
       navigate("/login");
-  }}, [isLoggedin, navigate]);
+    }
+  }, [isLoggedin, navigate]);
 
-  
   return (
     <div>
-       <Navbar menuItems={[{path: "/search", name: "Search"} ,{path: "/settings", name: "Settings"}, {path: "/about", name: "About"} , {path: "/terms", name: "Terms"} , {name: "Logout", onClick: () => {
-        handleLogout()
-        navigate("/login")
-        }}]} menuDesks={[{path: "/settings", name: "Settings"},{path: "/terms", name: "Terms"} , {path: "/about", name: "About"} ,{name: "Logout", onClick: () => {
-        handleLogout()
-        navigate("/login")
-        }}  ]}/>
-        <BackArrow />
-      <SearchBar setFilteredAds={setFilteredAds} searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
-      {filteredAds.length > 0 && <h1 className="search-result">Search Result</h1>}
+      <Navbar
+        menuItems={[
+          { path: "/home", name: "Home" },
+          { path: "/search", name: "Search" },
+          { path: "/settings", name: "My Setting" },
+          { path: "/manage-your-ads", name: "My Products" },
+          { path: "/about", name: "About" },
+          { path: "/terms", name: "Terms" },
+          {
+            name: "Logout",
+            onClick: () => {
+              handleLogout();
+              navigate("/login");
+            },
+          },
+        ]}
+        menuDesks={[
+          { path: "/home", name: "Home" },
+          { path: "/settings", name: "My Setting" },
+          { path: "/manage-your-ads", name: "My Products" },
+          {
+            name: "Logout",
+            onClick: () => {
+              handleLogout();
+              navigate("/login");
+            },
+          },
+        ]}
+      />
+      <BackArrow />
+      <SearchBar
+        setFilteredAds={setFilteredAds}
+        searchTerm={searchTerm}
+        setSearchTerm={setSearchTerm}
+      />
+      {filteredAds.length > 0 && (
+        <h1 className="search-result">Search Result</h1>
+      )}
       <ul className="filtered-ads">
         {filteredAds.map((ad) => (
           <AdCard key={ad._id} ad={ad} />
         ))}
       </ul>
-      
+
       <Footer />
     </div>
-    
   );
 };

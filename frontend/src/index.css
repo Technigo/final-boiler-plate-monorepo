@@ -150,6 +150,7 @@ textarea {
   border-radius: var(--border-radius);
   padding: 5px 10px;
   max-width: 100%;
+  width: 100%;
   margin: 0;
 }
 
@@ -221,11 +222,11 @@ img {
   input[type="password"],
   input[type="email"],
   input[type="number"],
-  input[type="email"],
   input[type="datetime-local"],
   input[type="file"],
   select,
   textarea {
+    width: 100%;
     font-size: 1.125rem;
     /* 24px */
   }
@@ -274,11 +275,11 @@ img {
   input[type="password"],
   input[type="email"],
   input[type="number"],
-  input[type="email"],
   input[type="datetime-local"],
   input[type="file"],
   select,
   textarea {
+    width: 100%;
     font-size: 1.125rem;
     /* 24px */
   }

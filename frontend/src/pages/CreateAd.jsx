@@ -128,7 +128,7 @@ export const CreateAd = () => {
         menuItems={[
           { path: "/home", name: "Home" },
           { path: "/search", name: "Search" },
-          { path: "/settings", name: "My Setting" },
+          { path: "/settings", name: "My Settings" },
           { path: "/manage-your-ads", name: "My Products" },
           { path: "/about", name: "About" },
           { path: "/terms", name: "Terms" },
@@ -143,10 +143,9 @@ export const CreateAd = () => {
         menuDesks={[
           { path: "/home", name: "Home" },
           { path: "/search", name: "Search" },
-          { path: "/settings", name: "My Setting" },
+          { path: "/settings", name: "My Settings" },
           { path: "/manage-your-ads", name: "My Products" },
-          { path: "/about", name: "About" },
-          { path: "/terms", name: "Terms" },
+
           {
             name: "Logout",
             onClick: () => {

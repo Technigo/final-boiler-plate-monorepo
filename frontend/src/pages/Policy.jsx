@@ -4,6 +4,7 @@ import { Heading } from "../components/reusableComponents/Heading";
 import { useNavigate, Link } from "react-router-dom";
 import { userStore } from "../stores/userStore";
 import { useEffect } from "react";
+import BackArrow from "../components/reusableComponents/BackArrow";
 import Swal from "sweetalert2";
 import "./policy.css";
 
@@ -31,7 +32,8 @@ export const Policy = () => {
         menuItems={[
           { path: "/home", name: "Home" },
           { path: "/search", name: "Search" },
-          { path: "/settings", name: "My Setting" },
+          { path: "/settings", name: "Settings" },
+          { path: "/manage-your-ads", name: "My Products" },
           { path: "/about", name: "About" },
           { path: "/terms", name: "Terms" },
           {
@@ -46,8 +48,9 @@ export const Policy = () => {
           { path: "/home", name: "Home" },
           { path: "/search", name: "Search" },
           { path: "/settings", name: "My Setting" },
+          { path: "/manage-your-ads", name: "My Products" },
           { path: "/about", name: "About" },
-          { path: "/terms", name: "Terms" },
+
           {
             name: "Logout",
             onClick: () => {
@@ -59,6 +62,9 @@ export const Policy = () => {
       />
       <div className="main-container">
         <div className="main-wrapper">
+          <div className="arrow-container">
+            <BackArrow />
+          </div>
           <Heading
             level={1}
             text="Terms of Service"

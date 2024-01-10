@@ -5,6 +5,7 @@ import { Button } from "../components/reusableComponents/Button";
 import { useNavigate, Link } from "react-router-dom";
 import { userStore } from "../stores/userStore";
 import { useEffect } from "react";
+import BackArrow from "../components/reusableComponents/BackArrow";
 import contact from "../assets/get-contact.svg";
 import giveAway from "../assets/give-away.svg";
 import picture from "../assets/picture.svg";
@@ -41,8 +42,9 @@ export const About = () => {
         menuItems={[
           { path: "/home", name: "Home" },
           { path: "/search", name: "Search" },
-          { path: "/settings", name: "My Setting" },
+          { path: "/settings", name: "Settings" },
           { path: "/manage-your-ads", name: "My Products" },
+          { path: "/about", name: "About" },
           { path: "/terms", name: "Terms" },
           {
             name: "Logout",
@@ -70,6 +72,9 @@ export const About = () => {
       <div className="main-container">
         <div className="main-wrapper">
           <div className="about-container">
+            <div className="arrow-container">
+              <BackArrow />
+            </div>
             <Heading
               level={1}
               text="What Is Green Buddy?"
