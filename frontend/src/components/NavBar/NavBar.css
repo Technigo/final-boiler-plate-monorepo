@@ -14,7 +14,7 @@
 .logo {
   fill: #faebd7;
   height: 100px;
-  /* width: auto; */
+  width: auto;
   filter: invert(1);
   margin-bottom: -42px;
   z-index: 10;
@@ -23,7 +23,7 @@
 .hamburger {
   display: block;
   height: 30px;
-  /* width: 10%; */
+  width: 10%;
   padding-right: 20px;
   margin-bottom: -23px;
 }

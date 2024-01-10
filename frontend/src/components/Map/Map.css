@@ -61,7 +61,18 @@ a {
   font-size: 10px;
 }
 
+@media (min-width: 500px) and (max-width: 767px) {
+  .my-map-container {
+    width: 95%;
+    margin-left: 2.5%;
+  }
+}
+
 @media (min-width: 768px) {
+  .my-map-container {
+    width: 95%;
+  }
+
   .search-input {
     font-size: 17px;
     width: 290px;
@@ -70,6 +81,11 @@ a {
 }
 
 @media (min-width: 1280px) {
+  .my-map-container {
+    width: 95%;
+    margin-left: 2.5%;
+  }
+
   .search-input {
     font-size: 17px;
     width: 290px;
