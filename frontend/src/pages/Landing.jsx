@@ -16,13 +16,14 @@ import broccoli from "../assets/broccoli.jpeg";
 import tomatoes from "../assets/cherry-tomatoes.jpeg";
 import cucumber from "../assets/cucumber.jpeg";
 import jam from "../assets/jam.jpeg";
+import tinyTim from "../assets/tiny-tim.jpg";
 
 export const Landing = () => {
   const [sliderImages, setSliderImages] = useState([]);
 
   useEffect(() => {
     // Set images to state when they are loaded
-    setSliderImages([broccoli, tomatoes, cucumber, jam]);
+    setSliderImages([broccoli, tomatoes, cucumber, jam, tinyTim]);
   }, []);
 
   // Settings for the carousel
@@ -47,7 +48,7 @@ export const Landing = () => {
       {
         breakpoint: 1440,
         settings: {
-          slidesToShow: 3,
+          slidesToShow: 4,
           slidesToScroll: 3,
           initialSlide: 3,
         },

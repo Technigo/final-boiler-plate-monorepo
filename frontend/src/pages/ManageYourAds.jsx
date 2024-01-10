@@ -1,23 +1,47 @@
-import BackArrow from '../components/reusableComponents/BackArrow';
+import BackArrow from "../components/reusableComponents/BackArrow";
+import { Button } from "../components/reusableComponents/Button";
+import { UserAds } from "../components/UserAds";
 import { userStore } from "../stores/userStore";
-import { UserAds } from '../components/UserAds';
-import { SavedAds } from '../components/UsersSavedAds';
+import { SavedAds } from "../components/UsersSavedAds";
 import { useNavigate, Link } from "react-router-dom";
+import { Navbar } from "../components/Navbar";
 import { Footer } from "../components/Footer";
-import "./manageYourAds.css";
-import { Navbar } from '../components/Navbar';
+import { useEffect } from "react";
+import Swal from "sweetalert2";
+import "./manageyourads.css";
 
 export const ManageYourAds = () => {
   const navigate = useNavigate();
 
+  const handleCreateAd = () => {
+    navigate("/create-ad");
+  };
+
+  // Get 'isLoggedIn' and 'accessToken' from the 'userStore'.
+  const isLoggedin = userStore((state) => state.isLoggedin);
   const handleLogout = userStore((state) => state.handleLogout);
+  // useEffect hook to check user authentication status.
+  useEffect(() => {
+    if (!isLoggedin) {
+      // If the user is not logged in, show an alert and navigate to the login route.
+      Swal.fire({
+        title: "Error!",
+        text: "Please log in to see the content",
+        icon: "error",
+      });
+      navigate("/login");
+    }
+  }, [isLoggedin, navigate]);
 
   return (
     <>
       <Navbar
         menuItems={[
+          { path: "/home", name: "Home" },
           { path: "/search", name: "Search" },
           { path: "/settings", name: "My Setting" },
+          { path: "/about", name: "About" },
+          { path: "/terms", name: "Terms" },
           {
             name: "Logout",
             onClick: () => {
@@ -27,8 +51,11 @@ export const ManageYourAds = () => {
           },
         ]}
         menuDesks={[
+          { path: "/home", name: "Home" },
           { path: "/search", name: "Search" },
-          { path: "/settings", name: "Settings" },
+          { path: "/settings", name: "My Setting" },
+          { path: "/about", name: "About" },
+          { path: "/terms", name: "Terms" },
           {
             name: "Logout",
             onClick: () => {
@@ -37,25 +64,23 @@ export const ManageYourAds = () => {
             },
           },
         ]}
-        logoRedirectPath="/home"
       />
       <div className="main-container">
         <div className="main-wrapper">
           <div className="your-ads-container">
             <div className="manage-nav">
               <BackArrow />
+              <Button
+                iconSize="small"
+                label="Create ad"
+                onClick={handleCreateAd}
+                invertIcon={true}
+              />
+              <h2>Your Products</h2>
+              <UserAds />
+              <h2>Saved Products</h2>
+              <SavedAds />
             </div>
-              <div className="manage-content">
-                <h1>Your Products</h1>
-                <div className="add-btn">
-                  <Link to="/create-ad">+ Add a product</Link>
-                </div>
-                <UserAds />
-              </div>
-              <div>
-                <h2>Your Saved Products</h2>
-                <SavedAds />
-              </div>
           </div>
         </div>
       </div>
@@ -63,4 +88,3 @@ export const ManageYourAds = () => {
     </>
   );
 };
-

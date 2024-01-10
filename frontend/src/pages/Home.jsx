@@ -50,10 +50,11 @@ export const Home = () => {
           },
         ]}
         menuDesks={[
-          { path: "/settings", name: "Settings" },
+          { path: "/search", name: "Search" },
+          { path: "/settings", name: "My Setting" },
           { path: "/manage-your-ads", name: "My Products" },
-          { path: "/terms", name: "Terms" },
           { path: "/about", name: "About" },
+          { path: "/terms", name: "Terms" },
           {
             name: "Logout",
             onClick: () => {
@@ -70,12 +71,14 @@ export const Home = () => {
             <SearchBar />
           </Link>
           <h1>Recently added</h1>
-          {isLoggedin &&
+          {isLoggedin && (
             <AdsList
               fetchType="all"
               displayGrid="true"
               initialDisplayCount={4}
-              maxDisplayCount={20} />}
+              maxDisplayCount={20}
+            />
+          )}
           {/* Render the user's ads */}
           <h1>Your ads</h1>
           {isLoggedin && <AdsList fetchType="user" />}
