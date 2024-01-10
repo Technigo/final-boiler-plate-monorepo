@@ -215,7 +215,6 @@ export const getShowtimeByMovie = asyncHandler(async (req, res) => {
 // @desc seed showtimes from json-file
 // @route /seedshowtime
 // @access public
-
 export const seedShowtimes = asyncHandler(async (req, res) => {
 	await ShowTimeModel.deleteMany({})
 	
