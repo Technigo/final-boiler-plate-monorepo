@@ -26,6 +26,7 @@ export const PostStory = () => {
   const handleFormSubmit = async (e) => {
     e.preventDefault();
 
+
     if (newStory.length < 10) {
       alert("The message is too short. Please try again! 💕");
       return;
@@ -46,45 +47,40 @@ export const PostStory = () => {
     setNewStory("");
 
     // Check if the language is supported for sentiment analysis
-    const supportedLanguagesForSentiment = ["en", "es", "ja", "pt"];
-    const languageCode = "sv";
+    const googleApiPayload = {
+      document: {
+        content: newStory,
+        type: "PLAIN_TEXT",
+      },
+    };
 
-    if (!supportedLanguagesForSentiment.includes(languageCode)) {
-      console.log("Sentiment analysis not supported for this language");
-    } else {
-      const googleApiPayload = {
-        document: {
-          content: newStory,
-          type: "PLAIN_TEXT",
-          language: languageCode,
+    console.log("Sending request to Google API with body:", googleApiPayload);
+
+    fetch(
+      `https://language.googleapis.com/v1/documents:analyzeSentiment?key=${
+        import.meta.env.VITE_GOOGLE_LANGUAGE_KEY
+      }`,
+      {
+        method: "POST",
+        body: JSON.stringify(googleApiPayload),
+        headers: {
+          "Content-Type": "application/json",
         },
-      };
-      console.log("Sending request to Google API with body:", googleApiPayload);
-
-      fetch(
-        `https://language.googleapis.com/v1/documents:analyzeSentiment?key=${
-          import.meta.env.VITE_GOOGLE_LANGUAGE_KEY
-        }`,
-        {
-          method: "POST",
-          body: JSON.stringify(googleApiPayload),
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      )
-        .then((res) => res.json())
-        .then((googleApiResponse) => {
-          console.log("Response from Google API:", googleApiResponse);
-          // Add logic to handle the response from sentiment analysis
-        })
-        .catch((error) => {
-          console.error("Error calling Google API:", error);
-        });
-    }
+      }
+    )
+      .then((res) => res.json())
+      .then((googleApiResponse) => {
+        console.log("Response from Google API:", googleApiResponse);
+        // Add logic to handle the response from sentiment analysis
+      })
+      .catch((error) => {
+        console.error("Error calling Google API:", error);
+      });
 
     // Post the story to the backend
+
     fetch("http://localhost:3000/stories", {
+
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -282,99 +278,6 @@ export const PostStory = () => {
             ))}
           </div>
         </Modal>
-        {/* <div className="gallery-images">
-            <button
-              className="image-buttons"
-              type="button"
-              onClick={() => handleImageSelect("image1.png")}
-            >
-              <img src={"image1.png"} alt="Image 1" />
-            </button>
-            <button
-              className="image-buttons"
-              type="button"
-              onClick={() => handleImageSelect("./image2.png")}
-            >
-              <img src={"image2.png"} alt="Image 2" />
-            </button>
-            <button
-              className="image-buttons"
-              type="button"
-              onClick={() => handleImageSelect("image3.png")}
-            >
-              <img src={"image3.png"} alt="Image 3" />
-            </button>
-            <button
-              className="image-buttons"
-              type="button"
-              onClick={() => handleImageSelect("./image4.png")}
-            >
-              <img src={"image4.png"} alt="Image 4" />
-            </button>
-            <button
-              className="image-buttons"
-              type="button"
-              onClick={() => handleImageSelect("./image5.png")}
-            >
-              <img src={"image5.png"} alt="Image 5" />
-            </button>
-            <button
-              className="image-buttons"
-              type="button"
-
-              onClick={() => handleImageSelect("./image6.png")}
-            >
-              <img src={"image6.png"} alt="Image 6" />
-
-            </button>
-            <button
-              className="image-buttons"
-              type="button"
-
-              onClick={() => handleImageSelect("./image7.png")}
-            >
-              <img src={"image7.png"} alt="Image 7" />
-
-            </button>
-            <button
-              className="image-buttons"
-              type="button"
-
-              onClick={() => handleImageSelect("./image8.png")}
-            >
-              <img src={"image8.png"} alt="Image 8" />
-            </button>
-            <button
-              className="image-buttons"
-              type="button"
-              onClick={() => handleImageSelect("./image9.png")}
-            >
-              <img src={"image9.png"} alt="Image 9" />
-            </button>
-            <button
-              className="image-buttons"
-              type="button"
-              onClick={() => handleImageSelect("./image10.png")}
-            >
-              <img src={"image10.png"} alt="Image 10" />
-            </button>
-            <button
-              className="image-buttons"
-              type="button"
-              onClick={() => handleImageSelect("./image11.png")}
-            >
-              <img src={"image11.png"} alt="Image 11" />
-            </button>
-            <button
-              className="image-buttons"
-              type="button"
-              onClick={() => handleImageSelect("./image12.png")}
-            >
-              <img src={"image12.png"} alt="Image 12" />
-
-            </button>
-          </div>
-        </Modal> */}
       </form>
     </div>
   );
