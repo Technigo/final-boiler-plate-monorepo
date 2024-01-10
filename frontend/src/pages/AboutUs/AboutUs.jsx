@@ -23,7 +23,7 @@ export const AboutUs = () => {
         <i> share it with the rest of us! ♥ </i>
       </p>
       <div className="about-img">
-        <img src="./public/aboutimg.jpg" />
+        <img src="./aboutimg.jpg" />
       </div>
     </div>
   );
