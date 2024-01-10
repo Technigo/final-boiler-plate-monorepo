@@ -7,14 +7,14 @@ import {
   currentUserProfile,
   updateCurrentUserProfile,
 } from "../controllers/userController.js"; // Imports the functions from the userController.js file.
-import { authenticateUser, authorizedAdmin } from "../middlewares/auth.js"; // Imports the authenticateUser and authorizedAdmin functions from the auth.js file.
+import { authenticateUser } from "../middlewares/auth.js"; // Imports the authenticateUser and authorizedAdmin functions from the auth.js file.
 
 const router = express.Router(); // Creates a new router object.
 
 // USERS ROUTES ---------------------------------------------
 
 // ALL USERS ROUTE: List of all users
-router.get("/", authenticateUser, authorizedAdmin(["admin"]), getAllUsers); // When a GET request is made to /, execute the getAllUsers function. The user must be authenticated and authorized as an admin.
+router.get("/", getAllUsers); // When a GET request is made to /, execute the getAllUsers function. The user must be authenticated and authorized as an admin.
 
 // REGISTER ROUTE: Handle user registration
 router.post("/register", registerUser); // When a POST request is made to /register, execute the registerUser function.

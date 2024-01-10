@@ -80,4 +80,21 @@ export const plantStore = create((set, get) => ({
       console.error(error);
     }
   },
+  fetchPlantsByIds: async (plantIds) => {
+    try {
+      // Ensure that fetchPlants is completed before proceeding
+      await get().fetchPlants();
+
+      const allPlants = get().plants;
+
+      const filteredPlants = allPlants.filter((plant) =>
+        plantIds.includes(plant.plantID)
+      );
+
+      set({ plants: filteredPlants });
+      console.log("Plants data fetch by IDs:", filteredPlants);
+    } catch (error) {
+      console.error("Error fetching plants by IDs", error);
+    }
+  },
 }));

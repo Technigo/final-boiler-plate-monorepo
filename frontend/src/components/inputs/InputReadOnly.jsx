@@ -1,9 +1,18 @@
-import "./Input.css"
+import "./Input.css";
 
-export const InputReadOnly = ({ type, id, placeholder, value, onChange, ariaLabel, labelTxt }) => {
+export const InputReadOnly = ({
+  type,
+  id,
+  placeholder,
+  value,
+  onChange,
+  ariaLabel,
+  labelTxt,
+}) => {
   return (
     <>
-      <label htmlFor={id}>{labelTxt}
+      <label htmlFor={id}>
+        {labelTxt}
         <input
           type={type}
           id={id}
@@ -15,5 +24,5 @@ export const InputReadOnly = ({ type, id, placeholder, value, onChange, ariaLabe
         />
       </label>
     </>
-  )
-}
+  );
+};

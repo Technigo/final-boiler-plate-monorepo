@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { PlantCard } from "../../../plantsPage/PlantCard";
+import { PlantCard } from "../../../../components/plantCard/PlantCard";
 
 import "./BestSellers.css";
 

@@ -7,33 +7,27 @@ const userSchema = new Schema(
   {
     // Define the 'username' field with a String data type.
     username: {
-      type: String, // Specifies that 'username' should be a string.
-      required: true, // Indicates that 'username' is a required field.
-      unique: true, // Ensures that 'username' values are unique.
-      minlength: 3, // Sets a minimum length of 3 characters for 'username'.
+      type: String,
+      required: true,
+      unique: true,
+      minlength: 3,
     },
     // Define the 'password' field with a String data type.
     password: {
-      type: String, // Specifies that 'password' should be a string.
-      required: true, // Indicates that 'password' is a required field.
-      minlength: 6, // Sets a minimum length of 6 characters for 'password'.
+      type: String,
+      required: true,
+      minlength: 6,
     },
     // Define the 'email' field with a String data type.
     email: {
-      type: String, // Specifies that 'email' should be a string.
-      required: true, // Indicates that 'email' is a required field.
-      unique: true, // Ensures that 'email' values are unique.
+      type: String,
+      required: true,
+      unique: true,
     },
-    // Defines the 'role' field with a String data type.
-    role: {
-      type: String, // Specifies that 'role' should be a string.
-      enum: ["user", "admin"], // Specifies that 'role' can only be either "user" or "admin".
-      default: "user", // Sets the default value of 'role' to "user".
+    // Define the 'accessToken' field with a String data type.
+    accessToken: {
+      type: String,
     },
-  },
-  {
-    // Additional field for storing refresh token
-    refresh_token: String,
   },
   {
     timestamps: true, // Adds timestamps to the document: createdAt and updatedAt.

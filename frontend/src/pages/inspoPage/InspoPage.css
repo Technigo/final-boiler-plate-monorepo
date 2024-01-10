@@ -1,0 +1,19 @@
+section {
+  width: 100%;
+  height: auto;
+}
+
+img {
+    position: relative;
+  width: 100%;
+  height: auto;
+}
+
+.dot-button {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background-color: red;
+  border-radius: 50%;
+  cursor: pointer;
+}

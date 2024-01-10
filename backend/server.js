@@ -18,11 +18,10 @@ dotenv.config();
 
 // Defines the port number the app (server) will run on.
 const port = process.env.PORT || 8080;
+const app = express(); // Creates an Express application.
 
 // Connection to the database through Mongoose.
 connectDB();
-
-const app = express(); // Creates an Express application.
 
 // MIDDLEWARES ---------------------------------------------
 app.use(cors()); // Enable CORS for all origins.

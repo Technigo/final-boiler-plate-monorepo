@@ -5,7 +5,7 @@ import {
   getFavourites,
   removeFavourite
 } from "../controllers/favouritesController.js";
-import { authenticateUser, authorizedAdmin } from "../middlewares/auth.js";
+import { authenticateUser } from "../middlewares/auth.js";
 
 const router = express.Router(); // Creates a new router object.
 

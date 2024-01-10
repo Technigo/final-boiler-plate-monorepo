@@ -2,7 +2,8 @@ import { cartStore } from "../../stores/cartStore";
 import { useEffect } from "react";
 
 export const OrderInfo = () => {
-  const {  calculateTotalPrice, total, totalWithDelivery, deliveryCost } = cartStore();
+  const { calculateTotalPrice, total, totalWithDelivery, deliveryCost } =
+    cartStore();
 
   useEffect(() => {
     calculateTotalPrice();

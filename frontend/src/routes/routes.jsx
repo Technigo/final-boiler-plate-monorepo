@@ -9,6 +9,7 @@ import { FavouritesPage } from "../pages/favouritesPage/FavouritesPage";
 import { CartPage } from "../pages/cartPage/CartPage";
 import { CheckOut } from "../pages/checkOut/CheckOut";
 import { About } from "../pages/about/About";
+import { InspoPage } from "../pages/inspoPage/InspoPage";
 
 const routes = (
   <>
@@ -28,7 +29,7 @@ const routes = (
     <Route path="/plants/all-plants/:category" element={<PlantsPage />} />
 
     {/* FAVOUITES/WISHLIST PAGE */}
-    <Route path="/wishlist" element={<FavouritesPage />}/>
+    <Route path="/wishlist" element={<FavouritesPage />} />
 
     {/* CART PAGES */}
     <Route path="/cart" element={<CartPage />} />
@@ -36,7 +37,9 @@ const routes = (
 
     {/* ABOUT AND CONTACT */}
     <Route path="/about" element={<About />} />
-    
+
+    {/* INSPIRATION */}
+    <Route path="/inspo" element={<InspoPage />} />
   </>
 );
 

@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 
 import { Link, useParams } from "react-router-dom";
 import { FilteredNav } from "./FilteredNav";
-import { PlantCard } from "./PlantCard";
+import { PlantCard } from "../../components/plantCard/PlantCard";
 
 import "./PlantsPage.css";
 
