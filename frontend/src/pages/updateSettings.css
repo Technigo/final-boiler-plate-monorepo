@@ -30,3 +30,7 @@
     flex-direction: row;
     align-items: flex-start;
 }
+
+.password-input span {
+    margin-left: -30px;
+}

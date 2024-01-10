@@ -113,7 +113,7 @@ export const ProfileSettings = () => {
             <BackArrow />
           </div>
           <div className="profile-settings">
-            <h1>Your settings</h1>
+            <h1>My settings</h1>
             {profileData.image ? (
               <img
                 src={profileData.image}
