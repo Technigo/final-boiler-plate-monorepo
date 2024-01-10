@@ -29,6 +29,8 @@ export const recipeStore = create((set, get) => ({
   },
   errorMessageGeneration: "",
   setErrorMessageGeneration: (errorMessageGeneration) => set({ errorMessageGeneration }),
+  errorMessageFetchAll: "",
+  setErrorMessageFetchAll: (errorMessageFetchAll) => set({ errorMessageFetchAll }),
   isVegetarian: false,
   setIsVegetarian: (isVegetarian) => set({ isVegetarian }),
   isGlutenFree: false,
@@ -57,6 +59,7 @@ export const recipeStore = create((set, get) => ({
       //Update the newRecipe state with the fetched newRecipe:
       set(() => ({ newRecipe: newRecipeVar }));
 
+      //Error messages, mounted in CollectionRecipes.jsx
     } catch (error) {
       console.error("Error fetching new recipe:", error);
       set(() => ({ errorMessageGeneration: "Error fetching new recipe!" }));
@@ -72,7 +75,7 @@ export const recipeStore = create((set, get) => ({
       });
       // Check if the response is not okay 
       if (!response.ok) {
-        throw new Error(`Failed to fetch collection of recipes! ${response.status}`);
+        throw new Error(`Status: ${response.status}`);
       }
       // Parse the JSON response and set the recipes in the state
       const data = await response.json();
@@ -84,9 +87,10 @@ export const recipeStore = create((set, get) => ({
       // Update the newRecipe state to null initially
       // set(() => ({ newRecipe: null })); //TA BORT?? 
 
+      //Error messages, mounted in CollectionRecipes.jsx
     } catch (error) {
       console.error("Error fetching collection of recipes:", error);
-      set(() => ({ errorMessageGeneration: "XXError fetching collection of recipes" }));
+      set(() => ({ errorMessageFetchAll: "Error fetching collection of recipes" }));
     }
   },
 

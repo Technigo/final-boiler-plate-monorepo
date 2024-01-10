@@ -5,7 +5,15 @@
 .new-recipe-section h3 {
     margin: 20px 0;
     text-align: left;
-    background-color: ;
+}
+
+.new-recipe-section-heading {
+    background-color: #173e34;
+    display: inline-flex;
+    color: white;
+    font-weight: 300;
+    padding: 5px;
+    border-radius: 5px;
 }
 
 .new-recipe-wrapper {

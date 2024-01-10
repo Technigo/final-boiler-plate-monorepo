@@ -50,7 +50,7 @@ export const NewRecipe = () => {
   return (
      <>
       <section className="recipe-details new-recipe-section" ref={recipeDetailsRef}>
-        <h3>Your freshly AI generated outdoor meal</h3>
+        <h3 className="new-recipe-section-heading">Your freshly AI generated outdoor meal</h3>
         {isMobileView ? (
           <>
             <HeadingDetails title={newRecipe.title} />

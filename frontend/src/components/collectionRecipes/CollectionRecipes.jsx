@@ -8,7 +8,7 @@ import "./collectionRecipes.css";
 // Define the CollectionRecipes component
 export const CollectionRecipes = () => {
   // Destructure recipes and setRecipes from the recipeStore
-  const { recipes, fetchCollectionRecipes, errorMessageGeneration, setErrorMessageGeneration, setNewRecipe } = recipeStore();
+  const { recipes, fetchCollectionRecipes, errorMessageGeneration, setErrorMessageGeneration, errorMessageFetchAll, setErrorMessageFetchAll, setNewRecipe } = recipeStore();
   const [loading, setLoading] = useState(true);
 
 
@@ -40,7 +40,15 @@ export const CollectionRecipes = () => {
   // Render the component with a list of recipes (map over the recipes and render each recipe's ingredients and instructions)
   return (
     <section className="collection-recipes">
+      {/* Error message from RecipeStore rendered if there was something wrong during generation */}
       {errorMessageGeneration && <div className="error-message-container"><p className="error-message-generation">{errorMessageGeneration}</p></div>}
+
+      {/* Error message from RecipeStore rendered if something is wrong with the fetch/database/Render */}
+      {errorMessageFetchAll && (
+        <div className="error-message-container">
+          <p className="error-message-generation">{errorMessageFetchAll}</p>
+        </div>)}
+
       <h3>Latest AI-Generated Recipes</h3>
       <div className="recipe-grid">
         {limitedRecipes.map((recipe, index) => (
