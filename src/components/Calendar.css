@@ -1,3 +1,7 @@
+.the-calendar {
+	background-color: var(--background-section-color-two);
+}
+
 .the-row-calendar .slick-list {
 	position: relative;
 	display: block;

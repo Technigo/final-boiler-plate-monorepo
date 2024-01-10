@@ -54,7 +54,7 @@ export const Calendar = () => {
   }
 
   return (
-    <div>
+    <div className="page-section the-calendar">
       <div className='the-row-calendar'>
         <Slider {...settings}>
           {dates.map((date, index) => (

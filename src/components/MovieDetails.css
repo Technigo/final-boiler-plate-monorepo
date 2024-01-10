@@ -1,34 +1,34 @@
 /* .background-poster {
-	position: relative;
-} */
+	   	position: relative;
+	   } */
 /* 
-.background-poster img {
-	position: fixed;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	object-fit: cover;
-	z-index: -1;
-} */
+	   .background-poster img {
+	   	position: fixed;
+	   	top: 0;
+	   	left: 0;
+	   	width: 100%;
+	   	height: 100%;
+	   	object-fit: cover;
+	   	z-index: -1;
+	   } */
 
 .the-detail-page {
 	display: flex;
 	position: relative;
 	justify-content: center !important;
-	align-items: center;
+	align-items: center !important;
 	/* height: 100vh;
-	width: 100vw; */
+      width: 100vw; */
 	/* background: linear-gradient(to top, rgba(0, 0, 0, 0.6) 20%, transparent 100%); */
 }
 .movie-title {
 	font-size: 4rem;
 }
 
-.summary {
+.detail-container {
 	display: flex;
 	flex-direction: column;
-	justify-content: center;
+	justify-content: center !important;
 	align-items: center !important;
 	padding: 50px;
 	color: white;
@@ -38,7 +38,7 @@
 	margin-bottom: 50px;
 }
 
-.summary img {
+.detail-container img {
 	max-width: 50%;
 	margin-right: 20px;
 	margin-bottom: 30px;
@@ -60,31 +60,36 @@
 }
 
 /* Additional styles for movie title and rating */
-.details h1 {
+.movie-title h1 {
 	font-size: 20px;
 	text-shadow: 1px 1px #4d4d4d;
 	line-height: 1;
 }
 
-.summary p {
+.more-info .description p {
 	font-size: 14px;
 	margin: 16px 0;
-	line-height: 1;
-	border: 2px soli red;
+	line-height: 1.5;
 }
 
-@media (min-width: 577px) {
+.movie-title-container {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+}
+
+@media (min-width: 667px) {
 	.detail-page {
 		justify-content: flex-start;
 	}
 
-	.summary {
+	.detail-container {
+		display: flex;
 		flex-direction: row;
-		align-items: flex-end;
-		width: 100%;
+		margin: 0 auto;
 	}
 
-	.summary img {
+	.detail-container img {
 		max-width: 250px;
 	}
 
@@ -95,13 +100,24 @@
 		position: relative;
 		justify-content: flex-end;
 	}
+
+	.description-container {
+		display: flex;
+		flex-direction: column;
+		align-items: start;
+		justify-content: flex-start;
+		gap: 2rem;
+	}
+	.description {
+		width: 70%;
+	}
 }
 
-@media (min-width: 933px) {
-	.summary {
+@media (min-width: 1025px) {
+	.detail-container {
 		width: 80%;
 	}
-	.summary img {
+	.detail-container img {
 		max-width: 30%;
 	}
 
