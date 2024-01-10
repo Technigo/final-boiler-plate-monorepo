@@ -170,6 +170,8 @@ img {
   justify-content: center;
   align-items: center;
   min-height: 100vh;
+  margin: 0;
+  padding: 0;
 }
 
 .main-wrapper {
@@ -188,6 +190,7 @@ img {
 @media only screen and (min-width: 768px) {
   h1 {
     font-size: 3rem;
+    line-height: 2.25rem;
     /* 48px */
   }
 
@@ -236,7 +239,7 @@ img {
 @media only screen and (min-width: 1200px) {
   h1 {
     font-size: 3.5rem;
-    margin: 1.5rem 0;
+    line-height: 2.25rem;
     /* 56px */
   }
 

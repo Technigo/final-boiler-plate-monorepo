@@ -1,0 +1,38 @@
+.heading-terms {
+    margin: 5px 10px;
+    text-align: center;
+}
+
+.terms-wrapper {
+    margin: 10px;
+}
+
+.terms-wrapper ul li {
+    margin: 15px 0;
+}
+
+.terms-wrapper span {
+    font-weight: 700;
+}
+
+.terms-wrapper p {
+    margin-top: 30px;
+}
+
+@media only screen and (min-width: 1200px) {
+    .heading-terms {
+        margin: 10px 0;
+        text-align: center;
+    }
+    .terms-wrapper ul li {
+        font-size: 18px;
+    }
+
+    .terms-wrapper p {
+        margin-top: 50px;
+    }
+
+    .terms-wrapper {
+        margin-top: 30px;
+    }
+}
