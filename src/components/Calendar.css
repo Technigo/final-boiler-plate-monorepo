@@ -30,5 +30,5 @@
 }
 
 .slick-dots {
-	color: aqua !important;
+	display: none !important;
 }

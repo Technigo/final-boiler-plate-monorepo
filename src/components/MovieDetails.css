@@ -12,14 +12,17 @@
 	z-index: -1;
 } */
 
-.detail-page {
+.the-detail-page {
 	display: flex;
 	position: relative;
 	justify-content: center !important;
 	align-items: center;
-	height: 100vh;
-	width: 100vw;
+	/* height: 100vh;
+	width: 100vw; */
 	/* background: linear-gradient(to top, rgba(0, 0, 0, 0.6) 20%, transparent 100%); */
+}
+.movie-title {
+	font-size: 4rem;
 }
 
 .summary {
@@ -48,7 +51,7 @@
 }
 
 .details {
-	width: 80%;
+	width: 100%;
 	display: flex;
 	flex-direction: column;
 	position: relative;
