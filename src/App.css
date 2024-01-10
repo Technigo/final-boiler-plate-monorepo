@@ -1,5 +1,5 @@
 .page-section {
-    padding: 4rem 1rem;
+    padding: var(--small-padding) 1rem;
     margin: 0 auto;
 }
 .page-section:not(.the-header):not(.the-footer) {
@@ -12,7 +12,7 @@
     align-items: center;
 }
 .page-section:not(.the-hero) {
-    margin: 0 11rem;
+    margin: 0 var(--big-padding);
 }
 /* .page-section.the-calender {
     padding: 3rem 11rem;
