@@ -1,6 +1,13 @@
 .your-ads-container {
     display: grid;
-    gap: 0px;
+    gap: 30px;
     padding: 20px 0 50px
 }
 
+.manage-content h1 {
+    margin-bottom: 5px;
+}
+
+.add-btn {
+    margin-bottom: 10px;
+}

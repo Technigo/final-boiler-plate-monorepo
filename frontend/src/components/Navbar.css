@@ -49,6 +49,7 @@ nav {
 
 .navbar-links.open {
   font-family: var(--font-heading);
+  font-size: 1.125rem;
   font-weight: 600;
   right: 0;
   transition: right 0.5s ease-in;
@@ -89,6 +90,7 @@ nav {
 
 .app-ul .app-li {
   font-family: var(--font-heading);
+  font-size: 1.125rem;
   display: none;
 }
 
@@ -109,6 +111,7 @@ nav .app-ul {
 .sign-out-text {
   font-family: var(--font-heading);
   color: var(--secondary-text);
+  font-size: 1.125rem;
   font-weight: 600;
   text-decoration: none;
 }

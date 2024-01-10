@@ -1,0 +1,86 @@
+.dropdown-style {
+    padding: 3px 4px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    background-color: white;
+    cursor: pointer;
+    width: 100%;
+}
+
+.dropdown-style:focus {
+    outline: none;
+    border-color: var(--nav-hover-text);
+}
+
+/* Specific style for the description field */
+.edit-ad-form .description {
+    flex-direction: column;
+    /* Keep column layout for description */
+}
+
+
+/* Containers */
+.edit-ad-container {
+    display: grid;
+    justify-content: center;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.edit-ad-form>div {
+    display: flex;
+    flex-direction: column;
+    /* Default layout for mobile */
+    align-items: flex-start;
+    /* Align items to the start */
+    margin-bottom: 20px;
+    /* Space between each field */
+}
+
+input[type="text"],
+input[type="password"],
+input[type="number"],
+input[type="datetime-local"],
+input[type="file"],
+select,
+.edit-ad-form .dropdown select {
+    /* Adjust this selector based on your actual Dropdown structure */
+    font-family: var(--font-heading);
+    font-size: 1rem;
+    /* Adjusted font size */
+    font-weight: 500;
+    border: 1px solid var(--border);
+    border-radius: var(--border-radius);
+    padding: 2px 5px;
+    width: 100%;
+}
+
+/* Style for desktop */
+@media (min-width: 1200px) {
+    .edit-ad-form>div {
+        flex-direction: row;
+        /* Labels beside inputs for desktop */
+        align-items: center;
+        /* Center align items */
+        justify-content: space-between;
+        /* Distribute space between label and input */
+    }
+
+    .edit-ad-form label {
+        margin-bottom: 0;
+        /* Remove bottom margin for labels in row layout */
+        margin-right: 10px;
+        /* Space between label and input */
+    }
+
+    .edit-ad-form textarea,
+    .edit-ad-form input[type="text"],
+    .edit-ad-form input[type="number"],
+    .edit-ad-form input[type="datetime-local"],
+    .edit-ad-form input[type="file"],
+    .edit-ad-form .dropdown {
+        width: 70%;
+        /* Adjust the width of inputs */
+    }
+}
+
