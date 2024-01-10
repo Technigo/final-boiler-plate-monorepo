@@ -12,6 +12,7 @@ import Lottie from "lottie-react";
 import loadingAnimation from "../assets/loading.json";
 import defaultProfileImage from "../assets/images/profile_icon.png";
 import "./profile.css";
+import { Heading } from "../components/reusableComponents/Heading";
 
 // This component renders the advertiser's profile
 export const Profile = () => {
@@ -85,7 +86,7 @@ export const Profile = () => {
                 )}
 
                 <div className="profile-info">
-                  <h1>{username}</h1>
+                  <Heading level={1} text={username} aria-label={username}>{username}</Heading>
                   <p>{profileData.introduction}</p>
                   {profileData.location ? (
                     <p>Location: {profileData.location}</p>
@@ -96,7 +97,7 @@ export const Profile = () => {
               </div>
 
               <div className="recent-ads">
-                <h2>Recent ads</h2>
+                <Heading level={2} text="Recent ads" aria-label="Recent ads">Recent ads</Heading>
                 <AdsList fetchType="user" userId={userId} displayGrid={true} />
               </div>
 
