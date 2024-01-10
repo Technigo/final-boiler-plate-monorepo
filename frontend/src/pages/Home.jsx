@@ -62,6 +62,7 @@ export const Home = () => {
             },
           },
         ]}
+        isHomePage={true}
       />
       <div className="container">
         {/* Render the search bar */}
