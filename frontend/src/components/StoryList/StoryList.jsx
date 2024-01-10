@@ -34,7 +34,7 @@ export const StoryList = () => {
       }
     };
     fetchStories();
-  }, []);
+  }, [apiUrl]);
 
   // useEffect(() => {
   //   // Function to fetch stories from backend

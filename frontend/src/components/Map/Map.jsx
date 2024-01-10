@@ -180,9 +180,6 @@ export const Map = () => {
       fetch(`${apiUrl}/stories`)
         .then((response) => response.json())
         .then((data) => {
-          if (data.length > 0) {
-            console.log("Example story structure:", data[0]);
-          }
           console.log("Fetched stories:", data);
 
           const validStories = data.filter(
@@ -198,6 +195,9 @@ export const Map = () => {
         });
     };
     fetchStories(); // fetch immediately on mount
+    const interval = setInterval(fetchStories, 10000); // fetch every 10 seconds
+
+    return () => clearInterval(interval); // clean up on unmount
   }, []);
 
   const onMapLoad = useCallback((mapInstance) => {

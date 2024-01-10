@@ -26,7 +26,6 @@ export const PostStory = () => {
   const handleFormSubmit = async (e) => {
     e.preventDefault();
 
-
     if (newStory.length < 10) {
       alert("The message is too short. Please try again! 💕");
       return;
@@ -78,9 +77,8 @@ export const PostStory = () => {
       });
 
     // Post the story to the backend
-
-    fetch("http://localhost:3000/stories", {
-
+    const apiUrl = import.meta.env.VITE_BACKEND_API || "http://localhost:3000";
+    fetch(`${apiUrl}/stories`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -196,8 +194,7 @@ export const PostStory = () => {
             className="category"
             value={newCategory}
             onChange={handleCategoryChange}
-            required
-          >
+            required>
             <option value="">Choose a category</option>
             <option value="anecdote">Anecdote</option>
             <option value="rumor">Rumor</option>
@@ -208,12 +205,10 @@ export const PostStory = () => {
         <div>
           <LoadScript
             googleMapsApiKey={import.meta.env.VITE_GOOGLE_MAPS_API_KEY}
-            libraries={libraries}
-          >
+            libraries={libraries}>
             <Autocomplete
               onLoad={onLoadAutocomplete}
-              onPlaceChanged={onPlaceChanged}
-            >
+              onPlaceChanged={onPlaceChanged}>
               <input
                 className="search-input"
                 type="text"
@@ -249,8 +244,7 @@ export const PostStory = () => {
           <button
             className="gallery-button"
             type="button"
-            onClick={openImageModal}
-          >
+            onClick={openImageModal}>
             Select Image
           </button>
         </div>
@@ -263,16 +257,14 @@ export const PostStory = () => {
           selectedImage={selectedImage}
           className="gallery"
           isOpen={isImageModalOpen}
-          contentLabel="Select Image"
-        >
+          contentLabel="Select Image">
           <div className="gallery-images">
             {images.map((image, index) => (
               <button
                 key={index}
                 className="image-buttons"
                 type="button"
-                onClick={() => handleImageSelect(image)}
-              >
+                onClick={() => handleImageSelect(image)}>
                 <img src={image} alt={`Image ${index + 1}`} />
               </button>
             ))}
