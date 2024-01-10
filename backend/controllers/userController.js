@@ -6,7 +6,7 @@ import jwt from "jsonwebtoken"; // Import the jsonwebtoken dependency.
 import { UserModel } from "../models/userModel.js"; // Import the UserModel from the userModel.js file.
 import asyncHandler from "../utils/asyncHandler.js"; // Import the asyncHandler function from the asyncHandler.js file.
 
-// ADMIN ONLY - GET ALL USERS ---------------------------------------------
+// GET ALL USERS ---------------------------------------------
 const getAllUsers = asyncHandler(async (req, res) => {
   const users = await UserModel.find({}); // Find all users in the database.
   // Send the users' information to the client.
@@ -18,29 +18,35 @@ const registerUser = asyncHandler(async (req, res) => {
   // Get user data - Extract email, username and password from the request body.
   const { username, password, email } = req.body;
 
+  // Validate the user data.
   try {
     // 1st Condition - Check if all fields are inputted.
     if (!username || !email || !password) {
       // If any of the fields are empty, send an error message.
       return res
         .status(400)
-        .send({ message: "Please fill in all the inputs." });
+        .json({ message: "Please fill in all the inputs." });
     }
 
-    // 2nd Condition - Check if the username already exists.
-    const existingUsername = await UserModel.findOne({ username });
-    if (existingUsername) {
-      // If the username already exists, send an error message.
-      return res.status(400).send({ message: "User already exists" });
-    }
-
-    // 3rd Condition - Check if the email already exists.
-    const existingEmail = await UserModel.findOne({ email });
-    if (existingEmail) {
-      // If the email already exists, send an error message.
-      return res.status(400).send({
-        message: "Email already exists. Please use a different email address.",
-      });
+    // 2nd Condition - Check if the username and email already exists.
+    const existingUser = await UserModel.findOne({
+      $or: [{ username }, { email }],
+    });
+    // If the user info already exists, send an error message.
+    if (existingUser) {
+      if (existingUser.username === username) {
+        // Check if the username already exists.
+        return res.status(400).json({
+          message: "User already exists. Please choose a different username.",
+        });
+      }
+      if (existingUser.email === email) {
+        // Check if the email already exists.
+        return res.status(400).json({
+          message:
+            "Email already exists. Please use a different email address.",
+        });
+      }
     }
 
     // Generate a salt and hash the user's password from the bcrypt library.
