@@ -9,9 +9,9 @@ import { Button } from "../components/reusableComponents/Button";
 import BackArrow from "../components/reusableComponents/BackArrow";
 import Lottie from "lottie-react";
 import loadingAnimation from "../assets/loading.json/";
-import {Icon} from "react-icons-kit";
-import {eyeOff} from "react-icons-kit/feather/eyeOff";
-import {eye} from "react-icons-kit/feather/eye";
+import { Icon } from "react-icons-kit";
+import { eyeOff } from "react-icons-kit/feather/eyeOff";
+import { eye } from "react-icons-kit/feather/eye";
 import "../pages/login.css";
 
 // Define the 'Login' functional component.
@@ -33,12 +33,19 @@ export const Login = () => {
 
   // Function to handle the toggle between the hide password (eyeOff icon) and the show password (eye icon)
   const handleToggle = () => {
-    if (type ==="password") {
+    if (type === "password") {
       setIcon(eye);
       setType("text");
     } else {
       setIcon(eyeOff);
       setType("password");
+    }
+  };
+
+  const handleKeyPress = (e) => {
+    if (e.key === "Enter") {
+      // Trigger form submission when Enter key is pressed
+      onLoginClick(e);
     }
   };
 
@@ -62,6 +69,10 @@ export const Login = () => {
       // Reset loading to false after the login process is completed (success or failure)
       setLoading(false);
     }
+  };
+
+  const style = {
+    height: 200,
   };
 
   // Render the component content.
@@ -97,14 +108,14 @@ export const Login = () => {
                 placeholder="Password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
+                onKeyUp={handleKeyPress}
               />
               <span onClick={handleToggle}>
-                <Icon icon={icon} size={22}/>
+                <Icon icon={icon} size={22} />
               </span>
-            </div>          
+            </div>
           </div>
-
-          {loading && <Lottie animationData={loadingAnimation} />}
+          {loading && <Lottie animationData={loadingAnimation} style={style} />}
           {!loading && (
             <Button
               iconSize="button"

@@ -1,20 +1,42 @@
 import { useState, useEffect } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams, useNavigate, Link } from "react-router-dom";
 import { adStore } from "../stores/adStore";
+import { userStore } from "../stores/userStore";
 import { Modal } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { ContactForm } from "../components/ContactForm";
 import BackArrow from "../components/reusableComponents/BackArrow";
 import { Button } from "../components/reusableComponents/Button"; // Import the Button component
 import { Image } from "../components/reusableComponents/Image"; // Import the Image component
+import { Navbar } from "../components/Navbar";
+import { Footer } from "../components/Footer";
+import Swal from "sweetalert2";
 
 const AdDetails = () => {
+  // Use the 'useNavigate' hook to programmatically navigate between routes.
+  const navigate = useNavigate();
   const [ad, setAd] = useState({});
   const { getAdById } = adStore();
   const { id } = useParams();
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+
+  // Get 'isLoggedIn' and 'accessToken' from the 'userStore'.
+  const isLoggedin = userStore((state) => state.isLoggedin);
+  const handleLogout = userStore((state) => state.handleLogout);
+  // useEffect hook to check user authentication status.
+  useEffect(() => {
+    if (!isLoggedin) {
+      // If the user is not logged in, show an alert and navigate to the login route.
+      Swal.fire({
+        title: "Error!",
+        text: "Please log in to see the content",
+        icon: "error",
+      });
+      navigate("/login");
+    }
+  }, [isLoggedin, navigate]);
 
   useEffect(() => {
     const fetchAd = async () => {
@@ -29,6 +51,38 @@ const AdDetails = () => {
 
   return (
     <>
+      <Navbar
+        menuItems={[
+          { path: "/home", name: "Home" },
+          { path: "/search", name: "Search" },
+          { path: "/settings", name: "My Setting" },
+          { path: "/manage-your-ads", name: "My Products" },
+          { path: "/about", name: "About" },
+          { path: "/terms", name: "Terms" },
+          {
+            name: "Logout",
+            onClick: () => {
+              handleLogout();
+              navigate("/login");
+            },
+          },
+        ]}
+        menuDesks={[
+          { path: "/home", name: "Home" },
+          { path: "/search", name: "Search" },
+          { path: "/settings", name: "My Setting" },
+          { path: "/manage-your-ads", name: "My Products" },
+          { path: "/about", name: "About" },
+          { path: "/terms", name: "Terms" },
+          {
+            name: "Logout",
+            onClick: () => {
+              handleLogout();
+              navigate("/login");
+            },
+          },
+        ]}
+      />
       <div className="main-container">
         <div className="main-wrapper">
           <div className="ad-details-container">
@@ -47,7 +101,9 @@ const AdDetails = () => {
                 </div>
                 <div>
                   <h4>Quantity:</h4>
-                  <p>{ad.quantity} {ad.unit}</p>
+                  <p>
+                    {ad.quantity} {ad.unit}
+                  </p>
                 </div>
                 <div>
                   <h4>Pickup Date:</h4>
@@ -60,14 +116,14 @@ const AdDetails = () => {
                 <div>
                   <h4>
                     Posted by:{" "}
-                    <Link to={`/profile/${ad.user?._id}`}>{ad.user?.username}</Link>
+                    <Link to={`/profile/${ad.user?._id}`}>
+                      {ad.user?.username}
+                    </Link>
                   </h4>
                 </div>
               </div>
-              <Button
-                label="Contact Advertiser"
-                onClick={handleShow}
-              /> {/* Use Button component */}
+              <Button label="Contact Advertiser" onClick={handleShow} />{" "}
+              {/* Use Button component */}
               <Modal show={show} onHide={handleClose}>
                 <Modal.Body>
                   <ContactForm
