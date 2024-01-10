@@ -75,10 +75,8 @@ export const Landing = () => {
     <>
       <Navbar
         menuItems={[
-          { path: "/home", name: "Home" },
-          { path: "/search", name: "Search" },
-          { path: "/settings", name: "Settings" },
-          { path: "/manage-your-ads", name: "My Products" },
+          { path: "/login", name: "Login" },
+          { path: "/register", name: "Signup" },
           { path: "/about", name: "About" },
           { path: "/terms", name: "Terms" },
         ]}

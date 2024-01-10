@@ -38,7 +38,7 @@ export const Home = () => {
         menuItems={[
           { path: "/home", name: "Home" },
           { path: "/search", name: "Search" },
-          { path: "/settings", name: "Settings" },
+          { path: "/settings", name: "My Settings" },
           { path: "/manage-your-ads", name: "My Products" },
           { path: "/about", name: "About" },
           { path: "/terms", name: "Terms" },

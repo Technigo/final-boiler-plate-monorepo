@@ -1,7 +1,7 @@
 import { Footer } from "../components/Footer";
 import { Navbar } from "../components/Navbar";
 import { Heading } from "../components/reusableComponents/Heading";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { userStore } from "../stores/userStore";
 import { useEffect } from "react";
 import BackArrow from "../components/reusableComponents/BackArrow";
@@ -32,7 +32,7 @@ export const Policy = () => {
         menuItems={[
           { path: "/home", name: "Home" },
           { path: "/search", name: "Search" },
-          { path: "/settings", name: "Settings" },
+          { path: "/settings", name: "My Settings" },
           { path: "/manage-your-ads", name: "My Products" },
           { path: "/about", name: "About" },
           { path: "/terms", name: "Terms" },
@@ -47,7 +47,7 @@ export const Policy = () => {
         menuDesks={[
           { path: "/home", name: "Home" },
           { path: "/search", name: "Search" },
-          { path: "/settings", name: "My Setting" },
+          { path: "/settings", name: "My Settings" },
           { path: "/manage-your-ads", name: "My Products" },
           { path: "/about", name: "About" },
 

@@ -14,7 +14,7 @@ export const NotFound = () => {
       <Lottie animationData={notFound} style={style} />
       <div className="404">
         <h1>404 Page not found</h1>
-        <p>Sorry, we can't seem to find the page you're looking for.</p>
+        <p>Sorry, we can&apos;t seem to find the page you&apos;re looking for.</p>
         <Button label="Back to home" link="/home" />
       </div>
     </div>
