@@ -26,7 +26,7 @@ const StyledToggleButton = styled.button`
   font-size: 20px;
   /* position: fixed; */
   padding: 0;
-  color: floralwhite;
+  color: var(--lighttext);
   cursor: pointer;
 `;
 

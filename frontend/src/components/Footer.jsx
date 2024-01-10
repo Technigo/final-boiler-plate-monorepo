@@ -24,7 +24,7 @@ const FooterText = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  color: #fff;
+  color: var(lighttext);
   font-size: 16px;
 
   @media screen and (min-width: 800px) {
@@ -45,9 +45,6 @@ const Contact = styled.div`
 
 // Define the Footer component as a functional component.
 export const Footer = () => {
-  const footerStyle = {
-    color: "#fff", // White color for footer links when not hovered
-  };
   return (
     <StyledFooter>
       <FooterText>
@@ -55,13 +52,13 @@ export const Footer = () => {
           <div className="anna-wrapper">
             <Contact>
               <p>Anna Robertsson</p>
-              <SocialMediaLinks person="Anna" footerStyle={footerStyle} />
+              <SocialMediaLinks person="Anna" />
             </Contact>
           </div>
           <div className="susanne-wrapper">
             <Contact>
               <p>Susanne Ekenheim</p>
-              <SocialMediaLinks person="Susanne" footerStyle={footerStyle} />
+              <SocialMediaLinks person="Susanne" />
             </Contact>
           </div>
         </div>

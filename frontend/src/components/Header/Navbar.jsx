@@ -13,8 +13,8 @@ const StyledNav = styled.nav`
   justify-content: flex-end;
 
   a {
-    color: floralwhite;
-    /* color: #213547; */
+    color: var(--lighttext);
+    /* color: var(--darktext); */
     font-weight: 600;
   }
 

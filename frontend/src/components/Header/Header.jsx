@@ -10,14 +10,14 @@ const StyledHeader = styled.div`
   /* position: fixed;
   top: 0;
   width: 100%; */
-  padding: 10px 5px 0 10px;
+  padding: 30px 30px 0;
   //background-color: #fff;
-  background: #633d57;
+  background: var(--purple);
   /* background-color: var(--secondaryColor); */
 
-  @media (min-width: 1100px) {
+  /* @media (min-width: 1100px) {
     padding: 10px 30px 0 10px;
-  }
+  } */
 `;
 
 export const Header = () => {

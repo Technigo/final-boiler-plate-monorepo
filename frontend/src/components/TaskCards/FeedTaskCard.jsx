@@ -17,8 +17,8 @@ const StyledFeedCardModal = styled.div`
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
   width: 260px;
   height: auto;
-  color: #213547;
-  background-color: #f8f8f8;
+  color: var(--darktext);
+  background-color: var(--grey);
 
   // Styling for the Need card
   .card-container {
@@ -76,9 +76,9 @@ const StyledFeedCardModal = styled.div`
     color: #000000;
     cursor: pointer;
 
-    // Styling for the buttin when hovering over it
+    // Styling for the button when hovering over it
     &:hover {
-      background-color: #899b64;
+      background-color: var(--buttonhover);
     }
   }
 
@@ -123,7 +123,7 @@ export const FeedTaskCard = ({ task }) => {
   const { _id, category, area } = task; // Destructure the task object
   const { icon: CategoryIcon, backgroundColor } = categoryStyle[category] || {
     icon: null, // Set the icon to null if it doesn't exist
-    backgroundColor: "#ffffff",
+    backgroundColor: "var(--grey)",
   };
 
   // Destructure the addMyselfToTask (volunteer) action from the taskStore

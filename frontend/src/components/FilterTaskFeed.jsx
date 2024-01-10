@@ -43,7 +43,7 @@ const StyledFilters = styled.div`
 const StyledSelects = styled.select`
   display: flex;
   width: 120px;
-  border: 1px solid var(--secondaryColor);
+  border: 1px solid var(--button);
   border-radius: 20px;
   padding: 5px;
 
