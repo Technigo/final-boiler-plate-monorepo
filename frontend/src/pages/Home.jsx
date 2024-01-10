@@ -64,21 +64,26 @@ export const Home = () => {
         ]}
         isHomePage={true}
       />
-      <div className="container">
-        {/* Render the search bar */}
-        <Link to="/search">
-          <SearchBar />
-        </Link>
-        {/* Render the recently added ads */}
-        <h1>Recently added</h1>
-        {isLoggedin && <AdsList fetchType="all" />}
-        {/* Render the user's ads */}
-        <h1>Your ads</h1>
-        {isLoggedin && <AdsList fetchType="user" />}
-        <div className="add-product">
-          <Link to="/create-ad">+ Add a product</Link>
+      <div className="main-container">
+        <div className="main-wrapper">
+          <Link to="/search">
+            <SearchBar />
+          </Link>
+          <h1>Recently added</h1>
+          {isLoggedin &&
+            <AdsList
+              fetchType="all"
+              displayGrid="true"
+              initialDisplayCount={4}
+              maxDisplayCount={20} />}
+          {/* Render the user's ads */}
+          <h1>Your ads</h1>
+          {isLoggedin && <AdsList fetchType="user" />}
+          <div className="add-product">
+            <Link to="/create-ad">+ Add a product</Link>
+          </div>
+          <Button label="Manage your ads" link="/manage-your-ads" />
         </div>
-        <Button label="Manage your ads" link="/manage-your-ads" />
       </div>
       <Footer />
     </>

@@ -36,31 +36,33 @@ const AdDetails = () => {
             <div>
               <h1>{ad.title}</h1>
               <Image src={ad.image} alt={ad.title} size="large" />
-              <div>
-                <h4>Description:</h4>
-                <p>{ad.description}</p>
-              </div>
-              <div>
-                <h4>Product:</h4>
-                <p>{ad.product}</p>
-              </div>
-              <div>
-                <h4>Quantity:</h4>
-                <p>{ad.quantity} {ad.unit}</p>
-              </div>
-              <div>
-                <h4>Pickup Date:</h4>
-                <p>{new Date(ad.pickupDate).toLocaleDateString()}</p>
-              </div>
-              <div>
-                <h4>Observation:</h4>
-                <p>{ad.observation}</p>
-              </div>
-              <div>
-                <h4>
-                  Posted by:{" "}
-                  <Link to={`/profile/${ad.user?._id}`}>{ad.user?.username}</Link>
-                </h4>
+              <div className="details-wrapper">
+                <div>
+                  <h4>Description:</h4>
+                  <p>{ad.description}</p>
+                </div>
+                <div>
+                  <h4>Product:</h4>
+                  <p>{ad.product}</p>
+                </div>
+                <div>
+                  <h4>Quantity:</h4>
+                  <p>{ad.quantity} {ad.unit}</p>
+                </div>
+                <div>
+                  <h4>Pickup Date:</h4>
+                  <p>{new Date(ad.pickupDate).toLocaleDateString()}</p>
+                </div>
+                <div>
+                  <h4>Observation:</h4>
+                  <p>{ad.observation}</p>
+                </div>
+                <div>
+                  <h4>
+                    Posted by:{" "}
+                    <Link to={`/profile/${ad.user?._id}`}>{ad.user?.username}</Link>
+                  </h4>
+                </div>
               </div>
               <Button
                 label="Contact Advertiser"

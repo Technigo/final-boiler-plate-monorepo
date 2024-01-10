@@ -2,3 +2,7 @@
     display: grid;
     gap: 40px;
 }
+
+.ad-details-container h1 {
+    margin: 100px 0;
+}

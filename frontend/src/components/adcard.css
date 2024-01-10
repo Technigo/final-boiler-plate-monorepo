@@ -8,7 +8,7 @@
   border-radius: var(--border-radius);
   padding: 50px 10px 10px;
   margin: 10px;
-  max-width: 300px;
+  max-height: 100%;
   width: 100%;
   flex-grow: 1; /* Makes the card grow to fill available space */
   box-sizing: border-box;
