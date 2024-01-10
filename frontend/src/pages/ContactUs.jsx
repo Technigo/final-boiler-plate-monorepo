@@ -48,42 +48,42 @@ export const ContactUs = () => {
                 <HeadingComponent text="Contact Us" level={1} style={{}} />
             </div>
 
-            <div className="rounded-md bg-custumPink lg:grid lg:grid-cols-2">
+            <div className="mx-6 my-6 md:mx-10 rounded-md bg-custumPink lg:grid lg:grid-cols-2">
 
                 {/* Left column with contact info */}
                 <Fade>
-                    <div className="lg:pr-8 lg:text-center border-y-4 border-customPink lg:border-x-4 border-customPink lg:border-y-0 h-auto m-4 lg:m-8 pb-4 rounded-md">
+                    <div className="lg:pr-8 lg:text-center border-y-4 border-customPink my-6 lg:border-x-4 border-customPink lg:border-y-0 h-auto md:m-4 lg:m-8 pb-4 rounded-md">
                         <SubHeadingComponent className="lg:pt-12" text="Do you have questions?" />
                         <SubHeadingComponent className="lg:pt-1 pb-4" text="Get in contact with us!" />
 
-                        <div className="p-4 lg:py-2 text-lg font-josefin-sans max-w-4xl mx-auto">
+                        <div className="md:p-4 lg:py-2 text-lg font-josefin-sans max-w-4xl mx-auto">
 
                             <div className="flex flex-col items-center justify-center">
                                 <div className="flex flex-row items-center">
-                                    <PhotoComponent className="h-6 pr-2" src={phoneIcon} alt="Phone icon" />
+                                    <PhotoComponent className="h-6 w-8 pr-2" src={phoneIcon} alt="Phone icon" />
                                     <a href="tel:+50661407609">+50661407609</a>
                                 </div>
 
                                 <div className="pt-2 flex flex-row items-center">
-                                    <PhotoComponent className="h-6 pr-2" src={emailIcon} alt="Phone icon" />
+                                    <PhotoComponent className="h-6 w-8 pr-2" src={emailIcon} alt="Phone icon" />
                                     <a href="mailto:tuanissurfschool@gmail.com"> tuanissurfschool@gmail.com</a>
                                 </div>
                             </div>
 
                             <div className="flex flex-col items-center justify-center">
                                 <div className="pt-2 flex flex-row items-center">
-                                    <PhotoComponent className="h-6 pr-2" src={tripAdvisorLogo} alt="Phone icon" />
+                                    <PhotoComponent className="h-9 w-16 md:h-7 md:w-8 pr-2" src={tripAdvisorLogo} alt="Tripadvicer icon" />
                                     <a href="https://www.tripadvisor.com/Attraction_Review-g309247-d19787493-Reviews-Tuanis_Surf_School_CR-Playa_Samara_Province_of_Guanacaste.html">Check us out on TRIP ADVISOR: Tuanis Surf School CR </a>
                                 </div>
                             </div>
 
                             <div className="flex flex-col items-center justify-center">
                                 <div className="pt-2 flex flex-row items-center">
-                                    <PhotoComponent className="h-6 pr-2" src={facebookLogo} />
+                                    <PhotoComponent className="h-6 w-8 pr-2" src={facebookLogo} alt="Facebook icon" />
                                     <a href="https://www.facebook.com/tuanissurfschool/?paipv=0&eav=AfZcAqHp8xoNj6BXPrqGBrlM8DZiMLhXSdGfqcH8it8et64jyuXr0dA06xiFsvnXss0&_rdr">FACEBOOK &</a>
                                 </div>
                                 <div className="pt-2 flex flex-row items-center">
-                                    <PhotoComponent className="h-6 pr-2" src={instagramLogo} />
+                                    <PhotoComponent className="h-6 w-8 pr-2" src={instagramLogo} alt="Instagram icon" />
                                     <a href="https://www.instagram.com/tuanissurfschool/">INSTAGRAM: Tuanis Surf School </a>
                                 </div>
                             </div>

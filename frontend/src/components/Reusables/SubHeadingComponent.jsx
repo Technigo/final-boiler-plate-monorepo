@@ -9,7 +9,7 @@ import { Fade } from "react-awesome-reveal";
  */
 export const SubHeadingComponent = ({ text, className, ...rest }) => {
     // Default classes that can be customized
-    const defaultClasses = 'px-10 pt-6 text-center text-3xl font-josefin-sans lg:max-w-3xl mx-auto';
+    const defaultClasses = 'mt-10 text-center text-3xl font-josefin-sans lg:max-w-3xl mx-auto';
 
     return (
         <Fade>

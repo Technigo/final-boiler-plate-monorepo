@@ -11,7 +11,7 @@ import { Checkbox } from './Checkbox';
  * @param {boolean} props.disabled - Flag to disable interactions with the checkbox
  * @returns {JSX.Element} - Rendered CheckboxSection component
  */
-export const CheckboxSection = ({ label, form, index, setForms, disabled }) => {
+export const CheckboxSection = ({ label, form, index, setForms, disabled, id }) => {
     return (
         <div className="mb-2">
             {/* Label for the checkbox section */}
@@ -19,8 +19,10 @@ export const CheckboxSection = ({ label, form, index, setForms, disabled }) => {
 
             {/* Checkbox component to toggle the checkbox state */}
             <Checkbox
+                label={label}
                 checked={form[label.toLowerCase()]}
                 // Update the form state when the checkbox is toggled
+                id={id}
                 onChange={() =>
                     setForms((prevForms) =>
                         prevForms.map((f, i) => (i === index ? { ...f, [label.toLowerCase()]: !f[label.toLowerCase()] } : f))

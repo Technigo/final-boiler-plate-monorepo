@@ -54,8 +54,8 @@ export const WhoAreWe = () => {
 
                 </div>
 
-                <div className="bg-backgroundPink">
-                    <div className="mt-5 lg:mx-4 text-left justify-center lg:mt-16">
+                <div className="bg-backgroundPink mx-6 md:mx-10">
+                    <div className="lg:mx-4 text-left justify-center lg:mt-16">
                         <ParagraphComponent text="Tuanis Surf School is a small family and friend owned business in Samara created by a group of awesome people that love the sport of surfing. We are all about the good life and we think that you are too. We are lucky to get guests from all over the world who come together to surf and enjoy our little piece of paradise. At Tuanis Surf School we have a great family vibe where you will instantly feel a sense of belonging. Surf with us to enjoy a social atmosphere and have a great time while making memories for life." />
                     </div>
                     <SubHeadingComponent className="lg:mb-0 lg:mt-16" text="We offer surf-lessons for all levels at:" />
@@ -67,9 +67,10 @@ export const WhoAreWe = () => {
 
                         {/* Video */}
                         <Fade>
-                            <video autoPlay muted loop playsInline controls={false} className="w-full h-auto p-4 rounded-full lg:rounded-full lg:w-96 lg:h-96 lg:object-cover">
+                            <video autoPlay muted loop playsInline controls={false} className="w-full h-auto pt-4 md:pt-0 md:pr-6 rounded-full lg:rounded-full lg:w-96 lg:h-96 lg:object-cover">
                                 <source src={Video} type="video/mp4" />
                                 Your browser does not support the video tag.
+                                <track kind="captions" srcLang="en" label="English" />
                             </video>
                         </Fade>
 
@@ -92,9 +93,9 @@ export const WhoAreWe = () => {
                         </div>
 
                     </div>
-                    <FooterComponent />
-                </div>
 
+                </div>
+                <FooterComponent />
             </div>
         </>
     )

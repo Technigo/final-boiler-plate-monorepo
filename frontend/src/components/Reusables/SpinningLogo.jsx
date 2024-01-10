@@ -9,7 +9,7 @@ export const SpinningLogo = () => {
             <img
                 className={`w-56 h-56 ${isLogoSpinning ? 'animate-spin' : ''}`}
                 src={logo}
-                style={{ animation: `spin 3s linear infinite` }} // Adjust the duration (e.g., 4s)
+                style={{ animation: `spin 3s linear infinite` }}
                 alt="logo"
             />
         </a>

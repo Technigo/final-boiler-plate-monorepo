@@ -330,6 +330,7 @@ export const PostBookingComponent = () => {
 
                             {/* select number of people */}
                             <select
+                                id="numberOfPeople"
                                 value={numberOfPeople}
                                 onChange={handleChangeNumberOfPeople}
                                 className="border rounded"

@@ -136,7 +136,7 @@ export const NavigationMenu = () => {
         const isCurrentPage = location.pathname === to;
 
         return (
-            <li className={`p-8 ${isCurrentPage ? 'bg-pink-500 bg-opacity-70 border-11 border-amber-300 rounded-full text-amber-200' : 'hover:bg-pink-500 hover:bg-opacity-70 hover:border-11 hover:rounded-full hover:text-amber-200'} transition-all duration-500`}>
+            <li className={`p-8 ${isCurrentPage ? 'bg-pink-500 bg-opacity-70 border-11 border-amber-300 rounded-full text-amber-300' : 'hover:bg-pink-500 hover:bg-opacity-70 hover:border-11 hover:rounded-full hover:text-amber-300'} transition-all duration-500`}>
                 <Link to={to}>{label}</Link>
             </li>
         );

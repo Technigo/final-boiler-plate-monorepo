@@ -57,11 +57,11 @@ export const SurfLessons = () => {
                 <HeadingComponent text="Our Surf Lessons" level={1} style={{}} />
             </div>
 
-            <div className="bg-backgroundPink">
+            <div className="bg-backgroundPink mx-6 md:mx-10">
                 <ParagraphComponent className="mt-5 lg:my-14" text="Our surf-lessons are offered at Playa Samara, a beautiful white sand beach surrounded by jungle and mountains.The ocean here is shallow with sand covering the ocean floor. The waves are present enough to learn how to surf but unforgiving enough to enjoy a day playing around in them. Which makes it the perfect place to learn at, Playa Samara is truly home to the friendliest waves to surf on. Each lesson is personalised to fit your specific needs, age, physic and experience. Our instructors are fluent in Spanish, English and Swedish. All of our surf-instructors have different nationalities and we work with both female and male surfers. They all have years of experience and are professionally trained. Our awesome instructors love sharing their stoke for the sport with the local community and tourists. We offer surf coaching for both complete beginners as well as more advanced surfers with a maximum of three students per instructor." />
 
                 <SubHeadingComponent className="lg:px-32" text="Our group-lessons are 2 hours long. 
-                    Our private lessons are 1,5 hours long" />
+                    Our private lessons are 1,5 hours long." />
 
                 <ParagraphComponent className="lg:my-14" text="Each lesson starts with 20-30 minute theory and warm-up on land. Here we will also talk oceansafety, conditions, technique, etiquette and practice our movements on land before heading out in the water. We then spend the rest of our time in the water catching and riding waves and improving your skills." />
 
@@ -90,10 +90,10 @@ export const SurfLessons = () => {
 
                 <SubHeadingComponent className="p-10" text="Pricing for our lessons:" />
 
-                <div className="p-12 grid gap-8 md:grid-cols-3 lg:grid-cols-3">
+                <div className="text-center grid gap-8 md:grid-cols-3 lg:grid-cols-3">
 
-                    <div className="border-t-4 border-customPink md:border-l-4 border-customPink md:border-t-0 py-12">
-                        <SubHeadingComponent className="" text="Book a package of one lesson:" />
+                    <div className="border-t-4 md:p-6 border-customPink md:border-l-4 border-customPink py-6 md:border-t-0 md:py-12">
+                        <SubHeadingComponent text="Book a package of one lesson:" />
                         <ParagraphComponent text="One groupe lesson $55 (a minimum of 2 people)." />
                         <ParagraphComponent text="One private lesson: $75f-board" />
                         <div className="flex justify-center items-center">
@@ -101,8 +101,8 @@ export const SurfLessons = () => {
                         </div>
                     </div>
 
-                    <div className="border-y-4 border-customPink md:border-x-4 border-customPink md:border-y-0 py-12">
-                        <SubHeadingComponent className="" text="Book a package of 3 lessons:" />
+                    <div className="border-y-4 md:p-6 border-customPink md:border-x-4 border-customPink py-6 md:border-y-0 md:py-12">
+                        <SubHeadingComponent text="Book a package of 3 lessons:" />
                         <ParagraphComponent text="3 group lessons: $45x3 = $135 in total." />
                         <ParagraphComponent text="3 private lessons: $65x3 = $195 in total" />
                         <div className="flex justify-center items-center">
@@ -110,10 +110,10 @@ export const SurfLessons = () => {
                         </div>
                     </div>
 
-                    <div className="border-b-4 border-customPink md:border-r-4 border-customPink md:border-b-0 py-12">
-                        <SubHeadingComponent className="" text="Book a package of 6 lessons:" />
-                        <ParagraphComponent className="" text="6 group lessons: $35x6 = $210 in total." />
-                        <ParagraphComponent className="" text="6 Private Lessons: $55x6 = $330 in total" />
+                    <div className="border-b-4 border-customPink md:border-r-4 md:p-6 border-customPink md:border-b-0 py-6 md:py-12">
+                        <SubHeadingComponent text="Book a package of 6 lessons:" />
+                        <ParagraphComponent text="6 group lessons: $35x6 = $210 in total." />
+                        <ParagraphComponent text="6 Private Lessons: $55x6 = $330 in total" />
                         <div className="flex justify-center items-center">
                             <PhotoComponent src={GiftIcon} alt="Gift icon" />
                         </div>
@@ -121,12 +121,11 @@ export const SurfLessons = () => {
 
                 </div>
 
-                <div className="flex items-center justify-center p-4">
+                <div className="flex items-center justify-center p-4 m-6">
                     <BtnComponent label="Book Now" onClick={handleButtonClick} />
                 </div>
 
             </div>
-
             <FooterComponent />
         </div>
 

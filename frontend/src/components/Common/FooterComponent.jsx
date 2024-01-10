@@ -12,7 +12,7 @@ export const FooterComponent = () => {
     return (
         <Fade>
             <div className="bg-customPink flex flex-col md:flex-row items-center justify-between h-auto">
-                <div className="space-x-10 items-center flex md:flex-row md:space-x-20 md:container justify-center items-center p-3 pb-10">
+                <div className="space-x-14 items-center flex md:flex-row md:space-x-20 md:container justify-center items-center mx-6 pb-0 pt-4 md:pb-7">
 
                     <BtnComponent img={tripAdvisorLogo} alt="TripAdvisor Logo" href="https://www.tripadvisor.com/Attraction_Review-g309247-d19787493-Reviews-Tuanis_Surf_School_CR-Playa_Samara_Province_of_Guanacaste.html" target="_blank" />
 
@@ -23,8 +23,8 @@ export const FooterComponent = () => {
 
                 <div className="items-center flex flex-col lg:flex-row md:container justify-center items-center">
 
-                    <ParagraphComponent className="pb-0 lg:" text="Email: tuanissurfschool@gmail.com" />
-                    <ParagraphComponent className="pt-0 pb-10 lg:" text="Phone: +506 6140-7609" />
+                    <ParagraphComponent className="pt-0 lg:p-7 lg:mb-7" text="Phone: +506 6140-7609" />
+                    <ParagraphComponent className="pb-0 pb-6 lg:p-7 lg:mb-7" text="Email: tuanissurfschool@gmail.com" />
 
                 </div>
             </div>

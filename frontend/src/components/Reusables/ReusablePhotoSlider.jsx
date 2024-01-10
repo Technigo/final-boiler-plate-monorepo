@@ -77,7 +77,7 @@ export const ReusablePhotoSlider = ({ images }) => {
                     {images.map((image, index) => (
                         <div key={index}>
                             {/* Display each image using the PhotoComponent */}
-                            <PhotoComponent className="rounded-3xl p-1 h-100% md:h-auto" src={image.src} alt={image.alt} />
+                            <PhotoComponent className="rounded-3xl p-1 h-full w-full md:h-auto" src={image.src} alt={image.alt} />
                         </div>
                     ))}
                 </Slider>

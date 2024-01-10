@@ -24,14 +24,14 @@ export const PostNewsletter = () => {
         <Fade>
             <div className='w-full h-full flex items-center justify-center'>
                 {/* The entire newsletter content */}
-                <div className='w-auto m-4 lg:m-8 py-12 rounded-md border-4 border-customPink px-10'>
-                    <div className='grid lg:grid-cols-1 lg:text-center'>
+                <div className='w-auto lg:m-8 py-12 rounded-md border-4 border-customPink px-2 md:px-10'>
+                    <div className='grid lg:grid-cols-1 text-left md:text-center'>
                         <div>
-                            <SubHeadingComponent className='sm:text-left lg:text-center' text="Want to know the latest news about Tuanis Surf School?" />
-                            <ParagraphComponent text="Sign up for our newsletter and stay up to date." />
+                            <SubHeadingComponent text="Want to know the latest news about Tuanis Surf School?" />
+                            <ParagraphComponent className="px-4 pb-4" text="Sign up for our newsletter and stay up to date." />
                         </div>
                         <div className='lg:my-4'>
-                            <div className='flex flex-col sm:flex-row items-center justify-between w-full'>
+                            <div className='flex flex-col sm:flex-row items-center justify-between w-full px-4'>
                                 <input
                                     className='p-3 flex w-full rounded-md text-black'
                                     type='email'
@@ -40,7 +40,7 @@ export const PostNewsletter = () => {
                                     onChange={(e) => setEmail(e.target.value)}
                                 />
                                 <BtnComponent
-                                    className='bg-amber-300 mt-2 text-pink-500 px-5 ml-5 whitespace-nowrap'
+                                    className='bg-amber-300 my-4 text-pink-500 px-5 ml-5 whitespace-nowrap'
                                     onClick={handleSubscribe}
                                     label={isLoading ? 'Subscribing...' : 'Sign up'}
                                 />

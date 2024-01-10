@@ -20,6 +20,7 @@ export const FormComponent = ({ form, index, setForms, minDate, errors, disabled
     const intermediateId = uuidv4();
     const advancedId = uuidv4();
     const textareaId = uuidv4();
+    const documentationId = uuidv4();
 
     // Calculate the total character count for newPost field
     const newPostCharacterCount = form.newPost.length;
@@ -130,7 +131,7 @@ export const FormComponent = ({ form, index, setForms, minDate, errors, disabled
 
             {/* Documentation checkboxes */}
             <div className="mb-2">
-                <label htmlFor={filmId} className="mr-2">
+                <label className="mr-2">
                     Would you like any documentation?
                 </label>
 
@@ -192,7 +193,7 @@ export const FormComponent = ({ form, index, setForms, minDate, errors, disabled
 
             {/* Checkbox Surf Level beginner */}
             <div className="mb-2">
-                <label htmlFor={beginnerId}>
+                <label >
                     <ParagraphComponent className="mb-2 pl-0 text-s" text={`Have you surfed before? `} />
                 </label>
                 <Checkbox
