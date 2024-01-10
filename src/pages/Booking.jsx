@@ -1,16 +1,16 @@
 import { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import { Link } from 'react-router-dom'
+
 import { userStore } from '../store/userStore'
 import { bookingStore } from '../store/bookingStore'
+
 import { SelectedTicket } from '../components/SelectedTicket'
 
 import './Booking.css'
 
 const compareArrays = (arrayOne, arrayTwo) => {
 	let isSame = true
-
-	// console.log('array one and two', arrayOne, arrayTwo)
 
 	if (arrayOne.length !== arrayTwo.length) return false
 	arrayOne.map((element, index) => isSame = isSame && (element === arrayTwo[index]))
@@ -19,7 +19,6 @@ const compareArrays = (arrayOne, arrayTwo) => {
 }
 
 export const Booking = () => {
-	// const [ thisShowTime, setThisShowTime ] = useState()
 	const [ cinemaHall, setCinemahall ] = useState()
 	const [ movieTitle, setMovieTitle ] = useState()
 	const [ seatInfo, setSeatInfo ] = useState()
@@ -36,22 +35,9 @@ export const Booking = () => {
 
 	const { showtimeID } = useParams()
 
-	// useEffect(() => {
-	// 	fetchAllShowTimes()
-	// }, [])
-
 	useEffect(() => {
 		if (showtimeID != null) fetchSelectedShowtime(showtimeID)
 	}, [showtimeID])
-
-	// useEffect(() => {
-	// 	if(allShowTimes != null && allShowTimes.length > 0) {
-	// 		const thisShowTime = allShowTimes[9]
-	// 		setThisShowTime(thisShowTime)
-	// 		// setSelectedShowtime(thisShowTime)
-	// 	}
-	// }, [allShowTimes])
-
 
 	useEffect(() => {
 		if (selectedShowtime != null) {
@@ -73,13 +59,11 @@ export const Booking = () => {
 		const removeSelected = (event) => {
 			event.target.classList.remove('selected')
 			let filteredArray = selectedSeats.filter(item => !compareArrays(item, newSelection))
-			// setSelectedSeats(filteredArray)
 			setSelectedSeats(filteredArray)
 		}
 
 		const addSelected = (event) => {
 			event.target.classList.add('selected')
-			// setSelectedSeats([...selectedSeats, newSelection])
 			updateSelectedSeats(newSelection)
 		}
 
@@ -93,7 +77,6 @@ export const Booking = () => {
 
 			existsAlready ? removeSelected(event) : addSelected(event)
 		} else {
-			// setSelectedSeats([newSelection])
 			setSelectedSeats([newSelection])
 			event.target.classList.add('selected')
 		}
@@ -115,7 +98,7 @@ export const Booking = () => {
 							<label>{index + 1}</label>
 							{row.map(seat => (
 								<div 
-									className={`seat ${seat.booked ? "booked" : ""} `} 
+									className={`seat ${seat.booked ? "booked" : ""} ${seat.selected ? "selected" : ""}`} 
 									key={seat.seatIndex} 
 									onClick={event => {
 											handleSeatClick(event, seat.rowIndex, seat.seatIndex)
