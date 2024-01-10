@@ -125,10 +125,6 @@ export const PostStory = () => {
     setSelectedDate(date);
   };
 
-  // const handleCalendarClick = () => {
-  //   setIsCalendarVisible(!isCalendarVisible);
-  // };
-
   const handleButtonClick = () => {
     console.log("Button clicked within PostStory component", newStory);
   };
@@ -290,99 +286,6 @@ export const PostStory = () => {
             ))}
           </div>
         </Modal>
-        {/* <div className="gallery-images">
-            <button
-              className="image-buttons"
-              type="button"
-              onClick={() => handleImageSelect("image1.png")}
-            >
-              <img src={"image1.png"} alt="Image 1" />
-            </button>
-            <button
-              className="image-buttons"
-              type="button"
-              onClick={() => handleImageSelect("./image2.png")}
-            >
-              <img src={"image2.png"} alt="Image 2" />
-            </button>
-            <button
-              className="image-buttons"
-              type="button"
-              onClick={() => handleImageSelect("image3.png")}
-            >
-              <img src={"image3.png"} alt="Image 3" />
-            </button>
-            <button
-              className="image-buttons"
-              type="button"
-              onClick={() => handleImageSelect("./image4.png")}
-            >
-              <img src={"image4.png"} alt="Image 4" />
-            </button>
-            <button
-              className="image-buttons"
-              type="button"
-              onClick={() => handleImageSelect("./image5.png")}
-            >
-              <img src={"image5.png"} alt="Image 5" />
-            </button>
-            <button
-              className="image-buttons"
-              type="button"
-
-              onClick={() => handleImageSelect("./image6.png")}
-            >
-              <img src={"image6.png"} alt="Image 6" />
-
-            </button>
-            <button
-              className="image-buttons"
-              type="button"
-
-              onClick={() => handleImageSelect("./image7.png")}
-            >
-              <img src={"image7.png"} alt="Image 7" />
-
-            </button>
-            <button
-              className="image-buttons"
-              type="button"
-
-              onClick={() => handleImageSelect("./image8.png")}
-            >
-              <img src={"image8.png"} alt="Image 8" />
-            </button>
-            <button
-              className="image-buttons"
-              type="button"
-              onClick={() => handleImageSelect("./image9.png")}
-            >
-              <img src={"image9.png"} alt="Image 9" />
-            </button>
-            <button
-              className="image-buttons"
-              type="button"
-              onClick={() => handleImageSelect("./image10.png")}
-            >
-              <img src={"image10.png"} alt="Image 10" />
-            </button>
-            <button
-              className="image-buttons"
-              type="button"
-              onClick={() => handleImageSelect("./image11.png")}
-            >
-              <img src={"image11.png"} alt="Image 11" />
-            </button>
-            <button
-              className="image-buttons"
-              type="button"
-              onClick={() => handleImageSelect("./image12.png")}
-            >
-              <img src={"image12.png"} alt="Image 12" />
-
-            </button>
-          </div>
-        </Modal> */}
       </form>
     </div>
   );
