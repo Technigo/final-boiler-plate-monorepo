@@ -11,7 +11,6 @@ export const CollectionRecipes = () => {
   const { recipes, fetchCollectionRecipes, errorMessageGeneration, setErrorMessageGeneration, setNewRecipe } = recipeStore();
   const [loading, setLoading] = useState(true);
 
-  // setErrorMessageGeneration() TEST!!
 
   // Use the useEffect hook to fetch recipes when the component mounts
   useEffect(() => {
@@ -19,8 +18,8 @@ export const CollectionRecipes = () => {
       try {
         await fetchCollectionRecipes();
         setLoading(false);
-        setErrorMessageGeneration("") //TEST!!
-        setNewRecipe(false) //TEST
+        setErrorMessageGeneration("")
+        setNewRecipe(false)
       } catch (error) {
         console.error("Error fetching data:", error);
         setLoading(false);

@@ -1,10 +1,8 @@
 // import OpenAiAssistant from '../components/OpenAIAssistant'
-import { Header } from '../components/header/Header';
 import { HeroSection } from '../components/heroSection/HeroSection';
 import { NewRecipe } from '../components/newRecipe/NewRecipe';
 import { CollectionRecipes } from "../components/collectionRecipes/CollectionRecipes"
 import { recipeStore } from '../stores/recipeStore';
-import { Footer } from '../components/footer/Footer';
 import "../components/collectionRecipes/collectionRecipes.css";
 import "../App.css";
 

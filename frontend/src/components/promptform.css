@@ -58,35 +58,33 @@ textarea::placeholder {
     /* justify-content: space-between; */
 }
 
-.checkbox-options input[type="checkbox"] {
-    position: absolute;
-    opacity: 0;
+/* Styling for checkboxes instead of default colors */
+input[type='checkbox']:checked {
+    background-color: #173e34;
 }
 
-.checkbox-options label {
-    position: relative;
-    padding-left: 25px;
-    /* Adjust as needed */
-    cursor: pointer;
+input[type='checkbox']:checked:after {
+    content: '\2713';
     color: white;
 }
 
-.checkbox-options label::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 16px;
-    height: 16px;
-    border: 2px solid #286052;
-    border-radius: 4px;
-    background-color: transparent;
+input[type='checkbox'] {
+    /* text-align: center; */
+    /* display: table-cell; */
+    vertical-align: middle;
+    width: 20px !important;
+    height: 20px !important;
+    margin-right: 3px;
+    appearance: none;
+    /*Om man tar bort denna rad hamnar de rätt men då blir koden fel för färgerna*/
+    border-radius: 10%;
+    border: 1px solid #173e34;
+    box-shadow: none;
+    background-color: white;
+    font-size: 1em;
 }
 
-.checkbox-options input[type="checkbox"]:checked+label::before {
-    background-color: darkgreen;
-    border-color: darkgreen;
-}
+/* Checkbox-styling end */
 
 /* Ev flyttas. Om alla knappar ska se likadana ut så kan denna flyttas till app */
 .generate-button {

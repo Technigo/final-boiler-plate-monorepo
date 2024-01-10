@@ -7,7 +7,6 @@ import { ImageDetails } from "./recipeDetailsComponents/imageDetails/ImageDetail
 import { DescriptionDetails } from "./recipeDetailsComponents/descriptionDetails/DescriptionDetails"
 import { IngredientsDetails } from "./recipeDetailsComponents/ingredientsDetails/IngredientsDetails"
 import { MethodDetails } from "./recipeDetailsComponents/methodDetails/MethodDetails"
-// import { SaveButtonBig } from "../../components/buttons/saveButtonBig/SaveButtonBig" (preppet for later)
 import { TabButton } from "../../components/buttons/tabButton/TabButton";
 import { recipeStore } from "../../stores/recipeStore";
 
@@ -16,12 +15,29 @@ export const RecipeDetails = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   // Getting the recipe state from recipeStore
-  const { recipes } = recipeStore();
+  const { recipes, fetchCollectionRecipes } = recipeStore();
   // Find the recipe with the matching 'id' from the 'recipes' array
   const foundRecipe = recipes.find((recipe) => recipe._id === id);
   const [isMobileView, setIsMobileView] = useState(window.innerWidth < 1024);
+  const [loading, setLoading] = useState(true);
 
-  //Setting the function HandleResize: 
+
+  //Fetching all the recipes so recipe state is updated when page is reloaded.
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        await fetchCollectionRecipes();
+        setLoading(false)
+
+      } catch (error) {
+        console.error("Error fetching data:", error);
+        setLoading(false)
+      }
+    };
+    fetchData();
+  }, [fetchCollectionRecipes]);
+
+  //Setting the function HandleResize (Components in different order depending on if its mobile/tablet or desktop)
   useEffect(() => {
     const handleResize = () => {
       setIsMobileView(window.innerWidth < 1024);
@@ -33,53 +49,46 @@ export const RecipeDetails = () => {
     };
   }, []);
 
-
-  // ANVÄNDS DENNA??? SVAR: JA:)
   // This is to make the page scroll up to top automatically
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
+  //Shows the NotFound-page
+  if (!foundRecipe) {
+    navigate("not-found");
+    return null;
+  }
 
-  // // DETTA FUNGERAR EJ, testa att byta ut en bokstav på ett recept. Sidan blir blank.
-  // // Check if a recipe was found
-  // // Check if a recipe was found
-  // if (!foundRecipe) {
-  //   // Redirect to a not-found page or handle appropriately
-  //   navigate("/not-found");
-  //   // Render nothing if recipe not found
-  //   return null;
-  // }
+  if (loading) {
+    return <p>Loading...</p>
+  }
 
-  
 
   return (
     <>
-    <section className="recipe-details">
-      {isMobileView ? (
-        <>
-          <HeadingDetails title={foundRecipe.title} />
-          <RecipeInfoDetails userInput={foundRecipe.userInput} />
-          <ImageDetails src="/recipe-imgs/campfire-896196_1280.jpg" alt="outdoor cooking" />
-          <DescriptionDetails description={foundRecipe.description} />
-          {/* <TabButton /> */}
-          <IngredientsDetails ingredients={foundRecipe.ingredients} />
-          <MethodDetails instructions={foundRecipe.instructions} />
-        </>
-      ) : (
-        <div className="details-desktop-container">
-          <ImageDetails src="/recipe-imgs/campfire-896196_1280.jpg" alt="outdoor cooking" />
-          <div className="details-text-container">
+      <section className="recipe-details">
+        {isMobileView ? (
+          <>
             <HeadingDetails title={foundRecipe.title} />
             <RecipeInfoDetails userInput={foundRecipe.userInput} />
+            <ImageDetails src="/recipe-imgs/campfire-896196_1280.jpg" alt="outdoor cooking" />
             <DescriptionDetails description={foundRecipe.description} />
-            <TabButton ingredients={foundRecipe.ingredients} instructions={foundRecipe.instructions} />
-            {/* <IngredientsDetails ingredients={foundRecipe.ingredients} />
-            <MethodDetails instructions={foundRecipe.instructions} /> */}
+            <IngredientsDetails ingredients={foundRecipe.ingredients} />
+            <MethodDetails instructions={foundRecipe.instructions} />
+          </>
+        ) : (
+          <div className="details-desktop-container">
+            <ImageDetails src="/recipe-imgs/campfire-896196_1280.jpg" alt="outdoor cooking" />
+            <div className="details-text-container">
+              <HeadingDetails title={foundRecipe.title} />
+              <RecipeInfoDetails userInput={foundRecipe.userInput} />
+              <DescriptionDetails description={foundRecipe.description} />
+              <TabButton ingredients={foundRecipe.ingredients} instructions={foundRecipe.instructions} />
+            </div>
           </div>
-        </div>
-      )}
-    </section>
-  </>
+        )}
+      </section>
+    </>
   );
 };

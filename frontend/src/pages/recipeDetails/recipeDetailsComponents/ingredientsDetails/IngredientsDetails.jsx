@@ -1,6 +1,6 @@
 import "./ingredientsDetails.css"
 
-export const IngredientsDetails = ({ingredients}) => {
+export const IngredientsDetails = ({ ingredients }) => {
 
   // Function to capitalise the first letter of a word in object
   const capitalizeKeys = (obj) => {
@@ -15,15 +15,14 @@ export const IngredientsDetails = ({ingredients}) => {
   };
   return (
     <>
-    <h3>Ingredients</h3>
-    {console.log(ingredients)}
-        <ul>
-          {Object.entries(capitalizeKeys(ingredients)).map(
-            ([ingredient, quantity], i) => (
-              <li key={i}>{`${ingredient}: ${quantity}`}</li>
-            )
-          )}
-        </ul>
-        </>
+      <h3>Ingredients</h3>
+      <ul>
+        {Object.entries(capitalizeKeys(ingredients)).map(
+          ([ingredient, quantity], i) => (
+            <li key={i}>{`${ingredient}: ${quantity}`}</li>
+          )
+        )}
+      </ul>
+    </>
   )
 }
