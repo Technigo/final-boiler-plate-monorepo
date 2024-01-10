@@ -112,35 +112,48 @@ export const addShowtime = asyncHandler(async (req, res) => {
 // @route /showtime/:id
 // @access public
 export const bookSeats = asyncHandler(async (req, res) => {
-	try{
-		// Extract data from the PUT request body
-		const { seat, showTimeId, bookingId } = req.body
-		
-		const existingShowtime = await ShowTimeModel.findOneAndUpdate(
-				{ 
-					_id: showTimeId,
-				},
-				{ $set : {
-					'seats.$[].$[xxx].booked' : true,
-					'seats.$[].$[xxx].bookingID' : bookingId
-				}},
-				{arrayFilters: [
-					{
-						'xxx.seatIndex': seat
-					}
-				]
-			}
-		)
+	try {
+		const { seat, id } = req.body
+
+		const existingShowtime = await ShowTimeModel.findById(id)
 
 		if (!existingShowtime) {
 			return res.status(404).json({error: `Cannot find the showtime with id ${showTimeId}`})
 		}
 
-		// Respond with the updated showtime
-		res.status(200).json(existingShowtime)
+		let seatToUpdate = null
+		let newSeatIndex
+
+		existingShowtime.seats.forEach((rowArray) => {
+			rowArray.forEach((seatObject) => {
+				if (seatObject.seatIndex === seat[1]) {
+					seatToUpdate = seatObject
+					newSeatIndex = seatToUpdate.seatIndex - 1
+				}
+			})
+		})
+
+		if (!seatToUpdate) {
+			return res.status(404).json({error: `Cannot find the seat with index ${seatIndex}`})
+		}
+		if (seatToUpdate.booked) {
+			return res.status(400).json({error: `The seat with index ${seatIndex} is already booked`})
+		}
+
+		seatToUpdate.selected = !seatToUpdate.selected
+
+		try {
+			const updatedShowTime = await ShowTimeModel.findOneAndUpdate(
+				{ _id: existingShowtime._id },
+				{ $set: { [`seats.$[].${newSeatIndex}.selected`]: seatToUpdate.selected } },
+				{ new: true }
+			)
+			res.status(200).json(updatedShowTime)
+		} catch (error) {
+			res.status(500).json({ error: 'Error updating the showtime.' });
+		}
 
 	} catch (error) {
-		// Handle errors that occurred during the request processing
 		res.status(500).json({ error: 'Something went wrong, please try again.' })
 	}
 })
