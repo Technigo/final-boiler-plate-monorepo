@@ -19,7 +19,7 @@ export const Cocktails = () => {
 
     return (
         <div className={styles.wrapper}>
-            <Text type="SbodyText" className={styles.SbodyText}>LATEST COCKTAILS</Text>
+            <Text type="H1" className={styles.h1}>LATEST COCKTAILS</Text>
             <div className={styles.gridContainer}>
                 {cocktails.map(cocktail => (
                     <div key={cocktail._id}>
