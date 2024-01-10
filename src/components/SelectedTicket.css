@@ -1,3 +1,7 @@
+.ticket-container {
+    margin: 10px;
+}
+
 .a-ticket {
     --notch-size: 20px;
     --notch-size-radius: -10px;
