@@ -49,7 +49,8 @@
 
 /* Hover effects */
 .footer p a:hover {
-    color: rgba(84, 101, 65, 0.5);
+    /* color: rgba(84, 101, 65, 0.5); */
+    color: rgba(140, 160, 120, 0.5);
 }
 
 .footer-nav svg:hover {
