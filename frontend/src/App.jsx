@@ -20,6 +20,7 @@ export const App = () => {
   );
 };
 
+
 // import { BrowserRouter, Routes, Route } from "react-router-dom";
 // import routes from "./routes/routes"; // Your regular routes
 // import AdminRoutes from "./routes/adminRoutes"; // Admin routes component
