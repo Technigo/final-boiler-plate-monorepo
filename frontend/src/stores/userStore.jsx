@@ -4,6 +4,7 @@ import { create } from "zustand";
 // Get the backend API endpoint from the environment variables.
 const apiEnv = import.meta.env.VITE_BACKEND_API;
 const backupApiEnv = import.meta.env.VITE_BACKUP_API;
+const localhoster = "http://localhost:3000";
 
 // Create a Zustand store for user-related state and actions.
 export const userStore = create((set, get) => ({
@@ -131,10 +132,13 @@ export const userStore = create((set, get) => ({
   handleChatHistory: async (senderId, recipientId) => {
     try {
       const response = await fetch(
-        `${apiEnv}/messages/${senderId}/${recipientId}`
+        `${localhoster}/messages/${senderId}/${recipientId}`
       );
 
       if (!response.ok) {
+        console.log(
+          `From store: ${apiEnv}/messages/${senderId}/${recipientId}`
+        );
         throw new Error(`Error fetching messages: ${response.statusText}`);
       }
 
