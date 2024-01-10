@@ -26,7 +26,6 @@ export const PostStory = () => {
   const handleFormSubmit = async (e) => {
     e.preventDefault();
 
-    //const apiUrl = import.meta.env.VITE_BACKEND_API || "http://localhost:3000";
 
     if (newStory.length < 10) {
       alert("The message is too short. Please try again! 💕");
@@ -79,7 +78,9 @@ export const PostStory = () => {
       });
 
     // Post the story to the backend
-    fetch(`http://localhost:3000/stories`, {
+
+    fetch("http://localhost:3000/stories", {
+
       method: "POST",
       headers: {
         "Content-Type": "application/json",

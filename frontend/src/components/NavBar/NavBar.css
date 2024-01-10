@@ -12,6 +12,7 @@
 .logo {
   fill: #faebd7;
   height: 100px;
+
   filter: invert(1);
   margin-bottom: -42px;
   z-index: 10;

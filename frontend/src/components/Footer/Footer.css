@@ -11,12 +11,24 @@
 .footer-text {
   font-size: 10px;
   text-align: center;
-  width: 80%;
+  width: 100%;
   font-family: "Rethink Sans", sans-serif;
+  z-index: 100;
+}
+
+span {
+  margin-right: 5%;
+}
+
+img {
+  width: 1.2%;
+  height: 1.2%;
+  margin-left: 1%;
+  margin-top: 0.5%;
 }
 
 @media screen and (min-width: 1000px) {
   .footer-text {
-    font-size: 12px;
+    font-size: 15px;
   }
 }
