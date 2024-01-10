@@ -85,7 +85,7 @@ export const addShowtime = asyncHandler(async (req, res) => {
 			const row = []
 			for (let j=0; j < numSeats; j++) {
 				let seatIndex = (numSeats*i) + j
-				row.push({ booked: false, bookingID: null, rowIndex: i + 1, seatIndex: seatIndex + 1 })
+				row.push({ booked: false, selected: false, bookingID: null, rowIndex: i + 1, seatIndex: seatIndex + 1 })
 			}
 			seats.push(row)
 		}
