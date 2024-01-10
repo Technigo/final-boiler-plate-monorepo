@@ -17,6 +17,10 @@ const StyledIconButton = styled.button`
   &:hover {
     background-color: var(--buttonhover);
   }
+  // When the button is pressed, but not released
+  &:active {
+    background-color: var(--buttonactive);
+  }
 `;
 
 const StyledIcon = styled.img`

@@ -33,7 +33,6 @@ const StyledRegField = styled.div`
   flex-direction: column;
   justify-content: center;
   max-width: 500px;
-
   border: 1px solid var(--button);
   border-radius: 20px 0 20px 20px;
   background-color: #f0f0f0;
@@ -52,10 +51,9 @@ const StyledRegField = styled.div`
 
 // Define the 'Register' functional component.
 export const Register = () => {
-  // Initialize state variables for 'username' and 'password' using 'useState'.
+  // Initialize state variables for 'username', 'password' and 'email' using 'useState'.
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-
   const [email, setEmail] = useState("");
 
   // Initialize the 'navigate' function from React Router.
@@ -103,7 +101,7 @@ export const Register = () => {
       </StyledIntroReg>
       <StyledRegField>
         <div className="user-registration">
-          {/* Create input fields for 'username' and 'password' and associate them with state variables. */}
+          {/* Create input fields for 'username', 'password' and 'email' and associate them with state variables. */}
           <input
             type="text"
             placeholder="Username"

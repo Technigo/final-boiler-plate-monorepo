@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { taskStore } from "../stores/taskStore";
 import { Button } from "./Buttons/Button";
-import aHelpingHandLogotype from "/Logo-white.png";
+//import aHelpingHandLogotype from "/Logo-white.png";
 import styled from "styled-components";
 
 const StyledFilterTaskFeed = styled.div`
@@ -10,7 +10,7 @@ const StyledFilterTaskFeed = styled.div`
   align-items: center;
   text-align: center;
   gap: 30px;
-  /* margin-bottom: 30px; */
+  margin-bottom: 30px;
   height: 500px;
 
   @media screen and (min-width: 600px) {
@@ -22,9 +22,9 @@ const StyledFilterTaskFeed = styled.div`
   }
 `;
 
-const StyledLogotype = styled.img`
-  width: 75px;
-`;
+// const StyledLogotype = styled.img`
+//   width: 75px;
+// `;
 
 const StyledFilters = styled.div`
   display: flex;
@@ -56,16 +56,13 @@ const StyledSelects = styled.select`
 export const FilterTaskFeed = () => {
   const [category, setCategory] = useState("");
   const [area, setArea] = useState("");
-  //const [filteredTasks, setFilteredTasks] = useState([]);
   const { fetchTasks } = taskStore();
 
   // Function to filter tasks by category and area
   const filterTasks = (selectedCategory, selectedArea) => {
-    // const tasks = taskStore
     taskStore
       .getState()
       .filterTasksByCategoryAndArea(selectedCategory, selectedArea);
-    //setFilteredTasks(tasks);
   };
 
   useEffect(() => {
@@ -82,17 +79,24 @@ export const FilterTaskFeed = () => {
   return (
     <StyledFilterTaskFeed>
       <p>
-        A Helping Hand is all about connecting people. Take the opportunity to
-        make someone&apos;s day by offering a helping hand!
+        A Helping Hand is all about the community coming together and helping
+        eachother out. Take the opportunity to make someone&apos;s day by
+        offering a helping hand!
       </p>
-      <StyledLogotype
+
+      {/* <StyledLogotype
         src={aHelpingHandLogotype}
         className="logotype"
         alt="A Helping Hand Logotype"
-      />
+      /> */}
       <p>
-        You can find the deeds you have offered to volunteer to on your profile
-        page.
+        Below you see everything you can help out with in Varberg at the moment.
+        Make sure to filter the tasks by category and area to find the ones that
+        suit you best.
+      </p>
+
+      <p>
+        You can find the deeds you have volunteered for on your profile page.
       </p>
 
       <StyledFilters>
@@ -100,15 +104,14 @@ export const FilterTaskFeed = () => {
         <StyledSelects
           className="category-select"
           type="select"
-          // onChange={handleCategoryChange}
           onChange={(e) => setCategory(e.target.value)}
           value={category}
         >
           <option disabled default value="">
             Filter by category
           </option>
-          <option value="Garden">Garden</option>
           <option value="Pets">Pets</option>
+          <option value="Garden">Garden</option>
           <option value="Shopping">Shopping</option>
           <option value="Repairs">Repairs</option>
           <option value="Other">Other</option>
@@ -118,7 +121,6 @@ export const FilterTaskFeed = () => {
         <StyledSelects
           className="area-select"
           type="select"
-          // onChange={handleAreaChange}
           onChange={(e) => setArea(e.target.value)}
           value={area}
         >

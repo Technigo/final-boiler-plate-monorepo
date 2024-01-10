@@ -15,6 +15,9 @@ const StyledButton = styled(Link)`
   &:hover {
     background-color: var(--buttonhover);
   }
+  &:active {
+    background-color: var(--buttonactive);
+  }
 `;
 
 // LinkButton component using the styled Link as a button

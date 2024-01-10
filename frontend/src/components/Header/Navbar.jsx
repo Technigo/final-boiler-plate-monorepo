@@ -28,13 +28,18 @@ const StyledNav = styled.nav`
 
   //Show menu when mobile menu is open
   ul.burger-menu-open {
-    display: block;
+    display: flex;
+    flex-direction: column;
     width: 150px;
   }
 
   li.active a {
     text-decoration-line: underline;
     border-bottom: 5px;
+  }
+
+  .logout-button {
+    background: transparent;
   }
 
   @media (min-width: 1100px) {
@@ -72,7 +77,6 @@ export const Navbar = () => {
     };
 
     handleResize(); // Initialize on mount
-
     window.addEventListener("resize", handleResize);
 
     return () => {
@@ -89,9 +93,8 @@ export const Navbar = () => {
   // Function to handle the click event of the logout button.
   const onLogoutClick = () => {
     storeHandleLogout();
-    // Additional logic after logout can be added here.
-    alert("Log out successful");
-    navigate("/"); // You can change this to the login route
+    // Go to home page after logout
+    navigate("/");
   };
 
   return (
