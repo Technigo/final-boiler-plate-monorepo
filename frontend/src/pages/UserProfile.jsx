@@ -65,12 +65,10 @@ export const UserProfile = () => {
 
   useEffect(() => {
     const getUserDataFromMongo = async () => {
-      // console.log(`${vite_backup}/user/${user.sub}`);
       try {
         await fetch(`${vite_backend}/user/${user.sub}`)
           .then((res) => res.json())
           .then((data) => {
-            // console.log("data: " + JSON.stringify(data));
             setMongoUsername(data.username);
             setLoggedInUserId(data._id);
             setEmail(data.email);
@@ -86,16 +84,10 @@ export const UserProfile = () => {
       const jsonUsers = await fetchUsers.json();
       setUserList(jsonUsers);
       setUserLoading(!userLoading);
-      // console.log(userList);
     };
 
     getUserDataFromMongo();
     getUsers();
-
-    // const chatSetup = async() => {
-    //   await setUsername(mongoUsername); console.log("chatReceiver: " + chatReceiver )};
-
-    // chatSetup();
   }, []);
 
   // console.log("User: " + JSON.stringify(user));

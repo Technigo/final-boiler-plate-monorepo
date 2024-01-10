@@ -8,6 +8,7 @@ import { CreateTrip } from "../pages/CreateTrip";
 import { Register } from "../pages/Register";
 import { Contact } from "../pages/Contact";
 import { Trips } from "../components/Trips";
+import { Messages } from "../pages/Messages";
 
 // Define the 'routes' variable as a JSX expression.
 const routes = (
@@ -18,8 +19,9 @@ const routes = (
     <Route path="/createtrip" element={<CreateTrip />} />
     <Route path="/trips" element={<Trips />} />
     <Route path="/register" element={<Register />} />
-    <Route path="*" element={<NotFound />} />
     <Route path="/contact" element={<Contact />} />
+    <Route path="/messages" element={<Messages />} />
+    <Route path="*" element={<NotFound />} />
   </>
 );
 
