@@ -6,12 +6,13 @@ import {
 	addShowtime,
 	updateShowtime,
 	seedShowtimes,
+	bookSeats,
 } from '../controllers/showtimeController'
 
 router.route('/').get(getAllShowtime)
-// router.route('/:id').get(getShowtimeById)
+router.route('/showtime/:id').get(getShowtimeById).put(bookSeats)
 router.route('/add').post(addShowtime)
 router.route('/seed').get(seedShowtimes)
-router.route('/update').put(updateShowtime)
+router.route('/showtime/:id/update').put(updateShowtime)
 
 export default router

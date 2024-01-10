@@ -1,5 +1,6 @@
 import CinemaHallModel from '../models/CinemaHallModel'
 import asyncHandler from 'express-async-handler'
+
 // @desc get all cinemaHall
 // @route /
 // @access public
@@ -38,14 +39,14 @@ export const getCinemaHallById = asyncHandler(async (req, res) => {
 // @access public
 export const addCinemaHall = asyncHandler(async (req, res) => {
 	try {
-		const { name, capacity, rows } = req.body
-		if (!name || !capacity || !rows)
+		const { name, capacity, rowsThenSeats } = req.body
+		if (!name || !capacity || !rowsThenSeats)
 			return res.status(400).json({ error: 'Missing required information' })
 
 		const newCinemaHall = new CinemaHallModel({
 			name: name,
 			capacity: capacity,
-			rows: rows,
+			rowsThenSeats: rowsThenSeats,
 		})
 		const saveCinemaHall = await newCinemaHall.save()
 		res.status(201).json(saveCinemaHall)
