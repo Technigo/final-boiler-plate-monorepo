@@ -1,3 +1,24 @@
+.page-section {
+    padding: var(--small-padding) 1rem;
+    margin: 0 auto;
+}
+.page-section:not(.the-header):not(.the-footer) {
+    min-height: 40vh;
+}
+.page-section:not(.the-header):not(.the-footer):not(.the-movie-list) {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.page-section:not(.the-hero) {
+    margin: 0 var(--big-padding);
+}
+/* .page-section.the-calender {
+    padding: 3rem 11rem;
+    margin: 0;
+} */
+
 .button-container {
     display: flex;
     justify-content: center;

@@ -1,3 +1,9 @@
+import './Footer.css'
+
 export const Footer = () => {
-	return <footer>© Frida & Klaudia for Technigo</footer>
+	return (
+		<footer className="the-footer page-section">
+			© Frida & Klaudia for Technigo
+		</footer>
+	)
 }

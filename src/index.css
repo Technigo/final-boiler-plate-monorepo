@@ -1,10 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
 #root {
-	max-width: 1280px;
 	margin: 0 auto;
-	padding: 2rem;
 	min-height: 100vh;
+	min-width: 100vw;
 	text-align: center;
 
 	display: flex;
@@ -31,12 +30,20 @@
 	-webkit-text-size-adjust: 100%;
 
 	--background-color: #262522;
+	--background-section-color-one: #A76D60;
+	--background-section-color-two: #161513;
+	--background-section-color-three: #0B1C26;
+	--background-section-color-four: #363530;
+
 	--font-color: #f2f2f2;
 	--primary-color: #7787a6;
 	--secondary-color: #424859;
 	--screen-color: rgba(0, 0, 0, 0.1);
 	--screen-text-color: #777;
 	--selection-color: yellow;
+
+	--small-padding: 4rem;
+	--big-padding: 11rem;
 }
 
 *,
@@ -55,9 +62,13 @@ a:hover {
 }
 
 body {
+	/* margin: 0 auto;
+	padding: 2rem; */
 	margin: 0;
+
 	min-width: 320px;
 	min-height: 100vh;
+	max-width: 1280px;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -109,5 +120,11 @@ button:focus-visible {
 	}
 	button {
 		background-color: #f9f9f9;
+	}
+}
+
+@media (min-width: 900px) and (max-width: 1280px) {
+	body {
+		max-width: 80dvw;
 	}
 }

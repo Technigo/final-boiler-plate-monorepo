@@ -22,7 +22,7 @@ export const MovieList = () => {
   }
 
   return (
-    <div className="the-movie-list" id="app-container">
+    <div className="the-movie-list page-section" id="app-container">
       {movies && movies.slice(0, 20).map((movie) => (
         <Link
           to={`/movie/${movie._id}`}
