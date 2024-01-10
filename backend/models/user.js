@@ -11,19 +11,18 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true,
     unique: true,
-    // Add a simple email validation
     match: /^\S+@\S+\.\S+$/,
   },
   password: {
     type: String,
     required: true,
   },
-  // completedChallenges: [
-  //   {
-  //     type: Number,
-  //     ref: 'Challenge',
-  //   },
-  // ],
+  completedChallenges: [
+    {
+      type: Number,
+      ref: 'Challenge',
+    },
+  ],
   createdAt: {
     type: Date,
     default: () => new Date()

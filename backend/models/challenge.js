@@ -22,10 +22,10 @@ const challengeSchema = new mongoose.Schema({
     default: false
   },
 
-  user: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "User",
-  }
+  // user: {
+  //   type: mongoose.Schema.Types.ObjectId,
+  //   ref: "User",
+  // }
 
 });
 
