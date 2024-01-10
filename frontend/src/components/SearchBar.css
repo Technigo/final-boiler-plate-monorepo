@@ -1,7 +1,7 @@
 .search-bar {
   margin: 10px auto;
-  
 }
+
 .search-bar input {
   height: 2.5rem;
   width: calc(100% - 36px);
@@ -10,18 +10,18 @@
   padding: 10px;
   font-weight: bold;
   outline: none;
- 
-  
 }
 
 .search-bar .search-input {
-
- max-width: 25rem;
- margin: 0 auto;
+  max-width: 25rem;
+  width: 100%;
+  margin: 0 auto;
 }
+
 .search-input {
   position: relative;
 }
+
 .search-bar .search-item {
   display: flex;
   flex-direction: row;
@@ -34,14 +34,15 @@
 .search-bar .search-item img {
   width: 50px;
 }
+
 .search-icon {
   height: 2rem;
   cursor: pointer;
   position: absolute;
   bottom: 4px;
   right: 0px;
-
 }
+
 .filtered-ads {
   width: 100%;
   display: flex;
@@ -75,8 +76,8 @@
   font-size: 1.5rem;
 }
 
-@media screen and (min-width: 1120px){
-  .search-bar .search-input{
+@media screen and (min-width: 1120px) {
+  .search-bar .search-input {
     max-width: 40rem;
     margin: 0 auto;
   }

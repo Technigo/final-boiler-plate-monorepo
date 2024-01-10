@@ -66,7 +66,7 @@ export const Home = () => {
       />
       <div className="main-container">
         <div className="main-wrapper">
-          <Link to="/search">
+          <Link className="searchbar-link" to="/search">
             <SearchBar />
           </Link>
           <h1>Recently added</h1>
