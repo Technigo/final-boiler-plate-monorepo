@@ -11,13 +11,11 @@ const SocialButton = styled.a`
   font-size: 32px;
   display: flex;
   align-items: center;
-  /* color: #d0d0d0; */
-  /* color: #fff; */
-  color: var(--primaryColor);
+  color: var(--lighttext);
   transition: color 0.3s ease; /* Transition for smooth color change */
 
   &:hover {
-    color: #d0d0d0;
+    color: var(--darkgrey);
   }
 `;
 
@@ -70,7 +68,7 @@ const susanneLinks = [
 ];
 
 // SocialMediaLinks component to display social media buttons
-export const SocialMediaLinks = ({ person, footerStyle }) => {
+export const SocialMediaLinks = ({ person }) => {
   // Choose social media links based on the person (Anna or Susanne)
   const linksToDisplay = person === "Anna" ? annaLinks : susanneLinks;
 
@@ -85,7 +83,6 @@ export const SocialMediaLinks = ({ person, footerStyle }) => {
           rel="noopener noreferrer"
           aria-label={`Link to ${link.label}`}
           className={"social-link-${link.label.toLowerCase()}"}
-          style={footerStyle}
         >
           {/* Display social media icon */}
           {link.icon}

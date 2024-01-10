@@ -3,8 +3,8 @@ import styled from "styled-components";
 
 // Styled Link as a button
 const StyledButton = styled(Link)`
-  background-color: var(--secondaryColor);
-  color: #fff;
+  background-color: var(--button);
+  color: var(--lighttext);
   padding: 5px 15px;
   border-radius: 20px;
   font-size: 20px;
@@ -13,7 +13,7 @@ const StyledButton = styled(Link)`
   height: fit-content;
 
   &:hover {
-    background-color: #899b64;
+    background-color: var(--buttonhover);
   }
 `;
 

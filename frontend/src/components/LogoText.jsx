@@ -1,25 +1,23 @@
 import { Link } from "react-router-dom"; // Ensure the correct import for Link
 // Import image assets for logo.
-import aHelpingHandLogo from "/a-helping-hand-logo.png";
+import aHelpingHandLogo from "/a-helping-hand-white.png";
 import styled from "styled-components";
 
 // STYLING I .LOGO I APP.CSS ÄR DET SOM TAR STYLINGEN, JUSTERA
 const StyledLogoText = styled.img`
   width: 200px;
-  height: 80px; /* Set height for logo images */
+  height: auto;
   object-fit: cover;
   //padding: 20px;
   will-change: filter; /* Specify a CSS property that may change */
   transition: filter 300ms; /* Apply a transition effect to the 'filter' property */
 
-  @media screen and (min-width: 400px) {
-    width: 300px;
-    height: 100px;
+  @media screen and (min-width: 600px) {
+    width: 250px;
   }
 
   @media screen and (min-width: 800px) {
-    width: 400px;
-    height: 125px;
+    width: 300px;
   }
 `;
 

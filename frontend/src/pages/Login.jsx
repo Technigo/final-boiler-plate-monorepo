@@ -23,17 +23,19 @@ const StyledLoginField = styled.div`
   flex-direction: column;
   justify-content: center;
   max-width: 500px;
-  border: 1px solid var(--secondaryColor);
+  border: 1px solid var(--button);
   border-radius: 20px 0 20px 20px;
+  background-color: #f0f0f0;
   padding: 20px;
   margin: 20px;
 
   input {
     margin-bottom: 10px;
     height: 30px;
-    border-bottom: 1px solid var(--secondaryColor);
+    border-bottom: 1px solid var(--button);
     width: 100%;
     padding-left: 5px;
+    background-color: #f0f0f0;
   }
 `;
 

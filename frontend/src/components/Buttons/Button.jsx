@@ -2,8 +2,8 @@ import styled from "styled-components";
 
 // Styled component for the button
 const StyledButton = styled.div`
-  background-color: var(--secondaryColor);
-  color: #fff;
+  background-color: var(--button);
+  color: var(--lighttext);
   padding: 5px 15px;
   border-radius: 20px;
   margin: 10px;
@@ -13,7 +13,7 @@ const StyledButton = styled.div`
   height: fit-content;
 
   &:hover {
-    background-color: #899b64;
+    background-color: var(--buttonhover);
   }
 `;
 

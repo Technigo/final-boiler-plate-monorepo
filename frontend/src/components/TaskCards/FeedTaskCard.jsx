@@ -17,6 +17,8 @@ const StyledFeedCardModal = styled.div`
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
   width: 260px;
   height: auto;
+  color: var(--darktext);
+  background-color: var(--grey);
 
   // Styling for the Need card
   .card-container {
@@ -80,7 +82,7 @@ const StyledFeedCardModal = styled.div`
 
     // Styling for the button when hovering over it
     &:hover {
-      background-color: #899b64;
+      background-color: var(--buttonhover);
     }
   }
 
@@ -105,23 +107,23 @@ const iconSize = "40px";
 const categoryStyle = {
   Garden: {
     icon: GiGardeningShears,
-    backgroundColor: "#eaffec",
+    //backgroundColor: "#eaffec",
   },
   Pets: {
     icon: MdPets,
-    backgroundColor: "#ffeafd",
+    //backgroundColor: "#ffeafd",
   },
   Shopping: {
     icon: TiShoppingCart,
-    backgroundColor: "#ffecea",
+    //backgroundColor: "#ffecea",
   },
   Repairs: {
     icon: GiHammerNails,
-    backgroundColor: "#eafdff",
+    //backgroundColor: "#eafdff",
   },
   Other: {
     icon: MdMiscellaneousServices,
-    backgroundColor: "#eaf3ff",
+    //backgroundColor: "#eaf3ff",
   },
 };
 
@@ -130,7 +132,7 @@ export const FeedTaskCard = ({ task }) => {
   const { _id, category, area } = task; // Destructure the task object
   const { icon: CategoryIcon, backgroundColor } = categoryStyle[category] || {
     icon: null, // Set the icon to null if it doesn't exist
-    backgroundColor: "#ffffff",
+    backgroundColor: "var(--grey)",
   };
 
   // Destructure the addMyselfToTask (volunteer) action from the taskStore

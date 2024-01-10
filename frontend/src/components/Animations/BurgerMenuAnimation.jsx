@@ -9,7 +9,7 @@ import styled from "styled-components";
 const BurgerMenuButton = styled.button`
   display: flex;
   justify-content: center;
-  background-color: #fff;
+  background-color: var(--lighttext);
   cursor: pointer;
   /* 
   @media (min-width: 667px) {

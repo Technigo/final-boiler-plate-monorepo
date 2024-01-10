@@ -2,7 +2,7 @@ import { createGlobalStyle } from "styled-components";
 
 export const GlobalStyle = createGlobalStyle`
   
-  * {
+* {
   margin: 0;
   padding: 0;
   border: 0;
@@ -23,7 +23,7 @@ svg {
   max-width: 100%;
 }
   
-  body {
+body {
   height: 100%;
   /* background: floralwhite; */
   /*background: #f2f3f4;*/
@@ -34,9 +34,14 @@ svg {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
-  color: #213547;
+  color: var(--lighttext);
   font-weight: 400;
-  }
+  background: var(--purple);
+  
+  /* background-image: url("/annarobertsson_23318_make_a_background_for_webdesign_with_soft__c2014488-b44a-4bd8-ab6b-5e7ced6659eb.png");
+  background-size: cover;
+  background-repeat: no-repeat; */
+}
 
   /* Apply styles to the body when the modal is active */
 body.active-modal {
@@ -45,8 +50,13 @@ body.active-modal {
 
 :root {
 /* Colors */
-  --primaryColor: #9b6489;
-  --secondaryColor: #64899b;
+  --purple: #633d57;
+  --lighttext: #fffaf0;
+  --darktext: #213547;
+  --grey: #f8f8f8;
+  --darkgrey: #555;
+  --button: #64899b;
+  --buttonhover: #7b9eaf;
 }
   
   main {
@@ -61,6 +71,7 @@ body.active-modal {
   border-radius: 20px 0 20px 20px;
   padding: 20px;
   background: #fff; */
+  
 
   @media (min-width: 400px) {
     /* margin: 50px 50px 192px; */

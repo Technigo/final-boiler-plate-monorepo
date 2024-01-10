@@ -21,7 +21,7 @@ const StyledList = styled.ul`
 `;
 
 const StyledListItem = styled.li`
-  background-color: #f8f8f8;
+  background-color: var(--grey);
   border: 1px solid #ddd;
   border-radius: 20px 0 20px 20px;
   padding: 15px;
@@ -33,20 +33,21 @@ const TaskTitle = styled.div`
   font-size: 18px;
   font-weight: bold;
   margin-bottom: 5px;
+  color: var(--darktext);
 `;
 
 const TaskDescription = styled.div`
-  color: #555;
+  color: var(--darkgrey);
   margin-bottom: 10px;
 `;
 
 const CreatedBySection = styled.div`
   font-weight: bold;
-  color: #333;
+  color: var(--darktext);
 `;
 
 const VolunteersSection = styled.div`
-  color: #555;
+  color: var(--darktext);
 `;
 
 export const Profile = () => {

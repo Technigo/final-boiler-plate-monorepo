@@ -13,7 +13,9 @@ const StyledNav = styled.nav`
   justify-content: flex-end;
 
   a {
-    color: #213547;
+    color: var(--lighttext);
+    /* color: var(--darktext); */
+    font-weight: 600;
   }
 
   a:hover {
@@ -28,6 +30,11 @@ const StyledNav = styled.nav`
   ul.burger-menu-open {
     display: block;
     width: 150px;
+  }
+
+  li.active a {
+    text-decoration-line: underline;
+    border-bottom: 5px;
   }
 
   @media (min-width: 1100px) {
