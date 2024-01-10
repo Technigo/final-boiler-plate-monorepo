@@ -11,6 +11,7 @@
     color: #1D1C25;
     justify-self: center;
     grid-column: span 2;
+    padding-top: 20px;
 }
 
 .AboutusText {
@@ -24,59 +25,148 @@
     text-align: left;
 }
 
-/* .WrapMembers {
-    padding-left: 40px;
-} */
+.imgBruun {
+    grid-column: 1/2;
+    width: 60%;
+    justify-self: center;
+    padding-top: 30px;
+}
+
 .membersBruun {
     grid-column: 1/2;
     text-align: left;
-    padding: 40px 10px 20px 30px;
+    padding: 0px 10px 20px 30px;
     justify-self: right;
+}
+
+.imgMima {
+    grid-column: 2/3;
+    width: 60%;
+    justify-self: center;
+    padding-top: 30px;
 }
 
 .membersMima {
     grid-column: 2/3;
     text-align: left;
-    padding: 40px 30px 20px 10px;
+    padding: 0px 30px 20px 10px;
     justify-self: left;
+}
+
+.imgFulba {
+    grid-column: 1/2;
+    width: 60%;
+    justify-self: center;
 }
 
 .membersFulba {
     grid-column: 1/2;
     text-align: left;
-    padding: 20px 10px 40px 30px;
+    padding: 0px 10px 40px 30px;
     justify-self: right;
+}
+
+.imgInemy {
+    grid-column: 2/3;
+    width: 60%;
+    justify-self: center;
 }
 
 .membersIneMy {
     grid-column: 2/3;
     text-align: left;
-    padding: 20px 30px 40px 10px;
+    padding: 0px 30px 40px 10px;
     justify-self: left;
+}
+
+/* iPad Pro 11" */
+@media (min-width: 767px) and (max-width: 1028px) {
+    .imgBruun {
+        padding: 40px 40px 0 0;
+        width: 50%;
+        justify-self: end;
+    }
+
+    .imgMima {
+        padding: 40px 0 0 40px;
+        width: 50%;
+        justify-self: start;
+    }
+
+    .imgFulba {
+        padding: 10px 40px 0 0;
+        width: 50%;
+        justify-self: end;
+    }
+
+    .imgInemy {
+        padding: 10px 0 0 40px;
+        width: 50%;
+        justify-self: start;
+    }
+
+    .h1 {
+        padding-top: 40px;
+    }
+
+    .membersFulba {
+        padding: 0px 10px 40px 30px;
+    }
+
+
+    .membersIneMy {
+        padding: 0px 30px 40px 10px;
+    }
+
 }
 
 @media (min-width: 1028px) {
     .wrapper {
         padding: 80px 0 60px 0;
+        grid-gap: 30px;
+    }
+
+    .imgBruun {
+        padding: 40px 40px 0 0;
+        width: 60%;
+        justify-self: end;
     }
 
     .membersBruun {
-        padding: 40px 10px 20px 0px;
+        padding: 0px calc(10vw + 20px) 20px 0px;
         justify-self: right;
+    }
+
+    .imgMima {
+        padding: 40px 0 0 40px;
+        width: 60%;
+        justify-self: start;
     }
 
     .membersMima {
-        padding: 40px 0px 20px 10px;
+        padding: 0 0 0 6vw;
         justify-self: left;
     }
 
+    .imgFulba {
+        padding: 0px 40px 0 0;
+        width: 59%;
+        justify-self: end;
+    }
+
     .membersFulba {
-        padding: 20px 10px 40px 0px;
+        padding: 0px calc(10vw + 20px) 20px 0px;
         justify-self: right;
     }
 
+    .imgInemy {
+        padding: 0px 0 0 40px;
+        width: 60%;
+        justify-self: start;
+    }
+
     .membersIneMy {
-        padding: 20px 0px 40px 10px;
+        padding: 0 0 0 6vw;
         justify-self: left;
     }
 }

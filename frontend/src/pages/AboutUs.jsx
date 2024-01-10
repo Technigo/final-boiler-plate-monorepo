@@ -1,27 +1,32 @@
-import { Text } from '../UI/Typography'; // Adjust the path as needed
+import { Text } from '../UI/Typography';
 import styles from './AboutUs.module.css';
 
 export const AboutUs = () => {
     return (
         <div className={styles.wrapper}>
             <Text type="H1" className={styles.h1}>ABOUT US</Text>
+            <img src="/images/bruun.PNG" className={styles.imgBruun} alt="Picture of Eva" />
+            <img src="/images/mima.PNG" className={styles.imgMima} alt="Picture of Mirela" />
             <div className={styles.membersBruun}>
-                <Text type="bodyText" className={styles.Bruun}>Eva<br />
-                    <span role="img" aria-label="Cocktail Glass">🍹</span> Favorite cocktail: Margarita<br />
-                    <span role="img" aria-label="Party Popper">🎉</span> Hobby: Answer<br />
-                    <span role="img" aria-label="Suitcase">🧳</span> Favorite destination: Answer<br />
-                    <span role="img" aria-label="Writing Hand">✍️</span> About me: Answer<br />
-                </Text>
-            </div><div className={styles.membersMima}>
-                <Text type="bodyText" className={styles.Mima}>Mirela<br />
+                <Text type="SbodyText" className={styles.Bruun}>Eva<br />
                     <span role="img" aria-label="Cocktail Glass">🍹</span> Favorite cocktail: Margarita<br />
                     <span role="img" aria-label="Party Popper">🎉</span> Hobby: Answer<br />
                     <span role="img" aria-label="Suitcase">🧳</span> Favorite destination: Answer<br />
                     <span role="img" aria-label="Writing Hand">✍️</span> About me: Answer<br />
                 </Text>
             </div>
+            <div className={styles.membersMima}>
+                <Text type="SbodyText" className={styles.Mima}>Mirela<br />
+                    <span role="img" aria-label="Cocktail Glass">🍹</span> Favorite cocktail: Margarita<br />
+                    <span role="img" aria-label="Party Popper">🎉</span> Hobby: Answer<br />
+                    <span role="img" aria-label="Suitcase">🧳</span> Favorite destination: Answer<br />
+                    <span role="img" aria-label="Writing Hand">✍️</span> About me: Answer<br />
+                </Text>
+            </div>
+            <img src="/images/fulba.PNG" className={styles.imgFulba} alt="Picture of Elba" />
+            <img src="/images/inemy.PNG" className={styles.imgInemy} alt="Picture of Ine" />
             <div className={styles.membersFulba}>
-                <Text type="bodyText" className={styles.fulba}>Elba<br />
+                <Text type="SbodyText" className={styles.fulba}>Elba<br />
                     <span role="img" aria-label="Cocktail Glass">🍹</span> Favorite cocktail: Negroni<br />
                     <span role="img" aria-label="Party Popper">🎉</span> Hobby: Answer<br />
                     <span role="img" aria-label="Suitcase">🧳</span> Favorite destination: Answer<br />
@@ -29,7 +34,7 @@ export const AboutUs = () => {
                 </Text>
             </div>
             <div className={styles.membersIneMy}>
-                <Text type="bodyText" className={styles.IneMy}>Ine<br />
+                <Text type="SbodyText" className={styles.IneMy}>Ine<br />
                     <span role="img" aria-label="Cocktail Glass">🍹</span> Favorite cocktail: Margarita<br />
                     <span role="img" aria-label="Party Popper">🎉</span> Hobby: Answer<br />
                     <span role="img" aria-label="Suitcase">🧳</span> Favorite destination: Answer<br />
