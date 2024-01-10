@@ -1,4 +1,4 @@
-.back-link {
+/* .back-link {
     position: absolute;
     display: inline-flex;
     color: #fff;
@@ -6,12 +6,12 @@
     font-weight: 700;
     text-decoration: none;
     left: 3rem;
-    /* top: 0.6rem; */
+    /* top: 0.6rem; 
     filter: drop-shadow(2px 3px 4px rgb(0 0 0/0.5));
   }
 
 .playground-details-container {
-  /* padding: auto; */
+  /* padding: auto; 
   border-radius: 4px;
   background-color: #557C55;
   background-image: linear-gradient(180deg, rgba(85, 124, 85, 1) 0%, rgba(166, 207, 152, 1) 99%);
@@ -85,4 +85,67 @@
   }
   
 
+   */
+
+
+     .back-link {
+       position: absolute;
+       display: inline-flex;
+       color: #fff;
+       align-items: center;
+       font-weight: 700;
+       text-decoration: none;
+       left: 3vw;
+       /* top: 0.6rem; */
+       filter: drop-shadow(2px 3px 4px rgb(0 0 0/0.5));
+     }
   
+     .playground-details-container {
+       /* padding: auto; */
+       border-radius: 4px;
+       background-color: #557C55;
+       background-image: linear-gradient(180deg, rgba(85, 124, 85, 1) 0%, rgba(166, 207, 152, 1) 99%);
+       box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+       max-height: 100vh;
+     }
+
+     .details-img {
+      border-radius: 200px;
+      border: solid #557C55 10px;
+     }
+  
+     .playground-details-container img {
+       max-width: 100%;
+       height: auto;
+       max-height: 200px;
+     }
+  
+     .icon-container {
+       display: flex;
+       flex-direction: row;
+       justify-content: center;
+       gap: 2vw;
+       /* Using viewport width units for responsive gap */
+     }
+  
+     .not-available {
+       opacity: 0.2;
+     }
+  
+     .playground-icon {
+       width: 3vw;
+       /* Using viewport width units for responsive width */
+     }
+  
+     .wheelchair-explanation,
+     .roundabout-explanation,
+     .zipwire-explanation,
+     .swing-explanation,
+     .slide-explanation,
+     .sandpit-explanation,
+     .icon-explanation-box {
+       display: flex;
+       flex-direction: row;
+       font-size: 1.5vw;
+       /* Using viewport width units for responsive font size */
+     }

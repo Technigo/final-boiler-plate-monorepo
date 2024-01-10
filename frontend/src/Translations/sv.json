@@ -7,7 +7,7 @@
 
     "Hero": {
         "hero-title" : "Hitta din lekplats i Eslöv!",
-        "hero-p": "Välkommen till vår gemenskap för lekglada invånare i Eslöv! Upptäck dina favoritlekplatser med vårt användarvänliga verktyg. Genom att skapa konto kan du spara dina mest älskade platser och enkelt återvända till dem när du vill. Eslövs lekplatser är nu bara ett klick bort - skapa ditt konto idag och börja utforska staden med lekfull entusiasm!"
+        "hero-p": "Välkommen till vår gemenskap för lekglada invånare i Eslöv! Upptäck dina favoritlekplatser med vårt användarvänliga verktyg."
     },
 
     "Form" : {
@@ -30,12 +30,12 @@
     "PlaygroundDetails": {
         "icon-explanation": "Ikonerna förklarar vad som finns på lekplatsen och inte. Om ikonen är svart och ifylld finns detta på lekplatsen, annars inte.",
         "playground-details-info-header": "Information om lekplatsen:",
-        "wheelchair-explanation-p": "- Rullstolsanpassat",
-        "roundabout-explanation-p": "- Karusell",
-        "zipwire-explanation-p": "- Linbana",
-        "swing-explanation-p": "- Gunga",
-        "slide-explanation-p": "- Rutschkana",
-        "sandpit-explanation-p": "- Sandlåda"
+        "wheelchair-explanation-p": "Rullstolsanpassat",
+        "roundabout-explanation-p": "Karusell",
+        "zipwire-explanation-p": "Linbana",
+        "swing-explanation-p": "Gunga",
+        "slide-explanation-p": "Rutschkana",
+        "sandpit-explanation-p": "Sandlåda"
     },
 
     "BackBtn": {

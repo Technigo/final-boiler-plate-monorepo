@@ -32,8 +32,8 @@ export const Challenge = ({ title, description, _id }) => {
 
     return (
       <div className={`challenge ${completed ? 'completed' : ''}`}>
-        <h3>{title}</h3>
-        <p>{description}</p>
+        <h3 className='challenge-title'>{title}</h3>
+        <p className='challenge-desc'>{description}</p>
         <button type='submit' onClick={handleComplete} disabled={completed}>
           {completed ? 'Challenge Completed, great job!' : 'Complete'}
         </button>

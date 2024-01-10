@@ -2,6 +2,7 @@ import { BrowserRouter, Routes } from "react-router-dom";
 import { NavBar } from "./components/NavBar";
 import routes from "./routes/routes";
 import "./App.css";
+import 'react-tooltip/dist/react-tooltip.css'
 
 export const App = () => {
   return (

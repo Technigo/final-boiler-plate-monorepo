@@ -1,13 +1,15 @@
+/* eslint-disable no-unused-vars */
 import "./playgrounddetails.css";
 import { useLayoutEffect } from "react"; 
 import { useParams } from "react-router-dom";
 import usePlaygroundStore from "../../stores/usePlaygroundStore";
 import { BackBtn } from "../../components/BackBtn";
-import { Button } from "../../components/Button";
+// import { Button } from "../../components/Button";
 //import Like from "../../components/Like";
 import { useLocation } from "react-router-dom";
+import { Loader } from "../../components/Loader";
 import { useTranslation } from "react-i18next";
-
+import { Tooltip } from 'react-tooltip'
 
 
 const PlaygroundDetails = () => {
@@ -27,31 +29,34 @@ const PlaygroundDetails = () => {
   }, [id, getPlaygroundDetails]);
 
   if (!playgroundDetails) {
-    return <div>Loading...</div>;
+    return <div> <Loader /> </div>;
   }
 
   return (
 <div>
   <div className="playground-details-container">
 
-    <BackBtn />
+    {/* <BackBtn /> */}
     <div>
       <h1>
         {playgroundDetails.name}
       </h1>
-      <h3>
-        {playgroundDetails.street}, {playgroundDetails.city} {playgroundDetails.postcode}
-      </h3>
+      
           {randomImage && 
             <img 
+            className="details-img"
               src={decodeURIComponent(randomImage)} 
               alt={`Random Image for ${playgroundDetails.name}`} />
           }
+
+          <h3> 📍 
+        {playgroundDetails.street}, {playgroundDetails.city} {playgroundDetails.postcode}
+      </h3>
       <p>
         {playgroundDetails.description}
       </p>
 
-      <h2 className="playground-details-info-header">{t("PlaygroundDetails.playground-details-info-header")}</h2>
+      {/* <h2 className="playground-details-info-header">{t("PlaygroundDetails.playground-details-info-header")}</h2> */}
     </div>
         
         
@@ -63,6 +68,8 @@ const PlaygroundDetails = () => {
             {playgroundDetails.wheelchair === 'yes' ? (
               <>
                 <img 
+                data-tooltip-id="wheelchair"
+                  data-tooltip-content={t("PlaygroundDetails.wheelchair-explanation-p")}
                   className="available playground-icon" 
                   src="/Icons/Black/icons8-wheelchair-50 (1).png" 
                   alt="Wheelchair accessible" />
@@ -70,6 +77,8 @@ const PlaygroundDetails = () => {
               ) : (
               <>
                 <img 
+                data-tooltip-id="wheelchair"
+                data-tooltip-content={t("PlaygroundDetails.wheelchair-explanation-p")}
                   className="not-available playground-icon" 
                   src="/Icons/White/icons8-wheelchair-50.png" 
                   alt="Not wheelchair accessible" />
@@ -79,6 +88,8 @@ const PlaygroundDetails = () => {
             ) : (
           <>
             <img 
+            data-tooltip-id="wheelchair"
+                data-tooltip-content={t("PlaygroundDetails.wheelchair-explanation-p")}
               className="not-available playground-icon" 
               src="/Icons/White/icons8-wheelchair-50.png" 
               alt="Not wheelchair accessible" /> 
@@ -92,6 +103,8 @@ const PlaygroundDetails = () => {
             {playgroundDetails.roundabout === 'true' ? (
               <>
                 <img 
+                data-tooltip-id="roundabout"
+                data-tooltip-content={t("PlaygroundDetails.roundabout-explanation-p")}
                   className="available playground-icon" 
                   src="/Icons/Black/icons8-carousel-50-B.png" 
                   alt="Carousel" />
@@ -99,6 +112,8 @@ const PlaygroundDetails = () => {
                 ) : (
               <>
                 <img 
+                data-tooltip-id="roundabout"
+                data-tooltip-content={t("PlaygroundDetails.roundabout-explanation-p")}
                   className="not-available playground-icon" 
                   src="/Icons/White/icons8-carousel-50.png" 
                   alt="No Carousel" /> 
@@ -114,6 +129,8 @@ const PlaygroundDetails = () => {
             {playgroundDetails.zipwire === 'true' ? (
               <>
                 <img 
+                data-tooltip-id="zipwire"
+                data-tooltip-content={t("PlaygroundDetails.zipwire-explanation-p")}
                   className="available playground-icon" 
                   src="/Icons/Black/icons8-zipline-50 (1).png" 
                   alt="Zipwire" /> 
@@ -121,6 +138,8 @@ const PlaygroundDetails = () => {
                 ) : (
               <>
                 <img 
+                 data-tooltip-id="zipwire"
+                data-tooltip-content={t("PlaygroundDetails.zipwire-explanation-p")}
                   className="not-available playground-icon" 
                   src="/Icons/White/icons8-zipline-50.png" 
                   alt="No Zipwire" /> 
@@ -136,6 +155,8 @@ const PlaygroundDetails = () => {
             {playgroundDetails.swing === 'true' ? (
               <>
                 <img 
+                 data-tooltip-id="swing"
+                data-tooltip-content={t("PlaygroundDetails.swing-explanation-p")}
                   className="available playground-icon" 
                   src="/Icons/Black/icons8-swing-50.png" 
                   alt="Swing" />
@@ -143,6 +164,8 @@ const PlaygroundDetails = () => {
                 ) : (
                 <>
                 <img 
+                data-tooltip-id="swing"
+                data-tooltip-content={t("PlaygroundDetails.swing-explanation-p")}
                   className="not-available playground-icon" 
                   src="/Icons/White/icons8-swing-50 (1).png" 
                   alt="No Swing" /> 
@@ -158,6 +181,8 @@ const PlaygroundDetails = () => {
             {playgroundDetails.slide === 'true' ? (
               <>
                 <img 
+                data-tooltip-id="slide"
+                data-tooltip-content={t("PlaygroundDetails.slide-explanation-p")}
                   className="available playground-icon" 
                   src="/Icons/Black/icons8-slide-60.png" 
                   alt="Slide" />
@@ -165,6 +190,8 @@ const PlaygroundDetails = () => {
                 ) : (
               <>
                 <img 
+                data-tooltip-id="slide"
+                data-tooltip-content={t("PlaygroundDetails.slide-explanation-p")}
                   className="not-available playground-icon" 
                   src="/Icons/White/icons8-slide-60 (1).png" 
                   alt="No Slide" /> 
@@ -180,6 +207,8 @@ const PlaygroundDetails = () => {
                 {playgroundDetails.sandpit === 'true' ? (
                   <>
                     <img 
+                    data-tooltip-id="sandpit"
+                data-tooltip-content={t("PlaygroundDetails.sanpit-explanation-p")}
                       className="available playground-icon" 
                       src="/Icons/Black/icons8-sandpit-50 (1).png" 
                       alt="Sandpit" /> 
@@ -187,6 +216,8 @@ const PlaygroundDetails = () => {
                   ) : (
                   <>
                     <img 
+                    data-tooltip-id="sandpit"
+                data-tooltip-content={t("PlaygroundDetails.sanpit-explanation-p")}
                       className="not-available playground-icon" 
                       src="/Icons/White/icons8-sandpit-50.png" 
                       alt="No sandpit" /> 
@@ -206,16 +237,16 @@ const PlaygroundDetails = () => {
       
     <div>
 
-    <Button 
+    {/* <Button 
     className={isLiked ? "like-button clicked" : "like-button"} 
     handleOnClick={likePlayground} 
     btnText={"♡"} 
-    />
+    /> */}
 
      
     </div>
   </div>
-  <div>
+  {/* <div>
     <p className="icon-explanation">{t("PlaygroundDetails.icon-explanation")} </p>
     
 <div className="icon-explanation-box">
@@ -239,7 +270,38 @@ const PlaygroundDetails = () => {
     </div>
 </div>
 
-  </div>
+  </div> */}
+ <Tooltip
+        id="wheelchair"
+        place="bottom"
+        content={t("PlaygroundDetails.wheelchair-explanation-p")}
+      />
+      <Tooltip
+        id="roundabout"
+        place="bottom"
+        content={t("PlaygroundDetails.roundabout-explanation-p")}
+      />
+      <Tooltip
+        id="zipwire"
+        place="bottom"
+        content={t("PlaygroundDetails.zipwire-explanation-p")}
+      />
+      <Tooltip
+        id="swing"
+        place="bottom"
+        content={t("PlaygroundDetails.swing-explanation-p")}
+      />
+      <Tooltip
+        id="slide"
+        place="bottom"
+        content={t("PlaygroundDetails.slide-explanation-p")}
+      />
+      <Tooltip
+        id="sandpit"
+        place="bottom"
+        content={t("PlaygroundDetails.sandpit-explanation-p")}
+      />
+
 </div>
   );
 };
