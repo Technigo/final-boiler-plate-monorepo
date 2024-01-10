@@ -13,7 +13,7 @@ export const Chat = () => {
   const [selectedUserId, setSelectedUserId] = useState(null);
   const [newMessageText, setNewMessageText] = useState("");
   const [messages, setMessages] = useState([]);
-  const [messageHistory, setMessageHistory] = useState([]);
+  // const [messageHistory, setMessageHistory] = useState([]);
   const divUnderMessages = useRef();
 
   // console.log("username in chat: " + username);
@@ -26,13 +26,6 @@ export const Chat = () => {
   const userId = loggedInUserId;
   const receiverId = recipientId;
 
-  //Connect to chat server
-  // const connectToWs = () => {
-  //   const ws = new Websocket("ws://localhost:3000");
-  //   setWs(ws);
-  //   ws.addEventListener("message", handleMessage2);
-  // };
-  //------
   const handleMessage = (e) => {
     const messageData = JSON.parse(e.data);
     console.log({ e, messageData });
@@ -46,13 +39,13 @@ export const Chat = () => {
 
     ws.send(
       JSON.stringify({
-        // recipient: selectedUserId,
         sender: userId,
         recipient: receiverId,
         text: newMessageText,
       })
     );
     setNewMessageText("");
+    setMessageSent(true);
     setMessages((prev) => [
       ...prev,
       {
@@ -83,47 +76,19 @@ export const Chat = () => {
     if (div) {
       div.scrollIntoView({ behavior: "smooth", block: "end" });
     }
-  }, [messages]);
+  }, [messages, chatMessages]);
 
   useEffect(() => {
     setSelectedUserId(recipientId);
-
-    if (selectedUserId) {
-      fetch(
-        `${import.meta.env.VITE_BACKUP_API}/messages/` + selectedUserId
-      ).then((res) => {
-        console.log("res.data: " + res.data);
-        setMessages(res.data);
-        // console.log("messages: " + JSON.stringify(messages));
-      });
-    }
   }, [selectedUserId]);
 
   useEffect(() => {
-    const ApiStuff = async () => {
-      const callAPI = await fetch(
-        `${import.meta.env.VITE_BACKUP_API}/getallmessages`
-      );
-      const jsonIT = await callAPI.json();
-      setMessageHistory(jsonIT);
-    };
-
-    ApiStuff();
-    console.log(JSON.stringify(messageHistory));
-  }, []);
-
-  useEffect(() => {
     const userMessages = async () => {
-      handleChatHistory(loggedInUserId, recipientId);
+      await handleChatHistory(loggedInUserId, recipientId);
     };
 
     userMessages();
-  }, [loggedInUserId, recipientId, handleChatHistory]);
-
-  //----------------
-  // const handleMessage = (e) => {
-  //   console.log("New Message!", e);
-  // };
+  }, [recipientId, chatMessages]);
 
   return (
     <div className="flex h-80">
@@ -132,31 +97,11 @@ export const Chat = () => {
         <button onClick={() => console.log(messages)}>Log messages</button>
       </div>
       <div className="flex flex-col bg-green-200 w-2/3 p-2">
-        <div className="flex-grow">Messages with selected person</div>
+        <div className="flex-grow">Messages with {recipientId}</div>
         {/* {!!selectedUserId && ( */}
         <div className="relative h-full">
           <div className="overflow-y-scroll absolute top-0 left-0 right-0 bottom-2">
-            {messages.map((message) => (
-              <div
-                key={message._id}
-                className={
-                  message.sender === username ? "text-right" : "text-left"
-                }
-              >
-                <div
-                  className={
-                    "text-left inline-block p-2 my-2 rounded-md text-sm " +
-                    (message.sender === username
-                      ? "bg-blue-500 text-white"
-                      : "bg-white text-gray-500")
-                  }
-                >
-                  {message.text}
-                </div>
-              </div>
-              // <div>{message.text}</div>
-            ))}
-            {messageHistory.map((message) => (
+            {chatMessages.map((message) => (
               <div
                 key={message._id}
                 className={
@@ -174,12 +119,12 @@ export const Chat = () => {
                   {message.text}
                 </div>
               </div>
-              // <div>{message.text}</div>
             ))}
             <div ref={divUnderMessages}></div>
           </div>
         </div>
         {/* )} */}
+
         <form className="flex gap-2" onSubmit={sendMessage}>
           <input
             type="text"

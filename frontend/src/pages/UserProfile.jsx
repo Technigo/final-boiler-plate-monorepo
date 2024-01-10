@@ -26,8 +26,8 @@ export const UserProfile = () => {
   const [userLoading, setUserLoading] = useState(true);
   const [userList, setUserList] = useState(null);
   // console.log("username: " + username);
-  console.log("user:", user);
-  console.log("mongoUsername: " + mongoUsername);
+  // console.log("user:", user);
+  // console.log("mongoUsername: " + mongoUsername);
 
   //#REGION USER_METADATA
   // console.log(useAuth0());
@@ -65,12 +65,12 @@ export const UserProfile = () => {
 
   useEffect(() => {
     const getUserDataFromMongo = async () => {
-      console.log(`${vite_backup}/user/${user.sub}`);
+      // console.log(`${vite_backup}/user/${user.sub}`);
       try {
         await fetch(`${vite_backup}/user/${user.sub}`)
           .then((res) => res.json())
           .then((data) => {
-            console.log("data: " + JSON.stringify(data));
+            // console.log("data: " + JSON.stringify(data));
             setMongoUsername(data.username);
             setLoggedInUserId(data._id);
             setEmail(data.email);
@@ -87,7 +87,7 @@ export const UserProfile = () => {
       const jsonUsers = await fetchUsers.json();
       setUserList(jsonUsers);
       setUserLoading(!userLoading);
-      console.log(userList);
+      // console.log(userList);
     };
 
     getUserDataFromMongo();
@@ -99,8 +99,8 @@ export const UserProfile = () => {
     // chatSetup();
   }, []);
 
-  console.log("User: " + JSON.stringify(user));
-  console.log("Authenticated: " + isAuthenticated);
+  // console.log("User: " + JSON.stringify(user));
+  // console.log("Authenticated: " + isAuthenticated);
   if (isLoading) {
     return <div>Loading ...</div>;
   }
@@ -120,7 +120,7 @@ export const UserProfile = () => {
                 key={user._id}
                 className="cursor-pointer"
                 onClick={() => {
-                  console.log(user._id);
+                  // console.log(user._id);
                   setChatReceiver(user.username);
                   setUsername(mongoUsername);
                   setRecipientId(user._id);

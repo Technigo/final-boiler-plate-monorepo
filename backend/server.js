@@ -10,7 +10,6 @@ import { MessageModel } from "./models/MessageModel";
 import ws from "ws";
 import fs from "fs";
 
-
 const { auth } = require("express-openid-connect");
 
 // Defines the port the app will run on. Defaults to 8080, but can be overridden
@@ -30,9 +29,9 @@ app.use(userRoutes);
 // Connection to the database through Mongoose
 connectDB();
 
-  //#REGION Websocket stuff
-  // Start the server and listen for incoming requests on the specified port
-  const server = app.listen(port, () => {
+//#REGION Websocket stuff
+// Start the server and listen for incoming requests on the specified port
+const server = app.listen(port, () => {
   console.log(`Server running on http://localhost:${port}`); // Display a message when the server is successfully started
 });
 
