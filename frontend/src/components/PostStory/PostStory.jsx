@@ -26,7 +26,6 @@ export const PostStory = () => {
   const handleFormSubmit = async (e) => {
     e.preventDefault();
 
-    //const apiUrl = import.meta.env.VITE_BACKEND_API || "http://localhost:3000";
 
     if (newStory.length < 10) {
       alert("The message is too short. Please try again! 💕");
@@ -76,6 +75,7 @@ export const PostStory = () => {
         // Check the sentiment score
         const sentimentScore = googleApiResponse.documentSentiment.score;
 
+
         // Decide on a threshold for negative sentiment
         const negativeSentimentThreshold = -0.5; // adjust this value based on your needs
 
@@ -114,6 +114,7 @@ export const PostStory = () => {
             .catch((error) => {
               console.error("Error posting the story", error);
             });
+
         }
       })
       .catch((error) => {

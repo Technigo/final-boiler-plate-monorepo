@@ -45,7 +45,8 @@ export const Carousel = () => {
   };
 
   useEffect(() => {
-    fetch("https://whisperwall.onrender.com/stories")
+    const apiUrl = import.meta.env.VITE_BACKEND_API || "http://localhost:3000";
+    fetch(`${apiUrl}/stories`)
       .then((response) => response.json())
       .then((data) => {
         setStories(data); // Set the fetched stories

@@ -10,14 +10,32 @@
   width: 100%;
 }
 
+.quote {
+  font-size: 30px;
+  padding-top: 12vh;
+  color: white;
+}
+
 @media (min-width: 768px) {
   .hero-wrapper {
     height: 42vh;
+  }
+
+  .quote {
+    font-size: 40px;
+    padding-top: 18vh;
+    color: white;
   }
 }
 
 @media (min-width: 1280px) {
   .hero-wrapper {
     height: 52vh;
+  }
+
+  .quote {
+    font-size: 60px;
+    padding-top: 20vh;
+    color: white;
   }
 }

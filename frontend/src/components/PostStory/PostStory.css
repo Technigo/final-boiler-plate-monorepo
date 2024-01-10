@@ -15,8 +15,10 @@
   border: 2px solid rgba(2, 108, 124, 0.7);
   margin: 3%;
   width: 70%;
+
   z-index: 100;
   border-radius: 5px;
+
 }
 
 .category {
@@ -48,7 +50,7 @@
 .gallery {
   position: absolute;
   width: 70%;
-  height: 60%;
+  height: 25%;
   display: flex;
   justify-content: center;
   padding: 3%;
@@ -92,5 +94,15 @@
   .category,
   .gallery-button {
     width: 100%;
+  }
+
+  .gallery {
+    height: 40%;
+  }
+}
+
+@media screen and (min-width: 2000px) {
+  .gallery {
+    height: 50%;
   }
 }
