@@ -4,6 +4,7 @@
 // import { Link } from "react-router-dom";
 import { Calendar } from '../components/Calendar'
 import { MovieList } from '../components/MovieList'
+import { Hero } from '../components/Hero'
 // // Define the 'Home' functional component.
 export const Home = () => {
   //   // Define text content for the heading and subheading.
@@ -44,6 +45,7 @@ export const Home = () => {
   // Render the component content.
   return (
     <>
+      <Hero />
       <Calendar />
       <MovieList />
     </>

@@ -7,7 +7,7 @@ export const Header = () => {
 	const isLoggedIn = userStore.getState().isLoggedIn
 
 	return (
-		<header className="the-header">
+		<header className="the-header page-section">
 			<div>{<Link to="/">HOME</Link>}</div>
 			<div>
 				{isLoggedIn ? (
