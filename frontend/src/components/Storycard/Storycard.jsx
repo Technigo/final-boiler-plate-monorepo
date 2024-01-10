@@ -11,8 +11,10 @@ export const StoryCard = ({ story, isActive, onUpdateStories }) => {
     position: "relative",
   };
 
+  const apiUrl = import.meta.env.VITE_BACKEND_API || "http://localhost:3000";
+
   const handleLikeClick = () => {
-    fetch(`https://whisperwall.onrender.com/stories/${story._id}/rank`, {
+    fetch(`${apiUrl}/stories/${story._id}/rank`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
