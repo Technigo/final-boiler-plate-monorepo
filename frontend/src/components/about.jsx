@@ -145,6 +145,16 @@ const AboutPage = () => {
               without her!
             </TeamMemberDescription>
             <br></br>
+            <GithubLink
+              href="https://github.com/malinlunde"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Github
+            </GithubLink>
+            <br></br>
+            <br></br>
+
             <PortfolioLink
               href="https://malin-lunde-portfolio.netlify.app/"
               target="_blank"
@@ -182,6 +192,8 @@ const AboutPage = () => {
               Github
             </GithubLink>
             <br></br>
+
+            <br></br>
             <PortfolioLink
               href="portfolio1-link"
               target="_blank"
@@ -216,6 +228,17 @@ const AboutPage = () => {
               gets rolled out after every meal.
             </TeamMemberDescription>
             <br></br>
+
+            <GithubLink
+              href="https://github.com/Cocofnas"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Github
+            </GithubLink>
+            <br></br>
+            <br></br>
+
             <PortfolioLink
               href="https://alexandrameijaportfolio.netlify.app"
               target="_blank"
