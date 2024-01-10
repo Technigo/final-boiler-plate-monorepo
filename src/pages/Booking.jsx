@@ -24,74 +24,75 @@ export const Booking = () => {
 	const [ movieTitle, setMovieTitle ] = useState()
 	const [ seatInfo, setSeatInfo ] = useState()
 
-	const fetchShows = bookingStore((state) => (state.fetchAllShowTimes))
-	fetchShows()
+	const { 
+		fetchAllShowTimes, 
+		allShowTimes,
+		selectedSeats,
+		setSelectedSeats,
+		updateSelectedSeats,
+		selectedShowtime,
+		setSelectedShowtime
+	} = bookingStore() 
+
+	const isLoggedIn = userStore.getState().isLoggedIn
 
 	// const showtimeParam = useParams()
 	// console.log(showtimeParam)
 
-	const stateSeats = bookingStore((state) => state.selectedSeats)
-	const isLoggedIn = userStore.getState().isLoggedIn
-
-	const setStateSeats = bookingStore((state) => state.setSelectedSeats)
-	const updateStateSeats = bookingStore((state) => (state.updateSelectedSeats))
-
-	const allShowTimes = bookingStore.getState().allShowTimes
-	console.log(allShowTimes)
-
-	const selectedShowtime = bookingStore((state) => state.selectedShowtime)
-	const setSelectedShowtime = bookingStore((state) => state.setSelectedShowtime)
-	
-	// const thisShowTime = allShowTimes[1]
-	// // setSelectedShowtime(thisShowTime._id)
-	// // console.log(selectedShowtime)
-	// const cinemaHall = thisShowTime.cinemaHall
-	// const movieTitle = thisShowTime.movieTitle
-	// const seatInfo = thisShowTime.seats
-	
-	useEffect(() => console.log('selectedSeats', stateSeats, 'stateSeats'), [stateSeats])
 	useEffect(() => {
-		setThisShowTime(allShowTimes[1])
-		setCinemahall(thisShowTime.cinemaHall)
-		setMovieTitle(thisShowTime.movieTitle)
-		setSeatInfo(thisShowTime.seats)
-	}, [allShowTimes])
-	useEffect(() => {
-		setSelectedShowtime(thisShowTime._id)
-		console.log(selectedShowtime)
-
-
-		console.log(thisShowTime)
+		fetchAllShowTimes()
 	}, [])
+
+	useEffect(() => {
+		if(allShowTimes != null && allShowTimes.length > 0) {
+			const thisShowTime = allShowTimes[9]
+			setThisShowTime(thisShowTime)
+			setSelectedShowtime(thisShowTime)
+		}
+	}, [allShowTimes])
+
+	useEffect(() => {
+		if (thisShowTime != null) {
+			const cinemaHall = thisShowTime.cinemaHall
+			const movieTitle = thisShowTime.movieTitle
+			const seatInfo = thisShowTime.seats
+
+			setCinemahall(cinemaHall)
+			setMovieTitle(movieTitle)
+			setSeatInfo(seatInfo)
+		}
+	}, [thisShowTime])
+
+	useEffect(() => console.log('selectedSeats', selectedSeats, 'stateSeats'), [selectedSeats])
 
 	const handleSeatClick = (event, row, seatIndex) => {
 		const newSelection = [row, seatIndex]
 
 		const removeSelected = (event) => {
 			event.target.classList.remove('selected')
-			let filteredArray = stateSeats.filter(item => !compareArrays(item, newSelection))
+			let filteredArray = selectedSeats.filter(item => !compareArrays(item, newSelection))
 			// setSelectedSeats(filteredArray)
-			setStateSeats(filteredArray)
+			setSelectedSeats(filteredArray)
 		}
 
 		const addSelected = (event) => {
 			event.target.classList.add('selected')
 			// setSelectedSeats([...selectedSeats, newSelection])
-			updateStateSeats(newSelection)
+			updateSelectedSeats(newSelection)
 		}
 
 		if (event.target.classList.contains('booked')) return null
-		if (stateSeats !== null && stateSeats.length > 0) {
+		if (selectedSeats != null) {
 			let existsAlready = false
 
-			stateSeats.map((seats) => {
+			selectedSeats.map((seats) => {
 				compareArrays(seats, newSelection) ? existsAlready = !existsAlready : false
 			})
 
 			existsAlready ? removeSelected(event) : addSelected(event)
 		} else {
 			// setSelectedSeats([newSelection])
-			setStateSeats([newSelection])
+			setSelectedSeats([newSelection])
 			event.target.classList.add('selected')
 		}
 	}
@@ -103,7 +104,7 @@ export const Booking = () => {
 			<section className="cinema-container">
 				<div className="the-screen">Screen</div>
 				<div className="seat-container">
-					{seatInfo.map((row, index) =>(
+					{seatInfo && seatInfo.map((row, index) =>(
 						<div className="the-rows" key={index}>
 							<label>{index + 1}</label>
 							{row.map(seat => (
@@ -136,7 +137,7 @@ export const Booking = () => {
 				</ul>
 			</section>
 
-			{stateSeats && (<SelectedTicket />)}
+			{selectedSeats && (<SelectedTicket />)}
 
 			{isLoggedIn ? (
 				<>
