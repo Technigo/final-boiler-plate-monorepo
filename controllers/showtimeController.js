@@ -183,6 +183,22 @@ export const updateShowtime = asyncHandler(async (req, res) => {
 	}
 })
 
+export const getShowtimeByMovie = asyncHandler(async (req, res) => {
+	try {
+		const movieId = req.params.movieId
+		const movieDetails = await MovieModel.findById(movieId)
+
+		const showtime = await ShowTimeModel.find({movieTitle: movieDetails.title})
+		if (showtime) {
+			res.json(showtime)
+		} else {
+			res.status(404).json({ error: `Showtime with movieId ${movieId} not found.` })
+		}
+	} catch (error) {
+		res.status(500).json({ error: 'Something went wrong, please try again.' })
+	}
+})
+
 // @desc seed showtimes from json-file
 // @route /seedshowtime
 // @access public
