@@ -53,12 +53,6 @@ export const bookingStore = create((set) => ({
             console.log(error)
         }
     }
-
-
-    // chartOfBookedSeats: allShowTimes.seats,
-    // setChartOfBookedSeats: (newBooking) => set({ (state) => ({chartOfBookedSeats: [...state.chartOfBookedSeats, newBooking]}) }),
-
-
 }))
 
 export default bookingStore
