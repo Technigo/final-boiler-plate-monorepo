@@ -77,56 +77,58 @@ export const Login = () => {
 
   // Render the component content.
   return (
-    <div className="container">
-      <div className="arrow-container">
-        <BackArrow />
-        <Logo className={"login-logo"} color="green" />
-      </div>
-      <div>
-        {/* Apply styling from app.css */}
-        <div className="user-login">
-          <Heading level={1} text="Login" aria-label="Login" />
-          {/* Create input fields for 'username' and 'password' and associate them with state variables. */}
-          <div>
-            <label htmlFor="username">Username:</label>
-            <input
-              type="text"
-              name="username"
-              id="username"
-              placeholder="Username"
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
-            />
-          </div>
-          <div>
-            <label htmlFor="password">Password:</label>
-            <div className="password-input">
+    <div className="main-container">
+      <div className="main-wrapper">
+        <div className="arrow-container">
+          <BackArrow />
+          <Logo className={"login-logo"} color="green" />
+        </div>
+        <div>
+          {/* Apply styling from app.css */}
+          <div className="user-login">
+            <Heading level={1} text="Login" aria-label="Login" />
+            {/* Create input fields for 'username' and 'password' and associate them with state variables. */}
+            <div>
+              <label htmlFor="username">Username:</label>
               <input
-                type={type}
-                name="password"
-                id="password"
-                placeholder="Password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                onKeyUp={handleKeyPress}
+                type="text"
+                name="username"
+                id="username"
+                placeholder="Username"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
               />
-              <span onClick={handleToggle}>
-                <Icon icon={icon} size={22} />
-              </span>
             </div>
+            <div>
+              <label htmlFor="password">Password:</label>
+              <div className="password-input">
+                <input
+                  type={type}
+                  name="password"
+                  id="password"
+                  placeholder="Password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  onKeyUp={handleKeyPress}
+                />
+                <span onClick={handleToggle}>
+                  <Icon icon={icon} size={22} />
+                </span>
+              </div>
+            </div>
+            {loading && <Lottie animationData={loadingAnimation} style={style} />}
+            {!loading && (
+              <Button
+                iconSize="button"
+                label="Login"
+                onClick={onLoginClick}
+                className="button"
+              />
+            )}
+            <h4>
+              Don&apos;t have an account? <Link to="/register">Sign up</Link>
+            </h4>
           </div>
-          {loading && <Lottie animationData={loadingAnimation} style={style} />}
-          {!loading && (
-            <Button
-              iconSize="button"
-              label="Login"
-              onClick={onLoginClick}
-              className="button"
-            />
-          )}
-          <h4>
-            Don&apos;t have an account? <Link to="/register">Sign up</Link>
-          </h4>
         </div>
       </div>
     </div>
