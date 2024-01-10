@@ -71,41 +71,54 @@ export const PostStory = () => {
       .then((res) => res.json())
       .then((googleApiResponse) => {
         console.log("Response from Google API:", googleApiResponse);
-        // Add logic to handle the response from sentiment analysis
+        // logic to handle the response from sentiment analysis
+        // Check the sentiment score
+        const sentimentScore = googleApiResponse.documentSentiment.score;
+
+
+        // Decide on a threshold for negative sentiment
+        const negativeSentimentThreshold = -0.5; // adjust this value based on your needs
+
+        if (sentimentScore < negativeSentimentThreshold) {
+          // Trigger an alert if the sentiment is too negative
+          alert(
+            "Your post seems to have a negative tone. Please consider revising it."
+          );
+          // You can also add additional logic here, like preventing form submission
+        } else {
+          // Post the story to the backend
+          fetch(`http://localhost:3000/stories`, {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(storyData),
+          })
+            .then((response) => {
+              if (!response.ok) {
+                throw new Error(`HTTP error! Status: ${response.status}`);
+              }
+              return response.json();
+            })
+            .then((newStory) => {
+              console.log("New story posted:", newStory);
+              // Reset form fields
+              setNewHeading("");
+              setNewStory("");
+              setSelectedDate(new Date());
+              setLocationName("");
+              setNewCategory("");
+              setSelectedImage("");
+              // Optionally, you can redirect or refresh the page here
+            })
+            .catch((error) => {
+              console.error("Error posting the story", error);
+            });
+
+        }
       })
       .catch((error) => {
         console.error("Error calling Google API:", error);
-      });
-
-    // Post the story to the backend
-
-    fetch("http://localhost:3000/stories", {
-
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(storyData),
-    })
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error(`HTTP error! Status: ${response.status}`);
-        }
-        return response.json();
-      })
-      .then((newStory) => {
-        console.log("New story posted:", newStory);
-        // Reset form fields
-        setNewHeading("");
-        setNewStory("");
-        setSelectedDate(new Date());
-        setLocationName("");
-        setNewCategory("");
-        setSelectedImage("");
-        // Optionally, you can redirect or refresh the page here
-      })
-      .catch((error) => {
-        console.error("Error posting the story", error);
       });
   };
 

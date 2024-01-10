@@ -22,37 +22,6 @@ export const StoryList = () => {
   };
 
   useEffect(() => {
-    // Function to fetch stories from backend
-    const fetchStories = async () => {
-      try {
-        const response = await fetch(`${apiUrl}/stories`);
-        const data = await response.json();
-        setStories(data);
-        updateCitiesAndCategories(data);
-      } catch (error) {
-        console.error("Error fetching stories:", error);
-      }
-    };
-    fetchStories();
-  }, []);
-
-  // useEffect(() => {
-  //   // Function to fetch stories from backend
-  //   const fetchStories = async () => {
-  //     try {
-  //       const response = await fetch(`${backendApiUrl}/stories`);
-  //       const data = await response.json();
-  //       setStories(data);
-  //       setCities([...new Set(data.map((story) => story.city))]);
-  //       setCategories([...new Set(data.map((story) => story.category))]);
-  //     } catch (error) {
-  //       console.error("Error fetching stories:", error);
-  //     }
-  //   };
-  //   fetchStories();
-  // }, []);
-
-  useEffect(() => {
     // Function to fetch translated stories
     const fetchTranslatedStories = async () => {
       try {
@@ -117,7 +86,8 @@ export const StoryList = () => {
           <select
             className="dropdowns"
             value={selectedLanguage}
-            onChange={handleLanguageChange}>
+            onChange={handleLanguageChange}
+          >
             <option value="en">English</option>
             <option value="sv">Swedish</option>
           </select>
@@ -125,7 +95,8 @@ export const StoryList = () => {
           <select
             className="dropdowns"
             value={filterType}
-            onChange={handleFilterTypeChange}>
+            onChange={handleFilterTypeChange}
+          >
             <option value="">Select Filter</option>
             <option value="ranking">Ranking</option>
             <option value="city">City</option>
@@ -137,7 +108,8 @@ export const StoryList = () => {
             <select
               className="dropdowns"
               value={selectedCity}
-              onChange={handleCityChange}>
+              onChange={handleCityChange}
+            >
               <option value="">Select City</option>
               {cities.map((city, index) => (
                 // Use a combination of city name and index as key
@@ -152,7 +124,8 @@ export const StoryList = () => {
             <select
               className="dropdowns"
               value={selectedCategory}
-              onChange={handleCategoryChange}>
+              onChange={handleCategoryChange}
+            >
               <option value="">Select Category</option>
               {categories.map((category, index) => (
                 // Use a combination of category name and index as key
