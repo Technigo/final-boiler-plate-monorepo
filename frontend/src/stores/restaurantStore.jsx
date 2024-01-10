@@ -4,7 +4,7 @@ const capitalizeFirstLetter = (string) => {
   return string.charAt(0).toUpperCase() + string.slice(1).toLowerCase();
 };
 
-const apiURL = "http://localhost:3000/api";
+const apiURL = "https://foodie-moodie.onrender.com/api";
 
 export const useRestaurantStore = create((set) => ({
   category: [],
@@ -20,7 +20,7 @@ export const useRestaurantStore = create((set) => ({
       const { selectedCategory } = useRestaurantStore.getState();
       console.log("Selected Category:", selectedCategory);
 
-      const response = await fetch("http://localhost:3000/api/category");
+      const response = await fetch("https://foodie-moodie.onrender.com/api/category");
       if (!response.ok) {
         throw new Error("Failed to fetch category");
       }
@@ -47,7 +47,7 @@ export const useRestaurantStore = create((set) => ({
 
   fetchOccasions: async () => {
     try {
-      const response = await fetch("http://localhost:3000/api/occasion");
+      const response = await fetch("https://foodie-moodie.onrender.com/api/occasion");
       if (!response.ok) {
         throw new Error("Failed to fetch occasions");
       }
@@ -117,7 +117,7 @@ export const useRestaurantStore = create((set) => ({
       set({ selectedMoods: [] });
       console.log("Fetching moods for occasion:", occasion);
       const response = await fetch(
-        `http://localhost:3000/api/mood?occasion=${encodeURIComponent(
+        `https://foodie-moodie.onrender.com/api/mood?occasion=${encodeURIComponent(
           occasion
         )}`
       );
@@ -171,7 +171,7 @@ export const useRestaurantStore = create((set) => ({
       console.log("Selected Occasion:", selectedOccasion);
       console.log("Selected Moods:", selectedMoods);
 
-      const apiURL = "http://localhost:3000/api/restaurants/search";
+      const apiURL = "https://foodie-moodie.onrender.com/api/restaurants/search";
       const queryParams = new URLSearchParams({
         category: selectedCategory,
         occasion: selectedOccasion,
