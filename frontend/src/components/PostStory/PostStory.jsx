@@ -31,10 +31,18 @@ export const PostStory = () => {
       return;
     }
 
+    // Capitalize the first letter of the title
+    const capitalizedTitle =
+      newHeading.charAt(0).toUpperCase() + newHeading.slice(1);
+
+    // Capitalize the first letter of the story
+    const capitalizedStory =
+      newStory.charAt(0).toUpperCase() + newStory.slice(1);
+
     // Prepare story data to send to the backend
     const storyData = {
-      title: newHeading,
-      content: newStory,
+      title: capitalizedTitle,
+      content: capitalizedStory,
       category: newCategory,
       ranking: 0,
       lat: latitude,
