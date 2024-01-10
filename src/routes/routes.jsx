@@ -31,7 +31,7 @@ const routes = (
       element={<BookingForm />}
     />
     <Route
-      path="/movie/:id" //:movie"
+      path="/movie/:id"
       element={<Movie />}
     />
     <Route

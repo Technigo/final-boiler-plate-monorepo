@@ -1,54 +1,71 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Repertoire } from '../components/Repertoire'
-import moment from 'moment';
 
+import moment from 'moment'
+import Slider from "react-slick"
+
+
+import "slick-carousel/slick/slick.css"
+import "slick-carousel/slick/slick-theme.css"
 import './Calendar.css'
 
-
-
 export const Calendar = () => {
-  const [isOpen, setIsOpen] = useState(false)
-  const [selectedDay, setSelectedDay] = useState(null)
+  const [dates, setDates] = useState([]);
+  const [selectedDate, setSelectedDate] = useState(null);
 
+  useEffect(() => {
+    // Function to generate dates 
+    const generateDates = () => {
+      const currentDate = moment()
+      const generatedDates = []
 
-  const currentDate = moment() // The current date as a reference
+      for (let i = 0; i < 30; i++) {
+        const date = currentDate.clone().add(i, 'days')
+        generatedDates.push({
+          month: date.format('MMM DD'),
+          dayOfWeek: date.format('ddd'),
+        });
+      }
 
-  const handleDayClick = (dayDate) => {
-    setIsOpen(true) // Toggle isOpen between true and false
-    setSelectedDay(dayDate) // Set the currently selected day when clicked
+      return generatedDates
+    };
+
+    // Set the generated dates in the component state
+    setDates(generateDates())
+  }, []);
+
+  const handleDateClick = (date) => {
+    setSelectedDate(date)
+  };
+
+  // setting for slider slick-carousel
+
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 3,
+    slidesToScroll: 3
   }
-
-  const generateCalendarDays = () => {
-    const currentDay = currentDate.day()
-    const daysOfWeek = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
-    const days = []
-
-    for (let i = 0; i < 7; i++) {
-      const dayDate = currentDate.clone().add(i - currentDay, 'days')
-      const dayString = dayDate.format('MMM DD')
-      const dayOfWeekString = daysOfWeek[dayDate.day()]
-
-      const isSelected = selectedDay && dayDate.isSame(selectedDay, 'day')
-
-      days.push(
-        <div
-          className={`the-day ${isSelected ? 'selected' : ''}`}
-          key={i}
-          onClick={() => handleDayClick(dayDate)}>
-          <p>{dayString}</p>
-          <h2>{dayOfWeekString}</h2>
-        </div>
-      )
-    }
-
-    return days
-  }
-
 
   return (
-    <>
-      <div className="the-row-calendar">{generateCalendarDays()}</div>
-      {isOpen ? <Repertoire /> : null} {/* Render Repertoire component when isOpen is true */}
-    </>
+    <div>
+      <div className='the-row-calendar'>
+        <Slider {...settings}>
+          {dates.map((date, index) => (
+            <div
+              className={`the-day ${selectedDate === date ? 'selected' : ''}`}
+              key={index}
+              onClick={() => handleDateClick(date)}
+            >
+              <p>{date.month}</p>
+              <p>{date.dayOfWeek}</p>
+            </div>
+          ))}
+        </Slider>
+      </div>
+
+      {selectedDate && <Repertoire />}
+    </div>
   )
 }

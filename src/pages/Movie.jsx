@@ -14,7 +14,7 @@ export const Movie = () => {
     const fetchData = async () => {
       try {
         await fetchMovies(); // Load videos every time the component renders
-        const movie = movies.find((m) => m._id.$oid === id);
+        const movie = movies.find((movie) => movie._id === id);
 
         if (movie) {
           setMovieData(movie);

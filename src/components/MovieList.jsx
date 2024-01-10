@@ -2,7 +2,9 @@ import { useEffect } from "react"
 import { movieStore } from '../store/movieStore'
 import { MovieItem } from "./MovieItem"
 import { Link } from "react-router-dom"
+
 import moment from 'moment'
+
 import './MovieList.css'
 
 export const MovieList = () => {
@@ -16,12 +18,14 @@ export const MovieList = () => {
 
   return (
     <div className="the-movie-list">
-      {movies.map((movie) => (
-        <Link to={`/movie/${movie._id.$oid}`} key={movie._id.$oid}>
+      {movies && movies.slice(0, 20).map((movie) => (
+        <Link
+          to={`/movie/${movie._id}`}
+          key={movie._id}>
           <MovieItem
             name={movie.title}
             photo={`https://image.tmdb.org/t/p/w500${movie.posterUrl}`}
-            releaseDate={formatReleaseDate(movie.releaseDate.$date)}
+            releaseDate={formatReleaseDate(movie.releaseDate)}
           />
         </Link>
       ))}

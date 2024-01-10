@@ -39,7 +39,6 @@ export const userStore = create((set) => ({
 
       if (data.success) {
         set({ username })
-        alert('Signup successful')
         console.log("Signing up with:", username)
       } else {
         alert(JSON.stringify(data.response) || 'Signup failed')

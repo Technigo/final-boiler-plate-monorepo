@@ -45,7 +45,8 @@ export const Home = () => {
   return (
     <>
       <Calendar />
-      <MovieList /></>
+      <MovieList />
+    </>
     // <>
     //       <nav>
     //         {/* Create a navigation menu with links to various routes. */}
