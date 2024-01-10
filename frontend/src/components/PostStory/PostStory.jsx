@@ -134,10 +134,6 @@ export const PostStory = () => {
     setSelectedDate(date);
   };
 
-  // const handleCalendarClick = () => {
-  //   setIsCalendarVisible(!isCalendarVisible);
-  // };
-
   const handleButtonClick = () => {
     console.log("Button clicked within PostStory component", newStory);
   };

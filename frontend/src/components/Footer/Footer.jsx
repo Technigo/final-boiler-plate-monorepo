@@ -1,4 +1,3 @@
-
 import { Link } from "react-router-dom";
 
 import "./Footer.css";
@@ -46,6 +45,7 @@ export const Footer = () => {
               <img src={githubIcon} alt="GitHub" />
             </Link>
           </span>
+          <br />
           <span>
             Sandra Gustafsson
             <Link
