@@ -8,6 +8,7 @@ export const Cocktails = () => {
     const [searchTerm, setSearchTerm] = useState('');
     const [selectedFilter, setSelectedFilter] = useState('');
     const [itemsToDisplay, setItemsToDisplay] = useState(6); // Initial number of cocktails to display
+    const [totalCocktails, setTotalCocktails] = useState(0); // State variable for total number of cocktails
 
     const filters = {
         'Occasion': ['Summer', 'Christmas', 'Fall', 'Spring', 'Halloween'],
@@ -28,6 +29,7 @@ export const Cocktails = () => {
             .then(data => {
                 setCocktails(data);
                 setDisplayedCocktails(data.slice(0, itemsToDisplay));
+                setTotalCocktails(data.length); // Update total number of cocktails
             })
             .catch(error => console.error('Error fetching cocktails:', error));
     }, [searchTerm, selectedFilter, itemsToDisplay]);
@@ -65,7 +67,7 @@ export const Cocktails = () => {
                 </select>
             </div>
 
-            <Text type="H1" className={styles.h1}>EXPLORE COCKTAILS</Text>
+            <Text type="H1" className={styles.h1}>OUR RECENT COCKTAILS</Text>
             <div className={styles.gridContainer}>
                 {displayedCocktails.map(cocktail => (
                     <div key={cocktail._id}>
@@ -80,23 +82,13 @@ export const Cocktails = () => {
             </div>
 
             {/* Load More Button */}
-            <div className={styles.loadMoreButtonContainer}>
-                <button onClick={loadMoreCocktails} className={styles.loadMoreButton}>
-                    Load More
-                </button>
-            </div>
+            {displayedCocktails.length < totalCocktails && (
+                <div className={styles.loadMoreButtonContainer}>
+                    <button onClick={loadMoreCocktails} className={styles.loadMoreButton}>
+                        Load More
+                    </button>
+                </div>
+            )}
         </div>
     );
 };
-
-
-
-{/* <Link to={`/cocktail/${cocktail._id}`} key={cocktail._id}>
-{cocktail.imageUrl && (
-    <img src={`https://cbc-uvko.onrender.com/${cocktail.imageUrl}`} alt={cocktail.name} className={styles.cocktailImage} />
-)}
-<Text type="H3" className={styles.h3}>{cocktail.name}</Text>
-<Text type="SbodyText" className={styles.SbodyText}>⏲️: {cocktail.prepTime} | 🌟: {cocktail.strength}</Text>
-<Text type="SbodyText" className={styles.SbodyText}>⚡: {cocktail.strength} | 🏷️ : {cocktail.tags.join(', ')}</Text>
-</Link>
-))} */}
