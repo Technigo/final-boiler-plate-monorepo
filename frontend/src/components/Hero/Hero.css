@@ -11,8 +11,8 @@
 }
 
 .quote {
-  font-size: 30px;
-  padding-top: 12vh;
+  font-size: 18px;
+  padding-top: 16vh;
   color: white;
 }
 
@@ -22,8 +22,8 @@
   }
 
   .quote {
-    font-size: 40px;
-    padding-top: 18vh;
+    font-size: 24px;
+    padding-top: 26vh;
     color: white;
   }
 }
@@ -34,8 +34,8 @@
   }
 
   .quote {
-    font-size: 60px;
-    padding-top: 20vh;
+    font-size: 40px;
+    padding-top: 30vh;
     color: white;
   }
 }

@@ -3,16 +3,13 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px;
-  padding-left: 20px;
-  padding-right: 20px;
-  padding-top: 20px;
+  padding: 20px 20px 0 10px;
   width: 100%;
 }
 
 .logo {
   fill: #faebd7;
-  height: 100px;
+  height: 180px;
   width: auto;
   filter: invert(1);
   margin-bottom: -42px;
@@ -23,6 +20,7 @@
 .hamburger {
   display: block;
   height: 30px;
+  width: 10%;
   padding-right: 20px;
   margin-bottom: -23px;
   width: 10%;
@@ -70,6 +68,7 @@
     height: 140px;
     margin-bottom: -60px;
   }
+
   .logo:hover {
     transform: scale(1.1);
   }
@@ -81,6 +80,7 @@
     margin-bottom: -60px;
     z-index: 10;
   }
+
   .nav-links a {
     text-decoration: none;
     color: #ddd;
