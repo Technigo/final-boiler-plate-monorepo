@@ -8,7 +8,7 @@ import { Navbar } from "../components/Navbar";
 import { Footer } from "../components/Footer";
 import { useEffect } from "react";
 import Swal from "sweetalert2";
-import "./manageyourads.css";
+import "./manageYourAds.css";
 
 export const ManageYourAds = () => {
   const navigate = useNavigate();
@@ -39,7 +39,7 @@ export const ManageYourAds = () => {
         menuItems={[
           { path: "/home", name: "Home" },
           { path: "/search", name: "Search" },
-          { path: "/settings", name: "My Setting" },
+          { path: "/settings", name: "My Settings" },
           { path: "/about", name: "About" },
           { path: "/terms", name: "Terms" },
           {
@@ -53,7 +53,7 @@ export const ManageYourAds = () => {
         menuDesks={[
           { path: "/home", name: "Home" },
           { path: "/search", name: "Search" },
-          { path: "/settings", name: "My Setting" },
+          { path: "/settings", name: "My Settings" },
           { path: "/about", name: "About" },
           { path: "/terms", name: "Terms" },
           {
