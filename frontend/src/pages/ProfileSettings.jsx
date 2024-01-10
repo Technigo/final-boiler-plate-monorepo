@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { userStore } from "../stores/userStore";
 import BackArrow from "../components/reusableComponents/BackArrow";
 import { Button } from "../components/reusableComponents/Button";
@@ -10,7 +10,6 @@ import Swal from "sweetalert2";
 import "./profileSettings.css";
 
 export const ProfileSettings = () => {
-  // const [isEditing, setIsEditing] = useState(false);
   const isLoggedin = userStore((state) => state.isLoggedin);
   const handleLogout = userStore((state) => state.handleLogout);
   const userId = userStore((state) => state.userId);
@@ -80,7 +79,7 @@ export const ProfileSettings = () => {
         menuItems={[
           { path: "/home", name: "Home" },
           { path: "/search", name: "Search" },
-          { path: "/settings", name: "My Setting" },
+          { path: "/settings", name: "My Settings" },
           { path: "/manage-your-ads", name: "My Products" },
           { path: "/about", name: "About" },
           { path: "/terms", name: "Terms" },
@@ -95,7 +94,7 @@ export const ProfileSettings = () => {
         menuDesks={[
           { path: "/home", name: "Home" },
           { path: "/search", name: "Search" },
-          { path: "/settings", name: "My Setting" },
+          { path: "/settings", name: "My Settings" },
           { path: "/manage-your-ads", name: "My Products" },
           { path: "/about", name: "About" },
           { path: "/terms", name: "Terms" },

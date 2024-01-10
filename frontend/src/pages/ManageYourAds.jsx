@@ -3,7 +3,7 @@ import { Button } from "../components/reusableComponents/Button";
 import { UserAds } from "../components/UserAds";
 import { userStore } from "../stores/userStore";
 import { SavedAds } from "../components/UsersSavedAds";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { Navbar } from "../components/Navbar";
 import { Footer } from "../components/Footer";
 import { useEffect } from "react";
