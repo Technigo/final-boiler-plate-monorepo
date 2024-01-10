@@ -1,19 +1,4 @@
 
-
-/* .carousel-wrapper {
-  position: relative;
-  z-index: 10 !important;
-} */
-
-/* .outlet-wrapper {
-  margin-top: -42px;
-} */
-
-/* .rumor-carousel .swiper-slide, 
-.hearsay-carousel .swiper-slide, 
-.historical-carousel .swiper-slide {
-  width: 150px; 
-} */
 .swiper-slide .swiper-slide-visible .swiper-fully-visible .swiper-slide-active {
  width: 100vw;
 }
@@ -37,25 +22,40 @@
   z-index: 100; 
 }
 
+.swiper {
+  margin-top: -40px;
+  margin-bottom: 50px;
+  /* margin-left: none;  */
+  /* display: flex;
+  justify-content: center; */
+}
 
 
 
 
-@media (min-width: 600px) {
+@media (min-width: 580px) {
   .story-card {
     width: 200px; 
   }
-}
-@media (min-width: 768px) {
-  .story-card {
-    width: 300px; 
-    
+  .swiper-wrapper {
+    margin-left: -50px;
   }
 }
-@media (min-width: 1024px) {
+@media (min-width: 700px) {
+  .story-card {
+    width: 300px; 
+  }
+  .swiper-wrapper {
+    margin-left: -100px;
+  }
+}
+@media (min-width: 900px) {
   .story-card {
     width: 400px;
   }
-
+.swiper {
+  margin-top: -80px;
+  margin-bottom: 100px;
+}
   
 } 

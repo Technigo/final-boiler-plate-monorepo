@@ -3,7 +3,11 @@ import "./Storycard.css";
 import { timeSince } from "../utils/timeUtils";
 import likeIcon from "../../assets/like.svg";
 
-export const StoryCard = ({ story, isActive, onUpdateStories }) => {
+export const StoryCard = ({ story, isActive, handleRankUpdate }) => {
+  // API URL from environment variables or default
+  const apiUrl = import.meta.env.VITE_BACKEND_API || "http://localhost:3000";
+
+  // Style object for the card, adjusts scale and z-index based on isActive prop
   const cardStyle = {
     transform: isActive ? "scale(1)" : "scale(1)",
     transition: "transform 0.3s ease-in-out",
@@ -11,7 +15,8 @@ export const StoryCard = ({ story, isActive, onUpdateStories }) => {
     position: "relative",
   };
 
-  const apiUrl = import.meta.env.VITE_BACKEND_API || "http://localhost:3000";
+
+  // Function to handle like button click, updates story ranking
 
   const handleLikeClick = () => {
     fetch(`${apiUrl}/stories/${story._id}/rank`, {
@@ -21,9 +26,9 @@ export const StoryCard = ({ story, isActive, onUpdateStories }) => {
       },
     })
       .then((response) => response.json())
-      .then(() => {
-        if (onUpdateStories) {
-          onUpdateStories(); // Function to trigger re-fetching of stories
+      .then((updatedStory) => {
+        if (handleRankUpdate) {
+          handleRankUpdate(updatedStory);
         }
       })
       .catch((error) => console.error("Error updating story ranking:", error));
@@ -35,14 +40,15 @@ export const StoryCard = ({ story, isActive, onUpdateStories }) => {
         <img src={`/${story.image}`} alt={`${story.city} story`} />
       )}
       <div className="story-info">
-        <h4>
-          {story.category} {story.city}
-        </h4>
+        <h4>{story.category}</h4>
+        <h3>{story.city}</h3>
       </div>
       {isActive && (
         <div className="story-overlay">
-          <h3>{story.title}</h3>
-          <p>{story.content}</p>
+          <div className="story-overlay-content">
+            <h3>{story.title}</h3>
+            <p>{story.content}</p>
+          </div>
           <div className="overlay-date-icon">
             {timeSince(story.createdAt)}
             <button onClick={handleLikeClick} className="like-button">
@@ -56,6 +62,7 @@ export const StoryCard = ({ story, isActive, onUpdateStories }) => {
   );
 };
 
+// PropTypes for type checking props passed to StoryCard
 StoryCard.propTypes = {
   story: PropTypes.shape({
     _id: PropTypes.string.isRequired,
@@ -65,8 +72,8 @@ StoryCard.propTypes = {
     ranking: PropTypes.number.isRequired,
     createdAt: PropTypes.string.isRequired,
     city: PropTypes.string,
-    image: PropTypes.string, // Image is optional for now
+    image: PropTypes.string,
   }).isRequired,
   isActive: PropTypes.bool,
-  onRankUpdate: PropTypes.func,
+  handleRankUpdate: PropTypes.func,
 };

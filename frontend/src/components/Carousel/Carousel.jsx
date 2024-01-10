@@ -10,7 +10,7 @@ import "swiper/css/effect-coverflow";
 import "swiper/css/pagination";
 
 export const Carousel = () => {
-  const [stories, setStories] = useState([]);
+  // State for managing various categories of stories and the active slide in each category
   const [rumorStories, setRumorStories] = useState([]);
   const [hearsayStories, setHearsayStories] = useState([]);
   const [historicalStories, setHistoricalStories] = useState([]);
@@ -19,48 +19,79 @@ export const Carousel = () => {
   const [activeHistoricalSlide, setActiveHistoricalSlide] = useState(0);
   const [viewportWidth, setViewportWidth] = useState(window.innerWidth);
 
+  // API URL configuration
+  const apiUrl = import.meta.env.VITE_BACKEND_API || "http://localhost:3000";
+
+  // Function to capitalize the first letter of a string
+  const capitalizeFirstLetter = (string) => {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+  };
+
+  // Function to update the rank of a story
   const handleRankUpdate = (updatedStory) => {
-    setStories((prevStories) =>
-      prevStories.map((story) =>
+    const updateStateArray = (array) =>
+      array.map((story) =>
         story._id === updatedStory._id ? updatedStory : story
-      )
-    );
+      );
+
+    setRumorStories((prev) => updateStateArray(prev));
+    setHearsayStories((prev) => updateStateArray(prev));
+    setHistoricalStories((prev) => updateStateArray(prev));
   };
 
+  // Function to fetch and update stories from the API
   const updateStories = () => {
-    const apiUrl = import.meta.env.VITE_BACKEND_API || "http://localhost:3000";
     fetch(`${apiUrl}/stories`)
       .then((response) => response.json())
       .then((data) => {
-        setStories(
-          data.map((story) => ({
-            ...story,
-            id: story._id,
-            city: story.city,
-            image: story.image,
-          }))
+        const formattedStories = data.map((story) => ({
+          ...story,
+          id: story._id,
+          city: story.city,
+          image: story.image,
+          category: capitalizeFirstLetter(story.category),
+        }));
+
+        // Update the states for each category
+        setRumorStories(
+          formattedStories.filter((story) => story.category === "Rumor")
+        );
+        setHearsayStories(
+          formattedStories.filter((story) => story.category === "Hearsay")
+        );
+        setHistoricalStories(
+          formattedStories.filter((story) => story.category === "Historical")
         );
       })
       .catch((error) => console.error("Error fetching stories:", error));
   };
 
+  // Fetching stories on component mount
   useEffect(() => {
-    const apiUrl = import.meta.env.VITE_BACKEND_API || "http://localhost:3000";
+
     fetch(`${apiUrl}/stories`)
       .then((response) => response.json())
       .then((data) => {
-        setStories(data); // Set the fetched stories
+        const formattedStories = data.map((story) => ({
+          ...story,
+          category: capitalizeFirstLetter(story.category),
+        }));
 
-        // Filter and set states for each category
-        setRumorStories(data.filter((story) => story.category === "rumor"));
-        setHearsayStories(data.filter((story) => story.category === "hearsay"));
+        // Directly updating the states for each category
+        setRumorStories(
+          formattedStories.filter((story) => story.category === "Rumor")
+        );
+        setHearsayStories(
+          formattedStories.filter((story) => story.category === "Hearsay")
+        );
         setHistoricalStories(
-          data.filter((story) => story.category === "historical")
+          formattedStories.filter((story) => story.category === "Historical")
         );
       })
       .catch((error) => console.error("Error fetching stories:", error));
-  }, []);
+  }, [apiUrl]);
 
+  // Slide change handlers for each category
   const onSlideChangeRumor = (swiper) => {
     setActiveRumorSlide(swiper.realIndex);
 
@@ -105,6 +136,7 @@ export const Carousel = () => {
     }
   };
 
+  // Adjusting the viewport width on window resize
   useEffect(() => {
     const handleResize = () => {
       setViewportWidth(window.innerWidth);
@@ -121,13 +153,13 @@ export const Carousel = () => {
   const slidesPerView =
     viewportWidth < 400
       ? 2
-      : viewportWidth < 500
-      ? 2
+      : viewportWidth < 580
+      ? 3
       : viewportWidth < 700
-      ? 3
+      ? 5
       : viewportWidth < 900
-      ? 3
-      : 4;
+      ? 7
+      : 7;
 
   return (
     <>
@@ -139,8 +171,7 @@ export const Carousel = () => {
         effect="coverflow"
         centeredSlides={true}
         loop={false}
-        initialSlide={4}
-        //offsetBefore={-20}
+        initialSlide={6}
         coverflowEffect={{
           rotate: 0,
           stretch: 20,
@@ -148,13 +179,13 @@ export const Carousel = () => {
           modifier: 1,
           slideShadows: true,
         }}
-        pagination={{ clickable: true }}>
+      >
         {rumorStories.map((story, index) => (
           <SwiperSlide key={story._id}>
             <StoryCard
               story={story}
               isActive={index === activeRumorSlide}
-              onRankUpdate={handleRankUpdate}
+              handleRankUpdate={handleRankUpdate}
               onUpdateStories={updateStories}
             />
           </SwiperSlide>
@@ -176,13 +207,13 @@ export const Carousel = () => {
           modifier: 1,
           slideShadows: true,
         }}
-        pagination={{ clickable: true }}>
+      >
         {hearsayStories.map((story, index) => (
           <SwiperSlide key={story._id}>
             <StoryCard
               story={story}
               isActive={index === activeHearsaySlide}
-              onRankUpdate={handleRankUpdate}
+              handleRankUpdate={handleRankUpdate}
               onUpdateStories={updateStories}
             />
           </SwiperSlide>
@@ -197,7 +228,6 @@ export const Carousel = () => {
         centeredSlides={true}
         loop={false}
         initialSlide={4}
-        // offsetAfter={20}
         coverflowEffect={{
           rotate: 0,
           stretch: 20,
@@ -205,13 +235,13 @@ export const Carousel = () => {
           modifier: 1,
           slideShadows: true,
         }}
-        pagination={{ clickable: true }}>
+      >
         {historicalStories.map((story, index) => (
           <SwiperSlide key={story._id}>
             <StoryCard
               story={story}
               isActive={index === activeHistoricalSlide}
-              onRankUpdate={handleRankUpdate}
+              handleRankUpdate={handleRankUpdate}
               onUpdateStories={updateStories}
             />
           </SwiperSlide>
