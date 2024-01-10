@@ -67,7 +67,7 @@ export const UserProfile = () => {
     const getUserDataFromMongo = async () => {
       // console.log(`${vite_backup}/user/${user.sub}`);
       try {
-        await fetch(`${vite_backup}/user/${user.sub}`)
+        await fetch(`${vite_backend}/user/${user.sub}`)
           .then((res) => res.json())
           .then((data) => {
             // console.log("data: " + JSON.stringify(data));
@@ -75,7 +75,7 @@ export const UserProfile = () => {
             setLoggedInUserId(data._id);
             setEmail(data.email);
             setLoading(!loading);
-            console.log(email, mongoUsername)
+            console.log(email, mongoUsername);
           });
       } catch (error) {
         console.log(error);
@@ -83,7 +83,7 @@ export const UserProfile = () => {
     };
 
     const getUsers = async () => {
-      const fetchUsers = await fetch(`${vite_backup}/users`);
+      const fetchUsers = await fetch(`${vite_backend}/users`);
       const jsonUsers = await fetchUsers.json();
       setUserList(jsonUsers);
       setUserLoading(!userLoading);
