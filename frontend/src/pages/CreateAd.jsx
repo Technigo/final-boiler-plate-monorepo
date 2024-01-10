@@ -109,7 +109,7 @@ export const CreateAd = () => {
         <div className="main-wrapper">
           <div className="create-ad-container">
             <BackArrow />
-
+            <h1>Add a product</h1>
             {isLoading ? (
               <div className="loading-container">
                 <Lottie
