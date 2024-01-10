@@ -9,9 +9,9 @@ import { Button } from "../components/reusableComponents/Button";
 import BackArrow from "../components/reusableComponents/BackArrow";
 import Lottie from "lottie-react";
 import loadingAnimation from "../assets/loading.json/";
-import {Icon} from "react-icons-kit";
-import {eyeOff} from "react-icons-kit/feather/eyeOff";
-import {eye} from "react-icons-kit/feather/eye";
+import { Icon } from "react-icons-kit";
+import { eyeOff } from "react-icons-kit/feather/eyeOff";
+import { eye } from "react-icons-kit/feather/eye";
 import "../pages/register.css";
 
 // Define the "Register" functional component.
@@ -35,7 +35,7 @@ export const Register = () => {
 
   // Function to handle the toggle between the hide password (eyeOff icon) and the show password (eye icon)
   const handleToggle = () => {
-    if (type ==="password") {
+    if (type === "password") {
       setIcon(eye);
       setType("text");
     } else {
@@ -70,75 +70,77 @@ export const Register = () => {
 
   // Render the component content.
   return (
-    <div className="container">
-      <div className="arrow-container">
-        <BackArrow />
-        <Logo className={"login-logo"} color="green" />
-      </div>
-      {/* Apply styling from app.css */}
-
-      <div className="user-registration">
-        <Heading level={1} text="Sign up" aria-label="Sign Up" />
-        {/* Create input fields for "email", "username", "password", "consent" and associate them with state variables. */}
-        <label htmlFor="username">Username</label>
-        <input
-          type="text"
-          name="username"
-          id="username"
-          placeholder="johndoe"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-        />
-
-        <label htmlFor="email">Email</label>
-        <input
-          type="email"
-          name="email"
-          id="email"
-          placeholder="john@email.com"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
-
-        <label htmlFor="password">Password</label>
-        <div className="password-input">
-          <input
-            type={type}
-            name="password"
-            id="password"
-            placeholder="Password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-          <span onClick={handleToggle}>
-            <Icon icon={icon} size={22}/>
-          </span>
+    <div className="main-container">
+      <div className="main-wrapper">
+        <div className="arrow-container">
+          <BackArrow />
+          <Logo className={"login-logo"} color="green" />
         </div>
+        {/* Apply styling from app.css */}
 
-        <div className="tnc">
+        <div className="user-registration">
+          <Heading level={1} text="Sign up" aria-label="Sign Up" />
+          {/* Create input fields for "email", "username", "password", "consent" and associate them with state variables. */}
+          <label htmlFor="username">Username</label>
           <input
-            type="checkbox"
-            name="consent"
-            id="consent"
-            checked={consent}
-            onChange={() => setConsent(!consent)}
+            type="text"
+            name="username"
+            id="username"
+            placeholder="johndoe"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
           />
-          <label htmlFor="consent">I agree to terms and policy</label>
+
+          <label htmlFor="email">Email</label>
+          <input
+            type="email"
+            name="email"
+            id="email"
+            placeholder="john@email.com"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+
+          <label htmlFor="password">Password</label>
+          <div className="password-input">
+            <input
+              type={type}
+              name="password"
+              id="password"
+              placeholder="Password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+            <span onClick={handleToggle}>
+              <Icon icon={icon} size={22} />
+            </span>
+          </div>
+
+          <div className="tnc">
+            <input
+              type="checkbox"
+              name="consent"
+              id="consent"
+              checked={consent}
+              onChange={() => setConsent(!consent)}
+            />
+            <label htmlFor="consent">I agree to terms and policy</label>
+          </div>
+          {/* Create a button for signing up and attach the "onSignupClick" event handler. */}
+          {loading && <Lottie animationData={loadingAnimation} />}
+          {!loading && (
+            <Button
+              iconSize="button"
+              label="Sign Up"
+              onClick={onSignupClick}
+              className="button"
+            />
+          )}
+          <h4>
+            Have an account?
+            <Link to="/login">Log In</Link>
+          </h4>
         </div>
-        {/* Create a button for signing up and attach the "onSignupClick" event handler. */}
-        {loading && <Lottie animationData={loadingAnimation} />}
-        {!loading && (
-          <Button
-            iconSize="button"
-            label="Sign Up"
-            onClick={onSignupClick}
-            className="button"
-          />
-        )}
-        <h4>
-          Have an account?
-          <Link to="/login">Log In</Link>
-        </h4>
       </div>
     </div>
   );
