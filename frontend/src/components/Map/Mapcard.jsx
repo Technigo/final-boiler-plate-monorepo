@@ -1,5 +1,6 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
+import "../Storycard/Storycard.css";
 
 export const Mapcard = () => {
   // eslint-disable-next-line no-undef
