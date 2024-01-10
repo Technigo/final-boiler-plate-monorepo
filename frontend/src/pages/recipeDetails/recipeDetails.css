@@ -1,12 +1,11 @@
 .recipe-details {
   line-height: 1.25;
-  padding-left: 1rem;
-  padding-right: 1rem;
-  margin-bottom: 15px;
+  padding: 0 10px; 
+  margin: 20px 0px;
 }
 
 .recipe-details h1 {
-  font-size: 2rem;
+  font-size: 1.8rem;
   font-weight: 400;
   margin-top: 1rem;
   margin-bottom: 1rem;
@@ -36,10 +35,6 @@
   display: flex;
   margin-bottom: 10px;
   gap: 10px;
-}
-
-.dot {
-  margin: 0 5px 0 5px;
 }
 
 .user-input-details {
@@ -76,20 +71,32 @@
 
 .description {
   margin-top: 15px;
+  font-weight: 600;
 }
 
 .recipe-details h3 {
   margin-top: 15px;
 }
 
+.details-desktop-container {
+  display: flex; 
+}
 
+.details-text-container {
+padding: 0 50px; 
+}
 
 /* ---------TABLET VIEW---------- */
 @media (min-width: 667px) and (max-width: 1024px) {
+  .recipe-details {
+    padding: 0 20px; 
+    margin: 50px 12px; 
+  }
+
   .recipe-details img {
     width: 100%;
-    height: 50%;
-  }
+    height: 50vw;
+  } 
 }
 
 /* ---------DESKTOP VIEW----------*/
@@ -99,8 +106,13 @@
   }
 
   .recipe-details img {
-    width: 60%;
-    height: 40%;
+    width: 45%;
+    height: 50vw;
+    /* height: 40%; */
+  }
+
+  .recipe-details h1 {
+    font-size: 2.5rem;
   }
 }
 
