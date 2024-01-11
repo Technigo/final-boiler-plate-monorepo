@@ -5,35 +5,35 @@
       "name": "Broccoli",
       "location": "Katrinehol",
       "owner": "Eva",
-      "image": "/src/assets/broccoli.jpeg"
+      "image": "./slideImages/broccoli.jpeg"
     },
     {
       "id": "2",
       "name": "Fresh Tomatoes",
       "location": "Knivsta",
       "owner": "Anna-Maria",
-      "image": "/src/assets/cherry-tomatoes.jpeg"
+      "image": "./slideImages/cherry-tomatoes.jpeg"
     },
     {
       "id": "3",
       "name": "Strawberry Jam",
       "location": "Uppsala",
       "owner": "Gustav",
-      "image": "/src/assets/jam.jpeg"
+      "image": "./slideImages/jam.jpeg"
     },
     {
       "id": "4",
       "name": "Organic cucumber",
       "location": "Täby",
       "owner": "Hannah",
-      "image": "/src/assets/cucumber.jpeg"
+      "image": "./slideImages/cucumber.jpeg"
     },
     {
       "id": "5",
       "name": "Cherry Tomatoes",
       "location": "Årsta",
       "owner": "Jen",
-      "image": "/src/assets/tiny-tim.jpg"
+      "image": "./slideImages/tiny-tim.jpg"
     }
   ]
 }

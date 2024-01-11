@@ -19,10 +19,10 @@ export const Policy = () => {
       <Navbar
         menuItems={[
           { path: "/home", name: "Home" },
+          { path: "/about", name: "About" },
           { path: "/search", name: "Search" },
           { path: "/settings", name: "My Settings" },
           { path: "/manage-your-ads", name: "My Products" },
-          { path: "/about", name: "About" },
           { path: "/terms", name: "Terms" },
           isLoggedin
             ? {
