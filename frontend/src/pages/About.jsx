@@ -2,8 +2,6 @@ import { Footer } from "../components/Footer";
 import { Navbar } from "../components/Navbar";
 import { Heading } from "../components/reusableComponents/Heading";
 import { Button } from "../components/reusableComponents/Button";
-import { useNavigate } from "react-router-dom";
-import { userStore } from "../stores/userStore";
 import BackArrow from "../components/reusableComponents/BackArrow";
 import contact from "../assets/get-contact.svg";
 import giveAway from "../assets/give-away.svg";
@@ -16,13 +14,6 @@ export const About = () => {
   const style = {
     height: 500,
   };
-  const navigate = useNavigate();
-
-  // Get 'isLoggedIn' and 'accessToken' from the 'userStore'.
-  const isLoggedin = userStore((state) => state.isLoggedin);
-  const handleLogout = userStore((state) => state.handleLogout);
-
-  const logoRedirectPath = isLoggedin ? "/home" : "/";
 
   return (
     <>
@@ -34,13 +25,6 @@ export const About = () => {
           { path: "/manage-your-ads", name: "My Products" },
           { path: "/about", name: "About" },
           { path: "/terms", name: "Terms" },
-          {
-            name: "Logout",
-            onClick: () => {
-              handleLogout();
-              navigate("/");
-            },
-          },
         ]}
         menuDesks={[
           { path: "/home", name: "Home" },
@@ -48,13 +32,6 @@ export const About = () => {
           { path: "/settings", name: "My Settings" },
           { path: "/manage-your-ads", name: "My Products" },
           { path: "/terms", name: "Terms" },
-          {
-            name: "Logout",
-            onClick: () => {
-              handleLogout();
-              navigate("/");
-            },
-          },
         ]}
         logoRedirectPath={logoRedirectPath}
       />
