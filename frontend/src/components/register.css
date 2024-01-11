@@ -4,6 +4,7 @@
     align-items: center;
     background-image: url("/notebook.png");
     background-size: cover;
+    background-position: 100%;
 }
 
 .register-container h2 {
