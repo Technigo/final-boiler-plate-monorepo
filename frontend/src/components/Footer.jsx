@@ -7,7 +7,7 @@ const Footer = () => {
 
     return (
         <div className="footer">
-            <div className='footer-content'>
+            <div className="footer-content">
                 <LanguageSwitcherFooter />
                 <p>Copyright | All rights reserved | 2023</p>
                 <img src="/HabitFlow.png" />
