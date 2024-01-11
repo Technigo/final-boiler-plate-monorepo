@@ -43,7 +43,8 @@
 	--selection-color: yellow;
 	--box-shadow-color: rgba(0, 0, 0, 0.7);
 
-	--small-padding: 4rem;
+	--small-padding: 1rem;
+	--medium-padding: 4rem;
 	--big-padding: 11rem;
 }
 
