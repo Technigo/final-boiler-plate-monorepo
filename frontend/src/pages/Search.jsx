@@ -74,11 +74,13 @@ export const Search = () => {
           {filteredAds.length > 0 && (
             <h1 className="search-result">Search Result</h1>
           )}
-          <ul className="filtered-ads">
-            {filteredAds.map((ad) => (
-              <AdCard key={ad._id} ad={ad} />
-            ))}
-          </ul>
+          <div className="search-result-wrapper">
+            <ul className="filtered-ads">
+              {filteredAds.map((ad) => (
+                <AdCard key={ad._id} ad={ad} />
+              ))}
+            </ul>
+          </div>
         </div>
       </div>
       <Footer />
