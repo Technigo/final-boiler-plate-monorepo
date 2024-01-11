@@ -50,7 +50,7 @@ export const Trips = () => {
           <div className="col-span-3 absolute right-4 top-1/2 transform -translate-y-1/2 h-full flex items-center justify-center">
             <Link
               to={`/trips/${trip.id}`}
-              className="bg-rose-500 text-white px-4 py-2 rounded-full hover:bg-rose-700 focus:outline-none focus:ring focus:border-blue-300">
+              className="bg-pink-400 rounded-full cursor-pointer hover:bg-cyan-800 text-white px-5 py-2 font-semibold focus:outline-none focus:ring focus:border-blue-300">
               Details
             </Link>
           </div>
