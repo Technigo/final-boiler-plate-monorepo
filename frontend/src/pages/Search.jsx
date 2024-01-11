@@ -65,7 +65,9 @@ export const Search = () => {
       />
       <div className="search-container">
         <div className="search-wrapper">
+          <div className="back-arrow-search">
           <BackArrow />
+          </div>
           <SearchBar
             setFilteredAds={setFilteredAds}
             searchTerm={searchTerm}

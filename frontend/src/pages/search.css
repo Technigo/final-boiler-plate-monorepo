@@ -18,6 +18,10 @@
     padding: 0;
 }
 
+.back-arrow-search img{
+    margin-bottom: 20px;
+}
+
 .search-result-wrapper {
     display: flex;
     justify-content: center;
