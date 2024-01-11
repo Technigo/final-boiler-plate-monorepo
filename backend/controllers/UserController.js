@@ -148,10 +148,11 @@ export const UserController = {
       res.json({ error: error.message });
     }
   },
+
   getSingleTrip: async (req, res) => {
     const { id } = req.params;
     try {
-      const trip = await TripModel.findOne({ id });
+      const trip = await TripModel.findOne({ _id: id });
       if (!trip) {
         return res.status(404).json({ message: "Trip not found" });
       }
