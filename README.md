@@ -43,6 +43,17 @@ As part of the Technigo Web Dev Bootcamp, this project was created as the Final 
 </div>
 </div>
 
+## Database Operations
+
+- **RecipeModel:** Represents the data structure for recipes, including user input, search words, title, description, ingredients, instructions, and creation timestamp.
+- **MongoDBOperations:** Implements CRUD operations for managing recipes in the MongoDB database.
+
+## AI integration
+
+**OpenAI:** The backend integrates with the OpenAI API to generate text-based recipes based on user prompts.
+
+**Endpoint:** Provides an /openai/generateText endpoint to handle AI-driven recipe generation.
+
 ## API Endpoints
 
 ### External APIs
@@ -62,17 +73,6 @@ As part of the Technigo Web Dev Bootcamp, this project was created as the Final 
   - `GET /`: Lists all available API endpoints for reference.
   - `GET /recipes`: Retrieves all stored recipes.
   - `GET /recipes/search/:query`: Searches for recipes based on a specified query.
-
-## Database Operations
-
-- **RecipeModel:** Represents the data structure for recipes, including user input, search words, title, description, ingredients, instructions, and creation timestamp.
-- **MongoDBOperations:** Implements CRUD operations for managing recipes in the MongoDB database.
-
-## AI integration
-
-**OpenAI:** The backend integrates with the OpenAI API to generate text-based recipes based on user prompts.
-
-**Endpoint:** Provides an /openai/generateText endpoint to handle AI-driven recipe generation.
 
 ## How to Run the Project
 
