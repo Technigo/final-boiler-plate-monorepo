@@ -9,6 +9,7 @@ import userRoutes from "./routes/userRoutes";
 import { MessageModel } from "./models/MessageModel";
 import ws from "ws";
 import fs from "fs";
+import listEndpoints from "express-list-endpoints";
 
 const { auth } = require("express-openid-connect");
 
@@ -33,6 +34,10 @@ connectDB();
 // Start the server and listen for incoming requests on the specified port
 const server = app.listen(port, () => {
   console.log(`Server running on http://localhost:${port}`); // Display a message when the server is successfully started
+});
+
+app.get("/endpoints", (req, res) => {
+  res.send(listEndpoints(app));
 });
 
 const wss = new ws.WebSocketServer({ server });
@@ -71,68 +76,5 @@ wss.on("connection", (ws) => {
   });
 });
 //#ENDREGION
-
-app.get("/trips", (req, res) => {
-  fs.readFile("trips.txt", "utf8", (err, data) => {
-    if (err) {
-      console.error(err);
-      return res.status(500).send("Internal Server Error");
-    }
-
-    let trips = [];
-
-    try {
-      trips = data.trim() !== "" ? JSON.parse(data) : [];
-      if (!Array.isArray(trips)) {
-        console.error("trips is not an array");
-        trips = [];
-      }
-    } catch (parseError) {
-      console.error(parseError);
-
-      trips = [];
-      return res.status(500).send("Error parsing existing trips");
-    }
-
-    res.json(trips);
-  });
-});
-
-app.post("/trip", (req, res) => {
-  fs.readFile("trips.txt", "utf8", (err, data) => {
-    if (err) {
-      console.error(err);
-      return res.status(500).send("Internal Server Error");
-    }
-
-    let trips = [];
-
-    try {
-      trips = JSON.parse(data);
-      if (!Array.isArray(trips)) {
-        console.error("trips is not an array");
-        trips = [];
-      }
-    } catch (parseError) {
-      console.error(parseError);
-      return res.status(500).send("Error parsing existing trips");
-    }
-
-    const newTrip = req.body;
-
-    trips.push(newTrip);
-
-    const updatedData = JSON.stringify(trips);
-
-    fs.writeFile("trips.txt", updatedData, (writeError) => {
-      if (writeError) {
-        console.error(writeError);
-        return res.status(500).send("Error writing to trips.txt");
-      }
-
-      res.send("Trip added successfully!");
-    });
-  });
-});
 
 export { app, wss };

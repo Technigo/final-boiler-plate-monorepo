@@ -1,21 +1,19 @@
 import { BrowserRouter, Routes } from "react-router-dom";
 import routes from "./routes/routes";
-import { Footer } from "./components/footer";
 import { Navbar } from "./components/Navbar";
-import { Hero } from "./components/Hero";
+import { Footer } from "./components/PageFooter";
 
 export const App = () => {
-
-
   return (
     <>
       <BrowserRouter>
-        <main>
-          <Navbar />
-          <Routes>{routes}</Routes>
-          <Hero />
+        <div className="flex flex-col min-h-screen">
+          <main className="flex-1">
+            <Navbar />
+            <Routes>{routes}</Routes>
+          </main>
           <Footer />
-        </main>
+        </div>
       </BrowserRouter>
     </>
   );

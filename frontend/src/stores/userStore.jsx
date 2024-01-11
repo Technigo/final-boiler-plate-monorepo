@@ -18,11 +18,6 @@ export const userStore = create((set, get) => ({
   // Define a function to set the email state.
   setEmail: (email) => set({ email }),
 
-  // Initialize password state.
-  password: "",
-  // Define a function to set the password state.
-  setPassword: (password) => set({ password }),
-
   //Initialize user to chat with
   chatReceiver: "",
   // Define a function to set the chatReceiver state.
@@ -35,11 +30,6 @@ export const userStore = create((set, get) => ({
   //Log the userId of the recipient of a message
   recipientId: "",
   setRecipientId: (recipientId) => set({ recipientId }),
-
-  // Initialize accessToken state with null.
-  accessToken: null,
-  // Define a function to set the accessToken state.
-  setAccessToken: (token) => set({ accessToken: token }),
 
   // Initialize isLoggedIn state with false.
   isLoggedIn: false,
@@ -143,15 +133,13 @@ export const userStore = create((set, get) => ({
       }
 
       const data = await response.json();
-      // console.log("data from store: " + JSON.stringify(data));
 
       set({ chatMessages: data });
-      // console.log("chatMessages from Store: " + chatMessages);
+      console.log(chatMessages);
     } catch (error) {
       console.error("Error fetching messages: ", error.message);
     }
   },
-
   // Function to handle user logout.
   handleLogout: () => {
     // Clear user information and set isLoggedIn to false.

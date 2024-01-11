@@ -70,13 +70,23 @@ export const UserController = {
     }
   },
 
+  getUserByMongoId: async (req, res) => {
+    const { mongoid } = req.params;
+    try {
+      const user = await UserModel.findById({ _id: mongoid });
+      if (!user) {
+        return res.status(404).json({ message: "User not found" });
+      }
+
+      res.json(user);
+    } catch (error) {
+      res.json({ error: error.message });
+    }
+  },
+
   getUserMessages: async (req, res) => {
     const { senderid, recipientid } = req.params;
 
-    //Might have to make up a solution for this part
-    //    const userData = await getUser
-    //const ourUserId = userData.userId;
-    //const ourUserId = userId;
     try {
       const messages = await MessageModel.find({
         sender: {
@@ -85,9 +95,6 @@ export const UserController = {
         recipient: {
           $in: [senderid, recipientid],
         },
-
-        // sender: { $in: [senderid, recipientid] },
-        // recipient: { $in: [senderid, recipientid] },
       })
         .sort({ createdAt: "ascending" })
         .exec();
@@ -109,27 +116,62 @@ export const UserController = {
   },
 
   addTrip: async (req, res) => {
-    const { from, to, message, date, time, make, model, availableSeats, reg } =
-      req.body;
+    const {
+      from,
+      to,
+      message,
+      date,
+      make,
+      model,
+      availableSeats,
+      reg,
+      user,
+      username,
+    } = req.body;
+    console.log(req.body);
     try {
       const trip = new TripModel({
         from,
         to,
         message,
         date,
-        time,
         make,
         model,
         availableSeats,
         reg,
+        user,
+        username,
       });
 
       await trip.save();
+      res.status(201).json({ message: "Trip successfully registered" });
     } catch (error) {
       res.status(400).json({
         message: "Could not post trip",
         errors: error.errors,
       });
+    }
+  },
+
+  getTrips: async (req, res) => {
+    try {
+      const trips = await TripModel.find().sort({ createdAt: "desc" }).exec();
+      res.json(trips);
+    } catch (error) {
+      res.json({ error: error.message });
+    }
+  },
+
+  getSingleTrip: async (req, res) => {
+    const { id } = req.params;
+    try {
+      const trip = await TripModel.findOne({ _id: id });
+      if (!trip) {
+        return res.status(404).json({ message: "Trip not found" });
+      }
+      res.json(trip);
+    } catch (error) {
+      res.json({ error: error.message });
     }
   },
 };
