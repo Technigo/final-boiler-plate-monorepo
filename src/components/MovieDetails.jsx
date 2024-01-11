@@ -14,28 +14,29 @@ export const MovieDetails = ({ movie }) => {
   // const backgroundImage = `https://image.tmdb.org/t/p/w1280/${backdropUrl}`;
   const posterImage = `https://image.tmdb.org/t/p/w780${posterUrl}`;
 
-  useEffect(() => {
-    const fetchShowtime = async () => {
-      try {
-        if (movie && movie._id) {
-          console.log('Fetching showtimes for movie:', movie.title);
-          // Fetch showtimes for the movie
-          await fetchShowtimeByMovie(movie._id);
-          // Access the updated showtimes from the store
-          const updatedShowtimes = showTimesStore.getState().showTimes;
-          console.log('Fetched showtimes:', updatedShowtimes);
-          setShowtimes(updatedShowtimes);
-        }
-      } catch (error) {
-        console.error('Error fetching showtimes:', error);
-      }
-    };
+  const fetchShowtime = async () => {
+    try {
+      if (movie && movie._id) {
+        console.log('Fetching showtimes for movie:', movie.title);
 
+        // Fetch showtimes for the movie
+        await fetchShowtimeByMovie(movie._id);
+
+        // Access the updated showtimes from the store
+        const updatedShowtime = showTimesStore.getState().showTimes;
+        console.log('Fetched showtimes:', updatedShowtime);
+        setShowtimes(updatedShowtime);
+      }
+    } catch (error) {
+      console.error('Error fetching showtimes:', error);
+    }
+  };
+
+  useEffect(() => {
     console.log('Component rendered with movie:', movie);
     fetchShowtime();
+  }, [])
 
-    // Include movie in the dependency array
-  }, [fetchShowtimeByMovie, movie]);
   const formatReleaseDate = (fullDate) => {
     return moment(fullDate).format("MMM Do YY")
   }
@@ -67,7 +68,7 @@ export const MovieDetails = ({ movie }) => {
             <h2>Showtimes:</h2>
             {showtimes && showtimes.map((showTime) => (
               <div className='showtime-container' key={showTime._id}>
-                <p><Link to={`/booking`}>{showTime.startingTime}:00</Link></p>
+                <p><Link to={`/booking/${showTime._id}`}>{showTime.startingTime}:00</Link></p>
 
               </div>
             ))}
