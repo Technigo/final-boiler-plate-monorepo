@@ -1,6 +1,5 @@
 // Import the necessary modules and functions
 import express from "express";
-
 import listEndpoints from "express-list-endpoints";
 import { mapStoryModel } from "../models/mapStoryModel";
 import { analyzeTextWithApiKey } from "../ApiComponents/contentAnalysis";

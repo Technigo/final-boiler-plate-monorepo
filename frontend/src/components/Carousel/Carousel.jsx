@@ -68,7 +68,6 @@ export const Carousel = () => {
 
   // Fetching stories on component mount
   useEffect(() => {
-
     fetch(`${apiUrl}/stories`)
       .then((response) => response.json())
       .then((data) => {
@@ -178,8 +177,7 @@ export const Carousel = () => {
           depth: 100,
           modifier: 1,
           slideShadows: true,
-        }}
-      >
+        }}>
         {rumorStories.map((story, index) => (
           <SwiperSlide key={story._id}>
             <StoryCard
@@ -206,8 +204,7 @@ export const Carousel = () => {
           depth: 100,
           modifier: 1,
           slideShadows: true,
-        }}
-      >
+        }}>
         {hearsayStories.map((story, index) => (
           <SwiperSlide key={story._id}>
             <StoryCard
@@ -234,8 +231,7 @@ export const Carousel = () => {
           depth: 100,
           modifier: 1,
           slideShadows: true,
-        }}
-      >
+        }}>
         {historicalStories.map((story, index) => (
           <SwiperSlide key={story._id}>
             <StoryCard
