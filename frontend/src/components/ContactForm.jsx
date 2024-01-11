@@ -77,8 +77,8 @@ export const ContactForm = ({
       </div>
       <div>
         <h1 className="contact-title">Contact Form</h1>
-        <input placeholder="Your name" type="text" name="user_name" required />
-        <input placeholder="E-mail" type="email" name="user_email" required />
+        <input placeholder="Your name" name="user_name" required />
+        <input placeholder="E-mail" name="user_email" required />
         <textarea className="msg-box" placeholder="Message" name="message" />
       </div>
       <button className="submit-btn" type="submit" value="Send">
