@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import LanguageSwitcherFooter from "./LanguageSwitcherFooter";
 import "./footermobile.css";
 
