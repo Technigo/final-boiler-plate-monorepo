@@ -10,10 +10,10 @@ As part of the Technigo Web Dev Bootcamp, this project was created as the Final 
 
 **Frontend**
 
-- React (Javascript)
+- React
+- Vite
 - Zustand
 - React router
-- CSS
 - React icons
 - Netlify
 
@@ -50,7 +50,7 @@ As part of the Technigo Web Dev Bootcamp, this project was created as the Final 
 
 - GET https://ai-recipes-collin-dieden.onrender.com/: Lists all available API endpoints for reference
 - GET https://ai-recipes-collin-dieden.onrender.com/recipes: Retrieves all stored recipes.
-- GET https://ai-recipes-collin-dieden.onrender.com/recipes/search/:query: Searches for recipes based on a specified query.
+- GET https://ai-recipes-collin-dieden.onrender.com/recipes/search/:query: Searches for recipes based on a specified query. (**Note:** This endpoint is still a dummy endpoint and has not yet been implemented into the frontend.)
 - POST https://ai-recipes-collin-dieden.onrender.com/openai/generateText: Initiates the process of generating a recipe using the OpenAI API.
 
 ## Database Operations
@@ -58,24 +58,73 @@ As part of the Technigo Web Dev Bootcamp, this project was created as the Final 
 - **RecipeModel:** Represents the data structure for recipes, including user input, search words, title, description, ingredients, instructions, and creation timestamp.
 - **MongoDBOperations:** Implements CRUD operations for managing recipes in the MongoDB database.
 
-## Get started
+## How to Run the Project
 
-As this is a monorepo both backend and frontend is included. Following installation is needed:<br>
-SKRIVA DE OLIKA HÄR?<br>
+### Backend
 
-In order to change to frontend to start the localhost:<br>
-In the VScode terminal: `cd frontend`<br>
-When in the frontend terminal: `npm run dev` <br>
+1. **Clone the Repository:**
 
-To get started with this project the following needs to be installed: <br>
-Frontend:<br>
-`npm....`<br>
-`npm....`<br>
-`npm....`<br>
+```
+git clone final-boiler-plate-monorepo
+```
 
-Backend:<br>
-`npm....`<br>
-`npm....`<br><br>
+2. **Navigate to the Backend Directory**
+
+```
+cd backend
+```
+
+3. **Install Dependencies**
+
+```
+npm install
+```
+
+4. **Set Environment Variables**
+   Create a .env file in the backend directory and add necessary environment variables, including PORT, MongoDB connection details, and OpenAI API key.
+
+Example .env:
+
+```
+PORT=3001
+MONGO_URL=[your-mongodb-url]
+OPENAI_API_KEY=[your-openai-api-key]
+```
+
+5. **Start the Backend Server**
+
+```
+npm start
+```
+
+### Frontend
+
+1. **Navigate to the Frontend Directory**
+
+```
+cd frontend
+```
+
+2. **Install Dependencies**
+
+```
+npm install
+```
+
+3. **Set Environment Variables**
+   Create a .env file in the frontend directory and add an environment variables for the backend localhost.
+
+Example .env:
+
+```
+VITE_BACKEND_API=[backend-localhost]
+```
+
+4. **Start the Frontend Development Server**
+
+```
+npm run dev
+```
 
 ## Challenges
 
