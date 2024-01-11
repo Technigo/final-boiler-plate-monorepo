@@ -28,7 +28,8 @@ export const Booking = () => {
 		selectedShowtime,
 		selectedSeats,
 		setSelectedSeats,
-		updateSelectedSeats
+		updateSelectedSeats,
+		// makeASelection
 	} = bookingStore() 
 
 	const isLoggedIn = userStore.getState().isLoggedIn
@@ -51,7 +52,21 @@ export const Booking = () => {
 		}
 	}, [selectedShowtime])
 
-	useEffect(() => console.log('selectedSeats', selectedSeats, 'stateSeats'), [selectedSeats])
+	useEffect(() => {
+		console.log('selectedSeats', selectedSeats)
+	}, [selectedSeats])
+
+	// useEffect(() => {
+	// 	const deleteSelections = () => {
+	// 		if(selectedSeats != null && selectedSeats.length > 0) {
+	// 			console.log(selectedSeats)
+	// 			selectedSeats.forEach(element => {
+	// 				makeASelection(element, showtimeID)
+	// 			})
+	// 		}
+	// 	}
+	// 	return(deleteSelections)
+	// },[])
 
 	const handleSeatClick = (event, row, seatIndex) => {
 		const newSelection = [row, seatIndex]
@@ -59,12 +74,12 @@ export const Booking = () => {
 		const removeSelected = (event) => {
 			event.target.classList.remove('selected')
 			let filteredArray = selectedSeats.filter(item => !compareArrays(item, newSelection))
-			setSelectedSeats(filteredArray)
+			setSelectedSeats(filteredArray, showtimeID)
 		}
 
 		const addSelected = (event) => {
 			event.target.classList.add('selected')
-			updateSelectedSeats(newSelection)
+			updateSelectedSeats(newSelection, showtimeID)
 		}
 
 		if (event.target.classList.contains('booked')) return null
@@ -77,7 +92,7 @@ export const Booking = () => {
 
 			existsAlready ? removeSelected(event) : addSelected(event)
 		} else {
-			setSelectedSeats([newSelection])
+			setSelectedSeats([newSelection], showtimeID)
 			event.target.classList.add('selected')
 		}
 	}
