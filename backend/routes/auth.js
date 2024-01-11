@@ -121,58 +121,39 @@ router.post('/complete-challenge', authenticateToken, async (req, res) => {
 
 
 
+const path = require('path');
+const challengesDataPath = path.join(__dirname, 'data', 'challenges.json');
 
+// ... (your existing code)
 
-// const seedChallenges = async () => {
-//   try {
-//     // Remove existing challenges in the database
-//     await Challenge.deleteMany();
-
-//     // Insert new challenges from the JSON file
-//     await Challenge.insertMany(challengesData);
-
-//     console.log('Data seeded successfully');
-//   } catch (error) {
-//     console.error('Error seeding data:', error);
-//   } finally {
-//     // Close the connection to the database
-//     mongoose.connection.close();
-//   }
-// };
-
-// seedChallenges();
-
-// router.get('/challenges', authenticateToken, (req, res) => {
-//   try {
-//     res.json(challenges);
-//   } catch (error) {
-//     console.error(error);
-//     res.status(500).send('Failed to fetch challenges');
-//   }
-// });
-
-// router.put('/update/:id', async (req, res) => {
-//   try {
-//     const token = req.header("Authorization");
+// Endpoint to get all completed challenges for a user
+router.get('/completed-challenges', authenticateToken, async (req, res) => {
+  try {
+    // Find the user based on the userId from the authentication token
+    const user = await User.findById(req.userId);
     
-//     // Find the user based on the access token
-//     const user = await UserModel.findOne({ token: token });
-    
-//     // Find the challenges associated with the user and respond with them (if needed)
-//     const userChallenges = await Challenge.find({ user: user }).sort("challengeId");
-//     res.json(userChallenges);
+    if (!user) {
+      return res.status(404).send('User not found');
+    }
 
-//     // Update the specific challenge to mark it as completed
-//     const { id } = req.params;
-//     const updatedChallenge = await Challenge.findByIdAndUpdate(id, { completed: true }, { new: true });
-    
-//     // Respond with the updated challenge
-//     res.json(updatedChallenge);
-//   } catch (error) {
-//     console.error(error);
-//     res.status(500).json({ error: 'Failed to update challenge' });
-//   }
-// });
+    // Retrieve the completed challenges for the user
+    const completedChallenges = user.completedChallenges;
+
+    // Read the challenges data from the backend JSON file
+    const challengesData = require(challengesDataPath);
+
+    // Get details of completed challenges
+    const completedChallengesDetails = completedChallenges.map(challengeId => {
+      const challenge = challengesData.find(c => c.challengeId === challengeId);
+      return challenge;
+    });
+
+    res.status(200).json(completedChallengesDetails);
+  } catch (error) {
+    console.error(error);
+    res.status(500).send(`Failed to get completed challenges: ${error.message}`);
+  }
+});
 
 
 
