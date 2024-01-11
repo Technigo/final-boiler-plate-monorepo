@@ -17,10 +17,6 @@ const StyledNav = styled.nav`
     font-weight: 600;
   }
 
-  a:hover {
-    text-decoration-line: underline;
-  }
-
   ul {
     display: none;
   }
@@ -30,11 +26,6 @@ const StyledNav = styled.nav`
     display: flex;
     flex-direction: column;
     width: 150px;
-  }
-
-  li.active a {
-    text-decoration-line: underline;
-    border-bottom: 5px;
   }
 
   .logout-button {

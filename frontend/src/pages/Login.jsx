@@ -23,7 +23,7 @@ const StyledLoginField = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  max-width: 500px;
+  max-width: 400px;
   border: 1px solid var(--button);
   border-radius: 20px 0 20px 20px;
   background-color: var(--grey);
