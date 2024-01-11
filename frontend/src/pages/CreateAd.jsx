@@ -46,10 +46,13 @@ export const CreateAd = () => {
   // Define units for dropdown
   const unitOptions = [
     { label: "Kilogram (kg)", value: "kg" },
-    { label: "Meter (m)", value: "m" },
-    { label: "Square Meter (m²)", value: "m2" },
+    { label: "Grams (g)", value: "g" },
     { label: "Liter (L)", value: "l" },
     { label: "Milliliter (mL)", value: "ml" },
+    { label: "Units (u)", value: "u" },
+    { label: "Meter (m)", value: "m" },
+    { label: "Centimeters (cm)", value: "cm" },
+    { label: "Square Meter (m²)", value: "m2" },
   ];
 
   const handleUnitChange = (event) => {

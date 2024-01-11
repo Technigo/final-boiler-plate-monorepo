@@ -55,7 +55,10 @@ export const ProfileSettings = () => {
     const getProfileData = async () => {
       setIsLoading(true);
       try {
-        const profileData = await storeHandleProfileDisplay(accessToken, userId);
+        const profileData = await storeHandleProfileDisplay(
+          accessToken,
+          userId
+        );
         if (profileData) {
           setProfileData({
             email: profileData.email,
@@ -84,44 +87,46 @@ export const ProfileSettings = () => {
     const swalWithBootstrapButtons = Swal.mixin({
       customClass: {
         confirmButton: "btn btn-success",
-        cancelButton: "btn btn-danger"
+        cancelButton: "btn btn-danger",
       },
-      buttonsStyling: false
+      buttonsStyling: false,
     });
-    swalWithBootstrapButtons.fire({
-      title: "Are you sure?",
-      text: "You won't be able to revert this!",
-      icon: "warning",
-      showCancelButton: true,
-      confirmButtonText: "Yes, delete my account!",
-      cancelButtonText: "No, cancel!",
-      reverseButtons: true
-    }).then((result) => {
-      if (result.isConfirmed) {
-        // Clear user information
-        storeHandleAccountDeletion(userId);
-        // Remove the accessToken from localStorage and userId.
-        localStorage.removeItem("accessToken");
-        localStorage.removeItem("userId");
-        // Display confirmation message
-        swalWithBootstrapButtons.fire({
-          title: "We are sad to see you go...",
-          text: "Your account has been deleted. Feel free to create a new account anytime!",
-          icon: "success"
-        });
-        // Navigate to landing page upon successful deletion
-        navigate("/");
-      } else if (
-        /* Display dismissal message */
-        result.dismiss === Swal.DismissReason.cancel
-      ) {
-        swalWithBootstrapButtons.fire({
-          title: "Cancelled",
-          text: "Thanks for staying with us :)",
-          icon: "error"
-        });
-      }
-    });
+    swalWithBootstrapButtons
+      .fire({
+        title: "Are you sure?",
+        text: "You won't be able to revert this!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonText: "Yes, delete my account!",
+        cancelButtonText: "No, cancel!",
+        reverseButtons: true,
+      })
+      .then((result) => {
+        if (result.isConfirmed) {
+          // Clear user information
+          storeHandleAccountDeletion(userId);
+          // Remove the accessToken from localStorage and userId.
+          localStorage.removeItem("accessToken");
+          localStorage.removeItem("userId");
+          // Display confirmation message
+          swalWithBootstrapButtons.fire({
+            title: "We are sad to see you go...",
+            text: "Your account has been deleted. Feel free to create a new account anytime!",
+            icon: "success",
+          });
+          // Navigate to landing page upon successful deletion
+          navigate("/");
+        } else if (
+          /* Display dismissal message */
+          result.dismiss === Swal.DismissReason.cancel
+        ) {
+          swalWithBootstrapButtons.fire({
+            title: "Cancelled",
+            text: "Thanks for staying with us :)",
+            icon: "error",
+          });
+        }
+      });
   };
 
   return (
@@ -163,17 +168,19 @@ export const ProfileSettings = () => {
             <BackArrow />
           </div>
           <div className="profile-settings">
-            <Heading level={1} text="My settings" aria-label="My settings">My settings</Heading>
+            <Heading level={1} text="My settings" aria-label="My settings">
+              My settings
+            </Heading>
             {isLoading ? (
-            <div className="loading-container">
-              <Lottie
-                options={{
-                  loop: true,
-                  autoplay: true,
-                  animationData: loadingAnimation,
-                }}
-              />
-            </div>
+              <div className="loading-container">
+                <Lottie
+                  options={{
+                    loop: true,
+                    autoplay: true,
+                    animationData: loadingAnimation,
+                  }}
+                />
+              </div>
             ) : (
               <>
                 {profileData.image ? (
@@ -202,14 +209,14 @@ export const ProfileSettings = () => {
 
                 <div className="settings-actions">
                   <Button
-                    icon="./src/assets/edit.svg"
+                    icon="./icons/edit.svg"
                     iconSize="button"
                     label="Edit settings"
                     onClick={handleUpdateClick}
                     invertIcon={true}
                   />
                   <Button
-                    icon="./src/assets/trash.svg"
+                    icon="./icons/trash.svg"
                     iconSize="button"
                     label="Delete account"
                     onClick={handleDeleteClick}
