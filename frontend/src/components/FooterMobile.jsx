@@ -4,14 +4,12 @@ import LanguageSwitcherFooter from "./LanguageSwitcherFooter";
 
 const FooterMobile = () => {
 
-
     return (
         <div className="footermobile">
             <div className="footermobile-content">
                 <LanguageSwitcherFooter />
                 <p>Copyright | All rights reserved | 2023</p>
             </div>
-
         </div>
     );
 }

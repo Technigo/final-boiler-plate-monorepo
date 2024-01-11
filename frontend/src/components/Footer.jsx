@@ -4,7 +4,6 @@ import LanguageSwitcherFooter from "./LanguageSwitcherFooter";
 
 const Footer = () => {
 
-
     return (
         <div className="footer">
             <div className="footer-content">
