@@ -14,6 +14,10 @@ export const Navbar = () => {
     setOpenMobileNav(!openMobileNav);
   };
 
+  const closeMobileNav = () => {
+    setOpenMobileNav(false);
+  }
+
   const navlinks = [
     // { linkName: "Search", linkRoute: "/search" },
     { linkName: "Create trip", linkRoute: "/createtrip" },
@@ -66,9 +70,7 @@ export const Navbar = () => {
   }, []);
 
   return (
-    <nav
-      className={`bg-gray-800 p-4 z-10 sticky top-0 ${isScrolled ? "" : ""}`}
-    >
+    <nav className={`bg-gray-800 p-4 z-10 sticky top-0 ${isScrolled ? "" : ""}`}>
       <div className="container mx-auto flex items-center justify-between">
         <div
           onClick={() => navigate("/")}
@@ -106,10 +108,10 @@ export const Navbar = () => {
             </li>
           </ul>
         )}
-
         {/* Add a responsive menu button for smaller screens */}
         <div className="md:hidden">
           <LoginBtn />
+          <LogoutBtn />
           <button className="text-white pl-5" onClick={onMobileNavClick}>
             {/* Add a responsive menu icon, e.g., a hamburger icon */}
             {openMobileNav ? <>&#x2715;</> : <>&#9776; </>}
