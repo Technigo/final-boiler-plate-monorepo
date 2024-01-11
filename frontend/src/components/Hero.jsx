@@ -1,12 +1,16 @@
+import { useEffect } from "react";
 import { LinkButton } from "../components/Buttons/LinkButton";
 import styled from "styled-components";
+import { userStore } from "../stores/userStore";
+import { useNavigate } from "react-router-dom";
+//import { useNavStore } from "../stores/useNavStore";
 
 const StyledHero = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 30px;
+  gap: 50px;
   width: 100%;
 `;
 const Container = styled.div`
@@ -163,6 +167,9 @@ const StyledButtonWrapper = styled.div`
 `;
 
 export const Hero = () => {
+  const { isLoggedIn } = userStore();
+  const navigate = useNavigate();
+
   const text = {
     // heading: "Welcome",
     // subheading: "We help people in Varberg connect with their community",
@@ -171,6 +178,13 @@ export const Hero = () => {
     intro:
       "We help the people in Varberg to connect through simple acts of kindness. Together, we build a world where every effort makes a meaningful difference.",
   };
+
+  useEffect(() => {
+    // Redirect to tasks page if user is logged in
+    if (isLoggedIn) {
+      navigate("/");
+    }
+  }, [isLoggedIn, navigate]);
 
   return (
     <StyledHero>
@@ -182,18 +196,20 @@ export const Hero = () => {
       </Container>
       <StyledP>
         <p>{text.intro}</p>
-        <StyledButtonWrapper>
-          <LinkButton
-            to="/login"
-            className="login-button"
-            buttonName="Log in"
-          />
-          <LinkButton
-            to="/register"
-            className="register-button"
-            buttonName="Join the community"
-          />
-        </StyledButtonWrapper>
+        {!isLoggedIn && ( // Render buttons only if not logged in
+          <StyledButtonWrapper>
+            <LinkButton
+              to="/login"
+              className="login-button"
+              buttonName="Log in"
+            />
+            <LinkButton
+              to="/register"
+              className="register-button"
+              buttonName="Join the community"
+            />
+          </StyledButtonWrapper>
+        )}
       </StyledP>
     </StyledHero>
   );

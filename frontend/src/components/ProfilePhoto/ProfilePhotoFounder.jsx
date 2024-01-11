@@ -8,6 +8,7 @@ const StyledProfilePhotoFounder = styled.img`
   width: 300px;
   object-fit: cover;
   border-radius: 20px 0 20px 20px;
+  border: 2px solid var(--lighttext);
 `;
 
 // Component to display the founder's photo based on the person (Anna or Susanne)
