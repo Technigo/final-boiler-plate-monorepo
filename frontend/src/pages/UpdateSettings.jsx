@@ -4,10 +4,10 @@ import { userStore } from "../stores/userStore";
 import BackArrow from "../components/reusableComponents/BackArrow";
 import { Button } from "../components/reusableComponents/Button";
 import defaultProfileImage from "../assets/images/profile_icon.png";
-import {Icon} from "react-icons-kit";
-import {eyeOff} from "react-icons-kit/feather/eyeOff";
-import {eye} from "react-icons-kit/feather/eye";
-import Swal from "sweetalert2"; 
+import { Icon } from "react-icons-kit";
+import { eyeOff } from "react-icons-kit/feather/eyeOff";
+import { eye } from "react-icons-kit/feather/eye";
+import Swal from "sweetalert2";
 import Lottie from "lottie-react";
 import loadingAnimation from "../assets/loading.json";
 import "./updateSettings.css";
@@ -24,7 +24,6 @@ export const UpdateSettings = () => {
   const [selectedImage, setSelectedImage] = useState(defaultProfileImage);
   const [isLoading, setIsLoading] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false); // To track if the update was successful
-  
 
   // Setting initial state for input type to be password and icon to be eyeOff so that the inputPassword will be hidden
   const [type, setType] = useState("password");
@@ -33,7 +32,9 @@ export const UpdateSettings = () => {
   // For fetching the current user profile data
   const isLoggedin = userStore((state) => state.isLoggedin);
   const userId = userStore((state) => state.userId);
-  const storeHandleProfileUpdate = userStore((state) => state.handleProfileUpdate);
+  const storeHandleProfileUpdate = userStore(
+    (state) => state.handleProfileUpdate
+  );
   const storeHandleImageUpdate = userStore((state) => state.handleImageUpdate);
 
   // Handle changes in states based on user's inputs
@@ -44,7 +45,7 @@ export const UpdateSettings = () => {
 
   // Function to handle the toggle between the hide password (eyeOff icon) and the show password (eye icon)
   const handleToggle = () => {
-    if (type ==="password") {
+    if (type === "password") {
       setIcon(eye);
       setType("text");
     } else {
@@ -62,7 +63,7 @@ export const UpdateSettings = () => {
     e.preventDefault();
     setInputLocation(e.target.value);
   };
-  
+
   const handleIntroductionUpdate = (e) => {
     e.preventDefault();
     setInputIntroduction(e.target.value);
@@ -80,12 +81,18 @@ export const UpdateSettings = () => {
   const handleUpdateSubmit = async (e) => {
     e.preventDefault();
     setIsLoading(true);
-    
-    if (!inputPassword && !inputEmail && !inputLocation && !inputIntroduction && selectedImage === defaultProfileImage) {
+
+    if (
+      !inputPassword &&
+      !inputEmail &&
+      !inputLocation &&
+      !inputIntroduction &&
+      selectedImage === defaultProfileImage
+    ) {
       Swal.fire({
         title: "Error!",
         text: "Please fill in at least one field",
-        icon: "error"
+        icon: "error",
       });
       return;
     }
@@ -96,19 +103,19 @@ export const UpdateSettings = () => {
     try {
       if (selectedImage === defaultProfileImage) {
         await storeHandleProfileUpdate(
-          isLoggedin, 
-          userId, 
+          isLoggedin,
+          userId,
           inputPassword,
           inputEmail,
           inputLocation,
-          inputIntroduction,
+          inputIntroduction
         );
       } else {
         // Handle profile update when new image is uploaded
         updatedImageData = await storeHandleImageUpdate(userId, selectedImage);
         await storeHandleProfileUpdate(
-          isLoggedin, 
-          userId, 
+          isLoggedin,
+          userId,
           inputPassword,
           inputEmail,
           inputLocation,
@@ -141,10 +148,16 @@ export const UpdateSettings = () => {
     <div className="main-container">
       <div className="main-wrapper">
         <div className="arrow-wrapper">
-          <BackArrow />          
+          <BackArrow />
         </div>
         <div className="update-settings">
-          <Heading level={1} text="Update settings" aria-label="Update settings">Update settings</Heading>
+          <Heading
+            level={1}
+            text="Update settings"
+            aria-label="Update settings"
+          >
+            Update settings
+          </Heading>
           {isLoading ? (
             <div className="loading-container">
               <Lottie
@@ -170,7 +183,7 @@ export const UpdateSettings = () => {
                     onChange={handlePasswordUpdate}
                   />
                   <span onClick={handleToggle}>
-                    <Icon icon={icon} size={22}/>
+                    <Icon icon={icon} size={22} />
                   </span>
                 </div>
               </div>
@@ -219,14 +232,14 @@ export const UpdateSettings = () => {
 
               <div className="settings-actions">
                 <Button
-                  icon="./src/assets/save2.svg"
-                  iconSize="button" 
+                  icon="./icons/save2.svg"
+                  iconSize="button"
                   label="Save changes"
                   invertIcon={true}
                 />
                 <Button
-                  icon="./src/assets/trash.svg"
-                  iconSize="button" 
+                  icon="./icons/trash.svg"
+                  iconSize="button"
                   label="Cancel"
                   onClick={handleCancelClick}
                   invertIcon={true}
@@ -237,5 +250,5 @@ export const UpdateSettings = () => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
