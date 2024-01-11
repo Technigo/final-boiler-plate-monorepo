@@ -56,7 +56,6 @@ export const recipeStore = create((set, get) => ({
       const data = await response.json();
       const recipes = data.recipes;
       const newRecipeVar = recipes[recipes.length - 1];
-      console.log(newRecipeVar)
 
       //Update the newRecipe state with the fetched newRecipe:
       set(() => ({ newRecipe: newRecipeVar }));
@@ -110,7 +109,7 @@ export const recipeStore = create((set, get) => ({
 
       const response = await fetch(`${api}/openai/generateText`, {
         method: 'POST',
-        body: JSON.stringify({ prompt: `${formattedIngredients}`, isVegetarian: isVegetarian, isGlutenFree: isGlutenFree, isLactoseFree: isLactoseFree }),
+        body: JSON.stringify({ prompt: `${formattedIngredients}`, isVegetarian: isVegetarian, isGlutenFree: isGlutenFree }),
         headers: { 'Content-Type': 'application/json' },
       })
 
