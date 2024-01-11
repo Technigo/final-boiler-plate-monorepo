@@ -9,6 +9,7 @@ import BackArrow from "../components/reusableComponents/BackArrow";
 import { Button } from "../components/reusableComponents/Button"; // Import the Button component
 import { Image } from "../components/reusableComponents/Image"; // Import the Image component
 import { Navbar } from "../components/Navbar";
+import { Footer } from "../components/Footer";
 import Swal from "sweetalert2";
 
 const AdDetails = () => {
@@ -136,6 +137,7 @@ const AdDetails = () => {
           </div>
         </div>
       </div>
+      <Footer />
     </>
   );
 };

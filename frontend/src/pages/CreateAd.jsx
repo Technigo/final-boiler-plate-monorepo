@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { adStore } from "../stores/adStore";
 import { userStore } from "../stores/userStore";
 import Swal from "sweetalert2";

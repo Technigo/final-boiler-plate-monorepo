@@ -8,7 +8,6 @@ import { Navbar } from "../components/Navbar";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import Swal from "sweetalert2";
-import BackArrow from "../components/reusableComponents/BackArrow";
 
 // Define the 'Search' functional component.
 export const Search = () => {
@@ -61,21 +60,25 @@ export const Search = () => {
           },
         ]}
       />
-      <BackArrow />
-      <SearchBar
-        setFilteredAds={setFilteredAds}
-        searchTerm={searchTerm}
-        setSearchTerm={setSearchTerm}
-      />
-      {filteredAds.length > 0 && (
-        <h1 className="search-result">Search Result</h1>
-      )}
-      <ul className="filtered-ads">
-        {filteredAds.map((ad) => (
-          <AdCard key={ad._id} ad={ad} />
-        ))}
-      </ul>
-
+      <div className="main-container">
+        <div className="main-wrapper">
+          <div className="search-container">
+            <SearchBar
+              setFilteredAds={setFilteredAds}
+              searchTerm={searchTerm}
+              setSearchTerm={setSearchTerm}
+            />
+          </div>
+          {filteredAds.length > 0 && (
+            <h1 className="search-result">Search Result</h1>
+          )}
+          <ul className="filtered-ads">
+            {filteredAds.map((ad) => (
+              <AdCard key={ad._id} ad={ad} />
+            ))}
+          </ul>
+        </div>
+      </div>
       <Footer />
     </div>
   );

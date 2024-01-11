@@ -76,7 +76,7 @@ export const ManageYourAds = () => {
                 onClick={handleCreateAd}
                 invertIcon={true}
               />
-              <h2>Your Products</h2>
+              <h2>My Products</h2>
               <UserAds />
               <h2>Saved Products</h2>
               <SavedAds />
