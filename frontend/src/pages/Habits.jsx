@@ -1,6 +1,6 @@
 // Import necessary dependencies, components, and stores.
 import { useEffect } from "react";
-import moment from 'moment';
+import moment from "moment";
 import Navbar from "../components/Navbar";
 import NavbarMobile from "../components/NavbarMobile";
 import Footer from "../components/Footer";
@@ -12,8 +12,8 @@ import { useNavigate } from "react-router-dom";
 import { useMediaQuery } from "react-responsive";
 import { Link } from "react-router-dom";
 import "../components/habits.css";
-import { useTranslation } from 'react-i18next';
-import lottie from 'lottie-web';
+import { useTranslation } from "react-i18next";
+import lottie from "lottie-web";
 import logInAnimationData from "../data/login_animation.json";
 
 // Define the 'Habits' functional component.

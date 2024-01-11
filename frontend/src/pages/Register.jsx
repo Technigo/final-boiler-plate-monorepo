@@ -1,6 +1,7 @@
 // Import necessary components, hooks, and stores.
 import { userStore } from "../stores/userStore";
 import React, { useEffect, useState } from "react";
+import "../components/register.css";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from 'react-i18next';
 import { Link } from "react-router-dom";
@@ -9,9 +10,8 @@ import Navbar from "../components/Navbar";
 import NavbarMobile from "../components/NavbarMobile";
 import Footer from "../components/Footer";
 import FooterMobile from "../components/FooterMobile";
-import lottie from 'lottie-web';
-import calenderAnimationData from '../data/calender.json';
-import "../components/register.css";
+import lottie from "lottie-web";
+import calenderAnimationData from "../data/calender.json";
 
 // Define the 'Register' functional component.
 export const Register = () => {
