@@ -199,11 +199,13 @@ img {
 
   h2 {
     font-size: 2.25rem;
+    line-height: 4rem;
     /* 36px */
   }
 
   h3 {
     font-size: 1.5rem;
+    line-height: 3rem; 
     /* 24px */
   }
 

@@ -1,9 +1,8 @@
 import BackArrow from "../components/reusableComponents/BackArrow";
-import { Button } from "../components/reusableComponents/Button";
 import { UserAds } from "../components/UserAds";
 import { userStore } from "../stores/userStore";
 import { SavedAds } from "../components/UsersSavedAds";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { Navbar } from "../components/Navbar";
 import { Footer } from "../components/Footer";
 import { useEffect } from "react";
@@ -12,10 +11,6 @@ import "./manageYourAds.css";
 
 export const ManageYourAds = () => {
   const navigate = useNavigate();
-
-  const handleCreateAd = () => {
-    navigate("/create-ad");
-  };
 
   // Get "accessToken" from the "userStore".
   const accessToken = userStore.getState().accessToken;
@@ -29,7 +24,7 @@ export const ManageYourAds = () => {
         text: "Please log in to see the content",
         icon: "error",
       });
-      navigate("/login");
+      navigate("/");
     }
   }, [accessToken, navigate]);
 
@@ -71,14 +66,15 @@ export const ManageYourAds = () => {
           <div className="your-ads-container">
             <div className="manage-nav">
               <BackArrow />
-              <Button
-                iconSize="small"
-                label="Create ad"
-                onClick={handleCreateAd}
-                invertIcon={true}
-              />
+            </div>
+            <div>
               <h2>My Products</h2>
+              <div className="add-product-btn">
+                <Link to="/create-ad">+ Add a product</Link>
+              </div>
               <UserAds />
+            </div>
+            <div>
               <h2>Saved Products</h2>
               <SavedAds />
             </div>
