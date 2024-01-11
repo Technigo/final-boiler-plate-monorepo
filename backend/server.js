@@ -41,9 +41,6 @@ app.use(fileUpload({
   tempFileDir: '/tmp/' //store temporarily
 }));
 
-// Middleware to serve static files from the 'uploads' directory
-//app.use('/uploads', express.static('uploads'));
-
 // Registering API routes with the Express application
 app.use('/', userRoutes);
 app.use('/admin', adminRoutes);
