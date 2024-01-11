@@ -19,8 +19,8 @@ export const BookingForm = () => {
      } = bookingStore()
 
      useEffect(() => {
-        console.log(selectedSeats)
-        console.log('showConfirmation', showConfirmation)
+        // console.log(selectedSeats)
+        // console.log('showConfirmation', showConfirmation)
      }, [])
 
      useEffect(() => {
@@ -30,7 +30,7 @@ export const BookingForm = () => {
     }, [selectedShowtime])
 
     useEffect(() => {
-        console.log(bookingReceipts)
+        // console.log(bookingReceipts)
         if (bookingReceipts != null && bookingReceipts.length > 0) setShowConfirmation(true)
     }, [bookingReceipts])
 
@@ -59,7 +59,7 @@ export const BookingForm = () => {
     }
 
     return(
-        <>
+        <div className="page-section the-confirmation">
             { !showConfirmation && selectedSeats && <SelectedTicket />}
 
             { showConfirmation && bookingReceipts.length > 0 && (
@@ -105,6 +105,6 @@ export const BookingForm = () => {
                     </form>
                 </div>}
             
-        </>
+        </div>
     )
 }
