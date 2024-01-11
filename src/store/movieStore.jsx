@@ -2,7 +2,7 @@ import { create } from 'zustand'
 
 
 const apiEnv = import.meta.env.VITE_BACKEND_API;
-console.log(apiEnv);
+// console.log(apiEnv);
 
 export const movieStore = create((set) => ({
   movies: [],
@@ -21,7 +21,7 @@ export const movieStore = create((set) => ({
       })
 
       const data = await response.json()
-
+      
       if (response.ok) {
         set({ movies: data })
       } else {

@@ -14,7 +14,7 @@ export const MovieList = () => {
   useEffect(() => {
     console.log('Fetching movies...')
     fetchMovies()
-  }, [fetchMovies])
+  }, [])
 
 
   const formatReleaseDate = (fullDate) => {
