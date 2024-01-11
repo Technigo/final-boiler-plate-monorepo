@@ -1,7 +1,7 @@
 import { Footer } from "../components/Footer";
 import { Navbar } from "../components/Navbar";
 import { Button } from "../components/reusableComponents/Button";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Lottie from "lottie-react";
 import shareAnimation from "../assets/share.json";
 import contact from "../assets/get-contact.svg";

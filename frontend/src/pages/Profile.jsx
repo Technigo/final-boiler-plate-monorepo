@@ -37,12 +37,12 @@ export const Profile = () => {
     image: null,
   });
 
-  // Get 'isLoggedIn' and 'accessToken' from the 'userStore'.
-  const isLoggedin = userStore((state) => state.isLoggedin);
+  // Get "accessToken" from the "userStore".
+  const accessToken = userStore.getState().accessToken;
   const handleLogout = userStore((state) => state.handleLogout);
   // useEffect hook to check user authentication status.
   useEffect(() => {
-    if (!isLoggedin) {
+    if (!accessToken) {
       // If the user is not logged in, show an alert and navigate to the login route.
       Swal.fire({
         title: "Error!",
@@ -51,7 +51,7 @@ export const Profile = () => {
       });
       navigate("/login");
     }
-  }, [isLoggedin, navigate]);
+  }, [accessToken, navigate]);
 
   useEffect(() => {
     const getProfileData = async () => {
