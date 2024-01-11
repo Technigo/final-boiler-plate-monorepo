@@ -173,7 +173,7 @@ export const TripGenerator = () => {
             setFormData={setFormData}
           />
 
-          <div className="flex flex-col sm:flex-row sm:space-x-4">
+          <div className="flex flex-col sm:flex-row sm:space-x-4 w-full">
             <div className="w-full sm:w-1/2">
               <label
                 htmlFor="date"
