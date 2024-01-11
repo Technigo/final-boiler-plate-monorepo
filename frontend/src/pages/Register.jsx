@@ -138,7 +138,3 @@ export const Register = () => {
     </StyledRegister>
   );
 };
-
-// SUMMARY
-
-// The Register component handles user registration functionality. It imports necessary components, hooks, and the user store. State variables manage username and password. The component renders a form for registration details and handles the signup button click event. React Router is used for navigation between routes. Additionally, it renders introductory text.
