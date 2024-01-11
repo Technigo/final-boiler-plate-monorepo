@@ -122,34 +122,43 @@ export const bookSeats = asyncHandler(async (req, res) => {
 		}
 
 		let seatToUpdate = null
-		let newSeatIndex
+		let selectedValue
 
 		existingShowtime.seats.forEach((rowArray) => {
 			rowArray.forEach((seatObject) => {
 				if (seatObject.seatIndex === seat[1]) {
 					seatToUpdate = seatObject
-					newSeatIndex = seatToUpdate.seatIndex - 1
+
+					if (seatToUpdate.selected === false) {
+						selectedValue = true
+					} else {
+						selectedValue = false
+					}
 				}
 			})
 		})
 
 		if (!seatToUpdate) {
-			return res.status(404).json({error: `Cannot find the seat with index ${seatIndex}`})
+			return res.status(404).json({error: `Cannot find the seat with index ${seat[1]}`})
 		}
 		if (seatToUpdate.booked) {
-			return res.status(400).json({error: `The seat with index ${seatIndex} is already booked`})
+			return res.status(400).json({error: `The seat with index ${seat[1]} is already booked`})
 		}
-
-		seatToUpdate.selected = !seatToUpdate.selected
 
 		try {
 			const updatedShowTime = await ShowTimeModel.findOneAndUpdate(
 				{ _id: existingShowtime._id },
-				{ $set: { [`seats.$[].${newSeatIndex}.selected`]: seatToUpdate.selected } },
-				{ new: true }
+				{ $set: { 'seats.$[].$[xxx].selected': selectedValue } },
+				{ 
+					arrayFilters: [
+						{ 'xxx.seatIndex': seatToUpdate.seatIndex}
+					],
+					returnOriginal: false
+				}
 			)
 			res.status(200).json(updatedShowTime)
 		} catch (error) {
+			console.error(error)
 			res.status(500).json({ error: 'Error updating the showtime.' });
 		}
 
