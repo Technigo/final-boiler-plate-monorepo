@@ -1,7 +1,7 @@
 .siteContainer {
     display: grid;
     grid-template-columns: repeat(6, 1fr);
-    max-width: fit-content;
+    max-width: 100%;
 }
 
 .mainContainer {

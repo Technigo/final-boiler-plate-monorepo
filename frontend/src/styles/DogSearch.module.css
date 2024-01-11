@@ -30,6 +30,7 @@
     min-height: 15em;
     justify-content: center;
     align-items: center;
+    gap: 1em;
 }
 
 .searchForm p {
@@ -44,15 +45,32 @@
     margin: 1em;
 }
 
-select {
-    border-radius: 5px;
+select, button {
+    border-radius: 10px;
     color: #42531D;
     font-family: 'Lexend';
-    height: 2em;
+    font-size: 1em;
+    height: 2.5em;
+    min-width: 7em;
+    background-color: #FFFFFF;
+    padding: 0.5em;
+    border: 2px solid #42531D;
+}
+
+button:hover {
+    color: #FFFFFF;
+    background-color: #42531D;
+    cursor: pointer;
 }
 
 label {
-    margin: 0.5em;
+    padding: 0.5em;
+}
+
+form {
+    padding: 2em;
+    border: 3px solid #42531D;
+    border-radius: 20px;
 }
 
 .formPiece {
@@ -61,11 +79,21 @@ label {
     align-items: center;
 }
 
-.dogs {
+.submitWrapper {
     display: flex;
-    flex-direction: column;
+    justify-content: center;
+}
+
+.dogs {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
     gap: 1em;
     padding: 1em;
+}
+
+.notFound {
+    display: flex;
+    justify-content: center;
 }
 
 .dogCard {
@@ -95,6 +123,31 @@ label {
     .headerImage {
         background-size: 130%;
         background-repeat: no-repeat;
+    }
+
+    form {
+        padding: 1em;
+        max-width: 90%;
+    }
+
+    .formPiece {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .formRow {
+        flex-direction: column;
+        gap: 1em;
+        margin: 1em;
+    }
+
+    .submitWrapper {
+        justify-content: flex-start;
+        padding-left: 1em;
+    }
+
+    .dogs {
+        grid-template-columns: 1fr;
     }
 }
 

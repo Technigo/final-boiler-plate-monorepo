@@ -12,71 +12,44 @@ export const DogSearch = () => {
     const [age, setAge] = useState('');
     const [specialAdoption, setSpecialAdoption] = useState(false);
     const [search, setSearch] = useState(false);
+    const [originalDogs, setOriginalDogs] = useState([]);
 
     useEffect(() => {
         axios.get('http://localhost:3000/findDogs')
-          .then((response) => setDogs(response.data))
-          .catch((err) => console.log(err));
-      }, []);
-    
-      const handleSearch = (e) => {
-        e.preventDefault();
-        setSearch(true);
-    
-        // Filter dogs based on user inputs
-        let showDogs = dogs;
-    
-        if (organisation !== 'any') {
-          showDogs = showDogs.filter((dog) => dog.organisation === organisation);
-        }
-    
-        if (size !== 'any') {
-          showDogs = showDogs.filter((dog) => dog.size === size);
-        }
-    
-        if (age !== 'any') {
-          showDogs = showDogs.filter((dog) => {
-            const [min, max] = age.split('-').map(Number);
-            return dog.age >= min && dog.age <= max;
-          });
-        }
-    
-        if (specialAdoption) {
-          showDogs = showDogs.filter((dog) => dog.special_adoption);
-        }
-    
-        setDogs(showDogs);
-      };
-
-    /* useEffect(() => {
-        axios.get('http://localhost:3000/findDogs')
             .then((response) => {
-                let showDogs = response.data;
-
-                // Apply filters based on user inputs
-                if (organisation) {
-                    showDogs = showDogs.filter((dog) => dog.organisation === organisation);
-                }
-
-                if (size) {
-                    showDogs = showDogs.filter((dog) => dog.size === size);
-                }
-
-                if (age) {
-                    showDogs = showDogs.filter((dog) => {
-                        const [min, max] = age.split('-').map(Number);
-                        return dog.age >= min && dog.age <= max;
-                    });
-                }
-
-                if (specialAdoption) {
-                    showDogs = showDogs.filter((dog) => dog.special_adoption);
-                }
-
-                setDogs(showDogs);
+                setDogs(response.data);
+                setOriginalDogs(response.data); // Save the original list of dogs
             })
             .catch((err) => console.log(err));
-    }, [organisation, size, age, specialAdoption]); */
+    }, []);
+
+    const handleSearch = () => {
+        setSearch(true);
+
+        // Filter dogs based on user inputs
+        let showDogs = originalDogs;
+
+        if (organisation.trim() !== '') {
+            showDogs = showDogs.filter((dog) => dog.organisation === organisation.trim());
+        }
+
+        if (size !== '') {
+            showDogs = showDogs.filter((dog) => dog.size === size);
+        }
+
+        if (age !== '') {
+            showDogs = showDogs.filter((dog) => {
+                const [min, max] = age.split('-').map(Number);
+                return dog.age >= min && dog.age <= max;
+            });
+        }
+
+        if (specialAdoption) {
+            showDogs = showDogs.filter((dog) => dog.special_adoption);
+        }
+
+        setDogs(showDogs);
+    };
 
     return (
         <>
@@ -93,23 +66,23 @@ export const DogSearch = () => {
                         <p>Here you can search for all the dogs in our database according to what kind of furry friend you're looking for.</p>
                         <p>There are currently dogs from 6 different animal rescue organisations available for adoption.</p>
                         <form onSubmit={(e) => {
-                            e.preventDefault();
-                            setSearch(true);
-                          }}>
+                        e.preventDefault();
+                        handleSearch(); // Call the handleSearch function when the form is submitted
+                        }}>
                             <div className={styles.formRow}>
                                 <div className={styles.formPiece}>
-                                    <label htmlFor="name">Organisation</label>
+                                    <label htmlFor="organisation">Organisation</label>
                                     <select
                                         name="organisation"
                                         id="organisation"
                                         onChange={(e) => setOrganisation(e.target.value)}>
-                                        <option value="any">Any organisation</option>
-                                        <option value="happypaws">Happy Paws</option>
-                                        <option value="dogrescue">Dog Rescue Foundation</option>
-                                        <option value="marys">Mary's Dog Shelter</option>
-                                        <option value="woofwoof">Woof Woof Foundation</option>
-                                        <option value="streetsafety">From Street to Safety Trust</option>
-                                        <option value="furryfriends">The Furry Friends Shelter</option>
+                                        <option value="">Any organisation</option>
+                                        <option value="Happy Paws">Happy Paws</option>
+                                        <option value="The Dog Rescue Foundation">The Dog Rescue Foundation</option>
+                                        <option value="Mary's Shelter">Mary's Shelter</option>
+                                        <option value="Woof Woof Foundation">Woof Woof Foundation</option>
+                                        <option value="From Street to Safety Trust">From Street to Safety Trust</option>
+                                        <option value="The Furry Friends Shelter">The Furry Friends Shelter</option>
                                     </select>
                                 </div>
                                 <div className={styles.formPiece}>
@@ -118,7 +91,7 @@ export const DogSearch = () => {
                                         name="size"
                                         id="size"
                                         onChange={(e) => setSize(e.target.value)}>
-                                        <option value="any">Any size</option>
+                                        <option value="">Any size</option>
                                         <option value="small">Small</option>
                                         <option value="medium">Mid-size</option>
                                         <option value="big">Big</option>
@@ -132,7 +105,7 @@ export const DogSearch = () => {
                                         name="age"
                                         id="age"
                                         onChange={(e) => setAge(e.target.value)}>
-                                        <option value="any">Any age</option>
+                                        <option value="">Any age</option>
                                         <option value="0-1">0-1</option>
                                         <option value="2-5">2-5</option>
                                         <option value="6-10">6-10</option>
@@ -149,18 +122,26 @@ export const DogSearch = () => {
                                     <label htmlFor="special"> Show dogs classified as "special adoption"</label>
                                 </div>
                             </div>
+                            <div className={styles.submitWrapper}>
                             <button type="submit">Search</button>
+                            </div>
                         </form>
                         <div className={styles.dogs}>
-                        {dogs.map(dog => (
-                            <div className={styles.dogCard} key={dog._id}>
-                                <p>Name: {dog.name}</p>
-                                <p>Estimated age: {dog.age}</p>
-                                <p>Special adoption: {dog.special_adoption ? "Yes" : "No"}</p>
-                                <p>Size: {dog.size}</p>
-                                <p>Organisation: {dog.organisation}</p>
+                        {dogs.length === 0 ? (
+                            <div className={styles.notFound}>
+                            <p>Nothing was found based on your search criteria.</p>
                             </div>
-                        ))}
+                        ) : (
+                            dogs.map(dog => (
+                                <div className={styles.dogCard} key={dog._id}>
+                                    <p>Name: {dog.name}</p>
+                                    <p>Estimated age: {dog.age}</p>
+                                    <p>Special adoption: {dog.special_adoption ? "Yes" : "No"}</p>
+                                    <p>Size: {dog.size}</p>
+                                    <p>Organisation: {dog.organisation}</p>
+                                </div>
+                            ))
+                        )}
                         </div>
                     </div>
                     <Footer />

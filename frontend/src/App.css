@@ -15,9 +15,9 @@ html {
 
 body {
   margin: 0;
-  min-width: 320px;
   min-height: 100vh;
   background-color: #CDD6C1;
+  box-sizing: border-box;
 }
 
 
