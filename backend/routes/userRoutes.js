@@ -1,21 +1,66 @@
-/* Import the necessary modules and functions
-import express from "express";
-import {
-  registerUserController,
-  loginUserController,
-} from "../controllers/userController"; // Import controller functions for user registration and login
+//Import the necessary modules and functions
+//import express from "express";
+//import {
+  //registerUserController,
+  //loginUserController,
+//} from "../controllers/userController"; // Import controller functions for user registration and login
 
-// Create an instance of the Express router
+import express from "express";
+import userModel from "./User";
+import asyncHandler from "express-async-handler";
+import jwt from "jsonwebtoken";
+import dotenv from "dotenv";
+ 
+//import json webtoken, bcrypt, async
+
+dotenv.config();
+
 const router = express.Router();
 
-// REGISTER ROUTE: Handle user registration
-router.post("/register", registerUserController); // When a POST request is made to /register, execute the registerUserController function
+const generateToken = (user) => {
+    return jwt.sign({id: user._id }, process.env.JWT_SECRET, {
+        expiresIn: "24h",
+    });
+};
 
-// LOGIN ROUTE: Handle user login
-router.post("/login", loginUserController); // When a POST request is made to /login, execute the loginUserController function
+router.post("/login", asyncHandler(async (req, res) => {
+  //extract username and password from the requested body
+const { username, password } = req.body;
 
-// Export the router for use in the main application
+try {
+  const user = await userModel.findOne({ username });
+
+  //find user in database
+  if (!user) {
+      return res
+      .status(401)
+      .json({ success: false, response: "User not found" });
+  }
+
+  //compare password to the hashed password in database
+  const isMatch = await bcrypt.compare(password, user.password);
+  if (!isMatch) {
+      //if the provided password don't match, throw an error message
+      return res
+      .status(401)
+      .json({ success: false, response: "Incorrect password" });
+  }
+
+  //respond with success message, user details, and JWT token
+  res.status(200).json({
+      success: true,
+      response: {
+          username: user.username,
+          id: user._id,
+          accessToken: generateToken(user._id), 
+      },
+  });
+  } catch (e) { 
+  //handle any errors occuring during the log in process
+  res.status(500).json({ success: false, response: e.message });
+  }
+
+})
+);
+
 export default router;
-
-// In summary, this file sets up routes using the Express router for user registration and login operations. It associates each route with the corresponding controller function. These routes define the API endpoints for handling user registration and login within the application.
-*/

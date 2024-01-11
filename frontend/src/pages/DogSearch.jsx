@@ -66,8 +66,8 @@ export const DogSearch = () => {
                         <p>Here you can search for all the dogs in our database according to what kind of furry friend you're looking for.</p>
                         <p>There are currently dogs from 6 different animal rescue organisations available for adoption.</p>
                         <form onSubmit={(e) => {
-                        e.preventDefault();
-                        handleSearch(); // Call the handleSearch function when the form is submitted
+                            e.preventDefault();
+                            handleSearch(); // Call the handleSearch function when the form is submitted
                         }}>
                             <div className={styles.formRow}>
                                 <div className={styles.formPiece}>
@@ -123,25 +123,30 @@ export const DogSearch = () => {
                                 </div>
                             </div>
                             <div className={styles.submitWrapper}>
-                            <button type="submit">Search</button>
+                                <button type="submit">Search</button>
                             </div>
                         </form>
                         <div className={styles.dogs}>
-                        {dogs.length === 0 ? (
-                            <div className={styles.notFound}>
-                            <p>Nothing was found based on your search criteria.</p>
-                            </div>
-                        ) : (
-                            dogs.map(dog => (
-                                <div className={styles.dogCard} key={dog._id}>
-                                    <p>Name: {dog.name}</p>
-                                    <p>Estimated age: {dog.age}</p>
-                                    <p>Special adoption: {dog.special_adoption ? "Yes" : "No"}</p>
-                                    <p>Size: {dog.size}</p>
-                                    <p>Organisation: {dog.organisation}</p>
+                            {dogs.length === 0 ? (
+                                <div className={styles.notFound}>
+                                    <p>Nothing was found based on your search criteria.</p>
                                 </div>
-                            ))
-                        )}
+                            ) : (
+                                dogs.map(dog => (
+                                    <div className={styles.dogCard} key={dog._id}>
+                                        <div className={styles.dogImage}>
+                                            <img src={dog.image.data} alt={dog.name} />
+                                         </div>
+                                        <div className={styles.dogInfo}>
+                                            <p>Name: {dog.name}</p>
+                                            <p>Estimated age: {dog.age}</p>
+                                            <p>Special adoption: {dog.special_adoption ? "Yes" : "No"}</p>
+                                            <p>Size: {dog.size}</p>
+                                            <p>Organisation: {dog.organisation}</p>
+                                        </div>
+                                    </div>
+                                ))
+                            )}
                         </div>
                     </div>
                     <Footer />

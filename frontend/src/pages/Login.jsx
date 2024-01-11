@@ -4,6 +4,16 @@ import { NavBar } from '../components/NavBar.jsx'
 import { Footer } from '../components/Footer.jsx'
 
 export const LogIn = () => {
+    const [user, setUser] = useState();
+
+    useEffect(() => {
+        axios.get('http://localhost:3000/login')
+            .then((response) => {
+                setUser(response.data);
+            })
+            .catch((err) => console.log(err));
+    }, []);
+    
     return (
         <>
             <div className={styles.siteContainer}>

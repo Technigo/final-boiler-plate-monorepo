@@ -100,10 +100,21 @@ form {
     background-color: #42531D;
     font-size: 1em;
     padding: 1em;
+    display: flex;
 }
 
 .dogCard p {
     text-align: left;
+}
+
+.dogImage img {
+    max-width: 200px;
+}
+
+.dogInfo {
+    display: flex;
+    flex-direction: column;
+    gap: 0em;
 }
 
 @media screen and (max-width: 667px) {

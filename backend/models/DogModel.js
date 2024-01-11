@@ -6,7 +6,11 @@ const DogSchema = new mongoose.Schema({
   age: Number,
   special_adoption: Boolean,
   size: String,
-  organisation: String
+  organisation: String,
+  image: {
+    format: String,
+    data: String
+  }
 });
 
 const DogModel = mongoose.model("DogModel", DogSchema)
