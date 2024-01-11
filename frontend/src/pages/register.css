@@ -28,6 +28,12 @@
   width: 100%;
 }
 
+.password-input span {
+  /* Style for the icon container */
+  margin: 5px 8px 0 0;/* Adjust as needed */
+  cursor: pointer;
+}
+
 .register-btn {
   margin: 1rem 0 1rem 0;
 }
