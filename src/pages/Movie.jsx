@@ -35,11 +35,6 @@ export const Movie = () => {
 
   return (
     <>
-      {/* {!isLoading && movieData && (
-        <Link className="back-arrow" to="/">
-          Back to home page
-        </Link>
-      )} */}
       {isLoading && !movieData && <p>Loading...</p>}
       {!isLoading && movieData && <MovieDetails movie={movieData} />}
 

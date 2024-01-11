@@ -43,8 +43,7 @@ export const MovieDetails = ({ movie }) => {
   return (
     <div className="page-section the-detail-page">
       <div className="detail-container">
-        <img src={posterImage} alt={title} />
-
+        <img className='movie-poster' src={posterImage} alt={title} />
 
         <div className="details">
 
@@ -63,18 +62,19 @@ export const MovieDetails = ({ movie }) => {
               <p> GENRES: {genre.join(", ")}</p>
               <p> RELEASE DATE :{formatReleaseDate(movie.releaseDate)}</p>
             </div>
+          </div>
+          <div className="the-showtimes">
+            <h2>Showtimes:</h2>
+            {showtimes && showtimes.map((showTime) => (
+              <div className='showtime-container' key={showTime._id}>
+                <p><Link to={`/booking`}>{showTime.startingTime}:00</Link></p>
 
-            <div className="showtimes">
-              <h2>Showtimes:</h2>
-              {showtimes && showtimes.map((showTime) => (
-                <div key={showTime._id}>
-                  <Link to={`/booking`}>{showTime.startingTime}:00</Link>
-                </div>
-              ))}
-
-            </div>
+              </div>
+            ))}
 
           </div>
+
+
         </div>
       </div>
     </div>
