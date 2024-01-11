@@ -13,9 +13,8 @@ As part of the Technigo Web Dev Bootcamp, this project was created as the Final 
 - React
 - Vite
 - Zustand
-- React router
-- React icons
-- Netlify
+- React Router DOM
+- React Icons
 
 </div>
 
@@ -28,7 +27,7 @@ As part of the Technigo Web Dev Bootcamp, this project was created as the Final 
 - MongoDB
 - Mongoose
 - OpenAI
-- Render
+- Nodemon
 
 </div>
 
@@ -41,22 +40,39 @@ As part of the Technigo Web Dev Bootcamp, this project was created as the Final 
 - VScode
 - Squoosh
 - Affinity Designer<br><br><br>
-
 </div>
-
 </div>
 
 ## API Endpoints
 
-- GET https://ai-recipes-collin-dieden.onrender.com/: Lists all available API endpoints for reference
-- GET https://ai-recipes-collin-dieden.onrender.com/recipes: Retrieves all stored recipes.
-- GET https://ai-recipes-collin-dieden.onrender.com/recipes/search/:query: Searches for recipes based on a specified query. (**Note:** This endpoint is still a dummy endpoint and has not yet been implemented into the frontend.)
-- POST https://ai-recipes-collin-dieden.onrender.com/openai/generateText: Initiates the process of generating a recipe using the OpenAI API.
+### External APIs
+
+**OpenAI API:**
+
+- **Description:** Utilized to generate text-based recipes based on user prompts.
+- **Endpoint:** `POST /openai/generateText`
+- **Usage:** This API is integrated into the backend to dynamically create recipes using the OpenAI GPT-3 model.
+
+### Internal APIs
+
+**MongoDB API:**
+
+- **Description:** The backend acts as an API to interact with the MongoDB database.
+- **Endpoints:**
+  - `GET /`: Lists all available API endpoints for reference.
+  - `GET /recipes`: Retrieves all stored recipes.
+  - `GET /recipes/search/:query`: Searches for recipes based on a specified query.
 
 ## Database Operations
 
 - **RecipeModel:** Represents the data structure for recipes, including user input, search words, title, description, ingredients, instructions, and creation timestamp.
 - **MongoDBOperations:** Implements CRUD operations for managing recipes in the MongoDB database.
+
+## AI integration
+
+**OpenAI:** The backend integrates with the OpenAI API to generate text-based recipes based on user prompts.
+
+**Endpoint:** Provides an /openai/generateText endpoint to handle AI-driven recipe generation.
 
 ## How to Run the Project
 
@@ -128,6 +144,7 @@ npm run dev
 
 ## Challenges
 
+The
 !!! UNDER CONSTRUCTION !!!
 Stage 1 (behöver skrivas om)
 Set up of boilerplate, installation. Created endpoints (no connection to AI at this time). Connected frontend to backend using the API endpoints. Implemented AI, possible to do a general prompt via the frontend localhost and get a respons in the console.
