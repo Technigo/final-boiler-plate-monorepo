@@ -4,22 +4,19 @@ import React, { useState, useEffect } from 'react';
 
 export const HomeCBC = () => {
     const [featuredCocktails, setFeaturedCocktails] = useState([]);
-    // Replace with the actual IDs of the cocktails you want to feature
-    const featuredIds = ['659d4d45faca05d6df658656', '6597a5cc65dea63aba7e1999', '5f50c31e1234567890123456'];
+    const featuredIds = ['659d4d45faca05d6df658656', '6597a5cc65dea63aba7e1999', '5f50c31e1234567890123456', '659f0a2fa8a230958c153963', '659f09a1a8a230958c15395a', '659f0a08a8a230958c153960'];
 
     useEffect(() => {
         fetch('https://cbc-uvko.onrender.com/cocktails')
             .then(response => response.json())
             .then(data => {
-                // Filter the cocktails to only include those with IDs in featuredIds
                 const selectedCocktails = data.filter(cocktail => featuredIds.includes(cocktail._id));
                 setFeaturedCocktails(selectedCocktails);
             })
             .catch(error => {
                 console.error('Error fetching data: ', error);
-                // Optionally, handle the error state in the UI
             });
-    }, []); // Empty dependency array ensures this effect runs once after the initial render
+    }, []);
 
     return (
         <div className={styles.wrapper}>
@@ -30,7 +27,7 @@ export const HomeCBC = () => {
                         {cocktail.imageUrl && (
                             <img src={`https://cbc-uvko.onrender.com/${cocktail.imageUrl}`} alt={cocktail.name} className={styles.cocktailImage} />
                         )}
-                        <Text type="H3" className={styles.h3}>{cocktail.name}</Text>
+                        {cocktail.name && <Text type="H3" className={styles.h3}>{cocktail.name}</Text>}
                         <Text type="SbodyText" className={styles.SbodyText}>⏲️: {cocktail.prepTime} | 🌟: {cocktail.strength}</Text>
                         <Text type="SbodyText" className={styles.SbodyText}>⚡: {cocktail.strength} | 🏷️ : {cocktail.tags.join(', ')}</Text>
                     </div>

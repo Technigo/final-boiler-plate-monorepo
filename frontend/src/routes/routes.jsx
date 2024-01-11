@@ -9,7 +9,7 @@ const routes = (
     <>
         <Route path="/" element={<HomeCBC />} />
         <Route path="/cocktails" element={<Cocktails />} />
-        <Route path="/sin-cocktail" element={<SinCocktail />} />
+        <Route path="/cocktail/:id" element={<SinCocktail />} /> {/* Updated path */}
         <Route path="/about-us" element={<AboutUs />} />
         <Route path="/contact" element={<ContactUs />} />
     </>

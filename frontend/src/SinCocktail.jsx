@@ -1,5 +1,3 @@
-
-
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import styles from "./SinCocktail.module.css";
@@ -7,21 +5,14 @@ import { Text } from './UI/Typography';
 
 export const SinCocktail = () => {
     const [cocktail, setCocktail] = useState(null);
+    const { id } = useParams(); // Extract the id from the URL (this was wrong yesterday)
 
     useEffect(() => {
-        // Fetch cocktail details using the `match.params.id` from the URL
-        const cocktailId = match.params.id;
-
-        // Replace this with your actual fetch logic to get the details of the specific cocktail
-        fetch(`https://your-api-url.com/cocktails/${cocktailId}`)
-            .then((response) => response.json())
-            .then((data) => {
-                setCocktail(data); // Set the cocktail details in state
-            })
-            .catch((error) => {
-                console.error('Error fetching cocktail details:', error);
-            });
-    }, [match.params.id]);
+        fetch(`https://cbc-uvko.onrender.com/cocktails/${id}`)
+            .then(response => response.json())
+            .then(data => setCocktail(data))
+            .catch(error => console.error('Error fetching cocktail:', error));
+    }, [id]);
 
     return (
         <div className={styles.wrapper}>
@@ -29,17 +20,15 @@ export const SinCocktail = () => {
             <div className={styles.gridContainer}>
                 {cocktail ? (
                     <div key={cocktail._id}>
-                        {/* {cocktail.imageUrl && (
+                        {cocktail.imageUrl && (
                             <img
                                 src={`https://cbc-uvko.onrender.com/${cocktail.imageUrl}`}
                                 alt={cocktail.name}
                                 className={styles.cocktailImage}
                             />
-                        )} */}
-                        <Text type="H3" className={styles.h3}>
-                            {cocktail.name}
-                        </Text>
-                        {/* <Text type="SbodyText" className={styles.SbodyText}>
+                        )}
+                        {cocktail.name && <Text type="H3" className={styles.h3}>{cocktail.name}</Text>}
+                        <Text type="SbodyText" className={styles.SbodyText}>
                             Primary Liquor: {cocktail.primaryLiquor}
                         </Text>
                         <Text type="SbodyText" className={styles.SbodyText}>
@@ -74,7 +63,7 @@ export const SinCocktail = () => {
                         </Text>
                         <Text type="SbodyText" className={styles.SbodyText}>
                             Strength: {cocktail.strength}
-                        </Text> */}
+                        </Text>
                     </div>
                 ) : (
                     <p>Loading cocktail details...</p>
