@@ -101,9 +101,10 @@ export const About = () => {
               responsibility and environmental consciousness. Join us in
               cultivating a greener future, one surplus product at a time.
             </p>
+
             <Heading
               level={2}
-              text="Ready to get started with Green Buddy?"
+              text="Ready to get started with us?"
               aria-label="log-in?"
             />
             <div className="about-list">
@@ -120,7 +121,9 @@ export const About = () => {
                 <img src={giveAway} alt="give-away" />
               </div>
             </div>
-            <Button label="Get started" link="/login" />
+            <div className="about-btn">
+              <Button label="Get started" link="/login" />
+            </div>
           </div>
         </div>
       </div>

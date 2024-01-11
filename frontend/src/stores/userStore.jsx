@@ -94,9 +94,14 @@ export const userStore = create((set) => ({
           email,
           password,
           consent,
+          userId: data.response.id,
+          accessToken: data.response.accessToken,
           isSignedup: true,
           isLoggedin: true
         });
+        // Store the accessToken and userId in the browser's localStorage.
+        localStorage.setItem("accessToken", data.response.accessToken);
+        localStorage.setItem("userId", data.response.id);
         // Display a success alert
         Swal.fire({
           title: "Congratulations!",

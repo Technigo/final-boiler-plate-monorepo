@@ -1,5 +1,5 @@
 .search-bar {
-  margin: 10px auto;
+  margin: 10px 0;
 }
 
 .search-bar input {
@@ -70,15 +70,19 @@
   box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
 }
 
-.search-result {
+.search-result,
+.search-error {
   text-align: center;
   font-weight: 700;
   font-size: 1.5rem;
 }
 
 @media screen and (min-width: 1120px) {
-  .search-bar .search-input {
-    max-width: 40rem;
-    margin: 0 auto;
+  .search-bar {
+    width: 100%;
+  }
+
+  .search-bar input {
+    width: calc( - 36px);
   }
 }
