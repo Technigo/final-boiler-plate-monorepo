@@ -173,21 +173,24 @@ export const TripGenerator = () => {
             setFormData={setFormData}
           />
 
-          <div className="flex flex-col sm:flex-row sm:space-x-4 w-full">
+          <div className="flex flex-col sm:flex-row sm:space-x-4">
             <div className="w-full sm:w-1/2">
               <label
                 htmlFor="date"
                 className="block text-sm font-md text-gray-700">
                 Date
               </label>
-              <input
-                type="date"
-                id="date"
-                name="date"
-                value={formData.date}
-                onChange={handleChange}
-                className="input-field border p-2 rounded-md w-full h-10"
-              />
+
+              <div className="w-full">
+                <input
+                  type="date"
+                  id="date"
+                  name="date"
+                  value={formData.date}
+                  onChange={handleChange}
+                  className="input-field border p-2 rounded-md w-full h-10"
+                />
+              </div>
             </div>
 
             <div className="w-full sm:w-1/2 mt-2 sm:mt-0">
