@@ -42,6 +42,13 @@ form input {
   font-size: 1.5rem;
 }
 
+.contact-title input[type="text"],
+.contact-title input[type="password"],
+.contact-title input[type="email"] {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
 .submit-btn {
   border-radius: var(--border-radius);
   border: 1px solid transparent;

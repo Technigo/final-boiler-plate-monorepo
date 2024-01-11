@@ -12,19 +12,20 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "./landing.css";
 import "../components/adslist.css";
-import broccoli from "../assets/broccoli.jpeg";
-import tomatoes from "../assets/cherry-tomatoes.jpeg";
-import cucumber from "../assets/cucumber.jpeg";
-import jam from "../assets/jam.jpeg";
-import tinyTim from "../assets/tiny-tim.jpg";
+import sliderData from "../assets/slider.json";
+// import broccoli from "../assets/broccoli.jpeg";
+// import tomatoes from "../assets/cherry-tomatoes.jpeg";
+// import cucumber from "../assets/cucumber.jpeg";
+// import jam from "../assets/jam.jpeg";
+// import tinyTim from "../assets/tiny-tim.jpg";
 
 export const Landing = () => {
-  const [sliderImages, setSliderImages] = useState([]);
+  const [sliderImages, setSliderImages] = useState(sliderData.advert);
 
-  useEffect(() => {
-    // Set images to state when they are loaded
-    setSliderImages([broccoli, tomatoes, cucumber, jam, tinyTim]);
-  }, []);
+  // useEffect(() => {
+  //   // Set images to state when they are loaded
+  //   setSliderImages([broccoli, tomatoes, cucumber, jam, tinyTim]);
+  // }, []);
 
   // Settings for the carousel
   const settings = {
@@ -124,13 +125,14 @@ export const Landing = () => {
       </div>
       <div className="slider">
         <Slider {...settings}>
-          {sliderImages.map((image, index) => (
-            <div className="ads-inner-wrapper" key={index}>
-              <img
-                src={image}
-                alt={`slider-image-${index}`}
-                className="landing-adcard"
-              />
+          {sliderImages.map((item, index) => (
+            <div className="slider-content" key={index}>
+              <img src={item.image} alt={`slider-image-${index}`} />
+              <div className="slider-card-info">
+                <h3>{item.name}</h3>
+                <p>Location: {item.location}</p>
+                <p>Posted by: {item.owner}</p>
+              </div>
             </div>
           ))}
         </Slider>

@@ -6,7 +6,7 @@
     /* Set the width to cover the viewport */
     color: white;
     /* Set text color to white */
-    background: rgb(83, 79, 79);
+    background: var(--primary-background);
     /* Set background color */
     text-align: center;
     /* Center-align text within the element */

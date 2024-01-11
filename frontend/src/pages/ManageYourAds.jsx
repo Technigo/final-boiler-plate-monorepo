@@ -47,7 +47,7 @@ export const ManageYourAds = () => {
             name: "Logout",
             onClick: () => {
               handleLogout();
-              navigate("/login");
+              navigate("/");
             },
           },
         ]}
@@ -60,10 +60,11 @@ export const ManageYourAds = () => {
             name: "Logout",
             onClick: () => {
               handleLogout();
-              navigate("/login");
+              navigate("/");
             },
           },
         ]}
+        logoRedirectPath="/home"
       />
       <div className="main-container">
         <div className="main-wrapper">

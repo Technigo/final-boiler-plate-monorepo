@@ -45,7 +45,7 @@ export const Search = () => {
             name: "Logout",
             onClick: () => {
               handleLogout();
-              navigate("/login");
+              navigate("/");
             },
           },
         ]}
@@ -57,10 +57,11 @@ export const Search = () => {
             name: "Logout",
             onClick: () => {
               handleLogout();
-              navigate("/login");
+              navigate("/");
             },
           },
         ]}
+        logoRedirectPath="/home"
       />
       <div className="search-container">
         <div className="search-wrapper">

@@ -13,7 +13,7 @@ import { Icon } from "react-icons-kit";
 import { eyeOff } from "react-icons-kit/feather/eyeOff";
 import { eye } from "react-icons-kit/feather/eye";
 import "../pages/register.css";
-import Swal from 'sweetalert2';
+import Swal from "sweetalert2";
 
 // Define the "Register" functional component.
 export const Register = () => {
@@ -57,13 +57,17 @@ export const Register = () => {
 
     if (!isValidEmail(email)) {
       setLoading(false);
-      Swal.fire('Error', 'Please enter a valid email address', 'error');
+      Swal.fire("Error", "Please enter a valid email address", "error");
       return;
     }
 
     if (username.length < 5) {
       setLoading(false);
-      Swal.fire('Error', 'Username must be at least 5 characters long', 'error');
+      Swal.fire(
+        "Error",
+        "Username must be at least 5 characters long",
+        "error"
+      );
       return;
     }
 
@@ -74,15 +78,24 @@ export const Register = () => {
     }
 
     try {
-      const response = await storeHandleSignup(username, password, email, consent);
+      const response = await storeHandleSignup(
+        username,
+        password,
+        email,
+        consent
+      );
       if (response.success) {
         navigate("/home");
       } else {
-        Swal.fire('Error', response.message || 'Signup failed. Please try again.', 'error');
+        Swal.fire(
+          "Error",
+          response.message || "Signup failed. Please try again.",
+          "error"
+        );
       }
     } catch (error) {
       console.error("Register failed:", error);
-      Swal.fire('Error', 'An unexpected error occurred.', 'error');
+      Swal.fire("Error", "An unexpected error occurred.", "error");
     } finally {
       setLoading(false);
     }
@@ -148,7 +161,9 @@ export const Register = () => {
                   checked={consent}
                   onChange={() => setConsent(!consent)}
                 />
-                <label htmlFor="consent">I agree to terms and policy</label>
+                <label htmlFor="consent">
+                  I agree to <Link to="/terms">terms and policy</Link>
+                </label>
               </div>
             </div>
             {/* Create a button for signing up and attach the "onSignupClick" event handler. */}

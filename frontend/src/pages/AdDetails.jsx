@@ -63,7 +63,7 @@ const AdDetails = () => {
             name: "Logout",
             onClick: () => {
               handleLogout();
-              navigate("/login");
+              navigate("/");
             },
           },
         ]}
@@ -77,10 +77,11 @@ const AdDetails = () => {
             name: "Logout",
             onClick: () => {
               handleLogout();
-              navigate("/login");
+              navigate("/");
             },
           },
         ]}
+        logoRedirectPath="/home"
       />
       <div className="main-container">
         <div className="main-wrapper">

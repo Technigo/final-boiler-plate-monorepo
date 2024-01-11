@@ -136,7 +136,7 @@ export const CreateAd = () => {
             name: "Logout",
             onClick: () => {
               handleLogout();
-              navigate("/login");
+              navigate("/");
             },
           },
         ]}
@@ -150,10 +150,11 @@ export const CreateAd = () => {
             name: "Logout",
             onClick: () => {
               handleLogout();
-              navigate("/login");
+              navigate("/");
             },
           },
         ]}
+        logoRedirectPath="/home"
       />
 
       <div className="main-container">
