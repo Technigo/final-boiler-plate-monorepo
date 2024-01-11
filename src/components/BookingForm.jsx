@@ -11,6 +11,7 @@ export const BookingForm = () => {
         showTimeId: ""
     })
     const [ bookingReceipts, setBookingReceipts ] = useState([])
+    const [ showConfirmation, setShowConfirmation ] = useState(false)
     const { 
         selectedSeats,
         selectedShowtime,
@@ -19,6 +20,7 @@ export const BookingForm = () => {
 
      useEffect(() => {
         console.log(selectedSeats)
+        console.log('showConfirmation', showConfirmation)
      }, [])
 
      useEffect(() => {
@@ -29,6 +31,7 @@ export const BookingForm = () => {
 
     useEffect(() => {
         console.log(bookingReceipts)
+        if (bookingReceipts != null && bookingReceipts.length > 0) setShowConfirmation(true)
     }, [bookingReceipts])
 
     const updateFormData = ( field, value ) => {
@@ -47,36 +50,61 @@ export const BookingForm = () => {
         })
     }
 
+    const calculatePrice = (ticketArray) => {
+        let totalPrice = 0
+        ticketArray.forEach(ticket => {
+            totalPrice += ticket.price
+        })
+        return totalPrice
+    }
+
     return(
         <>
-            {selectedSeats && <SelectedTicket />}
+            { !showConfirmation && selectedSeats && <SelectedTicket />}
 
-            <div className="form-container">
-                <form className="booking-form">
-                    <div className="form-element">
-                        <label htmlFor="the-name">Name: </label>
-                        <input 
-                            type="text" 
-                            placeholder="Boel Larsson"
-                            id="the-name"
-                            value={formData.name}
-                            onChange={(event) => {updateFormData("name", event.target.value)}}
-                        />
+            { showConfirmation && bookingReceipts.length > 0 && (
+                <div className="confirmation-container">
+                    <div className="confirmation-tickets">  
+                        {selectedSeats && <SelectedTicket />}
                     </div>
+                    <div className="confirmation-details">
+                        <h2>Booking confirmed:</h2>
+                        <h3>{selectedShowtime.movieTitle}</h3>
+                        <p>{selectedShowtime.date} {selectedShowtime.startingTime}:00</p>
+                        
+                        <p>Email: {bookingReceipts[0].email}</p>
+                        <p>Price: {calculatePrice(bookingReceipts)} kr</p>
+                    </div>
+                </div>
+            ) }
+            { !showConfirmation &&                
+                <div className="form-container">
+                    <form className="booking-form">
+                        <div className="form-element">
+                            <label htmlFor="the-name">Name: </label>
+                            <input 
+                                type="text" 
+                                placeholder="Boel Larsson"
+                                id="the-name"
+                                value={formData.name}
+                                onChange={(event) => {updateFormData("name", event.target.value)}}
+                            />
+                        </div>
 
-                    <div className="form-element">
-                        <label htmlFor="the-email">Email: </label>
-                        <input 
-                            type="text" 
-                            placeholder="your-mail@email.com"
-                            id="the-email"
-                            value={formData.email}
-                            onChange={(event) => {updateFormData("email", event.target.value)}}
-                        />
-                    </div>
-                    <button onClick={handleSubmit}>Book your tickets</button>
-                </form>
-            </div>
+                        <div className="form-element">
+                            <label htmlFor="the-email">Email: </label>
+                            <input 
+                                type="text" 
+                                placeholder="your-mail@email.com"
+                                id="the-email"
+                                value={formData.email}
+                                onChange={(event) => {updateFormData("email", event.target.value)}}
+                            />
+                        </div>
+                        <button onClick={handleSubmit}>Book your tickets</button>
+                    </form>
+                </div>}
+            
         </>
     )
 }
