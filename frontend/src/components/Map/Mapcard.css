@@ -7,10 +7,12 @@
 }
 
 .map-card-list {
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  z-index: 10;
 }
 .map-dropdowns {
   padding: 8px;
