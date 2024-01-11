@@ -12,11 +12,11 @@ export const NotFound = () => {
   return (
     <div className="not-found">
       <Lottie animationData={notFound} style={style} />
-      <div className="404">
+      <div className="four-o-four">
         <h1>404 Page not found</h1>
         <p>Sorry, we can&apos;t seem to find the page you&apos;re looking for.</p>
-        <Button label="Back to home" link="/home" />
       </div>
+      <Button label="Back to home" link="/home" />
     </div>
   );
 };
