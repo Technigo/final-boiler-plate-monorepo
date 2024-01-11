@@ -2,6 +2,8 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { LocationInput } from "./LocationInput";
 import { makes, models } from "./CarData";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 export const TripGenerator = () => {
   const [formData, setFormData] = useState({
@@ -91,13 +93,20 @@ export const TripGenerator = () => {
     };
 
     try {
-      await fetch("http://localhost:3000/trip", {
+      const response = await fetch("http://localhost:3000/addtrip", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify(newTrip),
       });
+
+      const data = await response.json();
+      if (data.success) {
+        alert("Trip posted successfully");
+      } else {
+        alert(data.response || "Adding trip failed");
+      }
 
       await new Promise((resolve) => setTimeout(resolve, 1000));
 
@@ -173,30 +182,30 @@ export const TripGenerator = () => {
             setFormData={setFormData}
           />
 
-          <div className="flex flex-col sm:flex-row sm:space-x-4">
-            <div className="w-full sm:w-1/2">
+          <div className="flex space-x-4">
+            <div className="w-1/2">
               <label
                 htmlFor="date"
-                className="block text-sm font-md text-gray-700">
+                className="block text-sm font-md text-gray-700"
+              >
                 Date
               </label>
-
-              <div className="w-full">
-                <input
-                  type="date"
-                  id="date"
-                  name="date"
-                  value={formData.date}
-                  onChange={handleChange}
-                  className="input-field border p-2 rounded-md w-full h-10"
-                />
-              </div>
+              <DatePicker
+                selected={formData.date}
+                onChange={(date) =>
+                  setFormData((prevData) => ({ ...prevData, date }))
+                }
+                placeholderText="MM/DD/YYYY"
+                wrapperClassName="w-full"
+                className="input-field border p-2 rounded-md w-full h-10"
+              />
             </div>
 
-            <div className="w-full sm:w-1/2 mt-2 sm:mt-0">
+            <div className="w-1/2">
               <label
                 htmlFor="time"
-                className="block text-sm font-md text-gray-700">
+                className="block text-sm font-md text-gray-700"
+              >
                 Time
               </label>
               <select
@@ -204,7 +213,8 @@ export const TripGenerator = () => {
                 name="time"
                 value={formData.time}
                 onChange={handleTimeChange}
-                className="input-field border p-2 rounded-md w-full h-10">
+                className="input-field border p-2 rounded-md w-full h-10"
+              >
                 {timeOptions}
               </select>
             </div>
@@ -214,7 +224,8 @@ export const TripGenerator = () => {
             <div className="w-1/2">
               <label
                 htmlFor="make"
-                className="block text-sm font-md text-gray-700">
+                className="block text-sm font-md text-gray-700"
+              >
                 Make
               </label>
               <select
@@ -226,7 +237,8 @@ export const TripGenerator = () => {
                     target: { name: e.target.name, value: e.target.value },
                   })
                 }
-                className="input-field border p-2 rounded-md w-full h-10">
+                className="input-field border p-2 rounded-md w-full h-10"
+              >
                 {" "}
                 <option value="" disabled>
                   Make
@@ -241,7 +253,8 @@ export const TripGenerator = () => {
             <div className="w-1/2">
               <label
                 htmlFor="model"
-                className="block text-sm font-md text-gray-700">
+                className="block text-sm font-md text-gray-700"
+              >
                 Model
               </label>
               <select
@@ -249,7 +262,8 @@ export const TripGenerator = () => {
                 name="model"
                 value={formData.model}
                 onChange={handleChange}
-                className="input-field border p-2 rounded-md w-full h-10">
+                className="input-field border p-2 rounded-md w-full h-10"
+              >
                 {" "}
                 <option value="" disabled>
                   Model
@@ -268,7 +282,8 @@ export const TripGenerator = () => {
             <div className="w-1/2">
               <label
                 htmlFor="reg"
-                className="block text-sm font-md text-gray-700">
+                className="block text-sm font-md text-gray-700"
+              >
                 Reg. no
               </label>
               <input
@@ -288,7 +303,8 @@ export const TripGenerator = () => {
             <div className="w-1/2">
               <label
                 htmlFor="availableSeats"
-                className="block text-sm font-md text-gray-700">
+                className="block text-sm font-md text-gray-700"
+              >
                 Available Seats
               </label>
               <input
@@ -318,7 +334,8 @@ export const TripGenerator = () => {
           <div className="mb-4">
             <label
               htmlFor="message"
-              className="block text-sm font-md text-gray-700">
+              className="block text-sm font-md text-gray-700"
+            >
               Message
             </label>
             <textarea
@@ -341,7 +358,8 @@ export const TripGenerator = () => {
                   ? "bg-gray-100"
                   : "bg-rose-500 hover:bg-rose-700"
               } text-white p-4 py-2 rounded-full focus:outline-none focus:ring focus:border-blue-300`}
-              disabled={loading || formDataIsIncomplete()}>
+              disabled={loading || formDataIsIncomplete()}
+            >
               {loading ? "Generating..." : "Create Trip"}
             </button>
           </div>
@@ -352,7 +370,8 @@ export const TripGenerator = () => {
             {trips.reverse().map((trip) => (
               <div
                 key={trip.id}
-                className="grid grid-cols-12 gap-2 p-4 bg-blue-100 rounded-lg relative">
+                className="grid grid-cols-12 gap-2 p-4 bg-blue-100 rounded-lg relative"
+              >
                 <div className="col-span-12 text-md text-gray-900 sm:text-xl">
                   You have created a trip from {trip.from} to {trip.to} on{" "}
                   {trip.date} starting at {trip.time}. Your vehicle of choice is
@@ -364,7 +383,8 @@ export const TripGenerator = () => {
                 <div className="col-span-12 flex items-center justify-center">
                   <Link
                     to="/trips"
-                    className="text-amber-500 hover:text-amber-700 focus:outline-none focus:ring focus:border-blue-300">
+                    className="text-amber-500 hover:text-amber-700 focus:outline-none focus:ring focus:border-blue-300"
+                  >
                     See list of trips
                   </Link>
                 </div>

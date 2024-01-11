@@ -15,8 +15,7 @@ export const UserProfile = () => {
     setLoggedInUserId,
     loggedInUserId,
   } = userStore();
-  // const [userMetadata, setUserMetadata] = useState(null);
-  // const domain = import.meta.env.VITE_AUTH0_DOMAIN;
+
   const vite_backend = import.meta.env.VITE_BACKEND_API;
   const vite_backup = import.meta.env.VITE_BACKUP_API;
 
