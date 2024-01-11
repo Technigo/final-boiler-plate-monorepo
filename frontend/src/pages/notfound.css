@@ -6,7 +6,7 @@
     /* Set the width to cover the viewport */
     color: white;
     /* Set text color to white */
-    background: var(--primary-background);
+    background: var(--secondary-background);
     /* Set background color */
     text-align: center;
     /* Center-align text within the element */
@@ -14,4 +14,8 @@
     /* Center-align element horizontally */
     display: block;
     /* Display element as a block-level */
+  }
+
+  .four-o-four {
+    margin-bottom: 20px;
   }
