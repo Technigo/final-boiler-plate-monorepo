@@ -27,22 +27,19 @@ export const userStore = create((set) => ({
   introduction: "",
   setIntroduction: (introduction) => set({ introduction }),
 
-  // products: [],
-  // setProducts: (products) => set({ products }),
-
   image: defaultProfileImage,
   setImage: (image) => set({ image }),
 
-  userId: null,
+  userId: localStorage.getItem("accessToken") || null,
   setUserId: (userId) => set({ userId }),
 
-  accessToken: null,
+  accessToken: localStorage.getItem("accessToken") || null,
   setAccessToken: (token) => set({ accessToken: token }),
 
   isSignedup: false,
   setIsSignedup: (isSignedup) => set({ isSignedup }),
 
-  isLoggedin: false,
+  isLoggedIn: localStorage.getItem("accessToken") ? true : false,
   setIsLoggedin: (isLoggedin) => set({ isLoggedin }),
 
   // FUNCTION TO REGISTER USERS
@@ -62,10 +59,10 @@ export const userStore = create((set) => ({
         icon: "error"
       });
       return;
-    } else if (password.length < 5) {
+    } else if (password.length < 6) {
       Swal.fire({
         title: "Error!",
-        text: "Your password should have at least 5 characters",
+        text: "Your password should have at least 6 characters",
         icon: "error"
       });
       return;
@@ -106,7 +103,6 @@ export const userStore = create((set) => ({
           text: "Sign up successful",
           icon: "success"
         });
-        Swal.fire('Congratulations!', 'Sign up successful', 'success');
         return { success: true };
       } else {
         return { success: false, message: data.response || "Sign up failed" };
@@ -425,7 +421,56 @@ export const userStore = create((set) => ({
   },
 
   // FUNCTION TO HANDLE USER ACCOUNT DELETION
-  handleAccountDeletion: () => {
+  handleAccountDeletion: async (userId) => {
+    console.log(userId);
+    try {
+      // If they are logged in, send GET request to the user endpoint to retrieve user data
+      const response = await fetch(`${apiEnv}/users/${userId}`, {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+
+      // Parse the response data as JSON.
+      const data = await response.json();
+      if (data.success) {
+        // Update the state with the response data
+        set((state) => ({
+          ...state,
+          username: "",
+          email: "",
+          password: "",
+          consent: false,
+          location: "",
+          introduction: "",
+          products: [],
+          image: null,
+          userId: null,
+          accessToken: null,
+          isLoggedin: false
+        }));
+      } else {
+        // Display an error message from the server or a generic message.
+        Swal.fire({
+          title: "Error!",
+          text: data.response || "Cannot delete user",
+          icon: "error"
+        });
+        return null;
+      }
+    } catch (error) {
+      // Handle and log any errors.
+          // Handle and log any errors.
+      console.error("Account deletion error: ", error);
+      Swal.fire({
+          title: "Error!",
+          text: `Failed to delete the user account. ${error.message || "Please try again later."}`,
+          icon: "error"
+      });
+      return null;
+    }
+
     const swalWithBootstrapButtons = Swal.mixin({
       customClass: {
         confirmButton: "btn btn-success",

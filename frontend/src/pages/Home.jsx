@@ -16,11 +16,14 @@ export const Home = () => {
   const navigate = useNavigate();
 
   // Get 'isLoggedIn' and 'accessToken' from the 'userStore'.
-  const isLoggedin = userStore((state) => state.isLoggedin);
+  const isLoggedin = userStore.getState().isLoggedin;
   const handleLogout = userStore((state) => state.handleLogout);
+  console.log(isLoggedin);
   // useEffect hook to check user authentication status.
   useEffect(() => {
-    if (!isLoggedin) {
+    if (isLoggedin) {
+      navigate("/home");
+    } else {
       // If the user is not logged in, show an alert and navigate to the login route.
       Swal.fire({
         title: "Error!",
