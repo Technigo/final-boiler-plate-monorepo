@@ -79,7 +79,7 @@ export const Login = () => {
   return (
     <div className="main-container">
       <div className="main-wrapper">
-        <div className="arrow-container">
+        <div className="login-arrow-wrapper">
           <BackArrow />
           <Logo className={"login-logo"} color="green" />
         </div>

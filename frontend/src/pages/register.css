@@ -4,7 +4,7 @@
   height: 3em;
 }
 
-.arrow-container {
+.register-arrow-wrapper {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -26,6 +26,12 @@
 
 .user-registration div {
   width: 100%;
+}
+
+.password-input span {
+  /* Style for the icon container */
+  margin: 5px 8px 0 0;/* Adjust as needed */
+  cursor: pointer;
 }
 
 .register-btn {
