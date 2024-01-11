@@ -28,6 +28,7 @@ export const Booking = () => {
 		selectedShowtime,
 		selectedSeats,
 		setSelectedSeats,
+		removeSelectedSeats,
 		updateSelectedSeats,
 		setJustSelectedSeats,
 	} = bookingStore()
@@ -57,6 +58,7 @@ export const Booking = () => {
 			seatInfo.forEach(row => {
 				row.forEach((seat) => {
 					if(seat.selected) {
+						console.log('useEffect selected seat', seat)
 						setJustSelectedSeats([seat.rowIndex, seat.seatIndex])
 					}
 				})
@@ -86,7 +88,8 @@ export const Booking = () => {
 		const removeSelected = (event) => {
 			event.target.classList.remove('selected')
 			let filteredArray = selectedSeats.filter(item => !compareArrays(item, newSelection))
-			setSelectedSeats(filteredArray, showtimeID)
+			removeSelectedSeats(filteredArray, newSelection, showtimeID)
+			// filteredArray.forEach(seat => updateSelectedSeats(seat, showtimeID))
 		}
 
 		const addSelected = (event) => {
