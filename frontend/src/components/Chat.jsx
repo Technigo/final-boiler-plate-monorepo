@@ -195,7 +195,7 @@ export const Chat = () => {
     isAuthenticated && (
       <div className="flex items-center justify-center p-4 mt-8 mb-8 w-full">
         <div className="flex flex-grow max-w-screen-lg">
-          <div className="bg-green-100 p-4 w-1/3">
+          <div className="bg-green-100 p-4 w-1/3 rounded-l-xl">
             <h1 className="text-black py-1 text-md xl:text-2xl">
               Welcome {username}.
             </h1>
@@ -219,7 +219,7 @@ export const Chat = () => {
               </ul>
             )}
           </div>
-          <div className="flex flex-col bg-green-200 flex-1 p-4">
+          <div className="flex flex-col bg-green-200 flex-1 p-4 rounded-r-xl">
             <div className="flex-grow">Messages with {chatReceiver}</div>
             <div className="relative h-full">
               <div className="overflow-y-scroll absolute top-0 left-0 right-0 bottom-2">

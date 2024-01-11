@@ -15,7 +15,6 @@ export const TripGenerator = () => {
     to: "",
     message: "",
     date: "",
-    time: "",
     make: "",
     model: "",
     availableSeats: "",
@@ -127,7 +126,6 @@ export const TripGenerator = () => {
         to: "",
         message: "",
         date: "",
-        // time: "",
         make: "",
         model: "",
         availableSeats: "",
@@ -155,14 +153,13 @@ export const TripGenerator = () => {
   });
 
   const formDataIsIncomplete = () => {
-    const { from, to, date, time, make, model, reg, availableSeats, message } =
+    const { from, to, date, make, model, reg, availableSeats, message } =
       formData;
 
     return (
       !from ||
       !to ||
       !date ||
-      !time ||
       !make ||
       !model ||
       !reg ||
@@ -388,8 +385,8 @@ export const TripGenerator = () => {
               >
                 <div className="col-span-12 text-md text-gray-900 sm:text-xl">
                   You have created a trip from {trip.from} to {trip.to} on{" "}
-                  {trip.date} starting at {trip.time}. Your vehicle of choice is
-                  a {trip.make} {trip.model} with {trip.reg} plates. You have{" "}
+                  {trip.date}. Your vehicle of choice is a {trip.make}{" "}
+                  {trip.model} with reg. no {trip.reg}. You have{" "}
                   {trip.availableSeats} free seat(s) and your message is:{" "}
                   {trip.message}
                 </div>

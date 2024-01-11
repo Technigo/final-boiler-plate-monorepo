@@ -19,12 +19,21 @@ export const Trips = () => {
   // }, []);
 
   useEffect(() => {
-    fetch(`${apiEnv}/trips`)
-      .then((response) => response.json())
-      .then((data) => {
-        setTrips(data);
-      })
-      .catch((error) => console.error("Error fetching trips:", error));
+    const tripFetch = () => {
+      fetch(`${apiEnv}/trips`)
+        .then((response) => response.json())
+        .then((data) => {
+          setTrips(data);
+        })
+        .catch((error) => console.error("Error fetching trips:", error));
+    };
+
+    //  const userFetch = () => {
+
+    //   fetch(`${}/user/mongo/${}`)
+    //  }
+
+    tripFetch();
   }, []);
 
   if (trips === null) {
@@ -52,9 +61,6 @@ export const Trips = () => {
           <div className="col-span-3 text-xs text-gray-900 sm:text-lg">
             {trip.date}
           </div>
-          {/* <div className="col-span-2 text-xs text-gray-900 sm:text-lg">
-            {trip.time}
-          </div> */}
           <div className="col-span-4 text-xs text-gray-900 sm:text-lg">
             {trip.user}
           </div>
