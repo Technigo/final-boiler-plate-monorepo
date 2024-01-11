@@ -41,12 +41,10 @@
 	--screen-color: rgba(0, 0, 0, 0.1);
 	--screen-text-color: #777;
 	--selection-color: yellow;
+	--box-shadow-color: rgba(0, 0, 0, 0.7);
 
 	--small-padding: 4rem;
 	--big-padding: 11rem;
-
-	--breakpoint-tablet: 666px;
-	--breakpoint-desktop: 1045px;
 }
 
 *,
@@ -105,18 +103,20 @@ button:focus-visible {
 
 @media (prefers-color-scheme: light) {
 	:root {
-		/* color: inherit; */
-		/* background-color: var(--font-color); */
 		--font-color: #262522;
-		--background-color: #f2f2f2;
 
-		/* --background-color: #262522;
-      --font-color: #F2F2F2;
-      --primary-color: #7787A6;
-      --secondary-color: #424859;
-      --screen-color: rgba(0, 0, 0, 0.1);
-      --screen-text-color: #777;
-      --selection-color: yellow; */
+		--background-color: #f2f2f2;
+		--background-section-color-one: #DBC3BD;
+		--background-section-color-two: #ECEBE9;
+		--background-section-color-three: #EFF6FA;
+		--background-section-color-four: #E2E2DF;
+
+		--primary-color: #7787a6;
+		--secondary-color: #424859;
+		--screen-color: rgba(0, 0, 0, 0.1);
+		--screen-text-color: #777;
+		--selection-color: yellow;
+		--box-shadow-color: #999999;
 	}
 	a:hover {
 		color: var(--secondary-color);
@@ -126,7 +126,7 @@ button:focus-visible {
 	}
 }
 
-@media (min-width: var(--breakpoint-tablet)) and (max-width: var(--breakpoint-desktop)) {
+@media (min-width: 667px) and (max-width: 1025px) {
 	body {
 		max-width: 80dvw;
 	}

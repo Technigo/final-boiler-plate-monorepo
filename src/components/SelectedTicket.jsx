@@ -1,21 +1,31 @@
 import { bookingStore } from '../store/bookingStore'
+import { useState, useEffect } from 'react'
 import './SelectedTicket.css'
 
 export const SelectedTicket = () => {
+    const [ presentArray, setPresentArray ] = useState()
 
-    const theSeats = bookingStore.getState().selectedSeats
+    // const theSeats = bookingStore(getState().selectedSeats
+    const theSeats = bookingStore(state => state.selectedSeats)
 
     const sortedArray = (array) => {
         let sorted = [...array]
-        sorted.sort((a, b) => b[0] - a[0]).reverse()
+        sorted.sort((a, b) => b[1] - a[1]).reverse()
         return sorted
     }
 
-    const presentArray = sortedArray(theSeats)
+    useEffect(() => {
+        if (theSeats != null) {
+            let sorted = sortedArray(theSeats)
+            setPresentArray(sorted)
+        }
+    }, [theSeats])
+    
+    // const presentArray = sortedArray(theSeats)
 
     return(
         <div className="ticket-container">
-            {presentArray.length > 0 && presentArray.map((item, index) => (
+            {presentArray != null && presentArray.length > 0 && presentArray.map((item, index) => (
                 <div className="a-ticket" key={index}>
                 <div className="ticket-notch top"></div>
                     <p className="ticket-text">SEAT</p>
