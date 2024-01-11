@@ -24,7 +24,7 @@ export const ManageYourAds = () => {
         text: "Please log in to see the content",
         icon: "error",
       });
-      navigate("/");
+      navigate("/login");
     }
   }, [accessToken, navigate]);
 
