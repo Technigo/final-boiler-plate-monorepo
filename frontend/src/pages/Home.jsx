@@ -46,7 +46,7 @@ export const Home = () => {
             name: "Logout",
             onClick: () => {
               handleLogout();
-              navigate("/login");
+              navigate("/");
             },
           },
         ]}
@@ -58,7 +58,7 @@ export const Home = () => {
             name: "Logout",
             onClick: () => {
               handleLogout();
-              navigate("/login");
+              navigate("/");
             },
           },
         ]}

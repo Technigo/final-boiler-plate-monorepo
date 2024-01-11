@@ -26,6 +26,8 @@ export const Policy = () => {
     }
   }, [isLoggedin, navigate]);
 
+  const logoRedirectPath = isLoggedin ? "/home" : "/";
+
   return (
     <>
       <Navbar
@@ -40,7 +42,7 @@ export const Policy = () => {
             name: "Logout",
             onClick: () => {
               handleLogout();
-              navigate("/login");
+              navigate("/");
             },
           },
         ]}
@@ -55,10 +57,11 @@ export const Policy = () => {
             name: "Logout",
             onClick: () => {
               handleLogout();
-              navigate("/login");
+              navigate("/");
             },
           },
         ]}
+        logoRedirectPath={logoRedirectPath}
       />
       <div className="main-container">
         <div className="main-wrapper">
