@@ -1,8 +1,40 @@
 .ad-details-container {
     display: grid;
-    gap: 40px;
+    gap: 1em;
 }
 
 .ad-details-container h1 {
-    margin: 100px 0;
+    margin: 0 0 10px 0;
+}
+
+.button.contact-btn {
+    margin: 40px 0 0 0;
+}
+
+.details-wrapper {
+    margin: 20px 0 0 0;
+}
+
+.details-wrapper div.description {
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: start;
+}
+
+
+.details-wrapper div {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin-bottom: 1rem;
+}
+
+.details-wrapper h4 {
+    margin: 0;
+    white-space: nowrap;
+}
+
+.details-wrapper p {
+    margin: 0;
+    flex-grow: 1;
 }
