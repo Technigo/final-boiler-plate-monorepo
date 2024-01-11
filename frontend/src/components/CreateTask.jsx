@@ -24,6 +24,7 @@ const StyledTaskTitleInput = styled.input`
   border-radius: 20px;
   width: 250px;
   padding: 5px 5px 5px 10px;
+  background-color: var(--grey);
 `;
 
 const CreateTaskSelects = styled.div`
@@ -39,6 +40,7 @@ const StyledSelects = styled.select`
   display: flex;
   width: 123px;
   border: 1px solid var(--button);
+  background-color: var(--grey);
   border-radius: 20px;
   padding: 5px;
 `;
@@ -48,6 +50,7 @@ const StyledTaskInput = styled.textarea`
   border-radius: 20px 0 20px 20px;
   width: 250px;
   height: 150px;
+  background-color: var(--grey);
   padding: 10px;
   resize: none; /* Prevent resizing */
   overflow-y: auto; /* Enable vertical scrollbar when content exceeds height */

@@ -22,8 +22,6 @@
   cursor: pointer;
   width: 120px;
   text-align: center;
-  /* background-color: var(--primaryColor);
-  color: #fff; */
 }
 
 .react-tabs__tab--selected {

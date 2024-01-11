@@ -44,6 +44,7 @@ const StyledSelects = styled.select`
   display: flex;
   width: 120px;
   border: 1px solid var(--button);
+  background-color: var(--grey);
   border-radius: 20px;
   padding: 5px;
 

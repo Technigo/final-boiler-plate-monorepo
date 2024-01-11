@@ -6,8 +6,21 @@ import { Button } from "../components/Buttons/Button";
 import styled from "styled-components";
 import "../components/Tabs/TabsStyling.css";
 
+const StyledProfilePage = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+`;
+
 const HeaderContainer = styled.div`
   padding: 20px;
+  max-width: 700px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
 `;
 
 const TasksContainer = styled.div`
@@ -18,15 +31,42 @@ const StyledList = styled.ul`
   list-style-type: none;
   padding: 0;
   margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
 `;
 
 const StyledListItem = styled.li`
+  display: flex;
+  flex-direction: column;
+  /* align-items: flex-end;
+  text-align: left; */
   background-color: var(--grey);
   border: 1px solid #ddd;
   border-radius: 20px 0 20px 20px;
   padding: 15px;
-  margin-bottom: 10px;
+  //margin-bottom: 10px;
+  width: 250px;
+  height: auto;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+
+  .delete-button {
+    align-items: flex-end;
+  }
+
+  @media screen and (min-width: 600px) {
+    width: 400px;
+  }
+
+  @media screen and (min-width: 1000px) {
+    width: 700px;
+  }
+`;
+
+const DeleteButton = styled.div`
+  display: flex;
+  justify-content: flex-end;
 `;
 
 const TaskTitle = styled.div`
@@ -34,11 +74,13 @@ const TaskTitle = styled.div`
   font-weight: bold;
   margin-bottom: 5px;
   color: var(--darktext);
+  overflow-wrap: break-word;
 `;
 
 const TaskDescription = styled.div`
   color: var(--darkgrey);
   margin-bottom: 10px;
+  overflow-wrap: break-word;
 `;
 
 const CreatedBySection = styled.div`
@@ -48,6 +90,7 @@ const CreatedBySection = styled.div`
 
 const VolunteersSection = styled.div`
   color: var(--darktext);
+  overflow-wrap: break-word;
 `;
 
 export const Profile = () => {
@@ -70,7 +113,7 @@ export const Profile = () => {
   // Filter tasks created by the current user
 
   return (
-    <div>
+    <StyledProfilePage>
       <HeaderContainer>
         <h1>Hi {username}!</h1>
         <p>
@@ -114,12 +157,14 @@ export const Profile = () => {
                           .join(", ")
                       : "No Volunteers"}
                   </VolunteersSection>
-                  {/* Delete button for tasks you have created */}
-                  <Button
-                    buttonName="Delete"
-                    className="delete-button"
-                    onClick={() => deleteTaskById(task._id)}
-                  />
+                  <DeleteButton>
+                    {/* Delete button for tasks you have created */}
+                    <Button
+                      buttonName="Delete"
+                      className="delete-button"
+                      onClick={() => deleteTaskById(task._id)}
+                    />
+                  </DeleteButton>
                 </StyledListItem>
               ))}
             </StyledList>
@@ -147,6 +192,6 @@ export const Profile = () => {
           </TasksContainer>
         </TabPanel>
       </Tabs>
-    </div>
+    </StyledProfilePage>
   );
 };

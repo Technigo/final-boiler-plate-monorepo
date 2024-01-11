@@ -76,7 +76,7 @@ const StyledFeedCardModal = styled.div`
     right: 10px;
     border: none;
     border-radius: 10px;
-    color: #000000;
+    color: var(--darkgrey);
     font-weight: bold;
     cursor: pointer;
 
@@ -107,23 +107,18 @@ const iconSize = "40px";
 const categoryStyle = {
   Garden: {
     icon: GiGardeningShears,
-    //backgroundColor: "#eaffec",
   },
   Pets: {
     icon: MdPets,
-    //backgroundColor: "#ffeafd",
   },
   Shopping: {
     icon: TiShoppingCart,
-    //backgroundColor: "#ffecea",
   },
   Repairs: {
     icon: GiHammerNails,
-    //backgroundColor: "#eafdff",
   },
   Other: {
     icon: MdMiscellaneousServices,
-    //backgroundColor: "#eaf3ff",
   },
 };
 
@@ -234,7 +229,7 @@ export const FeedTaskCard = ({ task }) => {
             bottom: "auto",
             marginRight: "-50%",
             transform: "translate(-50%, -50%)",
-            backgroundColor: "#f8f8f8",
+            backgroundColor: "var(--grey)",
             display: "flex",
             flexDirection: "column",
             justifyContent: "center",
@@ -269,7 +264,7 @@ export const FeedTaskCard = ({ task }) => {
                   buttonName="X"
                 />
               </div>
-              <div classname="cardBody-container">
+              <div className="cardBody-container">
                 <div className="area-modal">
                   {" "}
                   {/* Render the Need and the location where the Need is to be performed */}

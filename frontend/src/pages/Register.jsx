@@ -36,7 +36,7 @@ const StyledRegField = styled.div`
 
   border: 1px solid var(--button);
   border-radius: 20px 0 20px 20px;
-  background-color: #f0f0f0;
+  background-color: var(--grey);
   padding: 20px;
   margin: 20px;
 
@@ -46,7 +46,7 @@ const StyledRegField = styled.div`
     border-bottom: 1px solid var(--button);
     width: 100%;
     padding-left: 5px;
-    background-color: #f0f0f0;
+    background-color: var(--grey);
   }
 `;
 

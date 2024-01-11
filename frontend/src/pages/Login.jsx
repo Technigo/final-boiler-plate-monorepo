@@ -2,6 +2,7 @@ import { userStore } from "../stores/userStore";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Button } from "../components/Buttons/Button";
+import { LoaderAnimation } from "../components/Animations/LoaderAnimation";
 import styled from "styled-components";
 
 const StyledIntro = styled.div`
@@ -25,7 +26,7 @@ const StyledLoginField = styled.div`
   max-width: 500px;
   border: 1px solid var(--button);
   border-radius: 20px 0 20px 20px;
-  background-color: #f0f0f0;
+  background-color: var(--grey);
   padding: 20px;
   margin: 20px;
 
@@ -35,7 +36,7 @@ const StyledLoginField = styled.div`
     border-bottom: 1px solid var(--button);
     width: 100%;
     padding-left: 5px;
-    background-color: #f0f0f0;
+    background-color: var(--grey);
   }
 `;
 
@@ -44,6 +45,7 @@ export const Login = () => {
   // Create state variables for 'username' and 'password' using 'useState'.
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [isLoading, setIsLoading] = useState(true);
 
   // Use the 'useNavigate' hook to programmatically navigate between routes.
   const navigate = useNavigate();
@@ -64,12 +66,15 @@ export const Login = () => {
       // Get the 'isLoggedIn' state from 'userStore'.
       const isLoggedIn = userStore.getState().isLoggedIn;
       if (isLoggedIn) {
+        setIsLoading(false);
+        console.log("User logged in");
         // If the user is logged in, navigate to the "/tasks" route.
         navigate("/tasks");
       }
     } catch (error) {
       // Handle any errors that occur during login and display an alert.
       alert("An error occurred during login. Please try again.");
+      setIsLoading(false);
     }
   };
 
@@ -111,6 +116,7 @@ export const Login = () => {
                 }
               }}
             />
+            {isLoading ? <LoaderAnimation /> : ""}
             {/* Create a button for logging in and attach the 'onLoginClick' event handler. */}
             <Button
               onClick={onLoginClick}

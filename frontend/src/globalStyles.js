@@ -25,8 +25,6 @@ svg {
   
 body {
   height: 100%;
-  /* background: floralwhite; */
-  /*background: #f2f3f4;*/
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-synthesis: none;
@@ -37,10 +35,6 @@ body {
   color: var(--lighttext);
   font-weight: 400;
   background: var(--purple);
-  
-  /* background-image: url("/annarobertsson_23318_make_a_background_for_webdesign_with_soft__c2014488-b44a-4bd8-ab6b-5e7ced6659eb.png");
-  background-size: cover;
-  background-repeat: no-repeat; */
 }
 
   /* Apply styles to the body when the modal is active */
