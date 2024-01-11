@@ -208,7 +208,7 @@ const PlaygroundDetails = () => {
                   <>
                     <img 
                     data-tooltip-id="sandpit"
-                data-tooltip-content={t("PlaygroundDetails.sanpit-explanation-p")}
+                    data-tooltip-content={t("PlaygroundDetails.sandpit-explanation-p")}
                       className="available playground-icon" 
                       src="/Icons/Black/icons8-sandpit-50 (1).png" 
                       alt="Sandpit" /> 
@@ -217,7 +217,7 @@ const PlaygroundDetails = () => {
                   <>
                     <img 
                     data-tooltip-id="sandpit"
-                data-tooltip-content={t("PlaygroundDetails.sanpit-explanation-p")}
+                data-tooltip-content={t("PlaygroundDetails.sandpit-explanation-p")}
                       className="not-available playground-icon" 
                       src="/Icons/White/icons8-sandpit-50.png" 
                       alt="No sandpit" /> 
