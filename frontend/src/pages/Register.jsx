@@ -67,9 +67,9 @@ export const Register = () => {
       return;
     }
 
-    if (password.length < 8) {
+    if (password.length < 5) {
       setLoading(false);
-      Swal.fire('Error', 'Password must be at least 8 characters long', 'error');
+      Swal.fire('Error', 'Password must be at least 5 characters long', 'error');
       return;
     }
 

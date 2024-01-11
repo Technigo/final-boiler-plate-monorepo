@@ -9,6 +9,7 @@ import { Footer } from "../components/Footer";
 import Swal from "sweetalert2";
 import Lottie from "lottie-react";
 import loadingAnimation from "../assets/loading.json";
+import { Heading } from "../components/reusableComponents/Heading";
 import "./profileSettings.css";
 
 export const ProfileSettings = () => {
@@ -121,7 +122,7 @@ export const ProfileSettings = () => {
             <BackArrow />
           </div>
           <div className="profile-settings">
-            <h1>My settings</h1>
+            <Heading level={1} text="My settings" aria-label="My settings">My settings</Heading>
             {isLoading ? (
             <div className="loading-container">
               <Lottie

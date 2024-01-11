@@ -11,6 +11,7 @@ import Swal from "sweetalert2";
 import Lottie from "lottie-react";
 import loadingAnimation from "../assets/loading.json";
 import "./updateSettings.css";
+import { Heading } from "../components/reusableComponents/Heading";
 
 export const UpdateSettings = () => {
   const navigate = useNavigate();
@@ -143,7 +144,7 @@ export const UpdateSettings = () => {
           <BackArrow />          
         </div>
         <div className="update-settings">
-          <h1>Update settings</h1>
+          <Heading level={1} text="Update settings" aria-label="Update settings">Update settings</Heading>
           {isLoading ? (
             <div className="loading-container">
               <Lottie
