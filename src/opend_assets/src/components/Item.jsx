@@ -3,6 +3,7 @@ import logo from "../../assets/food-lightscape.png";
 import { Actor, HttpAgent } from "@dfinity/agent";
 import { idlFactory } from "../../../declarations/nft";
 import { Principal } from "@dfinity/principal";
+import Button from "./Button";
 
 
 function Item(props) {
@@ -10,9 +11,12 @@ function Item(props) {
   const [name, setName] = useState();
   const [owner, setOwner] = useState();
   const [image, setImage] = useState();
+  const [button, setButton] = useState();
+  const [priceInput, setPriceInput] = useState();
 
 
-  const id = Principal.fromText(props.id);
+  // const id = Principal.fromText(props.id);
+  const id = props.id;
 
   const localHost = "http://localhost:8080/";
   const agent = new HttpAgent({ host: localHost });
@@ -30,11 +34,32 @@ function Item(props) {
     setName(name);
     setOwner(owner.toText());
     setImage(image);
+
+    setButton(<Button handleClick={handleSell} text={"Sell"}/>);
+    
   }
 
   useEffect(() => {
     loadNFT();
   }, []);
+
+  let price;
+
+  function handleSell() {
+    console.log("Sell clicked");
+    setPriceInput( <input
+         placeholder="Price in BTC"
+         type="number"
+         className="price-input"
+         value={price}
+         onChange={(e) => price=e.target.value}
+     />);
+    setButton(<Button handleClick={sellItem} text={"Confirm"}/>);
+  }
+
+  async function sellItem() {
+    console.log("Set price = " + price);
+  }
 
   return (
     <div className="disGrid-item">
@@ -50,6 +75,8 @@ function Item(props) {
           <p className="disTypography-root makeStyles-bodyText-24 disTypography-body2 disTypography-colorTextSecondary">
             Owner: {owner}
           </p>
+          {priceInput}
+          {button}
         </div>
       </div>
     </div>
