@@ -4,7 +4,7 @@
   height: 3em;
 }
 
-.arrow-container {
+.register-arrow-wrapper {
   display: flex;
   flex-direction: row;
   justify-content: space-between;

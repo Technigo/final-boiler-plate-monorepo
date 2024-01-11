@@ -93,7 +93,7 @@ export const Register = () => {
     <>
       <div className="main-container">
         <div className="main-wrapper">
-          <div className="arrow-container">
+          <div className="register-arrow-wrapper">
             <BackArrow />
             <Logo className={"login-logo"} color="green" />
           </div>
