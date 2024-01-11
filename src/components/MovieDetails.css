@@ -61,7 +61,7 @@
 
 /* Additional styles for movie title and rating */
 .movie-title h1 {
-	font-size: 20px;
+	font-size: 10px;
 	text-shadow: 1px 1px #4d4d4d;
 	line-height: 1;
 }

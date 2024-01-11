@@ -9,7 +9,7 @@ export const Header = () => {
 	return (
 
 		<header className="the-header page-section">
-			<div>{<Link to="/">HOME</Link>}</div>
+			<div>{<Link to="/"><h3>HOME</h3></Link>}</div>
 
 			<div>
 				{isLoggedIn ? (

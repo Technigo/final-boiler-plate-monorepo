@@ -13,6 +13,7 @@ export const bookingStore = create((set) => ({
                 method: 'GET',
             })
             const data = await response.json()
+            console.log(data)
             set({ allShowTimes: data })
         }
         catch (error) {
