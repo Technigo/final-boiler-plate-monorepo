@@ -61,10 +61,6 @@ export const tripSchema = new Schema(
       type: String,
       required: true,
     },
-    time: {
-      type: String,
-      required: true,
-    },
     make: {
       type: String,
       required: true,

@@ -10,6 +10,7 @@ router.get("/", UserController.checkAuthentication);
 router.post("/register", UserController.registerUser);
 router.get("/users", UserController.getAllUsers);
 router.get("/user/:user_id", UserController.getUserById);
+router.get("/user/mongo/:mongoid", UserController.getUserByMongoId);
 router.get("/messages/:senderid/:recipientid", UserController.getUserMessages);
 router.get("/getallmessages", UserController.getAllMessages);
 //

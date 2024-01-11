@@ -76,6 +76,20 @@ export const UserController = {
     }
   },
 
+  getUserByMongoId: async (req, res) => {
+    const { mongoid } = req.params;
+    try {
+      const user = await UserModel.findById({ _id: mongoid });
+      if (!user) {
+        return res.status(404).json({ message: "User not found" });
+      }
+
+      res.json(user);
+    } catch (error) {
+      res.json({ error: error.message });
+    }
+  },
+
   getUserMessages: async (req, res) => {
     const { senderid, recipientid } = req.params;
 
@@ -117,6 +131,7 @@ export const UserController = {
   addTrip: async (req, res) => {
     const { from, to, message, date, make, model, availableSeats, reg, user } =
       req.body;
+    console.log(req.body);
     try {
       const trip = new TripModel({
         from,
