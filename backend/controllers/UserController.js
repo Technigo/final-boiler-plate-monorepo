@@ -3,6 +3,8 @@ import { MessageModel } from "../models/MessageModel";
 import { TripModel } from "../models/TripModel";
 import bcrypt from "bcrypt";
 
+// const listEndpoints = require("express-list-endpoints");
+
 export const UserController = {
   getProfile: (req, res) => {
     res.send(JSON.stringify(req.oidc.user));
@@ -11,6 +13,10 @@ export const UserController = {
   checkAuthentication: (req, res) => {
     res.send(req.oidc.isAuthenticated() ? "Logged in" : "Logged out");
   },
+
+  //  getEndpoints: (req, res) => {
+  //   res.send(listEndpoints(app))
+  // },
 
   registerUser: async (req, res) => {
     const { username, email, password } = req.body;
@@ -109,8 +115,18 @@ export const UserController = {
   },
 
   addTrip: async (req, res) => {
-    const { from, to, message, date, time, make, model, availableSeats, reg } =
-      req.body;
+    const {
+      from,
+      to,
+      message,
+      date,
+      time,
+      make,
+      model,
+      availableSeats,
+      reg,
+      user,
+    } = req.body;
     try {
       const trip = new TripModel({
         from,
@@ -122,9 +138,11 @@ export const UserController = {
         model,
         availableSeats,
         reg,
+        user,
       });
 
       await trip.save();
+      res.status(201).json({ message: "Trip successfully registered" });
     } catch (error) {
       res.status(400).json({
         message: "Could not post trip",

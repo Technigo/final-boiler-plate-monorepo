@@ -4,8 +4,11 @@ import { LocationInput } from "./LocationInput";
 import { makes, models } from "./CarData";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import { userStore } from "../stores/userStore";
 
 export const TripGenerator = () => {
+  const { loggedInUserId } = userStore();
+
   const [formData, setFormData] = useState({
     from: "",
     to: "",
@@ -16,6 +19,7 @@ export const TripGenerator = () => {
     model: "",
     availableSeats: "",
     reg: "",
+    user: loggedInUserId,
   });
 
   const [trips, setTrips] = useState([]);
@@ -81,19 +85,23 @@ export const TripGenerator = () => {
     setLoading(true);
 
     const newTrip = {
-      id: Date.now(),
+      // id: Date.now(),
       from: formData.from,
       to: formData.to,
       message: formData.message,
-      date: formData.date,
+      // date: formData.date,
+      date: "testdate",
       time: formData.time,
       make: formData.make,
       model: formData.model,
       availableSeats: formData.availableSeats,
       reg: formData.reg,
+      user: loggedInUserId,
     };
 
     try {
+      console.log(newTrip);
+      console.log(`${apiEnv}/addtrip`);
       const response = await fetch(`${apiEnv}/addtrip`, {
         method: "POST",
         headers: {

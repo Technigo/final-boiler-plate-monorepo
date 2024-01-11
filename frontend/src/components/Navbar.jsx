@@ -110,6 +110,7 @@ export const Navbar = () => {
         {/* Add a responsive menu button for smaller screens */}
         <div className="md:hidden">
           <LoginBtn />
+          <LogoutBtn />
           <button className="text-white pl-5 w-8" onClick={onMobileNavClick}>
             {/* Add a responsive menu icon, e.g., a hamburger icon */}
             {openMobileNav ? <>&#x2715;</> : <>&#9776; </>}

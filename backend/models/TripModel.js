@@ -81,6 +81,10 @@ export const tripSchema = new Schema(
       type: String,
       required: true,
     },
+    user: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User",
+    },
   },
   {
     timestamps: true,
@@ -88,5 +92,3 @@ export const tripSchema = new Schema(
 );
 
 export const TripModel = mongoose.model("Trip", tripSchema);
-
-

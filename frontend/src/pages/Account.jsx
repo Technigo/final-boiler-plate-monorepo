@@ -1,9 +1,8 @@
-import { Profile } from "../components/profile"
+// import { Profile } from "../components/profile"
 
 export const Account = () => {
-
   return (
-    <Profile/>
-    )
-    
+    // <Profile/>
+    <div>Account</div>
+  );
 };

@@ -9,6 +9,7 @@ import userRoutes from "./routes/userRoutes";
 import { MessageModel } from "./models/MessageModel";
 import ws from "ws";
 import fs from "fs";
+import listEndpoints from "express-list-endpoints";
 
 const { auth } = require("express-openid-connect");
 
@@ -33,6 +34,10 @@ connectDB();
 // Start the server and listen for incoming requests on the specified port
 const server = app.listen(port, () => {
   console.log(`Server running on http://localhost:${port}`); // Display a message when the server is successfully started
+});
+
+app.get("/endpoints", (req, res) => {
+  res.send(listEndpoints(app));
 });
 
 const wss = new ws.WebSocketServer({ server });
