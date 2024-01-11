@@ -1,6 +1,5 @@
 import { useEffect, useRef, useState, useCallback } from "react";
 import { adStore } from "../stores/adStore";
-import BackArrow from "./reusableComponents/BackArrow";
 import searchIcon from "../assets/search-icon.svg";
 import "./SearchBar.css";
 
@@ -69,7 +68,6 @@ export const SearchBar = ({ setFilteredAds, searchTerm, setSearchTerm }) => {
   return (
     <div className="search-bar">
       <div className="search-input">
-        <BackArrow />
         <input
           type="search"
           value={searchTerm}

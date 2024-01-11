@@ -1,0 +1,52 @@
+.search-container {
+    display: flex;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    /* Ensure this is 100% */
+    min-height: 100vh;
+}
+
+.search-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    /* Changed from flex-start to stretch to make children (including SearchBar) take full width */
+    width: 100%;
+    /* Set to 100% */
+    margin-top: 30px;
+    margin-bottom: 60px;
+    padding: 0;
+}
+
+.filtered-ads {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 20px;
+}
+
+/* Tablet styles */
+@media only screen and (min-width: 768px) {
+    .search-wrapper {
+        max-width: 680px;
+        margin-top: 40px;
+        margin-bottom: 80px;
+    }
+
+    .filtered-ads {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media only screen and (min-width: 1200px) {
+    .search-wrapper {
+        max-width: 1120px;
+        margin-top: 50px;
+        margin-bottom: 1000px;
+    }
+
+    .filtered-ads {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}

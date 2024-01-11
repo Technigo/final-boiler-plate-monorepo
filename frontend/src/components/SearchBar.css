@@ -1,5 +1,5 @@
 .search-bar {
-  margin: 10px auto;
+  margin: 10px 0;
 }
 
 .search-bar input {
@@ -78,8 +78,11 @@
 }
 
 @media screen and (min-width: 1120px) {
-  .search-bar .search-input {
-    max-width: 40rem;
-    margin: 0 auto;
+  .search-bar {
+    width: 100%;
+  }
+
+  .search-bar input {
+    width: calc( - 36px);
   }
 }
