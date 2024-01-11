@@ -16,7 +16,7 @@ export const Navbar = () => {
 
   const navlinks = [
     // { linkName: "Search", linkRoute: "/search" },
-    { linkName: "Create trip", linkRoute: "/createtrip" },
+    // { linkName: "Create trip", linkRoute: "/createtrip" },
     { linkName: "Trips", linkRoute: "/trips" },
     { linkName: "About", linkRoute: "/about" },
     // { linkName: "Register", linkRoute: "/register" },

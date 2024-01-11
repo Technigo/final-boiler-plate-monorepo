@@ -226,7 +226,7 @@ export const TripGenerator = () => {
                 maxLength={6}
                 pattern="[a-zA-Z]{3}\d{2}[a-zA-Z\d]{1}"
                 title="Please follow the patterns ABC123/ABC12X"
-                placeholder="e.g. ABC123"
+                placeholder="ex. ABC123"
               />
             </div>
 
