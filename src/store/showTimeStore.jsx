@@ -2,7 +2,7 @@ import { create } from 'zustand'
 
 
 const apiEnv = import.meta.env.VITE_BACKEND_API;
-console.log(apiEnv)
+// console.log(apiEnv)
 
 export const showTimesStore = create((set) => ({
   showTimes: [],
@@ -33,7 +33,6 @@ export const showTimesStore = create((set) => ({
 
 
   // fetch showtime by movie
-
   fetchShowtimeByMovie: async (movieId) => {
     try {
       const response = await fetch(`${apiEnv}/showtimes/movie/${movieId}`, {
@@ -53,7 +52,6 @@ export const showTimesStore = create((set) => ({
       console.error(error)
     }
   },
-
 }))
 
 
