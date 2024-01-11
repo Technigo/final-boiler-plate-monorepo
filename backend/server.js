@@ -1,48 +1,102 @@
-import express from 'express';
-import path from 'path';
-import { authenticateAdmin } from '../middleware/authenticateAdmin'; // Import middleware to add for protection
-import {
-  getCocktailsController,
-  getCocktailByIdController,
-  addCocktailController,
-  updateCocktailController,
-  deleteCocktailController
-} from '../controllers/cocktailController';
+// Importing necessary libraries and modules
+import express from "express";
+import cors from "cors";
+import dotenv from "dotenv";
+import cloudinary from 'cloudinary';
+import fileUpload from 'express-fileupload';
 
-// Set up uploadImage function to store uploaded image directly on the server
-const uploadImage = async (req, res, next) => {
-  if (!req.file) {
-    return next();
-  }
+import userRoutes from "./routes/userRoutes";
+import adminRoutes from "./routes/adminRoutes";
+import cocktailRoutes from "./routes/cocktailRoutes";
 
-  const fileName = `${Date.now()}${path.extname(req.file.originalname)}`;
-  const uploadPath = `uploads/${fileName}`;
+// Import database connection functions
+import { connectAtlasDB } from "./config/db";
 
-  // Store the uploaded image
-  try {
-    req.file.mv(uploadPath, err => {
-      if (err) {
-        return res.status(500).json({ message: err.message });
-      }
+dotenv.config(); // Load and parse environment variables from the .env file
 
-      // Add image URL to the request body
-      req.body.imageUrl = uploadPath;
-      next();
-    });
-  } catch (error) {
-    res.status(500).json({ message: error.message });
-  }
-};
+// const cloudinary = require('cloudinary').v2;
 
+// Configure Cloudinary
+cloudinary.config({
+  cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+  api_key: process.env.CLOUDINARY_API_KEY,
+  api_secret: process.env.CLOUDINARY_API_SECRET
+});
+
+// Retrieve the port number from environment variables or set default
+const port = process.env.PORT || 3000;
+
+// Create an Express application instance
+const app = express();
+
+// Middlewares setup
+app.use(cors());
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+
+// Add express-fileupload middleware
+app.use(fileUpload({
+  limits: { fileSize: 50 * 1024 * 1024 }, // Optional: Set file size limit
+  useTempFiles: true,
+  tempFileDir: '/tmp/' //store temporarily
+}));
+
+// Middleware to serve static files from the 'uploads' directory
+//app.use('/uploads', express.static('uploads'));
+
+// Registering API routes with the Express application
+app.use('/', userRoutes);
+app.use('/admin', adminRoutes);
+app.use('/cocktails', cocktailRoutes);
+
+// Error handling middleware
+app.use(function (err, req, res, next) {
+  console.error(err.stack);
+  res.status(500).send('Something broke!');
+});
+
+// Connecting to Mongo DB Atlas Instance
+connectAtlasDB(); // Connects to MongoDB Atlas
+
+// Start the server and listen for incoming requests
+app.listen(port, () => {
+  console.log(`Server running on http://localhost:${port}`);
+});
+
+
+
+
+
+/*
+
+import cloudinary from 'cloudinary';
+import fileUpload from 'express-fileupload'; // Import express-fileupload
+
+///////////
+
+// Configure Cloudinary
+cloudinary.config({
+  cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+  api_key: process.env.CLOUDINARY_API_KEY,
+  api_secret: process.env.CLOUDINARY_API_SECRET
+});
+
+// Middleware to handle file uploads
+app.use(fileUpload({
+  limits: { fileSize: 50 * 1024 * 1024 }, // You can set file size limits
+  useTempFiles: true, // Use temporary file storage
+  tempFileDir: '/tmp/' // Specify the temp file directory
+}));
 const router = express.Router();
 
-// Routes that handle image uploads with the updated storage configuration
-router.post('/', authenticateAdmin, uploadImage, addCocktailController);
-router.put('/:id', authenticateAdmin, uploadImage, updateCocktailController);
 
-// Routes that do not handle image uploads remain the same
-router.get('/', getCocktailsController);
-router.get('/:id', getCocktailByIdController);
-router.delete('/:id', authenticateAdmin, deleteCocktailController);
+app.use('/api/cocktails', cocktailRoutes);
 
-export default router;
+/////////////////
+
+
+// app.listen(process.env.PORT, () => {
+//   console.log(`Server is running on port ${process.env.PORT}`);
+// });
+*/
+
