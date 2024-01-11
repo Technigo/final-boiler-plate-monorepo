@@ -105,7 +105,7 @@ export const Register = () => {
             onChange={(e) => setPassword(e.target.value)}
           />
           {/* Create a button for signing up and attach the 'onSignupClick' event handler. */}
-          <button className="register" onClick={onSignupClick}>{t("Sign Up")}</button>
+          <button className="register-button" onClick={onSignupClick}>{t("Sign Up")}</button>
         </div>
       </div>
 

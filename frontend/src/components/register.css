@@ -26,7 +26,7 @@
     margin: 40px;
 }
 
-.register {
+.register-button {
     color: black;
     font-family: 'Poppins', sans-serif;
     font-weight: 700;
@@ -38,7 +38,7 @@
     border: none;
 }
 
-.register:hover {
+.register-button:hover {
     color: black;
     font-family: 'Poppins', sans-serif;
     font-weight: 700;
