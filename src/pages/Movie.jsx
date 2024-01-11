@@ -16,7 +16,6 @@ export const Movie = () => {
         await fetchMovies()
         const movie = movies.find((movie) => movie._id === id)
 
-
         if (movie) {
           setMovieData(movie)
           setIsLoading(false)
