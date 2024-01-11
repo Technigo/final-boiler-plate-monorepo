@@ -1,5 +1,7 @@
 import Lottie from "lottie-react";
 import HomePicture from "../assets/HomePicture.json";
+import { Hero } from "../components/Hero";
+import { FAQ } from "../components/FAQ";
 
 export const Home = () => {
   return (
@@ -41,6 +43,8 @@ export const Home = () => {
         animationData={HomePicture}
         loop={false}
       />
+      <Hero />
+      <FAQ />
     </>
   );
 };

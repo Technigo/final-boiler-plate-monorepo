@@ -160,9 +160,9 @@ export const Chat = () => {
 
   return (
     isAuthenticated && (
-      <div className="flex items-center justify-center mt-8 w-full">
+      <div className="flex items-center justify-center p-8 mt-8 mb-8 w-full">
         <div className="flex flex-grow max-w-screen-lg">
-          <div className="bg-green-100 px-5 w-1/3">
+          <div className="bg-green-100 p-5 w-1/3">
             <h1 className="text-black py-1 text-md xl:text-2xl">
               Welcome {username}.
             </h1>
