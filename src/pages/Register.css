@@ -1,11 +1,12 @@
-.input-container {
+.register-container {
 	grid-row: 2/3;
 	display: flex;
 	gap: 10px;
 	flex-direction: column;
 	justify-content: center;
+	margin-top: -5rem;
 }
-.input-container input {
+.register-container input {
 	border: none;
 	border-bottom: 1px var(--font-color) solid;
 	background-color: transparent;
@@ -19,11 +20,31 @@
 	display: flex;
 	justify-content: center;
 	align-items: start;
-	margin-top: 1rem;
+	margin-top: 2rem;
 }
 .button-container button {
 	font-size: 1em;
-	background-color: var(--primary-color); /*beige color as in Trello? */
+	background-color: var(--primary-color);
 	color: var(--background-color);
 	font-size: 1.2rem;
+}
+
+.register-button-container {
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	margin-top: 2rem;
+}
+
+.register-button {
+	display: inline-block;
+	padding: 10px 20px;
+	font-size: 16px;
+	text-align: center;
+	text-decoration: none;
+	background-color: var(--primary-color);
+	color: var(--background-color);
+	border-radius: 5px;
+	cursor: pointer;
+	margin-left: 3rem;
 }
