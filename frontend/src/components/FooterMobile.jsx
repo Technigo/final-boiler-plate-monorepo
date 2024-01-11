@@ -1,6 +1,6 @@
 import React from "react";
-import LanguageSwitcherFooter from "./LanguageSwitcherFooter";
 import "./footermobile.css";
+import LanguageSwitcherFooter from "./LanguageSwitcherFooter";
 
 const FooterMobile = () => {
 
