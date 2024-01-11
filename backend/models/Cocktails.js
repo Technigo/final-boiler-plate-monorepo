@@ -14,7 +14,8 @@ const cocktailSchema = mongoose.Schema({
     occasion: [String],
     difficulty: String,
     flavorProfile: [String],
-    imageUrl: String, // THIS IS WHERE I NEED A WAY TO UPLOAD IMAGES FROM DEVICES VIA FRONTEND (ADMIN ONLY ACCES)
+    imageUrl: String, // URL of the image
+    imagePublicId: String, // Public ID of the image in Cloudinary
     servings: Number,
     prepTime: String,
     drinkware: String,
@@ -28,6 +29,7 @@ const cocktailSchema = mongoose.Schema({
 });
 
 module.exports = mongoose.model('Cocktail', cocktailSchema);
+
 
 // eksempel:
 // {

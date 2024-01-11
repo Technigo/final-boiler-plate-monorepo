@@ -1,8 +1,5 @@
-
 import express from 'express';
-import multer from 'multer';
-import path from 'path';
-import { authenticateAdmin } from '../middleware/authenticateAdmin'; // Import middleware to add for protection
+import { authenticateAdmin } from '../middleware/authenticateAdmin';
 import {
     getCocktailsController,
     getCocktailByIdController,
@@ -10,31 +7,21 @@ import {
     updateCocktailController,
     deleteCocktailController
 } from '../controllers/cocktailController';
-
-
-// Set up multer for file uploads with updated storage configuration
-const storage = multer.diskStorage({
-    destination: function (req, file, cb) {
-        // Make sure the directory 'uploads/' exists
-        cb(null, 'uploads/');
-    },
-    filename: function (req, file, cb) {
-        // Append the timestamp and the original filename
-        cb(null, `${Date.now()}-${file.originalname}`);
-    }
-});
-
-const upload = multer({ storage: storage });
+import { uploadToCloudinary } from '../middleware/cloudinaryUpload';
 
 const router = express.Router();
 
-// Routes that handle image uploads with the updated multer middleware
-router.post('/', authenticateAdmin, upload.single('image'), addCocktailController);
-router.put('/:id', authenticateAdmin, upload.single('image'), updateCocktailController);
+// POST route for adding new cocktails with image upload
+router.post('/', authenticateAdmin, uploadToCloudinary, addCocktailController);
 
-// Routes that do not handle image uploads remain the same
+// PUT route for updating cocktails, possibly with new image
+router.put('/:id', authenticateAdmin, uploadToCloudinary, updateCocktailController);
+
+// GET routes for retrieving cocktails
 router.get('/', getCocktailsController);
 router.get('/:id', getCocktailByIdController);
+
+// DELETE route for deleting cocktails, including Cloudinary image deletion
 router.delete('/:id', authenticateAdmin, deleteCocktailController);
 
 export default router;
