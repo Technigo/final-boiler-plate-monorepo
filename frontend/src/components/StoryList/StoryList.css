@@ -1,9 +1,3 @@
-.story-list {
-  display: flex;
-  flex-direction: column;
-  align-items: center; 
-}
-
 .filter-options {
   width: 100%;
   display: flex;
@@ -21,6 +15,12 @@
   background-color: rgba(108, 117, 125, 0.7);
 }
 
+.story-list {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
 .story-card-list {
   width: 85%;
   display: flex;
@@ -39,13 +39,13 @@
   flex-basis: 40%;
 }
 
-
 .story-cards .story-image img {
   width: 95%;
   height: auto;
   border-radius: 2px;
   margin: 8px;
 }
+
 .story-image {
   display: flex;
   align-items: center;
@@ -67,7 +67,7 @@
 .story-content {
   display: flex;
   flex-direction: column;
-  justify-content: space-between; 
+  justify-content: space-between;
   flex-basis: 60%;
   overflow-y: auto;
 }
@@ -78,15 +78,17 @@
 
 .story-info h4 {
   color: #242424;
-   background-color: lightgrey;
-   padding-left: 3px;
-   padding-right: 3px;
-   border-radius: 3px;
-   margin-right: -5px;
+  background-color: lightgrey;
+  padding-left: 3px;
+  padding-right: 3px;
+  border-radius: 3px;
+  margin-right: -5px;
 }
+
 .story-footer span {
   color: #242424;
 }
+
 .story-footer {
   height: 30px;
   font-size: 12px;
@@ -114,18 +116,17 @@
 }
 
 .like-icon {
+  height: 25px;
   transition: transform 0.3s ease;
 }
 
 .like-icon:hover {
-  transform: scale(1.3); 
+  transform: scale(1.3);
 }
-
 
 @media (min-width: 600px) {
   .story-card-list .story-content {
     max-height: 300px;
-   
   }
   .story-card-list {
     max-height: 320px;
@@ -133,13 +134,13 @@
     flex-direction: row;
   }
   .story-content h3 {
-    padding-top: 10px; 
+    padding-top: 10px;
   }
 }
 
 @media (min-width: 600px) {
   .story-content h3 {
-    padding-top: 20px; 
+    padding-top: 20px;
     font-size: 25px;
   }
   .story-content p {
@@ -157,6 +158,7 @@
   }
   .story-card-list .story-footer .like-icon {
     width: 30px;
+    height: 30px;
     margin-right: 10px;
     margin-bottom: 6px;
   }

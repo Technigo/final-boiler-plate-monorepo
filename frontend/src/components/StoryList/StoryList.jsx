@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useCallback } from "react";
 import PropTypes from "prop-types";
-import likeIcon from "/likeblack.svg";
+import likeIcon from "../../assets/likeicon.svg";
 import { timeSince } from "../utils/timeUtils";
 import "./StoryList.css";
 
@@ -137,7 +137,8 @@ export const StoryList = () => {
           <select
             className="dropdowns"
             value={selectedLanguage}
-            onChange={handleLanguageChange}>
+            onChange={handleLanguageChange}
+          >
             <option value="en">English</option>
             <option value="sv">Swedish</option>
           </select>
@@ -145,7 +146,8 @@ export const StoryList = () => {
           <select
             className="dropdowns"
             value={filterType}
-            onChange={handleFilterTypeChange}>
+            onChange={handleFilterTypeChange}
+          >
             <option value="">Select Filter</option>
             <option value="ranking">Ranking</option>
             <option value="city">City</option>
@@ -157,7 +159,8 @@ export const StoryList = () => {
             <select
               className="dropdowns"
               value={selectedCity}
-              onChange={handleCityChange}>
+              onChange={handleCityChange}
+            >
               <option value="">Select City</option>
               {cities.map((city, index) => (
                 <option key={`city-${index}-${city}`} value={city}>
@@ -171,7 +174,8 @@ export const StoryList = () => {
             <select
               className="dropdowns"
               value={selectedCategory}
-              onChange={handleCategoryChange}>
+              onChange={handleCategoryChange}
+            >
               <option value="">Select Category</option>
               {categories.map((category, index) => (
                 <option key={`category-${index}-${category}`} value={category}>
