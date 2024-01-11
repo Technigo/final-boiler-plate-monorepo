@@ -10,22 +10,28 @@
 	z-index: 1;
 	margin-top: 3rem !important;
 }
-.the-contact-container {
-	width: 100%;
-	display: flex;
-	flex-direction: row;
-	justify-content: space-around;
-	align-items: center;
+@media (min-width: 667px) {
 }
 
-.the-footer h3 {
-	font-size: 1.5rem;
-	margin-bottom: 2rem;
-}
-.contact-info {
-	text-align: left;
-	line-height: 0.1;
-}
-.nav-bar {
-	margin-left: 5rem;
+/* Media Query: Further adjust grid for screens wider than 1025px */
+@media (min-width: 1025px) {
+	.the-contact-container {
+		width: 100%;
+		display: flex;
+		flex-direction: row;
+		justify-content: space-around;
+		align-items: center;
+	}
+
+	.the-footer h3 {
+		font-size: 1.5rem;
+		margin-bottom: 2rem;
+	}
+	.contact-info {
+		text-align: left;
+		line-height: 0.1;
+	}
+	.nav-bar {
+		margin-left: 5rem;
+	}
 }
