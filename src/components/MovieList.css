@@ -30,19 +30,17 @@
 }
 
 .image-overlay h2 {
-	font-size: 1rem;
+	font-size: 1.7rem;
 	font-weight: bold;
+	margin-bottom: 0.8rem;
+	text-align: center;
+	padding-left: 10px;
+	padding-bottom: 5px;
 }
 
 .image-overlay p {
 	padding-left: 10px;
 	text-align: center;
-}
-
-.image-overlay h2 {
-	text-align: center;
-	padding-left: 10px;
-	padding-bottom: 5px;
 }
 
 /* .the-movie-link *:hover {

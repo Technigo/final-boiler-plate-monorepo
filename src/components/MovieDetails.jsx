@@ -1,12 +1,11 @@
+import { useEffect, useState } from 'react';
 import { showTimesStore } from '../store/showTimeStore'
 import { Link } from 'react-router-dom'
 import moment from 'moment'
 
 import "./MovieDetails.css";
-import { useEffect, useState } from 'react';
 
 export const MovieDetails = ({ movie }) => {
-
   const fetchShowtimeByMovie = showTimesStore((state) => state.fetchShowtimeByMovie)
 
   const [showtimes, setShowtimes] = useState([]);
