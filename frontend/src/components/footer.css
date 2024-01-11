@@ -4,7 +4,7 @@
     padding: 10px;
 }
 
-.footer img {
+.footer-content img {
     width: 197px;
 }
 
@@ -15,7 +15,7 @@
     padding-left: 30px;
 }
 
-.footer p {
+.footer-content p {
     font-size: 8px;
     padding-top: 10px;
 }

@@ -11,7 +11,6 @@ const Footer = () => {
                 <p>Copyright | All rights reserved | 2023</p>
                 <img src="/HabitFlow.png" />
             </div>
-
         </div>
     );
 }
