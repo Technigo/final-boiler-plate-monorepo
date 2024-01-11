@@ -1,6 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 //import style component
 //authentication ?! -Mirela
+//add logout button
 
 export const AdminDashboard = () => {
     const navigate = useNavigate();
