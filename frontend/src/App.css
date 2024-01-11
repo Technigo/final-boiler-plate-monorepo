@@ -12,30 +12,22 @@ h1,
 h2,
 h3,
 h4 {
-  /* font-family: Georgia, 'Times New Roman', Times, serif; */
-  font-family: Raleway; 
+  font-family: Raleway;
 }
 
 p {
-  /* font-family: "Nunito", sans-serif;  */
-  font-family: Raleway; 
+  font-family: Raleway;
   font-size: 1.1em;
 }
 
-.georgia {
-  font-family: Georgia, 'Times New Roman', Times, serif;
-  font-size: 13px;
-}
 
 li {
-  /* font-family: "Nunito", sans-serif; */
   font-family: Raleway;
   font-size: 1.1em;
   line-height: 1.5;
 }
 
 button {
-  /* font-family: "Nunito", sans-serif; */
   font-family: Raleway;
   font-size: 1rem;
 }
@@ -48,9 +40,8 @@ button {
   color: #286052;
 }
 
-label{
-  /* font-family: "Nunito", sans-serif; */
+label {
   font-family: Raleway;
   color: white;
-  font-size: 1.1rem; 
+  font-size: 1.1rem;
 }

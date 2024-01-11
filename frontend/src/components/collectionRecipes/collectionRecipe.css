@@ -1,11 +1,11 @@
 .collection-recipe-card {
-  line-height: 1.25; 
+  line-height: 1.25;
 }
 
 .collection-recipe-card h2 {
   font-size: 18px;
   font-weight: 600;
-  margin: 0.3em 0 0.7em 0; 
+  margin: 0.3em 0 0.7em 0;
 }
 
 .collection-recipe-card h2:hover {
@@ -14,14 +14,15 @@
 
 .collection-recipe-card p {
   font-family: Georgia, 'Times New Roman', Times, serif;
-  font-size: 13px; 
+  font-size: 13px;
 }
 
 .collection-recipe-image-container {
   overflow: hidden;
   position: relative;
   width: 100%;
-  padding-top: 100%; /* This creates a square aspect ratio */
+  padding-top: 100%;
+  /* This creates a square aspect ratio */
 }
 
 .gradient-overlay {
@@ -30,8 +31,9 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(to top, rgb(55,95,74, 0.7) 5%,rgb(240,234,208, 0.1) 80%);
-  pointer-events: none; /* Allows clicks to pass through the overlay to the image */
+  background: linear-gradient(to top, rgb(55, 95, 74, 0.7) 5%, rgb(240, 234, 208, 0.1) 80%);
+  pointer-events: none;
+  /* Allows clicks to pass through the overlay to the image */
 }
 
 .collection-recipe-card img {
@@ -40,39 +42,39 @@
   left: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover; /* This ensures the image covers the entire container */
+  object-fit: cover;
+  /* This ensures the image covers the entire container */
 }
 
 .user-input-collection {
-  display: inline-flex; 
+  display: inline-flex;
   flex-direction: row;
   flex-wrap: wrap;
-  gap: 3px; 
+  gap: 3px;
 }
 
 .recipe-tag {
   background-color: #173e34;
-  color: white; 
+  color: white;
   font-family: Raleway;
-  font-size: 12px; 
-  padding: 4px; 
+  font-size: 12px;
+  padding: 4px;
   border-radius: 3px;
 }
 
 
 /* ---------TABLET VIEW---------- */
-@media (min-width: 667px) and (max-width: 1024px) { 
+@media (min-width: 667px) and (max-width: 1024px) {
   .recipe-tag {
-    font-size: 14px; 
-    padding: 5px; 
+    font-size: 14px;
+    padding: 5px;
   }
 }
 
 /* ---------DESKTOP VIEW---------- */
 @media (min-width: 1025px) {
-  
   .recipe-tag {
-    font-size: 14px; 
-    padding: 5px; 
+    font-size: 14px;
+    padding: 5px;
   }
 }

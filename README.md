@@ -84,7 +84,7 @@ As part of the Technigo Web Dev Bootcamp, this project was created as the Final 
 1. **Clone the Repository:**
 
 ```
-git clone final-boiler-plate-monorepo
+git clone open-air-feast
 ```
 
 2. **Navigate to the Backend Directory**
@@ -159,6 +159,8 @@ The starting point was to create a MVP and to set up a basic structure of the fr
 
 Moving forward: 
 The project is prepared for further development, such as using authentication for building a login function. There is a prepared endpoint for searching for recipes, which only needs to be implemented in the frontend. To extend the project further, next step would be to build an endpoint for saving recipes to the database, and also fine-tune the model for even better responses. 
+
+Google Lighthouse and cross-browser testing show satisfactory results.
 <br><br>
 
 ## View it live

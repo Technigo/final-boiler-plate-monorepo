@@ -6,11 +6,8 @@
     position: relative;
     background-image: url("/src/assets/hero-forest.jpg");
     background-size: cover;
-    /* height: 350px; */
     width: 100%;
-    /* background-attachment: fixed;  Fix the background image in place  */
     background-position: 50% 70%;
-    /* Adjust the percentage to move the visible part vertically */
 }
 
 

@@ -1,21 +1,21 @@
-import  { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef } from "react";
 import "./newRecipe.css";
 import { recipeStore } from "../../stores/recipeStore";
-import { PiCookingPot } from "react-icons/pi";
-import {HeadingDetails} from "../recipeDetailsComponents/headingDetails/HeadingDetails"
-import {RecipeInfoDetails} from "../recipeDetailsComponents/recipeInfoDetails/RecipeInfoDetails"
-import {ImageDetails} from "../recipeDetailsComponents/imageDetails/ImageDetails"
-import {DescriptionDetails} from "../recipeDetailsComponents/descriptionDetails/DescriptionDetails"
+
+//Importing all components
+import { HeadingDetails } from "../recipeDetailsComponents/headingDetails/HeadingDetails";
+import { RecipeInfoDetails } from "../recipeDetailsComponents/recipeInfoDetails/RecipeInfoDetails";
+import { ImageDetails } from "../recipeDetailsComponents/imageDetails/ImageDetails";
+import { DescriptionDetails } from "../recipeDetailsComponents/descriptionDetails/DescriptionDetails";
 import { IngredientsDetails } from "../recipeDetailsComponents/ingredientsDetails/IngredientsDetails";
 import { MethodDetails } from "../recipeDetailsComponents/methodDetails/MethodDetails";
 import { TabButton } from "../buttons/tabButton/TabButton";
 
-
-
 export const NewRecipe = () => {
-  const { newRecipe, errorMessageGeneration, fetchCollectionRecipes } = recipeStore();
+  const { newRecipe, errorMessageGeneration, fetchCollectionRecipes } =
+    recipeStore();
   const [isMobileView, setIsMobileView] = useState(window.innerWidth < 1025);
-  const recipeDetailsRef = useRef(null) //This is for scrolling
+  const recipeDetailsRef = useRef(null); //This is for scrolling
 
   useEffect(() => {
     // Fetch a new recipe when the component mounts
@@ -24,10 +24,10 @@ export const NewRecipe = () => {
 
   // Check if there is an error message, stop render of newRecipe
   if (errorMessageGeneration) {
-    return null
+    return null;
   }
 
-  //Setting the function HandleResize (Components in different order depending on if its mobile/tablet or desktop)
+  //Setting the function HandleResize (Components show in different order depending on if its mobile/tablet or desktop)
   useEffect(() => {
     const handleResize = () => {
       setIsMobileView(window.innerWidth < 1025);
@@ -46,11 +46,16 @@ export const NewRecipe = () => {
     }
   }, [newRecipe]); // Scroll into view whenever newRecipe changes
 
-
   return (
-     <>
-      <section className="recipe-details new-recipe-section" ref={recipeDetailsRef}>
-        <h3 className="new-recipe-section-heading">Your freshly AI generated outdoor meal</h3>
+    <>
+      <section
+        className="recipe-details new-recipe-section"
+        ref={recipeDetailsRef}
+      >
+        <h3 className="new-recipe-section-heading">
+          Your freshly AI generated outdoor meal
+        </h3>
+        {/*Conditional rendering of compoenents in mobile/tablet view or desktop */}
         {isMobileView ? (
           <>
             <HeadingDetails title={newRecipe.title} />
@@ -71,7 +76,6 @@ export const NewRecipe = () => {
         ) : (
           <div className="details-desktop-container">
             <div className="details-image-container"></div>
-            {/* <ImageDetails src="/recipe-imgs/campfire-896196_1280.jpg" alt="outdoor cooking" /> */}
             <div className="details-text-container">
               <HeadingDetails title={newRecipe.title} />
               <RecipeInfoDetails userInput={newRecipe.userInput} />
@@ -85,11 +89,8 @@ export const NewRecipe = () => {
         )}
       </section>
     </>
-  )
-
-
-}
-
+  );
+};
 
 // export const NewRecipe = () => {
 //   // Destructure values from the recipeStore
@@ -129,7 +130,7 @@ export const NewRecipe = () => {
 //     return newObj;
 //   };
 //   return (
-    
+
 //     <>
 //     <section className="recipe-details">
 //         <h1>{newRecipe.title}</h1>
@@ -170,11 +171,8 @@ export const NewRecipe = () => {
 //           ))}
 //         </ol>
 //       </section>
-    
-    
+
 //     </>
-   
+
 //   );
 // };
-
-

@@ -7,8 +7,9 @@ import "./collectionRecipes.css";
 
 // Define the CollectionRecipes component
 export const CollectionRecipes = () => {
-  // Destructure recipes and setRecipes from the recipeStore
-  const { recipes, fetchCollectionRecipes, errorMessageGeneration, setErrorMessageGeneration, errorMessageFetchAll, setErrorMessageFetchAll, setNewRecipe } = recipeStore();
+  // Destructure functions from the recipeStore
+  const { recipes, fetchCollectionRecipes, errorMessageGeneration, setErrorMessageGeneration, errorMessageFetchAll, setNewRecipe } = recipeStore();
+  // Defining a loading state
   const [loading, setLoading] = useState(true);
 
 

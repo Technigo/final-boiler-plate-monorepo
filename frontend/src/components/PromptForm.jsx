@@ -1,4 +1,4 @@
-// Mounted in page: Login. Represents a form where users can input a list of ingredients, submit the form, and receive a generated recipe.
+// Mounted in Hero.jsx. Represents a form where users can input a list of ingredients, submit the form, and receive a generated recipe.
 import "./promptform.css";
 import { recipeStore } from "../stores/recipeStore";
 
@@ -32,6 +32,7 @@ export const PromptForm = () => {
     }
   };
 
+  // Handler function for updating individual ingredients in the inputRecipe array
   const handleIngredientChange = (index, value) => {
     const updatedInputRecipe = [...inputRecipe];
     updatedInputRecipe[index] = value;

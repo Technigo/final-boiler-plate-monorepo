@@ -1,8 +1,6 @@
 .header {
-    /* height: 12vh; */
     padding-left: 1rem;
     padding-right: 1rem;
-    /* background-color: #86bca8; */
     background-color: rgba(84, 101, 65, 0.5);
     display: flex;
     justify-content: space-between;
@@ -10,7 +8,6 @@
 }
 
 .header a {
-    /* font-size: 3vh; */
     color: #286052;
 }
 
@@ -18,10 +15,7 @@
     width: 230px;
     margin-top: 10px;
     margin-bottom: 10px;
-    /* padding-bottom: 5%; */
-    /*Adjust to get correct height as it is a logo*/
 }
-
 
 .header nav ul {
     display: flex;
@@ -53,8 +47,6 @@
         width: 250px;
         margin-left: 15px;
         /*så att den kommer i linje med receptet*/
-        /* padding-top: 4%;
-        padding-left: 4%; */
     }
 
     .header nav ul {
@@ -69,7 +61,6 @@
         width: 305px;
         padding-bottom: 0%;
         padding-left: 8%;
-        /*Adjust to get correct height as it is a logo*/
     }
 
     .header nav ul {

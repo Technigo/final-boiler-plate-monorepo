@@ -1,6 +1,5 @@
 .collection-recipes {
     padding: 1rem;
-    /*Vill inte ändra till %, blir konstigt om det är dynamiskt*/
 }
 
 .collection-recipes h3 {

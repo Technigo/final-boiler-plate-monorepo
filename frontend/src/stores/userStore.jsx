@@ -1,4 +1,4 @@
-// Can be deleted?
+//STORE NOT USED BUT SAVED FOR FURTHER DEVELOPMENT OF PROJECT 
 
 // Import the 'create' function from the 'zustand' library.
 import { create } from "zustand";

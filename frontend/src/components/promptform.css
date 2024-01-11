@@ -6,7 +6,7 @@
 }
 
 .promptform-box {
-    display: flex; 
+    display: flex;
     flex-direction: column;
     align-items: center;
     margin: 10px;
@@ -24,8 +24,8 @@
 .ingredient-form {
     display: flex;
     flex-direction: column;
-    width: 70%; 
-    min-width: 240px;  
+    width: 70%;
+    min-width: 240px;
 }
 
 .textareas-container {
@@ -42,8 +42,6 @@ textarea {
     padding-left: 2%;
     padding-top: 2%;
     line-height: 0.8rem;
-    /* background-color: transparent;
-    color: white;  */
 }
 
 textarea:focus {
@@ -52,16 +50,11 @@ textarea:focus {
     box-shadow: 0 0 10px #173e34;
 }
 
-/* textarea::placeholder {
-    color: white; 
-} */
-
 .checkbox-options {
     display: flex;
     justify-content: center;
     gap: 10px;
     margin-bottom: 25px;
-    /* justify-content: space-between; */
 }
 
 /* Styling for checkboxes instead of default colors */
@@ -79,8 +72,6 @@ input[type='checkbox']:checked:after {
 }
 
 input[type='checkbox'] {
-    /* text-align: center; */
-    /* display: table-cell; */
     vertical-align: middle;
     position: relative;
     width: 20px !important;
@@ -98,9 +89,10 @@ input[type='checkbox'] {
 /* Checkbox-styling end */
 
 .generate-button-container {
-    display: flex; 
+    display: flex;
     justify-content: center;
 }
+
 .generate-button {
     font-size: 1.1rem;
     background-color: #173e34;
@@ -109,7 +101,7 @@ input[type='checkbox'] {
     border-radius: 1.6rem;
     padding: 0.5rem;
     margin-top: 0.5rem;
-    width: 180px; /*TEST*/
+    width: 180px;
 }
 
 .generate-button:hover {
@@ -122,7 +114,7 @@ button:hover {
 
 /* ---------TABLET VIEW---------- */
 @media (min-width: 667px) and (max-width: 1024px) {
-   
+
 
     .textareas-container {
         flex-direction: row;

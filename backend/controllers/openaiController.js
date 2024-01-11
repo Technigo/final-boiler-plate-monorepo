@@ -1,5 +1,6 @@
-// This controller defines a function that uses the OpenAI API to generate text based on a user-provided prompt. It includes error handling and sends a JSON response with the generated text or an error message
+// This controller defines a function that uses the OpenAI API to generate text based on a user-provided prompt. It includes error handling and sends a JSON response with the generated text or an error message. The JSON response is added to the RecipeModel which is then saved to the database.
 
+// Import required modules and dependencies
 import OpenAI from "openai";
 import { RecipeModel } from "../models/RecipeModel";
 
@@ -9,11 +10,10 @@ const openai = new OpenAI({ key: process.env.OPENAI_API_KEY });
 // Define the generateText function, which handles text generation using the OpenAI API
 const generateText = async (req, res) => {
   // Extract the "prompt" from the request body
-  const { prompt, isVegetarian, isGlutenFree, isLactoseFree } = req.body;
-  console.log(req.body);
+  const { prompt, isVegetarian, isGlutenFree } = req.body;
 
   try {
-    // Use the OpenAI API to generate text using the chat completions endpoint
+    // Use the OpenAI API to generate text using the chat completions endpoint. Three roles with content: system, user and assistant.
     const response = await openai.chat.completions.create({
       messages: [
         {
@@ -34,7 +34,7 @@ const generateText = async (req, res) => {
       model: "gpt-3.5-turbo-1106",
       // Specify the response format as a JSON object
       response_format: { type: "json_object" },
-      temperature: 0.5, // Adjust this value based on your preference. Lower values (e.g., 0.2) will make the output more deterministic and focused, potentially reducing token usage.
+      temperature: 0.5, // Adjust this value based on preference. Lower values (e.g., 0.2) will make the output more deterministic and focused, potentially reducing token usage.
     });
 
     // Extract the generated text from the API respons
@@ -51,25 +51,29 @@ const generateText = async (req, res) => {
         error: errorMessage,
       });
     }
+    // Parse the generated JSON text
     const generatedRecipeObject = JSON.parse(generatedRecipe);
     const title = generatedRecipeObject.title;
     const description = generatedRecipeObject.description;
     const ingredients = generatedRecipeObject.ingredients;
     const instructions = generatedRecipeObject.instructions;
-    console.log(generatedRecipeObject);
 
+    // Format the user input prompt
     const formatPrompt = (input) => {
+      // Split the input string into an array using commas as separator
       const promptArray = input.split(',').map(ingredient => {
+        // Trim any leading or trailing whitespaces from each ingredient
         const trimmedIngredient = ingredient.trim();
+        // Capitalize the first letter of each ingredient
         return trimmedIngredient.charAt(0).toUpperCase() + trimmedIngredient.slice(1);
       });
 
+      // Return the formatted array of ingredients
       return promptArray;
     }
 
+    // Call the formatPrompt function with the user-provided prompt
     const formattedPrompt = formatPrompt(prompt)
-    console.log(formattedPrompt)
-    console.log(prompt)
 
     // Create a new RecipeModel with the provided ingredients and generatedRecipe
     const newRecipe = new RecipeModel({
@@ -81,7 +85,6 @@ const generateText = async (req, res) => {
       instructions: instructions,
     });
 
-    console.log(newRecipe);
     // Save the new recipe to the database
     await newRecipe.save();
 

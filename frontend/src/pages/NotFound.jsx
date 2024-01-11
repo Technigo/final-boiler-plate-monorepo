@@ -1,6 +1,5 @@
 import "./notFound.css";
 
-// Define the 'NotFound' functional component.
 export const NotFound = () => {
   return (
     <>

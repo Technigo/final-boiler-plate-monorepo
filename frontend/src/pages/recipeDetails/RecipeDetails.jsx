@@ -1,6 +1,8 @@
 import "./recipeDetails.css";
+//Importing hooks
 import { useParams, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
+//Importing components
 import { RecipeInfoDetails } from "../../components/recipeDetailsComponents/recipeInfoDetails/RecipeInfoDetails";
 import { HeadingDetails } from "../../components/recipeDetailsComponents/headingDetails/HeadingDetails"
 import { ImageDetails } from "../../components/recipeDetailsComponents/imageDetails/ImageDetails"
@@ -8,15 +10,19 @@ import { DescriptionDetails } from "../../components/recipeDetailsComponents/des
 import { IngredientsDetails } from "../../components/recipeDetailsComponents/ingredientsDetails/IngredientsDetails"
 import { MethodDetails } from "../../components/recipeDetailsComponents/methodDetails/MethodDetails.jsx"
 import { TabButton } from "../../components/buttons/tabButton/TabButton";
+//Importing recipeStore
 import { recipeStore } from "../../stores/recipeStore";
 
 export const RecipeDetails = () => {
+  //Retrieve "id" parameter from the URL
   const { id } = useParams();
+  // Use the useNavigate hook to programmatically navigate between pages
   const navigate = useNavigate();
-  // Getting the recipe state from recipeStore
+  // Getting functions from recipeStore
   const { recipes, fetchCollectionRecipes } = recipeStore();
   // Find the recipe with the matching 'id' from the 'recipes' array
   const foundRecipe = recipes.find((recipe) => recipe._id === id);
+  // State to track whether the view is in mobile mode
   const [isMobileView, setIsMobileView] = useState(window.innerWidth < 1025);
   const [loading, setLoading] = useState(true);
 
@@ -34,7 +40,7 @@ export const RecipeDetails = () => {
     fetchData();
   }, [fetchCollectionRecipes]);
 
-  //Setting the function HandleResize (Components in different order depending on if its mobile/tablet or desktop)
+  //Setting the function HandleResize (components render in different order depending on if its mobile/tablet or desktop)
   useEffect(() => {
     const handleResize = () => {
       setIsMobileView(window.innerWidth < 1025);
@@ -51,12 +57,13 @@ export const RecipeDetails = () => {
     window.scrollTo(0, 0);
   }, []);
 
-  //Shows the NotFound-page
+  //Redirect to the NotFound-page if the recipe is not found
   if (!foundRecipe) {
     navigate("*");
     return null;
   }
 
+  //Display a loading message while fetching recipe data
   if (loading) {
     return (
       <div className="recipe-loader-container">
@@ -69,6 +76,7 @@ export const RecipeDetails = () => {
     );
   }
 
+  // Render the component based on whether it is in mobile or desktop view
   return (
     <>
       <section className="recipe-details">
@@ -81,8 +89,9 @@ export const RecipeDetails = () => {
                 src="/recipe-imgs/campfire-896196_1280.jpg"
                 alt="outdoor cooking"
               />
+              {/* Overlay div for the gradient */}
               <div className="details-image-gradient-overlay"></div>{" "}
-              {/* Adding this overlay div for the gradient */}
+
             </div>
 
             <DescriptionDetails description={foundRecipe.description} />

@@ -6,7 +6,7 @@ import { create } from "zustand";
 
 const api = "https://ai-recipes-collin-dieden.onrender.com"
 
-// Define the recipeStore using Zustand's 'create' function
+// Defining the recipeStore using Zustand's 'create' function
 export const recipeStore = create((set, get) => ({
   // Initialize the state with an empty array of recipes
   recipes: [],
@@ -27,17 +27,20 @@ export const recipeStore = create((set, get) => ({
       recipes: [...state.recipes, newRecipe],
     }));
   },
+  //State for error message if recipe generation fails
   errorMessageGeneration: "",
   setErrorMessageGeneration: (errorMessageGeneration) => set({ errorMessageGeneration }),
+  //State for error message if get request of recipes fails
   errorMessageFetchAll: "",
   setErrorMessageFetchAll: (errorMessageFetchAll) => set({ errorMessageFetchAll }),
+  //Initilazing state for vegetarian preference
   isVegetarian: false,
   setIsVegetarian: (isVegetarian) => set({ isVegetarian }),
+  //Initilazing state for glutenfree preference
   isGlutenFree: false,
   setIsGlutenFree: (isGlutenFree) => set({ isGlutenFree }),
-  isLactoseFree: false,
-  setIsLactoseFree: (isLactoseFree) => set({ isLactoseFree }),
 
+  // Function to fetch a new recipe from the API
   fetchNewRecipe: async () => {
     try {
       const response = await fetch(`${api}/recipes`, {
@@ -46,7 +49,6 @@ export const recipeStore = create((set, get) => ({
       });
 
       if (!response.ok) {
-        // set(() => ({ newRecipe: null }));//TEST
         // Handle non-successful response (e.g., 404 Not Found, 500 Internal Server Error)
         throw new Error(`Status: ${response.status}`);
 
@@ -62,10 +64,12 @@ export const recipeStore = create((set, get) => ({
       //Error messages, mounted in CollectionRecipes.jsx
     } catch (error) {
       console.error("Error fetching new recipe:", error);
+      // Set an error message in the state if fetching new recipe fails
       set(() => ({ errorMessageGeneration: "Error fetching new recipe!" }));
     }
   },
 
+  // Function to fetch all recipes from the API
   fetchCollectionRecipes: async () => {
     try {
       // Make a GET request to the API endpoint
@@ -84,8 +88,6 @@ export const recipeStore = create((set, get) => ({
 
       //Update the Recipes state with the fetched recipes
       set(() => ({ recipes: reversedRecipes }));
-      // Update the newRecipe state to null initially
-      // set(() => ({ newRecipe: null })); //TA BORT?? 
 
       //Error messages, mounted in CollectionRecipes.jsx
     } catch (error) {
@@ -94,16 +96,13 @@ export const recipeStore = create((set, get) => ({
     }
   },
 
-  // From PromptForm.jsx
+  // Function to generate a recipe using OpenAI
   generateRecipe: async (ingredients) => {
     const formattedIngredients = ingredients.join(",")
     const isVegetarian = get().isVegetarian
     const isGlutenFree = get().isGlutenFree
-    const isLactoseFree = get().isLactoseFree
 
     try {
-      console.log("Sending post request!")
-
       //Setting the isGenerating state to true so that loading message can be rendered in Home.jsx
       set(() => ({ isGenerating: true }))
       //Removes old error message when a new recipe is generated
@@ -135,6 +134,4 @@ export const recipeStore = create((set, get) => ({
       set(() => ({ isGenerating: false }));
     }
   },
-
-
 }));

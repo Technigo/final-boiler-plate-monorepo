@@ -1,3 +1,4 @@
+//This component is mounted in App.jsx
 import "./header.css";
 import { Link } from 'react-router-dom';
 import { CiHome } from "react-icons/ci";

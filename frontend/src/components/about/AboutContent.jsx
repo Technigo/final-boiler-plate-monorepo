@@ -1,5 +1,4 @@
 // This component is mounted in the page About.jsx
-
 import "./aboutContent.css";
 
 // Importing various icons from react-icons library
