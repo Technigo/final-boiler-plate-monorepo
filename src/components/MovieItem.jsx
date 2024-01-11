@@ -1,12 +1,14 @@
 import { movieStore } from '../store/movieStore'
 
+import './MovieList.css'
+
 export const MovieItem = ({ name, photo, releaseDate }) => {
   const setMovies = movieStore((state) => state.setMovies)
 
   const handleAddToFavorite = () => {
     setMovies((prevMovies) => [...prevMovies, { name, photo, releaseDate }])
   };
-  console.log(releaseDate)
+
 
   const imageBaseUrl = "https://image.tmdb.org/t/p/"
   const imageSize = "w780"
@@ -18,7 +20,6 @@ export const MovieItem = ({ name, photo, releaseDate }) => {
         <img src={imageUrl} alt={name} />
         <div className="image-overlay">
           <h2>{name}</h2>
-          <p>Release Date: {releaseDate}</p>
           <button onClick={handleAddToFavorite}>Read more</button>
         </div>
       </div>

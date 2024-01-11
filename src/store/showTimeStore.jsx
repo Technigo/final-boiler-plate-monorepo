@@ -29,9 +29,33 @@ export const showTimesStore = create((set) => ({
     } catch (error) {
       console.error(error)
     }
-  }
+  },
+
+
+  // fetch showtime by movie
+
+  fetchShowtimeByMovie: async (movieId) => {
+    try {
+      const response = await fetch(`${apiEnv}/showtimes/movie/${movieId}`, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      })
+
+      const data = await response.json()
+      if (response.ok) {
+        set({ showTimes: data })
+      } else {
+        console.error('Failed to fetch showTimes')
+      }
+    } catch (error) {
+      console.error(error)
+    }
+  },
 
 }))
+
 
 
 // import { create } from 'zustand'
