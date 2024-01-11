@@ -16,7 +16,6 @@ export const SinCocktail = () => {
 
     return (
         <div className={styles.wrapper}>
-            <Text type="SbodyText" className={styles.SbodyText}>COCKTAIL DETAILS</Text>
             <div className={styles.gridContainer}>
                 {cocktail ? (
                     <div key={cocktail._id}>
