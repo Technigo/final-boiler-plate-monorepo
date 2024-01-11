@@ -11,6 +11,7 @@ import { Image } from "../components/reusableComponents/Image"; // Import the Im
 import { Navbar } from "../components/Navbar";
 import { Footer } from "../components/Footer";
 import Swal from "sweetalert2";
+import "./addetails.css";
 
 const AdDetails = () => {
   // Use the 'useNavigate' hook to programmatically navigate between routes.
@@ -91,7 +92,7 @@ const AdDetails = () => {
               <h1>{ad.title}</h1>
               <Image src={ad.image} alt={ad.title} size="large" />
               <div className="details-wrapper">
-                <div>
+                <div className="description">
                   <h4>Description:</h4>
                   <p>{ad.description}</p>
                 </div>
@@ -122,7 +123,7 @@ const AdDetails = () => {
                   </h4>
                 </div>
               </div>
-              <Button label="Contact Advertiser" onClick={handleShow} />{" "}
+              <Button className="contact-btn" label="Contact Advertiser" onClick={handleShow} />{" "}
               {/* Use Button component */}
               <Modal show={show} onHide={handleClose}>
                 <Modal.Body>

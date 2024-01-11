@@ -26,6 +26,21 @@ select,
     width: 100%;
 }
 
+/* Specific style for the description field */
+.create-ad-form .description {
+    flex-direction: column;
+    /* Keep column layout for description */
+}
+
+
+/* Containers */
+.create-ad-container {
+    display: grid;
+    justify-content: center;
+    flex-direction: column;
+    gap: 10px;
+}
+
 /* Style for desktop */
 @media (min-width: 992px) {
     .create-ad-form>div {
@@ -55,17 +70,3 @@ select,
     }
 }
 
-/* Specific style for the description field */
-.create-ad-form .description {
-    flex-direction: column;
-    /* Keep column layout for description */
-}
-
-
-/* Containers */
-.create-ad-container {
-    display: grid;
-    justify-content: center;
-    flex-direction: column;
-    gap: 10px;
-}
