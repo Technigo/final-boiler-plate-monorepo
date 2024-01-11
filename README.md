@@ -47,12 +47,14 @@ As part of the Technigo Web Dev Bootcamp, this project was created as the Final 
 
 - **RecipeModel:** Represents the data structure for recipes, including user input, search words, title, description, ingredients, instructions, and creation timestamp.
 - **MongoDBOperations:** Implements CRUD operations for managing recipes in the MongoDB database.
+<br><br>
 
 ## AI integration
 
 **OpenAI:** The backend integrates with the OpenAI API to generate text-based recipes based on user prompts.
 
 **Endpoint:** Provides an /openai/generateText endpoint to handle AI-driven recipe generation.
+<br><br>
 
 ## API Endpoints
 
@@ -73,6 +75,7 @@ As part of the Technigo Web Dev Bootcamp, this project was created as the Final 
   - `GET /`: Lists all available API endpoints for reference.
   - `GET /recipes`: Retrieves all stored recipes.
   - `GET /recipes/search/:query`: Searches for recipes based on a specified query.
+ <br><br>
 
 ## How to Run the Project
 
@@ -141,21 +144,22 @@ VITE_BACKEND_API=[backend-localhost]
 ```
 npm run dev
 ```
+<br>
 
 ## Challenges
 
-The
-!!! UNDER CONSTRUCTION !!!
-Stage 1 (behöver skrivas om)
-Set up of boilerplate, installation. Created endpoints (no connection to AI at this time). Connected frontend to backend using the API endpoints. Implemented AI, possible to do a general prompt via the frontend localhost and get a respons in the console.
+It was a challenge connecting to the OpenAI API as this was completely new to us, and we realised that many of the explanatory videos and similar repos on GitHub already were outdated as the openAI technology develops very fast. But reading the documentation on OpenAIs website very thouroughly, in combination with studying similar projects, we got it to work.
 
-Challenges:
-What kind of endpoints as we were to use AI. Solved by discussing in our team and go through material.
-Old documentation AI... solved with...
+We are exploring the subject of prompt engineering and learning how to structure texts in a way so they are intepreted and understood by AI models as intended. 
+<br><br>
 
-How to prompt where....
+## Project Process
 
-GPT prompt: Put effort into rewriting this to get the result we want. Next step would be to fine-tune the prompt. Good way to control if recipes are up to standard, preventing the GPT to add too many ingreidents, checking whether the dishes seem edible, and that the dishes contain appropriate ampunt of nutriants and carbs for and outdoor adventure. Fine-tuning is a good way to check that the GPT actually is following instructions, eg. using only one saucepan.<br><br>
+The starting point was to create a MVP and to set up a basic structure of the frontend and backend. An API was built for connecting with MongoDB database, and connection was made to the OpenAI API. Next up was basic styling and responsiveness (mobile first). Final stage was focusing on prompt engineering to make the openAI model work better and also improving functions as error handling and solving minor bugs. Ended of with final styling. 
+
+Moving forward: 
+The project is prepared for further development, such as using authentication for building a login function. There is a prepared endpoint for searching for recipes, which only needs to be implemented in the frontend. To extend the project further, next step would be to build an endpoint for saving recipes to the database, and also fine-tune the model for even better responses. 
+<br><br>
 
 ## View it live
 

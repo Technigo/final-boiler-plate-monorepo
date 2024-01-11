@@ -23,7 +23,7 @@ const generateText = async (req, res) => {
         },
         {
           role: "user",
-          content: `${prompt} ${isVegetarian ? '\nVegetarian' : ''}${isGlutenFree ? '\nGluten-free' : ''}${isLactoseFree ? '\nLactose-free' : ''}`,
+          content: `${prompt} ${isVegetarian ? '\nVegetarian' : ''}${isGlutenFree ? '\nGluten-free' : ''}`,
         },
         {
           role: "assistant",
