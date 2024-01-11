@@ -6,14 +6,6 @@ import { timeSince } from "../utils/timeUtils";
 import likeIcon from "../../assets/likeicon.svg";
 import closeIcon from "../../assets/close-icon.svg";
 
-// Style object for the card, adjusts scale and z-index based on isActive prop
-// const cardStyle = {
-//   transform: isActive ? "scale(1)" : "scale(1)",
-//   transition: "transform 0.3s ease-in-out",
-//   zIndex: isActive ? 100 : 1,
-//   position: "relative",
-// };
-
 export const Mapcard = () => {
   // eslint-disable-next-line no-undef
   const { id } = useParams();
@@ -46,19 +38,6 @@ export const Mapcard = () => {
   };
 
   console.log(id);
-  // Function to fetch translated stories
-  const fetchTranslatedStories = async () => {
-    try {
-      const response = await fetch(
-        `${apiUrl}/stories?language=${selectedLanguage}`
-      );
-      const translatedData = await response.json();
-      setStories(translatedData);
-      // updateCitiesAndCategories(translatedData);
-    } catch (error) {
-      console.error("Error fetching translated stories:", error);
-    }
-  };
 
   // API URL from environment variables or default
   const apiUrl = import.meta.env.VITE_BACKEND_API || "http://localhost:3000";
@@ -77,7 +56,34 @@ export const Mapcard = () => {
       });
   }, [id, apiUrl]);
 
+  // Function to fetch translated stories
+  const fetchTranslatedStories = async () => {
+    try {
+      const response = await fetch(
+        `${apiUrl}/stories?language=${selectedLanguage}`
+      );
+      const translatedData = await response.json();
+      setStories(translatedData);
+      // updateCitiesAndCategories(translatedData);
+    } catch (error) {
+      console.error("Error fetching translated stories:", error);
+    }
+  };
+
   useEffect(() => {
+    // Function to fetch translated stories
+    const fetchTranslatedStories = async () => {
+      try {
+        const response = await fetch(
+          `${apiUrl}/stories?language=${selectedLanguage}`
+        );
+        const translatedData = await response.json();
+        setStories(translatedData);
+        // updateCitiesAndCategories(translatedData);
+      } catch (error) {
+        console.error("Error fetching translated stories:", error);
+      }
+    };
     if (selectedLanguage !== "en") {
       fetchTranslatedStories();
     } else {
@@ -111,8 +117,7 @@ export const Mapcard = () => {
         <select
           className="map-dropdowns"
           value={selectedLanguage}
-          onChange={handleLanguageChange}
-        >
+          onChange={handleLanguageChange}>
           <option value="en">English</option>
           <option value="sv">Swedish</option>
         </select>

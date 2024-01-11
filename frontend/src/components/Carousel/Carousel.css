@@ -1,25 +1,24 @@
-
 .swiper-slide .swiper-slide-visible .swiper-fully-visible .swiper-slide-active {
- width: 100vw;
+  width: 100vw;
 }
- .rumor-carousel .swiper-wrapper, 
-.hearsay-carousel .swiper-wrapper, 
+.rumor-carousel .swiper-wrapper,
+.hearsay-carousel .swiper-wrapper,
 .historical-carousel .swiper-wrapper {
   width: 250px;
   margin-bottom: 10px;
-}; 
+}
 
 .rumor-carousel .story-card .story-overlay h3 {
   color: blanchedalmond;
 }
 .swiper-slide {
   transition: transform 0.3s ease-in-out, z-index 0.3s;
-  z-index: 1; 
+  z-index: 1;
 }
 
 .swiper-slide-active {
   transform: scale(1);
-  z-index: 100; 
+  z-index: 100;
 }
 
 .swiper {
@@ -30,12 +29,9 @@
   justify-content: center; */
 }
 
-
-
-
 @media (min-width: 580px) {
   .story-card {
-    width: 200px; 
+    width: 200px;
   }
   .swiper-wrapper {
     margin-left: -50px;
@@ -43,7 +39,7 @@
 }
 @media (min-width: 700px) {
   .story-card {
-    width: 300px; 
+    width: 300px;
   }
   .swiper-wrapper {
     margin-left: -100px;
@@ -51,11 +47,10 @@
 }
 @media (min-width: 900px) {
   .story-card {
-    width: 400px;
+    width: 300px;
   }
-.swiper {
-  margin-top: -80px;
-  margin-bottom: 100px;
+  .swiper {
+    margin-top: -80px;
+    margin-bottom: 100px;
+  }
 }
-  
-} 

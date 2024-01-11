@@ -6,13 +6,12 @@
   background-position: center;
   background-repeat: no-repeat;
   margin: 0 auto;
-  /* max-width: 1350px; */
   width: 100%;
 }
 
 .quote {
   font-size: 18px;
-  padding-top: 16vh;
+  padding-top: 14vh;
   color: white;
 }
 
@@ -23,7 +22,7 @@
 
   .quote {
     font-size: 24px;
-    padding-top: 26vh;
+    padding-top: 24vh;
     color: white;
   }
 }

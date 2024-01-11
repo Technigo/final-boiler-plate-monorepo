@@ -32,7 +32,6 @@
   width: 80%;
   text-align: center;
   overflow: hidden;
-  
 }
 
 button.like-button {
@@ -72,10 +71,10 @@ button.like-button img {
 }
 
 .map-story-info h4 {
-background-color: lightgrey;
-border-radius: 4px;
-padding-left: 5px;
-padding-right: 5px;
+  background-color: lightgrey;
+  border-radius: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
 }
 .map-date-icon img {
   width: 30px;
@@ -105,32 +104,16 @@ padding-right: 5px;
 }
 
 .story-map-content p {
-font-size: 18px;
+  font-size: 18px;
 }
 
 .close-icon img {
   width: 10% !important;
-  
-
 }
 
 .map-story-card .close-button {
   width: 30px;
   background-color: transparent;
   border: none;
-margin-left: -93%;
+  margin-left: -93%;
 }
-/* 
-@media (min-width: 900px) {
-  .story-card {
-    width: 300px;
-  }
-
-  .story-overlay {
-    max-height: 334px;
-  }
-  .story-overlay-content h3 {
-    font-size: 20px;
-    padding: 5px;
-  }
-} */
