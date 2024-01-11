@@ -2,7 +2,7 @@ import Lottie from "lottie-react";
 import Loading from "./LoaderAnimation.json";
 import styled from "styled-components";
 
-const Load = styled.button`
+const Load = styled.div`
   display: flex;
   justify-content: center;
   background-color: transparent;
@@ -16,8 +16,8 @@ export const LoaderAnimation = () => {
   const options = {
     animationData: Loading,
     style: {
-      height: 40,
-      width: 40,
+      height: 150,
+      width: 150,
     },
     loop: true,
   };
