@@ -40,8 +40,9 @@ export const Trips = () => {
           <div className="col-span-3 text-xs text-gray-900 sm:text-lg">
             {trip.date}
           </div>
-          <div className="col-span-4 text-xs text-gray-900 sm:text-lg">
-            Posted by user {trip.username}
+          <div className="flex flex-col span-4 text-xs text-gray-900 sm:text-lg">
+            <p>Posted by user </p>
+            <p>{trip.username}</p>
           </div>
           <div className="col-span-3 absolute right-4 top-1/2 transform -translate-y-1/2 h-full flex items-center justify-center">
             <Link

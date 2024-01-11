@@ -132,7 +132,7 @@ export const userStore = create((set, get) => ({
   handleChatHistory: async (senderId, recipientId) => {
     try {
       const response = await fetch(
-        `${localhoster}/messages/${senderId}/${recipientId}`
+        `${apiEnv}/messages/${senderId}/${recipientId}`
       );
 
       if (!response.ok) {
