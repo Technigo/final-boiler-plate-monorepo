@@ -20,7 +20,7 @@ const mapStorySchema = new Schema({
     type: String,
     required: true,
 
-    enum: ["historical", "hearsay", "anecdote", "humor"],
+    enum: ["historical", "hearsay", "anecdote", "rumor"],
   },
   ranking: {
     type: Number,

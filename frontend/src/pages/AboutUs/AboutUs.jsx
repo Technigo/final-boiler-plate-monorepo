@@ -1,8 +1,6 @@
 import "./AboutUs.css";
 
 export const AboutUs = () => {
-  //When the home button is clicked, this function kicks in
-
   return (
     <div className="about-us">
       <h2>About us</h2>

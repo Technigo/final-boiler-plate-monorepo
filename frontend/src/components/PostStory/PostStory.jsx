@@ -14,10 +14,8 @@ export const PostStory = () => {
   const [newStory, setNewStory] = useState("");
   const [newCategory, setNewCategory] = useState("");
   const [selectedDate, setSelectedDate] = useState(new Date());
-  // const [isCalendarVisible, setIsCalendarVisible] = useState(false);
   const [isImageModalOpen, setIsImageModalOpen] = useState(false);
   const [selectedImage, setSelectedImage] = useState("");
-
   const [autocomplete, setAutocomplete] = useState(null);
   const [locationName, setLocationName] = useState("");
   const [latitude, setLatitude] = useState(null);
@@ -61,8 +59,6 @@ export const PostStory = () => {
       },
     };
 
-    console.log("Sending request to Google API with body:", googleApiPayload);
-
     fetch(
       `https://language.googleapis.com/v1/documents:analyzeSentiment?key=${
         import.meta.env.VITE_GOOGLE_LANGUAGE_KEY
@@ -77,20 +73,17 @@ export const PostStory = () => {
     )
       .then((res) => res.json())
       .then((googleApiResponse) => {
-        console.log("Response from Google API:", googleApiResponse);
         // Logic to handle the response from sentiment analysis
-        // Check the sentiment score
         const sentimentScore = googleApiResponse.documentSentiment.score;
 
         // Decide on a threshold for negative sentiment
-        const negativeSentimentThreshold = -0.5; // adjust this value based on your needs
+        const negativeSentimentThreshold = -0.5;
 
         if (sentimentScore < negativeSentimentThreshold) {
           // Trigger an alert if the sentiment is too negative
           alert(
             "Your post seems to have a negative tone. Please consider revising it."
           );
-          // You can also add additional logic here, like preventing form submission
         } else {
           // Post the story to the backend
           fetch(`http://localhost:3000/stories`, {
@@ -115,7 +108,6 @@ export const PostStory = () => {
               setLocationName("");
               setNewCategory("");
               setSelectedImage("");
-              // Optionally, you can redirect or refresh the page here
             })
             .catch((error) => {
               console.error("Error posting the story", error);
@@ -150,43 +142,49 @@ export const PostStory = () => {
         setLocationName("");
         setNewCategory("");
         setSelectedImage("");
-        // Optionally, you can redirect or refresh the page here
       })
       .catch((error) => {
         console.error("Error posting the story", error);
       });
   };
 
+  // Handles the change of the date selected in the date picker.
   const handleDateChange = (date) => {
     setSelectedDate(date);
   };
 
+  // Handles the click event of a button within the PostStory component.
   const handleButtonClick = () => {
     console.log("Button clicked within PostStory component", newStory);
   };
 
+  // Handles the change event of the category selection input.
   const handleCategoryChange = (e) => {
     setNewCategory(e.target.value);
   };
 
+  // Opens the image modal for image selection.
   const openImageModal = () => {
     setIsImageModalOpen(true);
   };
 
+  // Closes the image modal after image selection.
   const closeImageModal = () => {
     setIsImageModalOpen(false);
   };
 
+  // Handles the selection of an image
   const handleImageSelect = (image) => {
     setSelectedImage(image);
     closeImageModal();
-    console.log("Image chosen");
   };
 
+  // Sets the Autocomplete object for location input.
   const onLoadAutocomplete = (autocomplete) => {
     setAutocomplete(autocomplete);
   };
 
+  // Handles the event when the place is changed in the location Autocomplete.
   const onPlaceChanged = () => {
     if (autocomplete !== null) {
       const place = autocomplete.getPlace();
@@ -199,6 +197,7 @@ export const PostStory = () => {
     }
   };
 
+  //The images for the Modal gallery
   const images = [
     "image1.png",
     "image2.png",
@@ -240,7 +239,8 @@ export const PostStory = () => {
             className="category"
             value={newCategory}
             onChange={handleCategoryChange}
-            required>
+            required
+          >
             <option value="">Choose a category</option>
             <option value="anecdote">Anecdote</option>
             <option value="rumor">Rumor</option>
@@ -251,10 +251,12 @@ export const PostStory = () => {
         <div>
           <LoadScript
             googleMapsApiKey={import.meta.env.VITE_GOOGLE_MAPS_API_KEY}
-            libraries={libraries}>
+            libraries={libraries}
+          >
             <Autocomplete
               onLoad={onLoadAutocomplete}
-              onPlaceChanged={onPlaceChanged}>
+              onPlaceChanged={onPlaceChanged}
+            >
               <input
                 className="search-input"
                 type="text"
@@ -290,7 +292,8 @@ export const PostStory = () => {
           <button
             className="gallery-button"
             type="button"
-            onClick={openImageModal}>
+            onClick={openImageModal}
+          >
             Select Image
           </button>
         </div>
@@ -303,14 +306,16 @@ export const PostStory = () => {
           selectedImage={selectedImage}
           className="gallery"
           isOpen={isImageModalOpen}
-          contentLabel="Select Image">
+          contentLabel="Select Image"
+        >
           <div className="gallery-images">
             {images.map((image, index) => (
               <button
                 key={index}
                 className="image-buttons"
                 type="button"
-                onClick={() => handleImageSelect(image)}>
+                onClick={() => handleImageSelect(image)}
+              >
                 <img src={image} alt={`Image ${index + 1}`} />
               </button>
             ))}
