@@ -1,4 +1,31 @@
 .the-footer {
-    background-color: var(--background-section-color-four);
-    width: 100%;
+	background-color: var(--background-section-color-four);
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	align-items: center;
+	position: sticky;
+	top: 0;
+	z-index: 1;
+	margin-top: 3rem !important;
+}
+.the-contact-container {
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+	align-items: center;
+}
+
+.the-footer h3 {
+	font-size: 1.5rem;
+	margin-bottom: 2rem;
+}
+.contact-info {
+	text-align: left;
+	line-height: 0.1;
+}
+.nav-bar {
+	margin-left: 5rem;
 }
