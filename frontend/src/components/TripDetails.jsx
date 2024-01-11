@@ -27,12 +27,8 @@ export const TripDetails = () => {
     };
 
     const fetchUsername = async () => {
-      console.log(
-        `The address is ${localhost}/user/mongo/${selectedTrip.user}`
-      );
-      const response = await fetch(
-        `${localhost}/user/mongo/${selectedTrip.user}`
-      );
+      console.log(`The address is ${apiEnv}/user/mongo/${selectedTrip.user}`);
+      const response = await fetch(`${apiEnv}/user/mongo/${selectedTrip.user}`);
       console.log(JSON.stringify(response));
       const data = response.json();
       console.log("data from fetchUsername: " + JSON.stringify(data.username));

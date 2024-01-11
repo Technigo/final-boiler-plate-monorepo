@@ -12,7 +12,7 @@ export const Hero = () => {
           Step into a new era of travel. Enjoy the ease of carefree rides,
           turning every journey into an opportunity for new connections and
           lasting memories. With us, it becomes more than just getting from one
-          place to another.
+          place to another
         </h3>
         <LoginBtn />
       </div>

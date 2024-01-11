@@ -28,14 +28,9 @@ export const Chat = () => {
 
   const divUnderMessages = useRef();
   const vite_backend = import.meta.env.VITE_BACKEND_API;
+  const vite_backend_shortened = import.meta.env.VITE_BACKEND_SHORTENED;
 
   const prevChatMessagesRef = useRef(chatMessages.length);
-
-  // console.log("username in chat: " + username);
-
-  //Usernames of sender and receiver
-  // const userId = username;
-  // const receiverId = chatReceiver;
 
   //Id's of sender and receiver
   const userId = loggedInUserId;
@@ -105,7 +100,8 @@ export const Chat = () => {
   };
 
   useEffect(() => {
-    const ws = new WebSocket("ws://localhost:3000");
+    // const ws = new WebSocket("ws://localhost:3000");
+    const ws = new WebSocket(`ws://${vite_backend_shortened}`);
     setWs(ws);
 
     // Send the user ID to the server after WebSocket connection is open
