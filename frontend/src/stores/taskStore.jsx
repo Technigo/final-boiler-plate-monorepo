@@ -8,9 +8,9 @@ console.log(apiEnv);
 // Create and export a Zustand store for managing tasks
 export const taskStore = create((set) => ({
   // Initialize the tasks state with an empty array
-  tasks: [], // Array of tasks
-  userTasks: [], // Array of tasks created by the user
-  volunteeredTasks: [], // Array of tasks volunteered by the user
+  tasks: [],
+  userTasks: [],
+  volunteeredTasks: [],
   // Initialize the userId state by accessing it from the userStore
   userId: userStore.userId,
 
@@ -124,7 +124,6 @@ export const taskStore = create((set) => ({
     try {
       // Get tasks from the state
       const { originalTasks } = taskStore.getState(); // Get original tasks
-      // const allTasks = await taskStore.getState().tasks;
 
       // Filter tasks based on category and area
       const filteredTasks = originalTasks.filter(
@@ -161,7 +160,7 @@ export const taskStore = create((set) => ({
         alert("You have already volunteered for this Need!");
       }
     } catch (error) {
-      alert("Error adding yoursself as volunteer. Please try again.");
+      alert("Error adding yourself as volunteer. Please try again.");
     }
   },
 

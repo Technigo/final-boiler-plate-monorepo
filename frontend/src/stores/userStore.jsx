@@ -52,8 +52,7 @@ export const userStore = create((set, get) => ({
       // Parse the response data as JSON.
       const data = await response.json();
       if (data.success) {
-        // Update the username state.
-
+        // Update the states.
         set({
           username,
           email,
@@ -64,7 +63,6 @@ export const userStore = create((set, get) => ({
         localStorage.setItem("accessToken", data.response.accessToken);
         localStorage.setItem("username", username);
         // Display a success alert.
-
         alert("Signup successful!");
       } else {
         // Display an error message from the server or a generic message.

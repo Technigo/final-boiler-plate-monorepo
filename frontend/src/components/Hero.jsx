@@ -41,16 +41,6 @@ const Container = styled.div`
     max-width: 1000px;
   }
 
-  /* img {
-    object-fit: cover;
-   
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-    max-width: 100%;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-  } */
-
   @media (min-width: 950px) {
     display: flex;
     flex-direction: row;
@@ -137,20 +127,9 @@ const StyledP = styled.div`
   p {
     width: 80%;
     color: var(--lighttext);
+    //margin-top: 40px;
   }
 `;
-
-/* const StyledHeroText = styled.div`
-  /*display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 20px;
-
-  @media (min-width: 950px) {
-    width: 60%;
-  }
-`; */
 
 const StyledButtonWrapper = styled.div`
   display: flex;
@@ -171,12 +150,10 @@ export const Hero = () => {
   const navigate = useNavigate();
 
   const text = {
-    // heading: "Welcome",
-    // subheading: "We help people in Varberg connect with their community",
     heading: "We want the people of Varberg to connect",
     subheading: "Join our community of compassion and generosity",
     intro:
-      "We help the people in Varberg to connect through simple acts of kindness. Together, we build a world where every effort makes a meaningful difference.",
+      "Welcome to our community of compassion and generosity! We believe in the power of uniting hearts and strive to create a world where every act of kindness matters. Our platform is a vibrant hub where those in need of help encounter those who are ready to offer their time and care without expecting anything in return.",
   };
 
   useEffect(() => {
