@@ -275,6 +275,7 @@ const PlaygroundDetails = () => {
         id="wheelchair"
         place="bottom"
         content={t("PlaygroundDetails.wheelchair-explanation-p")}
+        style={{ backgroundColor: "#FA7070", color: "#222" }}
       />
       <Tooltip
         id="roundabout"

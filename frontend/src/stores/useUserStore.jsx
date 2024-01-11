@@ -127,10 +127,6 @@ export const useUserStore = create((set, get) => ({
   },
 
 
-
-
-
-
   logoutUser: () => {
     // Removes the accessToken from the store and sets isLoggedIn to false. Also empties the username and password fields
     set({
@@ -141,5 +137,37 @@ export const useUserStore = create((set, get) => ({
     });
     // Removes the accessToken from localStorage
     localStorage.removeItem("token");
+  },
+
+  completedChallenges: [],
+
+  setCompletedChallenges: (completedChallenges) => set({ completedChallenges }),
+
+  getCompletedChallenges: async () => {
+    try {
+      const token = get().token;
+
+      if (!token) {
+        console.error('Token not available');
+        return;
+      }
+
+      const response = await fetch(`${API_URL}/completed-challenges`, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': token,
+        },
+      });
+
+      if (response.ok) {
+        const completedChallenges = await response.json();
+        set({ completedChallenges });
+      } else {
+        console.error('Failed to fetch completed challenges:', response.status);
+      }
+    } catch (error) {
+      console.error('Error fetching completed challenges:', error);
+    }
   },
 }));
