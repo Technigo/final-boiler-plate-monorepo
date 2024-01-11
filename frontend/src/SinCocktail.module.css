@@ -35,25 +35,16 @@
 /* iPad Pro 11" */
 @media (min-width: 767px) and (max-width: 1028px) {
 
-    .h3 {
-        padding-top: 40px;
+    .wrapper {
+        padding: 40px 170px;
     }
 
-
 }
+
 
 /*Macbook Air*/
 @media (min-width: 1028px) {
     .wrapper {
-        padding: 80px 0 90px 0;
-        grid-gap: 30px;
-    }
-
-
-    .p {
-        padding: 10px 0;
-        text-align: left;
-        max-width: 700px;
-        margin: 0 auto;
+        padding: 40px 450px;
     }
 }
