@@ -4,12 +4,10 @@ import { Heading } from "../components/reusableComponents/Heading";
 import { Button } from "../components/reusableComponents/Button";
 import { useNavigate } from "react-router-dom";
 import { userStore } from "../stores/userStore";
-import { useEffect } from "react";
 import BackArrow from "../components/reusableComponents/BackArrow";
 import contact from "../assets/get-contact.svg";
 import giveAway from "../assets/give-away.svg";
 import picture from "../assets/picture.svg";
-import Swal from "sweetalert2";
 import aboutUs from "../assets/aboutUs.json";
 import Lottie from "lottie-react";
 import "../pages/about.css";
@@ -23,18 +21,6 @@ export const About = () => {
   // Get 'isLoggedIn' and 'accessToken' from the 'userStore'.
   const isLoggedin = userStore((state) => state.isLoggedin);
   const handleLogout = userStore((state) => state.handleLogout);
-  // useEffect hook to check user authentication status.
-  useEffect(() => {
-    if (!isLoggedin) {
-      // If the user is not logged in, show an alert and navigate to the login route.
-      Swal.fire({
-        title: "Error!",
-        text: "Please log in to see the content",
-        icon: "error",
-      });
-      navigate("/login");
-    }
-  }, [isLoggedin, navigate]);
 
   const logoRedirectPath = isLoggedin ? "/home" : "/";
 
