@@ -3,8 +3,6 @@ import { MessageModel } from "../models/MessageModel";
 import { TripModel } from "../models/TripModel";
 import bcrypt from "bcrypt";
 
-// const listEndpoints = require("express-list-endpoints");
-
 export const UserController = {
   getProfile: (req, res) => {
     res.send(JSON.stringify(req.oidc.user));
@@ -13,10 +11,6 @@ export const UserController = {
   checkAuthentication: (req, res) => {
     res.send(req.oidc.isAuthenticated() ? "Logged in" : "Logged out");
   },
-
-  //  getEndpoints: (req, res) => {
-  //   res.send(listEndpoints(app))
-  // },
 
   registerUser: async (req, res) => {
     const { username, email, password } = req.body;
@@ -93,10 +87,6 @@ export const UserController = {
   getUserMessages: async (req, res) => {
     const { senderid, recipientid } = req.params;
 
-    //Might have to make up a solution for this part
-    //    const userData = await getUser
-    //const ourUserId = userData.userId;
-    //const ourUserId = userId;
     try {
       const messages = await MessageModel.find({
         sender: {
@@ -105,9 +95,6 @@ export const UserController = {
         recipient: {
           $in: [senderid, recipientid],
         },
-
-        // sender: { $in: [senderid, recipientid] },
-        // recipient: { $in: [senderid, recipientid] },
       })
         .sort({ createdAt: "ascending" })
         .exec();
@@ -129,8 +116,18 @@ export const UserController = {
   },
 
   addTrip: async (req, res) => {
-    const { from, to, message, date, make, model, availableSeats, reg, user } =
-      req.body;
+    const {
+      from,
+      to,
+      message,
+      date,
+      make,
+      model,
+      availableSeats,
+      reg,
+      user,
+      username,
+    } = req.body;
     console.log(req.body);
     try {
       const trip = new TripModel({
@@ -143,6 +140,7 @@ export const UserController = {
         availableSeats,
         reg,
         user,
+        username,
       });
 
       await trip.save();
