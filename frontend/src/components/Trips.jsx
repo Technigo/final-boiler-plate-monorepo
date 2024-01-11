@@ -32,7 +32,7 @@ export const Trips = () => {
   }
 
   return (
-    <div className="mt-8 space-y-4 mx-auto max-w-screen-lg mb-8">
+    <div className="sm:mt-8 mt-2 space-y-4 mx-auto max-w-screen-lg mb-8 p-4">
       <h1 className="text-lg font-md">Available trips</h1>
       {trips.map((trip) => (
         <div

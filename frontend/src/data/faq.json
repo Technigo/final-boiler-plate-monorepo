@@ -1,24 +1,36 @@
 {
   "faq": [
     {
-      "question": "How does it work?",
-      "answer": "Get a ride with others to save money and reduce your carbon footprint!"
+      "question": "Is it safe to ride with strangers through this service?",
+      "answer": "Yes, your safety matters. We carefully check the background of both drivers and passengers, so you can travel with peace of mind, knowing you're in good company."
     },
     {
-      "question": "Is it safe with strangers?",
-      "answer": "We make sure everyone's okay, so you can feel secure traveling with new folks."
+      "question": "Can I pick who I ride with?",
+      "answer": "Absolutely! You have the freedom to choose your travel companions based on their profiles, making each trip more enjoyable and tailored to your preferences."
     },
     {
-      "question": "What benefits do I get?",
-      "answer": "Save money and earn good karma points by sharing rides."
+      "question": "How do I sign up for the service?",
+      "answer": "Getting started is easy! Simply create an account, and you'll be ready to explore new journeys with our community of travelers."
     },
     {
-      "question": "User ratings?",
-      "answer": "Give high-fives or thumbs down – let the stars speak for themselves."
+      "question": "Can I bring luggage or personal items during the ride?",
+      "answer": "Of course! You can bring your luggage or personal items, but it's always good to communicate with your travel companions in advance to ensure everyone has a comfortable journey."
     },
     {
-      "question": "Customer support?",
-      "answer": "Call us or send a message – we're here to help however you like!"
+      "question": "How do I communicate with my driver or fellow passengers?",
+      "answer": "Communication is a breeze through our messaging feature. You can chat with your driver or fellow passengers before and during your journey, making coordination simple and convenient."
+    },
+    {
+      "question": "What if I have a specific route or pit stops I'd like to make?",
+      "answer": "Your ride, your rules! Discuss any specific route preferences or pit stops with your driver before the journey begins to ensure a customized and enjoyable experience for everyone on board."
+    },
+    {
+      "question": "How can I get assistance if I encounter any issues during my ride?",
+      "answer": "Your comfort is our priority. If you face any issues during your ride, our customer support team is ready. Reach out, and we'll promptly assist you to ensure a hassle-free experience."
+    },
+    {
+      "question": "Can I track my ride in real-time?",
+      "answer": "We're excited to share that real-time tracking is a feature currently in the works! Soon, you'll be able to monitor the progress of your ride, stay informed about the estimated time of arrival, and enjoy an even more seamless and stress-free journey. "
     }
   ]
 }

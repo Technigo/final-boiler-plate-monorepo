@@ -173,7 +173,7 @@ export const TripGenerator = () => {
 
   return (
     <>
-      <div className="mt-8 max-w-2xl mx-auto p-2">
+      <div className="sm:mt-8 mt-2 max-w-2xl mx-auto p-2">
         <h1 className="text-lg font-md">Create trip</h1>
         <form onSubmit={handleSubmit} className="flex flex-col space-y-2 p-2">
           <LocationInput

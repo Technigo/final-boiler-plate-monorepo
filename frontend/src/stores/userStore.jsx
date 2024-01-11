@@ -147,11 +147,11 @@ export const userStore = create((set, get) => ({
 
       set({ chatMessages: data });
       // console.log("chatMessages from Store: " + chatMessages);
+      console.log(chatMessages);
     } catch (error) {
       console.error("Error fetching messages: ", error.message);
     }
   },
-
   // Function to handle user logout.
   handleLogout: () => {
     // Clear user information and set isLoggedIn to false.

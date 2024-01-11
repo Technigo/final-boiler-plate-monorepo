@@ -29,6 +29,8 @@ export const Chat = () => {
   const divUnderMessages = useRef();
   const vite_backend = import.meta.env.VITE_BACKEND_API;
 
+  const prevChatMessagesRef = useRef(chatMessages.length);
+
   // console.log("username in chat: " + username);
 
   //Usernames of sender and receiver
@@ -122,14 +124,21 @@ export const Chat = () => {
   }, [selectedUserId]);
 
   useEffect(() => {
-    const userMessages = async () => {
-      await handleChatHistory(loggedInUserId, recipientId);
-      if (isNewMessage) {
-        setIsNewMessage(false);
-      }
-    };
+    const userMessages = () => {
+      // Handle your logic for new messages here
 
-    // console.log(chatMessages);
+      // setTimeout(() => {
+      //   handleChatHistory(loggedInUserId, recipientId);
+      // }, 10000);
+      handleChatHistory(loggedInUserId, recipientId);
+      console.log("chatMessages: " + chatMessages.length);
+
+      // Update the reference to the latest chatMessages
+
+      // if (isNewMessage) {
+      //   setIsNewMessage(false);
+      // }
+    };
 
     userMessages();
   }, [recipientId, chatMessages]);
@@ -146,13 +155,36 @@ export const Chat = () => {
   //   userMessages2();
   // }, [isNewMessage]);
 
+  handleChatHistory();
+  const div = divUnderMessages.current;
+
+  console.log(prevChatMessagesRef.current !== chatMessages.length);
+  // useEffect(() => {
+  //   if (prevChatMessagesRef.current !== chatMessages.length) {
+  //     console.log("New messages detected!");
+  //     // Handle your logic for new messages here
+
+  //     div.scrollIntoView({ behavior: "smooth", block: "end" });
+
+  //     console.log("scrolling to bottom");
+
+  //     // Update the reference to the latest chatMessages
+  //     prevChatMessagesRef.current = chatMessages.length;
+  //   }
+  // }, [chatMessages.length]);
   useEffect(() => {
-    console.log("scrolling to bottom");
-    const div = divUnderMessages.current;
-    if (div) {
+    if (prevChatMessagesRef.current !== chatMessages.length) {
+      console.log("New messages detected!");
+      // Handle your logic for new messages here
+
       div.scrollIntoView({ behavior: "smooth", block: "end" });
+
+      console.log("scrolling to bottom");
+
+      // Update the reference to the latest chatMessages
+      prevChatMessagesRef.current = chatMessages.length;
     }
-  }, [messages]);
+  }, [chatMessages.length]);
 
   if (isLoading) {
     return <div>Loading ...</div>;
@@ -160,9 +192,9 @@ export const Chat = () => {
 
   return (
     isAuthenticated && (
-      <div className="flex items-center justify-center p-8 mt-8 mb-8 w-full">
+      <div className="flex items-center justify-center p-4 mt-8 mb-8 w-full">
         <div className="flex flex-grow max-w-screen-lg">
-          <div className="bg-green-100 p-5 w-1/3">
+          <div className="bg-green-100 p-4 w-1/3">
             <h1 className="text-black py-1 text-md xl:text-2xl">
               Welcome {username}.
             </h1>
@@ -186,7 +218,7 @@ export const Chat = () => {
               </ul>
             )}
           </div>
-          <div className="flex flex-col bg-green-200 flex-1 p-2">
+          <div className="flex flex-col bg-green-200 flex-1 p-4">
             <div className="flex-grow">Messages with {chatReceiver}</div>
             <div className="relative h-full">
               <div className="overflow-y-scroll absolute top-0 left-0 right-0 bottom-2">
@@ -204,7 +236,7 @@ export const Chat = () => {
                     </div>
                     <div
                       className={
-                        "text-left inline-block p-2 my-2 rounded-md text-sm lg:max-w-[40%] " +
+                        "text-left inline-block p-4 my-2 rounded-md text-sm lg:max-w-[40%] " +
                         (message.sender === loggedInUserId
                           ? "bg-blue-500 text-white"
                           : "bg-white text-gray-500")

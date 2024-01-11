@@ -7,6 +7,7 @@ export const TripDetails = () => {
   const apiEnv = import.meta.env.VITE_BACKEND_API;
 
   useEffect(() => {
+    console.log(tripId);
     console.log("Fetching trip details for tripId:", tripId);
     if (!tripId) {
       return;
@@ -25,17 +26,25 @@ export const TripDetails = () => {
     //     .catch((error) => console.error("Error fetching trip details:", error));
     // }, [tripId]);
 
-    fetch(`${apiEnv}/trips/${tripId}`)
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error(`HTTP error! Status: ${response.status}`);
-        }
-        return response.json();
-      })
-      .then((data) => {
-        setSelectedTrip(data);
-      })
-      .catch((error) => console.error("Error fetching trip details:", error));
+    const fetchTrip = async () => {
+      const response = await fetch(`${apiEnv}/trips/${tripId}`);
+
+      const data = await response.json();
+
+      console.log(data);
+      // .then((response) => {
+      //   if (!response.ok) {
+      //     throw new Error(`HTTP error! Status: ${response.status}`);
+      //   }
+      //   return response.json();
+      // })
+      // .then((data) => {
+      //   console.log("tripData: " + data);
+      //   setSelectedTrip(data);
+      // })
+      // .catch((error) => console.error("Error fetching trip details:", error));
+    };
+    fetchTrip();
   }, [tripId]);
 
   if (!selectedTrip) {
@@ -47,6 +56,9 @@ export const TripDetails = () => {
       <div className="mb-4 p-2">
         <div className="grid grid-cols-12 gap-4">
           <div className="col-span-12 flex justify-center">
+            {selectedTrip.map((trip) => {
+              <p>{trip}</p>;
+            })}
             <button
               type="button"
               className="bg-rose-500 text-white px-4 py-2 rounded-full hover:bg-rose-700 focus:outline-none focus:ring focus:border-blue-300"

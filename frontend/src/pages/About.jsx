@@ -4,8 +4,8 @@ import { UserProfile } from "./UserProfile";
 export const About = () => {
   return (
     <>
-      <div className="mt-8 space-y-4 mx-auto max-w-screen-md bg-yellow-50 mb-8 border-dashed border-2 border-yellow-500 p-4 rounded-xl">
-        <h1 className="text-lg font-md">
+      <div className="sm:mt-8 mt-2 space-y-4 mx-auto max-w-screen-md bg-yellow-50 mb-8 border-dashed border-2 border-yellow-500 p-4 rounded-xl">
+        <h1 className="text-lg font-md font-semibold p-2">
           This is our final project of Technigo Web Development Bootcamp fall
           2023.
         </h1>

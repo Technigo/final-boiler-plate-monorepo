@@ -66,9 +66,7 @@ export const Navbar = () => {
   }, []);
 
   return (
-    <nav
-      className={`bg-gray-800 p-4 z-10 sticky top-0 ${isScrolled ? "" : ""}`}
-    >
+    <nav className={`bg-primary p-4 z-20 sticky top-0 ${isScrolled ? "" : ""}`}>
       <div className="container mx-auto flex items-center justify-between">
         <div
           onClick={() => navigate("/")}
@@ -111,7 +109,10 @@ export const Navbar = () => {
         <div className="md:hidden">
           <LoginBtn />
           <LogoutBtn />
-          <button className="text-white pl-5 w-8" onClick={onMobileNavClick}>
+          <button
+            className="text-white text-2xl pl-5 w-8"
+            onClick={onMobileNavClick}
+          >
             {/* Add a responsive menu icon, e.g., a hamburger icon */}
             {openMobileNav ? <>&#x2715;</> : <>&#9776; </>}
           </button>
