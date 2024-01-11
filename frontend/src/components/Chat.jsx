@@ -101,7 +101,7 @@ export const Chat = () => {
 
   useEffect(() => {
     // const ws = new WebSocket("ws://localhost:3000");
-    const ws = new WebSocket(`ws://${vite_backend_shortened}`);
+    const ws = new WebSocket(`ws://${vite_backend}`);
     setWs(ws);
 
     // Send the user ID to the server after WebSocket connection is open
