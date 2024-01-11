@@ -53644,7 +53644,7 @@ function Gallery(props) {
     const [items, setItems] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)();
     function fetchNFTs() {
         if (props.ids != undefined) {
-            setItems(props.ids.map((NFTId) => (react__WEBPACK_IMPORTED_MODULE_0__.createElement(_Item__WEBPACK_IMPORTED_MODULE_1__["default"], { id: NFTId, key: NFTId.toText() }))));
+            setItems(props.ids.map((NFTId) => (react__WEBPACK_IMPORTED_MODULE_0__.createElement(_Item__WEBPACK_IMPORTED_MODULE_1__["default"], { id: NFTId, key: NFTId.toText(), role: props.role }))));
         }
     }
     (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
@@ -53692,10 +53692,14 @@ __webpack_require__.r(__webpack_exports__);
 
 function Header() {
     const [userOwnedGallery, setUserOwnedGallery] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)();
+    const [listingGallery, setListingGallery] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)();
     async function getNFTs() {
         const userNFTIds = await _declarations_opend__WEBPACK_IMPORTED_MODULE_5__.opend.getOwnedNFTs(_index__WEBPACK_IMPORTED_MODULE_6__["default"]);
         console.log(userNFTIds);
-        setUserOwnedGallery(react__WEBPACK_IMPORTED_MODULE_0__.createElement(_Gallery__WEBPACK_IMPORTED_MODULE_4__["default"], { title: "My NFTs", ids: userNFTIds }));
+        setUserOwnedGallery(react__WEBPACK_IMPORTED_MODULE_0__.createElement(_Gallery__WEBPACK_IMPORTED_MODULE_4__["default"], { title: "My NFTs", ids: userNFTIds, role: "collection" }));
+        const listedNFTIds = await _declarations_opend__WEBPACK_IMPORTED_MODULE_5__.opend.getListedNFTs();
+        console.log(listedNFTIds);
+        setListingGallery(react__WEBPACK_IMPORTED_MODULE_0__.createElement(_Gallery__WEBPACK_IMPORTED_MODULE_4__["default"], { title: "Discover", ids: listedNFTIds, role: "discover" }));
     }
     (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
         getNFTs();
@@ -53719,7 +53723,7 @@ function Header() {
                         react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_7__.Link, { to: "/collection" }, "My NFTs"))))),
         react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_8__.Switch, null,
             react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_8__.Route, { path: "/discover" },
-                react__WEBPACK_IMPORTED_MODULE_0__.createElement("h1", null, "Discover")),
+                react__WEBPACK_IMPORTED_MODULE_0__.createElement("h1", null, listingGallery)),
             react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_8__.Route, { path: "/minter" },
                 react__WEBPACK_IMPORTED_MODULE_0__.createElement(_Minter__WEBPACK_IMPORTED_MODULE_3__["default"], null)),
             react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_8__.Route, { path: "/collection" }, userOwnedGallery),
@@ -53747,6 +53751,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _declarations_nft__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../declarations/nft */ "./src/declarations/nft/index.js");
 /* harmony import */ var _Button__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Button */ "./src/opend_assets/src/components/Button.jsx");
 /* harmony import */ var _declarations_opend__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../declarations/opend */ "./src/declarations/opend/index.js");
+/* harmony import */ var _index__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../index */ "./src/opend_assets/src/index.jsx");
+/* harmony import */ var _PriceLabel__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./PriceLabel */ "./src/opend_assets/src/components/PriceLabel.jsx");
+
+
 
 
 
@@ -53760,6 +53768,8 @@ function Item(props) {
     const [priceInput, setPriceInput] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)();
     const [loaderHidden, setLoaderHidden] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(true);
     const [blur, setBlur] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)();
+    const [sellStatus, setSellStatus] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)("");
+    const [priceLabel, setPriceLabel] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)();
     // const id = Principal.fromText(props.id);
     const id = props.id;
     const localHost = "http://localhost:8080/";
@@ -53781,16 +53791,27 @@ function Item(props) {
         setName(name);
         setOwner(owner.toText());
         setImage(image);
-        const nftIsListed = await _declarations_opend__WEBPACK_IMPORTED_MODULE_4__.opend.isListed(props.id);
-        if (nftIsListed) {
-            setOwner("OpenD");
-            setBlur({ filter: "blur(5px)" });
+        if (props.role == "collection") {
+            const nftIsListed = await _declarations_opend__WEBPACK_IMPORTED_MODULE_4__.opend.isListed(props.id);
+            if (nftIsListed) {
+                setOwner("OpenD");
+                setBlur({ filter: "blur(5px)" });
+                setSellStatus("Listed");
+            }
+            else
+                [
+                    setButton(react__WEBPACK_IMPORTED_MODULE_0__.createElement(_Button__WEBPACK_IMPORTED_MODULE_3__["default"], { handleClick: handleSell, text: "Sell" }))
+                ];
+            setButton(react__WEBPACK_IMPORTED_MODULE_0__.createElement(_Button__WEBPACK_IMPORTED_MODULE_3__["default"], { handleClick: handleSell, text: "Sell" }));
         }
-        else
-            [
-                setButton(react__WEBPACK_IMPORTED_MODULE_0__.createElement(_Button__WEBPACK_IMPORTED_MODULE_3__["default"], { handleClick: handleSell, text: "Sell" }))
-            ];
-        setButton(react__WEBPACK_IMPORTED_MODULE_0__.createElement(_Button__WEBPACK_IMPORTED_MODULE_3__["default"], { handleClick: handleSell, text: "Sell" }));
+        else if (props.role == "discover") {
+            const originalOwner = await _declarations_opend__WEBPACK_IMPORTED_MODULE_4__.opend.getOriginalOwner(props.id);
+            if (originalOwner.toText() != _index__WEBPACK_IMPORTED_MODULE_5__["default"].toText()) {
+                setButton(react__WEBPACK_IMPORTED_MODULE_0__.createElement(_Button__WEBPACK_IMPORTED_MODULE_3__["default"], { handleClick: handleBuy, text: "Buy" }));
+            }
+            const price = await _declarations_opend__WEBPACK_IMPORTED_MODULE_4__.opend.getListedNFTPrice(props.id);
+            setPriceLabel(react__WEBPACK_IMPORTED_MODULE_0__.createElement(_PriceLabel__WEBPACK_IMPORTED_MODULE_6__["default"], { sellPrice: price.toString() }));
+        }
     }
     (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
         loadNFT();
@@ -53817,8 +53838,12 @@ function Item(props) {
                 setButton();
                 setPriceInput();
                 setOwner("OpenD");
+                setSellStatus("Listed");
             }
         }
+    }
+    async function handleBuy() {
+        console.log("Buy clicked");
     }
     return (react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: "disGrid-item" },
         react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: "disPaper-root disCard-root makeStyles-root-17 disPaper-elevation1 disPaper-rounded" },
@@ -53829,9 +53854,12 @@ function Item(props) {
                 react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null),
                 react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null)),
             react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: "disCardContent-root" },
+                priceLabel,
                 react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", { className: "disTypography-root makeStyles-bodyText-24 disTypography-h5 disTypography-gutterBottom" },
                     name,
-                    react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", { className: "purple-text" })),
+                    react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", { className: "purple-text" },
+                        " ",
+                        sellStatus)),
                 react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", { className: "disTypography-root makeStyles-bodyText-24 disTypography-body2 disTypography-colorTextSecondary" },
                     "Owner: ",
                     owner),
@@ -53909,6 +53937,30 @@ function Minter() {
     }
 }
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Minter);
+
+
+/***/ }),
+
+/***/ "./src/opend_assets/src/components/PriceLabel.jsx":
+/*!********************************************************!*\
+  !*** ./src/opend_assets/src/components/PriceLabel.jsx ***!
+  \********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+function PriceLabel(props) {
+    return (react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: "disButtonBase-root disChip-root makeStyles-price-23 disChip-outlined" },
+        react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", { className: "disChip-label" },
+            props.sellPrice,
+            " BTC")));
+}
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (PriceLabel);
 
 
 /***/ }),
@@ -54182,7 +54234,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 const idlFactory = ({ IDL }) => {
   return IDL.Service({
+    'getListedNFTPrice' : IDL.Func([IDL.Principal], [IDL.Nat], ['query']),
+    'getListedNFTs' : IDL.Func([], [IDL.Vec(IDL.Principal)], ['query']),
     'getOpenDCanisterID' : IDL.Func([], [IDL.Principal], ['query']),
+    'getOriginalOwner' : IDL.Func([IDL.Principal], [IDL.Principal], ['query']),
     'getOwnedNFTs' : IDL.Func(
         [IDL.Principal],
         [IDL.Vec(IDL.Principal)],
