@@ -1,6 +1,5 @@
 import { SocialMediaLinks } from "./SocialMediaLinks";
 import styled from "styled-components";
-import { useLocation } from "react-router-dom";
 
 // Styling for the footer
 const StyledFooter = styled.div`
@@ -9,16 +8,10 @@ const StyledFooter = styled.div`
   flex-direction: column;
   padding: 20px 0;
   text-align: center;
-  // position: fixed;
-  // position: sticky;
-  // position: -webkit-sticky;
+  position: fixed;
+  bottom: 0;
   width: 100%;
   background: -webkit-linear-gradient(45deg, #633d57, #9b6489, #633d57);
-  position: ${(props) =>
-    props.isFixed
-      ? "fixed"
-      : "static"}; // if isFixed is true, position is fixed, else position is static
-  bottom: 0;
 
   a {
     font-size: 20px;
@@ -50,12 +43,8 @@ const Contact = styled.div`
 
 // Define the Footer component as a functional component.
 export const Footer = () => {
-  const location = useLocation();
-  const isLoginOrRegister =
-    location.pathname === "/login" || location.pathname === "/register"; // if location.pathname is /login or /register, isLoginOrRegister is true, else isLoginOrRegister is false
-
   return (
-    <StyledFooter isFixed={isLoginOrRegister}>
+    <StyledFooter>
       <FooterText>
         <div className="contact-wrapper">
           <div className="anna-wrapper">

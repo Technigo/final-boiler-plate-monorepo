@@ -1,4 +1,3 @@
-// Import necessary dependencies, components, and stores.
 import { useEffect } from "react";
 import { taskStore } from "../stores/taskStore";
 import { userStore } from "../stores/userStore";
@@ -88,8 +87,7 @@ export const Tasks = () => {
     heading: "In Need, In Deed",
     intro: "Do you need a helping hand? Or do you want to help someone?",
     p: "Then Deed Hub is the place to be!",
-    // p: "Share it with the community and get the assistance you need!",
-    deeds: "Up for grabs",
+    deeds: "Help requested",
   };
 
   // Access the 'tasks' and 'fetchTasks' functions from the 'taskStore'.
@@ -133,7 +131,7 @@ export const Tasks = () => {
       <CardWrapper>
         {/* Conditional rendering based on the number of tasks. */}
         {tasks.length === 0 ? (
-          <p>No Needs to offer your helping hand to!</p>
+          <p>Nothing to volunteer for yet!</p>
         ) : (
           // Map through 'tasks' and render task items.
           tasks.map((task) => <FeedTaskCard key={task._id} task={task} />)
@@ -142,7 +140,3 @@ export const Tasks = () => {
     </StyledTaskPage>
   );
 };
-
-// SUMMARY
-
-// This code defines the Tasks component, which handles the display of tasks, their creation, filtering through them and the possibility to volunteer. It imports necessary components, hooks, and stores, and it uses React Router to navigate between routes. The component also fetches tasks from the server using the fetchTasks function and updates the display based on the user's authentication status. Additionally, it renders text content and conditionally displays tasks or a message when there are no tasks.

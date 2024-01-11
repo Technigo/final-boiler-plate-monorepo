@@ -3,7 +3,6 @@ import { LinkButton } from "../components/Buttons/LinkButton";
 import styled from "styled-components";
 import { userStore } from "../stores/userStore";
 import { useNavigate } from "react-router-dom";
-//import { useNavStore } from "../stores/useNavStore";
 
 const StyledHero = styled.div`
   display: flex;
@@ -26,7 +25,6 @@ const Container = styled.div`
   border: 2px solid var(--lighttext);
   border-radius: 20px 0 20px 20px;
   overflow: hidden;
-  //alt="Group of people"
 
   @media screen and (min-width: 570px) {
     height: 400px;
@@ -59,7 +57,6 @@ const HeroTextWrapper = styled.div`
   gap: 2px;
   flex-shrink: 0;
   background: rgba(255, 255, 255, 0.9);
-  //margin-bottom: 50px;
 
   h1 {
     color: var(--darktext);
@@ -95,7 +92,6 @@ const HeroTextWrapper = styled.div`
   @media screen and (min-width: 980px) {
     padding: 24px;
     margin-bottom: 30px;
-    // gap: 12px;
 
     h1 {
       font-size: 22px;
@@ -122,12 +118,11 @@ const StyledP = styled.div`
   flex-direction: column;
   align-items: center;
   text-align: center;
-  gap: 16px;
+  gap: 20px;
 
   p {
     width: 80%;
     color: var(--lighttext);
-    //margin-top: 40px;
   }
 `;
 

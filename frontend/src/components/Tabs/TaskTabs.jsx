@@ -2,7 +2,6 @@ import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import { CreateTask } from "../CreateTask";
 import { FilterTaskFeed } from "../FilterTaskFeed";
 import { taskStore } from "../../stores/taskStore";
-// import "./HandleTaskTabsStyling.css";
 import "./TabsStyling.css";
 
 export const TaskTabs = () => {

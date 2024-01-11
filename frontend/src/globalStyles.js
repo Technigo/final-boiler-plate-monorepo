@@ -55,37 +55,27 @@ body.active-modal {
 }
   
   main {
-  /* height: 100%; */
-  /* margin: 50px 15px 235px; */
-  margin: 50px 15px;
-  /* display: flex;
-  align-items: center;
-  justify-content: center; */
-
-  /* border: 1px solid #eeb885;
-  border-radius: 20px 0 20px 20px;
-  padding: 20px;
-  background: #fff; */
+  margin: 50px 15px 270px;
   
 
-  @media (min-width: 400px) {
-    /* margin: 50px 50px 192px; */
-    margin: 50px;
+  @media screen and (min-width: 400px) {
+    margin: 50px 50px 192px;
+    /* margin: 50px; */
   }
 
-  @media (min-width: 800px) {
-    /* margin: 50px 100px 158px; */
-    margin: 50px 100px;
+  @media screen and  (min-width: 800px) {
+    margin: 50px 100px 158px;
+    /* margin: 50px 100px; */
   }
 
-  @media (min-width: 1100px) {
-    /* margin: 100px 200px 208px; */
-    margin: 100px 200px;
+  @media screen and  (min-width: 1100px) {
+    margin: 100px 200px 208px;
+    /* margin: 100px 200px; */
   }
 
-  @media (min-width: 1300px) {
-    /* margin: 100px 300px 208px; */
-    margin: 100px 300px;
+  @media screen and  (min-width: 1300px) {
+    margin: 100px 300px 208px;
+    /* margin: 100px 300px; */
   }
 }
 `;

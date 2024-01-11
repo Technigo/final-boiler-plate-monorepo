@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { taskStore } from "../stores/taskStore";
 import { Button } from "./Buttons/Button";
-//import aHelpingHandLogotype from "/Logo-white.png";
+import aHelpingHandLogotype from "/Logo-white.png";
 import styled from "styled-components";
 
 const StyledFilterTaskFeed = styled.div`
@@ -22,9 +22,9 @@ const StyledFilterTaskFeed = styled.div`
   }
 `;
 
-// const StyledLogotype = styled.img`
-//   width: 75px;
-// `;
+const StyledLogotype = styled.img`
+  width: 75px;
+`;
 
 const StyledFilters = styled.div`
   display: flex;
@@ -85,11 +85,11 @@ export const FilterTaskFeed = () => {
         offering a helping hand!
       </p>
 
-      {/* <StyledLogotype
+      <StyledLogotype
         src={aHelpingHandLogotype}
         className="logotype"
         alt="A Helping Hand Logotype"
-      /> */}
+      />
       <p>
         Below you see everything you can help out with in Varberg at the moment.
         Make sure to filter the tasks by category and area to find the ones that

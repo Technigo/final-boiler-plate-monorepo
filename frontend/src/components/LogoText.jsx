@@ -1,16 +1,13 @@
-import { Link } from "react-router-dom"; // Ensure the correct import for Link
-// Import image assets for logo.
+import { Link } from "react-router-dom";
 import aHelpingHandLogo from "/a-helping-hand-white.png";
 import styled from "styled-components";
 
-// STYLING I .LOGO I APP.CSS ÄR DET SOM TAR STYLINGEN, JUSTERA
 const StyledLogoText = styled.img`
   width: 200px;
   height: auto;
   object-fit: cover;
-  //padding: 20px;
-  will-change: filter; /* Specify a CSS property that may change */
-  transition: filter 300ms; /* Apply a transition effect to the 'filter' property */
+  will-change: filter;
+  transition: filter 300ms;
 
   @media screen and (min-width: 600px) {
     width: 250px;
@@ -21,14 +18,12 @@ const StyledLogoText = styled.img`
   }
 `;
 
-// Lade in denna för att få loggan att hamna i mitten av sidan
 const StyledLogoDiv = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
 `;
 
-// Define the 'LogoText' functional component.
 function LogoText() {
   return (
     <StyledLogoDiv>
@@ -48,7 +43,3 @@ function LogoText() {
 }
 
 export default LogoText;
-
-// SUMMARY
-
-// This code defines the Logo component, which displays logo of various technologies. It imports image assets for React, Technigo, and Vite logo. The component uses anchor (<a>) tags to create clickable links to the respective websites, and it opens those links in new tabs (target="_blank"). Each logo image is displayed within an anchor tag, and they have CSS classes for styling. The component is exported as the default export, making it available for use in other parts of the application.

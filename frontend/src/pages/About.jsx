@@ -3,6 +3,7 @@ import { ProfilePhotoFounder } from "../components/ProfilePhoto/ProfilePhotoFoun
 import styled from "styled-components";
 
 const StyledAbout = styled.div`
+  margin: 0 auto;
   display: flex;
   flex-direction: column;
   gap: 64px;
@@ -33,12 +34,12 @@ const StyledFounders = styled.div`
   justify-content: center;
   gap: 50px;
 
-  @media (min-width: 1100px) {
+  @media screen and (min-width: 1100px) {
     flex-direction: row;
     gap: 100px;
   }
 
-  @media (min-width: 1400px) {
+  @media screen and (min-width: 1400px) {
     gap: 200px;
   }
 `;

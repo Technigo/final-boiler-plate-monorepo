@@ -14,7 +14,6 @@ const StyledNav = styled.nav`
 
   a {
     color: var(--lighttext);
-    /* color: var(--darktext); */
     font-weight: 600;
   }
 

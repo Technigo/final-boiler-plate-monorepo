@@ -64,8 +64,8 @@ const StyledFeedCardModal = styled.div`
   // Styling for the description in the card when the modal is open
   .description {
     margin: 30px 15px;
-    text-align: center;
     overflow-wrap: break-word;
+    text-align: center;
   }
 
   // Styling for the button to close the open modal
