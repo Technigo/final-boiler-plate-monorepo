@@ -45,8 +45,9 @@ const MoodSelectorContainer = styled.div`
   align-items: flex-start;
   gap: 5px;
   width: 100%;
-  max-width: 1200px;
+  /* max-width: 1200px; */
   margin-bottom: 15px;
+  font-family: "JosefinSans";
 
   @media ${tablet} {
     display: flex;
@@ -55,26 +56,28 @@ const MoodSelectorContainer = styled.div`
     align-items: flex-start;
     gap: 5px;
     width: 100%;
-    max-width: 1200px;
+    /* max-width: 1200px; */
     margin-bottom: 35px;
+    font-family: "JosefinSans";
   }
 
   @media ${desktop} {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    align-items: flex-start;
+    align-items: center;
     gap: 5px;
     width: 100%;
-    max-width: 1200px;
+    max-width: 1800px;
     margin-bottom: 40px;
+    font-family: "JosefinSans";
   }
 `;
 
 const MoodButton = styled.button`
   color: white;
   border: solid white;
-  padding: 10px 10px;
+  padding: 8px 8px;
   border: none;
   border-radius: 5px;
   cursor: pointer;
@@ -82,6 +85,7 @@ const MoodButton = styled.button`
   text-decoration: none;
   display: inline-block;
   font-size: 16px;
+  font-family: "JosefinSans";
   margin: 4px 4px;
   transition-duration: 0.2s;
   background-color: ${(props) => (props.selected ? "#01999A" : "#FCABE3")};
@@ -99,7 +103,7 @@ const MoodButton = styled.button`
   @media ${tablet} {
     color: white;
     border: solid white;
-    padding: 10px 10px;
+    padding: 12px 12px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -125,9 +129,9 @@ const MoodButton = styled.button`
   @media ${desktop} {
     color: white;
     border: solid white;
-    padding: 10px 10px;
+    padding: 12px 12px;
     border: none;
-    border-radius: 5px;
+    border-radius: 10px;
     cursor: pointer;
     text-align: center;
     text-decoration: none;
@@ -243,6 +247,7 @@ const ResultsButton = styled.button`
   font-size: 18px;
   margin: 2px 2px;
   transition-duration: 0.4s;
+  font-family: "JosefinSans";
 
   &:hover {
     background-color: white;
@@ -268,6 +273,7 @@ const ResultsButton = styled.button`
     font-size: 25px;
     margin: 2px 2px;
     transition-duration: 0.4s;
+    font-family: "JosefinSans";
 
     &:hover {
       background-color: white;
@@ -294,6 +300,7 @@ const ResultsButton = styled.button`
     font-size: 25px;
     margin: 2px 2px;
     transition-duration: 0.4s;
+    font-family: "JosefinSans";
 
     &:hover {
       background-color: white;
@@ -371,9 +378,7 @@ const MoodSelector = () => {
       </MoodSelectorContainer>
 
       <div style={{ display: "flex", justifyContent: "space-between" }}>
-        <BackButton onClick={handleBackButtonClick}>
-          Back to Occasion
-        </BackButton>
+        <BackButton onClick={handleBackButtonClick}>Back</BackButton>
 
         <Link to="/result">
           <ResultsButton

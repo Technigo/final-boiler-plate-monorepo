@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import logo from "../assets/logonew.png";
 
 const tablet = `(min-width: 750px)`;
 const desktop = `(min-width: 1007px)`;
@@ -132,7 +133,7 @@ const Navbar = () => {
   return (
     <NavbarContainer>
       <a href="/" target="_blank" rel="noopener noreferrer">
-        <FMLogo src="src/assets/LogoNew.png" alt="Logo" />
+        <FMLogo src={logo} alt="Logo" />
       </a>
       <NavbarNav>
         <NavItem>
