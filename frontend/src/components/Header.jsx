@@ -1,6 +1,6 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import "./css/header.css";
+import "./header.css";
 
 const Header = () => {
 

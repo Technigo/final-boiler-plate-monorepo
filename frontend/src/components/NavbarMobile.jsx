@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./css/navbar.css";
+import "./navbar.css";
 import { Link } from 'react-router-dom';
 import BurgerMenu from "./BurgerMenu";
 import LanguageSwitcher from "./LanguageSwitcher";

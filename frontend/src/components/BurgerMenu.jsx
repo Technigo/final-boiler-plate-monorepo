@@ -2,7 +2,7 @@ import React from 'react';
 import { slide as Menu } from 'react-burger-menu';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import './css/burgermenu.css';
+import './burgermenu.css';
 
 const BurgerMenu = ({ menuOpen, toggleMenu }) => {
 

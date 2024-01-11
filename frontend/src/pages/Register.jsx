@@ -11,7 +11,7 @@ import Footer from "../components/Footer";
 import FooterMobile from "../components/FooterMobile";
 import lottie from 'lottie-web';
 import calenderAnimationData from '../data/calender.json';
-import "../components/css/register.css";
+import "../components/register.css";
 
 // Define the 'Register' functional component.
 export const Register = () => {

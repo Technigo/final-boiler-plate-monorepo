@@ -1,6 +1,6 @@
 import React from 'react';
 import LanguageSwitcherFooter from "./LanguageSwitcherFooter";
-import "./css/footer.css";
+import "./footer.css";
 
 const Footer = () => {
 
