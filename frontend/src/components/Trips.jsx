@@ -5,35 +5,13 @@ export const Trips = () => {
   const [trips, setTrips] = useState(null);
   const apiEnv = import.meta.env.VITE_BACKEND_API;
 
-  // useEffect(() => {
-  //   fetch("http://localhost:3000/trips")
-  //     .then((response) => response.json())
-  //     .then((data) => {
-  //       if (Array.isArray(data)) {
-  //         setTrips(data);
-  //       } else {
-  //         setTrips([data]);
-  //       }
-  //     })
-  //     .catch((error) => console.error("Error fetching trips:", error));
-  // }, []);
-
   useEffect(() => {
-    const tripFetch = () => {
-      fetch(`${apiEnv}/trips`)
-        .then((response) => response.json())
-        .then((data) => {
-          setTrips(data);
-        })
-        .catch((error) => console.error("Error fetching trips:", error));
-    };
-
-    //  const userFetch = () => {
-
-    //   fetch(`${}/user/mongo/${}`)
-    //  }
-
-    tripFetch();
+    fetch(`${apiEnv}/trips`)
+      .then((response) => response.json())
+      .then((data) => {
+        setTrips(data);
+      })
+      .catch((error) => console.error("Error fetching trips:", error));
   }, []);
 
   if (trips === null) {
@@ -42,6 +20,7 @@ export const Trips = () => {
 
   return (
     <div className="sm:mt-8 mt-2 space-y-4 mx-auto max-w-screen-lg mb-8 p-4">
+      {console.log(trips)}
       <h1 className="text-lg font-md">Available trips</h1>
       {trips.map((trip) => (
         <div
@@ -62,7 +41,7 @@ export const Trips = () => {
             {trip.date}
           </div>
           <div className="col-span-4 text-xs text-gray-900 sm:text-lg">
-            {trip.user}
+            Posted by user {trip.username}
           </div>
           <div className="col-span-3 absolute right-4 top-1/2 transform -translate-y-1/2 h-full flex items-center justify-center">
             <Link

@@ -6,7 +6,7 @@ export const Hero = () => {
       <div className="absolute inset-0 bg-emerald-300"></div>
       <div className="max-w-4xl mx-auto text-white text-center z-10">
         <h1 className="text-primary text-6xl sm:text-8xl font-extrabold mb-8">
-          From A to B and Beyond
+          From A to Beyond
         </h1>
         <h3 className="text-primary text-2xl sm:text-4xl font-semibold mb-8 leading-tight">
           Step into a new era of travel. Enjoy the ease of carefree rides,

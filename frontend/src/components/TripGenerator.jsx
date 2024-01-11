@@ -8,7 +8,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import { userStore } from "../stores/userStore";
 
 export const TripGenerator = () => {
-  const { loggedInUserId } = userStore();
+  const { loggedInUserId, username: tripUsername } = userStore();
 
   const [formData, setFormData] = useState({
     from: "",
@@ -20,6 +20,7 @@ export const TripGenerator = () => {
     availableSeats: "",
     reg: "",
     user: loggedInUserId,
+    username: tripUsername,
   });
 
   const [trips, setTrips] = useState([]);
@@ -85,17 +86,16 @@ export const TripGenerator = () => {
     setLoading(true);
 
     const newTrip = {
-      // id: Date.now(),
       from: formData.from,
       to: formData.to,
       message: formData.message,
       date: formData.date.toString(),
-      // time: formData.time,
       make: formData.make,
       model: formData.model,
       availableSeats: formData.availableSeats,
       reg: formData.reg,
       user: loggedInUserId,
+      username: tripUsername,
     };
 
     try {
@@ -110,11 +110,9 @@ export const TripGenerator = () => {
       });
 
       const data = await response.json();
-      if (data.success) {
-        alert("Trip posted successfully");
-      } else {
-        alert(data.response || "Adding trip failed");
-      }
+      // if (data.success) {
+      alert("Trip posted successfully");
+      // }
 
       await new Promise((resolve) => setTimeout(resolve, 1000));
 
@@ -257,34 +255,7 @@ export const TripGenerator = () => {
               />
             </div>
           </div>
-          {/* <div className="flex space-x-4">
-            <div className="w-full">
-              <label
-                htmlFor="date"
-                className="block text-sm font-md text-gray-700"
-              >
-                Date
-              </label>
-              <DatePicker
-                selected={formData.date}
-                onChange={(date) =>
-                  setFormData((prevData) => ({ ...prevData, date }))
-                }
-                placeholderText="MM/DD/YYYY"
-                wrapperClassName="w-full"
-                className="input-field border p-2 rounded-md w-full h-10"
-              />
-            </div>
 
-            {/* <div className="w-1/2">
-              <label
-                htmlFor="time"
-                className="block text-sm font-md text-gray-700"
-              >
-                Time
-              </label>
-            </div>*/}
-          {/* </div> */}
           <div className="flex space-x-4">
             <div className="w-1/2">
               <label

@@ -11,25 +11,10 @@ export const TripDetails = () => {
   const localhost = "http://localhost:3000";
 
   useEffect(() => {
-    // console.log(tripId);
-    // console.log("Fetching trip details for tripId:", tripId);
     console.log(`${apiEnv}/trips/${tripId}`);
     if (!tripId) {
       return;
     }
-
-    //   fetch(`http://localhost:3000/trips/${tripId}`)
-    //     .then((response) => {
-    //       if (!response.ok) {
-    //         throw new Error(`HTTP error! Status: ${response.status}`);
-    //       }
-    //       return response.json();
-    //     })
-    //     .then((data) => {
-    //       setSelectedTrip(data);
-    //     })
-    //     .catch((error) => console.error("Error fetching trip details:", error));
-    // }, [tripId]);
 
     const fetchTrip = async () => {
       const response = await fetch(`${apiEnv}/trips/${tripId}`);
@@ -39,23 +24,6 @@ export const TripDetails = () => {
       setUser(selectedTrip.user);
       setIsLoading(false);
       console.log("user: " + user);
-
-      // console.log(`${localhost}/user/mongo/${user}`);
-      // const call2 = await fetch(`${localhost}/user/mongo/${user}`);
-      // const data2 = call2.json();
-      // setUsername(JSON.stringify(data2.username));
-      // console.log(username);
-      // .then((response) => {
-      //   if (!response.ok) {
-      //     throw new Error(`HTTP error! Status: ${response.status}`);
-      //   }
-      //   return response.json();
-      // })
-      // .then((data) => {
-      //   console.log("tripData: " + data);
-      //   setSelectedTrip(data);
-      // })
-      // .catch((error) => console.error("Error fetching trip details:", error));
     };
 
     const fetchUsername = async () => {
