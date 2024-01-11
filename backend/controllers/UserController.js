@@ -1,5 +1,6 @@
 import { UserModel } from "../models/UserModel";
 import { MessageModel } from "../models/MessageModel";
+import { TripModel } from "../models/TripModel";
 import bcrypt from "bcrypt";
 
 export const UserController = {
@@ -104,6 +105,31 @@ export const UserController = {
       res.json(messages);
     } catch (error) {
       res.json(error);
+    }
+  },
+
+  addTrip: async (req, res) => {
+    const { from, to, message, date, time, make, model, availableSeats, reg } =
+      req.body;
+    try {
+      const trip = new TripModel({
+        from,
+        to,
+        message,
+        date,
+        time,
+        make,
+        model,
+        availableSeats,
+        reg,
+      });
+
+      await trip.save();
+    } catch (error) {
+      res.status(400).json({
+        message: "Could not post trip",
+        errors: error.errors,
+      });
     }
   },
 };

@@ -10,12 +10,12 @@ export const FAQ = () => {
 
   return (
     <div className="accordion">
-      <h1 className="text-lg font-md">FAQ</h1>
       {faqData.faq.map((faq, index) => (
         <div key={index} className="faq-item">
           <div
             className="faq-title cursor-pointer flex justify-between items-center p-4 bg-emerald-200"
-            onClick={() => toggleAccordion(index)}>
+            onClick={() => toggleAccordion(index)}
+          >
             <span>{faq.question}</span>
             <span>{openIndex === index ? "-" : "+"}</span>
           </div>
