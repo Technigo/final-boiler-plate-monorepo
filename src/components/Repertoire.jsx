@@ -42,7 +42,7 @@ export const Repertoire = () => {
             <div key={showTime._id}>
               <ul>
                 <li>
-                  <Link to={`/booking`}>{showTime.startingTime}:00</Link>
+                  <Link to={`/booking/${showTime._id}`}>{showTime.startingTime}:00</Link>
                 </li>
               </ul>
             </div>
