@@ -58,7 +58,7 @@ export const Booking = () => {
 			seatInfo.forEach(row => {
 				row.forEach((seat) => {
 					if(seat.selected) {
-						console.log('useEffect selected seat', seat)
+						// console.log('useEffect selected seat', seat)
 						setJustSelectedSeats([seat.rowIndex, seat.seatIndex])
 					}
 				})
