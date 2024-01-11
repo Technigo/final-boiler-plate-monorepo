@@ -9,8 +9,8 @@ ul {
 	list-style: none;
 }
 
-li {
-	border-bottom: 1px solid white;
+.the-list li {
+	border-bottom: 1px solid var(--font-color);
 	margin-bottom: 5px;
 	padding-bottom: 5px;
 }
@@ -20,5 +20,5 @@ li {
 	text-align: start;
 }
 .the-title {
-	color: var(--primary-color);
+	color: var(--font-color);
 }

@@ -1,6 +1,6 @@
 .the-detail-page {
 	padding: 30px;
-	color: white;
+	color: var(--font-color);
 	min-height: 100vh;
 	background-position: center;
 	display: flex;
