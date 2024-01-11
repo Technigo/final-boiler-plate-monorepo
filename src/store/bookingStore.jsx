@@ -68,7 +68,6 @@ export const bookingStore = create((set) => ({
         )
         try {
             const theSeats = Array.isArray(newSeats) ? newSeats : [newSeats] 
-            console.log(newSeats, showTimeId)
             const response = await fetch(`${apiEnv}/showtimes/showtime/${showTimeId}`, {
                 method: 'PUT',
                 headers: {
@@ -80,7 +79,6 @@ export const bookingStore = create((set) => ({
                 })
             })
             const data = await response.json()
-            console.log(data)
             set({ selectedShowtime: data })
         } catch (error) {
             console.log(error)
@@ -107,25 +105,6 @@ export const bookingStore = create((set) => ({
             console.log(error)
         }
     },
-
-    // makeASelection: async (selectedSeat, showTimeId) => {
-    //     try {
-    //         const response = await fetch(`${apiEnv}/showtimes/showtime/${showTimeId}`, {
-    //             method: 'PUT',
-    //             headers: {
-    //                 "Content-Type": "application/json",
-    //             },
-    //             body: JSON.stringify({ 
-    //                 seat: selectedSeat,
-    //                 id: showTimeId 
-    //             })
-    //         })
-    //         const data = await response.json()
-    //         set({ selectedShowtime: data })
-    //     } catch (error) {
-    //         console.log(error)
-    //     }
-    // },
 }))
 
 export default bookingStore
