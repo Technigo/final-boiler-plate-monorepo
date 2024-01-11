@@ -39,6 +39,10 @@ export const Register = () => {
     return /\S+@\S+\.\S+/.test(email);
   };
 
+  const style = {
+    height: 200,
+  };
+
   // Function to handle the toggle between the hide password (eyeOff icon) and the show password (eye icon)
   const handleToggle = () => {
     if (type === "password") {
@@ -73,7 +77,11 @@ export const Register = () => {
 
     if (password.length < 6) {
       setLoading(false);
-      Swal.fire('Error', 'Password must be at least 6 characters long', 'error');
+      Swal.fire(
+        "Error",
+        "Password must be at least 6 characters long",
+        "error"
+      );
       return;
     }
 
@@ -167,7 +175,9 @@ export const Register = () => {
               </div>
             </div>
             {/* Create a button for signing up and attach the "onSignupClick" event handler. */}
-            {loading && <Lottie animationData={loadingAnimation} />}
+            {loading && (
+              <Lottie animationData={loadingAnimation} style={style} />
+            )}
             {!loading && (
               <Button
                 iconSize="button"

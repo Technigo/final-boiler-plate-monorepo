@@ -26,7 +26,9 @@ export const ProfileSettings = () => {
   const storeHandleAccountDeletion = userStore(
     (state) => state.handleAccountDeletion
   );
-
+  const style = {
+    height: 300,
+  };
   // Use the 'useNavigate' hook to programmatically navigate between routes.
   const navigate = useNavigate();
 
@@ -174,11 +176,12 @@ export const ProfileSettings = () => {
             {isLoading ? (
               <div className="loading-container">
                 <Lottie
+                  animationData={loadingAnimation}
                   options={{
                     loop: true,
                     autoplay: true,
-                    animationData: loadingAnimation,
                   }}
+                  style={style}
                 />
               </div>
             ) : (

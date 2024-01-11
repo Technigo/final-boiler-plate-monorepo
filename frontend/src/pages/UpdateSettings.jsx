@@ -28,6 +28,10 @@ export const UpdateSettings = () => {
   // Setting initial state for input type to be password and icon to be eyeOff so that the inputPassword will be hidden
   const [type, setType] = useState("password");
   const [icon, setIcon] = useState(eyeOff);
+  // Style Lottie animation
+  const style = {
+    height: 300,
+  };
 
   // For fetching the current user profile data
   const isLoggedin = userStore((state) => state.isLoggedin);
@@ -161,11 +165,12 @@ export const UpdateSettings = () => {
           {isLoading ? (
             <div className="loading-container">
               <Lottie
+                animationData={loadingAnimation}
                 options={{
                   loop: true,
                   autoplay: true,
-                  animationData: loadingAnimation,
                 }}
+                style={style}
               />
             </div>
           ) : (

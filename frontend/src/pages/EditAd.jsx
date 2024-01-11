@@ -24,8 +24,11 @@ export const EditAd = () => {
   const [pickupDate, setPickupDate] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false); // To track if the update was successful
-
   const { getAdById, handleEdit } = adStore();
+  // Style Lottie animation
+  const style = {
+    height: 300,
+  };
 
   useEffect(() => {
     const fetchAdData = async () => {
@@ -98,11 +101,12 @@ export const EditAd = () => {
           {isLoading ? (
             <div className="loading-container">
               <Lottie
+                animationData={loadingAnimation}
                 options={{
                   loop: true,
                   autoplay: true,
-                  animationData: loadingAnimation,
                 }}
+                style={style}
               />
             </div>
           ) : (
@@ -150,7 +154,6 @@ export const EditAd = () => {
                     { label: "Meter (m)", value: "m" },
                     { label: "Centimeters (cm)", value: "cm" },
                     { label: "Square Meter (m²)", value: "m2" },
-
                   ]}
                   value={unit}
                   onChange={handleUnitChange}

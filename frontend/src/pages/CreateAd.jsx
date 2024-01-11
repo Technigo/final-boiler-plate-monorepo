@@ -55,6 +55,10 @@ export const CreateAd = () => {
     { label: "Square Meter (m²)", value: "m2" },
   ];
 
+  const style = {
+    height: 300,
+  };
+
   const handleUnitChange = (event) => {
     setUnit(event.target.value);
   };
@@ -168,11 +172,12 @@ export const CreateAd = () => {
             {isLoading ? (
               <div className="loading-container">
                 <Lottie
+                  animationData={loadingAnimation}
                   options={{
                     loop: true,
                     autoplay: true,
-                    animationData: loadingAnimation,
                   }}
+                  style={style}
                 />
               </div>
             ) : (
