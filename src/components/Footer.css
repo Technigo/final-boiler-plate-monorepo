@@ -5,9 +5,6 @@
 	flex-direction: column;
 	justify-content: space-around;
 	align-items: center;
-	position: sticky;
-	top: 0;
-	z-index: 1;
 	margin-top: 3rem !important;
 }
 @media (min-width: 667px) {
