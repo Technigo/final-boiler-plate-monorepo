@@ -3,7 +3,6 @@ import { useState, useEffect } from "react";
 import { LoginBtn } from "./LoginBtn";
 import { LogoutBtn } from "./LogoutBtn";
 import { useAuth0 } from "@auth0/auth0-react";
-import { Trips } from "./Trips";
 
 export const Navbar = () => {
   const { isAuthenticated } = useAuth0();
