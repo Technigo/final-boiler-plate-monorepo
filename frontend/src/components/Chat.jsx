@@ -171,6 +171,7 @@ export const Chat = () => {
   //     // Update the reference to the latest chatMessages
   //     prevChatMessagesRef.current = chatMessages.length;
   //   }
+  //console.log("e")
   // }, [chatMessages.length]);
   useEffect(() => {
     if (prevChatMessagesRef.current !== chatMessages.length) {
