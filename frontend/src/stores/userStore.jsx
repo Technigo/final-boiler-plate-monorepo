@@ -185,9 +185,9 @@ export const userStore = create((set) => ({
   },
 
   // FUNCTION TO DISPLAY USER'S OWN PROFILE (for each user to see their profile settings)
-  handleProfileDisplay: async (isLoggedin, userId) => {
+  handleProfileDisplay: async (accessToken, userId) => {
     // Check if the user is logged in and display message if they are not
-    if (!isLoggedin) {
+    if (!accessToken) {
       Swal.fire({
         title: "Error!",
         text: "Please log in to see the profile",
@@ -287,9 +287,9 @@ export const userStore = create((set) => ({
   },
 
   // FUNCTION TO HANDLE USER'S OWN PROFILE UPDATE EXCEPT IMAGE (for each user to update their own profile settings)
-  handleProfileUpdate: async (isLoggedin, userId, password, email, location, introduction) => {
+  handleProfileUpdate: async (accessToken, userId, password, email, location, introduction) => {
     // Check if the user is logged in and display message if they are not
-    if (!isLoggedin) {
+    if (!accessToken) {
       Swal.fire({
         title: "Error!",
         text: "Please log in to update your profile",
@@ -427,7 +427,6 @@ export const userStore = create((set) => ({
 
   // FUNCTION TO HANDLE USER ACCOUNT DELETION
   handleAccountDeletion: async (userId) => {
-    console.log(userId);
     try {
       // If they are logged in, send GET request to the user endpoint to retrieve user data
       const response = await fetch(`${apiEnv}/users/${userId}`, {
@@ -466,7 +465,6 @@ export const userStore = create((set) => ({
       }
     } catch (error) {
       // Handle and log any errors.
-          // Handle and log any errors.
       console.error("Account deletion error: ", error);
       Swal.fire({
           title: "Error!",
@@ -475,58 +473,6 @@ export const userStore = create((set) => ({
       });
       return null;
     }
-
-    const swalWithBootstrapButtons = Swal.mixin({
-      customClass: {
-        confirmButton: "btn btn-success",
-        cancelButton: "btn btn-danger"
-      },
-      buttonsStyling: false
-    });
-    swalWithBootstrapButtons.fire({
-      title: "Are you sure?",
-      text: "You won't be able to revert this!",
-      icon: "warning",
-      showCancelButton: true,
-      confirmButtonText: "Yes, delete my account!",
-      cancelButtonText: "No, cancel!",
-      reverseButtons: true
-    }).then((result) => {
-      if (result.isConfirmed) {
-        // Clear user information
-        set({
-          username: "",
-          email: "",
-          password: "",
-          consent: false,
-          location: "",
-          introduction: "",
-          products: [],
-          image: null,
-          userId: null,
-          accessToken: null,
-          isLoggedin: false
-        });
-        // Remove the accessToken from localStorage and userId.
-        localStorage.removeItem("accessToken");
-        localStorage.removeItem("userId");
-        // Display confirmation message
-        swalWithBootstrapButtons.fire({
-          title: "We are sad to see you go...",
-          text: "Your account has been deleted. Feel free to create a new account anytime!",
-          icon: "success"
-        });
-      } else if (
-        /* Display dismissal message */
-        result.dismiss === Swal.DismissReason.cancel
-      ) {
-        swalWithBootstrapButtons.fire({
-          title: "Cancelled",
-          text: "Thanks for staying with us :)",
-          icon: "error"
-        });
-      }
-    });
   }
 }));
 

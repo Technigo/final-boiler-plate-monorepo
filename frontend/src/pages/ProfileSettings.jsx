@@ -16,7 +16,7 @@ export const ProfileSettings = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false); // To track if the data fetching was successful
 
-  const isLoggedin = userStore((state) => state.isLoggedin);
+  const accessToken = userStore.getState().accessToken;
   const handleLogout = userStore((state) => state.handleLogout);
   const userId = userStore((state) => state.userId);
   const username = userStore((state) => state.username);
@@ -32,7 +32,7 @@ export const ProfileSettings = () => {
 
   // useEffect hook to check user authentication status.
   useEffect(() => {
-    if (!isLoggedin) {
+    if (!accessToken) {
       // If the user is not logged in, show an alert and navigate to the login route.
       Swal.fire({
         title: "Error!",
@@ -41,7 +41,7 @@ export const ProfileSettings = () => {
       });
       navigate("/login");
     }
-  }, [isLoggedin, navigate]);
+  }, [accessToken, navigate]);
 
   const [profileData, setProfileData] = useState({
     email: "",
@@ -55,7 +55,7 @@ export const ProfileSettings = () => {
     const getProfileData = async () => {
       setIsLoading(true);
       try {
-        const profileData = await storeHandleProfileDisplay(isLoggedin, userId);
+        const profileData = await storeHandleProfileDisplay(accessToken, userId);
         if (profileData) {
           setProfileData({
             email: profileData.email,
@@ -74,14 +74,54 @@ export const ProfileSettings = () => {
       }
     };
     getProfileData();
-  }, [storeHandleProfileDisplay, isLoggedin, userId]);
+  }, [storeHandleProfileDisplay, accessToken, userId]);
 
   const handleUpdateClick = () => {
     navigate("/update-settings");
   };
 
   const handleDeleteClick = () => {
-    storeHandleAccountDeletion(userId);
+    const swalWithBootstrapButtons = Swal.mixin({
+      customClass: {
+        confirmButton: "btn btn-success",
+        cancelButton: "btn btn-danger"
+      },
+      buttonsStyling: false
+    });
+    swalWithBootstrapButtons.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonText: "Yes, delete my account!",
+      cancelButtonText: "No, cancel!",
+      reverseButtons: true
+    }).then((result) => {
+      if (result.isConfirmed) {
+        // Clear user information
+        storeHandleAccountDeletion(userId);
+        // Remove the accessToken from localStorage and userId.
+        localStorage.removeItem("accessToken");
+        localStorage.removeItem("userId");
+        // Display confirmation message
+        swalWithBootstrapButtons.fire({
+          title: "We are sad to see you go...",
+          text: "Your account has been deleted. Feel free to create a new account anytime!",
+          icon: "success"
+        });
+        // Navigate to landing page upon successful deletion
+        navigate("/");
+      } else if (
+        /* Display dismissal message */
+        result.dismiss === Swal.DismissReason.cancel
+      ) {
+        swalWithBootstrapButtons.fire({
+          title: "Cancelled",
+          text: "Thanks for staying with us :)",
+          icon: "error"
+        });
+      }
+    });
   };
 
   return (
