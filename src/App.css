@@ -11,13 +11,9 @@
     justify-content: center;
     align-items: center;
 }
-.page-section:not(.the-hero):not(.the-footer) {
+.page-section:not(.the-hero):not(.the-footer):not(.the-header) {
     margin: 0 var(--big-padding);
 }
-/* .page-section.the-calender {
-    padding: 3rem 11rem;
-    margin: 0;
-} */
 
 .button-container {
     display: flex;

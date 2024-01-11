@@ -1,10 +1,40 @@
+@import url('https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+.the-home-page {
+    position: relative;
+}
+
 .the-header {
     width: 100%;
     display: flex;
     justify-content: space-around;
     align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    background-color: var(--background-color);
+}
+.the-header h3 {
+    font-size: 1.5rem;
+}
+
+#the-header {
+    margin-top: 25px;
+}
+
+.the-nav-bar {
+    display: flex;
+    gap: 20px;
+    font-family: Jost, sans-serif;
 }
 
 .login-icon {
-    width: 2rem;
+    width: 1rem;
+}
+
+.the-login-button {
+    display:flex;
+    gap: 8px;
+    align-items: center;
+    justify-content: center;
 }
