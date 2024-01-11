@@ -42,14 +42,14 @@ export const UserAds = () => {
           <h3>{ad.title}</h3>
           <div className="user-ad-actions">
             <Button
-              icon="./src/assets/edit.svg"
+              icon="../icons/edit.svg"
               iconSize="small"
               label="Edit"
               onClick={() => handleEdit(ad._id)}
               invertIcon={true}
             />
             <Button
-              icon="./src/assets/trash.svg"
+              icon="../icons/trash.svg"
               iconSize="small"
               label="Delete"
               onClick={() => handleDelete(ad._id)}
