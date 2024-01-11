@@ -15,7 +15,6 @@ export const StoryCard = ({ story, isActive, handleRankUpdate }) => {
     position: "relative",
   };
 
-
   // Function to handle like button click, updates story ranking
 
   const handleLikeClick = () => {

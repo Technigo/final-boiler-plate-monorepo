@@ -14,10 +14,8 @@ export const PostStory = () => {
   const [newStory, setNewStory] = useState("");
   const [newCategory, setNewCategory] = useState("");
   const [selectedDate, setSelectedDate] = useState(new Date());
-  // const [isCalendarVisible, setIsCalendarVisible] = useState(false);
   const [isImageModalOpen, setIsImageModalOpen] = useState(false);
   const [selectedImage, setSelectedImage] = useState("");
-
   const [autocomplete, setAutocomplete] = useState(null);
   const [locationName, setLocationName] = useState("");
   const [latitude, setLatitude] = useState(null);
@@ -57,22 +55,7 @@ export const PostStory = () => {
       image: selectedImage,
     };
 
-    // setNewStory("");
-
-    // Assuming 'sv' is the language code for Swedish
-    //  if (isUnsupportedLanguage(newStory, 'sv')) {
-    //   postStory(storyData);
-    // } else {
-    //   // Perform sentiment analysis if the language is supported
-    //   analyzeSentimentAndPostStory(storyData, newStory);
-    // }
-    // };
-
-    // const isUnsupportedLanguage = (text, languageCode) => {
-    //   // For Swedish, you might check for unique Swedish characters
-    //   const swedishCharacters = ['å', 'ä', 'ö'];
-    //   return swedishCharacters.some(char => text.includes(char));
-    // };
+ 
 
     if (isStoryInSwedish(newStory)) {
       postStory(storyData);
@@ -103,6 +86,7 @@ export const PostStory = () => {
     )
       .then((res) => res.json())
       .then((googleApiResponse) => {
+
         if (
           googleApiResponse.error &&
           googleApiResponse.error.message.includes("Language not supported")
@@ -118,6 +102,7 @@ export const PostStory = () => {
           } else {
             postStory(storyData);
           }
+
         }
       })
       .catch((error) => {
@@ -148,43 +133,52 @@ export const PostStory = () => {
         setLocationName("");
         setNewCategory("");
         setSelectedImage("");
-        setNewStory(""); // Clear the story content here
+
+        setNewStory(""); 
+
       })
       .catch((error) => {
         console.error("Error posting the story", error);
       });
   };
 
+  // Handles the change of the date selected in the date picker.
   const handleDateChange = (date) => {
     setSelectedDate(date);
   };
 
+  // Handles the click event of a button within the PostStory component.
   const handleButtonClick = () => {
     console.log("Button clicked within PostStory component", newStory);
   };
 
+  // Handles the change event of the category selection input.
   const handleCategoryChange = (e) => {
     setNewCategory(e.target.value);
   };
 
+  // Opens the image modal for image selection.
   const openImageModal = () => {
     setIsImageModalOpen(true);
   };
 
+  // Closes the image modal after image selection.
   const closeImageModal = () => {
     setIsImageModalOpen(false);
   };
 
+  // Handles the selection of an image
   const handleImageSelect = (image) => {
     setSelectedImage(image);
     closeImageModal();
-    console.log("Image chosen");
   };
 
+  // Sets the Autocomplete object for location input.
   const onLoadAutocomplete = (autocomplete) => {
     setAutocomplete(autocomplete);
   };
 
+  // Handles the event when the place is changed in the location Autocomplete.
   const onPlaceChanged = () => {
     if (autocomplete !== null) {
       const place = autocomplete.getPlace();
@@ -197,6 +191,7 @@ export const PostStory = () => {
     }
   };
 
+  //The images for the Modal gallery
   const images = [
     "image1.png",
     "image2.png",
