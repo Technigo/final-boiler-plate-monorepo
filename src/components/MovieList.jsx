@@ -24,15 +24,19 @@ export const MovieList = () => {
   return (
     <div className="the-movie-list page-section" id="app-container">
       {movies && movies.slice(0, 20).map((movie) => (
-        <Link
-          to={`/movie/${movie._id}`}
-          key={movie._id}>
-          <MovieItem
-            name={movie.title}
-            photo={`https://image.tmdb.org/t/p/w500${movie.posterUrl}`}
-            releaseDate={formatReleaseDate(movie.releaseDate)}
-          />
-        </Link>
+        // <div className="the-movie-link" key={movie._id}>
+          <Link 
+            to={`/movie/${movie._id}`} 
+            key={movie._id}
+            className="the-movie-link"
+            >
+            <MovieItem
+              name={movie.title}
+              photo={`https://image.tmdb.org/t/p/w500${movie.posterUrl}`}
+              releaseDate={formatReleaseDate(movie.releaseDate)}
+            />
+          </Link>
+        // </div>
       ))}
     </div>
   )

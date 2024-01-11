@@ -45,6 +45,38 @@
 	padding-bottom: 5px;
 }
 
+
+
+/* .the-movie-link *:hover {
+	opacity: 0.5;
+} */
+/* .the-movie-link {
+	opacity: 1;
+}
+
+.the-movie-list:has(.the-movie-link:hover) .the-movie-link:not(:hover)  {
+	opacity: 0.5;
+} */
+
+
+
+/* 
+.the-movie-link {
+	transition: opacity 300ms;
+}
+
+.the-movie-list:has(.the-movie-item:hover) .image-overlay:not(:hover) {
+	opacity: 1;
+} */
+
+
 .movie-image:hover .image-overlay {
 	opacity: 1; /* Change overlay opacity to 1 when hovering */
+}
+
+@media (prefers-color-scheme: light) {
+	.the-movie-item {
+		box-shadow: 0 1px 2px var(--box-shadow-color);
+		padding: 10px;
+	}
 }
