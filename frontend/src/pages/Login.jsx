@@ -4,7 +4,6 @@ import { useNavigate } from "react-router-dom";
 import { Button } from "../components/Buttons/Button";
 import { LoaderAnimation } from "../components/Animations/LoaderAnimation";
 import styled from "styled-components";
-//import aHelpinHandLogotype from "../assets/Logo-white.png";
 
 const StyledIntro = styled.div`
   display: flex;
@@ -46,7 +45,7 @@ export const Login = () => {
   // Create state variables for 'username' and 'password' using 'useState'.
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
 
   // Use the 'useNavigate' hook to programmatically navigate between routes.
   const navigate = useNavigate();
@@ -62,19 +61,28 @@ export const Login = () => {
       return;
     }
     try {
+      // Set 'isLoading' to true before making the login request.
+      setIsLoading(true);
       // Call the 'handleLogin' function from 'userStore' with 'username' and 'password' parameters.
-      await storeHandleLogin(username, password);
+      const loginPromise = storeHandleLogin(username, password);
+
+      await Promise.all([
+        loginPromise,
+        new Promise((resolve) => setTimeout(resolve, 2000)),
+      ]);
       // Get the 'isLoggedIn' state from 'userStore'.
       const isLoggedIn = userStore.getState().isLoggedIn;
       if (isLoggedIn) {
-        setIsLoading(false);
-        console.log("User logged in");
+        //setIsLoading(false);
+        //console.log("User logged in");
         // If the user is logged in, navigate to the "/tasks" route.
         navigate("/tasks");
       }
     } catch (error) {
       // Handle any errors that occur during login and display an alert.
       alert("An error occurred during login. Please try again.");
+    } finally {
+      // Set 'isLoading' to false after the login request is completed (whether successful or not).
       setIsLoading(false);
     }
   };
@@ -117,7 +125,7 @@ export const Login = () => {
                 }
               }}
             />
-            {isLoading ? <LoaderAnimation /> : ""}
+
             {/* Create a button for logging in and attach the 'onLoginClick' event handler. */}
             <Button
               onClick={onLoginClick}
@@ -126,6 +134,7 @@ export const Login = () => {
             />
           </div>
         </StyledLoginField>
+        {isLoading ? <LoaderAnimation /> : ""}
       </StyledIntro>
     </>
   );
