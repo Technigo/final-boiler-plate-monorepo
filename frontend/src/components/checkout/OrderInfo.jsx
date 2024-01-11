@@ -1,5 +1,21 @@
-import React from "react";
+import { cartStore } from "../../stores/cartStore";
+import { useEffect } from "react";
 
 export const OrderInfo = () => {
-  return <div>OrderInfo</div>;
+  const { calculateTotalPrice, total, totalWithDelivery, deliveryCost } =
+    cartStore();
+
+  useEffect(() => {
+    calculateTotalPrice();
+  }, []);
+
+  console.log(totalWithDelivery);
+
+  return (
+    <>
+      <p className="h2-p">Order Value €{total}</p>
+      <p className="h2-p">Delivery €{deliveryCost}</p>
+      <p className="h2-p">Total €{totalWithDelivery}</p>
+    </>
+  );
 };

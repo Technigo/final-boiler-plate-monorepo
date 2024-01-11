@@ -1,3 +1,4 @@
+import { Navigation } from "../header/navigation/Navigation"
 import "./Footer.css";
 import { PiSmileyWinkLight } from "react-icons/pi";
 import { PiSmileyXEyesLight } from "react-icons/pi";
@@ -21,6 +22,7 @@ export const Footer = () => {
         {/* <img className="profile-pic" src="" alt="Picture of Julia Holm." />
         <img className="profile-pic" src="" alt="Picture of Vera Witting." /> */}
       </div>
+      <Navigation /> 
     </footer>
   );
 };

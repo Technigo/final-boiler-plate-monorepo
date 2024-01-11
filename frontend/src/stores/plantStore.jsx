@@ -10,30 +10,33 @@ import { create } from "zustand";
 const apiEnv = "https://plants-holm-witting-backend.onrender.com/api/plants";
 
 export const plantStore = create((set, get) => ({
+  isLoading: false,
   plants: [],
   singlePlant: {},
-
   //apiEndpoint: `${apiEnv}`, // Default API endpoint
   selectedCategory: null,
-
+  setIsLoading: (loading) => set({isLoading: loading}),
   setPlants: (plants) => set({ plants }),
   setSinglePlant: (singlePlant) => set({ singlePlant }),
   setApiEndpoint: (endpoint) => set({ apiEndpoint: endpoint }),
 
   fetchPlants: async (endpoint) => {
     try {
+      set({ isLoading: true });
       const response = await fetch(apiEnv + endpoint, {
         method: "GET",
       });
       if (response.ok) {
         const data = await response.json();
-        set({ plants: data });
+        set({ plants: data, isLoading: false });
         console.log("plantsdata fetch:", data);
       } else {
         console.error("Failed to fetch plants");
+        set({ isLoading: false });
       }
     } catch (error) {
       console.error(error);
+      set({ isLoading: false });
     }
   },
   fetchPlantsByCategory: async (category) => {

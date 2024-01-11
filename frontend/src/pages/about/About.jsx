@@ -16,8 +16,8 @@ export const About = () => {
   return (
     <>
     <section className="about-intro">
-    <h2>About & Contact</h2>
-        <h3>How fun, you found our about and contact page!</h3>
+    <h1>About & Contact</h1>
+        <p className="h2-p">How fun, you found our about and contact page!</p>
         <p>This page is a full stack final project of Technigos Boot Camp in Web Developement of 2023. 
             And if you haven't noticed, is not an actual web shop but a demo version.
             If you like something, or id you've got something on your mind, don't be shy to contact the developers!
@@ -25,7 +25,7 @@ export const About = () => {
 
     </section>
     <section className="about-developers">
-        <h2>Developers</h2>
+        <h2 className="section-title">Developers</h2>
         <div className="developers-wrapper">
         <div className="developer-wrapper">
         <PiSmileyXEyesLight className="profile-pic-icon" />
@@ -55,7 +55,7 @@ export const About = () => {
         </div>
     </section>
     <section>
-        <h2>Plants by Holm & Witting</h2>
+        <h2 className="section-title">Plants by Holm & Witting</h2>
         <h3>A Technigo Final Project</h3>
         <p>This is maybe some stuff from our readme file, something about what we wanted to create, 
             something about how we achieved this, something about how we worked together.

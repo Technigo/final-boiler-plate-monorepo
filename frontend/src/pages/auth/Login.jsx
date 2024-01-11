@@ -1,13 +1,13 @@
-import { Link } from "react-router-dom";
+
 import { userStore } from "../../stores/userStore";
-import { useNavigate } from "react-router-dom"; // Import useNavigate
+import { useNavigate, Link } from "react-router-dom"; // Import useNavigate
 import { Input } from "../../components/inputs/Input";
 import { Button } from "../../components/buttons/Button";
+import CircularProgress from '@mui/material/CircularProgress';
+import Box from '@mui/material/Box';
 
 export const Login = () => {
-  //const { username, setUsername, password, setPassword } = userStore();
-  const login = userStore((state) => state.login);
-  const error = userStore((state) => state.error);
+  const { login, username, setUsername, password, setPassword, errorMessage, setErrorMessage, isLoading } = userStore();
 
   // Use the 'useNavigate' hook to programmatically navigate between routes.
   const navigate = useNavigate();
@@ -15,15 +15,22 @@ export const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const username = e.target.elements.username.value;
-      const password = e.target.elements.password.value;
-
-      const response = await login(username, password);
-      console.log("Login result:", response);
-      if (response) {
-        // If the login is successful, navigate to the login route ("/").
-        navigate("/"); // Replace with your desired path
-      }
+      await login(username, password);
+      const loggedInValue = localStorage.getItem("isLoggedIn");
+      const isLoggedIn = loggedInValue === "true";
+      // const response = await login(username, password);
+      // console.log("Login result:", response);
+      // if (response) {
+      //   // If the login is successful, navigate to the login route ("/").
+      //   navigate("/"); // Replace with your desired path
+      // }
+      if (isLoggedIn) {
+        navigate("/");
+        setErrorMessage("");
+        return;
+    } else {
+        errorMessage;
+    }
     } catch (error) {
       // Handle any errors that occur during signup and display an alert.
       console.error("Login error:", error);
@@ -57,7 +64,8 @@ export const Login = () => {
 
   return (
     <>
-      <form onSubmit={handleSubmit}>
+      <form>
+      
         <div className="input-container">
           <label htmlFor="username" className="visually-hidden">
             Username
@@ -66,8 +74,8 @@ export const Login = () => {
             type="text"
             id="username"
             placeholder="Username"
-            // value={username}
-            // onChange={(e) => setUsername(e.target.value)}
+             value={username}
+             onChange={(e) => setUsername(e.target.value)}
             ariaLabel="Username input"
           />
         </div>
@@ -79,14 +87,20 @@ export const Login = () => {
             type="password"
             id="password"
             placeholder="Password"
-            // value={password}
-            // onChange={(e) => setPassword(e.target.value)}
+             value={password}
+             onChange={(e) => setPassword(e.target.value)}
             ariaLabel="Password input"
           />
         </div>
         <a className="forgot-password">Forgot Password?</a>
+        <p className="error-message disclaimer">{errorMessage}</p>
+        {isLoading ? (
+          <Box sx={{ display: 'flex' }}>
+            <CircularProgress />
+          </Box>) : "" }
         <Button
           type="submit"
+          onClick={handleSubmit}
           className="login-btn"
           btnText="Login"
           ariaLabel="login button"

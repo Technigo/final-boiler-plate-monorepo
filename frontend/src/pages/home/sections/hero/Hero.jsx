@@ -6,7 +6,7 @@ import "./Hero.css";
 export const Hero = () => {
   const text = {
     heading: "Ready to add to your urban jungle?",
-    text: "Give our plants a new home, take a look at what we.ve got!",
+    text: "Give our plants a new home, take a look at all the plant buddies we've got!",
     btnText: "Shop all plants",
   };
 

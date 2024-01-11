@@ -2,8 +2,9 @@ import { cartStore } from "../../stores/cartStore";
 import { Link } from "react-router-dom";
 import { CartItem } from "../../components/cart/cartItem/CartItem";
 import { useEffect } from "react";
-import { OrderInfo } from "../../components/cart/OrderInfo";
+import { OrderInfo } from "../../components/checkout/OrderInfo";
 
+import { MdKeyboardArrowLeft } from "react-icons/md";
 import "./CartPage.css";
 
 export const CartPage = () => {
@@ -33,8 +34,12 @@ export const CartPage = () => {
 
   return (
     <section className="cart-page-section">
+      <Link to="" className="go-back">
+        <MdKeyboardArrowLeft className="go-back-icon"/>
+        Continue shopping
+      </Link>
       <h2 className="section-title">Shopping Cart</h2>
-      {cart.length === 0 && <p>Your cart is empty...</p>}
+      {cart.length === 0 && <p className="h2-p">Your cart is empty...</p>}
       {cart.map((item, index) => {
         return (
           <div key={index}>

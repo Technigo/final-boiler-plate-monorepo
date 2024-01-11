@@ -6,8 +6,8 @@ import "./Inspo.css";
 
 export const Inspo = () => {
   const text = {
-    heading: "Chopidopido",
-    text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do aiusmod.",
+    heading: "Time for inspiration",
+    text: "Need some new input on what to do next with your urban jungle?",
     btnText: "GET INSPIRED",
   };
 
@@ -17,14 +17,13 @@ export const Inspo = () => {
         <div className="inspo-container">
           <div className="text-button-wrapper">
             <h2 className="inspo-title">{text.heading}</h2>
-            <p className="inspo-text">{text.text}</p>
+            <p className="h2-p">{text.text}</p>
             <Button
               className="inspo-btn"
               btnText={text.btnText}
               ariaLabel="inspo button"
             />
           </div>
-          <div className="inspo-box">this is inspo content</div>
         </div>
       </Link>
     </section>

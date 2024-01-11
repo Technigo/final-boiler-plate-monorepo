@@ -23,9 +23,10 @@ const registerUser = asyncHandler(async (req, res) => {
     // 1st Condition - Check if all fields are inputted.
     if (!username || !email || !password) {
       // If any of the fields are empty, send an error message.
-      return res
-        .status(400)
-        .json({ message: "Please fill in all the inputs." });
+      return res.status(400).json({
+        success: false,
+        response: { message: "Please fill in all the inputs." },
+      });
     }
 
     // 2nd Condition - Check if the username and email already exists.
@@ -37,14 +38,20 @@ const registerUser = asyncHandler(async (req, res) => {
       if (existingUser.username === username) {
         // Check if the username already exists.
         return res.status(400).json({
-          message: "User already exists. Please choose a different username.",
+          success: false,
+          response: {
+            message: "User already exists. Please choose a different username.",
+          },
         });
       }
       if (existingUser.email === email) {
         // Check if the email already exists.
         return res.status(400).json({
-          message:
-            "Email already exists. Please use a different email address.",
+          success: false,
+          response: {
+            message:
+              "Email already exists. Please use a different email address.",
+          },
         });
       }
     }
@@ -59,16 +66,24 @@ const registerUser = asyncHandler(async (req, res) => {
       email,
       password: hashedPassword,
     });
+
     await newUser.save();
+
     // Send the user's information to the client.
     res.status(201).json({
-      _id: newUser._id, // Send the user's ID.
-      username: newUser.username, // Send the user's username.
-      email: newUser.email, // Send the user's email.
+      success: true,
+      response: {
+        _id: newUser._id, // Send the user's ID.
+        username: newUser.username, // Send the user's username.
+        email: newUser.email, // Send the user's email.
+      },
     });
   } catch (error) {
     // If there's an error, send an error message.
-    return res.status(400).json({ message: "Could not create user" });
+    return res.status(400).json({
+      success: false,
+      response: { message: "Could not create user", errors: error },
+    });
   }
 });
 
@@ -76,18 +91,21 @@ const registerUser = asyncHandler(async (req, res) => {
 const loginUser = asyncHandler(async (req, res) => {
   // Extract username and password from the request body.
   const { username, password } = req.body;
+  const existingUser = await UserModel.findOne({ username });
 
   try {
     // Check if it's already an existing user with the provided username in the database.
-    const existingUser = await UserModel.findOne({ username });
     if (!existingUser) {
-      return res.status(401).json({ message: "User not found." });
+      return res
+        .status(401)
+        .json({ success: false, response: "User not found." });
     }
 
     const passwordMatch = await bcrypt.compare(password, existingUser.password);
-
     if (!passwordMatch) {
-      return res.status(401).json({ message: "Invalid password." });
+      return res
+        .status(401)
+        .json({ success: false, response: "Invalid password." });
     }
 
     // Generate a new access token with expiration using JWT
@@ -102,14 +120,20 @@ const loginUser = asyncHandler(async (req, res) => {
     await existingUser.save();
 
     res.status(201).json({
-      _id: existingUser._id, // Send the user's ID.
-      username: existingUser.username, // Send the user's username.
-      email: existingUser.email, // Send the user's email.
-      accessToken: existingUser.accessToken,
+      success: true,
+      response: {
+        _id: existingUser._id, // Send the user's ID.
+        username: existingUser.username, // Send the user's username.
+        email: existingUser.email, // Send the user's email.
+        accessToken: existingUser.accessToken,
+      },
     });
   } catch (error) {
+    console.error(error);
     // If there's an error, send an error message.
-    return res.status(400).json({ message: "Could not login user" });
+    return res
+      .status(400)
+      .json({ success: false, response: { message: "Could not login user" } });
   }
 });
 

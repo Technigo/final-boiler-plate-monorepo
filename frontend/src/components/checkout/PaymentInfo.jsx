@@ -1,11 +1,12 @@
 import { useState } from "react";
+import { Radio } from "@mui/material";
 import { RadioGroup } from "@mui/material";
 import { FormControlLabel } from "@mui/material";
-import { Radio } from "@mui/material";
 import { Input } from "../../components/inputs/Input";
 import { InputReadOnly } from "../../components/inputs/InputReadOnly";
 
-//import LocalPostOfficeIcon from '@mui/icons-material/LocalPostOffice';
+import { SiKlarna } from "react-icons/si";
+import { FaCheck, FaCreditCard } from "react-icons/fa";
 
 export const PaymentInfo = () => {
   const [paymentMethod, setPaymentMethod] = useState("klarna");
@@ -39,7 +40,7 @@ export const PaymentInfo = () => {
     <>
       <RadioGroup
         aria-labelledby="payment-options-label"
-        defaultValue={paymentMethod}
+        value={paymentMethod}
         name="payment-options"
         onChange={handleRadioChange}
       >
@@ -57,42 +58,49 @@ export const PaymentInfo = () => {
       </RadioGroup>
       {showKlarna && (
         <>
+        <SiKlarna />
           <h2>Klarna</h2>
           {/* <svg data-testid="LocalPostOfficeIcon"></svg> */}
           <ul>
-            <li>Safe and easy</li>
-            <li>Pay directly, with invoice or partial payments</li>
-            <li>Save your card and banc card</li>
+            <li><FaCheck /> Safe and easy</li>
+            <li><FaCheck /> Pay directly, with invoice or partial payments</li>
+            <li><FaCheck /> Save your card and banc card</li>
           </ul>
         </>
       )}
       {showCard && (
         <>
+        <FaCreditCard />
+        <h2>Pay with Card</h2>
           <p>
             *These inputs are already filled in and can't be changed, since this
             is not a real web shop.
           </p>
           <InputReadOnly
             type="text"
-            value="Lily Landersen"
+            value=""
+            placeholder="Lily Landersen"
             ariaLabel="Card holder input."
             readOnly={true}
           />
           <InputReadOnly
-            type="number"
-            value="XXXX XXXX XXXX XXXX"
+            type="text"
+            value=""
+            placeholder="XXXX XXXX XXXX XXXX"
             ariaLabel="City input."
             readOnly={true}
           />
           <InputReadOnly
-            type="number"
-            value="MM/YY"
+            type="text"
+            value=""
+            placeholder="MM/YY"
             ariaLabel="City input."
             readOnly={true}
           />
           <InputReadOnly
-            type="number"
-            value="CVC"
+            type="text"
+            value=""
+            placeholder="CVC"
             ariaLabel="City input."
             readOnly={true}
           />

@@ -14,15 +14,10 @@ export const InspoPage = () => {
   }, []);
 
   const buttonCoordinates = [
-    { x: 10, y: 30, plantIndex: 2 }, // Example coordinates, adjust based on your image
+    { x: 10, y: 30, plantIndex: 2 },
     { x: 65, y: 45, plantIndex: 1 },
     { x: 90, y: 35, plantIndex: 0 },
-    // Add more coordinates as needed
   ];
-
-  // const handleButtonClick = (plantIndex) => {
-  //   setSelectedPlantIndexes((prevIndexes) => [...prevIndexes, plantIndex]);
-  // };
 
   const handleButtonClick = (plantIndex) => {
     setSelectedPlantIndexes((prevIndexes) => {
@@ -40,7 +35,7 @@ export const InspoPage = () => {
   console.log("pi", selectedPlantIndexes)
 
   return (
-    <section>
+    <section className="inspo-section">
       <h2 className="section-title">Plant Dreams</h2>
       <img className="inspo-img"
         src="./inspo-bedroom-mixed.jpg"
