@@ -121,8 +121,29 @@ router.post('/complete-challenge', authenticateToken, async (req, res) => {
 
 
 
-// Endpoint to get completed challenges for a user
+// // Endpoint to get completed challenges for a user
+// router.get('/completed-challenges', authenticateToken, async (req, res) => {
+//   try {
+//     // Find the user by ID
+//     const user = await User.findOne({ _id: req.userId });
+
+//     if (!user) {
+//       return res.status(404).send('User not found');
+//     }
+
+//     // Retrieve completed challenges based on user's completedChallenges array
+//     const completedChallenges = await Challenge.find({ _id: { $in: user.completedChallenges } });
+
+//     res.status(200).json(completedChallenges);
+//   } catch (error) {
+//     console.error(error);
+//     res.status(500).send('Failed to fetch completed challenges');
+//   }
+// });
+
+// Endpoint to get completed challenges for a user NEW
 router.get('/completed-challenges', authenticateToken, async (req, res) => {
+  console.log(req.userId);
   try {
     // Find the user by ID
     const user = await User.findOne({ _id: req.userId });
@@ -132,9 +153,8 @@ router.get('/completed-challenges', authenticateToken, async (req, res) => {
     }
 
     // Retrieve completed challenges based on user's completedChallenges array
-    const completedChallenges = await Challenge.find({ _id: { $in: user.completedChallenges } });
 
-    res.status(200).json(completedChallenges);
+    res.status(200).json(user.completedChallenges);
   } catch (error) {
     console.error(error);
     res.status(500).send('Failed to fetch completed challenges');
