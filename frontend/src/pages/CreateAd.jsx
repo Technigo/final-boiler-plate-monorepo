@@ -186,6 +186,7 @@ export const CreateAd = () => {
                   <label>Title:</label>
                   <input
                     type="text"
+                    placeholder="e.g. Tomatoes to share"
                     value={title}
                     onChange={(e) => setTitle(e.target.value)}
                   />
@@ -194,6 +195,7 @@ export const CreateAd = () => {
                   <label>Description:</label>
                   <textarea
                     value={description}
+                    placeholder="Your description of your products"
                     onChange={(e) => setDescription(e.target.value)}
                   />
                 </div>
@@ -202,6 +204,7 @@ export const CreateAd = () => {
                   <input
                     type="text"
                     value={product}
+                    placeholder="e.g. Cherry tomatoes"
                     onChange={(e) => setProduct(e.target.value)}
                   />
                 </div>
@@ -209,6 +212,7 @@ export const CreateAd = () => {
                   <label>Quantity:</label>
                   <input
                     type="number"
+                    placeholder="e.g. 2"
                     value={quantity}
                     onChange={(e) => setQuantity(e.target.value)}
                   />
@@ -226,6 +230,7 @@ export const CreateAd = () => {
                   <label>Location:</label>
                   <input
                     type="text"
+                    placeholder="Stockholm"
                     value={address}
                     onChange={(e) => setAddress(e.target.value)}
                   />
@@ -242,6 +247,7 @@ export const CreateAd = () => {
                   <label>Observation:</label>
                   <input
                     type="text"
+                    placeholder="e.g. Please bring a bag with you"
                     value={observation}
                     onChange={(e) => setObservation(e.target.value)}
                   />

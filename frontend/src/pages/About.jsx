@@ -27,39 +27,51 @@ export const About = () => {
   return (
     <>
       <Navbar
-        menuItems={[
-          { path: "/home", name: "Home" },
-          { path: "/search", name: "Search" },
-          { path: "/settings", name: "My Settings" },
-          { path: "/manage-your-ads", name: "My Products" },
-          { path: "/about", name: "About" },
-          { path: "/terms", name: "Terms" },
+        menuItems={
           isLoggedin
-            ? {
-                name: "Logout",
-                onClick: () => {
-                  handleLogout();
-                  navigate("/");
+            ? [
+                { path: "/home", name: "Home" },
+                { path: "/search", name: "Search" },
+                { path: "/settings", name: "My Settings" },
+                { path: "/manage-your-ads", name: "My Products" },
+                { path: "/terms", name: "Terms" },
+                {
+                  name: "Logout",
+                  onClick: () => {
+                    handleLogout();
+                    navigate("/");
+                  },
                 },
-              }
-            : { path: "/login", name: "Login" },
-        ]}
-        menuDesks={[
-          { path: "/home", name: "Home" },
-          { path: "/search", name: "Search" },
-          { path: "/settings", name: "My Settings" },
-          { path: "/manage-your-ads", name: "My Products" },
-          { path: "/terms", name: "Terms" },
+              ]
+            : [
+                { path: "/home", name: "Home" },
+                { path: "/about", name: "About" },
+                { path: "/terms", name: "Terms" },
+                { path: "/login", name: "Login" },
+              ]
+        }
+        menuDesks={
           isLoggedin
-            ? {
-                name: "Logout",
-                onClick: () => {
-                  handleLogout();
-                  navigate("/");
+            ? [
+                { path: "/home", name: "Home" },
+                { path: "/search", name: "Search" },
+                { path: "/settings", name: "My Settings" },
+                { path: "/manage-your-ads", name: "My Products" },
+                { path: "/terms", name: "Terms" },
+                {
+                  name: "Logout",
+                  onClick: () => {
+                    handleLogout();
+                    navigate("/");
+                  },
                 },
-              }
-            : { path: "/login", name: "Login" },
-        ]}
+              ]
+            : [
+                { path: "/home", name: "Home" },
+                { path: "/terms", name: "Terms" },
+                { path: "/login", name: "Login" },
+              ]
+        }
         logoRedirectPath={logoRedirectPath}
       />
       <div className="main-container">
