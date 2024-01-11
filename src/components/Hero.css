@@ -2,7 +2,7 @@
     background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url("https://image.tmdb.org/t/p/w1280/1X7vow16X7CnCoexXh4H4F2yDJv.jpg");
     
     height: 80vh;
-    wdith: 100vw;
+    width: 100vw;
 
     background-position: center;
     background-repeat: no-repeat;
@@ -10,6 +10,7 @@
     position: relative;
 
     overflow: hidden;
+    border: 20px solid var(--background-color);
 }
 
 .the-hero-text {
