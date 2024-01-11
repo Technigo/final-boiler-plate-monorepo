@@ -23,6 +23,12 @@ export const PostStory = () => {
   const [latitude, setLatitude] = useState(null);
   const [longitude, setLongitude] = useState(null);
 
+  // Function to check if a story is in Swedish and bypass it
+  const isStoryInSwedish = (text) => {
+    const swedishCharacters = ["å", "ä", "ö"];
+    return swedishCharacters.some((char) => text.includes(char));
+  };
+
   const handleFormSubmit = async (e) => {
     e.preventDefault();
 
@@ -51,17 +57,37 @@ export const PostStory = () => {
       image: selectedImage,
     };
 
-    setNewStory("");
+    // setNewStory("");
 
-    // Check if the language is supported for sentiment analysis
+    // Assuming 'sv' is the language code for Swedish
+    //  if (isUnsupportedLanguage(newStory, 'sv')) {
+    //   postStory(storyData);
+    // } else {
+    //   // Perform sentiment analysis if the language is supported
+    //   analyzeSentimentAndPostStory(storyData, newStory);
+    // }
+    // };
+
+    // const isUnsupportedLanguage = (text, languageCode) => {
+    //   // For Swedish, you might check for unique Swedish characters
+    //   const swedishCharacters = ['å', 'ä', 'ö'];
+    //   return swedishCharacters.some(char => text.includes(char));
+    // };
+
+    if (isStoryInSwedish(newStory)) {
+      postStory(storyData);
+    } else {
+      analyzeSentimentAndPostStory(storyData, newStory);
+    }
+  };
+
+  const analyzeSentimentAndPostStory = (storyData, storyText) => {
     const googleApiPayload = {
       document: {
-        content: newStory,
+        content: storyText,
         type: "PLAIN_TEXT",
       },
     };
-
-    console.log("Sending request to Google API with body:", googleApiPayload);
 
     fetch(
       `https://language.googleapis.com/v1/documents:analyzeSentiment?key=${
@@ -77,56 +103,29 @@ export const PostStory = () => {
     )
       .then((res) => res.json())
       .then((googleApiResponse) => {
-        console.log("Response from Google API:", googleApiResponse);
-        // Logic to handle the response from sentiment analysis
-        // Check the sentiment score
-        const sentimentScore = googleApiResponse.documentSentiment.score;
-
-        // Decide on a threshold for negative sentiment
-        const negativeSentimentThreshold = -0.5; // adjust this value based on your needs
-
-        if (sentimentScore < negativeSentimentThreshold) {
-          // Trigger an alert if the sentiment is too negative
-          alert(
-            "Your post seems to have a negative tone. Please consider revising it."
-          );
-          // You can also add additional logic here, like preventing form submission
+        if (
+          googleApiResponse.error &&
+          googleApiResponse.error.message.includes("Language not supported")
+        ) {
+          postStory(storyData);
         } else {
-          // Post the story to the backend
-          fetch(`http://localhost:3000/stories`, {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify(storyData),
-          })
-            .then((response) => {
-              if (!response.ok) {
-                throw new Error(`HTTP error! Status: ${response.status}`);
-              }
-              return response.json();
-            })
-            .then((newStory) => {
-              console.log("New story posted:", newStory);
-              // Reset form fields
-              setNewHeading("");
-              setNewStory("");
-              setSelectedDate(new Date());
-              setLocationName("");
-              setNewCategory("");
-              setSelectedImage("");
-              // Optionally, you can redirect or refresh the page here
-            })
-            .catch((error) => {
-              console.error("Error posting the story", error);
-            });
+          const sentimentScore = googleApiResponse.documentSentiment.score;
+          const negativeSentimentThreshold = -0.5;
+          if (sentimentScore < negativeSentimentThreshold) {
+            alert(
+              "Your post seems to have a negative tone. Please consider revising it."
+            );
+          } else {
+            postStory(storyData);
+          }
         }
       })
       .catch((error) => {
         console.error("Error calling Google API:", error);
       });
+  };
 
-    // Post the story to the backend
+  const postStory = (storyData) => {
     const apiUrl = import.meta.env.VITE_BACKEND_API || "http://localhost:3000";
     fetch(`${apiUrl}/stories`, {
       method: "POST",
@@ -143,14 +142,13 @@ export const PostStory = () => {
       })
       .then((newStory) => {
         console.log("New story posted:", newStory);
-        // Reset form fields
+        // Reset form fields and clear the story
         setNewHeading("");
-        setNewStory("");
         setSelectedDate(new Date());
         setLocationName("");
         setNewCategory("");
         setSelectedImage("");
-        // Optionally, you can redirect or refresh the page here
+        setNewStory(""); // Clear the story content here
       })
       .catch((error) => {
         console.error("Error posting the story", error);
@@ -240,7 +238,8 @@ export const PostStory = () => {
             className="category"
             value={newCategory}
             onChange={handleCategoryChange}
-            required>
+            required
+          >
             <option value="">Choose a category</option>
             <option value="anecdote">Anecdote</option>
             <option value="rumor">Rumor</option>
@@ -251,10 +250,12 @@ export const PostStory = () => {
         <div>
           <LoadScript
             googleMapsApiKey={import.meta.env.VITE_GOOGLE_MAPS_API_KEY}
-            libraries={libraries}>
+            libraries={libraries}
+          >
             <Autocomplete
               onLoad={onLoadAutocomplete}
-              onPlaceChanged={onPlaceChanged}>
+              onPlaceChanged={onPlaceChanged}
+            >
               <input
                 className="search-input"
                 type="text"
@@ -290,7 +291,8 @@ export const PostStory = () => {
           <button
             className="gallery-button"
             type="button"
-            onClick={openImageModal}>
+            onClick={openImageModal}
+          >
             Select Image
           </button>
         </div>
@@ -303,14 +305,16 @@ export const PostStory = () => {
           selectedImage={selectedImage}
           className="gallery"
           isOpen={isImageModalOpen}
-          contentLabel="Select Image">
+          contentLabel="Select Image"
+        >
           <div className="gallery-images">
             {images.map((image, index) => (
               <button
                 key={index}
                 className="image-buttons"
                 type="button"
-                onClick={() => handleImageSelect(image)}>
+                onClick={() => handleImageSelect(image)}
+              >
                 <img src={image} alt={`Image ${index + 1}`} />
               </button>
             ))}
