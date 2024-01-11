@@ -1,48 +1,48 @@
-// Importing necessary libraries and modules
-import express from "express";
-import cors from "cors";
-import dotenv from "dotenv";
-import path from 'path'; // Make sure to import the 'path' module
+import express from 'express';
+import path from 'path';
+import { authenticateAdmin } from '../middleware/authenticateAdmin'; // Import middleware to add for protection
+import {
+  getCocktailsController,
+  getCocktailByIdController,
+  addCocktailController,
+  updateCocktailController,
+  deleteCocktailController
+} from '../controllers/cocktailController';
 
-// Importing custom route handlers
-import userRoutes from "./routes/userRoutes";
-import adminRoutes from "./routes/adminRoutes";
-import cocktailRoutes from "./routes/cocktailRoutes";
+// Set up uploadImage function to store uploaded image directly on the server
+const uploadImage = async (req, res, next) => {
+  if (!req.file) {
+    return next();
+  }
 
-// Import database connection functions
-import { connectAtlasDB } from "./config/db";
+  const fileName = `${Date.now()}${path.extname(req.file.originalname)}`;
+  const uploadPath = `uploads/${fileName}`;
 
-dotenv.config(); // Load and parse environment variables from the .env file
+  // Store the uploaded image
+  try {
+    req.file.mv(uploadPath, err => {
+      if (err) {
+        return res.status(500).json({ message: err.message });
+      }
 
-// Retrieve the port number from environment variables or set default
-const port = process.env.PORT || 3000;
+      // Add image URL to the request body
+      req.body.imageUrl = uploadPath;
+      next();
+    });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
 
-// Create an Express application instance
-const app = express();
+const router = express.Router();
 
-// Middlewares setup
-app.use(cors());
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
+// Routes that handle image uploads with the updated storage configuration
+router.post('/', authenticateAdmin, uploadImage, addCocktailController);
+router.put('/:id', authenticateAdmin, uploadImage, updateCocktailController);
 
-// Middleware to serve static files from the 'uploads' directory
-app.use('/uploads', express.static('uploads'));
+// Routes that do not handle image uploads remain the same
+router.get('/', getCocktailsController);
+router.get('/:id', getCocktailByIdController);
+router.delete('/:id', authenticateAdmin, deleteCocktailController);
 
-// Registering API routes with the Express application
-app.use('/', userRoutes);
-app.use('/admin', adminRoutes);
-app.use('/cocktails', cocktailRoutes);
-
-// Error handling middleware
-app.use(function (err, req, res, next) {
-  console.error(err.stack);
-  res.status(500).send('Something broke!');
-});
-
-// Connecting to Mongo DB Atlas Instance
-connectAtlasDB(); // Connects to MongoDB Atlas
-
-// Start the server and listen for incoming requests
-app.listen(port, () => {
-  console.log(`Server running on http://localhost:${port}`);
-});
+export default router;
