@@ -30,7 +30,7 @@ export const userStore = create((set) => ({
   image: defaultProfileImage,
   setImage: (image) => set({ image }),
 
-  userId: localStorage.getItem("accessToken") || null,
+  userId: localStorage.getItem("userId") || null,
   setUserId: (userId) => set({ userId }),
 
   accessToken: localStorage.getItem("accessToken") || null,

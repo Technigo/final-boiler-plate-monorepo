@@ -81,7 +81,7 @@ export const ProfileSettings = () => {
   };
 
   const handleDeleteClick = () => {
-    storeHandleAccountDeletion();
+    storeHandleAccountDeletion(userId);
   };
 
   return (

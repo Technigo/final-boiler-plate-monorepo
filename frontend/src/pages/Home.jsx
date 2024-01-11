@@ -16,12 +16,13 @@ export const Home = () => {
   const navigate = useNavigate();
 
   // Get 'isLoggedIn' and 'accessToken' from the 'userStore'.
-  const isLoggedin = userStore.getState().isLoggedin;
+  // const isLoggedin = userStore.getState().isLoggedin;
+  const accessToken = userStore.getState().accessToken;
   const handleLogout = userStore((state) => state.handleLogout);
-  console.log(isLoggedin);
+  console.log(accessToken);
   // useEffect hook to check user authentication status.
   useEffect(() => {
-    if (isLoggedin) {
+    if (accessToken) {
       navigate("/home");
     } else {
       // If the user is not logged in, show an alert and navigate to the login route.
@@ -32,7 +33,7 @@ export const Home = () => {
       });
       navigate("/login");
     }
-  }, [isLoggedin, navigate]);
+  }, [accessToken, navigate]);
 
   // Render the component content.
   return (
@@ -73,7 +74,7 @@ export const Home = () => {
             <SearchBar />
           </Link>
           <h1>Recently added</h1>
-          {isLoggedin && (
+          {accessToken && (
             <AdsList
               fetchType="all"
               displayGrid="true"
@@ -83,7 +84,7 @@ export const Home = () => {
           )}
           {/* Render the user's ads */}
           <h1>Your ads</h1>
-          {isLoggedin && <AdsList fetchType="user" />}
+          {accessToken && <AdsList fetchType="user" />}
           <div className="add-product">
             <Link to="/create-ad">+ Add a product</Link>
           </div>
