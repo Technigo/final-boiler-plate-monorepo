@@ -20,6 +20,7 @@ export const TripGenerator = () => {
 
   const [trips, setTrips] = useState([]);
   const [loading, setLoading] = useState(false);
+  const apiEnv = import.meta.env.VITE_BACKEND_API;
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -93,7 +94,7 @@ export const TripGenerator = () => {
     };
 
     try {
-      const response = await fetch("http://localhost:3000/addtrip", {
+      const response = await fetch(`${apiEnv}/addtrip`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
