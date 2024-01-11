@@ -10,9 +10,10 @@ import '../components/Hero.css'
 export const Home = () => {
 
   const fetchShows = bookingStore((state) => (state.fetchAllShowTimes))
+  const allShowTimes = bookingStore((state) => (state.allShowTimes))
   
   useEffect(() => {
-    fetchShows()    
+    if (allShowTimes.length > 0) fetchShows()
   },[])
 
   return (
