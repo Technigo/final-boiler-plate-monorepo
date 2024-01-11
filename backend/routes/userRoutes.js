@@ -14,5 +14,7 @@ router.get("/messages/:senderid/:recipientid", UserController.getUserMessages);
 router.get("/getallmessages", UserController.getAllMessages);
 //
 router.post("/addtrip", UserController.addTrip);
+router.get("/trips", UserController.getTrips);
+router.get("/trips/:id", UserController.getSingleTrip);
 
 export default router;

@@ -115,25 +115,14 @@ export const UserController = {
   },
 
   addTrip: async (req, res) => {
-    const {
-      from,
-      to,
-      message,
-      date,
-      time,
-      make,
-      model,
-      availableSeats,
-      reg,
-      user,
-    } = req.body;
+    const { from, to, message, date, make, model, availableSeats, reg, user } =
+      req.body;
     try {
       const trip = new TripModel({
         from,
         to,
         message,
         date,
-        time,
         make,
         model,
         availableSeats,
@@ -148,6 +137,27 @@ export const UserController = {
         message: "Could not post trip",
         errors: error.errors,
       });
+    }
+  },
+
+  getTrips: async (req, res) => {
+    try {
+      const trips = await TripModel.find().sort({ createdAt: "desc" }).exec();
+      res.json(trips);
+    } catch (error) {
+      res.json({ error: error.message });
+    }
+  },
+  getSingleTrip: async (req, res) => {
+    const { id } = req.params;
+    try {
+      const trip = await TripModel.findOne({ id });
+      if (!trip) {
+        return res.status(404).json({ message: "Trip not found" });
+      }
+      res.json(trip);
+    } catch (error) {
+      res.json({ error: error.message });
     }
   },
 };

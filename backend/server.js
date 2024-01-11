@@ -77,67 +77,67 @@ wss.on("connection", (ws) => {
 });
 //#ENDREGION
 
-app.get("/trips", (req, res) => {
-  fs.readFile("trips.txt", "utf8", (err, data) => {
-    if (err) {
-      console.error(err);
-      return res.status(500).send("Internal Server Error");
-    }
+// app.get("/trips", (req, res) => {
+//   fs.readFile("trips.txt", "utf8", (err, data) => {
+//     if (err) {
+//       console.error(err);
+//       return res.status(500).send("Internal Server Error");
+//     }
 
-    let trips = [];
+//     let trips = [];
 
-    try {
-      trips = data.trim() !== "" ? JSON.parse(data) : [];
-      if (!Array.isArray(trips)) {
-        console.error("trips is not an array");
-        trips = [];
-      }
-    } catch (parseError) {
-      console.error(parseError);
+//     try {
+//       trips = data.trim() !== "" ? JSON.parse(data) : [];
+//       if (!Array.isArray(trips)) {
+//         console.error("trips is not an array");
+//         trips = [];
+//       }
+//     } catch (parseError) {
+//       console.error(parseError);
 
-      trips = [];
-      return res.status(500).send("Error parsing existing trips");
-    }
+//       trips = [];
+//       return res.status(500).send("Error parsing existing trips");
+//     }
 
-    res.json(trips);
-  });
-});
+//     res.json(trips);
+//   });
+// });
 
-app.post("/trip", (req, res) => {
-  fs.readFile("trips.txt", "utf8", (err, data) => {
-    if (err) {
-      console.error(err);
-      return res.status(500).send("Internal Server Error");
-    }
+// app.post("/trip", (req, res) => {
+//   fs.readFile("trips.txt", "utf8", (err, data) => {
+//     if (err) {
+//       console.error(err);
+//       return res.status(500).send("Internal Server Error");
+//     }
 
-    let trips = [];
+//     let trips = [];
 
-    try {
-      trips = JSON.parse(data);
-      if (!Array.isArray(trips)) {
-        console.error("trips is not an array");
-        trips = [];
-      }
-    } catch (parseError) {
-      console.error(parseError);
-      return res.status(500).send("Error parsing existing trips");
-    }
+//     try {
+//       trips = JSON.parse(data);
+//       if (!Array.isArray(trips)) {
+//         console.error("trips is not an array");
+//         trips = [];
+//       }
+//     } catch (parseError) {
+//       console.error(parseError);
+//       return res.status(500).send("Error parsing existing trips");
+//     }
 
-    const newTrip = req.body;
+//     const newTrip = req.body;
 
-    trips.push(newTrip);
+//     trips.push(newTrip);
 
-    const updatedData = JSON.stringify(trips);
+//     const updatedData = JSON.stringify(trips);
 
-    fs.writeFile("trips.txt", updatedData, (writeError) => {
-      if (writeError) {
-        console.error(writeError);
-        return res.status(500).send("Error writing to trips.txt");
-      }
+//     fs.writeFile("trips.txt", updatedData, (writeError) => {
+//       if (writeError) {
+//         console.error(writeError);
+//         return res.status(500).send("Error writing to trips.txt");
+//       }
 
-      res.send("Trip added successfully!");
-    });
-  });
-});
+//       res.send("Trip added successfully!");
+//     });
+//   });
+// });
 
 export { app, wss };
