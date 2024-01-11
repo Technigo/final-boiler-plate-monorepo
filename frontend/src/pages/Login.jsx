@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { Button } from "../components/Buttons/Button";
 import { LoaderAnimation } from "../components/Animations/LoaderAnimation";
 import styled from "styled-components";
+//import aHelpinHandLogotype from "../assets/Logo-white.png";
 
 const StyledIntro = styled.div`
   display: flex;

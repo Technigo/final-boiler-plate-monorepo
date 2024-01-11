@@ -10,11 +10,8 @@ import styled from "styled-components";
 
 const StyledBurgerMenu = styled.div`
   display: flex;
-  /* flex-direction: column; */
-  max-width: 150px;
-  padding: 20px;
-  /*border: 1px solid #eeb885;
-  border-radius: 20px 0 20px 20px; */
+  max-width: 130px;
+  padding: 0 0 20px 20px;
 `;
 
 const StyledToggleButton = styled.button`
@@ -24,7 +21,6 @@ const StyledToggleButton = styled.button`
   background: transparent;
   border: none;
   font-size: 20px;
-  /* position: fixed; */
   padding: 0;
   color: var(--lighttext);
   cursor: pointer;
@@ -34,15 +30,16 @@ const StyledBurgerLinks = styled.div`
   display: flex;
   flex-direction: column;
   gap: 20px;
+
+  .logout-button {
+    margin: 0;
+    padding: 0;
+  }
 `;
 
 export const BurgerMenu = () => {
   const { activePage, setActivePage, burgerMenuOpen, setBurgerMenuOpen } =
     useNavStore();
-
-  // const toggleBurgerMenu = () => {
-  //   setIsBurgerMenuOpen((prev) => !prev);
-  // };
 
   const closeBurgerMenu = () => {
     setBurgerMenuOpen(false);
@@ -59,9 +56,8 @@ export const BurgerMenu = () => {
   // Function to handle the click event of the logout button.
   const onLogoutClick = () => {
     storeHandleLogout();
-    // Additional logic after logout can be added here.
-    alert("Log out successful");
-    navigate("/"); // You can change this to the login route
+    // Navigate to the home page after logout.
+    navigate("/");
   };
 
   return (
@@ -70,15 +66,15 @@ export const BurgerMenu = () => {
         {burgerMenuOpen ? (
           <IoCloseOutline
             style={{
-              width: "32px",
-              height: "32px",
+              width: "25px",
+              height: "25px",
               position: "absolute",
               top: "3px",
               right: "3px",
             }}
           />
         ) : (
-          <RxHamburgerMenu style={{ width: "32px", height: "32px" }} />
+          <RxHamburgerMenu style={{ width: "25px", height: "25px" }} />
         )}
       </StyledToggleButton>
       {/* <BurgerMenuAnimation onClick={toggleBurgerMenu} /> */}

@@ -72,7 +72,6 @@ const ErrorCounterWrapper = styled.div`
   justify-content: flex-end;
   padding: 0;
   gap: 25px;
-
   width: 250px;
 
   @media screen and (min-width: 600px) {
@@ -209,10 +208,10 @@ export const CreateTask = () => {
           <option disabled default value="">
             Category
           </option>
-          <option value="Garden">Garden</option>
           <option value="Pets">Pets</option>
-          <option value="Shopping">Shopping</option>
           <option value="Repairs">Repairs</option>
+          <option value="Shopping">Shopping</option>
+          <option value="Garden">Garden</option>
           <option value="Other">Other</option>
         </StyledSelects>
         <StyledSelects
