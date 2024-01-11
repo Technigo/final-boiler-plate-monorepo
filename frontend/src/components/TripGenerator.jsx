@@ -4,6 +4,7 @@ import { LocationInput } from "./LocationInput";
 import { makes, models } from "./CarData";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+
 import { userStore } from "../stores/userStore";
 
 export const TripGenerator = () => {
@@ -89,9 +90,8 @@ export const TripGenerator = () => {
       from: formData.from,
       to: formData.to,
       message: formData.message,
-      // date: formData.date,
-      date: "testdate",
-      time: formData.time,
+      date: formData.date.toString(),
+      // time: formData.time,
       make: formData.make,
       model: formData.model,
       availableSeats: formData.availableSeats,
@@ -127,7 +127,7 @@ export const TripGenerator = () => {
         to: "",
         message: "",
         date: "",
-        time: "",
+        // time: "",
         make: "",
         model: "",
         availableSeats: "",
@@ -190,9 +190,8 @@ export const TripGenerator = () => {
             onChange={handleChange}
             setFormData={setFormData}
           />
-
-          <div className="flex space-x-4">
-            <div className="w-1/2">
+          <div className="flex space-x-4 mb-4">
+            <div className="w-1/3">
               <label
                 htmlFor="date"
                 className="block text-sm font-md text-gray-700"
@@ -210,25 +209,85 @@ export const TripGenerator = () => {
               />
             </div>
 
-            <div className="w-1/2">
+            <div className="w-1/3">
+              <label
+                htmlFor="reg"
+                className="block text-sm font-md text-gray-700"
+              >
+                Reg. no
+              </label>
+              <input
+                type="text"
+                id="reg"
+                name="reg"
+                value={formData.reg}
+                onChange={handleChange}
+                className="input-field border p-2 rounded-md w-full"
+                maxLength={6}
+                pattern="[a-zA-Z]{3}\d{2}[a-zA-Z\d]{1}"
+                title="Please follow the patterns ABC123/ABC12X"
+                placeholder="e.g. ABC123"
+              />
+            </div>
+
+            <div className="w-1/3">
+              <label
+                htmlFor="availableSeats"
+                className="block text-sm font-md text-gray-700"
+              >
+                Available Seats
+              </label>
+              <input
+                type="number"
+                id="availableSeats"
+                name="availableSeats"
+                value={formData.availableSeats}
+                onChange={(e) => {
+                  const value = parseInt(e.target.value, 10);
+                  handleChange({
+                    target: {
+                      name: e.target.name,
+                      value: value > 0 ? value : 1,
+                    },
+                  });
+                }}
+                className="input-field border p-2 rounded-md w-full"
+                min={1}
+                max={8}
+                maxLength={1}
+                pattern="[1-8]"
+                placeholder="Max 8"
+              />
+            </div>
+          </div>
+          {/* <div className="flex space-x-4">
+            <div className="w-full">
+              <label
+                htmlFor="date"
+                className="block text-sm font-md text-gray-700"
+              >
+                Date
+              </label>
+              <DatePicker
+                selected={formData.date}
+                onChange={(date) =>
+                  setFormData((prevData) => ({ ...prevData, date }))
+                }
+                placeholderText="MM/DD/YYYY"
+                wrapperClassName="w-full"
+                className="input-field border p-2 rounded-md w-full h-10"
+              />
+            </div>
+
+            {/* <div className="w-1/2">
               <label
                 htmlFor="time"
                 className="block text-sm font-md text-gray-700"
               >
                 Time
               </label>
-              <select
-                id="time"
-                name="time"
-                value={formData.time}
-                onChange={handleTimeChange}
-                className="input-field border p-2 rounded-md w-full h-10"
-              >
-                {timeOptions}
-              </select>
-            </div>
-          </div>
-
+            </div>*/}
+          {/* </div> */}
           <div className="flex space-x-4">
             <div className="w-1/2">
               <label
@@ -286,60 +345,6 @@ export const TripGenerator = () => {
               </select>
             </div>
           </div>
-
-          <div className="flex space-x-4 mb-4">
-            <div className="w-1/2">
-              <label
-                htmlFor="reg"
-                className="block text-sm font-md text-gray-700"
-              >
-                Reg. no
-              </label>
-              <input
-                type="text"
-                id="reg"
-                name="reg"
-                value={formData.reg}
-                onChange={handleChange}
-                className="input-field border p-2 rounded-md w-full"
-                maxLength={6}
-                pattern="[a-zA-Z]{3}\d{2}[a-zA-Z\d]{1}"
-                title="Please follow the patterns ABC123/ABC12X"
-                placeholder="e.g. ABC123"
-              />
-            </div>
-
-            <div className="w-1/2">
-              <label
-                htmlFor="availableSeats"
-                className="block text-sm font-md text-gray-700"
-              >
-                Available Seats
-              </label>
-              <input
-                type="number"
-                id="availableSeats"
-                name="availableSeats"
-                value={formData.availableSeats}
-                onChange={(e) => {
-                  const value = parseInt(e.target.value, 10);
-                  handleChange({
-                    target: {
-                      name: e.target.name,
-                      value: value > 0 ? value : 1,
-                    },
-                  });
-                }}
-                className="input-field border p-2 rounded-md w-full"
-                min={1}
-                max={8}
-                maxLength={1}
-                pattern="[1-8]"
-                placeholder="Max 8"
-              />
-            </div>
-          </div>
-
           <div className="mb-4">
             <label
               htmlFor="message"

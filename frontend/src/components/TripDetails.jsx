@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 export const TripDetails = () => {
   const { tripId } = useParams();
   const [selectedTrip, setSelectedTrip] = useState(null);
+  const apiEnv = import.meta.env.VITE_BACKEND_API;
 
   useEffect(() => {
     console.log("Fetching trip details for tripId:", tripId);
@@ -11,7 +12,20 @@ export const TripDetails = () => {
       return;
     }
 
-    fetch(`http://localhost:3000/trips/${tripId}`)
+    //   fetch(`http://localhost:3000/trips/${tripId}`)
+    //     .then((response) => {
+    //       if (!response.ok) {
+    //         throw new Error(`HTTP error! Status: ${response.status}`);
+    //       }
+    //       return response.json();
+    //     })
+    //     .then((data) => {
+    //       setSelectedTrip(data);
+    //     })
+    //     .catch((error) => console.error("Error fetching trip details:", error));
+    // }, [tripId]);
+
+    fetch(`${apiEnv}/trips/${tripId}`)
       .then((response) => {
         if (!response.ok) {
           throw new Error(`HTTP error! Status: ${response.status}`);
@@ -35,7 +49,8 @@ export const TripDetails = () => {
           <div className="col-span-12 flex justify-center">
             <button
               type="button"
-              className="bg-rose-500 text-white px-4 py-2 rounded-full hover:bg-rose-700 focus:outline-none focus:ring focus:border-blue-300">
+              className="bg-rose-500 text-white px-4 py-2 rounded-full hover:bg-rose-700 focus:outline-none focus:ring focus:border-blue-300"
+            >
               Join trip
             </button>
           </div>
