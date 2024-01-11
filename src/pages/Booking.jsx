@@ -29,8 +29,8 @@ export const Booking = () => {
 		selectedSeats,
 		setSelectedSeats,
 		updateSelectedSeats,
-		// makeASelection
-	} = bookingStore() 
+		setJustSelectedSeats,
+	} = bookingStore()
 
 	const isLoggedIn = userStore.getState().isLoggedIn
 
@@ -51,6 +51,18 @@ export const Booking = () => {
 			setSeatInfo(seatInfo)
 		}
 	}, [selectedShowtime])
+
+	useEffect(() => {
+		if (seatInfo != null && seatInfo.length > 0) {
+			seatInfo.forEach(row => {
+				row.forEach((seat) => {
+					if(seat.selected) {
+						setJustSelectedSeats([seat.rowIndex, seat.seatIndex])
+					}
+				})
+			})
+		}
+	}, [seatInfo])
 
 	useEffect(() => {
 		console.log('selectedSeats', selectedSeats)

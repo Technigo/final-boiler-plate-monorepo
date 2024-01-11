@@ -34,6 +34,22 @@ export const bookingStore = create((set) => ({
         }
     },
 
+    setJustSelectedSeats: ( newSeats ) => {
+        set((state) => {
+            const isSelected = state.selectedSeats.some(
+                seat => seat[0] === newSeats[0] && seat[1] === newSeats[1]
+            )
+
+            if (!isSelected) {
+                return {
+                    selectedSeats: [...state.selectedSeats, newSeats],
+                }
+            } else {
+                return state
+            }
+        })
+    },
+
     setSelectedSeats: async ( newSeats, showTimeId ) => {
         set(
             () => ({ 
