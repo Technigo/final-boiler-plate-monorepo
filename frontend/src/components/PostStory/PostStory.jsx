@@ -21,6 +21,12 @@ export const PostStory = () => {
   const [latitude, setLatitude] = useState(null);
   const [longitude, setLongitude] = useState(null);
 
+  // Function to check if a story is in Swedish and bypass it
+  const isStoryInSwedish = (text) => {
+    const swedishCharacters = ["å", "ä", "ö"];
+    return swedishCharacters.some((char) => text.includes(char));
+  };
+
   const handleFormSubmit = async (e) => {
     e.preventDefault();
 
@@ -49,12 +55,19 @@ export const PostStory = () => {
       image: selectedImage,
     };
 
-    setNewStory("");
+ 
 
-    // Check if the language is supported for sentiment analysis
+    if (isStoryInSwedish(newStory)) {
+      postStory(storyData);
+    } else {
+      analyzeSentimentAndPostStory(storyData, newStory);
+    }
+  };
+
+  const analyzeSentimentAndPostStory = (storyData, storyText) => {
     const googleApiPayload = {
       document: {
-        content: newStory,
+        content: storyText,
         type: "PLAIN_TEXT",
       },
     };
@@ -73,52 +86,31 @@ export const PostStory = () => {
     )
       .then((res) => res.json())
       .then((googleApiResponse) => {
-        // Logic to handle the response from sentiment analysis
-        const sentimentScore = googleApiResponse.documentSentiment.score;
 
-        // Decide on a threshold for negative sentiment
-        const negativeSentimentThreshold = -0.5;
-
-        if (sentimentScore < negativeSentimentThreshold) {
-          // Trigger an alert if the sentiment is too negative
-          alert(
-            "Your post seems to have a negative tone. Please consider revising it."
-          );
+        if (
+          googleApiResponse.error &&
+          googleApiResponse.error.message.includes("Language not supported")
+        ) {
+          postStory(storyData);
         } else {
-          // Post the story to the backend
-          fetch(`http://localhost:3000/stories`, {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify(storyData),
-          })
-            .then((response) => {
-              if (!response.ok) {
-                throw new Error(`HTTP error! Status: ${response.status}`);
-              }
-              return response.json();
-            })
-            .then((newStory) => {
-              console.log("New story posted:", newStory);
-              // Reset form fields
-              setNewHeading("");
-              setNewStory("");
-              setSelectedDate(new Date());
-              setLocationName("");
-              setNewCategory("");
-              setSelectedImage("");
-            })
-            .catch((error) => {
-              console.error("Error posting the story", error);
-            });
+          const sentimentScore = googleApiResponse.documentSentiment.score;
+          const negativeSentimentThreshold = -0.5;
+          if (sentimentScore < negativeSentimentThreshold) {
+            alert(
+              "Your post seems to have a negative tone. Please consider revising it."
+            );
+          } else {
+            postStory(storyData);
+          }
+
         }
       })
       .catch((error) => {
         console.error("Error calling Google API:", error);
       });
+  };
 
-    // Post the story to the backend
+  const postStory = (storyData) => {
     const apiUrl = import.meta.env.VITE_BACKEND_API || "http://localhost:3000";
     fetch(`${apiUrl}/stories`, {
       method: "POST",
@@ -135,13 +127,15 @@ export const PostStory = () => {
       })
       .then((newStory) => {
         console.log("New story posted:", newStory);
-        // Reset form fields
+        // Reset form fields and clear the story
         setNewHeading("");
-        setNewStory("");
         setSelectedDate(new Date());
         setLocationName("");
         setNewCategory("");
         setSelectedImage("");
+
+        setNewStory(""); 
+
       })
       .catch((error) => {
         console.error("Error posting the story", error);

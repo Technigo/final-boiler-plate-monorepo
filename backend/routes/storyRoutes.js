@@ -50,21 +50,24 @@ router.get("/stories", async (req, res) => {
   }
 });
 
+// Function to check if a story is in Swedish
+const isStoryInSwedish = (text) => {
+  const swedishCharacters = ["å", "ä", "ö"];
+  return swedishCharacters.some((char) => text.includes(char));
+};
+
 //route for post a story
 router.post("/stories", async (req, res) => {
   const { title, content, category, ranking, lat, lng, city, image } = req.body;
   console.log(req.body);
 
   try {
-    // Analyze the content
-    const analysisResult = await analyzeTextWithApiKey(content);
-
-    // Add logic to check the sentiment score and handle negative content
-    // Adjust the condition based on your requirements
-    if (analysisResult.documentSentiment.score < -0.5) {
-      return res.status(400).json({ message: "Content is too negative" });
+    if (!isStoryInSwedish(content)) {
+      const analysisResult = await analyzeTextWithApiKey(content);
+      if (analysisResult.documentSentiment.score < -0.5) {
+        return res.status(400).json({ message: "Content is too negative" });
+      }
     }
-
     // If content is acceptable, proceed to save the story
     const newStory = new mapStoryModel({
       title,
@@ -86,14 +89,14 @@ router.post("/stories", async (req, res) => {
 // GET endpoint to retrieve a specific story by ID
 router.get("/stories/:id", async (req, res) => {
   try {
-    const storyId = req.params.id; // Extract the ID from the URL
-    const story = await mapStoryModel.findById(storyId); // Find the story by ID
+    const storyId = req.params.id;
+    const story = await mapStoryModel.findById(storyId);
 
     if (!story) {
       return res.status(404).json({ message: "Story not found" });
     }
 
-    res.json(story); // Send the found story back in the response
+    res.json(story);
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
