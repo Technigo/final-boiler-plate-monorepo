@@ -7,14 +7,24 @@ import DogModel from "./models/DogModel.js";
 import listEndpoints from "express-list-endpoints";
 // import taskRoutes from "./routes/taskRoutes"; // Import custom task controlled-routes
 // import userRoutes from "./routes/userRoutes"; // Import custom user routes
+import dogs from "./dogs.json"
 
-const mongoUrl = process.env.MONGO_URL || "mongodb://127.0.0.1:27017/Soygirt";
+const mongoUrl = process.env.ATLAS_URL;
 mongoose.connect(mongoUrl, {useNewUrlParser: true, useUnifiedTopology: true})
 mongoose.Promise = Promise
 
 // "mongodb+srv://Soygirt:Durkslag1@atlascluster.enkh5cp.mongodb.net/Soygirt"
 // "mongodb://127.0.0.1:27017/Soygirt";
 
+const seedDatabase = async () => {
+  await DogModel.deleteMany({})
+
+  dogs.dogs.forEach((dog) => {
+    new DogModel(dog).save()
+  })
+}
+
+seedDatabase()
 
 mongoose.connection.on('connected', () => {
   console.log('Connected to MongoDB');

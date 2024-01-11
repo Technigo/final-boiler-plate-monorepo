@@ -25,7 +25,7 @@
 }
 
 .textWrapper {
-    height: 20em;
+    min-height: 15em;
     display: flex;
     flex-direction: column;
     gap: 2em;
@@ -41,6 +41,16 @@
     .mainContainer {
         grid-column: 1 / 2;
     }
+
+    .headingContainer {
+        flex-direction: column;
+        gap: 0em;
+    }
+
+    .headerImage {
+        background-size: 100%;
+        background-repeat: no-repeat;
+    }
 }
 
 @media screen and (min-width: 668px) and (max-width: 1024px) {
@@ -50,5 +60,10 @@
 
     .mainContainer {
         grid-column: 1 / 3;
+    }
+
+    .headingContainer {
+        flex-direction: column;
+        gap: 0em;
     }
 }

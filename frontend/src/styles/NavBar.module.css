@@ -11,7 +11,7 @@
     text-decoration: none;
 }
 
-.navLink:hover {
+.mainContainer p:hover {
     color: #42531D;
 }
 
@@ -19,5 +19,22 @@
     .mainContainer {
         justify-content: center;
         align-items: center;
+        overflow: hidden;
+        white-space: nowrap;
+        padding: 0em 1em 0em 1em;
+    }
+}
+
+@media screen and (min-width: 668px) and (max-width: 1024px) {
+    .mainContainer {
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+        white-space: nowrap;
+        padding: 0em 1em 0em 1em;
+    }
+
+    .mainContainer p {
+        font-size: 1.5em;
     }
 }

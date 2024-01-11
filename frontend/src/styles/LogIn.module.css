@@ -24,13 +24,27 @@
     padding-left: 2em;
 }
 
-.formWrapper {
+.logInWrapper {
     height: 15em;
     display: flex;
     flex-direction: column;
+    gap: 1.5em;
     align-items: center;
     justify-content: center;
 }
+
+.logInWrapper p {
+    text-align: center;
+}
+
+.inputWrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0.2em;
+    font-size: 1.2em;
+}
+
 input {
     border-radius: 5px;
     color: #42531D;
@@ -46,6 +60,16 @@ input {
     .mainContainer {
         grid-column: 1 / 2;
     }
+
+    .headingContainer {
+        flex-direction: column;
+        gap: 0em;
+    }
+
+    .headerImage {
+        background-size: 120%;
+        background-repeat: no-repeat;
+    }
 }
 
 @media screen and (min-width: 668px) and (max-width: 1024px) {
@@ -55,5 +79,10 @@ input {
 
     .mainContainer {
         grid-column: 1 / 3;
+    }
+
+    .headingContainer {
+        flex-direction: column;
+        gap: 0em;
     }
 }

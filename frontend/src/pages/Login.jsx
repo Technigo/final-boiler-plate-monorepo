@@ -15,13 +15,21 @@ export const LogIn = () => {
                     <div className={styles.headerImage}>
                         <h2>LOG IN</h2>
                     </div>
-                    <div className={styles.formWrapper}>
+                    <div className={styles.logInWrapper}>
+                        <div className={styles.textWrapper}>
                         <p>This is the log in page for dog adoption organisations.</p>
                         <p>Are you representing an organisation? E-mail us at admin@rescuehelper.com to get verified.</p>
-                        <label for="username">Username</label>
-                        <input name="username" id="username" type="text" />
-                        <label for="password">Password</label>
-                        <input name="password" id="password" type="text" />
+                        </div>
+                        <div className={styles.formWrapper}>
+                        <div className={styles.inputWrapper}>
+                            <label for="username">Username</label>
+                            <input name="username" id="username" type="text" />
+                        </div>
+                        <div className={styles.inputWrapper}>
+                            <label for="password">Password</label>
+                            <input name="password" id="password" type="text" />
+                        </div>
+                        </div>
                     </div>
                     <Footer />
                 </div>

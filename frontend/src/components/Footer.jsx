@@ -8,7 +8,7 @@ export const Footer = () => {
                     <h2>RESCUE HELPER</h2>
                     <div className={styles.infoContainer}>
                         <p>admin@rescuehelper.com</p>
-                        <p>Final project @ Technigo Web Development Boot Camp</p>
+                        <p>Technigo Web Development Boot Camp</p>
                         <p>ELIN OLAUSSON & OLGA LEPISTÖ 2024</p>
                     </div>
                 </div>

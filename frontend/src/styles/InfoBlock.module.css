@@ -6,6 +6,7 @@
     align-items: center;
     justify-content: center;
     height: 10em;
+    text-align: center;
 }
 
 .emailWrapper {
@@ -36,9 +37,6 @@
 @media screen and (max-width: 667px) {
     .mainContainer {
         height: 10em;
-        justify-content: center;
-        align-items: center;
-        text-align: center;
     }
 
     .whiteText {
@@ -57,6 +55,5 @@
 @media screen and (min-width: 668px) and (max-width: 1024px) {
     .mainContainer {
         height: 12em;
-        justify-content: center;
     }
 }

@@ -1,6 +1,7 @@
 .siteContainer {
     display: grid;
     grid-template-columns: repeat(6, 1fr);
+    max-width: fit-content;
 }
 
 .mainContainer {
@@ -35,5 +36,10 @@
 
     .mainContainer {
         grid-column: 1 / 3;
+    }
+
+    .headingContainer {
+        flex-direction: column;
+        gap: 0em;
     }
 }

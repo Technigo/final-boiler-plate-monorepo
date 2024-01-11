@@ -16,16 +16,17 @@
 
 @media screen and (max-width: 667px) {
     .mainContainer {
-        height: 25em;
+        height: 23em;
         align-items: center;
         justify-content: left;
-        background-size: 120%;
+        background-size: 150%;
+        background-repeat: no-repeat;
     }
 
     .textContainer {
         text-align: left;
         max-width: 40%;
-        margin-left: 2em;
+        margin-left: 1em;
     }
 }
 
@@ -35,6 +36,7 @@
         align-items: center;
         justify-content: left;
         background-size: 120%;
+        background-repeat: no-repeat;
     }
 
     .textContainer {
