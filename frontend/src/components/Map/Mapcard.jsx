@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import "./Mapcard.css";
-import "../StoryCard/StoryCard.css";
+// import "../StoryCard/StoryCard.css";
 import { timeSince } from "../utils/timeUtils";
 import likeIcon from "../../assets/likeicon.svg";
 import closeIcon from "../../assets/close-icon.svg";
@@ -56,20 +56,6 @@ export const Mapcard = () => {
       });
   }, [id, apiUrl]);
 
-  // Function to fetch translated stories
-  const fetchTranslatedStories = async () => {
-    try {
-      const response = await fetch(
-        `${apiUrl}/stories?language=${selectedLanguage}`
-      );
-      const translatedData = await response.json();
-      setStories(translatedData);
-      // updateCitiesAndCategories(translatedData);
-    } catch (error) {
-      console.error("Error fetching translated stories:", error);
-    }
-  };
-
   useEffect(() => {
     // Function to fetch translated stories
     const fetchTranslatedStories = async () => {
@@ -117,7 +103,8 @@ export const Mapcard = () => {
         <select
           className="map-dropdowns"
           value={selectedLanguage}
-          onChange={handleLanguageChange}>
+          onChange={handleLanguageChange}
+        >
           <option value="en">English</option>
           <option value="sv">Swedish</option>
         </select>
