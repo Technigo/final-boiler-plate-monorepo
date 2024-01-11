@@ -5,7 +5,6 @@ const apiEnv = import.meta.env.VITE_BACKEND_API
 export const bookingStore = create((set) => ({
     allShowTimes: [],
     selectedSeats: [],
-    // selectedShowtimeID: "",
     selectedShowtime: [],
 
     fetchAllShowTimes: async () => {
@@ -21,8 +20,6 @@ export const bookingStore = create((set) => ({
             console.log(error)
         }
     },
-      
-    // setSelectedShowtimeID: ( input ) => set( () => ({ selectedShowtimeID: input })),
 
     fetchSelectedShowtime: async (showtimeId) => {
         try {
@@ -49,7 +46,7 @@ export const bookingStore = create((set) => ({
         })
     ),
 
-    makeAReservation: async (selectedSeat, showTimeId, email) => {
+    makeAReservation: async ({ selectedSeat, email, showTimeId }) => {
         try {
             const response = await fetch(`${apiEnv}/bookings`, {
                 method: 'POST',
@@ -59,15 +56,36 @@ export const bookingStore = create((set) => ({
                 body: JSON.stringify({ 
                     email: email,
                     seat: selectedSeat,
-                    showTimeId: showTimeId 
+                    showtimeId: showTimeId 
                 })
             })
             const data = await response.json()
             console.log(data)
+            return data
         } catch (error) {
             console.log(error)
         }
-    }
+    },
+
+    // makeASelection: async (selectedSeat, showTimeId) => {
+    //     try {
+    //         const response = await fetch(`${apiEnv}/showtimes/showtime/${showTimeId}`, {
+    //             method: 'PUT',
+    //             headers: {
+    //                 "Content-Type": "application/json",
+    //             },
+    //             body: JSON.stringify({ 
+    //                 seat: selectedSeat,
+    //                 showTimeId: showTimeId 
+    //             })
+    //         })
+    //         const data = await response.json()
+    //         console.log(data)
+    //         set({ selectedShowtime: data })
+    //     } catch (error) {
+    //         console.log(error)
+    //     }
+    // },
 }))
 
 export default bookingStore

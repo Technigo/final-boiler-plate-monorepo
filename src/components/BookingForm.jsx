@@ -1,36 +1,55 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 // import { useParams } from 'react-router-dom'
 import { bookingStore } from '../store/bookingStore'
 import { SelectedTicket } from './SelectedTicket'
 import './BookingForm.css'
 
 export const BookingForm = () => {
-    const stateSeats = bookingStore((state) => state.selectedSeats)
     const [ formData, setFormData ] = useState({
         name: "",
         email: "",
         showTimeId: ""
     })
-    // const bookingParam = useParams()
-    // console.log(bookingParam.typeOfBooking)
-    const selectedShowtime = bookingStore((state) => state.selectedShowtime)
-    const makeABooking = bookingStore((state) => state.makeAReservation)
+    const [ bookingReceipts, setBookingReceipts ] = useState([])
+    const { 
+        selectedSeats,
+        selectedShowtime,
+        makeAReservation
+     } = bookingStore()
+
+     useEffect(() => {
+        console.log(selectedSeats)
+     }, [])
+
+     useEffect(() => {
+        if (selectedShowtime != null && formData !=null) {
+            updateFormData( "showTimeId", selectedShowtime._id)
+        }
+    }, [selectedShowtime])
+
+    useEffect(() => {
+        console.log(bookingReceipts)
+    }, [bookingReceipts])
 
     const updateFormData = ( field, value ) => {
         setFormData((previous) => ({...previous, [field]: value}))
     }
 
+    const bookASeat = async (email, selectedSeat, showtimeID) => {
+        const bookingData = await makeAReservation({email: email, selectedSeat: selectedSeat, showTimeId: showtimeID})
+        setBookingReceipts(prev => [...prev, bookingData.booking])
+    }
+
     const handleSubmit = async (event) => {
         event.preventDefault()
-        stateSeats.map(seat => {
-            console.log(formData.email, seat, selectedShowtime)
-            makeABooking({email: formData.email, selectedSeat: seat, showTimeId: selectedShowtime})
+        selectedSeats.map(seat => {
+            bookASeat(formData.email, seat, selectedShowtime._id)
         })
     }
 
     return(
         <>
-            {stateSeats && <SelectedTicket />}
+            {selectedSeats && <SelectedTicket />}
 
             <div className="form-container">
                 <form className="booking-form">
