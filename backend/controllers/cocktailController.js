@@ -13,10 +13,8 @@ const storage = multer.diskStorage({
     }
 });
 
-const upload = multer({ storage: storage }).fields([
-    { name: 'image', maxCount: 1 },
-  ]);
-  
+const upload = multer({ storage: storage });
+
 // Middleware to handle image upload
 const addImageToCocktail = (req, res, next) => {
     upload.single('image')(req, res, (error) => {
@@ -118,72 +116,34 @@ export const getCocktailByIdController = async (req, res) => {
     }
 };
 
-  export const addCocktailController = async (req, res) => {
-      // Check admin role first
-      if (req.admin.role !== 'admin') {
-          return res.status(403).json({ message: 'Access denied' });
-      }
-  
-      // Convert any single-entry fields to arrays if necessary
-      const arrayFields = ['allLiquors', 'ingredients', 'InspiredByCreator', 'occasion', 'flavorProfile', 'tags'];
-      arrayFields.forEach(field => {
-          if (req.body[field] && !Array.isArray(req.body[field])) {
-              req.body[field] = [req.body[field]];
-          }
-      });
-  
-      // If an image was uploaded, multer will add the file information to req.files
-      if (req.files && req.files['image']) {
-          req.body.imageUrl = req.files['image'][0].path;
-      }
-  
+// Create a new cocktail with image upload
+export const addCocktailController = [
+    upload.single('image'),//multer should be used directly here
+    async (req, res) => {
+        //check admin role:
+        if (req.admin.role !== 'admin') {
+            return res.status(403).json({ message: 'Access denied' });
+        }
+        console.log(req.body); // Log the body to see the form data
+        console.log(req.file); // Log the file to see the image data
+
       try {
-          // Add time and date to the recipe
-          req.body.date = new Date();
+        // If the image is uploaded successfully, multer adds a file property to the request object.
+        if (req.file) {
+          req.body.imageUrl = req.file.path; // Save the path of the uploaded file in the imageUrl field
+        }
+
+        //Add time and date to the reicpe
+        req.body.date = new Date();
   
-          // Create and save the new cocktail
-          const newCocktail = new Cocktails(req.body);
-          await newCocktail.save();
-          res.status(201).json(newCocktail);
+        const newCocktail = new Cocktails(req.body);
+        await newCocktail.save();
+        res.status(201).json(newCocktail);
       } catch (error) {
-          res.status(400).json({ message: error.message });
-      }
-  };
-  
-
-// Update a cocktail by ID with image upload
-export const updateCocktailController = [addImageToCocktail, async (req, res) => {
-    // Check admin role:
-    if (req.admin.role !== 'admin') {
-        return res.status(403).json({ message: 'Access denied' });
-    }
-    try {
-        const updatedCocktail = await Cocktails.findByIdAndUpdate(req.params.id, req.body, { new: true });
-        if (!updatedCocktail) {
-            return res.status(404).json({ message: 'Cocktail not found' });
-        }
-        res.json(updatedCocktail);
-    } catch (error) {
         res.status(400).json({ message: error.message });
+      }
     }
-}];
-
-// Delete a cocktail by ID
-export const deleteCocktailController = async (req, res) => {
-    // Check admin role:
-    if (req.admin.role !== 'admin') {
-        return res.status(403).json({ message: 'Access denied' });
-    }
-    try {
-        const cocktail = await Cocktails.findByIdAndDelete(req.params.id);
-        if (!cocktail) {
-            return res.status(404).send('Cocktail not found');
-        }
-        res.send('Cocktail deleted successfully');
-    } catch (error) {
-        res.status(500).send(error.message);
-    }
-};
+  ];
 
 //POSTMAN TESTING
 
