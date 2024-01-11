@@ -1,55 +1,48 @@
 .user-ads-container {
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-gap: 20px;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 20px;
 }
 
 .user-ad {
-    border: 1px solid #ccc;
-    padding: 50px 10px 10px 10px;
-    border-radius: 5px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
+  border: 1px solid #ccc;
+  padding: 50px 10px 10px 10px;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
 
-    .user-ad-actions {
-        display: flex;
-        justify-content: center;
-        width: 100%;
-        margin-top: 10px;
-    }
+  .user-ad-actions {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-top: 10px;
+  }
 }
 
 .user-ad-image {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-    border-radius: var(--border-radius);
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: var(--border-radius);
 }
-
 
 .button.edit-btn {
-    margin-right: 15px;
+  margin-right: 15px;
 }
 
-
 @media (min-width: 768px) {
-
-    /* Tablet view */
-    .user-ads-container {
-        grid-template-columns: repeat(2, 1fr);
-    }
+  /* Tablet view */
+  .user-ads-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 @media (min-width: 1200px) {
-
-    /* Desktop view */
-    .user-ads-container {
-        grid-template-columns: repeat(4, 1fr);
-    }
+  /* Desktop view */
+  .user-ads-container {
+    grid-template-columns: repeat(4, 1fr);
+  }
 }
-
-
-
