@@ -24,13 +24,15 @@ export const Policy = () => {
           { path: "/manage-your-ads", name: "My Products" },
           { path: "/about", name: "About" },
           { path: "/terms", name: "Terms" },
-          {
-            name: "Logout",
-            onClick: () => {
-              handleLogout();
-              navigate("/");
-            },
-          },
+          isLoggedin
+            ? {
+                name: "Logout",
+                onClick: () => {
+                  handleLogout();
+                  navigate("/");
+                },
+              }
+            : { path: "/login", name: "Login" },
         ]}
         menuDesks={[
           { path: "/home", name: "Home" },
@@ -38,14 +40,15 @@ export const Policy = () => {
           { path: "/settings", name: "My Settings" },
           { path: "/manage-your-ads", name: "My Products" },
           { path: "/about", name: "About" },
-
-          {
-            name: "Logout",
-            onClick: () => {
-              handleLogout();
-              navigate("/");
-            },
-          },
+          isLoggedin
+            ? {
+                name: "Logout",
+                onClick: () => {
+                  handleLogout();
+                  navigate("/");
+                },
+              }
+            : { path: "/login", name: "Login" },
         ]}
         logoRedirectPath={logoRedirectPath}
       />
