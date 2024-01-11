@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import "./Mapcard.css";
 import "../StoryCard/StoryCard.css";
 import { timeSince } from "../utils/timeUtils";
-import likeIcon from "../../assets/like.svg";
+import likeIcon from "../../assets/likeicon.svg";
+import closeIcon from "../../assets/close-icon.svg";
 
 // Style object for the card, adjusts scale and z-index based on isActive prop
 // const cardStyle = {
@@ -20,9 +21,13 @@ export const Mapcard = () => {
   const [loading, setLoading] = useState(true);
   const [selectedLanguage, setSelectedLanguage] = useState("en"); // default to English
   const [stories, setStories] = useState([]);
+  const navigate = useNavigate();
+
+  const navigateToMap = () => {
+    navigate("/map");
+  };
 
   // Function to handle like button click, updates story ranking
-
   const handleLikeClick = () => {
     fetch(`${apiUrl}/stories/${story._id}/rank`, {
       method: "PUT",
@@ -32,8 +37,9 @@ export const Mapcard = () => {
     })
       .then((response) => response.json())
       .then((updatedStory) => {
-        if (handleRankUpdate) {
-          handleRankUpdate(updatedStory);
+        if (updatedStory) {
+          // Update the local state with the new story data
+          setStory(updatedStory);
         }
       })
       .catch((error) => console.error("Error updating story ranking:", error));
@@ -100,10 +106,10 @@ export const Mapcard = () => {
   }
 
   return (
-    <div className="story-card-list">
+    <div className="map-card-list">
       <div className="filter-options">
         <select
-          className="dropdowns"
+          className="map-dropdowns"
           value={selectedLanguage}
           onChange={handleLanguageChange}
         >
@@ -111,120 +117,31 @@ export const Mapcard = () => {
           <option value="sv">Swedish</option>
         </select>
       </div>
-      <div className="story-card">
+      <div className="map-story-card">
+        <button className="close-button" onClick={navigateToMap}>
+          <img className="close-icon" src={closeIcon} alt="Back to Map" />
+        </button>
         {story.image && (
-          <div className="story-image">
+          <div className="map-story-image">
             <img src={`/${story.image}`} alt={`${story.city} story`} />
           </div>
         )}
-        <div className="story-info">
+        <div className="map-story-info">
           <h4>{story.category}</h4>
           <h3>{story.city}</h3>
-          <div className="story-map-content">
-            <h3>{story.title}</h3>
-            <p>{story.content}</p>
-            <div className="overlay-date-icon">
-              {timeSince(story.createdAt)}
-              <button onClick={handleLikeClick} className="like-button">
-                <img className="like-button-icon" src={likeIcon} alt="Like" />
-              </button>
-              <span className="like-count">{story.ranking}</span>
-            </div>
+        </div>
+        <div className="story-map-content">
+          <h3>{story.title}</h3>
+          <p>{story.content}</p>
+          <div className="map-date-icon">
+            {timeSince(story.createdAt)}
+            <button onClick={handleLikeClick} className="like-button">
+              <img className="like-button-icon" src={likeIcon} alt="Like" />
+            </button>
+            <span className="like-count">{story.ranking}</span>
           </div>
         </div>
-
-        <div className="story-overlay"></div>
       </div>
     </div>
   );
 };
-
-// import { useParams } from "react-router-dom";
-// import { useEffect, useState } from "react";
-// import "./Mapcard.css";
-// import "./Storycard.css";
-// import { timeSince } from "../utils/timeUtils";
-// import likeIcon from "../../assets/like.svg";
-
-// export const Mapcard = () => {
-//   // eslint-disable-next-line no-undef
-//   const { id } = useParams();
-//   const [story, setStory] = useState(null);
-//   const [loading, setLoading] = useState(true);
-
-//   console.log(id);
-
-//   // Calling fetch
-//   useEffect(() => {
-//     const apiUrl = import.meta.env.VITE_BACKEND_API || "http://localhost:3000";
-//     fetch(`${apiUrl}/stories/${id}`)
-//       .then((response) => response.json())
-//       .then((data) => {
-//         setStory(data);
-//         setLoading(false);
-//         console.log(data);
-//       })
-//       .catch((error) => {
-//         console.error("Error fetching story:", error);
-//       });
-//   }, [id]);
-
-//   if (loading) {
-//     return <div>Loading...</div>;
-//   }
-
-//   if (!story) {
-//     return <div>Story not found.</div>;
-//   }
-
-//   return (
-//     <div className="story-card-list">
-//       <div className="story-card" style={cardStyle}>
-//         {story.image && (
-//           <div className="story-image">
-//             <img src={`/${story.image}`} alt={`${story.city} story`} />
-//           </div>
-//         )}
-//         <div className="story-info">
-//           <h4>{story.category}</h4>
-//           <h3>{story.city}</h3>
-//         </div>
-//         {isActive && (
-//           <div className="story-overlay">
-//             <div className="story-overlay-content">
-//               <h3>{story.title}</h3>
-//               <p>{story.content}</p>
-//             </div>
-//             <div className="overlay-date-icon">
-//               {timeSince(story.createdAt)}
-//               <button onClick={handleLikeClick} className="like-button">
-//                 <img className="like-button-icon" src={likeIcon} alt="Like" />
-//               </button>
-//               <span className="like-count">{story.ranking}</span>
-//             </div>
-//           </div>
-//         )}
-//       </div>
-//     </div>
-//   );
-// };
-
-// <div className="story-card-list">
-//   <div className="story-cards">
-//     {story.image && (
-//       <div className="story-image">
-//         <img src={`/${story.image}`} alt={`${story.city} story`} />
-//       </div>
-//     )}
-//     <div className="story-footer">
-//       {/* You can add like icon here if needed */}
-//       <span className="like-count">{story.ranking}</span>
-//     </div>
-//   </div>
-//   <div className="story-content">
-//     <div className="story-info">
-//       <h3>{story.title}</h3>
-//     </div>
-//     <p>{story.content}</p>
-//   </div>
-// </div>
