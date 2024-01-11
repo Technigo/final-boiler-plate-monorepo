@@ -10,21 +10,24 @@ export const Footer = () => {
           <div className="px-5 py-2">
             <a
               href="about"
-              className="text-base leading-6 text-gray-500 hover:text-gray-900">
+              className="text-base leading-6 text-gray-500 hover:text-gray-900"
+            >
               About
             </a>
           </div>
           <div className="px-5 py-2">
             <a
               href="contact"
-              className="text-base leading-6 text-gray-500 hover:text-gray-900">
+              className="text-base leading-6 text-gray-500 hover:text-gray-900"
+            >
               Contact
             </a>
           </div>
           <div className="px-5 py-2">
             <a
               href="followus"
-              className="text-base leading-6 text-gray-500 hover:text-gray-900">
+              className="text-base leading-6 text-gray-500 hover:text-gray-900"
+            >
               Follow Us
             </a>
           </div>
@@ -34,7 +37,8 @@ export const Footer = () => {
             href="https://www.linkedin.com/"
             className="text-blue-800 hover:text-gray-500"
             target="_blank"
-            rel="noopener noreferrer">
+            rel="noopener noreferrer"
+          >
             <span className="sr-only">LinkedIn</span>
             <FaLinkedin className="w-12 h-12" />
           </a>
@@ -42,7 +46,8 @@ export const Footer = () => {
             href="https://www.facebook.com/"
             className="text-blue-700 hover:text-gray-500"
             target="_blank"
-            rel="noopener noreferrer">
+            rel="noopener noreferrer"
+          >
             <span className="sr-only">LinkedIn</span>
             <FaFacebookSquare className="w-12 h-12" />
           </a>
@@ -50,7 +55,8 @@ export const Footer = () => {
             href="https://twitter.com/"
             className="text-black hover:text-gray-500"
             target="_blank"
-            rel="noopener noreferrer">
+            rel="noopener noreferrer"
+          >
             <span className="sr-only">LinkedIn</span>
             <FaSquareXTwitter className="w-12 h-12" />
           </a>
