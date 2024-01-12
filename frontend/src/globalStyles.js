@@ -55,27 +55,23 @@ body.active-modal {
 }
   
   main {
-  margin: 50px 15px 270px;
+  margin: 50px 15px 100px;
   
 
   @media screen and (min-width: 400px) {
-    margin: 50px 50px 192px;
-    /* margin: 50px; */
+    margin: 50px 50px 200px;
   }
 
   @media screen and  (min-width: 800px) {
-    margin: 50px 100px 158px;
-    /* margin: 50px 100px; */
+    margin: 50px 100px 220px;
   }
 
   @media screen and  (min-width: 1100px) {
-    margin: 100px 200px 208px;
-    /* margin: 100px 200px; */
+    margin: 100px 200px 200px;
   }
 
   @media screen and  (min-width: 1300px) {
-    margin: 100px 300px 208px;
-    /* margin: 100px 300px; */
+    margin: 100px 300px 240px;
   }
 }
 `;

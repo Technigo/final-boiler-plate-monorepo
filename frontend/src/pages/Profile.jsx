@@ -40,13 +40,10 @@ const StyledList = styled.ul`
 const StyledListItem = styled.li`
   display: flex;
   flex-direction: column;
-  /* align-items: flex-end;
-  text-align: left; */
   background-color: var(--grey);
   border: 1px solid #ddd;
   border-radius: 20px 0 20px 20px;
   padding: 15px;
-  //margin-bottom: 10px;
   width: 250px;
   height: auto;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
@@ -84,7 +81,6 @@ const TaskDescription = styled.div`
 `;
 
 const CreatedBySection = styled.div`
-  font-weight: bold;
   color: var(--darktext);
 `;
 
@@ -190,7 +186,6 @@ export const Profile = () => {
                     <TaskTitle>{task.task}</TaskTitle>
                     <TaskDescription>{task.description}</TaskDescription>
                     <CreatedBySection>
-                      {/* Display task creator's username */}
                       {/* Show the name of the author or 'Unknown User' if the task is missing username */}
                       <strong>Created by: </strong>
                       {task.user?.username || "Unknown User"}

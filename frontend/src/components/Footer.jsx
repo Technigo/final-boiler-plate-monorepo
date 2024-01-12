@@ -60,7 +60,9 @@ export const Footer = () => {
             </Contact>
           </div>
         </div>
-        <p>Web Development students at Technigo | January 2024</p>
+        <p>
+          Final project at Technigo | Web Development Bootcamp, January 2024
+        </p>
       </FooterText>
     </StyledFooter>
   );
