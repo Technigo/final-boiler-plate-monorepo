@@ -54,7 +54,7 @@ export const WhoAreWe = () => {
 
                 </div>
 
-                <div className="bg-backgroundPink mx-6 md:mx-10">
+                <div className="bg-backgroundPink mx-6 my-10 md:mx-10">
                     <div className="lg:mx-4 text-left justify-center lg:mt-16">
                         <ParagraphComponent text="Tuanis Surf School is a small family and friend owned business in Samara created by a group of awesome people that love the sport of surfing. We are all about the good life and we think that you are too. We are lucky to get guests from all over the world who come together to surf and enjoy our little piece of paradise. At Tuanis Surf School we have a great family vibe where you will instantly feel a sense of belonging. Surf with us to enjoy a social atmosphere and have a great time while making memories for life." />
                     </div>
@@ -63,7 +63,7 @@ export const WhoAreWe = () => {
 
                     {/* Video container */}
 
-                    <div className="flex flex-col md:flex-row items-center justify-center h-3/6 md:h-5/6 lg:h-screen overflow-hidden relative">
+                    <div className="my-10 flex flex-col md:flex-row items-center justify-center h-3/6 md:h-5/6 lg:h-screen overflow-hidden relative">
 
                         {/* Video */}
                         <Fade>
@@ -75,7 +75,7 @@ export const WhoAreWe = () => {
                         </Fade>
 
                         {/* Text */}
-                        <div className="lg:ml-4 max-w-md">
+                        <div className="my-10 lg:ml-4 max-w-md">
                             <ParagraphComponent className="text-left" text="Our focus is to offer a safe place where everyone feels included, accepted and comfortable while having the best time learning how to surf. Whatever your level is, we promise to elevate your surfing to the next level. We work hard to make sure that your safety is our top priority and that you learn the rules and etiquette of surfing while riding the waves. Join us for some legendary and dreamy surroundings." />
                         </div>
 
@@ -85,7 +85,7 @@ export const WhoAreWe = () => {
                         <div className="lg:mx-32 mb-16">
                             <SubHeadingComponent text="Surfing is an activity for the whole family!" />
 
-                            <ParagraphComponent className="text-left" text="All ages are welcomed! We have a lot of experience working with children of all ages: from as young as 3 years of age to our oldest surfer so far that was 78 years old. Our surf school welcomes everyone, from first timers to seasoned surfers, no matter what age you are. Surfing is also a great family activity, our expert instructors are great with kids and adults. Discover the passion of surfing together and create unforgettable memories in Costa Rica’s surfing paradise. Come and enjoy Playa Samara, our very family-friendly surf spot." />
+                            <ParagraphComponent className="my-10 text-left" text="All ages are welcomed! We have a lot of experience working with children of all ages: from as young as 3 years of age to our oldest surfer so far that was 78 years old. Our surf school welcomes everyone, from first timers to seasoned surfers, no matter what age you are. Surfing is also a great family activity, our expert instructors are great with kids and adults. Discover the passion of surfing together and create unforgettable memories in Costa Rica’s surfing paradise. Come and enjoy Playa Samara, our very family-friendly surf spot." />
                         </div>
 
                         <div className="lg:mx-16 mb-16">

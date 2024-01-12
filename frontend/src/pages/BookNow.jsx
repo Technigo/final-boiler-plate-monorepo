@@ -38,8 +38,10 @@ export const BookNow = () => {
                 <HeadingComponent text="Book Now"
                     level={1} style={{}} />
             </div>
+            <div className="my-10 mx-6">
+                <PostBookingComponent />
+            </div>
 
-            <PostBookingComponent />
             <FooterComponent />
         </div>
     )
