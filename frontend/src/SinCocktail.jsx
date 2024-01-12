@@ -31,13 +31,13 @@ export const SinCocktail = () => {
                         <Text
                             type="bodyText"
                             className={styles.bodyText}
-                            style={{ marginTop: '30px', padding: '0px 32px', fontWeight: '300' }} >
+                            style={{ marginTop: '30px', fontWeight: '300' }} >
                             ⏲️: {cocktail.prepTime} | 🌟: {cocktail.difficulty}
                         </Text>
                         <Text
                             type="bodyText"
                             className={styles.bodyText}
-                            style={{ marginBottom: '20px', padding: '0px 32px', fontWeight: '300' }}>
+                            style={{ marginBottom: '20px', fontWeight: '300' }}>
                             ⚡: {cocktail.strength} | 🏷️ : {cocktail.tags.join(', ')}
                         </Text>
                         {/* **** Ingredients ****** */}
@@ -73,7 +73,7 @@ export const SinCocktail = () => {
                         <Text
                             type="XSbodyText"
                             className={styles.SbodyText}
-                            style={{ marginTop: '20px' }}>
+                            style={{ marginTop: '30px' }}>
                             Created by {cocktail.creator}
                         </Text>
                         <Text

@@ -29,6 +29,15 @@
     color: #1d1c25d2;
 }
 
+.H4 {
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 104%;
+    letter-spacing: 1px;
+    font-family: 'Tenor Sans', sans-serif;
+    color: #1d1c25d2;
+}
+
 .bodyText {
     font-size: 14px;
     font-weight: 400;
@@ -53,7 +62,7 @@
     line-height: 140%;
     letter-spacing: 0.6px;
     font-family: 'Readex Pro', sans-serif;
-    color: #1D1C25;
+    color: #1d1c25bd;
 }
 
 /* Tablet-sized devices (e.g., iPad) */
@@ -64,19 +73,27 @@
     }
 
     .H2 {
-        font-size: 16px;
+        font-size: 18px;
     }
 
     .H3 {
         font-size: 24px;
     }
 
+    .H4 {
+        font-size: 18px;
+    }
+
     .bodyText {
-        font-size: 16px;
+        font-size: 17px;
     }
 
     .SbodyText {
-        font-size: 14px;
+        font-size: 16px;
+    }
+
+    .XSbodyText {
+        font-size: 13px;
     }
 }
 
@@ -89,7 +106,7 @@
     }
 
     .H2 {
-        font-size: 18px;
+        font-size: 20px;
         letter-spacing: 0.48px;
 
     }
@@ -99,14 +116,23 @@
         letter-spacing: 1.3px;
     }
 
+    .H4 {
+        font-size: 23px;
+    }
+
+
     .bodyText {
-        font-size: 16px;
+        font-size: 19px;
         letter-spacing: 0.60px;
     }
 
     .SbodyText {
-        font-size: 16px;
+        font-size: 17px;
         font-weight: 300;
         letter-spacing: 0.60px;
+    }
+
+    .XSbodyText {
+        font-size: 15px;
     }
 }
