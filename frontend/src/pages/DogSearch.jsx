@@ -12,13 +12,13 @@ export const DogSearch = () => {
     const [age, setAge] = useState('');
     const [specialAdoption, setSpecialAdoption] = useState(false);
     const [search, setSearch] = useState(false);
-    const [originalDogs, setOriginalDogs] = useState([]);
+    const [dogList, setDogList] = useState([]);
 
     useEffect(() => {
         axios.get('http://localhost:3000/findDogs')
             .then((response) => {
                 setDogs(response.data);
-                setOriginalDogs(response.data); // Save the original list of dogs
+                setDogList(response.data); // Save the original list of dogs
             })
             .catch((err) => console.log(err));
     }, []);
@@ -27,7 +27,7 @@ export const DogSearch = () => {
         setSearch(true);
 
         // Filter dogs based on user inputs
-        let showDogs = originalDogs;
+        let showDogs = dogList;
 
         if (organisation.trim() !== '') {
             showDogs = showDogs.filter((dog) => dog.organisation === organisation.trim());
@@ -45,7 +45,7 @@ export const DogSearch = () => {
         }
 
         if (specialAdoption) {
-            showDogs = showDogs.filter((dog) => dog.special_adoption);
+            showDogs = showDogs.filter((dog) => !dog.special_adoption);
         }
 
         setDogs(showDogs);
@@ -119,7 +119,7 @@ export const DogSearch = () => {
                                         name="special"
                                         value="special"
                                         onChange={(e) => setSpecialAdoption(e.target.checked)} />
-                                    <label htmlFor="special"> Show dogs classified as "special adoption"</label>
+                                    <label htmlFor="special"> Don't show dogs classified as "special adoption"</label>
                                 </div>
                             </div>
                             <div className={styles.submitWrapper}>

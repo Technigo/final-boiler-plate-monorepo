@@ -5,16 +5,12 @@ dotenv.config();
 import mongoose from "mongoose";
 import DogModel from "./models/DogModel.js";
 import listEndpoints from "express-list-endpoints";
-// import taskRoutes from "./routes/taskRoutes"; // Import custom task controlled-routes
 // import userRoutes from "./routes/userRoutes"; // Import custom user routes
 import dogs from "./dogs.json"
 
 const mongoUrl = process.env.ATLAS_URL;
 mongoose.connect(mongoUrl, {useNewUrlParser: true, useUnifiedTopology: true})
 mongoose.Promise = Promise
-
-// "mongodb+srv://Soygirt:Durkslag1@atlascluster.enkh5cp.mongodb.net/Soygirt"
-// "mongodb://127.0.0.1:27017/Soygirt";
 
 const seedDatabase = async () => {
   await DogModel.deleteMany({})
@@ -45,8 +41,6 @@ app.use(express.json()); // Parse incoming JSON data
 app.use(express.urlencoded({ extended: false })); // Parse URL-encoded data
 
 // Use the routes for handling API requests
-// ROUTES - These routes USE controller functions ;)
-//app.use(taskRoutes); // Use the task-controlled routes for task-related requests
 //app.use(userRoutes); // Use the user-controlled routes for user-related requests
 
 // List all of the endpoints

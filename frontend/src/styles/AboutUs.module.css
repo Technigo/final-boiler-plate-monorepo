@@ -30,7 +30,12 @@
     flex-direction: column;
     gap: 2em;
     justify-content: center;
-    padding-left: 2em;
+    padding: 2em;
+}
+
+.aboutUs {
+    color: #42531D;
+    font-size: 1.5em;
 }
 
 @media screen and (max-width: 667px) {

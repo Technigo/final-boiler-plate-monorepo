@@ -8,7 +8,7 @@
             "organisation": "Mary's Shelter",
             "image": {
                 "format": "jpg",
-                "data": "./frontend/src/assets/Dogs/animal-6800387_1280.jpg"
+                "data": "./assets/animal-6800387_1280.jpg"
               }
         },
         {
@@ -18,8 +18,8 @@
             "size": "small",
             "organisation": "Happy Paws",
             "image": {
-                "format": "jpg",
-                "data": "./frontend/src/assets/Dogs/animal-6800387_1280.jpg"
+                "format": "webp",
+                "data": "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.usatoday.com%2Fstory%2Fnews%2Fnation%2F2023%2F12%2F06%2Fwashington-state-mystery-dog-respiratory-illness-chikis-story%2F71812931007%2F&psig=AOvVaw1ut0I08xsdyo14ma01tkqw&ust=1705138131937000&source=images&cd=vfe&opi=89978449&ved=0CBIQjRxqFwoTCNCo99vE14MDFQAAAAAdAAAAABAE"
               }
         },
         {
