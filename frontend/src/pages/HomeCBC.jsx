@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'; //for SinCoctail (had troubble yesterda
 
 export const HomeCBC = () => {
     const [featuredCocktails, setFeaturedCocktails] = useState([]);
-    const featuredIds = ['659d4d45faca05d6df658656', '659fefe600633fc348db9f71', '659ffc6700633fc348dba0cb', '659ffa2400633fc348dba090', '659ffaa600633fc348dba096', '659ffa2c00633fc348dba093'];
+    const featuredIds = ['65a087deecc12fc758756500', '65a08126ecc12fc7587564fd', '659ffc6700633fc348dba0cb', '659ffa2400633fc348dba090', '659ffaa600633fc348dba096', '659ffa2c00633fc348dba093'];
 
     useEffect(() => {
         fetch('https://cbc-uvko.onrender.com/cocktails')
@@ -29,7 +29,7 @@ export const HomeCBC = () => {
                             {cocktail.imageUrl && (
                                 <img src={cocktail.imageUrl} alt={cocktail.name} className={styles.cocktailImage} />
                             )}
-                            {cocktail.name && <Text type="H3" className={styles.h3}>{cocktail.name}</Text>}
+                            {cocktail.name && <Text type="H4" className={styles.h3}>{cocktail.name}</Text>}
                             <Text type="SbodyText" className={styles.SbodyText}>⏲️: {cocktail.prepTime} | 🌟: {cocktail.strength}</Text>
                             <Text type="SbodyText" className={styles.SbodyText}>⚡: {cocktail.strength} | 🏷️ : {cocktail.tags.join(', ')}</Text>
                         </div>

@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom'; //for SinCoctail (had troubble yesterda
 import styles from './Cocktails.module.css';
 import { Text } from '../UI/Typography';
 
+
+
 export const Cocktails = () => {
     const [cocktails, setCocktails] = useState([]);
     const [displayedCocktails, setDisplayedCocktails] = useState([]);

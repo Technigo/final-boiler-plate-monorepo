@@ -6,6 +6,7 @@
     align-items: center;
     /*vertically */
     margin: 0 auto;
+    padding: 40px 0 50px 0;
 }
 
 .SbodyText {
@@ -41,6 +42,12 @@
 
 /* iPad Pro 11" */
 @media (min-width: 767px) and (max-width: 1028px) {
+
+    .wrapper {
+        padding: 80px 0 0 0;
+        width: 90%;
+    }
+
     .cocktailImage {
         width: 200px;
     }
