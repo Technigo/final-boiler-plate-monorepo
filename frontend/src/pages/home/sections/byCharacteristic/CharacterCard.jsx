@@ -28,9 +28,9 @@ export const CharacterCard = () => {
     },
     {
       id: 4,
-      heading: "Something...",
-      image: "low-maintenance.jpg",
-      imgAlt: "",
+      heading: "Most Loved",
+      image: "mostloved.png",
+      imgAlt: "Image of plants inside a store for category most loved",
       url: "/plants/all-plants/popular",
     },
   ];
@@ -40,11 +40,11 @@ export const CharacterCard = () => {
       {cards.map((card) => {
         return (
           <Link key={card.id} to={card.url}>
-            <div className="character-card-wrapper" >
+            <div className="character-card-wrapper">
               <img src={card.image} alt={card.imgAlt} />
               <div className="character-overlay">
                 <h3>{card.heading}</h3>
-                <p className="shop-now-link">SHOP NOW</p>
+                <p className="shop-now-link">Shop now</p>
               </div>
             </div>
           </Link>

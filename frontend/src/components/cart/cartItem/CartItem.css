@@ -1,0 +1,46 @@
+.cart-item-wrapper {
+    display: flex;
+    gap: 1rem;
+    padding: 0.5rem;
+    border: solid 0.5px var(--forrest);
+    border-radius: 1rem;
+    background-color: var(--chalk);
+    width: 100%;
+    max-width: 500px;
+}
+
+.cart-img-wrapper {
+    border-radius: 1rem;
+    height: 11rem;
+    width: 5rem;
+    overflow: hidden;
+}
+ 
+.cart-img {
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+}
+
+.cart-item-text {
+    padding: 0.5rem 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.cart-item-title {
+    color: var(--forrest);
+    font-family: var(--josefin);
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.cart-item-botanical-name {
+    font-size: 1rem;
+}
+
+.cart-item-btn-container {
+    display: flex;
+    gap: 0.5rem; 
+}

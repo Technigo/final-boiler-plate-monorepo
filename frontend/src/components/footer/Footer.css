@@ -1,29 +1,25 @@
 footer {
+  display: flex;
+  flex-direction: column;
+  gap: 3.5rem;
   background-color: var(--forrest);
   padding: 4rem;
 }
 
-footer .image-container {
-  display: flex;
-  justify-content: center;
-  gap: 3rem;
+footer .logo-container {
+  max-width: 20rem;
+  margin: auto;
 }
 
-.profile-pic {
-  border-radius: 100%;
-  background-color: var(--spring);
-  width: 100px;
-  height: 100px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  font-size: 1.3rem;
+footer .logo-container img {
+  width: 100%;
+}
+
+.copyright {
   font-family: var(--montserrat);
-  font-weight: 600;
-}
-
-.profile-pic-icon {
-  width: 50px;
-  height: 50px;
+  font-size: 0.9rem;
+  text-align: center;
+  vertical-align: middle;
+  color: var(--sand);
+  line-height: 1.7;
 }

@@ -1,7 +1,6 @@
-import React from "react";
 import { Button } from "../../../../components/buttons/Button";
 import { Link } from "react-router-dom";
-
+import { Carousel } from "../../../../components/carousel/Carousel";
 import "./Inspo.css";
 
 export const Inspo = () => {
@@ -13,19 +12,27 @@ export const Inspo = () => {
 
   return (
     <section className="inspo-wrapper">
-      <Link to="/inspo">
-        <div className="inspo-container">
-          <div className="text-button-wrapper">
-            <h2 className="inspo-title">{text.heading}</h2>
-            <p className="h2-p">{text.text}</p>
+      <div className="inspo-container">
+        <div className="inspo-content-wrapper">
+          <h2 className="section-title">{text.heading}</h2>
+          <p className="inspo-p">{text.text}</p>
+          <Link to="/inspo">
             <Button
               className="inspo-btn"
               btnText={text.btnText}
               ariaLabel="inspo button"
             />
+          </Link>
+        </div>
+        <div className="inspo-bg-container">
+          <div className="leaf-container">
+            <img src="./monstera-leaf.svg" alt="" />
+          </div>
+          <div className="inspo-img-container">
+            <Carousel />
           </div>
         </div>
-      </Link>
+      </div>
     </section>
   );
 };

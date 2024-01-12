@@ -1,0 +1,39 @@
+
+/* ------------- MINI PLANT CARD -------------- */
+.plant-card-mini {
+    display: flex;
+    flex-direction: column;
+ 
+    width: 150px;
+    padding: 1rem 1rem;
+    border-radius: 1rem ; 
+    background-color: var(--chalk);
+}
+
+.title-price-container-mini h3, .title-price-container-mini span {
+    color: var(--forrest)
+}
+
+.mini-link-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+}
+
+.like-icon-mini {
+    width: 1.5rem;
+    height: 1.5rem;
+    align-self: flex-end;
+    fill: none;
+    stroke-width: 0.8rem;
+    stroke: var(--forrest);
+    margin: 0 0.2rem 0.2rem 0;
+}
+
+.forward-icon {
+    width: 3rem;
+    height: 3rem;
+    color: var(--forrest);
+    margin: -0.5rem;
+}

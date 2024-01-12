@@ -3,6 +3,8 @@ header {
   color: var(--sand);
   font-family: var(--josefin);
   padding: 1rem;
+  position: relative;
+  z-index: 4;
 }
 
 /* NAVBAR STYLING */
@@ -105,25 +107,6 @@ ul {
 }
 
 /*---------- BREAKPOINTS ----------*/
-/* For extra large devices */
-@media (min-width: 1280px) {
-}
-
-/* For large devices */
-@media (min-width: 1024px) {
-}
-
-/* For medium devices */
-@media (min-width: 744px) {
-  .heart-icon,
-  .cart-icon,
-  .search-icon,
-  .user-icon {
-    width: 1.5rem;
-    height: 1.5rem;
-  }
-}
-
 /* From mobile and for small devices */
 @media (min-width: 576px) {
   header {
@@ -147,4 +130,30 @@ ul {
     width: 1.5rem;
     height: 1.5rem;
   }
+}
+
+/* For medium devices */
+@media (min-width: 744px) {
+  .heart-icon,
+  .cart-icon,
+  .search-icon,
+  .user-icon {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+}
+
+/* For large devices */
+@media (min-width: 1024px) {
+  header {
+    padding: 1rem 4rem;
+  }
+
+  .hidden-menu {
+    padding: 1.5rem 4rem;
+  }
+}
+
+/* For extra large devices */
+@media (min-width: 1280px) {
 }

@@ -17,15 +17,53 @@
 
 .insta-section-wrapper p {
   font-family: var(--montserrat);
+  line-height: 1.7;
 }
 
 .instafeed-container {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 0.5rem;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
 }
 
 .instafeed-container li img {
   max-width: 18rem;
   width: 100%;
+}
+
+.hashtag {
+  font-family: var(--josefin);
+  color: var(--forrest);
+  font-weight: 600;
+  font-size: 1.3rem;
+}
+
+/*---------- BREAKPOINTS ----------*/
+/* From mobile and for small devices */
+@media (min-width: 576px) {
+}
+
+/* For medium devices */
+@media (min-width: 744px) {
+  .insta-section-wrapper {
+    padding: 4rem 3rem;
+  }
+
+  .instafeed-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.5rem;
+  }
+
+}
+
+/* For large devices */
+@media (min-width: 1024px) {
+  .insta-section-wrapper {
+    padding: 5rem;
+  }
+}
+
+/* For extra large devices */
+@media (min-width: 1280px) {
 }

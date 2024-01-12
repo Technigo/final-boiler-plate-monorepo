@@ -8,7 +8,6 @@ import Badge from "@mui/material/Badge";
 // ICONS
 import { IoIosMenu } from "react-icons/io";
 import { IoClose } from "react-icons/io5";
-import { CgSearch } from "react-icons/cg";
 import { IoHeart } from "react-icons/io5";
 import { HiShoppingBag } from "react-icons/hi2";
 import { FaUser } from "react-icons/fa";
@@ -38,9 +37,6 @@ export const Navbar = () => {
       <nav className="nav-container">
         <div className="nav-sections">
           <IoIosMenu className="menu-icon" onClick={toggleHiddenMenu} />
-          <div className="search-container">
-            <CgSearch className="search-icon" />
-          </div>
         </div>
         <div className="logo-container">
           <Link to="/">
@@ -82,9 +78,6 @@ export const Navbar = () => {
           <div className="shop-menu" onClick={toggleHiddenMenu}>
             <IoIosMenu className="menu-icon" />
             <span>shop</span>
-          </div>
-          <div className="search-container">
-            <CgSearch className="search-icon" />
           </div>
         </div>
         <div className="logo-container">

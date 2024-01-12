@@ -1,20 +1,33 @@
 .inspo-section {
-  position: relative;
-  width: 100%;
   height: auto;
+  padding: 1rem;
+}
+
+.article-container {
+  width: 100%;
+}
+
+.image-container-bedroom {
+  position: relative;
+}
+
+.image-container-balcony {
+  position: relative;
 }
 
 .inspo-img {
-    position: relative;
+  border-radius: 1rem;
+  position: relative;
   width: 100%;
   height: auto;
 }
 
 .dot-button {
   position: absolute;
-  width: 10px;
-  height: 10px;
-  background-color: red;
+  width: 1rem;
+  height: 1rem;
+  border: solid var(--chalk);
+  background-color: var(--sand);
   border-radius: 50%;
   cursor: pointer;
 }

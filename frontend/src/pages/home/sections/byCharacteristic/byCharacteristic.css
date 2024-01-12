@@ -19,7 +19,8 @@
 
 .character-card-wrapper {
   width: auto;
-  height: 100%;
+  height: 16rem;
+  max-height: 100%;
   position: relative;
   letter-spacing: 0.025rem;
 }
@@ -57,8 +58,68 @@
   letter-spacing: 0.025rem;
 }
 
+.character-card-wrapper:hover .shop-now-link {
+  text-decoration: underline;
+}
+
+/*---------- BREAKPOINTS ----------*/
+/* From mobile and for small devices */
+@media (min-width: 576px) {
+  .by-characteristic-container {
+    padding: 3rem 2rem;
+  }
+
+  .character-card-wrapper {
+    height: 25rem;
+  }
+}
+
+/* For medium devices */
+@media (min-width: 744px) {
+  .by-characteristic-container {
+    padding: 4rem 3rem;
+  }
+
+  .character-card-wrapper {
+    height: 30rem;
+  }
+
+  .character-card-wrapper h3 {
+    font-size: 1.75rem;
+    font-weight: 700;
+  }
+
+  .shop-now-link {
+    font-size: 1.25rem;
+  }
+}
+
+/* For large devices */
+@media (min-width: 1024px) {
+  .cards-container {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .by-characteristic-container {
+    padding: 5rem;
+  }
+
+  .character-card-wrapper {
+    height: 20rem;
+  }
+
+  .character-card-wrapper h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+  }
+}
+
 /* For extra large devices */
 @media (min-width: 1280px) {
+  .character-card-wrapper {
+    height: 25rem;
+  }
+
   .categories-wrapper .products-wrapper {
     grid-template-columns: repeat(4, 1fr);
   }

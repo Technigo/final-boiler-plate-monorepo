@@ -49,16 +49,6 @@ h6 {
   overflow-wrap: break-word;
 }
 
-.section-title {
-  font-family: var(--big-h-font);
-  font-size: 1.8rem;
-  color: var(--charcoal);
-  font-weight: 900;
-  letter-spacing: 0.1375rem;
-  margin-bottom: 1rem;
-  text-align: center;
-}
-
 .card-name {
   font-family: var(--montserrat);
   font-size: 0.9rem;
@@ -85,6 +75,27 @@ button {
 
 /*---------- REUSABLE CSS CLASSES ----------*/
 
+/* Section title h2 */
+.section-title {
+  font-family: var(--big-h-font);
+  font-size: 1.8rem;
+  color: var(--charcoal);
+  font-weight: 900;
+  letter-spacing: 0.1375rem;
+  text-align: center;
+}
+
+/* Text under section title h2 */
+.h2-p {
+  font-family: var(--montserrat);
+  color: var(--charcoal);
+  font-size: 0.8rem;
+  line-height: 1.7;
+  letter-spacing: 0.1rem;
+  font-weight: 500;
+  padding: 0.5rem 2rem 1.5rem;
+}
+
 /* Visually hide the labels */
 .visually-hidden {
   position: absolute;
@@ -101,6 +112,33 @@ button {
 /*---------- LAYOUT ----------*/
 
 /*---------- BREAKPOINTS ----------*/
+/* From mobile and for small devices */
+@media (min-width: 576px) {
+  /* Text under section title h2 */
+  .h2-p {
+    font-size: 1rem;
+    padding: 0.5rem 2rem 2rem;
+  }
+}
+
+/* For medium devices */
+@media (min-width: 744px) {
+  /* Section title h2 */
+  .section-title {
+    font-size: 2.5rem;
+  }
+
+  /* Text under section title h2 */
+  .h2-p {
+    font-size: 1.3rem;
+    padding: 0.5rem 2rem 2rem;
+  }
+}
+
+/* For large devices */
+@media (min-width: 1024px) {
+}
+
 /* For extra large devices */
 @media (min-width: 1280px) {
   .section-title {
@@ -112,14 +150,20 @@ button {
   }
 }
 
-/* For large devices */
-@media (min-width: 1024px) {
+/* MALL */
+/*---------- BREAKPOINTS ----------*/
+/* From mobile and for small devices */
+@media (min-width: 576px) {
 }
 
 /* For medium devices */
 @media (min-width: 744px) {
 }
 
-/* From mobile and for small devices */
-@media (min-width: 576px) {
+/* For large devices */
+@media (min-width: 1024px) {
+}
+
+/* For extra large devices */
+@media (min-width: 1280px) {
 }

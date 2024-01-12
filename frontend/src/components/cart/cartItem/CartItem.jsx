@@ -1,4 +1,6 @@
 import { cartStore } from "../../../stores/cartStore";
+import { Button } from "../../../components/buttons/Button";
+import "./CartItem.css"
 
 export const CartItem = ({
   index,
@@ -20,15 +22,19 @@ export const CartItem = ({
   };
 
   return (
-    <div className="cart-item" key={index}>
-      <img className="cart-img" src={img} alt="" />
+    <div className="cart-item-wrapper" key={index}>
+      <div className="cart-img-wrapper">
+        <img className="cart-img" src={img} alt={title} />
+      </div>
       <div className="cart-item-text">
-        <h3>{title}</h3>
-        <p>{botanicalName}</p>
+        <h2 className="cart-item-title">{title}</h2>
+        <span className="botanical-name cart-item-botanical-name">{botanicalName}</span>
         <p>€{price}</p>
         <p>Quantity {quantity}</p>
-        <button onClick={() => handleRemoveFromCart(index)}>Remove</button>
-        <button onClick={() => handleAddToCart(index)}>Add Another</button>
+        <div className="cart-item-btn-container">
+          <Button onClick={() => handleRemoveFromCart(index)} btnText={"Remove"} />
+          <Button onClick={() => handleAddToCart(index)} btnText={"Add Another"}/>
+        </div>
       </div>
     </div>
   );

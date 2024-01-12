@@ -6,15 +6,19 @@ import "./Hero.css";
 export const Hero = () => {
   const text = {
     heading: "Ready to add to your urban jungle?",
-    text: "Give our plants a new home, take a look at all the plant buddies we've got!",
     btnText: "Shop all plants",
   };
 
   return (
     <section className="hero-wrapper">
       <div className="hero-content-wrapper">
-        <h1>{text.heading}</h1>
-        <p>{text.text}</p>
+        <div className="text-container">
+          <h1>{text.heading}</h1>
+          <p>
+            Your Space, Your Plants, Your Way! <br /> Start 2024 off with a new
+            plant you'll love!
+          </p>
+        </div>
         <Link to="plants/all-plants">
           <Button
             className={"all-plants-btn"}

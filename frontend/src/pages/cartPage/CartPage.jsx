@@ -39,11 +39,11 @@ export const CartPage = () => {
         Continue shopping
       </Link>
       <h2 className="section-title">Shopping Cart</h2>
+      <div className="cart-list-container">
       {cart.length === 0 && <p className="h2-p">Your cart is empty...</p>}
       {cart.map((item, index) => {
         return (
-          <div key={index}>
-            <CartItem
+            <CartItem key={index}
               index={index}
               img={item.images.full_size_url}
               title={item.plant_title}
@@ -51,9 +51,9 @@ export const CartPage = () => {
               price={item.price}
               quantity={item.quantity}
             />
-          </div>
         );
       })}
+      </div>
       <OrderInfo />
       <button onClick={handleClearCart}>Clear Cart</button>
       <Link to="/check-out">

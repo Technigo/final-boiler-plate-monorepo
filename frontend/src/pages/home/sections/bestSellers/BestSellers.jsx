@@ -4,7 +4,6 @@ import { plantStore } from "../../../../stores/plantStore";
 import Skeleton from '@mui/material/Skeleton';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
-
 import "./BestSellers.css";
 
 export const BestSellers = () => {
