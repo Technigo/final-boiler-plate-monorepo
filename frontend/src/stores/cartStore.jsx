@@ -97,7 +97,7 @@ export const cartStore = create((set) => ({
       const total = state.cart
         .reduce((acc, item) => acc + item.price * item.quantity, 0)
         .toFixed(2);
-      const deliveryCost = total > 60 ? 0 : 9;
+      const deliveryCost = total === '0.00' || parseFloat(total) > 60 ? 0 : 9;
       const totalWithDelivery = (parseFloat(total) + deliveryCost).toFixed(2);
       return { total, totalWithDelivery, deliveryCost };
     }),

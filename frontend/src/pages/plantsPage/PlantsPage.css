@@ -50,3 +50,21 @@
   text-transform: uppercase;
   letter-spacing: 0.075rem;
 }
+
+
+/*---------- BREAKPOINTS ----------*/
+/* From mobile and for small devices */
+@media (min-width: 576px) {
+}
+
+/* For medium devices */
+@media (min-width: 744px) {
+}
+
+/* For large devices */
+@media (min-width: 1024px) {
+}
+
+/* For extra large devices */
+@media (min-width: 1280px) {
+}
