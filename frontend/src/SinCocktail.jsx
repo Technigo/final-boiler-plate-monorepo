@@ -20,11 +20,7 @@ export const SinCocktail = () => {
                 {cocktail ? (
                     <div key={cocktail._id}>
                         {cocktail.imageUrl && (
-                            <img
-                                src={`https://cbc-uvko.onrender.com/${cocktail.imageUrl}`}
-                                alt={cocktail.name}
-                                className={styles.cocktailImage}
-                            />
+                            <img src={cocktail.imageUrl} alt={cocktail.name} className={styles.cocktailImage} />
                         )}
                         {cocktail.name && <Text type="H3" className={styles.h3}>{cocktail.name}</Text>}
                         <Text type="SbodyText" className={styles.SbodyText}>
@@ -33,9 +29,21 @@ export const SinCocktail = () => {
                         <Text type="SbodyText" className={styles.SbodyText}>
                             Ingredients: {cocktail.ingredients.join(', ')}
                         </Text>
-                        <Text type="SbodyText" className={styles.SbodyText}>
-                            Ingredients Count: {cocktail.ingredientsCount}
-                        </Text>
+
+                        <div>
+                            <Text type="H2" className={styles.h2}>
+                                Ingredients:
+                            </Text>
+                            <ul>
+                                {cocktail.ingredients.map((ingredient, index) => (
+                                    <li key={index}>
+                                        <Text type="SbodyText" className={styles.SbodyText}>
+                                            {ingredient}
+                                        </Text>
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
                         <Text type="SbodyText" className={styles.SbodyText}>
                             Difficulty: {cocktail.difficulty}
                         </Text>

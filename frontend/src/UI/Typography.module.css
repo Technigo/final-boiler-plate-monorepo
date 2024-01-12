@@ -1,9 +1,7 @@
 /* Base styles (Mobile-first design) */
 /* Applicable to small screens (smartphones) by default */
-
 .H1 {
     font-size: 24px;
-    /* Scaled down from desktop */
     font-weight: 400;
     line-height: 130%;
     letter-spacing: 1px;
@@ -12,12 +10,13 @@
 }
 
 .H2 {
-    font-size: 22px;
-    /* Slightly smaller than .H1 */
-    font-weight: 400;
+    font-size: 14px;
+    /* Inside recipes, chategory*/
+    font-weight: 300;
     line-height: 130%;
     letter-spacing: 1px;
-    font-family: 'Tenor Sans', sans-serif;
+    text-decoration: underline;
+    font-family: 'Readex Pro', sans-serif;
     color: #1d1c25d2;
 }
 
@@ -32,7 +31,6 @@
 
 .bodyText {
     font-size: 14px;
-    /* Comfortable size for mobile */
     font-weight: 400;
     line-height: 140%;
     letter-spacing: 0.6px;
@@ -41,7 +39,7 @@
 }
 
 .SbodyText {
-    font-size: 11px;
+    font-size: 13px;
     font-weight: 300;
     line-height: 140%;
     letter-spacing: 0.6px;
@@ -49,34 +47,28 @@
     color: #1D1C25;
 }
 
+
 /* Tablet-sized devices (e.g., iPad) */
 @media (min-width: 768px) {
     .H1 {
         font-size: 30px;
-        /* Intermediate size for tablet */
-        letter-spacing: 0.3px;
+
     }
 
     .H2 {
-        font-size: 28px;
-        letter-spacing: 0.28px;
+        font-size: 16px;
     }
 
     .H3 {
         font-size: 24px;
-        letter-spacing: 0.24px;
     }
 
     .bodyText {
         font-size: 16px;
-        /* Slightly larger for tablet */
-        letter-spacing: 0.16px;
     }
 
     .SbodyText {
         font-size: 14px;
-        font-weight: 300;
-        letter-spacing: 0.16px;
     }
 }
 
@@ -89,25 +81,23 @@
     }
 
     .H2 {
-        font-size: 28px;
-        /* Keep the hierarchy consistent */
+        font-size: 18px;
         letter-spacing: 0.48px;
     }
 
     .H3 {
         font-size: 24px;
-        /* Balance between .H1 and .H2 */
         letter-spacing: 1.3px;
     }
 
     .bodyText {
         font-size: 16px;
-        letter-spacing: 0.20px;
+        letter-spacing: 0.60px;
     }
 
     .SbodyText {
         font-size: 16px;
         font-weight: 300;
-        letter-spacing: 0.20px;
+        letter-spacing: 0.60px;
     }
 }
