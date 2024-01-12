@@ -40,6 +40,10 @@
 
     "BackBtn": {
         "back-link": "Tillbaka"
+    },
+
+    "Logout": {
+        "logout": "LOGGA UT"
     }
 
 }

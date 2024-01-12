@@ -1,7 +1,7 @@
 import express from 'express';
 import { connect } from 'mongoose';
 import { json } from 'body-parser';
-import cors from 'cors';  // Import the cors middleware
+import cors from 'cors';
 import authRoutes from './routes/auth';
 import { verify } from 'jsonwebtoken';
 import listEndpoints from 'express-list-endpoints';
@@ -13,7 +13,7 @@ const PORT = 3002;
 const mongoUrl = process.env.MONGO_URL || "mongodb://localhost/project-playground";
 connect(mongoUrl, { useNewUrlParser: true, useUnifiedTopology: true });
 
-app.use(cors());  // Use cors middleware here
+app.use(cors());
 
 app.use(json());
 

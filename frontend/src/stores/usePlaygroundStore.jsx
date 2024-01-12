@@ -1,4 +1,3 @@
-// playgroundStore.js
 import { create } from "zustand";
 
 const playgroundAPI = `https://catalog.eslov.se/rowstore/dataset/08b5e92d-7bc7-41de-aa56-f67f6662e919`;
@@ -7,7 +6,7 @@ const BACKEND_URL = import.meta.env.VITE_BACKEND_API;
 const usePlaygroundStore = create((set) => ({
   playgrounds: [],
   playgroundDetails: null,
-  isLiked: false, // Add isLiked state to track if the playground is liked
+  isLiked: false,
 
 
   fetchPlaygrounds: async () => {
@@ -76,10 +75,10 @@ const usePlaygroundStore = create((set) => ({
         apiId: id}),
     });
 
-     // Handle the response
+    
     if (response.ok) {
       const result = await response.json();
-      console.log(result.message); // Output success message
+      console.log(result.message); 
     } else {
       const error = await response.text();
       console.error(`Error: ${error}`);
@@ -103,7 +102,7 @@ const usePlaygroundStore = create((set) => ({
 
       if (response.ok) {
         const data = await response.json();
-        return data.favorites; // Assuming the response has a property named 'favorites'
+        return data.favorites; 
       } else {
         throw new Error(`Error fetching user favorites: ${response.statusText}`);
       }
@@ -113,7 +112,6 @@ const usePlaygroundStore = create((set) => ({
     }
   },
 
-  // Frontend function to fetch and display user favorites
   displayUserFavorites: async () => {
     try {
       const response = await fetch(`${BACKEND_URL}/get-my-favorites`, {
@@ -126,7 +124,7 @@ const usePlaygroundStore = create((set) => ({
 
       if (response.ok) {
         const favorites = await response.json();
-        return favorites; // Return the favorites array directly
+        return favorites; 
       } else {
         throw new Error(`Error fetching user favorites: ${response.statusText}`);
       }

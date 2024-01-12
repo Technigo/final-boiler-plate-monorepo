@@ -2,8 +2,10 @@ import { Link } from "react-router-dom";
 import { useUserStore } from "../stores/useUserStore";
 import { useNavigate } from "react-router-dom";
 import { Button } from "./Button"
+import { useTranslation } from "react-i18next";
 
 export const LogOut = () => {
+    const { t } = useTranslation();
     const { isLoggedIn, logoutUser } = useUserStore();
     const navigate = useNavigate();
 
@@ -20,7 +22,7 @@ export const LogOut = () => {
     return (
         <div className="logOut">
             {isLoggedIn ? (
-                <Link to="/logout" onClick={handleLogout}><Button className={"logout-button"} btnText={"Log out"} /></Link>
+                <Link to="/logout" onClick={handleLogout}><Button className={"logout-button"} btnText={t("Logout.logout")} /></Link>
             ) : (
                 null
             )}

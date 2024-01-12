@@ -10,7 +10,6 @@ export const App = () => {
       <BrowserRouter>
       <NavBar />
         <main>
-          {/* <Routes>{routes}</Routes> */}
           <Routes>{routes}</Routes>
         </main>
       </BrowserRouter>

@@ -39,6 +39,10 @@
 
     "BackBtn": {
         "back-link": "Back"
+    },
+
+    "Logout": {
+        "logout": "LOGOUT"
     }
 
 }

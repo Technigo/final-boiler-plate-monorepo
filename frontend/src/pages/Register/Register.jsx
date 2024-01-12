@@ -9,14 +9,12 @@ import { useTranslation } from "react-i18next";
 export const Register = () => {
     const { t } = useTranslation()
     const navigate = useNavigate();
-    const [loading, setLoading] = useState(false); // New state for loading indicator
-
-    // Destructures the function registerUser from the useUserStore hook
+    const [loading, setLoading] = useState(false);
     const { registerUser, username, setUsername, password, setPassword, email, setEmail } = useUserStore();
 
     const handleRegister = async (event) => {
         event.preventDefault();
-        setLoading(true); // Set loading to true when registration starts
+        setLoading(true);
 
         try {
             await registerUser(username, password, email);
@@ -27,7 +25,7 @@ export const Register = () => {
         } catch (error) {
             console.error("There was an error during signup =>", error);
         } finally {
-            setLoading(false); // Set loading to false when registration completes (success or failure)
+            setLoading(false);
         }
     }
 
@@ -79,16 +77,20 @@ export const Register = () => {
                 <Loader />
                 ) : ( 
                 <Button 
-                className={"form-button"} handleOnClick={handleRegister} btnText={t("Form.register")} 
+                className={"form-button"} 
+                handleOnClick={handleRegister} 
+                btnText={t("Form.register")} 
                 />
                 )}
                 </div>
                 <div>
-          <h2 className="form-header">{t("Form.notnew")}</h2>
-          <Link to="/login">
-            <Button className={"form-button"} btnText={t("Form.login")} />
-          </Link>
-        </div>
+                    <h2 className="form-header">{t("Form.notnew")}</h2>
+                    <Link to="/login">
+                        <Button 
+                        className={"form-button"} 
+                        btnText={t("Form.login")} />
+                    </Link>
+                </div>
              </form>
               
             </div>

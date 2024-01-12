@@ -2,6 +2,6 @@
 
 export const ErrorPage = () => {
   return (
-    <div>ErrorPage</div>
+    <div> Oops, wrong path!</div>
   )
 }

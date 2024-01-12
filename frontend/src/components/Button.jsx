@@ -8,7 +8,6 @@ export const Button = ({ className, handleOnClick, btnText }) => {
         className={className} 
         onClick={handleOnClick} 
         type="submit"
-        
         >
         {btnText}
         </button>

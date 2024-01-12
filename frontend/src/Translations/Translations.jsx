@@ -88,7 +88,6 @@ export const Translations = () => {
 
   return (
     <div className="translation-container">
-      {/*  */}
       <label htmlFor="languageDropdown">
         
       </label>
@@ -101,7 +100,6 @@ export const Translations = () => {
         <option value="" disabled defaultValue>🌐 Select language</option>
         <option value="en">🌐  English</option>
         <option value="sv">🌐  Svenska</option>
-        {/* Add more languages as needed */}
       </select>
     </div>
   );
