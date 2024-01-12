@@ -11,7 +11,7 @@ import { Image } from "../components/reusableComponents/Image"; // Import the Im
 import { Navbar } from "../components/Navbar";
 import { Footer } from "../components/Footer";
 import Swal from "sweetalert2";
-import "./addetails.css";
+import "./adDetails.css";
 
 const AdDetails = () => {
   // Use the 'useNavigate' hook to programmatically navigate between routes.
