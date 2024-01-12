@@ -1,5 +1,13 @@
+import { Resend } from 'resend';
 import Booking from '../models/BookingModel';
 import { handleErrors } from './commonController';
+require('dotenv').config();
+
+const resend = new Resend(process.env.BOOKING_RESEND_API_KEY);
+// Check if the initialization was successful
+if (!resend) {
+    throw new Error('Resend initialization failed');
+}
 
 // Validate message length
 const validateMessageLength = (message) => {
@@ -38,6 +46,18 @@ export const createBooking = async (req, res) => {
         });
 
         const savedBooking = await booking.save();
+        // Send a welcome/confirmation email to the subscriber
+        const subject = 'Booking Confirmation - Tuanis Surf School';
+        const htmlContent = `<p>Thank you for booking with Tuanis Surf School. We are excited to confirm your reservation! Get ready for an unforgettable surfing experience. We will soon get back to you with a confirmation.
+        Our team is looking forward to providing you with excellent service. If you have any questions or need further assistance, feel free to reach out at +506 6140-7609 or tuanissurfschool@gmail.com. Get ready to ride the waves with Tuanis Surf School! 
+        </p>`;
+
+        await resend.emails.send({
+            from: 'onboarding@resend.dev',
+            to: email,
+            subject,
+            html: htmlContent,
+        });
 
         res.status(201).json(savedBooking);
     } catch (error) {

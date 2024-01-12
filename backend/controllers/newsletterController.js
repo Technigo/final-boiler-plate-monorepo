@@ -1,45 +1,46 @@
+import { Resend } from 'resend';
+
 import NewsLetter from '../models/NewsLetterModel';
 import { handleErrors } from './commonController';
-import nodemailer from 'nodemailer';
+require('dotenv').config();
+
+
+const resend = new Resend(process.env.NEWSLETTER_RESEND_API_KEY);
 
 // Subscribe to newsletter
+
 export const subscribeToNewsletter = async (req, res) => {
     try {
-        // Create a new subscriber using the request body
-        const newSubscriber = new NewsLetter(req.body);
+        const { email } = req.body;
 
-        // Save the new subscriber to the database
-        await newSubscriber.save();
+        // Check if the email already exists in the newsletters collection
+        const existingSubscriber = await NewsLetter.findOne({ email });
 
-        // Send automatic response
-        await sendAutomaticResponse(newSubscriber.email);
+        if (existingSubscriber) {
+            res.status(400).json({ message: 'Email already exists' });
+        } else {
+            // Create a new subscriber using the request body
+            const newSubscriber = new NewsLetter({ email });
 
-        // Respond with a success message
-        res.status(201).json({ message: 'Subscriber added successfully' });
+            // Save the new subscriber to the database
+            await newSubscriber.save();
+
+            // Send a welcome/confirmation email to the subscriber
+            const subject = 'Welcome to Tuanis Surf School Newsletter';
+            const htmlContent = '<p>Thank you for subscribing to our newsletter. We are thrilled to have you join our community! Get ready for a wave of exciting updates, surf tips, and exclusive offers. What to expect from our newsletter: Monthly surf reports and forecasts, exclusive discounts on surf lessons and gear, tips and tricks for improving your surf skills, and updates on upcoming events and surf camps. Feel free to reach out if you have any questions or if there is anything specific you would like to see in our newsletters. Get ready to ride the waves with Tuanis Surf School!</p>'
+            await resend.emails.send({
+                from: 'onboarding@resend.dev',
+                to: email,
+                subject,
+                html: htmlContent,
+            });
+
+            // Respond with a success message
+            res.status(201).json({ message: 'Subscriber added successfully' });
+        }
     } catch (error) {
         // Handle errors and send an appropriate response
         handleErrors(res, error);
-    }
-};
-
-const sendAutomaticResponse = async (userEmail) => {
-    try {
-        const transporter = nodemailer.createTransport({
-            // Your nodemailer transporter configuration
-        });
-
-        const mailOptions = {
-            from: 'izza.R@hotmail.com',
-            to: userEmail,
-            subject: 'Thank you for subscribing!',
-            text: 'Thank you for subscribing to our newsletter. We appreciate your interest!',
-        };
-
-        await transporter.sendMail(mailOptions);
-
-        console.log('Automatic response sent successfully');
-    } catch (error) {
-        console.error('Error sending automatic response:', error);
     }
 };
 
