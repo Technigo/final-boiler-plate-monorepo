@@ -9,11 +9,13 @@
  * @param {string} props.error - Error message to display.
  * @returns {JSX.Element} - Rendered component.
  */
-export const FormField = ({ label, type, placeholder, value, onChange, error }) => (
+
+export const FormField = ({ name, label, type, placeholder, value, onChange, error }) => (
     <div>
         <label className="text-s font-josefin-sans">{label}</label>
         <input
             type={type}
+            name={name}
             placeholder={placeholder}
             value={value}
             onChange={onChange}
@@ -22,4 +24,3 @@ export const FormField = ({ label, type, placeholder, value, onChange, error }) 
         {error && <p className="text-red-600">{error}</p>}
     </div>
 );
-

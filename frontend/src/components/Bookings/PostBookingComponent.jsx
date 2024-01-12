@@ -1,15 +1,22 @@
-import React, { useState } from "react";
+import { useState } from "react";
+import { Fade } from "react-awesome-reveal";
+import { useRef } from 'react';
+import emailjs from '@emailjs/browser';
 import "react-datepicker/dist/react-datepicker.css";
+
+//import relevant components
+import { ParagraphComponent } from "../Reusables/ParagraphComponent";
 import { BtnComponent } from "../Reusables/BtnComonent";
 import { SucessMessage } from "./sucessMessage";
 import { Checkbox } from '../Reusables/Checkbox';
 import { FormComponent } from './FormComponent';
 import { SpinningLogo } from "../Reusables/SpinningLogo";
-import { Fade } from "react-awesome-reveal";
-import { ParagraphComponent } from "../Reusables/ParagraphComponent";
+
+//import relevant store
 import useBookingStore from "../../stores/bookingStore";
 
 export const PostBookingComponent = () => {
+
 
     // State Hooks for managing component state
     const [minDate, setMinDate] = useState(new Date());
@@ -241,6 +248,8 @@ export const PostBookingComponent = () => {
 
             setTimeout(() => {
                 resetFormState();
+                // Inside the handleSubmit function
+                console.log("Forms submitted successfully");
                 setShowSuccessMessage(true);
                 setIsLoading(false);
             }, delay);
@@ -300,25 +309,25 @@ export const PostBookingComponent = () => {
         setGroupIDError("");
     };
 
+
     return (
         <div>
 
             {/* Render loading state */}
             {isLoading ? (
+                // Render loading state
                 <Fade>
                     <div className="flex text-center flex-col items-center h-screen m-9">
                         <SpinningLogo />
                     </div>
                 </Fade>
-
             ) : showSuccessMessage ? (
-
-                //render successmessage 
+                // Render success message
                 <Fade>
                     <SucessMessage />
+                    {console.log("Success message rendered")}
                 </Fade>
             ) : (
-
                 //render form
                 <div className="flex justify-center items-center h-auto m-4 text-s font-josefin-sans">
                     <div className="w-full max-w-md rounded-md border-4 border-customPink p-4 px-10 rounded">
@@ -369,6 +378,7 @@ export const PostBookingComponent = () => {
                         <div className="flex items-center justify-center pt-0 p-4">
 
                             <BtnComponent
+                                type="submit"
                                 label="Send request"
                                 onClick={() => {
                                     if (validateForm()) {
@@ -384,6 +394,7 @@ export const PostBookingComponent = () => {
                     </div>
                 </div>
             )}
+
         </div>
     );
 };

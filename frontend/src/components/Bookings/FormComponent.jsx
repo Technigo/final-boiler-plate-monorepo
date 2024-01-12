@@ -1,8 +1,11 @@
+import { MyDatePicker } from '../Reusables/MyDatePicker';
+import { v4 as uuidv4 } from 'uuid';
+
+//import relevant components
 import { FormField } from '../Reusables/FormField';
 import { Checkbox } from '../Reusables/Checkbox';
-import { MyDatePicker } from '../Reusables/MyDatePicker';
+import { RadioButton } from '../Reusables/RadioButton';
 import { ParagraphComponent } from '../Reusables/ParagraphComponent';
-import { v4 as uuidv4 } from 'uuid';
 
 export const FormComponent = ({ form, index, setForms, minDate, errors, disabledDates }) => {
     // Generate unique IDs for each form element
@@ -20,7 +23,6 @@ export const FormComponent = ({ form, index, setForms, minDate, errors, disabled
     const intermediateId = uuidv4();
     const advancedId = uuidv4();
     const textareaId = uuidv4();
-    const documentationId = uuidv4();
 
     // Calculate the total character count for newPost field
     const newPostCharacterCount = form.newPost.length;
@@ -83,7 +85,7 @@ export const FormComponent = ({ form, index, setForms, minDate, errors, disabled
             <FormField
                 label="Email"
                 id={emailId}
-                type="text"
+                type="email"
                 placeholder={`Email for Person ${index + 1}`}
                 value={form.email}
                 onChange={(e) =>
@@ -196,7 +198,7 @@ export const FormComponent = ({ form, index, setForms, minDate, errors, disabled
                 <label >
                     <ParagraphComponent className="mb-2 pl-0 text-s" text={`Have you surfed before? `} />
                 </label>
-                <Checkbox
+                <RadioButton
                     id={beginnerId}
                     label="I'm a beginner"
                     checked={form.beginner}
@@ -206,13 +208,12 @@ export const FormComponent = ({ form, index, setForms, minDate, errors, disabled
                         )
                     }
                     disabled={form.intermediate || form.advanced}
-                    error={errors.surfLevel}
                 />
             </div>
 
             {/* Checkbox Surf Level intermediate */}
             <div className="mb-2">
-                <Checkbox
+                <RadioButton
                     id={intermediateId}
                     label="I'm intermediate"
                     checked={form.intermediate}
@@ -222,13 +223,12 @@ export const FormComponent = ({ form, index, setForms, minDate, errors, disabled
                         )
                     }
                     disabled={form.beginner || form.advanced}
-                    error={errors.surfLevel}
                 />
             </div>
 
             {/* Checkbox Surf Level advanced */}
             <div className="mb-2">
-                <Checkbox
+                <RadioButton
                     id={advancedId}
                     label="I'm advanced"
                     checked={form.advanced}
@@ -238,8 +238,9 @@ export const FormComponent = ({ form, index, setForms, minDate, errors, disabled
                         )
                     }
                     disabled={form.beginner || form.intermediate}
-                    error={errors.surfLevel}
+
                 />
+                <p className="text-red-500 ml-2">{errors.surfLevel}</p>
             </div>
 
             {/* Display the error message for Surf Levels */}
@@ -270,8 +271,7 @@ export const FormComponent = ({ form, index, setForms, minDate, errors, disabled
             <p className={`mb-2 text-sm ${newPostCharacterCount > 140 ? 'text-red-500' : 'text-black'}`}>
                 {newPostCharacterCount}/140
             </p>
-
-
         </div>
+
     );
 };

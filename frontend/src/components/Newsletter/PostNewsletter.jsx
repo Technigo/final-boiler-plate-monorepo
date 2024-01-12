@@ -1,4 +1,3 @@
-import React from 'react';
 import useNewsletterStore from '../../stores/newsletterStore';
 import { SubHeadingComponent } from '../Reusables/SubHeadingComponent';
 import { ParagraphComponent } from '../Reusables/ParagraphComponent';
@@ -23,7 +22,6 @@ export const PostNewsletter = () => {
     return (
         <Fade>
             <div className='w-full h-full flex items-center justify-center'>
-                {/* The entire newsletter content */}
                 <div className='w-auto lg:m-8 py-12 rounded-md border-4 border-customPink px-2 md:px-10'>
                     <div className='grid lg:grid-cols-1 text-left md:text-center'>
                         <div>
@@ -33,28 +31,29 @@ export const PostNewsletter = () => {
                         <div className='lg:my-4'>
                             <div className='flex flex-col sm:flex-row items-center justify-between w-full px-4'>
                                 <input
+                                    type="email"
+                                    name="user_email"
                                     className='p-3 flex w-full rounded-md text-black'
-                                    type='email'
                                     placeholder='Enter Email'
                                     value={email}
                                     onChange={(e) => setEmail(e.target.value)}
                                 />
                                 <BtnComponent
-                                    className='bg-amber-300 my-4 text-pink-500 px-5 ml-5 whitespace-nowrap'
+                                    type="submit"
+                                    className={`bg-amber-300 my-4 text-pink-500 px-5 ml-5 whitespace-nowrap ${isLoading ? 'opacity-50 cursor-not-allowed' : ''}`}
                                     onClick={handleSubscribe}
                                     label={isLoading ? 'Subscribing...' : 'Sign up'}
                                 />
                             </div>
-                            {successMessage && (
+                            {successMessage ? (
                                 <ParagraphComponent text={successMessage} className='text-green-500' />
-                            )}
-                            {errorMessage && (
-                                <ParagraphComponent text={errorMessage} className='text-red-500' />
+                            ) : (
+                                errorMessage && <ParagraphComponent text={errorMessage} className='text-red-500' />
                             )}
                         </div>
                     </div>
                 </div>
             </div>
         </Fade>
-    )
-}
+    );
+};

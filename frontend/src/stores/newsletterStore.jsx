@@ -35,11 +35,19 @@ const useNewsletterStore = create((set, getState) => ({
                 body: JSON.stringify({ email }),
             });
 
+            const responseData = await response.json();
+
             if (response.ok) {
                 set({ successMessage: 'Subscription successful!' });
                 set({ email: '' }); // Clear the input fields on successful subscription
             } else {
-                set({ errorMessage: `Failed to subscribe: ${response.status} ${response.statusText}` });
+                if (response.status === 400 && responseData.message === 'Email already exists') {
+                    // Handle the case where the email is already registered
+                    set({ errorMessage: 'This email is already subscribed' });
+                } else {
+                    // Handle other error cases
+                    set({ errorMessage: `Failed to subscribe: ${response.status} ${response.statusText}` });
+                }
             }
         } catch (error) {
             set({ errorMessage: error.message });
@@ -80,6 +88,7 @@ const useNewsletterStore = create((set, getState) => ({
         }
     },
 
+    //delete single newletter by its id
     handleDeleteNewsletter: async (id) => {
         try {
             // Show a confirmation dialog before deleting

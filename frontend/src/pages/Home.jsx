@@ -41,18 +41,17 @@ export const Home = () => {
             </div>
 
             <Fade>
-                <div className="relative h-screen lg:h-full flex items-center md:justify-center rounded-full overflow-hidden">
-                    {/* Video */}
+                <div className="relative h-screen lg:h-full flex items-center md:justify-center rounded-t-full overflow-hidden">
 
-                    <video autoPlay muted loop playsInline controls={false} className="py-2 rounded-full object-cover w-full h-full lg:w-4/6 lg:h-4/6">
+                    {/* Video */}
+                    <video autoPlay muted loop playsInline controls={false} className="py-2 rounded-t-full object-cover w-screen h-full lg:w-4/6 lg:h-4/6">
                         <source src={HomeSurfing} type="video/mp4" />
                         Your browser does not support the video tag.
                     </video>
 
                     {/* Text overlay */}
-                    <div className="absolute inset-0 flex flex-col items-center justify-center text-white">
-                        <SubHeadingComponent className="md:text-6xl font-moo-lah-lah text-amber-300 drop-shadow-[0_1.9px_1.9px_rgba(0,1,7,5.9)]" text="We believe that the most important part of surfing is to have fun. If you’re not having fun," />
-                        <SubHeadingComponent className="pb-12 md:text-6xl font-moo-lah-lah text-amber-300 drop-shadow-[0_1.9px_1.9px_rgba(0,1,7,5.9)]" text="you’re doing it wrong!" />
+                    <div className="absolute inset-0 flex flex-col items-center justify-center bg-gradient-to-b from-backgroundPink from-0% to-transparent to-100%">
+                        <SubHeadingComponent className="px-6 md:text-5xl font-josefin-sans text-amber-300 drop-shadow-[0_1.9px_1.9px_rgba(0,1,7,5.9)] lg:p-16" text="We believe that the most important part of surfing is to have fun. If you’re not having fun, you’re doing it wrong!" />
                     </div>
 
                 </div>
