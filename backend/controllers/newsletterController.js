@@ -8,7 +8,6 @@ require('dotenv').config();
 const resend = new Resend(process.env.NEWSLETTER_RESEND_API_KEY);
 
 // Subscribe to newsletter
-
 export const subscribeToNewsletter = async (req, res) => {
     try {
         const { email } = req.body;

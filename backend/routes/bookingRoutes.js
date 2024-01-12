@@ -4,6 +4,7 @@ import { authenticateUser } from '../middleware/authenticateUser';
 
 const router = express.Router();
 
+
 router.post('/', bookingController.createBooking);
 router.get('/', authenticateUser, bookingController.getAllBookings);
 router.delete('/deleteBooking/:id', authenticateUser, bookingController.deleteBookingById);

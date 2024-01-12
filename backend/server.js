@@ -9,14 +9,14 @@ const compression = require('compression');
 import userRoutes from "./routes/userRoutes"; // Import custom user routes
 import { connectDB } from "./config/db"; // Import database connection function (not used here)
 import { handleErrors } from "./controllers/commonController"; // Import the handleErrors function
+
 const app = express(); // Create an instance of the Express application
 app.use(compression());
 // Load environment variables from the .env file
 dotenv.config();
 
-// Define the port the app will run on. Defaults to 8080, but can be overridden
-const port = process.env.PORT || 8080; // Set the port number for the server
-
+// Enable CORS for all routes using the cors() middleware
+app.use(cors()); // Enable CORS (Cross-Origin Resource Sharing)
 
 // Define root endpoint to display all available endpoints
 app.get('/', (req, res) => {
@@ -29,8 +29,7 @@ app.get('/', (req, res) => {
   }
 });
 
-// Add middlewares to enable cors and json body parsing
-app.use(cors()); // Enable CORS (Cross-Origin Resource Sharing)
+// Add middlewares to enable json body parsing and URL-encoded data
 app.use(express.json()); // Parse incoming JSON data
 app.use(express.urlencoded({ extended: false })); // Parse URL-encoded data
 
@@ -49,6 +48,9 @@ connectDB();
 app.use((error, req, res, next) => {
   handleErrors(res, error);
 });
+
+// Define the port the app will run on. Defaults to 8080, but can be overridden
+const port = process.env.PORT || 8080; // Set the port number for the server
 
 // Start the server and listen for incoming requests on the specified port
 app.listen(port, () => {

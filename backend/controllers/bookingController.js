@@ -57,7 +57,7 @@ export const createBooking = async (req, res) => {
             to: email,
             subject,
             html: htmlContent,
-        });
+        })
 
         res.status(201).json(savedBooking);
     } catch (error) {
