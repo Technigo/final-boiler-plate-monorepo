@@ -1,48 +1,4 @@
 
-// import { uploadToCloudinary } from './path/to/cloudinaryMiddleware'; // Update the path accordingly
-
-// import path from 'path'; //DELETE
-
-// Configure multer for image upload
-// const storage = multer.diskStorage({
-//     destination: function (req, file, cb) {
-//         cb(null, 'uploads/'); // Ensure the 'uploads/' directory exists
-//     },
-//     filename: function (req, file, cb) {
-//         // Append the timestamp to the original filename to avoid name conflicts
-//         cb(null, Date.now() + path.extname(file.originalname));
-//     }
-// }); //DELETE
-
-// const upload = multer({ storage: storage });
-
-// // Middleware to handle image upload
-// const addImageToCocktail = (req, res, next) => {
-//     upload.single('image')(req, res, (error) => {
-//         if (error) {
-//             return res.status(500).json({ message: error.message });
-//         }
-//         if (req.file) {
-//             req.body.imageUrl = req.file.path; // Add image URL to the request body
-//         }
-//         next();
-//     });
-// }; //DELETE
-
-
-// // Middleware to handle image upload
-// const addImageToCocktail = (req, res, next) => {
-//     upload.single('image')(req, res, (error) => {
-//         if (error) {
-//             return res.status(500).json({ message: error.message });
-//         }
-//         if (req.file) {
-//             req.body.imageUrl = req.file.path; // Add image URL to the request body
-//         }
-//         next();
-//     });
-// }; //multer
-
 import Cocktails from '../models/Cocktails';
 import cloudinary from 'cloudinary';
 
@@ -135,29 +91,50 @@ export const getCocktailByIdController = async (req, res) => {
     }
 }; //BEHOLD
 
-//MIRELA:
+
 // Create a new cocktail with image upload
-export const addCocktailController = async (req, res) => {
-    // Check admin role
+ export const addCocktailController = async (req, res) => {
+        // Check admin role
     if (req.admin.role !== 'admin') {
-        return res.status(403).json({ message: 'Access denied' });
-    }
-
+            return res.status(403).json({ message: 'Access denied' });
+        }
+    
     try {
-        // Add time and date to the recipe
-        req.body.date = new Date();
+            // Parse array fields from JSON strings if they exist
+            if (req.body.allLiquors) {
+                req.body.allLiquors = JSON.parse(req.body.allLiquors);
+            }
+            if (req.body.ingredients) {
+                req.body.ingredients = JSON.parse(req.body.ingredients);
+            }
+            if (req.body.InspiredByCreator) {
+                req.body.InspiredByCreator = JSON.parse(req.body.InspiredByCreator);
+            }
+            if (req.body.occasion) {
+                req.body.occasion = JSON.parse(req.body.occasion);
+            }
+            if (req.body.flavorProfile) {
+                req.body.flavorProfile = JSON.parse(req.body.flavorProfile);
+            }
+            if (req.body.tags) {
+                req.body.tags = JSON.parse(req.body.tags);
+            }
+    
+            // Add time and date to the recipe
+            req.body.date = new Date();
+    
+            // Create a new cocktail document with the parsed request body
+            const newCocktail = new Cocktails(req.body);
+            await newCocktail.save();
+            res.status(201).json(newCocktail);
+        } catch (error) {
+            res.status(400).json({ message: error.message });
+        }
+    };
+    
 
-        // Create a new cocktail document with the request body
-        // The imageUrl will be added by the Cloudinary middleware if the image upload is successful
-        const newCocktail = new Cocktails(req.body);
-        await newCocktail.save();
-        res.status(201).json(newCocktail);
-    } catch (error) {
-        res.status(400).json({ message: error.message });
-    }
-};
 
-// Update cocktails (with or without updating picture)
+// Updates cocktails (with or without updating picture)
 export const updateCocktailController = async (req, res) => {
     //check admin role
     if (req.admin.role !== 'admin') {
@@ -219,34 +196,14 @@ export const deleteCocktailController = async (req, res) => {
 
 // Helper function to extract the public ID from the Cloudinary image URL
 function extractPublicIdFromUrl(url) {
-    // The implementation here depends on your Cloudinary URL structure.
-    // Typically, you'll need to parse the URL to extract the part that represents the public ID.
-    // This is an example and might need adjustment to fit your URL structure.
+    // The implementation here depends on the Cloudinary URL structure.
+    // Need to parse the URL to extract the part that represents the public ID?
+    // Might need adjustment depending on URL structure.
     const urlParts = url.split('/');
     const publicIdWithExtension = urlParts[urlParts.length - 1];
     const publicId = publicIdWithExtension.split('.')[0]; // Remove file extension
     return publicId;}
 
-// export const addCocktailController = [
-//     uploadToCloudinary, // Use your Cloudinary middleware here
-//     async (req, res) => {
-//         // Check admin role:
-//         if (req.admin.role !== 'admin') {
-//             return res.status(403).json({ message: 'Access denied' });
-//         }
-
-//         // Add time and date to the recipe
-//         req.body.date = new Date();
-  
-//         try {
-//             const newCocktail = new Cocktails(req.body);
-//             await newCocktail.save();
-//             res.status(201).json(newCocktail);
-//         } catch (error) {
-//             res.status(400).json({ message: error.message });
-//         }
-//     }
-// ]; //ADDED
 
 
 //POSTMAN TESTING
