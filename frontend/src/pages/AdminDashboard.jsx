@@ -1,19 +1,28 @@
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { adminStore } from '../stores/adminStore';
 //import style component
-//authentication ?! -Mirela
-//add logout button
 
 export const AdminDashboard = () => {
     const navigate = useNavigate();
+    const { handleAdminLogout } = adminStore((state) => ({
+        handleAdminLogout: state.handleAdminLogout,
+    }));
+
+    // Logout handler
+    const onLogoutClick = () => {
+        handleAdminLogout();
+        navigate('/admin/login'); // Redirect to login after logout
+    };
 
     return (
         <div>
             <h1>Admin Dashboard</h1>
-            <button onClick={() => navigate('/admin/register')}>Register New Admin</button>
-            <button onClick={() => navigate('/admin/users')}>List of Users</button>
-            <button onClick={() => navigate('/admin/upgrade-user')}>Upgrade User to Admin</button>
-            <button onClick={() => navigate('/admin/manage-cocktails')}>Manage Cocktails</button>
-            <button onClick={() => navigate('/')}>Home</button>
-        </div>
+            <Link to='/admin/register'><button>Register New Admin</button></Link>
+            <Link to='/admin/users'><button>List of Users</button></Link>
+            <Link to='/admin/upgrade-user'><button>Upgrade User to Admin</button></Link>
+            <Link to='/admin/manage-cocktails'><button>Manage Cocktails</button></Link>
+            <Link to='/'><button>Home</button></Link>
+            <button onClick={onLogoutClick}>Logout</button>
+        </div >
     );
 };

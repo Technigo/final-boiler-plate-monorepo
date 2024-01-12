@@ -1,4 +1,4 @@
-// Ensure it's not publicly linked; accessible only by direct URL: /admin/login
+// Accessible only by direct URL: /admin/login
 
 //import { Link } from "react-router-dom"; // Import the 'Link' component from 'react-router-dom'.
 import { adminStore } from "../stores/adminStore"; // Import the adminStore from zustand
@@ -23,6 +23,12 @@ export const AdminLogin = () => {
         }
         // Call handleAdminLogin from the adminStore
         await storeHandleAdminLogin(username, password);
+
+        // Retrieve the current state from the adminStore
+        const adminState = adminStore.getState();
+
+        // Log the accessToken to the console
+        console.log("AccessToken:", adminState.accessToken);
 
         // Check if admin is logged in and navigate to the dashboard
         const isLoggedIn = adminStore.getState().isLoggedIn;
@@ -55,6 +61,7 @@ export const AdminLogin = () => {
                         onChange={(e) => setPassword(e.target.value)}
                     />
                     <button onClick={onAdminLoginClick}>Admin Login</button>
+                    <button onClick={() => navigate('/')}>CBC Home</button>
                 </div>
             </div>
         </>
