@@ -22,7 +22,6 @@ export const About = () => {
             And if you haven't noticed, is not an actual web shop but a demo version.
             If you like something, or id you've got something on your mind, don't be shy to contact the developers!
             They are super nice!</p>
-
     </section>
     <section className="about-developers">
         <h2 className="section-title">Developers</h2>

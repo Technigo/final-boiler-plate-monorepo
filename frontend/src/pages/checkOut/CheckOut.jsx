@@ -77,58 +77,59 @@ export const CheckOut = () => {
       title: "YOUR INFORMATION",
       content: (<div className="accordion-detail-wrapper">
       <div className="checkout-account-wrapper">
-      <div className="login-wrapper">
-        <p className="h2-p">Already have an account?</p>
-        <Button btnText={"Log in"} />
+        <div className="login-wrapper">
+          <p className="h2-p">Already have an account?</p>
+          <Button btnText={"Log in"} />
         </div>
-        <div className="register-wrapper">
-        <p className="h2-p">Create an account!</p>
-        <Button btnText={"Register"} />
+        <div className="login-wrapper">
+          <p className="h2-p">Create an account!</p>
+          <Button btnText={"Register"} />
         </div>
         <Button
           btnText={"Continue as guest"}
           onClick={() => toggleShow(!show)}
         />
-        {show && (
-          <>
-            <input
-              type="email"
-              name={"email_from"}
-              id={"emailFrom"}
-              placeholder="your.email@email.com"
-              onChange={(e) => setEmail(e.target.value)}
-              required
-              value={email}
-              ariaLabel="Email input."
-              labelTxt={"Please put in your email"}
-            />
-            <PersonalInfo />
-            
-            <Button btnText={"Next"} onClick={handleNext} />
-          </>
-        )}
-        
+        <div className="form-wrapper">
+          {show && (
+            <>
+              <input
+                type="email"
+                name={"email_from"}
+                id={"emailFrom"}
+                placeholder="your.email@email.com"
+                onChange={(e) => setEmail(e.target.value)}
+                required
+                value={email}
+                ariaLabel="Email input."
+                labelTxt={"Please put in your email"}
+              />
+              <PersonalInfo />
+              
+              <Button btnText={"Next"} onClick={handleNext} />
+            </>
+          )}
+        </div>
       </div>
-      <p className="h2-p step-counter">STEP 1/3</p>
     </div>),
     },
     {
       title: "DELIVERY DETAILS",
       content: (<div className="accordion-detail-wrapper">
       <div className="accordion-step-container">
-      <div className="packed-with-love-container">
-  <LuPackageCheck className="icon" />
-  <p>packed with love</p>
-</div>
-<div className="climate-shipping-container">
-  <RiTruckLine className="icon" />
-  <p>climate shipping </p>
-</div>
+        <div className="delivery-icons-wrapper">
+          <div className="packed-with-love-container">
+            <LuPackageCheck className="icon" />
+            <p>packed with love</p>
+          </div>
+          <div className="climate-shipping-container">
+            <RiTruckLine className="icon" />
+            <p>climate shipping </p>
+          </div>
+        </div>
         <DeliveryDetails />
         <Button btnText={"Back"} onClick={handleBack} />
         <Button btnText={"Next"} onClick={handleNext} />
       </div>
-      <p className="h2-p step-counter">STEP 2/3</p>
     </div>),
     },
     {
@@ -139,7 +140,6 @@ export const CheckOut = () => {
         <Button btnText={"Back"} onClick={handleBack} />
         <Button btnText={"Next"} onClick={handleNext} />
       </div>
-      <p className="h2-p step-counter">STEP 3/3</p>
     </div>),
     },
     {
@@ -147,18 +147,20 @@ export const CheckOut = () => {
       content: (
         <div className="accordion-detail-wrapper">
             <OrderInfo />
-            {cart.map((item, index) => {
-              return (
-                <CartItem
-                  key={index}
-                  index={index}
-                  img={item.images.full_size_url}
-                  title={item.plant_title}
-                  price={item.price}
-                  quantity={item.quantity}
-                />
-              );
-            })}
+            <div className="cart-list-container">
+              {cart.map((item, index) => {
+                return (
+                  <CartItem
+                    key={index}
+                    index={index}
+                    img={item.images.full_size_url}
+                    title={item.plant_title}
+                    price={item.price}
+                    quantity={item.quantity}
+                  />
+                );
+              })}
+            </div>
             <Button btnText={"Back"} onClick={handleBack} />
           </div>
       ),
@@ -176,8 +178,8 @@ export const CheckOut = () => {
         
         <Accordion items={accordionItems}/>
 
-        <Button type={"submit"} btnText={"Pay"} />
-        <p>
+        <Button className={"pay-button"} type={"submit"} btnText={"Pay"} />
+        <p className="p-small">
           *By pressing the pay button, you will get an email with your plant
           buddies. Please remember, this is <b>not</b> an actual shop, no money
           will be drawn, and unfortunately no plants will be sent. But thank you
@@ -187,6 +189,11 @@ export const CheckOut = () => {
     </section>
   );
 };
+
+
+
+
+
 
 {/* <Accordion className="personal-info-accordion" defaultExpanded>
           <AccordionSummary>

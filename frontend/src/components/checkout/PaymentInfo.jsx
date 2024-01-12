@@ -58,52 +58,62 @@ export const PaymentInfo = () => {
       </RadioGroup>
       {showKlarna && (
         <>
-        <SiKlarna />
-          <h2>Klarna</h2>
+          <div className="payment-title-wrapper">
+            <SiKlarna className="icon"/>
+            <h2>Pay with Klarna</h2>
+          </div>
           {/* <svg data-testid="LocalPostOfficeIcon"></svg> */}
-          <ul>
-            <li><FaCheck /> Safe and easy</li>
-            <li><FaCheck /> Pay directly, with invoice or partial payments</li>
-            <li><FaCheck /> Save your card and banc card</li>
+          <ul className="klarna-list">
+            <li className="klarna-list-item"><FaCheck /> Safe and easy</li>
+            <li className="klarna-list-item"><FaCheck /> Pay directly, with invoice or partial payments</li>
+            <li className="klarna-list-item"><FaCheck /> Save your card and banc card</li>
           </ul>
         </>
       )}
       {showCard && (
         <>
-        <FaCreditCard />
-        <h2>Pay with Card</h2>
-          <p>
+          <div className="payment-title-wrapper">
+            <FaCreditCard className="icon"/>
+            <h2>Pay with Card</h2>
+          </div>
+          <p className="p-small">
             *These inputs are already filled in and can't be changed, since this
             is not a real web shop.
           </p>
-          <InputReadOnly
-            type="text"
-            value=""
-            placeholder="Lily Landersen"
-            ariaLabel="Card holder input."
-            readOnly={true}
-          />
-          <InputReadOnly
-            type="text"
-            value=""
-            placeholder="XXXX XXXX XXXX XXXX"
-            ariaLabel="City input."
-            readOnly={true}
-          />
-          <InputReadOnly
-            type="text"
-            value=""
-            placeholder="MM/YY"
-            ariaLabel="City input."
-            readOnly={true}
-          />
-          <InputReadOnly
-            type="text"
-            value=""
-            placeholder="CVC"
-            ariaLabel="City input."
-            readOnly={true}
-          />
+          <div className="form-wrapper">
+            <InputReadOnly
+              type="text"
+              value=""
+              placeholder="Lily Landersen"
+              ariaLabel="Card holder input."
+              readOnly={true}
+            />
+            <InputReadOnly
+              type="text"
+              value=""
+              placeholder="XXXX XXXX XXXX XXXX"
+              ariaLabel="City input."
+              readOnly={true}
+            />
+            <div className="input-payment-small">
+              <InputReadOnly
+                type="text"
+                value=""
+                placeholder="MM/YY"
+                ariaLabel="City input."
+                readOnly={true}
+                className={"input-small"}
+              />
+              <InputReadOnly
+                type="text"
+                value=""
+                placeholder="CVC"
+                ariaLabel="City input."
+                readOnly={true}
+                className={"input-small"}
+              />
+            </div>
+          </div>
         </>
       )}
     </>

@@ -8,6 +8,7 @@ export const InputReadOnly = ({
   onChange,
   ariaLabel,
   labelTxt,
+  className,
 }) => {
   return (
     <>
@@ -21,6 +22,7 @@ export const InputReadOnly = ({
           readOnly
           aria-label={ariaLabel}
           defaultChecked={value}
+          className={className}
         />
       </label>
     </>

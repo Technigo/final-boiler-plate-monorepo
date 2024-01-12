@@ -4,7 +4,7 @@ import { InputReadOnly } from "../../components/inputs/InputReadOnly";
 export const PersonalInfo = () => {
   return (
     <>
-      <p>
+      <p className="p-small">
         *These inputs are already filled in and can't be changed, since this is
         not a real web shop.
       </p>
@@ -29,20 +29,20 @@ export const PersonalInfo = () => {
         value={"Lily Lane 12"}
         readOnly={true}
       />
-      <InputReadOnly
-        type="text"
-        placeholder="123 45"
-        ariaLabel="ZIP input."
-        value={"123 45"}
-        readOnly={true}
-      />
-      <InputReadOnly
-        type="text"
-        placeholder="Gardenville"
-        ariaLabel="City input."
-        value={"Lilytown"}
-        readOnly={true}
-      />
+        <InputReadOnly
+          type="text"
+          placeholder="123 45"
+          ariaLabel="ZIP input."
+          value={"123 45"}
+          readOnly={true}
+        />
+        <InputReadOnly
+          type="text"
+          placeholder="Gardenville"
+          ariaLabel="City input."
+          value={"Lilytown"}
+          readOnly={true}
+        />
     </>
   );
 };

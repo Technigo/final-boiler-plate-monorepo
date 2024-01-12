@@ -14,3 +14,7 @@ input::placeholder {
   font-weight: 600;
   line-height: 113.5%; /* 0.85125rem */
 }
+
+.input-small {
+  width: 6.6rem; 
+}
