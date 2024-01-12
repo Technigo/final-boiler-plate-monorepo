@@ -108,10 +108,9 @@ export const Profile = () => {
   useEffect(() => {
     fetchUserTasks();
     fetchVolunteeredTasks();
-  }, [fetchUserTasks, fetchVolunteeredTasks]);
+  }, [fetchUserTasks, fetchVolunteeredTasks]); // Call the fetch functions when the component mounts
 
   // Filter tasks created by the current user
-
   return (
     <StyledProfilePage>
       <HeaderContainer>
@@ -134,39 +133,46 @@ export const Profile = () => {
         </TabList>
         <TabPanel>
           <div>
-            {/* <h3>Tasks you have created:</h3> */}
+            {/* List of tasks the user created */}
             <StyledList>
-              {userTasks.map((task) => (
-                <StyledListItem key={task._id}>
-                  <TaskTitle>{task.task}</TaskTitle>
-                  <TaskDescription>{task.description}</TaskDescription>
-                  <VolunteersSection>
-                    <strong>Volunteers: </strong>
-                    {task.volunteers && task.volunteers.length > 0
-                      ? task.volunteers
-                          .filter(
-                            (volunteer) =>
-                              volunteer._id.toString() !==
-                              task.user._id.toString()
-                          )
-                          // map over the volunteers array and return the username and email of each volunteer
-                          .map(
-                            (volunteer) =>
-                              `${volunteer.username} (${volunteer.email})`
-                          )
-                          .join(", ")
-                      : "No Volunteers"}
-                  </VolunteersSection>
-                  <DeleteButton>
-                    {/* Delete button for tasks you have created */}
-                    <Button
-                      buttonName="Delete"
-                      className="delete-button"
-                      onClick={() => deleteTaskById(task._id)}
-                    />
-                  </DeleteButton>
-                </StyledListItem>
-              ))}
+              {userTasks.map(
+                // map over the userTasks array and return the task/need details
+                (task) => (
+                  <StyledListItem key={task._id}>
+                    {/* Gives each task/need its own unique ID */}
+                    <TaskTitle>{task.task}</TaskTitle>
+                    {/* Title of task/need */}
+                    <TaskDescription>{task.description}</TaskDescription>
+                    <VolunteersSection>
+                      <strong>Volunteers: </strong>
+                      {task.volunteers && task.volunteers.length > 0 // check if the task object has volunteers and that the array is not empty
+                        ? task.volunteers // if there are volunteers, return the volunteers array
+                            .filter(
+                              // filter out the user who created the task to avoid displaying the creator as a volunteer
+                              (volunteer) =>
+                                volunteer._id.toString() !==
+                                task.user._id.toString()
+                            )
+                            // map over the volunteers array and return the username and email of each volunteer
+                            .map(
+                              (volunteer) =>
+                                `${volunteer.username} (${volunteer.email})`
+                            )
+                            .join(", ") // join the usernames and emails with a comma and space
+                        : "No Volunteers"}
+                      {/* If there are no volunteers, display that */}
+                    </VolunteersSection>
+                    <DeleteButton>
+                      {/* Delete button for tasks you have created */}
+                      <Button
+                        buttonName="Delete"
+                        className="delete-button"
+                        onClick={() => deleteTaskById(task._id)}
+                      />
+                    </DeleteButton>
+                  </StyledListItem>
+                )
+              )}
             </StyledList>
           </div>
         </TabPanel>
@@ -175,19 +181,23 @@ export const Profile = () => {
           <TasksContainer>
             {/* List of tasks the user volunteered for */}
             <StyledList>
-              {volunteeredTasks.map((task) => (
-                <StyledListItem key={task._id}>
-                  {/* Task details */}
-                  <TaskTitle>{task.task}</TaskTitle>
-                  <TaskDescription>{task.description}</TaskDescription>
-                  <CreatedBySection>
-                    {/* Display task creator's username */}
-                    <strong>Created by: </strong>
-                    {task.user?.username || "Unknown User"}
-                    {/* Show the name of the author or 'Unknown User' if the task is missing username */}
-                  </CreatedBySection>
-                </StyledListItem>
-              ))}
+              {volunteeredTasks.map(
+                (
+                  task // map over the volunteeredTasks array and return the task details
+                ) => (
+                  <StyledListItem key={task._id}>
+                    {/* Task details */}
+                    <TaskTitle>{task.task}</TaskTitle>
+                    <TaskDescription>{task.description}</TaskDescription>
+                    <CreatedBySection>
+                      {/* Display task creator's username */}
+                      {/* Show the name of the author or 'Unknown User' if the task is missing username */}
+                      <strong>Created by: </strong>
+                      {task.user?.username || "Unknown User"}
+                    </CreatedBySection>
+                  </StyledListItem>
+                )
+              )}
             </StyledList>
           </TasksContainer>
         </TabPanel>

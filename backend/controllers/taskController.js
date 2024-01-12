@@ -34,7 +34,7 @@ export const getTasksController = asyncHandler(async (req, res) => {
   }
 });
 
-// This controller is responsible for fetching tasks for a specific user. It uses the TaskModel to retrieve tasks from the database, sorts them by creation date, finds all tasks in the database and add the user object to the task object, filters out tasks that is not connected to a user and in the end responds with the list of tasks in JSON format. Access to this route is restricted to authenticated users.
+// This controller is responsible for fetching tasks/needs for a specific user. It uses the TaskModel to retrieve tasks from the database, sorts them by creation date, finds all tasks in the database and add the user object to the task object, filters out tasks that is not connected to a user and in the end responds with the list of tasks in JSON format. Access to this route is restricted to authenticated users.
 export const getUserTasksController = asyncHandler(async (req, res) => {
   const userId = req.user._id; // Get the user ID from the request object
   try {
