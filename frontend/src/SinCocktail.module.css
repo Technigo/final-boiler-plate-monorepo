@@ -1,31 +1,62 @@
 .wrapper {
-    background-color: #ffffff;
+    background-color: #FFF4E6;
     height: fit-content;
     grid-gap: 10px;
-    padding: 40px 80px;
-    text-align: left;
     display: grid;
     grid-template-columns: 1fr;
 }
 
+.cocktailImage {
+    width: 190px;
+    padding: 10px 0 40px 0;
+    justify-self: center;
+}
+
+.numberSquare {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    background-color: #DBC6B6;
+    text-align: center;
+    line-height: 30px;
+    margin-right: 5px;
+}
+
 .SbodyText {
-    margin-bottom: 10px;
-    grid-column: span 2;
+    margin-bottom: 1px;
+    grid-column: span 1;
+    padding: 0px 50px;
+    text-align: left;
+}
+
+.bodyText {
+    margin-bottom: 1px;
+    grid-column: span 1;
+    padding: 0px 50px;
+    text-align: left;
+}
+
+.h2 {
+    margin-bottom: 4px;
+    grid-column: span 1;
+    padding: 15px 50px 0px 50px;
+    text-align: left;
 }
 
 .h3 {
     color: #1D1C25;
     justify-self: center;
-    padding: 40px 0;
+    padding: 65px 55px 45px 55px;
     text-align: center;
-    grid-column: span 2;
+    grid-column: span 1;
 }
 
 
 .p {
     padding: 10px 0;
     text-align: left;
-    grid-column: span 2;
+    grid-column: span 1;
+    padding: 40px 85px;
 }
 
 

@@ -78,7 +78,7 @@ export const Cocktails = () => {
                                 <img src={cocktail.imageUrl} alt={cocktail.name} className={styles.cocktailImage} />
                             )}
                             {cocktail.name && <Text type="H3" className={styles.h3}>{cocktail.name}</Text>}
-                            <Text type="SbodyText" className={styles.SbodyText}>⏲️: {cocktail.prepTime} | 🌟: {cocktail.strength}</Text>
+                            <Text type="SbodyText" className={styles.SbodyText}>⏲️: {cocktail.prepTime} | 🌟: {cocktail.difficulty}</Text>
                             <Text type="SbodyText" className={styles.SbodyText}>⚡: {cocktail.strength} | 🏷️ : {cocktail.tags.join(', ')}</Text>
                         </div>
                     </Link>
