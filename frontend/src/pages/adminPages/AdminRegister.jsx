@@ -1,13 +1,35 @@
-//A form to register new admins.
-//  A form that sends a `POST` request to `/admin/register`.
-// After an admin performs an action (like registering a new admin), you might want to navigate them back to the `AdminDashboard` or show a success message. This can be done using the `useNavigate` hook and state management within each component.
+import { useState } from 'react';
+import { adminStore } from '../../stores/adminStore';
+import { useNavigate } from 'react-router-dom';
 
 export const AdminRegister = () => {
+    const navigate = useNavigate();
+    const [username, setUsername] = useState('');
+    const [password, setPassword] = useState('');
+    const [email, setEmail] = useState('');
+    const { registerNewAdmin, isLoading, errorMessage } = adminStore((state) => ({
+        registerNewAdmin: state.registerNewAdmin,
+        isLoading: state.isLoading,
+        errorMessage: state.errorMessage,
+    }));
 
+    const handleSubmit = async (event) => {
+        event.preventDefault();
+        await registerNewAdmin(username, password, email);
+        // Handle post-registration logic here (e.g., navigate, clear form, show success message)
+    };
 
     return (
-        <div>
-            <h1>Register New Admins</h1>
-        </div>
-    )
-}
+        <form onSubmit={handleSubmit}>
+            <h2>Register New Admin</h2>
+            {isLoading && <p>Loading...</p>}
+            {errorMessage && <p>Error: {errorMessage}</p>}
+            <input type="text" value={username} onChange={(e) => setUsername(e.target.value)} placeholder="Username" required />
+            <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Email" required />
+            <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Password" required />
+            <button type="submit" disabled={isLoading}>Register</button>
+            {/* Consider removing this button if navigation is handled post-registration */}
+            <button type="button" onClick={() => navigate('/admin/dashboard')}>Back to Dashboard</button>
+        </form>
+    );
+};
