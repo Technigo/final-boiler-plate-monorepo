@@ -1,3 +1,5 @@
+// before add dandelion
+
 import express from "express"
 import cors from "cors"
 import dotenv from "dotenv"
@@ -27,10 +29,6 @@ const userSchema = new Schema(
       type: Array,
       default: [{ row: 3, column: 'C' }] // initial value for the grid
     },
-    dandelion: {
-      type: Number,
-      default: 0,
-    }
   },
   {
     timestamps: true,
@@ -60,8 +58,7 @@ const registerUserController = asyncHandler(async (req,res) => {
     const newUser = new UserModel({
       username,
       password: hashedPassword,
-      grid: [{ row: 3, column: 'C' }],
-      dandelion: 0,
+      grid: [{ row: 3, column: 'C' }]
     })
     console.log(newUser) // log user before saving
     await newUser.save()
@@ -71,8 +68,7 @@ const registerUserController = asyncHandler(async (req,res) => {
         username: newUser.username,
         id: newUser._id,
         accessToken: newUser.accessToken,
-        grid: newUser.grid, // when a client registers , user will receive the initial position
-        dandelion: newUser.dandelion,
+        grid: newUser.grid // when a client registers , user will receive the initial position
       },
     })
   } catch (e) {
@@ -153,30 +149,6 @@ const upUserController = asyncHandler(async (req, res) => {
     //     // grid: user.grid,
     //   }
     // })
-    
-    // to check if dandelion needs to be updated
-    const updateDandelion = req.query.updateDandelion === 'true'
-    if (updateDandelion) {
-      // increase dandelion by 1
-      await UserModel.findByIdAndUpdate(user._id, { $inc: { dandelion: 1 } })
-      // await UserModel.findByIdAndUpdate(user._id, { $inc: { dandelion: 1 } }, { new: true })
-      // is this continuously working whenever user clicks afterwards update dandelion?
-
-      console.log('updateDandelion')
-
-      // console.log('dandelion:', user.dandelion)
-      // this might not work bcs data is received at client side
-
-
-      // can i make res?
-      res.status(200).json({
-        success: true,
-        response: {
-          dandelion: user.dandelion
-        }
-      })
-      // console.log('dandelion:', user.dandelion)
-    }
 
     // retrieve users with grid value of 3,C
     const userWithGrid3C = await UserModel.find({ 'grid.row': 3, 'grid.column': 'C' })

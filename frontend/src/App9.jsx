@@ -1,3 +1,5 @@
+// in hope of that i can make better function than this...
+
 import { useState, useEffect } from "react";
 import YouTube from "react-youtube"
 
@@ -34,7 +36,7 @@ export const App = () => {
   }
 
   useEffect(() => {
-    // document.body.style.textAlign = 'center'   
+    // document.body.style.textAlign = 'center'
     document.body.style.fontFamily = 'Roboto, sans-serif'
     document.body.style.fontSize = '24px'
     document.body.style.alignItems = 'center'
@@ -116,25 +118,16 @@ export const App = () => {
         // if dandelion found true, hide button
         // setShowButton2(true)
         setRefuseToMove(false)
-        // console.log('isDandelionFound:', isDandelionFound)
-        // if (isDandelionFound) {
-        //   setShowButton2(false)
-        // } else {
-        //   setShowButton2(true)
-        // }
-        // if (isRain && targetUserFound) {
-        //   setIsDandelionFound(true)
-        // }
-
         console.log('isDandelionFound:', isDandelionFound)
-        // show/hide button based on dandelion status
-        setShowButton2(!isDandelionFound)
-        console.log('setShowButton2:', setShowButton2)
+        if (isDandelionFound) {
+          setShowButton2(false)
+        } else {
+          setShowButton2(true)
+        }
         // user clicks button and frontend checks respond and set targetuserfound based on res
       }, 20000);
     }
-  // }, [displayText, isRain, targetUserFound, isDandelionFound])
-}, [displayText, isDandelionFound])
+  }, [displayText, isDandelionFound])
 
 
 
@@ -258,87 +251,37 @@ export const App = () => {
   // // when text is rain and targetuser is true, set showbutton 2 false.
   // and then, 20 sec after, change the text
   useEffect(() => {
-    console.log("useEffect triggered: based on targetuserfound value:", targetUserFound)
     // setShowButton2(false)
 
     // setTimeout(() => {
       // if (displayText === "... the snow turns to the rain " && targetUserFound) {
 
       // check if isRain first. and then, check targetuserfound.
-    if (isRain && targetUserFound) {
-      // if (targetUserFound) {
-        // // set isdandelionfound true
+    if (isRain) {
+      if (targetUserFound) {
+        // set isdandelionfound true
+        console.log('Before isDandelionFound update:', isDandelionFound)
+        setIsDandelionFound(true)
+        console.log('After isDandellionFound update:', isDandelionFound)
+        console.log('dandelion found:', isDandelionFound)
+
+        // use settimeout to delay the displaytext
+        setTimeout(() => {
+        setDisplayText(["... you cant believe your eyes.", "you found something from the ground"])
         // console.log('Before isDandelionFound update:', isDandelionFound)
         // setIsDandelionFound(true)
         // console.log('After isDandellionFound update:', isDandelionFound)
         // console.log('dandelion found:', isDandelionFound)
-
-        // use settimeout to delay the displaytext
-        setTimeout(() => {
-          setDisplayText(["... you cant believe your eyes.", "you found something from the ground"])
-          // console.log('Before isDandelionFound update:', isDandelionFound)
-          setIsDandelionFound(true)
-          setShowButton2(false)
-          // console.log('After isDandellionFound update:', isDandelionFound)
-          console.log('dandelion found:', isDandelionFound)
-        }, 20000)
-        const updateDandelion = async () => {
-          try {
-            // const response = await fetch("http://localhost:3000/up?updateDandelion=true", {
-              const response = await fetch("https://two2-3ck1.onrender.com/up?updateDandelion=true", {
-              method: "POST",
-              headers: {
-                "Content-Type": "application/json",
-                "Authorization": `${accessToken}`
-              },
-              body: JSON.stringify({
-                dandelionFound: true
-              })
-            })
-
-            const data = await response.json()
-            console.log("response:", data)
-
-            if (response.ok) {
-              console.log("Dandelion found and updated on the server.")
-
-        //       const originalText = "you step forward, but you stay there"
-        // setDisplayText([originalText])
-        // setTimeout(() => {
-        //   setDisplayText([originalText, "there is vision that never can be reached"])
-         
-
-              setTimeout(() => {
-                // setDisplayText(["you wake up with the usual place that you were", "it was nothing but just a dream"])
-                const text = "you wake up with the usual place that you were"
-                setDisplayText([text])
-                setTimeout(() => {
-                  setDisplayText([text, "it was nothing, but just a dream"])
-                }, 10000);
-              }, 50000);
-            } else {
-              console.error("failed to update dandelion on the server")
-            }
-          } catch (error) {
-            console.error("error updating dandelion:", error.message)
-          }
-        }
-        updateDandelion()
-      // }
+      }, 20000)
+      }
     }  
      
   // }, [displayText, targetUserFound])
-  }, [isRain, targetUserFound, isDandelionFound, accessToken])
+  }, [isRain, targetUserFound, isDandelionFound])
 
 
 
 
-// Change the video based on the displayText condition
-useEffect(() => {
-  if (displayText.includes("you wake up with the usual place that you were")) {
-    setVideoId("RbC86Yn6ypg");
-  }
-}, [displayText]);
 
 
 
@@ -352,8 +295,7 @@ useEffect(() => {
   const handleRegister = async () => {
     try {
       console.log("trying register:", username)
-      // const response = await fetch("http://localhost:3000/register", {
-        const response = await fetch("https://two2-3ck1.onrender.com/register", {
+      const response = await fetch("http://localhost:3000/register", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -400,8 +342,7 @@ useEffect(() => {
 
   const handleLogin = async () => {
     try {
-      // const response = await fetch("http://localhost:3000/login", {
-        const response = await fetch("https://two2-3ck1.onrender.com/login", {
+      const response = await fetch("http://localhost:3000/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -428,42 +369,10 @@ useEffect(() => {
     }
   }
 
-  const checkTargetUserFound = async () => {
-    try {
-      // perform additional fetch if needed
-      // const response = await fetch('http://localhost:3000/up', {
-        const response = await fetch('https://two2-3ck1.onrender.com/up', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `${accessToken}`
-        },
-      })
-      const data = await response.json()
-      console.log(data)
-
-      // to see current grid
-      console.log('grid:', data.response.grid)
-
-      if (data.response.targetUserFound) {
-        console.log('target user found:', data.response.targetUserFound)
-        setTargetUserFound(true)
-        console.log('targetuserfound:', targetUserFound)
-        } else {
-        console.log('cant find targetuserfound value')
-        // start here if else happens. make user press btn and then...
-        checkTargetUserFound()
-        }
-    } catch (error) {
-      console.error('Error checking targetUserFound:', error.message)
-    }
-  }
-
   const handleUP = async () => {
     try {
       console.log('handleUP')
-      // const response = await fetch('http://localhost:3000/up', {
-        const response = await fetch('https://two2-3ck1.onrender.com/up', {
+      const response = await fetch('http://localhost:3000/up', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -478,7 +387,6 @@ useEffect(() => {
 
       // check if the fetch request was successful before updating displayText
       if (response.ok) {
-        console.log('first response.ok:', response.ok)
         // setDisplayText([
         //   "you step forward, but you stay there",
         //   "there is vision that never can be reached"
@@ -524,8 +432,6 @@ useEffect(() => {
                     console.log('targetuserfound:', targetUserFound)
                   } else {
                     console.log('cant find targetuserfound value')
-                    // start here if else happens. make user press btn and then...
-                    checkTargetUserFound()
                   }
 
                   // // set targetuserfound based on the response

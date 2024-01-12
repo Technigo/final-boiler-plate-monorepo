@@ -1,3 +1,5 @@
+// save this before delete some comments
+
 import { useState, useEffect } from "react";
 import YouTube from "react-youtube"
 
@@ -18,9 +20,8 @@ export const App = () => {
   const [videoId, setVideoId] = useState("BjOq9SEDzKY")
   const [targetUserFound, setTargetUserFound] = useState(false)
   const [isRain, setIsRain] = useState(false)
-  const [isDandelionFound, setIsDandelionFound] = useState(false)
 
-  // event handler for when the user is ready to proceed, with playing video enough // currently not using
+  // event handler for when the user is ready to proceed, with playing video enough
   const onReady = (event) => {
     // you can access the player instance here (if needed)
     const player = event.target
@@ -34,7 +35,7 @@ export const App = () => {
   }
 
   useEffect(() => {
-    // document.body.style.textAlign = 'center'   
+    // document.body.style.textAlign = 'center'
     document.body.style.fontFamily = 'Roboto, sans-serif'
     document.body.style.fontSize = '24px'
     document.body.style.alignItems = 'center'
@@ -89,10 +90,24 @@ export const App = () => {
   // useEffect(() => {
   //   if (displayText === "... the snow turns to the rain ") {
   //     setVideoId("to1-K8vP3gk")
+  //     // after 10 sec show button
+  //     setTimeout(() => {
+  //       // show btn and change text
+  //       setShowButton2(true)
+  //       setRefuseToMove(false)
+  //       // user clicks button and frontend checks respond and set targetuserfound based on res
+  //     }, 10000);
+  //   }
+  // }, [displayText])
+
+
+  // // Change the video based on the displaytext condition
+  // useEffect(() => {
+  //   if (displayText === "... the snow turns to the rain ") {
+  //     setVideoId("to1-K8vP3gk")
   //     // after 20 sec show button
   //     setTimeout(() => {
   //       // show btn and change text
-  //       // // not show btn yet but change text of button
   //       setShowButton2(true)
   //       setRefuseToMove(false)
   //       // user clicks button and frontend checks respond and set targetuserfound based on res
@@ -100,249 +115,85 @@ export const App = () => {
   //   }
   // }, [displayText])
 
-
-
-
-
   // Change the video based on the displaytext condition
   useEffect(() => {
     if (displayText === "... the snow turns to the rain ") {
       setVideoId("to1-K8vP3gk")
-      console.log('video changed to rain')
       // after 20 sec show button
       setTimeout(() => {
-        // show btn and change text
-        // // not show btn yet but change text of button
-        // if dandelion found true, hide button
+        // // show btn and change text
+        // not show btn yet but change text of button
         // setShowButton2(true)
         setRefuseToMove(false)
-        // console.log('isDandelionFound:', isDandelionFound)
-        // if (isDandelionFound) {
-        //   setShowButton2(false)
-        // } else {
-        //   setShowButton2(true)
-        // }
-        // if (isRain && targetUserFound) {
-        //   setIsDandelionFound(true)
-        // }
-
-        console.log('isDandelionFound:', isDandelionFound)
-        // show/hide button based on dandelion status
-        setShowButton2(!isDandelionFound)
-        console.log('setShowButton2:', setShowButton2)
         // user clicks button and frontend checks respond and set targetuserfound based on res
       }, 20000);
     }
-  // }, [displayText, isRain, targetUserFound, isDandelionFound])
-}, [displayText, isDandelionFound])
-
-
-
+  }, [displayText])
 
 
   // // // update displaytext when text is rain and targetuserfound is true
-  // // update displaytext when israin is true and targetuserfound is true
-  // // // when text is rain and targetuser is true, set showbutton 2 false.
+  // // when text is rain and targetuser is true, set showbutton 2 false.
   // // and then, 20 sec after, change the text
   // useEffect(() => {
-  //   // setShowButton2(false)
+  //   setShowButton2(false)
+  //   // setTimeout(() => {
+  //   //   // show btn and change text
+  //   //   setShowButton2(true)
+  //   //   setRefuseToMove(false)
+  //   //   // user clicks button and frontend checks respond and set targetuserfound based on res
+  //   // }, 10000);
 
   //   // setTimeout(() => {
   //     // if (displayText === "... the snow turns to the rain " && targetUserFound) {
   //   if (isRain && targetUserFound) {
   //     setTimeout(() => {
-  //     setDisplayText(["... you cant believe your eyes.", "you found something from the ground"])
-  //     setIsDandelionFound(true)
-  //     console.log('dandelion found:', isDandelionFound)
+  //     setDisplayText("... you cant believe your eyes. you found something from the ground")
+  //     // setDisplayText("... the snow turns to the rain ")
+
+  //     // failed to set display text at right time. instead of this, create new user at this point? that has role of 22222? bcs this user born this moment, the user should meet this user AFTER this moment. but no, cant create new user every time. it will make thousands of useless user. need to find this certain user called 33333 from this moment, i did this previously. and this happens whenever user presses upuser button, which will lead user to 3 to 2. finding at 2, 33333 that has location of 3, takes time, so i can show the rain text while that i guess...? i feel there should be more organized way than this, but no. lack of brain energy
+  //     // i wanted to make this happen 10 sec after, but safari not works so chatgpt not works so need to restart the pc..
+  //     // }
   //   }, 20000)
-  // } 
+  // }
+
+    
+    
   // // }, [displayText, targetUserFound])
-  // }, [isRain, targetUserFound, isDandelionFound])
+  // }, [isRain, targetUserFound])
 
 
 
 
 
-
-
-
-
-
-
-
-
-// // this one makes check when user is  location of 2
-// // but this one says dandelion found is false, therefore, the button is showing
-// // but what i wanted is dandelion found should be true, since this function is executed, and according to button setting usereffect before this useeffect, the set show button should be false. 
-
-
-//   // // update displaytext when text is rain and targetuserfound is true
-//   // update displaytext when israin is true and targetuserfound is true
-//   // // when text is rain and targetuser is true, set showbutton 2 false.
-//   // and then, 20 sec after, change the text
-//   useEffect(() => {
-//     // setShowButton2(false)
-
-//     // setTimeout(() => {
-//       // if (displayText === "... the snow turns to the rain " && targetUserFound) {
-
-//       // check if isRain first. and then, check targetuserfound.
-//     if (isRain) {
-//       if (targetUserFound) {
-//         setTimeout(() => {
-//         setDisplayText(["... you cant believe your eyes.", "you found something from the ground"])
-//         console.log('Before isDandelionFound update:', isDandelionFound)
-//         setIsDandelionFound(true)
-//         console.log('After isDandellionFound update:', isDandelionFound)
-//         console.log('dandelion found:', isDandelionFound)
-//       }, 20000)
-//       }
-//     }  
-     
-//   // }, [displayText, targetUserFound])
-//   }, [isRain, targetUserFound, isDandelionFound])
-
-
-
-// this one is not checking when user is location 2
-// but // check if isRain first. and then, check targetuserfound. and then, set dande true. and then, display text
-// this order looks better. dk why this is not working like this
-
-  // // // update displaytext when text is rain and targetuserfound is true
-  // // update displaytext when israin is true and targetuserfound is true
-  // // // when text is rain and targetuser is true, set showbutton 2 false.
-  // // and then, 20 sec after, change the text
-  // useEffect(() => {
-  //   // setShowButton2(false)
-
-  //   // setTimeout(() => {
-  //     // if (displayText === "... the snow turns to the rain " && targetUserFound) {
-
-  //     // check if isRain first. and then, check targetuserfound. and then, set dande true. and then, display text
-  //   if (isRain) {
-  //     if (targetUserFound) {
-  //       setTimeout(() => {
-  //       console.log('Before isDandelionFound update:', isDandelionFound)
-  //       setIsDandelionFound(true)
-  //       console.log('After isDandellionFound update:', isDandelionFound)
-  //       console.log('dandelion found:', isDandelionFound)
-  //       setDisplayText(["... you cant believe your eyes.", "you found something from the ground"])
-  //       // console.log('Before isDandelionFound update:', isDandelionFound)
-  //       // setIsDandelionFound(true)
-  //       // console.log('After isDandellionFound update:', isDandelionFound)
-  //       // console.log('dandelion found:', isDandelionFound)
-  //     }, 20000)
-  //     }
-  //   }  
-     
-  // // }, [displayText, targetUserFound])
-  // }, [isRain, targetUserFound, isDandelionFound])
-
-
-
-
-
-
-
-
-
-// 3rd approach regarding displaytext and settrue
-
-  // this one makes check when user is  location of 2
-// but this one says dandelion found is false, therefore, the button is showing
-// but what i wanted is dandelion found should be true, since this function is executed, and according to button setting usereffect before this useeffect, the set show button should be false. 
-
-
-  // // update displaytext when text is rain and targetuserfound is true
-  // update displaytext when israin is true and targetuserfound is true
-  // // when text is rain and targetuser is true, set showbutton 2 false.
+// // update displaytext when text is rain and targetuserfound is true
+  // when text is rain and targetuser is true, set showbutton 2 false.
   // and then, 20 sec after, change the text
   useEffect(() => {
-    console.log("useEffect triggered: based on targetuserfound value:", targetUserFound)
     // setShowButton2(false)
+    // setTimeout(() => {
+    //   // show btn and change text
+    //   setShowButton2(true)
+    //   setRefuseToMove(false)
+    //   // user clicks button and frontend checks respond and set targetuserfound based on res
+    // }, 10000);
 
     // setTimeout(() => {
       // if (displayText === "... the snow turns to the rain " && targetUserFound) {
-
-      // check if isRain first. and then, check targetuserfound.
     if (isRain && targetUserFound) {
-      // if (targetUserFound) {
-        // // set isdandelionfound true
-        // console.log('Before isDandelionFound update:', isDandelionFound)
-        // setIsDandelionFound(true)
-        // console.log('After isDandellionFound update:', isDandelionFound)
-        // console.log('dandelion found:', isDandelionFound)
+      setTimeout(() => {
+      setDisplayText(["... you cant believe your eyes.", "you found something from the ground"])
+      // setDisplayText("... the snow turns to the rain ")
 
-        // use settimeout to delay the displaytext
-        setTimeout(() => {
-          setDisplayText(["... you cant believe your eyes.", "you found something from the ground"])
-          // console.log('Before isDandelionFound update:', isDandelionFound)
-          setIsDandelionFound(true)
-          setShowButton2(false)
-          // console.log('After isDandellionFound update:', isDandelionFound)
-          console.log('dandelion found:', isDandelionFound)
-        }, 20000)
-        const updateDandelion = async () => {
-          try {
-            // const response = await fetch("http://localhost:3000/up?updateDandelion=true", {
-              const response = await fetch("https://two2-3ck1.onrender.com/up?updateDandelion=true", {
-              method: "POST",
-              headers: {
-                "Content-Type": "application/json",
-                "Authorization": `${accessToken}`
-              },
-              body: JSON.stringify({
-                dandelionFound: true
-              })
-            })
-
-            const data = await response.json()
-            console.log("response:", data)
-
-            if (response.ok) {
-              console.log("Dandelion found and updated on the server.")
-
-        //       const originalText = "you step forward, but you stay there"
-        // setDisplayText([originalText])
-        // setTimeout(() => {
-        //   setDisplayText([originalText, "there is vision that never can be reached"])
-         
-
-              setTimeout(() => {
-                // setDisplayText(["you wake up with the usual place that you were", "it was nothing but just a dream"])
-                const text = "you wake up with the usual place that you were"
-                setDisplayText([text])
-                setTimeout(() => {
-                  setDisplayText([text, "it was nothing, but just a dream"])
-                }, 10000);
-              }, 50000);
-            } else {
-              console.error("failed to update dandelion on the server")
-            }
-          } catch (error) {
-            console.error("error updating dandelion:", error.message)
-          }
-        }
-        updateDandelion()
+      // failed to set display text at right time. instead of this, create new user at this point? that has role of 22222? bcs this user born this moment, the user should meet this user AFTER this moment. but no, cant create new user every time. it will make thousands of useless user. need to find this certain user called 33333 from this moment, i did this previously. and this happens whenever user presses upuser button, which will lead user to 3 to 2. finding at 2, 33333 that has location of 3, takes time, so i can show the rain text while that i guess...? i feel there should be more organized way than this, but no. lack of brain energy
+      // i wanted to make this happen 10 sec after, but safari not works so chatgpt not works so need to restart the pc..
       // }
-    }  
-     
-  // }, [displayText, targetUserFound])
-  }, [isRain, targetUserFound, isDandelionFound, accessToken])
-
-
-
-
-// Change the video based on the displayText condition
-useEffect(() => {
-  if (displayText.includes("you wake up with the usual place that you were")) {
-    setVideoId("RbC86Yn6ypg");
+    }, 20000)
   }
-}, [displayText]);
 
-
-
-
+    
+    
+  // }, [displayText, targetUserFound])
+  }, [isRain, targetUserFound])
 
 
 
@@ -352,8 +203,7 @@ useEffect(() => {
   const handleRegister = async () => {
     try {
       console.log("trying register:", username)
-      // const response = await fetch("http://localhost:3000/register", {
-        const response = await fetch("https://two2-3ck1.onrender.com/register", {
+      const response = await fetch("http://localhost:3000/register", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -400,8 +250,7 @@ useEffect(() => {
 
   const handleLogin = async () => {
     try {
-      // const response = await fetch("http://localhost:3000/login", {
-        const response = await fetch("https://two2-3ck1.onrender.com/login", {
+      const response = await fetch("http://localhost:3000/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -428,42 +277,9 @@ useEffect(() => {
     }
   }
 
-  const checkTargetUserFound = async () => {
-    try {
-      // perform additional fetch if needed
-      // const response = await fetch('http://localhost:3000/up', {
-        const response = await fetch('https://two2-3ck1.onrender.com/up', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `${accessToken}`
-        },
-      })
-      const data = await response.json()
-      console.log(data)
-
-      // to see current grid
-      console.log('grid:', data.response.grid)
-
-      if (data.response.targetUserFound) {
-        console.log('target user found:', data.response.targetUserFound)
-        setTargetUserFound(true)
-        console.log('targetuserfound:', targetUserFound)
-        } else {
-        console.log('cant find targetuserfound value')
-        // start here if else happens. make user press btn and then...
-        checkTargetUserFound()
-        }
-    } catch (error) {
-      console.error('Error checking targetUserFound:', error.message)
-    }
-  }
-
   const handleUP = async () => {
     try {
-      console.log('handleUP')
-      // const response = await fetch('http://localhost:3000/up', {
-        const response = await fetch('https://two2-3ck1.onrender.com/up', {
+      const response = await fetch('http://localhost:3000/up', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -478,7 +294,6 @@ useEffect(() => {
 
       // check if the fetch request was successful before updating displayText
       if (response.ok) {
-        console.log('first response.ok:', response.ok)
         // setDisplayText([
         //   "you step forward, but you stay there",
         //   "there is vision that never can be reached"
@@ -493,11 +308,9 @@ useEffect(() => {
             setRefuseToMove(true) // to change the label of the button 
             // loop counter
             if (refuseToMove) {
-              console.log('refusetomove:', refuseToMove)
               setLoopCounter((prevCounter) => prevCounter + 1)
               console.log("Loop Counter:", loopCounter)
               if (loopCounter > 0) {
-                console.log('loopcounter checked:', loopCounter)
                 setDisplayText("... the snow turns to the rain ")
                 // reset the counter for the next time
                 setLoopCounter(0)
@@ -509,7 +322,6 @@ useEffect(() => {
                 // check response again bcs response should be updated
                 // but does this if block means we are checking the updated response?
                 if(response.ok) {
-                  console.log('response.ok:', response.ok)
                   // check if the target user is found in the server response
                   // // why do i check data.response here? do i need this here?
                   // if (data.response && data.response.targetUserFound) {
@@ -524,8 +336,6 @@ useEffect(() => {
                     console.log('targetuserfound:', targetUserFound)
                   } else {
                     console.log('cant find targetuserfound value')
-                    // start here if else happens. make user press btn and then...
-                    checkTargetUserFound()
                   }
 
                   // // set targetuserfound based on the response

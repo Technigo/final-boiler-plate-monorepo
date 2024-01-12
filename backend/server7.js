@@ -1,3 +1,5 @@
+// i dont think i need this. dont have to make updateduser. bcs it already updates database. what i needed was just to have respond at client side. 
+
 import express from "express"
 import cors from "cors"
 import dotenv from "dotenv"
@@ -158,21 +160,29 @@ const upUserController = asyncHandler(async (req, res) => {
     const updateDandelion = req.query.updateDandelion === 'true'
     if (updateDandelion) {
       // increase dandelion by 1
-      await UserModel.findByIdAndUpdate(user._id, { $inc: { dandelion: 1 } })
+      // await UserModel.findByIdAndUpdate(user._id, { $inc: { dandelion: 1 } })
+      // this one makes database updates itself but not letting me to make res
+
       // await UserModel.findByIdAndUpdate(user._id, { $inc: { dandelion: 1 } }, { new: true })
+      // this one seemed to make me res but seems not. might need updateduser for this
       // is this continuously working whenever user clicks afterwards update dandelion?
 
-      console.log('updateDandelion')
+      const updatedUser = await UserModel.findOneAndUpdate(
+        { _id: user._id },
+        { $inc: { dandelion: 1 } },
+        { new: true } // for ensure the updated user is returned
+      )
 
       // console.log('dandelion:', user.dandelion)
-      // this might not work bcs data is received at client side
+      console.log('dandelion:', updatedUser.dandelion)
 
 
       // can i make res?
       res.status(200).json({
         success: true,
         response: {
-          dandelion: user.dandelion
+          // dandelion: user.dandelion
+          dandelion: updatedUser.dandelion
         }
       })
       // console.log('dandelion:', user.dandelion)
