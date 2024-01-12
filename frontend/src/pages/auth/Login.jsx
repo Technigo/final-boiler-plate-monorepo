@@ -5,6 +5,7 @@ import { Input } from "../../components/inputs/Input";
 import { Button } from "../../components/buttons/Button";
 import CircularProgress from '@mui/material/CircularProgress';
 import Box from '@mui/material/Box';
+import "./UserAuthPage.css";
 
 export const Login = () => {
   const { login, username, setUsername, password, setPassword, errorMessage, setErrorMessage, isLoading } = userStore();
