@@ -10,7 +10,7 @@
 }
 
 .H2 {
-    font-size: 14px;
+    font-size: 13px;
     /* Inside recipes, chategory*/
     font-weight: 300;
     line-height: 130%;
@@ -21,7 +21,7 @@
 }
 
 .H3 {
-    font-size: 13px;
+    font-size: 15px;
     font-weight: 400;
     line-height: 104%;
     letter-spacing: 1px;
@@ -39,7 +39,7 @@
 }
 
 .SbodyText {
-    font-size: 13px;
+    font-size: 11px;
     font-weight: 300;
     line-height: 140%;
     letter-spacing: 0.6px;
@@ -47,6 +47,14 @@
     color: #1D1C25;
 }
 
+.XSbodyText {
+    font-size: 9px;
+    font-weight: 300;
+    line-height: 140%;
+    letter-spacing: 0.6px;
+    font-family: 'Readex Pro', sans-serif;
+    color: #1D1C25;
+}
 
 /* Tablet-sized devices (e.g., iPad) */
 @media (min-width: 768px) {
@@ -83,6 +91,7 @@
     .H2 {
         font-size: 18px;
         letter-spacing: 0.48px;
+
     }
 
     .H3 {
