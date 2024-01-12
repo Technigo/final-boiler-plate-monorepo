@@ -275,32 +275,37 @@ const PlaygroundDetails = () => {
         id="wheelchair"
         place="bottom"
         content={t("PlaygroundDetails.wheelchair-explanation-p")}
-        style={{ backgroundColor: "#FA7070", color: "#222" }}
+        style={{ backgroundColor: "#FA7070", color: "black" }}
       />
       <Tooltip
         id="roundabout"
         place="bottom"
         content={t("PlaygroundDetails.roundabout-explanation-p")}
+         style={{ backgroundColor: "#FA7070", color: "black" }}
       />
       <Tooltip
         id="zipwire"
         place="bottom"
         content={t("PlaygroundDetails.zipwire-explanation-p")}
+         style={{ backgroundColor: "#FA7070", color: "black" }}
       />
       <Tooltip
         id="swing"
         place="bottom"
         content={t("PlaygroundDetails.swing-explanation-p")}
+         style={{ backgroundColor: "#FA7070", color: "black" }}
       />
       <Tooltip
         id="slide"
         place="bottom"
         content={t("PlaygroundDetails.slide-explanation-p")}
+         style={{ backgroundColor: "#FA7070", color: "black" }}
       />
       <Tooltip
         id="sandpit"
         place="bottom"
         content={t("PlaygroundDetails.sandpit-explanation-p")}
+         style={{ backgroundColor: "#FA7070", color: "black" }}
       />
 
 </div>

@@ -1,9 +1,13 @@
 /* Apply styles to the root element of the application */
 #root {
-  margin: 0px; /* Center align the content horizontally */
+  /* margin: 0px; Center align the content horizontally */
   padding: 0px; /* Add padding around the content */
   min-height: 100vh; /* Ensure a minimum height to cover the viewport */
   text-align: center; /* Center-align text within the root element */
+}
+
+body {
+  margin: 0;
 }
 
 :root {
