@@ -24,8 +24,6 @@
 .ingredient-form {
     display: flex;
     flex-direction: column;
-    width: 80%;
-    /* min-width: 240px; */
 }
 
 .textareas-container {
