@@ -37,17 +37,17 @@ Rescue Helper emerged as a beacon of compassion, bridging the gap between rescue
 
 <h4>Every Wag Tells a Tale</h4>
 
-<p>In the heart of our organization lies the belief that every wagging tail tells a tale of triumph over adversity. Each dog we help find a home becomes a living testament to the power of compassion and second chances. We celebrate not only the joy of new beginnings for our furry friends but also the profound impact these adoptions have on the lives of the families who welcome them into their homes.
+<p>In the heart of our organization lies the belief that every wagging tail tells a tale of triumph over adversity. Each dog we help find a home becomes a living testament to the power of compassion and second chances. We celebrate not only the joy of new beginnings for our furry friends but also the profound impact these adoptions have on the lives of the families who welcome them into their homes.</p>
 
-Join Us on the Journey
+<h4>Join Us on the Journey</h4>
 
-As you explore Rescue Helper, we invite you to become part of our story. Whether you're a dog lover looking to adopt, a rescue organization seeking support, or an advocate for animal welfare, your involvement makes a difference. Together, we can turn the page for more dogs, creating a world where every paw finds its path to love and happiness.
+<p>As you explore Rescue Helper, we invite you to become part of our story. Whether you're a dog lover looking to adopt, a rescue organization seeking support, or an advocate for animal welfare, your involvement makes a difference. Together, we can turn the page for more dogs, creating a world where every paw finds its path to love and happiness.</p>
 
-Thank you for being a part of our journey and for helping us create a legacy of hope, compassion, and endless tail wags.
+<p>Thank you for being a part of our journey and for helping us create a legacy of hope, compassion, and endless tail wags.</p>
 
-With gratitude,
+<p>With gratitude,</p>
 
-The Rescue Helper Team</p>
+<p>The Rescue Helper Team</p>
                     </div>
                     <Footer />
                 </div>
