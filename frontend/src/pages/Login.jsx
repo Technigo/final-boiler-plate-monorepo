@@ -53,7 +53,7 @@ export const Login = () => {
   // Render the component content.
   return (
 
-    <div className="items-center justify-center h-screen bg-backgroundPink">
+    <div className="absolute h-screen w-screen bg-backgroundPink">
       {/* Set meta description */}
       <Helmet>
         <meta name="description" content="Login to Tuanis Surf School Admin for booking management." />

@@ -50,8 +50,16 @@ const useMyDatePickerStore = create((set) => ({
 
                 // Convert the booking counts to an array of disabled dates
                 const datesToDisable = Object.entries(bookingCountsByDate)
-                    .filter(([formattedDate, count]) => count > 10)
+                    .filter(([formattedDate, count]) => count >= 10)
                     .map(([formattedDate]) => new Date(formattedDate));
+
+                // Logic to disable dates with 9 or more bookings
+                const datesToLimit = Object.entries(bookingCountsByDate)
+                    .filter(([formattedDate, count]) => count === 10)
+                    .map(([formattedDate]) => new Date(formattedDate));
+
+                // Add these dates to the disabled dates
+                datesToDisable.push(...datesToLimit);
 
                 // Logic to disable dates less than 2 days from now
                 const twoDaysFromNow = new Date();

@@ -194,6 +194,44 @@ const useBookingStore = create((set) => ({
         }
     },
 
+    // Action to fetch all bookings from the server
+    fetchBookingByDate: async () => {
+        try {
+            set({ loading: true, error: null });
+
+            // Make an API request to fetch all bookings
+            const response = await fetch(`${import.meta.env.VITE_API_URL}/booking/handledBookings/bookingsByDate`, {
+                method: 'GET',
+                headers: {
+                    Authorization: localStorage.getItem("accessToken"),
+                },
+            });
+
+            // Check if the request was successful
+            if (response.ok) {
+                // Parse the response data
+                const bookings = await response.json();
+
+                // Update the local state with the fetched bookings
+                setBookingsByDate(bookings);
+
+                // Extract unique dates from bookings
+                const dates = Array.from(new Set(bookings.map((booking) => booking.date)));
+                setUniqueDates(dates);
+            } else {
+                // Handle errors when the request fails
+                console.error('Failed to fetch bookings');
+                setError('Failed to fetch bookings');
+            }
+        } catch (error) {
+            // Handle errors during the fetchBookings process
+            setError(error.message);
+            console.error('Error fetching bookings:', error);
+        } finally {
+            setLoading(false);
+        }
+    },
+
     // Action to fetch handled bookings from the server
     fetchHandledBookings: async () => {
         try {

@@ -46,24 +46,28 @@ export const NewsLetterListComponent = () => {
     };
 
     return (
-        <div className='bg-backgroundPink h-screen flex flex-col items-center '>
+        <div className='h-screen flex flex-col items-center mx-10'>
+
+            <BtnComponent className='mx-6 bg-gray-800 m-1 hover:bg-gray-600 text-white' onClick={handleCopy} label="Copy all emails" />
+
             {loading && <p>Loading...</p>}
             {errorMessage && <ParagraphComponent text={`Error: ${errorMessage}`} />}
             {!loading && newsletter.length === 0 && <ParagraphComponent text="No subscribers found" />}
             {!loading && newsletter.length > 0 && (
                 <div>
-                    <BtnComponent onClick={handleCopy} label="Copy all emails" />
-                    <ul>
-                        {newsletter.map((subscriber) => (
-                            <li key={subscriber._id} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                                <span>{subscriber.email}</span>
-                                <BtnComponent className="m-2" onClick={() => handleDeleteNewsletter(subscriber._id)} label="Delete" />
-                            </li>
-                        ))}
-                    </ul>
+                    {newsletter.map((subscriber) => (
+                        <div key={subscriber._id} className="mb-4">
+
+                            <span className=''>{subscriber.email}</span>
+
+                            <BtnComponent className=' bg-gray-800 m-1 hover:bg-gray-600 text-white sm:block' onClick={() => handleDeleteNewsletter(subscriber._id)} label="Delete" />
+
+                        </div>
+                    ))}
 
                 </div>
+
             )}
         </div>
     );
-};
+}

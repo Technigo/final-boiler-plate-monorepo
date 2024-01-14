@@ -10,14 +10,17 @@ export const DropDownComponent = () => {
     };
 
     return (
-        <div>
-            <label htmlFor="booking-filter">Filter Bookings: </label>
-            <select id="booking-filter" onChange={handleChange} value={location.pathname}>
-                <option value="/Admin">All Bookings</option>
-                <option value="/HandledBooking">Handled Bookings</option>
-                <option value="/UnHandledBooking">Unhandled Bookings</option>
-                <option value="/Newsletter">Newsletter</option>
-            </select>
+        <div className='bg-amber-300 p-6 rounded-md'>
+            <div>
+                <label htmlFor="booking-filter">Filter Bookings: </label>
+                <select id="booking-filter" onChange={handleChange} value={location.pathname}>
+                    <option value="/Admin">All Bookings</option>
+                    <option value="/HandledBooking">Accepted Bookings</option>
+                    <option value="/UnHandledBooking">Unhandled Bookings</option>
+                    <option value="/BookedDates">Booked dates</option>
+                    <option value="/Newsletter">Newsletter</option>
+                </select>
+            </div>
         </div>
     );
 };

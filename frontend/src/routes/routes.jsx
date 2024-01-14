@@ -13,6 +13,7 @@ import { BookNow } from "../pages/BookNow";
 import { HandledBooking } from "../pages/HandleBooking";
 import { UnHandledBooking } from "../pages/UnHandledBooking";
 import { Newsletter } from "../pages/Newsletter";
+import { BookedDates } from "../pages/BookedDates";
 
 const routes = (
   <>
@@ -24,6 +25,7 @@ const routes = (
     <Route path="/Admin" element={<Admin />} />
     <Route path="/HandledBooking" element={<HandledBooking />} />
     <Route path="/UnHandledBooking" element={<UnHandledBooking />} />
+    <Route path="/BookedDates" element={<BookedDates />} />
     <Route path="/Newsletter" element={<Newsletter />} />
     <Route path="/Login" element={<Login />} />
     <Route path="/Register" element={<Register />} />
