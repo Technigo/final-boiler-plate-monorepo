@@ -1,14 +1,22 @@
-
 import { userStore } from "../../stores/userStore";
 import { useNavigate, Link } from "react-router-dom"; // Import useNavigate
 import { Input } from "../../components/inputs/Input";
 import { Button } from "../../components/buttons/Button";
-import CircularProgress from '@mui/material/CircularProgress';
-import Box from '@mui/material/Box';
+import CircularProgress from "@mui/material/CircularProgress";
+import Box from "@mui/material/Box";
 import "./UserAuthPage.css";
 
 export const Login = () => {
-  const { login, username, setUsername, password, setPassword, errorMessage, setErrorMessage, isLoading } = userStore();
+  const {
+    login,
+    username,
+    setUsername,
+    password,
+    setPassword,
+    errorMessage,
+    setErrorMessage,
+    isLoading,
+  } = userStore();
 
   // Use the 'useNavigate' hook to programmatically navigate between routes.
   const navigate = useNavigate();
@@ -29,9 +37,9 @@ export const Login = () => {
         navigate("/");
         setErrorMessage("");
         return;
-    } else {
+      } else {
         errorMessage;
-    }
+      }
     } catch (error) {
       // Handle any errors that occur during signup and display an alert.
       console.error("Login error:", error);
@@ -65,59 +73,81 @@ export const Login = () => {
 
   return (
     <>
-      <form>
-      
-        <div className="input-container">
-          <label htmlFor="username" className="visually-hidden">
-            Username
-          </label>
-          <Input
-            type="text"
-            id="username"
-            placeholder="Username"
-             value={username}
-             onChange={(e) => setUsername(e.target.value)}
-            ariaLabel="Username input"
+      <div className="auth-wrapper">
+        <div className="bg-wrapper">
+          <img
+            src="./login-register-bg.png"
+            className="bg-img"
+            alt="Background image of plant leaves"
           />
+          <div className="overlay">
+            <div className="big-logo">
+              <img
+                src="./big-logo-sand.svg"
+                alt="Plants by Holm and Witting logo"
+              />
+            </div>
+            <div className="user-auth-container">
+              <form>
+                <div className="form-group">
+                  <label htmlFor="username" className="visually-hidden">
+                    Username
+                  </label>
+                  <Input
+                    type="text"
+                    id="username"
+                    placeholder="Username"
+                    value={username}
+                    onChange={(e) => setUsername(e.target.value)}
+                    ariaLabel="Username input"
+                  />
+                </div>
+                <div className="form-group">
+                  <label htmlFor="password" className="visually-hidden">
+                    Password
+                  </label>
+                  <Input
+                    type="password"
+                    id="password"
+                    placeholder="Password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    ariaLabel="Password input"
+                  />
+                </div>
+                {isLoading ? (
+                  <Box sx={{ display: "flex" }}>
+                    <CircularProgress />
+                  </Box>
+                ) : (
+                  ""
+                )}
+                
+                {errorMessage && <p className="error-message disclaimer">{errorMessage}</p>}
+                  <Button
+                    type="submit"
+                    onClick={handleSubmit}
+                    className="login-btn"
+                    btnText="Login"
+                    ariaLabel="login button"
+                  />
+
+              </form>
+            </div>
+            <nav className="register-link-container">
+              {/* Create a navigation menu with links to the login and sign-up routes. */}
+              <ul className="app-ul">
+                <li className="app-li">
+                  <span>Don't have an account?</span>
+                  <Link to="/register">
+                    Become a <b>member</b>
+                  </Link>
+                </li>
+              </ul>
+            </nav>
+          </div>
         </div>
-        <div className="input-container">
-          <label htmlFor="password" className="visually-hidden">
-            Password
-          </label>
-          <Input
-            type="password"
-            id="password"
-            placeholder="Password"
-             value={password}
-             onChange={(e) => setPassword(e.target.value)}
-            ariaLabel="Password input"
-          />
-        </div>
-        <a className="forgot-password">Forgot Password?</a>
-        <p className="error-message disclaimer">{errorMessage}</p>
-        {isLoading ? (
-          <Box sx={{ display: 'flex' }}>
-            <CircularProgress />
-          </Box>) : "" }
-        <Button
-          type="submit"
-          onClick={handleSubmit}
-          className="login-btn"
-          btnText="Login"
-          ariaLabel="login button"
-        />
-      </form>
-      <nav className="register-link-container">
-        {/* Create a navigation menu with links to the login and sign-up routes. */}
-        <ul className="app-ul">
-          <li className="app-li">
-            <span>Don't have an account?</span>
-            <Link to="/register">
-              Become a <b>member</b>
-            </Link>
-          </li>
-        </ul>
-      </nav>
+      </div>
     </>
     // <div className="login-wrapper">
     //   <div className="bg-wrapper">

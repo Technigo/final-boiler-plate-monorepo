@@ -14,78 +14,78 @@ const getAllUsers = asyncHandler(async (req, res) => {
 });
 
 // REGISTER A NEW USER ---------------------------------------------
-const registerUser = asyncHandler(async (req, res) => {
-  // Get user data - Extract email, username and password from the request body.
-  const { username, password, email } = req.body;
+// const registerUser = asyncHandler(async (req, res) => {
+//   // Get user data - Extract email, username and password from the request body.
+//   const { username, password, email } = req.body;
 
-  // Validate the user data.
-  try {
-    // 1st Condition - Check if all fields are inputted.
-    if (!username || !email || !password) {
-      // If any of the fields are empty, send an error message.
-      return res.status(400).json({
-        success: false,
-        response: { message: "Please fill in all the inputs." },
-      });
-    }
+//   // Validate the user data.
+//   try {
+//     // 1st Condition - Check if all fields are inputted.
+//     if (!username || !email || !password) {
+//       // If any of the fields are empty, send an error message.
+//       return res.status(400).json({
+//         success: false,
+//         response: { message: "Please fill in all the inputs." },
+//       });
+//     }
 
-    // 2nd Condition - Check if the username and email already exists.
-    const existingUser = await UserModel.findOne({
-      $or: [{ username }, { email }],
-    });
-    // If the user info already exists, send an error message.
-    if (existingUser) {
-      if (existingUser.username === username) {
-        // Check if the username already exists.
-        return res.status(400).json({
-          success: false,
-          response: {
-            message: "User already exists. Please choose a different username.",
-          },
-        });
-      }
-      if (existingUser.email === email) {
-        // Check if the email already exists.
-        return res.status(400).json({
-          success: false,
-          response: {
-            message:
-              "Email already exists. Please use a different email address.",
-          },
-        });
-      }
-    }
+//     // 2nd Condition - Check if the username and email already exists.
+//     const existingUser = await UserModel.findOne({
+//       $or: [{ username }, { email }],
+//     });
+//     // If the user info already exists, send an error message.
+//     if (existingUser) {
+//       if (existingUser.username === username) {
+//         // Check if the username already exists.
+//         return res.status(400).json({
+//           success: false,
+//           response: {
+//             message: "User already exists. Please choose a different username.",
+//           },
+//         });
+//       }
+//       if (existingUser.email === email) {
+//         // Check if the email already exists.
+//         return res.status(400).json({
+//           success: false,
+//           response: {
+//             message:
+//               "Email already exists. Please use a different email address.",
+//           },
+//         });
+//       }
+//     }
 
-    // Generate a salt and hash the user's password from the bcrypt library.
-    const salt = await bcrypt.genSalt(10); // Generate a salt with 10 rounds.
-    const hashedPassword = await bcrypt.hash(password, salt); // Hash the user's password with the salt.
+//     // Generate a salt and hash the user's password from the bcrypt library.
+//     const salt = await bcrypt.genSalt(10); // Generate a salt with 10 rounds.
+//     const hashedPassword = await bcrypt.hash(password, salt); // Hash the user's password with the salt.
 
-    // Create a new user.
-    const newUser = new UserModel({
-      username,
-      email,
-      password: hashedPassword,
-    });
+//     // Create a new user.
+//     const newUser = new UserModel({
+//       username,
+//       email,
+//       password: hashedPassword,
+//     });
 
-    await newUser.save();
+//     await newUser.save();
 
-    // Send the user's information to the client.
-    res.status(201).json({
-      success: true,
-      response: {
-        _id: newUser._id, // Send the user's ID.
-        username: newUser.username, // Send the user's username.
-        email: newUser.email, // Send the user's email.
-      },
-    });
-  } catch (error) {
-    // If there's an error, send an error message.
-    return res.status(400).json({
-      success: false,
-      response: { message: "Could not create user", errors: error },
-    });
-  }
-});
+//     // Send the user's information to the client.
+//     res.status(201).json({
+//       success: true,
+//       response: {
+//         _id: newUser._id, // Send the user's ID.
+//         username: newUser.username, // Send the user's username.
+//         email: newUser.email, // Send the user's email.
+//       },
+//     });
+//   } catch (error) {
+//     // If there's an error, send an error message.
+//     return res.status(400).json({
+//       success: false,
+//       response: { message: "Could not create user", errors: error },
+//     });
+//   }
+// });
 
 // LOGIN AS A USER ---------------------------------------------
 const loginUser = asyncHandler(async (req, res) => {
@@ -193,7 +193,6 @@ const updateCurrentUserProfile = asyncHandler(async (req, res) => {
 // Export the functions.
 export {
   getAllUsers,
-  registerUser,
   loginUser,
   logoutUser,
   currentUserProfile,

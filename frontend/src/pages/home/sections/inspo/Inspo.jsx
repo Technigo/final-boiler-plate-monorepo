@@ -5,7 +5,7 @@ import "./Inspo.css";
 
 export const Inspo = () => {
   const text = {
-    heading: "Time for inspiration",
+    heading: "Inspiration",
     text: "Need some new input on what to do next with your urban jungle?",
     btnText: "GET INSPIRED",
   };

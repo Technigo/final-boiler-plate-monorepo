@@ -1,7 +1,6 @@
 import express from "express"; // Imports the express package.
 import {
   getAllUsers,
-  registerUser,
   loginUser,
   logoutUser,
   currentUserProfile,
@@ -13,17 +12,18 @@ const router = express.Router(); // Creates a new router object.
 
 // USERS ROUTES ---------------------------------------------
 
-// ALL USERS ROUTE: List of all users
+// ALL USERS ROUTE: List of all users.
 router.get("/", getAllUsers); // When a GET request is made to /, execute the getAllUsers function. The user must be authenticated and authorized as an admin.
 
 // REGISTER ROUTE: Handle user registration
-router.post("/register", registerUser); // When a POST request is made to /register, execute the registerUser function.
+// router.post("/register", registerUser); // When a POST request is made to /register, execute the registerUser function.
 
-// LOGIN ROUTE: Handle user login
-router.post("/login", loginUser); // When a POST request is made to /login, execute the loginUser function.
-
-// LOGOUT ROUTE: Handle user logout
-router.post("/logout", authenticateUser, logoutUser); // When a POST request is made to /logout, execute the logoutUser function.
+// AUTH ROUTE: Handle user authentication.
+router
+  // LOGIN ROUTE: Handle user login
+  .post("/login", loginUser, authenticateUser) // When a GET request is made to /auth, execute the authenticateUser function.
+  // LOGOUT ROUTE: Handle user logout
+  .post("/logout", logoutUser, authenticateUser); // When a POST request is made to /auth, execute the authenticateUser function.
 
 // USER PROFILE ROUTE: Handle users profile.
 router

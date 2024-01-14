@@ -137,6 +137,9 @@ button {
 
 /* For large devices */
 @media (min-width: 1024px) {
+  .section-title {
+    font-size: 3rem;
+  }
 }
 
 /* For extra large devices */

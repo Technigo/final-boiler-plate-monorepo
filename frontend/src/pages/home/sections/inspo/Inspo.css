@@ -61,3 +61,152 @@
   font-size: 0.8rem;
   border-radius: 10rem;
 }
+
+/*---------- BREAKPOINTS ----------*/
+/* From mobile and for small devices */
+@media (min-width: 576px) {
+}
+
+/* For medium devices */
+@media (min-width: 744px) {
+}
+
+/* For large devices */
+@media (min-width: 1024px) {
+  .inspo-wrapper {
+    background-color: var(--chalk);
+    position: relative;
+  }
+
+  .inspo-container {
+    margin-bottom: 30rem;
+  }
+
+  .inspo-content-wrapper {
+    width: auto;
+    gap: 1rem;
+    left: 5rem;
+    padding: 3rem;
+    align-items: flex-end;
+    text-align: right;
+    margin: 3.7rem 30rem 0 0;
+    z-index: 10;
+    border-radius: 0.625rem;
+    background-image: linear-gradient(
+      to right,
+      #f3f3ea00 0%,
+      #f3f3ea 70%,
+      #f3f3ea 90%,
+      #f3f3ea00 100%
+    );
+  }
+
+  .inspo-p {
+    font-family: var(--montserrat);
+    color: var(--charcoal);
+    font-size: 1.5rem;
+    line-height: 1.7;
+    letter-spacing: 0.1rem;
+    font-weight: 500;
+    display: block;
+    width: 24rem;
+  }
+
+  .inspo-bg-container {
+    display: flex;
+    justify-content: center;
+  }
+
+  .leaf-container {
+    position: absolute;
+    width: 35%;
+    left: 5rem;
+    top: 4rem;
+    z-index: 1;
+  }
+
+  .inspo-img-container {
+    margin: 2rem 5rem 0;
+  }
+
+  .inspo-img-container {
+    position: absolute;
+    right: 0;
+    max-width: 650px;
+    width: 100%;
+  }
+
+  .inspo-btn {
+    font-family: var(--montserrat);
+    background-color: var(--terracotta);
+    color: var(--chalk);
+    padding: 1.2rem 2.2rem;
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size: 1.4rem;
+    border-radius: 10rem;
+  }
+}
+
+/* .inspo-wrapper {
+  background-color: var(--chalk);
+  position: relative;
+  padding: 2rem 1rem 6rem;
+}
+
+.inspo-content-wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1rem;
+  padding-top: 1rem;
+  z-index: 10;
+}
+.inspo-content-wrapper .section-title {
+  text-align: left;
+}
+
+.inspo-p {
+  font-family: var(--montserrat);
+  color: var(--charcoal);
+  font-size: 0.8rem;
+  line-height: 1.7;
+  letter-spacing: 0.1rem;
+  font-weight: 500;
+}
+
+.inspo-bg-container {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+}
+
+.leaf-container {
+  position: absolute;
+  width: 50%;
+  left: 0;
+}
+
+.inspo-img-container {
+  margin: 4rem 1rem 0;
+}
+
+.inspo-img-container img {
+  border-radius: 0.625rem;
+}
+
+.inspo-btn {
+  font-family: var(--montserrat);
+  background-color: var(--terracotta);
+  color: var(--chalk);
+  padding: 0.8rem 1.5rem;
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 0.7rem;
+  border-radius: 10rem;
+} */
+
+/* For extra large devices */
+@media (min-width: 1280px) {
+}

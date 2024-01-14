@@ -1,6 +1,7 @@
 import { Register } from "./Register"; // Import the 'Register' component.
 import { Login } from "./Login"; // Import the 'Login' component.
 import "./UserAuthPage.css";
+import { Outlet } from "react-router-dom"; // Import the 'Outlet' component.
 
 export const UserAuthPage = () => {
   return (
@@ -19,8 +20,7 @@ export const UserAuthPage = () => {
             />
           </div>
           <div className="user-auth-container"></div>
-          <Register />
-          <Login />
+          <Outlet />
         </div>
       </div>
     </div>
