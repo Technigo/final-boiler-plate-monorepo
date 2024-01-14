@@ -122,7 +122,7 @@ export const SortedByDate = () => {
 
                                             <ParagraphComponent className="text-base text-center" text={`Total Bookings: ${bookingsForDate.length}`} />
 
-                                            <div className='grid grid-cols-1 lg:grid-cols-2 gap-4 m-6'>
+                                            <div className='grid grid-cols-1 lg:grid-cols-2 gap-4 m-6' style={{ wordWrap: 'break-word' }}>
                                                 {bookingsForDate.map((booking) => (
                                                     <div key={booking._id} className='border border-2 border black p-6'>
                                                         <ParagraphComponent text={`${booking.name}, ${booking.age} years old`} category="Name" />
@@ -132,7 +132,6 @@ export const SortedByDate = () => {
                                                         <ParagraphComponent className="py-0 pt-0 lg:py-0 lg:pt-2" text={`${booking.email}`} category="Email" />
                                                         <ParagraphComponent className="py-0 pt-0 lg:py-0 lg:pt-2" text={`${booking.phonenumber}`} category="Phone number" />
                                                         <ParagraphComponent className="py-0 pt-0 lg:py-0 lg:pt-2" text={`Other message: ${booking.message}`} />
-
 
                                                         {booking.film && <ParagraphComponent className="py-0 pt-0 lg:py-0 lg:pt-2" text="Yes" category="Film" />}
                                                         {booking.droneVideos && <ParagraphComponent className="py-0 pt-0 lg:py-0 lg:pt-2" text="Yes" category="Drone video" />}

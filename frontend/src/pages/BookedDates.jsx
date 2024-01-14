@@ -1,13 +1,42 @@
 import Modal from 'react-modal';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { SortedByDate } from "../components/Bookings/SortedByDate"
 import { SubHeadingComponent } from "../components/Reusables/SubHeadingComponent"
 import { DropDownComponent } from "../components/Common/DropDownComponent"
 import { ReusableModal } from '../components/Reusables/ReusableModal';
 import { BtnComponent } from '../components/Reusables/BtnComonent';
+import { useNavigate } from "react-router-dom";
+import { userStore } from "../stores/userStore";
 
 export const BookedDates = () => {
     const [aboutModalIsOpen, setAboutModalIsOpen] = useState(false);
+    const storeHandleLogout = userStore((state) => state.handleLogout);
+
+    // Use the 'useNavigate' hook to programmatically navigate between routes.
+    const navigate = useNavigate();
+
+    // Get 'isLoggedIn' and 'accessToken' from the 'userStore'.
+    const { isLoggedIn, accessToken } = userStore();
+    console.log(isLoggedIn);
+    console.log(accessToken);
+
+    // useEffect hook to check user authentication status.
+    useEffect(() => {
+        if (!isLoggedIn) {
+            // If the user is not logged in, show an alert and navigate to the login route.
+            alert("No permission - please log in");
+            navigate("/"); // You can change this to the login route
+        }
+    }, [isLoggedIn]);
+
+    // Function to handle the click event of the logout button.
+    const onLogoutClick = () => {
+        storeHandleLogout(); // Call the 'handleLogout' function from 'userStore'.
+        // Additional logic after logout can be added here.
+        alert("Log out successful");
+        navigate("/"); // You can change this to the login route
+    };
+
 
     const openAboutModal = () => {
         setAboutModalIsOpen(true);
@@ -44,6 +73,10 @@ export const BookedDates = () => {
                 modalTitle="About This Page">
                 {aboutThisPageText}
             </ReusableModal>
+
+            <div className="flex items-center justify-center p-4">
+                <BtnComponent className="m-6 bg-gray-800 hover:bg-gray-600 text-white" label="Logout" onClick={onLogoutClick} />
+            </div>
 
             <SubHeadingComponent text="Booking sorted by date" />
 

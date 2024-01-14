@@ -141,7 +141,7 @@ export const BookingListComponent = ({ fetchAllBookings, fetchUnHandledBookings 
                         <div className="m-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-2">
 
                             {bookingsInGroup.map((booking, index) => (
-                                <div key={index} className="flex justify-center items-center h-full max-w-lg">
+                                <div key={index} className="flex justify-center items-center h-full max-w-lg" style={{ wordWrap: 'break-word' }}>
                                     <div className={`rounded-md px-4 mb-14 h-auto w-full ${booking.bookingIsHandled ? 'bg-emerald-300' : 'bg-red-300'}`}>
                                         <div>
 

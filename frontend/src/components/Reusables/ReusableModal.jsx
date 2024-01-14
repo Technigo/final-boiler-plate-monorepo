@@ -2,6 +2,9 @@ import { BtnComponent } from './BtnComonent';
 import { SubHeadingComponent } from './SubHeadingComponent';
 import Modal from 'react-modal';
 
+// Ensure to set the app root element for react-modal
+Modal.setAppElement('#root');
+
 export const ReusableModal = ({ isOpen, onRequestClose, contentLabel, modalTitle, children }) => {
     return (
         <Modal
