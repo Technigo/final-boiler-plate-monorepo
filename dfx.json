@@ -22,14 +22,12 @@
       "type": "assets"
     }
   },
-  "defaults": {
-    "build": {
-      "args": "",
-      "packtool": ""
-    }
-  },
-  "dfx": "0.9.3",
+  "dfx": "0.14.1",
   "networks": {
+    "ic": {
+      "bind": "http://localhost:8080",
+      "type": "persistent"
+    },
     "local": {
       "bind": "127.0.0.1:8000",
       "type": "ephemeral"
