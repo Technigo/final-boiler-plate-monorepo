@@ -1,6 +1,8 @@
 import { Resend } from 'resend';
 import Booking from '../models/BookingModel';
 import { handleErrors } from './commonController';
+import { startOfDay, endOfDay } from 'date-fns';
+
 require('dotenv').config();
 
 const resend = new Resend(process.env.BOOKING_RESEND_API_KEY);
@@ -130,6 +132,22 @@ export const getAllBookings = async (req, res) => {
     } catch (error) {
         // Utilize the existing handleErrors function
         handleErrors(res, error);
+    }
+};
+
+// Modify the getBookingsByDate function in your controller
+export const getHandledBookingsByDate = async (req, res) => {
+    try {
+        // Your existing logic to retrieve handled bookings
+        const handledBookings = await Booking.find({ bookingIsHandled: true });
+
+        // Sort the handled bookings by the nearest date
+        handledBookings.sort((a, b) => new Date(a.date) - new Date(b.date));
+
+        res.status(200).json(handledBookings);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: 'Internal Server Error' });
     }
 };
 
