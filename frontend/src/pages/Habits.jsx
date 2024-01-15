@@ -1,5 +1,5 @@
-import React, { useEffect } from "react";
-//import "../components/habits.css";
+import { useEffect } from "react";
+import "../components/habits.css";
 import moment from "moment";
 import Navbar from "../components/Navbar";
 import NavbarMobile from "../components/NavbarMobile";
@@ -15,6 +15,7 @@ import { useTranslation } from "react-i18next";
 import lottie from "lottie-web";
 import logInAnimationData from "../data/login_animation.json";
 
+// Define the 'Habits' functional component.
 export const Habits = () => {
   const isMobile = useMediaQuery({ maxWidth: 393 });
   const isTablet = useMediaQuery({ minWidth: 394, maxWidth: 834 });
@@ -26,6 +27,7 @@ export const Habits = () => {
 
   useEffect(() => {
     fetchHabits();
+    console.log('fetch');
 
     const container = document.getElementById('login-lottie-container');
 
@@ -44,6 +46,8 @@ export const Habits = () => {
       };
     }
   }, []);
+
+
 
   const navigate = useNavigate();
 
@@ -73,7 +77,7 @@ export const Habits = () => {
       const dayLabel = day.format('dddd');
 
       dayElements.push(
-        <div key={dayLabel} className="day-container" style={{ display: 'flex', flexDirection: 'row' }}>
+        <div key={dayLabel} className="day-container">
           <button
             className={`day-label ${active ? "finished" : "unfinished"}`}
             onClick={() => onClickMark(habit, active, day.format('YYYY-MM-DDT12:00:00'))}
@@ -98,43 +102,36 @@ export const Habits = () => {
     );
   };
 
-  const getHabitBackgroundStyle = (index) => {
-    const colors = ['#E7FDFF', '#F2FFE7', '#FFE7F9', '#FFF6E7'];
-    return {
-      backgroundColor: colors[index % colors.length],
-      borderRadius: '20px',
-      marginBottom: '15px',
-      padding: '20px',
-    };
+  // Function to get the background class based on the habit index
+  const getHabitBackgroundClass = (index) => {
+    const classes = ['habit-bg-first', 'habit-bg-second', 'habit-bg-third', 'habit-bg-forth'];
+    return classes[index % classes.length];
   };
 
   return (
     <>
       {isMobile ? <NavbarMobile /> : isTablet ? <NavbarMobile /> : <Navbar />}
 
-      <div style={{ textAlign: 'left', margin: '100px auto', maxWidth: '900px' }}>
-        {isLoggedIn && <h2 style={{ fontWeight: '500' }}>{t("Hi")}{t(", welcome! Let's make the best of this day ☀️")}</h2>}
+      <div className="habits-container">
+        {isLoggedIn && <h2>{t("Hi")}{t(", welcome! Let's make the best of this day ☀️")}</h2>}
 
         {isLoggedIn ? (
           <>
-            <h3 style={{ fontWeight: '500', marginTop: '20px' }}>{t("My habits")}</h3>
-            <hr style={{ border: 'none', borderTop: '8px dotted #3EC3CE', color: '#fff', backgroundColor: 'none', height: '1px', width: '100%', marginLeft: '0px', paddingBottom: '40px', position: 'relative' }} />
+            <h3>{t("My habits")}</h3>
+            <hr />
             {habits.length === 0 ? (
               <p>{t("No habits yet, go ahead and add some!")}</p>
             ) : (
               habits.map((habit, index) => (
-                <div
-                  key={habit._id}
-                  style={getHabitBackgroundStyle(index)}
-                >
-                  <div style={{ borderRadius: '20px', paddingLeft: '20px' }}>
-                    <div style={{ flex: '1', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+                <div key={habit._id} className={`card-wrapper ${getHabitBackgroundClass(index)}`}>
+                  <div className="one-habit">
+                    <div className="habit-name-container">
                       <p>{habit.habit}</p>
                     </div>
                     {finishedComponent(habit)}
-                    <div style={{ width: '100%', display: 'flex', justifyContent: 'flex-end', alignItems: 'center', paddingRight: '20px', marginTop: '-40px', }}>
-                      <button style={{ backgroundColor: 'transparent', border: 'none', padding: 'none', cursor: 'pointer' }} onClick={() => deleteHabitById(habit._id)}>
-                        <img src="./trashcan.png" alt="delete" style={{ width: '20px' }} />
+                    <div className="trash-container">
+                      <button className="trash" onClick={() => deleteHabitById(habit._id)}>
+                        <img src="./trashcan.png" alt="delete" className="trash-icon" />
                       </button>
                     </div>
                   </div>
@@ -146,20 +143,20 @@ export const Habits = () => {
             <button onClick={onLogoutClick}>{t("Sign Out")}</button>
           </>
         ) : (
-          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '70vh', textAlign: 'center' }}>
-            <div style={{ maxWidth: '600px', margin: '0 auto', padding: '20px' }}>
+          <div className="access-denied-container">
+            <div className="message-box">
               <div id="login-lottie-container" className="login-lottie-animation"></div>
-              <h2 style={{ color: '#3EC3CE', fontSize: '30px', marginBottom: '10px' }}>{t("Oops! You need to be logged in.")}</h2>
-              <p style={{ color: '#555', fontSize: '16px', lineHeight: '1.6' }}>
+              <h2>{t("Oops! You need to be logged in.")}</h2>
+              <p>
                 {t("Access to My Page is exclusive to our members. Please")}
-                <Link to="/" style={{ textDecoration: 'none', fontWeight: 'bold' }}>{t("log in")}</Link>
+                <Link to="/">{t("log in")}</Link>
                 {t("or")}
-                <Link to="/" style={{ textDecoration: 'none', fontWeight: 'bold' }}>{t("sign up")}</Link>
+                <Link to="/">{t("sign up")}</Link>
                 {t("to manage your personal content and enjoy all the benefits of being a member.")}
               </p>
-              <p style={{ color: '#555', fontSize: '16px', lineHeight: '1.6' }}>
+              <p>
                 {t("If you're just looking around, welcome! Feel free to")}
-                <Link to="/" style={{ textDecoration: 'none', fontWeight: 'bold' }}>{t("go back to our homepage")}</Link>
+                <Link to="/">{t("go back to our homepage")}</Link>
                 {t("and explore.")}
               </p>
             </div>
