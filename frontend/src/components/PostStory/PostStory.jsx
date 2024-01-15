@@ -20,6 +20,7 @@ export const PostStory = () => {
   const [locationName, setLocationName] = useState("");
   const [latitude, setLatitude] = useState(null);
   const [longitude, setLongitude] = useState(null);
+  const [storyPosted, setStoryPosted] = useState("");
 
   // Function to check if a story is in Swedish and bypass it
   const isStoryInSwedish = (text) => {
@@ -55,8 +56,6 @@ export const PostStory = () => {
       image: selectedImage,
     };
 
- 
-
     if (isStoryInSwedish(newStory)) {
       postStory(storyData);
     } else {
@@ -86,7 +85,6 @@ export const PostStory = () => {
     )
       .then((res) => res.json())
       .then((googleApiResponse) => {
-
         if (
           googleApiResponse.error &&
           googleApiResponse.error.message.includes("Language not supported")
@@ -102,7 +100,6 @@ export const PostStory = () => {
           } else {
             postStory(storyData);
           }
-
         }
       })
       .catch((error) => {
@@ -134,8 +131,7 @@ export const PostStory = () => {
         setNewCategory("");
         setSelectedImage("");
 
-        setNewStory(""); 
-
+        setNewStory("");
       })
       .catch((error) => {
         console.error("Error posting the story", error);

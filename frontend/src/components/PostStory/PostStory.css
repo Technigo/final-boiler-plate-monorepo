@@ -18,7 +18,6 @@
 
   z-index: 100;
   border-radius: 5px;
-
 }
 
 .category {
@@ -50,7 +49,7 @@
 .gallery {
   position: absolute;
   width: 70%;
-  height: 25%;
+  height: 40%;
   display: flex;
   justify-content: center;
   padding: 3%;
@@ -80,15 +79,6 @@
   border-radius: 5px;
 }
 
-/* POPUPKALENDERN
- .date-picker {
-  width: 70%;
-  background-color: rgba(2, 108, 124, 0.7);
-  border: 2px solid rgba(2, 108, 124, 0.7);
-  border-radius: 10px;
-  padding: 0.3%;
-} */
-
 @media screen and (min-width: 1000px) {
   .input-field,
   .category,
@@ -97,12 +87,6 @@
   }
 
   .gallery {
-    height: 40%;
-  }
-}
-
-@media screen and (min-width: 2000px) {
-  .gallery {
-    height: 50%;
+    height: 60%;
   }
 }
