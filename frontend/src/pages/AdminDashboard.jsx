@@ -1,10 +1,10 @@
 import { Link, useNavigate } from 'react-router-dom';
-import { adminStore } from '../stores/adminStore';
+import { adminLoginStore } from '../stores/adminLoginStore';
 //import style component
 
 export const AdminDashboard = () => {
     const navigate = useNavigate();
-    const { handleAdminLogout } = adminStore((state) => ({
+    const { handleAdminLogout } = adminLoginStore((state) => ({
         handleAdminLogout: state.handleAdminLogout,
     }));
 

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { adminStore } from '../../stores/adminStore';
+import { adminDashStore } from '../../stores/adminDashStore';
 import { useNavigate } from 'react-router-dom';
 
 export const AdminRegister = () => {
@@ -7,7 +7,7 @@ export const AdminRegister = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [email, setEmail] = useState('');
-    const { registerNewAdmin, isLoading, errorMessage } = adminStore((state) => ({
+    const { registerNewAdmin, isLoading, errorMessage } = adminDashStore((state) => ({
         registerNewAdmin: state.registerNewAdmin,
         isLoading: state.isLoading,
         errorMessage: state.errorMessage,
@@ -15,9 +15,15 @@ export const AdminRegister = () => {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-        await registerNewAdmin(username, password, email);
-        // Handle post-registration logic here (e.g., navigate, clear form, show success message)
+        try {
+            await registerNewAdmin(username, password, email);
+            // Handle success logic here
+        } catch (error) {
+            console.error('Registration error:', error);
+            // Handle the error (e.g., show an error message to the user)
+        }
     };
+    // Handle post-registration logic here (e.g., navigate, clear form, show success message)
 
     return (
         <form onSubmit={handleSubmit}>
@@ -28,7 +34,6 @@ export const AdminRegister = () => {
             <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Email" required />
             <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Password" required />
             <button type="submit" disabled={isLoading}>Register</button>
-            {/* Consider removing this button if navigation is handled post-registration */}
             <button type="button" onClick={() => navigate('/admin/dashboard')}>Back to Dashboard</button>
         </form>
     );

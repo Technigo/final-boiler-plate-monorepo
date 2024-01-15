@@ -3,14 +3,14 @@
 // After an admin performs an action (like registering a new admin), you might want to navigate them back to the `AdminDashboard` or show a success message. This can be done using the `useNavigate` hook and state management within each component.
 
 import { useState } from 'react';
-import { adminStore } from '../../stores/adminStore';
+import { adminDashStore } from '../../stores/adminDashStore';
 import { useNavigate } from 'react-router-dom';
 
 
 export const UpgradeUser = () => {
     const navigate = useNavigate();
     const [userId, setUserId] = useState('');
-    const { upgradeUserToAdmin } = adminStore((state) => ({
+    const { upgradeUserToAdmin } = adminDashStore((state) => ({
         upgradeUserToAdmin: state.upgradeUserToAdmin
     }));
 
