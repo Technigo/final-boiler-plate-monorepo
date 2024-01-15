@@ -89,7 +89,7 @@ export const Habits = () => {
     }
 
     return (
-      <div className="days-wrapper" style={{ display: 'flex', flexDirection: 'row' }}>
+      <div className="days-wrapper">
         {dayElements}
         <div className="finished-weeks">
           {t("Finished weeks:")} {habit.finishedWeeks || 0}
@@ -132,7 +132,7 @@ export const Habits = () => {
                       <p>{habit.habit}</p>
                     </div>
                     {finishedComponent(habit)}
-                    <div style={{ width: '100%', display: 'flex', justifyContent: 'flex-end', alignItems: 'center', paddingRight: '20px', marginTop: '-40px' }}>
+                    <div style={{ width: '100%', display: 'flex', flexDirection: 'row', justifyContent: 'flex-end', alignItems: 'center', paddingRight: '20px', marginTop: '-40px' }}>
                       <button style={{ backgroundColor: 'transparent', border: 'none', padding: 'none', cursor: 'pointer' }} onClick={() => deleteHabitById(habit._id)}>
                         <img src="./trashcan.png" alt="delete" style={{ width: '20px' }} />
                       </button>
