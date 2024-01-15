@@ -2,7 +2,7 @@ import { NavBar } from "../../components/NavBar/NavBar";
 import { Hero } from "../../components/Hero/Hero";
 import { Footer } from "../../components/Footer/Footer";
 import { Outlet } from "react-router-dom"; // For rendering nested routes
-import { Smoke } from "../../components/Smoke/Smoke";
+// import { Smoke } from "../../components/Smoke/Smoke";
 import { useRef } from "react";
 
 export const LandingPage = () => {
@@ -14,7 +14,7 @@ export const LandingPage = () => {
 
   return (
     <div>
-      <Smoke ref={smokeRef} />
+      {/* <Smoke ref={smokeRef} /> */}
       <NavBar onLogoClick={addSplat} />
 
       <Hero />
