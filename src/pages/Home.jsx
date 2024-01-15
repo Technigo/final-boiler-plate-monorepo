@@ -11,10 +11,10 @@ export const Home = () => {
 
   const fetchShows = bookingStore((state) => (state.fetchAllShowTimes))
   const allShowTimes = bookingStore((state) => (state.allShowTimes))
-  
+
   useEffect(() => {
     if (allShowTimes.length > 0) fetchShows()
-  },[])
+  }, [])
 
   return (
     <div className="the-home-page">
