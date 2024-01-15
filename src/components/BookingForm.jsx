@@ -14,6 +14,7 @@ export const BookingForm = () => {
     const [ showConfirmation, setShowConfirmation ] = useState(false)
     const { 
         selectedSeats,
+        setSelectedSeats,
         selectedShowtime,
         makeAReservation
      } = bookingStore()
@@ -48,6 +49,7 @@ export const BookingForm = () => {
         selectedSeats.map(seat => {
             bookASeat(formData.email, seat, selectedShowtime._id)
         })
+        setSelectedSeats([])
     }
 
     const calculatePrice = (ticketArray) => {

@@ -1,15 +1,15 @@
 .the-calendar {
 	background-color: var(--background-section-color-two);
+	width: 90vw;
 }
 
 .the-row-calendar .slick-list {
 	position: relative;
 	display: block;
 	margin: 20px;
-	width: 300px;
+	width: 70vw;
 }
 .the-day {
-	height: 100%;
 	box-shadow: 0 4px 8px var(--box-shadow-color);
 	border-radius: 1rem;
 }
@@ -24,8 +24,8 @@
 
 .slick-slide {
 	margin: 0 1rem;
-	height: 100%;
-	width: 200px !important;
+	width: 100px !important;
+	height: 100px;
 }
 
 .slick-dots {
@@ -33,12 +33,24 @@
 }
 
 @media (min-width: 667px) {
+	.the-calendar {
+		width: 80vw;
+	}
+	.the-row-calendar .slick-list {
+		width: 70vw;
+	}
 }
 
 /* Media Query: Further adjust grid for screens wider than 1025px */
 @media (min-width: 1025px) {
+	.the-calendar {
+		width: 80vw;
+	}
 	.the-row-calendar .slick-list {
-		width: 1280px;
+		width: 75vw;
+	}
+	.slick-slide {
+		width: 200px !important;
 	}
 }
 
