@@ -13,7 +13,7 @@ import "./Map.css";
 
 const libraries = ["places"];
 
-//Style from the Google Maps to have a different look on the map
+// Custom styles for Google Maps to give it a unique appearance
 const styles = {
   retro: [
     { elementType: "geometry", stylers: [{ color: "#ebe3cd" }] },
@@ -155,14 +155,14 @@ const styles = {
   ],
 };
 
-// Helper function to truncate story content
+// Helper function to truncate story content to a specified number of words
 const truncate = (str, numWords) => {
   return str.split(" ").splice(0, numWords).join(" ") + "...";
 };
 
 export const Map = () => {
+  // State hooks for various functionalities
   const [map, setMap] = useState(null);
-
   const [stories, setStories] = useState([]);
   const [selectedMarker, setSelectedMarker] = useState(null);
   const [mapCenter, setMapCenter] = useState({
@@ -172,8 +172,9 @@ export const Map = () => {
   const [autocomplete, setAutocomplete] = useState(null);
   const [customMarkerIcon, setCustomMarkerIcon] = useState(null);
 
-  // Fetch stories when the component mounts
+  // useEffect hook to fetch stories from the backend when the component mounts
   useEffect(() => {
+    // Function to fetch stories from the API
     const fetchStories = () => {
       const apiUrl =
         import.meta.env.VITE_BACKEND_API || "http://localhost:3000";
@@ -181,7 +182,7 @@ export const Map = () => {
         .then((response) => response.json())
         .then((data) => {
           console.log("Fetched stories:", data);
-
+          // Filtering out invalid story locations
           const validStories = data.filter(
             (story) =>
               story.location &&
@@ -194,12 +195,14 @@ export const Map = () => {
           console.error("Error fetching stories:", error);
         });
     };
-    fetchStories(); // fetch immediately on mount
-    const interval = setInterval(fetchStories, 10000); // fetch every 10 seconds
+    fetchStories(); // Immediate fetch on mount
+    const interval = setInterval(fetchStories, 10000); // Fetch every 10 seconds
 
-    return () => clearInterval(interval); // clean up on unmount
+    // Cleanup function to clear the interval when the component unmounts
+    return () => clearInterval(interval);
   }, []);
 
+  // Callback to handle map loading
   const onMapLoad = useCallback((mapInstance) => {
     setMap(mapInstance);
     const customMarker = {
@@ -209,6 +212,7 @@ export const Map = () => {
     setCustomMarkerIcon(customMarker);
   }, []);
 
+  // Transforming story data into marker data
   const markers = stories.map((story) => ({
     lat: Number(story.location.lat),
     lng: Number(story.location.lng),
@@ -219,18 +223,22 @@ export const Map = () => {
 
   console.log("Markers:", markers);
 
+  // Callback for handling marker click events
   const onMarkerClick = useCallback((marker) => {
     setSelectedMarker(marker);
   }, []);
 
+  // Handler for autocomplete component load
   const onLoadAutocomplete = (autocomplete) => {
     setAutocomplete(autocomplete);
   };
 
+  // Handler for when a place is selected in the autocomplete component
   const onPlaceChanged = () => {
     if (autocomplete !== null) {
       const place = autocomplete.getPlace();
       if (place.geometry && place.geometry.location) {
+        // Updating map center based on selected location
         const newCenter = {
           lat: place.geometry.location.lat(),
           lng: place.geometry.location.lng(),
@@ -250,20 +258,19 @@ export const Map = () => {
       googleMapsApiKey={import.meta.env.VITE_GOOGLE_MAPS_API_KEY}
       libraries={libraries}>
       <Autocomplete onLoad={onLoadAutocomplete} onPlaceChanged={onPlaceChanged}>
-        {/* // types={["(cities)", "address"]} */}
         <input
           className="search-input"
           type="text"
           placeholder="Search location"
         />
       </Autocomplete>
-
       <GoogleMap
         onLoad={onMapLoad}
         mapContainerClassName="my-map-container"
         center={mapCenter}
         zoom={4}
         options={{ styles: styles.retro, streetViewControl: false }}>
+        {/* Mapping through markers to display them on the map */}
         {markers.map((marker, index) => (
           <Marker
             key={index}
@@ -272,6 +279,7 @@ export const Map = () => {
             icon={customMarkerIcon}
           />
         ))}
+        {/* Displaying an info window for the selected marker */}
         {selectedMarker && (
           <InfoWindow
             position={{ lat: selectedMarker.lat, lng: selectedMarker.lng }}
@@ -288,4 +296,5 @@ export const Map = () => {
   );
 };
 
+// Using memo to optimize rendering
 export default memo(Map);

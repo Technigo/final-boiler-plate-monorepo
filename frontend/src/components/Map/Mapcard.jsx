@@ -1,25 +1,27 @@
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import "./Mapcard.css";
-// import "../StoryCard/StoryCard.css";
 import { timeSince } from "../utils/timeUtils";
 import likeIcon from "../../assets/likeicon.svg";
 import closeIcon from "../../assets/close-icon.svg";
 
 export const Mapcard = () => {
   // eslint-disable-next-line no-undef
+  // Extracting the story ID from the URL parameters
   const { id } = useParams();
+  // State hooks for story data, loading status, and language selection
   const [story, setStory] = useState(null);
   const [loading, setLoading] = useState(true);
   const [selectedLanguage, setSelectedLanguage] = useState("en"); // default to English
   // const [stories, setStories] = useState([]);
   const navigate = useNavigate();
 
+  // Function to navigate back to the map view
   const navigateToMap = () => {
     navigate("/map");
   };
 
-  // Function to handle like button click, updates story ranking
+  // Function to handle the like button click. This updates the story's ranking.
   const handleLikeClick = () => {
     fetch(`${apiUrl}/stories/${story._id}/rank`, {
       method: "PUT",
@@ -30,7 +32,7 @@ export const Mapcard = () => {
       .then((response) => response.json())
       .then((updatedStory) => {
         if (updatedStory) {
-          // Update the local state with the new story data
+          // Updating the local state with the new story data reflecting the like
           setStory(updatedStory);
         }
       })
@@ -39,9 +41,10 @@ export const Mapcard = () => {
 
   console.log(id);
 
-  // API URL from environment variables or default
+  // Define the API URL from environment variables or use a default value
   const apiUrl = import.meta.env.VITE_BACKEND_API || "http://localhost:3000";
 
+  // useEffect hook to fetch story details based on the selected languag
   useEffect(() => {
     const fetchStory = async () => {
       try {
@@ -54,7 +57,8 @@ export const Mapcard = () => {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
         const data = await response.json();
-        console.log("Fetched data:", data); // Debugging log
+        // Setting the fetched story data and updating loading status
+
         setStory(data);
         setLoading(false);
       } catch (error) {
@@ -72,6 +76,7 @@ export const Mapcard = () => {
     console.log("Language changed to:", e.target.value);
   };
 
+  // Rendering loading state or error message if story is not found
   if (loading) {
     return <div>Loading...</div>;
   }
@@ -80,14 +85,14 @@ export const Mapcard = () => {
     return <div>Story not found.</div>;
   }
 
+  // Rendering the story details card
   return (
     <div className="map-card-list">
       <div className="filter-options">
         <select
           className="map-dropdowns"
           value={selectedLanguage}
-          onChange={handleLanguageChange}
-        >
+          onChange={handleLanguageChange}>
           <option value="en">English</option>
           <option value="sv">Swedish</option>
         </select>
