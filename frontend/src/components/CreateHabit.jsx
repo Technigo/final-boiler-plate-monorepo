@@ -51,7 +51,7 @@ export const CreateHabit = () => {
           style={{
             display: 'flex',
             justifyContent: 'center',
-            alignItems: 'center',
+            // alignItems: 'center',
             width: 'auto',
             padding: '5px 10px',
             paddingTop: '1px',
