@@ -3,10 +3,6 @@ import mongoose from "mongoose";
 const { Schema } = mongoose;
 
 const mapStorySchema = new Schema({
-  // id: {
-  //   type: Number,
-  //   required: true,
-  // },
   title: {
     type: String,
     required: true,
