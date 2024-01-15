@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import "../components/habits.css";
+import "./habits.css";
 import moment from "moment";
 import Navbar from "../components/Navbar";
 import NavbarMobile from "../components/NavbarMobile";
