@@ -9,7 +9,13 @@ export const Trips = () => {
     fetch(`${apiEnv}/trips`)
       .then((response) => response.json())
       .then((data) => {
-        setTrips(data);
+        // Filter trips based on date
+        const filteredTrips = data.filter((trip) => {
+          const tripDate = new Date(trip.date);
+          const currentDate = new Date();
+          return tripDate >= currentDate;
+        });
+        setTrips(filteredTrips);
       })
       .catch((error) => console.error("Error fetching trips:", error));
   }, []);
@@ -25,29 +31,29 @@ export const Trips = () => {
       {trips.map((trip) => (
         <div
           key={trip._id}
-          className="grid grid-cols-12 gap-2 p-4 bg-secondary rounded-lg relative"
+          className="grid grid-cols-12 gap-2 p-4 border rounded-lg relative"
         >
-          <div className="col-span-4 text-md text-gray-900 sm:text-xl">
+          <div className="col-span-4 text-md text-primary-900 sm:text-xl">
             {trip.from}
           </div>
-          <div className="col-span-1 text-md text-gray-900 text-center sm:text-xl">
+          <div className="col-span-1 text-md text-primary-900 text-center sm:text-xl">
             →
           </div>
-          <div className="col-span-4 text-md text-gray-900 sm:text-xl">
+          <div className="col-span-4 text-md text-primary-900 sm:text-xl">
             {trip.to}
           </div>
           <div className="col-span-3"></div>
-          <div className="col-span-3 text-xs text-gray-900 sm:text-lg">
+          <div className="col-span-3 text-xs text-primary-900 sm:text-lg">
             {trip.date}
           </div>
-          <div className="flex flex-col span-4 text-xs text-gray-900 sm:text-lg">
+          <div className="flex flex-col span-4 text-xs text-primary-900 sm:text-lg">
             <p>Posted by user </p>
             <p>{trip.username}</p>
           </div>
           <div className="col-span-3 absolute right-4 top-1/2 transform -translate-y-1/2 h-full flex items-center justify-center">
             <Link
               to={`/trips/${trip._id}`}
-              className="bg-pink-400 rounded-full cursor-pointer hover:bg-cyan-800 text-white px-5 py-2 font-semibold focus:outline-none focus:ring focus:border-blue-300"
+              className="bg-secondary-400 rounded-full cursor-pointer hover:bg-secondary-800 text-white px-5 py-2 font-semibold focus:outline-none focus:ring focus:border-primary-300"
             >
               Details
             </Link>

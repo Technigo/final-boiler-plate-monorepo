@@ -89,7 +89,7 @@ export const TripGenerator = () => {
       from: formData.from,
       to: formData.to,
       message: formData.message,
-      date: formData.date.toString(),
+      date: formData.date.toISOString().split("T")[0],
       make: formData.make,
       model: formData.model,
       availableSeats: formData.availableSeats,
@@ -199,6 +199,7 @@ export const TripGenerator = () => {
                 placeholderText="MM/DD/YYYY"
                 wrapperClassName="w-full"
                 className="input-field border p-2 rounded-md w-full h-10"
+                minDate={new Date()}
               />
             </div>
 
@@ -333,10 +334,10 @@ export const TripGenerator = () => {
               type="submit"
               className={`submit-button ${
                 loading
-                  ? "bg-gray-100"
+                  ? "bg-primary-100"
                   : formDataIsIncomplete()
-                  ? "bg-gray-100"
-                  : "bg-rose-500 hover:bg-rose-700"
+                  ? "bg-primary-100"
+                  : "bg-secondary-500 hover:bg-secondary-700"
               } text-white p-4 py-2 rounded-full focus:outline-none focus:ring focus:border-blue-300`}
               disabled={loading || formDataIsIncomplete()}
             >
@@ -350,7 +351,7 @@ export const TripGenerator = () => {
             {trips.reverse().map((trip) => (
               <div
                 key={trip.id}
-                className="grid grid-cols-12 gap-2 p-4 bg-blue-100 rounded-lg relative"
+                className="grid grid-cols-12 gap-2 p-4 bg-secondary-100 rounded-lg relative"
               >
                 <div className="col-span-12 text-md text-gray-900 sm:text-xl">
                   You have created a trip from {trip.from} to {trip.to} on{" "}

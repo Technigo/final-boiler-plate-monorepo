@@ -4,48 +4,48 @@ import { TripModel } from "../models/TripModel";
 import bcrypt from "bcrypt";
 
 export const UserController = {
-  getProfile: (req, res) => {
-    res.send(JSON.stringify(req.oidc.user));
-  },
+  // getProfile: (req, res) => {
+  //   res.send(JSON.stringify(req.oidc.user));
+  // },
 
   checkAuthentication: (req, res) => {
     res.send(req.oidc.isAuthenticated() ? "Logged in" : "Logged out");
   },
 
-  registerUser: async (req, res) => {
-    const { username, email, password } = req.body;
-    try {
-      if (!username || !email || !password) {
-        res.status(400).json({ message: "Please add all fields" });
-      }
+  // registerUser: async (req, res) => {
+  //   const { username, email, password } = req.body;
+  //   try {
+  //     if (!username || !email || !password) {
+  //       res.status(400).json({ message: "Please add all fields" });
+  //     }
 
-      const existingUser = await UserModel.findOne({
-        $or: [{ username }, { email }],
-      });
+  //     const existingUser = await UserModel.findOne({
+  //       $or: [{ username }, { email }],
+  //     });
 
-      if (existingUser) {
-        res.status(400).json({
-          message: `User with ${
-            existingUser.username === username ? "username" : "email"
-          } already exists`,
-        });
-      }
+  //     if (existingUser) {
+  //       res.status(400).json({
+  //         message: `User with ${
+  //           existingUser.username === username ? "username" : "email"
+  //         } already exists`,
+  //       });
+  //     }
 
-      const user = new UserModel({
-        email,
-        username,
-        password: bcrypt.hashSync(password, 10),
-      });
+  //     const user = new UserModel({
+  //       email,
+  //       username,
+  //       password: bcrypt.hashSync(password, 10),
+  //     });
 
-      await user.save();
-      res.status(201).json({ id: user._id, accessToken: user.accessToken });
-    } catch (err) {
-      res.status(400).json({
-        message: "Could not create user",
-        errors: err.errors,
-      });
-    }
-  },
+  //     await user.save();
+  //     res.status(201).json({ id: user._id, accessToken: user.accessToken });
+  //   } catch (err) {
+  //     res.status(400).json({
+  //       message: "Could not create user",
+  //       errors: err.errors,
+  //     });
+  //   }
+  // },
 
   getAllUsers: async (req, res) => {
     try {
@@ -129,6 +129,7 @@ export const UserController = {
       username,
     } = req.body;
     console.log(req.body);
+
     try {
       const trip = new TripModel({
         from,
@@ -144,6 +145,15 @@ export const UserController = {
       });
 
       await trip.save();
+
+      const joined = await trip.joinTrip(user);
+
+      if (!joined) {
+        return res
+          .status(400)
+          .json({ message: "No available seats for the trip" });
+      }
+
       res.status(201).json({ message: "Trip successfully registered" });
     } catch (error) {
       res.status(400).json({

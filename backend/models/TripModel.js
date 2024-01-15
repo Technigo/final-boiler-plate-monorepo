@@ -43,10 +43,28 @@ export const tripSchema = new Schema(
       type: mongoose.Schema.Types.ObjectId,
       ref: "User",
     },
+
+    passengers: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User",
+      },
+    ],
   },
   {
     timestamps: true,
   }
 );
+
+tripSchema.methods.joinTrip = async function (userId) {
+  if (this.availableSeats > 0) {
+    this.availableSeats -= 1;
+    this.passengers.push(userId);
+    await this.save();
+    return true;
+  } else {
+    return false;
+  }
+};
 
 export const TripModel = mongoose.model("Trip", tripSchema);
