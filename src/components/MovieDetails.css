@@ -42,7 +42,6 @@
 		align-items: center;
 		flex-direction: row;
 		gap: 2rem;
-		margin-top: -4rem;
 	}
 	.movie-poster {
 		max-width: 400px;
@@ -63,9 +62,7 @@
 	.rating {
 		margin-left: 1rem;
 	}
-	.details {
-		margin-top: -10rem;
-	}
+
 	.description-container {
 		display: flex;
 		flex-direction: row;
