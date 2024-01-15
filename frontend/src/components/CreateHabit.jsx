@@ -39,6 +39,7 @@ export const CreateHabit = () => {
             backgroundColor: '#f4eee3',
             borderRadius: '25px',
             border: '1px solid grey',
+            width: '300px',
             flexGrow: 1
           }}
           type="text"
@@ -60,13 +61,13 @@ export const CreateHabit = () => {
             fontFamily: "'Poppins', sans-serif",
             fontWeight: 'bold',
             color: 'black',
-            backgroundColor: 'white' 
+            backgroundColor: 'white'
           }}
           onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#3EC3CE'}
           onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'white'}
           onClick={addHabitLocal}
         >
-          <img style={{ width: '15px', marginRight: '5px' }} src="/plus.png" alt="Add"/>
+          <img style={{ width: '15px', marginRight: '5px' }} src="/plus.png" alt="Add" />
           {t("Add Habit")}
         </button>
       </div>
@@ -85,8 +86,8 @@ export const CreateHabit = () => {
         onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#3EC3CE'}
         onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'transparent'}
         onClick={deleteAllHabits}
-        >
-        <img style={{ width: '14px', paddingRight: '8px' }} src="/trashcan.png" alt="Delete"/>
+      >
+        <img style={{ width: '14px', paddingRight: '8px' }} src="/trashcan.png" alt="Delete" />
         {t("Delete All My Habits")}
       </button>
     </div>
