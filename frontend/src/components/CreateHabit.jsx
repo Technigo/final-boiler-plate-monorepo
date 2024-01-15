@@ -2,33 +2,29 @@ import { useState } from "react";
 import { habitStore } from "../stores/habitStore";
 import { useTranslation } from 'react-i18next';
 
-// Define the 'Createhabit' functional component.
 export const CreateHabit = () => {
-  // Initialize state variable 'habit' using 'useState' to store the habit input.
   const [habit, setHabit] = useState("");
-  // Access the 'addHabitToServer' and 'deleteAllHabits' functions from the 'HabitStore'.
   const { addHabitToServer, deleteAllHabits } = habitStore();
 
-  // Function to update the 'habit' state with the value entered in the input field.
   const habitInput = (e) => {
     setHabit(e.target.value);
   };
 
-  // Function to add a new Habit both locally and to the server.
+
   const addHabitLocal = async () => {
     if (habit.trim() !== "") {
-      // Check if the 'habit' input is not empty or only whitespace.
-      await addHabitToServer(habit); // Add the habit to the server.
-      setHabit(""); // Clear the input field after the Habit is added.
+      await addHabitToServer(habit);
+      setHabit("");
     }
   };
 
   const { t } = useTranslation();
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', padding: '40px', paddingLeft: '0px' }}>
-      <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', gap: '10px' }}>
+    <div id="create-habit-container" style={{ display: 'flex', flexDirection: 'column', gap: '10px', padding: '40px', paddingLeft: '0px' }}>
+      <div id="habit-input-container" style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', gap: '10px' }}>
         <input
+          id="habit-input"
           style={{
             color: 'black',
             padding: '10px',
@@ -48,6 +44,7 @@ export const CreateHabit = () => {
           value={habit}
         />
         <button
+          id="add-habit-button"
           style={{
             display: 'flex',
             justifyContent: 'center',
@@ -72,6 +69,7 @@ export const CreateHabit = () => {
         </button>
       </div>
       <button
+        id="delete-all-habits-button"
         style={{
           border: '#3EC3CE dotted 2px',
           color: '#3EC3CE',
@@ -93,4 +91,3 @@ export const CreateHabit = () => {
     </div>
   );
 };
-
