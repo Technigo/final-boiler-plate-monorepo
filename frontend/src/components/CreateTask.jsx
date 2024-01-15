@@ -87,11 +87,11 @@ const StyledCharCounter = styled.span`
 `;
 
 const StyledTitleError = styled.p`
-  color: #e70505;
+  color: var(--error);
 `;
 
 const StyledDescriptionError = styled.p`
-  color: #e70505;
+  color: var(--error);
   padding-left: 10px;
   text-align: left;
 `;

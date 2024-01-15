@@ -2,6 +2,7 @@ import { userStore } from "../stores/userStore";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Button } from "../components/Buttons/Button";
+import { LoaderAnimation } from "../components/Animations/LoaderAnimation";
 import styled from "styled-components";
 
 // Styling for the Register component
@@ -55,6 +56,7 @@ export const Register = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
   // Initialize the 'navigate' function from React Router.
   const navigate = useNavigate();
@@ -70,15 +72,28 @@ export const Register = () => {
       return;
     }
     try {
+      setIsLoading(true);
       // Call the 'handleSignup' function from 'userStore' with 'username' and 'password' parameters.
-      await storeHandleSignup(username, password, email);
-      if (username && password && email) {
+      const registerPromise = storeHandleSignup(username, password, email);
+
+      await Promise.all([
+        registerPromise,
+        new Promise((resolve) => setTimeout(resolve, 2000)),
+      ]);
+      const isLoggedIn = userStore.getState().isLoggedIn;
+      // if (username && password && email) {
+      if (isLoggedIn) {
         // If the signup is successful, navigate to the task route ("/tasks").
         navigate("/tasks");
+      } else {
+        // Handle the case where isLoggedIn is false, i.e., signup was not successful.
+        alert("Signup was not successful");
       }
     } catch (error) {
       // Handle any errors that occur during signup and display an alert.
       alert("An error occurred during signup");
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -135,6 +150,7 @@ export const Register = () => {
           />
         </div>
       </StyledRegField>
+      {isLoading ? <LoaderAnimation /> : ""}
     </StyledRegister>
   );
 };
