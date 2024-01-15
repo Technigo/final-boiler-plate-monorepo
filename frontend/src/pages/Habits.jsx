@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import "./habits.css";
+// import "./habits.css";
 import moment from "moment";
 import Navbar from "../components/Navbar";
 import NavbarMobile from "../components/NavbarMobile";
@@ -77,7 +77,7 @@ export const Habits = () => {
       const dayLabel = day.format('dddd');
 
       dayElements.push(
-        <div key={dayLabel} className="day-container">
+        <div key={dayLabel} className="day-container" style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', marginRight: '5px' }}>
           <button
             className={`day-label ${active ? "finished" : "unfinished"}`}
             onClick={() => onClickMark(habit, active, day.format('YYYY-MM-DDT12:00:00'))}
@@ -112,7 +112,7 @@ export const Habits = () => {
     <>
       {isMobile ? <NavbarMobile /> : isTablet ? <NavbarMobile /> : <Navbar />}
 
-      <div className="habits-container">
+      <div className="habits-container" style={{ maxWidth: '900px', textAlign: 'left', margin: '100px auto' }}>
         {isLoggedIn && <h2>{t("Hi")}{t(", welcome! Let's make the best of this day ☀️")}</h2>}
 
         {isLoggedIn ? (
@@ -164,13 +164,15 @@ export const Habits = () => {
         )}
       </div>
 
-      {isMobile ? (
-        <FooterMobile />
-      ) : isTablet ? (
-        <Footer />
-      ) : (
-        <Footer />
-      )}
+      {
+        isMobile ? (
+          <FooterMobile />
+        ) : isTablet ? (
+          <Footer />
+        ) : (
+          <Footer />
+        )
+      }
     </>
   );
 };
