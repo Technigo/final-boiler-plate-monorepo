@@ -110,9 +110,7 @@ export const TripGenerator = () => {
       });
 
       const data = await response.json();
-      // if (data.success) {
       alert("Trip posted successfully");
-      // }
 
       await new Promise((resolve) => setTimeout(resolve, 1000));
 

@@ -19,7 +19,6 @@ export const Chat = () => {
   const [selectedUserId, setSelectedUserId] = useState(null);
   const [newMessageText, setNewMessageText] = useState("");
   const [messages, setMessages] = useState([]);
-  const [isNewMessage, setIsNewMessage] = useState(false);
 
   const [loading, setLoading] = useState(true);
   const [userLoading, setUserLoading] = useState(true);
@@ -28,7 +27,6 @@ export const Chat = () => {
 
   const divUnderMessages = useRef();
   const vite_backend = import.meta.env.VITE_BACKEND_API;
-  const vite_backend_shortened = import.meta.env.VITE_BACKEND_SHORTENED;
 
   const prevChatMessagesRef = useRef(chatMessages.length);
 
@@ -94,14 +92,10 @@ export const Chat = () => {
         _id: Date.now(),
       },
     ]);
-
-    // Set isNewMessage to true when a new message is sent
-    setIsNewMessage(true);
   };
 
   useEffect(() => {
     const ws = new WebSocket("ws://localhost:3000");
-    // const ws = new WebSocket(`ws://${vite_backend}`);
     setWs(ws);
 
     // Send the user ID to the server after WebSocket connection is open
@@ -123,52 +117,16 @@ export const Chat = () => {
     const userMessages = () => {
       // Handle your logic for new messages here
 
-      // setTimeout(() => {
-      //   handleChatHistory(loggedInUserId, recipientId);
-      // }, 10000);
       handleChatHistory(loggedInUserId, recipientId);
       console.log("chatMessages: " + chatMessages.length);
-
-      // Update the reference to the latest chatMessages
-
-      // if (isNewMessage) {
-      //   setIsNewMessage(false);
-      // }
     };
 
     userMessages();
   }, [recipientId, chatMessages]);
 
-  // useEffect(() => {
-  //   const userMessages2 = async () => {
-  //     if (isNewMessage) {
-  //       await handleChatHistory(loggedInUserId, recipientId);
-  //       setIsNewMessage(false);
-  //     }
-  //   };
-  //   // console.log(chatMessages);
-
-  //   userMessages2();
-  // }, [isNewMessage]);
-
   handleChatHistory();
   const div = divUnderMessages.current;
 
-  console.log(prevChatMessagesRef.current !== chatMessages.length);
-  // useEffect(() => {
-  //   if (prevChatMessagesRef.current !== chatMessages.length) {
-  //     console.log("New messages detected!");
-  //     // Handle your logic for new messages here
-
-  //     div.scrollIntoView({ behavior: "smooth", block: "end" });
-
-  //     console.log("scrolling to bottom");
-
-  //     // Update the reference to the latest chatMessages
-  //     prevChatMessagesRef.current = chatMessages.length;
-  //   }
-  //console.log("e")
-  // }, [chatMessages.length]);
   useEffect(() => {
     if (prevChatMessagesRef.current !== chatMessages.length) {
       console.log("New messages detected!");
@@ -198,20 +156,23 @@ export const Chat = () => {
             <h2 className="text-black text-sm py-1 xl:text-xl">Contacts:</h2>
             {!userLoading && (
               <ul className="px-2">
-                {userList.map((user) => (
-                  <li
-                    key={user._id}
-                    className="cursor-pointer py-2 text-sm xl:text-md"
-                    onClick={() => {
-                      setChatReceiver(user.username);
-                      setRecipientId(user._id);
-                      console.log("The recipient id is: " + recipientId);
-                      console.log("The sender id is: " + loggedInUserId);
-                    }}
-                  >
-                    {user.username}
-                  </li>
-                ))}
+                {userList.map(
+                  (user) =>
+                    user._id !== loggedInUserId && (
+                      <li
+                        key={user._id}
+                        className="cursor-pointer py-2 text-sm xl:text-md"
+                        onClick={() => {
+                          setChatReceiver(user.username);
+                          setRecipientId(user._id);
+                          console.log("The recipient id is: " + recipientId);
+                          console.log("The sender id is: " + loggedInUserId);
+                        }}
+                      >
+                        {user.username}
+                      </li>
+                    )
+                )}
               </ul>
             )}
           </div>
