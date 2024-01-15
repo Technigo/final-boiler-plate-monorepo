@@ -67,35 +67,36 @@ export const Habits = () => {
     var dayElements = [];
     var finished = habit.finished.map((i) => moment(i).dayOfYear());
 
-    return (
-      <div className="days-wrapper" style={{ display: 'flex', flexDirection: 'row' }}>
-        {[1, 2, 3, 4, 5, 6, 7].map((i) => {
-          const day = moment().day(i);
-          const active = finished.includes(day.dayOfYear());
-          const dayLabel = day.format('dddd');
+    for (var i = 1; i <= 7; i++) {
+      const day = moment().day(i);
+      const active = finished.includes(day.dayOfYear());
+      const dayLabel = day.format('dddd');
 
-          return (
-            <div key={dayLabel} className="day-container">
-              <button
-                className={`day-label ${active ? "finished" : "unfinished"}`}
-                onClick={() => onClickMark(habit, active, day.format('YYYY-MM-DDT12:00:00'))}
-              >
-                {dayLabel}
-              </button>
-              <button
-                className={`day-circle ${active ? "finished" : "unfinished"}`}
-                onClick={() => onClickMark(habit, active, day.format('YYYY-MM-DDT12:00:00'))}
-              />
-            </div>
-          );
-        })}
+      dayElements.push(
+        <div key={dayLabel} className="day-container" style={{ display: 'flex', flexDirection: 'row' }}>
+          <button
+            className={`day-label ${active ? "finished" : "unfinished"}`}
+            onClick={() => onClickMark(habit, active, day.format('YYYY-MM-DDT12:00:00'))}
+          >
+            {dayLabel}
+          </button>
+          <button
+            className={`day-circle ${active ? "finished" : "unfinished"}`}
+            onClick={() => onClickMark(habit, active, day.format('YYYY-MM-DDT12:00:00'))}
+          />
+        </div>
+      );
+    }
+
+    return (
+      <div className="days-wrapper">
+        {dayElements}
         <div className="finished-weeks">
           {t("Finished weeks:")} {habit.finishedWeeks || 0}
         </div>
       </div>
     );
   };
-
 
   const getHabitBackgroundStyle = (index) => {
     const colors = ['#E7FDFF', '#F2FFE7', '#FFE7F9', '#FFF6E7'];
@@ -131,7 +132,7 @@ export const Habits = () => {
                       <p>{habit.habit}</p>
                     </div>
                     {finishedComponent(habit)}
-                    <div style={{ width: '100%', display: 'flex', justifyContent: 'flex-end', alignItems: 'center', paddingRight: '20px', marginTop: '-40px' }}>
+                    <div style={{ width: '100%', display: 'flex', justifyContent: 'flex-end', alignItems: 'center', paddingRight: '20px', marginTop: '-40px', }}>
                       <button style={{ backgroundColor: 'transparent', border: 'none', padding: 'none', cursor: 'pointer' }} onClick={() => deleteHabitById(habit._id)}>
                         <img src="./trashcan.png" alt="delete" style={{ width: '20px' }} />
                       </button>
