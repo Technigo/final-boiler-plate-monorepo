@@ -59,11 +59,13 @@ export const Habits = () => {
   };
 
   const onClickMark = async (habit, active, date) => {
+    console.log(`Marking habit: ${habit._id}, Active: ${active}, Date: ${date}`);
     if (active) {
       await markUnfinished(habit._id, date);
     } else {
       await markFinished(habit._id, date);
     }
+    console.log(`Updated habit data for ${habit._id}:`, habits.find(h => h._id === habit._id));
   };
 
   const finishedComponent = (habit) => {

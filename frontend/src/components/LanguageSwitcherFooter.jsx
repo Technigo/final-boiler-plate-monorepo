@@ -1,6 +1,6 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import "./footer.css";
+
 
 const LanguageSwitcherFooter = () => {
     const { i18n } = useTranslation();
@@ -15,9 +15,14 @@ const LanguageSwitcherFooter = () => {
         console.log('Current language:', i18n.language);
     };
 
+    const style = {
+        cursor: 'pointer',
+        padding: '10px',
+    };
+
 
     return (
-        <div onClick={toggleLanguage} className="footer-link">
+        <div onClick={toggleLanguage} style={style}>
             {i18n.language === 'en' ? 'Change Language' : 'Byt Språk'}
         </div>
     );
