@@ -12,8 +12,7 @@ export const Mapcard = () => {
   // State hooks for story data, loading status, and language selection
   const [story, setStory] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [selectedLanguage, setSelectedLanguage] = useState("en"); // default to English
-  // const [stories, setStories] = useState([]);
+  const [selectedLanguage, setSelectedLanguage] = useState("en");
   const navigate = useNavigate();
 
   // Function to navigate back to the map view
@@ -32,7 +31,6 @@ export const Mapcard = () => {
       .then((response) => response.json())
       .then((updatedStory) => {
         if (updatedStory) {
-          // Updating the local state with the new story data reflecting the like
           setStory(updatedStory);
         }
       })
@@ -48,16 +46,15 @@ export const Mapcard = () => {
   useEffect(() => {
     const fetchStory = async () => {
       try {
-        console.log("Fetching story with language:", selectedLanguage); // Debugging log
+        console.log("Fetching story with language:", selectedLanguage);
         const response = await fetch(
           `${apiUrl}/stories/${id}?language=${selectedLanguage}`
         );
-        console.log("Response received:", response); // Debugging log
+        console.log("Response received:", response);
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
         const data = await response.json();
-        // Setting the fetched story data and updating loading status
 
         setStory(data);
         setLoading(false);
@@ -92,7 +89,8 @@ export const Mapcard = () => {
         <select
           className="map-dropdowns"
           value={selectedLanguage}
-          onChange={handleLanguageChange}>
+          onChange={handleLanguageChange}
+        >
           <option value="en">English</option>
           <option value="sv">Swedish</option>
         </select>

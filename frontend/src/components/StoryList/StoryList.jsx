@@ -55,7 +55,6 @@ export const StoryList = () => {
   };
 
   useEffect(() => {
-    // Function to fetch stories from backend
     const fetchStories = async () => {
       try {
         const response = await fetch(`${apiUrl}/stories`);

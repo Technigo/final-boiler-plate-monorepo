@@ -22,7 +22,6 @@ export const PostStory = () => {
   const [longitude, setLongitude] = useState(null);
   const [imageChosen, setImageChosen] = useState("");
   const [storyPosted, setStoryPosted] = useState("");
-  const [errorMessage, setErrorMessage] = useState("");
 
   // Function to check if a story is in Swedish and bypass it
   const isStoryInSwedish = (text) => {
@@ -34,7 +33,7 @@ export const PostStory = () => {
     e.preventDefault();
 
     if (newStory.length < 10) {
-      setErrorMessage("The message is too short. Please try again!");
+      alert("The message is too short. Please try again!");
 
       return;
     } else if (
@@ -44,10 +43,6 @@ export const PostStory = () => {
       !locationName ||
       !selectedImage
     ) {
-      setErrorMessage(
-        "Whoops, please fill in all required fields and try again!"
-      );
-
       return;
     }
 
@@ -147,10 +142,10 @@ export const PostStory = () => {
         setSelectedImage("");
 
         setNewStory("");
+        setStoryPosted("Your story was posted successfully!");
       })
       .catch((error) => {
         console.error("Error posting the story", error);
-        setErrorMessage("");
       });
   };
 
@@ -162,7 +157,6 @@ export const PostStory = () => {
   // Handles the click event of a button within the PostStory component.
   const handleButtonClick = () => {
     console.log("Button clicked within PostStory component", newStory);
-    setStoryPosted("Your story was posted successfully!");
   };
 
   // Handles the change event of the category selection input.
@@ -233,6 +227,7 @@ export const PostStory = () => {
           maxLength="30"
           placeholder="Heading"
           className="input-field"
+          required
         />
         <textarea
           type="text"
@@ -241,6 +236,7 @@ export const PostStory = () => {
           minLength="10"
           placeholder="Please write your story here"
           className="input-field"
+          required
         />
         <div>
           <select
@@ -309,12 +305,8 @@ export const PostStory = () => {
         <div>
           <Buttons buttonText="Send Story" onClick={handleButtonClick} />
         </div>
-        {errorMessage && <div className="error-message">{errorMessage}</div>}
-        {storyPosted && !errorMessage && (
-          <div className="posting-messages">{storyPosted}</div>
-        )}
 
-        {/* {storyPosted && <div className="posting-messages">{storyPosted}</div>} */}
+        {storyPosted && <div className="posting-messages">{storyPosted}</div>}
         {/* Image Modal */}
         <Modal
           appElement={document.getElementById("root")}
@@ -322,6 +314,7 @@ export const PostStory = () => {
           className="gallery"
           isOpen={isImageModalOpen}
           contentLabel="Select Image"
+          required
         >
           <div className="gallery-images">
             {images.map((image, index) => (

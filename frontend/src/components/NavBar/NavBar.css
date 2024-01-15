@@ -28,8 +28,8 @@
 
 .dropdown {
   position: absolute;
-  top: 100%; /* Adjust position based on your layout */
-  right: 20px; /* Adjust position based on your layout */
+  top: 100%;
+  right: 20px;
   background-color: #242424;
   border: 1px solid #ddd;
   border-radius: 4px;
