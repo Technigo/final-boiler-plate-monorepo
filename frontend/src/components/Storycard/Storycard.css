@@ -108,4 +108,9 @@ button.like-button img {
     font-size: 20px;
     padding: 5px;
   }
+
+  .swiper {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
 }

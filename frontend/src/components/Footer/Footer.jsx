@@ -10,8 +10,10 @@ export const Footer = () => {
   return (
     <div className="footer">
       <div className="footer-text">
-        <p>
-          Technigo Web Developer Bootcamp Fall 2023 Final Project <br />
+        <p>Technigo Web Developer Bootcamp Fall 2023 Final Project </p>
+      </div>
+      <div className="footer-links">
+        <div className="link-group">
           <span>
             Frida Lindskog
             <Link
@@ -29,6 +31,8 @@ export const Footer = () => {
               <img src={githubIcon} alt="GitHub" />
             </Link>
           </span>
+        </div>
+        <div className="link-group">
           <span>
             Carolina Luna
             <Link
@@ -46,7 +50,8 @@ export const Footer = () => {
               <img src={githubIcon} alt="GitHub" />
             </Link>
           </span>
-          <br />
+        </div>
+        <div className="link-group">
           <span>
             Sandra Gustafsson
             <Link
@@ -64,6 +69,8 @@ export const Footer = () => {
               <img src={githubIcon} alt="GitHub" />
             </Link>
           </span>
+        </div>
+        <div className="link-group">
           <span>
             Emmy Jansson
             <Link
@@ -81,7 +88,7 @@ export const Footer = () => {
               <img src={githubIcon} alt="GitHub" />
             </Link>
           </span>
-        </p>
+        </div>
       </div>
     </div>
   );

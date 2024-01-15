@@ -79,6 +79,11 @@
   border-radius: 5px;
 }
 
+.posting-messages {
+  padding-top: -1%;
+  padding-bottom: 2%;
+}
+
 @media screen and (min-width: 1000px) {
   .input-field,
   .category,
