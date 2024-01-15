@@ -67,6 +67,7 @@ export const Habits = () => {
     console.log(`Updated habit data for ${habit._id}:`, habits.find(h => h._id === habit._id));
   };
 
+
   const finishedComponent = (habit) => {
     var dayElements = [];
     var finished = habit.finished.map((i) => moment(i).dayOfYear());
@@ -77,30 +78,33 @@ export const Habits = () => {
       const dayLabel = day.format('dddd');
 
       dayElements.push(
-        <div key={dayLabel} className="day-container">
+        <div key={dayLabel} className="day-container" style={{ marginRight: '5px' }}>
           <button
-            className={`day-label ${active ? "finished" : "unfinished"}`}
+            className={`day-label ${active ? 'finished' : 'unfinished'}`}
             onClick={() => onClickMark(habit, active, day.format('YYYY-MM-DDT12:00:00'))}
           >
             {dayLabel}
           </button>
           <button
-            className={`day-circle ${active ? "finished" : "unfinished"}`}
+            className={`day-circle ${active ? 'finished' : 'unfinished'}`}
             onClick={() => onClickMark(habit, active, day.format('YYYY-MM-DDT12:00:00'))}
+            style={{ width: '20px', height: '20px', borderRadius: '50%', border: '1px solid #c2e7eb', backgroundColor: '#f0f0f0', cursor: 'pointer', padding: '0' }}
           />
         </div>
       );
     }
 
     return (
-      <div className="days-wrapper">
+      <div className="days-wrapper" style={{ display: 'flex', alignItems: 'row', flexWrap: 'wrap' }}>
         {dayElements}
-        <div className="finished-weeks">
-          {t("Finished weeks:")} {habit.finishedWeeks || 0}
+        <div className="finished-weeks" style={{ width: '100%', paddingTop: '10px', textAlign: 'left' }}>
+          {t('Finished weeks:')} {habit.finishedWeeks || 0}
         </div>
       </div>
     );
   };
+
+
 
   // Function to get the background class based on the habit index
   const getHabitBackgroundClass = (index) => {
