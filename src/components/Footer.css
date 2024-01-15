@@ -1,4 +1,41 @@
 .the-footer {
 	background-color: var(--background-section-color-four);
 	width: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	align-items: center;
+	margin-top: 3rem !important;
+	padding-top: 6rem !important;
+}
+.copyright {
+	color: var(--screen-text-color);
+	margin-top: 5rem;
+	margin-bottom: 0;
+}
+
+@media (min-width: 667px) {
+}
+
+/* Media Query: Further adjust grid for screens wider than 1025px */
+@media (min-width: 1025px) {
+	.the-contact-container {
+		width: 100%;
+		display: flex;
+		flex-direction: row;
+		justify-content: space-around;
+		align-items: center;
+	}
+
+	.the-footer h3 {
+		font-size: 1.5rem;
+		margin-bottom: 2rem;
+	}
+	.contact-info {
+		text-align: left;
+		line-height: 0.1;
+	}
+	.nav-bar {
+		margin-left: 5rem;
+	}
 }

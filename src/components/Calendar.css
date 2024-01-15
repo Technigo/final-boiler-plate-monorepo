@@ -6,8 +6,7 @@
 	position: relative;
 	display: block;
 	margin: 20px;
-	padding: 2rem;
-	width: 1280px;
+	width: 300px;
 }
 .the-day {
 	height: 100%;
@@ -23,10 +22,6 @@
 	background-color: var(--primary-color);
 }
 
-.the-row-calendar {
-	padding: 2rem;
-}
-
 .slick-slide {
 	margin: 0 1rem;
 	height: 100%;
@@ -37,11 +32,21 @@
 	display: none !important;
 }
 
+@media (min-width: 667px) {
+}
+
+/* Media Query: Further adjust grid for screens wider than 1025px */
+@media (min-width: 1025px) {
+	.the-row-calendar .slick-list {
+		width: 1280px;
+	}
+}
+
 @media (prefers-color-scheme: light) {
 	.the-day {
 		box-shadow: 0 1px 2px var(--box-shadow-color);
 	}
-	.selected{
-		background-color: var(--box-shadow-color)
+	.selected {
+		background-color: var(--box-shadow-color);
 	}
 }
