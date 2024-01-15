@@ -37,7 +37,7 @@ Interested in contributing? Please contact us through GitHub or LinkedIn.
 
 Team and Contact
 
-Sandra Gustafssson - www.linkedin.com/in/sandra-gustafsson-3665061a5
+Sandra Gustafsson - http://linkedin.com/in/sandra-gustafsson-3665061a5
 Emmy Jansson - https://linkedin.com/in/emmy-jansson-2104a3293
 Carolina Luna - https://linkedin.com/in/carolina-luna-b1659251
 Frida Lindskog - https://linkedin.com/in/frida-lindskog-0566b5149
