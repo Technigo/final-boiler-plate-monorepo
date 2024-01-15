@@ -25,37 +25,52 @@ export const Trips = () => {
   }
 
   return (
-    <div className="sm:mt-8 mt-2 space-y-4 mx-auto max-w-screen-lg mb-8 p-4">
+    <div className="sm:mt-8 mt-2 space-y-4 mx-auto max-w-screen-lg mb-8 p-2">
       {console.log(trips)}
       <h1 className="text-lg font-md">Available trips</h1>
       {trips.map((trip) => (
         <div
           key={trip._id}
-          className="grid grid-cols-12 gap-2 p-4 border rounded-lg relative"
+          className="grid grid-cols-12 gap-2  border rounded-lg relative"
         >
-          <div className="col-span-4 text-md text-primary-900 sm:text-xl">
+          <div className="col-span-5 text-lg text-primary-900 bg-secondary-300 p-4 sm:text-xl">
             {trip.from}
           </div>
-          <div className="col-span-1 text-md text-primary-900 text-center sm:text-xl">
-            →
+          <div className="col-span-2 flex items-center justify-center text-lg text-primary-900 p-4">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth="1.5"
+              stroke="currentColor"
+              className="w-6 h-6"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"
+              />
+            </svg>
           </div>
-          <div className="col-span-4 text-md text-primary-900 sm:text-xl">
+
+          <div className="col-span-5 text-lg text-right text-primary-900 bg-primary-300 p-4 sm:text-xl">
             {trip.to}
           </div>
-          <div className="col-span-3"></div>
-          <div className="col-span-3 text-xs text-primary-900 sm:text-lg">
+
+          <div className="col-span-6 text-md text-primary-900 bg-primary-200 p-4">
             {trip.date}
           </div>
-          <div className="flex flex-col span-4 text-xs text-primary-900 sm:text-lg">
-            <p>Posted by user </p>
-            <p>{trip.username}</p>
+
+          <div className="col-span-6 text-md text-right text-primary-900 bg-primary-200 p-4">
+            🐖 {trip.username}
           </div>
-          <div className="col-span-3 absolute right-4 top-1/2 transform -translate-y-1/2 h-full flex items-center justify-center">
+
+          <div className="col-span-12 text-lg text-center text-primary-900 sm:text-xl p-4">
             <Link
               to={`/trips/${trip._id}`}
               className="bg-secondary-400 rounded-full cursor-pointer hover:bg-secondary-800 text-white px-5 py-2 font-semibold focus:outline-none focus:ring focus:border-primary-300"
             >
-              Details
+              View
             </Link>
           </div>
         </div>
