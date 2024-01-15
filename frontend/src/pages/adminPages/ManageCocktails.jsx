@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { adminStore } from '../../stores/adminStore';
+import { cocktailStore } from '../../stores/cocktailStore';
 // Update cocktail not working yet, should add a conditional update button as the update coktail button is not showing, only the add cocktail is showing 
 
 export const ManageCocktails = () => {
@@ -13,7 +13,7 @@ export const ManageCocktails = () => {
         fetchCocktails,
         isLoading,
         errorMessage,
-    } = adminStore((state) => state);
+    } = cocktailStore((state) => state);
 
     const [showCocktails, setShowCocktails] = useState(false);
     const [selectedCocktail, setSelectedCocktail] = useState(null);
@@ -115,21 +115,6 @@ export const ManageCocktails = () => {
             </form>
 
             <h2>Edit or Delete Cocktails</h2>
-            <button onClick={() => setShowCocktails(!showCocktails)}>
-                {showCocktails ? 'Hide Cocktails' : 'Show Cocktails'}
-            </button>
-            {showCocktails && (
-                <div>
-                    {cocktails.map(cocktail => (
-                        <div key={cocktail._id}>
-                            {cocktail.name}
-                            <button onClick={() => handleEditClick(cocktail)}>Edit</button>
-                            <button onClick={() => handleDelete(cocktail._id)}>Delete</button>
-                        </div>
-                    ))}
-                </div>
-            )}
-
             {selectedCocktail && (
                 <form onSubmit={handleUpdateSubmit}>
                     <input type="text" name="name" value={newCocktailData.name} onChange={handleInputChange} required />
@@ -156,6 +141,20 @@ export const ManageCocktails = () => {
                 </form>
             )}
 
+            <button onClick={() => setShowCocktails(!showCocktails)}>
+                {showCocktails ? 'Hide Cocktails' : 'Show Cocktails'}
+            </button>
+            {showCocktails && (
+                <div>
+                    {cocktails.map(cocktail => (
+                        <div key={cocktail._id}>
+                            {cocktail.name}
+                            <button onClick={() => handleEditClick(cocktail)}>Edit</button>
+                            <button onClick={() => handleDelete(cocktail._id)}>Delete</button>
+                        </div>
+                    ))}
+                </div>
+            )}
 
             {isLoading && <p>Loading...</p>}
             {errorMessage && <p>Error: {errorMessage}</p>}

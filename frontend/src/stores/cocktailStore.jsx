@@ -1,20 +1,22 @@
-/*import { create } from "zustand";
-//import { adminStore } from './adminStore'; //keep in case of need for tokens 
+import { create } from "zustand";
+import { adminLoginStore } from './adminLoginStore'; // Import the adminLoginStore
 
 const apiEnv = import.meta.env.VITE_BACKEND_API;
 
-export const cocktailStore = create((set) => ({
-    // Cocktail state variables
+export const cocktailStore = create((set, get) => ({
     cocktails: [],
     isLoading: false,
     errorMessage: "",
 
-    // Functions to fetch, add, update, and delete cocktails
+    // Function to fetch all cocktails
     fetchCocktails: async () => {
         set({ isLoading: true, errorMessage: "" });
+        const token = get(adminLoginStore).accessToken || localStorage.getItem("adminToken");
+
         try {
             const response = await fetch(`${apiEnv}/cocktails`, {
                 method: "GET",
+                headers: token ? { "Authorization": `Bearer ${token}` } : {},
             });
             const data = await response.json();
             if (response.ok) {
@@ -30,11 +32,14 @@ export const cocktailStore = create((set) => ({
         }
     },
 
+    // Function to add new cocktails
     addCocktail: async (formData) => {
         set({ isLoading: true, errorMessage: "" });
+        const token = get(adminLoginStore).accessToken || localStorage.getItem("adminToken");
         try {
             const response = await fetch(`${apiEnv}/cocktails`, {
                 method: "POST",
+                headers: token ? { "Authorization": `Bearer ${token}` } : {},
                 body: formData,
             });
             const data = await response.json();
@@ -51,11 +56,14 @@ export const cocktailStore = create((set) => ({
         }
     },
 
+    // Function to update cocktails
     updateCocktail: async (id, formData) => {
         set({ isLoading: true, errorMessage: "" });
+        const token = get(adminLoginStore).accessToken || localStorage.getItem("adminToken");
         try {
             const response = await fetch(`${apiEnv}/cocktails/${id}`, {
                 method: "PUT",
+                headers: token ? { "Authorization": `Bearer ${token}` } : {},
                 body: formData,
             });
             const data = await response.json();
@@ -76,11 +84,14 @@ export const cocktailStore = create((set) => ({
         }
     },
 
+    // Function to delete cocktails
     deleteCocktail: async (id) => {
         set({ isLoading: true, errorMessage: "" });
+        const token = get(adminLoginStore).accessToken || localStorage.getItem("adminToken");
         try {
             const response = await fetch(`${apiEnv}/cocktails/${id}`, {
                 method: "DELETE",
+                headers: token ? { "Authorization": `Bearer ${token}` } : {},
             });
             if (response.ok) {
                 set((state) => ({
@@ -96,6 +107,5 @@ export const cocktailStore = create((set) => ({
         } finally {
             set({ isLoading: false });
         }
-    }
+    },
 }));
-*/

@@ -1,7 +1,7 @@
 // Accessible only by direct URL: /admin/login
 
 //import { Link } from "react-router-dom"; // Import the 'Link' component from 'react-router-dom'.
-import { adminStore } from "../stores/adminStore"; // Import the adminStore from zustand
+import { adminLoginStore } from "../stores/adminLoginStore"; // Import the adminStore from zustand
 import { useState } from "react"; // Import useState hook
 import { useNavigate } from "react-router-dom"; // Import useNavigate hook
 //import styles from './AdminLogin.module.css'; // Styling
@@ -13,7 +13,7 @@ export const AdminLogin = () => {
     const navigate = useNavigate();
 
     // Retrieve handleAdminLogin function from adminStore
-    const storeHandleAdminLogin = adminStore((state) => state.handleAdminLogin);
+    const storeHandleAdminLogin = adminLoginStore((state) => state.handleAdminLogin);
 
     // Function to handle the click event of the admin login button
     const onAdminLoginClick = async () => {
@@ -25,13 +25,13 @@ export const AdminLogin = () => {
         await storeHandleAdminLogin(username, password);
 
         // Retrieve the current state from the adminStore
-        const adminState = adminStore.getState();
+        const adminState = adminLoginStore.getState();
 
         // Log the accessToken to the console
         console.log("AccessToken:", adminState.accessToken);
 
         // Check if admin is logged in and navigate to the dashboard
-        const isLoggedIn = adminStore.getState().isLoggedIn;
+        const isLoggedIn = adminLoginStore.getState().isLoggedIn;
         if (isLoggedIn) {
             navigate("/admin/dashboard"); // Redirect to admin dashboard upon successful login
         } else {
