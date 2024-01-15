@@ -116,3 +116,58 @@
     }
 
 }
+
+@media (min-width: 1026px) {
+    .seat-legend li {
+        font-size: 1rem;
+    }
+
+    .the-screen {
+        width: 60%;
+    }
+    .seat-legend {
+        width: 70%;
+    }
+
+    .booking-container {
+        display: grid !important;
+        gap: 10px;
+        grid-template-columns: 1fr 2fr 1fr;
+        grid-template-rows: 0.5fr 2fr 0.1fr 1fr;
+    }
+    .movie-title {
+        grid-column: 1 / 4;
+        grid-row: 1 / 2;
+        text-align: left;
+        font-size: 4rem;
+    }
+    .movie-poster {
+        display: block;
+        width: 200px;
+        grid-column: 1 / 2;
+        grid-row: 2 / 3;
+    }
+    .cinema-container {
+        grid-column: 2 / 4;
+        grid-row: 2 / 3;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .selected-ticket-container {
+        grid-column: 1 / 3;
+        grid-row: 3 / 4;
+
+    }
+    .booking-container .button-container {
+        grid-column: 2 / 3;
+        grid-row: 4 / 5;
+        flex-direction: row;
+    }
+
+    .ticket-container {
+        justify-content: flex-start;
+        /* padding-top: 2rem; */
+    }
+
+}

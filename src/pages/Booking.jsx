@@ -114,11 +114,9 @@ export const Booking = () => {
 	
 	return (
 		<div className="booking-container page-section">
-			<section className="booking-movie-info">
-				<h2 className="movie-title">{movieTitle}</h2>
-				<img className="movie-poster" src="https://image.tmdb.org/t/p/w780/8xV47NDrjdZDpkVcCFqkdHa3T0C.jpg" />
-			</section>
-			
+			<h2 className="movie-title">{movieTitle}</h2>
+			<img className="movie-poster" src="https://image.tmdb.org/t/p/w780/8xV47NDrjdZDpkVcCFqkdHa3T0C.jpg" />
+	
 			<section className="cinema-container">
 				<h3>{cinemaHall}</h3>
 				<div className="the-screen">Screen</div>
