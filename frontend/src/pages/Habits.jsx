@@ -93,7 +93,7 @@ export const Habits = () => {
     }
 
     return (
-      <div className="days-wrapper">
+      <div className="days-wrapper" style={{ display: 'flex', alignItems: 'row', flexWrap: 'wrap' }}>
         {dayElements}
         <div className="finished-weeks">
           {t("Finished weeks:")} {habit.finishedWeeks || 0}
