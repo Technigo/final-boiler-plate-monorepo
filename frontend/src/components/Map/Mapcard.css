@@ -7,8 +7,9 @@
 }
 
 .map-card-list {
+  max-width: 500px;
   position: relative;
-  display: flex;
+  display: inline-block;
   justify-content: center;
   align-items: center;
   flex-direction: column;

@@ -12,7 +12,7 @@ export const Mapcard = () => {
   const [story, setStory] = useState(null);
   const [loading, setLoading] = useState(true);
   const [selectedLanguage, setSelectedLanguage] = useState("en"); // default to English
-  const [stories, setStories] = useState([]);
+  // const [stories, setStories] = useState([]);
   const navigate = useNavigate();
 
   const navigateToMap = () => {
@@ -42,51 +42,34 @@ export const Mapcard = () => {
   // API URL from environment variables or default
   const apiUrl = import.meta.env.VITE_BACKEND_API || "http://localhost:3000";
 
-  // Calling fetch
   useEffect(() => {
-    fetch(`${apiUrl}/stories/${id}`)
-      .then((response) => response.json())
-      .then((data) => {
+    const fetchStory = async () => {
+      try {
+        console.log("Fetching story with language:", selectedLanguage); // Debugging log
+        const response = await fetch(
+          `${apiUrl}/stories/${id}?language=${selectedLanguage}`
+        );
+        console.log("Response received:", response); // Debugging log
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const data = await response.json();
+        console.log("Fetched data:", data); // Debugging log
         setStory(data);
         setLoading(false);
-        console.log(data);
-      })
-      .catch((error) => {
-        console.error("Error fetching story:", error);
-      });
-  }, [id, apiUrl]);
-
-  useEffect(() => {
-    // Function to fetch translated stories
-    const fetchTranslatedStories = async () => {
-      try {
-        const response = await fetch(
-          `${apiUrl}/stories?language=${selectedLanguage}`
-        );
-        const translatedData = await response.json();
-        setStories(translatedData);
-        // updateCitiesAndCategories(translatedData);
       } catch (error) {
-        console.error("Error fetching translated stories:", error);
+        console.error("Error fetching story:", error);
+        setLoading(false);
       }
     };
-    if (selectedLanguage !== "en") {
-      fetchTranslatedStories();
-    } else {
-      // Fetch original stories when language is set to English
-      fetch(`${apiUrl}/stories`)
-        .then((response) => response.json())
-        .then((data) => {
-          setStories(data);
-          // updateCitiesAndCategories(data);
-        })
-        .catch((error) => console.error("Error fetching stories:", error));
-    }
-  }, [apiUrl, selectedLanguage]);
+
+    fetchStory();
+  }, [id, apiUrl, selectedLanguage]);
 
   // Handler for language change
   const handleLanguageChange = (e) => {
     setSelectedLanguage(e.target.value);
+    console.log("Language changed to:", e.target.value);
   };
 
   if (loading) {
