@@ -13,6 +13,7 @@ export const BookingForm = () => {
     const [ bookingReceipts, setBookingReceipts ] = useState([])
     const { 
         selectedSeats,
+        setSelectedSeats,
         selectedShowtime,
         makeAReservation
      } = bookingStore()
@@ -45,6 +46,7 @@ export const BookingForm = () => {
         selectedSeats.map(seat => {
             bookASeat(formData.email, seat, selectedShowtime._id)
         })
+        setSelectedSeats([])
     }
 
     return(

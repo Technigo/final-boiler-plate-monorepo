@@ -128,6 +128,12 @@ button:focus-visible {
 	}
 }
 
+@media (max-width: 666px) {
+	:root {
+		--big-padding: 1rem;
+	}
+}
+
 @media (min-width: 667px) and (max-width: 1025px) {
 	body {
 		max-width: 80dvw;

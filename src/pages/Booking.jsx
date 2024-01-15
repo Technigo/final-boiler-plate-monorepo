@@ -116,7 +116,6 @@ export const Booking = () => {
 		<div className="booking-container page-section">
 			<section className="booking-movie-info">
 				<h2>{movieTitle}</h2>
-				{selectedSeats && (<SelectedTicket />)}
 			</section>
 			
 			<section className="cinema-container">
@@ -154,6 +153,10 @@ export const Booking = () => {
 						<span>Occupied</span>
 					</li>
 				</ul>
+			</section>
+
+			<section className="selected-ticket-container">
+				{selectedSeats && (<SelectedTicket />)}
 			</section>
 
 			{isLoggedIn ? (
