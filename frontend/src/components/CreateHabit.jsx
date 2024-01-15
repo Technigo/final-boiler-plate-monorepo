@@ -1,6 +1,6 @@
+import "./createhabit.css"
 import { useState } from "react";
 import { habitStore } from "../stores/habitStore";
-import "./createhabit.css"
 import { useTranslation } from 'react-i18next';
 
 // Define the 'Createhabit' functional component.
