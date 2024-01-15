@@ -14,7 +14,6 @@ export const BookingForm = () => {
     const [ showConfirmation, setShowConfirmation ] = useState(false)
     const { 
         selectedSeats,
-        setSelectedSeats,
         selectedShowtime,
         makeAReservation
      } = bookingStore()
@@ -49,7 +48,6 @@ export const BookingForm = () => {
         selectedSeats.map(seat => {
             bookASeat(formData.email, seat, selectedShowtime._id)
         })
-        setSelectedSeats([])
     }
 
     const calculatePrice = (ticketArray) => {
@@ -62,7 +60,6 @@ export const BookingForm = () => {
 
     return(
         <div className="page-section the-confirmation">
-            { !showConfirmation && selectedSeats && <SelectedTicket />}
 
             { showConfirmation && bookingReceipts.length > 0 && (
                 <div className="confirmation-container">
@@ -79,8 +76,11 @@ export const BookingForm = () => {
                     </div>
                 </div>
             ) }
-            { !showConfirmation &&                
+
+            { !showConfirmation && 
                 <div className="form-container">
+                    <h3>{selectedShowtime.movieTitle}</h3>
+                    { selectedSeats && <SelectedTicket />}
                     <form className="booking-form">
                         <div className="form-element">
                             <label htmlFor="the-name">Name: </label>
@@ -106,7 +106,6 @@ export const BookingForm = () => {
                         <button onClick={handleSubmit}>Book your tickets</button>
                     </form>
                 </div>}
-            
         </div>
     )
 }

@@ -74,7 +74,6 @@
 .ticket-container {
     display: flex;
     flex-wrap: wrap;
-    width: 100%;
     justify-content: center;
     gap: 15px;
 }
@@ -165,9 +164,8 @@
         flex-direction: row;
     }
 
-    .ticket-container {
+    .booking-container .ticket-container {
         justify-content: flex-start;
-        /* padding-top: 2rem; */
     }
 
 }

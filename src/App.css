@@ -2,9 +2,9 @@
     padding: var(--small-padding) 1rem;
     margin: 0 auto;
 }
-.page-section:not(.the-header):not(.the-footer) {
+/* .page-section:not(.the-header):not(.the-footer) {
     min-height: 40vh;
-}
+} */
 .page-section:not(.the-header):not(.the-footer):not(.the-movie-list) {
     display: flex;
     flex-direction: column;
