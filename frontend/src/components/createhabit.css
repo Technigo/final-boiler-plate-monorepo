@@ -1,4 +1,4 @@
-.add-habits-container {
+.create-habit-container {
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -6,22 +6,14 @@
     padding-left: 0px;
 }
 
-.input-button-container {
+.create-habit-container .input-button-container {
     display: flex;
     flex-direction: row;
     align-items: center;
     gap: 10px;
 }
 
-.add-habit {
-    width: 100%;
-    font-size: 12px;
-    text-align: left;
-    border: none;
-    background-color: white;
-}
-
-.habit-input {
+.create-habit-container .habit-input {
     color: black;
     padding: 10px;
     font-weight: 200;
@@ -34,7 +26,7 @@
     flex-grow: 1;
 }
 
-.add-habit {
+.create-habit-container .add-habit-button {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -49,19 +41,19 @@
     color: black;
 }
 
-.add-habit:hover {
+.create-habit-container .add-habit-button:hover {
     background-color: #3EC3CE;
     color: white;
     font-family: 'Poppins', sans-serif;
     font-weight: bold;
 }
 
-.plus {
+.create-habit-container .plus-icon {
     width: 15px;
     margin-right: 5px;
 }
 
-.delete-habit {
+.create-habit-container .delete-habit-button {
     border: #3EC3CE dotted 2px;
     color: #3EC3CE;
     background-color: transparent;
@@ -73,23 +65,14 @@
     margin-top: 50px;
 }
 
-.delete-habit:hover {
+.create-habit-container .delete-habit-button:hover {
     background-color: #3EC3CE;
     color: white;
     font-family: 'Poppins', sans-serif;
     font-weight: bold;
 }
 
-.delete-trash-icon {
+.create-habit-container .delete-icon {
     width: 14px;
     padding-right: 8px;
-}
-
-/* Mobile */
-@media (max-width: 393px) {
-
-    .add-habits-container {
-        width: 100%;
-    }
-
 }
