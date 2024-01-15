@@ -1,19 +1,20 @@
 import styled from "styled-components";
 import { useState, useEffect } from "react";
-import { IconButton } from "./IconButton";
-import { MdKeyboardDoubleArrowUp } from "react-icons/md";
+import { MdOutlineKeyboardDoubleArrowUp } from "react-icons/md";
+//import { Button } from "./Button";
 
 const StyledGoTop = styled.div`
   position: fixed;
-  bottom: 5%;
+  bottom: 28%;
   right: 5%;
   z-index: 1000;
 
-  .goTopButton {
+  .goTopIcon {
     background-color: var(--button);
+    color: var(--lighttext);
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-    width: 30px;
-    height: 30px;
+    width: 40px;
+    height: 40px;
     border-radius: 25px;
     cursor: pointer;
     text-align: center;
@@ -26,18 +27,22 @@ const StyledGoTop = styled.div`
   }
 `;
 
+// Button to scroll to the top of the page
 export const GoTopButton = () => {
   const [showGoTop, setShowGoTop] = useState(false);
 
+  // Show the button when the user scrolls down 900px from the top of the document
   const handleVisibleButton = () => {
     const scrollPosition = window.scrollY || document.documentElement.scrollTop;
-    setShowGoTop(scrollPosition > 50);
+    setShowGoTop(scrollPosition > 900);
   };
 
+  // Scroll to the top of the page
   const handleScrollUp = () => {
     window.scrollTo({ left: 0, top: 0, behavior: "smooth" });
   };
 
+  // Add event listener when the component is mounted
   useEffect(() => {
     window.addEventListener("scroll", handleVisibleButton);
     return () => {
@@ -45,15 +50,14 @@ export const GoTopButton = () => {
     };
   }, []);
 
+  // Empty array as second argument to only run the effect once
   return (
     <StyledGoTop className={showGoTop ? "" : "goTopHidden"}>
-      <IconButton
-        className="goTopButton"
-        color="primary"
+      <MdOutlineKeyboardDoubleArrowUp
+        className="goTopIcon"
         onClick={handleScrollUp}
-      >
-        <MdKeyboardDoubleArrowUp />
-      </IconButton>
+        size={10}
+      />
     </StyledGoTop>
   );
 };

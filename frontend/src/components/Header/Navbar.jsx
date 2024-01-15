@@ -128,20 +128,17 @@ export const Navbar = () => {
               </li>
             </>
           )}
-          {/* Conditionally render "Deed Hub" link only when logged in */}
-          {isLoggedIn ? (
-            <li className={activePage === "tasks" ? "active" : ""}>
-              <Link
-                to="/tasks"
-                onClick={() => {
-                  setActivePage("tasks");
-                }}
-              >
-                Deed Hub
-              </Link>
-            </li>
-          ) : null}
-          {/* Conditionally render "Profile" link only when logged in */}
+
+          <li className={activePage === "tasks" ? "active" : ""}>
+            <Link
+              to="/tasks"
+              onClick={() => {
+                setActivePage("tasks");
+              }}
+            >
+              Deed Hub
+            </Link>
+          </li>
           {isLoggedIn ? (
             <li className={activePage === "profile" ? "active" : ""}>
               <Link

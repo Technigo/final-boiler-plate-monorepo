@@ -41,6 +41,10 @@ body {
 body.active-modal {
   overflow-y: hidden;
 }
+ /* Hide the back-to-top butten is on top of the page */
+.goTopHidden {
+  display: none;
+}
 
 :root {
 /* Colors */
