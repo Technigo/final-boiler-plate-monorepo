@@ -1,3 +1,8 @@
+
+.movie-poster {
+    display:none;
+}
+
 .the-screen {
     background-color: var(--screen-color);
     color: var(--screen-text-color);
@@ -72,4 +77,42 @@
     width: 100%;
     justify-content: center;
     gap: 15px;
+}
+
+@media (min-width: 667px) and (max-width: 1025px) {
+    .seat-legend li {
+        font-size: 1rem;
+    }
+
+    .the-screen {
+        width: 90%;
+    }
+    .seat-legend {
+        width: 100%;
+    }
+
+    .booking-container {
+        display: grid !important;
+        grid-template-columns: 2fr 1fr;
+        grid-template-rows: 0.5fr 2fr 1fr;
+    }
+    .movie-title {
+        grid-column: 1 / 3;
+        grid-row: 1 / 2;
+    }
+    .cinema-container {
+        grid-column: 1 / 2;
+        grid-row: 2 / 3;
+    }
+    .selected-ticket-container {
+        grid-column-start: 2;
+        grid-row-start: 2;
+    }
+    .booking-container .button-container {
+        grid-column: 1 / 3;
+        grid-row: 3 / 4;
+        flex-direction: row;
+
+    }
+
 }
