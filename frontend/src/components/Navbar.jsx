@@ -35,7 +35,7 @@ export const Navbar = () => {
     isAuthenticated ? (
       <ul className="bg-gray-100 absolute top-15 w-full mt-4 left-0 p-2 space-y-2">
         {navlinksLoggedIn.map((link) => (
-          <li onClick={onMobileNavClick} key={link.linkName}>
+          <li key={link.linkName}>
             <Link to={link.linkRoute}>{link.linkName}</Link>
           </li>
         ))}
@@ -43,7 +43,7 @@ export const Navbar = () => {
     ) : (
       <ul className="bg-gray-100 absolute top-15 w-full mt-4 left-0 p-2 space-y-2">
         {navlinks.map((link) => (
-          <li onClick={onMobileNavClick} key={link.linkName}>
+          <li key={link.linkName}>
             <Link to={link.linkRoute}>{link.linkName}</Link>
           </li>
         ))}
@@ -104,7 +104,6 @@ export const Navbar = () => {
             </li>
           </ul>
         )}
-
         {/* Add a responsive menu button for smaller screens */}
         <div className="md:hidden">
           <LoginBtn />
