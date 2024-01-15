@@ -28,27 +28,25 @@ export const CreateHabit = () => {
 
   // Render the component content.
   return (
-    <>
-      <div className="add-habits-container">
-        <div className="input-button-container">
-          {/* Input field and Add Habit button */}
-          <input
-            className="habit-input"
-            type="text"
-            placeholder={t("enter new habit")}
-            onChange={habitInput}
-            value={habit}
-          />
-          <button className="add-habit" onClick={addHabitLocal}>
-            <img className="plus" src="/plus.png" />{t("Add Habit")}
-          </button>
-        </div>
-        {/* Delete All Habits button */}
-        <button className="delete-habit" onClick={deleteAllHabits}>
-          <img className="delete-trash-icon" src="/trashcan.png" />{t("Delete All My Habits")}
+    <div className="add-habits-container">
+      <div className="input-button-container">
+        {/* Input field and Add Habit button */}
+        <input
+          className="habit-input"
+          type="text"
+          placeholder={t("enter new habit")}
+          onChange={habitInput}
+          value={habit}
+        />
+        <button className="add-habit" onClick={addHabitLocal}>
+          <img className="plus" src="/plus.png" />{t("Add Habit")}
         </button>
       </div>
-    </>
+      {/* Delete All Habits button */}
+      <button className="delete-habit" onClick={deleteAllHabits}>
+        <img className="delete-trash-icon" src="/trashcan.png" />{t("Delete All My Habits")}
+      </button>
+    </div>
   );
 };
 
