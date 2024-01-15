@@ -1,107 +1,53 @@
+import "./createhabit.css"
 import { useState } from "react";
 import { habitStore } from "../stores/habitStore";
 import { useTranslation } from 'react-i18next';
 
 // Define the 'Createhabit' functional component.
 export const CreateHabit = () => {
+  // Initialize state variable 'habit' using 'useState' to store the habit input.
   const [habit, setHabit] = useState("");
+  // Access the 'addHabitToServer' and 'deleteAllHabits' functions from the 'HabitStore'.
   const { addHabitToServer, deleteAllHabits } = habitStore();
-  const { t } = useTranslation();
 
+  // Function to update the 'habit' state with the value entered in the input field.
   const habitInput = (e) => {
     setHabit(e.target.value);
   };
 
+  // Function to add a new Habit both locally and to the server.
   const addHabitLocal = async () => {
     if (habit.trim() !== "") {
-      await addHabitToServer(habit);
-      setHabit("");
+      // Check if the 'habit' input is not empty or only whitespace.
+      await addHabitToServer(habit); // Add the habit to the server.
+      setHabit(""); // Clear the input field after the Habit is added.
     }
   };
 
+  const { t } = useTranslation();
+
+  // Render the component content.
   return (
-    <div style={createHabitStyles}>
-      <div style={inputButtonContainerStyles}>
+    <div className="add-habits-container">
+      <div className="input-button-container">
+        {/* Input field and Add Habit button */}
         <input
-          style={habitInputStyles}
+          className="habit-input"
           type="text"
           placeholder={t("enter new habit")}
           onChange={habitInput}
           value={habit}
         />
-        <button style={addHabitButtonStyles} onClick={addHabitLocal}>
-          <img style={plusIconStyles} src="/plus.png" alt="plus icon" />{t("Add Habit")}
+        <button className="add-habit" onClick={addHabitLocal}>
+          <img className="plus" src="/plus.png" />{t("Add Habit")}
         </button>
       </div>
-      <button style={deleteHabitButtonStyles} onClick={deleteAllHabits}>
-        <img style={deleteIconStyles} src="/trashcan.png" alt="delete icon" />{t("Delete All My Habits")}
+      {/* Delete All Habits button */}
+      <button className="delete-habit" onClick={deleteAllHabits}>
+        <img className="delete-trash-icon" src="/trashcan.png" />{t("Delete All My Habits")}
       </button>
     </div>
   );
 };
 
-// Define inline styles
-const createHabitStyles = {
-  display: 'flex',
-  flexDirection: 'column',
-  gap: '10px',
-  padding: '40px',
-  paddingLeft: '0px',
-};
 
-const inputButtonContainerStyles = {
-  display: 'flex',
-  flexDirection: 'row',
-  alignItems: 'center',
-  gap: '10px',
-};
-
-const habitInputStyles = {
-  color: 'black',
-  padding: '10px',
-  fontWeight: '200',
-  fontStyle: 'italic',
-  fontFamily: 'sans-serif',
-  fontSize: '15px',
-  backgroundColor: '#f4eee3',
-  borderRadius: '25px',
-  border: '1px solid grey',
-  flexGrow: '1',
-};
-
-const addHabitButtonStyles = {
-  display: 'flex',
-  justifyContent: 'center',
-  alignItems: 'center',
-  width: 'auto',
-  padding: '5px 10px',
-  paddingTop: '1px',
-  fontSize: '17px',
-  border: 'none',
-  cursor: 'pointer',
-  fontFamily: 'Poppins, sans-serif',
-  fontWeight: 'bold',
-  color: 'black',
-};
-
-const plusIconStyles = {
-  width: '15px',
-  marginRight: '5px',
-};
-
-const deleteHabitButtonStyles = {
-  border: '#3EC3CE dotted 2px',
-  color: '#3EC3CE',
-  backgroundColor: 'transparent',
-  fontFamily: 'Poppins, sans-serif',
-  fontWeight: 'bold',
-  padding: '5px 10px',
-  width: 'auto',
-  alignSelf: 'center',
-  marginTop: '50px',
-};
-
-const deleteIconStyles = {
-  width: '14px',
-  paddingRight: '8px',
-};
