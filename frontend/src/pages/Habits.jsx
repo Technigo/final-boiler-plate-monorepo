@@ -73,7 +73,7 @@ export const Habits = () => {
       const dayLabel = day.format('dddd');
 
       dayElements.push(
-        <div key={dayLabel} className="day-container" style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
+        <div key={dayLabel} className="day-container" style={{ display: 'flex', flexDirection: 'row' }}>
           <button
             className={`day-label ${active ? "finished" : "unfinished"}`}
             onClick={() => onClickMark(habit, active, day.format('YYYY-MM-DDT12:00:00'))}

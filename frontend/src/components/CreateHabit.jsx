@@ -80,7 +80,7 @@ export const CreateHabit = () => {
           fontWeight: 'bold',
           padding: '5px 10px',
           width: 'auto',
-          // alignSelf: 'center',
+          alignSelf: 'center',
           marginTop: '50px'
         }}
         onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#3EC3CE'}
