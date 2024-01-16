@@ -25,6 +25,10 @@ const StyledGoTop = styled.div`
       transform: scale(1.1);
     }
   }
+  // Adjust the position of the button on smaller screens
+  @media screen and (min-width: 600px) and (max-width: 680px) {
+    right: 2%;
+  }
 `;
 
 // Button to scroll to the top of the page
