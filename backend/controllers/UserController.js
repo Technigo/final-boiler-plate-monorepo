@@ -184,4 +184,24 @@ export const UserController = {
       res.json({ error: error.message });
     }
   },
+
+  //Experiment
+  addMessage: async (req, res) => {
+    const { sender, recipient, text } = req.body;
+
+    try {
+      const message = new MessageModel({
+        sender,
+        recipient,
+        text,
+      });
+
+      await message.save();
+    } catch (error) {
+      res.status(400).json({
+        message: "Could not send message",
+        errors: error.errors,
+      });
+    }
+  },
 };

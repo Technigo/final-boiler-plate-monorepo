@@ -72,6 +72,43 @@ export const Chat = () => {
     }
   };
 
+  //#REGION NO WS
+  const sendMessageNoWS = async (e) => {
+    if (e) e.preventDefault();
+    const newMessage = {
+      sender: loggedInUserId,
+      recipient: receiverId,
+      text: newMessageText,
+    };
+    try {
+      const response = await fetch(`${apiEnv}/addmessage`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(newMessage),
+      });
+
+      const data = await response.json();
+      alert("Trip posted successfully");
+
+      setMessages((prev) => [
+        ...prev,
+        {
+          text: newMessageText,
+          sender: username,
+          recipient: receiverId,
+          _id: Date.now(),
+        },
+      ]);
+      setNewMessageText("");
+    } catch (error) {
+      console.error("Error sending message:", error);
+      alert(`Failed to send message. Error: ${error.message}`);
+    }
+  };
+  //#ENDREGION
+
   const sendMessage = (e) => {
     if (e) e.preventDefault();
 
@@ -208,7 +245,7 @@ export const Chat = () => {
               </div>
             </div>
 
-            <form className="flex gap-2" onSubmit={sendMessage}>
+            {/* <form className="flex gap-2" onSubmit={sendMessage}>
               <input
                 type="text"
                 value={newMessageText}
@@ -219,6 +256,34 @@ export const Chat = () => {
               <button
                 type="submit"
                 className="rounded-sm bg-slate-300 p-2 text-white border cursor-pointer hover:bg-slate-400"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth="1.5"
+                  stroke="currentColor"
+                  className="w-6 h-6"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M6 12 3.269 3.125A59.769 59.769 0 0 1 21.485 12 59.768 59.768 0 0 1 3.27 20.875L5.999 12Zm0 0h7.5"
+                  />
+                </svg>
+              </button>
+            </form> */}
+            <form className="flex gap-2" onSubmit={sendMessageNoWS}>
+              <input
+                type="text"
+                value={newMessageText}
+                onChange={(e) => setNewMessageText(e.target.value)}
+                placeholder="Type a message..."
+                className="bg-white text-black border p-2 flex-grow rounded-sm"
+              />
+              <button
+                type="submit"
+                className="rounded-sm bg-red-400 p-2 text-white border cursor-pointer hover:bg-slate-400"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
