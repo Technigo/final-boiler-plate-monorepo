@@ -112,12 +112,12 @@ export const CreateTask = () => {
 
   // Function to update the 'task' state with the value entered in the input field.
   const taskTitle = (e) => {
-    const newTitle = e.target.value; // Get the value entered in the input field.
+    const newTitle = e.target.value.slice(0, 30); // Limit the title to 30 characters.
     setTask(newTitle);
 
     // Check the length of the title and update the error state
     if (newTitle.length < 3 || newTitle.length > 30) {
-      // If the title is less than 3 or more than 30 characters
+      // If the title is less than 3 or more than 29 characters
       setTitleError("Title must be between 3 and 30 characters."); // Set the error message
     } else {
       setTitleError("");
@@ -136,13 +136,13 @@ export const CreateTask = () => {
 
   // Function to handle task description input
   const taskDescription = (e) => {
-    const newDescription = e.target.value; // Get the value entered in the input field.
+    const newDescription = e.target.value.slice(0, 300); // Limit the description to 300 characters.
     setDescription(newDescription); // Update the 'task' state with the value entered in the input field.
     setTaskLength(newDescription.length); // Update task length
 
     // Check the length of the description and update the error state
-    if (newDescription.length < 10 || newDescription.length > 300) {
-      // If the description is less than 10 or more than 300 characters
+    if (newDescription.length < 10 || newDescription.length > 299) {
+      // If the description is less than 10 or more than 299 characters
       setDescriptionError("Description must be between 10 and 300 characters."); // Set the error message
     } else {
       setDescriptionError("");
@@ -175,6 +175,7 @@ export const CreateTask = () => {
       setCategory("");
       setArea("");
       setDescription("");
+      setTaskLength(0); // Reset the task length counter to zero
     } else {
       alert("Please fill in all fields");
     }

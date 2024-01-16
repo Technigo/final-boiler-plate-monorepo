@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { FeedTaskCard } from "../components/TaskCards/FeedTaskCard";
 import { TaskTabs } from "../components/Tabs/TaskTabs";
 import styled from "styled-components";
+import { GoTopButton } from "../components/Buttons/GoTop";
 
 const StyledTaskPage = styled.div`
   display: flex;
@@ -213,6 +214,7 @@ export const Tasks = () => {
           tasks.map((task) => <FeedTaskCard key={task._id} task={task} />)
         )}
       </CardWrapper>
+      <GoTopButton />
     </StyledTaskPage>
   );
 };

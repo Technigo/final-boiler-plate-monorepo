@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 // Styled component for the button
-const StyledButton = styled.div`
+const StyledButton = styled.button`
   background-color: var(--button);
   color: var(--lighttext);
   padding: 5px 15px;
