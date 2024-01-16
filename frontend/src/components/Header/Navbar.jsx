@@ -8,9 +8,12 @@ import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
 const StyledNav = styled.nav`
-  position: relative;
+  position: absolute;
   display: flex;
   justify-content: flex-end;
+  top: 30px;
+  width: 70%;
+  right: 30px;
 
   a {
     color: var(--lighttext);
@@ -26,6 +29,7 @@ const StyledNav = styled.nav`
     display: flex;
     flex-direction: column;
     width: 150px;
+    //background-color: var(--grey);
   }
 
   .logout-button {

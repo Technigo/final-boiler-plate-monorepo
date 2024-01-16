@@ -5,6 +5,7 @@ import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import { Button } from "../components/Buttons/Button";
 import styled from "styled-components";
 import "../components/Tabs/TabsStyling.css";
+import { GoTopButton } from "../components/Buttons/GoTop";
 
 const StyledProfilePage = styled.div`
   display: flex;
@@ -197,6 +198,7 @@ export const Profile = () => {
           </TasksContainer>
         </TabPanel>
       </Tabs>
+      <GoTopButton />
     </StyledProfilePage>
   );
 };

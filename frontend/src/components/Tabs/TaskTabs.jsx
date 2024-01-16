@@ -14,7 +14,10 @@ export const TaskTabs = () => {
   return (
     <Tabs>
       <TabList>
-        <Tab onClick={handleReset}>Ask for help</Tab>
+        <Tab tabIndex="0" onClick={handleReset}>
+          {/* tabIndex="0" makes tab focusable */}
+          Ask for help
+        </Tab>
         <Tab>Lend a hand</Tab>
       </TabList>
       <TabPanel>
