@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { IoCloseOutline } from "react-icons/io5";
-//import { BurgerMenuAnimation } from "./Animations/BurgerMenuAnimation.jsx";
 import { useNavStore } from "../../stores/NavStore";
 import { userStore } from "../../stores/userStore";
 import { Button } from "../Buttons/Button";
@@ -77,7 +76,6 @@ export const BurgerMenu = () => {
           <RxHamburgerMenu style={{ width: "25px", height: "25px" }} />
         )}
       </StyledToggleButton>
-      {/* <BurgerMenuAnimation onClick={toggleBurgerMenu} /> */}
       <StyledBurgerLinks>
         <ul className={burgerMenuOpen ? "burger-menu-open" : ""}>
           <li className={activePage === "home" ? "active" : ""}>

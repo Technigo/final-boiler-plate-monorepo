@@ -12,7 +12,7 @@
         "testimonialId": 2,
         "reviewerName": "Anita",
         "reviewerAge": "68",
-        "imageUrl": "/testimonials/testimonial-anita1.jpg",
+        "imageUrl": "/testimonials/testimonial-anita1.1.jpg",
         "imageAlt": "Anita",
         "review": "'Thanks to Emma for picking up my groceries when I was down with the flu! Lifesaver! This is certainly not my last time using A Helping Hand!'"
       },
@@ -20,7 +20,7 @@
         "testimonialId": 3,
         "reviewerName": "Jaqueline",
         "reviewerAge": "31",
-        "imageUrl": "/testimonials/testimonial-jaqueline-sandy1.jpg",
+        "imageUrl": "/testimonials/testimonial-jaqueline-sandy1.1.jpg",
         "imageAlt": "Jaqueline with dog Sandy",
         "review": "'So happy for finding Lisa through your service. She helped me walk my dog Sandy after I had an accident and wasn't able to post-surgery. So fun because me and Lisa actually still stay in touch!'"
       },
@@ -28,7 +28,7 @@
         "testimonialId": 4,
         "reviewerName": "Adam",
         "reviewerAge": "34",
-        "imageUrl": "/testimonials/testimonial-adam1.jpg",
+        "imageUrl": "/testimonials/testimonial-adam1.1.jpg",
         "imageAlt": "Adam",
         "review": "'Thanks to this service, and Sam who quickly lent me his suit, when my luggage had gotten lost during my flight over to Sweden. Thanks to you I still could look well dressed and have the best time during my best friends wedding!'"
       },
@@ -44,7 +44,7 @@
         "testimonialId": 6,
         "reviewerName": "Maya",
         "reviewerAge": "23",
-        "imageUrl": "/testimonials/testimonial-maya1.jpg",
+        "imageUrl": "/testimonials/testimonial-maya1.1.jpg",
         "imageAlt": "Maya",
         "review": "'Kudos to Andrew who was willing to meet up and help me carry my new, really heavy, sofa up three flights of stairs. I certainly couldn't have done it without you!'"
       },
@@ -92,7 +92,7 @@
         "testimonialId": 12,
         "reviewerName": "Inez",
         "reviewerAge": "57",
-        "imageUrl": "/testimonials/testimonial-inez1.jpg",
+        "imageUrl": "/testimonials/testimonial-inez1.1.jpg",
         "imageAlt": "Inez",
         "review": "'Many thanks to Mike for fixing my leaky faucet. You saved me from a mini flood! I'll admit I was at first a bit hesitant to ask a stranger for help like this, but it worked really well and I will recommend your service to my friends!'"
       },
@@ -100,7 +100,7 @@
         "testimonialId": 13,
         "reviewerName": "Simon",
         "reviewerAge": "62",
-        "imageUrl": "/testimonials/testimonial-simon1.jpg",
+        "imageUrl": "/testimonials/testimonial-simon1.1.jpg",
         "imageAlt": "Simon",
         "review": "'Thanks to James for letting me help with his car repairs when he needed some assistance. Felt good to lend a hand and pass on my knowledge!'"
       },
@@ -108,7 +108,7 @@
         "testimonialId": 14,
         "reviewerName": "Edward",
         "reviewerAge": "59",
-        "imageUrl": "/testimonials/testimonial-edward1.jpg",
+        "imageUrl": "/testimonials/testimonial-edward1.1.jpg",
         "imageAlt": "Edward",
         "review": "'A big shoutout to Grace for watching over my cat while I was away. Happy and purring, thanks to you!'"
       },

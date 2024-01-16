@@ -154,10 +154,10 @@ export const Hero = () => {
         Welcome to our compassionate community! We unite hearts to create a
         world where every act of kindness matters. Our platform connects those
         in need with generous individuals ready to offer their time and care.
-        Whether it's helping an elderly neighbor or assisting with groceries, we
-        believe in fostering an inclusive community where goodwill is the
-        currency. Join us in building a warmer, more empathetic world. Welcome
-        to this beautiful movement of humanity!
+        Whether it&apos;s helping an elderly neighbor or assisting with
+        groceries, we believe in fostering an inclusive community where goodwill
+        is the currency. Join us in building a warmer, more empathetic world.
+        Welcome to this beautiful movement of humanity!
         <br />
         <br />
         Sign up now to volunteer your time and kindness. Be a part of this

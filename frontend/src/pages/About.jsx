@@ -59,9 +59,9 @@ export const About = () => {
         <p>
           The inspiration to creating this site rose from the needs that emerged
           during the COVID-19 pandemic, where individuals were unable to leave
-          their houses due to illness or age. At the time, communities to
-          helping those in need arose. But as the pandemic subsided, the help
-          did too. But the people who needs help remains.This realization fueled
+          their houses due to illness or age. At the time, communities aiming to
+          helping those in need arose. As the pandemic subsided, the help did
+          too. But the people who needs help remains. This realization fueled
           our desire to create a platform where this spirit of assistance could
           continue thriving even after the pandemic subsided.
         </p>
@@ -79,7 +79,7 @@ export const About = () => {
           assist others. We envision this initiative sparking a collective
           spirit of compassion and community involvement. Through collaborative
           endeavors, we aim to make a tangible and positive impact on the lives
-          of those who may need a helping hand. Together, let's turn this
+          of those who may need a helping hand. Together, let&apos;s turn this
           project into a source of inspiration for genuine acts of kindness
           within our community.
         </p>
