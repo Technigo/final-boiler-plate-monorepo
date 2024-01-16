@@ -1,6 +1,7 @@
+// Import necessary dependencies, components, and stores.
 import React from "react";
-import { useEffect } from "react";
 import "./habits.css";
+import { useEffect } from "react";
 import moment from "moment";
 import Navbar from "../components/Navbar";
 import NavbarMobile from "../components/NavbarMobile";
@@ -78,7 +79,7 @@ export const Habits = () => {
       const dayLabel = day.format('dddd');
 
       dayElements.push(
-        <div key={dayLabel} className="day-container" style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', marginRight: '5px' }}>
+        <div key={dayLabel} className="day-container">
           <button
             className={`day-label ${active ? "finished" : "unfinished"}`}
             onClick={() => onClickMark(habit, active, day.format('YYYY-MM-DDT12:00:00'))}
@@ -94,7 +95,7 @@ export const Habits = () => {
     }
 
     return (
-      <div className="days-wrapper" style={{ display: 'flex', alignItems: 'row', flexWrap: 'wrap' }}>
+      <div className="days-wrapper">
         {dayElements}
         <div className="finished-weeks">
           {t("Finished weeks:")} {habit.finishedWeeks || 0}
@@ -113,7 +114,7 @@ export const Habits = () => {
     <>
       {isMobile ? <NavbarMobile /> : isTablet ? <NavbarMobile /> : <Navbar />}
 
-      <div className="habits-container" style={{ maxWidth: '900px', textAlign: 'left', margin: '100px auto' }}>
+      <div className="habits-container">
         {isLoggedIn && <h2>{t("Hi")}{t(", welcome! Let's make the best of this day ☀️")}</h2>}
 
         {isLoggedIn ? (
@@ -165,15 +166,13 @@ export const Habits = () => {
         )}
       </div>
 
-      {
-        isMobile ? (
-          <FooterMobile />
-        ) : isTablet ? (
-          <Footer />
-        ) : (
-          <Footer />
-        )
-      }
+      {isMobile ? (
+        <FooterMobile />
+      ) : isTablet ? (
+        <Footer />
+      ) : (
+        <Footer />
+      )}
     </>
   );
 };

@@ -1,0 +1,95 @@
+.add-habits-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 40px;
+    padding-left: 0px;
+}
+
+.input-button-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+}
+
+.add-habit {
+    width: 100%;
+    font-size: 12px;
+    text-align: left;
+    border: none;
+    background-color: white;
+}
+
+.habit-input {
+    color: black;
+    padding: 10px;
+    font-weight: 200;
+    font-style: italic;
+    font-family: sans-serif;
+    font-size: 15px;
+    background-color: #f4eee3;
+    border-radius: 25px;
+    border: 1px solid grey;
+    flex-grow: 1;
+}
+
+.add-habit {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: auto;
+    padding: 5px 10px;
+    padding-top: 1px;
+    font-size: 17px;
+    border: none;
+    cursor: pointer;
+    font-family: 'Poppins', sans-serif;
+    font-weight: bold;
+    color: black;
+}
+
+.add-habit:hover {
+    background-color: #3EC3CE;
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    font-weight: bold;
+}
+
+.plus {
+    width: 15px;
+    margin-right: 5px;
+}
+
+.delete-habit {
+    border: #3EC3CE dotted 2px;
+    color: #3EC3CE;
+    background-color: transparent;
+    font-family: 'Poppins', sans-serif;
+    font-weight: bold;
+    padding: 5px 10px;
+    width: auto;
+    align-self: center;
+    margin-top: 50px;
+}
+
+.delete-habit:hover {
+    background-color: #3EC3CE;
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    font-weight: bold;
+}
+
+.delete-trash-icon {
+    width: 14px;
+    padding-right: 8px;
+}
+
+/* Mobile */
+@media (max-width: 393px) {
+
+    .add-habits-container {
+        width: 100%;
+    }
+
+}
