@@ -62,8 +62,6 @@ export const userStore = create((set, get) => ({
         // Store the accessToken in the browser's localStorage.
         localStorage.setItem("accessToken", data.response.accessToken);
         localStorage.setItem("username", username);
-        // Display a success alert.
-        alert("Signup successful!");
       } else {
         // Display an error message from the server or a generic message.
         alert(data.response || "Signup failed");
