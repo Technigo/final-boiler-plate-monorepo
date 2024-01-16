@@ -8,14 +8,16 @@ const StyledHomePage = styled.div`
   flex-direction: column;
   gap: 50px;
 
-  @media (min-width: 800px) {
+  /* @media (min-width: 800px) {
     gap: 150px;
-  }
+  } */
 `;
 
 const StyledTestimonials = styled.div`
   display: flex;
   flex-direction: column;
+  //max-width: 1200px;
+  //margin: 0 auto;
 `;
 
 // Define the 'Home' functional component.

@@ -57,27 +57,31 @@ export const About = () => {
       <StyledVision>
         <h2>Our vision</h2>
         <p>
-          Welcome to our community of compassion and generosity! We believe in
-          the power of uniting hearts and strive to create a world where every
-          act of kindness matters. Our platform is a vibrant hub where those in
-          need of help encounter those who are ready to offer their time and
-          care without expecting anything in return.
+          The inspiration to creating this site rose from the needs that emerged
+          during the COVID-19 pandemic, where individuals were unable to leave
+          their houses due to illness or age. At the time, communities to
+          helping those in need arose. But as the pandemic subsided, the help
+          did too. But the people who needs help remains.This realization fueled
+          our desire to create a platform where this spirit of assistance could
+          continue thriving even after the pandemic subsided.
         </p>
         <p>
-          Here, it&apos;s about uplifting each other, where a simple gesture can
-          make a tremendous difference. Perhaps there&apos;s an elderly neighbor
-          who needs help raking leaves, someone requiring assistance with
-          grocery shopping, or an individual unable to walk their four-legged
-          friend. Our platform serves as a bridge connecting needs with helpful
-          souls.
+          As two compassionate women, we see the importance of providing
+          assistance beyond the challenges posed by the pandemic. While the
+          initial focus during the pandemic was on helping with groceries, we
+          now see that there are ongoing needs for various tasks, such as garden
+          work or small repairs. Simultaneously, there are individuals eager to
+          lend a helping hand.
         </p>
         <p>
-          We believe in fostering an inclusive community where goodwill and
-          kindness are the currency. Here, commitment and generosity matter
-          most. With us, every effort is a step towards a warmer, more
-          empathetic world. Together, we&apos;re building a place where hearts
-          meet to make a difference. Welcome to being a part of this beautiful
-          movement of humanity.
+          Today, we aspire for this school project to serve as a catalyst,
+          inspiring the community to actively engage in meaningful efforts to
+          assist others. We envision this initiative sparking a collective
+          spirit of compassion and community involvement. Through collaborative
+          endeavors, we aim to make a tangible and positive impact on the lives
+          of those who may need a helping hand. Together, let's turn this
+          project into a source of inspiration for genuine acts of kindness
+          within our community.
         </p>
       </StyledVision>
       <StyledFounderSection>

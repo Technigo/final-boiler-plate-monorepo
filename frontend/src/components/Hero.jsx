@@ -118,7 +118,9 @@ const StyledP = styled.div`
   flex-direction: column;
   align-items: center;
   text-align: center;
-  gap: 20px;
+  gap: 40px;
+  margin: 20px 0;
+  max-width: 1200px;
 
   p {
     width: 80%;
@@ -147,8 +149,21 @@ export const Hero = () => {
   const text = {
     heading: "We want the people of Varberg to connect",
     subheading: "Join our community of compassion and generosity",
-    intro:
-      "Welcome to our community of compassion and generosity! We believe in the power of uniting hearts and strive to create a world where every act of kindness matters. Our platform is a vibrant hub where those in need of help encounter those who are ready to offer their time and care without expecting anything in return.",
+    intro: (
+      <>
+        Welcome to our compassionate community! We unite hearts to create a
+        world where every act of kindness matters. Our platform connects those
+        in need with generous individuals ready to offer their time and care.
+        Whether it's helping an elderly neighbor or assisting with groceries, we
+        believe in fostering an inclusive community where goodwill is the
+        currency. Join us in building a warmer, more empathetic world. Welcome
+        to this beautiful movement of humanity!
+        <br />
+        <br />
+        Sign up now to volunteer your time and kindness. Be a part of this
+        beautiful movement and let your generosity shine!
+      </>
+    ),
   };
 
   useEffect(() => {
