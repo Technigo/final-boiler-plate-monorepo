@@ -12,9 +12,9 @@ export const AboutUs = () => {
         where the users can both read other peoples stories and also post their
         own stories. The stories can be both old legends and tales, but also
         funny stories that has happened today. We wanted to connect the stories
-        to a map so the users can find new places to visit based on where "the
-        good stories" are, but also so the user can choose stories from a
-        certain city.
+        to a map so the users can find new places to visit based on where
+        &quot;the good stories&quot; are, but also so the user can choose
+        stories from a certain city.
         <br /> <br />
         We really hope that you will enjoy this web page just as much as we do!
         And please, if you have a story to tell -

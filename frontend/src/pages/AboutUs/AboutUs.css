@@ -2,6 +2,10 @@
   padding-bottom: 5%;
   color: #c98686;
 }
+.about-us p {
+  position: relative;
+  z-index: 10;
+}
 
 .about-us {
   font-size: 18px;
