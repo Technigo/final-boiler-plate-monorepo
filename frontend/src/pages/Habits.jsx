@@ -1,6 +1,6 @@
 // Import necessary dependencies, components, and stores.
 import React from "react";
-import "./habits.css";
+//import "./habits.css";
 import { useEffect } from "react";
 import moment from "moment";
 import Navbar from "../components/Navbar";
