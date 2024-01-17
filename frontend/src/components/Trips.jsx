@@ -47,7 +47,7 @@ export const Trips = () => {
       {trips.map((trip) => (
         <div
           key={trip._id}
-          className="grid grid-cols-12 gap-2 bg-secondary-50 rounded-lg relative p-2"
+          className="grid grid-cols-12 gap-2 bg-secondary rounded-lg relative p-4"
         >
           <div className="col-span-5 text-lg text-primary-900 font-semibold sm:text-4xl">
             {trip.from}
@@ -73,11 +73,11 @@ export const Trips = () => {
             {trip.to}
           </div>
 
-          <div className="col-span-3 flex items-center text-sm text-primary-900 sm:text-lg">
+          <div className="col-span-3 flex items-center text-xs text-primary-900 sm:text-lg">
   {trip.date}
 </div>
 
-          <div className="col-span-6 flex items-center justify-center text-sm font-semibold text-primary-900 sm:text-lg">
+          <div className="col-span-6 flex items-center justify-center text-xs text-primary-900 sm:text-lg">
           <span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6">
   <path fillRule="evenodd" d="M18.685 19.097A9.723 9.723 0 0 0 21.75 12c0-5.385-4.365-9.75-9.75-9.75S2.25 6.615 2.25 12a9.723 9.723 0 0 0 3.065 7.097A9.716 9.716 0 0 0 12 21.75a9.716 9.716 0 0 0 6.685-2.653Zm-12.54-1.285A7.486 7.486 0 0 1 12 15a7.486 7.486 0 0 1 5.855 2.812A8.224 8.224 0 0 1 12 20.25a8.224 8.224 0 0 1-5.855-2.438ZM15.75 9a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Z" clipRule="evenodd" />
 </svg>
@@ -86,7 +86,7 @@ export const Trips = () => {
 </span> {trip.username}
           </div>
 
-          <div className="col-span-3 flex items-center justify-end text-sm text-primary-900 sm:text-lg">
+          <div className="col-span-3 flex items-center justify-end text-xs text-primary-900 sm:text-lg">
   <Link
     to={`/trips/${trip._id}`}
     className="text-secondary-500 hover:text-secondary-700 focus:outline-none focus:ring focus:border-blue-300"

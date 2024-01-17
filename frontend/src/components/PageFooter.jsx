@@ -4,13 +4,13 @@ import { FaLinkedin } from "react-icons/fa6";
 
 export const Footer = () => {
   return (
-    <section className="bg-primary-100">
+    <section className="bg-background text-primary">
       <div className="max-w-screen-xl px-4 py-12 mx-auto space-y-8 overflow-hidden sm:px-6 lg:px-8">
         <nav className="flex flex-wrap justify-center -mx-5 -my-2">
           <div className="px-5 py-2">
             <a
               href="about"
-              className="text-base leading-6 text-primary-500 hover:text-primary-900"
+              className="text-base leading-6 text-primary hover:text-gray-400"
             >
               About
             </a>
@@ -18,7 +18,7 @@ export const Footer = () => {
           <div className="px-5 py-2">
             <a
               href="contact"
-              className="text-base leading-6 text-primary-500 hover:text-primary-900"
+              className="text-base leading-6 text-primary hover:text-gray-400"
             >
               Contact
             </a>
@@ -26,7 +26,7 @@ export const Footer = () => {
           <div className="px-5 py-2">
             <a
               href="followus"
-              className="text-base leading-6 text-primary-500 hover:text-primary-900"
+              className="text-base leading-6 text-primary hover:text-gray-400"
             >
               Follow Us
             </a>
@@ -35,7 +35,7 @@ export const Footer = () => {
         <div className="flex justify-center items-center mt-8 gap-3">
           <a
             href="https://www.linkedin.com/"
-            className="text-blue-800 hover:text-primary-500"
+            className="text-blue-800 hover:text-gray-400"
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -44,7 +44,7 @@ export const Footer = () => {
           </a>
           <a
             href="https://www.facebook.com/"
-            className="text-blue-700 hover:text-primary-500"
+            className="text-blue-700 hover:text-gray-400"
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -53,7 +53,7 @@ export const Footer = () => {
           </a>
           <a
             href="https://twitter.com/"
-            className="text-black hover:text-primary-500"
+            className="text-black hover:text-gray-400"
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -61,7 +61,7 @@ export const Footer = () => {
             <FaSquareXTwitter className="w-12 h-12" />
           </a>
         </div>
-        <p className="mt-8 text-base leading-6 text-center text-primary-400">
+        <p className="mt-8 text-base leading-6 text-center text-primary">
           © 2024 Piggyback, Inc. All rights reserved.
         </p>
       </div>

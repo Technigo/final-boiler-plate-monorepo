@@ -7,8 +7,7 @@ export const LoginBtn = () => {
     !isAuthenticated && (
       <button
         onClick={() => loginWithRedirect()}
-        className="bg-pink-400 rounded-full cursor-pointer hover:bg-cyan-800 text-white px-5 py-2 font-semibold"
-      >
+        className="bg-quinary rounded-full cursor-pointer hover:bg-cyan-800 text-primary px-5 py-2 font-semibold">
         Log in / Register
       </button>
     )

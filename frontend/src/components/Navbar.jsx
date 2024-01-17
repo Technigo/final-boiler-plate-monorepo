@@ -33,7 +33,7 @@ export const Navbar = () => {
 
   const renderMenuItems = () =>
     isAuthenticated ? (
-      <ul className="bg-primary-100 absolute top-15 w-full mt-4 left-0 p-2 space-y-2">
+      <ul className="bg-primary absolute top-15 w-full mt-4 left-0 p-2 space-y-2">
         {navlinksLoggedIn.map((link) => (
           <li key={link.linkName}>
             <Link to={link.linkRoute}>{link.linkName}</Link>
@@ -41,7 +41,7 @@ export const Navbar = () => {
         ))}
       </ul>
     ) : (
-      <ul className="bg-primary-100 absolute top-15 w-full mt-4 left-0 p-2 space-y-2">
+      <ul className="bg-primary absolute top-15 w-full mt-4 left-0 p-2 space-y-2">
         {navlinks.map((link) => (
           <li key={link.linkName}>
             <Link to={link.linkRoute}>{link.linkName}</Link>
@@ -67,13 +67,12 @@ export const Navbar = () => {
 
   return (
     <nav
-      className={`bg-primary-800 p-4 z-20 sticky top-0 ${isScrolled ? "" : ""}`}
+      className={`bg-tertiary p-4 z-20 sticky top-0 ${isScrolled ? "" : ""}`}
     >
       <div className="container mx-auto flex items-center justify-between">
         <div
           onClick={() => navigate("/")}
-          className="text-white font-bold text-xl cursor-pointer"
-        >
+          className="text-white font-bold text-xl cursor-pointer">
           Piggyback
         </div>
         {!isAuthenticated && (

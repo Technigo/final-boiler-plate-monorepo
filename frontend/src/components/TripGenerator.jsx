@@ -339,7 +339,7 @@ export const TripGenerator = () => {
                 <option value="alternativeAdventures">
                   Alternative Adventures
                 </option>
-                <option value="alternative">No music</option>
+                <option value="noMusic">No music</option>
               </select>
             </div>
           </div>
