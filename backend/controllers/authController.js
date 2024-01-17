@@ -4,12 +4,6 @@ import asyncHandler from "express-async-handler";
 import { UserModel } from "../models/userModel.js";
 import { createToken } from "../utils/createToken.js";
 
-// GET ALL USERS ---------------------------------------------
-export const getAllUsers = asyncHandler(async (req, res) => {
-  const users = await UserModel.find({});
-  res.json(users);
-});
-
 // REGISTER A NEW USER ---------------------------------------------
 export const registerUser = asyncHandler(async (req, res, next) => {
   try {
