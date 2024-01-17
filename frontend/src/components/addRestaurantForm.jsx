@@ -110,6 +110,41 @@ const StyledMoodsContainer = styled.div`
   flex-direction: column;
 `;
 
+const predefinedOccasions = [
+  "Have dinner with the in-laws",
+      "Have a sunday funday aka brunch",
+      "Have dinner with kids present",
+      "Have dinner with your bestie",
+      "Have dinner with friends to catch up",
+      "Say Cheers- a classic Swedish after work",
+      "Have dinner with colleagues",
+      "Have dinner with the whole family",
+      "Have dinner with your parents",
+      "Impress your date and the sky is the limit",
+      "Impress your date on a tight budget",
+      "Celebrate a relationship anniversary",
+      "Celebrate you turning 28 again (honey, you ain't fooling anyone)",
+      "Have a meparty aka dinner for one",
+      "Go on a nice date with that special someone"
+];
+
+const predefinedMoods = [
+  "Cozy",
+  "Good lighting",
+  "Soft-spoken",
+  "Bustling",
+  "Intimate",
+  "Casual",
+  "Sophisticated",
+  "Family friendly",
+  "Homely",
+  "Kid friendly",
+  "Dog friendly",
+  "Calm",
+  "Vegan option",
+  "Extended dining hours",
+  "Romantic"
+];
 const AddRestaurantForm = () => {
   const { occasions, moods, fetchOccasions, fetchMoods } = useRestaurantStore();
 
@@ -145,6 +180,7 @@ const AddRestaurantForm = () => {
       setFormData({ ...formData, [name]: value });
     }
   };
+
   const handleFormSubmit = (e) => {
     e.preventDefault();
     if (formData.occasion.length === 0 || formData.mood.length === 0) {
@@ -161,20 +197,9 @@ const AddRestaurantForm = () => {
       <StyledH2>Are you a Foodie who can sense the Moodie?</StyledH2>
       <StyledH1>Add your own!</StyledH1>
       <form onSubmit={handleFormSubmit} action="https://formsubmit.co/foodiemoodieappen@gmail.com" method="POST">
-        <FormLabel>Restaurant Name*:</FormLabel>
-        <StyledInput type="text" name="restaurantName" value={formData.restaurantName} onChange={handleChange} required />
-        <FormLabel>Address:</FormLabel>
-        <StyledInput type="text" name="address" value={formData.address} onChange={handleChange} />
-        <FormLabel>Zipcode:</FormLabel>
-        <StyledInput type="number" name="zipcode" value={formData.zipcode} onChange={handleChange} />
-        <FormLabel>City*:</FormLabel>
-        <StyledInput type="text" name="city" value={formData.city} onChange={handleChange} required />
-        <FormLabel>Country:</FormLabel>
-        <StyledInput type="text" name="country" value={formData.country} onChange={handleChange} />
-        <FormLabel>Borough:</FormLabel>
-        <StyledInput type="text" name="borough" value={formData.borough} onChange={handleChange} />
-        <FormLabel>Cuisine*:</FormLabel>
-        <StyledInput type="text" name="cuisine" value={formData.cuisine} onChange={handleChange} required />
+        {/* Form fields like Restaurant Name, Address, etc. */}
+        
+        {/* Occasion checkboxes */}
         <StyledOccasionsContainer>
           <FormLabel>Tick the boxes with suiting occasions*:</FormLabel>
           {occasions.map((option, index) => (
@@ -184,6 +209,7 @@ const AddRestaurantForm = () => {
             </label>
           ))}
         </StyledOccasionsContainer>
+
         {/* Mood checkboxes */}
         <StyledMoodsContainer>
           <FormLabel>Tick the boxes with suiting moods*:</FormLabel>
