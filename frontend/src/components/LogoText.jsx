@@ -30,7 +30,7 @@ function LogoText() {
       <div className="logo-img">
         {/* Create a link to the A Helping Hand website that opens in a new tab. */}
         <Link to="/">
-          {/* Display the A Helping Hand logo image with CSS classes 'logo'. */}
+          {/* Display the A Helping Hand logo image. */}
           <StyledLogoText
             src={aHelpingHandLogo}
             className="logo"

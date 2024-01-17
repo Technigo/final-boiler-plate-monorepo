@@ -114,11 +114,13 @@ export const Profile = () => {
         <h1>Hi {username}!</h1>
         <p>
           Here you can find an overview over all the Needs you&apos;ve created
-          and those you have volunteered for. Keep an eye on the{" "}
-          <strong>Your Needs</strong> tab where you will see if someone offers
-          their help. Here you can also delete your created Needs if you no
-          longer require help. On the <strong>Your Deeds</strong> tab you can
-          see all the Needs of others that you have volunteered for.
+          and those you have volunteered for! Keep an eye on the{" "}
+          <strong>Your Needs</strong> tab, where you will see if someone offers
+          their help. If someone volunteers you will receive their email so you
+          can reach out to them and make arrangements. Here you can also delete
+          your created Needs if you no longer require help. On the{" "}
+          <strong>Your Deeds</strong> tab you can see all the Needs of others
+          that you have volunteered for.
         </p>
       </HeaderContainer>
 

@@ -37,11 +37,11 @@ body {
   background: var(--purple);
 }
 
-  /* Apply styles to the body when the modal is active */
+/* Apply styles to the body when the modal is active */
 body.active-modal {
   overflow-y: hidden;
 }
- /* Hide the back-to-top butten is on top of the page */
+/* Hide the back-to-top button if on top of the page */
 .goTopHidden {
   display: none;
 }
@@ -55,14 +55,13 @@ body.active-modal {
   --darkgrey: #555;
   --button: #64899b;
   --buttonhover: #7b9eaf;
-  --buttonactive: #5a7b8c; // color of button when pressed
+  --buttonactive: #5a7b8c; // Color of button when pressed
   --error: #e70505;
 }
   
   main {
-  margin: 50px 15px 100px;
+  margin: 50px 15px 215px;
   
-
   @media screen and (min-width: 400px) {
     margin: 50px 50px 200px;
   }

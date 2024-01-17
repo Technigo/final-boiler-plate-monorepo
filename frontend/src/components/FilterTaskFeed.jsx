@@ -9,8 +9,11 @@ const StyledFilterTaskFeed = styled.div`
   align-items: center;
   text-align: center;
   gap: 20px;
-  margin-bottom: 30px;
-  height: 500px;
+  height: 600px;
+
+  @media screen and (min-width: 450px) {
+    height: 550px;
+  }
 
   @media screen and (min-width: 600px) {
     height: 400px;
@@ -35,16 +38,12 @@ const StyledFilters = styled.div`
 
 const StyledSelects = styled.select`
   display: flex;
-  width: 120px;
+  width: 190px;
+  height: 40px;
   border: 1px solid var(--button);
   background-color: var(--grey);
   border-radius: 20px;
   padding: 5px;
-
-  &.category-select,
-  &.area-select {
-    width: 140px;
-  }
 `;
 
 export const FilterTaskFeed = () => {
@@ -74,7 +73,7 @@ export const FilterTaskFeed = () => {
     <StyledFilterTaskFeed>
       <p>
         A Helping Hand is all about the community coming together and helping
-        eachother out. Take the opportunity to make someone&apos;s day by
+        each other out. Take the opportunity to make someone&apos;s day by
         offering a helping hand!
       </p>
 
@@ -85,7 +84,9 @@ export const FilterTaskFeed = () => {
       </p>
 
       <p>
-        You can find the deeds you have volunteered for on your profile page.
+        When volunteering, you&apos;re email will be sent to the person that
+        asked for help so they can choose to contact you. You can find the deeds
+        you have volunteered for on your profile page.
       </p>
 
       <StyledFilters>

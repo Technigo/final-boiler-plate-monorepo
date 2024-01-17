@@ -8,7 +8,7 @@ const StyledCreateTask = styled.div`
   flex-direction: column;
   align-items: center;
   gap: 10px;
-  height: 500px;
+  height: 550px;
 
   @media screen and (min-width: 600px) {
     height: 400px;
@@ -23,8 +23,13 @@ const StyledTaskTitleInput = styled.input`
   border: 1px solid var(--button);
   border-radius: 20px;
   width: 250px;
+  height: 40px;
   padding: 5px 5px 5px 10px;
   background-color: var(--grey);
+
+  @media screen and (min-width: 600px) {
+    width: 400px;
+  }
 `;
 
 const CreateTaskSelects = styled.div`
@@ -32,17 +37,22 @@ const CreateTaskSelects = styled.div`
   gap: 4px;
 
   @media screen and (min-width: 600px) {
-    gap: 50px;
+    gap: 20px;
   }
 `;
 
 const StyledSelects = styled.select`
   display: flex;
   width: 123px;
+  height: 40px;
   border: 1px solid var(--button);
   background-color: var(--grey);
   border-radius: 20px;
   padding: 5px;
+
+  @media screen and (min-width: 600px) {
+    width: 190px;
+  }
 `;
 
 const StyledTaskInput = styled.textarea`
@@ -186,7 +196,9 @@ export const CreateTask = () => {
     <StyledCreateTask>
       <p>
         Share your need with the community! After posting, you will see the
-        status of your post in your profile page.
+        status of your post in your profile page. If someone offers to
+        volunteer, you will receive their username and email so you can contact
+        them.
       </p>
       {/* Create an input field for entering the task title. */}
       <StyledTaskTitleInput

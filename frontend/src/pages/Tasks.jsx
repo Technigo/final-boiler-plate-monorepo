@@ -13,46 +13,46 @@ const StyledTaskPage = styled.div`
   align-items: center;
   justify-content: center;
 
-  h3 {
+  h2 {
     margin-bottom: 20px;
   }
 `;
 
-const StyledTaskFields = styled.div`
+const HeadingWrapper = styled.div`
   display: flex;
-  flex-direction: column;
-  text-align: center;
-  width: 250px;
-  gap: 10px;
-
-  @media screen and (min-width: 600px) {
-    width: 500px;
-  }
-
-  @media screen and (min-width: 1000px) {
-    flex-direction: row;
-    align-items: flex-start;
-    justify-content: center;
-    width: 750px;
-  }
-`;
-
-const StyledTaskCreator = styled.div`
-  display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 20px;
-  margin-bottom: 30px;
+  border: none;
+  padding: 0;
+
+  h1 {
+    margin: 0;
+  }
+
+  @media screen and (min-width: 855px) {
+    flex-direction: column;
+    justify-content: flex-start;
+    border-right: 5px solid var(--lighttext);
+    width: 30%;
+  }
 `;
 
 const StyledTaskText = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: 50px;
+  margin-bottom: 40px;
+
+  @media screen and (min-width: 855px) {
+    flex-direction: row;
+  }
+`;
+
+const TextWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
   justify-content: center;
-  gap: 5px;
-  margin-bottom: 20px;
 `;
 
 const CardWrapper = styled.div`
@@ -86,7 +86,6 @@ const CardWrapper = styled.div`
 export const Tasks = () => {
   // Text content for the heading and paragraphs.
   const text = {
-    heading: "In Need, In Deed",
     intro: "Do you need a helping hand? Or do you want to help someone?",
     p: "Then Deed Hub is the place to be!",
     deeds: "Help requested",
@@ -118,18 +117,22 @@ export const Tasks = () => {
   // Render the component content.
   return (
     <StyledTaskPage>
-      <StyledTaskFields>
-        <StyledTaskCreator>
-          <StyledTaskText>
-            {/* Display the heading and paragraphs. */}
-            <h2>{text.heading}</h2>
-            <p>{text.intro}</p>
-            <p>{text.p}</p>
-          </StyledTaskText>
-          <TaskTabs />
-        </StyledTaskCreator>
-      </StyledTaskFields>
-      <h3>{text.deeds}</h3>
+      <StyledTaskText>
+        {/* Display the heading and paragraphs. */}
+        <HeadingWrapper>
+          <h1>
+            In Need,
+            <br />
+            In Deed
+          </h1>
+        </HeadingWrapper>
+        <TextWrapper>
+          <p>{text.intro}</p>
+          <p>{text.p}</p>
+        </TextWrapper>
+      </StyledTaskText>
+      <TaskTabs />
+      <h2>{text.deeds}</h2>
       <CardWrapper>
         {/* Conditional rendering based on the number of tasks. */}
         {tasks.length === 0 ? (
