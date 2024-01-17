@@ -28,9 +28,9 @@
 	-webkit-text-size-adjust: 100%;
 
 	--background-color: #262522;
-	--background-section-color-one: #A76D60;
+	--background-section-color-one: #a76d60;
 	--background-section-color-two: #161513;
-	--background-section-color-three: #0B1C26;
+	--background-section-color-three: #0b1c26;
 	--background-section-color-four: #363530;
 
 	--font-color: #f2f2f2;
@@ -71,7 +71,12 @@ body {
 	max-width: 1280px;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
 	font-family: Jost, sans-serif;
 	font-weight: 400;
 }
@@ -106,10 +111,10 @@ button:focus-visible {
 
 		--background-color: #f2f2f2;
 		--off-background-color: #f9f9f9;
-		--background-section-color-one: #DBC3BD;
-		--background-section-color-two: #ECEBE9;
-		--background-section-color-three: #EFF6FA;
-		--background-section-color-four: #E2E2DF;
+		--background-section-color-one: #dbc3bd;
+		--background-section-color-two: #ecebe9;
+		--background-section-color-three: #eff6fa;
+		--background-section-color-four: #e2e2df;
 
 		--primary-color: #7787a6;
 		--secondary-color: #424859;
