@@ -6,6 +6,7 @@ const apiEnv = import.meta.env.VITE_BACKEND_API;
 export const adminDashStore = create((set, get) => {
     return {
         // Initialize state variables for admin dashboard
+        users: [],
         isLoading: false,
         errorMessage: "",
 
@@ -43,7 +44,6 @@ export const adminDashStore = create((set, get) => {
         // Function to upgrade user to admin
         upgradeUserToAdmin: async (userId) => {
             set({ isLoading: true, errorMessage: "" });
-            // Access accessToken from adminLoginStore
             const token = get(adminLoginStore).accessToken || localStorage.getItem("adminToken");
 
             try {
@@ -65,6 +65,38 @@ export const adminDashStore = create((set, get) => {
                 alert('An error occurred during user upgrade');
             } finally {
                 set({ isLoading: false });
+            }
+        },
+
+
+        // Function to retrieve a list of users
+        fetchUsers: async () => {
+            set({ isLoadingUsers: true, usersErrorMessage: "" });
+            // Access accessToken from adminLoginStore
+            const token = get(adminLoginStore).accessToken || localStorage.getItem("adminToken");
+
+            try {
+                const response = await fetch(`${apiEnv}/admin/users`, {
+                    method: "GET",
+                    headers: {
+                        "Content-Type": "application/json",
+                        ...(token && { "Authorization": `Bearer ${token}` }),
+                    },
+                });
+
+                const data = await response.json();
+                if (response.ok) {
+                    // Assuming that the response contains a list of users
+                    // Each user object should include the userId
+                    set({ users: data.users || [] });
+                } else {
+                    throw new Error(data.message || 'Failed to fetch users');
+                }
+            } catch (error) {
+                console.error('Fetch users error:', error);
+                set({ usersErrorMessage: error.message || 'Failed to fetch users' });
+            } finally {
+                set({ isLoadingUsers: false });
             }
         },
     };
