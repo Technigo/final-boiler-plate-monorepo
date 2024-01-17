@@ -45,8 +45,9 @@ const MoodSelectorContainer = styled.div`
   align-items: flex-start;
   gap: 5px;
   width: 100%;
-  max-width: 1200px;
+  /* max-width: 1200px; */
   margin-bottom: 15px;
+  font-family: "JosefinSans";
 
   @media ${tablet} {
     display: flex;
@@ -55,26 +56,28 @@ const MoodSelectorContainer = styled.div`
     align-items: flex-start;
     gap: 5px;
     width: 100%;
-    max-width: 1200px;
+    /* max-width: 1200px; */
     margin-bottom: 35px;
+    font-family: "JosefinSans";
   }
 
   @media ${desktop} {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    align-items: flex-start;
+    align-items: center;
     gap: 5px;
     width: 100%;
-    max-width: 1200px;
+    max-width: 1800px;
     margin-bottom: 40px;
+    font-family: "JosefinSans";
   }
 `;
 
 const MoodButton = styled.button`
   color: white;
   border: solid white;
-  padding: 10px 10px;
+  padding: 8px 8px;
   border: none;
   border-radius: 5px;
   cursor: pointer;
@@ -82,6 +85,7 @@ const MoodButton = styled.button`
   text-decoration: none;
   display: inline-block;
   font-size: 16px;
+  font-family: "JosefinSans";
   margin: 4px 4px;
   transition-duration: 0.2s;
   background-color: ${(props) => (props.selected ? "#01999A" : "#FCABE3")};
@@ -99,7 +103,7 @@ const MoodButton = styled.button`
   @media ${tablet} {
     color: white;
     border: solid white;
-    padding: 10px 10px;
+    padding: 12px 12px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -125,9 +129,9 @@ const MoodButton = styled.button`
   @media ${desktop} {
     color: white;
     border: solid white;
-    padding: 10px 10px;
+    padding: 12px 12px;
     border: none;
-    border-radius: 5px;
+    border-radius: 10px;
     cursor: pointer;
     text-align: center;
     text-decoration: none;
@@ -243,6 +247,7 @@ const ResultsButton = styled.button`
   font-size: 18px;
   margin: 2px 2px;
   transition-duration: 0.4s;
+  font-family: "JosefinSans";
 
   &:hover {
     background-color: white;
@@ -268,6 +273,7 @@ const ResultsButton = styled.button`
     font-size: 25px;
     margin: 2px 2px;
     transition-duration: 0.4s;
+    font-family: "JosefinSans";
 
     &:hover {
       background-color: white;
@@ -294,6 +300,7 @@ const ResultsButton = styled.button`
     font-size: 25px;
     margin: 2px 2px;
     transition-duration: 0.4s;
+    font-family: "JosefinSans";
 
     &:hover {
       background-color: white;
@@ -308,84 +315,75 @@ const ResultsButton = styled.button`
   }
 `;
 
-const MoodSelector = () => {
-  const { state } = useLocation();
-  const { occasionRoute } = state || {};
-  const {
-    selectedOccasion,
-    fetchMoodsForOccasion,
-    moods,
-    selectedMoods,
-    setSelectedMoods,
-    fetchResults,
-  } = useRestaurantStore();
-
-  const [resultsButtonClicked, setResultsButtonClicked] = useState(false);
-
-  useEffect(() => {
-    if (selectedOccasion) {
-      fetchMoodsForOccasion(selectedOccasion);
-    }
-  }, [fetchMoodsForOccasion, selectedOccasion]);
-
-  const handleMoodClick = (mood) => {
-    setSelectedMoods(mood);
-  };
-
-  const handleResultsButtonClick = async () => {
-    if (selectedMoods.length > 0 && selectedMoods.length <= 3) {
-      setResultsButtonClicked(true);
-      await fetchResults();
-    } else {
-      console.log("Please select between 1 and 3 moods.");
-    }
-  };
-
-  const location = useLocation();
-  const navigate = useNavigate();
-
-  const handleBackButtonClick = () => {
-    const { state } = location;
-    const { occasionRoute } = state || {};
-
-    // Navigate back to the relevant occasion-page using the occasionRoute
-    navigate(occasionRoute || "/");
-  };
-
-  return (
-    <PageContainer>
-      <Navbar />
-      <TitleContainer>
-        <h2>Please select 1-3 moods</h2>
-      </TitleContainer>
-      <MoodSelectorContainer>
-        {moods.map((mood) => (
-          <MoodButton
-            key={mood}
-            onClick={() => handleMoodClick(mood)}
-            selected={selectedMoods.includes(mood)}
-          >
-            {mood}
-          </MoodButton>
-        ))}
+const CitySelector = () => {
+    const {
+      cities,
+      selectedCities,
+      setSelectedCities,
+      fetchCities,
+      fetchResults,
+    } = useRestaurantStore();
+  
+    const [resultsButtonClicked, setResultsButtonClicked] = useState(false);
+  
+    useEffect(() => {
+      fetchCities(); // Fetch cities when the component mounts
+    }, [fetchCities]);
+  
+    const handleCityClick = (city) => {
+      setSelectedCities(city); // Update selected cities array
+    };
+  
+    const handleResultsButtonClick = async () => {
+      if (selectedCities.length > 0) {
+        setResultsButtonClicked(true);
+        await fetchResults(); // Ensure this function is implemented to handle multiple cities
+      } else {
+        console.log("Please select a city.");
+      }
+    };
+  
+    const navigate = useNavigate();
+    const handleBackButtonClick = () => {
+      navigate("/"); // Adjust the navigation path
+    };
+  
+    return (
+        <PageContainer>
+          <Navbar />
+          <TitleContainer>
+            <h2>Please select a city</h2>
+          </TitleContainer>
+          <MoodSelectorContainer>
+            {cities && cities.length > 0 ? (
+              cities.map((city) => (
+                <MoodButton
+                  key={city}
+                  onClick={() => handleCityClick(city)}
+                  selected={selectedCities.includes(city)}
+                >
+                  {city}
+                  </MoodButton>
+          ))
+        ) : (
+          <p>Loading cities...</p> // or any other placeholder
+        )}
       </MoodSelectorContainer>
-
-      <div style={{ display: "flex", justifyContent: "space-between" }}>
-        <BackButton onClick={handleBackButtonClick}>
-          Back to Occasion
-        </BackButton>
-        <Link to="/city">
-          <ResultsButton
-            onClick={handleResultsButtonClick}
-            $clicked={resultsButtonClicked}
-          >
-            To city
-          </ResultsButton>
-        </Link>
-      </div>
-      <Footer />
-    </PageContainer>
-  );
-};
-
-export default MoodSelector;
+  
+        <div style={{ display: "flex", justifyContent: "space-between" }}>
+          <BackButton onClick={handleBackButtonClick}>Back</BackButton>
+          <Link to="/result">
+            <ResultsButton
+              onClick={handleResultsButtonClick}
+              $clicked={resultsButtonClicked}
+            >
+              To Results
+            </ResultsButton>
+          </Link>
+        </div>
+        <Footer />
+      </PageContainer>
+    );
+  };
+  
+  export default CitySelector;
