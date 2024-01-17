@@ -8,7 +8,7 @@ import occasionandmoodRoutes from './routes/occasionandmoodRoutes.js';
 const app = express();
 
 app.use(cors({
-  origin: 'http://localhost:5173'
+  origin: 'https://foodiemoodie.netlify.app'
 }));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
