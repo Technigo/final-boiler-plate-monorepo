@@ -1,11 +1,13 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { userStore } from "../stores/userStore";
+import { useAuth0 } from "@auth0/auth0-react";
 
 export const TripDetails = () => {
   const { tripId } = useParams();
   const { loggedInUserId } = userStore();
   const [selectedTrip, setSelectedTrip] = useState(null);
+  const { isAuthenticated } = useAuth0();
   const [isLoading, setIsLoading] = useState(true);
   const apiEnv = import.meta.env.VITE_BACKEND_API;
 
@@ -49,7 +51,7 @@ export const TripDetails = () => {
             <div className="info-item">Make: {selectedTrip.make}</div>
             <div className="info-item">Model: {selectedTrip.model}</div>
             <div className="info-item">Message: {selectedTrip.message}</div>
-            {selectedTrip.user !== loggedInUserId && (
+            {isAuthenticated && selectedTrip.user !== loggedInUserId && (
               <button
                 type="button"
                 className="bg-pink-400 rounded-full cursor-pointer hover:bg-cyan-800 text-white px-5 py-2 mt-8 font-semibold"

@@ -1,9 +1,11 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { userStore } from "../stores/userStore";
 
 export const Trips = () => {
   const [trips, setTrips] = useState(null);
   const apiEnv = import.meta.env.VITE_BACKEND_API;
+  const { loggedInUserId } = userStore();
 
   useEffect(() => {
     fetch(`${apiEnv}/trips`)
@@ -19,6 +21,16 @@ export const Trips = () => {
       })
       .catch((error) => console.error("Error fetching trips:", error));
   }, []);
+
+  const deleteTrip = async (tripId) => {
+    try {
+      const response = await fetch(`${apiEnv}/deletetrip/${tripId}`, {
+        method: "DELETE",
+      });
+    } catch (error) {
+      console.error(error.message);
+    }
+  };
 
   if (trips === null) {
     return <p>Loading...</p>;
@@ -73,6 +85,14 @@ export const Trips = () => {
               View
             </Link>
           </div>
+          {trip.user === loggedInUserId && (
+            <button
+              onClick={deleteTrip}
+              className="bg-orange-400 text-white text-lg"
+            >
+              Delete trip
+            </button>
+          )}
         </div>
       ))}
     </div>

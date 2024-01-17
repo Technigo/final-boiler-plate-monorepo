@@ -81,27 +81,39 @@ export const Chat = () => {
       text: newMessageText,
     };
     try {
-      const response = await fetch(`${apiEnv}/addmessage`, {
+      const response = await fetch(`${vite_backend}/addmessage`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(newMessage),
+        body: JSON.stringify({
+          sender: userId,
+          recipient: receiverId,
+          text: newMessageText,
+        }),
       });
 
-      const data = await response.json();
-      alert("Trip posted successfully");
+      if (response.ok) {
+        console.log("banana");
+        const data = await response.json();
+        console.log("data: " + data);
+        alert("Message sent successfully");
 
-      setMessages((prev) => [
-        ...prev,
-        {
-          text: newMessageText,
-          sender: username,
-          recipient: receiverId,
-          _id: Date.now(),
-        },
-      ]);
-      setNewMessageText("");
+        setNewMessageText("");
+
+        setMessages((prev) => [
+          ...prev,
+          {
+            text: newMessageText,
+            sender: username,
+            recipient: receiverId,
+            _id: Date.now(),
+          },
+        ]);
+        console.log(messages);
+      } else {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
     } catch (error) {
       console.error("Error sending message:", error);
       alert(`Failed to send message. Error: ${error.message}`);
@@ -153,7 +165,8 @@ export const Chat = () => {
   useEffect(() => {
     const userMessages = () => {
       // Handle your logic for new messages here
-
+      console.log("sender: " + loggedInUserId);
+      console.log("receiver: " + recipientId);
       handleChatHistory(loggedInUserId, recipientId);
       console.log("chatMessages: " + chatMessages.length);
     };
@@ -170,8 +183,6 @@ export const Chat = () => {
       // Handle your logic for new messages here
 
       div.scrollIntoView({ behavior: "smooth", block: "end" });
-
-      console.log("scrolling to bottom");
 
       // Update the reference to the latest chatMessages
       prevChatMessagesRef.current = chatMessages.length;

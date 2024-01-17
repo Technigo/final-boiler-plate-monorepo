@@ -185,6 +185,19 @@ export const UserController = {
     }
   },
 
+  deleteSingleTrip: async (req, res) => {
+    const { id } = req.params;
+    try {
+      const trip = await TripModel.findOneAndDelete({ _id: id });
+      if (!trip) {
+        return res.status(404).json({ message: "Trip not found" });
+      }
+      res.json(trip);
+    } catch (error) {
+      res.json({ error: error.message });
+    }
+  },
+
   //Experiment
   addMessage: async (req, res) => {
     const { sender, recipient, text } = req.body;
