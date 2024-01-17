@@ -378,16 +378,9 @@ const MoodSelector = () => {
       </MoodSelectorContainer>
 
       <div style={{ display: "flex", justifyContent: "space-between" }}>
-<<<<<<< HEAD
-        <BackButton onClick={handleBackButtonClick}>
-          Back to Occasion
-        </BackButton>
-        <Link to="/city">
-=======
         <BackButton onClick={handleBackButtonClick}>Back</BackButton>
 
-        <Link to="/result">
->>>>>>> 2a3a1a283f1ba184c164156b6d42b21b56f8a639
+        <Link to="/city">
           <ResultsButton
             onClick={handleResultsButtonClick}
             $clicked={resultsButtonClicked}
