@@ -146,8 +146,6 @@ const predefinedMoods = [
   "Romantic"
 ];
 const AddRestaurantForm = () => {
-  const { occasions, moods, fetchOccasions, fetchMoods } = useRestaurantStore();
-
   const [formData, setFormData] = useState({
     restaurantName: "",
     address: "",
@@ -176,28 +174,17 @@ const AddRestaurantForm = () => {
     }
   };
 
-  const handleFormSubmit = (e) => {
-    e.preventDefault();
-    if (formData.occasion.length === 0 || formData.mood.length === 0) {
-      alert("Please select at least one occasion and one mood.");
-      return;
-    }
-    console.log("Form data:", formData);
-    // Perform form submission logic here...
-  };
-
   return (
     <PageContainer>
       <Navbar />
       <StyledH2>Are you a Foodie who can sense the Moodie?</StyledH2>
       <StyledH1>Add your own!</StyledH1>
       <form action="https://formsubmit.co/foodiemoodieappen@gmail.com" method="POST">
-
         
         {/* Occasion checkboxes */}
         <StyledOccasionsContainer>
           <FormLabel>Tick the boxes with suiting occasions*:</FormLabel>
-          {occasions.map((option, index) => (
+          {predefinedOccasions.map((option, index) => (
             <label key={index}>
               {option}
               <input type="checkbox" name="occasion" value={option} checked={formData.occasion.includes(option)} onChange={handleChange} />
@@ -208,13 +195,15 @@ const AddRestaurantForm = () => {
         {/* Mood checkboxes */}
         <StyledMoodsContainer>
           <FormLabel>Tick the boxes with suiting moods*:</FormLabel>
-          {moods.map((option, index) => (
+          {predefinedMoods.map((option, index) => (
             <label key={index}>
               {option}
               <input type="checkbox" name="mood" value={option} checked={formData.mood.includes(option)} onChange={handleChange} />
             </label>
           ))}
         </StyledMoodsContainer>
+
+        {/* Additional form fields */}
         <FormLabel>Your description of the restaurant*:</FormLabel>
         <StyledInput type="text" name="description" value={formData.description} onChange={handleChange} required />
         <FormLabel>Website URL:</FormLabel>
@@ -223,6 +212,7 @@ const AddRestaurantForm = () => {
         <StyledInput type="text" name="name" value={formData.name} onChange={handleChange} />
         <FormLabel>Your e-mail (in case we need some more info):</FormLabel>
         <StyledInput type="email" name="email" value={formData.email} onChange={handleChange} />
+
         <StyledParagraph>Fields marked with * are mandatory.</StyledParagraph>
         <Button type="submit">Submit</Button>
       </form>
