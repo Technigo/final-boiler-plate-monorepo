@@ -12,6 +12,12 @@ const StyledBurgerMenu = styled.div`
   display: flex;
   max-width: 130px;
   padding: 0 0 20px 20px;
+
+  /* @media screen and (max-width: 510px) {
+    background-color: rgba(155, 100, 137, 0.8);
+    padding: 0 0 5px 5px;
+    border-radius: 10px 0 10px 0;
+  } */
 `;
 
 const StyledToggleButton = styled.button`
@@ -34,6 +40,13 @@ const StyledBurgerLinks = styled.div`
   .logout-button {
     margin: 0;
     padding: 0;
+  }
+
+  @media screen and (max-width: 510px) {
+    background-color: ${(props) =>
+      props.burgerMenuOpen ? "rgba(155, 100, 137, 0.8)" : "transparent"};
+    padding: ${(props) => (props.burgerMenuOpen ? "0 0 5px 5px" : "0")};
+    border-radius: ${(props) => (props.burgerMenuOpen ? "10px 0 10px 0" : "0")};
   }
 `;
 
@@ -70,7 +83,7 @@ export const BurgerMenu = () => {
               height: "25px",
               position: "absolute",
               top: "3px",
-              right: "3px",
+              right: "-10px",
             }}
           />
         ) : (
@@ -78,7 +91,7 @@ export const BurgerMenu = () => {
         )}
       </StyledToggleButton>
       {/* <BurgerMenuAnimation onClick={toggleBurgerMenu} /> */}
-      <StyledBurgerLinks>
+      <StyledBurgerLinks burgerMenuOpen={burgerMenuOpen}>
         <ul className={burgerMenuOpen ? "burger-menu-open" : ""}>
           <li className={activePage === "home" ? "active" : ""}>
             <Link
