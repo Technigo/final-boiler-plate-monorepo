@@ -191,8 +191,8 @@ const AddRestaurantForm = () => {
       <Navbar />
       <StyledH2>Are you a Foodie who can sense the Moodie?</StyledH2>
       <StyledH1>Add your own!</StyledH1>
-      <form onSubmit={handleFormSubmit} action="https://formsubmit.co/foodiemoodieappen@gmail.com" method="POST">
-        {/* Form fields like Restaurant Name, Address, etc. */}
+      <form action="https://formsubmit.co/foodiemoodieappen@gmail.com" method="POST">
+
         
         {/* Occasion checkboxes */}
         <StyledOccasionsContainer>
@@ -223,7 +223,6 @@ const AddRestaurantForm = () => {
         <StyledInput type="text" name="name" value={formData.name} onChange={handleChange} />
         <FormLabel>Your e-mail (in case we need some more info):</FormLabel>
         <StyledInput type="email" name="email" value={formData.email} onChange={handleChange} />
-        <input type="hidden" name="_cc" value="foodiemoodieappen@gmail.com" />
         <StyledParagraph>Fields marked with * are mandatory.</StyledParagraph>
         <Button type="submit">Submit</Button>
       </form>
