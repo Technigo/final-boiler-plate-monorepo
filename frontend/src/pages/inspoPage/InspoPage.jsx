@@ -1,22 +1,9 @@
-import { useEffect, useState } from "react";
-import { plantStore } from "../../stores/plantStore";
+
 import { ArticleBedroom } from "./articles/ArticleBedroom";
 import { ArticleBalcony } from "./articles/ArticleBalcony";
-import { PlantCardMini } from "../../components/plantCard/PlantCardMini";
 import "./InspoPage.css";
 
 export const InspoPage = () => {
-  const { plants, fetchPlantsByIds } = plantStore();
-  const [selectedPlantIndexes, setSelectedPlantIndexes] = useState([]);
-  const [clickedButtonCoord, setClickedButtonCoord] = useState(null);
-
-  const plantIds = [3, 21, 10, 2];
-
-  //const plantIdsTwo = [2, 21];
-
-  useEffect(() => {
-    fetchPlantsByIds(plantIds);
-  }, []);
 
   return (
     <>

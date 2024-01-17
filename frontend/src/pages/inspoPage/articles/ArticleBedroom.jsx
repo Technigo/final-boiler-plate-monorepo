@@ -52,7 +52,7 @@ export const ArticleBedroom = () => {
             type="radio"
             name="plants"
             key={coord.plantIndex}
-            className="dot-button"
+            className="dot-button-bedroom"
             style={{ left: `${coord.x}%`, top: `${coord.y}%` }}
             onClick={() => handleButtonClick(coord.plantIndex, coord)}
           ></button>

@@ -3,9 +3,6 @@ import { cartStore } from "../../../stores/cartStore";
 import { Link } from "react-router-dom";
 import { useMediaQuery } from "react-responsive";
 import { Navigation } from "./Navigation";
-//import Badge from "@mui/material/Badge";
-//import { Badge } from '@mui/base/Badge';
-
 
 // ICONS
 import { IoIosMenu } from "react-icons/io";
@@ -55,12 +52,10 @@ export const Navbar = () => {
           <Link to="/wishlist">
             <IoHeart className="heart-icon" />
           </Link>
-          {/* <Badge color="secondary" badgeContent={numberOfProducts} showZero> */}
             <Link to="/cart" className="cart-badge-container">
               <HiShoppingBag className="cart-icon" />
-              <div className="cart-count" badgeContent={numberOfProducts}>{numberOfProducts}</div>
+              <div className="cart-count">{numberOfProducts}</div>
             </Link>
-          {/* </Badge> */}
         </div>
       </nav>
       {hiddenMenu && (

@@ -49,7 +49,7 @@ export const ArticleBalcony = () => {
               type="radio"
               name="plants"
               key={coord.plantIndex}
-              className="dot-button"
+              className="dot-button-balcony"
               style={{ left: `${coord.x}%`, top: `${coord.y}%` }}
               onClick={() => handleButtonClick(coord.plantIndex, coord)}
             ></button>
@@ -64,7 +64,10 @@ export const ArticleBalcony = () => {
       )} */}
       {selectedPlantIndexes !== null && plants.length > 0 && clickedButtonCoord !== null && (
         <PlantCardMini plants={selectedPlantIndexes.map((index) => plants[index])}
-        position={{left: `10%`, top: `90%`,}}
+        position={{
+          left: `${clickedButtonCoord.x}%`,
+          top: `${clickedButtonCoord.y}%`,
+        }}
          />
       )}
       

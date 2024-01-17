@@ -17,12 +17,21 @@
 
 .inspo-img {
   border-radius: 1rem;
-  position: relative;
   width: 100%;
   height: auto;
 }
 
-.dot-button {
+.dot-button-bedroom {
+  position: absolute;
+  width: 1rem;
+  height: 1rem;
+  border: solid var(--chalk);
+  background-color: var(--sand);
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.dot-button-balcony {
   position: absolute;
   width: 1rem;
   height: 1rem;
