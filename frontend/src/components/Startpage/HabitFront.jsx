@@ -1,5 +1,5 @@
 import React from 'react';
-import './habitfront.css';
+/*import './habitfront.css';*/
 
 const daysOfWeek = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
 
