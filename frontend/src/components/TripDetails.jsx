@@ -62,67 +62,46 @@ export const TripDetails = () => {
 
   return (
     <>
-    <div className="sm:mt-8 mt-2 space-y-4 mx-auto max-w-screen-lg mb-8 p-2">
+    <div className="sm:mt-8 mt-2 space-y-4 mx-auto max-w-screen-md mb-8 p-2">
   
       <h1 className="text-lg font-md">Trip details</h1>
-      <div className="grid grid-cols-12 gap-2 bg-secondary-50 rounded-lg relative p-2"
+      <div className="grid grid-cols-12 gap-2 bg-secondary-50 rounded-lg relative p-4"
         >
      
-     <div className="col-span-5 text-xs bg-cyan-100">
+     <div className="col-span-6 text-xs">
           From
           </div>
-          <div className="col-span-2 bg-pink-100">
-          
-          </div>
-          <div className="col-span-5 text-xs bg-green-100">
+
+          <div className="col-span-6 text-xs">
           To
           </div>
 
 
 
 
-          <div className="col-span-5 text-lg text-primary-900 font-semibold sm:text-4xl bg-slate-200">
+          <div className="col-span-6 flex items-center text-lg text-primary-900 font-semibold sm:text-4xl p-2">
           {selectedTrip.from}
           </div>
-          <div className="col-span-2 flex items-center justify-center bg-fuchsia-300">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth="1.5"
-              stroke="currentColor"
-              className="w-6 h-6"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"
-              />
-            </svg>
-          </div>
 
-          <div className="col-span-5 text-lg text-right font-semibold sm:text-4xl bg-slate-200">
+          <div className="col-span-6 flex items-center text-lg text-right font-semibold sm:text-4xl p-2">
           {selectedTrip.to}
           </div>
 
 
 
-          <div className="col-span-4 mt-2 text-xs">
+          <div className="col-span-6 mt-2 text-xs">
           Date
           </div>
-          <div className="col-span-5 mt-2 text-xs">
+          <div className="col-span-6 mt-2 text-xs">
           User
           </div>
-          <div className="col-span-3 mt-2 text-xs">
-          Reg. No
-          </div>
 
 
 
-          <div className="col-span-4 flex items-center justify-center text-md sm:text-xl">
+          <div className="col-span-6 flex items-center text-lg sm:text-2xl p-2">
           {selectedTrip.date}
           </div>
-          <div className="col-span-5 flex items-center justify-center text-md sm:text-xl bg-yellow-200">
+          <div className="col-span-6 flex items-center font-semibold text-lg sm:text-2xl p-2">
           <span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6">
   <path fillRule="evenodd" d="M18.685 19.097A9.723 9.723 0 0 0 21.75 12c0-5.385-4.365-9.75-9.75-9.75S2.25 6.615 2.25 12a9.723 9.723 0 0 0 3.065 7.097A9.716 9.716 0 0 0 12 21.75a9.716 9.716 0 0 0 6.685-2.653Zm-12.54-1.285A7.486 7.486 0 0 1 12 15a7.486 7.486 0 0 1 5.855 2.812A8.224 8.224 0 0 1 12 20.25a8.224 8.224 0 0 1-5.855-2.438ZM15.75 9a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Z" clipRule="evenodd" />
 </svg>
@@ -130,58 +109,59 @@ export const TripDetails = () => {
 
 </span> {selectedTrip.username}
           </div>
-          <div className="col-span-3 flex items-center justify-center text-lg sm:text-xl font-semibold bg-white border border-primary-900 rounded-lg p-2">
-          {selectedTrip.reg}
-          </div>
 
 
 
-          <div className="col-span-6 text-xs">
+      
+
+
+
+          <div className="col-span-6 mt-2 text-xs">
           Make
           </div>
-          <div className="col-span-6 text-xs bg-pink-100">
+          <div className="col-span-6 mt-2 text-xs">
           Model
           </div>
    
-          <div className="col-span-6 flex items-center justify-center text-md sm:text-xl bg-secondary-200">
+          <div className="col-span-6 flex items-center text-lg sm:text-xl p-2">
           {selectedTrip.make}
           </div>
-          <div className="col-span-6 flex items-center justify-center text-md sm:text-xl bg-green-100">
+          <div className="col-span-6 flex items-center text-lg sm:text-xl p-2">
           {selectedTrip.model}
           </div>
 
 
           
-          <div className="col-span-6 text-xs bg-cyan-100">
+          <div className="col-span-3 mt-2 text-xs">
           Avail. seats
           </div>
-          <div className="col-span-6 text-xs bg-pink-100">
+          <div className="col-span-3 mt-2 text-xs">
+          Music
+          </div>
+          <div className="col-span-7 mt-2 text-xs">
           Music
           </div>
    
-          <div className="col-span-6 text-md sm:text-xl bg-green-100">
+          <div className="col-span-4 flex items-center text-md sm:text-xl p-2">
           {selectedTrip.availableSeats}
           </div>
-          <div className="col-span-6 text-md sm:text-xl bg-amber-100">
-          {selectedTrip.music}
+          <div className="col-span-4 flex items-center text-md sm:text-xl p-2">
+          {selectedTrip.music} Alternative Adventures
+          </div>
+          <div className="col-span-4 flex items-center text-md sm:text-xl p-2">
+          {selectedTrip.availableSeats}
           </div>
 
 
-          <div className="col-span-12 text-xs bg-cyan-100">
+          <div className="col-span-12 mt-2 text-xs">
           Message
           </div>
 
-          <div className="col-span-12 text-md sm:text-xl bg-orange-200">
-          {selectedTrip.message}
+          <div className="col-span-12 text-md sm:text-lg">
+          Lorem ipsum dolor sit amet. Ut labore impedit ut temporibus magni aut fugiat dicta sed autem eaque aut consequuntur animi id veniam eveniet quo numquam laboriosam. Ut debitis blanditiis ut veniam iure et laboriosam dolor hic placeat molestias At perspiciatis deserunt non rerum nulla? Eum similique voluptas ad excepturi enim sed nihil voluptatem qui debitis tempore et vitae enim aut totam repellat in vitae velit? {selectedTrip.message}
           </div>
 
-          <div className="col-span-12 text-xs bg-cyan-100">
-          Message
-          </div>
 
-          <div className="col-span-12 text-md sm:text-xl bg-orange-200">
-          {selectedTrip.message}
-          </div>
 
 
           </div>

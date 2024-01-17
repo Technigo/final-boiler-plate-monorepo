@@ -283,7 +283,7 @@ export const TripGenerator = () => {
               <label
                 htmlFor="availableSeats"
                 className="block text-sm font-md text-gray-700">
-                Available Seats
+                Avail. Seats
               </label>
               <input
                 type="number"
