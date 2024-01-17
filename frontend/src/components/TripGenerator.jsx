@@ -19,6 +19,7 @@ export const TripGenerator = () => {
     model: "",
     availableSeats: "",
     reg: "",
+    music: "",
     user: loggedInUserId,
     username: tripUsername,
   });
@@ -65,21 +66,21 @@ export const TripGenerator = () => {
     }
   };
 
-  const handleTimeChange = (e) => {
-    const { name, value } = e.target;
-    let formattedValue = value;
+  // const handleTimeChange = (e) => {
+  //   const { name, value } = e.target;
+  //   let formattedValue = value;
 
-    const selectedTime = new Date(`2000-01-01T${formattedValue}`);
-    const roundedMinutes = Math.round(selectedTime.getMinutes() / 15) * 15;
-    selectedTime.setMinutes(roundedMinutes);
+  //   const selectedTime = new Date(`2000-01-01T${formattedValue}`);
+  //   const roundedMinutes = Math.round(selectedTime.getMinutes() / 15) * 15;
+  //   selectedTime.setMinutes(roundedMinutes);
 
-    const formattedTime = selectedTime.toLocaleTimeString([], {
-      hour: "2-digit",
-      minute: "2-digit",
-    });
+  //   const formattedTime = selectedTime.toLocaleTimeString([], {
+  //     hour: "2-digit",
+  //     minute: "2-digit",
+  //   });
 
-    setFormData((prevData) => ({ ...prevData, [name]: formattedTime }));
-  };
+  //   setFormData((prevData) => ({ ...prevData, [name]: formattedTime }));
+  // };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -94,6 +95,7 @@ export const TripGenerator = () => {
       model: formData.model,
       availableSeats: formData.availableSeats,
       reg: formData.reg,
+      music: formData.music,
       user: loggedInUserId,
       username: tripUsername,
     };
@@ -126,6 +128,7 @@ export const TripGenerator = () => {
         model: "",
         availableSeats: "",
         reg: "",
+        music: "",
       }));
     } catch (error) {
       console.error("Error creating trip:", error);
@@ -135,18 +138,18 @@ export const TripGenerator = () => {
     }
   };
 
-  const timeOptions = Array.from({ length: 24 * 4 }, (_, index) => {
-    const hours = Math.floor(index / 4);
-    const minutes = (index % 4) * 15;
-    const formattedTime = `${String(hours).padStart(2, "0")}:${String(
-      minutes
-    ).padStart(2, "0")}`;
-    return (
-      <option key={formattedTime} value={formattedTime}>
-        {formattedTime}
-      </option>
-    );
-  });
+  // const timeOptions = Array.from({ length: 24 * 4 }, (_, index) => {
+  //   const hours = Math.floor(index / 4);
+  //   const minutes = (index % 4) * 15;
+  //   const formattedTime = `${String(hours).padStart(2, "0")}:${String(
+  //     minutes
+  //   ).padStart(2, "0")}`;
+  //   return (
+  //     <option key={formattedTime} value={formattedTime}>
+  //       {formattedTime}
+  //     </option>
+  //   );
+  // });
 
   const formDataIsIncomplete = () => {
     const { from, to, date, make, model, reg, availableSeats, message } =
@@ -184,11 +187,10 @@ export const TripGenerator = () => {
             setFormData={setFormData}
           />
           <div className="flex space-x-4 mb-4">
-            <div className="w-1/3">
+            <div className="w-1/2">
               <label
                 htmlFor="date"
-                className="block text-sm font-md text-gray-700"
-              >
+                className="block text-sm font-md text-gray-700">
                 Date
               </label>
               <DatePicker
@@ -203,11 +205,10 @@ export const TripGenerator = () => {
               />
             </div>
 
-            <div className="w-1/3">
+            <div className="w-1/2">
               <label
                 htmlFor="reg"
-                className="block text-sm font-md text-gray-700"
-              >
+                className="block text-sm font-md text-gray-700">
                 Reg. no
               </label>
               <input
@@ -223,13 +224,66 @@ export const TripGenerator = () => {
                 placeholder="ex. ABC123"
               />
             </div>
+          </div>
 
-            <div className="w-1/3">
+          <div className="flex space-x-4">
+            <div className="w-1/2">
+              <label
+                htmlFor="make"
+                className="block text-sm font-md text-gray-700">
+                Make
+              </label>
+              <select
+                id="make"
+                name="make"
+                value={formData.make}
+                onChange={(e) =>
+                  handleChange({
+                    target: { name: e.target.name, value: e.target.value },
+                  })
+                }
+                className="input-field border p-2 rounded-md w-full h-10">
+                <option value="" disabled>
+                  Make
+                </option>
+                {makes.map((make) => (
+                  <option key={make} value={make}>
+                    {make}
+                  </option>
+                ))}
+              </select>
+            </div>
+            <div className="w-1/2">
+              <label
+                htmlFor="model"
+                className="block text-sm font-md text-gray-700">
+                Model
+              </label>
+              <select
+                id="model"
+                name="model"
+                value={formData.model}
+                onChange={handleChange}
+                className="input-field border p-2 rounded-md w-full h-10">
+                <option value="" disabled>
+                  Model
+                </option>
+                {formData.make &&
+                  models[formData.make].map((model) => (
+                    <option key={model} value={model}>
+                      {model}
+                    </option>
+                  ))}
+              </select>
+            </div>
+          </div>
+
+          <div className="flex space-x-4">
+            <div className="w-1/4">
               <label
                 htmlFor="availableSeats"
-                className="block text-sm font-md text-gray-700"
-              >
-                Available Seats
+                className="block text-sm font-md text-gray-700">
+                Avail. Seats
               </label>
               <input
                 type="number"
@@ -253,70 +307,47 @@ export const TripGenerator = () => {
                 placeholder="Max 8"
               />
             </div>
+            <div className="w-3/4">
+              <label
+                htmlFor="music"
+                className="block text-sm font-md text-gray-700">
+                Music
+              </label>
+              <select
+                id="music"
+                name="music"
+                value={formData.music}
+                onChange={handleChange}
+                className="input-field border p-2 rounded-md w-full h-10">
+                <option value="" disabled>
+                  Music
+                </option>
+                <option value="popextravaganza">Pop Extravaganza</option>
+                <option value="rockNRoll">Rock &apos;n&apos; Roll</option>
+                <option value="hipHopGrooves">Hip-Hop Grooves</option>
+                <option value="jazzyJams">Jazzy Jams</option>
+                <option value="bluesyBeats">Bluesy Beats</option>
+                <option value="classicalElegance">Classical Elegance</option>
+                <option value="electronicWaves">Electronic Waves</option>
+                <option value="rhythmicAndBlues">Rhythmic & Blues</option>
+                <option value="countryRoads">Country Roads</option>
+                <option value="indieVibes">Indie Vibes</option>
+                <option value="folkyFeels">Folky Feels</option>
+                <option value="reggaeRhythms">Reggae Rhythms</option>
+                <option value="latinHeat">Latin Heat</option>
+                <option value="metalMayhem">Metal Mayhem</option>
+                <option value="alternativeAdventures">
+                  Alternative Adventures
+                </option>
+                <option value="noMusic">No music</option>
+              </select>
+            </div>
           </div>
 
-          <div className="flex space-x-4">
-            <div className="w-1/2">
-              <label
-                htmlFor="make"
-                className="block text-sm font-md text-gray-700"
-              >
-                Make
-              </label>
-              <select
-                id="make"
-                name="make"
-                value={formData.make}
-                onChange={(e) =>
-                  handleChange({
-                    target: { name: e.target.name, value: e.target.value },
-                  })
-                }
-                className="input-field border p-2 rounded-md w-full h-10"
-              >
-                {" "}
-                <option value="" disabled>
-                  Make
-                </option>
-                {makes.map((make) => (
-                  <option key={make} value={make}>
-                    {make}
-                  </option>
-                ))}
-              </select>
-            </div>
-            <div className="w-1/2">
-              <label
-                htmlFor="model"
-                className="block text-sm font-md text-gray-700"
-              >
-                Model
-              </label>
-              <select
-                id="model"
-                name="model"
-                value={formData.model}
-                onChange={handleChange}
-                className="input-field border p-2 rounded-md w-full h-10"
-              >
-                {" "}
-                <option value="" disabled>
-                  Model
-                </option>
-                {formData.make &&
-                  models[formData.make].map((model) => (
-                    <option key={model} value={model}>
-                      {model}
-                    </option>
-                  ))}
-              </select>
-            </div>
-          </div>
           <div className="mb-4">
             <label
               htmlFor="message"
-              className="block text-sm font-md text-gray-700"
-            >
+              className="block text-sm font-md text-gray-700">
               Message
             </label>
             <textarea
@@ -339,8 +370,7 @@ export const TripGenerator = () => {
                   ? "bg-primary-100"
                   : "bg-secondary-500 hover:bg-secondary-700"
               } text-white p-4 py-2 rounded-full focus:outline-none focus:ring focus:border-blue-300`}
-              disabled={loading || formDataIsIncomplete()}
-            >
+              disabled={loading || formDataIsIncomplete()}>
               {loading ? "Generating..." : "Create Trip"}
             </button>
           </div>
@@ -351,8 +381,7 @@ export const TripGenerator = () => {
             {trips.reverse().map((trip) => (
               <div
                 key={trip.id}
-                className="grid grid-cols-12 gap-2 p-4 bg-secondary-100 rounded-lg relative"
-              >
+                className="grid grid-cols-12 gap-2 p-4 bg-secondary-100 rounded-lg relative">
                 <div className="col-span-12 text-md text-gray-900 sm:text-xl">
                   You have created a trip from {trip.from} to {trip.to} on{" "}
                   {trip.date}. Your vehicle of choice is a {trip.make}{" "}
@@ -364,8 +393,7 @@ export const TripGenerator = () => {
                 <div className="col-span-12 flex items-center justify-center">
                   <Link
                     to="/trips"
-                    className="text-amber-500 hover:text-amber-700 focus:outline-none focus:ring focus:border-blue-300"
-                  >
+                    className="text-amber-500 hover:text-amber-700 focus:outline-none focus:ring focus:border-blue-300">
                     See list of trips
                   </Link>
                 </div>
@@ -377,3 +405,4 @@ export const TripGenerator = () => {
     </>
   );
 };
+

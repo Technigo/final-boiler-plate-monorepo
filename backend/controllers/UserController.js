@@ -12,6 +12,45 @@ export const UserController = {
     res.send(req.oidc.isAuthenticated() ? "Logged in" : "Logged out");
   },
 
+  joinTrip: async (req, res) => {
+    const { tripId, userId } = req.params;
+    console.log("Received tripId:", tripId);
+    console.log("Received userId:", userId);
+
+    try {
+      const trip = await TripModel.findById(tripId);
+
+      if (!trip) {
+        return res.status(404).json({ message: "Trip not found" });
+      }
+
+      // Check if the user is already part of the trip
+      if (trip.passengers.includes(userId)) {
+        return res
+          .status(400)
+          .json({ message: "User is already part of the trip" });
+      }
+
+      // Check if there are available seats
+      if (trip.availableSeats <= 0) {
+        return res
+          .status(400)
+          .json({ message: "No available seats for the trip" });
+      }
+
+      // Update the trip information
+      trip.availableSeats -= 1;
+      trip.passengers.push(userId);
+
+      // Save the updated trip to the database
+      await trip.save();
+
+      res.json(trip); // Return the updated trip information to the client
+    } catch (error) {
+      console.error("Error joining trip:", error);
+      res.status(500).json({ error: error.message });
+    }
+  },
   // registerUser: async (req, res) => {
   //   const { username, email, password } = req.body;
   //   try {
