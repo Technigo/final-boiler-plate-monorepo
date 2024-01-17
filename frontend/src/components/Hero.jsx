@@ -156,12 +156,11 @@ export const Hero = () => {
         in need with generous individuals ready to offer their time and care.
         Whether it&apos;s helping an elderly neighbor or assisting with
         groceries, we believe in fostering an inclusive community where goodwill
-        is the currency. Join us in building a warmer, more empathetic world.
-        Welcome to this beautiful movement of humanity!
+        is the currency. Join us in building a warmer, more empathetic world!
         <br />
         <br />
-        Sign up now to volunteer your time and kindness. Be a part of this
-        beautiful movement and let your generosity shine!
+        Sign up now to either ask for help or volunteer your time and kindness.
+        Be a part of this beautiful movement and let your generosity shine!
       </>
     ),
   };
