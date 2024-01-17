@@ -164,11 +164,6 @@ const AddRestaurantForm = () => {
     email: ""
   });
 
-  useEffect(() => {
-    fetchOccasions();
-    fetchMoods();
-  }, [fetchOccasions, fetchMoods]);
-
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
     if (type === "checkbox") {
