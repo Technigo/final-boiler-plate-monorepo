@@ -121,7 +121,7 @@ const Suggestion = () => {
     <PageContainer>
       <Navbar />
       <StyledH1>Suggest changes to the restaurants description</StyledH1>
-      <form
+      <form 
         action="https://formsubmit.co/foodiemoodieappen@gmail.com"
         method="POST"
       >
@@ -131,21 +131,18 @@ const Suggestion = () => {
           name="restaurantName"
           value={formData.restaurantName}
           onChange={handleChange}
-          required // Add required attribute
+          required
         />
-
+  
         <FormLabel>Your Description Suggestion*:</FormLabel>
         <StyledInput
           type="text"
           name="description"
           value={formData.description}
           onChange={handleChange}
-          required // Add required attribute
+          required
         />
-
-        {/* Hidden input for redirection and multiple email addresses */}
-        <input type="hidden" name="_cc" value="foodiemoodieappen@gmail.com" />
-
+  
         <StyledParagraph>Fields marked with * are mandatory.</StyledParagraph>
         <Button type="submit">Submit</Button>
         <Link to="/result">
