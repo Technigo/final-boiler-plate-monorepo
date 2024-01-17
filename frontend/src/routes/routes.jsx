@@ -8,6 +8,9 @@ import { CartPage } from "../pages/cartPage/CartPage";
 import { CheckOut } from "../pages/checkOut/CheckOut";
 import { About } from "../pages/about/About";
 import { InspoPage } from "../pages/inspoPage/InspoPage";
+import { Profile } from "../pages/account/Profile";
+import { Login } from "../pages/auth/Login";
+import { Register } from "../pages/auth/Register";
 
 const routes = (
   <>
@@ -18,6 +21,13 @@ const routes = (
     <Route path="/plants/:id" element={<ProductPage />} />
     <Route path="/plants/all-plants" element={<PlantsPage />} />
     <Route path="/plants/all-plants/:category" element={<PlantsPage />} />
+
+    {/* AUTH PAGES */}
+    <Route path="/login" element={<Login />} />
+    <Route path="/register" element={<Register />} />
+
+    {/* USER PAGES */}
+    <Route path="/profile" element={<Profile />} />
 
     {/* FAVOUITES/WISHLIST PAGE */}
     <Route path="/wishlist" element={<FavouritesPage />} />

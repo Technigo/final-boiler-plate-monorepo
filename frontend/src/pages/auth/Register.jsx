@@ -1,15 +1,15 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
-import { ToastContainer, toast } from "react-toastify";
 import CircularProgress from "@mui/material/CircularProgress";
 import Box from "@mui/material/Box";
+import { ToastContainer, toast } from "react-toastify";
 
-import { InputField } from "../../inputs/inputField";
-import { Button } from "../../buttons/Button";
+import { InputField } from "../../components/inputs/InputField";
+import { Button } from "../../components/buttons/Button";
 
 const API_URL = import.meta.env.VITE_BACKEND_API;
-const withEndpoint = (endpoint) => `${API_URL}/${endpoint}`;
+const withEndpoint = (endpoint) => `${API_URL}/api/auth/${endpoint}`;
 
 export const Register = () => {
   const navigate = useNavigate();
@@ -56,7 +56,7 @@ export const Register = () => {
       if (success) {
         handleSuccess(message);
         setTimeout(() => {
-          navigate("/");
+          navigate("/login");
         }, 1000);
       } else {
         handleError(message);
@@ -78,7 +78,7 @@ export const Register = () => {
         <div className="bg-wrapper">
           <img
             src="./login-register-bg.png"
-            className="bg-imgage"
+            className="bg-img"
             alt="Background image of plant leaves"
           />
           <div className="overlay">
@@ -88,67 +88,76 @@ export const Register = () => {
                 alt="Plants by Holm and Witting logo"
               />
             </div>
-            <div className="user-auth-form">
-              <form onSubmit={handleSubmit}>
-                <div className="form-group">
-                  <label htmlFor="username" className="visually-hidden">
-                    Username
-                  </label>
-                  <InputField
-                    type="text"
-                    name="username"
-                    value={username}
-                    placeholder="Username"
-                    onChange={handleOnChange}
-                    ariaLabel="Username text input"
-                  />
-                </div>
-                <div className="form-group">
-                  <label htmlFor="password" className="visually-hidden">
-                    Password
-                  </label>
-                  <InputField
-                    type="password"
-                    name="password"
-                    value={password}
-                    placeholder="Password"
-                    onChange={handleOnChange}
-                    ariaLabel="Password input"
-                  />
-                </div>
-                <div className="form-group">
-                  <label htmlFor="email" className="visually-hidden">
-                    Email
-                  </label>
-                  <InputField
-                    type="email"
-                    name="email"
-                    value={email}
-                    placeholder="Email"
-                    onChange={handleOnChange}
-                    ariaLabel="Email input"
-                  />
-                </div>
-                {isLoading ? (
-                  <Box sx={{ display: "flex" }}>
-                    <CircularProgress />
-                  </Box>
-                ) : (
-                  ""
-                )}
-                {errorMessage && (
-                  <p className="error-message disclaimer">{errorMessage}</p>
-                )}
-                <Button
-                  className="signup-btn"
-                  type="submit"
-                  btnText="Sign up"
-                  ariaLabel="Sign up button"
+            <form onSubmit={handleSubmit}>
+              <div className="form-group">
+                <label htmlFor="username" className="visually-hidden">
+                  Username
+                </label>
+                <InputField
+                  type="text"
+                  name="username"
+                  value={username}
+                  placeholder="Username"
+                  onChange={handleOnChange}
+                  ariaLabel="Username text input"
                 />
-              </form>
-            </div>
-            <ToastContainer />
+              </div>
+              <div className="form-group">
+                <label htmlFor="password" className="visually-hidden">
+                  Password
+                </label>
+                <InputField
+                  type="password"
+                  name="password"
+                  value={password}
+                  placeholder="Password"
+                  onChange={handleOnChange}
+                  ariaLabel="Password input"
+                />
+              </div>
+              <div className="form-group">
+                <label htmlFor="email" className="visually-hidden">
+                  Email
+                </label>
+                <InputField
+                  type="email"
+                  name="email"
+                  value={email}
+                  placeholder="Email"
+                  onChange={handleOnChange}
+                  ariaLabel="Email input"
+                />
+              </div>
+              {isLoading ? (
+                <Box sx={{ display: "flex" }}>
+                  <CircularProgress />
+                </Box>
+              ) : (
+                ""
+              )}
+              {errorMessage && (
+                <p className="error-message disclaimer">{errorMessage}</p>
+              )}
+              <Button
+                className="signup-btn"
+                type="submit"
+                btnText="Sign up"
+                ariaLabel="Sign up button"
+              />
+            </form>
+            <nav className="register-link-container">
+              {/* Create a navigation menu with links to the login and sign-up routes. */}
+              <ul className="app-ul">
+                <li className="app-li">
+                  <span>Already have an account?</span>
+                  <Link to="/login">
+                    <b>Login here!</b>
+                  </Link>
+                </li>
+              </ul>
+            </nav>
           </div>
+          <ToastContainer />
         </div>
       </div>
     </>

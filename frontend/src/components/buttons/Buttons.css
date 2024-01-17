@@ -19,6 +19,7 @@ button {
 }
 
 .login-btn {
+  margin-top: 1rem;
   width: 100%;
   padding: 0.75rem 0.625rem;
   color: var(--chalk);
@@ -38,4 +39,42 @@ button {
 
 .login-btn:hover {
   background-position: right center;
+}
+
+.signup-btn {
+  margin-top: 1rem;
+  font-family: var(--montserrat);
+  width: 100%;
+  padding: 0.75rem 0.625rem;
+  background-color: #f3f3ead9;
+  backdrop-filter: blur(2px);
+  color: var(--forrest);
+  font-size: 1.25rem;
+  font-weight: 700;
+  transition: all 0.8s;
+  border-radius: 10rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.signup-btn::before {
+  content: '';
+  position: absolute;
+  height: 100%;
+  width: 0%;
+  top: 0;
+  left: -40px;
+  transform: skewX(45deg);
+  background-color: rgba(155, 169, 134, 0.4);
+  z-index: -1;
+  transition: all 0.8s;
+}
+
+.signup-btn:hover {
+  background-color: rgba(155, 169, 134, 0.4);
+  color: var(--chalk);
+}
+
+.signup-btn:hover::before {
+  width: 160%;
 }

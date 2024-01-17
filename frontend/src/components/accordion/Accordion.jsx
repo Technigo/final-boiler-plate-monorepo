@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 import { IoMdArrowDropdown } from "react-icons/io";
 
-const AccordionItem = ({ title, content, isOpen, onToggle, onLinkClick }) => {
+const AccordionItem = ({ title, content, isOpen, onToggle, onLinkClick, onNext, onBack }) => {
   return (
     <div className="accordion-item">
       <div className="accordion-header" onClick={onToggle}>
@@ -33,11 +33,14 @@ const AccordionItem = ({ title, content, isOpen, onToggle, onLinkClick }) => {
           )}
         </div>
       )}
+      {onBack && (
+        <Button btnText={"Back"} onClick={onBack} />
+      )}
     </div>
   );
 };
 
-const Accordion = ({ items }) => {
+const Accordion = ({ items, handleNext, handleBack }) => {
   const [openIndex, setOpenIndex] = useState(null);
   const location = useLocation();
 
@@ -64,6 +67,8 @@ const Accordion = ({ items }) => {
           isOpen={index === openIndex}
           onToggle={() => handleToggle(index)}
           onLinkClick={handleLinkClick}
+          onNext={handleNext}
+          onBack={handleBack}
         />
       ))}
     </div>

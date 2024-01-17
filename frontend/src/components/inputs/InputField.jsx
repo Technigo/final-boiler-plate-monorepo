@@ -17,7 +17,6 @@ export const InputField = ({
         value={value}
         onChange={onChange}
         aria-label={ariaLabel}
-        defaultChecked={value}
       />
     </>
   );

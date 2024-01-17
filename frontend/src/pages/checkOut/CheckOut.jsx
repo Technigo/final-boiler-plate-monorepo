@@ -10,9 +10,6 @@ import { OrderInfo } from "../../components/checkout/OrderInfo";
 import { cartStore } from "../../stores/useCartStore";
 import { useState } from "react";
 import emailjs from "@emailjs/browser";
-// import Accordion from "@mui/material/Accordion";
-// import AccordionSummary from "@mui/material/AccordionSummary";
-// import AccordionDetails from "@mui/material/AccordionDetails";
 import Accordion from "../../components/accordion/Accordion";
 
 import { MdKeyboardArrowLeft } from "react-icons/md";
@@ -21,9 +18,9 @@ import { RiTruckLine, RiPlantLine } from "react-icons/ri";
 import "./CheckOut.css";
 
 export const CheckOut = () => {
-  const serviceId = import.meta.env.VITE_SERVICE_ID;
+  const serviceId = "service_yl79s0f";
   const templateId = "template_a3do47o";
-  const publicKey = import.meta.env.VITE_PUBLIC_KEY;
+  const publicKey = "14TsPm9sc7yUWZT-s";
 
   const [email, setEmail] = useState();
   const [activeStep, setActiveStep] = useState(0);
@@ -79,6 +76,16 @@ export const CheckOut = () => {
       });
   };
 
+  const handleContinueAsGuest = (e) => {
+    e.preventDefault();
+    toggleShow(!show);
+  };
+
+  const handlePayButtonClick = (e) => {
+    e.preventDefault();
+    sendEmail();
+  };
+
   const accordionItems = [
     {
       title: "YOUR INFORMATION",
@@ -95,21 +102,20 @@ export const CheckOut = () => {
             </div>
             <Button
               btnText={"Continue as guest"}
-              onClick={() => toggleShow(!show)}
+              onClick={handleContinueAsGuest}
             />
             <div className="form-wrapper">
               {show && (
                 <>
-                  <input
+                  <InputField
                     type="email"
-                    name={"email_from"}
-                    id={"emailFrom"}
+                    name="email_from"
                     placeholder="your.email@email.com"
                     onChange={(e) => setEmail(e.target.value)}
                     required
                     value={email}
                     ariaLabel="Email input."
-                    labelTxt={"Please put in your email"}
+                    labelTxt="Please put in your email"
                   />
                   <PersonalInfo />
 
@@ -187,10 +193,10 @@ export const CheckOut = () => {
         Go back to cart
       </Link>
       <h2 className="section-title">Check Out</h2>
-      <form className={"checkout-form"} onSubmit={sendEmail}>
+      <form className={"checkout-form"}>
         <Accordion items={accordionItems} />
 
-        <Button className={"pay-button"} type={"submit"} btnText={"Pay"} />
+        <Button className={"pay-button"} type={"submit"} btnText={"Pay"} onClick={handlePayButtonClick} />
         <p className="p-small">
           *By pressing the pay button, you will get an email with your plant
           buddies. Please remember, this is <b>not</b> an actual shop, no money
