@@ -1,6 +1,6 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import "./headermobile.css";
+/*import "./headermobile.css";*/
 
 const HeaderMobile = () => {
 
