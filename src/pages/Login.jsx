@@ -49,9 +49,7 @@ export const Login = () => {
       </div>
       <div className="button-container">
         <button onClick={onLoginClick}> Login </button>
-      </div>
-      <div className="register-button-container">
-        <p>New in CINEMA FK ?</p>
+        <p>or </p>
         <Link to="/register" className='register-button'>Sign Up</Link>
       </div>
     </div>
