@@ -145,7 +145,6 @@ const AddRestaurantForm = () => {
       setFormData({ ...formData, [name]: value });
     }
   };
-
   const handleFormSubmit = (e) => {
     e.preventDefault();
     if (formData.occasion.length === 0 || formData.mood.length === 0) {
@@ -153,7 +152,7 @@ const AddRestaurantForm = () => {
       return;
     }
     console.log("Form data:", formData);
-    // Perform form submission logic here (e.g., send data to an API or another page)
+    // Perform form submission logic here...
   };
 
   return (
@@ -185,6 +184,7 @@ const AddRestaurantForm = () => {
             </label>
           ))}
         </StyledOccasionsContainer>
+        {/* Mood checkboxes */}
         <StyledMoodsContainer>
           <FormLabel>Tick the boxes with suiting moods*:</FormLabel>
           {moods.map((option, index) => (
