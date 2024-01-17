@@ -4,7 +4,7 @@ const capitalizeFirstLetter = (string) => {
   return string.charAt(0).toUpperCase() + string.slice(1).toLowerCase();
 };
 
-const apiURL = "https://foodie-moodie.onrender.com/api";
+const apiURL = "http://localhost:3000/api";
 
 export const useRestaurantStore = create((set) => ({
   category: [],
@@ -20,7 +20,7 @@ export const useRestaurantStore = create((set) => ({
       const { selectedCategory } = useRestaurantStore.getState();
       console.log("Selected Category:", selectedCategory);
 
-      const response = await fetch("https://foodie-moodie.onrender.com/api/category");
+      const response = await fetch("http://localhost:3000/api/category");
       if (!response.ok) {
         throw new Error("Failed to fetch category");
       }
@@ -47,7 +47,7 @@ export const useRestaurantStore = create((set) => ({
 
   fetchOccasions: async () => {
     try {
-      const response = await fetch("https://foodie-moodie.onrender.com/api/occasion");
+      const response = await fetch("http://localhost:3000/api/occasion");
       if (!response.ok) {
         throw new Error("Failed to fetch occasions");
       }
@@ -117,7 +117,7 @@ export const useRestaurantStore = create((set) => ({
       set({ selectedMoods: [] });
       console.log("Fetching moods for occasion:", occasion);
       const response = await fetch(
-        `https://foodie-moodie.onrender.com/api/mood?occasion=${encodeURIComponent(
+        `http://localhost:3000/api/mood?occasion=${encodeURIComponent(
           occasion
         )}`
       );
@@ -161,6 +161,65 @@ export const useRestaurantStore = create((set) => ({
       return { selectedMoods: state.selectedMoods };
     }),
 
+    cities: [],
+    selectedCities: [],
+
+    fetchCities: async () => {
+      try {
+        const response = await fetch(`${apiURL}/cities`);
+        if (!response.ok) {
+          throw new Error("Failed to fetch cities");
+        }
+        const cities = await response.json();
+        set({ cities });
+      } catch (error) {
+        console.error("Error fetching cities:", error);
+      }
+    },
+
+    setSelectedCities: (city) => {
+      set((state) => {
+        const isSelected = state.selectedCities.includes(city);
+        if (isSelected) {
+          return {
+            selectedCities: state.selectedCities.filter(
+              (selectedCity) => selectedCity !== city
+            ),
+          };
+        }
+        return { selectedCities: [...state.selectedCities, city] };
+      });
+    },
+  
+    // Update the selected city
+    setSelectedCity: (city) => {
+      set({ selectedCity: city });
+    },
+  
+    // Fetch results based on selected city (you can combine this with other filters if needed)
+    fetchResultsByCity: async () => {
+      try {
+        console.log("Fetching results...");
+        const { selectedCity } = useRestaurantStore.getState();
+        console.log("Selected City:", selectedCity);
+  
+        const url = `${apiURL}/restaurants/search?city=${encodeURIComponent(selectedCity)}`;
+        console.log("Fetching from URL:", url);
+  
+        const response = await fetch(url);
+        if (!response.ok) {
+          const errorMessage = `Failed to fetch search results. Status: ${response.status}, ${response.statusText}`;
+          throw new Error(errorMessage);
+        }
+  
+        const results = await response.json();
+        set({ results });
+      } catch (error) {
+        console.error("Error fetching search results:", error);
+      }
+    },
+  
+
   // Fetch results based on selected occasion and moods
   fetchResults: async () => {
     try {
@@ -171,7 +230,7 @@ export const useRestaurantStore = create((set) => ({
       console.log("Selected Occasion:", selectedOccasion);
       console.log("Selected Moods:", selectedMoods);
 
-      const apiURL = "https://foodie-moodie.onrender.com/api/restaurants/search";
+      const apiURL = "http://localhost:3000/api/restaurants/search";
       const queryParams = new URLSearchParams({
         category: selectedCategory,
         occasion: selectedOccasion,

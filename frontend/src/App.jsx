@@ -9,6 +9,7 @@ import AddRestaurantForm from "./components/addRestaurantForm";
 import Suggestion from "./components/suggestion";
 import styled, { createGlobalStyle } from "styled-components";
 import Business from "./components/occasions/business"; // Assuming you have this component created
+import CitySelector from "./components/city"; // Assuming you have this component created
 import Celebration from "./components/occasions/celebration"; // Assuming you have this component created
 import Date from "./components/occasions/date"; // Assuming you have this component created
 import Family from "./components/occasions/family"; // Assuming you have this component created
@@ -35,6 +36,7 @@ const App = () => {
         <Route path="/friends" element={<Friends />} />
         <Route path="/other" element={<Other />} />
         <Route path="/mood" element={<MoodSelector />} />
+        <Route path="/city" element={<CitySelector />} />
         <Route path="/result" element={<ResultsComponent />} />
         <Route path="/about" element={<AboutPage />} />
         <Route path="/addrestaurant" element={<AddRestaurantForm />} />
