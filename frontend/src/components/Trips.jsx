@@ -1,9 +1,25 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { userStore } from "../stores/userStore";
+
+
 
 export const Trips = () => {
   const [trips, setTrips] = useState(null);
   const apiEnv = import.meta.env.VITE_BACKEND_API;
+  const { loggedInUserId } = userStore();
+
+  const deleteTrip = async (tripId) => {
+    // console.log(`${apiEnv}/deletetrip/${tripId}`)
+    try {
+      const response = await fetch(`${apiEnv}/deletetrip/${tripId}`, {
+        method: "DELETE",
+      });
+
+    } catch (error) {
+      console.error(error.message);
+    }
+  };
 
   useEffect(() => {
     fetch(`${apiEnv}/trips`)
@@ -31,12 +47,12 @@ export const Trips = () => {
       {trips.map((trip) => (
         <div
           key={trip._id}
-          className="grid grid-cols-12 gap-2  border rounded-lg relative"
+          className="grid grid-cols-12 gap-2 bg-secondary-50 rounded-lg relative p-2"
         >
-          <div className="col-span-5 text-lg text-primary-900 bg-secondary-300 p-4 sm:text-xl">
+          <div className="col-span-5 text-lg text-primary-900 font-semibold sm:text-4xl">
             {trip.from}
           </div>
-          <div className="col-span-2 flex items-center justify-center text-lg text-primary-900 p-4">
+          <div className="col-span-2 flex items-center justify-center">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -53,26 +69,40 @@ export const Trips = () => {
             </svg>
           </div>
 
-          <div className="col-span-5 text-lg text-right text-primary-900 bg-primary-300 p-4 sm:text-xl">
+          <div className="col-span-5 text-lg text-right font-semibold sm:text-4xl">
             {trip.to}
           </div>
 
-          <div className="col-span-6 text-md text-primary-900 bg-primary-200 p-4">
-            {trip.date}
+          <div className="col-span-3 flex items-center text-sm text-primary-900 sm:text-lg">
+  {trip.date}
+</div>
+
+          <div className="col-span-6 flex items-center justify-center text-sm font-semibold text-primary-900 sm:text-lg">
+          <span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6">
+  <path fillRule="evenodd" d="M18.685 19.097A9.723 9.723 0 0 0 21.75 12c0-5.385-4.365-9.75-9.75-9.75S2.25 6.615 2.25 12a9.723 9.723 0 0 0 3.065 7.097A9.716 9.716 0 0 0 12 21.75a9.716 9.716 0 0 0 6.685-2.653Zm-12.54-1.285A7.486 7.486 0 0 1 12 15a7.486 7.486 0 0 1 5.855 2.812A8.224 8.224 0 0 1 12 20.25a8.224 8.224 0 0 1-5.855-2.438ZM15.75 9a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Z" clipRule="evenodd" />
+</svg>
+
+
+</span> {trip.username}
           </div>
 
-          <div className="col-span-6 text-md text-right text-primary-900 bg-primary-200 p-4">
-            🐖 {trip.username}
-          </div>
+          <div className="col-span-3 flex items-center justify-end text-sm text-primary-900 sm:text-lg">
+  <Link
+    to={`/trips/${trip._id}`}
+    className="text-secondary-500 hover:text-secondary-700 focus:outline-none focus:ring focus:border-blue-300"
+  >
+    View details
+  </Link>
+</div>
 
-          <div className="col-span-12 text-lg text-center text-primary-900 sm:text-xl p-4">
-            <Link
-              to={`/trips/${trip._id}`}
-              className="bg-secondary-400 rounded-full cursor-pointer hover:bg-secondary-800 text-white px-5 py-2 font-semibold focus:outline-none focus:ring focus:border-primary-300"
+          {trip.user === loggedInUserId && (
+            <button
+              onClick={() =>deleteTrip(trip._id)}
+              className="bg-orange-400 text-white text-lg"
             >
-              View
-            </Link>
-          </div>
+              Delete trip
+            </button>
+          )}
         </div>
       ))}
     </div>
