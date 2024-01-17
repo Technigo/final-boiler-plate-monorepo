@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { favouriteStore } from "../../stores/favouriteStore";
-import { cartStore } from "../../stores/cartStore";
+import { favouriteStore } from "../../stores/useFavouriteStore";
+import { cartStore } from "../../stores/useCartStore";
 import { Link } from "react-router-dom";
 import { PiHeartStraightFill } from "react-icons/pi";
 import { Button } from "../../components/buttons/Button";

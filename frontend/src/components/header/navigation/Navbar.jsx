@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { cartStore } from "../../../stores/cartStore";
+import { cartStore } from "../../../stores/useCartStore";
 import { Link } from "react-router-dom";
 import { useMediaQuery } from "react-responsive";
 import { Navigation } from "./Navigation";

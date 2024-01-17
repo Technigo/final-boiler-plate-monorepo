@@ -1,5 +1,5 @@
 import "./Footer.css";
-import Accordion from "../Accordion";
+import Accordion from "../accordion/Accordion";
 import { Link } from "react-router-dom";
 
 import { FaLinkedin } from "react-icons/fa6";

@@ -1,4 +1,4 @@
-import { cartStore } from "../../stores/cartStore";
+import { cartStore } from "../../stores/useCartStore";
 import { useEffect } from "react";
 import "../../pages/checkOut/CheckOut.css";
 

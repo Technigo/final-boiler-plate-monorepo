@@ -2,6 +2,7 @@
 import express from "express"; // Express web server framework
 import cors from "cors"; // Cross-Origin Resource Sharing
 import dotenv from "dotenv"; // Environment variables
+import mongoose from "mongoose"; // MongoDB object modeling tool
 import listEndpoints from "express-list-endpoints"; // List all endpoints of the server
 import cookieParser from "cookie-parser"; // Parse cookie header and populate req.cookies with an object keyed by the cookie names
 

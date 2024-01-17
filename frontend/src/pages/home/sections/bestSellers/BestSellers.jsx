@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { PlantCard } from "../../../../components/plantCard/PlantCard";
-import { plantStore } from "../../../../stores/plantStore";
+import { plantStore } from "../../../../stores/usePlantStore";
 import Skeleton from "@mui/material/Skeleton";
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";

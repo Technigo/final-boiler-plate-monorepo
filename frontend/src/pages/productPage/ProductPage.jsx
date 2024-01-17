@@ -1,8 +1,8 @@
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { Button } from "../../components/buttons/Button";
-import { plantStore } from "../../stores/plantStore";
-import { cartStore } from "../../stores/cartStore";
+import { plantStore } from "../../stores/usePlantStore";
+import { cartStore } from "../../stores/useCartStore";
 import { PlantCare } from "./sections/PlantCare";
 import { Link } from "react-router-dom";
 import Snackbar from "@mui/material/Snackbar";

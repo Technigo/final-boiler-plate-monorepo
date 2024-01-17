@@ -1,5 +1,5 @@
 import { CartItem } from "../../components/cart/cartItem/CartItem";
-import { Input } from "../../components/inputs/Input";
+import { InputField } from "../../components/inputs/InputField";
 import { Link } from "react-router-dom";
 import { InputReadOnly } from "../../components/inputs/InputReadOnly";
 import { Button } from "../../components/buttons/Button";
@@ -7,13 +7,13 @@ import { PersonalInfo } from "../../components/checkout/PersonalInfo";
 import { DeliveryDetails } from "../../components/checkout/DeliveryDetails";
 import { PaymentInfo } from "../../components/checkout/PaymentInfo";
 import { OrderInfo } from "../../components/checkout/OrderInfo";
-import { cartStore } from "../../stores/cartStore";
+import { cartStore } from "../../stores/useCartStore";
 import { useState } from "react";
 import emailjs from "@emailjs/browser";
 // import Accordion from "@mui/material/Accordion";
 // import AccordionSummary from "@mui/material/AccordionSummary";
 // import AccordionDetails from "@mui/material/AccordionDetails";
-import Accordion from "../../components/Accordion";
+import Accordion from "../../components/accordion/Accordion";
 
 import { MdKeyboardArrowLeft } from "react-icons/md";
 import { LuPackageCheck } from "react-icons/lu";

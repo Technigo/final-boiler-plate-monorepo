@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Radio } from "@mui/material";
 import { RadioGroup } from "@mui/material";
 import { FormControlLabel } from "@mui/material";
-import { Input } from "../../components/inputs/Input";
+import { InputField } from "../../components/inputs/InputField";
 import { InputReadOnly } from "../../components/inputs/InputReadOnly";
 
 import { SiKlarna } from "react-icons/si";

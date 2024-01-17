@@ -1,4 +1,4 @@
-import { plantStore } from "../../stores/plantStore";
+import { plantStore } from "../../stores/usePlantStore";
 import { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import { Button } from "../../components/buttons/Button";

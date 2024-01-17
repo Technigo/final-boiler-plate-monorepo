@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { plantStore } from "../../../stores/plantStore";
+import { plantStore } from "../../../stores/usePlantStore";
 import { PlantCardMini } from "../../../components/plantCard/PlantCardMini";
 import "../InspoPage.css";
 

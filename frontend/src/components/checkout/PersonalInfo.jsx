@@ -1,4 +1,4 @@
-import { Input } from "../../components/inputs/Input";
+import { InputField } from "../../components/inputs/InputField";
 import { InputReadOnly } from "../../components/inputs/InputReadOnly";
 
 export const PersonalInfo = () => {

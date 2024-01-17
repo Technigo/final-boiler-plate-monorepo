@@ -5,14 +5,13 @@ import {
   getFavourites,
   removeFavourite,
 } from "../controllers/favouritesController.js";
-import { authenticateUser } from "../middlewares/auth.js";
 
 const router = express.Router(); // Creates a new router object.
 
-router.post("/add-to-favourites", authenticateUser, addFavourite);
+router.post("/add-to-favourites", addFavourite);
 
-router.get("/get-my-favourites", authenticateUser, getFavourites);
+router.get("/get-my-favourites", getFavourites);
 
-router.delete("/remove-favourite", authenticateUser, removeFavourite);
+router.delete("/remove-favourite", removeFavourite);
 
 export default router;

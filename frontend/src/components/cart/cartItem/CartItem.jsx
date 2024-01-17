@@ -1,4 +1,4 @@
-import { cartStore } from "../../../stores/cartStore";
+import { cartStore } from "../../../stores/useCartStore";
 import { Button } from "../../../components/buttons/Button";
 import "./CartItem.css";
 
