@@ -1,0 +1,178 @@
+.product-page {
+  background-color: var(--chalk);
+}
+
+.go-back {
+  display: flex;
+  align-items: center;
+  font-family: var(--montserrat);
+  color: var(--spring);
+  cursor: pointer;
+  padding: 1rem 1.5rem 0;
+}
+
+.go-back-icon {
+  width: 1.5rem;
+  height: 1.5rem;
+  color: var(--spring);
+}
+
+.product-page-container {
+  padding: 2rem;
+}
+
+.botanical-name {
+  font-family: var(--josefin);
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--forrest);
+  text-transform: uppercase;
+}
+
+.plant-page-title {
+  font-family: var(--big-h-font);
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--forrest);
+}
+
+.plant-description-container {
+  font-family: var(--montserrat);
+  line-height: 1.7;
+  color: var(--charcoal);
+  margin: 1.5rem 0 0;
+}
+.show-more {
+  font-weight: 600;
+  cursor: pointer;
+  color: var(--spring);
+  font-style: italic;
+}
+
+.price {
+  color: var(--forrest);
+  font-family: var(--montserrat);
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.add-to-cart-btn {
+  width: 100%;
+  background-color: var(--terracotta);
+  color: var(--chalk);
+  padding: 0.8rem 1.6rem;
+  font-weight: 600;
+  font-size: 1rem;
+  border-radius: 10rem;
+}
+
+.plant-image-container {
+  height: 24rem;
+  margin: 0.5rem 0 1.5rem;
+}
+.plant-image-container img {
+  object-fit: cover;
+  object-position: center;
+  border-radius: 0.625rem;
+  height: 100%;
+  width: 100%;
+}
+
+.details-container {
+  margin: 2rem 0;
+}
+
+.details-container hr {
+  border: 1px solid var(--breeze);
+}
+
+.plant-height {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: var(--montserrat);
+  color: var(--charcoal);
+  margin: 1rem;
+}
+
+.plant-height div {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.details-icon {
+  width: 1.5rem;
+  height: 1.5rem;
+  color: var(--forrest);
+}
+
+.italic-style {
+  display: block;
+  font-style: italic;
+  color: var(--forrest);
+  font-weight: 600;
+  font-size: 0.9rem;
+  margin: 0 0 0.5rem;
+}
+
+/* PLANT CARE */
+.plant-care-wrapper {
+  font-family: var(--montserrat);
+  line-height: 1.7;
+  color: var(--charcoal);
+}
+
+.care-title {
+  color: var(--forrest);
+  font-family: var(--josefin);
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.care-icon {
+  color: var(--forrest);
+  width: 2rem;
+  height: 2rem;
+}
+
+.treatment-details {
+  margin: 1rem 0;
+}
+
+.treatment-details li {
+  display: flex;
+  gap: 1rem;
+  font-size: 0.9rem;
+}
+
+.fun-fact-wrapper {
+  background-color: var(--breeze);
+  padding: 1.5rem;
+  border-radius: 0.625rem;
+}
+
+.fun-fact-title {
+  font-family: var(--josefin);
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: var(--forrest);
+  text-transform: uppercase;
+}
+
+/*---------- BREAKPOINTS ----------*/
+/* From mobile and for small devices */
+@media (min-width: 576px) {
+}
+
+/* For medium devices */
+@media (min-width: 744px) {
+}
+
+/* For large devices */
+@media (min-width: 1024px) {
+}
+
+/* For extra large devices */
+@media (min-width: 1280px) {
+}

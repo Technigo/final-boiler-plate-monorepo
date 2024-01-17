@@ -1,0 +1,42 @@
+.inspo-section {
+  height: auto;
+  padding: 1rem;
+}
+
+.article-container {
+  width: 100%;
+}
+
+.image-container-bedroom {
+  position: relative;
+}
+
+.image-container-balcony {
+  position: relative;
+}
+
+.inspo-img {
+  border-radius: 1rem;
+  width: 100%;
+  height: auto;
+}
+
+.dot-button-bedroom {
+  position: absolute;
+  width: 1rem;
+  height: 1rem;
+  border: solid var(--chalk);
+  background-color: var(--sand);
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.dot-button-balcony {
+  position: absolute;
+  width: 1rem;
+  height: 1rem;
+  border: solid var(--chalk);
+  background-color: var(--sand);
+  border-radius: 50%;
+  cursor: pointer;
+}

@@ -1,0 +1,19 @@
+.about-developers {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.developers-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+.developer-wrapper {
+}
+
+@media (min-width: 576px) {
+  .developers-wrapper {
+    flex-direction: row;
+  }
+}

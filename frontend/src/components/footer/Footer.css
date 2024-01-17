@@ -1,0 +1,25 @@
+footer {
+  display: flex;
+  flex-direction: column;
+  gap: 3.5rem;
+  background-color: var(--forrest);
+  padding: 4rem;
+}
+
+footer .logo-container {
+  max-width: 20rem;
+  margin: auto;
+}
+
+footer .logo-container img {
+  width: 100%;
+}
+
+.copyright {
+  font-family: var(--montserrat);
+  font-size: 0.9rem;
+  text-align: center;
+  vertical-align: middle;
+  color: var(--sand);
+  line-height: 1.7;
+}
