@@ -43,9 +43,10 @@ export const MovieDetails = ({ movie }) => {
   return (
     <div className="page-section the-detail-page">
 
-      <img className='movie-poster poster-details' src={posterImage} alt={title} />
-
-      <div className="details">
+      <div className="the-movie-poster">
+        <img className='movie-poster poster-details' src={posterImage} alt={title} />
+      </div>
+      {/* <div className="details"> */}
 
         <div className="movie-title-container">
           <h1 className='movie-title'>{title}</h1>
@@ -71,7 +72,7 @@ export const MovieDetails = ({ movie }) => {
             </div>
           ))}
         </div>
-      </div>
+      {/* </div> */}
     </div>
   )
 }
