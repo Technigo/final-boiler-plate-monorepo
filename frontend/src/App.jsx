@@ -15,7 +15,7 @@ import Date from "./components/occasions/date"; // Assuming you have this compon
 import Family from "./components/occasions/family"; // Assuming you have this component created
 import Friends from "./components/occasions/friends"; // Assuming you have this component created
 import Other from "./components/occasions/other";
-import CitySelector from "./components/city"; // Assuming you have this component c
+
 
 const GlobalStyle = createGlobalStyle`
 body { 
@@ -38,7 +38,6 @@ const App = () => {
         <Route path="/other" element={<Other />} />
         <Route path="/mood" element={<MoodSelector />} />
         <Route path="/city" element={<CitySelector />} />
-         <Route path="/city" element={<CitySelector />} />
         <Route path="/result" element={<ResultsComponent />} />
         <Route path="/about" element={<AboutPage />} />
         <Route path="/addrestaurant" element={<AddRestaurantForm />} />
