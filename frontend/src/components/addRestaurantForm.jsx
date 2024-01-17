@@ -216,9 +216,9 @@ const AddRestaurantForm = () => {
               {option}
               <input
                 type="checkbox"
-                name="mood"
+                name="occasion"
                 value={option}
-                checked={formData.mood.includes(option)}
+                checked={formData.occasion.includes(option)}
                 onChange={handleChange}
                 required
               />
