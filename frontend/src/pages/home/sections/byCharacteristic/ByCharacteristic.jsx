@@ -1,5 +1,5 @@
 import { CharacterCard } from "./CharacterCard";
-import "./ByCharacteristic.css";
+import "./byCharacteristic.css";
 
 export const ByCharacteristic = () => {
   const text = {
