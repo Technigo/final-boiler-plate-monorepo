@@ -220,6 +220,8 @@ export const useRestaurantStore = create((set) => ({
     },
   
 
+
+    
   // Fetch results based on selected occasion and moods
   fetchResults: async () => {
     try {

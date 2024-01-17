@@ -90,4 +90,16 @@ router.get('/cities', asyncHandler(async (req, res) => {
     }
 }));
 
+router.get('/cities', asyncHandler(async (req, res) => {
+    try {
+        // Fetch all unique cities from the Restaurant collection
+        const cities = await Restaurant.distinct('city');
+        res.json(cities);
+    } catch (error) {
+        console.error('Error fetching cities:', error);
+        res.status(500).json({ message: error.message });
+    }
+}));
+
+
 export default router;
