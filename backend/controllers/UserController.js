@@ -259,7 +259,44 @@ export const UserController = {
     }
   },
 
+  // passengerJoin: async (req, res) => {
+  //   console.log();
+  //   const { tripid } = req.params;
+  //   const { id, username } = req.body;
+  //   const newPassenger = {
+  //     userId: id,
+  //     username: username,
+  //   };
+
+  //   try {
+  //     console.log(req.body);
+  //     const findTrip = await TripModel.findOne({ _id: tripid });
+  //     if (!findTrip) {
+  //       return res
+  //         .status(404)
+  //         .json({ message: "Trip not found in passengerJoin" });
+  //     }
+  //     findTrip.passengers.push(newPassenger);
+  //     // const passenger = await TripModel.findOneAndUpdate(
+  //     //   { _id: tripid },
+  //     //   { $push: { passengers: newPassenger } },
+  //     //   { new: true }
+  //     // );
+  //     // console.log(passenger);
+  //     // res.json({ passenger });
+
+  //     const updatedTrip = await findTrip.save();
+
+  //     res.json({ passenger: updatedTrip.passengers });
+  //   } catch (error) {
+  //     res.status(400).json({
+  //       message: "Could not add passenger",
+  //       errors: error.errors,
+  //     });
+  //   }
+  // },
   passengerJoin: async (req, res) => {
+    console.log();
     const { tripid } = req.params;
     const { id, username } = req.body;
     const newPassenger = {
@@ -270,23 +307,10 @@ export const UserController = {
     try {
       console.log(req.body);
       const findTrip = await TripModel.findOne({ _id: tripid });
-      if (!findTrip) {
-        return res
-          .status(404)
-          .json({ message: "Trip not found in passengerJoin" });
-      }
-      findTrip.passengers.push(newPassenger);
-      // const passenger = await TripModel.findOneAndUpdate(
-      //   { _id: tripid },
-      //   { $push: { passengers: newPassenger } },
-      //   { new: true }
-      // );
-      // console.log(passenger);
-      // res.json({ passenger });
 
-      const updatedTrip = await findTrip.save();
-
-      res.json({ passenger: updatedTrip.passengers });
+      findTrip.passengers.push({ userId: id, username: username });
+      const updated = await findTrip.save();
+      res.json({ passenger: updated.passengers });
     } catch (error) {
       res.status(400).json({
         message: "Could not add passenger",
