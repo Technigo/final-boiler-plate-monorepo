@@ -1,18 +1,18 @@
-/*import { Navigate, useLocation } from 'react-router-dom';
-import { adminStore } from '../stores/adminStore';
+import { Navigate, useLocation } from 'react-router-dom';
+import { adminLoginStore } from '../stores/adminLoginStore';
 
+// Function to make sure admin is logged in in order to access the routes
 export const ProtectedRoute = ({ children }) => {
-    // Get the current login status from adminStore
-    const { isLoggedIn } = adminStore.getState();
     const location = useLocation();
+    const { isLoggedIn, role } = adminLoginStore((state) => ({
+        isLoggedIn: state.isLoggedIn,
+        role: state.role
+    }));
 
-    if (!isLoggedIn) {
-        // If not logged in, redirect to the admin login page
-        // 'state' is used to remember the location the user tried to access
+    if (!isLoggedIn || role !== 'admin') {
+        // Redirect to login page if not logged in as an admin
         return <Navigate to="/admin/login" state={{ from: location }} replace />;
     }
 
-    // If logged in, render the requested component (children)
     return children;
 };
-*/
