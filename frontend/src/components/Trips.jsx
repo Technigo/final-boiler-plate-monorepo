@@ -88,6 +88,7 @@ export const Trips = () => {
                 />
               </svg>
             </span>{" "}
+            &nbsp;
             {trip.username}
           </div>
 

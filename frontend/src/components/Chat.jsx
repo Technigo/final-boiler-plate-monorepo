@@ -246,6 +246,7 @@ export const Chat = () => {
                               clipRule="evenodd"
                             />
                           </svg>{" "}
+                          &nbsp;
                           {user.username}
                         </div>
                       </li>

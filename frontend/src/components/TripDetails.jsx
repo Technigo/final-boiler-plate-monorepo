@@ -38,10 +38,10 @@ export const TripDetails = () => {
     }
   };
   const joinTripAttempt = async () => {
-    // const passengerDetails = {
-    //   id: loggedInUserId,
-    //   username: username,
-    // };
+    const passengerDetails = {
+      id: loggedInUserId,
+      username: username,
+    };
 
     try {
       const response = await fetch(`${apiEnv}/trips/join/${tripId}`, {
@@ -49,7 +49,7 @@ export const TripDetails = () => {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ loggedInUserId, username }),
+        body: JSON.stringify({ passengerDetails }),
       });
 
       if (response.ok) {
@@ -130,6 +130,7 @@ export const TripDetails = () => {
                 />
               </svg>
             </span>{" "}
+            &nbsp;
             {selectedTrip.username}
           </div>
 
