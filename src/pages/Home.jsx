@@ -9,15 +9,24 @@ import '../components/Hero.css'
 
 export const Home = () => {
 
-  const fetchShows = bookingStore((state) => (state.fetchAllShowTimes))
-  const allShowTimes = bookingStore((state) => (state.allShowTimes))
-  const setSelectedSeats = bookingStore((state) => (state.setSelectedSeats))
-  const selectedSeats = bookingStore((state) => state.selectedSeats)
+  const {
+    fetchAllShowTimes,
+    allShowTimes,
+    setSelectedSeats,
+    selectedSeats
+  } = bookingStore()
 
   useEffect(() => {
-    if (allShowTimes.length > 0) fetchShows()
+    if (allShowTimes) {
+      fetchAllShowTimes()
+    }
     if (selectedSeats.length > 0) setSelectedSeats()
   }, [])
+
+  // console.log(allShowTimes)
+  // const showTimes = allShowTimes
+  // const showDate = new Date('17 january 2024')
+  // console.log(showDate)
 
   return (
     <div className="the-home-page">

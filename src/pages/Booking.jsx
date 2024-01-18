@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import { Link } from 'react-router-dom'
+import moment from 'moment'
 
 import { userStore } from '../store/userStore'
 import { bookingStore } from '../store/bookingStore'
@@ -53,7 +54,8 @@ export const Booking = () => {
       const moviePoster = selectedShowtime.moviePoster
       const seatInfo = selectedShowtime.seats
 
-      const showtimeDate = selectedShowtime.date
+      let showtimeDate = selectedShowtime.date
+      showtimeDate = moment().format('MMMM Do YYYY')
       const showtimeTime = selectedShowtime.startingTime
       const showtimePrice = selectedShowtime.price
 
