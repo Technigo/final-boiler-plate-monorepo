@@ -30,8 +30,14 @@ const StyledBurgerLinks = styled.div`
   display: flex;
   flex-direction: column;
   gap: 20px;
-  z-index: 1;
+  z-index: 1; /* Ensure that the burger menu links are behind the toggle button. */
 
+  .logout-button {
+    margin: 0;
+    padding: 0;
+  }
+
+  // When the burger menu is open on small screens, it gets a background color for readability.
   @media screen and (max-width: 510px) {
     background-color: ${(props) =>
       props.burgerMenuOpen ? "rgba(155, 100, 137, 0.8)" : "transparent"};
@@ -44,6 +50,7 @@ export const BurgerMenu = () => {
   const { activePage, setActivePage, burgerMenuOpen, setBurgerMenuOpen } =
     useNavStore();
 
+  // Function to close the burger menu.
   const closeBurgerMenu = () => {
     setBurgerMenuOpen(false);
   };
@@ -54,6 +61,7 @@ export const BurgerMenu = () => {
   // Access the 'handleLogout' function from the 'userStore'.
   const storeHandleLogout = userStore((state) => state.handleLogout);
 
+  // Access the 'isLoggedIn' variable from the 'userStore'.
   const { isLoggedIn } = userStore();
 
   // Function to handle the click event of the logout button.
@@ -80,6 +88,8 @@ export const BurgerMenu = () => {
           <RxHamburgerMenu style={{ width: "25px", height: "25px" }} />
         )}
       </StyledToggleButton>
+
+      {/* Conditionally render the burger menu links based on the user login status and the active page. */}
       <StyledBurgerLinks burgerMenuOpen={burgerMenuOpen}>
         <ul className={burgerMenuOpen ? "burger-menu-open" : ""}>
           <li className={activePage === "home" ? "active" : ""}>

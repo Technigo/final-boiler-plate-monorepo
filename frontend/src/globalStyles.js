@@ -17,11 +17,6 @@ li {
   list-style: none;
 }
 
-/* li.active a {
-    text-decoration-line: underline;
-    border-bottom: 5px;
-  } */
-
 
 img,
 svg {
@@ -62,7 +57,7 @@ body.active-modal {
   --button: #64899b;
   --buttonhover: #7b9eaf;
   --buttonactive: #5a7b8c; // Color of button when pressed
-  --error: #e70505;
+  --error: #e5e500;
 }
   
   main {
