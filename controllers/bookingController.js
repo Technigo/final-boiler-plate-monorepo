@@ -56,6 +56,7 @@ export const addBooking = asyncHandler(async (req, res) => {
 			},
 			{ $set : {
 				'seats.$[].$[xxx].booked' : true,
+				'seats.$[].$[xxx].selected' : false,
 				'seats.$[].$[xxx].bookingID' : bookingId
 			}},
 			{arrayFilters: [
