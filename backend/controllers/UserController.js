@@ -257,7 +257,7 @@ export const UserController = {
     }
   },
 
-  joinTrip: async (req, res) => {
+  passengerJoin: async (req, res) => {
     const { tripid } = req.body;
     try {
       const passenger = await TripModel.findOneAndUpdate(
