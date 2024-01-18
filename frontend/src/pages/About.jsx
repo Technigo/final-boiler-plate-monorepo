@@ -215,8 +215,8 @@ export const About = () => {
                 />
               </svg>
             </span>
-            Design Adaptability: Develop a design that adjusts gracefully to fit
-            devices of all sizes.
+            Design Adaptability: Develop a design that adjusts to fit devices of
+            all sizes.
           </li>
         </ul>
       </div>
