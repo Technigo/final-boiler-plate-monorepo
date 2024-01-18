@@ -4,7 +4,7 @@ const capitalizeFirstLetter = (string) => {
   return string.charAt(0).toUpperCase() + string.slice(1).toLowerCase();
 };
 
-const apiURL = "https://foodie-moodie.onrender.com/api/occasion";
+const apiURL = "https://foodie-moodie.onrender.com/api/";
 
 export const useRestaurantStore = create((set) => ({
   category: [],
