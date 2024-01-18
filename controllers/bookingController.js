@@ -59,11 +59,14 @@ export const addBooking = asyncHandler(async (req, res) => {
 				'seats.$[].$[xxx].selected' : false,
 				'seats.$[].$[xxx].bookingID' : bookingId
 			}},
-			{arrayFilters: [
+			{
+				arrayFilters: [
 					{
 						'xxx.seatIndex': seat[1]
 					}
-				]
+				],
+				returnOriginal: false
+
 			}
 		)
 
