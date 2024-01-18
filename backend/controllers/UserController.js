@@ -269,13 +269,24 @@ export const UserController = {
 
     try {
       console.log(req.body);
-      const passenger = await TripModel.findOneAndUpdate(
-        { _id: tripid },
-        { $push: { passengers: newPassenger } },
-        { new: true }
-      );
-      console.log(passenger);
-      res.json({ passenger });
+      const findTrip = await TripModel.find({ _id: tripid });
+      if (!findTrip) {
+        return res
+          .status(404)
+          .json({ message: "Trip not found in passengerJoin" });
+      }
+      findTrip.passengers.push(newPassenger);
+      // const passenger = await TripModel.findOneAndUpdate(
+      //   { _id: tripid },
+      //   { $push: { passengers: newPassenger } },
+      //   { new: true }
+      // );
+      // console.log(passenger);
+      // res.json({ passenger });
+
+      const updatedTrip = await findTrip.save();
+
+      res.json({ passenger: updatedTrip.passengers });
     } catch (error) {
       res.status(400).json({
         message: "Could not add passenger",

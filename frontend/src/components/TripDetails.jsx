@@ -96,8 +96,8 @@ export const TripDetails = () => {
         >
           Back to Trips
         </Link>
-        <div className="grid grid-cols-12 gap-2 bg-background rounded-lg relative p-6">
-          <div className="col-span-12 flex items-center justify-center text-md sm:text-lg p-2"></div>
+        <div className="grid grid-cols-12 bg-background rounded-lg relative p-4">
+          <div className="col-span-12 flex items-center justify-center text-md sm:text-lg"></div>
 
           <div className="col-span-6 text-xs">From</div>
 

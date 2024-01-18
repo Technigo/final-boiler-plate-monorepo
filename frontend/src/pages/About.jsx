@@ -4,7 +4,7 @@
 export const About = () => {
   return (
     <>
-      <div class="sm:mt-8 mt-2 space-y-4 mx-auto max-w-screen-md mb-8 p-4 text-sm sm:text-lg rounded-xl">
+      <div class="sm:mt-8 mt-2 space-y-4 sm:mx-auto max-w-screen-md mb-8 mx-2 p-4 text-sm sm:text-lg rounded-xl">
         <h1 class="text-lg font-md font-semibold">
           This is our final project of Technigo Web Development Bootcamp fall
           2023.
