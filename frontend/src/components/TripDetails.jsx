@@ -7,6 +7,8 @@ import { Link } from "react-router-dom";
 export const TripDetails = () => {
   const { tripId } = useParams();
   const { loggedInUserId, username } = userStore();
+  const [theUsername, setTheUsername] = useState("");
+  const [theTripId, setTheTripId] = useState("");
   const [selectedTrip, setSelectedTrip] = useState(null);
   const { isAuthenticated } = useAuth0();
   const [isLoading, setIsLoading] = useState(true);
@@ -36,18 +38,18 @@ export const TripDetails = () => {
     }
   };
   const joinTripAttempt = async () => {
-    const passengerDetails = {
-      id: loggedInUserId,
-      username: username,
-    };
+    // const passengerDetails = {
+    //   id: loggedInUserId,
+    //   username: username,
+    // };
+
     try {
-      console.log(passengerDetails);
       const response = await fetch(`${apiEnv}/trips/join/${tripId}`, {
-        method: "POST",
+        method: "PUT",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ passengerDetails }),
+        body: JSON.stringify({ loggedInUserId, username }),
       });
 
       if (response.ok) {
@@ -80,6 +82,8 @@ export const TripDetails = () => {
     }
 
     fetchTrip();
+    // setTheTripId(tripId);
+    // setTheUsername(username);
   }, [tripId]);
 
   if (isLoading) {
