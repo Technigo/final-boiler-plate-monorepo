@@ -46,12 +46,7 @@ export const tripSchema = new Schema(
 
     passengers: [
       {
-        userId: {
-          type: mongoose.Schema.Types.ObjectId,
-        },
-        username: {
-          type: String,
-        },
+        type: mongoose.Schema.Types.Mixed,
       },
     ],
     music: {
