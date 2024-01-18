@@ -166,6 +166,7 @@ export const UserController = {
       reg,
       user,
       username,
+      music,
     } = req.body;
     console.log(req.body);
 
@@ -181,6 +182,7 @@ export const UserController = {
         reg,
         user,
         username,
+        music,
       });
 
       await trip.save();
@@ -265,6 +267,7 @@ export const UserController = {
     };
 
     try {
+      console.log(req.body);
       const passenger = await TripModel.findOneAndUpdate(
         { _id: tripid },
         { $push: { passengers: newPassenger } },

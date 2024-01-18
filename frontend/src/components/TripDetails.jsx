@@ -159,7 +159,9 @@ export const TripDetails = () => {
           </div>
 
           <div className="col-span-6 mt-2 text-xs">Music</div>
+          {selectedTrip.}
           <div className="col-span-6 mt-2 text-xs">Trip ID</div>
+          {selectedTrip._id}
 
           <div className="col-span-6 flex items-center text-lg sm:text-xl p-2">
             {selectedTrip.music}

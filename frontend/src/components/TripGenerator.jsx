@@ -152,7 +152,7 @@ export const TripGenerator = () => {
   // });
 
   const formDataIsIncomplete = () => {
-    const { from, to, date, make, model, reg, availableSeats, message } =
+    const { from, to, date, make, model, reg, availableSeats, message, music } =
       formData;
 
     return (
@@ -163,7 +163,8 @@ export const TripGenerator = () => {
       !model ||
       !reg ||
       !availableSeats ||
-      !message
+      !message ||
+      !music
     );
   };
 

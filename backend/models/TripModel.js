@@ -54,6 +54,9 @@ export const tripSchema = new Schema(
         },
       },
     ],
+    music: {
+      type: String,
+    },
   },
   {
     timestamps: true,
