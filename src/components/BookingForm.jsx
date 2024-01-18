@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 // import { useParams } from 'react-router-dom'
+import moment from 'moment'
 import { bookingStore } from '../store/bookingStore'
 import { SelectedTicket } from './SelectedTicket'
 import './BookingForm.css'
@@ -58,6 +59,11 @@ export const BookingForm = () => {
         return totalPrice
     }
 
+    const displayDate = (date) => {
+        date = moment().format('MMMM Do YYYY')
+        return date
+    }
+
     return(
         <div className="page-section the-confirmation">
 
@@ -69,7 +75,7 @@ export const BookingForm = () => {
                     <div className="confirmation-details">
                         <h2>Booking confirmed:</h2>
                         <h3>{selectedShowtime.movieTitle}</h3>
-                        <p>{selectedShowtime.date} {selectedShowtime.startingTime}:00</p>
+                        <p>{displayDate(selectedShowtime.date)} {selectedShowtime.startingTime}:00</p>
                         
                         <p>Email: {bookingReceipts[0].email}</p>
                         <p>Price: {calculatePrice(bookingReceipts)} kr</p>
