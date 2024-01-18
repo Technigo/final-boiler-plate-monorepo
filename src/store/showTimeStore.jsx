@@ -1,12 +1,12 @@
 import { create } from 'zustand'
 
 const apiEnv = import.meta.env.VITE_BACKEND_API;
-// console.log(apiEnv)
 
 export const showTimesStore = create((set) => ({
   showTimes: [],
-  setShowTimes: (showTimes) => set({ showTimes }),
+  showTimesByMovie: [],
 
+  setShowTimes: (showTimes) => set({ showTimes }),
 
   fetchShowTimes: async () => {
     try {
@@ -15,12 +15,10 @@ export const showTimesStore = create((set) => ({
         headers: {
           'Content-Type': 'application/json',
         },
-
       })
 
       const data = await response.json()
       if (response.ok) {
-
         set({ showTimes: data })
       } else {
         console.error('Failed to fetch showTimes')
@@ -31,7 +29,7 @@ export const showTimesStore = create((set) => ({
   },
 
   // fetch showtime by movie
-  fetchShowtimeByMovie: async (movieId) => {
+  fetchShowtimesByMovie: async (movieId) => {
     try {
       const response = await fetch(`${apiEnv}/showtimes/movie/${movieId}`, {
         method: 'GET',
@@ -44,7 +42,7 @@ export const showTimesStore = create((set) => ({
       console.log(data)
 
       if (response.ok && data.length > 0) {
-        set({ showTimes: data })
+        set({ showTimesByMovie: data })
       } else if (data.length === 0) {
         console.error('No showtimes for this movie')
       } else {
@@ -55,22 +53,3 @@ export const showTimesStore = create((set) => ({
     }
   },
 }))
-
-
-
-// import { create } from 'zustand'
-// import showTimesData from '../showTime.json'
-
-// export const showTimeStore = create((set) => ({
-//   showTimes: showTimesData, // Directly assign data from the JSON file to the state
-//   setShowTimes: (showTime) => set({ showTime }),
-//   fetchShowTimes: async () => {
-//     try {
-//       const data = showTimesData
-//       set({ showTimes: data })
-//     } catch (error) {
-//       console.error('Error fetching showTime:', error)
-//     }
-//   }
-// }))
-

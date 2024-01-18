@@ -1,4 +1,5 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react'
+// import { useState } from 'react'
 import { showTimesStore } from '../store/showTimeStore'
 import { Link } from 'react-router-dom'
 import moment from 'moment'
@@ -6,9 +7,15 @@ import moment from 'moment'
 import "./MovieDetails.css";
 
 export const MovieDetails = ({ movie }) => {
-  const fetchShowtimeByMovie = showTimesStore((state) => state.fetchShowtimeByMovie)
+  // const fetchShowtimeByMovie = showTimesStore((state) => state.fetchShowtimeByMovie)
+  const { 
+    // showTimes, 
+    // setShowtimes,
+    showTimesByMovie,
+    fetchShowtimesByMovie
+   } = showTimesStore()
 
-  const [showtimes, setShowtimes] = useState([]);
+  // const [showtimes, setShowtimes] = useState([]);
   const { title, posterUrl, description, IMDBRating, duration, genre } = movie;
   // const backgroundImage = `https://image.tmdb.org/t/p/w1280/${backdropUrl}`;
   const posterImage = `https://image.tmdb.org/t/p/w780${posterUrl}`;
@@ -19,12 +26,12 @@ export const MovieDetails = ({ movie }) => {
         console.log('Fetching showtimes for movie:', movie.title);
 
         // Fetch showtimes for the movie
-        await fetchShowtimeByMovie(movie._id);
+        await fetchShowtimesByMovie(movie._id);
 
         // Access the updated showtimes from the store
-        const updatedShowtime = showTimesStore.getState().showTimes;
-        console.log('Fetched showtimes:', updatedShowtime);
-        setShowtimes(updatedShowtime);
+        // const updatedShowtime = showTimesStore.getState().showTimes;
+        // console.log('Fetched showtimes:', updatedShowtime);
+        // setShowtimes(updatedShowtime);
       }
     } catch (error) {
       console.error('Error fetching showtimes:', error);
@@ -34,6 +41,7 @@ export const MovieDetails = ({ movie }) => {
   useEffect(() => {
     console.log('Component rendered with movie:', movie);
     fetchShowtime();
+    console.log(showTimesByMovie)
   }, [])
 
   const formatReleaseDate = (fullDate) => {
@@ -62,9 +70,9 @@ export const MovieDetails = ({ movie }) => {
       <div className="the-showtimes">
         <h2>Showtimes:</h2>
         <div className='showtime-container'>
-          {showtimes && showtimes.map((showTime) => (
+          {showTimesByMovie && showTimesByMovie.map((showTime) => (
             <div key={showTime._id}>
-              <p><Link to={`/booking/${showTime._id}`}>{showTime.startingTime}:00</Link></p>
+              <Link to={`/booking/${showTime._id}`}><p>{showTime.startingTime}:00</p></Link>
             </div>
           ))}</div>
       </div>
