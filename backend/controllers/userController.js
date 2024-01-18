@@ -84,7 +84,7 @@ export const registerUserController = asyncHandler(async (req, res) => {
 // @desc    Login Existing User
 // @route   POST api/login
 // @access  Public
-
+*/
 export const loginUserController = asyncHandler(async (req, res) => {
   // Extract username and password from the request body
   const { username, password } = req.body;
