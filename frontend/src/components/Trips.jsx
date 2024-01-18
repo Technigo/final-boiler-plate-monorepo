@@ -113,7 +113,20 @@ export const Trips = () => {
             <div className="col-span-12 flex items-center justify-center text-xs text-primary-900 sm:text-lg mt-4">
               <button
                 onClick={() => deleteTrip(trip._id)}
-                className="text-red-500 hover:text-red-700 focus:outline-none bg-red-50 border border-red-200 focus:ring focus:border-blue-300 p-2 rounded-md">
+                className="text-red-500 hover:text-red-700 focus:outline-none border border-red-500 hover:border-red-700 focus:ring focus:border-blue-300 p-2 rounded-md flex items-center">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth="1.5"
+                  stroke="currentColor"
+                  className="w-6 h-6 mr-1">
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="m9.75 9.75 4.5 4.5m0-4.5-4.5 4.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
+                  />
+                </svg>
                 Delete trip
               </button>
             </div>
