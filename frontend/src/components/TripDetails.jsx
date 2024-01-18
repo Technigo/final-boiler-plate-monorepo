@@ -186,12 +186,14 @@ export const TripDetails = () => {
               )}
           </div>
         </div>
-        <Link
-          to="/trips"
-          className="text-blue-500 hover:text-blue-700 focus:outline-none focus:ring focus:border-blue-300">
-          {" "}
-          Back to Trips
-        </Link>
+        <div>
+          <Link
+            to="/trips"
+            className="text-blue-500 text-md hover:text-blue-700 focus:outline-none focus:ring focus:border-blue-300">
+            {" "}
+            Back to Trips
+          </Link>
+        </div>
       </div>
     </>
   );
