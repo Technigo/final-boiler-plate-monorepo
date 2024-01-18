@@ -7,6 +7,10 @@ const ShowtimeSchema = new Schema({
 		type: String,
 		required: true,
 	},
+	moviePoster: {
+		type: String,
+		required: true,
+	},
 	cinemaHall: {
 		type: String,
 		required: true,

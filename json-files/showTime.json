@@ -1,6 +1,7 @@
 [
     {
         "movieTitle": "Aquaman and the Lost Kingdom",
+        "moviePoster": "/8xV47NDrjdZDpkVcCFqkdHa3T0C.jpg",
         "cinemaHall": "Room 1",
         "date": "3th jan",
         "startingTime": 14,
@@ -16,6 +17,7 @@
     },
     {
         "movieTitle": "Killers of the Flower Moon",
+        "moviePoster": "/dB6Krk806zeqd0YNp2ngQ9zXteH.jpg",
         "cinemaHall": "Room 1",
         "date": "4th jan",
         "startingTime": 14,
@@ -31,6 +33,7 @@
     },
     {
         "movieTitle": "Trolls Band Together",
+        "moviePoster": "/bkpPTZUdq31UGDovmszsg2CchiI.jpg",
         "cinemaHall": "Room 1",
         "date": "5th jan",
         "startingTime": 14,
@@ -46,6 +49,7 @@
     },
     {
         "movieTitle": "Trolls Band Together",
+        "moviePoster": "/bkpPTZUdq31UGDovmszsg2CchiI.jpg",
         "cinemaHall": "Room 1",
         "date": "5th jan",
         "startingTime": 19,
@@ -61,6 +65,7 @@
     },
     {
         "movieTitle": "Trolls Band Together",
+        "moviePoster": "/bkpPTZUdq31UGDovmszsg2CchiI.jpg",
         "cinemaHall": "Room 1",
         "date": "5th jan",
         "startingTime": 22,
@@ -76,6 +81,7 @@
     },
     {
         "movieTitle": "Freelance",
+        "moviePoster": "/7Bd4EUOqQDKZXA6Od5gkfzRNb0.jpg",
         "cinemaHall": "Room 1",
         "date": "6th jan",
         "startingTime": 14,
@@ -91,6 +97,7 @@
     },
     {
         "movieTitle": "Leo",
+        "moviePoster": "/pD6sL4vntUOXHmuvJPPZAgvyfd9.jpg",
         "cinemaHall": "Room 1",
         "date": "7th jan",
         "startingTime": 14,
@@ -106,6 +113,7 @@
     },
     {
         "movieTitle": "Leave the World Behind",
+        "moviePoster": "/29rhl1xopxA7JlGVVsf1UHfYPvN.jpg",
         "cinemaHall": "Room 1",
         "date": "8th jan",
         "startingTime": 14,
@@ -121,6 +129,7 @@
     },
     {
         "movieTitle": "Good Boy",
+        "moviePoster": "/9DPG1gxLwV2oyFdHq3SnISsWbse.jpg",
         "cinemaHall": "Room 1",
         "date": "9th jan",
         "startingTime": 14,
@@ -136,6 +145,7 @@
     },
     {
         "movieTitle": "Thanksgiving",
+        "moviePoster": "/f5f3TEVst1nHHyqgn7Z3tlwnBIH.jpg",
         "cinemaHall": "Room 1",
         "date": "10th jan",
         "startingTime": 14,
@@ -151,6 +161,7 @@
     },
     {
         "movieTitle": "Wonka",
+        "moviePoster": "/qhb1qOilapbapxWQn9jtRCMwXJF.jpg",
         "cinemaHall": "Room 1",
         "date": "11th jan",
         "startingTime": 14,
@@ -166,6 +177,7 @@
     },
     {
         "movieTitle": "The Hunger Games: The Ballad of Songbirds & Snakes",
+        "moviePoster": "/mBaXZ95R2OxueZhvQbcEWy2DqyO.jpg",
         "cinemaHall": "Room 1",
         "date": "12th jan",
         "startingTime": 14,

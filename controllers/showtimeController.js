@@ -68,6 +68,7 @@ export const addShowtime = asyncHandler(async (req, res) => {
 			return res.status(404).json({ error: 'Movie not found' });
 		} else {
 			const movieTitle = movieDetails[0].title
+			const moviePoster = movieDetails[0].posterUrl
 		}
 		
 		const hallDetails = await CinemaHallModel.find(
