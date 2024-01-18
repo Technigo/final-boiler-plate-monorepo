@@ -302,10 +302,10 @@ export const UserController = {
 
     try {
       console.log(req.body);
-      const findTrip = await TripModel.findOne({ _id: tripid });
+      const trip = await TripModel.findOne({ _id: tripid });
 
-      findTrip.passengers.push({ userId: id, username: username });
-      const updated = await findTrip.save();
+      trip.passengers.push({ userId: id, username: username });
+      const updated = await trip.save();
       res.json({
         message: "Passenger added successfully",
         passenger: updated.passengers,
