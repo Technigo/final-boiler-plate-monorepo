@@ -177,7 +177,11 @@ export const Carousel = () => {
           depth: 100,
           modifier: 1,
           slideShadows: true,
-        }}>
+        }}
+        pagination={{
+          clickable: true,
+        }}
+      >
         {rumorStories.map((story, index) => (
           <SwiperSlide key={story._id}>
             <StoryCard
@@ -204,7 +208,11 @@ export const Carousel = () => {
           depth: 100,
           modifier: 1,
           slideShadows: true,
-        }}>
+        }}
+        pagination={{
+          clickable: true,
+        }}
+      >
         {hearsayStories.map((story, index) => (
           <SwiperSlide key={story._id}>
             <StoryCard
@@ -231,7 +239,11 @@ export const Carousel = () => {
           depth: 100,
           modifier: 1,
           slideShadows: true,
-        }}>
+        }}
+        pagination={{
+          clickable: true,
+        }}
+      >
         {historicalStories.map((story, index) => (
           <SwiperSlide key={story._id}>
             <StoryCard
