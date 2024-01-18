@@ -63,7 +63,7 @@ body.active-modal {
   margin: 50px 15px 215px;
   
   @media screen and (min-width: 400px) {
-    margin: 50px 50px 200px;
+    margin: 70px 50px 200px;
   }
 
   @media screen and  (min-width: 800px) {

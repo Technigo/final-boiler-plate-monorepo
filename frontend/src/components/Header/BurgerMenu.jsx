@@ -11,12 +11,6 @@ const StyledBurgerMenu = styled.div`
   display: flex;
   max-width: 130px;
   padding: 0 0 20px 20px;
-
-  /* @media screen and (max-width: 510px) {
-    background-color: rgba(155, 100, 137, 0.8);
-    padding: 0 0 5px 5px;
-    border-radius: 10px 0 10px 0;
-  } */
 `;
 
 const StyledToggleButton = styled.button`
@@ -29,12 +23,14 @@ const StyledToggleButton = styled.button`
   padding: 0;
   color: var(--lighttext);
   cursor: pointer;
+  z-index: 2;
 `;
 
 const StyledBurgerLinks = styled.div`
   display: flex;
   flex-direction: column;
   gap: 20px;
+  z-index: 1;
 
   .logout-button {
     margin: 0;
@@ -89,7 +85,7 @@ export const BurgerMenu = () => {
           <RxHamburgerMenu style={{ width: "25px", height: "25px" }} />
         )}
       </StyledToggleButton>
-      <StyledBurgerLinks>
+      <StyledBurgerLinks burgerMenuOpen={burgerMenuOpen}>
         <ul className={burgerMenuOpen ? "burger-menu-open" : ""}>
           <li className={activePage === "home" ? "active" : ""}>
             <Link
