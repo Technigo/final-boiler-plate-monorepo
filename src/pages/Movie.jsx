@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { movieStore } from '../store/movieStore'
 import { MovieDetails } from '../components/MovieDetails'
 import { useParams } from 'react-router-dom'
+import bookingStore from '../store/bookingStore'
 
 export const Movie = () => {
   const [movieData, setMovieData] = useState(null)
@@ -9,6 +10,13 @@ export const Movie = () => {
   const { id } = useParams()
   const fetchMovies = movieStore((state) => state.fetchMovies)
   const movies = movieStore((state) => state.movies)
+
+  const selectedSeats = bookingStore(state => state.selectedSeats)
+  const setSelectedSeats = bookingStore(state => state.setSelectedSeats)
+
+  useEffect(() => {
+    if (selectedSeats.length > 0) setSelectedSeats()
+  }, [])
 
   useEffect(() => {
     const fetchData = async () => {
