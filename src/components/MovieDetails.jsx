@@ -42,37 +42,32 @@ export const MovieDetails = ({ movie }) => {
 
   return (
     <div className="page-section the-detail-page">
-
       <div className="the-movie-poster">
-        <img className='movie-poster poster-details' src={posterImage} alt={title} />
+        <img className='poster-details' src={posterImage} alt={title} />
       </div>
-      {/* <div className="details"> */}
-
-        <div className="movie-title-container">
-          <h1 className='movie-title'>{title}</h1>
-          <p className="rating">⭐️ {'\u00A0'} {IMDBRating.toFixed(1)} </p>
+      <div className="movie-title-container">
+        <h1 className='movie-title'>{title}</h1>
+        <p className="rating">⭐️ {'\u00A0'} {IMDBRating.toFixed(1)} </p>
+      </div>
+      <div className="description-container">
+        <div className="description">
+          <p>{description}</p>
         </div>
-
-        <div className="description-container">
-          <div className="description">
-            <p>{description}</p>
-          </div>
-
-          <div className="more-info">
-            <p> RUNTIME: {duration} min </p>
-            <p> GENRES: {genre.join(", ")}</p>
-            <p> RELEASE DATE :{formatReleaseDate(movie.releaseDate)}</p>
-          </div>
+        <div className="more-info">
+          <p> RUNTIME: {duration} min </p>
+          <p> GENRES: {genre.join(", ")}</p>
+          <p> RELEASE DATE :{formatReleaseDate(movie.releaseDate)}</p>
         </div>
-        <div className="the-showtimes">
-          <h2>Showtimes:</h2>
+      </div>
+      <div className="the-showtimes">
+        <h2>Showtimes:</h2>
+        <div className='showtime-container'>
           {showtimes && showtimes.map((showTime) => (
-            <div className='showtime-container' key={showTime._id}>
+            <div key={showTime._id}>
               <p><Link to={`/booking/${showTime._id}`}>{showTime.startingTime}:00</Link></p>
             </div>
-          ))}
-        </div>
-      {/* </div> */}
+          ))}</div>
+      </div>
     </div>
   )
 }
