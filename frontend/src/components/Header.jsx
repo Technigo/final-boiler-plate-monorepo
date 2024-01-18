@@ -1,6 +1,6 @@
-import React from 'react';
-import { useTranslation } from 'react-i18next';
-//import "./header.css";
+import React from "react";
+import "./header.css";
+import { useTranslation } from "react-i18next";
 
 const Header = () => {
 
