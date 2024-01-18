@@ -1,3 +1,13 @@
+.the-detail-page {
+	display: grid !important;
+	grid-template-columns: 1fr;
+	gap: 20px;
+}
+
+.poster-details {
+	max-width: 200px;
+}
+
 .showtime-container p {
 	padding: 0.3rem 2rem;
 	text-align: center;
@@ -6,8 +16,14 @@
 	display: inline-block;
 }
 
+.description-container {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+}
+
 @media (min-width: 667px) {
-	.movie-poster {
+	.poster-details {
 		max-width: 250px;
 	}
 }
@@ -15,31 +31,21 @@
 @media (min-width: 1026px) {
 	.the-detail-page {
 		display: grid !important;
+		grid-template-columns: 1fr 2fr;
+		grid-template-rows: 1fr 0.1fr 1fr;
 		gap: 10px;
-		grid-template-columns: 0.5fr 2fr;
-		grid-template-rows: 0.5fr 2fr 1fr;
-	}
-	.movie-poster {
-		max-width: 400px;
 	}
 	.poster-details {
-		left: 50%;
+		max-width: 300px;
 	}
 
-	.details {
-		grid-column: 2 / 3;
-		grid-row: 2 / 3;
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-	}
 	.movie-title-container {
-		grid-column: 1 / 3 !important;
-		grid-row: 1 / 2 !important;
+		grid-column: 1 / span 2;
+		grid-row: 1 / 4;
 		display: flex;
-		justify-content: start;
-		font-size: 2rem;
+		justify-content: center;
 		align-items: center;
+		font-size: 3rem;
 	}
 
 	.rating {
@@ -47,7 +53,7 @@
 	}
 
 	.movie-title-container h1 {
-		font-size: 2rem;
+		font-size: 3rem;
 		text-align: left;
 	}
 	.rating {
@@ -57,8 +63,9 @@
 	.description-container {
 		display: flex;
 		flex-direction: row;
-		grid-column-start: 2;
-		grid-column-end: 3;
+		justify-content: space-between;
+		grid-column: 2 / span 3;
+		grid-row: 1 / 5;
 	}
 	.more-info {
 		text-align: left;
@@ -72,14 +79,15 @@
 	}
 	.showtime-container {
 		display: flex;
-		flex-direction: row;
+		flex-direction: column;
 		margin-left: 3rem;
 		margin-top: 1rem;
 	}
 	.the-showtimes {
 		display: flex;
 		flex-direction: row;
-		grid-column: 2 / 3;
+		grid-column: 2 / span 2;
+		grid-row: 4 / span 22;
 	}
 	.the-movie-poster {
 		grid-column: 1 / 2;
