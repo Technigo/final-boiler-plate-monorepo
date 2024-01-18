@@ -49,7 +49,7 @@ export const TripDetails = () => {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ passengerDetails }),
+        body: JSON.stringify(passengerDetails),
       });
 
       if (response.ok) {
