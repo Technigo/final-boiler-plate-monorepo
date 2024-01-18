@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import { Button } from "../Buttons/Button";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
+import { useLocation } from "react-router-dom";
 
 const StyledNav = styled.nav`
   position: absolute;
@@ -20,6 +21,11 @@ const StyledNav = styled.nav`
     font-weight: 600;
   }
 
+  li.active a {
+    text-decoration-line: underline;
+    border-bottom: 5px;
+  }
+
   ul {
     display: none;
   }
@@ -29,7 +35,6 @@ const StyledNav = styled.nav`
     display: flex;
     flex-direction: column;
     width: 150px;
-    //background-color: var(--grey);
   }
 
   .logout-button {
@@ -58,8 +63,29 @@ export const Navbar = () => {
 
   const { isLoggedIn } = userStore();
 
+  // Use the useLocation hook to get the current location
+  const location = useLocation();
+
+  // Update activePage based on the pathname
   useEffect(() => {
-    // Logic to toggle burger menu visibility based on window width
+    const path = location.pathname;
+    if (path === "/") {
+      setActivePage("home");
+    } else if (path === "/login") {
+      setActivePage("login");
+    } else if (path === "/register") {
+      setActivePage("register");
+    } else if (path === "/tasks") {
+      setActivePage("tasks");
+    } else if (path === "/profile") {
+      setActivePage("profile");
+    } else if (path === "/about") {
+      setActivePage("about");
+    }
+  }, [location.pathname, setActivePage]);
+
+  // Logic to toggle burger menu visibility based on window width
+  useEffect(() => {
     const handleResize = () => {
       const width = window.innerWidth;
       if (width <= 1100) {
