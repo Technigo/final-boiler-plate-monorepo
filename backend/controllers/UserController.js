@@ -260,7 +260,8 @@ export const UserController = {
   },
 
   passengerJoin: async (req, res) => {
-    const { tripid, id, username } = req.body;
+    const { tripid } = req.params;
+    const { id, username } = req.body;
     const newPassenger = {
       userId: id,
       username: username,
