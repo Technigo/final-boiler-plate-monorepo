@@ -7,44 +7,62 @@ import cloudinary from 'cloudinary';
 export const getCocktailsController = async (req, res) => {
     try {
         const { search, primaryLiquor, category, ingredientsCount, occasion, flavorProfile, prepTime, drinkware, strength, difficulty, color, allLiquors } = req.query;
-        let query = Cocktails.find();
+        
+        const { filter } = req.query;
+        if (filter) {
+            const [category, value] = filter.split(':');
+            if (category && value) {
+                switch (category.toLowerCase()) {
+                    case 'liquor':
+                        query = query.where({ allLiquors: new RegExp(value, 'i') });
+                        break;
+                    case 'color':
+                        query = query.where({ color: new RegExp(value, 'i') });
+                        break;
+                    case 'occasion':
+                        query = query.where({ occasion: new RegExp(value, 'i') });
+                        break;
+                    case 'flavorprofile':
+                        query = query.where({ flavorProfile: new RegExp(value, 'i') });
+                        break;}
+                }}
 
-        if (primaryLiquor) {
-            query = query.where({ primaryLiquor: new RegExp(primaryLiquor, 'i') });
-        }
-        if (allLiquors) {
-            let liquorArray = Array.isArray(allLiquors) ? allLiquors : [allLiquors];
-            query = query.where({ allLiquors: { $in: liquorArray } });
-        }
-        if (category) {
-            query = query.where({ category: new RegExp(category, 'i') });
-        }
-        if (ingredientsCount) {
-            query = query.where({ ingredientsCount: ingredientsCount });
-        }
-        if (occasion) {
-            let occasionArray = Array.isArray(occasion) ? occasion : [occasion];
-            query = query.where({ occasion: { $in: occasionArray } });
-        }
-        if (flavorProfile) {
-            let flavorProfileArray = Array.isArray(flavorProfile) ? flavorProfile : [flavorProfile];
-            query = query.where({ flavorProfile: { $in: flavorProfileArray } });
-        }
-        if (prepTime) {
-            query = query.where({ prepTime: new RegExp(prepTime, 'i') });
-        }
-        if (drinkware) {
-            query = query.where({ drinkware: new RegExp(drinkware, 'i') });
-        }
-        if (strength) {
-            query = query.where({ strength: new RegExp(strength, 'i') });
-        }
-        if (difficulty) {
-            query = query.where({ difficulty: new RegExp(difficulty, 'i') });
-        }
-        if (color) {
-            query = query.where({ color: new RegExp(color, 'i') });
-        }
+        // if (primaryLiquor) {
+        //     query = query.where({ primaryLiquor: new RegExp(primaryLiquor, 'i') });
+        // }
+        // if (allLiquors) {
+        //     let liquorArray = Array.isArray(allLiquors) ? allLiquors : [allLiquors];
+        //     query = query.where({ allLiquors: { $in: liquorArray } });
+        // }
+        // if (category) {
+        //     query = query.where({ category: new RegExp(category, 'i') });
+        // }
+        // if (ingredientsCount) {
+        //     query = query.where({ ingredientsCount: ingredientsCount });
+        // }
+        // if (occasion) {
+        //     let occasionArray = Array.isArray(occasion) ? occasion : [occasion];
+        //     query = query.where({ occasion: { $in: occasionArray } });
+        // }
+        // if (flavorProfile) {
+        //     let flavorProfileArray = Array.isArray(flavorProfile) ? flavorProfile : [flavorProfile];
+        //     query = query.where({ flavorProfile: { $in: flavorProfileArray } });
+        // }
+        // if (prepTime) {
+        //     query = query.where({ prepTime: new RegExp(prepTime, 'i') });
+        // }
+        // if (drinkware) {
+        //     query = query.where({ drinkware: new RegExp(drinkware, 'i') });
+        // }
+        // if (strength) {
+        //     query = query.where({ strength: new RegExp(strength, 'i') });
+        // }
+        // if (difficulty) {
+        //     query = query.where({ difficulty: new RegExp(difficulty, 'i') });
+        // }
+        // if (color) {
+        //     query = query.where({ color: new RegExp(color, 'i') });
+     // }
 
         if (search) {
             const regexSearch = new RegExp('\\b' + search + '\\b', 'i');
@@ -73,10 +91,10 @@ export const getCocktailsController = async (req, res) => {
         
         const cocktails = await query.sort({ name: 1 });
         res.json(cocktails);
-     } catch (error) {
+    } catch (error) {
         res.status(500).send(error.message);
     }
-}; //BEHOLD
+};
 
 // Get a single cocktail by ID
 export const getCocktailByIdController = async (req, res) => {
@@ -101,7 +119,7 @@ export const getCocktailByIdController = async (req, res) => {
     
     try {
             // Parse array fields from JSON strings if they exist
-            if (req.body.allLiquors) {
+        if (req.body.allLiquors) {
                 req.body.allLiquors = JSON.parse(req.body.allLiquors);
             }
             if (req.body.ingredients) {
