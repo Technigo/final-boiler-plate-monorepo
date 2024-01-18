@@ -308,7 +308,7 @@ export const UserController = {
       console.log(req.body);
       const findTrip = await TripModel.findOne({ _id: tripid });
 
-      findTrip.passengers.push({ newPassenger });
+      findTrip.passengers.push({ userId: id, username: username });
       const updated = await findTrip.save();
       res.json({
         message: "Passenger added successfully",
