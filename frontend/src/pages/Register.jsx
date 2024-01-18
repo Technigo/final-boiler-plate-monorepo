@@ -1,7 +1,6 @@
-// Import necessary components, hooks, and stores.
 import { userStore } from "../stores/userStore";
 import React, { useEffect, useState } from "react";
-/*import "../components/register.css";*/
+import "../components/register.css";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from 'react-i18next';
 import { Link } from "react-router-dom";
