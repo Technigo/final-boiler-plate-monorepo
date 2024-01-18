@@ -258,11 +258,16 @@ export const UserController = {
   },
 
   passengerJoin: async (req, res) => {
-    const { tripid } = req.body;
+    const { tripid, id, username } = req.body;
+    const newPassenger = {
+      userId: id,
+      username: username,
+    };
+
     try {
       const passenger = await TripModel.findOneAndUpdate(
         { _id: tripid },
-        req.body,
+        { $push: { passengers: newPassenger } },
         { new: true }
       );
       console.log(passenger);

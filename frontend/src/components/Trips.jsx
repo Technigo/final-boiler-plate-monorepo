@@ -43,7 +43,7 @@ export const Trips = () => {
       {trips.map((trip) => (
         <div
           key={trip._id}
-          className="grid grid-cols-12 gap-2 bg-secondary rounded-lg relative p-4"
+          className="grid grid-cols-12 gap-2 bg-background rounded-lg relative p-4"
         >
           <div className="col-span-5 text-lg text-primary-900 font-semibold sm:text-4xl">
             {trip.from}
@@ -94,19 +94,21 @@ export const Trips = () => {
           <div className="col-span-3 flex items-center justify-end text-xs text-primary-900 sm:text-lg">
             <Link
               to={`/trips/${trip._id}`}
-              className="text-secondary-500 hover:text-secondary-700 focus:outline-none focus:ring focus:border-blue-300"
+              className="text-blue-500 hover:text-blue-700 focus:outline-none focus:ring focus:border-blue-300"
             >
               View details
             </Link>
           </div>
 
           {trip.user === loggedInUserId && (
-            <button
-              onClick={() => deleteTrip(trip._id)}
-              className="bg-orange-400 text-white text-lg"
-            >
-              Delete trip
-            </button>
+            <div className="col-span-12 flex items-center justify-end text-xs text-primary-900 sm:text-lg">
+              <button
+                onClick={() => deleteTrip(trip._id)}
+                className="text-red-500 hover:text-red-700 focus:outline-none bg-red-50 border border-red-200 focus:ring focus:border-blue-300 px-2 rounded-md"
+              >
+                Delete trip
+              </button>
+            </div>
           )}
         </div>
       ))}
