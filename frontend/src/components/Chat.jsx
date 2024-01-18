@@ -7,13 +7,11 @@ export const Chat = () => {
   const {
     chatReceiver,
     setChatReceiver,
-    setUsername,
     username,
     recipientId,
     loggedInUserId,
     chatMessages,
     setRecipientId,
-    setLoggedInUserId,
     handleChatHistory,
   } = userStore();
   const [selectedUserId, setSelectedUserId] = useState(null);
@@ -23,7 +21,7 @@ export const Chat = () => {
   const [loading, setLoading] = useState(true);
   const [userLoading, setUserLoading] = useState(true);
   const [userList, setUserList] = useState(null);
-  const { user, isAuthenticated, isLoading } = useAuth0();
+  const { isAuthenticated, isLoading } = useAuth0();
 
   const divUnderMessages = useRef();
   const vite_backend = import.meta.env.VITE_BACKEND_API;
@@ -37,20 +35,6 @@ export const Chat = () => {
   //#REGION Fetch users to chat with
 
   useEffect(() => {
-    const getUserDataFromMongo = async () => {
-      try {
-        await fetch(`${vite_backend}/user/${user.sub}`)
-          .then((res) => res.json())
-          .then((data) => {
-            setUsername(data.username);
-            setLoggedInUserId(data._id);
-            setLoading(!loading);
-          });
-      } catch (error) {
-        console.log(error);
-      }
-    };
-
     const getUsers = async () => {
       const fetchUsers = await fetch(`${vite_backend}/users`);
       const jsonUsers = await fetchUsers.json();
@@ -58,7 +42,6 @@ export const Chat = () => {
       setUserLoading(!userLoading);
     };
 
-    getUserDataFromMongo();
     if (userList === null) {
       getUsers();
     }
