@@ -99,8 +99,6 @@ export const Chat = () => {
         console.log("data: " + data);
         alert("Message sent successfully");
 
-        setNewMessageText("");
-
         setMessages((prev) => [
           ...prev,
           {
@@ -111,7 +109,9 @@ export const Chat = () => {
           },
         ]);
         console.log(messages);
+        setNewMessageText("");
       } else {
+        setNewMessageText("");
         throw new Error(`HTTP error! Status: ${response.status}`);
       }
     } catch (error) {

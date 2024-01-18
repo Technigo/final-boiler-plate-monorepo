@@ -38,22 +38,25 @@ export const userStore = create((set, get) => ({
 
   // Initialize the user's messaging history
   chatMessages: [],
+  setChatMessages: (chatMessages) => set({ chatMessages }),
 
-  handleChatHistory: async (senderId, recipientId) => {
+  handleChatHistory: async (sender, recipient) => {
     try {
-      const response = await fetch(
-        `${apiEnv}/messages/${senderId}/${recipientId}`
-      );
-
+      const response = await fetch(`${apiEnv}/messages/${sender}/${recipient}`);
+      console.log(response);
       if (!response.ok) {
-        console.log(
-          `From store: ${apiEnv}/messages/${senderId}/${recipientId}`
-        );
+        console.log(`From store: ${apiEnv}/messages/${sender}/${recipient}`);
         throw new Error(`Error fetching messages: ${response.statusText}`);
+      } else {
+        console.log(
+          `From store again: Sender: ${sender} and receiver: ${recipient}`
+        );
       }
 
       const data = await response.json();
+      console.log(data);
 
+      // set({ chatMessages: data });
       set({ chatMessages: data });
       console.log(chatMessages);
     } catch (error) {

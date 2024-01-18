@@ -18,6 +18,7 @@ router.get("/trips/:id", UserController.getSingleTrip);
 router.delete("/deletetrip/:id", UserController.deleteSingleTrip);
 router.post("/trips/:tripid/:id", UserController.joinTrip);
 router.post("/addmessage", UserController.addMessage);
+router.post("/trips/join/:tripid", UserController.joinTrip);
 // router.get("/endpoints", UserController.getEndpoints);
 
 export default router;

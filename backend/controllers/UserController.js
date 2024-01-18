@@ -256,4 +256,22 @@ export const UserController = {
       });
     }
   },
+
+  joinTrip: async (req, res) => {
+    const { tripid } = req.body;
+    try {
+      const passenger = await TripModel.findOneAndUpdate(
+        { _id: tripid },
+        req.body,
+        { new: true }
+      );
+      console.log(passenger);
+      res.json({ passenger });
+    } catch (error) {
+      res.status(400).json({
+        message: "Could not add passenger",
+        errors: error.errors,
+      });
+    }
+  },
 };

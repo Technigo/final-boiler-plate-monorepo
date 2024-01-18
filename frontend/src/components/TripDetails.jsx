@@ -34,6 +34,29 @@ export const TripDetails = () => {
       console.error("Error joining trip:", error);
     }
   };
+  const joinTripAttempt = async () => {
+    try {
+      const response = await fetch(`${apiEnv}/trips/join/${tripId}`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          userId: loggedInUserId,
+        }),
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        setSelectedTrip(data);
+      } else {
+        const errorResponse = await response.text();
+        console.error("Error joining trip:", errorResponse);
+      }
+    } catch (error) {
+      console.error("Error joining trip:", error);
+    }
+  };
 
   useEffect(() => {
     const fetchTrip = async () => {

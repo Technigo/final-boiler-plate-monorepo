@@ -46,8 +46,13 @@ export const tripSchema = new Schema(
 
     passengers: [
       {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "User",
+        userId: {
+          type: mongoose.Schema.Types.ObjectId,
+          ref: "User",
+        },
+        username: {
+          type: String,
+        },
       },
     ],
   },
@@ -71,6 +76,5 @@ tripSchema.methods.joinTrip = async function (userId) {
     return false;
   }
 };
-
 
 export const TripModel = mongoose.model("Trip", tripSchema);
