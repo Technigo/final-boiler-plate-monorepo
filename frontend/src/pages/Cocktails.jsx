@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom'; //for SinCoctail (had troubble yesterday and moved sinCocktails from pages to src)
+import { Link } from 'react-router-dom';
 import styles from './Cocktails.module.css';
 import { Text } from '../UI/Typography';
 
@@ -10,12 +10,17 @@ export const Cocktails = () => {
     const [displayedCocktails, setDisplayedCocktails] = useState([]);
     const [searchTerm, setSearchTerm] = useState('');
     const [selectedFilter, setSelectedFilter] = useState('');
-    const [itemsToDisplay, setItemsToDisplay] = useState(6); // Initial number of cocktails to display on Cocktails
+    const [itemsToDisplay, setItemsToDisplay] = useState(6);
     const [totalCocktails, setTotalCocktails] = useState(0);
-
+    const handleFilterChange = (e) => {
+        setSelectedFilter(e.target.value);
+        console.log("Selected filter:", e.target.value);
+    };
     const filters = {
-        'Occasion': ['Summer', 'Christmas', 'Fall', 'Spring', 'Halloween'],
-        'Main Liquor': ['Gin', 'Tequila', 'Vermouth']
+        'Liquor': ['Gin', 'Vodka', 'Tequila', 'Rum', 'Whiskey'],
+        'Color': ['Red', 'Blue', 'Green', 'Yellow', 'Clear'],
+        'Occasion': ['Christmas', 'Summer', 'New Year', 'Halloween'],
+        'FlavorProfile': ['Sweet', 'Bitter', 'Sour', 'Spicy']
     };
 
     useEffect(() => {
@@ -24,16 +29,19 @@ export const Cocktails = () => {
             query += `search=${encodeURIComponent(searchTerm)}`;
         }
         if (selectedFilter) {
-            query += (query ? '&' : '') + `category=${encodeURIComponent(selectedFilter)}`;
+            const [category, value] = selectedFilter.split(':');
+            query += (query ? '&' : '') + `${category.toLowerCase()}=${encodeURIComponent(value)}`;
         }
-
+        console.log(`Requesting URL: https://cbc-uvko.onrender.com/cocktails${query ? '?' + query : ''}`);
         fetch(`https://cbc-uvko.onrender.com/cocktails${query ? '?' + query : ''}`)
             .then(response => response.json())
             .then(data => {
+                console.log("Received data:", data);
                 setCocktails(data);
                 setDisplayedCocktails(data.slice(0, itemsToDisplay));
-                setTotalCocktails(data.length); // Update total number of cocktails
+                setTotalCocktails(data.length);
             })
+
             .catch(error => console.error('Error fetching cocktails:', error));
     }, [searchTerm, selectedFilter, itemsToDisplay]);
 
@@ -53,17 +61,17 @@ export const Cocktails = () => {
                 />
             </div>
 
-            {/* Filter Dropdown */}
+            {/* dropdown */}
             <div className={styles.dropdowns}>
                 <select
                     value={selectedFilter}
-                    onChange={(e) => setSelectedFilter(e.target.value)}
+                    onChange={handleFilterChange} // Use the handler here
                 >
                     <option value="">Select Filter</option>
                     {Object.entries(filters).map(([category, values]) => (
                         <optgroup label={category} key={category}>
                             {values.map(value => (
-                                <option key={value} value={value}>{value}</option>
+                                <option key={value} value={`${category}:${value}`}>{value}</option>
                             ))}
                         </optgroup>
                     ))}
