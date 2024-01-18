@@ -101,12 +101,12 @@ export const Trips = () => {
           </div>
 
           {trip.user === loggedInUserId && (
-            <div className="col-span-12 flex items-center justify-end text-xs text-primary-900 sm:text-lg">
+            <div className="col-span-12 flex items-center justify-center text-xs text-primary-900 sm:text-lg mt-4">
               <button
                 onClick={() => deleteTrip(trip._id)}
-                className="text-red-500 hover:text-red-700 focus:outline-none bg-red-50 border border-red-200 focus:ring focus:border-blue-300 px-2 rounded-md"
+                className="text-red-500 hover:text-red-700 focus:outline-none bg-red-50 border border-red-200 focus:ring focus:border-blue-300 p-2 rounded-md"
               >
-                Delete trip
+                Delete your trip
               </button>
             </div>
           )}

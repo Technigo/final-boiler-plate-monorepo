@@ -269,7 +269,7 @@ export const UserController = {
 
     try {
       console.log(req.body);
-      const findTrip = await TripModel.find({ _id: tripid });
+      const findTrip = await TripModel.findOne({ _id: tripid });
       if (!findTrip) {
         return res
           .status(404)

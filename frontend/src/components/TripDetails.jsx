@@ -90,12 +90,6 @@ export const TripDetails = () => {
     <>
       <div className="sm:mt-8 mt-2 space-y-4 mx-auto max-w-screen-md mb-8 p-2">
         <h1 className="text-lg font-md">Trip details</h1>
-        <Link
-          to="/trips"
-          className="text-blue-500 hover:text-blue-700 focus:outline-none focus:ring focus:border-blue-300"
-        >
-          Back to Trips
-        </Link>
         <div className="grid grid-cols-12 bg-background rounded-lg relative p-4">
           <div className="col-span-12 flex items-center justify-center text-md sm:text-lg"></div>
 
@@ -159,12 +153,15 @@ export const TripDetails = () => {
           </div>
 
           <div className="col-span-6 mt-2 text-xs">Music</div>
-          {selectedTrip.music}
-          <div className="col-span-6 mt-2 text-xs">Trip ID</div>
-          {selectedTrip._id}
 
-          <div className="col-span-6 flex items-center text-lg sm:text-xl p-2"></div>
-          <div className="col-span-6 flex items-center text-lg sm:text-xl p-2"></div>
+          <div className="col-span-6 mt-2 text-xs">Trip ID</div>
+
+          <div className="col-span-6 flex items-center text-lg sm:text-xl p-2">
+            {selectedTrip.music}
+          </div>
+          <div className="col-span-6 flex items-center text-lg sm:text-xl p-2 truncate">
+            {selectedTrip._id}
+          </div>
 
           <div className="col-span-12 mt-2 text-xs">Message</div>
 
@@ -187,6 +184,12 @@ export const TripDetails = () => {
         <button onClick={joinTripAttempt} className="bg-green-400">
           Join
         </button>
+        <Link
+          to="/trips"
+          className="text-blue-500 hover:text-blue-700 focus:outline-none focus:ring focus:border-blue-300"
+        >
+          Back to Trips
+        </Link>
       </div>
     </>
   );
