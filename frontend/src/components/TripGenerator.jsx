@@ -111,7 +111,7 @@ export const TripGenerator = () => {
         body: JSON.stringify(newTrip),
       });
 
-      const data = await response.json();
+      await response.json();
       alert("Trip posted successfully");
 
       await new Promise((resolve) => setTimeout(resolve, 1000));
@@ -299,7 +299,7 @@ export const TripGenerator = () => {
                     },
                   });
                 }}
-                className="input-field border p-2 rounded-md w-full"
+                className="input-field border p-2 rounded-md w-full h-10"
                 min={1}
                 max={8}
                 maxLength={1}
@@ -405,4 +405,3 @@ export const TripGenerator = () => {
     </>
   );
 };
-

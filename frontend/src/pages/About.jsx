@@ -1,10 +1,10 @@
-import { Chat } from "../components/Chat";
-import { UserProfile } from "./UserProfile";
+// import { Chat } from "../components/Chat";
+// import { UserProfile } from "./UserProfile";
 
 export const About = () => {
   return (
     <>
-      <div className="sm:mt-8 mt-2 space-y-4 mx-auto max-w-screen-md bg-yellow-50 mb-8 border-dashed border-2 border-yellow-500 p-4 rounded-xl">
+      <div className="sm:mt-8 mt-2 space-y-4 mx-auto max-w-screen-md mb-8 border p-4 rounded-xl">
         <h1 className="text-lg font-md font-semibold">
           This is our final project of Technigo Web Development Bootcamp fall
           2023.
@@ -15,74 +15,208 @@ export const About = () => {
         <ul className="flex flex-col items-start">
           <li className="flex items-center leading-relaxed">
             <span role="img" aria-label="Check Mark" className="mr-2">
-              ✔️
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth="1.5"
+                stroke="currentColor"
+                className="w-6 h-6">
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
+                />
+              </svg>
             </span>
-            Frontend in React
+            Frontend: Use React for the user interface.
           </li>
           <li className="flex items-center leading-relaxed">
             <span role="img" aria-label="Check Mark" className="mr-2">
-              ✔️
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth="1.5"
+                stroke="currentColor"
+                className="w-6 h-6">
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
+                />
+              </svg>
             </span>
-            Backend in Node.js
+            Backend: Implement the server in Node.js.
           </li>
           <li className="flex items-center leading-relaxed">
             <span role="img" aria-label="Check Mark" className="mr-2">
-              ✔️
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth="1.5"
+                stroke="currentColor"
+                className="w-6 h-6">
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
+                />
+              </svg>
             </span>
-            MongoDB database
+            Database: Employ MongoDB for data storage.
           </li>
           <li className="flex items-center leading-relaxed">
             <span role="img" aria-label="Check Mark" className="mr-2">
-              ✔️
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth="1.5"
+                stroke="currentColor"
+                className="w-6 h-6">
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
+                />
+              </svg>
             </span>
-            Navigation using React Router
+            Navigation: Utilize React Router for seamless navigation.
           </li>
           <li className="flex items-center leading-relaxed">
             <span role="img" aria-label="Check Mark" className="mr-2">
-              ✔️
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth="1.5"
+                stroke="currentColor"
+                className="w-6 h-6">
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
+                />
+              </svg>
             </span>
-            Should work in Chrome, Firefox & Safari
+            Browser Compatibility: Ensure compatibility with Chrome, Firefox,
+            and Safari.
           </li>
           <li className="flex items-center leading-relaxed">
             <span role="img" aria-label="Check Mark" className="mr-2">
-              ✔️
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth="1.5"
+                stroke="currentColor"
+                className="w-6 h-6">
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
+                />
+              </svg>
             </span>
-            Be responsive and work well on mobile, tablet and desktop
+            Responsiveness: Design the application to work well on mobile,
+            tablet, and desktop devices.
           </li>
           <li className="flex items-center leading-relaxed">
             <span role="img" aria-label="Check Mark" className="mr-2">
-              ✔️
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth="1.5"
+                stroke="currentColor"
+                className="w-6 h-6">
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
+                />
+              </svg>
             </span>
-            Follow the accessibility guidelines
+            Accessibility: Adhere to accessibility guidelines for an inclusive
+            user experience.
           </li>
           <li className="flex items-center leading-relaxed">
             <span role="img" aria-label="Check Mark" className="mr-2">
-              ✔️
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth="1.5"
+                stroke="currentColor"
+                className="w-6 h-6">
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
+                />
+              </svg>
             </span>
-            Your application should have a clear structure, using the box model
-            as a reference, with consistent margins/paddings
+            Structure: Maintain clarity, following the box model with consistent
+            margins and paddings.
           </li>
           <li className="flex items-center leading-relaxed">
             <span role="img" aria-label="Check Mark" className="mr-2">
-              ✔️
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth="1.5"
+                stroke="currentColor"
+                className="w-6 h-6">
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
+                />
+              </svg>
             </span>
-            You should use consistent h1-h6 styles and sizes throughout your
-            site and for multiple devices
+            Typography: Apply consistent h1-h6 styles and sizes across various
+            devices.
           </li>
           <li className="flex items-center leading-relaxed">
             <span role="img" aria-label="Check Mark" className="mr-2">
-              ✔️
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth="1.5"
+                stroke="currentColor"
+                className="w-6 h-6">
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
+                />
+              </svg>
             </span>
-            You should use a colour scheme based on one or a few colours
+            Color Scheme: Create a color scheme based on one or a few selected
+            colors.
           </li>
           <li className="flex items-center leading-relaxed">
             <span role="img" aria-label="Check Mark" className="mr-2">
-              ✔️
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth="1.5"
+                stroke="currentColor"
+                className="w-6 h-6">
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
+                />
+              </svg>
             </span>
-            You should have a design that can be adjusted to fit devices of all
-            sizes. Remember that 58.43% (Mar 2023) of all users will visit your
-            page from a mobile device and that the page should therefore be
-            optimised for these users too
+            Design Adaptability: Develop a design that adjusts gracefully to fit
+            devices of all sizes.
           </li>
         </ul>
       </div>
