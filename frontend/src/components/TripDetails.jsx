@@ -120,8 +120,7 @@ export const TripDetails = () => {
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"
                 fill="currentColor"
-                className="w-6 h-6"
-              >
+                className="w-6 h-6">
                 <path
                   fillRule="evenodd"
                   d="M18.685 19.097A9.723 9.723 0 0 0 21.75 12c0-5.385-4.365-9.75-9.75-9.75S2.25 6.615 2.25 12a9.723 9.723 0 0 0 3.065 7.097A9.716 9.716 0 0 0 12 21.75a9.716 9.716 0 0 0 6.685-2.653Zm-12.54-1.285A7.486 7.486 0 0 1 12 15a7.486 7.486 0 0 1 5.855 2.812A8.224 8.224 0 0 1 12 20.25a8.224 8.224 0 0 1-5.855-2.438ZM15.75 9a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Z"
@@ -156,21 +155,20 @@ export const TripDetails = () => {
             {selectedTrip.availableSeats}
           </div>
 
-          <div className="col-span-6 mt-2 text-xs">Music</div>
+          <div className="col-span-12 mt-2 text-xs">Music</div>
 
-          <div className="col-span-6 mt-2 text-xs">Trip ID</div>
-
-          <div className="col-span-6 flex items-center text-lg sm:text-xl p-2">
+          <div className="col-span-12 flex items-center text-lg sm:text-xl p-2">
             {selectedTrip.music}
-          </div>
-          <div className="col-span-6 flex items-center text-lg sm:text-xl p-2 truncate">
-            {selectedTrip._id}
           </div>
 
           <div className="col-span-12 mt-2 text-xs">Message</div>
 
           <div className="col-span-12 flex items-center text-md sm:text-lg p-2">
             {selectedTrip.message}
+          </div>
+
+          <div className="col-span-12 flex items-center justify-end text-gray-400 text-xs mt-8">
+            Trip ID: {selectedTrip._id}
           </div>
 
           <div className="col-span-12 flex items-center justify-center text-md sm:text-lg p-2">
@@ -182,8 +180,7 @@ export const TripDetails = () => {
                 <button
                   type="button"
                   onClick={joinTripAttempt}
-                  className="bg-pink-400 rounded-full cursor-pointer hover:bg-cyan-800 text-white px-5 py-2 mt-8 font-semibold"
-                >
+                  className="bg-pink-400 rounded-full cursor-pointer hover:bg-cyan-800 text-white px-5 py-2 mt-8 font-semibold">
                   Join trip
                 </button>
               )}
@@ -191,8 +188,7 @@ export const TripDetails = () => {
         </div>
         <Link
           to="/trips"
-          className="text-blue-500 hover:text-blue-700 focus:outline-none focus:ring focus:border-blue-300"
-        >
+          className="text-blue-500 hover:text-blue-700 focus:outline-none focus:ring focus:border-blue-300">
           {" "}
           Back to Trips
         </Link>
