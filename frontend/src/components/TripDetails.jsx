@@ -43,11 +43,11 @@ export const TripDetails = () => {
     try {
       console.log(passengerDetails);
       const response = await fetch(`${apiEnv}/trips/join/${tripId}`, {
-        method: "PATCH",
+        method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(passengerDetails),
+        body: JSON.stringify({ passengerDetails }),
       });
 
       if (response.ok) {
@@ -159,13 +159,11 @@ export const TripDetails = () => {
           </div>
 
           <div className="col-span-6 mt-2 text-xs">Music</div>
-          {selectedTrip.}
+          {selectedTrip.music}
           <div className="col-span-6 mt-2 text-xs">Trip ID</div>
           {selectedTrip._id}
 
-          <div className="col-span-6 flex items-center text-lg sm:text-xl p-2">
-            {selectedTrip.music}
-          </div>
+          <div className="col-span-6 flex items-center text-lg sm:text-xl p-2"></div>
           <div className="col-span-6 flex items-center text-lg sm:text-xl p-2"></div>
 
           <div className="col-span-12 mt-2 text-xs">Message</div>
