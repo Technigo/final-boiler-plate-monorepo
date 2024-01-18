@@ -3,20 +3,14 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Button } from "../components/Buttons/Button";
 import { LoaderAnimation } from "../components/Animations/LoaderAnimation";
+import { Heading1 } from "../components/Typography/Heading1";
+import { BodyText } from "../components/Typography/BodyText";
 import styled from "styled-components";
 
 const StyledIntro = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-
-  p {
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-    margin: 20px;
-    max-width: 600px;
-  }
 `;
 
 const StyledLoginField = styled.div`
@@ -100,9 +94,9 @@ export const Login = () => {
     <>
       {/* Display the introduction. */}
       <StyledIntro>
-        <h2>{text.heading}</h2>
-        <p>{text.intro}</p>
-        <p>{text.p}</p>
+        <Heading1 className={"heading1-login"} text={`${text.heading}`} />
+        <BodyText className={"bodytext-login"} text={`${text.intro}`} />
+        <BodyText className={"bodytext-login"} text={`${text.p}`} />
         {/* Create the login form */}
         <StyledLoginField>
           <div className="user-login">

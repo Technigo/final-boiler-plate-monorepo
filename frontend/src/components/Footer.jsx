@@ -1,4 +1,5 @@
 import { SocialMediaLinks } from "./SocialMediaLinks";
+import { BodyText } from "./Typography/BodyText";
 import styled from "styled-components";
 
 // Styling for the footer
@@ -22,8 +23,6 @@ const FooterText = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  color: var(lighttext);
-  font-size: 16px;
 
   @media screen and (min-width: 800px) {
     .contact-wrapper {
@@ -49,20 +48,29 @@ export const Footer = () => {
         <div className="contact-wrapper">
           <div className="anna-wrapper">
             <Contact>
-              <p>Anna Robertsson</p>
+              <BodyText
+                className={"bodytext-footer"}
+                text={"Anna Robertsson"}
+              />
               <SocialMediaLinks person="Anna" />
             </Contact>
           </div>
           <div className="susanne-wrapper">
             <Contact>
-              <p>Susanne Ekenheim</p>
+              <BodyText
+                className={"bodytext-footer"}
+                text={"Susanne Ekenheim"}
+              />
               <SocialMediaLinks person="Susanne" />
             </Contact>
           </div>
         </div>
-        <p>
-          Final project at Technigo | Web Development Bootcamp, January 2024
-        </p>
+        <BodyText
+          className={"bodytext-footer"}
+          text={
+            "Final project at Technigo | Web Development Bootcamp, January 2024"
+          }
+        />
       </FooterText>
     </StyledFooter>
   );

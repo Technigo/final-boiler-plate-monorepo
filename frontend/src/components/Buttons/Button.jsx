@@ -7,7 +7,7 @@ const StyledButton = styled.button`
   padding: 5px 15px;
   border-radius: 20px;
   margin: 10px;
-  font-size: 16px;
+  font-size: 20px;
   cursor: pointer;
   width: fit-content;
   height: fit-content;
@@ -18,6 +18,18 @@ const StyledButton = styled.button`
   // When the button is pressed, but not released
   &:active {
     background-color: var(--buttonactive);
+  }
+
+  &.logout-button-navbar {
+    font-size: 16px;
+    background: transparent;
+  }
+
+  &.logout-button-burgermenu {
+    font-size: 14px;
+    background: transparent;
+    margin: 0;
+    padding: 0;
   }
 `;
 

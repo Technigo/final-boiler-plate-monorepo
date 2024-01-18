@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { taskStore } from "../stores/taskStore";
 import { Button } from "./Buttons/Button";
+import { BodyText } from "./Typography/BodyText";
 import styled from "styled-components";
 
 const StyledFilterTaskFeed = styled.div`
@@ -71,23 +72,26 @@ export const FilterTaskFeed = () => {
 
   return (
     <StyledFilterTaskFeed>
-      <p>
-        A Helping Hand is all about the community coming together and helping
-        each other out. Take the opportunity to make someone&apos;s day by
-        offering a helping hand!
-      </p>
+      <BodyText
+        className={"bodytext-filtertaskfeed"}
+        text={
+          "A Helping Hand is all about the community coming together and helping each other out. Take the opportunity to make someone&apos;s day by offering a helping hand!"
+        }
+      />
 
-      <p>
-        Below you see everything you can help out with in Varberg at the moment.
-        Make sure to filter the tasks by category and area to find the ones that
-        suit you best.
-      </p>
+      <BodyText
+        className={"bodytext-filtertaskfeed"}
+        text={
+          "Below you see everything you can help out with in Varberg at the moment. Make sure to filter the tasks by category and area to find the ones that suit you best."
+        }
+      />
 
-      <p>
-        When volunteering, you&apos;re email will be sent to the person that
-        asked for help so they can choose to contact you. You can find the deeds
-        you have volunteered for on your profile page.
-      </p>
+      <BodyText
+        className={"bodytext-filtertaskfeed"}
+        text={
+          "When volunteering, you&apos;re email will be sent to the person that asked for help so they can choose to contact you. You can find the deeds you have volunteered for on your profile page."
+        }
+      />
 
       <StyledFilters>
         {/* Filter tasks by category */}

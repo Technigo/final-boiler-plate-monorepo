@@ -1,6 +1,7 @@
 import { Hero } from "../components/Hero";
-import styled from "styled-components";
+import { Heading2 } from "../components/Typography/Heading2";
 import { TestimonialsCarousel } from "../components/Testimonials/TestimonialsCarousel";
+import styled from "styled-components";
 
 // Styled components for the HomePage
 const StyledHomePage = styled.div`
@@ -27,7 +28,10 @@ export const Home = () => {
     <StyledHomePage>
       <Hero />
       <StyledTestimonials>
-        <h3>Stories of kindness</h3>
+        <Heading2
+          className={"heading2-testimonials"}
+          text={"Stories of kindness"}
+        />
         <TestimonialsCarousel />
       </StyledTestimonials>
     </StyledHomePage>

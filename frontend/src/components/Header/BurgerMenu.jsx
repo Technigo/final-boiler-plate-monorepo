@@ -32,11 +32,6 @@ const StyledBurgerLinks = styled.div`
   gap: 20px;
   z-index: 1;
 
-  .logout-button {
-    margin: 0;
-    padding: 0;
-  }
-
   @media screen and (max-width: 510px) {
     background-color: ${(props) =>
       props.burgerMenuOpen ? "rgba(155, 100, 137, 0.8)" : "transparent"};
@@ -168,7 +163,7 @@ export const BurgerMenu = () => {
           {isLoggedIn ? (
             <li>
               <Button
-                className="logout-button"
+                className="logout-button-burgermenu"
                 buttonName="Log out"
                 onClick={onLogoutClick}
               />
