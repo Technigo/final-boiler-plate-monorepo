@@ -41,23 +41,25 @@ export const TripDetails = () => {
       username: username,
     };
     try {
+      console.log(passengerDetails);
       const response = await fetch(`${apiEnv}/trips/join/${tripId}`, {
-        method: "POST",
+        method: "PATCH",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ passengerDetails }),
+        body: JSON.stringify(passengerDetails),
       });
 
       if (response.ok) {
         const data = await response.json();
-        setSelectedTrip(data);
-      } else {
-        const errorResponse = await response.text();
-        console.error("Error joining trip:", errorResponse);
+        console.log("Passenger added successfully:", data);
       }
+      // else {
+      //   const errorResponse = await response.text();
+      //   console.error("Error joining trip:", errorResponse);
+      // }
     } catch (error) {
-      console.error("Error joining trip:", error);
+      console.error("Error joining trip: ", error);
     }
   };
 
