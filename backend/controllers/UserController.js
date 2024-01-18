@@ -299,10 +299,6 @@ export const UserController = {
     console.log();
     const { tripid } = req.params;
     const { id, username } = req.body;
-    const newPassenger = {
-      userId: id,
-      username: username,
-    };
 
     try {
       console.log(req.body);

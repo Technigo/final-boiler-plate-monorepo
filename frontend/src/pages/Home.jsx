@@ -2,8 +2,33 @@ import Lottie from "lottie-react";
 import HomePicture from "../assets/HomePicture.json";
 import { Hero } from "../components/Hero";
 import { FAQ } from "../components/FAQ";
+import { userStore } from "../stores/userStore";
+import { useAuth0 } from "@auth0/auth0-react";
+import { useEffect } from "react";
 
 export const Home = () => {
+  const { isAuthenticated, user } = useAuth0();
+  const { setUsername, setLoggedInUserId } = userStore();
+  const vite_backend = import.meta.env.VITE_BACKEND_API;
+
+  useEffect(() => {
+    const getUserDataFromMongo = async () => {
+      try {
+        await fetch(`${vite_backend}/user/${user.sub}`)
+          .then((res) => res.json())
+          .then((data) => {
+            setUsername(data.username);
+            setLoggedInUserId(data._id);
+            setLoading(!loading);
+          });
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    getUserDataFromMongo();
+  }, [isAuthenticated]);
+
   return (
     <>
       <div className="text-center font-bold text-4xl tracking-tight text-primary bg-secondary sm:text-5xl md:text-6xl p-6">

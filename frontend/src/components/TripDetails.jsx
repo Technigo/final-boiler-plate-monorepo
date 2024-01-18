@@ -7,36 +7,34 @@ import { Link } from "react-router-dom";
 export const TripDetails = () => {
   const { tripId } = useParams();
   const { loggedInUserId, username } = userStore();
-  const [theUsername, setTheUsername] = useState("");
-  const [theTripId, setTheTripId] = useState("");
   const [selectedTrip, setSelectedTrip] = useState(null);
   const { isAuthenticated } = useAuth0();
   const [isLoading, setIsLoading] = useState(true);
   const apiEnv = import.meta.env.VITE_BACKEND_API;
 
-  const joinTrip = async () => {
-    try {
-      const response = await fetch(`${apiEnv}/trips/join/${tripId}`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          userId: loggedInUserId,
-        }),
-      });
+  // const joinTrip = async () => {
+  //   try {
+  //     const response = await fetch(`${apiEnv}/trips/join/${tripId}`, {
+  //       method: "POST",
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //       },
+  //       body: JSON.stringify({
+  //         userId: loggedInUserId,
+  //       }),
+  //     });
 
-      if (response.ok) {
-        const data = await response.json();
-        setSelectedTrip(data);
-      } else {
-        const errorResponse = await response.text();
-        console.error("Error joining trip:", errorResponse);
-      }
-    } catch (error) {
-      console.error("Error joining trip:", error);
-    }
-  };
+  //     if (response.ok) {
+  //       const data = await response.json();
+  //       setSelectedTrip(data);
+  //     } else {
+  //       const errorResponse = await response.text();
+  //       console.error("Error joining trip:", errorResponse);
+  //     }
+  //   } catch (error) {
+  //     console.error("Error joining trip:", error);
+  //   }
+  // };
   const joinTripAttempt = async () => {
     const passengerDetails = {
       id: loggedInUserId,
@@ -175,20 +173,21 @@ export const TripDetails = () => {
           </div>
 
           <div className="col-span-12 flex items-center justify-center text-md sm:text-lg p-2">
-            {isAuthenticated && selectedTrip.user !== loggedInUserId && (
-              <button
-                type="button"
-                onClick={joinTrip}
-                className="bg-pink-400 rounded-full cursor-pointer hover:bg-cyan-800 text-white px-5 py-2 mt-8 font-semibold"
-              >
-                Join trip
-              </button>
-            )}
+            {isAuthenticated &&
+              selectedTrip.user !== loggedInUserId &&
+              !selectedTrip.passengers
+                .map((x) => x.userId)
+                .includes(loggedInUserId) && (
+                <button
+                  type="button"
+                  onClick={joinTripAttempt}
+                  className="bg-pink-400 rounded-full cursor-pointer hover:bg-cyan-800 text-white px-5 py-2 mt-8 font-semibold"
+                >
+                  Join trip
+                </button>
+              )}
           </div>
         </div>
-        <button onClick={joinTripAttempt} className="bg-green-400">
-          Join
-        </button>
         <Link
           to="/trips"
           className="text-blue-500 hover:text-blue-700 focus:outline-none focus:ring focus:border-blue-300"
