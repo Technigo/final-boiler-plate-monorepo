@@ -21,6 +21,10 @@ const StyledIconButton = styled.button`
   &:active {
     background-color: var(--buttonactive);
   }
+
+  &.offer-help-button-modal {
+    margin: 15px 0 10px;
+  }
 `;
 
 const StyledIcon = styled.img`

@@ -34,6 +34,8 @@ const StyledLoginField = styled.div`
   }
 `;
 
+const UserLogin = styled.div``;
+
 // Define the 'Login' functional component.
 export const Login = () => {
   // Create state variables for 'username' and 'password' using 'useState'.
@@ -99,7 +101,7 @@ export const Login = () => {
         <BodyText className={"bodytext-login"} text={`${text.p}`} />
         {/* Create the login form */}
         <StyledLoginField>
-          <div className="user-login">
+          <UserLogin>
             {/* Create input fields for 'username' and 'password' and associate them with state variables. */}
             <input
               type="text"
@@ -126,7 +128,7 @@ export const Login = () => {
               className="login-btn"
               buttonName="Log in"
             />
-          </div>
+          </UserLogin>
         </StyledLoginField>
         {isLoading ? <LoaderAnimation /> : ""}
       </StyledIntro>

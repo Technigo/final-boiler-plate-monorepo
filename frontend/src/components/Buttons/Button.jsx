@@ -31,6 +31,29 @@ const StyledButton = styled.button`
     margin: 0;
     padding: 0;
   }
+
+  // Styling for the button to close the open modal
+  &.close-modal-btn {
+    position: absolute;
+    background-color: transparent;
+    top: 10px;
+    right: 10px;
+    border: none;
+    border-radius: 10px;
+    color: var(--darkgrey);
+    font-weight: bold;
+    cursor: pointer;
+
+    // Styling for the button when hovering over it
+    &:hover {
+      background-color: var(--buttonhover);
+    }
+
+    // When the button is pressed, but not released
+    &:active {
+      background-color: var(--buttonactive);
+    }
+  }
 `;
 
 // Button component to be used in other components

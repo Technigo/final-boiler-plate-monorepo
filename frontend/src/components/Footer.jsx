@@ -23,14 +23,14 @@ const FooterText = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+`;
 
+const ContactWrapper = styled.div`
   @media screen and (min-width: 800px) {
-    .contact-wrapper {
-      display: flex;
-      flex-direction: row;
-      justify-content: space-between;
-      gap: 50px;
-    }
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 50px;
   }
 `;
 
@@ -40,13 +40,17 @@ const Contact = styled.div`
   margin: 10px 0;
 `;
 
+const AnnaWrapper = styled.div``;
+
+const SusanneWrapper = styled.div``;
+
 // Define the Footer component as a functional component.
 export const Footer = () => {
   return (
     <StyledFooter>
       <FooterText>
-        <div className="contact-wrapper">
-          <div className="anna-wrapper">
+        <ContactWrapper>
+          <AnnaWrapper>
             <Contact>
               <BodyText
                 className={"bodytext-footer"}
@@ -54,8 +58,8 @@ export const Footer = () => {
               />
               <SocialMediaLinks person="Anna" />
             </Contact>
-          </div>
-          <div className="susanne-wrapper">
+          </AnnaWrapper>
+          <SusanneWrapper>
             <Contact>
               <BodyText
                 className={"bodytext-footer"}
@@ -63,8 +67,8 @@ export const Footer = () => {
               />
               <SocialMediaLinks person="Susanne" />
             </Contact>
-          </div>
-        </div>
+          </SusanneWrapper>
+        </ContactWrapper>
         <BodyText
           className={"bodytext-footer"}
           text={

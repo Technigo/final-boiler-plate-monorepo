@@ -75,7 +75,7 @@ export const FilterTaskFeed = () => {
       <BodyText
         className={"bodytext-filtertaskfeed"}
         text={
-          "A Helping Hand is all about the community coming together and helping each other out. Take the opportunity to make someone&apos;s day by offering a helping hand!"
+          "A Helping Hand is all about the community coming together and helping each other out. Take the opportunity to make someones day by offering a helping hand!"
         }
       />
 
@@ -89,7 +89,7 @@ export const FilterTaskFeed = () => {
       <BodyText
         className={"bodytext-filtertaskfeed"}
         text={
-          "When volunteering, you&apos;re email will be sent to the person that asked for help so they can choose to contact you. You can find the deeds you have volunteered for on your profile page."
+          "When volunteering, your email will be sent to the person that asked for help so they can choose to contact you. You can find the deeds you have volunteered for on your profile page."
         }
       />
 

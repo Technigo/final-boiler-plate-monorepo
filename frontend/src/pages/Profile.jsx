@@ -129,7 +129,7 @@ export const Profile = () => {
           <Tab>Your Deeds</Tab>
         </TabList>
         <TabPanel>
-          <div>
+          <>
             {/* List of tasks the user created */}
             <StyledList>
               {userTasks.map(
@@ -171,7 +171,7 @@ export const Profile = () => {
                 )
               )}
             </StyledList>
-          </div>
+          </>
         </TabPanel>
 
         <TabPanel>

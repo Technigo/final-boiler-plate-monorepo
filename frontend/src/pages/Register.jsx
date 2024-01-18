@@ -42,6 +42,8 @@ const StyledRegField = styled.div`
   }
 `;
 
+const UserRegistration = styled.div``;
+
 // Define the 'Register' functional component.
 export const Register = () => {
   // Initialize state variables for 'username', 'password' and 'email' using 'useState'.
@@ -107,7 +109,7 @@ export const Register = () => {
         <BodyText className={"bodytext-register"} text={`${text.p}`} />
       </StyledIntroReg>
       <StyledRegField>
-        <div className="user-registration">
+        <UserRegistration>
           {/* Create input fields for 'username', 'password' and 'email' and associate them with state variables. */}
           <input
             type="text"
@@ -140,7 +142,7 @@ export const Register = () => {
             className="signUp-btn"
             buttonName="Create profile"
           />
-        </div>
+        </UserRegistration>
       </StyledRegField>
       {isLoading ? <LoaderAnimation /> : ""}
     </StyledRegister>

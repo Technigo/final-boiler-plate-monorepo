@@ -27,7 +27,7 @@ const StyledLogoDiv = styled.div`
 function LogoText() {
   return (
     <StyledLogoDiv>
-      <div className="logo-img">
+      <>
         {/* Create a link to the A Helping Hand website that opens in a new tab. */}
         <Link to="/">
           {/* Display the A Helping Hand logo image. */}
@@ -37,7 +37,7 @@ function LogoText() {
             alt="A Helping Hand logo"
           />
         </Link>
-      </div>
+      </>
     </StyledLogoDiv>
   );
 }

@@ -4,11 +4,11 @@ import { MdPets } from "react-icons/md";
 import { TiShoppingCart } from "react-icons/ti";
 import { GiHammerNails } from "react-icons/gi";
 import { MdMiscellaneousServices } from "react-icons/md";
-import { Button } from "../Buttons/Button";
-import { IconButton } from "../Buttons/IconButton";
-import { taskStore } from "../../stores/taskStore";
-import { Heading3 } from "../Typography/Heading3";
-import { BodyText } from "../Typography/BodyText";
+import { Button } from "./Buttons/Button";
+import { IconButton } from "./Buttons/IconButton";
+import { taskStore } from "../stores/taskStore";
+import { Heading3 } from "./Typography/Heading3";
+import { BodyText } from "./Typography/BodyText";
 import Modal from "react-modal";
 import styled from "styled-components";
 
@@ -21,95 +21,96 @@ const StyledFeedCardModal = styled.div`
   height: auto;
   color: var(--darktext);
   background-color: var(--grey);
+`;
 
-  // Styling for the Need card
-  .card-container {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    padding: 6px;
-  }
+// Styling for the Need card
+const CardContainer = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 6px;
+`;
 
-  // Styling for the Need card header
-  .task-header {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin: 10px;
-    justify-content: flex-start;
-  }
+// Styling for the Need card header
+const TaskHeader = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 10px;
+  justify-content: flex-start;
+`;
 
-  .cardBody-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+const CardBodyContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 
-    .description {
-      width: 100%;
-    }
-  }
-
-  // Styling for the Need card location and title
-  .area {
-    display: flex;
-    flex-direction: column;
-    overflow-wrap: break-word;
-    margin: 10px;
-    text-align: center;
-  }
-
-  // Styling for the Need card footer
-  .task-footer {
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    margin: 10px;
-  }
-
-  // Styling for the description in the card when the modal is open
   .description {
-    margin: 30px 15px;
-    overflow-wrap: break-word;
-    text-align: center;
-  }
-
-  // Styling for the button to close the open modal
-  .closeModal-btn {
-    position: absolute;
-    background-color: transparent;
-    top: 10px;
-    right: 10px;
-    border: none;
-    border-radius: 10px;
-    color: var(--darkgrey);
-    font-weight: bold;
-    cursor: pointer;
-
-    // Styling for the button when hovering over it
-    &:hover {
-      background-color: var(--buttonhover);
-    }
-
-    // When the button is pressed, but not released
-    &:active {
-      background-color: var(--buttonactive);
-    }
-  }
-
-  // Styling for the title and location in the card
-  .area-modal {
-    display: flex;
-    flex-direction: column;
-    overflow-wrap: break-word;
-    text-align: center;
-    margin: 10px;
-  }
-
-  .offer-help-button-modal {
-    margin: 15px 0 10px;
+    width: 100%;
   }
 `;
+
+// Styling for the Need card location and title
+const Area = styled.div`
+  display: flex;
+  flex-direction: column;
+  overflow-wrap: break-word;
+  margin: 10px;
+  text-align: center;
+`;
+
+// Styling for the Need card footer
+const TaskFooter = styled.div`
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  margin: 10px;
+`;
+
+// Styling for the description in the card when the modal is open
+const Description = styled.div`
+  margin: 30px 15px;
+  overflow-wrap: break-word;
+  text-align: center;
+`;
+
+// // Styling for the button to close the open modal
+// .closeModal-btn {
+//   position: absolute;
+//   background-color: transparent;
+//   top: 10px;
+//   right: 10px;
+//   border: none;
+//   border-radius: 10px;
+//   color: var(--darkgrey);
+//   font-weight: bold;
+//   cursor: pointer;
+
+//   // Styling for the button when hovering over it
+//   &:hover {
+//     background-color: var(--buttonhover);
+//   }
+
+//   // When the button is pressed, but not released
+//   &:active {
+//     background-color: var(--buttonactive);
+//   }
+//}
+
+// Styling for the title and location in the card
+const AreaModal = styled.div`
+  display: flex;
+  flex-direction: column;
+  overflow-wrap: break-word;
+  text-align: center;
+  margin: 10px;
+`;
+
+// .offer-help-button-modal {
+//   margin: 15px 0 10px;
+// }
+//`;
 
 // Define the icon size
 const iconSize = "40px";
@@ -192,9 +193,9 @@ export const FeedTaskCard = ({ task }) => {
       <StyledFeedCardModal style={{ backgroundColor }}>
         {" "}
         {/* Set the background color based on the category */}
-        <div className="card-container">
+        <CardContainer>
           <li key={_id}>
-            <div className="task-header">
+            <TaskHeader>
               {CategoryIcon && <CategoryIcon size={iconSize} />}{" "}
               {/* Render the icon if it exists */}
               <BodyText
@@ -202,9 +203,9 @@ export const FeedTaskCard = ({ task }) => {
                 text={`${category}`}
               />{" "}
               {/* Render the category */}
-            </div>
-            <div className="cardBody-container">
-              <div className="area">
+            </TaskHeader>
+            <CardBodyContainer>
+              <Area>
                 <Heading3
                   className={"heading3-feedtaskcard"}
                   text={`${task.task}`}
@@ -215,8 +216,8 @@ export const FeedTaskCard = ({ task }) => {
                   text={`${area}`}
                 />{" "}
                 {/* Render the location where the Need is to be performed */}
-              </div>
-              <div className="task-footer">
+              </Area>
+              <TaskFooter>
                 <BodyText
                   className={"bodytext-feedtaskcard"}
                   text={`Created by: ${task.user && task.user.username}`}
@@ -227,15 +228,15 @@ export const FeedTaskCard = ({ task }) => {
                   text={`Posted: ${formattedCreatedAt}`}
                 />{" "}
                 {/* Render the date when the Need was created */}
-              </div>
+              </TaskFooter>
               <Button
                 onClick={openModal}
                 className="show-more-btn"
                 buttonName="Show more"
               />
-            </div>
+            </CardBodyContainer>
           </li>
-        </div>
+        </CardContainer>
       </StyledFeedCardModal>
 
       {/* Modal component */}
@@ -279,9 +280,9 @@ export const FeedTaskCard = ({ task }) => {
         }}
       >
         <StyledFeedCardModal>
-          <div className="card-container">
+          <CardContainer>
             <li key={_id}>
-              <div className="task-header">
+              <TaskHeader>
                 {CategoryIcon && <CategoryIcon size={iconSize} />}{" "}
                 {/* Render the icon if it exists */}
                 <BodyText
@@ -292,12 +293,12 @@ export const FeedTaskCard = ({ task }) => {
                 {/* Button to close the modal */}
                 <Button
                   onClick={closeModal} // Call closeModal when the user clicks on the button
-                  className="closeModal-btn"
+                  className="close-modal-btn"
                   buttonName="X"
                 />
-              </div>
-              <div className="cardBody-container">
-                <div className="area-modal">
+              </TaskHeader>
+              <CardBodyContainer>
+                <AreaModal>
                   {" "}
                   {/* Render the Need and the location where the Need is to be performed */}
                   <Heading3
@@ -310,17 +311,17 @@ export const FeedTaskCard = ({ task }) => {
                     text={`${area}`}
                   />{" "}
                   {/* Render the location where the Need is to be performed */}
-                </div>
+                </AreaModal>
 
                 {/* Modal content */}
-                <div className="description">
+                <Description>
                   <BodyText
                     className={"bodytext-feedtaskcard"}
                     text={`${task.description}`}
                   />{" "}
                   {/* Render the description of the Need */}
-                </div>
-                <div className="task-footer">
+                </Description>
+                <TaskFooter>
                   <BodyText
                     className={"bodytext-feedtaskcard"}
                     text={`Created by: ${task.user && task.user.username}`}
@@ -331,7 +332,7 @@ export const FeedTaskCard = ({ task }) => {
                     text={`Posted: ${formattedCreatedAt}`}
                   />{" "}
                   {/* Render the date when the Need was created */}
-                </div>
+                </TaskFooter>
 
                 {/* Button to offer help */}
                 <IconButton
@@ -344,9 +345,9 @@ export const FeedTaskCard = ({ task }) => {
                   iconAlt="Logo showing two shaking hands forming a heart"
                   src="/Logo-white.png"
                 />
-              </div>
+              </CardBodyContainer>
             </li>
-          </div>
+          </CardContainer>
         </StyledFeedCardModal>
       </Modal>
     </>

@@ -1,5 +1,5 @@
 import { SocialMediaLinks } from "../components/SocialMediaLinks";
-import { ProfilePhotoFounder } from "../components/ProfilePhoto/ProfilePhotoFounder";
+import { ProfilePhotoFounder } from "../components/ProfilePhotoFounder";
 import { Heading1 } from "../components/Typography/Heading1";
 import { Heading2 } from "../components/Typography/Heading2";
 import { Heading3 } from "../components/Typography/Heading3";
@@ -10,6 +10,7 @@ const StyledAbout = styled.div`
   margin: 0 auto;
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 64px;
 `;
 
@@ -18,6 +19,7 @@ const StyledVision = styled.div`
   flex-direction: column;
   text-align: center;
   gap: 20px;
+  max-width: 1100px;
 `;
 
 const StyledFounderSection = styled.div`
@@ -71,7 +73,7 @@ export const About = () => {
         <BodyText
           className={"bodytext-about"}
           text={
-            "Today, we aspire for this school project to serve as a catalyst, inspiring the community to actively engage in meaningful efforts to assist others. We envision this initiative sparking a collective spirit of compassion and community involvement. Through collaborative endeavors, we aim to make a tangible and positive impact on the lives of those who may need a helping hand. Together, let&apos;s turn this project into a source of inspiration for genuine acts of kindness within our community."
+            "Today, we aspire for this school project to serve as a catalyst, inspiring the community to actively engage in meaningful efforts to assist others. We envision this initiative sparking a collective spirit of compassion and community involvement. Through collaborative endeavors, we aim to make a tangible and positive impact on the lives of those who may need a helping hand. Together, let us turn this project into a source of inspiration for genuine acts of kindness within our community."
           }
         />
       </StyledVision>
