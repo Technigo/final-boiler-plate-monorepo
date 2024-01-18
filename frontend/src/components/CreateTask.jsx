@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { taskStore } from "../stores/taskStore";
 import { Button } from "../components/Buttons/Button";
+import { BodyText } from "../components/Typography/BodyText";
 import styled from "styled-components";
 
 const StyledCreateTask = styled.div`
@@ -194,12 +195,12 @@ export const CreateTask = () => {
   // Render the component content.
   return (
     <StyledCreateTask>
-      <p>
-        Share your need with the community! After posting, you will see the
-        status of your post in your profile page. If someone offers to
-        volunteer, you will receive their username and email so you can contact
-        them.
-      </p>
+      <BodyText
+        className={"bodytext-createtask"}
+        text={
+          "Share your need with the community! After posting, you will see the status of your post in your profile page. If someone offers to volunteer, you will receive their username and email so you can contact them."
+        }
+      />
       {/* Create an input field for entering the task title. */}
       <StyledTaskTitleInput
         className="task-input"

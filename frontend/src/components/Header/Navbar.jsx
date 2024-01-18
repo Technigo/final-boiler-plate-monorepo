@@ -32,10 +32,6 @@ const StyledNav = styled.nav`
     //background-color: var(--grey);
   }
 
-  .logout-button {
-    background: transparent;
-  }
-
   @media (min-width: 1100px) {
     ul {
       display: flex;
@@ -169,7 +165,7 @@ export const Navbar = () => {
           {isLoggedIn ? (
             <li>
               <Button
-                className="logout-button"
+                className="logout-button-navbar"
                 buttonName="Log out"
                 onClick={onLogoutClick}
               />

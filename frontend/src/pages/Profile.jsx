@@ -3,9 +3,11 @@ import { taskStore } from "../stores/taskStore";
 import { useEffect } from "react";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import { Button } from "../components/Buttons/Button";
+import { Heading1 } from "../components/Typography/Heading1";
+import { BodyText } from "../components/Typography/BodyText";
+import { GoTopButton } from "../components/Buttons/GoTop";
 import styled from "styled-components";
 import "../components/Tabs/TabsStyling.css";
-import { GoTopButton } from "../components/Buttons/GoTop";
 
 const StyledProfilePage = styled.div`
   display: flex;
@@ -111,17 +113,13 @@ export const Profile = () => {
   return (
     <StyledProfilePage>
       <HeaderContainer>
-        <h1>Hi {username}!</h1>
-        <p>
-          Here you can find an overview over all the Needs you&apos;ve created
-          and those you have volunteered for! Keep an eye on the{" "}
-          <strong>Your Needs</strong> tab, where you will see if someone offers
-          their help. If someone volunteers you will receive their email so you
-          can reach out to them and make arrangements. Here you can also delete
-          your created Needs if you no longer require help. On the{" "}
-          <strong>Your Deeds</strong> tab you can see all the Needs of others
-          that you have volunteered for.
-        </p>
+        <Heading1 className={"heading1-profile"} text={`Hi ${username}!`} />
+        <BodyText
+          className={"bodytext-profile"}
+          text={
+            "Here you can find an overview over all the Needs you have created and those you have volunteered for! Keep an eye on the Your Needs tab, where you will see if someone offers their help. If someone volunteers you will receive their email so you can reach out to them and make arrangements. Here you can also delete your created Needs if you no longer require help. On the Your Deeds tab you can see all the Needs of others that you have volunteered for."
+          }
+        />
       </HeaderContainer>
 
       {/* Tabs to display different sections */}

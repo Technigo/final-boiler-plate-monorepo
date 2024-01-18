@@ -7,6 +7,8 @@ import { MdMiscellaneousServices } from "react-icons/md";
 import { Button } from "../Buttons/Button";
 import { IconButton } from "../Buttons/IconButton";
 import { taskStore } from "../../stores/taskStore";
+import { Heading3 } from "../Typography/Heading3";
+import { BodyText } from "../Typography/BodyText";
 import Modal from "react-modal";
 import styled from "styled-components";
 
@@ -195,18 +197,35 @@ export const FeedTaskCard = ({ task }) => {
             <div className="task-header">
               {CategoryIcon && <CategoryIcon size={iconSize} />}{" "}
               {/* Render the icon if it exists */}
-              <p>{category}</p> {/* Render the category */}
+              <BodyText
+                className={"bodytext-feedtaskcard"}
+                text={`${category}`}
+              />{" "}
+              {/* Render the category */}
             </div>
             <div className="cardBody-container">
               <div className="area">
-                <h3>{task.task}</h3> {/* Render the Need */}
-                <p>{area}</p>{" "}
+                <Heading3
+                  className={"heading3-feedtaskcard"}
+                  text={`${task.task}`}
+                />{" "}
+                {/* Render the Need */}
+                <BodyText
+                  className={"bodytext-feedtaskcard"}
+                  text={`${area}`}
+                />{" "}
                 {/* Render the location where the Need is to be performed */}
               </div>
               <div className="task-footer">
-                <p>Created by: {task.user && task.user.username}</p>{" "}
+                <BodyText
+                  className={"bodytext-feedtaskcard"}
+                  text={`Created by: ${task.user && task.user.username}`}
+                />{" "}
                 {/* Render the username of the user who created the Need */}
-                <p>Posted: {formattedCreatedAt}</p>{" "}
+                <BodyText
+                  className={"bodytext-feedtaskcard"}
+                  text={`Posted: ${formattedCreatedAt}`}
+                />{" "}
                 {/* Render the date when the Need was created */}
               </div>
               <Button
@@ -265,7 +284,11 @@ export const FeedTaskCard = ({ task }) => {
               <div className="task-header">
                 {CategoryIcon && <CategoryIcon size={iconSize} />}{" "}
                 {/* Render the icon if it exists */}
-                <p>{category}</p> {/* Render the category */}
+                <BodyText
+                  className={"bodytext-feedtaskcard"}
+                  text={`${category}`}
+                />{" "}
+                {/* Render the category */}
                 {/* Button to close the modal */}
                 <Button
                   onClick={closeModal} // Call closeModal when the user clicks on the button
@@ -277,20 +300,36 @@ export const FeedTaskCard = ({ task }) => {
                 <div className="area-modal">
                   {" "}
                   {/* Render the Need and the location where the Need is to be performed */}
-                  <h3>{task.task}</h3> {/* Render the title of the Need */}
-                  <p>{area}</p>{" "}
+                  <Heading3
+                    className={"heading3-modalcard"}
+                    text={`${task.task}`}
+                  />{" "}
+                  {/* Render the title of the Need */}
+                  <BodyText
+                    className={"bodytext-feedtaskcard"}
+                    text={`${area}`}
+                  />{" "}
                   {/* Render the location where the Need is to be performed */}
                 </div>
 
                 {/* Modal content */}
                 <div className="description">
-                  <p>{task.description}</p>{" "}
+                  <BodyText
+                    className={"bodytext-feedtaskcard"}
+                    text={`${task.description}`}
+                  />{" "}
                   {/* Render the description of the Need */}
                 </div>
                 <div className="task-footer">
-                  <p>Created by: {task.user && task.user.username}</p>{" "}
+                  <BodyText
+                    className={"bodytext-feedtaskcard"}
+                    text={`Created by: ${task.user && task.user.username}`}
+                  />{" "}
                   {/* Render the username of the user who created the Need */}
-                  <p>Posted: {formattedCreatedAt}</p>{" "}
+                  <BodyText
+                    className={"bodytext-feedtaskcard"}
+                    text={`Posted: ${formattedCreatedAt}`}
+                  />{" "}
                   {/* Render the date when the Need was created */}
                 </div>
 

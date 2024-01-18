@@ -4,18 +4,17 @@ import { userStore } from "../stores/userStore";
 import { useNavigate } from "react-router-dom";
 import { FeedTaskCard } from "../components/TaskCards/FeedTaskCard";
 import { TaskTabs } from "../components/Tabs/TaskTabs";
-import styled from "styled-components";
+import { Heading1 } from "../components/Typography/Heading1";
+import { Heading2 } from "../components/Typography/Heading2";
+import { BodyText } from "../components/Typography/BodyText";
 import { GoTopButton } from "../components/Buttons/GoTop";
+import styled from "styled-components";
 
 const StyledTaskPage = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-
-  h2 {
-    margin-bottom: 20px;
-  }
 `;
 
 const HeadingWrapper = styled.div`
@@ -24,10 +23,6 @@ const HeadingWrapper = styled.div`
   justify-content: center;
   border: none;
   padding: 0;
-
-  h1 {
-    margin: 0;
-  }
 
   @media screen and (min-width: 855px) {
     flex-direction: column;
@@ -120,23 +115,25 @@ export const Tasks = () => {
       <StyledTaskText>
         {/* Display the heading and paragraphs. */}
         <HeadingWrapper>
-          <h1>
-            In Need,
-            <br />
-            In Deed
-          </h1>
+          <Heading1
+            className={"heading1-tasks"}
+            lines={["In Need,", "In Deed"]}
+          />
         </HeadingWrapper>
         <TextWrapper>
-          <p>{text.intro}</p>
-          <p>{text.p}</p>
+          <BodyText className={"bodytext-tasks-intro"} text={`${text.intro}`} />
+          <BodyText className={"bodytext-tasks-p"} text={`${text.p}`} />
         </TextWrapper>
       </StyledTaskText>
       <TaskTabs />
-      <h2>{text.deeds}</h2>
+      <Heading2 className={"heading2-tasks"} text={`${text.deeds}`} />
       <CardWrapper>
         {/* Conditional rendering based on the number of tasks. */}
         {tasks.length === 0 ? (
-          <p>Nothing to volunteer for yet!</p>
+          <BodyText
+            className={"bodytext-tasks-nothingtovolunteer"}
+            text={"Nothing to volunteer for yet!"}
+          />
         ) : (
           // Map through 'tasks' and render task items.
           tasks.map((task) => <FeedTaskCard key={task._id} task={task} />)

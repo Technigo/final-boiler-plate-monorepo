@@ -1,4 +1,5 @@
 import { testimonials } from "./Testimonials.json";
+import { BodyText } from "../Typography/BodyText";
 import styled from "styled-components";
 
 // Styled component for the carousel container
@@ -55,7 +56,6 @@ const StyledReviewCard = styled.div`
   border-radius: 20px 0 20px 20px;
   border: 1px solid var(--lighttext);
   background: rgba(255, 255, 255, 0.9);
-  color: var(--darktext);
 
   img {
     height: 125px;
@@ -74,23 +74,11 @@ const ReviewCardText = styled.div`
   align-items: center;
   gap: 20px;
   align-self: stretch;
-  text-align: center;
-
-  p {
-    font-size: 14px;
-    font-style: italic;
-    font-weight: 400;
-    line-height: normal;
-  }
 `;
 
 const StyledReviewer = styled.div`
   display: flex;
   justify-content: flex-end;
-
-  p .reviewer {
-    text-align: center;
-  }
 `;
 
 const StyledInfo = styled.div`
@@ -99,7 +87,6 @@ const StyledInfo = styled.div`
   align-items: center;
   justify-content: center;
   width: 115px;
-  font-style: normal;
 `;
 
 export const TestimonialsCarousel = () => {
@@ -109,13 +96,22 @@ export const TestimonialsCarousel = () => {
         <StyledReviewCard key={index}>
           <StyledReviewer>
             <StyledInfo>
-              <p className="reviewer">{testimonial.reviewerName},</p>
-              <p className="reviewer">{testimonial.reviewerAge} y/o</p>
+              <BodyText
+                className={"bodytext-reviewer"}
+                text={`${testimonial.reviewerName}`}
+              />
+              <BodyText
+                className={"bodytext-reviewer"}
+                text={`${testimonial.reviewerAge} y/o`}
+              />
             </StyledInfo>
             <img src={testimonial.imageUrl} alt={testimonial.imageAlt} />
           </StyledReviewer>
           <ReviewCardText>
-            <p>{testimonial.review}</p>
+            <BodyText
+              className={"bodytext-testimonials"}
+              text={`${testimonial.review}`}
+            />
           </ReviewCardText>
         </StyledReviewCard>
       ))}
