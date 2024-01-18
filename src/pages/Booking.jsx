@@ -19,9 +19,14 @@ const compareArrays = (arrayOne, arrayTwo) => {
 }
 
 export const Booking = () => {
-  const [cinemaHall, setCinemahall] = useState()
-  const [movieTitle, setMovieTitle] = useState()
-  const [seatInfo, setSeatInfo] = useState()
+  const [ cinemaHall, setCinemahall ] = useState()
+  const [ movieTitle, setMovieTitle ] = useState()
+  const [ moviePoster, setMoviePoster ] = useState()
+  const [ seatInfo, setSeatInfo ] = useState()
+  
+  const [ showtimeDate, setShowtimeDate ] = useState()
+  const [ showtimeTime, setShowtimeTime ] = useState()
+  const [ showtimePrice, setShowtimePrice ] = useState()
 
   const {
     fetchSelectedShowtime,
@@ -45,11 +50,20 @@ export const Booking = () => {
     if (selectedShowtime != null) {
       const cinemaHall = selectedShowtime.cinemaHall
       const movieTitle = selectedShowtime.movieTitle
+      const moviePoster = selectedShowtime.moviePoster
       const seatInfo = selectedShowtime.seats
+
+      const showtimeDate = selectedShowtime.date
+      const showtimeTime = selectedShowtime.startingTime
+      const showtimePrice = selectedShowtime.price
 
       setCinemahall(cinemaHall)
       setMovieTitle(movieTitle)
+      setMoviePoster(`https://image.tmdb.org/t/p/w780${moviePoster}`)
       setSeatInfo(seatInfo)
+      setShowtimeDate(showtimeDate)
+      setShowtimeTime(showtimeTime)
+      setShowtimePrice(showtimePrice)
     }
   }, [selectedShowtime])
 
@@ -58,7 +72,6 @@ export const Booking = () => {
       seatInfo.forEach(row => {
         row.forEach((seat) => {
           if (seat.selected) {
-            // console.log('useEffect selected seat', seat)
             setJustSelectedSeats([seat.rowIndex, seat.seatIndex])
           }
         })
@@ -70,18 +83,6 @@ export const Booking = () => {
     console.log('selectedSeats', selectedSeats)
   }, [selectedSeats])
 
-  // useEffect(() => {
-  // 	const deleteSelections = () => {
-  // 		if(selectedSeats != null && selectedSeats.length > 0) {
-  // 			console.log(selectedSeats)
-  // 			selectedSeats.forEach(element => {
-  // 				makeASelection(element, showtimeID)
-  // 			})
-  // 		}
-  // 	}
-  // 	return(deleteSelections)
-  // },[])
-
   const handleSeatClick = (event, row, seatIndex) => {
     const newSelection = [row, seatIndex]
 
@@ -89,7 +90,6 @@ export const Booking = () => {
       event.target.classList.remove('selected')
       let filteredArray = selectedSeats.filter(item => !compareArrays(item, newSelection))
       removeSelectedSeats(filteredArray, newSelection, showtimeID)
-      // filteredArray.forEach(seat => updateSelectedSeats(seat, showtimeID))
     }
 
     const addSelected = (event) => {
@@ -115,7 +115,12 @@ export const Booking = () => {
   return (
     <div className="booking-container page-section">
       <h2 className="movie-title">{movieTitle}</h2>
-      <img className="movie-poster" src="https://image.tmdb.org/t/p/w780/8xV47NDrjdZDpkVcCFqkdHa3T0C.jpg" />
+      <div className="showtime-info">
+        <img className="movie-poster" src={moviePoster} />
+        <p>{showtimeDate}</p>
+        <p>{showtimeTime}:00</p>
+        <p>Price: {showtimePrice} kr</p>
+      </div>
 
       <section className="cinema-container">
         <h3>{cinemaHall}</h3>

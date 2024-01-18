@@ -143,6 +143,10 @@
 		grid-column: 1 / 2;
 		grid-row: 2 / 3;
 	}
+	.showtime-info{
+		grid-column: 1 / 2;
+		grid-row: 2 / 3;
+	}
 	.cinema-container {
 		grid-column: 2 / 4;
 		grid-row: 2 / 3;
