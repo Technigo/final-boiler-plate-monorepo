@@ -53,12 +53,14 @@ import cloudinary from 'cloudinary';
                 ]}]);
             }
 
+            console.log("Executing query:", query.getQuery());
+
          const cocktails = await query.sort({ name: 1 });
         res.json(cocktails);
     } catch (error) {
-        res.status(500).send(error.message);
+        console.error("Error caught in getCocktailsController:", error);
+        res.status(500).json({ message: error.message });
     }
-};
 
 // Get a single cocktail by ID
 export const getCocktailByIdController = async (req, res) => {
