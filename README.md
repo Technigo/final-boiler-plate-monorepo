@@ -1,4 +1,4 @@
-# Final Project - A Helping Hand community
+# Final Project - A Helping Hand Community
 
 ## Collaboration Between Anna and Susanne
 
@@ -64,7 +64,7 @@ The status of both your requests and the deeds you volunteered for, can be found
 
 To improve accessibility we have strived to use text and background with a sufficient contrast ratio, use aria-label when appropriate or alt-text for images. We have made the entire site keyboard focusable. We have performed accessibility tests consisting of auditing tools and validation among many other things.
 
-## View it live
+## View It Live
 
 Frontend: [![Netlify Status](https://api.netlify.com/api/v1/badges/a058da08-22d3-4898-8913-fba7338c9a1c/deploy-status)](https://a-helping-hand.netlify.app/)  
 Backend: [![Render](https://img.shields.io/badge/Render-%46E3B7.svg?style=for-the-badge&logo=render&logoColor=white)](https://a-helping-hand.onrender.com)
