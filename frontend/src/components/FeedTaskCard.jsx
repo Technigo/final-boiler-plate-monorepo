@@ -39,7 +39,7 @@ const TaskHeader = styled.div`
   margin: 10px;
   justify-content: flex-start;
 `;
-
+// Styling for the Needs card body
 const CardBodyContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -75,29 +75,6 @@ const Description = styled.div`
   text-align: center;
 `;
 
-// // Styling for the button to close the open modal
-// .closeModal-btn {
-//   position: absolute;
-//   background-color: transparent;
-//   top: 10px;
-//   right: 10px;
-//   border: none;
-//   border-radius: 10px;
-//   color: var(--darkgrey);
-//   font-weight: bold;
-//   cursor: pointer;
-
-//   // Styling for the button when hovering over it
-//   &:hover {
-//     background-color: var(--buttonhover);
-//   }
-
-//   // When the button is pressed, but not released
-//   &:active {
-//     background-color: var(--buttonactive);
-//   }
-//}
-
 // Styling for the title and location in the card
 const AreaModal = styled.div`
   display: flex;
@@ -106,11 +83,6 @@ const AreaModal = styled.div`
   text-align: center;
   margin: 10px;
 `;
-
-// .offer-help-button-modal {
-//   margin: 15px 0 10px;
-// }
-//`;
 
 // Define the icon size
 const iconSize = "40px";
@@ -169,9 +141,9 @@ export const FeedTaskCard = ({ task }) => {
     })
     .replace(/\//g, "/"); // Replace slashes with dashes
 
-  // Add current user as a volunteer to a specific task
+  // Add current user as a volunteer to a specific task/need
   const addMyselfToTaskClick = () => {
-    addMyselfToTask(task._id);
+    addMyselfToTask(task._id); // Call the addMyselfToTask action
   };
 
   useEffect(() => {
@@ -191,7 +163,6 @@ export const FeedTaskCard = ({ task }) => {
   return (
     <>
       <StyledFeedCardModal style={{ backgroundColor }}>
-        {" "}
         {/* Set the background color based on the category */}
         <CardContainer>
           <li key={_id}>
@@ -209,27 +180,27 @@ export const FeedTaskCard = ({ task }) => {
                 <Heading3
                   className={"heading3-feedtaskcard"}
                   text={`${task.task}`}
-                />{" "}
+                />
                 {/* Render the Need */}
                 <BodyText
                   className={"bodytext-feedtaskcard"}
                   text={`${area}`}
-                />{" "}
+                />
                 {/* Render the location where the Need is to be performed */}
               </Area>
               <TaskFooter>
                 <BodyText
                   className={"bodytext-feedtaskcard"}
                   text={`Created by: ${task.user && task.user.username}`}
-                />{" "}
+                />
                 {/* Render the username of the user who created the Need */}
                 <BodyText
                   className={"bodytext-feedtaskcard"}
                   text={`Posted: ${formattedCreatedAt}`}
-                />{" "}
+                />
                 {/* Render the date when the Need was created */}
               </TaskFooter>
-              <Button
+              <Button // Button to open the modal
                 onClick={openModal}
                 className="show-more-btn"
                 buttonName="Show more"
@@ -282,13 +253,14 @@ export const FeedTaskCard = ({ task }) => {
         <StyledFeedCardModal>
           <CardContainer>
             <li key={_id}>
+              {/* Render the Need card */}
               <TaskHeader>
                 {CategoryIcon && <CategoryIcon size={iconSize} />}{" "}
                 {/* Render the icon if it exists */}
                 <BodyText
                   className={"bodytext-feedtaskcard"}
                   text={`${category}`}
-                />{" "}
+                />
                 {/* Render the category */}
                 {/* Button to close the modal */}
                 <Button
@@ -299,17 +271,16 @@ export const FeedTaskCard = ({ task }) => {
               </TaskHeader>
               <CardBodyContainer>
                 <AreaModal>
-                  {" "}
                   {/* Render the Need and the location where the Need is to be performed */}
                   <Heading3
                     className={"heading3-modalcard"}
                     text={`${task.task}`}
-                  />{" "}
+                  />
                   {/* Render the title of the Need */}
                   <BodyText
                     className={"bodytext-feedtaskcard"}
                     text={`${area}`}
-                  />{" "}
+                  />
                   {/* Render the location where the Need is to be performed */}
                 </AreaModal>
 
@@ -318,19 +289,19 @@ export const FeedTaskCard = ({ task }) => {
                   <BodyText
                     className={"bodytext-feedtaskcard"}
                     text={`${task.description}`}
-                  />{" "}
+                  />
                   {/* Render the description of the Need */}
                 </Description>
                 <TaskFooter>
                   <BodyText
                     className={"bodytext-feedtaskcard"}
                     text={`Created by: ${task.user && task.user.username}`}
-                  />{" "}
+                  />
                   {/* Render the username of the user who created the Need */}
                   <BodyText
                     className={"bodytext-feedtaskcard"}
                     text={`Posted: ${formattedCreatedAt}`}
-                  />{" "}
+                  />
                   {/* Render the date when the Need was created */}
                 </TaskFooter>
 

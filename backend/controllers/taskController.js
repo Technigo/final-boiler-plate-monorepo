@@ -69,6 +69,7 @@ export const getVolunteeredTasksController = asyncHandler(async (req, res) => {
     })
       .sort("-createdAt")
       .populate({
+        // populate the user object with the username
         path: "user",
         select: "username",
       })
@@ -162,18 +163,4 @@ export const deleteSpecificTaskController = asyncHandler(async (req, res) => {
       }
     })
     .catch((err) => res.status(500).json(err)); // Handle any errors that occur during the operation
-});
-
-export const updateTaskController = asyncHandler(async (req, res) => {
-  const { id } = req.params;
-  try {
-    const updatedTask = await TaskModel.findByIdAndUpdate(
-      { _id: id },
-      { done: true },
-      { new: true }
-    );
-    res.json(updatedTask);
-  } catch (error) {
-    res.status(500).json(error);
-  }
 });

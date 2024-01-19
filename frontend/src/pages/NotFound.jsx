@@ -10,6 +10,7 @@ const StyledErrorPage = styled.div`
   justify-content: center;
 `;
 
+// Define the 'NotFound' functional component.
 export const NotFound = () => {
   return (
     <StyledErrorPage>

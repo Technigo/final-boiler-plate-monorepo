@@ -105,7 +105,7 @@ export const Tasks = () => {
       alert("You need to log in to see all the content");
       navigate("/login");
     }
-  }, [isLoggedIn, navigate]);
+  }, [isLoggedIn, navigate]); // Add 'navigate' to the dependency array.
 
   // Render the component content.
   return (
@@ -133,7 +133,7 @@ export const Tasks = () => {
             text={"Nothing to volunteer for yet!"}
           />
         ) : (
-          // Map through 'tasks' and render task items.
+          // Map through 'tasks/needs' and render task items.
           tasks.map((task) => <FeedTaskCard key={task._id} task={task} />)
         )}
       </CardWrapper>

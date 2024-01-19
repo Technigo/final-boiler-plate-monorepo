@@ -48,6 +48,7 @@ const StyledNav = styled.nav`
   }
 `;
 
+// Define the Navbar component as a functional component.
 export const Navbar = () => {
   const {
     activePage,
@@ -57,6 +58,7 @@ export const Navbar = () => {
     setBurgerMenuOpen,
   } = useNavStore();
 
+  // Access the 'isLoggedIn' variable from the 'userStore'.
   const { isLoggedIn } = userStore();
 
   // Use the useLocation hook to get the current location
@@ -96,7 +98,7 @@ export const Navbar = () => {
     window.addEventListener("resize", handleResize);
 
     return () => {
-      window.removeEventListener("resize", handleResize);
+      window.removeEventListener("resize", handleResize); // Remove event listener on unmount
     };
   }, [setBurgerMenuVisible, setBurgerMenuOpen]);
 

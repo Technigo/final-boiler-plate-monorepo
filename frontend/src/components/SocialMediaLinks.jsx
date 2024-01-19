@@ -79,9 +79,9 @@ export const SocialMediaLinks = ({ person }) => {
         <SocialButton
           key={index}
           href={link.url}
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label={`Link to ${link.label}`}
+          target="_blank" // Open link in new tab
+          rel="noopener noreferrer" // Security measure to prevent malicious links
+          aria-label={`Link to ${link.label}`} // Label for screen readers
           className={"social-link-${link.label.toLowerCase()}"}
         >
           {/* Display social media icon */}

@@ -92,6 +92,7 @@ const VolunteersSection = styled.div`
   overflow-wrap: break-word;
 `;
 
+// Define the 'Profile' functional component.
 export const Profile = () => {
   // Accessing data from Zustand stores
   const { username } = userStore();

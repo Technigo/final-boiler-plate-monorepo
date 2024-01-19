@@ -41,9 +41,10 @@ const StyledBurgerLinks = styled.div`
   }
 `;
 
+// Define the BurgerMenu component as a functional component.
 export const BurgerMenu = () => {
   const { activePage, setActivePage, burgerMenuOpen, setBurgerMenuOpen } =
-    useNavStore();
+    useNavStore(); // Access the 'activePage' and 'setActivePage' variables from the 'navStore'.
 
   // Function to close the burger menu.
   const closeBurgerMenu = () => {
@@ -69,6 +70,7 @@ export const BurgerMenu = () => {
   return (
     <StyledBurgerMenu>
       <StyledToggleButton onClick={() => setBurgerMenuOpen(!burgerMenuOpen)}>
+        {/* Toggle the burger menu open and closed. */}
         {burgerMenuOpen ? (
           <IoCloseOutline
             style={{

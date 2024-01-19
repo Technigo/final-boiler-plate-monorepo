@@ -163,6 +163,7 @@ export const taskStore = create((set) => ({
     }
   },
 
+  // Delete a task by its ID
   deleteTaskById: async (id) => {
     try {
       const confirmed = window.confirm(
@@ -181,6 +182,7 @@ export const taskStore = create((set) => ({
       }));
 
       set((state) => ({
+        // Update userTasks state
         userTasks: state.userTasks.filter(
           (task) => task._id.toString() !== id.toString()
         ),

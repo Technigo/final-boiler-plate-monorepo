@@ -9,7 +9,7 @@ export const taskSchema = new Schema(
       type: String, // Specifies that 'task' should be a string
       required: true, // Indicates that 'task' is a required field
       minlength: 3, // Sets a minimum length of 3 characters for 'task' title
-      maxlength: 30,
+      maxlength: 30, // Sets a maximum length of 30 characters for 'task' title
     },
     category: {
       type: String,
@@ -17,6 +17,7 @@ export const taskSchema = new Schema(
       required: true,
     },
     area: {
+      //  The area field is an enum with the different areas in Varberg
       type: String,
       enum: [
         "Bua",
@@ -49,7 +50,7 @@ export const taskSchema = new Schema(
     },
 
     user: {
-      type: mongoose.Schema.Types.ObjectId,
+      type: mongoose.Schema.Types.ObjectId, //  The user's id
       ref: "user",
     },
     creatorUsername: String,

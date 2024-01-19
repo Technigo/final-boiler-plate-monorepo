@@ -89,32 +89,38 @@ const StyledInfo = styled.div`
   width: 115px;
 `;
 
+// Define the TestimonialsCarousel component as a functional component.
 export const TestimonialsCarousel = () => {
   return (
     <CarouselContainer>
-      {testimonials.map((testimonial, index) => (
-        <StyledReviewCard key={index}>
-          <StyledReviewer>
-            <StyledInfo>
+      {testimonials.map(
+        (
+          testimonial,
+          index // Map over the testimonials array and render a review card for each testimonial
+        ) => (
+          <StyledReviewCard key={index}>
+            <StyledReviewer>
+              <StyledInfo>
+                <BodyText
+                  className={"bodytext-reviewer"}
+                  text={`${testimonial.reviewerName}`}
+                />
+                <BodyText
+                  className={"bodytext-reviewer"}
+                  text={`${testimonial.reviewerAge} y/o`}
+                />
+              </StyledInfo>
+              <img src={testimonial.imageUrl} alt={testimonial.imageAlt} />
+            </StyledReviewer>
+            <ReviewCardText>
               <BodyText
-                className={"bodytext-reviewer"}
-                text={`${testimonial.reviewerName}`}
+                className={"bodytext-testimonials"}
+                text={`${testimonial.review}`}
               />
-              <BodyText
-                className={"bodytext-reviewer"}
-                text={`${testimonial.reviewerAge} y/o`}
-              />
-            </StyledInfo>
-            <img src={testimonial.imageUrl} alt={testimonial.imageAlt} />
-          </StyledReviewer>
-          <ReviewCardText>
-            <BodyText
-              className={"bodytext-testimonials"}
-              text={`${testimonial.review}`}
-            />
-          </ReviewCardText>
-        </StyledReviewCard>
-      ))}
+            </ReviewCardText>
+          </StyledReviewCard>
+        )
+      )}
     </CarouselContainer>
   );
 };

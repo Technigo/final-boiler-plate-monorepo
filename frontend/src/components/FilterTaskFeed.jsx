@@ -47,6 +47,7 @@ const StyledSelects = styled.select`
   padding: 5px;
 `;
 
+// Define the FilterTaskFeed component as a functional component.
 export const FilterTaskFeed = () => {
   const [category, setCategory] = useState("");
   const [area, setArea] = useState("");
@@ -60,16 +61,18 @@ export const FilterTaskFeed = () => {
   };
 
   useEffect(() => {
+    // Invoke the filterTasks function when category or area changes
     filterTasks(category, area);
   }, [category, area]);
 
   // Function to reset filters
   const handleReset = () => {
-    setCategory("");
-    setArea("");
+    setCategory(""); // Reset category
+    setArea(""); // Reset area
     fetchTasks(); // Reset tasks by invoking the fetchTasks action
   };
 
+  // Return the FilterTaskFeed component.
   return (
     <StyledFilterTaskFeed>
       <BodyText
@@ -143,7 +146,7 @@ export const FilterTaskFeed = () => {
         </StyledSelects>
       </StyledFilters>
       <Button
-        onClick={handleReset}
+        onClick={handleReset} // Invoke the handleReset function when the button is clicked
         className="filterReset-button"
         buttonName="Reset and Show All Tasks"
       />

@@ -17,7 +17,6 @@ app.use(express.json()); // Parse incoming JSON data
 app.use(express.urlencoded({ extended: false })); // Parse URL-encoded data
 
 // Use the routes for handling API requests
-// ROUTES - These routes USE controller functions ;)
 app.use(taskRoutes); // Use the task-controlled routes for task-related requests
 app.use(userRoutes); // Use the user-controlled routes for user-related requests
 

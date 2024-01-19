@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import { useState, useEffect } from "react";
 import { MdOutlineKeyboardDoubleArrowUp } from "react-icons/md";
-//import { Button } from "./Button";
 
 const StyledGoTop = styled.div`
   position: fixed;
@@ -22,7 +21,7 @@ const StyledGoTop = styled.div`
     transition: transform 0.3s ease;
 
     &:hover {
-      transform: scale(1.1);
+      transform: scale(1.1); /* Change size on hover */
     }
   }
   // Adjust the position of the button on smaller screens
@@ -50,7 +49,7 @@ export const GoTopButton = () => {
   useEffect(() => {
     window.addEventListener("scroll", handleVisibleButton);
     return () => {
-      window.removeEventListener("scroll", handleVisibleButton);
+      window.removeEventListener("scroll", handleVisibleButton); // Remove event listener when the component is unmounted
     };
   }, []);
 

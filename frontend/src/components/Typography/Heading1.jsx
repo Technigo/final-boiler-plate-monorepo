@@ -31,10 +31,6 @@ const StyledHeading1 = styled.h1`
     margin: 0;
   }
 
-  /* &.heading1-about {
-    text-align: center;
-  } */
-
   &.heading1-notfound {
     margin-bottom: 20px;
   }
@@ -46,13 +42,18 @@ export const Heading1 = ({ className, lines, text }) => {
   return (
     <StyledHeading1 className={`${className}`}>
       {lines
-        ? lines.map((line, index) => (
-            <React.Fragment key={index}>
-              {line}
-              {index < lines.length - 1 && <br />}{" "}
-              {/* Add <br /> except for the last line */}
-            </React.Fragment>
-          ))
+        ? lines.map(
+            (
+              line,
+              index // Map over the lines array and render a line for each line
+            ) => (
+              <React.Fragment key={index}>
+                {line}
+                {index < lines.length - 1 && <br />}{" "}
+                {/* Add <br /> except for the last line */}
+              </React.Fragment>
+            )
+          )
         : text}
     </StyledHeading1>
   );

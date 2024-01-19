@@ -50,7 +50,7 @@ export const Register = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(false); // State variable to track loading state
 
   // Initialize the 'navigate' function from React Router.
   const navigate = useNavigate();
@@ -71,11 +71,11 @@ export const Register = () => {
       const registerPromise = storeHandleSignup(username, password, email);
 
       await Promise.all([
+        // Wait for both promises to resolve
         registerPromise,
-        new Promise((resolve) => setTimeout(resolve, 2000)),
+        new Promise((resolve) => setTimeout(resolve, 2000)), // Wait for 2 seconds
       ]);
       const isLoggedIn = userStore.getState().isLoggedIn;
-      // if (username && password && email) {
       if (isLoggedIn) {
         // If the signup is successful, navigate to the task route ("/tasks").
         navigate("/tasks");
@@ -133,7 +133,7 @@ export const Register = () => {
             type="email"
             placeholder="Email"
             value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            onChange={(e) => setEmail(e.target.value)} // Trigger signup on pressing 'Enter' key.
           />
 
           {/* Create a button for signing up and attach the 'onSignupClick' event handler. */}
@@ -144,6 +144,7 @@ export const Register = () => {
           />
         </UserRegistration>
       </StyledRegField>
+      {/* Show loader if isLoading is true */}
       {isLoading ? <LoaderAnimation /> : ""}
     </StyledRegister>
   );

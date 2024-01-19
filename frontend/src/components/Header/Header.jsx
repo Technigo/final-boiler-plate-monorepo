@@ -9,11 +9,12 @@ const StyledHeader = styled.div`
   background: var(--purple);
 `;
 
+// Define the Header component as a functional component.
 export const Header = () => {
   return (
     <StyledHeader>
-      <LogoText />
-      <Navbar />
+      <LogoText /> {/* LogoText component */}
+      <Navbar /> {/* Navbar component */}
     </StyledHeader>
   );
 };

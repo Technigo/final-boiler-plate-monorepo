@@ -15,7 +15,7 @@ const StyledIconButton = styled.button`
   height: fit-content;
 
   &:hover {
-    background-color: var(--buttonhover);
+    background-color: var(--buttonhover); /* Change color on hover */
   }
   // When the button is pressed, but not released
   &:active {

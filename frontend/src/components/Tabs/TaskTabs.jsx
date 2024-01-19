@@ -4,6 +4,7 @@ import { FilterTaskFeed } from "../FilterTaskFeed";
 import { taskStore } from "../../stores/taskStore";
 import "./TabsStyling.css";
 
+// Define the TaskTabs component as a functional component.
 export const TaskTabs = () => {
   const { fetchTasks } = taskStore();
 
@@ -11,11 +12,12 @@ export const TaskTabs = () => {
     fetchTasks(); // Fetch tasks from server
   };
 
+  // Define the tabs and their content
   return (
     <Tabs>
       <TabList>
         <Tab tabIndex="0" onClick={handleReset}>
-          {/* tabIndex="0" makes tab focusable */}
+          {/* tabIndex="0" makes tab focusable and when switching tabs the task/need list is reloaded */}
           Ask for help
         </Tab>
         <Tab>Lend a hand</Tab>

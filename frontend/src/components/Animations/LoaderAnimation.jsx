@@ -6,12 +6,9 @@ const Load = styled.div`
   display: flex;
   justify-content: center;
   background-color: transparent;
-  /* 
-  @media (min-width: 667px) {
-    display: hidden;
-  } */
 `;
 
+// Component rendering the 'Loading' Lottie animation
 export const LoaderAnimation = () => {
   const options = {
     animationData: Loading,

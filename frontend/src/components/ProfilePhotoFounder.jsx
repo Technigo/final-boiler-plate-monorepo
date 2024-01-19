@@ -19,7 +19,7 @@ export const ProfilePhotoFounder = ({ person }) => {
   return (
     <StyledProfilePhotoFounder
       src={profilePhoto}
-      alt="Photo of ${person}, Founder of A Helping Hand"
+      alt="Photo of ${person}, Creator of A Helping Hand website"
     />
   );
 };

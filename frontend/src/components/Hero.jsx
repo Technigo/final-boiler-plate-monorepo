@@ -100,9 +100,10 @@ const StyledButtonWrapper = styled.div`
   }
 `;
 
+// Define the 'Hero' functional component.
 export const Hero = () => {
-  const { isLoggedIn } = userStore();
-  const navigate = useNavigate();
+  const { isLoggedIn } = userStore(); // Access the 'isLoggedIn' state from 'userStore'.
+  const navigate = useNavigate(); // Initialize the 'navigate' function from React Router.
 
   // Text content for the Hero section
   const text = {
@@ -114,7 +115,7 @@ export const Hero = () => {
       "Sign up now to either ask for help or volunteer your time and kindness. Be a part of this beautiful movement and let your generosity shine!",
   };
 
-  // Redirect to tasks page if user is logged in
+  // Redirect to tasks page/Deed Hub if user is logged in
   useEffect(() => {
     if (isLoggedIn) {
       navigate("/");
@@ -125,6 +126,7 @@ export const Hero = () => {
     <StyledHero>
       <Container>
         <HeroTextWrapper>
+          {/* Text content for the Hero section */}
           <Heading1 className="heading1-hero" text={`${text.heading}`} />
           <Heading2 className={"heading2-hero"} text={`${text.subheading}`} />
         </HeroTextWrapper>

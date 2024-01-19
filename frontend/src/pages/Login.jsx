@@ -63,14 +63,13 @@ export const Login = () => {
       const loginPromise = storeHandleLogin(username, password);
 
       await Promise.all([
+        // Wait for both promises to resolve
         loginPromise,
         new Promise((resolve) => setTimeout(resolve, 2000)),
       ]);
       // Get the 'isLoggedIn' state from 'userStore'.
       const isLoggedIn = userStore.getState().isLoggedIn;
       if (isLoggedIn) {
-        //setIsLoading(false);
-        //console.log("User logged in");
         // If the user is logged in, navigate to the "/tasks" route.
         navigate("/tasks");
       }
@@ -122,7 +121,7 @@ export const Login = () => {
               }}
             />
 
-            {/* Create a button for logging in and attach the 'onLoginClick' event handler. */}
+            {/* Button for logging in and attach the 'onLoginClick' event handler. */}
             <Button
               onClick={onLoginClick}
               className="login-btn"
@@ -130,6 +129,7 @@ export const Login = () => {
             />
           </UserLogin>
         </StyledLoginField>
+        {/* Display the loader animation when 'isLoading' is true. */}
         {isLoading ? <LoaderAnimation /> : ""}
       </StyledIntro>
     </>

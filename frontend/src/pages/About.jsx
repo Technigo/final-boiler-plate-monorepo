@@ -53,6 +53,7 @@ const StyledFounderInfo = styled.div`
   gap: 10px;
 `;
 
+// Define the 'About' functional component.
 export const About = () => {
   return (
     <StyledAbout>
