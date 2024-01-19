@@ -226,6 +226,23 @@ export const UserController = {
     }
   },
 
+  getUserTrips: async (req, res) => {
+    const { id } = req.params;
+    try {
+      // Fetch trips where the loggedInUser is the main user or a passenger
+      const trips = await TripModel.find({
+        $or: [
+          { user: id }, // User is the main user
+          { "passengers.userId": id }, // User is a passenger
+        ],
+      });
+
+      res.status(200).json(trips);
+    } catch (error) {
+      res.json({ error: error.message });
+    }
+  },
+
   deleteSingleTrip: async (req, res) => {
     const { id } = req.params;
     try {

@@ -15,6 +15,7 @@ router.get("/getallmessages", UserController.getAllMessages);
 router.post("/addtrip", UserController.addTrip);
 router.get("/trips", UserController.getTrips);
 router.get("/trips/:id", UserController.getSingleTrip);
+router.get("/trips/usertrips/:id", UserController.getUserTrips);
 router.delete("/deletetrip/:id", UserController.deleteSingleTrip);
 router.post("/trips/:tripid/:id", UserController.joinTrip);
 router.post("/addmessage", UserController.addMessage);
