@@ -28,11 +28,8 @@ export const Chat = () => {
 
   const prevChatMessagesRef = useRef(chatMessages.length);
 
-  //Id's of sender and receiver
   const userId = loggedInUserId;
   const receiverId = recipientId;
-
-  //#REGION Fetch users to chat with
 
   useEffect(() => {
     const getUsers = async () => {
@@ -46,16 +43,14 @@ export const Chat = () => {
       getUsers();
     }
   }, []);
-  //#ENDREGION
+
   const handleMessage = (e) => {
     const messageData = JSON.parse(e.data);
-    console.log({ e, messageData });
     if (messageData.sender === selectedUserId) {
       setMessages((prev) => [...prev, { ...messageData }]);
     }
   };
 
-  //#REGION NO WS
   const sendMessageNoWS = async (e) => {
     if (e) e.preventDefault();
     const newMessage = {
@@ -77,9 +72,7 @@ export const Chat = () => {
       });
 
       if (response.ok) {
-        console.log("banana");
         const data = await response.json();
-        console.log("data: " + data);
         alert("Message sent successfully");
 
         setMessages((prev) => [
@@ -91,7 +84,6 @@ export const Chat = () => {
             _id: Date.now(),
           },
         ]);
-        console.log(messages);
         setNewMessageText("");
       } else {
         setNewMessageText("");
@@ -102,11 +94,9 @@ export const Chat = () => {
       alert(`Failed to send message. Error: ${error.message}`);
     }
   };
-  //#ENDREGION
 
   const sendMessage = (e) => {
     if (e) e.preventDefault();
-
     ws.send(
       JSON.stringify({
         sender: userId,
@@ -130,16 +120,11 @@ export const Chat = () => {
     const ws = new WebSocket("ws://localhost:3000");
     setWs(ws);
 
-    // Send the user ID to the server after WebSocket connection is open
     ws.addEventListener("open", () => {
       ws.send(JSON.stringify({ type: "setUserId", userId }));
       ws.send(JSON.stringify({ type: "setReceiverId", receiverId }));
     });
-
-    // ws.addEventListener("message", handleMessage);
   }, []);
-
-  //-----------------
 
   useEffect(() => {
     setSelectedUserId(recipientId);
@@ -147,7 +132,6 @@ export const Chat = () => {
 
   useEffect(() => {
     const userMessages = () => {
-      // Handle your logic for new messages here
       console.log("sender: " + loggedInUserId);
       console.log("receiver: " + recipientId);
       handleChatHistory(loggedInUserId, recipientId);
@@ -158,16 +142,13 @@ export const Chat = () => {
   }, [recipientId, chatMessages]);
 
   handleChatHistory();
+
   const div = divUnderMessages.current;
 
   useEffect(() => {
     if (prevChatMessagesRef.current !== chatMessages.length) {
       console.log("New messages detected!");
-      // Handle your logic for new messages here
-
       div.scrollIntoView({ behavior: "smooth", block: "end" });
-
-      // Update the reference to the latest chatMessages
       prevChatMessagesRef.current = chatMessages.length;
     }
   }, [chatMessages.length]);
@@ -178,140 +159,104 @@ export const Chat = () => {
 
   return (
     isAuthenticated && (
-      <div className="flex items-center justify-center mx-auto max-w-screen-md p-4 mt-8 mb-8 w-full">
-        <div className="flex flex-grow max-w-screen-lg">
-          <div className="bg-green-100 p-4 w-1/4 rounded-l-xl">
-            <h1 className="text-black py-1 text-md xl:text-xl">
-              Hi, {username}
-            </h1>
-            <h2 className="text-black text-sm py-1 xl:text-md">Contacts:</h2>
-            {!userLoading && (
-              <ul className="px-2">
-                {userList.map(
-                  (user) =>
-                    user._id !== loggedInUserId && (
-                      <li
-                        key={user._id}
-                        className="cursor-pointer py-2 text-md xl:text-md"
-                        onClick={() => {
-                          setChatReceiver(user.username);
-                          setRecipientId(user._id);
-                          console.log("The recipient id is: " + recipientId);
-                          console.log("The sender id is: " + loggedInUserId);
-                        }}
-                      >
-                        <div style={{ display: "flex", alignItems: "center" }}>
+      <div className="flex flex-col mx-auto max-w-screen-md p-2 mt-8 mb-8 w-full">
+        <div className="bg-gray-50 p-4 rounded-lg mb-2">
+          <h1 className="text-black py-1 text-md">
+            Hi, {username}! Choose a user to chat with:
+          </h1>
+
+          {!userLoading && (
+            <ul className="px-2">
+              {userList.map(
+                (user) =>
+                  user._id !== loggedInUserId && (
+                    <li
+                      key={user._id}
+                      className="cursor-pointer py-2 text-md"
+                      onClick={() => {
+                        setChatReceiver(user.username);
+                        setRecipientId(user._id);
+                      }}>
+                      <div className="flex items-center">
+                        <span>
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
                             viewBox="0 0 24 24"
                             fill="currentColor"
-                            className="w-4 h-4"
-                            style={{ verticalAlign: "middle" }}
-                          >
+                            className="w-6 h-6 mr-1">
                             <path
                               fillRule="evenodd"
                               d="M18.685 19.097A9.723 9.723 0 0 0 21.75 12c0-5.385-4.365-9.75-9.75-9.75S2.25 6.615 2.25 12a9.723 9.723 0 0 0 3.065 7.097A9.716 9.716 0 0 0 12 21.75a9.716 9.716 0 0 0 6.685-2.653Zm-12.54-1.285A7.486 7.486 0 0 1 12 15a7.486 7.486 0 0 1 5.855 2.812A8.224 8.224 0 0 1 12 20.25a8.224 8.224 0 0 1-5.855-2.438ZM15.75 9a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Z"
                               clipRule="evenodd"
                             />
-                          </svg>{" "}
-                          &nbsp;
-                          {user.username}
-                        </div>
-                      </li>
-                    )
-                )}
-              </ul>
-            )}
+                          </svg>
+                        </span>
+                        {user.username}
+                      </div>
+                    </li>
+                  )
+              )}
+            </ul>
+          )}
+        </div>
+        <div className="flex flex-col bg-gray-200 p-4 rounded-lg">
+          <div className="flex-grow mb-2 text-md">
+            Messages with {chatReceiver}
           </div>
-          <div className="flex flex-col bg-green-200 flex-1 p-4 rounded-r-xl">
-            <div className="flex-grow">Messages with {chatReceiver}</div>
-            <div className="relative h-full">
-              <div className="overflow-y-scroll absolute top-0 left-0 right-0 bottom-2">
-                {chatMessages.map((message) => (
-                  <div
-                    key={message._id}
-                    className={
-                      message.sender === loggedInUserId
-                        ? "text-right"
-                        : "text-left"
-                    }
-                  >
-                    <div className="text-xs text-gray-700">
-                      {new Date(message.createdAt).toLocaleString()}
-                    </div>
-                    <div
-                      className={
-                        "text-left inline-block p-4 my-2 rounded-md text-sm lg:max-w-[40%] " +
-                        (message.sender === loggedInUserId
-                          ? "bg-blue-500 text-white"
-                          : "bg-white text-gray-500")
-                      }
-                    >
-                      {message.text}
-                    </div>
-                  </div>
-                ))}
-                <div ref={divUnderMessages}></div>
+          <div className="overflow-y-auto flex-grow max-h-72">
+            {chatMessages.map((message) => (
+              <div
+                key={message._id}
+                className={`${
+                  message.sender === loggedInUserId ? "text-right" : "text-left"
+                } mb-2`}>
+                <div className="text-xs text-gray-700">
+                  {new Date(message.createdAt).toLocaleString(undefined, {
+                    year: "numeric",
+                    month: "numeric",
+                    day: "numeric",
+                    hour: "numeric",
+                    minute: "numeric",
+                  })}
+                </div>
+                <div
+                  className={`text-left inline-block p-4 my-2 rounded-md text-sm lg:max-w-[40%] ${
+                    message.sender === loggedInUserId
+                      ? "bg-blue-500 text-white"
+                      : "bg-white text-gray-500"
+                  }`}>
+                  {message.text}
+                </div>
               </div>
-            </div>
-
-            {/* <form className="flex gap-2" onSubmit={sendMessage}>
-              <input
-                type="text"
-                value={newMessageText}
-                onChange={(e) => setNewMessageText(e.target.value)}
-                placeholder="Type a message..."
-                className="bg-white text-black border p-2 flex-grow rounded-sm"
-              />
-              <button
-                type="submit"
-                className="rounded-sm bg-slate-300 p-2 text-white border cursor-pointer hover:bg-slate-400"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  strokeWidth="1.5"
-                  stroke="currentColor"
-                  className="w-6 h-6"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M6 12 3.269 3.125A59.769 59.769 0 0 1 21.485 12 59.768 59.768 0 0 1 3.27 20.875L5.999 12Zm0 0h7.5"
-                  />
-                </svg>
-              </button>
-            </form> */}
-            <form className="flex gap-2" onSubmit={sendMessageNoWS}>
-              <input
-                type="text"
-                value={newMessageText}
-                onChange={(e) => setNewMessageText(e.target.value)}
-                placeholder="Type a message..."
-                className="bg-white text-black border p-2 flex-grow rounded-sm"
-              />
-              <button
-                type="submit"
-                className="rounded-sm bg-red-400 p-2 text-white border cursor-pointer hover:bg-slate-400"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  strokeWidth="1.5"
-                  stroke="currentColor"
-                  className="w-6 h-6"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M6 12 3.269 3.125A59.769 59.769 0 0 1 21.485 12 59.768 59.768 0 0 1 3.27 20.875L5.999 12Zm0 0h7.5"
-                  />
-                </svg>
-              </button>
-            </form>
+            ))}
+            <div ref={divUnderMessages}></div>
           </div>
+          <form className="flex gap-2" onSubmit={sendMessageNoWS}>
+            <input
+              type="text"
+              value={newMessageText}
+              onChange={(e) => setNewMessageText(e.target.value)}
+              placeholder="Type a message..."
+              className="bg-white text-black border p-2 mt-4 flex-grow rounded-sm"
+            />
+            <button
+              type="submit"
+              className="rounded-sm bg-blue-500 p-2 text-white border cursor-pointer hover:bg-blue-700 mt-4">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth="1.5"
+                stroke="currentColor"
+                className="w-6 h-6">
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M6 12 3.269 3.125A59.769 59.769 0 0 1 21.485 12 59.768 59.768 0 0 1 3.27 20.875L5.999 12Zm0 0h7.5"
+                />
+              </svg>
+            </button>
+          </form>
         </div>
       </div>
     )

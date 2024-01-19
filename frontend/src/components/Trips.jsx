@@ -11,7 +11,6 @@ export const Trips = () => {
     fetch(`${apiEnv}/trips`)
       .then((response) => response.json())
       .then((data) => {
-        // Filter trips based on date
         const filteredTrips = data.filter((trip) => {
           const tripDate = new Date(trip.date);
           const currentDate = new Date();
@@ -38,7 +37,6 @@ export const Trips = () => {
 
   return (
     <div className="sm:mt-8 mt-2 space-y-4 mx-auto max-w-screen-md mb-8 p-2">
-      {console.log(trips)}
       <h1 className="text-lg font-md">Available trips</h1>
       {trips.map((trip) => (
         <div

@@ -4,6 +4,7 @@ import { LocationInput } from "./LocationInput";
 import { makes, models } from "./CarData";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import moment from "moment";
 
 import { userStore } from "../stores/userStore";
 
@@ -90,7 +91,7 @@ export const TripGenerator = () => {
       from: formData.from,
       to: formData.to,
       message: formData.message,
-      date: formData.date.toISOString().split("T")[0],
+      date: moment(formData.date).format("YYYY-MM-DD"),
       make: formData.make,
       model: formData.model,
       availableSeats: formData.availableSeats,
@@ -197,12 +198,16 @@ export const TripGenerator = () => {
               <DatePicker
                 selected={formData.date}
                 onChange={(date) =>
-                  setFormData((prevData) => ({ ...prevData, date }))
+                  setFormData((prevData) => ({
+                    ...prevData,
+                    date: date,
+                  }))
                 }
-                placeholderText="MM/DD/YYYY"
+                placeholderText="YYYY-MM-DD"
                 wrapperClassName="w-full"
                 className="input-field border p-2 rounded-md w-full h-10"
                 minDate={new Date()}
+                dateFormat="yyyy-MM-dd"
               />
             </div>
 
@@ -378,12 +383,12 @@ export const TripGenerator = () => {
         </form>
 
         {trips.length > 0 && (
-          <div className="mt-8 space-y-4">
+          <div className="space-y-4">
             {trips.reverse().map((trip) => (
               <div
                 key={trip.id}
-                className="grid grid-cols-12 gap-2 p-4 rounded-lg relative">
-                <div className="col-span-12 text-md border rounded-lg p-4 sm:text-xl">
+                className="grid grid-cols-12 gap-2 p-2 rounded-lg relative">
+                <div className="col-span-12 text-sm bg-yellow-50 rounded-lg p-4 sm:text-lg">
                   You have created a trip from {trip.from} to {trip.to} on{" "}
                   {trip.date}. Your vehicle of choice is a {trip.make}{" "}
                   {trip.model} with reg. no {trip.reg}. You have{" "}
