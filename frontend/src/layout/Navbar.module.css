@@ -13,7 +13,7 @@
     position: relative;
     background-color: #DBC6B6;
     padding: 0 1rem;
-    height: 75px;
+    height: 115px;
 }
 
 
@@ -75,10 +75,10 @@
 
 
 /* iPad Pro 11" */
-@media (min-width: 767px) and (max-width: 1028px) {
+@media (min-width: 767px) and (max-width: 1285px) {
 
     .nav {
-        height: 90px;
+        height: 180px;
     }
 
     .menuIcon {
@@ -106,10 +106,20 @@
     }
 }
 
-@media (min-width: 1028px) {
+@media (min-width: 1285px) {
 
     .menuIcon {
         display: none;
+    }
+
+    .nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: relative;
+        background-color: #DBC6B6;
+        padding: 0 1rem;
+        height: 160px;
     }
 
     .navLinks {
@@ -126,22 +136,12 @@
 
     .navLink {
         padding: 0px 18px;
-        font-size: 18px;
-    }
-
-    .navLink:last-of-type {
-        padding: 0;
-        margin-right: 0;
-    }
-
-    .navLink:last-of-type::after {
-        display: none;
+        font-size: 22px;
     }
 
     .navLink:hover {
-        color: #c53c1a;
+        color: #5a493b;
     }
-
 
     .navSvgBackground {
         display: none;
@@ -149,7 +149,6 @@
 
     .navLink.dropdown {
         pointer-events: none;
-
     }
 
     .navLink:not(:last-of-type)::after {

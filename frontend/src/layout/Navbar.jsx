@@ -44,9 +44,9 @@ export const Navbar = () => {
                 <NavLink to="/contact" className={style.navLink} onClick={() => setIsNavExpanded(false)}>
                     Contact us
                 </NavLink>
-                <NavLink to="/login" className={style.navLink} onClick={() => setIsNavExpanded(false)}>
+                {/* <NavLink to="/login" className={style.navLink} onClick={() => setIsNavExpanded(false)}>
                     LOG IN
-                </NavLink>
+                </NavLink> */}
             </div>
         </nav>
     );

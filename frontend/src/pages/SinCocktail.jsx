@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import styles from "./SinCocktail.module.css";
-import { Text } from './UI/Typography';
+import { Text } from '../UI/Typography';
+import { BackButton } from '../UI/BackToButton';
 
 export const SinCocktail = () => {
     const [cocktail, setCocktail] = useState(null);
@@ -87,13 +88,13 @@ export const SinCocktail = () => {
                             style={{ marginBottom: '50px' }}>
                             Occasions: {cocktail.occasion.join(', ')}
                         </Text>
-
+                        <BackButton />
                     </div>
                 ) : (
                     <p>Loading cocktail details...</p>
                 )}
             </div>
-        </div>
+        </div >
     );
 };
 
