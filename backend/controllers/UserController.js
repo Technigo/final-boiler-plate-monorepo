@@ -304,12 +304,21 @@ export const UserController = {
       console.log(req.body);
       const trip = await TripModel.findOne({ _id: tripid });
 
-      trip.passengers.push({ userId: id, username: username });
-      const updated = await trip.save();
-      res.json({
-        message: "Passenger added successfully",
-        passenger: updated.passengers,
-      });
+      if (trip.availableSeats > 0) {
+        trip.passengers.push({ userId: id, username: username });
+
+        // Decrease available seats by 1
+        trip.availableSeats -= 1;
+
+        // Save the updated trip
+        const updated = await trip.save();
+        res.json({
+          message: "Passenger added successfully",
+          passenger: updated.passengers,
+        });
+      } else {
+        res.status(400).json({ error: "No available seats" });
+      }
     } catch (error) {
       res.status(400).json({
         message: "Could not add passenger",

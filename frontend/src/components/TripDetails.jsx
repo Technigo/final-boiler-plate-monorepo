@@ -179,13 +179,19 @@ export const TripDetails = () => {
               !selectedTrip.passengers
                 .map((x) => x.userId)
                 .includes(loggedInUserId) && (
-                <button
-                  type="button"
-                  onClick={joinTripAttempt}
-                  className="bg-pink-400 rounded-full cursor-pointer hover:bg-cyan-800 text-white px-5 py-2 mt-8 font-semibold"
-                >
-                  Join trip
-                </button>
+                <>
+                  {selectedTrip && selectedTrip.availableSeats > 0 ? (
+                    <button
+                      type="button"
+                      onClick={joinTripAttempt}
+                      className="bg-pink-400 rounded-full cursor-pointer hover:bg-cyan-800 text-white px-5 py-2 mt-8 font-semibold"
+                    >
+                      Join trip
+                    </button>
+                  ) : (
+                    <p>No available seats</p>
+                  )}
+                </>
               )}
           </div>
         </div>
