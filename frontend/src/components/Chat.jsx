@@ -161,10 +161,10 @@ export const Chat = () => {
     isAuthenticated && (
       <div className="flex flex-col mx-auto max-w-screen-md p-2 mt-8 mb-8 w-full">
         <div className="bg-blue-100 p-4 rounded-xl mb-4">
-          <h1 className="text-black py-1 text-md xl:text-xl">Hi, {username}</h1>
-          <h2 className="text-black text-sm py-1 xl:text-md">
-            Choose a user to chat with:
-          </h2>
+          <h1 className="text-black py-1 text-md">
+            Hi, {username}! Choose a user to chat with:
+          </h1>
+
           {!userLoading && (
             <ul className="px-2">
               {userList.map(
@@ -172,7 +172,7 @@ export const Chat = () => {
                   user._id !== loggedInUserId && (
                     <li
                       key={user._id}
-                      className="cursor-pointer py-2 text-md xl:text-md"
+                      className="cursor-pointer py-2 text-md"
                       onClick={() => {
                         setChatReceiver(user.username);
                         setRecipientId(user._id);
@@ -200,7 +200,9 @@ export const Chat = () => {
           )}
         </div>
         <div className="flex flex-col bg-gray-200 p-4 rounded-lg">
-          <div className="flex-grow mb-4">Messages with {chatReceiver}</div>
+          <div className="flex-grow mb-4 text-md">
+            Messages with {chatReceiver}
+          </div>
           <div className="overflow-y-auto flex-grow max-h-72">
             {chatMessages.map((message) => (
               <div
