@@ -1,5 +1,6 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+
 import { useEffect } from 'react'
-// import { useState } from 'react'
 import { showTimesStore } from '../store/showTimeStore'
 import { Link } from 'react-router-dom'
 import moment from 'moment'
@@ -7,15 +8,11 @@ import moment from 'moment'
 import "./MovieDetails.css";
 
 export const MovieDetails = ({ movie }) => {
-  // const fetchShowtimeByMovie = showTimesStore((state) => state.fetchShowtimeByMovie)
   const { 
-    // showTimes, 
-    // setShowtimes,
     showTimesByMovie,
     fetchShowtimesByMovie
    } = showTimesStore()
 
-  // const [showtimes, setShowtimes] = useState([]);
   const { title, posterUrl, description, IMDBRating, duration, genre } = movie;
   // const backgroundImage = `https://image.tmdb.org/t/p/w1280/${backdropUrl}`;
   const posterImage = `https://image.tmdb.org/t/p/w780${posterUrl}`;
@@ -27,11 +24,6 @@ export const MovieDetails = ({ movie }) => {
 
         // Fetch showtimes for the movie
         await fetchShowtimesByMovie(movie._id);
-
-        // Access the updated showtimes from the store
-        // const updatedShowtime = showTimesStore.getState().showTimes;
-        // console.log('Fetched showtimes:', updatedShowtime);
-        // setShowtimes(updatedShowtime);
       }
     } catch (error) {
       console.error('Error fetching showtimes:', error);
@@ -39,12 +31,11 @@ export const MovieDetails = ({ movie }) => {
   };
 
   useEffect(() => {
-    console.log('Component rendered with movie:', movie);
     fetchShowtime();
-    console.log(showTimesByMovie)
+    console.log('Component rendered with movie:', movie);
   }, [])
 
-  const formatReleaseDate = (fullDate) => {
+  const formatDate = (fullDate) => {
     return moment(fullDate).format("MMM Do YY")
   }
 
@@ -64,7 +55,7 @@ export const MovieDetails = ({ movie }) => {
         <div className="more-info">
           <p> RUNTIME: {duration} min </p>
           <p> GENRES: {genre.join(", ")}</p>
-          <p> RELEASE DATE :{formatReleaseDate(movie.releaseDate)}</p>
+          <p> RELEASE DATE :{formatDate(movie.releaseDate)}</p>
         </div>
       </div>
       <div className="the-showtimes">
