@@ -1,7 +1,7 @@
 import { Route } from "react-router-dom";
 
 import { About } from "../pages/About";
-import { Account } from "../pages/Account";
+// import { Account } from "../pages/Account";
 import { Home } from "../pages/Home";
 import { NotFound } from "../pages/NotFound";
 import { CreateTrip } from "../pages/CreateTrip";
@@ -10,15 +10,17 @@ import { Contact } from "../pages/Contact";
 import { Trips } from "../components/Trips";
 import { Messages } from "../pages/Messages";
 import { TripDetails } from "../components/TripDetails";
+import { MyTrips } from "../pages/MyTrips";
 
 // Define the 'routes' variable as a JSX expression.
 const routes = (
   <>
     <Route path="/" element={<Home />} />
     <Route path="/about" element={<About />} />
-    <Route path="/account" element={<Account />} />
+    {/* <Route path="/account" element={<Account />} /> */}
     <Route path="/createtrip" element={<CreateTrip />} />
     <Route path="/trips" element={<Trips />} />
+    <Route path="/mytrips" element={<MyTrips />} />
     <Route path="/trips/:tripId" element={<TripDetails />} />
     <Route path="/register" element={<Register />} />
     <Route path="/contact" element={<Contact />} />

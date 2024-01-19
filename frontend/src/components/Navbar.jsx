@@ -27,7 +27,8 @@ export const Navbar = () => {
     { linkName: "Messages", linkRoute: "/messages" },
     { linkName: "Create trip", linkRoute: "/createtrip" },
     { linkName: "Trips", linkRoute: "/trips" },
-    { linkName: "My Account", linkRoute: "/account" },
+    { linkName: "My Trips", linkRoute: "/mytrips" },
+    // { linkName: "My Account", linkRoute: "/account" },
     { linkName: "About", linkRoute: "/about" },
   ];
 
@@ -67,8 +68,7 @@ export const Navbar = () => {
 
   return (
     <nav
-      className={`bg-tertiary p-4 z-20 sticky top-0 ${isScrolled ? "" : ""}`}
-    >
+      className={`bg-tertiary p-4 z-20 sticky top-0 ${isScrolled ? "" : ""}`}>
       <div className="container mx-auto flex items-center justify-between">
         <div
           onClick={() => navigate("/")}
@@ -111,8 +111,7 @@ export const Navbar = () => {
           <LogoutBtn />
           <button
             className="text-white text-2xl pl-5 w-8"
-            onClick={onMobileNavClick}
-          >
+            onClick={onMobileNavClick}>
             {/* Add a responsive menu icon, e.g., a hamburger icon */}
             {openMobileNav ? <>&#x2715;</> : <>&#9776; </>}
           </button>
