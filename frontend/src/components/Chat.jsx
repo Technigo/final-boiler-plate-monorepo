@@ -200,7 +200,7 @@ export const Chat = () => {
           )}
         </div>
         <div className="flex flex-col bg-gray-200 p-4 rounded-lg">
-          <div className="flex-grow mb-4 text-md">
+          <div className="flex-grow mb-2 text-md">
             Messages with {chatReceiver}
           </div>
           <div className="overflow-y-auto flex-grow max-h-72">
@@ -237,11 +237,11 @@ export const Chat = () => {
               value={newMessageText}
               onChange={(e) => setNewMessageText(e.target.value)}
               placeholder="Type a message..."
-              className="bg-white text-black border p-2 flex-grow rounded-sm"
+              className="bg-white text-black border p-2 mt-4 flex-grow rounded-sm"
             />
             <button
               type="submit"
-              className="rounded-sm bg-blue-500 p-2 text-white border cursor-pointer hover:bg-blue-700">
+              className="rounded-sm bg-blue-500 p-2 text-white border cursor-pointer hover:bg-blue-700 mt-4">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
