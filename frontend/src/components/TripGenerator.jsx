@@ -67,22 +67,6 @@ export const TripGenerator = () => {
     }
   };
 
-  // const handleTimeChange = (e) => {
-  //   const { name, value } = e.target;
-  //   let formattedValue = value;
-
-  //   const selectedTime = new Date(`2000-01-01T${formattedValue}`);
-  //   const roundedMinutes = Math.round(selectedTime.getMinutes() / 15) * 15;
-  //   selectedTime.setMinutes(roundedMinutes);
-
-  //   const formattedTime = selectedTime.toLocaleTimeString([], {
-  //     hour: "2-digit",
-  //     minute: "2-digit",
-  //   });
-
-  //   setFormData((prevData) => ({ ...prevData, [name]: formattedTime }));
-  // };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
@@ -102,8 +86,6 @@ export const TripGenerator = () => {
     };
 
     try {
-      console.log(newTrip);
-      console.log(`${apiEnv}/addtrip`);
       const response = await fetch(`${apiEnv}/addtrip`, {
         method: "POST",
         headers: {
@@ -138,19 +120,6 @@ export const TripGenerator = () => {
       setLoading(false);
     }
   };
-
-  // const timeOptions = Array.from({ length: 24 * 4 }, (_, index) => {
-  //   const hours = Math.floor(index / 4);
-  //   const minutes = (index % 4) * 15;
-  //   const formattedTime = `${String(hours).padStart(2, "0")}:${String(
-  //     minutes
-  //   ).padStart(2, "0")}`;
-  //   return (
-  //     <option key={formattedTime} value={formattedTime}>
-  //       {formattedTime}
-  //     </option>
-  //   );
-  // });
 
   const formDataIsIncomplete = () => {
     const { from, to, date, make, model, reg, availableSeats, message, music } =
@@ -381,11 +350,11 @@ export const TripGenerator = () => {
               type="submit"
               className={`submit-button ${
                 loading
-                  ? "bg-primary-100"
+                  ? "bg-background"
                   : formDataIsIncomplete()
-                  ? "bg-primary-100"
+                  ? "bg-background"
                   : "bg-secondary-500 hover:bg-secondary-700"
-              } text-white p-4 py-2 rounded-full focus:outline-none focus:ring focus:border-blue-300`}
+              } text-primary p-4 py-2 rounded-full focus:outline-none focus:ring focus:border-blue-300`}
               disabled={loading || formDataIsIncomplete()}
             >
               {loading ? "Generating..." : "Create Trip"}

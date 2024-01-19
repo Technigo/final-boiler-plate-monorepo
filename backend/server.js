@@ -5,7 +5,7 @@ import dotenv from "dotenv"; // Import dotenv for environment variables
 dotenv.config(); // Load environment variables from the .env file
 import { connectDB } from "./config/db"; // Import database connection function
 import { auth0Config } from "./config/Auth0";
-import userRoutes from "./routes/userRoutes";
+import routes from "./routes/routes";
 
 const { auth } = require("express-openid-connect");
 
@@ -21,7 +21,7 @@ app.use(auth(auth0Config));
 
 // Use the routes for handling API requests
 // ROUTES - These routes USE controller functions ;)
-app.use(userRoutes);
+app.use(routes);
 
 // Connection to the database through Mongoose
 connectDB();

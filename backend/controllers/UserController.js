@@ -85,7 +85,6 @@ export const UserController = {
       username,
       music,
     } = req.body;
-    console.log(req.body);
 
     try {
       const trip = new TripModel({
@@ -193,21 +192,17 @@ export const UserController = {
   },
 
   passengerJoin: async (req, res) => {
-    console.log();
     const { tripid } = req.params;
     const { id, username } = req.body;
 
     try {
-      console.log(req.body);
       const trip = await TripModel.findOne({ _id: tripid });
 
       if (trip.availableSeats > 0) {
         trip.passengers.push({ userId: id, username: username });
 
-        // Decrease available seats by 1
         trip.availableSeats -= 1;
 
-        // Save the updated trip
         const updated = await trip.save();
         res.json({
           message: "Passenger added successfully",

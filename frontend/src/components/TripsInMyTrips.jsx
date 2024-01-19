@@ -5,7 +5,7 @@ import { userStore } from "../stores/userStore";
 export const TripsInMyTrips = () => {
   const [trips, setTrips] = useState(null);
   const apiEnv = import.meta.env.VITE_BACKEND_API;
-  const { loggedInUserId, username } = userStore();
+  const { loggedInUserId } = userStore();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -15,14 +15,13 @@ export const TripsInMyTrips = () => {
         );
         const response = await fetcher.json();
         setTrips(response);
-        console.log(trips);
       } catch (error) {
         console.log(error);
       }
     };
 
     fetchData();
-  }, []);
+  }, [trips]);
 
   const deleteTrip = async (tripId) => {
     try {
@@ -41,7 +40,7 @@ export const TripsInMyTrips = () => {
   return (
     <>
       <div className="sm:mt-8 mt-2 space-y-4 mx-auto max-w-screen-md mb-8 p-2">
-        <h1 className="text-lg font-md">Created Trips</h1>
+        <h1 className="text-lg font-md">My created trips</h1>
         {trips.map((trip) => (
           <>
             {trip.user === loggedInUserId && (
@@ -148,12 +147,13 @@ export const TripsInMyTrips = () => {
         ))}
       </div>
       <div className="sm:mt-8 mt-2 space-y-4 mx-auto max-w-screen-md mb-8 p-2">
-        <h1 className="text-lg font-md">Joined Trips</h1>
+        <h1 className="text-lg font-md">My joined trips</h1>
         {trips.map((trip) => (
           <>
             {trip.user !== loggedInUserId && (
               <div
                 key={trip._id}
+                s
                 className="grid grid-cols-12 gap-2 bg-background rounded-lg relative p-4"
               >
                 <div className="col-span-5 text-lg text-primary-900 font-semibold sm:text-4xl">

@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { userStore } from "../stores/userStore";
 import { useAuth0 } from "@auth0/auth0-react";
 import { Link } from "react-router-dom";
@@ -11,31 +11,9 @@ export const TripDetails = () => {
   const { isAuthenticated } = useAuth0();
   const [isLoading, setIsLoading] = useState(true);
   const apiEnv = import.meta.env.VITE_BACKEND_API;
+  const navigate = useNavigate();
 
-  // const joinTrip = async () => {
-  //   try {
-  //     const response = await fetch(`${apiEnv}/trips/join/${tripId}`, {
-  //       method: "POST",
-  //       headers: {
-  //         "Content-Type": "application/json",
-  //       },
-  //       body: JSON.stringify({
-  //         userId: loggedInUserId,
-  //       }),
-  //     });
-
-  //     if (response.ok) {
-  //       const data = await response.json();
-  //       setSelectedTrip(data);
-  //     } else {
-  //       const errorResponse = await response.text();
-  //       console.error("Error joining trip:", errorResponse);
-  //     }
-  //   } catch (error) {
-  //     console.error("Error joining trip:", error);
-  //   }
-  // };
-  const joinTripAttempt = async () => {
+  const joinTrip = async () => {
     const passengerDetails = {
       id: loggedInUserId,
       username: username,
@@ -52,12 +30,8 @@ export const TripDetails = () => {
 
       if (response.ok) {
         const data = await response.json();
-        console.log("Passenger added successfully:", data);
+        navigate("/mytrips");
       }
-      // else {
-      //   const errorResponse = await response.text();
-      //   console.error("Error joining trip:", errorResponse);
-      // }
     } catch (error) {
       console.error("Error joining trip: ", error);
     }
@@ -78,10 +52,7 @@ export const TripDetails = () => {
     if (!tripId) {
       return;
     }
-
     fetchTrip();
-    // setTheTripId(tripId);
-    // setTheUsername(username);
   }, [tripId]);
 
   if (isLoading) {
@@ -90,7 +61,6 @@ export const TripDetails = () => {
 
   return (
     <>
-      {console.log(username)}
       <div className="sm:mt-8 mt-2 space-y-4 mx-auto max-w-screen-md mb-8 p-2">
         <h1 className="text-lg font-md">Trip details</h1>
         <div className="grid grid-cols-12 bg-background rounded-lg relative p-4">
@@ -181,7 +151,7 @@ export const TripDetails = () => {
                   {selectedTrip && selectedTrip.availableSeats > 0 ? (
                     <button
                       type="button"
-                      onClick={joinTripAttempt}
+                      onClick={joinTrip}
                       className="bg-pink-400 rounded-full cursor-pointer hover:bg-cyan-800 text-white px-5 py-2 mt-8 font-semibold"
                     >
                       Join trip
@@ -219,35 +189,3 @@ export const TripDetails = () => {
     </>
   );
 };
-
-{
-  /* <div className="sm:mt-8 mt-2 mb-8 space-y-4 mx-auto max-w-screen-lg">
-<h1 className="text-lg font-md">Trip details</h1>
-<div className="grid grid-cols-12 gap-4 border mb-8 p-4 rounded-lg">
-  <div className="col-span-12 flex justify-center p-4">
-    <div className="trip-info">
-      <div className="info-item">Username: {selectedTrip.username}</div>
-      <div className="info-item">From: {selectedTrip.from}</div>
-      <div className="info-item">To: {selectedTrip.to}</div>
-      <div className="info-item">Date: {selectedTrip.date}</div>
-      <div className="info-item">Reg.no: {selectedTrip.reg}</div>
-      <div className="info-item">
-        Avail. seats: {selectedTrip.availableSeats}
-      </div>
-      <div className="info-item">Make: {selectedTrip.make}</div>
-      <div className="info-item">Model: {selectedTrip.model}</div>
-      <div className="info-item">Message: {selectedTrip.message}</div>
-      {isAuthenticated && selectedTrip.user !== loggedInUserId && (
-        <button
-          type="button"
-          onClick={joinTrip}
-          className="bg-pink-400 rounded-full cursor-pointer hover:bg-cyan-800 text-white px-5 py-2 mt-8 font-semibold"
-        >
-          Join trip
-        </button>
-      )}
-    </div>
-  </div>
-</div>
-</div> */
-}
