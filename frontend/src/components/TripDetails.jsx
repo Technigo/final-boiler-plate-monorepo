@@ -166,7 +166,7 @@ export const TripDetails = () => {
             {selectedTrip.message}
           </div>
 
-          <div className="col-span-12 flex items-center justify-end text-gray-400 text-xs mt-8">
+          <div className="col-span-12 flex items-center justify-end text-gray-300 text-xs mt-8">
             Trip ID: {selectedTrip._id}
           </div>
 
