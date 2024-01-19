@@ -1,7 +1,8 @@
 import { createGlobalStyle } from "styled-components";
 
 export const GlobalStyle = createGlobalStyle`
-  
+
+/* CSS Reset */
 * {
   margin: 0;
   padding: 0;
@@ -23,6 +24,8 @@ svg {
   display: block;
   max-width: 100%;
 }
+
+/* End of CSS Reset */
   
 body {
   height: 100%;

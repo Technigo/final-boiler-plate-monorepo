@@ -69,7 +69,10 @@ export const BurgerMenu = () => {
 
   return (
     <StyledBurgerMenu>
-      <StyledToggleButton onClick={() => setBurgerMenuOpen(!burgerMenuOpen)}>
+      <StyledToggleButton
+        onClick={() => setBurgerMenuOpen(!burgerMenuOpen)}
+        aria-label="Toggle Menu"
+      >
         {/* Toggle the burger menu open and closed. */}
         {burgerMenuOpen ? (
           <IoCloseOutline

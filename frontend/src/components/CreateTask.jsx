@@ -218,6 +218,7 @@ export const CreateTask = () => {
           type="select"
           onChange={taskCategory}
           value={category}
+          aria-label="Select category"
         >
           <option disabled default value="">
             Category
@@ -233,6 +234,7 @@ export const CreateTask = () => {
           type="select"
           onChange={taskArea}
           value={area}
+          aria-label="Select area"
         >
           <option disabled default value="">
             Area

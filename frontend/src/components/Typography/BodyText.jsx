@@ -46,7 +46,7 @@ const StyledBodyText = styled.p`
   }
 `;
 
-// Define a functional component 'BodyText' that takes 'text' as a prop.
+// Define a functional component 'BodyText' that takes 'className', 'lines' and 'text' as a prop.
 export const BodyText = ({ className, lines, text }) => {
   // Render the styled p element with the provided text and a className of "bodytext".
   return (

@@ -27,17 +27,15 @@ const StyledLogoDiv = styled.div`
 function LogoText() {
   return (
     <StyledLogoDiv>
-      <>
-        {/* Create a link to the A Helping Hand website that opens in a new tab. */}
-        <Link to="/">
-          {/* Display the A Helping Hand logo image. */}
-          <StyledLogoText
-            src={aHelpingHandLogo}
-            className="logo"
-            alt="A Helping Hand logo"
-          />
-        </Link>
-      </>
+      {/* Create a link to the A Helping Hand website that opens in a new tab. */}
+      <Link to="/">
+        {/* Display the A Helping Hand logo image. */}
+        <StyledLogoText
+          src={aHelpingHandLogo}
+          className="logo"
+          alt="A Helping Hand logo"
+        />
+      </Link>
     </StyledLogoDiv>
   );
 }

@@ -103,6 +103,7 @@ export const FilterTaskFeed = () => {
           type="select"
           onChange={(e) => setCategory(e.target.value)}
           value={category}
+          aria-label="Filter by category"
         >
           <option disabled default value="">
             Filter by category
@@ -120,6 +121,7 @@ export const FilterTaskFeed = () => {
           type="select"
           onChange={(e) => setArea(e.target.value)}
           value={area}
+          aria-label="Filter by area"
         >
           <option disabled default value="">
             Filter by area

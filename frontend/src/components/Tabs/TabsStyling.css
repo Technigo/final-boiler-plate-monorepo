@@ -1,3 +1,5 @@
+/* Styling sheet for the tabs component TaskTabs.jsx */
+
 .react-tabs {
   -webkit-tap-highlight-color: transparent;
 }
