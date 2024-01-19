@@ -3437,5 +3437,358 @@
     ],
     "description": "The restaurant's atmosphere is characterized by good lighting and a bustling yet casual vibe, making it suitable for a wide range of occasions. It's a family-friendly establishment, so you can bring the whole family along, including the kids and even your furry friends, as it's dog-friendly. One of the standout features of Bistro Leoparden is its great pizzas. Whether you're craving a classic Margherita or something more adventurous, you'll find delicious pizza options to satisfy your taste buds. So, whether you're having dinner with friends, colleagues, or enjoying a romantic date night, you can enjoy some fantastic pizzas at Bistro Leoparden. And don't forget, you can also visit for a classic Swedish after-work gathering or even have a solo dinner party.",
     "url": "https://bistroleoparden.se/"
+  },
+
+  {
+    "restaurantID": "94",
+    "restaurantName": "Symbios",
+    "address": "Skånegatan 80",
+    "zipcode": "11637",
+    "city": "Stockholm",
+    "country": "Sweden",
+    "borough": "Södermalm",
+    "cuisine": "Scandinavian with a southern european twist",
+    "category": ["Celebration", "Date", "Family", "Friends", "Other"],
+    "occasion": [
+      "Have dinner with the in-laws",
+      "Have dinner with your bestie",
+      "Have dinner with friends to catch up",
+      "Have dinner with the whole family",
+      "Have dinner with your parents",
+      "Impress your date and the sky is the limit",
+      "Celebrate a relationship anniversary",
+      "Celebrate you turning 28 again (honey, you ain't fooling anyone)",
+      "Have a meparty aka dinner for one",
+      "Go on a nice date with that special someone"
+    ],
+    "mood": [
+      "Cozy",
+      "Good lighting",
+      "Soft-spoken",
+      "Sophisticated",
+      "Family friendly",
+      "Calm",
+      "Romantic"
+    ],
+    "description": "Located in the old venue of Pet Sounds Bar in Skånegatan Symbios is a charming haven for diverse occasions. With its cozy ambiance and good lighting, it's perfect for intimate dinners with the in-laws, your bestie, or friends catching up. Families can enjoy a warm atmosphere for gatherings, while the restaurant's sophisticated and soft-spoken setting adds a touch of romance. Whether you're looking for a calm and family-friendly spot or aiming to impress your date with limitless possibilities, Symbios welcomes you. Celebrate relationship milestones, the timeless act of turning 28 again, or have a delightful solo dinner party. It's an ideal destination for creating special memories and enjoying a nice date with that special someone.",
+    "url": "https://symbiossthlm.se/"
+  },
+
+  {
+    "restaurantID": "95",
+    "restaurantName": "Villa Godthem",
+    "address": "Rosendalsvägen 9",
+    "zipcode": "11521",
+    "city": "Stockholm",
+    "country": "Sweden",
+    "borough": "Djurgården",
+    "cuisine": "Scandinavian",
+    "category": ["Business", "Celebration", "Date", "Family", "Friends", "Other"],
+    "occasion": [
+      "Have dinner with the in-laws",
+      "Have a sunday funday aka brunch",
+      "Have dinner with kids present",
+      "Have dinner with your bestie",
+      "Have dinner with friends to catch up",
+      "Say Cheers- a classic Swedish after work",
+      "Have dinner with the whole family",
+      "Have dinner with your parents",
+      "Impress your date and the sky is the limit",
+      "Celebrate a relationship anniversary",
+      "Celebrate you turning 28 again (honey, you ain't fooling anyone)",
+      "Have a meparty aka dinner for one",
+      "Go on a nice date with that special someone"
+    ],
+    "mood": [
+      "Cozy",
+      "Good lighting",
+      "Bustling",
+      "Intimate",
+      "Sophisticated",
+      "Family friendly",
+      "Homely",
+      "Kid friendly",
+      "Romantic"
+    ],
+    "description": "With its cozy and homely ambiance, Villa Godthem provides good lighting to set the mood just right. Whether you're seeking a bustling atmosphere or a quiet, romantic dinner, this versatile venue caters to your every need. Bring the kids along for a family-friendly experience or enjoy a sophisticated and intimate evening with your loved one. Villa Godthem is your go-to spot for all these occasions and more. During the summer they have a huge garden which you can sit and sip on a cool drink or a lemonade enjoying the views of Djurgårdsbrunn",
+    "url": "https://villagodthem.se/"
+  },
+
+{ 
+    "restaurantID": "96",
+    "restaurantName": "Ulla Winbladh",
+    "address": "Rosendalsvägen 8",
+    "zipcode": "11521",
+    "city": "Stockholm",
+    "country": "Sweden",
+    "borough": "Djurgården",
+    "cuisine": "Scandinavian",
+    "category": ["Business", "Celebration", "Date", "Family", "Friends", "Other"],
+    "occasion": [
+      "Have dinner with the in-laws",
+      "Have a sunday funday aka brunch",
+      "Have dinner with kids present",
+      "Have dinner with your bestie",
+      "Have dinner with friends to catch up",
+      "Have dinner with colleagues",
+      "Have dinner with the whole family",
+      "Have dinner with your parents",
+      "Impress your date and the sky is the limit",
+      "Celebrate a relationship anniversary",
+      "Celebrate you turning 28 again (honey, you ain't fooling anyone)",
+      "Have a meparty aka dinner for one",
+      "Go on a nice date with that special someone"
+    ],
+    "mood": [
+      "Cozy",
+      "Good lighting",
+      "Bustling",
+      "Sophisticated",
+      "Family friendly",
+      "Homely",
+      "Kid friendly",
+      "Calm",
+      "Vegan option",
+      "Romantic"
+    ],
+    "description": "At Ulla Winbladh, named after the famed muse of Carl Michael Bellman, you'll find a cozy ambiance with good lighting that's perfect for various moods, from bustling and sophisticated to calm and romantic. Its setting is very traditional, but you can always count on an excellent Biff Rydberg.",
+    "url": "https://ullawinbladh.se/"
+  },
+  
+
+  {
+    "restaurantID": "97",
+    "restaurantName": "Belgobaren",
+    "address": "Bryggargatan 12",
+    "zipcode": "11121",
+    "city": "Stockholm",
+    "country": "Sweden",
+    "borough": "Norrmalm",
+    "cuisine": "Belgian, especially mussels",
+    "category": ["Business", "Celebration", "Date", "Family", "Friends"],
+    "occasion": [
+      "Have dinner with the in-laws",
+      "Have dinner with kids present",
+      "Have dinner with your bestie",
+      "Have dinner with friends to catch up",
+      "Say Cheers- a classic Swedish after work",
+      "Have dinner with colleagues",
+      "Have dinner with the whole family",
+      "Have dinner with your parents",
+      "Impress your date on a tight budget",
+      "Celebrate you turning 28 again (honey, you ain't fooling anyone)",
+      "Go on a nice date with that special someone"
+    ],
+    "mood": [
+      "Bustling",
+      "Casual",
+      "Family friendly",
+      "Homely",
+      "Kid friendly",
+      "Extended dining hours"
+    ],
+    "description": "Belgobaren is a versatile and welcoming restaurant perfect for a range of dining experiences. Whether you're planning to have dinner with in-laws, kids, your best friend, colleagues, or the whole family, Belgobaren caters to all. It's an ideal spot for catching up with friends, celebrating special occasions like turning 28 again, or impressing your date on a budget. The restaurant also offers a classic Swedish after-work atmosphere where you can say 'cheers' and unwind. The mood at Belgobaren is bustling and casual, with a homely vibe that makes it family and kid-friendly. One of the highlights of this restaurant is its extended dining hours, accommodating guests for longer periods. Belgobaren specializes in delicious mussels and an impressive selection of Belgian beer, adding to its unique charm. Its location near Stockholm Central makes it a convenient and accessible choice for both locals and visitors. Whether you're looking for a casual meal or a place to celebrate a special occasion, Belgobaren offers a warm and inviting atmosphere, delicious food, and excellent drinks.",
+    "url": "https://www.belgobaren.se/"
+  },
+  
+
+  {
+    "restaurantID": "98",
+    "restaurantName": "L'Aventurra",
+    "address": "Sveavägen 77",
+    "zipcode": "11143",
+    "city": "Stockholm",
+    "country": "Sweden",
+    "borough": "Vasastan",
+    "cuisine": "Italian",
+    "category": ["Business", "Celebration", "Date", "Family", "Friends"],
+    "occasion": [
+      "Have dinner with the in-laws",
+      "Have dinner with kids present",
+      "Have dinner with your bestie",
+      "Have dinner with friends to catch up",
+      "Say Cheers- a classic Swedish after work",
+      "Have dinner with colleagues",
+      "Have dinner with the whole family",
+      "Have dinner with your parents",
+      "Impress your date and the sky is the limit",
+      "Celebrate a relationship anniversary",
+      "Celebrate you turning 28 again (honey, you ain't fooling anyone)",
+      "Go on a nice date with that special someone"
+    ],
+    "mood": [
+      "Cozy",
+      "Good lighting",
+      "Soft-spoken",
+      "Bustling",
+      "Intimate",
+      "Sophisticated",
+      "Family friendly",
+      "Homely",
+      "Kid friendly",
+      "Romantic"
+    ],
+    "description": "L'Aventurra offers an exquisite Italian dining experience, perfect for a wide range of occasions. Whether you're planning to have dinner with in-laws, kids, your best friend, colleagues, or the whole family, this restaurant provides an ideal setting. It's a great place for catching up with friends, celebrating special occasions like relationship anniversaries, or impressing your date when the sky is the limit. The restaurant also creates a classic Swedish after-work atmosphere, perfect for saying 'cheers' and relaxing. The mood at L'Aventurra is a harmonious blend of cozy, sophisticated, and intimate, with good lighting and a soft-spoken ambiance. This makes it both bustling and romantic, suitable for family gatherings as well as more intimate occasions. The restaurant is family and kid-friendly, offering a homely environment that welcomes all guests. It provides a warm and inviting atmosphere, superb food, and an experience that encapsulates the essence of Italian dining.",
+    "url": "https://lavventura.se/"
+  },
+  
+
+  {
+    "restaurantID": "99",
+    "restaurantName": "Namu",
+    "address": "Landbygatan 5",
+    "zipcode": "21134",
+    "city": "Malmö",
+    "country": "Sweden",
+    "borough": "Gamla staden",
+    "cuisine": "Korean",
+    "category": ["Celebration", "Date", "Family", "Friends", "Other"],
+    "occasion": [
+      "Have dinner with the in-laws",
+      "Have dinner with kids present",
+      "Have dinner with your bestie",
+      "Have dinner with friends to catch up",
+      "Have dinner with the whole family",
+      "Have dinner with your parents",
+      "Impress your date and the sky is the limit",
+      "Celebrate a relationship anniversary",
+      "Celebrate you turning 28 again (honey, you ain't fooling anyone)",
+      "Have a meparty aka dinner for one",
+      "Go on a nice date with that special someone"
+    ],
+    "mood": [
+      "Cozy",
+      "Good lighting",
+      "Soft-spoken",
+      "Bustling",
+      "Intimate",
+      "Casual",
+      "Family friendly",
+      "Homely",
+      "Kid friendly",
+      "Calm",
+      "Vegan option",
+      "Romantic"
+    ],
+    "description": "Namu, owned by former Swedish MasterChef winner Jennie Walldén, is a culinary gem that caters to a variety of dining experiences. Whether you're looking to have dinner with in-laws, kids, your best friend, or the whole family, Namu offers an accommodating and welcoming atmosphere. It's an excellent choice for catching up with friends, celebrating milestones like relationship anniversaries, or impressing your date with no expense spared. The restaurant also serves as a cozy spot for a 'me party' or dinner for one, and is perfect for romantic dates. The mood at Namu is a delightful mix of cozy and intimate, with good lighting and a soft-spoken environment that also buzzes with a bustling and casual atmosphere. The setting is family and kid-friendly, offering a homely feel that makes everyone feel at ease. For those seeking calm and a vegan option, Namu provides choices that cater to diverse dietary preferences.",
+    "url": "https://namu.nu/"
+  },
+  
+  {
+    "restaurantID": "100",
+    "restaurantName": "Noir Vin- och kaffekultur",
+    "address": "Engelbrektsgatan 6BV",
+    "zipcode": "21133",
+    "city": "Malmö",
+    "country": "Sweden",
+    "borough": "Gamla staden",
+    "cuisine": "Great coffee and small dishes accompanied by wine",
+    "category": ["Business", "Date", "Friends", "Other"],
+    "occasion": [
+      "Have dinner with the in-laws",
+      "Have a sunday funday aka brunch",
+      "Have dinner with your bestie",
+      "Have dinner with friends to catch up",
+      "Say Cheers- a classic Swedish after work",
+      "Impress your date on a tight budget",
+      "Have a meparty aka dinner for one",
+      "Go on a nice date with that special someone"
+    ],
+    "mood": [
+      "Cozy",
+      "Good lighting",
+      "Bustling",
+      "Intimate",
+      "Casual",
+      "Family friendly",
+      "Homely",
+      "Kid friendly",
+      "Vegan option"
+    ],
+    "description": "Noir Vin- och kaffekultur, located in the charming borough of Gamla staden in Malmö, Sweden, is a delightful spot that combines the love for great coffee with small dishes and fine wine. The mood at Noir is a blend of cozy intimacy and bustling energy, illuminated by good lighting that creates a welcoming atmosphere. It's casual yet sophisticated, making it suitable for both family gatherings and business meetings. The setting is family and kid-friendly, with a homely vibe that makes guests of all ages feel at ease. For those seeking vegan options, Noir provides a variety of choices that cater to different dietary needs. The combination of great coffee, small yet delicious dishes, and a selection of wines ensures a memorable dining experience in the heart of Malmö.",
+    "url": "https://www.facebook.com/noirkaffekultur/"
+  },
+  
+  {
+    "restaurantID": "101",
+    "restaurantName": "MJ's restaurant",
+    "address": "Mäster Johansgatan 13",
+    "zipcode": "21121",
+    "city": "Malmö",
+    "country": "Sweden",
+    "borough": "Gamla staden",
+    "cuisine": "Great coffee and small dishes accompanied by wine",
+    "category": ["Business", "Celebration", "Date", "Family", "Friends", "Other"],
+    "occasion": [
+      "Have dinner with the in-laws",
+      "Have a sunday funday aka brunch",
+      "Have dinner with kids present",
+      "Have dinner with your bestie",
+      "Have dinner with friends to catch up",
+      "Say Cheers- a classic Swedish after work",
+      "Have dinner with colleagues",
+      "Have dinner with the whole family",
+      "Have dinner with your parents",
+      "Impress your date and the sky is the limit",
+      "Impress your date on a tight budget",
+      "Celebrate a relationship anniversary",
+      "Celebrate you turning 28 again (honey, you ain't fooling anyone)",
+      "Have a meparty aka dinner for one",
+      "Go on a nice date with that special someone"
+    ],
+    "mood": [
+      "Cozy",
+      "Good lighting",
+      "Soft-spoken",
+      "Bustling",
+      "Intimate",
+      "Casual",
+      "Sophisticated",
+      "Family friendly",
+      "Homely",
+      "Kid friendly",
+      "Dog friendly",
+      "Calm",
+      "Vegan option",
+      "Romantic"
+    ],
+    "description": "MJ's Restaurant, nestled within a hotel that shares the Foodie Moodie team's love for pink, is a vibrant and welcoming destination in the heart of the city. This restaurant is a perfect choice for a wide array of occasions, from having dinner with the in-laws to enjoying a Sunday brunch, a meal with kids, a catch-up dinner with friends, or a romantic date night. The mood at MJ's Restaurant is a delightful mix of cozy and sophisticated, with good lighting and a soft-spoken ambiance that complements its bustling and intimate setting. The atmosphere is both casual and refined, making it an ideal spot for family gatherings, business dinners, or casual outings with friends. The restaurant is family and kid-friendly, and even welcomes dogs, ensuring that all guests, including furry ones, feel at home.",
+    "url": "https://mjs.life/mjs-restaurant/"
+  },
+  
+
+  {
+    "restaurantID": "102",
+    "restaurantName": "Waipo",
+    "address": "Jakobsbergsgatan 15",
+    "zipcode": "11144",
+    "city": "Stockholm",
+    "country": "Sweden",
+    "borough": "Norrmalm",
+    "cuisine": "Asian fusion",
+    "category": ["Date", "Family", "Friends", "Other"],
+    "occasion": [
+      "Have dinner with the in-laws",
+      "Have a sunday funday aka brunch",
+      "Have dinner with kids present",
+      "Have dinner with your bestie",
+      "Have dinner with friends to catch up",
+      "Have dinner with the whole family",
+      "Have dinner with your parents",
+      "Celebrate a relationship anniversary",
+      "Go on a nice date with that special someone"
+    ],
+    "mood": [
+      "Cozy",
+      "Casual",
+      "Family friendly",
+      "Homely",
+      "Kid friendly",
+      "Vegan option",
+      "Romantic"
+    ],
+    "description": "Tasty Asian themed tapas sized dishes that are meant to be shared makes this restaurant in the heart of Stockholm a social and heartwarming place to eat. There is something for everyone, whether you are a vegan or a lover of meat",
+    "url": "https://waipo.se/"
   }
+  
 ]
