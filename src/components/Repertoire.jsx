@@ -2,41 +2,52 @@ import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 // import { movieStore } from '../store/movieStore'
 import { showTimesStore } from '../store/showTimeStore'
-
+import moment from 'moment'
 import './Repertoire.css'
 
-export const Repertoire = () => {
-  // const fetchMovies = movieStore((state) => state.fetchMovies)
-  // const movies = movieStore((state) => state.movies)
+export const Repertoire = ({ date }) => {
+  const {
+    fetchShowTimes,
+    showTimes
+  } = showTimesStore()
 
-  const fetchShowTimes = showTimesStore((state) => state.fetchShowTimes)
-  const showTimes = showTimesStore((state) => state.showTimes)
-
-
+  const compareDate = (date1, date2) => {
+    let updatedDate1 = moment(date1).format('MMM DD')
+    if (updatedDate1 === date2) return true
+    else return false
+  }
 
   useEffect(() => {
     console.log('Fetching show time.')
     fetchShowTimes()
-  }, [fetchShowTimes])
-
-
-  console.log('Showtimes:', showTimes)
-
+  }, [])
 
   return (
     <div className='the-repertoire'>
       <h4>Repertoire</h4>
       <div className='the-list'>
-        <div className='the-title'>
-          {showTimes && showTimes.map((title) => (
+        <ul>
+          <div className='the-title'>
+          {showTimes && showTimes.map((showtime) => (
+            compareDate(showtime.date, date.month) && (
+              <div key={showtime._id}>
+                <li>
+                  {showtime.movieTitle}: 
+                  <span>
+                    <Link to={`/booking/${showtime._id}`}>
+                      {showtime.startingTime}:00
+                    </Link>
+                  </span>
+                </li>
+              </div>)
+          ))}
+          {/* {showTimes && showTimes.map((title) => (
             <div key={title._id}>
-              {/* title Title */}
               <ul>
                 <li >{title.movieTitle} :</li>
               </ul>
             </div>
           ))}</div>
-        {/* Showtimes */}
         <div className='the-showtime'>
           {showTimes && showTimes.map((showTime) => (
             <div key={showTime._id}>
@@ -46,8 +57,9 @@ export const Repertoire = () => {
                 </li>
               </ul>
             </div>
-          ))}
-        </div>
+          ))} */}
+          </div>
+        </ul>
       </div>
     </div>
   )
