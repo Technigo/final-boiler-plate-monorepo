@@ -14,13 +14,13 @@ const mongooseOptions = {
   useUnifiedTopology: true // Use the new Server Discover and Monitoring engine
 };
 
-/**
- * Asynchronous function to connect to MongoDB.
- * This function tries to establish a connection with the MongoDB server
- * using the connection string provided in the .env file.
- */
+//Asynchronous function to connect to MongoDB. This function tries to establish a connection with the MongoDB server using the connection string provided in the .env file.
 
-// CONNECT TO LOCAL MONGO DB
+
+
+
+// CONNECT TO LOCAL MONGO DB 
+// (keep even if using Atlas)
 export const connectDB = async () => {
   // Check if the MONGO_URL environment variable is set
   if (!process.env.MONGO_URL) {
@@ -41,6 +41,10 @@ export const connectDB = async () => {
     process.exit(1);
   }
 };
+
+
+
+
 
 // CONNECT TO ATLAS DB
 export const connectAtlasDB = async () => {

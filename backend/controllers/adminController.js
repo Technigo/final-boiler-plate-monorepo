@@ -10,7 +10,7 @@ const generateToken = (id) => {
     });
 };
 
-// Register Admin
+// REGISTER ADMIN
 export const registerAdminController = asyncHandler(async (req, res) => {
     const adminRole = req.admin.role;
 
@@ -60,7 +60,9 @@ export const registerAdminController = asyncHandler(async (req, res) => {
     }
 });
 
-// Admin login
+
+
+// ADMIN LOGIN
 export const loginAdminController = asyncHandler(async (req, res) => {
     const { username, password } = req.body;
 
@@ -91,7 +93,7 @@ export const loginAdminController = asyncHandler(async (req, res) => {
     }
 });
 
-// List all users
+// LIST OF ALL USERS
 export const listUsersController = asyncHandler(async (req, res) => {
     const adminRole = req.admin.role;
 
@@ -108,7 +110,8 @@ export const listUsersController = asyncHandler(async (req, res) => {
     }
 });
 
-// Upgrade a user to an admin
+
+// UPGRADE USER TO ADMIN
 export const upgradeUserController = asyncHandler(async (req, res) => {
     const adminRole = req.admin.role;
 

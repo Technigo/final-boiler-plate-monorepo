@@ -136,38 +136,3 @@ export const loginUserController = asyncHandler(async (req, res) => {
 // loginUserController: This controller manages user login. It extracts the username and password from the request body, then attempts to find a user with the provided username in the database. If the user is found, it compares the provided password with the hashed password stored in the database using bcrypt. If the credentials match, it generates a JWT token for the user and responds with a success message, user details, and the JWT token. In case of authentication failure (wrong password or non-existent user), it responds with appropriate error messages.
 
 // In summary, this file provides controllers for user registration and login, ensuring that user credentials are securely handled and authenticated using JWT tokens. It also uses bcrypt to hash and store passwords securely in the database, enhancing the overall security of user authentication in the application.
-
-/*
-//MED JWT//
-import jwt from 'jsonwebtoken';
-import { UserModel } from '../models/UserModel'; // Or AdminModel if you have a separate model for admins
-import dotenv from 'dotenv';
-
-dotenv.config();
-
-export const authenticateAdmin = async (req, res, next) => {
-  const token = req.header('Authorization')?.split(' ')[1];
-  if (!token) {
-    return res.status(401).json({ success: false, message: 'No token, authorization denied' });
-  }
-
-  try {
-    const decoded = jwt.verify(token, process.env.JWT_SECRET);
-    const user = await UserModel.findById(decoded.id).select('-password'); // Or AdminModel.findById if using a separate model
-
-    if (!user) {
-      return res.status(401).json({ success: false, message: 'Token is not valid' });
-    }
-
-    // Check if the user has the 'admin' role
-    if (user.role !== 'admin') {
-      return res.status(403).json({ success: false, message: 'Access denied: requires admin role' });
-    }
-
-    req.user = user;
-    next();
-  } catch (e) {
-    res.status(401).json({ success: false, message: 'Token is not valid' });
-  }
-};
-*/

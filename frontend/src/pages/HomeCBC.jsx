@@ -1,6 +1,6 @@
 import styles from './HomeCBC.module.css';
 import { Text } from '../UI/Typography';
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom'; //for SinCoctail (had troubble yesterday and moved sinCocktails from pages to src)
 
 export const HomeCBC = () => {

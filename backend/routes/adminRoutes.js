@@ -1,11 +1,12 @@
 import express from "express";
+import { authenticateAdmin } from "../middleware/authenticateAdmin"; // Import middleware to add for protection
 import {
     registerAdminController,
     loginAdminController,
     listUsersController, // List of all users
     upgradeUserController // Upgrade user to admin
 } from "../controllers/adminController";
-import { authenticateAdmin } from "../middleware/authenticateAdmin"; // Import middleware to add for protection
+
 
 
 // Create an instance of the Express router

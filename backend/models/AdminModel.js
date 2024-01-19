@@ -1,5 +1,4 @@
 import mongoose from 'mongoose';
-// import crypto from "crypto"; //  Imports the Node.js crypto library for generating secure random strings.
 
 const adminSchema = new mongoose.Schema({
     username: {

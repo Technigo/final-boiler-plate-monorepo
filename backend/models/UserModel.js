@@ -1,5 +1,4 @@
 import mongoose from "mongoose";
-//import crypto from "crypto"; //  Imports the Node.js crypto library for generating secure random strings.
 
 // Import the Schema class from the Mongoose library
 // Destructures the Schema class from the Mongoose library, allowing us to create a schema.
@@ -40,12 +39,6 @@ const userSchema = new Schema(
       type: String,
       default: 'user',
     },
-    /* //NOT USED ANYWHERE IN THE APP AS THE REST OF THE APP USES JWT TOKENS? - COMMENT OUT FOR NOW
-    //Define the 'accessToken' field with a String data type
-    accessToken: {
-      type: String, // Specifies that 'accessToken' should be a string
-      default: () => crypto.randomBytes(128).toString("hex"), // Sets a default value using a cryptographic random string
-    },*/
   },
   {
     timestamps: true,

@@ -1,5 +1,3 @@
-// Accessible only by direct URL: /admin/login
-
 //import { Link } from "react-router-dom"; // Import the 'Link' component from 'react-router-dom'.
 import { adminLoginStore } from "../stores/adminLoginStore"; // Import the adminStore from zustand
 import { useState } from "react"; // Import useState hook
@@ -40,12 +38,8 @@ export const AdminLogin = () => {
         }
     };
 
-    // Render the admin login form
     return (
         <div className={styles.wrapper}>
-            <nav>
-                {/* Optional navigation links can be added here */}
-            </nav>
             <div>
                 <Text type="H1" className={styles.h1}>ADMIN LOGIN</Text>
                 <div className="admin-login">
