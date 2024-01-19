@@ -77,6 +77,10 @@
 	gap: 15px;
 }
 
+.movie-title {
+	margin: 0;
+}
+
 @media (min-width: 667px) and (max-width: 1025px) {
 	.seat-legend li {
 		font-size: 1rem;
