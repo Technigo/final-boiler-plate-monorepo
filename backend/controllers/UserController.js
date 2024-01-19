@@ -173,7 +173,6 @@ export const UserController = {
     }
   },
 
-  //Experiment
   addMessage: async (req, res) => {
     const { sender, recipient, text } = req.body;
 

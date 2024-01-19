@@ -21,6 +21,5 @@ router.get("/trips/usertrips/:id", UserController.getUserTrips);
 router.delete("/deletetrip/:id", UserController.deleteSingleTrip);
 router.post("/addmessage", UserController.addMessage);
 router.put("/trips/join/:tripid", UserController.passengerJoin);
-// router.get("/endpoints", UserController.getEndpoints);
 
 export default router;

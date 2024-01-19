@@ -17,7 +17,6 @@ const routes = (
   <>
     <Route path="/" element={<Home />} />
     <Route path="/about" element={<About />} />
-    {/* <Route path="/account" element={<Account />} /> */}
     <Route path="/createtrip" element={<CreateTrip />} />
     <Route path="/trips" element={<Trips />} />
     <Route path="/mytrips" element={<MyTrips />} />

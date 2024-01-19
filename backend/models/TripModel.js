@@ -58,20 +58,4 @@ export const tripSchema = new Schema(
   }
 );
 
-tripSchema.methods.joinTrip = async function (userId) {
-  try {
-    if (this.availableSeats > 0) {
-      this.availableSeats -= 1;
-      this.passengers.push(userId);
-      await this.save();
-      return true;
-    } else {
-      return false;
-    }
-  } catch (error) {
-    console.error("Error saving trip:", error);
-    return false;
-  }
-};
-
 export const TripModel = mongoose.model("Trip", tripSchema);
