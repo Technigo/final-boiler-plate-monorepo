@@ -93,21 +93,21 @@ export const ManageCocktails = () => {
             <form onSubmit={handleAddSubmit}>
                 <input type="text" name="name" placeholder="Name" value={newCocktailData.name} onChange={handleInputChange} required />
                 <input type="text" name="primaryLiquor" placeholder="Primary Liquor" value={newCocktailData.primaryLiquor} onChange={handleInputChange} required />
-                <input type="text" name="allLiquors" placeholder="All Liquors (comma-separated)" value={newCocktailData.allLiquors} onChange={handleInputChange} />
-                <input type="text" name="ingredients" placeholder="Ingredients (comma-separated)" value={newCocktailData.ingredients} onChange={handleInputChange} />
+                <input type="text" name="allLiquors" placeholder="All Liquors (comma-separated)" value={newCocktailData.allLiquors} onChange={handleInputChange} required />
+                <input type="text" name="ingredients" placeholder="Ingredients (comma-separated)" value={newCocktailData.ingredients} onChange={handleInputChange} required />
                 <textarea name="instructions" placeholder="Instructions" value={newCocktailData.instructions} onChange={handleInputChange}></textarea>
-                <input type="text" name="category" placeholder="Category" value={newCocktailData.category} onChange={handleInputChange} />
-                <input type="text" name="color" placeholder="Color" value={newCocktailData.color} onChange={handleInputChange} />
+                <input type="text" name="category" placeholder="Category" value={newCocktailData.category} onChange={handleInputChange} required />
+                <input type="text" name="color" placeholder="Color" value={newCocktailData.color} onChange={handleInputChange} required />
                 <input type="number" name="ingredientsCount" placeholder="Ingredients Count" value={newCocktailData.ingredientsCount} onChange={handleInputChange} />
-                <input type="text" name="creator" placeholder="Creator" value={newCocktailData.creator} onChange={handleInputChange} />
-                <input type="text" name="occasion" placeholder="Occasion" value={newCocktailData.occasion} onChange={handleInputChange} />
-                <input type="text" name="difficulty" placeholder="Difficulty" value={newCocktailData.difficulty} onChange={handleInputChange} />
-                <input type="text" name="flavorProfile" placeholder="Flavor Profile" value={newCocktailData.flavorProfile} onChange={handleInputChange} />
-                <input type="number" name="servings" placeholder="Servings" value={newCocktailData.servings} onChange={handleInputChange} />
-                <input type="text" name="prepTime" placeholder="Prep Time" value={newCocktailData.prepTime} onChange={handleInputChange} />
+                <input type="text" name="creator" placeholder="Creator" value={newCocktailData.creator} onChange={handleInputChange} required />
+                <input type="text" name="occasion" placeholder="Occasion" value={newCocktailData.occasion} onChange={handleInputChange} required />
+                <input type="text" name="difficulty" placeholder="Difficulty" value={newCocktailData.difficulty} onChange={handleInputChange} required />
+                <input type="text" name="flavorProfile" placeholder="Flavor Profile" value={newCocktailData.flavorProfile} onChange={handleInputChange} required />
+                <input type="number" name="servings" placeholder="Servings" value={newCocktailData.servings} onChange={handleInputChange} required />
+                <input type="text" name="prepTime" placeholder="Prep Time" value={newCocktailData.prepTime} onChange={handleInputChange} required />
                 <input type="text" name="drinkware" placeholder="Drinkware" value={newCocktailData.drinkware} onChange={handleInputChange} />
-                <input type="text" name="strength" placeholder="Strength" value={newCocktailData.strength} onChange={handleInputChange} />
-                <input type="text" name="tags" placeholder="Tags (comma-separated)" value={newCocktailData.tags} onChange={handleInputChange} />
+                <input type="text" name="strength" placeholder="Strength" value={newCocktailData.strength} onChange={handleInputChange} required />
+                <input type="text" name="tags" placeholder="Tags (comma-separated)" value={newCocktailData.tags} onChange={handleInputChange} required />
                 <textarea name="description" placeholder="Description" value={newCocktailData.description} onChange={handleInputChange}></textarea>
                 <input type="file" name="image" onChange={event => setNewCocktailData({ ...newCocktailData, image: event.target.files[0] })} />
 
@@ -119,22 +119,22 @@ export const ManageCocktails = () => {
                 <form onSubmit={handleUpdateSubmit}>
                     <input type="text" name="name" value={newCocktailData.name} onChange={handleInputChange} required />
                     <input type="text" name="primaryLiquor" value={newCocktailData.primaryLiquor} onChange={handleInputChange} required />
-                    <input type="text" name="allLiquors" value={newCocktailData.allLiquors} onChange={handleInputChange} />
-                    <input type="text" name="ingredients" value={newCocktailData.ingredients} onChange={handleInputChange} />
+                    <input type="text" name="allLiquors" value={newCocktailData.allLiquors} onChange={handleInputChange} required />
+                    <input type="text" name="ingredients" value={newCocktailData.ingredients} onChange={handleInputChange} required />
                     <textarea name="instructions" value={newCocktailData.instructions} onChange={handleInputChange}></textarea>
-                    <input type="text" name="category" value={newCocktailData.category} onChange={handleInputChange} />
-                    <input type="text" name="color" value={newCocktailData.color} onChange={handleInputChange} />
+                    <input type="text" name="category" value={newCocktailData.category} onChange={handleInputChange} required />
+                    <input type="text" name="color" value={newCocktailData.color} onChange={handleInputChange} required />
                     <input type="number" name="ingredientsCount" value={newCocktailData.ingredientsCount} onChange={handleInputChange} />
-                    <input type="text" name="creator" value={newCocktailData.creator} onChange={handleInputChange} />
+                    <input type="text" name="creator" value={newCocktailData.creator} onChange={handleInputChange} required />
                     <input type="text" name="inspiredByCreator" value={newCocktailData.inspiredByCreator} onChange={handleInputChange} />
-                    <input type="text" name="occasion" value={newCocktailData.occasion} onChange={handleInputChange} />
-                    <input type="text" name="difficulty" value={newCocktailData.difficulty} onChange={handleInputChange} />
-                    <input type="text" name="flavorProfile" value={newCocktailData.flavorProfile} onChange={handleInputChange} />
-                    <input type="number" name="servings" value={newCocktailData.servings} onChange={handleInputChange} />
-                    <input type="text" name="prepTime" value={newCocktailData.prepTime} onChange={handleInputChange} />
+                    <input type="text" name="occasion" value={newCocktailData.occasion} onChange={handleInputChange} required />
+                    <input type="text" name="difficulty" value={newCocktailData.difficulty} onChange={handleInputChange} required />
+                    <input type="text" name="flavorProfile" value={newCocktailData.flavorProfile} onChange={handleInputChange} required />
+                    <input type="number" name="servings" value={newCocktailData.servings} onChange={handleInputChange} required />
+                    <input type="text" name="prepTime" value={newCocktailData.prepTime} onChange={handleInputChange} required />
                     <input type="text" name="drinkware" value={newCocktailData.drinkware} onChange={handleInputChange} />
-                    <input type="text" name="strength" value={newCocktailData.strength} onChange={handleInputChange} />
-                    <input type="text" name="tags" value={newCocktailData.tags} onChange={handleInputChange} />
+                    <input type="text" name="strength" value={newCocktailData.strength} onChange={handleInputChange} required />
+                    <input type="text" name="tags" value={newCocktailData.tags} onChange={handleInputChange} required />
                     <textarea name="description" value={newCocktailData.description} onChange={handleInputChange}></textarea>
                     <input type="file" name="image" onChange={event => setNewCocktailData({ ...newCocktailData, image: event.target.files[0] })} />
                     <button type="submit">Update Cocktail</button>
