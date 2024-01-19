@@ -2,65 +2,76 @@
 import Cocktails from '../models/Cocktails';
 import cloudinary from 'cloudinary';
         
-        export const getCocktailsController = async (req, res) => {
-            try {
-                const { search, primaryLiquor, category, ingredientsCount, occasion, flavorProfile, prepTime, drinkware, strength, difficulty, color, allLiquors, filter } = req.query;
-                
-                // Initialize the query variable
-                let query = Cocktails.find();
-        
-                if (filter) {
-                    const [filterCategory, value] = filter.split(':');
-                    if (filterCategory && value) {
-                        switch (filterCategory.toLowerCase()) {
-                            case 'liquor':
-                                query = query.where({ allLiquors: new RegExp(value, 'i') });
-                                break;
-                            case 'color':
-                                query = query.where({ color: new RegExp(value, 'i') });
-                                break;
-                            case 'occasion':
-                                query = query.where({ occasion: new RegExp(value, 'i') });
-                                break;
-                            case 'flavorprofile':
-                                query = query.where({ flavorProfile: new RegExp(value, 'i') });
-                                break;
-                    }
+export const getCocktailsController = async (req, res) => {
+    try {
+        // Extracting query parameters
+        const { search, filter } = req.query;
+
+        // Initialize the Mongoose query
+        let query = Cocktails.find();
+
+        // Filter logic: Apply filters based on the 'filter' query parameter
+        if (filter) {
+            const [filterCategory, value] = filter.split(':');
+            if (filterCategory && value) {
+                switch (filterCategory.toLowerCase()) {
+                    case 'liquor':
+                        query = query.where({ allLiquors: new RegExp(value, 'i') });
+                        break;
+                    case 'color':
+                        query = query.where({ color: new RegExp(value, 'i') });
+                        break;
+                    case 'occasion':
+                        query = query.where({ occasion: new RegExp(value, 'i') });
+                        break;
+                    case 'flavorprofile':
+                        query = query.where({ flavorProfile: new RegExp(value, 'i') });
+                        break;
+                    // Add more cases as needed for other filters
                 }
             }
-    
+        }
 
-            if (search) {
-                const regexSearch = new RegExp('\\b' + search + '\\b', 'i');
-                query = query.and([{ $or: [
-                    { name: regexSearch },
-                    { primaryLiquor: regexSearch },
-                    { allLiquors: { $in: [regexSearch] } },
-                    { ingredients: { $in: [regexSearch] } },
-                    { instructions: regexSearch },
-                    { category: regexSearch },
-                    { color: regexSearch },
-                    { occasion: { $in: [regexSearch] } },
-                    { difficulty: regexSearch },
-                    { flavorProfile: regexSearch },
-                    { prepTime: regexSearch },
-                    { drinkware: regexSearch },
-                    { strength: regexSearch },
-                    { tags: { $in: [regexSearch] } },
-                    { creator: regexSearch },
-                    { description: regexSearch },
-                    {InspiredByCreator: { $in: [regexSearch] } },
-                ]}]);
-            }
+        // Search logic: Apply a search filter if 'search' query parameter is provided
+        if (search) {
+            const regexSearch = new RegExp('\\b' + search + '\\b', 'i');
+            query = query.and([{ $or: [
+                { name: regexSearch },
+                { primaryLiquor: regexSearch },
+                { allLiquors: { $in: [regexSearch] } },
+                { ingredients: { $in: [regexSearch] } },
+                { instructions: regexSearch },
+                { category: regexSearch },
+                { color: regexSearch },
+                { occasion: { $in: [regexSearch] } },
+                { difficulty: regexSearch },
+                { flavorProfile: regexSearch },
+                { prepTime: regexSearch },
+                { drinkware: regexSearch },
+                { strength: regexSearch },
+                { tags: { $in: [regexSearch] } },
+                { creator: regexSearch },
+                { description: regexSearch },
+                { InspiredByCreator: { $in: [regexSearch] } },
+                // Add more fields as needed
+            ]}]);
+        }
 
-            console.log("Executing query:", query.getQuery());
+        // Debug: Log the final query being executed
+        console.log("Executing query:", query.getQuery());
 
-         const cocktails = await query.sort({ name: 1 });
+        // Execute the query and sort the results
+        const cocktails = await query.sort({ name: 1 });
+
+        // Send the query results as a JSON response
         res.json(cocktails);
+
     } catch (error) {
+        // Error handling: Log the error and send a 500 Internal Server Error response
         console.error("Error caught in getCocktailsController:", error);
         res.status(500).json({ message: error.message });
     }
+};
 
 // Get a single cocktail by ID
 export const getCocktailByIdController = async (req, res) => {
@@ -115,7 +126,7 @@ export const getCocktailByIdController = async (req, res) => {
             res.status(400).json({ message: error.message });
         }
     };
-    
+        
 
 
 // Updates cocktails (with or without updating picture)

@@ -82,7 +82,8 @@ export const loginAdminController = asyncHandler(async (req, res) => {
             response: {
                 username: admin.username,
                 id: admin._id,
-                token
+                token,
+                role: admin.role
             },
         });
     } catch (e) {
