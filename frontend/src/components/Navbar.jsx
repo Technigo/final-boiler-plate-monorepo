@@ -15,51 +15,44 @@ export const Navbar = () => {
   };
 
   const navlinks = [
-    // { linkName: "Search", linkRoute: "/search" },
-    // { linkName: "Create trip", linkRoute: "/createtrip" },
     { linkName: "Trips", linkRoute: "/trips" },
     { linkName: "About", linkRoute: "/about" },
-    // { linkName: "Register", linkRoute: "/register" },
   ];
 
   const navlinksLoggedIn = [
-    // { linkName: "Search", linkRoute: "/search" },
     { linkName: "Messages", linkRoute: "/messages" },
     { linkName: "Create trip", linkRoute: "/createtrip" },
     { linkName: "Trips", linkRoute: "/trips" },
-    { linkName: "My Account", linkRoute: "/account" },
+    { linkName: "My Trips", linkRoute: "/mytrips" },
     { linkName: "About", linkRoute: "/about" },
   ];
 
-  const renderMenuItems = () =>
-    isAuthenticated ? (
-      <ul className="bg-primary absolute top-15 w-full mt-4 left-0 p-2 space-y-2">
-        {navlinksLoggedIn.map((link) => (
-          <li key={link.linkName}>
-            <Link to={link.linkRoute}>{link.linkName}</Link>
-          </li>
-        ))}
-      </ul>
-    ) : (
-      <ul className="bg-primary absolute top-15 w-full mt-4 left-0 p-2 space-y-2">
-        {navlinks.map((link) => (
-          <li key={link.linkName}>
-            <Link to={link.linkRoute}>{link.linkName}</Link>
-          </li>
-        ))}
-      </ul>
-    );
+  const renderMenuItems = () => (
+    <ul className="bg-tertiary text-white absolute top-16 left-0 w-full mt-2 p-2 space-y-2 text-center">
+      {isAuthenticated
+        ? navlinksLoggedIn.map((link) => (
+            <li key={link.linkName} className="text-white">
+              <Link to={link.linkRoute} onClick={onMobileNavClick}>
+                {link.linkName}
+              </Link>
+            </li>
+          ))
+        : navlinks.map((link) => (
+            <li key={link.linkName}>
+              <Link to={link.linkRoute} onClick={onMobileNavClick}>
+                {link.linkName}
+              </Link>
+            </li>
+          ))}
+    </ul>
+  );
 
   const handleScroll = () => {
-    // Check if the user has scrolled down more than 50 pixels
     setIsScrolled(window.scrollY > 50);
   };
 
   useEffect(() => {
-    // Add a scroll event listener when the component mounts
     window.addEventListener("scroll", handleScroll);
-
-    // Remove the scroll event listener when the component unmounts
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
@@ -67,8 +60,7 @@ export const Navbar = () => {
 
   return (
     <nav
-      className={`bg-tertiary p-4 z-20 sticky top-0 ${isScrolled ? "" : ""}`}
-    >
+      className={`bg-tertiary p-4 z-20 sticky top-0 ${isScrolled ? "" : ""}`}>
       <div className="container mx-auto flex items-center justify-between">
         <div
           onClick={() => navigate("/")}
@@ -79,7 +71,9 @@ export const Navbar = () => {
           <ul className="hidden md:flex space-x-4">
             {navlinks.map((link) => (
               <li className="text-white pt-2" key={link.linkName}>
-                <Link to={link.linkRoute}>{link.linkName}</Link>
+                <Link to={link.linkRoute} onClick={onMobileNavClick}>
+                  {link.linkName}
+                </Link>
               </li>
             ))}
             <li>
@@ -94,7 +88,9 @@ export const Navbar = () => {
           <ul className="hidden md:flex space-x-4">
             {navlinksLoggedIn.map((link) => (
               <li className="text-white pt-2" key={link.linkName}>
-                <Link to={link.linkRoute}>{link.linkName}</Link>
+                <Link to={link.linkRoute} onClick={onMobileNavClick}>
+                  {link.linkName}
+                </Link>
               </li>
             ))}
             <li>
@@ -105,18 +101,43 @@ export const Navbar = () => {
             </li>
           </ul>
         )}
-        {/* Add a responsive menu button for smaller screens */}
-        <div className="md:hidden">
+        <div className="md:hidden flex items-center">
           <LoginBtn />
           <LogoutBtn />
           <button
-            className="text-white text-2xl pl-5 w-8"
-            onClick={onMobileNavClick}
-          >
-            {/* Add a responsive menu icon, e.g., a hamburger icon */}
-            {openMobileNav ? <>&#x2715;</> : <>&#9776; </>}
+            className="text-white text-2xl pl-2 w-8"
+            onClick={onMobileNavClick}>
+            {openMobileNav ? (
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth="1.5"
+                stroke="currentColor"
+                className="w-8 h-8">
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M6 18 18 6M6 6l12 12"
+                />
+              </svg>
+            ) : (
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth="1.5"
+                stroke="currentColor"
+                className="w-8 h-8">
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+                />
+              </svg>
+            )}
           </button>
-          {/* Display the menu if openMobileNav is true */}
+
           {openMobileNav && renderMenuItems()}
         </div>
       </div>

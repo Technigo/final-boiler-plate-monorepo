@@ -120,7 +120,7 @@ export const TripDetails = () => {
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"
                 fill="currentColor"
-                className="w-6 h-6"
+                className="w-6 h-6 mr-1"
               >
                 <path
                   fillRule="evenodd"
@@ -128,8 +128,7 @@ export const TripDetails = () => {
                   clipRule="evenodd"
                 />
               </svg>
-            </span>{" "}
-            &nbsp;
+            </span>
             {selectedTrip.username}
           </div>
 
@@ -156,21 +155,20 @@ export const TripDetails = () => {
             {selectedTrip.availableSeats}
           </div>
 
-          <div className="col-span-6 mt-2 text-xs">Music</div>
+          <div className="col-span-12 mt-2 text-xs">Music</div>
 
-          <div className="col-span-6 mt-2 text-xs">Trip ID</div>
-
-          <div className="col-span-6 flex items-center text-lg sm:text-xl p-2">
+          <div className="col-span-12 flex items-center text-lg sm:text-xl p-2">
             {selectedTrip.music}
-          </div>
-          <div className="col-span-6 flex items-center text-lg sm:text-xl p-2 truncate">
-            {selectedTrip._id}
           </div>
 
           <div className="col-span-12 mt-2 text-xs">Message</div>
 
           <div className="col-span-12 flex items-center text-md sm:text-lg p-2">
             {selectedTrip.message}
+          </div>
+
+          <div className="col-span-12 flex items-center justify-end text-gray-300 text-xs mt-8">
+            Trip ID: {selectedTrip._id}
           </div>
 
           <div className="col-span-12 flex items-center justify-center text-md sm:text-lg p-2">
@@ -195,13 +193,28 @@ export const TripDetails = () => {
               )}
           </div>
         </div>
-        <Link
-          to="/trips"
-          className="text-blue-500 hover:text-blue-700 focus:outline-none focus:ring focus:border-blue-300"
-        >
-          {" "}
-          Back to Trips
-        </Link>
+        <div className="flex items-center">
+          <Link
+            to="/trips"
+            className="text-blue-500 text-md hover:text-blue-700 focus:outline-none focus:ring focus:border-blue-300 flex items-center"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth="1.5"
+              stroke="currentColor"
+              className="w-6 h-6 mr-1"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="m11.25 9-3 3m0 0 3 3m-3-3h7.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
+              />
+            </svg>
+            Back to Trips
+          </Link>
+        </div>
       </div>
     </>
   );
