@@ -3,9 +3,11 @@ import express from "express"; // Import the Express.js framework
 import cors from "cors"; // Import the CORS middleware
 import dotenv from "dotenv"; // Import dotenv for environment variables
 dotenv.config(); // Load environment variables from the .env file
-import taskRoutes from "./routes/taskRoutes"; // Import custom task controlled-routes
-import userRoutes from "./routes/userRoutes"; // Import custom user routes
-import { connectDB } from "./config/db"; // Import database connection function (not used here)
+import { connectDB } from "./config/db"; // Import database connection function
+import { auth0Config } from "./config/Auth0";
+import routes from "./routes/routes";
+
+const { auth } = require("express-openid-connect");
 
 // Defines the port the app will run on. Defaults to 8080, but can be overridden
 const port = process.env.PORT; // Set the port number for the server
@@ -15,11 +17,11 @@ const app = express(); // Create an instance of the Express application
 app.use(cors()); // Enable CORS (Cross-Origin Resource Sharing)
 app.use(express.json()); // Parse incoming JSON data
 app.use(express.urlencoded({ extended: false })); // Parse URL-encoded data
+app.use(auth(auth0Config));
 
 // Use the routes for handling API requests
 // ROUTES - These routes USE controller functions ;)
-app.use(taskRoutes); // Use the task-controlled routes for task-related requests
-app.use(userRoutes); // Use the user-controlled routes for user-related requests
+app.use(routes);
 
 // Connection to the database through Mongoose
 connectDB();
