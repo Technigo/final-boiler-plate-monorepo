@@ -337,7 +337,7 @@ const CitySelector = () => {
     const handleResultsButtonClick = async () => {
       if (selectedCities.length > 0) {
         setResultsButtonClicked(true);
-        await fetchResults(); // Ensure this function is implemented to handle multiple cities
+        await fetchResults(selectedCities[0]); // Pass the selected city to fetchResults
       } else {
         console.log("Please select a city.");
       }

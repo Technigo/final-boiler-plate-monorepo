@@ -196,26 +196,22 @@ export const useRestaurantStore = create((set) => ({
       set({ selectedCity: city });
     },
   
-    // Fetch results based on selected city (you can combine this with other filters if needed)
     fetchResultsByCity: async () => {
       try {
-        console.log("Fetching results...");
-        const { selectedCity } = useRestaurantStore.getState();
-        console.log("Selected City:", selectedCity);
-  
+        const { selectedCities } = useRestaurantStore.getState();
+        const selectedCity = selectedCities[0]; // Assuming only one city is selected
+        console.log("Fetching results for city:", selectedCity);
+    
         const url = `${apiURL}/restaurants/search?city=${encodeURIComponent(selectedCity)}`;
-        console.log("Fetching from URL:", url);
-  
         const response = await fetch(url);
         if (!response.ok) {
-          const errorMessage = `Failed to fetch search results. Status: ${response.status}, ${response.statusText}`;
-          throw new Error(errorMessage);
+          throw new Error("Failed to fetch results by city");
         }
-  
+    
         const results = await response.json();
         set({ results });
       } catch (error) {
-        console.error("Error fetching search results:", error);
+        console.error("Error fetching results by city:", error);
       }
     },
   
