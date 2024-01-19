@@ -104,6 +104,7 @@ export const Hero = () => {
   const { isLoggedIn } = userStore();
   const navigate = useNavigate();
 
+  // Text content for the Hero section
   const text = {
     heading: "We want the people in Varberg to connect",
     subheading: "Join our community of compassion and generosity",
@@ -113,8 +114,8 @@ export const Hero = () => {
       "Sign up now to either ask for help or volunteer your time and kindness. Be a part of this beautiful movement and let your generosity shine!",
   };
 
+  // Redirect to tasks page if user is logged in
   useEffect(() => {
-    // Redirect to tasks page if user is logged in
     if (isLoggedIn) {
       navigate("/");
     }
