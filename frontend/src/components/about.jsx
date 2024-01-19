@@ -260,7 +260,7 @@ const AboutPage = () => {
           &nbsp; Web Developer Bootcamp of Fall 2023. <br></br>
           <br></br>This is a labour of sweat, tired knuckles and love - please
           feel free to reach out to us! <br></br> <br></br>
-          foodiemoodie@gmail.com
+          foodiemoodieappen@gmail.com
           <br></br>
         </IntroParagraph>
       </AboutWrapper>

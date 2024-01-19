@@ -110,8 +110,42 @@ const StyledMoodsContainer = styled.div`
   flex-direction: column;
 `;
 
+const predefinedOccasions = [
+  "Have dinner with the in-laws",
+      "Have a sunday funday aka brunch",
+      "Have dinner with kids present",
+      "Have dinner with your bestie",
+      "Have dinner with friends to catch up",
+      "Say Cheers- a classic Swedish after work",
+      "Have dinner with colleagues",
+      "Have dinner with the whole family",
+      "Have dinner with your parents",
+      "Impress your date and the sky is the limit",
+      "Impress your date on a tight budget",
+      "Celebrate a relationship anniversary",
+      "Celebrate you turning 28 again (honey, you ain't fooling anyone)",
+      "Have a meparty aka dinner for one",
+      "Go on a nice date with that special someone"
+];
+
+const predefinedMoods = [
+  "Cozy",
+  "Good lighting",
+  "Soft-spoken",
+  "Bustling",
+  "Intimate",
+  "Casual",
+  "Sophisticated",
+  "Family friendly",
+  "Homely",
+  "Kid friendly",
+  "Dog friendly",
+  "Calm",
+  "Vegan option",
+  "Extended dining hours",
+  "Romantic"
+];
 const AddRestaurantForm = () => {
-  const { occasions, moods, fetchOccasions, fetchMoods } = useRestaurantStore();
   const [formData, setFormData] = useState({
     restaurantName: "",
     address: "",
@@ -124,21 +158,16 @@ const AddRestaurantForm = () => {
     mood: [],
     description: "",
     url: "",
+    name: "",
+    email: ""
   });
-
-  useEffect(() => {
-    fetchOccasions();
-    fetchMoods();
-  }, [fetchOccasions, fetchMoods]);
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
     if (type === "checkbox") {
       setFormData((prevData) => ({
         ...prevData,
-        [name]: checked
-          ? [...prevData[name], value]
-          : prevData[name].filter((item) => item !== value),
+        [name]: checked ? [...prevData[name], value] : prevData[name].filter((item) => item !== value),
       }));
     } else {
       setFormData({ ...formData, [name]: value });
@@ -149,12 +178,9 @@ const AddRestaurantForm = () => {
     <PageContainer>
       <Navbar />
       <StyledH2>Are you a Foodie who can sense the Moodie?</StyledH2>
-      <StyledH1>Add your own !</StyledH1>
-      <form
-        action="https://formsubmit.co/foodiemoodieappen@gmail.com"
-        method="POST"
-      >
-        <FormLabel>Restaurant Name*:</FormLabel>
+      <StyledH1>Add your own!</StyledH1>
+      <form action="https://formsubmit.co/foodiemoodieappen@gmail.com" method="POST">
+      <FormLabel>Restaurant Name*:</FormLabel>
         <StyledInput
           type="text"
           name="restaurantName"
@@ -208,39 +234,22 @@ const AddRestaurantForm = () => {
         />
         {/* Occasion checkboxes */}
         <StyledOccasionsContainer>
-          <FormLabel>
-            Tick the boxes with suiting occasions*: <br></br> <br></br>
-          </FormLabel>
-          {occasions.map((option, index) => (
+          <FormLabel>Tick the boxes with suiting occasions*:</FormLabel>
+          {predefinedOccasions.map((option, index) => (
             <label key={index}>
               {option}
-              <input
-                type="checkbox"
-                name="mood"
-                value={option}
-                checked={formData.mood.includes(option)}
-                onChange={handleChange}
-                required
-              />
+              <input type="checkbox" name="occasion" value={option} checked={formData.occasion.includes(option)} onChange={handleChange} />
             </label>
           ))}
         </StyledOccasionsContainer>
-        <br></br> <br></br>
+
+        {/* Mood checkboxes */}
         <StyledMoodsContainer>
-          <FormLabel>
-            Tick the boxes with suiting moods*: <br></br> <br></br>
-          </FormLabel>
-          {moods.map((option, index) => (
+          <FormLabel>Tick the boxes with suiting moods*:</FormLabel>
+          {predefinedMoods.map((option, index) => (
             <label key={index}>
               {option}
-              <input
-                type="checkbox"
-                name="mood"
-                value={option}
-                checked={formData.mood.includes(option)}
-                onChange={handleChange}
-                required
-              ></input>
+              <input type="checkbox" name="mood" value={option} checked={formData.mood.includes(option)} onChange={handleChange} />
             </label>
           ))}
         </StyledMoodsContainer>
@@ -274,9 +283,7 @@ const AddRestaurantForm = () => {
           value={formData.email}
           onChange={handleChange}
         />
-        {/* Hidden input for redirection and multiple email addresses */}
-        <input type="hidden" name="_cc" value="foodiemoodieappen@gmail.com" />
-        <StyledParagraph>Fields marked with * are mandatory.</StyledParagraph>
+                <StyledParagraph>Fields marked with * are mandatory.</StyledParagraph>
         <Button type="submit">Submit</Button>
       </form>
       <Footer />
