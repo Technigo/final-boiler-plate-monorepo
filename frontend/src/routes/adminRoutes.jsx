@@ -12,7 +12,7 @@ const AdminRoutes = () => {
         <Routes>
             <Route path="/login" element={<AdminLogin />} /> {/* Admin login page */}
             <Route path="/dashboard" element={<ProtectedRoute><AdminDashboard /></ProtectedRoute>} /> {/* Landingpage with admin options*/}
-            <Route path="/register" element={<ProtectedRoute><AdminRegister /></ProtectedRoute>} /> {/* Register new admin */}
+            < Route path="/register" element={<ProtectedRoute><AdminRegister /></ProtectedRoute>} /> {/* Register new admin */}
             <Route path="/users" element={<ProtectedRoute><ListUsers /></ProtectedRoute>} /> {/* Get list of all registered users */}
             <Route path="/upgrade-user" element={<ProtectedRoute><UpgradeUser /></ProtectedRoute>} /> {/* Upgrade user to admin */}
             <Route path="/manage-cocktails" element={<ProtectedRoute><ManageCocktails /></ProtectedRoute>} /> {/* Page to manage cocktails - add, update and delete cocktails */}

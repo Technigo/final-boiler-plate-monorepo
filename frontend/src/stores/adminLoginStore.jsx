@@ -2,7 +2,7 @@ import { create } from "zustand";
 
 const apiEnv = import.meta.env.VITE_BACKEND_API;
 
-export const adminLoginStore = create((set, get) => {
+export const adminLoginStore = create((set) => {
     const savedToken = localStorage.getItem("adminToken");
 
     return {
@@ -33,6 +33,7 @@ export const adminLoginStore = create((set, get) => {
                 });
 
                 const data = await response.json();
+                console.log("Login response:", data);
                 if (data.success) {
                     set({
                         username,
