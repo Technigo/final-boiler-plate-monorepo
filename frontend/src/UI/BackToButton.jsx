@@ -1,6 +1,5 @@
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
-// import styles from "./BackToButton.module.css"
 
 const StyledBackButton = styled.button`
   padding: 10px; 
@@ -13,6 +12,7 @@ const StyledBackButton = styled.button`
   cursor: pointer;
 
   &:hover {
+    background-color: #dbc6b6cf;
     color: #5a493b;
   }
 

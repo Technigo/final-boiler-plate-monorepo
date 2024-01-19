@@ -17,16 +17,6 @@ export const StyledButton = styled.button`
   &:hover {
     color: #5a493b;
   }
-`;
-
-// StyledButton to create InternalStyledButton with additional styles
-export const InternalStyledButton = styled(StyledButton)`
-  border-radius: 30px;
-  width: 92px;
-  height: 53px;
-  background-color: #DBC6B6;
-  color: #1D1C25;
-  // You can add or override more styles here
 
   &:hover {
     background-color: #dbc6b6cf;

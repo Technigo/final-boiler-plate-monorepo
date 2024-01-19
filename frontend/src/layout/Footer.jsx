@@ -1,10 +1,8 @@
 import styles from './Footer.module.css';
-import { Text } from '../UI/Typography';
+import { InstagramButton } from '../UI/InstagramButton';
 
 export const Footer = () => {
     return (<div className={styles.wrapper}>
-        <Text type="bodyText" className={styles.p}>
-            This is the footer
-        </Text>
+        <InstagramButton />
     </div>)
 }
