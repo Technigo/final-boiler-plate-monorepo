@@ -6,9 +6,6 @@ dotenv.config(); // Load environment variables from the .env file
 import { connectDB } from "./config/db"; // Import database connection function
 import { auth0Config } from "./config/Auth0";
 import userRoutes from "./routes/userRoutes";
-import { MessageModel } from "./models/MessageModel";
-import ws from "ws";
-import fs from "fs";
 import listEndpoints from "express-list-endpoints";
 
 const { auth } = require("express-openid-connect");
@@ -31,7 +28,7 @@ app.use(userRoutes);
 connectDB();
 
 // Start the server and listen for incoming requests on the specified port
-const server = app.listen(port, () => {
+app.listen(port, () => {
   console.log(`Server running on http://localhost:${port}`); // Display a message when the server is successfully started
 });
 
@@ -76,5 +73,3 @@ app.get("/endpoints", (req, res) => {
 //   });
 // });
 //#ENDREGION
-
-export { app };
