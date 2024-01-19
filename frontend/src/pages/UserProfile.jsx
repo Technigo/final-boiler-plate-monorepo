@@ -24,43 +24,6 @@ export const UserProfile = () => {
   const [loading, setLoading] = useState(true);
   const [userLoading, setUserLoading] = useState(true);
   const [userList, setUserList] = useState(null);
-  // console.log("username: " + username);
-  // console.log("user:", user);
-  // console.log("mongoUsername: " + mongoUsername);
-
-  //#REGION USER_METADATA
-  // console.log(useAuth0());
-  //Get user metadata if it exists
-  // useEffect(() => {
-  //   const getUserMetadata = async () => {
-  //     try {
-  //       const accessToken = await getAccessTokenSilently({
-  //         authorizationParams: {
-  //           audience: `https://${domain}/api/v2/`,
-  //           scope: "read:current_user",
-  //         },
-  //       });
-
-  //       const userDetailsByIdUrl = `https://${domain}/api/v2/users/${user.sub}`;
-
-  //       const metadataResponse = await fetch(userDetailsByIdUrl, {
-  //         headers: {
-  //           Authorization: `Bearer ${accessToken}`,
-  //         },
-  //       });
-
-  //       const { user_metadata } = await metadataResponse.json();
-
-  //       setUserMetadata(user_metadata);
-  //     } catch (e) {
-  //       console.log(e.message);
-  //     }
-  //   };
-
-  //   getUserMetadata();
-  // }, [getAccessTokenSilently, user?.sub]);
-
-  //#ENDREGION
 
   useEffect(() => {
     const getUserDataFromMongo = async () => {
@@ -88,9 +51,6 @@ export const UserProfile = () => {
     getUserDataFromMongo();
     getUsers();
   }, []);
-
-  // console.log("User: " + JSON.stringify(user));
-  // console.log("Authenticated: " + isAuthenticated);
   if (isLoading) {
     return <div>Loading ...</div>;
   }
@@ -110,7 +70,6 @@ export const UserProfile = () => {
                 key={user._id}
                 className="cursor-pointer"
                 onClick={() => {
-                  // console.log(user._id);
                   setChatReceiver(user.username);
                   setUsername(mongoUsername);
                   setRecipientId(user._id);
@@ -130,15 +89,6 @@ export const UserProfile = () => {
         >
           click me
         </button>
-        {/* <img src={user.picture} alt={user.name} />
-        <h2 className="text-black">{user.nickname}</h2>
-        <p className="text-black">{user.email}</p> */}
-        {/* <h3>User Metadata</h3>
-        {userMetadata ? (
-          <pre>{JSON.stringify(userMetadata, null, 2)}</pre>
-        ) : (
-          "No user metadata defined"
-        )} */}
       </div>
     )
   );

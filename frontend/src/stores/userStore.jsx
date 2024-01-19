@@ -1,11 +1,6 @@
 // Import the 'create' function from the 'zustand' library.
 import { create } from "zustand";
 
-// Get the backend API endpoint from the environment variables.
-const apiEnv = import.meta.env.VITE_BACKEND_API;
-const backupApiEnv = import.meta.env.VITE_BACKUP_API;
-const localhoster = "http://localhost:3000";
-
 // Create a Zustand store for user-related state and actions.
 export const userStore = create((set, get) => ({
   // Initialize username state.
@@ -35,34 +30,6 @@ export const userStore = create((set, get) => ({
   isLoggedIn: false,
   // Define a function to set the isLoggedIn state.
   setIsLoggedIn: (isLoggedIn) => set({ isLoggedIn }),
-
-  // Initialize the user's messaging history
-  chatMessages: [],
-  setChatMessages: (chatMessages) => set({ chatMessages }),
-
-  handleChatHistory: async (sender, recipient) => {
-    try {
-      const response = await fetch(`${apiEnv}/messages/${sender}/${recipient}`);
-      console.log(response);
-      if (!response.ok) {
-        console.log(`From store: ${apiEnv}/messages/${sender}/${recipient}`);
-        throw new Error(`Error fetching messages: ${response.statusText}`);
-      } else {
-        console.log(
-          `From store again: Sender: ${sender} and receiver: ${recipient}`
-        );
-      }
-
-      const data = await response.json();
-      console.log(data);
-
-      // set({ chatMessages: data });
-      set({ chatMessages: data });
-      console.log(chatMessages);
-    } catch (error) {
-      console.error("Error fetching messages: ", error.message);
-    }
-  },
 }));
 
 // SUMMARY

@@ -30,7 +30,6 @@ app.use(userRoutes);
 // Connection to the database through Mongoose
 connectDB();
 
-//#REGION Websocket stuff
 // Start the server and listen for incoming requests on the specified port
 const server = app.listen(port, () => {
   console.log(`Server running on http://localhost:${port}`); // Display a message when the server is successfully started
@@ -40,41 +39,42 @@ app.get("/endpoints", (req, res) => {
   res.send(listEndpoints(app));
 });
 
-const wss = new ws.WebSocketServer({ server });
+// //#REGION Websocket stuff
+// const wss = new ws.WebSocketServer({ server });
 
-wss.on("connection", (ws) => {
-  ws.on("message", async (message) => {
-    const data = JSON.parse(message);
-    const { sender, recipient, text } = data;
+// wss.on("connection", (ws) => {
+//   ws.on("message", async (message) => {
+//     const data = JSON.parse(message);
+//     const { sender, recipient, text } = data;
 
-    if (data.type === "setUserId") {
-      // Associate the user ID with the WebSocket connection
-      ws.userId = data.userId;
-      console.log(`User ${ws.userId} connected.`);
-    } else if (data.type === "setReceiverId") {
-      ws.receiverId = data.receiverId;
-      console.log(
-        `User ${ws.userId} will send chat messages to ${ws.receiverId}.`
-      );
-    } else if (recipient && text) {
-      const messageDoc = await MessageModel.create({
-        sender,
-        recipient,
-        text,
-      });
-      console.log("created message");
-      console.log(messageDoc);
-      console.log(sender);
-    } else {
-      // Handle other message types
-    }
-  });
+//     if (data.type === "setUserId") {
+//       // Associate the user ID with the WebSocket connection
+//       ws.userId = data.userId;
+//       console.log(`User ${ws.userId} connected.`);
+//     } else if (data.type === "setReceiverId") {
+//       ws.receiverId = data.receiverId;
+//       console.log(
+//         `User ${ws.userId} will send chat messages to ${ws.receiverId}.`
+//       );
+//     } else if (recipient && text) {
+//       const messageDoc = await MessageModel.create({
+//         sender,
+//         recipient,
+//         text,
+//       });
+//       console.log("created message");
+//       console.log(messageDoc);
+//       console.log(sender);
+//     } else {
+//       // Handle other message types
+//     }
+//   });
 
-  ws.on("close", () => {
-    // Clean up user-related data upon WebSocket close
-    console.log(`User ${ws.userId} disconnected.`);
-  });
-});
+//   ws.on("close", () => {
+//     // Clean up user-related data upon WebSocket close
+//     console.log(`User ${ws.userId} disconnected.`);
+//   });
+// });
 //#ENDREGION
 
-export { app, wss };
+export { app };
