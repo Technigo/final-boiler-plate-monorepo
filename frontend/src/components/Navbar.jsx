@@ -28,7 +28,7 @@ export const Navbar = () => {
   ];
 
   const renderMenuItems = () => (
-    <ul className="bg-tertiary text-white absolute top-16 left-0 w-full mt-2 p-2 space-y-2 text-center">
+    <ul className="bg-tertiary text-white absolute top-14 left-0 w-full mt-2 p-2 space-y-2 text-center">
       {isAuthenticated
         ? navlinksLoggedIn.map((link) => (
             <li key={link.linkName} className="text-white">
