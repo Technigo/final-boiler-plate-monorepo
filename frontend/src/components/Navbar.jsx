@@ -29,9 +29,9 @@ export const Navbar = () => {
 
   const renderMenuItems = () =>
     isAuthenticated ? (
-      <ul className="bg-primary absolute top-15 w-full mt-4 left-0 p-2 space-y-2">
+      <ul className="bg-tertiary text-white absolute top-16 w-full mt-2 left-0 p-2 space-y-2">
         {navlinksLoggedIn.map((link) => (
-          <li key={link.linkName}>
+          <li key={link.linkName} className="text-white">
             <Link to={link.linkRoute} onClick={onMobileNavClick}>
               {link.linkName}
             </Link>
@@ -39,7 +39,7 @@ export const Navbar = () => {
         ))}
       </ul>
     ) : (
-      <ul className="bg-primary absolute top-15 w-full mt-4 left-0 p-2 space-y-2">
+      <ul className="bg-tertiary text-white absolute top-16 w-full mt-2 left-0 p-2 space-y-2">
         {navlinks.map((link) => (
           <li key={link.linkName}>
             <Link to={link.linkRoute} onClick={onMobileNavClick}>
@@ -104,14 +104,43 @@ export const Navbar = () => {
             </li>
           </ul>
         )}
-        <div className="md:hidden">
+        <div className="md:hidden flex items-center ">
           <LoginBtn />
           <LogoutBtn />
           <button
-            className="text-white text-2xl pl-5 w-8"
+            className="text-white text-2xl pl-2 w-8"
             onClick={onMobileNavClick}>
-            {openMobileNav ? <>&#x2715;</> : <>&#9776; </>}
+            {openMobileNav ? (
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth="1.5"
+                stroke="currentColor"
+                className="w-8 h-8">
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M6 18 18 6M6 6l12 12"
+                />
+              </svg>
+            ) : (
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth="1.5"
+                stroke="currentColor"
+                className="w-8 h-8">
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+                />
+              </svg>
+            )}
           </button>
+
           {openMobileNav && renderMenuItems()}
         </div>
       </div>
