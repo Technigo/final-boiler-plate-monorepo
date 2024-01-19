@@ -2,8 +2,7 @@ import { create } from "zustand";
 import { userStore } from "./userStore";
 
 // Get the backend API URL from the environment variable
-const apiEnv = import.meta.env.VITE_BACKEND_API;
-console.log(apiEnv);
+const apiEnv = import.meta.env.VITE_BACKEND_API || "http://localhost:3000";
 
 // Create and export a Zustand store for managing tasks
 export const taskStore = create((set) => ({

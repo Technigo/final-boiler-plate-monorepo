@@ -54,8 +54,8 @@ body.active-modal {
   --darktext: #213547;
   --grey: #f8f8f8;
   --darkgrey: #555;
-  --button: #64899b;
-  --buttonhover: #7b9eaf;
+  --button: #367b9e;
+  --buttonhover: #4f85a1;
   --buttonactive: #5a7b8c; // Color of button when pressed
   --error: #e5e500;
 }
