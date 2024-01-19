@@ -1,5 +1,4 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-
 import { useEffect } from 'react'
 import { bookingStore } from '../store/bookingStore'
 
@@ -24,11 +23,6 @@ export const Home = () => {
     }
     if (selectedSeats.length > 0) setSelectedSeats()
   }, [])
-
-  // console.log(allShowTimes)
-  // const showTimes = allShowTimes
-  // const showDate = new Date('17 january 2024')
-  // console.log(showDate)
 
   return (
     <div className="the-home-page">

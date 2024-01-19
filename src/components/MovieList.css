@@ -91,5 +91,6 @@
 	.the-movie-item {
 		box-shadow: 0 1px 2px var(--box-shadow-color);
 		padding: 10px;
+		padding-bottom: 25px;
 	}
 }

@@ -5,7 +5,7 @@ import './MovieList.css'
 export const MovieItem = ({ name, photo, releaseDate }) => {
   const setMovies = movieStore((state) => state.setMovies)
 
-  const handleAddToFavorite = () => {
+  const handleReadMore = () => {
     setMovies((prevMovies) => [...prevMovies, { name, photo, releaseDate }])
   };
 
@@ -20,7 +20,7 @@ export const MovieItem = ({ name, photo, releaseDate }) => {
         <img src={imageUrl} alt={name} />
         <div className="image-overlay">
           <h2>{name}</h2>
-          <button onClick={handleAddToFavorite}>Read more</button>
+          <button onClick={handleReadMore}>Read more</button>
         </div>
       </div>
     </div>

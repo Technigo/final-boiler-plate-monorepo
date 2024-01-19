@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect } from "react"
 import { movieStore } from '../store/movieStore'
 import { MovieItem } from "./MovieItem"
@@ -12,7 +13,6 @@ export const MovieList = () => {
   const movies = movieStore((state) => state.movies)
 
   useEffect(() => {
-    console.log('Fetching movies...')
     fetchMovies()
   }, [])
 
@@ -24,7 +24,6 @@ export const MovieList = () => {
   return (
     <div className="the-movie-list page-section" id="app-container">
       {movies && movies.slice(0, 20).map((movie) => (
-        // <div className="the-movie-link" key={movie._id}>
           <Link 
             to={`/movie/${movie._id}`} 
             key={movie._id}
@@ -36,7 +35,6 @@ export const MovieList = () => {
               releaseDate={formatReleaseDate(movie.releaseDate)}
             />
           </Link>
-        // </div>
       ))}
     </div>
   )

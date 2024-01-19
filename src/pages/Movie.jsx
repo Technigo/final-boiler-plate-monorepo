@@ -1,5 +1,4 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-
 import { useEffect, useState } from 'react'
 import { movieStore } from '../store/movieStore'
 import { MovieDetails } from '../components/MovieDetails'
@@ -36,10 +35,10 @@ export const Movie = () => {
         if (movie) {
           setMovieData(movie)
           setIsLoading(false)
-          window.scrollTo({ top: 0, behavior: 'smooth' })
+          // window.scrollTo({ top: 0, behavior: 'smooth' })
         } else {
           setMovieData(null)
-          setIsLoading(false)
+          setIsLoading(true)
         }
       } catch (error) {
         console.error('Error fetching data:', error)
