@@ -11,8 +11,10 @@ export const Movie = () => {
   const fetchMovies = movieStore((state) => state.fetchMovies)
   const movies = movieStore((state) => state.movies)
 
-  const selectedSeats = bookingStore(state => state.selectedSeats)
-  const setSelectedSeats = bookingStore(state => state.setSelectedSeats)
+  const {
+    selectedSeats,
+    setSelectedSeats
+  } = bookingStore()
 
   useEffect(() => {
     if (selectedSeats.length > 0) setSelectedSeats()
@@ -22,7 +24,12 @@ export const Movie = () => {
     const fetchData = async () => {
       try {
         await fetchMovies()
-        const movie = movies.find((movie) => movie._id === id)
+
+        let movie
+
+        if (movies.length > 0) {
+          movie = movies.find((movie) => movie._id === id)
+        }
 
         if (movie) {
           setMovieData(movie)
