@@ -1,4 +1,4 @@
-/*Import the UserModel from the User model file
+//Import the UserModel from the User model file
 import { UserModel } from "../models/UserModel";
 // Define a function called authenticateUser that takes a request (req), response (res), and a next function as parameters
 export const authenticateUser = async (req, res, next) => {
@@ -6,7 +6,7 @@ export const authenticateUser = async (req, res, next) => {
   const accessToken = req.header("Authorization");
   try {
     // Find a user in the database using the retrieved access token
-    // Mongoose Method: UserModel.findOne({ accessToken: accessToken })
+    //Mongoose Method: UserModel.findOne({ accessToken: accessToken })
     // Description: This line of code serves the purpose of authenticating a user based on the provided access token. It checks if a user with the specified accessToken exists in the database using the UserModel. If a user is found, their user document is stored in the user variable. This allows the middleware to add the user object to the request, making it available for subsequent middleware or routes. If no user is found, it prepares to send a 401 Unauthorized response to indicate that the user needs to log in. This code is an essential part of user authentication in the Node.js application and helps control access to protected routes or endpoints.
     const user = await UserModel.findOne({ accessToken: accessToken });
     if (user) {

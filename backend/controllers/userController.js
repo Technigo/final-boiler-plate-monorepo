@@ -81,7 +81,7 @@ export const registerUserController = asyncHandler(async (req, res) => {
 // -----------------------
 // -----------------------
 
-// @desc    Login Existing User
+//@desc    Login Existing User
 // @route   POST api/login
 // @access  Public
 */

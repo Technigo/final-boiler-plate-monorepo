@@ -8,7 +8,7 @@
             "organisation": "Mary's Shelter",
             "image": {
                 "format": "jpg",
-                "data": "./assets/animal-6800387_1280.jpg"
+                "data": "https://storage.cloud.google.com/rescuehelper/Buddy.jpg"
               }
         },
         {
@@ -18,8 +18,8 @@
             "size": "small",
             "organisation": "Happy Paws",
             "image": {
-                "format": "webp",
-                "data": "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.usatoday.com%2Fstory%2Fnews%2Fnation%2F2023%2F12%2F06%2Fwashington-state-mystery-dog-respiratory-illness-chikis-story%2F71812931007%2F&psig=AOvVaw1ut0I08xsdyo14ma01tkqw&ust=1705138131937000&source=images&cd=vfe&opi=89978449&ved=0CBIQjRxqFwoTCNCo99vE14MDFQAAAAAdAAAAABAE"
+                "format": "jpeg",
+                "data": "https://storage.cloud.google.com/rescuehelper/Max.jpg"
               }
         },
         {
@@ -30,7 +30,7 @@
             "organisation": "The Dog Rescue Foundation",
             "image": {
                 "format": "jpg",
-                "data": "./frontend/src/assets/Dogs/animal-6800387_1280.jpg"
+                "data": "https://storage.cloud.google.com/rescuehelper/Lucy.jpg"
               }
         },
         {
@@ -41,7 +41,7 @@
             "organisation": "Woof Woof Foundation",
             "image": {
                 "format": "jpg",
-                "data": "./frontend/src/assets/Dogs/animal-6800387_1280.jpg"
+                "data": "https://storage.cloud.google.com/rescuehelper/Charlie.jpg"
               }
         },
         {
@@ -52,7 +52,7 @@
             "organisation": "The Furry Friends Shelter",
             "image": {
                 "format": "jpg",
-                "data": "./frontend/src/assets/Dogs/animal-6800387_1280.jpg"
+                "data": "https://storage.cloud.google.com/rescuehelper/Daisy.jpg"
               }
         },
         {
@@ -63,7 +63,7 @@
             "organisation": "From Street to Safety Trust",
             "image": {
                 "format": "jpg",
-                "data": "./frontend/src/assets/Dogs/animal-6800387_1280.jpg"
+                "data": "https://storage.cloud.google.com/rescuehelper/Rocky.jpg"
               }
         },
         {
@@ -74,7 +74,7 @@
             "organisation": "The Furry Friends Shelter",
             "image": {
                 "format": "jpg",
-                "data": "./frontend/src/assets/Dogs/animal-6800387_1280.jpg"
+                "data": "https://storage.cloud.google.com/rescuehelper/Nala.jpg"
               }
         },
         {
@@ -85,7 +85,7 @@
             "organisation": "From Street to Safety Trust",
             "image": {
                 "format": "jpg",
-                "data": "./frontend/src/assets/Dogs/animal-6800387_1280.jpg"
+                "data": "https://storage.cloud.google.com/rescuehelper/Rusty.jpg"
               }
         },
         {
@@ -96,7 +96,7 @@
             "organisation": "Happy Paws",
             "image": {
                 "format": "jpg",
-                "data": "./frontend/src/assets/Dogs/animal-6800387_1280.jpg"
+                "data": "https://storage.cloud.google.com/rescuehelper/Lola.jpg"
               }
         },
         {
@@ -107,7 +107,7 @@
             "organisation": "Woof Woof Foundation",
             "image": {
                 "format": "jpg",
-                "data": "./frontend/src/assets/Dogs/animal-6800387_1280.jpg"
+                "data": "https://storage.cloud.google.com/rescuehelper/Cooper.jpg"
               }
         },
         {
@@ -118,7 +118,7 @@
             "organisation": "Mary's Shelter",
             "image": {
                 "format": "jpg",
-                "data": "./frontend/src/assets/Dogs/animal-6800387_1280.jpg"
+                "data": "https://storage.cloud.google.com/rescuehelper/Sadie.jpg"
               }
         },
         {
@@ -129,7 +129,7 @@
             "organisation": "The Dog Rescue Foundation",
             "image": {
                 "format": "jpg",
-                "data": "./frontend/src/assets/Dogs/animal-6800387_1280.jpg"
+                "data": "https://storage.cloud.google.com/rescuehelper/Bailey.jpg"
               }
         },
         {
@@ -140,7 +140,7 @@
             "organisation": "The Dog Rescue Foundation",
             "image": {
                 "format": "jpg",
-                "data": "./frontend/src/assets/Dogs/animal-6800387_1280.jpg"
+                "data": "https://storage.cloud.google.com/rescuehelper/Tucker.jpg"
               }
         },
         {
@@ -151,7 +151,7 @@
             "organisation": "From Street to Safety Trust",
             "image": {
                 "format": "jpg",
-                "data": "./frontend/src/assets/Dogs/animal-6800387_1280.jpg"
+                "data": "https://storage.cloud.google.com/rescuehelper/Zoe.jpg"
               }
         },
         {
@@ -162,7 +162,7 @@
             "organisation": "Happy Paws",
             "image": {
                 "format": "jpg",
-                "data": "./frontend/src/assets/Dogs/animal-6800387_1280.jpg"
+                "data": "https://storage.cloud.google.com/rescuehelper/Oscar.jpg"
               }
         },
         {
@@ -173,7 +173,7 @@
             "organisation": "From Street to Safety Trust",
             "image": {
                 "format": "jpg",
-                "data": "./frontend/src/assets/Dogs/animal-6800387_1280.jpg"
+                "data": "https://storage.cloud.google.com/rescuehelper/Molly.jpg"
               }
         },
         {
@@ -184,7 +184,7 @@
             "organisation": "Mary's Shelter",
             "image": {
                 "format": "jpg",
-                "data": "./frontend/src/assets/Dogs/animal-6800387_1280.jpg"
+                "data": "https://storage.cloud.google.com/rescuehelper/Winston.jpg"
               }
         },
         {
@@ -195,7 +195,7 @@
             "organisation": "Mary's Shelter",
             "image": {
                 "format": "jpg",
-                "data": "./frontend/src/assets/Dogs/animal-6800387_1280.jpg"
+                "data": "https://storage.cloud.google.com/rescuehelper/Sophie.jpg"
               }
         },
         {
@@ -206,7 +206,7 @@
             "organisation": "The Furry Friends Shelter",
             "image": {
                 "format": "jpg",
-                "data": "./frontend/src/assets/Dogs/animal-6800387_1280.jpg"
+                "data": "https://storage.cloud.google.com/rescuehelper/Leo.jpg"
               }
         },
         {
@@ -217,7 +217,7 @@
             "organisation": "Mary's Shelter",
             "image": {
                 "format": "jpg",
-                "data": "./frontend/src/assets/Dogs/animal-6800387_1280.jpg"
+                "data": "https://storage.cloud.google.com/rescuehelper/Mia.jpg"
               }
         },
         {
@@ -228,7 +228,7 @@
             "organisation": "Happy Paws",
             "image": {
                 "format": "jpg",
-                "data": "./frontend/src/assets/Dogs/animal-6800387_1280.jpg"
+                "data": "https://storage.cloud.google.com/rescuehelper/Oliver.jpg"
               }
         },
         {
@@ -239,7 +239,7 @@
             "organisation": "The Dog Rescue Foundation",
             "image": {
                 "format": "jpg",
-                "data": "./frontend/src/assets/Dogs/animal-6800387_1280.jpg"
+                "data": "https://storage.cloud.google.com/rescuehelper/Luna.jpg"
               }
         },
         {
@@ -250,7 +250,7 @@
             "organisation": "Woof Woof Foundation",
             "image": {
                 "format": "jpg",
-                "data": "./frontend/src/assets/Dogs/animal-6800387_1280.jpg"
+                "data": "https://storage.cloud.google.com/rescuehelper/Teddy.jpg"
               }
         },
         {
@@ -261,7 +261,7 @@
             "organisation": "The Furry Friends Shelter",
             "image": {
                 "format": "jpg",
-                "data": "./frontend/src/assets/Dogs/animal-6800387_1280.jpg"
+                "data": "https://storage.cloud.google.com/rescuehelper/Ruby.jpg"
               }
         },
         {
@@ -272,7 +272,7 @@
             "organisation": "From Street to Safety Trust",
             "image": {
                 "format": "jpg",
-                "data": "./frontend/src/assets/Dogs/animal-6800387_1280.jpg"
+                "data": "https://storage.cloud.google.com/rescuehelper/Zeus.jpg"
               }
         },
         {
@@ -283,7 +283,7 @@
             "organisation": "Mary's Shelter",
             "image": {
                 "format": "jpg",
-                "data": "./frontend/src/assets/Dogs/animal-6800387_1280.jpg"
+                "data": "https://storage.cloud.google.com/rescuehelper/Milo.jpg"
               }
         },
         {
@@ -294,7 +294,7 @@
             "organisation": "Happy Paws",
             "image": {
                 "format": "jpg",
-                "data": "./frontend/src/assets/Dogs/animal-6800387_1280.jpg"
+                "data": "https://storage.cloud.google.com/rescuehelper/Coco.jpg"
               }
         },
         {
@@ -305,7 +305,7 @@
             "organisation": "The Dog Rescue Foundation",
             "image": {
                 "format": "jpg",
-                "data": "./frontend/src/assets/Dogs/animal-6800387_1280.jpg"
+                "data": "https://storage.cloud.google.com/rescuehelper/Loki.jpg"
               }
         },
         {
@@ -316,7 +316,7 @@
             "organisation": "Woof Woof Foundation",
             "image": {
                 "format": "jpg",
-                "data": "./frontend/src/assets/Dogs/animal-6800387_1280.jpg"
+                "data": "https://storage.cloud.google.com/rescuehelper/Bella.jpg"
               }
         },
         {
@@ -327,7 +327,7 @@
             "organisation": "The Furry Friends Shelter",
             "image": {
                 "format": "jpg",
-                "data": "./frontend/src/assets/Dogs/animal-6800387_1280.jpg"
+                "data": "https://storage.cloud.google.com/rescuehelper/Jack.jpg"
               }
         },
         {
@@ -338,7 +338,7 @@
             "organisation": "From Street to Safety Trust",
             "image": {
                 "format": "jpg",
-                "data": "./frontend/src/assets/Dogs/animal-6800387_1280.jpg"
+                "data": "https://storage.cloud.google.com/rescuehelper/Rosie.jpg"
               }
         },
         {
@@ -349,7 +349,7 @@
             "organisation": "Mary's Shelter",
             "image": {
                 "format": "jpg",
-                "data": "./frontend/src/assets/Dogs/animal-6800387_1280.jpg"
+                "data": "https://storage.cloud.google.com/rescuehelper/Duke.jpg"
               }
         },
         {
@@ -360,7 +360,7 @@
             "organisation": "Happy Paws",
             "image": {
                 "format": "jpg",
-                "data": "./frontend/src/assets/Dogs/animal-6800387_1280.jpg"
+                "data": "https://storage.cloud.google.com/rescuehelper/Penny.jpg"
               }
         },
         {
@@ -371,7 +371,7 @@
             "organisation": "The Dog Rescue Foundation",
             "image": {
                 "format": "jpg",
-                "data": "./frontend/src/assets/Dogs/animal-6800387_1280.jpg"
+                "data": "https://storage.cloud.google.com/rescuehelper/Jackson.jpg"
               }
         },
         {
@@ -382,7 +382,7 @@
             "organisation": "Woof Woof Foundation",
             "image": {
                 "format": "jpg",
-                "data": "./frontend/src/assets/Dogs/animal-6800387_1280.jpg"
+                "data": "https://storage.cloud.google.com/rescuehelper/Chloe.jpg"
               }
         },
         {
@@ -393,7 +393,7 @@
             "organisation": "The Furry Friends Shelter",
             "image": {
                 "format": "jpg",
-                "data": "./frontend/src/assets/Dogs/animal-6800387_1280.jpg"
+                "data": "https://storage.cloud.google.com/rescuehelper/Winnie.jpg"
               }
         },
         {
@@ -404,7 +404,7 @@
             "organisation": "From Street to Safety Trust",
             "image": {
                 "format": "jpg",
-                "data": "./frontend/src/assets/Dogs/animal-6800387_1280.jpg"
+                "data": "https://storage.cloud.google.com/rescuehelper/Sam.jpg"
               }
         },
         {
@@ -415,7 +415,7 @@
             "organisation": "Mary's Shelter",
             "image": {
                 "format": "jpg",
-                "data": "./frontend/src/assets/Dogs/animal-6800387_1280.jpg"
+                "data": "https://storage.cloud.google.com/rescuehelper/Hank.jpg"
               }
         },
         {
@@ -426,7 +426,7 @@
             "organisation": "Happy Paws",
             "image": {
                 "format": "jpg",
-                "data": "./frontend/src/assets/Dogs/animal-6800387_1280.jpg"
+                "data": "https://storage.cloud.google.com/rescuehelper/Maddie.jpg"
               }
         },
         {
@@ -437,7 +437,7 @@
             "organisation": "The Dog Rescue Foundation",
             "image": {
                 "format": "jpg",
-                "data": "./frontend/src/assets/Dogs/animal-6800387_1280.jpg"
+                "data": "https://storage.cloud.google.com/rescuehelper/Riley.jpg"
               }
         },
         {
@@ -448,7 +448,7 @@
             "organisation": "Woof Woof Foundation",
             "image": {
                 "format": "jpg",
-                "data": "./frontend/src/assets/Dogs/animal-6800387_1280.jpg"
+                "data": "https://storage.cloud.google.com/rescuehelper/Archie.jpg"
               }
         },
         {
@@ -459,7 +459,7 @@
             "organisation": "The Furry Friends Shelter",
             "image": {
                 "format": "jpg",
-                "data": "./frontend/src/assets/Dogs/animal-6800387_1280.jpg"
+                "data": "https://storage.cloud.google.com/rescuehelper/Dexter.jpg"
               }
         },
         {
@@ -470,7 +470,7 @@
             "organisation": "From Street to Safety Trust",
             "image": {
                 "format": "jpg",
-                "data": "./frontend/src/assets/Dogs/animal-6800387_1280.jpg"
+                "data": "https://storage.cloud.google.com/rescuehelper/Cleo.jpg"
               }
         },
         {
@@ -481,7 +481,7 @@
             "organisation": "Mary's Shelter",
             "image": {
                 "format": "jpeg",
-                "data": "https://wallpapers.com/images/hd/super-funny-pictures-iduwjp1gpohrve6r.jpg"
+                "data": "https://storage.cloud.google.com/rescuehelper/Zeke.jpg"
               }
         },
         {
@@ -492,7 +492,7 @@
             "organisation": "Happy Paws",
             "image": {
                 "format": "jpg",
-                "data": "./assets/hero-dog.jpg"
+                "data": "https://storage.cloud.google.com/rescuehelper/Koda.jpg"
               }
         }
     ]
