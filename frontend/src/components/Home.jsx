@@ -147,11 +147,20 @@ const Home = () => {
   };
 
   const { category, fetchCategory, setSelectedCategory } = useRestaurantStore();
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetchCategory().catch((error) => {
-      console.error("Error fetching category:", error);
-    });
+    const fetchData = async () => {
+      try {
+        await fetchCategory();
+      } catch (error) {
+        console.error('Error fetching category:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+    
+    fetchData();
   }, [fetchCategory]);
 
   const handleCategorySelect = (selectedCategory) => {
@@ -164,7 +173,10 @@ const Home = () => {
       <main>
         <Heading>{text.heading}</Heading>
         <Subheading>{text.subheading}</Subheading>
-        <Intro>
+        {loading ? (
+        <Intro>Loading a lot of nice restaurants, please wait for categories... </Intro>
+        ):(
+          <Intro>
           {category.map((category, index) => (
             <StyledButton
               key={index}
@@ -176,6 +188,7 @@ const Home = () => {
             </StyledButton>
           ))}
         </Intro>
+        )}
       </main>
       <Footer />
     </PageContainer>
