@@ -1,13 +1,8 @@
 import { UserModel } from "../models/UserModel";
 import { MessageModel } from "../models/MessageModel";
 import { TripModel } from "../models/TripModel";
-import listEndpoints from "express-list-endpoints";
 
 export const UserController = {
-  showEndpoints: async (req, res) => {
-    res.send(listEndpoints(app));
-  },
-
   getAllUsers: async (req, res) => {
     try {
       const users = await UserModel.find().sort({ createdAt: "desc" }).exec();

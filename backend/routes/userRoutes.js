@@ -1,11 +1,14 @@
 import express from "express";
 import { UserController } from "../controllers/UserController";
+import listEndpoints from "express-list-endpoints";
 
 // const { requiresAuth } = require("express-openid-connect");
 const router = express.Router();
 
 // router.get("/profile", requiresAuth(), UserController.getProfile);
-router.get("/", UserController.showEndpoints);
+router.get("/", async (req, res) => {
+  res.send(listEndpoints(router));
+});
 router.get("/users", UserController.getAllUsers);
 router.get("/user/:user_id", UserController.getUserById);
 router.get("/user/mongo/:mongoid", UserController.getUserByMongoId);
