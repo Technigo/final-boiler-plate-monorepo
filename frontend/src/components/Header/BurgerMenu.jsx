@@ -125,20 +125,15 @@ export const BurgerMenu = () => {
               </li>
             </>
           )}
-          {/* Conditionally render "Deed Hub" link only when logged in */}
-          {isLoggedIn ? (
-            <li className={activePage === "tasks" ? "active" : ""}>
-              <Link
-                to="/tasks"
-                onClick={() => {
-                  setActivePage("tasks");
-                  closeBurgerMenu();
-                }}
-              >
-                Deed Hub
-              </Link>
-            </li>
-          ) : null}
+          <li className={activePage === "tasks" ? "active" : ""} />
+          <Link
+            to="/tasks"
+            onClick={() => {
+              setActivePage("tasks");
+            }}
+          >
+            Deed Hub
+          </Link>
           {/* Conditionally render "Profile" link only when logged in */}
           {isLoggedIn ? (
             <li className={activePage === "profile" ? "active" : ""}>
