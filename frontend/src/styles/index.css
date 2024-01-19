@@ -1,0 +1,38 @@
+@import url("https://fonts.googleapis.com/css2?family=Megrim&family=Poppins:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  font-family: "Poppins", Arial, Helvetica, sans-serif;
+  --primary: #fbe3df;
+  --secondary: #f5b9b0;
+}
+
+@layer components {
+  .section-layout {
+    @apply mx-auto w-full max-w-[1000px] min-h-[65vh] h-full flex items-center flex-col justify-center;
+  }
+}
+
+.scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: var(--secondary) var(--primary);
+}
+
+/* Chrome, Edge, and Safari */
+.scrollbar::-webkit-scrollbar {
+  width: 15px;
+  height: 10px;
+}
+
+.scrollbar::-webkit-scrollbar-track {
+  background: var(--primary);
+  border-radius: 5px;
+}
+
+.scrollbar::-webkit-scrollbar-thumb {
+  background-color: var(--secondary);
+  border-radius: 14px;
+  border: 1px solid var(--primary);
+}
