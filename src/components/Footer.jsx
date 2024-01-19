@@ -12,10 +12,10 @@ export const Footer = () => {
           <p>Stockholm</p>
         </div>
         <div className="nav-bar">
-          <NavBar />
+          <NavBar showHamburger={false} />
         </div>
       </div>
-      <p className='copyright'> © Frida & Klaudia for Technigo</p>
+      <p className="copyright"> © Frida & Klaudia for Technigo</p>
     </footer>
   )
 }
