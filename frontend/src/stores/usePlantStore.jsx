@@ -43,7 +43,7 @@ export const plantStore = create((set, get) => ({
     let endpoint;
     switch (category) {
       case "shade-loving":
-        endpoint = `/category/shade-loving`;
+        endpoint = `/category/shady`;
         break;
       case "easy":
         endpoint = `/category/easy`;

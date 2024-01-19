@@ -43,7 +43,7 @@ const accordionItems = [
 export const Footer = () => {
   return (
     <footer>
-      <Accordion items={accordionItems} />
+      <Accordion items={accordionItems} showButtons={false}/>
       <div className="logo-container">
         <Link to="/">
           <img

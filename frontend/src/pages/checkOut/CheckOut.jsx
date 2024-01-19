@@ -1,7 +1,6 @@
 import { CartItem } from "../../components/cart/cartItem/CartItem";
 import { InputField } from "../../components/inputs/InputField";
 import { Link } from "react-router-dom";
-import { InputReadOnly } from "../../components/inputs/InputReadOnly";
 import { Button } from "../../components/buttons/Button";
 import { PersonalInfo } from "../../components/checkout/PersonalInfo";
 import { DeliveryDetails } from "../../components/checkout/DeliveryDetails";
@@ -18,26 +17,23 @@ import { RiTruckLine, RiPlantLine } from "react-icons/ri";
 import "./CheckOut.css";
 
 export const CheckOut = () => {
+  // variables for the emailjs function
   const serviceId = "service_yl79s0f";
   const templateId = "template_a3do47o";
   const publicKey = "14TsPm9sc7yUWZT-s";
 
+  // email state for guest users for emailjs function
   const [email, setEmail] = useState();
-  const [activeStep, setActiveStep] = useState(0);
+
+  // accordion activeStep state for next and back button
+  // const [activeStep, setActiveStep] = useState(0);
+  // show state for show/hide additional personal information
   const [show, toggleShow] = useState(false);
 
   //This variable should change when we have an actual username
   let username = "Plant Friend";
 
   const { cart } = cartStore();
-
-  const handleNext = () => {
-    setActiveStep((prevStep) => prevStep + 1);
-  };
-
-  const handleBack = () => {
-    setActiveStep((prevStep) => prevStep - 1);
-  };
 
   console.log("EMAIL:", email);
   console.log("CART:", cart);
@@ -81,9 +77,10 @@ export const CheckOut = () => {
     toggleShow(!show);
   };
 
+  // function to send email via emailjs to the user's email address
   const handlePayButtonClick = (e) => {
     e.preventDefault();
-    sendEmail();
+    sendEmail(e);
   };
 
   const accordionItems = [
@@ -119,7 +116,7 @@ export const CheckOut = () => {
                   />
                   <PersonalInfo />
 
-                  <Button btnText={"Next"} onClick={handleNext} />
+                  {/* <Button btnText={"Next"} onClick={handleNext} /> */}
                 </>
               )}
             </div>
@@ -143,8 +140,8 @@ export const CheckOut = () => {
               </div>
             </div>
             <DeliveryDetails />
-            <Button btnText={"Back"} onClick={handleBack} />
-            <Button btnText={"Next"} onClick={handleNext} />
+            {/* <Button btnText={"Back"} onClick={handleBack} />
+            <Button btnText={"Next"} onClick={handleNext} /> */}
           </div>
         </div>
       ),
@@ -155,8 +152,8 @@ export const CheckOut = () => {
         <div className="accordion-detail-wrapper">
           <div className="acc-step-container">
             <PaymentInfo />
-            <Button btnText={"Back"} onClick={handleBack} />
-            <Button btnText={"Next"} onClick={handleNext} />
+            {/* <Button btnText={"Back"} onClick={handleBack} />
+            <Button btnText={"Next"} onClick={handleNext} /> */}
           </div>
         </div>
       ),
@@ -180,7 +177,7 @@ export const CheckOut = () => {
               );
             })}
           </div>
-          <Button btnText={"Back"} onClick={handleBack} />
+          {/* <Button btnText={"Back"} onClick={handleBack} /> */}
         </div>
       ),
     },
@@ -194,7 +191,7 @@ export const CheckOut = () => {
       </Link>
       <h2 className="section-title">Check Out</h2>
       <form className={"checkout-form"}>
-        <Accordion items={accordionItems} />
+        <Accordion items={accordionItems} showButtons={true} openFirstAccordion={true}/>
 
         <Button className={"pay-button"} type={"submit"} btnText={"Pay"} onClick={handlePayButtonClick} />
         <p className="p-small">

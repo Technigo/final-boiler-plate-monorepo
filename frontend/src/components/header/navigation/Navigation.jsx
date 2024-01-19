@@ -1,48 +1,56 @@
 import { Link } from "react-router-dom";
 import { PiPawPrintLight } from "react-icons/pi";
 
-export const Navigation = () => {
+export const Navigation = ({ onClick }) => {
+
+  const handleLinkClick = () => {
+
+    if (onClick) {
+      onClick();
+    }
+  };
+
   return (
     <>
       <ul>
         <li className="ul-title">Categories</li>
         <li>
-          <Link to="/plants/all-plants">All plants</Link>
+          <Link to="/plants/all-plants" onClick={handleLinkClick}>All plants</Link>
         </li>
         <li>
-          <Link to="/plants/all-plants/popular">Most popular</Link>
+          <Link to="/plants/all-plants/popular" onClick={handleLinkClick}>Most popular</Link>
         </li>
         <li>
-          <Link to="/plants/all-plants/shade-loving">Shade lovers</Link>
+          <Link to="/plants/all-plants/shade-loving" onClick={handleLinkClick}>Shade lovers</Link>
         </li>
         <li>
-          <Link to="/plants/all-plants/easy">Easy care</Link>
+          <Link to="/plants/all-plants/easy" onClick={handleLinkClick}>Easy care</Link>
         </li>
         <li>
-          <Link to="/plants/all-plants/pet-friendly">
+          <Link to="/plants/all-plants/pet-friendly" onClick={handleLinkClick}>
             Pet friendly <PiPawPrintLight />
           </Link>
         </li>
         <li>
-          <Link to="/plants/all-plants/climbing">Hanging & climbing</Link>
+          <Link to="/plants/all-plants/climbing" onClick={handleLinkClick}>Hanging & climbing</Link>
         </li>
       </ul>
       <hr />
       <ul>
         <li>
-          <Link to="/wishlist">My account</Link>
+          <Link to="/wishlist" onClick={handleLinkClick}>My account</Link>
         </li>
         <li>
-          <Link to="/register">Register</Link>
+          <Link to="/register" onClick={handleLinkClick}>Register</Link>
         </li>
         <li>
-          <Link to="/about">About us</Link>
+          <Link to="/about" onClick={handleLinkClick}>About us</Link>
         </li>
         <li>
-          <Link to="/about">Contact</Link>
+          <Link to="/about" onClick={handleLinkClick}>Contact</Link>
         </li>
       </ul>
-      <Link to="/">
+      <Link to="/" onClick={handleLinkClick}>
         <img
           className="menu-logo"
           src="./big-logo-sand.svg"
