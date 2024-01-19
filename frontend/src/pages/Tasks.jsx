@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { taskStore } from "../stores/taskStore";
 import { userStore } from "../stores/userStore";
 import { useNavigate } from "react-router-dom";
-import { FeedTaskCard } from "../components/TaskCards/FeedTaskCard";
+import { FeedTaskCard } from "../components/FeedTaskCard";
 import { TaskTabs } from "../components/Tabs/TaskTabs";
 import { Heading1 } from "../components/Typography/Heading1";
 import { Heading2 } from "../components/Typography/Heading2";

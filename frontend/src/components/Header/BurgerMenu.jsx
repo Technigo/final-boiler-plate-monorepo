@@ -32,11 +32,6 @@ const StyledBurgerLinks = styled.div`
   gap: 20px;
   z-index: 1; /* Ensure that the burger menu links are behind the toggle button. */
 
-  .logout-button {
-    margin: 0;
-    padding: 0;
-  }
-
   // When the burger menu is open on small screens, it gets a background color for readability.
   @media screen and (max-width: 510px) {
     background-color: ${(props) =>
