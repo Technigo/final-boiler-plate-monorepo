@@ -383,12 +383,12 @@ export const TripGenerator = () => {
         </form>
 
         {trips.length > 0 && (
-          <div className="mt-8 space-y-4">
+          <div className="space-y-4">
             {trips.reverse().map((trip) => (
               <div
                 key={trip.id}
-                className="grid grid-cols-12 gap-2 p-4 rounded-lg relative">
-                <div className="col-span-12 text-md border rounded-lg p-4 sm:text-xl">
+                className="grid grid-cols-12 gap-2 p-2 rounded-lg relative">
+                <div className="col-span-12 text-sm bg-yellow-50 rounded-lg p-4 sm:text-lg">
                   You have created a trip from {trip.from} to {trip.to} on{" "}
                   {trip.date}. Your vehicle of choice is a {trip.make}{" "}
                   {trip.model} with reg. no {trip.reg}. You have{" "}
