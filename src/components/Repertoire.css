@@ -18,6 +18,8 @@ ul {
 	border-bottom: 1px solid var(--font-color);
 	margin-bottom: 5px;
 	padding-bottom: 5px;
+	display: flex;
+	gap: 20px;
 }
 
 .the-title,
@@ -26,4 +28,11 @@ ul {
 }
 .the-title {
 	color: var(--font-color);
+}
+
+.the-title span a{
+	font-weight: 300;
+}
+.the-title span a:hover {
+	opacity: 0.5;
 }

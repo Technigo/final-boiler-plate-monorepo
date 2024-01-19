@@ -4,7 +4,6 @@ import { Repertoire } from '../components/Repertoire'
 import moment from 'moment'
 import Slider from "react-slick"
 
-
 import "slick-carousel/slick/slick.css"
 import "slick-carousel/slick/slick-theme.css"
 import './Calendar.css'
@@ -24,15 +23,15 @@ export const Calendar = () => {
         generatedDates.push({
           month: date.format('MMM DD'),
           dayOfWeek: date.format('ddd'),
-        });
+        })
       }
 
       return generatedDates
-    };
+    }
 
     // Set the generated dates in the component state
     setDates(generateDates())
-  }, []);
+  }, [])
 
   const handleDateClick = (date) => {
     if (selectedDate && selectedDate === date) {
@@ -40,13 +39,11 @@ export const Calendar = () => {
     } else {
       setSelectedDate(date)
     }
-
-  };
+  }
 
   // setting for slider slick-carousel
-
   const settings = {
-    dots: true,
+    dots: false,
     infinite: true,
     speed: 500,
     slidesToShow: 3,
@@ -96,7 +93,7 @@ export const Calendar = () => {
         </Slider>
       </div>
 
-      {selectedDate && <Repertoire />}
+      {selectedDate && <Repertoire date={selectedDate} />}
     </div>
   )
 }
