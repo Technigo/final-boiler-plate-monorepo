@@ -209,7 +209,13 @@ export const Chat = () => {
                   message.sender === loggedInUserId ? "text-right" : "text-left"
                 } mb-2`}>
                 <div className="text-xs text-gray-700">
-                  {new Date(message.createdAt).toLocaleString()}
+                  {new Date(message.createdAt).toLocaleString(undefined, {
+                    year: "numeric",
+                    month: "numeric",
+                    day: "numeric",
+                    hour: "numeric",
+                    minute: "numeric",
+                  })}
                 </div>
                 <div
                   className={`text-left inline-block p-4 my-2 rounded-md text-sm lg:max-w-[40%] ${
