@@ -27,7 +27,7 @@ export const UserDashboard = () => {
         </div>
         <h3>Welcome, {user.username}!</h3>
         <p className="dashboard-text">
-          From your account dashboard you can found your wishlist, recent orders
+          From your account dashboard you can find your wishlist, recent orders
           and edit your account details.
         </p>
         <ul className="dashboard-links-wrapper">
