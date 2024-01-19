@@ -1,11 +1,9 @@
 import { Route } from "react-router-dom";
 
 import { About } from "../pages/About";
-// import { Account } from "../pages/Account";
 import { Home } from "../pages/Home";
 import { NotFound } from "../pages/NotFound";
 import { CreateTrip } from "../pages/CreateTrip";
-import { Register } from "../pages/Register";
 import { Contact } from "../pages/Contact";
 import { Trips } from "../components/Trips";
 import { Messages } from "../pages/Messages";
@@ -21,7 +19,6 @@ const routes = (
     <Route path="/trips" element={<Trips />} />
     <Route path="/mytrips" element={<MyTrips />} />
     <Route path="/trips/:tripId" element={<TripDetails />} />
-    <Route path="/register" element={<Register />} />
     <Route path="/contact" element={<Contact />} />
     <Route path="/messages" element={<Messages />} />
     <Route path="*" element={<NotFound />} />
