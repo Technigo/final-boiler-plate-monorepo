@@ -162,7 +162,9 @@ export const Chat = () => {
       <div className="flex flex-col mx-auto max-w-screen-md p-2 mt-8 mb-8 w-full">
         <div className="bg-blue-100 p-4 rounded-xl mb-4">
           <h1 className="text-black py-1 text-md xl:text-xl">Hi, {username}</h1>
-          <h2 className="text-black text-sm py-1 xl:text-md">Contacts:</h2>
+          <h2 className="text-black text-sm py-1 xl:text-md">
+            Choose a user to chat with:
+          </h2>
           {!userLoading && (
             <ul className="px-2">
               {userList.map(
