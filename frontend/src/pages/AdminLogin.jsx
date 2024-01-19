@@ -4,7 +4,8 @@
 import { adminLoginStore } from "../stores/adminLoginStore"; // Import the adminStore from zustand
 import { useState } from "react"; // Import useState hook
 import { useNavigate } from "react-router-dom"; // Import useNavigate hook
-//import styles from './AdminLogin.module.css'; // Styling
+import styles from './AdminLogin.module.css'; // Styling
+import { Text } from '../UI/Typography';
 
 export const AdminLogin = () => {
     // State variables for admin username and password
@@ -41,30 +42,32 @@ export const AdminLogin = () => {
 
     // Render the admin login form
     return (
-        <>
+        <div className={styles.wrapper}>
             <nav>
                 {/* Optional navigation links can be added here */}
             </nav>
             <div>
-                <h2>Admin Login</h2>
+                <Text type="H1" className={styles.h1}>ADMIN LOGIN</Text>
                 <div className="admin-login">
                     <input
                         type="text"
                         placeholder="Admin Username"
                         value={username}
                         onChange={(e) => setUsername(e.target.value)}
+                        className={styles.inputStyle}
                     />
                     <input
                         type="password"
                         placeholder="Password"
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
+                        className={styles.inputStyle}
                     />
                     <button onClick={onAdminLoginClick}>Admin Login</button>
                     <button onClick={() => navigate('/')}>CBC Home</button>
                 </div>
             </div>
-        </>
+        </div>
     );
 };
 
