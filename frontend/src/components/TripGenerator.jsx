@@ -140,7 +140,7 @@ export const TripGenerator = () => {
 
   return (
     <>
-      <div className="text-primary sm:mt-8 mt-2 max-w-2xl mx-auto p-2">
+      <div className="text-primary sm:mt-8 mt-2 sm:mb-8 max-w-2xl mx-auto p-2">
         <h1 className="text-lgfont-md">Create trip</h1>
         <form onSubmit={handleSubmit} className="flex flex-col space-y-2 p-2">
           <LocationInput
@@ -161,8 +161,7 @@ export const TripGenerator = () => {
             <div className="w-1/2">
               <label
                 htmlFor="date"
-                className=" block text-sm font-md text-gray-700"
-              >
+                className=" block text-sm font-md text-gray-700">
                 Date
               </label>
               <DatePicker
@@ -184,8 +183,7 @@ export const TripGenerator = () => {
             <div className="w-1/2">
               <label
                 htmlFor="reg"
-                className="block text-sm font-md text-gray-700"
-              >
+                className="block text-sm font-md text-gray-700">
                 Reg. no
               </label>
               <input
@@ -207,8 +205,7 @@ export const TripGenerator = () => {
             <div className="w-1/2">
               <label
                 htmlFor="make"
-                className="block text-sm font-md text-gray-700"
-              >
+                className="block text-sm font-md text-gray-700">
                 Make
               </label>
               <select
@@ -220,8 +217,7 @@ export const TripGenerator = () => {
                     target: { name: e.target.name, value: e.target.value },
                   })
                 }
-                className="input-field border p-2 rounded-md w-full h-10"
-              >
+                className="input-field border p-2 rounded-md w-full h-10">
                 <option value="" disabled>
                   Make
                 </option>
@@ -235,8 +231,7 @@ export const TripGenerator = () => {
             <div className="w-1/2">
               <label
                 htmlFor="model"
-                className="block text-sm font-md text-gray-700"
-              >
+                className="block text-sm font-md text-gray-700">
                 Model
               </label>
               <select
@@ -244,8 +239,7 @@ export const TripGenerator = () => {
                 name="model"
                 value={formData.model}
                 onChange={handleChange}
-                className="input-field border p-2 rounded-md w-full h-10"
-              >
+                className="input-field border p-2 rounded-md w-full h-10">
                 <option value="" disabled>
                   Model
                 </option>
@@ -263,8 +257,7 @@ export const TripGenerator = () => {
             <div className="w-1/4">
               <label
                 htmlFor="availableSeats"
-                className="block text-sm font-md text-gray-700"
-              >
+                className="block text-sm font-md text-gray-700">
                 Avail. Seats
               </label>
               <input
@@ -292,8 +285,7 @@ export const TripGenerator = () => {
             <div className="w-3/4">
               <label
                 htmlFor="music"
-                className="block text-sm font-md text-gray-700"
-              >
+                className="block text-sm font-md text-gray-700">
                 Music
               </label>
               <select
@@ -301,8 +293,7 @@ export const TripGenerator = () => {
                 name="music"
                 value={formData.music}
                 onChange={handleChange}
-                className="input-field border p-2 rounded-md w-full h-10"
-              >
+                className="input-field border p-2 rounded-md w-full h-10">
                 <option value="" disabled>
                   Music
                 </option>
@@ -331,8 +322,7 @@ export const TripGenerator = () => {
           <div className="mb-4">
             <label
               htmlFor="message"
-              className="block text-sm font-md text-gray-700"
-            >
+              className="block text-sm font-md text-gray-700">
               Message
             </label>
             <textarea
@@ -350,13 +340,12 @@ export const TripGenerator = () => {
               type="submit"
               className={`submit-button ${
                 loading
-                  ? "bg-background"
+                  ? ""
                   : formDataIsIncomplete()
-                  ? "bg-background"
-                  : "bg-secondary-500 hover:bg-secondary-700"
+                  ? "bg-gray-50 text-gray-200"
+                  : "bg-quinary hover:bg-cyan-800 hover:text-white"
               } text-primary p-4 py-2 rounded-full focus:outline-none focus:ring focus:border-blue-300`}
-              disabled={loading || formDataIsIncomplete()}
-            >
+              disabled={loading || formDataIsIncomplete()}>
               {loading ? "Generating..." : "Create Trip"}
             </button>
           </div>
@@ -367,8 +356,7 @@ export const TripGenerator = () => {
             {trips.reverse().map((trip) => (
               <div
                 key={trip.id}
-                className="grid grid-cols-12 gap-2 p-2 rounded-lg relative"
-              >
+                className="grid grid-cols-12 gap-2 p-2 rounded-lg relative">
                 <div className="col-span-12 text-sm bg-yellow-50 rounded-lg p-4 sm:text-lg">
                   You have created a trip from {trip.from} to {trip.to} on{" "}
                   {trip.date}. Your vehicle of choice is a {trip.make}{" "}
@@ -381,8 +369,7 @@ export const TripGenerator = () => {
                 <div className="col-span-12 flex items-center justify-center">
                   <Link
                     to="/trips"
-                    className="text-blue-500 hover:text-blue-700 focus:outline-none focus:ring focus:border-blue-300"
-                  >
+                    className="text-blue-500 hover:text-blue-700 focus:outline-none focus:ring focus:border-blue-300">
                     See list of trips
                   </Link>
                 </div>
