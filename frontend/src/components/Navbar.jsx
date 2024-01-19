@@ -27,28 +27,25 @@ export const Navbar = () => {
     { linkName: "About", linkRoute: "/about" },
   ];
 
-  const renderMenuItems = () =>
-    isAuthenticated ? (
-      <ul className="bg-tertiary text-white absolute top-16 w-full mt-2 left-0 p-2 space-y-2">
-        {navlinksLoggedIn.map((link) => (
-          <li key={link.linkName} className="text-white">
-            <Link to={link.linkRoute} onClick={onMobileNavClick}>
-              {link.linkName}
-            </Link>
-          </li>
-        ))}
-      </ul>
-    ) : (
-      <ul className="bg-tertiary text-white absolute top-16 w-full mt-2 left-0 p-2 space-y-2">
-        {navlinks.map((link) => (
-          <li key={link.linkName}>
-            <Link to={link.linkRoute} onClick={onMobileNavClick}>
-              {link.linkName}
-            </Link>
-          </li>
-        ))}
-      </ul>
-    );
+  const renderMenuItems = () => (
+    <ul className="bg-tertiary text-white absolute top-16 left-0 w-full mt-2 p-2 space-y-2 text-center">
+      {isAuthenticated
+        ? navlinksLoggedIn.map((link) => (
+            <li key={link.linkName} className="text-white">
+              <Link to={link.linkRoute} onClick={onMobileNavClick}>
+                {link.linkName}
+              </Link>
+            </li>
+          ))
+        : navlinks.map((link) => (
+            <li key={link.linkName}>
+              <Link to={link.linkRoute} onClick={onMobileNavClick}>
+                {link.linkName}
+              </Link>
+            </li>
+          ))}
+    </ul>
+  );
 
   const handleScroll = () => {
     setIsScrolled(window.scrollY > 50);
