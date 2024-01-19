@@ -1,111 +1,146 @@
-import { create } from "zustand"; // Import the create function from the zustand library.
+// import { create } from "zustand"; // Import the create function from the zustand library.
+// import axios from "axios";
 
-const userApi = "http://localhost:8080/api/users";
+// const API_BASE_URL = import.meta.env.VITE_BACKEND_API;
+// const withEndpoint = (endpoint) => `${API_BASE_URL}/api/auth/${endpoint}`;
 
-//import.meta.env.VITE_USER_API;
+// // Utility function to handle HTTP status code
+// const handleResponseStatus = (response, successCallback, errorCallback) => {
+//   if (response.status >= 200 && response.status < 300) {
+//     successCallback(response.data);
+//   } else {
+//     errorCallback(response.status, response.data);
+//   }
+// };
 
-export const userStore = create((set, get) => ({
-  isLoading: false,
-  username: "",
-  password: "",
-  email: "",
-  accessToken: "",
-  isLoggedIn: false,
-  errorMessage: "",
+// export const userStore = create((set, get) => ({
+//   username: "",
+//   password: "",
+//   email: "",
+//   isLoggedIn: false,
+//   errorMessage: "",
+//   isLoading: false,
+//   isAuthenticated: false,
 
-  setUsername: (username) => set({ username }),
-  setPassword: (password) => set({ password }),
-  setEmail: (email) => set({ email }),
-  setAccessToken: (token) => set({ accessToken: token }),
-  setIsLoggedIn: (isLoggedIn) => set({ isLoggedIn }),
-  setErrorMessage: (errorMessage) => set({ errorMessage: errorMessage }),
-  setIsLoading: (loading) => set({ isLoading: loading }),
+//   setUsername: (username) => set({ username }),
+//   setPassword: (password) => set({ password }),
+//   setEmail: (email) => set({ email }),
+//   setIsLoggedIn: (isLoggedIn) => set({ isLoggedIn }),
+//   setErrorMessage: (message) => set({ errorMessage: message }),
+//   setIsLoading: (loading) => set({ isLoading: loading }),
+//   setIsAuthenticated: (authenticated) =>
+//     set({ isAuthenticated: authenticated }),
 
-  register: async (username, password, email) => {
-    if (!username || !password || !email) {
-      alert("Please enter username, email, and password");
-      return;
-    }
+//   register: async (username, password, email) => {
+//     if (!username || !password || !email) {
+//       set({ errorMessage: "Please enter username, email, and password" });
+//       return;
+//     }
 
-    try {
-      set({ isLoading: true });
-      const response = await fetch(`${userApi}/register`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ username, password, email }),
-      });
+//     try {
+//       set({ isLoading: true });
+//       const response = await axios.post(withEndpoint("register"), {
+//         username,
+//         password,
+//         email,
+//       });
 
-      if (!response.ok) {
-        const data = await response.json();
-        set({ errorMessage: data.response.message, isLoading: false });
-      }
+//       handleResponseStatus(
+//         response,
+//         (data) => {
+//           // On successful registration, clear the input fields
+//           set({ username: "", email: "", password: "", isLoading: false });
+//           console.log("Registration response:", data);
+//         },
+//         (status, errorData) => {
+//           console.error("Unexpected status code during registration:", status);
+//           set({ errorMessage: errorData.error.message });
+//         }
+//       );
+//     } catch (error) {
+//       console.error("Signup error:", error);
 
-      const data = await response.json();
-      const successfullFetch = data.success;
-      if (successfullFetch) {
-        set({ username: username, email: email, isLoading: false });
-        console.log("SUCCESSFULL REGISTRATION!!");
-      }
-    } catch (error) {
-      console.error("Signup error:", error);
-      alert("An error occurred during signup");
-      set({ isLoading: false });
-    }
-  },
+//       if (error.response) {
+//         // The request was made and the server responded with a status code
+//         // that falls out of the range of 2xx
+//         set({ errorMessage: error.response.data.error.message });
+//       } else if (error.request) {
+//         // The request was made but no response was received
+//         set({ errorMessage: "No response from server" });
+//       } else {
+//         // Something happened in setting up the request that triggered an Error
+//         set({ errorMessage: "Error in setting up the request" });
+//       }
+//     } finally {
+//       set({ isLoading: false });
+//     }
+//   },
 
-  login: async (username, password) => {
-    if (!username || !password) {
-      set({ errorMessage: "Please enter both username and password" });
-      return;
-    }
+//   login: async (username, password) => {
+//     if (!username || !password) {
+//       set({ errorMessage: "Please enter both username and password" });
+//       return;
+//     }
 
-    try {
-      set({ isLoading: true });
-      const response = await fetch(`${userApi}/login`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ username, password }),
-      });
+//     try {
+//       set({ isLoading: true });
+//       const response = await axios.post(
+//         withEndpoint("login"),
+//         {
+//           username,
+//           password,
+//         },
+//         {
+//           withCredentials: true,
+//         }
+//       );
 
-      if (!response.ok) {
-        throw new Error("Login failed");
-        set({ isLoading: false });
-      }
+//       handleResponseStatus(
+//         response,
+//         (data) => {
+//           // On successful login, clear the input fields
+//           set({ username: "", password: "", isLoading: false });
+//           console.log("Login response:", data);
+//           // Set authentication and loggedin status
+//           set({ isAuthenticated: true, isLoggedIn: true });
+//         },
+//         (status, errorData) => {
+//           console.error("Unexpected status code during login:", status);
+//           set({ errorMessage: errorData.error.message });
+//         }
+//       );
+//     } catch (error) {
+//       console.error("Login error:", error);
 
-      const data = await response.json();
-      const successfullFetch = data.success;
+//       if (error.response) {
+//         // The request was made and the server responded with a status code
+//         // that falls out of the range of 2xx
+//         set({ errorMessage: error.response.data.error.message });
+//       } else if (error.request) {
+//         // The request was made but no response was received
+//         set({ errorMessage: "No response from server" });
+//       } else {
+//         // Something happened in setting up the request that triggered an Error
+//         set({ errorMessage: "Error in setting up the request" });
+//       }
+//     } finally {
+//       set({ isLoading: false });
+//     }
+//   },
+//   logout: async () => {
+//     try {
+//       // Call the server to handle logout and clear the HttpOnly cookie
+//       await axios.post(withEndpoint("logout"));
 
-      if (successfullFetch) {
-        set({ username: username, email: email, isLoading: false });
-        console.log("SUCCESSFULL LOGIN!!");
-      }
-      // Saves the accessToken in localStorage
-      localStorage.setItem("accessToken", data.response.accessToken);
-      localStorage.setItem("username", username);
-      localStorage.setItem("userId", data.response._id);
-      localStorage.setItem("isLoggedIn", true);
-    } catch (error) {
-      set({ error: error.message, isLoading: false });
-    }
-  },
-  logout: async () => {
-    set({ error: null }); // Reset the error state
-    try {
-      set({ isLoading: true });
-      const response = await fetch(`${userApi}/logout`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-      });
-
-      if (!response.ok) {
-        throw new Error("Logout failed");
-        set({ isLoading: false });
-      }
-
-      set({ user: null, isLoggedIn: false, isLoading: false });
-      return "Logout successful"; // Return a success message
-    } catch (error) {
-      set({ error: error.message, isLoading: false });
-    }
-  },
-}));
+//       // Clear user information from state
+//       set({
+//         username: "",
+//         isAuthenticated: false,
+//         isLoggedIn: false,
+//         isLoading: false,
+//       });
+//     } catch (error) {
+//       console.error("Logout error:", error);
+//     }
+//   },
+// }));

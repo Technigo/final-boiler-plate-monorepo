@@ -25,11 +25,11 @@
 }
 
 .big-logo {
-  margin-bottom: 3.4rem;
+  margin-bottom: 2rem;
 }
 
 .big-logo img {
-  width: 10rem;
+  width: 13rem;
 }
 
 form {
@@ -45,7 +45,7 @@ form {
   flex-direction: column;
 }
 
-span {
+.auth-wrapper span {
   color: var(--chalk);
 }
 
@@ -93,4 +93,12 @@ span {
 .app-li a:hover::before {
   width: 100%;
   left: 0;
+}
+
+.member-text {
+  color: var(--sand);
+  font-weight: 800;
+  margin-bottom: 2rem;
+  font-size: 1.3rem;
+  font-family: var(--big-h-font);
 }
