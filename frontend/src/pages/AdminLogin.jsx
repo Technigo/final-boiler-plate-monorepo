@@ -1,10 +1,9 @@
-// Accessible only by direct URL: /admin/login
-
 //import { Link } from "react-router-dom"; // Import the 'Link' component from 'react-router-dom'.
 import { adminLoginStore } from "../stores/adminLoginStore"; // Import the adminStore from zustand
 import { useState } from "react"; // Import useState hook
 import { useNavigate } from "react-router-dom"; // Import useNavigate hook
-//import styles from './AdminLogin.module.css'; // Styling
+import styles from './AdminLogin.module.css'; // Styling
+import { Text } from '../UI/Typography';
 
 export const AdminLogin = () => {
     // State variables for admin username and password
@@ -40,27 +39,29 @@ export const AdminLogin = () => {
     };
 
     return (
-        <>
+        <div className={styles.wrapper}>
             <div>
-                <h2>Admin Login</h2>
+                <Text type="H1" className={styles.h1}>ADMIN LOGIN</Text>
                 <div className="admin-login">
                     <input
                         type="text"
                         placeholder="Admin Username"
                         value={username}
                         onChange={(e) => setUsername(e.target.value)}
+                        className={styles.inputStyle}
                     />
                     <input
                         type="password"
                         placeholder="Password"
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
+                        className={styles.inputStyle}
                     />
                     <button onClick={onAdminLoginClick}>Admin Login</button>
                     <button onClick={() => navigate('/')}>CBC Home</button>
                 </div>
             </div>
-        </>
+        </div>
     );
 };
 

@@ -1,0 +1,37 @@
+.wrapper {
+    height: 400px;
+}
+
+.inputStyle {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 140%;
+    letter-spacing: 0.6px;
+    font-family: 'Readex Pro', sans-serif;
+    color: #1D1C25;
+}
+
+/* Tablet-sized devices (e.g., iPad) */
+@media (min-width: 768px) {
+
+    .wrapper {
+        height: 600px;
+    }
+
+    .inputStyle {
+        font-size: 17px;
+    }
+}
+
+/* Laptop and desktops */
+@media (min-width: 1024px) {
+    .wrapper {
+        height: 700px;
+    }
+
+    .inputStyle {
+        font-size: 19px;
+        letter-spacing: 0.60px;
+    }
+
+}
