@@ -1,90 +1,12 @@
 import { UserModel } from "../models/UserModel";
 import { MessageModel } from "../models/MessageModel";
 import { TripModel } from "../models/TripModel";
-import bcrypt from "bcrypt";
+import listEndpoints from "express-list-endpoints";
 
 export const UserController = {
-  // getProfile: (req, res) => {
-  //   res.send(JSON.stringify(req.oidc.user));
-  // },
-
-  checkAuthentication: (req, res) => {
-    res.send(req.oidc.isAuthenticated() ? "Logged in" : "Logged out");
+  showEndpoints: async (req, res) => {
+    res.send(listEndpoints(app));
   },
-
-  joinTrip: async (req, res) => {
-    const { tripId, userId } = req.params;
-    console.log("Received tripId:", tripId);
-    console.log("Received userId:", userId);
-
-    try {
-      const trip = await TripModel.findById(tripId);
-
-      if (!trip) {
-        return res.status(404).json({ message: "Trip not found" });
-      }
-
-      // Check if the user is already part of the trip
-      if (trip.passengers.includes(userId)) {
-        return res
-          .status(400)
-          .json({ message: "User is already part of the trip" });
-      }
-
-      // Check if there are available seats
-      if (trip.availableSeats <= 0) {
-        return res
-          .status(400)
-          .json({ message: "No available seats for the trip" });
-      }
-
-      // Update the trip information
-      trip.availableSeats -= 1;
-      trip.passengers.push(userId);
-
-      // Save the updated trip to the database
-      await trip.save();
-
-      res.json(trip); // Return the updated trip information to the client
-    } catch (error) {
-      console.error("Error joining trip:", error);
-      res.status(500).json({ error: error.message });
-    }
-  },
-  // registerUser: async (req, res) => {
-  //   const { username, email, password } = req.body;
-  //   try {
-  //     if (!username || !email || !password) {
-  //       res.status(400).json({ message: "Please add all fields" });
-  //     }
-
-  //     const existingUser = await UserModel.findOne({
-  //       $or: [{ username }, { email }],
-  //     });
-
-  //     if (existingUser) {
-  //       res.status(400).json({
-  //         message: `User with ${
-  //           existingUser.username === username ? "username" : "email"
-  //         } already exists`,
-  //       });
-  //     }
-
-  //     const user = new UserModel({
-  //       email,
-  //       username,
-  //       password: bcrypt.hashSync(password, 10),
-  //     });
-
-  //     await user.save();
-  //     res.status(201).json({ id: user._id, accessToken: user.accessToken });
-  //   } catch (err) {
-  //     res.status(400).json({
-  //       message: "Could not create user",
-  //       errors: err.errors,
-  //     });
-  //   }
-  // },
 
   getAllUsers: async (req, res) => {
     try {
@@ -276,42 +198,6 @@ export const UserController = {
     }
   },
 
-  // passengerJoin: async (req, res) => {
-  //   console.log();
-  //   const { tripid } = req.params;
-  //   const { id, username } = req.body;
-  //   const newPassenger = {
-  //     userId: id,
-  //     username: username,
-  //   };
-
-  //   try {
-  //     console.log(req.body);
-  //     const findTrip = await TripModel.findOne({ _id: tripid });
-  //     if (!findTrip) {
-  //       return res
-  //         .status(404)
-  //         .json({ message: "Trip not found in passengerJoin" });
-  //     }
-  //     findTrip.passengers.push(newPassenger);
-  //     // const passenger = await TripModel.findOneAndUpdate(
-  //     //   { _id: tripid },
-  //     //   { $push: { passengers: newPassenger } },
-  //     //   { new: true }
-  //     // );
-  //     // console.log(passenger);
-  //     // res.json({ passenger });
-
-  //     const updatedTrip = await findTrip.save();
-
-  //     res.json({ passenger: updatedTrip.passengers });
-  //   } catch (error) {
-  //     res.status(400).json({
-  //       message: "Could not add passenger",
-  //       errors: error.errors,
-  //     });
-  //   }
-  // },
   passengerJoin: async (req, res) => {
     console.log();
     const { tripid } = req.params;

@@ -6,7 +6,6 @@ dotenv.config(); // Load environment variables from the .env file
 import { connectDB } from "./config/db"; // Import database connection function
 import { auth0Config } from "./config/Auth0";
 import userRoutes from "./routes/userRoutes";
-import listEndpoints from "express-list-endpoints";
 
 const { auth } = require("express-openid-connect");
 
@@ -19,10 +18,10 @@ app.use(cors()); // Enable CORS (Cross-Origin Resource Sharing)
 app.use(express.json()); // Parse incoming JSON data
 app.use(express.urlencoded({ extended: false })); // Parse URL-encoded data
 app.use(auth(auth0Config));
-app.use(userRoutes);
 
 // Use the routes for handling API requests
 // ROUTES - These routes USE controller functions ;)
+app.use(userRoutes);
 
 // Connection to the database through Mongoose
 connectDB();
@@ -31,45 +30,3 @@ connectDB();
 app.listen(port, () => {
   console.log(`Server running on http://localhost:${port}`); // Display a message when the server is successfully started
 });
-
-app.get("/endpoints", (req, res) => {
-  res.send(listEndpoints(app));
-});
-
-// //#REGION Websocket stuff
-// const wss = new ws.WebSocketServer({ server });
-
-// wss.on("connection", (ws) => {
-//   ws.on("message", async (message) => {
-//     const data = JSON.parse(message);
-//     const { sender, recipient, text } = data;
-
-//     if (data.type === "setUserId") {
-//       // Associate the user ID with the WebSocket connection
-//       ws.userId = data.userId;
-//       console.log(`User ${ws.userId} connected.`);
-//     } else if (data.type === "setReceiverId") {
-//       ws.receiverId = data.receiverId;
-//       console.log(
-//         `User ${ws.userId} will send chat messages to ${ws.receiverId}.`
-//       );
-//     } else if (recipient && text) {
-//       const messageDoc = await MessageModel.create({
-//         sender,
-//         recipient,
-//         text,
-//       });
-//       console.log("created message");
-//       console.log(messageDoc);
-//       console.log(sender);
-//     } else {
-//       // Handle other message types
-//     }
-//   });
-
-//   ws.on("close", () => {
-//     // Clean up user-related data upon WebSocket close
-//     console.log(`User ${ws.userId} disconnected.`);
-//   });
-// });
-//#ENDREGION
