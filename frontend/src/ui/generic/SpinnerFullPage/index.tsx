@@ -1,0 +1,1 @@
+export { SpinnerFullPage } from "./SpinnerFullPage";
