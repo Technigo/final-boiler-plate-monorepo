@@ -3,7 +3,7 @@ import { HomeCBC } from "../pages/HomeCBC";
 import { Cocktails } from "../pages/Cocktails";
 import { AboutUs } from "../pages/AboutUs";
 import { ContactUs } from "../pages/ContactUs";
-import { SinCocktail } from "../SinCocktail";
+import { SinCocktail } from "../pages/SinCocktail";
 
 const routes = (
     <>
