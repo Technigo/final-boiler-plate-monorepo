@@ -8,7 +8,7 @@ export const TripsInMyTrips = () => {
   const { loggedInUserId } = userStore();
 
   useEffect(() => {
-    fetch(`${apiEnv}/trips/join/${loggedInUserId}`)
+    fetch(`${apiEnv}/trips/usertrips/${loggedInUserId}`)
       .then((response) => response.json())
       .then((data) => {
         // Filter trips based on date
@@ -17,7 +17,7 @@ export const TripsInMyTrips = () => {
         //   const currentDate = new Date();
         //   return tripDate >= currentDate;
         // });
-        setTrips(filteredTrips);
+        setTrips(data);
       })
       .catch((error) => console.error("Error fetching trips:", error));
   }, []);
