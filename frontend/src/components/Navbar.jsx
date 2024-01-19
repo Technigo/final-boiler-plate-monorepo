@@ -104,7 +104,7 @@ export const Navbar = () => {
             </li>
           </ul>
         )}
-        <div className="md:hidden flex items-center ">
+        <div className="md:hidden flex items-center">
           <LoginBtn />
           <LogoutBtn />
           <button
