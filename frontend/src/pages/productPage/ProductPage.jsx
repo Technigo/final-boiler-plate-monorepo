@@ -56,7 +56,7 @@ export const ProductPage = () => {
   console.log("CART:", cart);
 
   return (
-    <section className="product-page">
+    <div className="product-page">
       <Link to="/plants/all-plants" className="go-back">
         <MdKeyboardArrowLeft className="go-back-icon" />
         Go back to all plants
@@ -148,6 +148,6 @@ export const ProductPage = () => {
           Plant added to cart!
         </MuiAlert>
       </Snackbar>
-    </section>
+    </div>
   );
 };

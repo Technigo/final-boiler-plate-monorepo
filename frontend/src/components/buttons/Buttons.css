@@ -58,7 +58,7 @@ button {
 }
 
 .signup-btn::before {
-  content: '';
+  content: "";
   position: absolute;
   height: 100%;
   width: 0%;
@@ -77,4 +77,28 @@ button {
 
 .signup-btn:hover::before {
   width: 160%;
+}
+
+.logout-btn {
+  padding: 0.5rem 1rem;
+  width: fit-content;
+  color: var(--chalk);
+  background-color: var(--forrest);
+  font-family: var(--montserrat);
+  font-size: 0.8rem;
+  font-weight: 500;
+  border-radius: 10rem;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease 0s;
+}
+
+.logout-btn:hover {
+  background-color: var(--terracotta);
+  box-shadow: 0px 15px 20px rgba(237, 220, 174, 0.4);
+  color: #fff;
+  transform: translateY(-3px);
+}
+
+.logout-btn:active {
+  transform: translateY(-1px);
 }
