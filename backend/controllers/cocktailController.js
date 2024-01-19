@@ -1,7 +1,7 @@
 
 import Cocktails from '../models/Cocktails';
 import cloudinary from 'cloudinary';
-        
+
 export const getCocktailsController = async (req, res) => {
     try {
         // Extracting query parameters
@@ -35,26 +35,28 @@ export const getCocktailsController = async (req, res) => {
         // Search logic: Apply a search filter if 'search' query parameter is provided
         if (search) {
             const regexSearch = new RegExp('\\b' + search + '\\b', 'i');
-            query = query.and([{ $or: [
-                { name: regexSearch },
-                { primaryLiquor: regexSearch },
-                { allLiquors: { $in: [regexSearch] } },
-                { ingredients: { $in: [regexSearch] } },
-                { instructions: regexSearch },
-                { category: regexSearch },
-                { color: regexSearch },
-                { occasion: { $in: [regexSearch] } },
-                { difficulty: regexSearch },
-                { flavorProfile: regexSearch },
-                { prepTime: regexSearch },
-                { drinkware: regexSearch },
-                { strength: regexSearch },
-                { tags: { $in: [regexSearch] } },
-                { creator: regexSearch },
-                { description: regexSearch },
-                { InspiredByCreator: { $in: [regexSearch] } },
-                // Add more fields as needed
-            ]}]);
+            query = query.and([{
+                $or: [
+                    { name: regexSearch },
+                    { primaryLiquor: regexSearch },
+                    { allLiquors: { $in: [regexSearch] } },
+                    { ingredients: { $in: [regexSearch] } },
+                    { instructions: regexSearch },
+                    { category: regexSearch },
+                    { color: regexSearch },
+                    { occasion: { $in: [regexSearch] } },
+                    { difficulty: regexSearch },
+                    { flavorProfile: regexSearch },
+                    { prepTime: regexSearch },
+                    { drinkware: regexSearch },
+                    { strength: regexSearch },
+                    { tags: { $in: [regexSearch] } },
+                    { creator: regexSearch },
+                    { description: regexSearch },
+                    { InspiredByCreator: { $in: [regexSearch] } },
+                    // Add more fields as needed
+                ]
+            }]);
         }
 
         // Debug: Log the final query being executed
@@ -84,49 +86,49 @@ export const getCocktailByIdController = async (req, res) => {
     } catch (error) {
         res.status(500).send(error.message);
     }
-}; //BEHOLD
+};
 
 
 // Create a new cocktail with image upload
- export const addCocktailController = async (req, res) => {
-        // Check admin role
+export const addCocktailController = async (req, res) => {
+    // Check admin role
     if (req.admin.role !== 'admin') {
-            return res.status(403).json({ message: 'Access denied' });
-        }
-    
+        return res.status(403).json({ message: 'Access denied' });
+    }
+
     try {
-            // Parse array fields from JSON strings if they exist
+        // Parse array fields from JSON strings if they exist
         if (req.body.allLiquors) {
-                req.body.allLiquors = JSON.parse(req.body.allLiquors);
-            }
-            if (req.body.ingredients) {
-                req.body.ingredients = JSON.parse(req.body.ingredients);
-            }
-            if (req.body.InspiredByCreator) {
-                req.body.InspiredByCreator = JSON.parse(req.body.InspiredByCreator);
-            }
-            if (req.body.occasion) {
-                req.body.occasion = JSON.parse(req.body.occasion);
-            }
-            if (req.body.flavorProfile) {
-                req.body.flavorProfile = JSON.parse(req.body.flavorProfile);
-            }
-            if (req.body.tags) {
-                req.body.tags = JSON.parse(req.body.tags);
-            }
-    
-            // Add time and date to the recipe
-            req.body.date = new Date();
-    
-            // Create a new cocktail document with the parsed request body
-            const newCocktail = new Cocktails(req.body);
-            await newCocktail.save();
-            res.status(201).json(newCocktail);
-        } catch (error) {
-            res.status(400).json({ message: error.message });
+            req.body.allLiquors = JSON.parse(req.body.allLiquors);
         }
-    };
-        
+        if (req.body.ingredients) {
+            req.body.ingredients = JSON.parse(req.body.ingredients);
+        }
+        if (req.body.InspiredByCreator) {
+            req.body.InspiredByCreator = JSON.parse(req.body.InspiredByCreator);
+        }
+        if (req.body.occasion) {
+            req.body.occasion = JSON.parse(req.body.occasion);
+        }
+        if (req.body.flavorProfile) {
+            req.body.flavorProfile = JSON.parse(req.body.flavorProfile);
+        }
+        if (req.body.tags) {
+            req.body.tags = JSON.parse(req.body.tags);
+        }
+
+        // Add time and date to the recipe
+        req.body.date = new Date();
+
+        // Create a new cocktail document with the parsed request body
+        const newCocktail = new Cocktails(req.body);
+        await newCocktail.save();
+        res.status(201).json(newCocktail);
+    } catch (error) {
+        res.status(400).json({ message: error.message });
+    }
+};
+
 
 
 // Updates cocktails (with or without updating picture)
@@ -197,108 +199,7 @@ function extractPublicIdFromUrl(url) {
     const urlParts = url.split('/');
     const publicIdWithExtension = urlParts[urlParts.length - 1];
     const publicId = publicIdWithExtension.split('.')[0]; // Remove file extension
-    return publicId;}
+    return publicId;
+}
 
-
-
-//POSTMAN TESTING
-
-////// Get All Cocktails//////
-// Endpoint: /cocktails
-// HTTP Method: GET
-// Description: Retrieves a list of all cocktails.
-// Controller Function: getCocktailsController
-// Postman Setup: GET - body-none - http://localhost:3001/cocktails
-
-
-
-////// Get Cocktail by ID //////
-// Endpoint: /cocktails/:id
-// HTTP Method: GET
-// Description: Retrieves a single cocktail by its ID.
-// Controller Function: getCocktailByIdController
-// Postman Setup: GET - body-none - http://localhost:3001/cocktails/:id
-
-
-
-////// Add New Cocktail //////
-// Endpoint: /cocktails
-// HTTP Method: POST
-// Description: Creates a new cocktail.
-// Controller Function: addCocktailController
-// Postman Setup: POST - body-raw-json - http://localhost:3000/cocktails
-// Example input:
-/*{
-    "name": "Classic Margarita",
-    "primaryLiquor": "Tequila",
-    "ingredients": ["2 oz Tequila", "1 oz Lime Juice", "1 oz Triple Sec", "Salt for rim", "Lime wedge for garnish"],
-    "instructions": "Rub the rim of the glass with the lime slice to make the salt stick to it. Shake the tequila, lime juice, and triple sec with ice and strain into the glass. Garnish with a lime wedge.",
-    "category": "Classic",
-    "color": "Yellow",
-    "ingredientsCount": 5,
-    "creator": "Jane Smith",
-    "occasion": ["Party", "Celebration"],
-    "difficulty": "Medium",
-    "flavorProfile": "Citrus and Strong",
-    "imageUrl": "path/to/classic-margarita-image.jpg",
-    "servings": 1,
-    "prepTime": "10 minutes",
-    "drinkware": "Margarita Glass",
-    "strength": "Strong",
-    "tags": ["Classic", "Citrus", "Strong"]
-  }*/
-  
-
-  
-////// Update Cocktail by ID
-
-// Endpoint: /cocktails/:id
-// HTTP Method: PUT
-// Description: Updates an existing cocktail by its ID.
-// Controller Function: updateCocktailController
-// Postman Setup: PUT - body-raw-json - http://localhost:3000/cocktails/:id
-// Example input:
-/*{
-    "name": "Fun Margarita",
-    "primaryLiquor": "Tequila",
-    "ingredients": ["2 oz Tequila", "1 oz Lime Juice", "1 oz Triple Sec", "Salt for rim", "Lime wedge for garnish"],
-    "instructions": "Rub the rim of the glass with the lime slice to make the salt stick to it. Shake the tequila, lime juice, and triple sec with ice and strain into the glass. Garnish with a lime wedge.",
-    "category": "Classic",
-    "color": "Yellow",
-    "ingredientsCount": 5,
-    "creator": "Jane Smith",
-    "occasion": ["Party", "Celebration"],
-    "difficulty": "Medium",
-    "flavorProfile": "Citrus and Strong",
-    "imageUrl": "path/to/classic-margarita-image.jpg",
-    "servings": 1,
-    "prepTime": "10 minutes",
-    "drinkware": "Margarita Glass",
-    "strength": "Strong",
-    "tags": ["Classic", "Citrus", "Strong"]
-  }*/
-  
-
-////// Get All or Filtered Cocktails //////
-// Endpoint: /cocktails
-// HTTP Method: GET
-// Description: Retrieves all cocktails or filters by category if category query is provided.
-// Controller Function: getCocktailsController
-// Postman Setup for All: GET - http://localhost:3000/cocktails
-// Postman Setup for Category Filter: GET - http://localhost:3000/cocktails?category=Classic
-
-////// Search Cocktails //////
-// Endpoint: /cocktails
-// HTTP Method: GET
-// Description: Searches for cocktails by name or ingredients.
-// Controller Function: getCocktailsController
-// Postman Setup: GET - http://localhost:3000/cocktails?term=margarita
-
-////// Delete Cocktail by ID //////
-
-// Endpoint: /cocktails/:id
-// HTTP Method: DELETE
-// Description: Deletes a cocktail by its ID.
-// Controller Function: deleteCocktailController
-// Postman Setup: DELETE - body-none - http://localhost:3000/cocktails/:id
 

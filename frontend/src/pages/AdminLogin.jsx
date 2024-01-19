@@ -39,12 +39,8 @@ export const AdminLogin = () => {
         }
     };
 
-    // Render the admin login form
     return (
         <>
-            <nav>
-                {/* Optional navigation links can be added here */}
-            </nav>
             <div>
                 <h2>Admin Login</h2>
                 <div className="admin-login">

@@ -14,8 +14,6 @@ import { connectAtlasDB } from "./config/db";
 
 dotenv.config(); // Load and parse environment variables from the .env file
 
-// const cloudinary = require('cloudinary').v2;
-
 // Configure Cloudinary
 cloudinary.config({
   cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
@@ -62,38 +60,4 @@ app.listen(port, () => {
 
 
 
-
-
-/*
-
-import cloudinary from 'cloudinary';
-import fileUpload from 'express-fileupload'; // Import express-fileupload
-
-///////////
-
-// Configure Cloudinary
-cloudinary.config({
-  cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
-  api_key: process.env.CLOUDINARY_API_KEY,
-  api_secret: process.env.CLOUDINARY_API_SECRET
-});
-
-// Middleware to handle file uploads
-app.use(fileUpload({
-  limits: { fileSize: 50 * 1024 * 1024 }, // You can set file size limits
-  useTempFiles: true, // Use temporary file storage
-  tempFileDir: '/tmp/' // Specify the temp file directory
-}));
-const router = express.Router();
-
-
-app.use('/api/cocktails', cocktailRoutes);
-
-/////////////////
-
-
-// app.listen(process.env.PORT, () => {
-//   console.log(`Server is running on port ${process.env.PORT}`);
-// });
-*/
 

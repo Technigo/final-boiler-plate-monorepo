@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { cocktailStore } from '../../stores/cocktailStore';
-// Update cocktail not working yet, should add a conditional update button as the update coktail button is not showing, only the add cocktail is showing 
 
 export const ManageCocktails = () => {
     const navigate = useNavigate();
