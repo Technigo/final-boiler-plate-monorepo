@@ -48,6 +48,7 @@ export const Calendar = () => {
     speed: 500,
     slidesToShow: 3,
     slidesToScroll: 3,
+    centerMode: true,
     responsive: [
       {
         breakpoint: 1024,
@@ -92,7 +93,6 @@ export const Calendar = () => {
           ))}
         </Slider>
       </div>
-
       {selectedDate && <Repertoire date={selectedDate} />}
     </div>
   )

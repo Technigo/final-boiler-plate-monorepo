@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 // import { movieStore } from '../store/movieStore'
