@@ -1,6 +1,5 @@
 .wrapper {
     background-color: #fff4e6bd;
-    height: fit-content;
     grid-gap: 10px;
     display: grid;
     grid-template-columns: 1fr;
