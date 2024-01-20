@@ -91,7 +91,7 @@ export const SinCocktail = () => {
                         <BackButton />
                     </div>
                 ) : (
-                    <p>Loading cocktail details...</p>
+                    <Text type="H3" className={styles.h3Load}>LOADING COCKTAIL DETAILS</Text>
                 )}
             </div>
         </div >
