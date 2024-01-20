@@ -2,9 +2,28 @@ import styles from '../styles/LogIn.module.css'
 import { Header } from '../components/Header.jsx'
 import { NavBar } from '../components/NavBar.jsx'
 import { Footer } from '../components/Footer.jsx'
+import { userStore } from '../stores/userStore.jsx'
+import { useNavigate } from 'react-router-dom';
 
 export const LogIn = () => {
-    
+    const { handleLogin } = userStore();
+    const navigate = useNavigate();
+
+    const handleLoginFormSubmit = async (e) => {
+        e.preventDefault();
+        const username = e.target.username.value;
+        const password = e.target.password.value;
+
+        try {
+            await handleLogin(username, password);
+            // If login is successful, display UserProfile.jsx
+            navigate('/userProfile');
+        } catch (error) {
+            console.error('Login error:', error);
+        }
+
+    };
+
     return (
         <>
             <div className={styles.siteContainer}>
@@ -18,18 +37,21 @@ export const LogIn = () => {
                     </div>
                     <div className={styles.logInWrapper}>
                         <div className={styles.textWrapper}>
-                        <p>This is the log in page for dog adoption organisations.</p>
-                        <p>Are you representing an organisation? E-mail us at admin@rescuehelper.com to get verified.</p>
+                            <p>This is the log in page for dog adoption organisations.</p>
+                            <p>Are you representing an organisation? E-mail us at admin@rescuehelper.com to get verified.</p>
                         </div>
                         <div className={styles.formWrapper}>
-                        <div className={styles.inputWrapper}>
-                            <label for="username">Username</label>
-                            <input name="username" id="username" type="text" />
-                        </div>
-                        <div className={styles.inputWrapper}>
-                            <label for="password">Password</label>
-                            <input name="password" id="password" type="text" />
-                        </div>
+                            <form onSubmit={handleLoginFormSubmit}>
+                            <div className={styles.inputWrapper}>
+                                <label htmlFor="username">Username</label>
+                                <input name="username" id="username" type="text" />
+                            </div>
+                            <div className={styles.inputWrapper}>
+                                <label htmlFor="password">Password</label>
+                                <input name="password" id="password" type="password" />
+                            </div>
+                            <button type="submit">Log in</button>
+                            </form>
                         </div>
                     </div>
                     <Footer />

@@ -3,6 +3,7 @@ import { Home } from '../pages/Home.jsx'
 import { DogSearch } from '../pages/DogSearch.jsx'
 import { AboutUs } from '../pages/AboutUs.jsx'
 import { LogIn } from "../pages/LogIn.jsx";
+import { UserProfile } from "../pages/UserProfile.jsx"
 
 // Define the 'routes' variable as a JSX expression.
 const routes = (
@@ -15,6 +16,8 @@ const routes = (
     <Route path="/aboutus" element={<AboutUs />} />
     {/* Define a route for the '/login' path that renders the 'LogIn' component. */}
     <Route path="/login" element={<LogIn />} />
+    {/* Define a route for the '/userProfile' path that renders the 'UserProfile' component. */}
+    <Route path="/userProfile" element={<UserProfile />} />
   </>
 );
 

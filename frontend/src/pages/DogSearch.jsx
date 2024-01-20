@@ -135,7 +135,7 @@ export const DogSearch = () => {
                                 dogs.map(dog => (
                                     <div className={styles.dogCard} key={dog._id}>
                                         <div className={styles.dogImage}>
-                                            <img src={dog.image.data} alt={dog.name} />
+                                            {/* <img src={dog.image.data} alt={dog.name} /> */}
                                          </div>
                                         <div className={styles.dogInfo}>
                                             <p>Name: {dog.name}</p>
