@@ -10,6 +10,7 @@ The command below is a combination of installing dependencies, opening up the pr
 
 npm i && code . && npm run dev
 
+
 **Current features**
 - Authentication: User can sign up and log in using their credentials
 - Once logged in, user has access to the products available and their own products
@@ -18,12 +19,15 @@ npm i && code . && npm run dev
 - User can manage their own ads, for example, creating a new ad, editing or deleting an ad, and unsaving an ad
 - User can also see their own profile, edit it or delete their account
 
+
 **Potential features**
 - Search by filters and geolocation
 - Customization of homepage based on the user's preset preferences
 - Message within the app
 
+
 **Tech stack**
+
 Frontend:
 - React
 - Navigation using React Router
@@ -43,7 +47,9 @@ Backend:
 - Cloudinary (for file storage)
 - multer-storage-cloudinary (Cloudinary multer storage engine)
 
+
 **Authors**
+
 We are four students at Technigo's Web Development Bootcamp Fall 2023:
 - Hang Nguyen
 - Maria Pettersson
