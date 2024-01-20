@@ -57,6 +57,9 @@
     grid-column: span 1;
 }
 
+.h3Load {
+    padding: 0 40px;
+}
 
 .p {
     padding: 10px 0;

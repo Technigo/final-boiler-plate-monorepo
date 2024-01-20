@@ -8,7 +8,7 @@ export const HomeCBC = () => {
     const [featuredCocktails, setFeaturedCocktails] = useState([]);
     const [isLoading, setIsLoading] = useState(true); // Loading state
     const animationContainer = useRef(null); // Ref for the Lottie container
-    const featuredIds = ['65a087deecc12fc758756500', '65a08126ecc12fc7587564fd', '659ffc6700633fc348dba0cb', '659ffa2400633fc348dba090', '659ffaa600633fc348dba096', '659ffa2c00633fc348dba093'];
+    const featuredIds = ['65a10d2388f0635f92631580', '65a0a9464c154a29ccb2c897', '659ffc6700633fc348dba0cb', '659ffa2400633fc348dba090', '659ffaa600633fc348dba096', '659ffa2c00633fc348dba093'];
 
     useEffect(() => {
         const anim = lottie.loadAnimation({
@@ -40,7 +40,6 @@ export const HomeCBC = () => {
 
     return (
         <div className={styles.wrapper}>
-            <Text type="H1" className={styles.h1}>TEST</Text>
             {isLoading ? (
                 <div>
                     <div ref={animationContainer} className={styles.lottieContainer}></div>
