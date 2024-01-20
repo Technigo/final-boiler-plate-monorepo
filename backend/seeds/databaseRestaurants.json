@@ -3787,6 +3787,188 @@
     ],
     "description": "Tasty Asian themed tapas sized dishes that are meant to be shared makes this restaurant in the heart of Stockholm a social and heartwarming place to eat. There is something for everyone, whether you are a vegan or a lover of meat",
     "url": "https://waipo.se/"
-  }
+  },
+
+  {
+    "restaurantID": "103",
+    "restaurantName": "Urban Turban",
+    "address": "Södra förstadsgatan 3",
+    "zipcode": "211 43",
+    "city": "Malmö",
+    "country": "Sweden",
+    "borough": "Davidshall",
+    "cuisine": "Indian",
+    "category": ["Celebration", "Date", "Family", "Friends", "Other"],
+    "occasion": [
+      "Have dinner with the in-laws",
+      "Have a sunday funday aka brunch",
+      "Have dinner with kids present",
+      "Have dinner with your bestie",
+      "Have dinner with friends to catch up",
+      "Have dinner with the whole family",
+      "Have dinner with your parents",
+      "Impress your date on a tight budget",
+      "Celebrate you turning 28 again (honey, you ain't fooling anyone)",
+      "Have a meparty aka dinner for one"
+    ],
+    "mood": [
+      "Good lighting",
+      "Soft-spoken",
+      "Casual",
+      "Family friendly",
+      "Homely",
+      "Kid friendly",
+      "Calm",
+      "Vegan option"
+    ],
+    "description": "The Indian cuisine at Urban Turban is authentic and flavorful, promising a culinary journey that is both enjoyable and memorable. Whether you're seeking a casual meal or a place to celebrate a special occasion, Urban Turban provides a warm and inviting atmosphere, coupled with delicious food, making it a must-visit destination for lovers of Indian cuisine.",
+    "url": "https://www.urbanturban.nu/"
+  },
   
+
+  {
+    "restaurantID": "104",
+    "restaurantName": "Nem Sitges",
+    "address": "Illa de Cuba 9",
+    "zipcode": "08870",
+    "city": "Sitges",
+    "country": "Spain",
+    "borough": "Center",
+    "cuisine": "Spanish",
+    "category": ["Business", "Celebration", "Date", "Family", "Friends", "Other"],
+    "occasion": [
+      "Have dinner with the in-laws",
+      "Have a sunday funday aka brunch",
+      "Have dinner with kids present",
+      "Have dinner with your bestie",
+      "Have dinner with friends to catch up",
+      "Say Cheers- a classic Swedish after work",
+      "Have dinner with the whole family",
+      "Have dinner with your parents",
+      "Celebrate a relationship anniversary",
+      "Celebrate you turning 28 again (honey, you ain't fooling anyone)",
+      "Have a meparty aka dinner for one",
+      "Go on a nice date with that special someone"
+    ],
+    "mood": [
+      "Cozy",
+      "Good lighting",
+      "Bustling",
+      "Intimate",
+      "Casual",
+      "Family friendly",
+      "Homely",
+      "Kid friendly",
+      "Vegan option",
+      "Romantic"
+    ],
+    "description": "The mood at Nem Sitges is cozy and intimate, illuminated by good lighting that creates a warm and welcoming atmosphere. It's bustling yet casual, making it suitable for both family gatherings and romantic dates. The restaurant is family and kid-friendly, offering a homely environment that welcomes all guests. For those seeking vegan options, Nem Sitges provides choices that cater to diverse dietary preferences. One of the unique features of Nem Sitges is its ever-changing menu, offering new culinary delights every month. However, one constant and must-try item is their Bravas, renowned as the best one member of the Foodie Moodie team has ever had. This signature dish is a staple that keeps diners coming back for more.",
+    "url": "https://www.nemsitges.com/"
+  },
+  
+
+{
+  "restaurantID": "105",
+  "restaurantName": "La Picara",
+  "address": "Carrer Sant Pere 3",
+  "zipcode": "08870",
+  "city": "Sitges",
+  "country": "Spain",
+  "borough": "Center",
+  "cuisine": "Spanish and catalan",
+  "category": ["Business", "Celebration", "Date", "Family", "Friends", "Other"],
+  "occasion": [
+    "Have dinner with the in-laws",
+    "Have a sunday funday aka brunch",
+    "Have dinner with kids present",
+    "Have dinner with your bestie",
+    "Have dinner with friends to catch up",
+    "Say Cheers- a classic Swedish after work",
+    "Have dinner with colleagues",
+    "Have dinner with the whole family",
+    "Have dinner with your parents",
+    "Celebrate a relationship anniversary",
+    "Celebrate you turning 28 again (honey, you ain't fooling anyone)",
+    "Have a meparty aka dinner for one",
+    "Go on a nice date with that special someone"
+  ],
+  "mood": [
+    "Cozy",
+    "Good lighting",
+    "Bustling",
+    "Casual",
+    "Family friendly",
+    "Homely",
+    "Kid friendly"
+  ],
+  "description": "La Picara, a delightful restaurant specializing in Spanish and Catalan cuisine, offers a warm and inviting atmosphere for a wide range of dining occasions. Whether you're planning to have dinner with in-laws, enjoy a Sunday brunch, dine with kids, spend quality time with your best friend, catch up with friends, or celebrate a relationship anniversary, La Picara is an excellent choice. The mood at La Picara is cozy and casual, illuminated by good lighting that creates a welcoming and homely ambiance. The restaurant buzzes with energy, making it a perfect spot for family gatherings, casual dinners with colleagues, or a classic Swedish after-work experience to say 'cheers' and unwind. La Picara is family and kid-friendly, ensuring that guests of all ages feel comfortable and catered to. The restaurant's atmosphere is ideal for celebrating special moments, such as cheekily turning 28 again, having a 'me party' with dinner for one, or enjoying a romantic date with that special someone. If they have brandade on the menu you have to try it, it’s like eating a small piece of heaven",
+  "url": "https://lapicarasitges.cat/"
+},
+
+{
+  "restaurantID": "106",
+  "restaurantName": "Puertecillo",
+  "address": "Carrer Sant Pere 24",
+  "zipcode": "08870",
+  "city": "Sitges",
+  "country": "Spain",
+  "borough": "Center",
+  "cuisine": "Seafood",
+  "category": ["Family", "Friends", "Other"],
+  "occasion": [
+    "Have dinner with the in-laws",
+    "Have a sunday funday aka brunch",
+    "Have dinner with kids present",
+    "Have dinner with your bestie",
+    "Have dinner with friends to catch up",
+    "Have dinner with the whole family",
+    "Have dinner with your parents"
+  ],
+  "mood": [
+    "Good lighting",
+    "Bustling",
+    "Casual",
+    "Family friendly",
+    "Kid friendly"
+  ],
+  "description": "Puertecillo, located in the heart of Sitges, Spain, is a seafood lover's paradise. This restaurant is perfect for a variety of occasions, from having dinner with in-laws to enjoying a Sunday brunch, dining with kids, spending time with your best friend, or catching up with friends and family. The mood at Puertecillo is bustling and casual, illuminated by good lighting that creates a warm and welcoming atmosphere. It's particularly family and kid-friendly, making it a great choice for gatherings where everyone from the youngest to the oldest can enjoy a delightful meal together. It may not look like much, but the food is worth a visit. One of the unique features of Puertecillo is the ability for guests to choose their preferred type of fish or shellfish and specify how they would like it prepared. This personalized approach to dining ensures that each guest can enjoy a meal that suits their taste and preference.",
+  "url": "https://puertecillo.es/en/puertecillo_sitges/"
+},
+
+{
+  "restaurantID": "107",
+  "restaurantName": "El Santo",
+  "address": "Calle Sant Josep 30",
+  "zipcode": "08871",
+  "city": "Sitges",
+  "country": "Spain",
+  "borough": "Center",
+  "cuisine": "Hamburgers and sandwiches",
+  "category": ["Business", "Celebration", "Family", "Friends", "Other"],
+  "occasion": [
+    "Have dinner with the in-laws",
+    "Have a sunday funday aka brunch",
+    "Have dinner with kids present",
+    "Have dinner with your bestie",
+    "Have dinner with friends to catch up",
+    "Say Cheers- a classic Swedish after work",
+    "Have dinner with colleagues",
+    "Have dinner with the whole family",
+    "Have dinner with your parents",
+    "Have a meparty aka dinner for one"
+  ],
+  "mood": [
+    "Cozy",
+    "Good lighting",
+    "Soft-spoken",
+    "Bustling",
+    "Casual",
+    "Family friendly",
+    "Homely",
+    "Kid friendly",
+    "Extended seating hours"
+  ],
+  "description": "This restaurant offers a delightful dining experience, specializing in hamburgers and sandwiches, perfect for a wide range of occasions and gatherings. Whether you're looking to have dinner with in-laws, enjoy a Sunday brunch, dine with kids, spend time with your best friend, catch up with friends, or have a casual business meal, this restaurant caters to all these needs with its delicious and hearty menu. The mood in this restaurant is a harmonious blend of cozy and casual, featuring good lighting and a soft-spoken ambiance that also buzzes with a bustling energy. It's an ideal setting for both family-friendly and kid-friendly gatherings, providing a homely and welcoming environment for guests of all ages.",
+  "url": "https://elsantosandwich.com/"
+}
 ]
