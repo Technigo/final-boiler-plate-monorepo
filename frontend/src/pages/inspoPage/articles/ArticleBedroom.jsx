@@ -17,11 +17,11 @@ export const ArticleBedroom = () => {
 
   const bedroomButtonCoordinates = [
     //Monstera
-    { x: 85, y: 55, plantIndex: 1 },
+    { x: 85, y: 55, plantIndex: 2 },
     //Snake Plant
-    { x: 60, y: 70, plantIndex: 2 },
+    { x: 60, y: 70, plantIndex: 3 },
     //Money Tree
-    { x: 10, y: 30, plantIndex: 3 },
+    { x: 10, y: 30, plantIndex: 1 },
   ];
 
   const handleButtonClick = (plantIndex, coord) => {
@@ -35,6 +35,12 @@ export const ArticleBedroom = () => {
       }
     });
     setClickedButtonCoord(coord);
+  };
+
+  const calculatePlantCardPosition = (dotButtonCoord) => {
+    const left = dotButtonCoord.x > 50 ? `${dotButtonCoord.x - 50}%` : `${dotButtonCoord.x}%`;
+    const top = dotButtonCoord.y > 50 ? `${dotButtonCoord.y - 50}%` : `${dotButtonCoord.y}%`;
+    return { left, top };
   };
 
   return (
@@ -63,10 +69,7 @@ export const ArticleBedroom = () => {
           clickedButtonCoord !== null && (
             <PlantCardMini
               plants={selectedPlantIndexes.map((index) => plants[index])}
-              position={{
-                left: `${clickedButtonCoord.x}%`,
-                top: `${clickedButtonCoord.y}%`,
-              }}
+              position={calculatePlantCardPosition(clickedButtonCoord)}
             />
           )}
       </div>

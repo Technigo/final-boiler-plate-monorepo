@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link, Navigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useAuthStore } from "../../stores/useAuthStore";
 import "./Auth.css";
 import { InputField } from "../../components/inputs/InputField";
@@ -12,6 +12,7 @@ export const Register = () => {
   const [errorMessage, setErrorMessage] = useState("");
 
   const register = useAuthStore((state) => state.register);
+  const navigate = useNavigate()
 
   const handleRegister = async (e) => {
     e.preventDefault();

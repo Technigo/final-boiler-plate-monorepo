@@ -17,7 +17,7 @@ export const ArticleBalcony = () => {
 
   const balconyButtonCoordinates = [
     //Money Tree
-    { x: 35, y: 20, plantIndex: 3 },
+    { x: 35, y: 20, plantIndex: 1 },
     //Pep
     { x: 40, y: 80, plantIndex: 0 },
   ];
@@ -33,6 +33,12 @@ export const ArticleBalcony = () => {
       }
     });
     setClickedButtonCoord(coord);
+  };
+
+  const calculatePlantCardPosition = (dotButtonCoord) => {
+    const left = dotButtonCoord.x > 50 ? `${dotButtonCoord.x - 50}%` : `${dotButtonCoord.x}%`;
+    const top = dotButtonCoord.y > 50 ? `${dotButtonCoord.y - 50}%` : `${dotButtonCoord.y}%`;
+    return { left, top };
   };
 
   return (
@@ -55,25 +61,15 @@ export const ArticleBalcony = () => {
             onClick={() => handleButtonClick(coord.plantIndex, coord)}
           ></button>
         ))}
-      </div>
-
-      {/* Render PlantCard based on selectedPlantIndex */}
-      {/* {selectedPlantIndexes !== null && plants.length > 0 && clickedButtonCoord !== null && (
-        <PlantCardMini plants={selectedPlantIndexes.map((index) => plants[index])}
-        position={{left: `${clickedButtonCoord.x}%`, top: `${clickedButtonCoord.y}%`,}}
-         />
-      )} */}
-      {selectedPlantIndexes !== null &&
+        {selectedPlantIndexes !== null &&
         plants.length > 0 &&
         clickedButtonCoord !== null && (
           <PlantCardMini
             plants={selectedPlantIndexes.map((index) => plants[index])}
-            position={{
-              left: `${clickedButtonCoord.x}%`,
-              top: `${clickedButtonCoord.y}%`,
-            }}
+            position={calculatePlantCardPosition(clickedButtonCoord)}
           />
         )}
+      </div>
     </article>
   );
 };

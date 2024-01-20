@@ -10,9 +10,9 @@ export const PersonalInfo = () => {
       </p>
       <InputReadOnly
         type="text"
-        placeholder="Daisy Evergreen"
+        placeholder="Rhoda Dendron"
         ariaLabel="Name input."
-        value={"Lily Landersen"}
+        value={"Rhoda Dendron"}
         readOnly={true}
       />
       <InputReadOnly
@@ -24,9 +24,9 @@ export const PersonalInfo = () => {
       />
       <InputReadOnly
         type="text"
-        placeholder="Lily Lane 12"
+        placeholder="12 Dendron Rhode"
         ariaLabel="Address input."
-        value={"Lily Lane 12"}
+        value={"12 Dendron Rhode"}
         readOnly={true}
       />
         <InputReadOnly
@@ -38,9 +38,9 @@ export const PersonalInfo = () => {
         />
         <InputReadOnly
           type="text"
-          placeholder="Gardenville"
+          placeholder="Rhodonia"
           ariaLabel="City input."
-          value={"Lilytown"}
+          value={"Rhodonia"}
           readOnly={true}
         />
     </>

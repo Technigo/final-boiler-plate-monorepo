@@ -84,7 +84,7 @@ export const PaymentInfo = () => {
             <InputReadOnly
               type="text"
               value=""
-              placeholder="Lily Landersen"
+              placeholder="Rhoda Dendron"
               ariaLabel="Card holder input."
               readOnly={true}
             />
@@ -119,47 +119,3 @@ export const PaymentInfo = () => {
     </>
   );
 };
-
-// <ul>
-// <li>
-// <Input type={"radio"} name="paymentMethod" value={true} labelTxt={"Pay with Klarna"} onChange={() => handleShowKlarna()}/>
-// {showKlarna &&
-//     <ul>
-//     <li>Safe and easy</li>
-//     <li>Pay directly, with invoice or partial payments</li>
-//     <li>Save your card and banc card</li>
-//     </ul>}
-
-// </li>
-// <li>
-// <Input type={"radio"} name="paymentMethod" labelTxt={"Pay with card"} onChange={() => handleShowCard()}/>
-// {showCard &&
-//   (<>
-//   <InputReadOnly
-//     type="text"
-//     value="Lily Landersen"
-//     ariaLabel="Card holder input."
-//     readOnly={true}
-//   />
-//   <InputReadOnly
-//     type="number"
-//     value="XXXX XXXX XXXX XXXX"
-//     ariaLabel="City input."
-//     readOnly={true}
-//   />
-//   <InputReadOnly
-//     type="number"
-//     value="MM/YY"
-//     ariaLabel="City input."
-//     readOnly={true}
-//   />
-//   <InputReadOnly
-//     type="number"
-//     value="CVC"
-//     ariaLabel="City input."
-//     readOnly={true}
-//   />
-//     </>)}
-// </li>
-
-// </ul>
