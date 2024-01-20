@@ -1,5 +1,6 @@
 import { Text } from '../UI/Typography';
 import styles from './AboutUs.module.css';
+import { BackButton } from '../UI/BackToButton';
 
 export const AboutUs = () => {
     return (
@@ -54,6 +55,9 @@ export const AboutUs = () => {
                     Whether you're an experienced cocktail enthusiast or a curious beginner, we welcome you. Keep up with our activities, feel free to comment, contribute ideas, or give feedback on our drinks - we appreciate all interaction! </Text>
                 <Text type="bodyText" className={styles.p}>
                     Follow us on Instagram to get a glimpse into our world of cocktails. Take a look around our page for inspiration and ideas for your next drink experience. </Text>
+            </div>
+            <div className={styles.BackToButton}>
+                <BackButton />
             </div>
         </div>
     );

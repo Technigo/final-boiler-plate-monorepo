@@ -84,6 +84,11 @@
     justify-self: left;
 }
 
+.BackToButton {
+    padding: 25px;
+    grid-column: span 2;
+}
+
 /* iPad Pro 11" */
 @media (min-width: 767px) and (max-width: 1028px) {
     .imgBruun {

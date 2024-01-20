@@ -88,7 +88,9 @@ export const SinCocktail = () => {
                             style={{ marginBottom: '50px' }}>
                             Occasions: {cocktail.occasion.join(', ')}
                         </Text>
-                        <BackButton />
+                        <div className={styles.BackToButton}>
+                            <BackButton />
+                        </div>
                     </div>
                 ) : (
                     <Text type="H3" className={styles.h3Load}>LOADING COCKTAIL DETAILS</Text>

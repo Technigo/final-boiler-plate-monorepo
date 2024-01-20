@@ -61,12 +61,16 @@
     padding: 0 40px;
 }
 
-.p {
+.BackToButton {
+    padding: 25px;
+}
+
+/* .p {
     padding: 10px 0;
     text-align: left;
     grid-column: span 1;
     padding: 40px 85px;
-}
+} */
 
 
 /* iPad Pro 11" */

@@ -39,19 +39,19 @@ const StyledBackButton = styled.button`
 
 
 export const BackButton = () => {
-    const navigate = useNavigate();
+  const navigate = useNavigate();
 
-    const goBack = () => {
-        // Save the current scroll position
-        sessionStorage.setItem('lastScrollPosition', window.scrollY);
+  const goBack = () => {
+    // Save the current scroll position
+    sessionStorage.setItem('lastScrollPosition', window.scrollY);
 
-        // Navigate back
-        navigate(-1);
-    };
+    // Navigate back
+    navigate(-1);
+  };
 
-    return (
-        <StyledBackButton onClick={goBack}>
-            <img src="/images/arrow-back.png" alt="Arrow go back" />
-        </StyledBackButton>
-    );
+  return (
+    <StyledBackButton onClick={goBack}>
+      <img src="/images/arrow-back.png" alt="Arrow go back" />
+    </StyledBackButton>
+  );
 };
