@@ -1,10 +1,11 @@
 .wrapper {
-    background-color: #FFF4E6;
+    background-color: #fff4e6bd;
     height: fit-content;
     grid-gap: 10px;
     display: grid;
     grid-template-columns: 1fr;
     padding: 0 30px;
+    height: 80vw;
 }
 
 .cocktailImage {

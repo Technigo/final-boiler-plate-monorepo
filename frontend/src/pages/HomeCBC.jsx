@@ -6,9 +6,10 @@ import lottie from 'lottie-web';
 
 export const HomeCBC = () => {
     const [featuredCocktails, setFeaturedCocktails] = useState([]);
-    const [isLoading, setIsLoading] = useState(true); // Loading state
-    const animationContainer = useRef(null); // Ref for the Lottie container
-    const featuredIds = ['65a10d2388f0635f92631580', '65a0a9464c154a29ccb2c897', '659ffc6700633fc348dba0cb', '659ffa2400633fc348dba090', '659ffaa600633fc348dba096', '659ffa2c00633fc348dba093'];
+    const [isLoading, setIsLoading] = useState(true);
+    const [showLoadingIndicator, setShowLoadingIndicator] = useState(false);
+    const animationContainer = useRef(null);
+    const featuredIds = ['659ffaa600633fc348dba096', '65a10d2388f0635f92631580', '65a0a9464c154a29ccb2c897', '659ffc6700633fc348dba0cb', '659ffa2400633fc348dba090', '659ffa2c00633fc348dba093'];
 
     useEffect(() => {
         const anim = lottie.loadAnimation({
@@ -16,36 +17,42 @@ export const HomeCBC = () => {
             renderer: 'svg',
             loop: true,
             autoplay: true,
-            path: '/animations/Animation - 1705760771667.json' // The path to the JSON file
+            path: '/animations/Animation - 1705760771667.json'
         });
 
-        return () => anim.destroy(); // Cleanup
+        return () => anim.destroy();
     }, []);
 
     useEffect(() => {
-        setIsLoading(true); // Start loading
+
+        setIsLoading(true);
+        let loadingTimeout = setTimeout(() => {
+            setShowLoadingIndicator(true);
+        }, 3000);
 
         fetch('https://cbc-uvko.onrender.com/cocktails')
             .then(response => response.json())
             .then(data => {
+                clearTimeout(loadingTimeout);
                 const selectedCocktails = data.filter(cocktail => featuredIds.includes(cocktail._id));
                 setFeaturedCocktails(selectedCocktails);
                 setIsLoading(false); // Data fetched, stop loading
             })
             .catch(error => {
                 console.error('Error fetching data: ', error);
-                setIsLoading(false); // Error occurred, stop loading
+                clearTimeout(loadingTimeout);
             });
     }, []);
 
     return (
         <div className={styles.wrapper}>
-            {isLoading ? (
+            {isLoading && showLoadingIndicator && (
                 <div>
                     <div ref={animationContainer} className={styles.lottieContainer}></div>
                     <Text type="H3" className={styles.h3Load}>PLEASE WAIT WHILE LOADING PAGE</Text>
                 </div>
-            ) : (
+            )}
+            {!isLoading && (
                 <>
                     <Text type="H1" className={styles.h1}>OUR CURRENT FAVOURITES</Text>
                     <div className={styles.gridContainer}>
@@ -66,6 +73,6 @@ export const HomeCBC = () => {
             )}
         </div>
     );
-};
 
-export default HomeCBC;
+
+}
