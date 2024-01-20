@@ -1,6 +1,6 @@
 .wrapper {
     background-color: #FFF4E6;
-    height: fit-content;
+    min-height: 80vh;
     justify-content: center;
     /* horizontally */
     align-items: center;
@@ -38,6 +38,20 @@
     /* horizontally */
     align-items: center;
     /*vertically */
+}
+
+.lottieContainer {
+    width: 180px;
+    height: auto;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    overflow: hidden;
+}
+
+.h3Load {
+    padding: 0 40px;
 }
 
 /* iPad Pro 11" */

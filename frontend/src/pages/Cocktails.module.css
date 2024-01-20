@@ -1,10 +1,10 @@
 .wrapper {
     background-color: #FFF4E6;
-    height: fit-content;
+    min-height: 80vh;
+    display: flex;
+    flex-direction: column;
     justify-content: center;
-    /* horizontally */
     align-items: center;
-    /*vertically */
     margin: 0 auto;
 }
 
@@ -21,9 +21,24 @@
     margin-bottom: 8px;
 }
 
+.h3Load {
+    padding: 0 40px;
+}
+
 .cocktailImage {
     width: 130px;
 }
+
+.lottieContainer {
+    width: 230px;
+    height: auto;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    overflow: hidden;
+}
+
 
 .gridContainer {
     display: grid;
@@ -40,6 +55,7 @@
 
 /* iPad Pro 11" */
 @media (min-width: 767px) and (max-width: 1028px) {
+
     .cocktailImage {
         width: 200px;
     }
@@ -58,12 +74,14 @@
         margin-bottom: 15px;
     }
 
+
 }
 
 /* Macbook Air*/
 @media (min-width: 1028px) {
     .wrapper {
         max-width: 1100px;
+        min-height: 90vh;
     }
 
     .SbodyText {
