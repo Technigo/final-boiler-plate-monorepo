@@ -13,6 +13,7 @@ export const Cocktails = () => {
     const [itemsToDisplay, setItemsToDisplay] = useState(6);
     const [totalCocktails, setTotalCocktails] = useState(0);
     const [isLoading, setIsLoading] = useState(true);
+    const [showLoadingIndicator, setShowLoadingIndicator] = useState(false);
     const animationContainer = useRef(null);
 
     const handleFilterChange = (e) => {
@@ -37,6 +38,10 @@ export const Cocktails = () => {
     }, []);
 
     useEffect(() => {
+        let loadingTimeout = setTimeout(() => {
+            setShowLoadingIndicator(true);
+        }, 3000);
+
         let query = '';
         if (searchTerm) {
             query += `search=${encodeURIComponent(searchTerm)}`;
@@ -47,8 +52,10 @@ export const Cocktails = () => {
         }
 
         fetch(`https://cbc-uvko.onrender.com/cocktails${query ? '?' + query : ''}`)
+
             .then(response => response.json())
             .then(data => {
+                clearTimeout(loadingTimeout); // Clear the timeout on successful data fetch
                 setCocktails(data);
                 setDisplayedCocktails(data.slice(0, itemsToDisplay));
                 setTotalCocktails(data.length);
@@ -56,8 +63,9 @@ export const Cocktails = () => {
             })
             .catch(error => {
                 console.error('Error fetching cocktails:', error);
-                setIsLoading(false);
+                clearTimeout(loadingTimeout);
             });
+        return () => clearTimeout(loadingTimeout);
     }, [searchTerm, selectedFilter, itemsToDisplay]);
 
     const loadMoreCocktails = () => {
@@ -66,14 +74,18 @@ export const Cocktails = () => {
 
     return (
         <div className={styles.wrapper}>
-            {isLoading && (
+            {/* Display the loading indicator only if isLoading is true and showLoadingIndicator is true */}
+            {isLoading && showLoadingIndicator && (
                 <div>
                     <div ref={animationContainer} className={styles.lottieContainer}></div>
                     <Text type="H3" className={styles.h3Load}>PLEASE WAIT WHILE LOADING RECIPES</Text>
                 </div>
             )}
+
+            {/* Display the content only if isLoading is false */}
             {!isLoading && (
-                <> <Text type="H1" className={styles.h1}>EXPLORE OUR COCKTAILS</Text>
+                <>
+                    <Text type="H1" className={styles.h1}>EXPLORE OUR COCKTAILS</Text>
 
                     <div className={styles.searchContainer}>
                         <input
