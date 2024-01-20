@@ -142,7 +142,7 @@ const predefinedMoods = [
   "Dog friendly",
   "Calm",
   "Vegan option",
-  "Extended dining hours",
+  "Extended seating hours",
   "Romantic"
 ];
 const AddRestaurantForm = () => {

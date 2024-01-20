@@ -71,7 +71,7 @@ const restaurantSchema = new mongoose.Schema({
       "Dog friendly",
       "Calm",
       "Vegan option",
-      "Extended dining hours",
+      "Extended seating hours",
       "Romantic"
     ],
     required: true, // Make it required
