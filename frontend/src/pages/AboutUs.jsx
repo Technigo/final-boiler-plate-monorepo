@@ -10,7 +10,7 @@ export const AboutUs = () => {
             <img src="/images/mima.PNG" className={styles.imgMima} alt="Picture of Mirela" />
             <div className={styles.membersBruun}>
                 <Text type="SbodyText" className={styles.Bruun}>Eva<br />
-                    <span role="img" aria-label="Cocktail Glass">🍹</span> Favorite cocktail: Margarita<br />
+                    <span role="img" aria-label="Cocktail Glass">🍹</span> Favorite cocktail: Mojito<br />
                     <span role="img" aria-label="Party Popper">🎉</span> Hobby: Answer<br />
                     <span role="img" aria-label="Suitcase">🧳</span> Favorite destination: Answer<br />
                     <span role="img" aria-label="Writing Hand">✍️</span> About me: Answer<br />
