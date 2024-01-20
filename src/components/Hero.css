@@ -1,5 +1,5 @@
 .the-hero {
-    background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url("https://image.tmdb.org/t/p/w1280/1X7vow16X7CnCoexXh4H4F2yDJv.jpg");
+    background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url("https://image.tmdb.org/t/p/w780/1X7vow16X7CnCoexXh4H4F2yDJv.jpg");
    
 
     height: 85vh;
@@ -24,17 +24,31 @@
 }
 
 .the-hero-text h1 {
-    font-size: 10rem;
+    font-size: 4.5rem;
     margin-bottom: 1rem;
 
 }
 .the-hero-text h2 {
-    font-size: 4rem;
+    font-size: 2rem;
     margin-top: 1rem;
 }
 
-@media (max-width: 667px) {
+@media (min-width: 450px) {
+    .the-hero-text h1 {
+        font-size: 6rem;
+    }
+    .the-hero-text h2 {
+        font-size: 3rem;
+    }
+}
+@media (min-width: 667px) {
     .the-hero {
-        background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url("https://image.tmdb.org/t/p/w780/1X7vow16X7CnCoexXh4H4F2yDJv.jpg");
+        background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url("https://image.tmdb.org/t/p/w1280/1X7vow16X7CnCoexXh4H4F2yDJv.jpg");
+    }
+    .the-hero-text h1 {
+        font-size: 10rem;
+    }
+    .the-hero-text h2 {
+        font-size: 4rem;
     }
 }

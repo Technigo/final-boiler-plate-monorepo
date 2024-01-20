@@ -82,7 +82,7 @@ h6 {
 }
 
 h1 {
-	font-size: 3.2em;
+	font-size: 1.2em;
 	line-height: 1.1;
 }
 
@@ -144,5 +144,8 @@ button:focus-visible {
 @media (min-width: 1026px) {
 	:root {
 		--big-padding: 11rem;
+	}
+	h1 {
+		font-size: 3.2em;
 	}
 }
