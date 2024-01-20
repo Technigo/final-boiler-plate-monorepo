@@ -40,6 +40,7 @@ export const HomeCBC = () => {
 
     return (
         <div className={styles.wrapper}>
+            <Text type="H1" className={styles.h1}>TEST</Text>
             {isLoading ? (
                 <div>
                     <div ref={animationContainer} className={styles.lottieContainer}></div>
