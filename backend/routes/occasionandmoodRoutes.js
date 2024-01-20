@@ -6,22 +6,20 @@ const router = express.Router();
 
 // Endpoint to search restaurants based on occasion and mood
 router.get('/restaurants/search', asyncHandler(async (req, res) => {
-    // Extract occasion and mood query parameters from the request
-    const { category, occasion, mood } = req.query;
-    console.log('Received request with category:', category, 'occasion:', occasion, 'and mood:', mood);
+    const { category, occasion, mood, city } = req.query;
 
-    // Validate that both occasion and mood are provided
-    if (!category || !occasion || !mood) {
-        return res.status(400).json({ message: 'Category, occasion and mood are required parameters' });
+    // Validate that all required parameters are provided
+    if (!category || !occasion || !mood || !city) {
+        return res.status(400).json({ message: 'Category, occasion, mood, and city are required parameters' });
     }
 
     // Ensure only one category is selected
-    if (Array.isArray(category) || !category) {
+    if (Array.isArray(category)) {
          return res.status(400).json({ message: 'You can only pick one category' });
     }
 
     // Ensure occasion is provided and only one is selected
-    if (!occasion || Array.isArray(occasion)) {
+    if (Array.isArray(occasion)) {
         return res.status(400).json({ message: 'You can only pick one occasion' });
     }
 
@@ -32,11 +30,12 @@ router.get('/restaurants/search', asyncHandler(async (req, res) => {
     }
 
     try {
-        // Assuming mood is an array field in the database schema
+        // Query the database with the provided filters
         const restaurants = await Restaurant.find({
             category: category,
             occasion: occasion,
-            mood: { $all: moods } // Using moods array here
+            mood: { $all: moods },
+            city: city // Include city in the query
         });
 
         console.log('Query:', { category: category, occasion: occasion, mood: { $all: moods } });
@@ -79,7 +78,7 @@ router.get('/mood', async (req, res) => {
     }
 });
 
-router.get('/cities', asyncHandler(async (req, res) => {
+router.get('/city', asyncHandler(async (req, res) => {
     try {
         // Fetch all unique cities from the Restaurant collection
         const cities = await Restaurant.distinct('city');

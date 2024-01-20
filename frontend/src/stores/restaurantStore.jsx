@@ -4,7 +4,7 @@ const capitalizeFirstLetter = (string) => {
   return string.charAt(0).toUpperCase() + string.slice(1).toLowerCase();
 };
 
-const apiURL = "https://foodie-moodie.onrender.com/api/";
+const apiURL = "http://localhost:3000/api";
 
 export const useRestaurantStore = create((set) => ({
   category: [],
@@ -20,7 +20,7 @@ export const useRestaurantStore = create((set) => ({
       const { selectedCategory } = useRestaurantStore.getState();
       console.log("Selected Category:", selectedCategory);
 
-      const response = await fetch("https://foodie-moodie.onrender.com/api/category");
+      const response = await fetch("http://localhost:3000/api/category");
       if (!response.ok) {
         throw new Error("Failed to fetch category");
       }
@@ -47,7 +47,7 @@ export const useRestaurantStore = create((set) => ({
 
   fetchOccasions: async () => {
     try {
-      const response = await fetch("https://foodie-moodie.onrender.com/api/occasion");
+      const response = await fetch("http://localhost:3000/api/occasion");
       if (!response.ok) {
         throw new Error("Failed to fetch occasions");
       }
@@ -117,7 +117,7 @@ export const useRestaurantStore = create((set) => ({
       set({ selectedMoods: [] });
       console.log("Fetching moods for occasion:", occasion);
       const response = await fetch(
-        `https://foodie-moodie.onrender.com/api/mood?occasion=${encodeURIComponent(
+        `http://localhost:3000/api/mood?occasion=${encodeURIComponent(
           occasion
         )}`
       );
@@ -166,7 +166,7 @@ export const useRestaurantStore = create((set) => ({
 
     fetchCities: async () => {
       try {
-        const response = await fetch(`${apiURL}/cities`);
+        const response = await fetch(`${apiURL}/city`);
         if (!response.ok) {
           throw new Error("Failed to fetch cities");
         }
@@ -191,9 +191,8 @@ export const useRestaurantStore = create((set) => ({
       });
     },
   
-    // Update the selected city
-    setSelectedCity: (city) => {
-      set({ selectedCity: city });
+    setSelectedCities: (city) => {
+      set({ selectedCities: [city] }); // Set the selectedCities array to only contain the selected city
     },
   
     fetchResultsByCity: async () => {
@@ -222,18 +221,27 @@ export const useRestaurantStore = create((set) => ({
   fetchResults: async () => {
     try {
       console.log("Fetching results...");
-      const { selectedCategory, selectedOccasion, selectedMoods } =
+      const { selectedCategory, selectedOccasion, selectedMoods, selectedCities  } =
         useRestaurantStore.getState();
       console.log("Selected Category:", selectedCategory);
       console.log("Selected Occasion:", selectedOccasion);
       console.log("Selected Moods:", selectedMoods);
+      console.log("Selected Cities:", selectedCities);
 
-      const apiURL = "https://foodie-moodie.onrender.com/api/restaurants/search";
+      const apiURL = "http://localhost:3000/api/restaurants/search";
+      if (!selectedCities.length) {
+        console.error("No city selected");
+        return; // Exit the function if no city is selected
+      }
+      const city = selectedCities[0]; 
+      
       const queryParams = new URLSearchParams({
         category: selectedCategory,
         occasion: selectedOccasion,
         mood: selectedMoods.join(","),
+        city: city, // Include the selected city in the query
       });
+      
 
       const url = `${apiURL}?${queryParams}`;
       console.log("Fetching from URL:", url);
