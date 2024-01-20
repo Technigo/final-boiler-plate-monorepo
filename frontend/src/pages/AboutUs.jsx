@@ -18,7 +18,7 @@ export const AboutUs = () => {
             </div>
             <div className={styles.membersMima}>
                 <Text type="SbodyText" className={styles.Mima}>Mirela<br />
-                    <span role="img" aria-label="Cocktail Glass">🍹</span> Favorite cocktail: Margarita<br />
+                    <span role="img" aria-label="Cocktail Glass">🍹</span> Favorite cocktail: Espresso Martini<br />
                     <span role="img" aria-label="Party Popper">🎉</span> Hobby: Answer<br />
                     <span role="img" aria-label="Suitcase">🧳</span> Favorite destination: Answer<br />
                     <span role="img" aria-label="Writing Hand">✍️</span> About me: Answer<br />

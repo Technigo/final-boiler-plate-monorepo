@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import styles from './HomeCBC.module.css';
 import { Text } from '../UI/Typography';
-import { Link } from 'react-router-dom'; //for SinCoctail (had troubble yesterday and moved sinCocktails from pages to src)
+import { Link } from 'react-router-dom';
 import lottie from 'lottie-web';
 
 export const HomeCBC = () => {
