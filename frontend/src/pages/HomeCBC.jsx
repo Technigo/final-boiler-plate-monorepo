@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'; //for SinCoctail (had troubble yesterda
 
 export const HomeCBC = () => {
     const [featuredCocktails, setFeaturedCocktails] = useState([]);
-    const featuredIds = ['65a087deecc12fc758756500', '65a08126ecc12fc7587564fd', '659ffc6700633fc348dba0cb', '659ffa2400633fc348dba090', '659ffaa600633fc348dba096', '659ffa2c00633fc348dba093'];
+    const featuredIds = ['65a0a9464c154a29ccb2c897', '65a08126ecc12fc7587564fd', '659ffc6700633fc348dba0cb', '659ffa2400633fc348dba090', '659ffaa600633fc348dba096', '659ffa2c00633fc348dba093'];
 
     useEffect(() => {
         fetch('https://cbc-uvko.onrender.com/cocktails')
