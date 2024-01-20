@@ -83,3 +83,24 @@
 .order-info-item-wrapper p {
   padding: 0;
 }
+
+section.success-message .about-link {
+  position: relative;
+}
+
+section.success-message .about-link::before {
+  content: '';
+  width: 0;
+  height: 1px;
+  border-radius: 2px;
+  background-color: var(--forrest);
+  position: absolute;
+  bottom: -.25rem;
+  left: 50%;
+  transition: width .3s, left .3s;
+}
+
+section.success-message .about-link:hover::before {
+  width: 100%;
+  left: 0;
+}

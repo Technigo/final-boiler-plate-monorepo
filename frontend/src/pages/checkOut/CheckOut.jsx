@@ -17,6 +17,7 @@ import { RiTruckLine, RiPlantLine } from "react-icons/ri";
 import "./CheckOut.css";
 
 export const CheckOut = () => {
+  const [showSuccessMessage, setShowSuccessMessage] = useState(false);
   // variables for the emailjs function
   const serviceId = "service_yl79s0f";
   const templateId = "template_a3do47o";
@@ -25,8 +26,6 @@ export const CheckOut = () => {
   // email state for guest users for emailjs function
   const [email, setEmail] = useState();
 
-  // accordion activeStep state for next and back button
-  // const [activeStep, setActiveStep] = useState(0);
   // show state for show/hide additional personal information
   const [show, toggleShow] = useState(false);
 
@@ -78,10 +77,18 @@ export const CheckOut = () => {
   };
 
   // function to send email via emailjs to the user's email address
+  // and show user successful purchase-message
   const handlePayButtonClick = (e) => {
     e.preventDefault();
     sendEmail(e);
+    setShowSuccessMessage(true);
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth', // Use smooth scrolling if supported
+    });
   };
+
+  
 
   const accordionItems = [
     {
@@ -106,7 +113,7 @@ export const CheckOut = () => {
                 <>
                   <InputField
                     type="email"
-                    name="email_from"
+                    name="to_email"
                     placeholder="your.email@email.com"
                     onChange={(e) => setEmail(e.target.value)}
                     required
@@ -115,8 +122,6 @@ export const CheckOut = () => {
                     labelTxt="Please put in your email"
                   />
                   <PersonalInfo />
-
-                  {/* <Button btnText={"Next"} onClick={handleNext} /> */}
                 </>
               )}
             </div>
@@ -140,8 +145,6 @@ export const CheckOut = () => {
               </div>
             </div>
             <DeliveryDetails />
-            {/* <Button btnText={"Back"} onClick={handleBack} />
-            <Button btnText={"Next"} onClick={handleNext} /> */}
           </div>
         </div>
       ),
@@ -152,8 +155,6 @@ export const CheckOut = () => {
         <div className="accordion-detail-wrapper">
           <div className="acc-step-container">
             <PaymentInfo />
-            {/* <Button btnText={"Back"} onClick={handleBack} />
-            <Button btnText={"Next"} onClick={handleNext} /> */}
           </div>
         </div>
       ),
@@ -177,14 +178,23 @@ export const CheckOut = () => {
               );
             })}
           </div>
-          {/* <Button btnText={"Back"} onClick={handleBack} /> */}
         </div>
       ),
     },
   ];
 
   return (
-    <section>
+    <>
+      {showSuccessMessage ? (
+        <section className="success-message">
+          <h2>Thank You for Your Order!</h2>
+          <p className="h2-p">Wow! You made an order!</p>
+          <p className="h2-p">Well, this is just a demo of a web based plant shop,
+            but thank you for testing it out! You will be receiving an email with your order details, just for fun!</p>
+          <p className="h2-p">This page was brought to you by Julia Holm and Vera Witting. Check out <Link to="/about" className="about-link"><b>this page</b></Link> if you want to know more about this project or the developers!</p>
+        </section>
+      ) : (
+        <section>
       <Link to="/cart" className="go-back">
         <MdKeyboardArrowLeft className="go-back-icon" />
         Go back to cart
@@ -201,6 +211,8 @@ export const CheckOut = () => {
           for testing it out!{" "}
         </p>
       </form>
-    </section>
+      </section>
+      )}
+    </>
   );
 };
