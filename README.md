@@ -1,6 +1,84 @@
-# Final Boiler Project
+### Final Boiler Project
 
-Detailed info on how to consume this boilerplate will be updated shortly...
+# NFT Food Market Project
+
+### DFINITY Examples for the Internet Computer
+
+Welcome to the NFT Food Market project, showcasing the capabilities of the Internet Computer platform in minting NFTs and building a decentralized marketplace for digital food items, complete with corresponding packages including drinks, disc packages, and more.
+
+## Project Overview
+This project aims to demonstrate the seamless integration of Non-Fungible Tokens (NFTs) with a digital marketplace focused on food items. By leveraging the Internet Computer platform, developers can explore the creation, minting, and trading of unique digital representations of food, along with bundled packages for a richer user experience.
+
+## Getting Started
+To get started with this project, follow these steps:
+
+Open a terminal shell on your local computer.
+
+Download and install the DFINITY Canister SDK:
+
+```
+bash
+DFX_VERSION=0.9.3 sh -ci "$(curl -fsSL https://sdk.dfinity.org/install.sh)"
+```
+the project use a Motoko programming language 
+
+Make new directory for your project 
+
+```
+bash
+mkdir nft-food-market
+```
+
+
+Clone this repository to your local workspace:
+
+
+```
+git clone https://github.com/stenlisuryadinata/final-boiler-plate-monorepo.git
+```
+Navigate to the project folder:
+
+```
+bash
+cd nft-food-market
+```
+Start a local Internet Computer replica:
+
+```
+bash
+dfx start
+```
+
+Install node modules: 
+
+```
+bash 
+npm install
+```
+
+Open a new terminal shell on your local computer.
+
+Build the project:
+
+```
+
+dfx deploy --argument='("CryptoEat&Talk #123", principal "2vxsx-fae", (vec {137; 80; 78; 71; 13; 10; 26; 10; 0; 0; 0; 13; 73; 72; 68; 82; 0; 0; 0; 10; 0; 0; 0; 10; 8; 6; 0; 0; 0; 141; 50; 207; 189; 0; 0; 0; 1; 115; 82; 71; 66; 0; 174; 206; 28; 233; 0; 0; 0; 68; 101; 88; 73; 102; 77; 77; 0; 42; 0; 0; 0; 8; 0; 1; 135; 105; 0; 4; 0; 0; 0; 1; 0; 0; 0; 26; 0; 0; 0; 0; 0; 3; 160; 1; 0; 3; 0; 0; 0; 1; 0; 1; 0; 0; 160; 2; 0; 4; 0; 0; 0; 1; 0; 0; 0; 10; 160; 3; 0; 4; 0; 0; 0; 1; 0; 0; 0; 10; 0; 0; 0; 0; 59; 120; 184; 245; 0; 0; 0; 113; 73; 68; 65; 84; 24; 25; 133; 143; 203; 13; 128; 48; 12; 67; 147; 94; 97; 30; 24; 0; 198; 134; 1; 96; 30; 56; 151; 56; 212; 85; 68; 17; 88; 106; 243; 241; 235; 39; 42; 183; 114; 137; 12; 106; 73; 236; 105; 98; 227; 152; 6; 193; 42; 114; 40; 214; 126; 50; 52; 8; 74; 183; 108; 158; 159; 243; 40; 253; 186; 75; 122; 131; 64; 0; 160; 192; 168; 109; 241; 47; 244; 154; 152; 112; 237; 159; 252; 105; 64; 95; 48; 61; 12; 3; 61; 167; 244; 38; 33; 43; 148; 96; 3; 71; 8; 102; 4; 43; 140; 164; 168; 250; 23; 219; 242; 38; 84; 91; 18; 112; 63; 0; 0; 0; 0; 73; 69; 78; 68; 174; 66; 96; 130;}))'
+```
+
+Start the frontend :
+```
+bash
+npm start
+```
+
+Minting NFTs and Using the Marketplace
+Explore the provided Motoko or other language examples to understand how NFTs are minted and how the decentralized marketplace is implemented. The marketplace includes features for buying, selling, and trading digital food items, including various packages such as drinks, disc packages, and more.
+
+Security Considerations and Best Practices
+If you decide to build upon this project for your own NFT marketplace, ensure to adhere to the Security Best Practices recommended for developing on the Internet Computer. Customize and enhance the provided examples to implement all necessary security measures.
+
+Additional Information
+For more detailed information on how to consume and extend this boilerplate, stay tuned for upcoming documentation and guides. This will include insights into integrating additional features, enhancing the user interface, and optimizing the smart contract logic for your specific NFT food marketplace.
 
 
 ## Problem 
