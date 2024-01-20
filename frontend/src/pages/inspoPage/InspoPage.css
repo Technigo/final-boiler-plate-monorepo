@@ -3,8 +3,40 @@
   padding: 1rem;
 }
 
+.page-title {
+  text-align: center;
+}
+
+.illustration-container {
+  display: flex;
+  justify-content: right;
+}
+
+.monstera-illustration {
+  width: 100px;
+  padding: 0rem 2.5rem 2rem;
+  margin-top: -2rem;
+}
+
 .article-container {
   width: 100%;
+}
+
+.article-title {
+  color: var(--forrest);
+  font-family: var(--josefin);
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.article-p {
+  font-family: var(--montserrat);
+  color: var(--charcoal);
+  font-size: 0.8rem;
+  line-height: 1.7;
+  letter-spacing: 0.1rem;
+  font-weight: 500;
+  padding: 0.5rem 0rem 1.5rem;
 }
 
 .image-container-bedroom {

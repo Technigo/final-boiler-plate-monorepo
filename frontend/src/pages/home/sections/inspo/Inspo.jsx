@@ -26,7 +26,7 @@ export const Inspo = () => {
         </div>
         <div className="inspo-bg-container">
           <div className="leaf-container">
-            <img src="./monstera-leaf.svg" alt="" />
+            <img src="./monstera-leaf.svg" alt="Illustration of a monstera leaf" />
           </div>
           <div className="inspo-img-container">
             <Carousel />

@@ -35,3 +35,10 @@
 .accordion-content li:hover {
   color: var(--sand);
 }
+
+.accordion-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  padding-top: 1rem;
+}

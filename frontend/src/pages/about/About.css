@@ -1,7 +1,21 @@
+.about-intro {
+  padding: 1rem
+}
+
 .about-developers {
   display: flex;
   flex-direction: column;
   text-align: center;
+  padding: 0 2rem 0; 
+}
+
+.about-section-title {
+  color: var(--forrest);
+  font-family: var(--josefin);
+  font-size: 2rem;
+  font-weight: 600;
+  text-align: left;
+  padding-bottom: 1rem;
 }
 
 .developers-wrapper {
@@ -9,8 +23,79 @@
   flex-direction: column;
   gap: 2rem;
 }
-.developer-wrapper {
+
+.profile-pic-icon {
+  width: 50%; 
+  height: 50%;
+  align-self: center;
+  padding-bottom: 1rem;
 }
+
+.developer-wrapper {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--breeze);
+  padding: 1rem;
+  border-radius: 1rem;
+}
+
+.name-links-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-right: 1rem;
+  gap: 0.5rem;
+}
+
+.h3-about {
+  font-family: var(--josefin);
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: var(--forrest);
+  text-transform: uppercase;
+  text-align: left;
+}
+
+.contact-link-icons-wrapper {
+  display: flex;
+  gap: 1rem;
+}
+
+.contact-icon {
+  height: 1.3rem;
+  width: 1.3rem;
+  fill: var(--charcoal)
+}
+
+.contact-icon:hover {
+  fill: var(--terracotta)
+}
+
+.developer-p {
+  font-family: var(--montserrat);
+  color: var(--charcoal);
+  font-size: 0.8rem;
+  line-height: 1.7;
+  letter-spacing: 0.1rem;
+  font-weight: 500;
+  padding: 0.5rem 0rem 1.5rem;
+  text-align: left;
+}
+
+.project-section {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  padding: 2rem ; 
+}
+
+.code-icon {
+  height: 2rem;
+  width: 2rem;
+  fill: var(--forrest)
+}
+
+
 
 @media (min-width: 576px) {
   .developers-wrapper {

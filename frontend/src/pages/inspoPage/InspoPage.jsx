@@ -11,21 +11,11 @@ export const InspoPage = () => {
           This is the place for green dreams of growing lushness! Press a button
           to reveal how your dreams will come true.
         </p>
+        <div className="illustration-container">
+         <img className="monstera-illustration" src="./monstera-leaf.svg" alt="Illustration of a monstera leaf" />
+        </div>
         <ArticleBedroom />
-        <p className="h2-p">
-          Transform your bedroom into a green sanctuary with beautiful plants.
-          Their leafy elegance not only adds aesthetic charm but also promotes a
-          calm atmosphere, enhancing your well-being and connecting you to the
-          soothing rhythms of nature. Embrace the beauty of a botanical haven in
-          your personal space. 🌿✨ #GreenSanctuary #BedroomOasis
-        </p>
         <ArticleBalcony />
-        <p className="h2-p">
-          Elevate your balcony into a vibrant botanical retreat. With plants
-          adorning your space, experience the joy of outdoor serenity at your
-          doorstep. From colorful blooms to lush greens, create a tranquil oasis
-          in the heart of the city. 🌼🌿 #BalconyParadise #BalconyBeauties
-        </p>
       </section>
     </>
   );

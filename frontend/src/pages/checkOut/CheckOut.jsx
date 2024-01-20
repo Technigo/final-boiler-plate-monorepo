@@ -98,13 +98,14 @@ export const CheckOut = () => {
           <div className="checkout-account-wrapper">
             <div className="login-wrapper">
               <p className="h2-p">Already have an account?</p>
-              <Button btnText={"Log in"} />
+              <Button className={"checkout-btn-primary"} btnText={"Log in"} />
             </div>
             <div className="login-wrapper">
               <p className="h2-p">Create an account!</p>
-              <Button btnText={"Register"} />
+              <Button className={"checkout-btn-primary"} btnText={"Register"} />
             </div>
             <Button
+              className={"checkout-btn-primary"}
               btnText={"Continue as guest"}
               onClick={handleContinueAsGuest}
             />
@@ -199,11 +200,11 @@ export const CheckOut = () => {
         <MdKeyboardArrowLeft className="go-back-icon" />
         Go back to cart
       </Link>
-      <h2 className="section-title">Check Out</h2>
+      <h2 className="checkout-section-title">Check Out</h2>
       <form className={"checkout-form"}>
         <Accordion items={accordionItems} showButtons={true} openFirstAccordion={true}/>
 
-        <Button className={"pay-button"} type={"submit"} btnText={"Pay"} onClick={handlePayButtonClick} />
+        <Button className={"checkout-btn-secondary"} type={"submit"} btnText={"Pay"} onClick={handlePayButtonClick} />
         <p className="p-small">
           *By pressing the pay button, you will get an email with your plant
           buddies. Please remember, this is <b>not</b> an actual shop, no money

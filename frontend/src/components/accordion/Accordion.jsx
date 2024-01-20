@@ -35,10 +35,10 @@ const AccordionItem = ({ title, content, isOpen, onToggle, onLinkClick, onNaviga
             {showButtons && (
               <div className="accordion-buttons">
               {index > 0 && (
-                <Button type="button" btnText="Back" onClick={() => onNavigate("back")} />
+                <Button className={"accordion-btn"} type="button" btnText="Back" onClick={() => onNavigate("back")} />
               )}
               {index < totalItems - 1 && (
-                <Button type="button" btnText="Next" onClick={() => onNavigate("next")} />
+                <Button className={"accordion-btn"} type="button" btnText="Next" onClick={() => onNavigate("next")} />
               )}
             </div>
             )}

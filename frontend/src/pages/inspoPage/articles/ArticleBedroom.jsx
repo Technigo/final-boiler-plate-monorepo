@@ -45,7 +45,8 @@ export const ArticleBedroom = () => {
 
   return (
     <article className="article-bedroom">
-      <h2 className="section-title">Bedroom Oasis</h2>
+      <h2 className="article-title">Bedroom Oasis</h2>
+      <p className="article-p">Transform your bedroom into a green sanctuary with beautiful plants.</p>
       <div className="image-container-bedroom">
         <img
           className="inspo-img"
@@ -73,6 +74,12 @@ export const ArticleBedroom = () => {
             />
           )}
       </div>
+      <p className="article-p">
+          The leafy elegance not only adds aesthetic charm but also promotes a
+          calm atmosphere, enhancing your well-being and connecting you to the
+          soothing rhythms of nature. Embrace the beauty of a botanical haven in
+          your personal space. 🌿✨ #GreenSanctuary #BedroomOasis
+        </p>
     </article>
   );
 };

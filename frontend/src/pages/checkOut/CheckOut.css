@@ -1,3 +1,14 @@
+
+.checkout-section-title {
+  font-family: var(--big-h-font);
+  font-size: 1.8rem;
+  color: var(--charcoal);
+  font-weight: 900;
+  letter-spacing: 0.1375rem;
+  text-align: center;
+  padding-top: 1rem;
+}
+
 .accordion-detail-wrapper {
   display: flex;
   flex-direction: column;
@@ -5,6 +16,7 @@
   justify-content: space-between;
   max-width: 500px;
   color: var(--forrest);
+  padding: 1rem; 
 }
 
 .p-small {
@@ -38,19 +50,20 @@
   flex-direction: column;
   align-items: center;
   gap: 0.5rem;
+  padding-top: 1rem;
 }
 
-.step-counter {
-  margin-left: -3rem;
-  text-align: left;
+.checkout-form {
+  padding: 1rem;
 }
 
 .delivery-icons-wrapper {
   display: flex;
   width: 100%;
-  gap: 1rem;
+  gap: 3rem;
   justify-content: center;
   align-items: center;
+  padding: 0.5rem;
 }
 .accordion-step-container .packed-with-love-container {
   color: var(--forrest);

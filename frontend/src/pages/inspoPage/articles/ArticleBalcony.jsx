@@ -43,7 +43,8 @@ export const ArticleBalcony = () => {
 
   return (
     <article className="article-balcony">
-      <h2 className="section-title">Balcony Beauties</h2>
+      <h2 className="article-title">Balcony Beauties</h2>
+      <p className="article-p">Elevate your balcony into a vibrant botanical retreat.</p>
       <div className="image-container-balcony">
         <img
           className="inspo-img"
@@ -70,6 +71,11 @@ export const ArticleBalcony = () => {
           />
         )}
       </div>
+      <p className="article-p">
+          With plants adorning your space, experience the joy of outdoor serenity at your
+          doorstep. From colorful blooms to lush greens, create a tranquil oasis
+          in the heart of the city. 🌼🌿 #BalconyParadise #BalconyBeauties
+        </p>
     </article>
   );
 };

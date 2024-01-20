@@ -13,11 +13,6 @@ button {
   cursor: pointer;
 }
 
-.pay-button {
-  width: 150px;
-  background-color: var(--terracotta);
-}
-
 .login-btn {
   margin-top: 1rem;
   width: 100%;
@@ -101,4 +96,54 @@ button {
 
 .logout-btn:active {
   transform: translateY(-1px);
+}
+
+.checkout-btn-primary {
+  width: 100%;
+  background-color: var(--spring);
+  color: var(--charcoal);
+  padding: 0.8rem 1.6rem;
+  font-weight: 600;
+  font-size: 1rem;
+  border-radius: 10rem;
+  border: 2px solid transparent; 
+  box-sizing: border-box; 
+  transition: border-color 0.3s;
+}
+
+.checkout-btn-primary:hover {
+  border: solid 2px var(--forrest);
+}
+
+.checkout-btn-secondary {
+  width: 100%;
+  background-color: var(--terracotta);
+  color: var(--chalk);
+  padding: 0.8rem 1.6rem;
+  font-weight: 600;
+  font-size: 1rem;
+  border-radius: 10rem;
+  border: 2px solid transparent; 
+  box-sizing: border-box; 
+  transition: border-color 0.3s;
+}
+
+.checkout-btn-secondary:hover {
+  border: solid 2px var(--charcoal);
+}
+
+.accordion-btn {
+  width: 40%;
+  color: var(--charcoal);
+  padding: 0.5rem 1rem;
+  font-weight: 600;
+  font-size: 1rem;
+  border-radius: 10rem;
+  border: 2px solid transparent; 
+  box-sizing: border-box; 
+  transition: border-color 0.3s;
+}
+
+.accordion-btn:hover {
+  border: 2px solid var(--breeze);
 }
