@@ -13,7 +13,7 @@
     position: relative;
     background-color: #DBC6B6;
     padding: 0 1rem;
-    height: 100px;
+    height: 90px;
 }
 
 
@@ -29,16 +29,34 @@
     z-index: 1;
 }
 
+.LogoButtonWrapper {
+    padding-left: 5px;
+}
 
 .bar {
     display: block;
     width: 33px;
     height: 3px;
-    margin: 7px auto;
     background-color: #FFF4E6;
     transition: all 0.3s ease;
     border-radius: 13px;
+    display: block;
+    margin: 5px auto;
+    /* This centers the bars and ensures equal spacing */
+    transition: transform 0.2s, opacity 0.2s;
+    /* Smooth transitions for the transform and opacity changes */
 }
+
+
+.menuIcon {
+    position: relative;
+    /* This ensures that the child elements are positioned relative to this container. */
+    width: 30px;
+    /* Set a fixed width to contain the bars */
+    height: 20px;
+    /* Set a fixed height to contain the bars */
+}
+
 
 .navLinks.active {
     display: flex;
@@ -64,18 +82,31 @@
     display: none;
 }
 
+/* X icon for closing navbar */
+.open .bar:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+}
+
+.open .bar:nth-child(2) {
+    opacity: 0;
+}
+
+.open .bar:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+}
 
 
 /* iPad Pro 11" */
-@media (min-width: 767px) and (max-width: 1285px) {
+@media (min-width: 767px) {
 
     .nav {
-        height: 170px;
+        height: 130px;
     }
 
     .menuIcon {
         padding-top: 0px;
         padding-right: 40px;
+        overflow: visible;
     }
 
     .navLink {
@@ -88,7 +119,7 @@
         display: block;
         width: 43px;
         height: 4px;
-        margin: 9px auto;
+        margin: 7px auto;
         background-color: #FFF4E6;
         transition: all 0.3s ease;
     }
@@ -100,11 +131,24 @@
     .LogoButtonWrapper {
         padding-left: 25px;
     }
+
+    /* X icon for closing navbar */
+    .open .bar:nth-child(1) {
+        transform: translateY(11px) rotate(45deg);
+    }
+
+    .open .bar:nth-child(2) {
+        opacity: 0;
+    }
+
+    .open .bar:nth-child(3) {
+        transform: translateY(-11px) rotate(-45deg);
+    }
 }
 
 @media (min-width: 1285px) {
     .nav {
-        height: 200px;
+        height: 150px;
     }
 
     .menuIcon {
@@ -141,7 +185,7 @@
     }
 
     .LogoButtonWrapper {
-        padding-left: 20px;
+        padding-left: 25px;
         padding-top: 20px;
     }
 

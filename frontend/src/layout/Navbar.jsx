@@ -36,9 +36,9 @@ export const Navbar = () => {
                 <div className={style.bar}></div>
             </div>
             <div className={`${style.navLinks} ${isNavExpanded ? style.active : ''}`}>
-                <NavLink to="/" className={style.navLink} onClick={() => setIsNavExpanded(false)}>
+                {/* <NavLink to="/" className={style.navLink} onClick={() => setIsNavExpanded(false)}>
                     Home
-                </NavLink>
+                </NavLink> */}
                 <NavLink to="/about-us" className={style.navLink} onClick={() => setIsNavExpanded(false)}>
                     About Us
                 </NavLink>

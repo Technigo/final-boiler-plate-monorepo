@@ -71,7 +71,7 @@ export const Cocktails = () => {
         <div className={styles.wrapper}>
             {/* Show loading animation while isLoading is true */}
             {isLoading && (
-                <div>
+                <div className={styles.loadContainer}>
                     <div ref={animationContainer} className={styles.lottieContainer}></div>
                     <Text type="H3" className={styles.h3Load}>PLEASE WAIT WHILE OUR RECIPES ARE LOADING</Text>
                 </div>

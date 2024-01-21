@@ -2,29 +2,30 @@ import styled from 'styled-components';
 
 const StyledInstagramButton = styled.button`
 border: none;
-border-radius: 50%;
-background-color: #DBC6B6; 
-color: #1D1C25; 
+border-radius: 50px;
+background-color: transparent; 
 transition: background-color 0.1s, color 0.1s;
 font-family: 'Tenor Sans', sans-serif;
 cursor: pointer;
 margin: 0px 0px;
 
 img {
-    width: 40px; 
+    width: 35px; 
 }
-
+&:hover img {
+  transform: scale(1.1); 
+}
 // Responsive tablet
 @media (min-width: 768px) {
   img {
-    width: 50px;
+    width: 40px;
   }
 }
 
 // Responsive desktop
 @media (min-width: 1285px) {
   img {
-    width: 80px; 
+    width: 60px; 
   }
 }
 `;
