@@ -1,27 +1,16 @@
-.about-intro {
-  padding: 1rem
-}
-
-.about-developers {
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-  padding: 0 2rem 0; 
-}
-
-.about-section-title {
-  color: var(--forrest);
-  font-family: var(--josefin);
-  font-size: 2rem;
-  font-weight: 600;
-  text-align: left;
-  padding-bottom: 1rem;
-}
-
 .developers-wrapper {
   display: flex;
   flex-direction: column;
   gap: 2rem;
+  padding: 1rem 0;
+}
+
+.developer-wrapper {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  border-radius: 1rem;
+  border: solid 1px var(--forrest)
 }
 
 .profile-pic-icon {
@@ -31,29 +20,17 @@
   padding-bottom: 1rem;
 }
 
-.developer-wrapper {
+.h3-title {
+  text-align: center;
+}
+
+.title-links-wrapper {
   display: flex;
   flex-direction: column;
-  background-color: var(--breeze);
-  padding: 1rem;
-  border-radius: 1rem;
-}
-
-.name-links-wrapper {
-  display: flex;
   align-items: center;
   justify-content: space-between;
-  padding-right: 1rem;
+  padding: 1rem 0rem 0rem;
   gap: 0.5rem;
-}
-
-.h3-about {
-  font-family: var(--josefin);
-  font-size: 1.2rem;
-  font-weight: 800;
-  color: var(--forrest);
-  text-transform: uppercase;
-  text-align: left;
 }
 
 .contact-link-icons-wrapper {
@@ -62,38 +39,42 @@
 }
 
 .contact-icon {
-  height: 1.3rem;
-  width: 1.3rem;
-  fill: var(--charcoal)
+  height: 1.5rem;
+  width: 1.5rem;
+  fill: var(--forrest)
 }
 
 .contact-icon:hover {
   fill: var(--terracotta)
 }
 
-.developer-p {
-  font-family: var(--montserrat);
-  color: var(--charcoal);
-  font-size: 0.8rem;
-  line-height: 1.7;
-  letter-spacing: 0.1rem;
-  font-weight: 500;
-  padding: 0.5rem 0rem 1.5rem;
-  text-align: left;
-}
-
 .project-section {
   display: flex;
   flex-direction: column;
   text-align: center;
-  padding: 2rem ; 
+  gap: 0.5rem;
+  padding-top: 2rem;
+}
+
+.project-link {
+  border: solid transparent 2px;
+  border-radius: 1rem;
+  transition: border-color 0.3s, border-width 0.3s;
+}
+
+.project-link:hover {
+  border: solid var(--forrest) 2px; 
+  border-width: 2px;
 }
 
 .code-icon {
   height: 2rem;
   width: 2rem;
-  fill: var(--forrest)
+  fill: var(--forrest);
+  padding-top: 1rem; 
 }
+
+
 
 
 

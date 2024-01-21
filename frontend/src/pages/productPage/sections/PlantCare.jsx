@@ -7,7 +7,7 @@ export const PlantCare = ({
 }) => {
   return (
     <div className="plant-care-wrapper">
-      <h2 className="care-title">Treatments & Facts</h2>
+      <h3 className="h3-title">Treatments & Facts</h3>
       <span className="italic-style">Origin: {singlePlant.origin}</span>
       <p>
         {singlePlant.careDetails && singlePlant.careDetails.care_description}
@@ -27,7 +27,7 @@ export const PlantCare = ({
         </li>
       </ul>
       <div className="fun-fact-wrapper">
-        <h3 className="fun-fact-title">Fun Fact</h3>
+        <h3 className="h3-alt-title">Fun Fact</h3>
         <p>{singlePlant.fun_fact}</p>
       </div>
     </div>

@@ -10,25 +10,26 @@ import "./About.css";
 
 export const About = () => {
   return (
-    <>
-      <section className="about-intro">
+    <div className="page-container-primary">
+      <section className="about-intro-section">
         <h1 className="page-title">About & Contact</h1>
         <p className="h2-p">How fun, you found our about and contact page!</p>
         <p className="h2-p">
           This page is a full stack final project of Technigos Boot Camp in Web
           Developement of 2023. And if you haven't noticed, is not an actual web
-          shop but a demo version. If you like something, or id you've got
+          shop but a demo version. If you like something, or if you've got
           something on your mind, don't be shy to contact the developers! They
           are super nice!
         </p>
       </section>
-      <section className="about-developers">
-        <h2 className="about-section-title">Developers</h2>
+      <section className="about-developers-section">
+        <h2 className="section-title">Developers</h2>
         <div className="developers-wrapper">
           <div className="developer-wrapper">
             <PiSmileyXEyesLight className="profile-pic-icon" />
-            <div className="name-links-wrapper">
-              <h3 className="h3-about">Julia T Holm</h3>
+            <h3 className="h3-title">Julia T Holm</h3>
+            <div className="title-links-wrapper">
+              <h2 className="h2-sub-title"> junior frontend developer</h2>
               <div className="contact-link-icons-wrapper">
                 <Link to={"https://github.com/JuliaHolm"} target="_blank">
                   <FaGithub className="contact-icon"/>
@@ -42,7 +43,7 @@ export const About = () => {
                 <MdEmail className="contact-icon"/>
               </div>
             </div>
-            <p className="developer-p">
+            <p className="p-body">
               Julia is a dedicated developer known for her beautiful web sites,
               innovative solutions and exceptional coding abilities. She creates
               user-friendly applications and solves complex issues with ease.
@@ -52,8 +53,9 @@ export const About = () => {
           </div>
           <div className="developer-wrapper">
             <PiSmileyWinkLight className="profile-pic-icon" />
-            <div className="name-links-wrapper">
-              <h3 className="h3-about">Vera Witting</h3>
+            <h3 className="h3-title">Vera Witting</h3>
+            <div className="title-links-wrapper">
+              <h2 className="h2-sub-title">junior frontend developer</h2>
               <div className="contact-link-icons-wrapper">
                 <Link to={"https://github.com/verawitting"} target="_blank">
                   <FaGithub className="contact-icon"/>
@@ -67,7 +69,7 @@ export const About = () => {
                 <MdEmail className="contact-icon"/>
               </div>
             </div>
-            <p className="developer-p">
+            <p className="p-body">
               Vera, a skilled developer, seamlessly integrates her graphic
               design background with coding expertise. Recognized for her
               creative problem-solving approach, Vera navigates challenges with
@@ -80,20 +82,20 @@ export const About = () => {
         </div>
       </section>
       <section className="project-section">
-        <h2 className="about-section-title">Plants by Holm & Witting</h2>
-        <h3 className="h3-about">A Technigo Final Project</h3>
-        <p className="developer-p">
+        <h2 className="h3-title">Plants by Holm & Witting</h2>
+        <h3 className="h2-sub-title">A Technigo Final Project</h3>
+        <p className="p-body">
           This is maybe some stuff from our readme file, something about what we
           wanted to create, something about how we achieved this, something
           about how we worked together. Finally something about if you who are
           reading like what you see, don't be shy to contact us! Or if you have
           any tips or feedback, learning is the best!
         </p>
-        <Link to="https://github.com/JuliaHolm/final-boiler-plate-monorepo">
+        <Link to="https://github.com/JuliaHolm/final-boiler-plate-monorepo" className="project-link">
           <FaCode className="code-icon" />
-          <p className="developer-p">Take a look at this project on Github!</p>
+          <p className="h2-p">Take a look at this project on Github!</p>
         </Link>
       </section>
-    </>
+    </div>
   );
 };

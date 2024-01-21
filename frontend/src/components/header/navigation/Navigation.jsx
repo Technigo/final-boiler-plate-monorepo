@@ -34,6 +34,9 @@ export const Navigation = ({ onClick }) => {
         <li>
           <Link to="/plants/all-plants/climbing" onClick={handleLinkClick}>Hanging & climbing</Link>
         </li>
+        <li>
+          <Link to="/inspo" className="ul-title" onClick={handleLinkClick}>Inspiration</Link>
+        </li>
       </ul>
       <hr />
       <ul>

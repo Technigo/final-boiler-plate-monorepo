@@ -96,6 +96,56 @@ button {
   padding: 0.5rem 2rem 1.5rem;
 }
 
+.h2-sub-title {
+  font-family: var(--josefin);
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--forrest);
+  text-transform: uppercase;
+}
+
+/* Under-section title */
+.h3-title {
+  color: var(--forrest);
+  font-family: var(--josefin);
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.h3-alt-title {
+  font-family: var(--josefin);
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: var(--forrest);
+  text-transform: uppercase;
+}
+
+
+/* Body text */
+.p-body {
+  font-family: var(--montserrat);
+  color: var(--charcoal);
+  font-size: 0.8rem;
+  line-height: 1.7;
+  letter-spacing: 0.1rem;
+  font-weight: 500;
+  padding: 0.5rem 0rem 1.5rem;
+  text-align: left;
+}
+
+/* Small text */
+.p-small {
+  font-family: var(--montserrat);
+  color: var(--charcoal);
+  font-size: 0.7rem;
+  line-height: 1.7;
+  letter-spacing: 0.1rem;
+  font-weight: 500;
+  padding: 1.5rem 0rem 0.5rem;
+}
+
+
+
 /* Visually hide the labels */
 .visually-hidden {
   position: absolute;
@@ -110,6 +160,9 @@ button {
 }
 
 /*---------- LAYOUT ----------*/
+.page-container-primary {
+  padding: 2rem;
+}
 
 /*---------- BREAKPOINTS ----------*/
 /* From mobile and for small devices */

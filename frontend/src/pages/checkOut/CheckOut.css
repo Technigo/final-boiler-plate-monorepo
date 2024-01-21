@@ -19,16 +19,6 @@
   padding: 1rem; 
 }
 
-.p-small {
-  font-family: var(--montserrat);
-  color: var(--charcoal);
-  font-size: 0.7rem;
-  line-height: 1.7;
-  letter-spacing: 0.1rem;
-  font-weight: 500;
-  padding: 1.5rem 0rem 0.5rem;
-}
-
 .checkout-account-wrapper {
   display: flex;
   flex-direction: column;

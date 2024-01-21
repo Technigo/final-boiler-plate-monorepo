@@ -123,13 +123,6 @@
   color: var(--charcoal);
 }
 
-.care-title {
-  color: var(--forrest);
-  font-family: var(--josefin);
-  font-size: 1.5rem;
-  font-weight: 600;
-}
-
 .care-icon {
   color: var(--forrest);
   width: 2rem;
@@ -150,14 +143,6 @@
   background-color: var(--breeze);
   padding: 1.5rem;
   border-radius: 0.625rem;
-}
-
-.fun-fact-title {
-  font-family: var(--josefin);
-  font-size: 1.2rem;
-  font-weight: 800;
-  color: var(--forrest);
-  text-transform: uppercase;
 }
 
 /*---------- BREAKPOINTS ----------*/

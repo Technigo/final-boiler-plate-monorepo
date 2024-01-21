@@ -14,6 +14,7 @@ const accordionItems = [
       { text: "Easy care", url: "/plants/all-plants/easy" },
       { text: "Pet-friendly", url: "/plants/all-plants/pet-friendly" },
       { text: "Hanging & climbing", url: "/plants/all-plants/climbing" },
+      { text: "Inspiration", url: "/inspo" },
     ],
   },
   {
@@ -27,14 +28,14 @@ const accordionItems = [
   },
   {
     title: "Customer Service",
-    content: <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>,
+    content: <p>This is not a real web shop, but if it was, it'd probably have the best Custumer Service in the world.</p>,
   },
   {
     title: "About us",
     content: (
       <div>
-        <p>This is a custom React component.</p>
-        <p>You can include paragraphs, formatting, etc.</p>
+        <p>This page was developed by Julia Holm and Vera Witting</p>
+        <p>Do visit our <Link to="/about"><b>about page</b></Link> to see more about us and this project!</p>
       </div>
     ),
   },

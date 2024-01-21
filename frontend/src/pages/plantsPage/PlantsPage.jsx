@@ -34,7 +34,7 @@ export const PlantsPage = () => {
 
   return (
     <section className="plants-page-wrapper">
-      <div className="plants-page-container">
+      <div className="page-container-primary">
         <div className="title-container">
           <h2 className="section-title">Our Plants</h2>
         </div>
