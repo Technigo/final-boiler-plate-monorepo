@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 
-// Define your base StyledButton with base styles
 export const StyledButton = styled.button`
   padding: 10px;
   border: none;

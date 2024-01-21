@@ -11,7 +11,6 @@ export const Text = ({ children, type, style, className }) => {
     );
 };
 
-// Adding PropTypes for validation (optional but recommended)
 Text.propTypes = {
     children: PropTypes.node.isRequired,
     type: PropTypes.string,

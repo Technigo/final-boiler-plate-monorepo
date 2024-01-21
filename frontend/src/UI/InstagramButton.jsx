@@ -32,7 +32,6 @@ img {
 
 export const InstagramButton = () => {
   const goToInstagram = () => {
-    // Redirect to a specific Instagram page
     window.location.href = 'https://www.instagram.com/cbcocktailklubb/';
   };
 
