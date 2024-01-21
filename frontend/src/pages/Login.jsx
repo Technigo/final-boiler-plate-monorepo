@@ -16,13 +16,7 @@ export const LogIn = () => {
 
         try {
             await handleLogin(username, password);
-
-            if (!username, !password) {
-                alert("Please")
-            } else {
-            // If login is successful, display UserProfile.jsx
             navigate('/userProfile');
-            }
         } catch (error) {
             console.error('Login error:', error);
         }
@@ -52,18 +46,14 @@ export const LogIn = () => {
                                     <input
                                         name="username"
                                         id="username"
-                                        type="text"
-                                        /* value={username}
-                                        onChange={(e) => setUsername(e.target.value)} */ />
+                                        type="text"/>
                                 </div>
                                 <div className={styles.inputWrapper}>
                                     <label htmlFor="password">Password</label>
                                     <input
                                         name="password"
                                         id="password"
-                                        type="password"
-                                        /* value={password}
-                                        onChange={(e) => setPassword(e.target.value)} */ />
+                                        type="password"/>
                                 </div>
                                 <div className={styles.logIn}>
                                     <button type="submit">Log in</button>

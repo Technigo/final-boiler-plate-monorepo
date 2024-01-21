@@ -63,8 +63,8 @@ export const userStore = create((set, get) => ({
         console.log("Logging in with:", username, password);
       } else {
         // Display an error message from the server or a generic message.
+        alert("Incorrect username or password")
         throw new Error(data.response || "Login failed");
-        alert(data.response || "Login failed");
       }
     } catch (error) {
       // Handle and log any login errors.
