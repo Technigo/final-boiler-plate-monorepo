@@ -16,6 +16,11 @@ The admin panel is a secure area where administrators can log in to manage the a
 - Upgrading users to admin roles
 - The CSS for the admin part has not yet been prioritized, as it was more important that the functions we needed actually work and also what the user can see. 
 
+![AdminDashboard](/frontend/public/images/AdminDashboard.png)
+*The Admin Dashboard*
+
+![ManageCocktails](/frontend/public/images/ManageCocktails.png)
+*Admin Cocktail Management*
 
 # Tools and Technologies
 - Frontend: React, React Router, Styled Components, Zustand, .env
@@ -27,7 +32,8 @@ The admin panel is a secure area where administrators can log in to manage the a
 - User Interaction: Users can search for cocktails and view detailed information.
 - Admin Management: Secure admin panel for comprehensive content management.
 
-# Challenges and Problems
+
+# Challenges and Problems:
 
 # Transition from Multer to Cloudinary for Image Upload
 The project initially used Multer for handling image uploads. However, as we spent too much time trying to make it work without success, we transitioned to Cloudinary. This shift presented its own set of challenges, particularly in integrating it to our existing code. Also, it did not work until we added express-files as well. 
