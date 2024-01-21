@@ -42,7 +42,7 @@ export const HomeCBC = () => {
             {isLoading && (
                 <div>
                     <div ref={animationContainer} className={styles.lottieContainer}></div>
-                    <Text type="H3" className={styles.h3Load}>PLEASE WAIT WHILE LOADING PAGE</Text>
+                    <Text type="H3" className={styles.h3Load}>PLEASE WAIT WHILE OUR PAGE LOADS</Text>
                 </div>
             )}
             {!isLoading && (

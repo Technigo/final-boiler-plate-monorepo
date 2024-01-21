@@ -22,7 +22,7 @@ const StyledBackButton = styled.button`
 
   // Responsive tablet
   @media (min-width: 768px) {
-    padding: 15px 15px; 
+    padding: 20px 20px; 
     img {
       width: 30px;
     }

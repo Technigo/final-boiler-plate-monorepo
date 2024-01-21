@@ -30,7 +30,7 @@ export const AboutUs = () => {
                 <Text type="SbodyText" className={styles.fulba}>Elba<br />
                     <span role="img" aria-label="Cocktail Glass">🍹</span> Favorite cocktail: Negroni<br />
                     <span role="img" aria-label="Party Popper">🎉</span> Hobby: Answer<br />
-                    <span role="img" aria-label="Suitcase">🧳</span> Favorite destination: Colombia & Croatia<br />
+                    <span role="img" aria-label="Suitcase">🧳</span> Favorite destination: Croatia<br />
                     <span role="img" aria-label="Writing Hand">✍️</span> About me: Answer<br />
                 </Text>
             </div>
