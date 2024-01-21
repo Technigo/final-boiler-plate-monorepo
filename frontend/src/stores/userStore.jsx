@@ -29,38 +29,6 @@ export const userStore = create((set, get) => ({
   // Define a function to set the isLoggedIn state.
   setIsLoggedIn: (isLoggedIn) => set({ isLoggedIn }),
 
-/*   // FUNCTION TO REGISTER USERS
-  handleSignup: async (username, password, email) => {
-    if (!username || !password || !email) {
-      alert("Please enter username, email and password");
-      return;
-    }
-
-    try {
-      const response = await fetch("http://localhost:3000/register", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ email, username, password }),
-      });
-
-      const data = await response.json();
-      if (data.success) {
-        set({ username });
-        // Redirect or update UI
-        alert("Signup successful!");
-        console.log("Signing up with:", username);
-      } else {
-        // Display error message from server
-        alert(data.response || "Signup failed");
-      }
-    } catch (error) {
-      console.error("Signup error:", error);
-      alert("An error occurred during signup");
-    }
-  }, */
-
   // LOGIN
   handleLogin: async (username, password) => {
     // Check if both username and password are provided and display an alert if not.
@@ -95,12 +63,14 @@ export const userStore = create((set, get) => ({
         console.log("Logging in with:", username, password);
       } else {
         // Display an error message from the server or a generic message.
+        throw new Error(data.response || "Login failed");
         alert(data.response || "Login failed");
       }
     } catch (error) {
       // Handle and log any login errors.
-      console.error("Login error:", error);
-      alert("An error occurred during login");
+      throw error;
+      /* console.error("Login error:", error);
+      alert("An error occurred during login"); */
     }
   },
 

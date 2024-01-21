@@ -16,8 +16,13 @@ export const LogIn = () => {
 
         try {
             await handleLogin(username, password);
+
+            if (!username, !password) {
+                alert("Please")
+            } else {
             // If login is successful, display UserProfile.jsx
             navigate('/userProfile');
+            }
         } catch (error) {
             console.error('Login error:', error);
         }
@@ -42,17 +47,27 @@ export const LogIn = () => {
                         </div>
                         <div className={styles.formWrapper}>
                             <form onSubmit={handleLoginFormSubmit}>
-                            <div className={styles.inputWrapper}>
-                                <label htmlFor="username">Username</label>
-                                <input name="username" id="username" type="text" />
-                            </div>
-                            <div className={styles.inputWrapper}>
-                                <label htmlFor="password">Password</label>
-                                <input name="password" id="password" type="password" />
-                            </div>
-                            <div className={styles.logIn}>
-                            <button type="submit">Log in</button>
-                            </div>
+                                <div className={styles.inputWrapper}>
+                                    <label htmlFor="username">Username</label>
+                                    <input
+                                        name="username"
+                                        id="username"
+                                        type="text"
+                                        /* value={username}
+                                        onChange={(e) => setUsername(e.target.value)} */ />
+                                </div>
+                                <div className={styles.inputWrapper}>
+                                    <label htmlFor="password">Password</label>
+                                    <input
+                                        name="password"
+                                        id="password"
+                                        type="password"
+                                        /* value={password}
+                                        onChange={(e) => setPassword(e.target.value)} */ />
+                                </div>
+                                <div className={styles.logIn}>
+                                    <button type="submit">Log in</button>
+                                </div>
                             </form>
                         </div>
                     </div>
