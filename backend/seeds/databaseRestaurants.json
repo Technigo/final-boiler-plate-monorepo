@@ -3970,5 +3970,226 @@
   ],
   "description": "This restaurant offers a delightful dining experience, specializing in hamburgers and sandwiches, perfect for a wide range of occasions and gatherings. Whether you're looking to have dinner with in-laws, enjoy a Sunday brunch, dine with kids, spend time with your best friend, catch up with friends, or have a casual business meal, this restaurant caters to all these needs with its delicious and hearty menu. The mood in this restaurant is a harmonious blend of cozy and casual, featuring good lighting and a soft-spoken ambiance that also buzzes with a bustling energy. It's an ideal setting for both family-friendly and kid-friendly gatherings, providing a homely and welcoming environment for guests of all ages.",
   "url": "https://elsantosandwich.com/"
-}
+},
+
+{
+  "restaurantID": "108",
+  "restaurantName": "Big Al’s Sitges",
+  "address": "Calle de Francesc Gumá 21",
+    "zipcode": "08870",
+  "city": "Sitges",
+  "country": "Spain",
+  "borough": "Center",
+  "cuisine": "Hamburgers",
+  "category": ["Business", "Celebration", "Family", "Friends", "Other"],
+  "occasion": [
+    "Have dinner with the in-laws",
+    "Have a sunday funday aka brunch",
+    "Have dinner with kids present",
+    "Have dinner with your bestie",
+    "Have dinner with friends to catch up",
+    "Say Cheers- a classic Swedish after work",
+    "Have dinner with colleagues",
+    "Have dinner with the whole family",
+    "Have dinner with your parents",
+    "Celebrate you turning 28 again (honey, you ain't fooling anyone)",
+    "Have a meparty aka dinner for one"
+  ],
+  "mood": [
+    "Cozy",
+    "Good lighting",
+    "Bustling",
+    "Casual",
+    "Family friendly",
+    "Homely",
+    "Kid friendly",
+    "Vegan option"
+  ],
+  "description": "Big Al's Sitges is a popular destination for burger aficionados in the heart of Sitges, Spain. This restaurant offers a vibrant and welcoming atmosphere, ideal for various dining occasions. Known for its old-school classic burgers, the menu features mouthwatering options like the Classic Cheeseburger, Deluxe Cheeseburger, BBQ Cheeseburger, Spicy Jalapeño Cheeseburger, and a delectable Pulled Pork Sandwich. Each dish is accompanied by curly fries, adding an extra touch of indulgence. The cozy, casual setting, combined with good lighting and a homely mood, makes Big Al’s perfect for family outings, friendly gatherings, or casual business meals. With options to suit all tastes, including spicy and smoky flavors, and a kid-friendly environment, Big Al's Sitges is a must-visit for those seeking delicious comfort food in a lively, welcoming setting.",
+  "url": "https://www.bigals.es/"
+},
+
+{
+  "restaurantID": "109",
+  "restaurantName": "Clärchens",
+  "address": "Auguststrasse 24",
+  "zipcode": "10117",
+  "city": "Berlin",
+  "country": "Germany",
+  "borough": "Mitte",
+  "cuisine": "German and french",
+  "category": ["Business", "Celebration", "Date", "Family", "Friends"],
+  "occasion": [
+    "Have dinner with the in-laws",
+    "Have dinner with kids present",
+    "Have dinner with your bestie",
+    "Have dinner with friends to catch up",
+    "Say Cheers- a classic Swedish after work",
+    "Have dinner with colleagues",
+    "Have dinner with the whole family",
+    "Have dinner with your parents", 
+    "Celebrate a relationship anniversary",
+    "Celebrate you turning 28 again (honey, you ain't fooling anyone)",
+    "Go on a nice date with that special someone"
+  ],
+  "mood": [
+    "Good lighting",
+    "Bustling",
+    "Intimate",
+    "Sophisticated",
+    "Family friendly",
+    "Homely",
+    "Kid friendly",
+    "Calm",
+    "Vegan option", 
+    "Romantic"
+  ],
+  "description": "Clärchens, a charming restaurant nestled inside a ballroom from the early 1900’s is known for its inviting atmosphere, is a wonderful destination for a wide array of dining experiences. Whether you're planning to have dinner with in-laws, enjoy a meal with kids, catch up with your best friend, celebrate a relationship anniversary, or simply go on a nice date, Clärchens is perfectly suited for these occasions. The mood at Clärchens strikes a beautiful balance between bustling and calm, creating an environment that is both intimate and sophisticated. Good lighting enhances the ambiance, making it ideal for romantic evenings or family gatherings. The restaurant is family and kid-friendly, providing a homely feel that ensures everyone feels comfortable and welcomed. Clärchens also caters to diverse dietary needs, offering vegan options alongside its regular menu. The setting becomes even more enchanting with its outdoor seating, available when the weather permits. Guests can enjoy their meals in the serene garden, adding a touch of nature's tranquility to their dining experience.",
+  "url": "https://claerchensball.haus/"
+},
+  {
+    "restaurantID": "110",
+    "restaurantName": "The Avocado show",
+    "address": "Keizersgracht 449",
+    "zipcode": "1017 DK",
+    "city": "Amsterdam",
+    "country": "The Netherlands",
+    "borough": "Amsterdam- Centrum",
+    "cuisine": "Fusion with a lot of avocado",
+    "category": ["Business", "Celebration", "Date", "Family", "Friends", "Other"],
+    "occasion": [
+      "Have dinner with the in-laws",
+      "Have a sunday funday aka brunch",
+      "Have dinner with kids present",
+      "Have dinner with your bestie",
+      "Have dinner with friends to catch up",
+      "Have dinner with colleagues",
+      "Have dinner with the whole family",
+      "Have dinner with your parents",
+      "Impress your date on a tight budget",
+      "Celebrate you turning 28 again (honey, you ain't fooling anyone)",
+      "Have a me party aka dinner for one",
+      "Go on a nice date with that special someone"
+    ],
+    "mood": [
+      "Cozy",
+      "Good lighting",
+      "Bustling",
+      "Casual",
+      "Family friendly",
+      "Homely",
+      "Kid friendly",
+      "Vegan option"
+    ],
+    "description": "The Avocado Show is a unique and trendy restaurant where every dish celebrates the versatility of avocados. It's an ideal spot for a variety of occasions, from casual brunches with friends to cozy family dinners, and even impressing a date on a budget. Whether you're celebrating turning 28 again, having a me party, or just catching up with colleagues, this restaurant offers a fun and flavorful experience. This restaurant is a must-visit for avocado lovers and those looking for a unique culinary adventure in a friendly, inviting setting.",
+    "url": "https://www.theavocadoshow.com/locations/amsterdam-keizersgracht"
+  },
+
+  {
+    "restaurantID": "111",
+    "restaurantName": "Café restaurant Amsterdam",
+    "address": "Watertorenplein 6",
+    "zipcode": "1051 PA",
+    "city": "Amsterdam",
+    "country": "The Netherlands",
+    "borough": "Centrale Markt",
+    "cuisine": "Asian fusion",
+    "category": ["Business", "Celebration", "Date", "Family", "Friends", "Other"],
+    "occasion": [
+      "Have dinner with the in-laws",
+      "Have a sunday funday aka brunch",
+      "Have dinner with kids present",
+      "Have dinner with your bestie",
+      "Have dinner with friends to catch up",
+      "Say Cheers- a classic Swedish after work",
+      "Have dinner with colleagues",
+      "Have dinner with the whole family",
+      "Have dinner with your parents",
+      "Celebrate a relationship anniversary",
+      "Celebrate you turning 28 again (honey, you ain't fooling anyone)",
+      "Have a me party aka dinner for one",
+      "Go on a nice date with that special someone"
+    ],
+    "mood": [
+      "Cozy",
+      "Good lighting",
+      "Bustling",
+      "Casual",
+      "Family friendly",
+      "Homely",
+      "Kid friendly",
+      "Vegan option"
+    ],
+    "description": "Café Restaurant Amsterdam, situated in a beautifully converted old pumping station, offers a unique dining experience that caters to a wide range of occasions. Whether you're planning to have dinner with in-laws, enjoy a Sunday brunch, dine with kids, or celebrate a relationship anniversary, this restaurant provides the perfect setting. The mood at Café Restaurant Amsterdam is cozy and bustling, with good lighting that creates a casual and homely atmosphere. It's an ideal place for both family gatherings and intimate dates, offering a warm and inviting environment that's family and kid-friendly. One of the standout features of this café restaurant is its commitment to diverse dietary needs, offering both a vegan menu and a special menu for kids. The eclectic menu includes a variety of dishes, but a must-try item is their escargots, which is a favorite among guests.",
+    "url": "https://cradam.nl/"
+  },
+  {
+    "restaurantID": "112",
+    "restaurantName": "Balthazar’s keuken",
+    "address": "Elandsgracht 108",
+    "zipcode": "1016 VA",
+    "city": "Amsterdam",
+    "country": "The Netherlands",
+    "borough": "Jordaan",
+    "cuisine": "French",
+    "category": ["Celebration", "Date", "Family", "Friends", "Other"],
+    "occasion": [
+      "Have dinner with the in-laws",
+      "Have dinner with your bestie",
+      "Have dinner with friends to catch up",
+      "Have dinner with the whole family",
+      "Have dinner with your parents",
+      "Impress your date and the sky is the limit",
+      "Celebrate a relationship anniversary",
+      "Celebrate you turning 28 again (honey, you ain't fooling anyone)",
+      "Have a me party aka dinner for one",
+      "Go on a nice date with that special someone"
+    ],
+    "mood": [
+      "Cozy",
+      "Good lighting",
+      "Soft-spoken",
+      "Intimate",
+      "Sophisticated",
+      "Family friendly",
+      "Homely",
+      "Calm",
+      "Romantic"
+    ],
+    "description": "The restaurant's atmosphere is a blend of soft-spoken elegance and homely warmth, illuminated by good lighting that creates a calm and romantic setting. It's an ideal spot for impressing a date, celebrating special moments like turning 28 again, or simply enjoying a 'me party' dinner for one. As a family-friendly establishment, Balthazar's Keuken ensures a welcoming environment for guests of all ages. The sophistication of French cuisine, combined with the restaurant's cozy ambiance, makes it a great choice for those looking to enjoy a meal in a relaxed yet refined atmosphere. The ever-changing menu keeps the dining experience fresh and exciting, offering new culinary delights to explore with each visit. Whether you're planning a quiet, romantic date or a lively family gathering, Balthazar's Keuken offers a memorable dining experience in one of Amsterdam's most charming neighborhoods.",
+    "url": "https://balthazarskeuken.nl/"
+  },
+
+  {
+    "restaurantID": "113",
+    "restaurantName": "Fou Fow Ramen",
+    "address": "Elandsgracht 2a",
+    "zipcode": "1016 TV",
+    "city": "Amsterdam",
+    "country": "The Netherlands",
+    "borough": "Jordaan",
+    "cuisine": "Japanese, mainly ramen",
+    "category": ["Family", "Friends", "Other"],
+    "occasion": [
+      "Have a sunday funday aka brunch",
+      "Have dinner with kids present",
+      "Have dinner with your bestie",
+      "Have dinner with friends to catch up",
+      "Have dinner with the whole family",
+      "Have dinner with your parents",
+      "Have a me party aka dinner for one"
+    ],
+    "mood": [
+      "Good lighting",
+      "Bustling",
+      "Casual",
+      "Family friendly",
+      "Homely",
+      "Kid friendly",
+      "Vegan option"
+    ],
+    "description": "The mood at Fou Fow Ramen is bustling yet homely, with good lighting that creates an inviting space for guests of all ages. It's an ideal spot for both families and individuals, offering a kid-friendly environment and catering to diverse tastes, including those seeking vegan options. Fou Fow Ramen is renowned for its delicious ramen, making it a must-visit for ramen lovers. The restaurant's commitment to authentic flavors and quality ingredients ensures a delightful culinary experience for anyone seeking the warmth and comfort of a hearty bowl of ramen. Whether you're dining with family, friends, or enjoying a solo meal, Fou Fow Ramen provides a delightful and satisfying dining experience.",
+    "url": "https://www.foufow.nl/"
+  }
+
 ]
