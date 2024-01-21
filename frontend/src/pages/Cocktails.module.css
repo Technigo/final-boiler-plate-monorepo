@@ -92,9 +92,19 @@
     /*vertically */
 }
 
+.placeholder {
+    min-height: 500px;
+}
 
-/* iPad Pro 11" */
-@media (min-width: 767px) and (max-width: 1285px) {
+/* smaller tablets */
+@media (min-width: 767px) {
+    .placeholder {
+        min-height: 800px;
+    }
+}
+
+/* iPad Pro 11 */
+@media (min-width: 900px) {
     .wrapper {
         min-height: 70vh;
     }
@@ -120,6 +130,11 @@
     .h1 {
         padding-top: 125px;
     }
+
+    .placeholder {
+        min-height: 900px;
+    }
+
 }
 
 /* Macbook Air*/
@@ -175,5 +190,7 @@
         color: transparent;
     }
 
-
+    .placeholder {
+        min-height: 1000px;
+    }
 }

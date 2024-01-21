@@ -109,36 +109,36 @@ export const Cocktails = () => {
                             ))}
                         </select>
                     </div> */}
-
-                    <div className={styles.gridContainer}>
-                        {displayedCocktails.map(cocktail => (
-                            <Link to={`/cocktail/${cocktail._id}`} key={cocktail._id} className={styles.cocktailLink}>
-                                <div>
-                                    {cocktail.imageUrl && (
-                                        <img src={cocktail.imageUrl} alt={cocktail.name} className={styles.cocktailImage} />
-                                    )}
-                                    {cocktail.name && <Text type="H3" className={styles.h3}>{cocktail.name}</Text>}
-                                    <Text type="SbodyText" className={styles.SbodyText}>⏲️: {cocktail.prepTime} | 🌟: {cocktail.difficulty}</Text>
-                                    <Text type="SbodyText" className={styles.SbodyText}>⚡: {cocktail.strength} | 🏷️ : {cocktail.tags.join(', ')}</Text>
-                                </div>
-                            </Link>
-                        ))}
-                    </div>
-
-                    {displayedCocktails.length < totalCocktails && (
-                        <div className={styles.loadMoreButtonContainer}>
-                            <StyledButton onClick={loadMoreCocktails}>
-                                <p>EXPLORE MORE</p>
-                                <p>COCKTAILS</p>
-                            </StyledButton>
+                    <div className={styles.placeholder}>
+                        <div className={styles.gridContainer}>
+                            {displayedCocktails.map(cocktail => (
+                                <Link to={`/cocktail/${cocktail._id}`} key={cocktail._id} className={styles.cocktailLink}>
+                                    <div>
+                                        {cocktail.imageUrl && (
+                                            <img src={cocktail.imageUrl} alt={cocktail.name} className={styles.cocktailImage} />
+                                        )}
+                                        {cocktail.name && <Text type="H3" className={styles.h3}>{cocktail.name}</Text>}
+                                        <Text type="SbodyText" className={styles.SbodyText}>⏲️: {cocktail.prepTime} | 🌟: {cocktail.difficulty}</Text>
+                                        <Text type="SbodyText" className={styles.SbodyText}>⚡: {cocktail.strength} | 🏷️ : {cocktail.tags.join(', ')}</Text>
+                                    </div>
+                                </Link>
+                            ))}
                         </div>
-                    )}
+
+                        {displayedCocktails.length < totalCocktails && (
+                            <div className={styles.loadMoreButtonContainer}>
+                                <StyledButton onClick={loadMoreCocktails}>
+                                    <p>EXPLORE MORE</p>
+                                    <p>COCKTAILS</p>
+                                </StyledButton>
+                            </div>
+                        )}
+                    </div>
                 </>
             )}
         </div>
     );
 };
-
 
 
 
