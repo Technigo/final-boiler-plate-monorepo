@@ -56,6 +56,7 @@ x Log in for users; users can save fav cocktails and perhaps only they can comme
 x I think we should hide Amin? If we want it on page for convenience we can make it a transparent button or something?
 - change footer: add pinterest and email?
 - make a pinterest page, add to 
+- change padding to width viewpoint, about us and contact us?
 
 ### DONE:
 - loading.. message 
