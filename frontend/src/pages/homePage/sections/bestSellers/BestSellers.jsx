@@ -10,8 +10,6 @@ export const BestSellers = () => {
   // Access the 'plants' and 'fetchPlants' functions from the 'plantStore'.
   const { plants, fetchPlantsByCategory, isLoading } = plantStore();
 
-  console.log("POPULAR PLANTS:", plants);
-
   useEffect(() => {
     fetchPlantsByCategory("popular");
   }, [fetchPlantsByCategory]);
@@ -27,14 +25,14 @@ export const BestSellers = () => {
           </p>
         </h2>
         <div className="products-wrapper-scroll">
-          {/* {isLoading ? (<Skeleton variant="rounded" width={200} height={260} />) : (<PlantCard plants={plants} />) }  */}
           {isLoading ? (
             // Show skeleton loader when loading
-            <Grid container spacing={1} width="190%" wrap="nowrap">
-              {[1, 2, 3, 4].map((item) => (
-                <Grid item key={item} xs={4} sm={1} md={3} lg={2}>
+            <Grid container spacing={1.5} width="100%" wrap="nowrap">
+              {[1, 2, 3, 4, 5, 6].map((item) => (
+                <Grid item key={item} xs={14} sm={14} md={14} lg={14}>
                   <Box sx={{ p: 0 }}>
-                    <Skeleton variant="rounded" width="100%" height={200} />
+                    <Skeleton variant="rectangular" width="12rem" height="16rem"
+                    style={{ borderRadius: "0.625rem" }} />
                   </Box>
                 </Grid>
               ))}

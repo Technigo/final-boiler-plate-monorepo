@@ -1,27 +1,19 @@
 import { useState } from "react";
-import { favouriteStore } from "../../stores/useFavouriteStore";
 import { cartStore } from "../../stores/useCartStore";
 import { Link } from "react-router-dom";
-import { PiHeartStraightFill } from "react-icons/pi";
 import { Button } from "../../components/buttons/Button";
 import Snackbar from "@mui/material/Snackbar";
 import MuiAlert from "@mui/material/Alert";
 
-export const PlantCard = ({ plants, position }) => {
-  const { addToFavourites } = favouriteStore();
-  const { addToCart, cart } = cartStore();
-
+export const PlantCard = ({ plants }) => {
+  const { addToCart } = cartStore();
   const [snackbarOpen, setSnackbarOpen] = useState(false);
 
-  const handleSnackbarClose = (event, reason) => {
+  const handleSnackbarClose = (reason) => {
     if (reason === "clickaway") {
       return;
     }
     setSnackbarOpen(false);
-  };
-
-  const handleAddFavourite = (plantId) => {
-    addToFavourites(plantId);
   };
 
   const handleAddToCart = (plant) => {
@@ -29,7 +21,6 @@ export const PlantCard = ({ plants, position }) => {
     setSnackbarOpen(true);
   };
 
-  console.log("plants", plants);
   return (
     <>
       {plants.map((plant) => {
@@ -42,10 +33,6 @@ export const PlantCard = ({ plants, position }) => {
                 alt={plant.plant_title}
               />
               <div className="product-overlay">
-                <PiHeartStraightFill
-                  className="like-icon"
-                  onClick={() => handleAddFavourite(plant._id)}
-                />
                 <div className="btns-hover-wrapper">
                   <div className="btns-hover-container">
                     <Link

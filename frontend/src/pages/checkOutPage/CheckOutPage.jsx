@@ -1,3 +1,5 @@
+import { useState, useEffect } from "react";
+import { cartStore } from "../../stores/useCartStore";
 import { CartItem } from "../../components/cart/cartItem/CartItem";
 import { InputField } from "../../components/inputs/InputField";
 import { Link } from "react-router-dom";
@@ -6,25 +8,27 @@ import { PersonalInfo } from "../../components/checkout/PersonalInfo";
 import { DeliveryDetails } from "../../components/checkout/DeliveryDetails";
 import { PaymentInfo } from "../../components/checkout/PaymentInfo";
 import { OrderInfo } from "../../components/checkout/OrderInfo";
-import { cartStore } from "../../stores/useCartStore";
-import { useState } from "react";
+import { OrderSuccess } from "../../components/checkout/OrderSuccess";
 import emailjs from "@emailjs/browser";
 import Accordion from "../../components/accordion/Accordion";
-
+import Snackbar from "@mui/material/Snackbar";
+import MuiAlert from "@mui/material/Alert";
 import { MdKeyboardArrowLeft } from "react-icons/md";
 import { LuPackageCheck } from "react-icons/lu";
 import { RiTruckLine, RiPlantLine } from "react-icons/ri";
-import "./CheckOut.css";
+import "./CheckOutPage.css";
 
-export const CheckOut = () => {
+
+export const CheckOutPage = () => {
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
+  const [snackbarOpen, setSnackbarOpen] = useState(false);
   // variables for the emailjs function
   const serviceId = "service_yl79s0f";
   const templateId = "template_a3do47o";
   const publicKey = "14TsPm9sc7yUWZT-s";
 
   // email state for guest users for emailjs function
-  const [email, setEmail] = useState();
+  const [email, setEmail] = useState("");
 
   // show state for show/hide additional personal information
   const [show, toggleShow] = useState(false);
@@ -32,20 +36,20 @@ export const CheckOut = () => {
   //This variable should change when we have an actual username
   let username = "Plant Friend";
 
-  const { cart } = cartStore();
+  const { cart, calculateTotalPrice } = cartStore();
 
-  console.log("EMAIL:", email);
-  console.log("CART:", cart);
+  useEffect(() => {
+    calculateTotalPrice();
+  }, [cart]);
 
-  const sendEmail = (e) => {
-    e.preventDefault();
+  const sendEmail = async () => {
 
     const templateParams = {
       to_email: email,
       to_name: username,
       message: cart
         .map(
-          (item, index) =>
+          (item) =>
             `${item.plant_title}\n Botanical Name: ${item.botanical_name}\nPrice: €${item.price}\nQuantity: ${item.quantity}\n\n`
         )
         .join("\n"),
@@ -55,20 +59,25 @@ export const CheckOut = () => {
       logo_alt: "Plants by Holm & Witting logotype",
     };
 
-    emailjs
-      .send(serviceId, templateId, templateParams, publicKey)
-      .then((response) => {
-        console.log("Email sent successfully:", response);
-        alert(
-          "You've got mail! An order confirmation is on it's way to your inbox!"
-        );
-      })
-      .catch((error) => {
-        console.error("Email could not be sent:", error);
-        alert(
-          "Unfortunately, we could not send you your order confirmation. Please try again!"
-        );
-      });
+    return emailjs
+    .send(serviceId, templateId, templateParams, publicKey)
+    .then((response) => {
+      if (response.status === 200) {
+        setShowSuccessMessage(true);
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth', 
+        });
+      } else {
+        setSnackbarOpen(true);
+        setShowSuccessMessage(false);
+      }
+    })
+    .catch((error) => {
+      console.error("Email could not be sent:", error);
+      setSnackbarOpen(true);
+      setShowSuccessMessage(false);
+    });
   };
 
   const handleContinueAsGuest = (e) => {
@@ -77,38 +86,32 @@ export const CheckOut = () => {
   };
 
   // function to send email via emailjs to the user's email address
-  // and show user successful purchase-message
-  const handlePayButtonClick = (e) => {
+  const handlePayButtonClick = async (e) => {
     e.preventDefault();
-    sendEmail(e);
-    setShowSuccessMessage(true);
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth', // Use smooth scrolling if supported
-    });
+    await sendEmail();
   };
 
   
 
   const accordionItems = [
     {
-      title: "YOUR INFORMATION",
+      title: "Your information",
       content: (
-        <div className="accordion-detail-wrapper">
+        <>
           <div className="checkout-account-wrapper">
             <div className="login-wrapper">
-              <p className="h2-p">Already have an account?</p>
-              <Button className={"checkout-btn-primary"} btnText={"Log in"} />
+              <p>Already have an account?</p>
+              <Button className={"checkout-btn gradient-btn"} btnText={"Log in"} />
             </div>
             <div className="login-wrapper">
-              <p className="h2-p">Create an account!</p>
-              <Button className={"checkout-btn-primary"} btnText={"Register"} />
+              <p>Create an account!</p>
+              <Button className={"checkout-btn gradient-btn"} btnText={"Register"} />
             </div>
-            <Button
-              className={"checkout-btn-primary"}
-              btnText={"Continue as guest"}
-              onClick={handleContinueAsGuest}
-            />
+            <span 
+            className="" 
+            onClick={handleContinueAsGuest}>
+              Continue as guest
+            </span>
             <div className="form-wrapper">
               {show && (
                 <>
@@ -127,13 +130,13 @@ export const CheckOut = () => {
               )}
             </div>
           </div>
-        </div>
+        </>
       ),
     },
     {
-      title: "DELIVERY DETAILS",
+      title: "Delivery details",
       content: (
-        <div className="accordion-detail-wrapper">
+        <>
           <div className="accordion-step-container">
             <div className="delivery-icons-wrapper">
               <div className="packed-with-love-container">
@@ -147,23 +150,23 @@ export const CheckOut = () => {
             </div>
             <DeliveryDetails />
           </div>
-        </div>
+        </>
       ),
     },
     {
-      title: "PAYMENT INFORMATION",
+      title: "Payment information",
       content: (
-        <div className="accordion-detail-wrapper">
+        <>
           <div className="acc-step-container">
             <PaymentInfo />
           </div>
-        </div>
+        </>
       ),
     },
     {
-      title: "YOUR ORDER",
+      title: "Your order",
       content: (
-        <div className="accordion-detail-wrapper">
+        <>
           <OrderInfo />
           <div className="cart-list-container">
             {cart.map((item, index) => {
@@ -175,11 +178,12 @@ export const CheckOut = () => {
                   title={item.plant_title}
                   price={item.price}
                   quantity={item.quantity}
+                  botanicalName={item.botanical_name}
                 />
               );
             })}
           </div>
-        </div>
+        </>
       ),
     },
   ];
@@ -187,31 +191,47 @@ export const CheckOut = () => {
   return (
     <>
       {showSuccessMessage ? (
-        <section className="success-message">
-          <h2>Thank You for Your Order!</h2>
-          <p className="h2-p">Wow! You made an order!</p>
-          <p className="h2-p">Well, this is just a demo of a web based plant shop,
-            but thank you for testing it out! You will be receiving an email with your order details, just for fun!</p>
-          <p className="h2-p">This page was brought to you by Julia Holm and Vera Witting. Check out <Link to="/about" className="about-link"><b>this page</b></Link> if you want to know more about this project or the developers!</p>
-        </section>
+        <OrderSuccess />
       ) : (
-        <section>
-      <Link to="/cart" className="go-back">
-        <MdKeyboardArrowLeft className="go-back-icon" />
-        Go back to cart
-      </Link>
-      <h2 className="checkout-section-title">Check Out</h2>
-      <form className={"checkout-form"}>
-        <Accordion items={accordionItems} showButtons={true} openFirstAccordion={true}/>
-
-        <Button className={"checkout-btn-secondary"} type={"submit"} btnText={"Pay"} onClick={handlePayButtonClick} />
-        <p className="p-small">
-          *By pressing the pay button, you will get an email with your plant
-          buddies. Please remember, this is <b>not</b> an actual shop, no money
-          will be drawn, and unfortunately no plants will be sent. But thank you
-          for testing it out!{" "}
-        </p>
-      </form>
+        <section className="checkout-section">
+      <div className="checkout-page-wrapper">
+        <Link to="/cart" className="go-back">
+          <MdKeyboardArrowLeft className="go-back-icon" />
+          Go back to cart
+        </Link>
+        <h2 className="section-title">Check Out</h2>
+        <div className={"checkout-form"}>
+          <Accordion items={accordionItems} showButtons={true} openFirstAccordion={true}/>
+          <Button className={"checkout-btn terracotta-btn"} type={"submit"} btnText={"Pay"} onClick={(e) => handlePayButtonClick(e)} />
+          <Snackbar
+              anchorOrigin={{ vertical: "bottom", horizontal: "left" }}
+              open={snackbarOpen}
+              autoHideDuration={6000}
+              onClose={() => setSnackbarOpen(false)}
+            >
+              <MuiAlert
+                onClose={() => setSnackbarOpen(false)}
+                severity="error"
+                sx={{
+                  width: "100%",
+                  backgroundColor: "#bb5532",
+                  color: "#f3f3ea",
+                  "& .MuiSvgIcon-root": {
+                    fill: "#f3f3ea",
+                  },
+                }}
+              >
+                Unfortunatley, we could not send you an email...Are you sure you put in the right address? Try again!
+              </MuiAlert>
+            </Snackbar>
+          <p className="p-small">
+            *By pressing the pay button, you will get an email with your plant
+            buddies. Please remember, this is <b>not</b> an actual shop, no money
+            will be drawn, and unfortunately no plants will be sent. But thank you
+            for testing it out!{" "}
+          </p>
+        </div>
+      </div>
       </section>
       )}
     </>

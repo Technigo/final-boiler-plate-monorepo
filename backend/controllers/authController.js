@@ -70,10 +70,11 @@ export const loginUser = asyncHandler(async (req, res) => {
       return res.status(401).send("Invalid username or password");
     }
 
-    const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET);
+    const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET, { expiresIn: '1h' });
     res.cookie("token", token, {
+      path: '/',
       httpOnly: true,
-      sameSite: "none",
+      sameSite: "None",
       secure: true,
       maxAge: 3600000,
     });

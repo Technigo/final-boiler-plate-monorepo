@@ -21,7 +21,7 @@ export const Hero = () => {
         </div>
         <Link to="plants/all-plants">
           <Button
-            className={"all-plants-btn"}
+            className={"all-plants-btn terracotta-btn"}
             btnText={text.btnText}
             ariaLabel={"Shop all plants"}
           />

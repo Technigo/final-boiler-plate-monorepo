@@ -18,7 +18,7 @@ export const Inspo = () => {
           <p className="inspo-p">{text.text}</p>
           <Link to="/inspo">
             <Button
-              className="inspo-btn"
+              className="inspo-btn terracotta-btn"
               btnText={text.btnText}
               ariaLabel="inspo button"
             />

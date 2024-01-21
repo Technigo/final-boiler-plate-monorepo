@@ -1,6 +1,6 @@
 import { cartStore } from "../../stores/useCartStore";
 import { useEffect } from "react";
-import "../../pages/checkOut/CheckOut.css";
+import "../../pages/checkOutPage/CheckOutPage.css";
 
 export const OrderInfo = () => {
   const { calculateTotalPrice, total, totalWithDelivery, deliveryCost } =
@@ -10,21 +10,19 @@ export const OrderInfo = () => {
     calculateTotalPrice();
   }, []);
 
-  console.log(totalWithDelivery);
-
   return (
     <>
       <div className="order-info-item-wrapper">
-        <p className="h2-p">Order Value </p>
-        <p className="h2-p">€{total}</p>
+        <p className="p-body">Order Value </p>
+        <p className="p-body">€{total}</p>
       </div>
       <div className="order-info-item-wrapper">
-        <p className="h2-p">Delivery</p>
-        <p className="h2-p">€{deliveryCost}</p>
+        <p className="p-body">Delivery</p>
+        <p className="p-body">€{deliveryCost}</p>
       </div>
       <div className="order-info-item-wrapper">
-        <p className="h2-p">Total</p>
-        <p className="h2-p">€{totalWithDelivery}</p>
+        <p className="p-body">Total</p>
+        <p className="p-body">€{totalWithDelivery}</p>
       </div>
     </>
   );

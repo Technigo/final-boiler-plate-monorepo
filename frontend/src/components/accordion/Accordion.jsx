@@ -53,7 +53,6 @@ const AccordionItem = ({ title, content, isOpen, onToggle, onLinkClick, onNaviga
 const Accordion = ({ items, showButtons, openFirstAccordion }) => {
   const [openIndex, setOpenIndex] = useState(openFirstAccordion ? 0 : null);
   const location = useLocation();
-  const accordionRef = useRef(null);
 
   useEffect(() => {
     // Scroll to top when location changes

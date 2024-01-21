@@ -1,19 +1,13 @@
-// Import the 'create' function from the 'zustand' library.
 import { create } from "zustand";
 
-// Import the userStore to access user-related data
-//WE DONT NEED THIS?
-//import { userStore } from "./userStore";
 
 // Get the backend API endpoint from the environment variables.
-// const apiEnv = import.meta.env.VITE_BACKEND_API;
-const apiEnv = "https://plants-holm-witting-backend.onrender.com/api/plants";
+const apiEnv = import.meta.env.VITE_BACKEND_API_PLANTS;
 
 export const plantStore = create((set, get) => ({
   isLoading: false,
   plants: [],
   singlePlant: {},
-  //apiEndpoint: `${apiEnv}`, // Default API endpoint
   selectedCategory: null,
   setIsLoading: (loading) => set({ isLoading: loading }),
   setPlants: (plants) => set({ plants }),
@@ -29,7 +23,6 @@ export const plantStore = create((set, get) => ({
       if (response.ok) {
         const data = await response.json();
         set({ plants: data, isLoading: false });
-        console.log("plantsdata fetch:", data);
       } else {
         console.error("Failed to fetch plants");
         set({ isLoading: false });
@@ -63,7 +56,6 @@ export const plantStore = create((set, get) => ({
 
     set({
       selectedCategory: category,
-      //  apiEndpoint: endpoint
     });
 
     try {
@@ -78,7 +70,6 @@ export const plantStore = create((set, get) => ({
       if (response.ok) {
         const data = await response.json();
         set({ singlePlant: data });
-        console.log("singlePlant data fetch:", data);
       } else {
         console.error("Failed to fetch plant product");
       }
@@ -98,7 +89,7 @@ export const plantStore = create((set, get) => ({
       );
 
       set({ plants: filteredPlants });
-      console.log("Plants data fetch by IDs:", filteredPlants);
+
     } catch (error) {
       console.error("Error fetching plants by IDs", error);
     }

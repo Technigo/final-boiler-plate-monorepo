@@ -143,7 +143,6 @@ export const Register = () => {
 //         navigate("/login");
 //       }, 1000);
 //     } catch (error) {
-//       console.log(error);
 //       userStore
 //         .getState()
 //         .setErrorMessage("An error occurred during registration");

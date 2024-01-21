@@ -12,7 +12,6 @@ export const cartStore = create((set) => ({
     .reduce((acc, quantity) => acc + quantity, 0),
   addToCart: (item) =>
     set((state) => {
-      console.log("Current state:", state);
       const existingItem = state.cart.findIndex(
         (cartItem) => cartItem._id === item._id
       );
@@ -23,7 +22,6 @@ export const cartStore = create((set) => ({
           quantity: updatedCart[existingItem].quantity + 1,
         };
         localStorage.setItem("cart", JSON.stringify(updatedCart));
-        console.log("Updated state:", { cart: updatedCart });
         const newNumberOfProducts = updatedCart
           .map((item) => item.quantity || 1)
           .reduce((acc, quantity) => acc + quantity, 0);

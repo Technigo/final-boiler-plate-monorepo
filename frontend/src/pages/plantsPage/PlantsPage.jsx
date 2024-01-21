@@ -1,9 +1,9 @@
 import { plantStore } from "../../stores/usePlantStore";
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import { Button } from "../../components/buttons/Button";
 import { PlantCard } from "../../components/plantCard/PlantCard";
-import Skeleton from "@mui/material/Skeleton";
+import { PlantLoader } from "../../components/lottie/lottieComp";
 import "./PlantsPage.css";
 
 export const PlantsPage = () => {
@@ -17,8 +17,6 @@ export const PlantsPage = () => {
 
   const { category } = useParams();
 
-  const [error, setError] = useState(null);
-
   // Access the 'plants' and 'fetchPlants' functions from the 'plantStore'.
   const { plants, fetchPlantsByCategory, isLoading } = plantStore();
 
@@ -29,8 +27,6 @@ export const PlantsPage = () => {
       fetchPlantsByCategory(null);
     }
   }, [fetchPlantsByCategory, category]);
-
-  console.log(category);
 
   return (
     <section className="plants-page-wrapper">
@@ -59,13 +55,16 @@ export const PlantsPage = () => {
               />
             </Link>
           </div>
-          <div className="products-wrapper">
-            {isLoading ? (
-              <Skeleton variant="rounded" width={200} height={260} />
-            ) : (
-              <PlantCard plants={plants} />
-            )}
-          </div>
+          {isLoading ? (
+            <div className="animation-wrapper">
+              <PlantLoader className="loader-animation" />
+              <p className="p-body">Hang in there, plant friend! We're fetching your plants for you...</p>
+            </div>
+          ) : (
+            <div className="products-wrapper">
+            <PlantCard plants={plants} />
+            </div>
+          )}
         </div>
       </div>
     </section>

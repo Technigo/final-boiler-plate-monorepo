@@ -1,8 +1,6 @@
 import { useState } from "react";
-import { favouriteStore } from "../../stores/useFavouriteStore";
 import { cartStore } from "../../stores/useCartStore";
 import { Link } from "react-router-dom";
-import { PiHeartStraightFill } from "react-icons/pi";
 import { Button } from "../../components/buttons/Button";
 import Snackbar from "@mui/material/Snackbar";
 import MuiAlert from "@mui/material/Alert";
@@ -10,20 +8,15 @@ import { MdKeyboardArrowRight } from "react-icons/md";
 import "./PlantCards.css";
 
 export const PlantCardMini = ({ plants, position }) => {
-  const { addToFavourites } = favouriteStore();
-  const { addToCart, cart } = cartStore();
+  const { addToCart } = cartStore();
 
   const [snackbarOpen, setSnackbarOpen] = useState(false);
 
-  const handleSnackbarClose = (event, reason) => {
+  const handleSnackbarClose = (reason) => {
     if (reason === "clickaway") {
       return;
     }
     setSnackbarOpen(false);
-  };
-
-  const handleAddFavourite = (plantId) => {
-    addToFavourites(plantId);
   };
 
   const handleAddToCart = (plant) => {

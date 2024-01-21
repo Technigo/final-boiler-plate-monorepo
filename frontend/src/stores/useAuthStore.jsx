@@ -7,7 +7,7 @@ const withEndpoint = (endpoint) => `${API_BASE_URL}/api/auth/${endpoint}`;
 export const useAuthStore = create((set) => ({
   isAuthenticated: false,
   user: null,
-  register: async () => {
+  register: async (username, password, email) => {
     try {
       const response = await axios.post(withEndpoint("register"), {
         username,
@@ -15,7 +15,6 @@ export const useAuthStore = create((set) => ({
         email,
       });
       set({ user: response.data.user });
-      console.log("Registration response:", data);
     } catch (error) {
       console.error("Signup error:", error);
     }
@@ -25,6 +24,7 @@ export const useAuthStore = create((set) => ({
       const response = await axios.post(withEndpoint("login"), credentials, {
         withCredentials: true,
       });
+      const token = response.data.token;
       set({ isAuthenticated: true, user: response.data.user });
     } catch (error) {
       console.error(error.response.data);

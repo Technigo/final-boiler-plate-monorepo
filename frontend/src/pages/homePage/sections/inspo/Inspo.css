@@ -51,17 +51,6 @@
   object-fit: cover;
 }
 
-.inspo-btn {
-  font-family: var(--montserrat);
-  background-color: var(--terracotta);
-  color: var(--chalk);
-  padding: 0.8rem 1.5rem;
-  text-transform: uppercase;
-  font-weight: 600;
-  font-size: 0.8rem;
-  border-radius: 10rem;
-}
-
 /*---------- BREAKPOINTS ----------*/
 /* From mobile and for small devices */
 @media (min-width: 576px) {
@@ -134,17 +123,6 @@
     right: 0;
     max-width: 650px;
     width: 100%;
-  }
-
-  .inspo-btn {
-    font-family: var(--montserrat);
-    background-color: var(--terracotta);
-    color: var(--chalk);
-    padding: 1.2rem 2.2rem;
-    text-transform: uppercase;
-    font-weight: 600;
-    font-size: 1.4rem;
-    border-radius: 10rem;
   }
 }
 

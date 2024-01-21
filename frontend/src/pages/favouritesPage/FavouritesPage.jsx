@@ -1,3 +1,5 @@
+// This component is not yet ready and implemented.
+
 import { useEffect } from "react";
 import { favouriteStore } from "../../stores/useFavouriteStore";
 //import { userStore } from "../../stores/useUserStore";
@@ -10,7 +12,7 @@ export const FavouritesPage = () => {
 
   useEffect(() => {
     fetchFavourites();
-    console.log("FAVOURITES:", favourites);
+    
   }, []);
 
   return (

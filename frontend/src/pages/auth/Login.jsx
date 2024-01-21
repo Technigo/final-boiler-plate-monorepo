@@ -16,7 +16,7 @@ export const Login = () => {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      await login({ username, password });
+      const response = await login({ username, password });
       alert("User logged in successfully");
     } catch (error) {
       setErrorMessage("Invalid username or password");

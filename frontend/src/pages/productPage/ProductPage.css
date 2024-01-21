@@ -56,16 +56,6 @@
   font-weight: 600;
 }
 
-.add-to-cart-btn {
-  width: 100%;
-  background-color: var(--terracotta);
-  color: var(--chalk);
-  padding: 0.8rem 1.6rem;
-  font-weight: 600;
-  font-size: 1rem;
-  border-radius: 10rem;
-}
-
 .plant-image-container {
   height: 24rem;
   margin: 0.5rem 0 1.5rem;

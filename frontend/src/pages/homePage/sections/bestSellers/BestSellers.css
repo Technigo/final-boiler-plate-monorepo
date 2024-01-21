@@ -35,108 +35,7 @@
     }
   }
   
-  .product-overlay {
-    position: absolute;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    padding: 1rem;
   
-    inset: 0;
-    border-radius: 0.625rem;
-    border: 1px solid var(--Forest, #3f543f);
-    background: linear-gradient(180deg, rgba(51, 51, 51, 0) 50%, #333 100%);
-  }
-  
-  .plant-card {
-    height: 16rem;
-    min-height: 100%;
-    /* width: 12rem;
-    height: 16.6rem; */
-    position: relative;
-    font-family: var(--montserrat);
-    letter-spacing: 0.025rem;
-  }
-  
-  .like-icon {
-    width: 1.8rem;
-    height: 1.8rem;
-    align-self: flex-end;
-    fill: none;
-    stroke-width: 0.8rem;
-    stroke: var(--charcoal);
-  }
-  
-  .preview-plant-img {
-    object-fit: cover;
-    object-position: center;
-    border-radius: 0.625rem;
-    height: 100%;
-    width: 100%;
-  }
-  
-  .card-price {
-    color: var(--breeze);
-    font-size: 0.9rem;
-    font-weight: 600;
-  }
-  
-  /* HOVER OVER PRODUCT CARD */
-  .btns-hover-wrapper {
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 100%;
-  }
-  
-  .btns-hover-container {
-    max-height: 0;
-    overflow: hidden;
-    position: absolute;
-    display: flex;
-    top: 10%;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 1rem;
-    transition: 0.4s ease-in-out;
-  }
-  
-  .product-overlay:hover .btns-hover-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 1rem;
-    max-height: 100%;
-  }
-  
-  .hover-btn-more,
-  .hover-btn-add {
-    padding: 0.8rem 1rem;
-    border: 1px solid var(--forrest);
-    backdrop-filter: blur(5px);
-    font-size: 0.6rem;
-    font-weight: 600;
-    text-transform: uppercase;
-  }
-  
-  .hover-btn-more {
-    background: rgba(243, 243, 234, 0.8);
-    color: var(--forrest);
-    max-width: 8rem;
-    text-align: center;
-  }
-  
-  .hover-btn-add {
-    background: rgba(63, 84, 63, 0.8);
-    color: var(--chalk);
-    max-width: 10rem;
-    width: 100%;
-    border-radius: 2.5rem;
-  }
   
   /* button {
       border-radius: 10rem;
@@ -151,7 +50,7 @@
   /* From mobile and for small devices */
   @media (min-width: 576px) {
   }
-  
+
   /* For medium devices */
   @media (min-width: 744px) {
     .best-sellers-container {
@@ -166,6 +65,11 @@
     }
   
     .best-sellers-wrapper .plant-card {
+      height: 25rem;
+      width: 18rem;
+    }
+
+    .best-sellers-wrapper .products-wrapper-scroll .custom-skeleton {
       height: 25rem;
       width: 18rem;
     }

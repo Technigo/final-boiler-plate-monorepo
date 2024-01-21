@@ -41,7 +41,7 @@ export const Navigation = ({ onClick }) => {
       <hr />
       <ul>
         <li>
-          <Link to="/wishlist" onClick={handleLinkClick}>My account</Link>
+          <Link to="/dashboard" onClick={handleLinkClick}>My account</Link>
         </li>
         <li>
           <Link to="/register" onClick={handleLinkClick}>Register</Link>

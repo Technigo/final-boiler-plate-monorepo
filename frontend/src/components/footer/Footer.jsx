@@ -20,8 +20,7 @@ const accordionItems = [
   {
     title: "My account",
     content: [
-      { text: "Profile", url: "" },
-      { text: "Wishlist", url: "/wishlist" },
+      { text: "Dashboard", url: "/dashboard" },
       { text: "Login", url: "/login" },
       { text: "Register", url: "/register" },
     ],

@@ -50,7 +50,6 @@
 //         (data) => {
 //           // On successful registration, clear the input fields
 //           set({ username: "", email: "", password: "", isLoading: false });
-//           console.log("Registration response:", data);
 //         },
 //         (status, errorData) => {
 //           console.error("Unexpected status code during registration:", status);
@@ -100,7 +99,6 @@
 //         (data) => {
 //           // On successful login, clear the input fields
 //           set({ username: "", password: "", isLoading: false });
-//           console.log("Login response:", data);
 //           // Set authentication and loggedin status
 //           set({ isAuthenticated: true, isLoggedIn: true });
 //         },

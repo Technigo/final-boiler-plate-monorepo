@@ -2,7 +2,6 @@ import { useState } from "react";
 import { Radio } from "@mui/material";
 import { RadioGroup } from "@mui/material";
 import { FormControlLabel } from "@mui/material";
-import { InputField } from "../../components/inputs/InputField";
 import { InputReadOnly } from "../../components/inputs/InputReadOnly";
 
 import { SiKlarna } from "react-icons/si";
@@ -12,16 +11,6 @@ export const PaymentInfo = () => {
   const [paymentMethod, setPaymentMethod] = useState("klarna");
   const [showKlarna, setShowKlarna] = useState(true);
   const [showCard, setShowCard] = useState(false);
-
-  // const handleShowKlarna = () => {
-  //     setShowKlarna(!showKlarna);
-  //     setShowCard(false);
-  // };
-
-  // const handleShowCard = () => {
-  //     setShowCard(!showCard);
-  //     setShowKlarna(false);
-  // };
 
   const handleRadioChange = (event) => {
     const value = event.target.value;
@@ -46,13 +35,13 @@ export const PaymentInfo = () => {
       >
         <FormControlLabel
           value="klarna"
-          control={<Radio />}
+          control={<Radio color="default"/>}
           label="Pay with Klarna"
         />
 
         <FormControlLabel
           value="card"
-          control={<Radio />}
+          control={<Radio color="default"/>}
           label="Pay with Card"
         />
       </RadioGroup>
@@ -62,7 +51,6 @@ export const PaymentInfo = () => {
             <SiKlarna className="icon"/>
             <h2>Pay with Klarna</h2>
           </div>
-          {/* <svg data-testid="LocalPostOfficeIcon"></svg> */}
           <ul className="klarna-list">
             <li className="klarna-list-item"><FaCheck /> Safe and easy</li>
             <li className="klarna-list-item"><FaCheck /> Pay directly, with invoice or partial payments</li>

@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { CartItem } from "../../components/cart/cartItem/CartItem";
 import { useEffect } from "react";
 import { OrderInfo } from "../../components/checkout/OrderInfo";
-
+import { Button } from "../../components/buttons/Button"
 import { MdKeyboardArrowLeft } from "react-icons/md";
 import "./CartPage.css";
 
@@ -11,15 +11,8 @@ export const CartPage = () => {
   const {
     cart,
     clearCart,
-    total,
-    calculateTotalPrice,
-    freeDelivery,
-    numberOfProducts,
+    calculateTotalPrice
   } = cartStore();
-
-  //   console.log("CART!:", cart);
-  //   console.log("item-id's:", cart[0]._id);
-  //   console.log("remove item id:", itemId);
 
   const handleClearCart = () => {
     clearCart();
@@ -29,17 +22,13 @@ export const CartPage = () => {
     calculateTotalPrice();
   }, [cart]);
 
-  //console.log("TOTAL:", total);
-  console.log(numberOfProducts);
-  console.log("TOTAL:", total);
-
   return (
     <section className="cart-page-section">
+      <div className="cart-page-wrapper">
       <Link to="/plants/all-plants" className="go-back">
         <MdKeyboardArrowLeft className="go-back-icon" />
         Continue shopping
       </Link>
-      <div className="cart-page-wrapper">
         <h2 className="section-title">Shopping Cart</h2>
         <div className="cart-list-container">
           {cart.length === 0 && <p className="h2-p">Your cart is empty...</p>}
@@ -60,16 +49,19 @@ export const CartPage = () => {
         <div className="orderinfo-container">
           <OrderInfo />
         </div>
-        <button className="clear-btn" onClick={handleClearCart}>
-          Clear Cart
-        </button>
+        <Button className="clear-btn" onClick={handleClearCart}
+            btnText="Clear Cart"/>
         <div className="btn-wrapper-cart">
-          <Link to="/check-out">
-            <button className="checkout-btn">Proceed to checkout</button>
+          <Link to="/plants/all-plants">
+          <Button className="btn-primary" 
+            btnText="Continue shopping"/>
           </Link>
-          {/* <Link to="/plants/all-plants">
-            <button className="checkout-btn">continue shopping</button>
-          </Link> */}
+          {cart.length != 0 && 
+            <Link to="/check-out">
+              <Button className="checkout-btn gradient-btn" 
+              btnText="Proceed to checkout"/>
+            </Link>
+          }
         </div>
       </div>
     </section>

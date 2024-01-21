@@ -7,7 +7,6 @@ import { Navigation } from "./Navigation";
 // ICONS
 import { IoIosMenu } from "react-icons/io";
 import { IoClose } from "react-icons/io5";
-import { IoHeart } from "react-icons/io5";
 import { HiShoppingBag } from "react-icons/hi2";
 import { RiUserLine } from "react-icons/ri";
 
@@ -66,9 +65,6 @@ export const Navbar = () => {
           <Link to="/dashboard">
             <RiUserLine className="user-icon" />
           </Link>
-          <Link to="/wishlist">
-            <IoHeart className="heart-icon" />
-          </Link>
           <Link to="/cart" className="cart-badge-container">
             <HiShoppingBag className="cart-icon" />
             <div className="cart-count">{numberOfProducts}</div>
@@ -105,9 +101,6 @@ export const Navbar = () => {
         </div>
         <div className="nav-sections">
           <Link to="/dashboard">Account</Link>
-          <Link to="/wishlist">
-            <IoHeart className="heart-icon" />
-          </Link>
           <Link to="/cart" className="cart-badge-container">
             <HiShoppingBag className="cart-icon" />
             <div className="cart-count">

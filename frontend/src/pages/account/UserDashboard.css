@@ -23,6 +23,23 @@
     font-size: 1.4rem;
 }
 
+.coming-soon {
+    color: var(--forrest);
+    font-family: var(--josefin);
+    font-size: 1.2rem;
+    display: block;
+}
+
+.coming-soon-wrapper {
+    border: 1px solid var(--spring);
+    border-radius: 0.6rem;
+    padding: 1rem 2rem 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
 .dashboard-links-wrapper li {
     display: flex;
     align-items: center;

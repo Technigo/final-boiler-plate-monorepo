@@ -20,9 +20,8 @@ import "./ProductPage.css";
 
 export const ProductPage = () => {
   const { id } = useParams();
-
   const { singlePlant, setApiEndpoint, fetchSinglePlant } = plantStore();
-  const { addToCart, cart } = cartStore();
+  const { addToCart } = cartStore();
 
   const [snackbarOpen, setSnackbarOpen] = useState(false);
   const [showMore, setShowMore] = useState(false);
@@ -49,12 +48,6 @@ export const ProductPage = () => {
     setSnackbarOpen(true);
   };
 
-  useEffect(() => {
-    console.log("Cart Updated:", cart);
-  }, [cart]);
-
-  console.log("CART:", cart);
-
   return (
     <div className="product-page">
       <Link to="/plants/all-plants" className="go-back">
@@ -74,7 +67,7 @@ export const ProductPage = () => {
             />
           </div>
           <Button
-            className="add-to-cart-btn"
+            className="add-to-cart-btn terracotta-btn"
             onClick={handleAddToCart}
             btnText="Add to Cart"
             ariaLabel="cart button"

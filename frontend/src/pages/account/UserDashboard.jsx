@@ -26,24 +26,27 @@ export const UserDashboard = () => {
           <h2 className="section-title">Dashboard</h2>
         </div>
         <h3>Welcome, {user.username}!</h3>
-        <p className="dashboard-text">
-          From your account dashboard you can find your wishlist, recent orders
-          and edit your account details.
-        </p>
-        <ul className="dashboard-links-wrapper">
-          <li className="dashboard-links">
-            <IoHeart size={24} />
-            <Link to="/wishlist">Wishlist</Link>
-          </li>
-          <li className="dashboard-links">
-            <HiShoppingBag size={24} />
-            <Link to="/">Orders (0)</Link>
-          </li>
-          <li className="dashboard-links">
-            <RiUserSettingsFill size={24} />
-            <Link to="/">Account Details</Link>
-          </li>
-        </ul>
+        <div className="coming-soon-wrapper">
+          <p className="dashboard-text">
+            <span className="coming-soon">Coming soon...</span>
+            From your account dashboard you can find your wishlist, recent orders
+            and edit your account details.
+          </p>
+          <ul className="dashboard-links-wrapper">
+            <li className="dashboard-links">
+              <IoHeart size={24} />
+              <Link to="/wishlist">Wishlist</Link>
+            </li>
+            <li className="dashboard-links">
+              <HiShoppingBag size={24} />
+              <Link to="/">Orders (0)</Link>
+            </li>
+            <li className="dashboard-links">
+              <RiUserSettingsFill size={24} />
+              <Link to="/">Account Details</Link>
+            </li>
+          </ul>
+        </div>
         <Button
           className="logout-btn"
           type="button"

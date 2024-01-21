@@ -14,12 +14,12 @@ export const DeliveryDetails = () => {
       >
         <FormControlLabel
           value="office"
-          control={<Radio />}
+          control={<Radio color="default"/>}
           label="Collect at Post Office"
         />
         <FormControlLabel
           value="home"
-          control={<Radio />}
+          control={<Radio color="default"/>}
           label="Home Delivery"
         />
       </RadioGroup>

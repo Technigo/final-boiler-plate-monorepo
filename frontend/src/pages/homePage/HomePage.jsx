@@ -5,7 +5,7 @@ import { Inspo } from "./sections/inspo/Inspo";
 import { ByCharacteristic } from "./sections/byCharacteristic/ByCharacteristic";
 import { Instagram } from "./sections/instagram/Instagram";
 
-export const Home = () => {
+export const HomePage = () => {
   return (
     <>
       <Hero />

@@ -6,15 +6,15 @@ import { FaLinkedin } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
 import { FaCode } from "react-icons/fa";
 
-import "./About.css";
+import "./AboutPage.css";
 
-export const About = () => {
+export const AboutPage = () => {
   return (
     <div className="page-container-primary">
       <section className="about-intro-section">
         <h1 className="page-title">About & Contact</h1>
         <p className="h2-p">How fun, you found our about and contact page!</p>
-        <p className="h2-p">
+        <p className="p-body">
           This page is a full stack final project of Technigos Boot Camp in Web
           Developement of 2023. And if you haven't noticed, is not an actual web
           shop but a demo version. If you like something, or if you've got
@@ -26,7 +26,9 @@ export const About = () => {
         <h2 className="section-title">Developers</h2>
         <div className="developers-wrapper">
           <div className="developer-wrapper">
-            <PiSmileyXEyesLight className="profile-pic-icon" />
+            <div className="profile-img-wrapper">
+              <img className="profile-img" src="./public/profil-vera.jpg" alt="Julia Holm profile picture"/>
+            </div>
             <h3 className="h3-title">Julia T Holm</h3>
             <div className="title-links-wrapper">
               <h2 className="h2-sub-title"> junior frontend developer</h2>
@@ -52,7 +54,9 @@ export const About = () => {
             </p>
           </div>
           <div className="developer-wrapper">
-            <PiSmileyWinkLight className="profile-pic-icon" />
+            <div className="profile-img-wrapper">
+              <img className="profile-img" src="./public/profil-vera.jpg" alt="Vera Witting profile picture"/>
+            </div>
             <h3 className="h3-title">Vera Witting</h3>
             <div className="title-links-wrapper">
               <h2 className="h2-sub-title">junior frontend developer</h2>

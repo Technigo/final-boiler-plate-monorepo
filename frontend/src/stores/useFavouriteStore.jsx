@@ -1,7 +1,6 @@
 import { create } from "zustand";
 
-const apiEnv = "http://localhost:8080/api/favourites";
-//"https://plants-holm-witting-backend.onrender.com/api/favourites";
+const apiEnv = import.meta.env.VITE_BACKEND_API_FAVOURITES;
 
 export const favouriteStore = create((set) => ({
   isLoading: false,
@@ -19,7 +18,6 @@ export const favouriteStore = create((set) => ({
       if (response.ok) {
         const data = await response.json();
         set({ favourites: data, isLoading: false });
-        console.log("favourite data fetch:", data);
       } else {
         console.error("Failed to fetch favourites");
         set({ isLoading: false });
@@ -46,7 +44,6 @@ export const favouriteStore = create((set) => ({
           favourites: [...state.favourites, plantId],
           isLoading: false,
         }));
-        console.log("Plant added to favourites");
       } else {
         console.error("Failed to add plant to favourites");
         set({ isLoading: false });
