@@ -11,45 +11,44 @@ const StyledLogoButton = styled.button`
   font-family: 'Tenor Sans', sans-serif;
   cursor: pointer;
 
-  &:hover {
-    background-color: #dbc6b6cf;
-    color: #5a493b;
+  &:hover img {
+    transform: scale(1.1); 
   }
 
   img {
-      width: 60px; 
+      width: 47px; 
   }
 
   // Responsive tablet
   @media (min-width: 768px) {
  
     img {
-      width: 100px;
+      width: 70px;
     }
   }
 
   // Responsive desktop
   @media (min-width: 1285px) {
     img {
-      width: 120px; 
+      width: 90px; 
     }
   }
 `;
 
 export const LogoButton = () => {
-    const navigate = useNavigate();
+  const navigate = useNavigate();
 
 
-    const goHome = () => {
-        // Save the current scroll position
-        sessionStorage.setItem('lastScrollPosition', window.scrollY);
+  const goHome = () => {
+    // Save the current scroll position
+    sessionStorage.setItem('lastScrollPosition', window.scrollY);
 
-        navigate('/');
-    };
+    navigate('/');
+  };
 
-    return (
-        <StyledLogoButton onClick={goHome}>
-            <img src="/images/logo.png" alt="Home" />
-        </StyledLogoButton>
-    );
+  return (
+    <StyledLogoButton onClick={goHome}>
+      <img src="/images/logo.png" alt="Home" />
+    </StyledLogoButton>
+  );
 };

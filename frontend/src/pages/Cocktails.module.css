@@ -1,5 +1,4 @@
 .wrapper {
-    background-color: #fff4e6bd;
     min-height: 80vh;
     display: flex;
     flex-direction: column;
@@ -16,9 +15,8 @@
 .searchInput {
     background-image: url('/images/magnifierglass_icon.png');
     background-position: 5px 5px;
-    /* Adjust the position as needed */
-    background-size: 20px 20px;
-    /* Adjust the size of the icon */
+    background-size: 18px 18px;
+    /* For adjusting the size of the icon */
     background-repeat: no-repeat;
     font-size: 14px;
     font-weight: 400;
@@ -27,21 +25,21 @@
     font-family: 'Readex Pro', sans-serif;
     color: #1D1C25;
     background-color: #ffffff;
-    padding: 3px 5px;
+    padding: 4px 3px;
     border: 1px solid #ffffff;
     width: 230px;
+    box-sizing: border-box;
+    text-indent: 25px;
 }
 
 .searchInput::placeholder {
     color: #1D1C25;
     font-weight: 500;
-    padding-left: 20px;
 }
 
 .searchInput:focus {
     border-color: #5d4b3d;
     outline: none;
-    padding-left: 25px;
 }
 
 .searchInput:focus::placeholder {
@@ -53,7 +51,7 @@
 }
 
 .h1 {
-    padding-top: 100px;
+    padding: 50px 20px 0 20px;
 }
 
 .h3 {
@@ -79,7 +77,6 @@
     overflow: hidden;
 }
 
-
 .gridContainer {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -96,10 +93,18 @@
     min-height: 500px;
 }
 
+.loadContainer {
+    min-height: 500px;
+}
+
 /* smaller tablets */
 @media (min-width: 767px) {
     .placeholder {
         min-height: 800px;
+    }
+
+    .loadContainer {
+        min-height: 500px;
     }
 }
 
@@ -132,6 +137,10 @@
     }
 
     .placeholder {
+        min-height: 900px;
+    }
+
+    .loadContainer {
         min-height: 900px;
     }
 
@@ -176,14 +185,12 @@
         background-position: 7px 7px;
         font-size: 18px;
         letter-spacing: 0.8px;
-        padding: 5px 10px;
         width: 300px;
     }
 
     .searchInput:focus {
         border-color: #5d4b3d;
         outline: none;
-        padding-left: 33px;
     }
 
     .searchInput:focus::placeholder {
@@ -191,6 +198,10 @@
     }
 
     .placeholder {
+        min-height: 1000px;
+    }
+
+    .loadContainer {
         min-height: 1000px;
     }
 }

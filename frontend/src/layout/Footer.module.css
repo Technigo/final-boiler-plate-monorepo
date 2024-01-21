@@ -1,7 +1,7 @@
 .wrapper {
     background-color: #DBC6B6;
-    padding: 20px;
-    height: 100px;
+    padding: 20px 10px 20px 10px;
+    height: 70px;
     position: relative;
     bottom: 0;
     left: 0;
@@ -9,14 +9,16 @@
 }
 
 /* iPad Pro 11" */
-@media (min-width: 767px) and (max-width: 1285px) {
+@media (min-width: 820px) {
     .wrapper {
-        height: 160px;
+        height: 100px;
+        padding: 30px 20px 20px 20px;
     }
 }
 
 @media (min-width: 1285px) {
     .wrapper {
-        height: 170px;
+        height: 120px;
+        padding: 30px 20px 20px 20px;
     }
 }
