@@ -1,129 +1,54 @@
-# Final Boiler Project
+# Carl Berner Cocktail Club - About the Project
 
-We chose to use MongoDB Atlas for storing our data as an API because the database will (hopefully) be frequently updated by admins.
-- Elba
+We are a group of friends in Oslo sharing a passion for cocktails. Our journey started from sharing our favorite drinks and evolved into a regular tradition. We meet to explore cocktail making, focusing on new themes each time. Our Instagram page documents our adventures, where we post about our meetings and the drinks we make.
 
+For this project, we wanted to extend our platform to include a website for the club. The Carl Berner Cocktail Club web application is created for cocktail enthusiasts based in Oslo. It serves as a platform to explore and share the art of cocktail making. 
 
+# Open website
+The application features a main page displaying selected cocktails, an 'About Us' page, and a comprehensive list of all cocktails with detailed recipes and information. It also includes a robust search function for exploring all available cocktails.
 
+# Admin Panel
+The admin panel is a secure area where administrators can log in to manage the application. Features include:
 
+- Adding, editing, and deleting cocktail recipes, including image uploads
+- Registering new admins
+- Viewing the entire user list
+- Upgrading users to admin roles
+- The CSS for the admin part has not yet been prioritized, as it was more important that the functions we needed actually work and also what the user can see. 
 
-// SHOULD WE ONLY USE ATLAS?
-Migrating your local MongoDB to MongoDB Atlas and having two separate MongoDB Atlas databases — one for general application use and another specifically for your API (such as file uploads) — can be a good approach, especially if you're planning for production deployment or need cloud-based features like scalability, high availability, and easy management. Here are some considerations and benefits of using MongoDB Atlas for both databases:
 
-### Benefits of Using MongoDB Atlas:
+# Tools and Technologies
+- Frontend: React, React Router, Styled Components, Zustand, .env
+- Backend: Node.js, Express, MongoDB, Mongoose, Cloudinary and express-files for image uploads, JWT for authentication, .env 
+- Development Tools: Vite, Babel
 
-1. **Scalability**: Atlas provides easy scaling options. You can scale your database as your application grows.
+# Features
+- Cocktail Display: Showcases a curated selection of cocktails with complete recipes.
+- User Interaction: Users can search for cocktails and view detailed information.
+- Admin Management: Secure admin panel for comprehensive content management.
 
-2. **High Availability**: Atlas ensures high availability with automatic failover and backup options.
+# Challenges and Problems
 
-3. **Security**: Atlas offers robust security features, including network isolation, encryption at rest, and more.
+# Transition from Multer to Cloudinary for Image Upload
+The project initially used Multer for handling image uploads. However, as we spent too much time trying to make it work without success, we transitioned to Cloudinary. This shift presented its own set of challenges, particularly in integrating it to our existing code. Also, it did not work until we added express-files as well. 
 
-4. **Unified Management**: Using Atlas for both databases allows for centralized management of your databases in one place.
+# API Integration for Adding and Editing Cocktail Recipes
+Integrating the API for adding and editing cocktail recipes was a complex task. This involved not just the technical implementation on both backend and frontend, but also ensuring that the user interface was intuitive. Admins can now easily add new recipes and modify existing ones, making the process as straightforward as possible.
 
-5. **Accessibility**: Being cloud-based, Atlas databases are accessible from anywhere, which can be beneficial for distributed development teams.
+# Protecting Webpages and Routes Through Authentication and Managing JWT Tokens for Secure Authentication
 
-### Considerations for Migration:
+We placed a strong emphasis on security, especially in protecting certain webpages and routes. This involved implementing a robust authentication system through middleware, roles and JWT tokens that allows only authorized users to access specific functionalities, particularly within the admin panel. 
 
-1. **Data Migration**: You’ll need to migrate data from your local MongoDB to Atlas. Tools like `mongodump` and `mongorestore` can be used for this.
+Implementing JWT (JSON Web Tokens) for secure authentication was a significant task. It involved ensuring that tokens were generated, stored, and used correctly to maintain the integrity and security of user sessions and data, first in backend, but later through the zustand store in frontend as well. 
 
-2. **Configuration Updates**: Update your application configuration to point to the new Atlas databases. This includes updating connection strings and any related configuration settings.
+As of now, the main challenges connencted to this and role handeling that still remain are upgrading users to admin, and checking the role of the admin as an extra security for the frontend routes.
 
-3. **Testing**: After migration, thoroughly test your application with the new database setup to ensure everything works as expected.
+# Implementing the Filter Function
+One of the key challenges we faced was implementing a robust and efficient filter function. This feature is crucial for enhancing user experience, as it allows users to easily navigate through our extensive cocktail collection and find drinks that suit their preferences. This function is not working yet, but we will keep working on it.
 
-4. **Cost**: While MongoDB Atlas offers free tiers, consider the cost implications as your usage grows.
+# Carousel Implementation
+Creating an interactive and visually appealing carousel for showcasing featured cocktails posed a challenge, which we have not yet been able to solve.
 
-### Implementation:
-
-- **General Atlas DB**: Used for your main application data (user registration, login, etc.).
-- **API-Specific Atlas DB**: Dedicated to your API needs, such as handling file uploads or other specific functionalities.
-
-### Updating the Connection Functions:
-
-You would still maintain two separate connection functions but with Atlas URLs:
-
-```javascript
-// Connect to General MongoDB Atlas
-export const connectGeneralAtlasDB = async () => {
-    // Logic to connect to General MongoDB Atlas using a specific ATLAS_URL
-};
-
-// Connect to API MongoDB Atlas
-export const connectApiAtlasDB = async () => {
-    // Logic to connect to API MongoDB Atlas using a different ATLAS_API_URL
-};
-```
-
-Each function connects to a different Atlas cluster based on the part of the application it serves.
-
-### Conclusion:
-
-Consolidating to MongoDB Atlas for both databases can streamline your operations and offer the benefits of a managed database service. It's a forward-looking approach, particularly if you anticipate scaling your application or need the reliability and accessibility offered by cloud databases. However, ensure that the cost and effort of migration and maintenance align with your project's needs and resources.
-
-
-
-// COMMON JS vs ES MODULES (:
-there are two main ways to include files or modules in your code: using require and using import. These two methods have some fundamental differences due to the way Node.js has evolved over time and its support for different module systems.
-
-require Syntax (CommonJS)
-Syntax: const module = require('module-name');
-Usage: This is the original module system used in Node.js, known as CommonJS.
-Flexibility: It allows you to conditionally and dynamically load modules.
-Compatibility: CommonJS is widely used and supported in Node.js by default.
-Limitation: It does not support the static analysis of module structure (e.g., for tree shaking in front-end tools).
-import Syntax (ES Modules)
-Syntax: import module from 'module-name';
-Usage: This is the newer module system, known as ECMAScript Modules (ES Modules), and it aligns with how modules work in modern JavaScript (ES6+).
-Static & Declarative: The import statements are static, meaning they cannot be loaded conditionally or dynamically. They are hoisted to the top of your file.
-Tree Shaking: Better support for tree shaking, which can reduce bundle sizes in front-end development.
-Compatibility: Initially, ES Modules were not fully supported in Node.js, but with newer versions (v12 and above), it's becoming more common.
-Choosing Between require and import
-Node.js Version: If you're using a Node.js version that fully supports ES Modules (v14+ recommended), you can use import. Otherwise, stick with require.
-
-Project Structure:
-
-For a project that aligns with modern JavaScript practices, especially if you're integrating with modern front-end tooling, import is preferable.
-For traditional Node.js applications, especially those that require dynamic loading of modules, require may be more suitable.
-Package Compatibility: Some NPM packages might only support one module type. Check the package documentation for compatibility.
-
-Codebase Consistency: If you're working in a codebase that already heavily uses one style, it's generally easier to stick with that style for consistency.
-
-TypeScript: If you're using TypeScript, import statements are generally the standard.
-
-Conversion:
-Node.js allows you to use either module system, but it requires some configuration, especially for enabling ES Modules. In recent versions, you can use "type": "module" in your package.json to enable ES Module syntax project-wide.
-
-Remember, mixing the two within the same file is not allowed. However, you can use them in separate files or modules within the same project, given proper configuration.
-
-Conclusion:
-require is more traditional in Node.js and offers dynamic loading.
-import aligns with modern JavaScript standards and is suitable for projects that can leverage ES Modules.
-The choice largely depends on your Node.js version, project requirements, and personal or team preference.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+# View it Live
+- Frontend: Deployed Frontend Application
+- Backend: Deployed Backend Application
