@@ -19,22 +19,16 @@
     align-items: center;
     background-image: url('../assets/login.jpg');
     background-size: 100%;
-    background-position: center;
+    background-position: 0% 75%;
     height: 10em;
     padding-left: 2em;
-}
-
-.formWrapper {
-    padding: 2em;
-    border: 3px solid #42531D;
-    border-radius: 20px;
 }
 
 .logInWrapper {
     min-height: 17em;
     display: flex;
     flex-direction: column;
-    gap: 1.5em;
+    gap: 3em;
     align-items: center;
     justify-content: center;
     padding: 2em;
@@ -42,6 +36,12 @@
 
 .logInWrapper p {
     text-align: center;
+}
+
+.logIn {
+    display: flex;
+    justify-content: center;
+    padding-top: 2em;
 }
 
 .inputWrapper {

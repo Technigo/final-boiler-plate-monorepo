@@ -14,6 +14,14 @@
     justify-content: center;
 }
 
+.navLink {
+    text-decoration: none;
+}
+
+.navLink h3:hover {
+    color: #42531D;
+}
+
 @media screen and (max-width: 667px) {
     .mainContainer {
         height: 23em;

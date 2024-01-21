@@ -1,0 +1,36 @@
+.mainContainer {
+    display: flex;
+    flex-direction: column;
+    padding: 1em 0em 1em 0em;
+}
+
+.mainContainer h3 {
+    align-self: center;
+}
+
+.formContainer {
+    display: flex;
+    flex-direction: column;
+    min-height: 15em;
+    padding: 2em;
+    justify-content: center;
+    align-items: center;
+    gap: 1em;
+}
+
+.formRow {
+    display: flex;
+    flex-direction: row;
+    gap: 3em;
+    margin: 1em;
+}
+
+.formPiece {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+label {
+    padding: 0.5em;
+}

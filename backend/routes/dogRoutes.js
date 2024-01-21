@@ -9,13 +9,13 @@ const router = express.Router();
 // Get the complete list of dogs
 router.get(
     "/findDogs", async (req, res) => {
-    try {
-      const dogs = await DogModel.find();
-      res.json(dogs);
-    } catch (err) {
-      res.status(400).json({ error: err.message });
+        try {
+            const dogs = await DogModel.find();
+            res.json(dogs);
+        } catch (err) {
+            res.status(400).json({ error: err.message });
+        }
     }
-  }
 );
 
 // Get the dogs a specific user has added
@@ -31,23 +31,6 @@ router.get(
             .catch((error) => res.json(error))
     })
 )
-
-// ChatGPTs code:
-/* router.get(
-    "/yourDogs",
-    authenticateUser,
-    asyncHandler(async (req, res) => {
-        const userId = req.user.id; // Assuming your authentication middleware sets req.user.id
-        try {
-            const dogs = await DogModel.find({ user: userId })
-            .sort("-createdAt");
-            res.json(dogs);
-        } catch (error) {
-            console.error(error);
-            res.status(500).json({ error: "Internal Server Error" });
-        }
-    })
-) */
 
 // Add dogs to the database
 router.post(
@@ -84,20 +67,38 @@ router.post(
 )
 
 // Delete a dog from the database
-/* router.delete("/delete/:id", async (req, res) => {
-    const { id } = req.params;
-    await DogModel.findByIdAndDelete(id)
-        .then((result) => {
-            if (result) {
-                res.json({
-                    message: "Dog deleted from Rescue Helper",
-                    deleteDog: result
-                })
-            } else {
-                res.status(404).json({ message: "Dog not found" })
-            }
-        })
-        .catch((err) => res.status(500).json(err))
-}); */
+router.delete(
+    "/delete/:id",
+    async (req, res) => {
+        const { id } = req.params;
+        await DogModel.findByIdAndDelete(id)
+            .then((result) => {
+                if (result) {
+                    res.json({
+                        message: "Dog deleted from Rescue Helper",
+                        deleteDog: result
+                    })
+                } else {
+                    res.status(404).json({ message: "Dog not found" })
+                }
+            })
+            .catch((err) => res.status(500).json(err))
+    }
+);
+
+// Define a route for handling DELETE requests to delete all tasks
+router.delete(
+    "/deleteAll",
+    asyncHandler(async (req, res) => {
+      await DogModel.deleteMany({})
+        .then((result) =>
+          res.json({
+            message: "All dogs deleted",
+            deletedCount: result.deletedCount,
+          })
+        ) // Respond with a success message and the count of deleted tasks
+        .catch((err) => res.status(500).json(err));
+    })
+  );
 
 export default router

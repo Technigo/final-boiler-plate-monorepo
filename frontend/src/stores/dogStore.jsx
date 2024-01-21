@@ -23,7 +23,7 @@ export const dogStore = create((set) => ({
                 const data = await response.json();
                 set({ dogs: data });
             } else {
-                console.error("Failed to fetch dogs");
+                console.error("Failed to fetch your dogs");
             }
         } catch (error) {
             console.error(error);
@@ -53,9 +53,9 @@ export const dogStore = create((set) => ({
 
             if (response.ok) {
                 set((state) => ({ dogs: [...state.dogs, data] }));
-                alert("Dog added!")
+                alert("Dog added to Rescue Helper!")
 
-                // Uncomment to forceReload of page
+                // Reload the page after adding a dog successfully
                 location.reload();
 
             } else {
@@ -66,7 +66,7 @@ export const dogStore = create((set) => ({
         }
     },
 
-    /*   // Delete a dog by ID
+// Delete a dog by ID
       deleteDogById: async (id) => {
         try {
           const response = await fetch(`${apiEnv}/delete/${id}`, {
@@ -75,17 +75,20 @@ export const dogStore = create((set) => ({
     
           if (response.ok) {
             console.log("Delete successful");
-            // Remove the task from the state
+            // Remove the dog from the state
             set((state) => ({
-              tasks: state.tasks.filter((task) => task._id !== id),
+              tasks: state.dogs.filter((dog) => dog._id !== id),
             }));
+
+            alert("Dog deleted from Rescue Helper")
+
+            // Reload the page after deleting a dog successfully
+            location.reload();
           } else {
-            console.error("Failed to delete task");
+            console.error("Failed to delete dog");
           }
         } catch (error) {
-          console.error("Error deleting task:", error);
+          console.error("Error deleting dog:", error);
         }
-      }, */
-
-
+      },
 }));

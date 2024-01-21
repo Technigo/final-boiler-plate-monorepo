@@ -1,0 +1,46 @@
+.mainContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 2em;
+    align-items: center;
+    min-height: auto;
+    padding: 1em 0em 1em 0em;
+}
+
+.dogs {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1em;
+    padding: 1em;
+}
+
+.dogCard {
+    background-color: #42531D;
+    font-size: 1em;
+    padding: 1em;
+}
+
+.dogCard button {
+    width: 30%;
+    align-self: center;
+}
+
+.dogCard p {
+    text-align: left;
+}
+
+.dogImage img {
+    max-width: 200px;
+}
+
+.dogInfo {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+}
+
+.notFound {
+    grid-column: 1 / 3;
+    display: flex;
+    justify-content: center;
+}

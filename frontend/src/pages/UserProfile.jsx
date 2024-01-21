@@ -2,22 +2,10 @@ import styles from '../styles/UserProfile.module.css'
 import { Header } from '../components/Header.jsx'
 import { NavBar } from '../components/NavBar.jsx'
 import { Footer } from '../components/Footer.jsx'
-import { userStore } from "../stores/userStore.jsx";
-import { useNavigate } from 'react-router-dom';
 import AddDogs from '../components/AddDogs.jsx'
 import YourDogs from '../components/YourDogs.jsx';
 
 export const UserProfile = () => {
-    const storeHandleLogout = userStore((state) => state.handleLogout);
-    const navigate = useNavigate();
-
-    // Handle the click event of the logout button
-    const onLogoutClick = () => {
-        storeHandleLogout();
-        alert("Log out succesfull");
-        // Navigate to the homepage if logout was successful
-        navigate("/");
-    };
 
     return (
         <>
@@ -31,11 +19,20 @@ export const UserProfile = () => {
                         <h2>YOUR PROFILE</h2>
                     </div>
                     <div className={styles.contentWrapper}>
-                        <button onClick={onLogoutClick}>Log Out</button>
+                        <div className={styles.textWrapper}>
+                            <p>Welcome!</p>
+                            <p>This is your user profile. Here you can add the dogs you have currently available in your 
+                                shelter to our database, inspect them or delete them if they have been lucky enough to find a home!</p>
+                            <p>We ask you kindly to keep your list of dogs updated - please delete the dog from the database
+                                in case it is no longer available for adoption.</p>
+                            <p>Thank you for choosing to use Rescue Helper and making it easier for someone to offer a forever home
+                                to a rescue dog!</p>
+                            <p>Please reach out to us with any questions you might have at admin@rescuehelper.com.</p>
+                        </div>
                         <AddDogs />
                     </div>
                     <div className={styles.displayDogs}>
-                    <YourDogs />
+                        <YourDogs />
                     </div>
                     <Footer />
                 </div>

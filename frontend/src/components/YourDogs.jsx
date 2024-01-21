@@ -1,18 +1,21 @@
 import { dogStore } from "../stores/dogStore.jsx";
 import { useEffect } from "react";
 import { useStore } from "zustand";
-import { userStore } from "../stores/userStore.jsx";
-import styles from "../styles/UserProfile.module.css"
+import styles from "../styles/YourDogs.module.css"
 
 export const YourDogs = () => {
 
-    const { dogs, fetchDogs } = useStore(dogStore);
-    const { user } = userStore()
+    const { dogs, fetchDogs, deleteDogById } = useStore(dogStore);
 
     useEffect(() => {
         // Fetch dogs when the component mounts
         fetchDogs();
     }, []);
+
+    const handleDeleteDog = (id) => {
+        // Call deleteDogById with the dog's id
+        deleteDogById(id);
+      };
 
     return (
         <>
@@ -34,6 +37,10 @@ export const YourDogs = () => {
                                     <p>Special adoption: {dog.special_adoption ? "Yes" : "No"}</p>
                                     <p>Size: {dog.size}</p>
                                     <p>Organisation: {dog.organisation}{/* {dog.organisation} */}</p>
+                                    <button 
+                                        className={styles.deleteDog}
+                                        type="button"
+                                        onClick={() => handleDeleteDog(dog._id)}>Delete dog</button>
                                 </div>
                             </div>
                         )))}

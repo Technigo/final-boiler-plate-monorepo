@@ -12,6 +12,7 @@
 .textContainer {
     padding-left: 2em;
     margin-top: 0;
+    text-wrap: nowrap;
 }
 
 .navLink {

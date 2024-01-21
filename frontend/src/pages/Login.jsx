@@ -50,7 +50,9 @@ export const LogIn = () => {
                                 <label htmlFor="password">Password</label>
                                 <input name="password" id="password" type="password" />
                             </div>
+                            <div className={styles.logIn}>
                             <button type="submit">Log in</button>
+                            </div>
                             </form>
                         </div>
                     </div>

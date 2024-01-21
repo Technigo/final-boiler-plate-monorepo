@@ -14,25 +14,23 @@
     gap: 5em;
 }
 
-.dogCard {
-    background-color: #42531D;
-    font-size: 1em;
-    padding: 1em;
+.headerImage {
     display: flex;
+    justify-content: left;
+    align-items: center;
+    background-image: url('../assets/profile1.webp');
+    background-size: 100%;
+    background-position: 0% 25%;
+    height: 10em;
+    padding-left: 2em;
 }
 
-.dogCard p {
-    text-align: left;
-}
-
-.dogImage img {
-    max-width: 200px;
-}
-
-.dogInfo {
+.textWrapper {
     display: flex;
     flex-direction: column;
-    gap: 0em;
+    gap: 1em;
+    text-align: left;
+    padding: 1em 0em 1em 0em;
 }
 
 @media screen and (max-width: 667px) {
