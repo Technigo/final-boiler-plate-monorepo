@@ -10,6 +10,11 @@ const DogSchema = new mongoose.Schema({
   image: {
     format: String,
     data: String
+  },
+  
+  user: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "UserModel"
   }
 });
 

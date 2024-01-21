@@ -5,6 +5,7 @@ import { Footer } from '../components/Footer.jsx'
 import { userStore } from "../stores/userStore.jsx";
 import { useNavigate } from 'react-router-dom';
 import AddDogs from '../components/AddDogs.jsx'
+import YourDogs from '../components/YourDogs.jsx';
 
 export const UserProfile = () => {
     const storeHandleLogout = userStore((state) => state.handleLogout);
@@ -33,20 +34,9 @@ export const UserProfile = () => {
                         <button onClick={onLogoutClick}>Log Out</button>
                         <AddDogs />
                     </div>
-                    {/* <div className={styles.dogs}>
-                        <div className={styles.dogCard} key={dog._id}>
-                            <div className={styles.dogImage}>
-                                <img src={dog.image.data} alt={dog.name} />
-                            </div>
-                            <div className={styles.dogInfo}>
-                                <p>Name: {dog.name}</p>
-                                <p>Estimated age: {dog.age}</p>
-                                <p>Special adoption: {dog.special_adoption ? "Yes" : "No"}</p>
-                                <p>Size: {dog.size}</p>
-                                <p>Organisation: {dog.organisation}</p>
-                            </div>
-                        </div>
-                    </div> */}
+                    <div className={styles.displayDogs}>
+                    <YourDogs />
+                    </div>
                     <Footer />
                 </div>
             </div>

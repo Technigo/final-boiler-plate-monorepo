@@ -10,7 +10,7 @@ export const dogStore = create((set) => ({
     addDog: (newDog) => set((state) => ({ dogs: [...state.dogs, newDog] })),
     setDogs: (dogs) => set({ dogs }),
 
-    // New action to fetch dogs
+    // Fetch the dogs a specific user has added in their profile
     fetchDogs: async () => {
         try {
             const response = await fetch(`${apiEnv}/yourDogs`, {
@@ -53,9 +53,10 @@ export const dogStore = create((set) => ({
 
             if (response.ok) {
                 set((state) => ({ dogs: [...state.dogs, data] }));
+                alert("Dog added!")
 
                 // Uncomment to forceReload of page
-                // location.reload();
+                location.reload();
 
             } else {
                 console.error("Failed to add dog");

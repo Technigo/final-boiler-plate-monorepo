@@ -19,7 +19,7 @@ router.get(
 );
 
 // Get the dogs a specific user has added
-/* router.get(
+router.get(
     "/yourDogs",
     authenticateUser,
     asyncHandler(async (req, res) => {
@@ -29,6 +29,23 @@ router.get(
             .sort("-createdAt")
             .then((result) => res.json(result))
             .catch((error) => res.json(error))
+    })
+)
+
+// ChatGPTs code:
+/* router.get(
+    "/yourDogs",
+    authenticateUser,
+    asyncHandler(async (req, res) => {
+        const userId = req.user.id; // Assuming your authentication middleware sets req.user.id
+        try {
+            const dogs = await DogModel.find({ user: userId })
+            .sort("-createdAt");
+            res.json(dogs);
+        } catch (error) {
+            console.error(error);
+            res.status(500).json({ error: "Internal Server Error" });
+        }
     })
 ) */
 
