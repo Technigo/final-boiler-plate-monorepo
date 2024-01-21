@@ -13,8 +13,8 @@ export const Cocktails = () => {
     const [itemsToDisplay, setItemsToDisplay] = useState(6);
     const [totalCocktails, setTotalCocktails] = useState(0);
     const [isLoading, setIsLoading] = useState(true);
-    const [showLoadingIndicator, setShowLoadingIndicator] = useState(false);
     const animationContainer = useRef(null);
+    const LOTTIE_ANIMATION_PATH = '/animations/Animation - 1705760771667.json';
 
     const handleFilterChange = (e) => {
         setSelectedFilter(e.target.value);
@@ -25,6 +25,7 @@ export const Cocktails = () => {
         'Occasion': ['Christmas', 'Summer', 'New Year', 'Halloween'],
         'FlavorProfile': ['Sweet', 'Bitter', 'Sour', 'Spicy']
     };
+
     useEffect(() => {
         setIsLoading(true);
         const anim = lottie.loadAnimation({
@@ -32,16 +33,12 @@ export const Cocktails = () => {
             renderer: 'svg',
             loop: true,
             autoplay: true,
-            path: '/animations/Animation - 1705760771667.json'
+            path: LOTTIE_ANIMATION_PATH
         });
         return () => anim.destroy();
     }, []);
 
     useEffect(() => {
-        let loadingTimeout = setTimeout(() => {
-            setShowLoadingIndicator(true);
-        }, 3000);
-
         let query = '';
         if (searchTerm) {
             query += `search=${encodeURIComponent(searchTerm)}`;
@@ -52,10 +49,9 @@ export const Cocktails = () => {
         }
 
         fetch(`https://cbc-uvko.onrender.com/cocktails${query ? '?' + query : ''}`)
-
-            .then(response => response.json())
+            .then(response => response.json())  // Convert the response to JSON
             .then(data => {
-                clearTimeout(loadingTimeout); // Clear the timeout on successful data fetch
+                console.log("Fetched data:", data); // Log the fetched data
                 setCocktails(data);
                 setDisplayedCocktails(data.slice(0, itemsToDisplay));
                 setTotalCocktails(data.length);
@@ -63,22 +59,21 @@ export const Cocktails = () => {
             })
             .catch(error => {
                 console.error('Error fetching cocktails:', error);
-                clearTimeout(loadingTimeout);
+                setIsLoading(false);
             });
-        return () => clearTimeout(loadingTimeout);
     }, [searchTerm, selectedFilter, itemsToDisplay]);
 
     const loadMoreCocktails = () => {
-        setItemsToDisplay(prev => prev + 6);
+        setItemsToDisplay(prevItems => prevItems + 6);
     };
 
     return (
         <div className={styles.wrapper}>
-            {/* Display the loading indicator only if isLoading is true and showLoadingIndicator is true */}
-            {isLoading && showLoadingIndicator && (
+            {/* Show loading animation while isLoading is true */}
+            {isLoading && (
                 <div>
                     <div ref={animationContainer} className={styles.lottieContainer}></div>
-                    <Text type="H3" className={styles.h3Load}>PLEASE WAIT WHILE LOADING RECIPES</Text>
+                    <Text type="H3" className={styles.h3Load}>PLEASE WAIT WHILE OUR RECIPES ARE LOADING</Text>
                 </div>
             )}
 
