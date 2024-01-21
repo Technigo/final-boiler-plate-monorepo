@@ -5,7 +5,7 @@ We are a group of friends in Oslo sharing a passion for cocktails. Our journey s
 For this project, we wanted to extend our platform to include a website for the club. The Carl Berner Cocktail Club web application is created for cocktail enthusiasts based in Oslo. It serves as a platform to explore and share the art of cocktail making. 
 
 # Open website
-The application features a main page displaying selected cocktails, an 'About Us' page, and a comprehensive list of all cocktails with detailed recipes and information. It also includes a robust search function for exploring all available cocktails.
+The application features a main page displaying selected cocktails, an 'About Us' page, and a comprehensive list of all cocktails with detailed recipes and information. It also includes a robust search function for exploring all available cocktails. The backend for user registration and login is also ready, and will be set up in the frontend at a later point. 
 
 # Admin Panel
 The admin panel is a secure area where administrators can log in to manage the application. Features include:
@@ -54,6 +54,13 @@ One of the key challenges we faced was implementing a robust and efficient filte
 
 # Carousel Implementation
 Creating an interactive and visually appealing carousel for showcasing featured cocktails posed a challenge, which we have not yet been able to solve.
+
+
+# Further Development
+We will use this page actively, so we will keep developing it. 
+The problems that have not been fixed will be prioritised.
+
+We have also listed what will be developed further in the Develop.md file. 
 
 # View it Live
 - Frontend: Deployed Frontend Application

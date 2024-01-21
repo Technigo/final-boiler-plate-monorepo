@@ -11,7 +11,7 @@
 /* iPad Pro 11" */
 @media (min-width: 767px) and (max-width: 1285px) {
     .wrapper {
-        height: 180px;
+        height: 160px;
     }
 }
 

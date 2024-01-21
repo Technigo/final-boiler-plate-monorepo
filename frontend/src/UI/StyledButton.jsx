@@ -25,7 +25,7 @@ export const StyledButton = styled.button`
 
   // Responsive tablet
   @media (min-width: 768px) {
-    width: 140px;
+    width: 170px;
     height: 60px;
   }
 

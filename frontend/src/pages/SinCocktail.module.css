@@ -1,10 +1,10 @@
 .wrapper {
-    background-color: #FFF4E6;
-    height: fit-content;
+    background-color: #fff4e6bd;
     grid-gap: 10px;
     display: grid;
     grid-template-columns: 1fr;
     padding: 0 30px;
+    min-height: 80vh;
 }
 
 .cocktailImage {
@@ -57,13 +57,20 @@
     grid-column: span 1;
 }
 
+.h3Load {
+    padding: 0 40px;
+}
 
-.p {
+.BackToButton {
+    padding: 25px;
+}
+
+/* .p {
     padding: 10px 0;
     text-align: left;
     grid-column: span 1;
     padding: 40px 85px;
-}
+} */
 
 
 /* iPad Pro 11" */

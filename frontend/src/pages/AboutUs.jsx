@@ -1,5 +1,6 @@
 import { Text } from '../UI/Typography';
 import styles from './AboutUs.module.css';
+import { BackButton } from '../UI/BackToButton';
 
 export const AboutUs = () => {
     return (
@@ -9,7 +10,7 @@ export const AboutUs = () => {
             <img src="/images/mima.PNG" className={styles.imgMima} alt="Picture of Mirela" />
             <div className={styles.membersBruun}>
                 <Text type="SbodyText" className={styles.Bruun}>Eva<br />
-                    <span role="img" aria-label="Cocktail Glass">🍹</span> Favorite cocktail: Margarita<br />
+                    <span role="img" aria-label="Cocktail Glass">🍹</span> Favorite cocktail: Mojito<br />
                     <span role="img" aria-label="Party Popper">🎉</span> Hobby: Answer<br />
                     <span role="img" aria-label="Suitcase">🧳</span> Favorite destination: Answer<br />
                     <span role="img" aria-label="Writing Hand">✍️</span> About me: Answer<br />
@@ -17,7 +18,7 @@ export const AboutUs = () => {
             </div>
             <div className={styles.membersMima}>
                 <Text type="SbodyText" className={styles.Mima}>Mirela<br />
-                    <span role="img" aria-label="Cocktail Glass">🍹</span> Favorite cocktail: Margarita<br />
+                    <span role="img" aria-label="Cocktail Glass">🍹</span> Favorite cocktail: Espresso Martini<br />
                     <span role="img" aria-label="Party Popper">🎉</span> Hobby: Answer<br />
                     <span role="img" aria-label="Suitcase">🧳</span> Favorite destination: Answer<br />
                     <span role="img" aria-label="Writing Hand">✍️</span> About me: Answer<br />
@@ -29,7 +30,7 @@ export const AboutUs = () => {
                 <Text type="SbodyText" className={styles.fulba}>Elba<br />
                     <span role="img" aria-label="Cocktail Glass">🍹</span> Favorite cocktail: Negroni<br />
                     <span role="img" aria-label="Party Popper">🎉</span> Hobby: Answer<br />
-                    <span role="img" aria-label="Suitcase">🧳</span> Favorite destination: Answer<br />
+                    <span role="img" aria-label="Suitcase">🧳</span> Favorite destination: Croatia<br />
                     <span role="img" aria-label="Writing Hand">✍️</span> About me: Answer<br />
                 </Text>
             </div>
@@ -54,6 +55,9 @@ export const AboutUs = () => {
                     Whether you're an experienced cocktail enthusiast or a curious beginner, we welcome you. Keep up with our activities, feel free to comment, contribute ideas, or give feedback on our drinks - we appreciate all interaction! </Text>
                 <Text type="bodyText" className={styles.p}>
                     Follow us on Instagram to get a glimpse into our world of cocktails. Take a look around our page for inspiration and ideas for your next drink experience. </Text>
+            </div>
+            <div className={styles.BackToButton}>
+                <BackButton />
             </div>
         </div>
     );

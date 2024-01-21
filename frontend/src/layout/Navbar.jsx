@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { NavLink } from 'react-router-dom';
 import style from './Navbar.module.css';
+import { LogoButton } from '../UI/LogoButton';
 
 export const Navbar = () => {
     const [isNavExpanded, setIsNavExpanded] = useState(false);
@@ -23,6 +24,9 @@ export const Navbar = () => {
 
     return (
         <nav ref={navRef} className={style.nav}>
+            <div className={style.LogoButtonWrapper}>
+                <LogoButton />
+            </div>
             <div
                 className={`${style.menuIcon} ${isNavExpanded ? style.open : ''}`}
                 onClick={() => setIsNavExpanded(!isNavExpanded)}
