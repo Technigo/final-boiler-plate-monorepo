@@ -1,0 +1,85 @@
+.disclaimer {
+    background: #3C2F2F;
+    min-height: 100vh;
+    padding: 10vh 10vw;
+}
+
+.h1 {
+    color: #FFF4E6;
+    padding: 30PX 0;
+}
+
+.h3 {
+    color: #FFF4E6;
+}
+
+.buttons {
+    padding: 30px 0 0 0;
+}
+
+.h1Btn {
+    color: #FFF4E6;
+}
+
+.btnYes,
+.btnNo {
+    border: none;
+    box-shadow: none;
+    margin-right: 30px;
+    padding: 7px 25px;
+    border-radius: 25px;
+}
+
+.btnYes {
+    background-color: #80816B;
+    margin-right: 20px;
+}
+
+.btnYes:hover {
+    background-color: #515243;
+}
+
+.btnNo {
+    background-color: #854442;
+    margin-left: 20px;
+}
+
+.btnNo:hover {
+    background-color: #693331;
+}
+
+.h1Btn:hover {
+    color: #fffaf4;
+}
+
+@media (min-width: 767px) {
+    .disclaimer {
+        padding: 20vh 10vw 10vh 10vw;
+    }
+
+    .btnYes {
+        margin-right: 30px;
+    }
+
+    .btnNo {
+        margin-left: 30px;
+    }
+}
+
+@media (min-width: 1285px) {
+    .disclaimer {
+        padding: 40vh 20vw 20vh 20vw;
+    }
+
+    .buttons {
+        padding: 55px 0 0 0;
+    }
+
+    .btnYes {
+        margin-right: 40px;
+    }
+
+    .btnNo {
+        margin-left: 40px;
+    }
+}
