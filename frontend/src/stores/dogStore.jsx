@@ -55,9 +55,6 @@ export const dogStore = create((set) => ({
                 set((state) => ({ dogs: [...state.dogs, data] }));
                 alert("Dog added to Rescue Helper!")
 
-                // Reload the page after adding a dog successfully
-                location.reload();
-
             } else {
                 console.error("Failed to add dog");
             }
@@ -82,8 +79,6 @@ export const dogStore = create((set) => ({
 
             alert("Dog deleted from Rescue Helper")
 
-            // Reload the page after deleting a dog successfully
-            location.reload();
           } else {
             console.error("Failed to delete dog");
           }
