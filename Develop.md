@@ -29,7 +29,6 @@
 - Most of it 
 
 ### Public Interface:
-- - Disclamer to enter the page
 - a header under the navbar separated from the loading of cocktails on homepage so that the user sees something else before the loading message. 
 - Restructure cocktails.jsx and integrate it with zustand's exploreRecipesStore.jsx
 - instagram carousell, or some way to display images from our instagram, perhaps one at a time that change?
@@ -67,3 +66,4 @@ x Home is only displayed as logo
 - Add padding under recipes that display after search is compleated
 - Search bar: when not typing the text moves back over the icon, fix it so it stays 25(?)px to the right
 - Change gap on tablet in cocktails.jsx to 20px
+- Disclaimer
