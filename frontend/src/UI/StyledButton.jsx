@@ -5,18 +5,18 @@ export const StyledButton = styled.button`
   border: none;
   border-radius: 50px;
   padding: 10px 20px;
-  background-color: #DBC6B6;
-  color: #1D1C25; 
+  background-color: #AA8497;
+  color: #F6EDF1; 
   font-size: 14px;
   transition: background-color 0.1s, color 0.1s;
   font-family: 'Tenor Sans', sans-serif;
   cursor: pointer;
-  margin: 100px 0;
+  margin: 50px 0;
   letter-spacing: 1px;
  
   &:hover {
-    background-color: #dbc6b6cf;
-    color: #5a493b;
+    background-color: #B493A4;
+    color: #F6EDF1;
   }
 
   // Responsive tablet

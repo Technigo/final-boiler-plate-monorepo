@@ -5,7 +5,7 @@
     line-height: 130%;
     letter-spacing: 1px;
     font-family: 'Tenor Sans', sans-serif;
-    color: #1d1c25d2;
+    color: #55424b;
 }
 
 .H2 {
@@ -16,7 +16,7 @@
     letter-spacing: 1px;
     text-decoration: underline;
     font-family: 'Readex Pro', sans-serif;
-    color: #1d1c25d2;
+    color: #55424b;
 }
 
 .H3 {
@@ -25,7 +25,7 @@
     line-height: 104%;
     letter-spacing: 1px;
     font-family: 'Tenor Sans', sans-serif;
-    color: #1d1c25d2;
+    color: #55424b;
 }
 
 .H4 {
@@ -34,7 +34,7 @@
     line-height: 104%;
     letter-spacing: 1px;
     font-family: 'Tenor Sans', sans-serif;
-    color: #1d1c25d2;
+    color: #55424b;
 }
 
 .bodyText {
@@ -43,16 +43,16 @@
     line-height: 140%;
     letter-spacing: 0.6px;
     font-family: 'Readex Pro', sans-serif;
-    color: #1D1C25;
+    color: #55424b;
 }
 
 .SbodyText {
-    font-size: 11px;
+    font-size: 10px;
     font-weight: 300;
     line-height: 140%;
     letter-spacing: 0.6px;
     font-family: 'Readex Pro', sans-serif;
-    color: #1D1C25;
+    color: #55424b;
 }
 
 .XSbodyText {
@@ -61,7 +61,7 @@
     line-height: 140%;
     letter-spacing: 0.6px;
     font-family: 'Readex Pro', sans-serif;
-    color: #1d1c25bd;
+    color: #55424b;
 }
 
 /* Tablet-sized devices (e.g., iPad) */
@@ -126,7 +126,7 @@
     }
 
     .SbodyText {
-        font-size: 17px;
+        font-size: 20px;
         font-weight: 300;
         letter-spacing: 0.60px;
     }

@@ -4,6 +4,7 @@
     text-decoration: none;
     list-style: none;
     box-sizing: border-box;
+
 }
 
 .nav {
@@ -11,7 +12,7 @@
     justify-content: space-between;
     align-items: center;
     position: relative;
-    background-color: #DBC6B6;
+    background-color: #AA8497;
     padding: 0 1rem;
     height: 90px;
 }
@@ -22,11 +23,11 @@
     flex-direction: column;
     width: 100%;
     position: absolute;
-    top: 100%;
+    top: 99%;
     left: 0;
-    background-color: #DBC6B6;
+    background-color: #AA8497;
     box-sizing: border-box;
-    z-index: 1;
+    z-index: 20;
 }
 
 .LogoButtonWrapper {
@@ -37,7 +38,7 @@
     display: block;
     width: 33px;
     height: 3px;
-    background-color: #FFF4E6;
+    background-color: #F6EDF1;
     transition: all 0.3s ease;
     border-radius: 13px;
     display: block;
@@ -50,36 +51,42 @@
 
 .menuIcon {
     position: relative;
-    /* This ensures that the child elements are positioned relative to this container. */
     width: 30px;
-    /* Set a fixed width to contain the bars */
     height: 20px;
-    /* Set a fixed height to contain the bars */
 }
 
 
 .navLinks.active {
     display: flex;
     flex-direction: column;
-    padding: 1rem 0;
+    padding: 0;
 }
 
 .navLink {
-    color: #1D1C25;
-    background-color: #DBC6B6;
+    color: #F6EDF1;
+    background-color: #AA8497;
     padding: 20px;
     text-decoration: overline;
     z-index: 2;
     font-family: 'Tenor Sans', sans-serif;
     letter-spacing: 1px;
-    font-size: 13px;
+    font-size: 15px;
     line-height: 131%;
     padding: 20px 18px;
     display: block;
+
 }
 
 .navLink::after {
     display: none;
+}
+
+.navLink:first-child {
+    padding-top: 50px;
+}
+
+.navLink:last-child {
+    padding-bottom: 67px;
 }
 
 /* X icon for closing navbar */
@@ -91,12 +98,14 @@
     opacity: 0;
 }
 
+
+
 .open .bar:nth-child(3) {
     transform: translateY(-8px) rotate(-45deg);
 }
 
 
-/* iPad Pro 11" */
+/* smaller tablets*/
 @media (min-width: 767px) {
 
     .nav {
@@ -120,7 +129,7 @@
         width: 43px;
         height: 4px;
         margin: 7px auto;
-        background-color: #FFF4E6;
+        background-color: #F6EDF1;
         transition: all 0.3s ease;
     }
 
@@ -144,6 +153,63 @@
     .open .bar:nth-child(3) {
         transform: translateY(-11px) rotate(-45deg);
     }
+
+    .navLink:last-child {
+        padding-bottom: 77px;
+    }
+}
+
+/* iPad Pro 11" */
+@media (min-width: 820px) {
+    .nav {
+        height: 130px;
+    }
+
+    .menuIcon {
+        padding-top: 0px;
+        padding-right: 40px;
+        overflow: visible;
+    }
+
+    .navLink {
+        top: 2vh;
+        left: 88%;
+        font-size: 23px;
+    }
+
+    .bar {
+        display: block;
+        width: 43px;
+        height: 4px;
+        margin: 7px auto;
+        background-color: #F6EDF1;
+        transition: all 0.3s ease;
+    }
+
+    .logo {
+        margin-top: 20px;
+    }
+
+    .LogoButtonWrapper {
+        padding-left: 25px;
+    }
+
+    /* X icon for closing navbar */
+    .open .bar:nth-child(1) {
+        transform: translateY(11px) rotate(45deg);
+    }
+
+    .open .bar:nth-child(2) {
+        opacity: 0;
+    }
+
+    .open .bar:nth-child(3) {
+        transform: translateY(-11px) rotate(-45deg);
+    }
+
+    .navLink:last-child {
+        padding-bottom: 155px;
+    }
 }
 
 @media (min-width: 1285px) {
@@ -160,7 +226,7 @@
         justify-content: space-between;
         align-items: center;
         position: relative;
-        background-color: #DBC6B6;
+        background-color: #AA8497;
         padding: 0 1rem;
         height: 160px;
         padding-right: 23px;
@@ -181,7 +247,7 @@
     .navLink {
         padding: 55px 18px 0 18px;
         font-size: 28px;
-        color: #fff7ec;
+        color: #F6EDF1;
     }
 
     .LogoButtonWrapper {
@@ -190,7 +256,7 @@
     }
 
     .navLink:hover {
-        color: #5a493b;
+        color: #55424b;
     }
 
     .navSvgBackground {
@@ -203,5 +269,13 @@
 
     .navLink:not(:last-of-type)::after {
         display: none;
+    }
+
+    .navLink:first-child {
+        padding-top: 55px;
+    }
+
+    .navLink:last-child {
+        padding-bottom: 0px;
     }
 }

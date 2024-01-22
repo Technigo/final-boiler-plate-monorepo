@@ -4,6 +4,7 @@
     grid-template-columns: 1fr;
     padding: 0 30px;
     min-height: 80vh;
+    background-color: #fff2fe;
 }
 
 .cocktailImage {
@@ -16,13 +17,23 @@
     display: inline-block;
     width: 30px;
     height: 30px;
-    background-color: #DBC6B6;
+    background-color: #AA8497;
     text-align: center;
     line-height: 30px;
-    margin-right: 5px;
+    margin: 0 5px 10px 0;
+    color: #fff2fe;
 }
 
 .SbodyText {
+    margin-bottom: 1px;
+    grid-column: span 1;
+    width: 85%;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.SbodyTextTop,
+.SbodyTextTag {
     margin-bottom: 1px;
     grid-column: span 1;
     width: 85%;
@@ -48,10 +59,10 @@
     text-align: left;
 }
 
-.h3 {
+.h1 {
     color: #1D1C25;
     justify-self: center;
-    padding: 65px 20px 45px 20px;
+    padding: 65px 20px 10px 20px;
     text-align: center;
     grid-column: span 1;
 }
@@ -64,16 +75,31 @@
     padding: 25px;
 }
 
-/* .p {
-    padding: 10px 0;
-    text-align: left;
-    grid-column: span 1;
-    padding: 40px 85px;
-} */
+.icon {
+    width: 10px;
+    height: 12px;
+    vertical-align: middle;
+    margin-right: 2px;
+}
 
+.icon2 {
+    width: 10px;
+    height: 12px;
+    vertical-align: middle;
+    margin-right: 2px;
+    margin-left: 2px;
+}
 
-/* iPad Pro 11" */
-@media (min-width: 767px) and (max-width: 1028px) {
+@media (min-width: 767px) {
+    .icon {
+        width: 20px;
+        height: 20px;
+    }
+
+    .icon2 {
+        width: 20px;
+        height: 20px;
+    }
 
     .wrapper {
         padding: 40px 90px;
@@ -83,17 +109,83 @@
         width: 450px;
     }
 
+    .numberSquare {
+        width: 40px;
+        height: 40px;
+        margin: 0 5px 18px 0;
+        padding: 5px;
+    }
+
+    .h2 {
+        padding: 25px 0 0 0;
+    }
+
 }
 
-
 /*Macbook Air*/
+@media (min-width: 820px) {
+    .wrapper {
+        padding: 40px 0px;
+    }
+
+    .icon {
+        width: 23px;
+        height: 23px;
+    }
+
+    .icon2 {
+        width: 20px;
+        height: 20px;
+    }
+
+    .cocktailImage {
+        width: 600px;
+    }
+
+    .bodyText {
+        width: 70%;
+    }
+
+    .SbodyText {
+        width: 63%;
+    }
+
+    .SbodyTextTop,
+    .SbodyTextTag {
+        width: 63%;
+    }
+
+    .h2 {
+        width: 65%;
+    }
+}
+
 @media (min-width: 1028px) {
     .wrapper {
         padding: 40px 40px;
     }
 
+    .bodyText {
+        width: 55%;
+    }
+
+    .SbodyText {
+        width: 48%;
+    }
+
+    .SbodyTextTop,
+    .SbodyTextTag {
+        width: 48%;
+    }
+
+    .h2 {
+        width: 50%;
+    }
+}
+
+@media (min-width: 1285px) {
     .cocktailImage {
-        width: 600px;
+        width: 700px;
     }
 
     .bodyText {
@@ -104,9 +196,12 @@
         width: 43%;
     }
 
+    .SbodyTextTop,
+    .SbodyTextTag {
+        width: 43%;
+    }
+
     .h2 {
         width: 45%;
     }
-
-
 }

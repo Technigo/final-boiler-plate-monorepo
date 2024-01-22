@@ -23,7 +23,7 @@ The admin panel is a secure area where administrators can log in to manage the a
 *Admin Cocktail Management*
 
 # Tools and Technologies
-- Frontend: React, React Router, Styled Components, Zustand, .env
+- Frontend: React, React Router,Reusable Components, Styled Components, Zustand, .env
 - Backend: Node.js, Express, MongoDB, Mongoose, Cloudinary and express-files for image uploads, JWT for authentication, .env 
 - Development Tools: Vite, Babel
 
@@ -53,7 +53,7 @@ As of now, the main challenges connencted to this and role handeling that still 
 One of the key challenges we faced was implementing a robust and efficient filter function. This feature is crucial for enhancing user experience, as it allows users to easily navigate through our extensive cocktail collection and find drinks that suit their preferences. This function is not working yet, but we will keep working on it.
 
 # Carousel Implementation
-Creating an interactive and visually appealing carousel for showcasing featured cocktails posed a challenge, which we have not yet been able to solve.
+Creating an interactive and visually appealing carousel for showcasing featured cocktails posed a challenge, as libraries tested did not work as intended. We have not yet been able to solve this yet but mostly we have not had time to tackle it. 
 
 
 # Further Development
@@ -63,5 +63,5 @@ The problems that have not been fixed will be prioritised.
 We have also listed what will be developed further in the Develop.md file. 
 
 # View it Live
-- Frontend: Deployed Frontend Application
-- Backend: Deployed Backend Application
+- Frontend: https://cbc-klubb.netlify.app
+- Backend: https://cbc-uvko.onrender.com 

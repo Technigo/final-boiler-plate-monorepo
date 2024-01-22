@@ -117,9 +117,17 @@ export const Cocktails = () => {
                                         {cocktail.imageUrl && (
                                             <img src={cocktail.imageUrl} alt={cocktail.name} className={styles.cocktailImage} />
                                         )}
-                                        {cocktail.name && <Text type="H3" className={styles.h3}>{cocktail.name}</Text>}
-                                        <Text type="SbodyText" className={styles.SbodyText}>⏲️: {cocktail.prepTime} | 🌟: {cocktail.difficulty}</Text>
-                                        <Text type="SbodyText" className={styles.SbodyText}>⚡: {cocktail.strength} | 🏷️ : {cocktail.tags.join(', ')}</Text>
+                                        {cocktail.name && <Text type="H4" className={styles.h4}>{cocktail.name}</Text>}
+                                        <Text type="SbodyText" className={styles.SbodyTextTop}>
+                                            <img src="/images/time-icon.png" alt="Prep Time" className={styles.icon} /> {cocktail.prepTime}
+                                            <img src="/images/brain.png" alt="Prep Time" className={styles.icon2} /> {cocktail.difficulty}
+                                        </Text>
+                                        <Text type="SbodyText" className={styles.SbodyTextTop}>
+                                            <img src="/images/percent.png" alt="Prep Time" className={styles.icon} /> {cocktail.strength}
+                                        </Text>
+                                        <Text type="SbodyText" className={styles.SbodyText}>
+                                            <img src="/images/tag.png" alt="Prep Time" className={styles.icon} /> {cocktail.tags.join(', ')}
+                                        </Text>
                                     </div>
                                 </Link>
                             ))}
@@ -135,8 +143,9 @@ export const Cocktails = () => {
                         )}
                     </div>
                 </>
-            )}
-        </div>
+            )
+            }
+        </div >
     );
 };
 

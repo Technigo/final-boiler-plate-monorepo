@@ -20,26 +20,24 @@ export const SinCocktail = () => {
             <div className={styles.gridContainer}>
                 {cocktail ? (
                     <div key={cocktail._id}>
-                        {cocktail.name && <Text type="H3" className={styles.h3}>{cocktail.name}</Text>}
+                        {cocktail.name && <Text type="H1" className={styles.h1}>{cocktail.name}</Text>}
                         {cocktail.imageUrl && (
                             <img src={cocktail.imageUrl} alt={cocktail.name} className={styles.cocktailImage} />
                         )}
                         {/* **** Servings ****** */}
-                        <Text type="SbodyText" className={styles.SbodyText} style={{ textAlign: 'center' }}>
+                        <Text type="bodyText" className={styles.bodyText} style={{ textAlign: 'center' }}>
                             <span className={styles.numberSquare}>{cocktail.servings}</span> Serving
                         </Text>
                         {/* **** Icons ****** */}
-                        <Text
-                            type="bodyText"
-                            className={styles.bodyText}
-                            style={{ marginTop: '30px', fontWeight: '300' }} >
-                            ⏲️: {cocktail.prepTime} | 🌟: {cocktail.difficulty}
+                        <Text type="SbodyText" className={styles.SbodyTextTop}>
+                            <img src="/images/time-icon.png" alt="Prep Time" className={styles.icon} /> {cocktail.prepTime}
+                            <img src="/images/brain.png" alt="Prep Time" className={styles.icon2} /> {cocktail.difficulty}
                         </Text>
-                        <Text
-                            type="bodyText"
-                            className={styles.bodyText}
-                            style={{ marginBottom: '20px', fontWeight: '300' }}>
-                            ⚡: {cocktail.strength} | 🏷️ : {cocktail.tags.join(', ')}
+                        <Text type="SbodyText" className={styles.SbodyTextTop}>
+                            <img src="/images/percent.png" alt="Prep Time" className={styles.icon} /> {cocktail.strength}
+                        </Text>
+                        <Text type="SbodyText" className={styles.SbodyTextTag}>
+                            <img src="/images/tag.png" alt="Prep Time" className={styles.icon} /> {cocktail.tags.join(', ')}
                         </Text>
                         {/* **** Ingredients ****** */}
                         <div>
