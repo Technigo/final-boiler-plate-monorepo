@@ -70,10 +70,11 @@ x Home is only displayed as logo
 
 ### Colors
 
- color: #55424b; mørk
- AA8497 bckground
- color: #F6EDF1; lys rosa
-color: #AA8497; mørk plumme
-color: #957484; mørk plumme hover
-color: #B493A4 lysere hover
-color: #ffffff;
+ - color: #55424b; mørk
+ - color: #F6EDF1; lys rosa
+ - color: #AA8497; mørk plumme
+ - color: #957484; mørk plumme hover
+ - color: #B493A4 lysere hover
+ - color: #ffffff;
+
+
