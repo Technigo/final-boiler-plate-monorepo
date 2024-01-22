@@ -1,6 +1,6 @@
 import { create } from "zustand";
 
-const apiEnv = import.meta.env.VITE_BACKEND_API;
+/* const apiEnv = import.meta.env.VITE_BACKEND_API; */
 
 // Create a Zustand store for user-related state and actions.
 export const userStore = create((set, get) => ({
@@ -39,7 +39,7 @@ export const userStore = create((set, get) => ({
 
     try {
       // Send a POST request to the login endpoint with user data.
-      const response = await fetch(`${apiEnv}/login`, {
+      const response = await fetch('https://rescue-helper.onrender.com/login', {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

@@ -15,7 +15,7 @@ export const DogSearch = () => {
     const [dogList, setDogList] = useState([]);
 
     useEffect(() => {
-        axios.get('http://localhost:3000/findDogs')
+        axios.get('https://rescue-helper.onrender.com/findDogs')
             .then((response) => {
                 setDogs(response.data);
                 setDogList(response.data); // Save the original list of dogs

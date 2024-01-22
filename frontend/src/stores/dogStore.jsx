@@ -1,8 +1,8 @@
 import { create } from "zustand";
 import { userStore } from "./userStore";
 
-const apiEnv = import.meta.env.VITE_BACKEND_API;
-console.log(apiEnv);
+/* const apiEnv = import.meta.env.VITE_BACKEND_API;
+console.log(apiEnv); */
 
 export const dogStore = create((set) => ({
     dogs: [],
@@ -13,7 +13,7 @@ export const dogStore = create((set) => ({
     // Fetch the dogs a specific user has added in their profile
     fetchDogs: async () => {
         try {
-            const response = await fetch(`${apiEnv}/yourDogs`, {
+            const response = await fetch('https://rescue-helper.onrender.com/yourDogs', {
                 method: "GET",
                 headers: {
                     Authorization: localStorage.getItem("accessToken"),
@@ -33,7 +33,7 @@ export const dogStore = create((set) => ({
     // Add a dog to the server and then to the store
     addDogToServer: async (formData) => {
         try {
-            const response = await fetch(`${apiEnv}/addDogs`, {
+            const response = await fetch('https://rescue-helper.onrender.com/addDogs', {
                 method: "POST",
                 headers: {
                     Authorization: localStorage.getItem("accessToken"),
@@ -66,7 +66,7 @@ export const dogStore = create((set) => ({
 // Delete a dog by ID
       deleteDogById: async (id) => {
         try {
-          const response = await fetch(`${apiEnv}/delete/${id}`, {
+          const response = await fetch(`https://rescue-helper.onrender.com/delete/${id}`, {
             method: "DELETE",
           });
     
