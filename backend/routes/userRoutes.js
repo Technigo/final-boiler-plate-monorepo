@@ -1,20 +1,90 @@
-// Import the necessary modules and functions
 import express from "express";
-import {
-  registerUserController,
-  loginUserController,
-} from "../controllers/userController"; // Import controller functions for user registration and login
+import { UserModel } from "../models/UserModel.js"
+import bcrypt, { genSaltSync } from "bcrypt";
+import asyncHandler from "express-async-handler";
+import dotenv from "dotenv"
+dotenv.config()
 
-// Create an instance of the Express router
-const router = express.Router();
+const router = express.Router()
 
-// REGISTER ROUTE: Handle user registration
-router.post("/register", registerUserController); // When a POST request is made to /register, execute the registerUserController function
+router.post("/login",
+    asyncHandler(async (req, res) => {
+        const { username, password } = req.body;
 
-// LOGIN ROUTE: Handle user login
-router.post("/login", loginUserController); // When a POST request is made to /login, execute the loginUserController function
+        try {
+            const user = await UserModel.findOne({ username })
+            if (!user) {
+                return res
+                    .status(401)
+                    .json({ success: false, response: "User not found" })
+            }
 
-// Export the router for use in the main application
-export default router;
+            const isMatch = await bcrypt.compare(password, user.password);
+            if (!isMatch) {
+                return res
+                    .status(401)
+                    .json({ success: false, response: "Incorrect password" })
+            }
 
-// In summary, this file sets up routes using the Express router for user registration and login operations. It associates each route with the corresponding controller function. These routes define the API endpoints for handling user registration and login within the application.
+            res.status(200).json({
+                success: true,
+                response: {
+                    user: user.username,
+                    id: user._id,
+                    accessToken: user.accessToken
+                }
+            })
+        } catch (e) {
+            res.status(500).json({ success: false, response: e.message })
+        }
+    })
+)
+
+router.post("/register",
+    asyncHandler(async (req, res) => {
+        const { username, password, email } = req.body;
+
+        try {
+            if (!username || !password || !email) {
+                res.status(400)
+                throw new Error("Please add all fields")
+            }
+
+            const existingUser = await UserModel.findOne({
+                $or: [{ username }, { email }]
+            })
+            if (existingUser) {
+                res.status(400)
+                throw new Error(
+                    `User with ${existingUser.username === username ? "username" : "email"}
+            already exists.`
+                )
+            }
+
+            const salt = genSaltSync(10);
+            const hashedPassword = bcrypt.hashSync(password, salt)
+
+            const newUser = new UserModel({
+                username,
+                email,
+                password: hashedPassword
+            })
+
+            await newUser.save();
+
+            res.status(201).json({
+                success: true,
+                response: {
+                    username: newUser.username,
+                    email: newUser.email,
+                    id: newUser._id,
+                    accessToken: newUser.accessToken
+                }
+            })
+        } catch (e) {
+            res.status(500).json({ success: false }, { response: e.message })
+        }
+    })
+)
+
+export default router

@@ -1,0 +1,180 @@
+.siteContainer {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+}
+
+.mainContainer {
+    grid-column: 2 / 6;
+}
+
+.headingContainer {
+    display: flex;
+    flex-direction: row;
+    gap: 5em;
+}
+
+.headerImage {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    background-image: url('../assets/dogsearch.png');
+    background-size: 100%;
+    background-position: center;
+    height: 10em;
+    padding-left: 2em;
+}
+
+.searchForm {
+    display: flex;
+    flex-direction: column;
+    min-height: 15em;
+    padding: 2em;
+    justify-content: center;
+    align-items: center;
+    gap: 1em;
+}
+
+.searchForm p {
+    text-align: center;
+    padding: 0.5em;
+}
+
+.formRow {
+    display: flex;
+    flex-direction: row;
+    gap: 3em;
+    margin: 1em;
+}
+
+select, button {
+    border-radius: 10px;
+    color: #42531D;
+    font-family: 'Lexend';
+    font-size: 1em;
+    height: 2.5em;
+    min-width: 7em;
+    background-color: #FFFFFF;
+    padding: 0.5em;
+    border: 2px solid #42531D;
+}
+
+button:hover {
+    color: #FFFFFF;
+    background-color: #42531D;
+    cursor: pointer;
+}
+
+label {
+    padding: 0.5em;
+}
+
+form {
+    padding: 2em;
+    border: 3px solid #42531D;
+    border-radius: 20px;
+}
+
+.formPiece {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.submitWrapper {
+    display: flex;
+    justify-content: center;
+}
+
+.dogs {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1em;
+    padding: 1em;
+}
+
+.notFound {
+    grid-column: 1 / 3;
+    display: flex;
+    justify-content: center;
+}
+
+.dogCard {
+    background-color: #42531D;
+    font-size: 1em;
+    padding: 1em;
+    display: flex;
+}
+
+.dogCard p {
+    text-align: left;
+}
+
+.dogImage img {
+    max-width: 200px;
+}
+
+.dogInfo {
+    display: flex;
+    flex-direction: column;
+    gap: 0em;
+}
+
+@media screen and (max-width: 667px) {
+    .siteContainer {
+        grid-template-columns: 1fr;
+    }
+
+    .mainContainer {
+        grid-column: 1 / 2;
+    }
+
+    .headingContainer {
+        flex-direction: column;
+        gap: 0em;
+    }
+
+    .headerImage {
+        background-size: 130%;
+        background-repeat: no-repeat;
+    }
+
+    form {
+        padding: 1em;
+        max-width: 90%;
+    }
+
+    .formPiece {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .formRow {
+        flex-direction: column;
+        gap: 1em;
+        margin: 1em;
+    }
+
+    .submitWrapper {
+        justify-content: flex-start;
+        padding-left: 1em;
+    }
+
+    .dogs {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media screen and (min-width: 668px) and (max-width: 1024px) {
+    .siteContainer {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .mainContainer {
+        grid-column: 1 / 3;
+    }
+
+    .headingContainer {
+        flex-direction: column;
+        gap: 0em;
+    }
+}

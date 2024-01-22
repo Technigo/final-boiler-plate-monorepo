@@ -1,0 +1,499 @@
+{
+    "dogs": [
+        {
+            "name": "Buddy",
+            "age": 8,
+            "special_adoption": false,
+            "size": "mid-size",
+            "organisation": "Mary's Shelter",
+            "image": {
+                "format": "jpg",
+                "data": "https://storage.googleapis.com/rescuehelper/Buddy.jpg"
+              }
+        },
+        {
+            "name": "Max",
+            "age": 3,
+            "special_adoption": true,
+            "size": "small",
+            "organisation": "Happy Paws",
+            "image": {
+                "format": "jpeg",
+                "data": "https://storage.googleapis.com/rescuehelper/Max.jpg"
+              }
+        },
+        {
+            "name": "Lucy",
+            "age": 5,
+            "special_adoption": false,
+            "size": "big",
+            "organisation": "The Dog Rescue Foundation",
+            "image": {
+                "format": "jpg",
+                "data": "https://storage.googleapis.com/rescuehelper/Lucy.jpg"
+              }
+        },
+        {
+            "name": "Charlie",
+            "age": 1,
+            "special_adoption": false,
+            "size": "mid-size",
+            "organisation": "Woof Woof Foundation",
+            "image": {
+                "format": "jpg",
+                "data": "https://storage.googleapis.com/rescuehelper/Charlie.jpg"
+              }
+        },
+        {
+            "name": "Daisy",
+            "age": 10,
+            "special_adoption": true,
+            "size": "small",
+            "organisation": "The Furry Friends Shelter",
+            "image": {
+                "format": "jpg",
+                "data": "https://storage.googleapis.com/rescuehelper/Daisy.jpg"
+              }
+        },
+        {
+            "name": "Rocky",
+            "age": 2,
+            "special_adoption": false,
+            "size": "big",
+            "organisation": "From Street to Safety Trust",
+            "image": {
+                "format": "jpg",
+                "data": "https://storage.googleapis.com/rescuehelper/Rocky.jpg"
+              }
+        },
+        {
+            "name": "Nala",
+            "age": 7,
+            "special_adoption": true,
+            "size": "mid-size",
+            "organisation": "The Furry Friends Shelter",
+            "image": {
+                "format": "jpg",
+                "data": "https://storage.googleapis.com/rescuehelper/Nala.jpg"
+              }
+        },
+        {
+            "name": "Rusty",
+            "age": 4,
+            "special_adoption": false,
+            "size": "big",
+            "organisation": "From Street to Safety Trust",
+            "image": {
+                "format": "jpg",
+                "data": "https://storage.googleapis.com/rescuehelper/Rusty.jpg"
+              }
+        },
+        {
+            "name": "Lola",
+            "age": 5,
+            "special_adoption": true,
+            "size": "small",
+            "organisation": "Happy Paws",
+            "image": {
+                "format": "jpg",
+                "data": "https://storage.googleapis.com/rescuehelper/Lola.jpg"
+              }
+        },
+        {
+            "name": "Cooper",
+            "age": 1,
+            "special_adoption": false,
+            "size": "mid-size",
+            "organisation": "Woof Woof Foundation",
+            "image": {
+                "format": "jpg",
+                "data": "https://storage.googleapis.com/rescuehelper/Cooper.jpg"
+              }
+        },
+        {
+            "name": "Sadie",
+            "age": 9,
+            "special_adoption": false,
+            "size": "big",
+            "organisation": "Mary's Shelter",
+            "image": {
+                "format": "jpg",
+                "data": "https://storage.googleapis.com/rescuehelper/Sadie.jpg"
+              }
+        },
+        {
+            "name": "Bailey",
+            "age": 13,
+            "special_adoption": true,
+            "size": "small",
+            "organisation": "The Dog Rescue Foundation",
+            "image": {
+                "format": "jpg",
+                "data": "https://storage.googleapis.com/rescuehelper/Bailey.jpg"
+              }
+        },
+        {
+            "name": "Tucker",
+            "age": 2,
+            "special_adoption": true,
+            "size": "medium",
+            "organisation": "The Dog Rescue Foundation",
+            "image": {
+                "format": "jpg",
+                "data": "https://storage.googleapis.com/rescuehelper/Tucker.jpg"
+              }
+        },
+        {
+            "name": "Zoe",
+            "age": 1,
+            "special_adoption": false,
+            "size": "big",
+            "organisation": "From Street to Safety Trust",
+            "image": {
+                "format": "jpg",
+                "data": "https://storage.googleapis.com/rescuehelper/Zoe.jpg"
+              }
+        },
+        {
+            "name": "Oscar",
+            "age": 4,
+            "special_adoption": false,
+            "size": "small",
+            "organisation": "Happy Paws",
+            "image": {
+                "format": "jpg",
+                "data": "https://storage.googleapis.com/rescuehelper/Oscar.jpg"
+              }
+        },
+        {
+            "name": "Molly",
+            "age": 6,
+            "special_adoption": true,
+            "size": "medium",
+            "organisation": "From Street to Safety Trust",
+            "image": {
+                "format": "jpg",
+                "data": "https://storage.googleapis.com/rescuehelper/Molly.jpg"
+              }
+        },
+        {
+            "name": "Winston",
+            "age": 7,
+            "special_adoption": false,
+            "size": "big",
+            "organisation": "Mary's Shelter",
+            "image": {
+                "format": "jpg",
+                "data": "https://storage.googleapis.com/rescuehelper/Winston.jpg"
+              }
+        },
+        {
+            "name": "Sophie",
+            "age": 2,
+            "special_adoption": false,
+            "size": "small",
+            "organisation": "Mary's Shelter",
+            "image": {
+                "format": "jpg",
+                "data": "https://storage.googleapis.com/rescuehelper/Sophie.jpg"
+              }
+        },
+        {
+            "name": "Leo",
+            "age": 8,
+            "special_adoption": true,
+            "size": "medium",
+            "organisation": "The Furry Friends Shelter",
+            "image": {
+                "format": "jpg",
+                "data": "https://storage.googleapis.com/rescuehelper/Leo.jpg"
+              }
+        },
+        {
+            "name": "Mia",
+            "age": 10,
+            "special_adoption": false,
+            "size": "big",
+            "organisation": "Mary's Shelter",
+            "image": {
+                "format": "jpg",
+                "data": "https://storage.googleapis.com/rescuehelper/Mia.jpg"
+              }
+        },
+        {
+            "name": "Oliver",
+            "age": 5,
+            "special_adoption": false,
+            "size": "small",
+            "organisation": "Happy Paws",
+            "image": {
+                "format": "jpg",
+                "data": "https://storage.googleapis.com/rescuehelper/Oliver.jpg"
+              }
+        },
+        {
+            "name": "Luna",
+            "age": 8,
+            "special_adoption": true,
+            "size": "mid-size",
+            "organisation": "The Dog Rescue Foundation",
+            "image": {
+                "format": "jpg",
+                "data": "https://storage.googleapis.com/rescuehelper/Luna.jpg"
+              }
+        },
+        {
+            "name": "Teddy",
+            "age": 3,
+            "special_adoption": false,
+            "size": "big",
+            "organisation": "Woof Woof Foundation",
+            "image": {
+                "format": "jpg",
+                "data": "https://storage.googleapis.com/rescuehelper/Teddy.jpg"
+              }
+        },
+        {
+            "name": "Ruby",
+            "age": 2,
+            "special_adoption": false,
+            "size": "small",
+            "organisation": "The Furry Friends Shelter",
+            "image": {
+                "format": "jpg",
+                "data": "https://storage.googleapis.com/rescuehelper/Ruby.jpg"
+              }
+        },
+        {
+            "name": "Zeus",
+            "age": 12,
+            "special_adoption": true,
+            "size": "mid-size",
+            "organisation": "From Street to Safety Trust",
+            "image": {
+                "format": "jpg",
+                "data": "https://storage.googleapis.com/rescuehelper/Zeus.jpg"
+              }
+        },
+        {
+            "name": "Milo",
+            "age": 6,
+            "special_adoption": false,
+            "size": "big",
+            "organisation": "Mary's Shelter",
+            "image": {
+                "format": "jpg",
+                "data": "https://storage.googleapis.com/rescuehelper/Milo.jpg"
+              }
+        },
+        {
+            "name": "Coco",
+            "age": 4,
+            "special_adoption": true,
+            "size": "small",
+            "organisation": "Happy Paws",
+            "image": {
+                "format": "jpg",
+                "data": "https://storage.googleapis.com/rescuehelper/Coco.jpg"
+              }
+        },
+        {
+            "name": "Loki",
+            "age": 9,
+            "special_adoption": false,
+            "size": "mid-size",
+            "organisation": "The Dog Rescue Foundation",
+            "image": {
+                "format": "jpg",
+                "data": "https://storage.googleapis.com/rescuehelper/Loki.jpg"
+              }
+        },
+        {
+            "name": "Bella",
+            "age": 7,
+            "special_adoption": false,
+            "size": "big",
+            "organisation": "Woof Woof Foundation",
+            "image": {
+                "format": "jpg",
+                "data": "https://storage.googleapis.com/rescuehelper/Bella.jpg"
+              }
+        },
+        {
+            "name": "Jack",
+            "age": 1,
+            "special_adoption": true,
+            "size": "small",
+            "organisation": "The Furry Friends Shelter",
+            "image": {
+                "format": "jpg",
+                "data": "https://storage.googleapis.com/rescuehelper/Jack.jpg"
+              }
+        },
+        {
+            "name": "Rosie",
+            "age": 11,
+            "special_adoption": true,
+            "size": "mid-size",
+            "organisation": "From Street to Safety Trust",
+            "image": {
+                "format": "jpg",
+                "data": "https://storage.googleapis.com/rescuehelper/Rosie.jpg"
+              }
+        },
+        {
+            "name": "Duke",
+            "age": 8,
+            "special_adoption": false,
+            "size": "big",
+            "organisation": "Mary's Shelter",
+            "image": {
+                "format": "jpg",
+                "data": "https://storage.googleapis.com/rescuehelper/Duke.jpg"
+              }
+        },
+        {
+            "name": "Penny",
+            "age": 2,
+            "special_adoption": false,
+            "size": "small",
+            "organisation": "Happy Paws",
+            "image": {
+                "format": "jpg",
+                "data": "https://storage.googleapis.com/rescuehelper/Penny.jpg"
+              }
+        },
+        {
+            "name": "Jackson",
+            "age": 5,
+            "special_adoption": true,
+            "size": "mid-size",
+            "organisation": "The Dog Rescue Foundation",
+            "image": {
+                "format": "jpg",
+                "data": "https://storage.googleapis.com/rescuehelper/Jackson.jpg"
+              }
+        },
+        {
+            "name": "Chloe",
+            "age": 10,
+            "special_adoption": false,
+            "size": "big",
+            "organisation": "Woof Woof Foundation",
+            "image": {
+                "format": "jpg",
+                "data": "https://storage.googleapis.com/rescuehelper/Chloe.jpg"
+              }
+        },
+        {
+            "name": "Winnie",
+            "age": 3,
+            "special_adoption": false,
+            "size": "small",
+            "organisation": "The Furry Friends Shelter",
+            "image": {
+                "format": "jpg",
+                "data": "https://storage.googleapis.com/rescuehelper/Winnie.jpg"
+              }
+        },
+        {
+            "name": "Sam",
+            "age": 7,
+            "special_adoption": true,
+            "size": "mid-size",
+            "organisation": "From Street to Safety Trust",
+            "image": {
+                "format": "jpg",
+                "data": "https://storage.googleapis.com/rescuehelper/Sam.jpg"
+              }
+        },
+        {
+            "name": "Hank",
+            "age": 4,
+            "special_adoption": false,
+            "size": "big",
+            "organisation": "Mary's Shelter",
+            "image": {
+                "format": "jpg",
+                "data": "https://storage.googleapis.com/rescuehelper/Hank.jpg"
+              }
+        },
+        {
+            "name": "Maddie",
+            "age": 12,
+            "special_adoption": true,
+            "size": "small",
+            "organisation": "Happy Paws",
+            "image": {
+                "format": "jpg",
+                "data": "https://storage.googleapis.com/rescuehelper/Maddie.jpg"
+              }
+        },
+        {
+            "name": "Riley",
+            "age": 6,
+            "special_adoption": false,
+            "size": "mid-size",
+            "organisation": "The Dog Rescue Foundation",
+            "image": {
+                "format": "jpg",
+                "data": "https://storage.googleapis.com/rescuehelper/Riley.jpg"
+              }
+        },
+        {
+            "name": "Archie",
+            "age": 9,
+            "special_adoption": false,
+            "size": "big",
+            "organisation": "Woof Woof Foundation",
+            "image": {
+                "format": "jpg",
+                "data": "https://storage.googleapis.com/rescuehelper/Archie.jpg"
+              }
+        },
+        {
+            "name": "Dexter",
+            "age": 1,
+            "special_adoption": true,
+            "size": "small",
+            "organisation": "The Furry Friends Shelter",
+            "image": {
+                "format": "jpg",
+                "data": "https://storage.googleapis.com/rescuehelper/Dexter.jpg"
+              }
+        },
+        {
+            "name": "Cleo",
+            "age": 8,
+            "special_adoption": true,
+            "size": "mid-size",
+            "organisation": "From Street to Safety Trust",
+            "image": {
+                "format": "jpg",
+                "data": "https://storage.googleapis.com/rescuehelper/Cleo.jpg"
+              }
+        },
+        {
+            "name": "Zeke",
+            "age": 5,
+            "special_adoption": false,
+            "size": "big",
+            "organisation": "Mary's Shelter",
+            "image": {
+                "format": "jpeg",
+                "data": "https://storage.googleapis.com/rescuehelper/Zeke.jpg"
+              }
+        },
+        {
+            "name": "Koda",
+            "age": 3,
+            "special_adoption": false,
+            "size": "small",
+            "organisation": "Happy Paws",
+            "image": {
+                "format": "jpg",
+                "data": "https://storage.googleapis.com/rescuehelper/Koda.jpg"
+              }
+        }
+    ]
+}
