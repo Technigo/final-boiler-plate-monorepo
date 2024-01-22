@@ -43,10 +43,6 @@
 /*---------- BREAKPOINTS ----------*/
 /* From mobile and for small devices */
 @media (min-width: 576px) {
-  h1 {
-    font-size: 2.5rem;
-  }
-
   .hero-wrapper p {
     font-size: 1.2rem;
   }
@@ -124,10 +120,6 @@
   .hero-image-container {
     right: 5rem;
     top: 3rem;
-  }
-
-  h1 {
-    font-size: 3.2rem;
   }
 
   .hero-wrapper p {

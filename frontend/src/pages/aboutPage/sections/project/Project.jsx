@@ -5,8 +5,8 @@ export const Project = () => {
   return (
     <section className="project-wrapper">
       <div className="project-section section-container">
-        <h2 className="h3-title">Plants by Holm & Witting</h2>
-        <h3 className="h2-sub-title">A Technigo Final Project</h3>
+        <h2 className="section-title">Plants by Holm & Witting</h2>
+        <h3 className="h3-sub-title">A Technigo Final Project</h3>
         <p className="about-p">
           This is maybe some stuff from our readme file, something about what we
           wanted to create, something about how we achieved this, something

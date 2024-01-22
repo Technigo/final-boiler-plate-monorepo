@@ -136,14 +136,6 @@ h1 {
   padding: 0.5rem 2rem 1.5rem;
 }
 
-.h2-sub-title {
-  font-family: var(--josefin);
-  font-size: 1.1rem;
-  font-weight: 600;
-  color: var(--forrest);
-  text-transform: uppercase;
-}
-
 /* Under-section title */
 .h3-title {
   color: var(--forrest);
@@ -207,6 +199,10 @@ h1 {
 /*---------- BREAKPOINTS ----------*/
 /* From mobile and for small devices */
 @media (min-width: 576px) {
+  h1 {
+    font-size: 2.5rem;
+  }
+
   /* Text under section title h2 */
   .h2-p {
     font-size: 1rem;
@@ -218,7 +214,7 @@ h1 {
 @media (min-width: 744px) {
   /* Section title h2 */
   .section-title {
-    font-size: 2.5rem;
+    font-size: 2.3rem;
   }
 
   /* Text under section title h2 */
@@ -230,6 +226,10 @@ h1 {
 
 /* For large devices */
 @media (min-width: 1024px) {
+  h1 {
+    font-size: 3.2rem;
+  }
+
   .section-title {
     font-size: 3rem;
   }

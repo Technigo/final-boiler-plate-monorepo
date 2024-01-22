@@ -1,10 +1,8 @@
 import { Link } from "react-router-dom";
 
 // ICONS IMPORTS
-import { FaGithub } from "react-icons/fa";
-import { FaLinkedin } from "react-icons/fa";
-import { MdEmail } from "react-icons/md";
-import { FaCode } from "react-icons/fa";
+import { FaGithub, FaLinkedin } from "react-icons/fa";
+import { GrSend } from "react-icons/gr";
 
 export const Developers = () => {
   const julia = {
@@ -50,7 +48,7 @@ export const Developers = () => {
             <Link to={julia.linkedInUrl} target="_blank">
               <FaLinkedin className="icon" />
             </Link>
-            <MdEmail className="icon" />
+            <GrSend className="icon" />
           </div>
           <p className="about-p">{julia.pText}</p>
         </div>
@@ -71,7 +69,7 @@ export const Developers = () => {
             <Link to={vera.linkedInUrl} target="_blank">
               <FaLinkedin className="icon" />
             </Link>
-            <MdEmail className="icon" />
+            <GrSend className="icon" />
           </div>
           <p className="about-p">{vera.pText}</p>
         </div>

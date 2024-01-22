@@ -2,9 +2,7 @@ import { Link } from "react-router-dom";
 import { PiPawPrintLight } from "react-icons/pi";
 
 export const Navigation = ({ onClick }) => {
-
   const handleLinkClick = () => {
-
     if (onClick) {
       onClick();
     }
@@ -15,16 +13,24 @@ export const Navigation = ({ onClick }) => {
       <ul>
         <li className="ul-title">Categories</li>
         <li>
-          <Link to="/plants/all-plants" onClick={handleLinkClick}>All plants</Link>
+          <Link to="/plants/all-plants" onClick={handleLinkClick}>
+            All plants
+          </Link>
         </li>
         <li>
-          <Link to="/plants/all-plants/popular" onClick={handleLinkClick}>Most popular</Link>
+          <Link to="/plants/all-plants/popular" onClick={handleLinkClick}>
+            Most popular
+          </Link>
         </li>
         <li>
-          <Link to="/plants/all-plants/shade-loving" onClick={handleLinkClick}>Shade lovers</Link>
+          <Link to="/plants/all-plants/shade-loving" onClick={handleLinkClick}>
+            Shade lovers
+          </Link>
         </li>
         <li>
-          <Link to="/plants/all-plants/easy" onClick={handleLinkClick}>Easy care</Link>
+          <Link to="/plants/all-plants/easy" onClick={handleLinkClick}>
+            Easy care
+          </Link>
         </li>
         <li>
           <Link to="/plants/all-plants/pet-friendly" onClick={handleLinkClick}>
@@ -32,25 +38,32 @@ export const Navigation = ({ onClick }) => {
           </Link>
         </li>
         <li>
-          <Link to="/plants/all-plants/climbing" onClick={handleLinkClick}>Hanging & climbing</Link>
+          <Link to="/plants/all-plants/climbing" onClick={handleLinkClick}>
+            Hanging & climbing
+          </Link>
         </li>
         <li>
-          <Link to="/inspo" className="ul-title" onClick={handleLinkClick}>Inspiration</Link>
+          <Link to="/inspo" className="ul-title" onClick={handleLinkClick}>
+            Inspiration
+          </Link>
         </li>
       </ul>
       <hr />
       <ul>
         <li>
-          <Link to="/dashboard" onClick={handleLinkClick}>My account</Link>
+          <Link to="/dashboard" onClick={handleLinkClick}>
+            My account
+          </Link>
         </li>
         <li>
-          <Link to="/register" onClick={handleLinkClick}>Register</Link>
+          <Link to="/register" onClick={handleLinkClick}>
+            Register
+          </Link>
         </li>
         <li>
-          <Link to="/about" onClick={handleLinkClick}>About us</Link>
-        </li>
-        <li>
-          <Link to="/about" onClick={handleLinkClick}>Contact</Link>
+          <Link to="/about" onClick={handleLinkClick}>
+            About us
+          </Link>
         </li>
       </ul>
       <Link to="/" onClick={handleLinkClick}>
