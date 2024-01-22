@@ -5,8 +5,7 @@ const StyledLogoButton = styled.button`
   padding: 0; 
   border: none;
   border-radius: 50%;
-  background-color: #DBC6B6; 
-  color: #1D1C25; 
+  background-color: #AA8497; 
   transition: background-color 0.1s, color 0.1s;
   font-family: 'Tenor Sans', sans-serif;
   cursor: pointer;

@@ -2,18 +2,16 @@ import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 
 const StyledBackButton = styled.button`
-  padding: 10px; 
+  padding: 8px; 
   border: none;
   border-radius: 50%;
-  background-color: #DBC6B6; 
-  color: #1D1C25; 
+  background-color: #AA8497; 
   transition: background-color 0.1s, color 0.1s;
   font-family: 'Tenor Sans', sans-serif;
   cursor: pointer;
 
   &:hover {
-    background-color: #dbc6b6cf;
-    color: #5a493b;
+    background-color: #957484;
   }
 
   img {
@@ -22,7 +20,7 @@ const StyledBackButton = styled.button`
 
   // Responsive tablet
   @media (min-width: 768px) {
-    padding: 20px 20px; 
+    padding: 15px; 
     img {
       width: 30px;
     }
@@ -32,7 +30,7 @@ const StyledBackButton = styled.button`
   @media (min-width: 1285px) {
     padding: 20px 20px;
     img {
-      width: 40px; 
+      width: 30px; 
     }
   }
 `;

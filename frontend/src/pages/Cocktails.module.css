@@ -1,15 +1,16 @@
 .wrapper {
-    min-height: 80vh;
-    display: flex;
-    flex-direction: column;
     justify-content: center;
+    /* horizontally */
     align-items: center;
+    /*vertically */
     margin: 0 auto;
+    padding: 0;
 }
 
 .searchContainer {
     padding: 30px 0 0 20px;
-    align-self: flex-start
+    display: flex;
+    justify-content: flex-start;
 }
 
 .searchInput {
@@ -23,7 +24,7 @@
     line-height: 140%;
     letter-spacing: 0.6px;
     font-family: 'Readex Pro', sans-serif;
-    color: #1D1C25;
+    color: #55424b;
     background-color: #ffffff;
     padding: 4px 3px;
     border: 1px solid #ffffff;
@@ -33,12 +34,12 @@
 }
 
 .searchInput::placeholder {
-    color: #1D1C25;
+    color: #55424b;
     font-weight: 500;
 }
 
 .searchInput:focus {
-    border-color: #5d4b3d;
+    border-color: #55424b;
     outline: none;
 }
 
@@ -46,17 +47,31 @@
     color: transparent;
 }
 
-.SbodyText {
-    margin-bottom: 7px;
-}
-
 .h1 {
-    padding: 50px 20px 0 20px;
+    margin: 50px 0 20px 0;
+    padding: 45px 30px 0 30px;
 }
 
-.h3 {
-    padding-top: 10px;
-    margin-bottom: 8px;
+.SbodyText,
+.SbodyTextTop,
+.h4 {
+    display: flex;
+    text-align: left;
+    width: 160px;
+}
+
+.SbodyTextTop {
+    min-height: 20px;
+}
+
+.SbodyTextTop {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+.h4 {
+    margin-top: 5px;
+    min-height: 40px;
 }
 
 .h3Load {
@@ -64,7 +79,7 @@
 }
 
 .cocktailImage {
-    width: 130px;
+    width: 160px;
 }
 
 .lottieContainer {
@@ -80,13 +95,11 @@
 .gridContainer {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
-    padding: 30px 30px 5px 30px;
+    gap: 20px;
+    padding: 5vw 20vh;
     text-align: start;
     justify-content: center;
     /* horizontally */
-    align-items: center;
-    /*vertically */
 }
 
 .placeholder {
@@ -97,14 +110,70 @@
     min-height: 500px;
 }
 
+.loadMoreButtonContainer {
+    padding-bottom: 30px;
+}
+
+.icon {
+    width: 10px;
+    height: 12px;
+    vertical-align: middle;
+    margin-right: 2px;
+}
+
+.icon2 {
+    width: 10px;
+    height: 12px;
+    vertical-align: middle;
+    margin-right: 2px;
+    margin-left: 2px;
+}
+
+
 /* smaller tablets */
 @media (min-width: 767px) {
     .placeholder {
         min-height: 800px;
     }
 
+    .searchContainer {
+        padding: 30px 0 0 70px;
+    }
+
     .loadContainer {
         min-height: 500px;
+    }
+
+    .h1 {
+        padding: 65px 30px 0 30px;
+    }
+
+    .SbodyText,
+    .SbodyTextTop,
+    .h4 {
+        width: 250px;
+    }
+
+    .SbodyTextTop {
+        min-height: 30px;
+    }
+
+    .cocktailImage {
+        width: 250px;
+    }
+
+    .gridContainer {
+        gap: 35px;
+    }
+
+    .icon {
+        width: 20px;
+        height: 20px;
+    }
+
+    .icon2 {
+        width: 20px;
+        height: 20px;
     }
 }
 
@@ -114,26 +183,8 @@
         min-height: 70vh;
     }
 
-    .cocktailImage {
-        width: 200px;
-    }
-
-    .gridContainer {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 30px;
-    }
-
-    .SbodyText {
-        margin-bottom: 10px;
-    }
-
-    .h3 {
-        margin-bottom: 15px;
-    }
-
-    .h1 {
-        padding-top: 125px;
+    .searchContainer {
+        padding: 30px 0 0 30px;
     }
 
     .placeholder {
@@ -144,41 +195,36 @@
         min-height: 900px;
     }
 
-}
-
-/* Macbook Air*/
-@media (min-width: 1285px) {
-    .wrapper {
-        max-width: 1100px;
-        min-height: 90vh;
-    }
-
-    .SbodyText {
-        margin-bottom: 10px;
-    }
-
-    .h3 {
-        margin-bottom: 15px;
-    }
-
-    .h1 {
-        padding-top: 225px;
-    }
-
     .cocktailImage {
-        width: 200px;
+        width: 300px;
     }
 
     .gridContainer {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
-        gap: 30px;
-        padding: 30px 50px 5px 50px;
+        gap: 35px;
+        padding: 5vw 20vh;
+        text-align: start;
+        justify-content: center;
+        /* horizontally */
     }
 
-    .searchContainer {
-        padding: 70px 0 30px 30px;
-        align-self: flex-start
+    .h1 {
+        padding: 85px 30px 5px 30px;
+    }
+
+    .h4 {
+        min-height: 60px;
+    }
+
+    .SbodyText,
+    .SbodyTextTop,
+    .h4 {
+        width: 300px;
+    }
+
+    .SbodyTextTop {
+        min-height: 35px;
     }
 
     .searchInput {
@@ -199,6 +245,43 @@
 
     .placeholder {
         min-height: 1000px;
+    }
+
+    .icon {
+        width: 23px;
+        height: 23px;
+    }
+
+    .icon2 {
+        width: 20px;
+        height: 20px;
+    }
+}
+
+@media (min-width: 1028px) {
+    .searchContainer {
+        padding: 30px 0 0 90px;
+    }
+}
+
+/* Macbook Air*/
+@media (min-width: 1285px) {
+    .searchContainer {
+        padding: 30px 0 0 155px;
+    }
+
+    .SbodyText,
+    .SbodyTextTop,
+    .h4 {
+        width: 430px;
+    }
+
+    .h1 {
+        padding: 130px 0 0 0;
+    }
+
+    .cocktailImage {
+        width: 430px;
     }
 
     .loadContainer {

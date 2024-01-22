@@ -67,3 +67,14 @@ x Home is only displayed as logo
 - Search bar: when not typing the text moves back over the icon, fix it so it stays 25(?)px to the right
 - Change gap on tablet in cocktails.jsx to 20px
 - Disclaimer
+
+### Colors
+
+ - color: #55424b; mørk
+ - color: #F6EDF1; lys rosa
+ - color: #AA8497; mørk plumme
+ - color: #957484; mørk plumme hover
+ - color: #B493A4 lysere hover
+ - color: #ffffff;
+
+
