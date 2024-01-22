@@ -1,6 +1,5 @@
 import { create } from "zustand";
 
-
 // Get the backend API endpoint from the environment variables.
 const apiEnv = import.meta.env.VITE_BACKEND_API_PLANTS;
 
@@ -89,7 +88,6 @@ export const plantStore = create((set, get) => ({
       );
 
       set({ plants: filteredPlants });
-
     } catch (error) {
       console.error("Error fetching plants by IDs", error);
     }

@@ -1,16 +1,19 @@
+// COMPONENTS IMPORTS
 import { CharacterCard } from "./CharacterCard";
+
 import "./byCharacteristic.css";
 
 export const ByCharacteristic = () => {
-  const text = {
+  const content = {
     heading: "By Characteristic",
+    sectionP: "Botanical treasures to suit every environment",
   };
+
   return (
-    <section className="by-characteristic-wrapper">
-      <div className="by-characteristic-container">
+    <section className="characteristic-wrapper">
+      <div className="characteristic-container section-container">
         <h2 className="section-title">
-          {text.heading}{" "}
-          <p className="h2-p">Botanical treasures to suit every environment</p>
+          {content.heading} <p className="h2-p">{content.sectionP}</p>
         </h2>
         <CharacterCard />
       </div>

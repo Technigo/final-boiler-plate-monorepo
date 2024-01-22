@@ -26,46 +26,58 @@ export const Login = () => {
     return <Navigate to="/dashboard" />;
   }
 
+  const content = {
+    srcLogoImg: "./big-logo-sand.svg",
+    altLogoImg: "Plants by Holm and Witting logo",
+    srcBackgroundImg: "./login-register-bg.png",
+    altBackgroundImg: "Background image of plant leaves",
+    labelUsername: "Username",
+    labelPassword: "Password",
+    inputUsernameAriaLabel: "Put you username here",
+    inputPasswordAriaLabel: "Put you password here",
+    btnText: "Login",
+    btnAriaLabel: "To login click on this button",
+    spanText: "Don't have an account?",
+    linkTo: "/register",
+  };
+
   return (
     <div className="auth-wrapper">
       <div className="bg-wrapper">
         <img
-          src="./login-register-bg.png"
+          src={content.srcBackgroundImg}
           className="bg-img"
-          alt="Background image of plant leaves"
+          alt={content.altBackgroundImg}
         />
         <div className="overlay">
           <div className="big-logo">
-            <img
-              src="./big-logo-sand.svg"
-              alt="Plants by Holm and Witting logo"
-            />
+            <img src={content.srcLogoImg} alt={content.altLogoImg} />
           </div>
           <form onSubmit={handleLogin}>
             <div className="form-group">
               <label htmlFor="username" className="visually-hidden">
-                Username
+                {content.labelUsername}
               </label>
               <InputField
                 type="text"
                 name="username"
                 value={username}
-                placeholder="Username"
+                placeholder={content.labelUsername}
                 onChange={(e) => setUsername(e.target.value)}
-                ariaLabel="Put you username here"
+                ariaLabel={content.inputUsernameAriaLabel}
               />
             </div>
             <div className="form-group">
               <label htmlFor="password" className="visually-hidden">
-                Password
+                {content.labelPassword}
               </label>
               <InputField
                 type="password"
                 name="password"
                 value={password}
-                placeholder="Password"
+                placeholder={content.labelPassword}
                 onChange={(e) => setPassword(e.target.value)}
-                ariaLabel="Put you password here"
+                ariaLabel={content.inputPasswordAriaLabel}
               />
             </div>
             {errorMessage && (
@@ -74,16 +86,16 @@ export const Login = () => {
             <Button
               type="submit"
               className="login-btn"
-              btnText="Login"
-              ariaLabel="To login click on this button"
+              btnText={content.btnText}
+              ariaLabel={content.btnAriaLabel}
             />
           </form>
           <nav className="register-link-container">
             {/* Create a navigation menu with links to the login and sign-up routes. */}
             <ul className="app-ul">
               <li className="app-li">
-                <span>Don't have an account?</span>
-                <Link to="/register">
+                <span>{content.spanText}</span>
+                <Link to={content.linkTo}>
                   Become a <b>member</b>!
                 </Link>
               </li>

@@ -12,7 +12,7 @@
   margin: 0 auto;
 }
 
-.section-title {
+.checkout-page-wrapper .section-title {
   font-family: var(--big-h-font);
   font-size: 1.8rem;
   color: var(--charcoal);

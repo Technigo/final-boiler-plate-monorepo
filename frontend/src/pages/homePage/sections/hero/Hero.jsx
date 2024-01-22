@@ -1,34 +1,43 @@
 import { Link } from "react-router-dom";
+
+// COMPONENTS IMPORTS
 import { Button } from "../../../../components/buttons/Button";
 
 import "./Hero.css";
 
 export const Hero = () => {
-  const text = {
+  const content = {
     heading: "Ready to add to your urban jungle?",
+    sectionPOne: "Your Space, Your Plants, Your Way! ",
+    sectionPTwo: "Start 2024 off with a new plant you'll love!",
     btnText: "Shop all plants",
+    btnAriaLabel: "Shop all plants",
+    linkTo: "plants/all-plants",
+    srcHeroImg: "./hero-img.png",
+    altHeroImg: "Background of plants",
   };
 
   return (
     <section className="hero-wrapper">
       <div className="hero-content-wrapper">
         <div className="text-container">
-          <h1>{text.heading}</h1>
+          <h1>{content.heading}</h1>
           <p>
-            Your Space, Your Plants, Your Way! <br /> Start 2024 off with a new
-            plant you'll love!
+            {content.sectionPOne}
+            <br />
+            {content.sectionPTwo}
           </p>
         </div>
-        <Link to="plants/all-plants">
+        <Link to={content.linkTo}>
           <Button
             className={"all-plants-btn terracotta-btn"}
-            btnText={text.btnText}
-            ariaLabel={"Shop all plants"}
+            btnText={content.btnText}
+            ariaLabel={content.btnAriaLabel}
           />
         </Link>
       </div>
       <div className="hero-image-container">
-        <img src="./hero-img.png" alt="" />
+        <img src={content.srcHeroImg} alt={content.altHeroImg} />
       </div>
     </section>
   );

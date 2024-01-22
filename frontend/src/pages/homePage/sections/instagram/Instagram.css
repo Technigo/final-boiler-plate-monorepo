@@ -1,11 +1,13 @@
-.insta-section-wrapper {
+.insta-wrapper {
   background-color: var(--breeze);
+}
+
+.insta-container {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
-  padding: 3rem 1rem;
   gap: 1rem;
 }
 
@@ -45,9 +47,6 @@
 
 /* For medium devices */
 @media (min-width: 744px) {
-  .insta-section-wrapper {
-    padding: 4rem 3rem;
-  }
 
   .instafeed-container {
     display: grid;
@@ -58,9 +57,6 @@
 
 /* For large devices */
 @media (min-width: 1024px) {
-  .insta-section-wrapper {
-    padding: 5rem;
-  }
 }
 
 /* For extra large devices */

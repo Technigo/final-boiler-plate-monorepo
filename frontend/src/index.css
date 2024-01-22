@@ -1,6 +1,6 @@
 /*---------- GOOGLE FONTS ----------
-MONTSERRAT (300, 400, italic 400, 500, 600, 700, 800, 900)
-PLAYFAIR DISPLAY (400, 500, 600, 700, italic 700, 800, italic 800, 900, italic 900)
+MONTSERRAT (300, 400, 500, 600, 700, 800, 900, italic 400, 600)
+PLAYFAIR DISPLAY (400, 500, 600, 700, 800, 900, italic 700, 800, 900)
 JOSEFIN SANS (400, 500, 600, 700 ----------*/
 @import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;500;600;700&family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,700;1,800;1,900&display=swap");
 
@@ -49,14 +49,6 @@ h6 {
   overflow-wrap: break-word;
 }
 
-.card-name {
-  font-family: var(--montserrat);
-  font-size: 0.9rem;
-  color: var(--chalk);
-  font-weight: 600;
-  letter-spacing: 0.025rem;
-}
-
 a {
   color: inherit;
 }
@@ -74,6 +66,54 @@ button {
 }
 
 /*---------- REUSABLE CSS CLASSES ----------*/
+
+.card-name {
+  font-family: var(--montserrat);
+  font-size: 0.9rem;
+  color: var(--chalk);
+  font-weight: 600;
+  letter-spacing: 0.025rem;
+}
+
+/* Section container */
+.section-container {
+  padding: 3rem 1rem;
+}
+
+/* From mobile and for small devices */
+@media (min-width: 576px) {
+}
+
+/* For medium devices */
+@media (min-width: 744px) {
+  .section-container {
+    padding: 4rem 3rem;
+  }
+}
+
+/* For large devices */
+@media (min-width: 1024px) {
+  .section-container {
+    padding: 5rem;
+  }
+}
+
+/* For extra large devices */
+@media (min-width: 1280px) {
+}
+
+.title-container {
+  text-align: center;
+}
+
+/* Page title */
+h1 {
+  color: var(--charcoal);
+  font-family: var(--big-h-font);
+  font-size: 1.8rem;
+  font-weight: 900;
+  margin-bottom: 1rem;
+}
 
 /* Section title h2 */
 .section-title {
@@ -120,7 +160,6 @@ button {
   text-transform: uppercase;
 }
 
-
 /* Body text */
 .p-body {
   font-family: var(--montserrat);
@@ -143,8 +182,6 @@ button {
   font-weight: 500;
   padding: 1.5rem 0rem 0.5rem;
 }
-
-
 
 /* Visually hide the labels */
 .visually-hidden {
@@ -217,18 +254,10 @@ button {
 
 /* For medium devices */
 @media (min-width: 744px) {
-  .page-container-primary {
-    padding-left: 3rem;
-    padding-right: 3rem;
-  }
 }
 
 /* For large devices */
 @media (min-width: 1024px) {
-  .page-container-primary {
-    padding-left: 5rem;
-    padding-right: 5rem;
-  }
 }
 
 /* For extra large devices */

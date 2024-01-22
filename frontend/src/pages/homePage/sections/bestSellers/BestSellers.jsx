@@ -14,14 +14,20 @@ export const BestSellers = () => {
     fetchPlantsByCategory("popular");
   }, [fetchPlantsByCategory]);
 
+  const content = {
+    heading: "Best Sellers",
+    sectionPOne: "A wise person once said that ",
+    sectionPTwo: `"Start 2024 off with a new plant you'll love!"`,
+  };
+
   return (
     <section className="best-sellers-wrapper">
-      <div className="best-sellers-container">
+      <div className="best-sellers-container section-container">
         <h2 className="section-title">
-          Best Sellers{" "}
+          {content.heading}{" "}
           <p className="h2-p">
-            A wise person once said that <br />{" "}
-            <em>"if everyone likes it, I like it too"</em>
+            {content.sectionPOne}
+            <br /> <em>{content.sectionPTwo}</em>
           </p>
         </h2>
         <div className="products-wrapper-scroll">
@@ -31,8 +37,12 @@ export const BestSellers = () => {
               {[1, 2, 3, 4, 5, 6].map((item) => (
                 <Grid item key={item} xs={14} sm={14} md={14} lg={14}>
                   <Box sx={{ p: 0 }}>
-                    <Skeleton variant="rectangular" width="12rem" height="16rem"
-                    style={{ borderRadius: "0.625rem" }} />
+                    <Skeleton
+                      variant="rectangular"
+                      width="12rem"
+                      height="16rem"
+                      style={{ borderRadius: "0.625rem" }}
+                    />
                   </Box>
                 </Grid>
               ))}

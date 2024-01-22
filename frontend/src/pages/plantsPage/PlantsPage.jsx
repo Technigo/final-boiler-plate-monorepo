@@ -30,9 +30,9 @@ export const PlantsPage = () => {
 
   return (
     <section className="plants-page-wrapper">
-      <div className="page-container-primary">
+      <div className="plants-page-container section-container">
         <div className="title-container">
-          <h2 className="section-title">Our Plants</h2>
+          <h1>Our Plants</h1>
         </div>
         <div className="main-content">
           <div className="filtering-wrapper">
@@ -58,11 +58,14 @@ export const PlantsPage = () => {
           {isLoading ? (
             <div className="animation-wrapper">
               <PlantLoader className="loader-animation" />
-              <p className="p-body">Hang in there, plant friend! We're fetching your plants for you...</p>
+              <p className="p-body">
+                Hang in there, plant friend! We're fetching your plants for
+                you...
+              </p>
             </div>
           ) : (
             <div className="products-wrapper">
-            <PlantCard plants={plants} />
+              <PlantCard plants={plants} />
             </div>
           )}
         </div>

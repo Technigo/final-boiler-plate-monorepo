@@ -12,7 +12,7 @@ export const Register = () => {
   const [errorMessage, setErrorMessage] = useState("");
 
   const register = useAuthStore((state) => state.register);
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const handleRegister = async (e) => {
     e.preventDefault();
@@ -28,60 +28,76 @@ export const Register = () => {
     }
   };
 
+  const content = {
+    srcLogoImg: "./big-logo-sand.svg",
+    altLogoImg: "Plants by Holm and Witting logo",
+    srcBackgroundImg: "./login-register-bg.png",
+    altBackgroundImg: "Background image of plant leaves",
+    headingP: "Become a memeber today!",
+    labelUsername: "Username",
+    labelPassword: "Password",
+    labelEmail: "Email",
+    inputUsernameAriaLabel: "Put you username here",
+    inputPasswordAriaLabel: "Put you password here",
+    inputEmailAriaLabel: "Put you email address here",
+    btnText: "Register",
+    btnAriaLabel: "To register click on this button",
+    spanText: "Already have an account?",
+    linkTo: "/login",
+    linkB: "Login here!",
+  };
+
   return (
     <div className="auth-wrapper">
       <div className="bg-wrapper">
         <img
-          src="./login-register-bg.png"
+          src={content.srcBackgroundImg}
           className="bg-img"
-          alt="Background image of plant leaves"
+          alt={content.altBackgroundImg}
         />
         <div className="overlay">
           <div className="big-logo">
-            <img
-              src="./big-logo-sand.svg"
-              alt="Plants by Holm and Witting logo"
-            />
+            <img src={content.srcLogoImg} alt={content.altLogoImg} />
           </div>
-          <p className="member-text">Become a memeber today!</p>
+          <p className="member-text">{content.headingP}</p>
           <form onSubmit={handleRegister}>
             <div className="form-group">
               <label htmlFor="username" className="visually-hidden">
-                Username
+                {content.labelUsername}
               </label>
               <InputField
                 type="text"
                 name="username"
                 value={username}
-                placeholder="Username"
+                placeholder={content.labelUsername}
                 onChange={(e) => setUsername(e.target.value)}
-                ariaLabel="Put you username here"
+                ariaLabel={content.inputUsernameAriaLabel}
               />
             </div>
             <div className="form-group">
               <label htmlFor="password" className="visually-hidden">
-                Password
+                {content.labelPassword}
               </label>
               <InputField
                 type="password"
                 name="password"
                 value={password}
-                placeholder="Password"
+                placeholder={content.labelPassword}
                 onChange={(e) => setPassword(e.target.value)}
-                ariaLabel="Put you password here"
+                ariaLabel={content.inputPasswordAriaLabel}
               />
             </div>
             <div className="form-group">
               <label htmlFor="email" className="visually-hidden">
-                Email
+                {content.labelEmail}
               </label>
               <InputField
                 type="email"
                 name="email"
                 value={email}
-                placeholder="Email"
+                placeholder={content.labelEmail}
                 onChange={(e) => setEmail(e.target.value)}
-                ariaLabel="Put you email address here"
+                ariaLabel={content.inputEmailAriaLabel}
               />
             </div>
             {errorMessage && (
@@ -90,17 +106,17 @@ export const Register = () => {
             <Button
               type="submit"
               className="signup-btn"
-              btnText="Register"
-              ariaLabel="To register click on this button"
+              btnText={content.btnText}
+              ariaLabel={content.btnAriaLabel}
             />
           </form>
           <nav className="register-link-container">
             {/* Create a navigation menu with links to the login and sign-up routes. */}
             <ul className="app-ul">
               <li className="app-li">
-                <span>Already have an account?</span>
-                <Link to="/login">
-                  <b>Login here!</b>
+                <span>{content.spanText}</span>
+                <Link to={content.linkTo}>
+                  <b>{content.linkB}</b>
                 </Link>
               </li>
             </ul>
@@ -108,137 +124,5 @@ export const Register = () => {
         </div>
       </div>
     </div>
-
-    // <div>
-    //   <h2>Register</h2>
-    //   <label>
-    //     Username:
-    //     <input type="text" value={username} onChange={(e) => setUsername(e.target.value)} />
-    //   </label>
-    //   <br />
-    //   <label>
-    //     Password:
-    //     <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
-    //   </label>
-    //   <br />
-    //   <button onClick={handleRegister}>Register</button>
-    // </div>
   );
 };
-
-//   const handleOnChange = (e) => {
-//     const { name, value } = e.target;
-//     if (name === "username") setUsername(value);
-//     else if (name === "password") setPassword(value);
-//     else if (name === "email") setEmail(value);
-//   };
-
-//   const handleSubmit = async (e) => {
-//     e.preventDefault();
-//     userStore.getState().setIsLoading(true);
-//     userStore.getState().setErrorMessage(""); // Clear the error message
-//     try {
-//       await register(username, password, email);
-//       setTimeout(() => {
-//         navigate("/login");
-//       }, 1000);
-//     } catch (error) {
-//       userStore
-//         .getState()
-//         .setErrorMessage("An error occurred during registration");
-//       userStore.getState().setIsLoading(false); // Set loading to false in case of error
-//     } finally {
-//       userStore.getState().setIsLoading(false);
-//     }
-//   };
-
-//   return (
-//     <>
-//       <div className="auth-wrapper">
-//         <div className="bg-wrapper">
-//           <img
-//             src="./login-register-bg.png"
-//             className="bg-img"
-//             alt="Background image of plant leaves"
-//           />
-//           <div className="overlay">
-//             <div className="big-logo">
-//               <img
-//                 src="./big-logo-sand.svg"
-//                 alt="Plants by Holm and Witting logo"
-//               />
-//             </div>
-//             <form onSubmit={handleSubmit}>
-//               <div className="form-group">
-//                 <label htmlFor="username" className="visually-hidden">
-//                   Username
-//                 </label>
-//                 <InputField
-//                   type="text"
-//                   name="username"
-//                   value={username}
-//                   placeholder="Username"
-//                   onChange={handleOnChange}
-//                   ariaLabel="Username text input"
-//                 />
-//               </div>
-//               <div className="form-group">
-//                 <label htmlFor="password" className="visually-hidden">
-//                   Password
-//                 </label>
-//                 <InputField
-//                   type="password"
-//                   name="password"
-//                   value={password}
-//                   placeholder="Password"
-//                   onChange={handleOnChange}
-//                   ariaLabel="Password input"
-//                 />
-//               </div>
-//               <div className="form-group">
-//                 <label htmlFor="email" className="visually-hidden">
-//                   Email
-//                 </label>
-//                 <InputField
-//                   type="email"
-//                   name="email"
-//                   value={email}
-//                   placeholder="Email"
-//                   onChange={handleOnChange}
-//                   ariaLabel="Email input"
-//                 />
-//               </div>
-//               {isLoading ? (
-//                 <Box sx={{ display: "flex" }}>
-//                   <CircularProgress />
-//                 </Box>
-//               ) : (
-//                 ""
-//               )}
-//               {errorMessage && (
-//                 <p className="error-message disclaimer">{errorMessage}</p>
-//               )}
-//               <Button
-//                 className="signup-btn"
-//                 type="submit"
-//                 btnText="Sign up"
-//                 ariaLabel="Sign up button"
-//               />
-//             </form>
-//             <nav className="register-link-container">
-//               {/* Create a navigation menu with links to the login and sign-up routes. */}
-//               <ul className="app-ul">
-//                 <li className="app-li">
-//                   <span>Already have an account?</span>
-//                   <Link to="/login">
-//                     <b>Login here!</b>
-//                   </Link>
-//                 </li>
-//               </ul>
-//             </nav>
-//           </div>
-//         </div>
-//       </div>
-//     </>
-//   );
-// };

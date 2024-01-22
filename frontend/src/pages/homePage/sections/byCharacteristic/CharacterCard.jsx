@@ -4,6 +4,10 @@ import { plantStore } from "../../../../stores/usePlantStore";
 export const CharacterCard = () => {
   const { selectedCategory } = plantStore();
 
+  const content = {
+    span: "Shop all",
+  };
+
   const cards = [
     {
       id: 1,
@@ -44,7 +48,7 @@ export const CharacterCard = () => {
               <img src={card.image} alt={card.imgAlt} />
               <div className="character-overlay">
                 <h3>{card.heading}</h3>
-                <p className="shop-now-link">Shop now</p>
+                <span className="shop-now">{content.span}</span>
               </div>
             </div>
           </Link>

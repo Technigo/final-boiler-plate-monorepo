@@ -1,16 +1,18 @@
-.banner-container {
+.banner-wrapper {
   background-color: var(--spring);
-  color: var(--chalk);
   font-family: var(--josefin);
+  color: var(--chalk);
   font-weight: 600;
   text-transform: uppercase;
-  padding: 2rem 1rem;
-  display: grid;
-  gap: 0.5rem;
-  grid-template-columns: repeat(2, 1fr);
 }
 
-.icon {
+.banner-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.5rem;
+}
+
+.banner-icon {
   width: 1.5rem;
   height: 1.5rem;
 }
@@ -33,13 +35,10 @@
 /* From mobile and for small devices */
 @media (min-width: 576px) {
   .banner-container {
-    padding: 2rem 1rem;
-    display: grid;
-    gap: 0.5rem;
     grid-template-columns: repeat(4, 1fr);
   }
 
-  .icon {
+  .banner-icon {
     width: 2rem;
     height: 2rem;
   }
@@ -48,7 +47,6 @@
 /* For medium devices */
 @media (min-width: 744px) {
   .banner-container {
-    padding: 4rem 2rem;
     display: grid;
     gap: 0.5rem;
     grid-template-columns: repeat(4, 1fr);
@@ -64,9 +62,6 @@
 
 /* For large devices */
 @media (min-width: 1024px) {
-  .banner-container {
-    padding: 4rem 5rem;
-  }
 }
 
 /* For extra large devices */

@@ -20,14 +20,6 @@
   padding: 3rem 3rem 2rem;
 }
 
-h1 {
-  color: var(--charcoal);
-  font-family: var(--big-h-font);
-  font-size: 1.8rem;
-  font-weight: 900;
-  margin-bottom: 1rem;
-}
-
 .hero-wrapper p {
   color: var(--charcoal);
   font-family: var(--montserrat);
