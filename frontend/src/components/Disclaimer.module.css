@@ -1,16 +1,16 @@
 .disclaimer {
-    background: #3C2F2F;
+    background: #55424b88;
     min-height: 100vh;
     padding: 10vh 10vw;
 }
 
 .h1 {
-    color: #FFF4E6;
+    color: #fff2fe;
     padding: 30PX 0;
 }
 
 .h3 {
-    color: #FFF4E6;
+    color: #fff2fe;
 }
 
 .buttons {
@@ -18,7 +18,7 @@
 }
 
 .h1Btn {
-    color: #FFF4E6;
+    color: #fff2fe;
 }
 
 .btnYes,
@@ -27,25 +27,25 @@
     box-shadow: none;
     margin-right: 30px;
     padding: 7px 25px;
-    border-radius: 25px;
+    border-radius: 35px;
 }
 
 .btnYes {
-    background-color: #80816B;
+    background-color: #667D70;
     margin-right: 20px;
 }
 
 .btnYes:hover {
-    background-color: #515243;
+    background-color: #3D4B43;
 }
 
 .btnNo {
-    background-color: #854442;
+    background-color: #7F5B5B;
     margin-left: 20px;
 }
 
 .btnNo:hover {
-    background-color: #693331;
+    background-color: #4C3636;
 }
 
 .h1Btn:hover {
