@@ -143,7 +143,7 @@ const Home = () => {
   // Define text content for the heading and subheading.
   const text = {
     heading: "WHO",
-    subheading: "ARE YOU seating WITH?",
+    subheading: "ARE YOU DINING WITH?",
   };
 
   const { category, fetchCategory, setSelectedCategory } = useRestaurantStore();
