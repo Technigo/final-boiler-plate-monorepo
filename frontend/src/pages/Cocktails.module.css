@@ -83,13 +83,14 @@
 }
 
 .lottieContainer {
-    width: 230px;
+    width: 220px;
     height: auto;
     margin: auto;
     display: flex;
     justify-content: center;
     align-items: flex-start;
     overflow: hidden;
+    padding-top: 100px;
 }
 
 .gridContainer {
@@ -179,6 +180,11 @@
 
 /* iPad Pro 11 */
 @media (min-width: 900px) {
+    .lottieContainer {
+        width: 520px;
+        padding-top: 150px;
+    }
+
     .wrapper {
         min-height: 70vh;
     }

@@ -17,7 +17,7 @@ export const HomeCBC = () => {
             renderer: 'svg',
             loop: true,
             autoplay: true,
-            path: '/animations/Animation - 1705760771667.json'
+            path: '/animations/cocktailglass.json'
         });
 
         return () => anim.destroy();

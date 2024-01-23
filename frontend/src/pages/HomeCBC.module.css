@@ -44,13 +44,14 @@
 }
 
 .lottieContainer {
-    width: 180px;
+    width: 220px;
     height: auto;
     margin: auto;
     display: flex;
     justify-content: center;
     align-items: flex-start;
     overflow: hidden;
+    padding-top: 100px;
 }
 
 .h3Load {
@@ -167,6 +168,10 @@
 
 /* iPad Pro 11" */
 @media (min-width: 820px) {
+    .lottieContainer {
+        width: 520px;
+        padding-top: 150px;
+    }
 
     .cocktailImage {
         width: 300px;

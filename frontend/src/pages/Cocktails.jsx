@@ -14,7 +14,7 @@ export const Cocktails = () => {
     const [totalCocktails, setTotalCocktails] = useState(0);
     const [isLoading, setIsLoading] = useState(true);
     const animationContainer = useRef(null);
-    const LOTTIE_ANIMATION_PATH = '/animations/Animation - 1705760771667.json';
+    const LOTTIE_ANIMATION_PATH = '/animations/cocktailglass.json';
 
     const handleFilterChange = (e) => {
         setSelectedFilter(e.target.value);
