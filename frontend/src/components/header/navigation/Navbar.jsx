@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from "react";
-import { cartStore } from "../../../stores/useCartStore";
 import { Link } from "react-router-dom";
 import { useMediaQuery } from "react-responsive";
+import { cartStore } from "../../../stores/useCartStore";
 import { Navigation } from "./Navigation";
 
 // ICONS
@@ -23,12 +23,15 @@ export const Navbar = () => {
   const isMobile = useMediaQuery({ maxWidth: 767 });
 
   const toggleHiddenMenu = (event) => {
-    event.stopPropagation();
+    // stop propagation to prevent triggering handleOutsideClick
+    if ( event ) {
+      event.stopPropagation();
+    }
     setHiddenMenu(!hiddenMenu);
   };
 
+  // useRef for handling outside click of the hamburger menu
   const menuRef = useRef(null);
-
   // Close the menu when clicking outside of it
   const handleClickOutside = (event) => {
     if (menuRef.current && !menuRef.current.contains(event.target)) {
@@ -38,6 +41,7 @@ export const Navbar = () => {
   };
 
   // Add or remove the 'no-scroll' class on the body when hiddenMenu changes
+  // also listen for outside clicks when menu is open.
   useEffect(() => {
     if (hiddenMenu) {
       document.body.classList.add("no-scroll");
@@ -46,7 +50,6 @@ export const Navbar = () => {
       document.body.classList.remove("no-scroll");
       document.removeEventListener("click", handleClickOutside);
     }
-
     return () => {
       document.removeEventListener("click", handleClickOutside);
     };
@@ -56,7 +59,7 @@ export const Navbar = () => {
     <div className="header-wrapper">
       <nav className="nav-container">
         <div className="nav-sections">
-          <IoIosMenu className="menu-icon" onClick={(e) => toggleHiddenMenu(e)} />
+          <IoIosMenu className="menu-icon" onClick={toggleHiddenMenu} />
         </div>
         <div className="logo-container">
           <Link to="/">
@@ -82,7 +85,7 @@ export const Navbar = () => {
             <div className="menu-header">
               <IoClose className="close-icon" onClick={toggleHiddenMenu} />
             </div>
-            <Navigation onClick={toggleHiddenMenu} />
+            <Navigation closeMenu={toggleHiddenMenu}/>
           </div>
         </div>
       )}
@@ -120,8 +123,7 @@ export const Navbar = () => {
             <div className="menu-header">
               <IoClose className="close-icon" onClick={toggleHiddenMenu} />
             </div>
-
-            <Navigation  onClick={toggleHiddenMenu}/>
+            <Navigation closeMenu={toggleHiddenMenu}/>
           </div>
         </div>
       )}

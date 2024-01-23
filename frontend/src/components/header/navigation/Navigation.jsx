@@ -1,49 +1,44 @@
 import { Link } from "react-router-dom";
 import { PiPawPrintLight } from "react-icons/pi";
 
-export const Navigation = ({ onClick }) => {
-  const handleLinkClick = () => {
-    if (onClick) {
-      onClick();
-    }
-  };
+export const Navigation = ({ closeMenu}) => {
 
   return (
     <>
       <ul>
         <li className="ul-title">Categories</li>
         <li>
-          <Link to="/plants/all-plants" onClick={handleLinkClick}>
+          <Link to="/plants/all-plants" onClick={closeMenu}>
             All plants
           </Link>
         </li>
         <li>
-          <Link to="/plants/all-plants/popular" onClick={handleLinkClick}>
+          <Link to="/plants/all-plants/popular" onClick={closeMenu}>
             Most popular
           </Link>
         </li>
         <li>
-          <Link to="/plants/all-plants/shade-loving" onClick={handleLinkClick}>
+          <Link to="/plants/all-plants/shade-loving" onClick={closeMenu}>
             Shade lovers
           </Link>
         </li>
         <li>
-          <Link to="/plants/all-plants/easy" onClick={handleLinkClick}>
+          <Link to="/plants/all-plants/easy" onClick={closeMenu}>
             Easy care
           </Link>
         </li>
         <li>
-          <Link to="/plants/all-plants/pet-friendly" onClick={handleLinkClick}>
+          <Link to="/plants/all-plants/pet-friendly" onClick={closeMenu}>
             Pet friendly <PiPawPrintLight />
           </Link>
         </li>
         <li>
-          <Link to="/plants/all-plants/climbing" onClick={handleLinkClick}>
+          <Link to="/plants/all-plants/climbing" onClick={closeMenu}>
             Hanging & climbing
           </Link>
         </li>
         <li>
-          <Link to="/inspo" className="ul-title" onClick={handleLinkClick}>
+          <Link to="/inspo" className="ul-title" onClick={closeMenu}>
             Inspiration
           </Link>
         </li>
@@ -51,22 +46,22 @@ export const Navigation = ({ onClick }) => {
       <hr />
       <ul>
         <li>
-          <Link to="/dashboard" onClick={handleLinkClick}>
+          <Link to="/dashboard" onClick={closeMenu}>
             My account
           </Link>
         </li>
         <li>
-          <Link to="/register" onClick={handleLinkClick}>
+          <Link to="/register" onClick={closeMenu}>
             Register
           </Link>
         </li>
         <li>
-          <Link to="/about" onClick={handleLinkClick}>
+          <Link to="/about" onClick={closeMenu}>
             About us
           </Link>
         </li>
       </ul>
-      <Link to="/" onClick={handleLinkClick}>
+      <Link to="/" onClick={closeMenu}>
         <img
           className="menu-logo"
           src="./big-logo-sand.svg"
