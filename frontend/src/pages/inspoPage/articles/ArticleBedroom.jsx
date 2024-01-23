@@ -21,7 +21,7 @@ export const ArticleBedroom = () => {
   const isMediumScreen = useMediaQuery({minWidth: 501, maxWidth: 600});
   const isTablet = useMediaQuery({minWidth: 601, maxWidth: 800});
   const isLargeTablet = useMediaQuery({minWidth: 801, maxWidth: 1000});
-  const isDesktop = useMediaQuery
+  const isDesktop = useMediaQuery({minWidth: 1001});
 
 
   useEffect(() => {

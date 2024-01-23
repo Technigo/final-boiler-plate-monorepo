@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useMediaQuery } from "react-responsive";
 import { plantStore } from "../../../stores/usePlantStore";
 import { PlantCardMini } from "../../../components/plantCard/PlantCardMini";
 import "../InspoPage.css";
@@ -9,6 +10,13 @@ export const ArticleBalcony = () => {
   const [clickedButtonCoord, setClickedButtonCoord] = useState(null);
 
   const plantIds = [3, 21, 10, 2];
+
+  const isMobile = useMediaQuery({maxWidth: 400});
+  const isSmallScreen = useMediaQuery({minWidth: 401, maxWidth: 500});
+  const isMediumScreen = useMediaQuery({minWidth: 501, maxWidth: 600});
+  const isTablet = useMediaQuery({minWidth: 601, maxWidth: 800});
+  const isLargeTablet = useMediaQuery({minWidth: 801, maxWidth: 1000});
+  const isDesktop = useMediaQuery({minWidth: 1001});
 
   useEffect(() => {
     fetchPlantsByIds(plantIds);
@@ -35,8 +43,25 @@ export const ArticleBalcony = () => {
   };
 
   const calculatePlantCardPosition = (dotButtonCoord) => {
-    const left = dotButtonCoord.x > 50 ? `${dotButtonCoord.x - 50}%` : `${dotButtonCoord.x}%`;
-    const top = dotButtonCoord.y > 50 ? `${dotButtonCoord.y - 50}%` : `${dotButtonCoord.y}%`;
+    const cardWidth = isMobile ? 55 : isSmallScreen ? 47 : isMediumScreen ? 40 : isTablet ? 30 : isLargeTablet ? 25 : 200; 
+    const cardHeight = isMobile ? 40 : isSmallScreen ? 30 : isMediumScreen ? 20 : isTablet ? 20 : isLargeTablet ? 10 : 200;
+    const gap = isMobile ? 10 : isSmallScreen ? 7 : isMediumScreen ? 7 : isTablet ? 5 : 5; 
+
+    let left; 
+    if (dotButtonCoord.x > 50) {
+      // Align right corner with button if button is on the right side
+      left = `${dotButtonCoord.x - cardWidth}%`;
+    } else {
+      // Align left corner with button if button is on the left side
+      left = `${dotButtonCoord.x + gap }%`;
+    }
+
+    let top; 
+    if (dotButtonCoord.y > 50) {
+      top = `${dotButtonCoord.y - cardHeight}%`
+    } else {
+      top = `${dotButtonCoord.y}%`
+    };
     return { left, top };
   };
 

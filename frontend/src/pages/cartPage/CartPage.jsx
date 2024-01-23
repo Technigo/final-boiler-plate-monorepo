@@ -53,7 +53,7 @@ export const CartPage = () => {
             btnText="Clear Cart"/>
         <div className="btn-wrapper-cart">
           <Link to="/plants/all-plants">
-          <Button className="btn-primary" 
+          <Button className="clear-btn" 
             btnText="Continue shopping"/>
           </Link>
           {cart.length != 0 && 

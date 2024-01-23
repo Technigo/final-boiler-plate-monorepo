@@ -10,7 +10,7 @@
   gap: 1.5rem;
 }
 
-.dashboard-wrapper p {
+.dashboard-text {
     font-family: var(--montserrat);
     line-height: 1.7;
     max-width: 300px;
@@ -21,6 +21,7 @@
 .dashboard-wrapper h3 {
     font-family: var(--josefin);
     font-size: 1.4rem;
+    color: var(--forrest);
 }
 
 .coming-soon {

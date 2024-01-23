@@ -199,55 +199,59 @@ export const CheckOutPage = () => {
   ];
 
   return (
-    <>
-      {showSuccessMessage ? (
-        <OrderSuccess />
-      ) : (
+      <>
         <section className="checkout-section">
-      <div className="checkout-page-wrapper">
-        <Link to="/cart" className="go-back">
-          <MdKeyboardArrowLeft className="go-back-icon" />
-          Go back to cart
-        </Link>
-        <h2 className="section-title">Check Out</h2>
-        <div className={"checkout-form"}>
-          <Accordion items={accordionItems} showButtons={true} openFirstAccordion={true}/>
-          <Link to="/plants/all-plants">
-          <Button className="btn-primary" 
-            btnText="Continue shopping"/>
-          </Link>
-          <Button className={"checkout-btn terracotta-btn"} type={"submit"} btnText={"Pay"} onClick={(e) => handlePayButtonClick(e)} />
-          <Snackbar
-              anchorOrigin={{ vertical: "bottom", horizontal: "left" }}
-              open={snackbarOpen}
-              autoHideDuration={6000}
-              onClose={() => setSnackbarOpen(false)}
-            >
-              <MuiAlert
-                onClose={() => setSnackbarOpen(false)}
-                severity="error"
-                sx={{
-                  width: "100%",
-                  backgroundColor: "#bb5532",
-                  color: "#f3f3ea",
-                  "& .MuiSvgIcon-root": {
-                    fill: "#f3f3ea",
-                  },
-                }}
-              >
-                Unfortunatley, we could not send you an email...Are you sure you put in the right address? Try again!
-              </MuiAlert>
-            </Snackbar>
-          <p className="p-small">
-            *By pressing the pay button, you will get an email with your plant
-            buddies. Please remember, this is <b>not</b> an actual shop, no money
-            will be drawn, and unfortunately no plants will be sent. But thank you
-            for testing it out!{" "}
-          </p>
+          <div className="checkout-page-wrapper">
+            {showSuccessMessage ? (
+              <OrderSuccess />
+              ) : ( 
+                <>
+                  <Link to="/cart" className="go-back">
+                    <MdKeyboardArrowLeft className="go-back-icon" />
+                    Go back to cart
+                  </Link>
+                  <h2 className="section-title">Check Out</h2>
+                  <div className={"checkout-form"}>
+                    <Accordion items={accordionItems} showButtons={true} openFirstAccordion={true}/>
+                    <div className="btn-container-checkout">
+                      <Link to="/plants/all-plants">
+                        <Button className="clear-btn checkout-btn" 
+                          btnText="Continue shopping"/>
+                      </Link>
+                      <Button className={"checkout-btn terracotta-btn"} type={"submit"} btnText={"Pay"} onClick={(e) => handlePayButtonClick(e)} />
+                    </div>
+                    <Snackbar
+                        anchorOrigin={{ vertical: "bottom", horizontal: "left" }}
+                        open={snackbarOpen}
+                        autoHideDuration={6000}
+                        onClose={() => setSnackbarOpen(false)}
+                      >
+                        <MuiAlert
+                          onClose={() => setSnackbarOpen(false)}
+                          severity="error"
+                          sx={{
+                            width: "100%",
+                            backgroundColor: "#bb5532",
+                            color: "#f3f3ea",
+                            "& .MuiSvgIcon-root": {
+                              fill: "#f3f3ea",
+                            },
+                          }}
+                        >
+                          Unfortunatley, we could not send you an email...Are you sure you put in the right address? Try again!
+                        </MuiAlert>
+                      </Snackbar>
+                    <p className="p-small">
+                      *By pressing the pay button, you will get an email with your plant
+                      buddies. Please remember, this is <b>not</b> an actual shop, no money
+                      will be drawn, and unfortunately no plants will be sent. But thank you
+                      for testing it out!{" "}
+                    </p>
+                  </div> 
+                </>
+              )}
         </div>
-      </div>
       </section>
-      )}
     </>
   );
 };

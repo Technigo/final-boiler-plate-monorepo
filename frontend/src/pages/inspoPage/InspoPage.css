@@ -1,6 +1,35 @@
-.inspo-section {
+.inspo-page-wrapper {
+  background-color: var(--chalk);
+}
+
+.inspo-page-container {
+  margin: auto;
   height: auto;
-  padding: 1rem;
+  padding: 3rem 1rem;
+  max-width: 800px;
+}
+
+.title-section {
+  position: relative;
+  z-index: 2;
+  max-width: 480px;
+  margin: auto;
+}
+
+.inspo-page-p {
+  text-align: center;
+  font-family: var(--montserrat);
+  color: var(--charcoal);
+  font-size: 0.8rem;
+  line-height: 1.7;
+  letter-spacing: 0.1rem;
+  font-weight: 500;
+}
+
+.article-bedroom {
+  position: relative;
+  margin-top: 3rem;
+  z-index: 1;
 }
 
 .page-title {
@@ -8,14 +37,22 @@
 }
 
 .illustration-container {
+  position: relative;
   display: flex;
   justify-content: right;
 }
 
 .monstera-illustration {
-  width: 100px;
-  padding: 0rem 2.5rem 2rem;
-  margin-top: -2rem;
+  position: absolute;
+  bottom: -5.5rem;
+  right: 3rem;
+  width: 200px;
+}
+
+.articles-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
 }
 
 .article-container {
@@ -34,15 +71,11 @@
   color: var(--charcoal);
   font-size: 0.8rem;
   line-height: 1.7;
-  letter-spacing: 0.1rem;
   font-weight: 500;
-  padding: 0.5rem 0rem 1.5rem;
+  padding: 1rem 0rem;
 }
 
-.image-container-bedroom {
-  position: relative;
-}
-
+.image-container-bedroom, 
 .image-container-balcony {
   position: relative;
 }
@@ -53,7 +86,8 @@
   height: auto;
 }
 
-.dot-button-bedroom {
+.dot-button-bedroom, 
+.dot-button-balcony {
   position: absolute;
   width: 1.5rem;
   height: 1.5rem;
@@ -63,12 +97,63 @@
   cursor: pointer;
 }
 
-.dot-button-balcony {
-  position: absolute;
-  width: 1.5rem;
-  height: 1.5rem;
-  border: solid var(--chalk);
-  background-color: var(--forrest);
-  border-radius: 50%;
-  cursor: pointer;
+.line {
+  border: 0;
+  height: 1px;
+  background: var(--breeze);
+}
+
+/*---------- BREAKPOINTS ----------*/
+/* From mobile and for small devices */
+@media (min-width: 576px) {
+  .inspo-page-container {
+    padding: 3rem;
+  }
+
+  .inspo-page-p {
+    font-size: 0.9rem;
+  }
+
+  .article-title {
+    font-size: 1.6rem;
+  }
+  
+  .article-p {
+    font-family: var(--montserrat);
+    color: var(--charcoal);
+    font-size: 0.9rem;
+  }
+}
+
+/* For medium devices */
+@media (min-width: 744px) {
+  .inspo-page-container {
+    padding: 3rem 5rem;
+  }
+
+  .inspo-page-p {
+    font-size: 1rem;
+  }
+
+  .article-title {
+    font-size: 1.8rem;
+    font-weight: 700;
+  }
+  
+  .article-p {
+    font-family: var(--montserrat);
+    color: var(--charcoal);
+    font-size: 1rem;
+  }
+}
+
+/* For large devices */
+@media (min-width: 1024px) {
+  .inspo-section {
+    padding: 5rem;
+  }
+}
+
+/* For extra large devices */
+@media (min-width: 1280px) {
 }

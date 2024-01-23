@@ -19,7 +19,7 @@ export const NotFoundPage = () => {
         <p className="h2-p">{content.ps}</p>
         <Link to="/">
           <Button
-            className={"btn-primary"}
+            className={"terracotta-btn checkout-btn"}
             ariaLabel={"Go back to home page"}
             btnText={"back to home"}
           />

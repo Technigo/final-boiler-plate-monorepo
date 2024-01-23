@@ -263,3 +263,10 @@ h1 {
 /* For extra large devices */
 @media (min-width: 1280px) {
 }
+
+
+
+/* Nothing to care about */
+.favourites-section {
+  background-color: var(--chalk);
+}
