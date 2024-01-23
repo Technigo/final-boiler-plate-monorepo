@@ -1,3 +1,4 @@
+// This is the start of a favourite 
 import { create } from "zustand";
 
 const apiEnv = import.meta.env.VITE_BACKEND_API_FAVOURITES;
@@ -30,7 +31,7 @@ export const favouriteStore = create((set) => ({
   addToFavourites: async (plantId) => {
     try {
       set({ isLoading: true });
-      const response = await fetch(`${apiEnv}/add-favourite`, {
+      const response = await fetch(`${apiEnv}/add-to-favourites`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

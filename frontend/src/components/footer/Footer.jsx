@@ -1,9 +1,10 @@
-import "./Footer.css";
-import Accordion from "../accordion/Accordion";
 import { Link } from "react-router-dom";
+// IMPORT COMPONENTS
+import { Accordion } from "../accordion/Accordion";
+// IMPORT STYLESHEETS
+import "./Footer.css";
 
-import { FaLinkedin } from "react-icons/fa6";
-
+// Accordion items
 const accordionItems = [
   {
     title: "Plants",
@@ -27,35 +28,56 @@ const accordionItems = [
   },
   {
     title: "Customer Service",
-    content: <p>This is not a real web shop, but if it was, it'd probably have the best Custumer Service in the world.</p>,
+    content: (
+      <p>
+        This is not a real web shop, but if it was, it'd probably have the best
+        Custumer Service in the world.
+      </p>
+    ),
   },
   {
     title: "About us",
     content: (
       <div>
-        <p>This page was developed by Julia Holm and Vera Witting</p>
-        <p>Do visit our <Link to="/about"><b>about page</b></Link> to see more about us and this project!</p>
+        <p>
+          This page was developed by Julia Holm and Vera Witting for our final
+          project of the Web Development Bootcamp at Technigo.
+        </p>
+        <p>
+          Visit our{" "}
+          <Link to="/about">
+            <b>about page</b>
+          </Link>{" "}
+          to read more about us and this project!
+        </p>
       </div>
     ),
   },
 ];
 
+const content = {
+  logoUrl: "./big-logo-sand.svg",
+  logoAlt: "Plants by Holm and Witting logotype",
+  copyright: "Copyright 2024 © Julia H & Vera W",
+  bootcampP: "Technigo Bootcamp Final Project",
+};
+
 export const Footer = () => {
   return (
     <footer>
-      <Accordion items={accordionItems} showButtons={false}/>
+      <Accordion items={accordionItems} showButtons={false} />
       <div className="logo-container">
         <Link to="/">
           <img
             className="menu-logo"
-            src="./big-logo-sand.svg"
-            alt="Plants by Holm and Witting logotype"
+            src={content.logoUrl}
+            alt={content.logoAlt}
           />
         </Link>
       </div>
       <div>
-        <p className="copyright">Copyright 2024 © Julia H & Vera W</p>
-        <p className="copyright">Technigo Bootcamp Final Project</p>
+        <p className="copyright">{content.copyright}</p>
+        <p className="copyright">{content.bootcampP}</p>
       </div>
     </footer>
   );

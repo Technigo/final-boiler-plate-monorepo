@@ -10,7 +10,7 @@ import { PaymentInfo } from "../../components/checkout/PaymentInfo";
 import { OrderInfo } from "../../components/checkout/OrderInfo";
 import { OrderSuccess } from "../../components/checkout/OrderSuccess";
 import emailjs from "@emailjs/browser";
-import Accordion from "../../components/accordion/Accordion";
+import { Accordion } from "../../components/accordion/Accordion";
 import Snackbar from "@mui/material/Snackbar";
 import MuiAlert from "@mui/material/Alert";
 import { MdKeyboardArrowLeft } from "react-icons/md";
@@ -55,7 +55,7 @@ export const CheckOutPage = () => {
         .join("\n"),
       image_link: cart[0].images.full_size_url,
       image_alt: cart[0].plant_title,
-      logo_link: "./big-logo-sand.svg",
+      logo_link: "https://i.ibb.co/6yySrmj/logo.png",
       logo_alt: "Plants by Holm & Witting logotype",
     };
 

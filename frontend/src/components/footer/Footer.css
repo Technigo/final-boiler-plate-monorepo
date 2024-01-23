@@ -1,8 +1,8 @@
 footer {
+  background-color: var(--forrest);
   display: flex;
   flex-direction: column;
   gap: 3.5rem;
-  background-color: var(--forrest);
   padding: 4rem;
 }
 

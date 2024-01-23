@@ -13,9 +13,13 @@ import { RiUserLine } from "react-icons/ri";
 
 // NAVBAR COMPONENT
 export const Navbar = () => {
+  // Get the number of products in the cart
   const { numberOfProducts } = cartStore();
 
+  // State for the hidden menu
   const [hiddenMenu, setHiddenMenu] = useState(false);
+
+  // Check if the screen is mobile
   const isMobile = useMediaQuery({ maxWidth: 767 });
 
   const toggleHiddenMenu = (event) => {
@@ -25,6 +29,7 @@ export const Navbar = () => {
 
   const menuRef = useRef(null);
 
+  // Close the menu when clicking outside of it
   const handleClickOutside = (event) => {
     if (menuRef.current && !menuRef.current.contains(event.target)) {
       // Click outside the menu, close it
