@@ -1,6 +1,4 @@
-// COMPONENTS IMPORTS
 import { CharacterCard } from "./CharacterCard";
-
 import "./byCharacteristic.css";
 
 export const ByCharacteristic = () => {

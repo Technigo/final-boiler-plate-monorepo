@@ -1,5 +1,6 @@
 import { create } from "zustand";
 
+// using local storage to save plants to cart
 const loadCartFromLocalStorage = () => {
   const storedCart = localStorage.getItem("cart");
   return storedCart ? JSON.parse(storedCart) : [];
@@ -15,6 +16,7 @@ export const cartStore = create((set) => ({
       const existingItem = state.cart.findIndex(
         (cartItem) => cartItem._id === item._id
       );
+      // updating quantity if item already exists
       if (existingItem !== -1) {
         const updatedCart = [...state.cart];
         updatedCart[existingItem] = {
@@ -26,7 +28,9 @@ export const cartStore = create((set) => ({
           .map((item) => item.quantity || 1)
           .reduce((acc, quantity) => acc + quantity, 0);
         return { cart: updatedCart, numberOfProducts: newNumberOfProducts };
-      } else {
+      }
+      // adding new item to cart if it doesn't exsist in cart 
+      else {
         const newCart = [...state.cart, { ...item, quantity: 1 }];
         localStorage.setItem("cart", JSON.stringify(newCart));
         const newNumberOfProducts = newCart
@@ -35,6 +39,7 @@ export const cartStore = create((set) => ({
         return { cart: newCart, numberOfProducts: newNumberOfProducts };
       }
     }),
+  // adding by index (used in cartPage), to update quantity of already existing items in cart
   addByIndexToCart: (index) =>
     set((state) => {
       const itemToAdd = state.cart[index];
@@ -62,9 +67,11 @@ export const cartStore = create((set) => ({
       }
       return state; // Return the unchanged state if item is not found
     }),
+  // remove item from cart OR decrease its quantity
   removeFromCart: (index) =>
     set((state) => {
       const itemToRemove = state.cart[index];
+      // Decrease quantity if greater than 1
       if (itemToRemove.quantity > 1) {
         const updatedCart = [...state.cart];
         updatedCart[index] = {
@@ -77,6 +84,7 @@ export const cartStore = create((set) => ({
           .reduce((acc, quantity) => acc + quantity, 0);
         return { cart: updatedCart, numberOfProducts: newNumberOfProducts };
       } else {
+        // Remove the item if quantity is 1
         const newCart = state.cart.filter((_, i) => i !== index);
         localStorage.setItem("cart", JSON.stringify(newCart));
         const newNumberOfProducts = newCart

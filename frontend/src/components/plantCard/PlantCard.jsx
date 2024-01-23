@@ -7,8 +7,11 @@ import MuiAlert from "@mui/material/Alert";
 
 export const PlantCard = ({ plants }) => {
   const { addToCart } = cartStore();
+
+  // state for handling snackbar alert message
   const [snackbarOpen, setSnackbarOpen] = useState(false);
 
+  // function for closing snackbar
   const handleSnackbarClose = (reason) => {
     if (reason === "clickaway") {
       return;

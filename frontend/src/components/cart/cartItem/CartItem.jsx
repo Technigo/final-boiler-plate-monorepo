@@ -14,10 +14,13 @@ export const CartItem = ({
   botanicalName,
   quantity,
 }) => {
+  // importing cart functions. 
   const { removeFromCart, addByIndexToCart } = cartStore();
+  // states for handling snackbar alert messages
   const [addSnackbarOpen, setAddSnackbarOpen] = useState(false);
   const [removeSnackbarOpen, setRemoveSnackbarOpen] = useState(false);
 
+  // function for closing snackbar, and setting the right snackbar to the right button.
   const handleSnackbarClose = (reason, snackbarType) => {
     if (reason === "clickaway") {
       return;
@@ -29,6 +32,7 @@ export const CartItem = ({
     }
   };
 
+  // button functions for cart
   const handleRemoveFromCart = (index) => {
     removeFromCart(index);
     setRemoveSnackbarOpen(true);

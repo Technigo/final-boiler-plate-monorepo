@@ -1,8 +1,5 @@
 import { Link } from "react-router-dom";
-
-// COMPONENTS IMPORTS
 import { Button } from "../../../../components/buttons/Button";
-
 import "./Hero.css";
 
 export const Hero = () => {

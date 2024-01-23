@@ -1,14 +1,11 @@
-import React from "react";
 import { Link, Navigate } from "react-router-dom";
 import { useAuthStore } from "../../stores/useAuthStore";
-import "./UserDashboard.css";
 import { Button } from "../../components/buttons/Button";
-
+// importing icons and styling
 import { IoHeart } from "react-icons/io5";
 import { HiShoppingBag } from "react-icons/hi2";
-import { FaUser } from "react-icons/fa";
 import { RiUserSettingsFill } from "react-icons/ri";
-
+import "./UserDashboard.css";
 
 export const UserDashboard = () => {
   const isAuthenticated = useAuthStore((state) => state.isAuthenticated);

@@ -1,7 +1,7 @@
-import { cartStore } from "../../stores/useCartStore";
-import { Link } from "react-router-dom";
-import { CartItem } from "../../components/cart/cartItem/CartItem";
 import { useEffect } from "react";
+import { Link } from "react-router-dom";
+import { cartStore } from "../../stores/useCartStore";
+import { CartItem } from "../../components/cart/cartItem/CartItem";
 import { OrderInfo } from "../../components/checkout/OrderInfo";
 import { Button } from "../../components/buttons/Button"
 import { MdKeyboardArrowLeft } from "react-icons/md";

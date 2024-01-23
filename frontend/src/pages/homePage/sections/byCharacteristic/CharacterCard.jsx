@@ -1,8 +1,6 @@
 import { Link } from "react-router-dom";
-import { plantStore } from "../../../../stores/usePlantStore";
 
 export const CharacterCard = () => {
-  const { selectedCategory } = plantStore();
 
   const content = {
     span: "Shop all",

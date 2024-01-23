@@ -8,6 +8,7 @@ export const plantStore = create((set, get) => ({
   plants: [],
   singlePlant: {},
   selectedCategory: null,
+
   setIsLoading: (loading) => set({ isLoading: loading }),
   setPlants: (plants) => set({ plants }),
   setSinglePlant: (singlePlant) => set({ singlePlant }),
@@ -31,6 +32,7 @@ export const plantStore = create((set, get) => ({
       set({ isLoading: false });
     }
   },
+  // adding to the endpont to use another backend route. 
   fetchPlantsByCategory: async (category) => {
     let endpoint;
     switch (category) {
@@ -63,6 +65,8 @@ export const plantStore = create((set, get) => ({
       console.error("Error fetching plants", error);
     }
   },
+  // a single plant fetch to not mess up the component that expects arrays.
+  // used in ProductPage.
   fetchSinglePlant: async () => {
     try {
       const response = await fetch(get().apiEndpoint);

@@ -1,21 +1,24 @@
 import { useState, useEffect } from "react";
-import { cartStore } from "../../stores/useCartStore";
-import { CartItem } from "../../components/cart/cartItem/CartItem";
-import { InputField } from "../../components/inputs/InputField";
 import { Link } from "react-router-dom";
+import { cartStore } from "../../stores/useCartStore";
+// importing components
+import { InputField } from "../../components/inputs/InputField";
 import { Button } from "../../components/buttons/Button";
+import { Accordion } from "../../components/accordion/Accordion";
+import { CartItem } from "../../components/cart/cartItem/CartItem";
 import { PersonalInfo } from "../../components/checkout/PersonalInfo";
 import { DeliveryDetails } from "../../components/checkout/DeliveryDetails";
 import { PaymentInfo } from "../../components/checkout/PaymentInfo";
 import { OrderInfo } from "../../components/checkout/OrderInfo";
 import { OrderSuccess } from "../../components/checkout/OrderSuccess";
+// email js function
 import emailjs from "@emailjs/browser";
-import { Accordion } from "../../components/accordion/Accordion";
+// snackbar, icons and styling
 import Snackbar from "@mui/material/Snackbar";
 import MuiAlert from "@mui/material/Alert";
 import { MdKeyboardArrowLeft } from "react-icons/md";
 import { LuPackageCheck } from "react-icons/lu";
-import { RiTruckLine, RiPlantLine } from "react-icons/ri";
+import { RiTruckLine } from "react-icons/ri";
 import "./CheckOutPage.css";
 
 
@@ -43,7 +46,8 @@ export const CheckOutPage = () => {
   }, [cart]);
 
   const sendEmail = async () => {
-
+    
+    // data to send to emailjs
     const templateParams = {
       to_email: email,
       to_name: username,
@@ -59,16 +63,19 @@ export const CheckOutPage = () => {
       logo_alt: "Plants by Holm & Witting logotype",
     };
 
+    // sending the email to the given email address
     return emailjs
     .send(serviceId, templateId, templateParams, publicKey)
     .then((response) => {
       if (response.status === 200) {
+        // sending user to success message
         setShowSuccessMessage(true);
         window.scrollTo({
           top: 0,
           behavior: 'smooth', 
         });
       } else {
+        // alerting user email was not sent
         setSnackbarOpen(true);
         setShowSuccessMessage(false);
       }
@@ -91,21 +98,24 @@ export const CheckOutPage = () => {
     await sendEmail();
   };
 
-  
-
   const accordionItems = [
     {
       title: "Your information",
       content: (
         <>
           <div className="checkout-account-wrapper">
-            <div className="login-wrapper">
-              <p>Already have an account?</p>
-              <Button className={"checkout-btn gradient-btn"} btnText={"Log in"} />
-            </div>
-            <div className="login-wrapper">
-              <p>Create an account!</p>
-              <Button className={"checkout-btn gradient-btn"} btnText={"Register"} />
+            <div className="coming-soon-wrapper">
+              <span className="coming-soon">Coming soon...</span>
+                Login to use your account to check out. 
+                This is not implemented yet, so please check out as a guest below with your email.
+              <div className="login-wrapper">
+                <p>Already have an account?</p>
+                <Button className={"checkout-btn gradient-btn"} btnText={"Log in"} />
+              </div>
+              <div className="login-wrapper">
+                <p>Create an account!</p>
+                <Button className={"checkout-btn gradient-btn"} btnText={"Register"} />
+              </div>
             </div>
             <span 
             className="" 
@@ -202,6 +212,10 @@ export const CheckOutPage = () => {
         <h2 className="section-title">Check Out</h2>
         <div className={"checkout-form"}>
           <Accordion items={accordionItems} showButtons={true} openFirstAccordion={true}/>
+          <Link to="/plants/all-plants">
+          <Button className="btn-primary" 
+            btnText="Continue shopping"/>
+          </Link>
           <Button className={"checkout-btn terracotta-btn"} type={"submit"} btnText={"Pay"} onClick={(e) => handlePayButtonClick(e)} />
           <Snackbar
               anchorOrigin={{ vertical: "bottom", horizontal: "left" }}

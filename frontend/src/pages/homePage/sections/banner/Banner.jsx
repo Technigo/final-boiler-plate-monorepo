@@ -1,9 +1,9 @@
-import "./Banner.css";
-
-// ICONS IMPORTS
+// import icons
 import { LuPackageCheck } from "react-icons/lu";
 import { BsEnvelopePaperHeart } from "react-icons/bs";
 import { RiTruckLine, RiPlantLine } from "react-icons/ri";
+
+import "./Banner.css"; 
 
 export const Banner = () => {
   const content = {

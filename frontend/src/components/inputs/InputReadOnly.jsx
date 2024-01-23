@@ -5,7 +5,6 @@ export const InputReadOnly = ({
   id,
   placeholder,
   value,
-  onChange,
   ariaLabel,
   labelTxt,
   className,

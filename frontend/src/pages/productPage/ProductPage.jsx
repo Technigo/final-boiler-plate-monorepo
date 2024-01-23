@@ -1,13 +1,13 @@
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { useState, useEffect } from "react";
-import { Button } from "../../components/buttons/Button";
 import { plantStore } from "../../stores/usePlantStore";
 import { cartStore } from "../../stores/useCartStore";
+// importing components
+import { Button } from "../../components/buttons/Button";
 import { PlantCare } from "./sections/PlantCare";
-import { Link } from "react-router-dom";
+// importing snackbar and icons and styling
 import Snackbar from "@mui/material/Snackbar";
 import MuiAlert from "@mui/material/Alert";
-
 import {
   MdOutlineLightMode,
   MdOutlineWaterDrop,
@@ -15,17 +15,19 @@ import {
   MdKeyboardArrowLeft,
 } from "react-icons/md";
 import { PiPottedPlantDuotone } from "react-icons/pi";
-
 import "./ProductPage.css";
 
 export const ProductPage = () => {
   const { id } = useParams();
+  // importing functions from stores
   const { singlePlant, setApiEndpoint, fetchSinglePlant } = plantStore();
   const { addToCart } = cartStore();
 
   const [snackbarOpen, setSnackbarOpen] = useState(false);
   const [showMore, setShowMore] = useState(false);
 
+  // fetching clicked plant using useParams, 
+  // sending it to the fetchSinglePlant function in plantStore.
   useEffect(() => {
     setApiEndpoint(
       `https://plants-holm-witting-backend.onrender.com/api/plants/${id}`

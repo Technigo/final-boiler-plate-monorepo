@@ -9,13 +9,13 @@ export const Instagram = () => {
     linkText: "@plantsby_hw",
     pOne: "We love to see our plants in your homes. Tag your photo with ",
     pTwo: " on Instagram.",
-    srcImgOne: "./insta_1.jpeg",
+    srcImgOne: "/../insta_1.jpeg",
     altImgOne: "Livingroom with plants",
-    srcImgTwo: "./insta_2.jpeg",
+    srcImgTwo: "/../insta_2.jpeg",
     altImgTwo: "Livingroom with a ficus on the table",
-    srcImgThree: "./insta_3.jpeg",
+    srcImgThree: "/../insta_3.jpeg",
     altImgThree: "Window sill with plants",
-    srcImgFour: "./insta_4.jpeg",
+    srcImgFour: "/../insta_4.jpeg",
     altImgFour: "Livingroom with a big strelitzia nicolai plant",
   };
 

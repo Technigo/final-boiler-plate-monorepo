@@ -9,7 +9,6 @@ export const ArticleBalcony = () => {
   const [clickedButtonCoord, setClickedButtonCoord] = useState(null);
 
   const plantIds = [3, 21, 10, 2];
-  //const plantIdsTwo = [2, 21];
 
   useEffect(() => {
     fetchPlantsByIds(plantIds);

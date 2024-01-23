@@ -10,8 +10,10 @@ import "./PlantCards.css";
 export const PlantCardMini = ({ plants, position }) => {
   const { addToCart } = cartStore();
 
+  // state for handling snackbar alert message
   const [snackbarOpen, setSnackbarOpen] = useState(false);
 
+  // function for closing snackbar
   const handleSnackbarClose = (reason) => {
     if (reason === "clickaway") {
       return;

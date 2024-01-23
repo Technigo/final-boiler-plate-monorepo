@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Link, Navigate } from "react-router-dom";
 import { useAuthStore } from "../../stores/useAuthStore";
-import "./Auth.css";
 import { InputField } from "../../components/inputs/InputField";
 import { Button } from "../../components/buttons/Button";
+import "./Auth.css";
 
 export const Login = () => {
   const [username, setUsername] = useState("");

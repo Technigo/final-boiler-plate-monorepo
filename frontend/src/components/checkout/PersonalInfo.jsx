@@ -29,20 +29,20 @@ export const PersonalInfo = () => {
         value={"12 Dendron Rhode"}
         readOnly={true}
       />
-        <InputReadOnly
-          type="text"
-          placeholder="123 45"
-          ariaLabel="ZIP input."
-          value={"123 45"}
-          readOnly={true}
-        />
-        <InputReadOnly
-          type="text"
-          placeholder="Rhodonia"
-          ariaLabel="City input."
-          value={"Rhodonia"}
-          readOnly={true}
-        />
+      <InputReadOnly
+        type="text"
+        placeholder="123 45"
+        ariaLabel="ZIP input."
+        value={"123 45"}
+        readOnly={true}
+      />
+      <InputReadOnly
+        type="text"
+        placeholder="Rhodonia"
+        ariaLabel="City input."
+        value={"Rhodonia"}
+        readOnly={true}
+      />
     </>
   );
 };
