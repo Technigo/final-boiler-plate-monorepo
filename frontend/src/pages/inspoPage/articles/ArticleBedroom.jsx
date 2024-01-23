@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useMediaQuery } from "react-responsive";
 import { plantStore } from "../../../stores/usePlantStore";
 import { PlantCardMini } from "../../../components/plantCard/PlantCardMini";
 import "../InspoPage.css";
@@ -10,17 +11,30 @@ export const ArticleBedroom = () => {
 
   const plantIds = [3, 21, 10, 2];
 
+  //0 = CHINESE MONEY PLANT
+  //1 = MONSTERA
+  //2 = SNAKE PLANT
+  //3 = MONEY TREE
+
+  const isMobile = useMediaQuery({maxWidth: 400});
+  const isSmallScreen = useMediaQuery({minWidth: 401, maxWidth: 500});
+  const isMediumScreen = useMediaQuery({minWidth: 501, maxWidth: 600});
+  const isTablet = useMediaQuery({minWidth: 601, maxWidth: 800});
+  const isLargeTablet = useMediaQuery({minWidth: 801, maxWidth: 1000});
+  const isDesktop = useMediaQuery
+
+
   useEffect(() => {
     fetchPlantsByIds(plantIds);
   }, []);
 
   const bedroomButtonCoordinates = [
     //Monstera
-    { x: 85, y: 55, plantIndex: 2 },
+    { x: 85, y: 55, plantIndex: 1 },
     //Snake Plant
-    { x: 60, y: 70, plantIndex: 3 },
+    { x: 60, y: 70, plantIndex: 2 },
     //Money Tree
-    { x: 10, y: 30, plantIndex: 1 },
+    { x: 10, y: 30, plantIndex: 3 },
   ];
 
   const handleButtonClick = (plantIndex, coord) => {
@@ -37,8 +51,25 @@ export const ArticleBedroom = () => {
   };
 
   const calculatePlantCardPosition = (dotButtonCoord) => {
-    const left = dotButtonCoord.x > 50 ? `${dotButtonCoord.x - 50}%` : `${dotButtonCoord.x}%`;
-    const top = dotButtonCoord.y > 50 ? `${dotButtonCoord.y - 50}%` : `${dotButtonCoord.y}%`;
+    const cardWidth = isMobile ? 55 : isSmallScreen ? 47 : isMediumScreen ? 40 : isTablet ? 30 : isLargeTablet ? 25 : 200; 
+    const cardHeight = isMobile ? 40 : isSmallScreen ? 30 : isMediumScreen ? 20 : isTablet ? 20 : isLargeTablet ? 10 : 200;
+    const gap = isMobile ? 10 : isSmallScreen ? 7 : isMediumScreen ? 7 : isTablet ? 5 : 5; 
+
+    let left; 
+    if (dotButtonCoord.x > 50) {
+      // Align right corner with button if button is on the right side
+      left = `${dotButtonCoord.x - cardWidth}%`;
+    } else {
+      // Align left corner with button if button is on the left side
+      left = `${dotButtonCoord.x + gap }%`;
+    }
+
+    let top; 
+    if (dotButtonCoord.y > 50) {
+      top = `${dotButtonCoord.y - cardHeight}%`
+    } else {
+      top = `${dotButtonCoord.y}%`
+    };
     return { left, top };
   };
 
