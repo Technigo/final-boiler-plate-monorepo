@@ -62,7 +62,7 @@ export const Navbar = () => {
           <IoIosMenu className="menu-icon" onClick={toggleHiddenMenu} />
         </div>
         <div className="logo-container">
-          <Link to="/">
+          <Link to="/" aria-label="Go to home page">
             <img
               src="./logo-sand.svg"
               alt="Plants by Holm and Witting logotype"
@@ -70,10 +70,10 @@ export const Navbar = () => {
           </Link>
         </div>
         <div className="nav-sections">
-          <Link to="/dashboard">
+          <Link to="/dashboard" aria-label="Go to account dashboard">
             <RiUserLine className="user-icon" />
           </Link>
-          <Link to="/cart" className="cart-badge-container">
+          <Link to="/cart" className="cart-badge-container" aria-label="Go to your cart">
             <HiShoppingBag className="cart-icon" />
             <div className="cart-count">{numberOfProducts}</div>
           </Link>
@@ -100,7 +100,7 @@ export const Navbar = () => {
           </div>
         </div>
         <div className="logo-container">
-          <Link to="/">
+          <Link to="/" aria-label="Go to home page">
             <img
               src="./logo-sand.svg"
               alt="Plants by Holm and Witting logotype"
@@ -108,8 +108,8 @@ export const Navbar = () => {
           </Link>
         </div>
         <div className="nav-sections">
-          <Link to="/dashboard">Account</Link>
-          <Link to="/cart" className="cart-badge-container">
+          <Link to="/dashboard" aria-label="Go to account dashboard">Account</Link>
+          <Link to="/cart" className="cart-badge-container" aria-label="Go to your cart">
             <HiShoppingBag className="cart-icon" />
             <div className="cart-count">
               {numberOfProducts}

@@ -1,6 +1,5 @@
 import { ArticleBedroom } from "./articles/ArticleBedroom";
 import { ArticleBalcony } from "./articles/ArticleBalcony";
-import { BestSellers } from "../homePage/sections/bestSellers/BestSellers";
 import { Instagram } from "../homePage/sections/instagram/Instagram"; 
 import "./InspoPage.css";
 
@@ -26,7 +25,6 @@ export const InspoPage = () => {
         </div>
       </section>
       <hr className="line"/>
-      <BestSellers />
       <Instagram />
     </>
   );

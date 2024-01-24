@@ -29,7 +29,7 @@ export const Login = () => {
   const content = {
     srcLogoImg: "./big-logo-sand.svg",
     altLogoImg: "Plants by Holm and Witting logo",
-    srcBackgroundImg: "./login-register-bg.png",
+    srcBackgroundImg: "./login-register-bg.jpg",
     altBackgroundImg: "Background image of plant leaves",
     labelUsername: "Username",
     labelPassword: "Password",

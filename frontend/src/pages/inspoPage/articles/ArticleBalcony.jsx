@@ -11,12 +11,15 @@ export const ArticleBalcony = () => {
 
   const plantIds = [3, 21, 10, 2];
 
-  const isMobile = useMediaQuery({maxWidth: 400});
-  const isSmallScreen = useMediaQuery({minWidth: 401, maxWidth: 500});
-  const isMediumScreen = useMediaQuery({minWidth: 501, maxWidth: 600});
-  const isTablet = useMediaQuery({minWidth: 601, maxWidth: 800});
-  const isLargeTablet = useMediaQuery({minWidth: 801, maxWidth: 1000});
-  const isDesktop = useMediaQuery({minWidth: 1001});
+  const isMobileSmall = useMediaQuery({maxWidth: 390});
+  const isMobileMedium = useMediaQuery({minWidth: 391, maxWidth: 410});
+  const isMobileLarge = useMediaQuery({minWidth: 411, maxWidth: 450});
+  const isTabletSmall = useMediaQuery({minWidth: 451, maxWidth: 500});
+  const isTabletMedium = useMediaQuery({minWidth: 501, maxWidth: 610});
+  const isTabletMediumLarge = useMediaQuery({minWidth: 611, maxWidth: 700});
+  const isTabletLarge = useMediaQuery({minWidth: 701, maxWidth: 743 }); 
+  const isDesktop = useMediaQuery({minWidth: 744, maxWidth: 800 });
+  const isDesktopLarge = useMediaQuery({minWidth: 801, maxWidth: 900});
 
   useEffect(() => {
     fetchPlantsByIds(plantIds);
@@ -43,9 +46,9 @@ export const ArticleBalcony = () => {
   };
 
   const calculatePlantCardPosition = (dotButtonCoord) => {
-    const cardWidth = isMobile ? 55 : isSmallScreen ? 47 : isMediumScreen ? 40 : isTablet ? 30 : isLargeTablet ? 25 : 200; 
-    const cardHeight = isMobile ? 40 : isSmallScreen ? 30 : isMediumScreen ? 20 : isTablet ? 20 : isLargeTablet ? 10 : 200;
-    const gap = isMobile ? 10 : isSmallScreen ? 7 : isMediumScreen ? 7 : isTablet ? 5 : 5; 
+    const cardWidth = isMobileSmall ? 53 : isMobileMedium ? 52 : isMobileLarge ? 49 : isTabletSmall ? 45 : isTabletMedium ? 40 : isTabletMediumLarge ? 36 : isTabletLarge ? 31 : isDesktop ? 32 : isDesktopLarge ? 30 : 25; 
+    const cardHeight = isMobileSmall ? 45 : isMobileMedium ? 40 : isMobileLarge ? 37 : isTabletSmall ? 32 : isTabletMedium ? 28 : isTabletMediumLarge ? 25 : isTabletLarge ? 18 : isDesktop ? 18 : 18;
+    const gap = isTabletMediumLarge || isTabletLarge || isDesktop || isDesktopLarge || window.innerWidth > 900 ? 5 : 8; 
 
     let left; 
     if (dotButtonCoord.x > 50) {

@@ -1,5 +1,6 @@
 import { useParams, Link } from "react-router-dom";
 import { useState, useEffect } from "react";
+import { useMediaQuery } from "react-responsive";
 import { plantStore } from "../../stores/usePlantStore";
 import { cartStore } from "../../stores/useCartStore";
 // importing components
@@ -26,7 +27,9 @@ export const ProductPage = () => {
   const [snackbarOpen, setSnackbarOpen] = useState(false);
   const [showMore, setShowMore] = useState(false);
 
-  // fetching clicked plant using useParams, 
+  const isMobile = useMediaQuery({ query: "(max-width: 744px)" });
+
+  // fetching clicked plant using useParams,
   // sending it to the fetchSinglePlant function in plantStore.
   useEffect(() => {
     setApiEndpoint(
@@ -58,63 +61,145 @@ export const ProductPage = () => {
       </Link>
       <div className="product-page-container">
         <div className="product-highlights-wrapper">
-          <span className="botanical-name">{singlePlant.botanical_name}</span>
-          <h1 className="plant-page-title">{singlePlant.plant_title}</h1>
-          <span className="price">€{singlePlant.price}</span>
-          <div className="plant-image-container">
-            <img
-              className="product-image"
-              src={singlePlant.images && singlePlant.images.full_size_url}
-              alt=""
-            />
-          </div>
-          <Button
-            className="add-to-cart-btn terracotta-btn"
-            onClick={handleAddToCart}
-            btnText="Add to Cart"
-            ariaLabel="cart button"
-          />
-          <div className="plant-description-container">
-            <span className="italic-style">{singlePlant.common_names}</span>
-            <p
-              style={
-                showMore
-                  ? null
-                  : {
-                      WebkitLineClamp: 3,
-                      WebkitBoxOrient: "vertical",
-                      overflow: "hidden",
-                      display: "-webkit-box",
-                    }
-              }
-            >
-              {singlePlant.description}
-            </p>
-            <span className="show-more" onClick={() => setShowMore(!showMore)}>
-              {showMore ? "show less..." : "show more..."}
-            </span>
-          </div>
-          <div className="details-container">
-            <hr />
-            <div className="plant-height">
-              <div>
-                <MdOutlineHeight className="details-icon" />
-                <span>Height (incl. pot)</span>
-              </div>
-              <span>{singlePlant.height}</span>
-            </div>
-            <hr />
-            <div className="plant-height">
-              <div>
-                <PiPottedPlantDuotone className="details-icon" />
-                <span>Care level</span>
-              </div>
-              <span>
-                {singlePlant.careDetails && singlePlant.careDetails.care_level}
+          {isMobile ? (
+            <>
+              <span className="botanical-name">
+                {singlePlant.botanical_name}
               </span>
-            </div>
-            <hr />
-          </div>
+              <h1 className="plant-page-title">{singlePlant.plant_title}</h1>
+              <span className="price">€{singlePlant.price}</span>
+              <div className="plant-image-container">
+                <img
+                  className="product-image"
+                  src={singlePlant.images && singlePlant.images.full_size_url}
+                  alt=""
+                />
+              </div>
+              <Button
+                className="add-to-cart-btn terracotta-btn"
+                onClick={handleAddToCart}
+                btnText="Add to Cart"
+                ariaLabel="cart button"
+              />
+              <div className="plant-description-container">
+                <span className="italic-style">{singlePlant.common_names}</span>
+                <p
+                  style={
+                    showMore
+                      ? null
+                      : {
+                          WebkitLineClamp: 3,
+                          WebkitBoxOrient: "vertical",
+                          overflow: "hidden",
+                          display: "-webkit-box",
+                        }
+                  }
+                >
+                  {singlePlant.description}
+                </p>
+                <span
+                  className="show-more"
+                  onClick={() => setShowMore(!showMore)}
+                >
+                  {showMore ? "show less..." : "show more..."}
+                </span>
+              </div>
+              <div className="details-container">
+                <hr />
+                <div className="plant-height">
+                  <div>
+                    <MdOutlineHeight className="details-icon" />
+                    <span>Height (incl. pot)</span>
+                  </div>
+                  <span>{singlePlant.height}</span>
+                </div>
+                <hr />
+                <div className="plant-height">
+                  <div>
+                    <PiPottedPlantDuotone className="details-icon" />
+                    <span>Care level</span>
+                  </div>
+                  <span>
+                    {singlePlant.careDetails &&
+                      singlePlant.careDetails.care_level}
+                  </span>
+                </div>
+                <hr />
+              </div>
+            </>
+          ) : (
+            <>
+              <div className="left-col">
+                <span className="botanical-name">
+                  {singlePlant.botanical_name}
+                </span>
+                <h1 className="plant-page-title">{singlePlant.plant_title}</h1>
+                <span className="price">€{singlePlant.price}</span>
+                <div className="plant-description-container">
+                  <span className="italic-style">
+                    {singlePlant.common_names}
+                  </span>
+                  <p
+                    style={
+                      showMore
+                        ? null
+                        : {
+                            WebkitLineClamp: 3,
+                            WebkitBoxOrient: "vertical",
+                            overflow: "hidden",
+                            display: "-webkit-box",
+                          }
+                    }
+                  >
+                    {singlePlant.description}
+                  </p>
+                  <span
+                    className="show-more"
+                    onClick={() => setShowMore(!showMore)}
+                  >
+                    {showMore ? "show less..." : "show more..."}
+                  </span>
+                </div>
+                <div className="details-container">
+                  <hr />
+                  <div className="plant-height">
+                    <div>
+                      <MdOutlineHeight className="details-icon" />
+                      <span>Height (incl. pot)</span>
+                    </div>
+                    <span>{singlePlant.height}</span>
+                  </div>
+                  <hr />
+                  <div className="plant-height">
+                    <div>
+                      <PiPottedPlantDuotone className="details-icon" />
+                      <span>Care level</span>
+                    </div>
+                    <span>
+                      {singlePlant.careDetails &&
+                        singlePlant.careDetails.care_level}
+                    </span>
+                  </div>
+                  <hr />
+                </div>
+              </div>
+              <div className="right-col">
+                <div className="plant-image-container">
+                  <img
+                    className="product-image"
+                    src={singlePlant.images && singlePlant.images.full_size_url}
+                    alt=""
+                  />
+                </div>
+                <Button
+                  className="add-to-cart-btn terracotta-btn"
+                  onClick={handleAddToCart}
+                  btnText="Add to Cart"
+                  ariaLabel="cart button"
+                />
+              </div>
+            </>
+          )}
         </div>
         <PlantCare
           singlePlant={singlePlant}

@@ -41,18 +41,19 @@ export const PlantCard = ({ plants }) => {
                     <Link
                       to={`/plants/${plant._id}`}
                       className="hover-btn-more"
+                      aria-label="Go to product page"
                     >
                       more info
                     </Link>
                     <Button
                       className="hover-btn-add"
                       btnText="add to cart"
-                      ariaLabel="More info button"
+                      ariaLabel="Add this product to your cart"
                       onClick={() => handleAddToCart(plant)}
                     />
                   </div>
                 </div>
-                <Link to={`/plants/${plant._id}`}>
+                <Link to={`/plants/${plant._id}`} aria-label="Go to product page">
                   <div className="title-price-container">
                     <h3 className="card-name">{plant.plant_title}</h3>
                     <span className="card-price">€{plant.price}</span>

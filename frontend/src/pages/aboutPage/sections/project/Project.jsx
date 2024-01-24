@@ -21,7 +21,7 @@ export const Project = () => {
         </p>
         <Link
           to="https://github.com/JuliaHolm/final-boiler-plate-monorepo"
-          className="project-link"
+          className="project-link" aria-label="Project link to git hub repository"
         >
           <FaCode className="code-icon" />
           <p className="about-p">

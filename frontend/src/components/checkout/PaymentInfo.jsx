@@ -70,33 +70,33 @@ export const PaymentInfo = () => {
           </p>
           <div className="form-wrapper">
             <InputReadOnly
-              type="text"
+              type={"text"}
               value=""
-              placeholder="Rhoda Dendron"
-              ariaLabel="Card holder input."
+              placeholder={"Rhoda Dendron"}
+              ariaLabel={"Card holder input."}
               readOnly={true}
             />
             <InputReadOnly
-              type="text"
+              type={"text"}
               value=""
-              placeholder="XXXX XXXX XXXX XXXX"
-              ariaLabel="City input."
+              placeholder={"XXXX XXXX XXXX XXXX"}
+              ariaLabel={"City input."}
               readOnly={true}
             />
             <div className="input-payment-small">
               <InputReadOnly
-                type="text"
+                type={"text"}
                 value=""
-                placeholder="MM/YY"
-                ariaLabel="City input."
+                placeholder={"MM/YY"}
+                ariaLabel={"City input."}
                 readOnly={true}
                 className={"input-small"}
               />
               <InputReadOnly
-                type="text"
+                type={"text"}
                 value=""
-                placeholder="CVC"
-                ariaLabel="City input."
+                placeholder={"CVC"}
+                ariaLabel={"City input."}
                 readOnly={true}
                 className={"input-small"}
               />

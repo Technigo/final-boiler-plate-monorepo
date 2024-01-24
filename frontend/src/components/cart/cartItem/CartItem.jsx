@@ -14,7 +14,7 @@ export const CartItem = ({
   botanicalName,
   quantity,
 }) => {
-  // importing cart functions. 
+  // importing cart functions.
   const { removeFromCart, addByIndexToCart } = cartStore();
   // states for handling snackbar alert messages
   const [addSnackbarOpen, setAddSnackbarOpen] = useState(false);
@@ -59,38 +59,40 @@ export const CartItem = ({
           <span className="item-price">€{price}</span>
           <div className="item-quantity-container">
             <Button
-              className="cart-btn"
+              className={"cart-btn"}
+              ariaLabel={"remove item from cart"}
               onClick={() => handleRemoveFromCart(index)}
               btnText={<CiCircleMinus size={24} />}
             />
             <span>{quantity}</span>
             <Button
-              className="cart-btn"
+              className={"cart-btn"}
+              ariaLabel={"add another item from cart"}
               onClick={() => handleAddToCart(index)}
               btnText={<CiCirclePlus size={24} />}
             />
             <Snackbar
-                anchorOrigin={{ vertical: "bottom", horizontal: "left" }}
-                open={addSnackbarOpen}
-                autoHideDuration={3000}
+              anchorOrigin={{ vertical: "bottom", horizontal: "left" }}
+              open={addSnackbarOpen}
+              autoHideDuration={3000}
+              onClose={(reason) => handleSnackbarClose(reason, "add")}
+            >
+              <MuiAlert
                 onClose={(reason) => handleSnackbarClose(reason, "add")}
+                severity="success"
+                sx={{
+                  width: "100%",
+                  backgroundColor: "#3f543f",
+                  color: "#f3f3ea",
+                  "& .MuiSvgIcon-root": {
+                    fill: "#f3f3ea",
+                  },
+                }}
               >
-                <MuiAlert
-                  onClose={(reason) => handleSnackbarClose(reason, "add")}
-                  severity="success"
-                  sx={{
-                    width: "100%",
-                    backgroundColor: "#3f543f",
-                    color: "#f3f3ea",
-                    "& .MuiSvgIcon-root": {
-                      fill: "#f3f3ea",
-                    },
-                  }}
-                >
-                  Plant added to cart!
-                </MuiAlert>
-              </Snackbar>
-              <Snackbar
+                Plant added to cart!
+              </MuiAlert>
+            </Snackbar>
+            <Snackbar
               anchorOrigin={{ vertical: "bottom", horizontal: "left" }}
               open={removeSnackbarOpen}
               autoHideDuration={3000}

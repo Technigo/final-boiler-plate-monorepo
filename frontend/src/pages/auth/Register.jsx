@@ -1,4 +1,5 @@
 import { Link, useNavigate } from "react-router-dom";
+import { useState } from "react";
 import { useAuthStore } from "../../stores/useAuthStore";
 import { InputField } from "../../components/inputs/InputField";
 import { Button } from "../../components/buttons/Button";
@@ -30,7 +31,7 @@ export const Register = () => {
   const content = {
     srcLogoImg: "./big-logo-sand.svg",
     altLogoImg: "Plants by Holm and Witting logo",
-    srcBackgroundImg: "./login-register-bg.png",
+    srcBackgroundImg: "./login-register-bg.jpg",
     altBackgroundImg: "Background image of plant leaves",
     headingP: "Become a memeber today!",
     labelUsername: "Username",

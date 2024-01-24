@@ -101,6 +101,7 @@
   .hero-image-container img {
     border-radius: 0rem 0rem 31.25rem 31.25rem;
     object-position: 0%;
+    width: auto;
   }
 }
 

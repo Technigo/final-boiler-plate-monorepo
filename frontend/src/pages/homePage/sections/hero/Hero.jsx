@@ -10,7 +10,7 @@ export const Hero = () => {
     btnText: "Shop all plants",
     btnAriaLabel: "Shop all plants",
     linkTo: "plants/all-plants",
-    srcHeroImg: "./hero-img.png",
+    srcHeroImg: "./hero-img.jpg",
     altHeroImg: "Background of plants",
   };
 

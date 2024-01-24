@@ -35,7 +35,7 @@ export const PlantCardMini = ({ plants, position }) => {
             key={plant._id}
             style={{ position: "absolute", ...position }}
           >
-            <Link to={`/plants/${plant._id}`}>
+            <Link to={`/plants/${plant._id}`} aria-label="Go to product page">
               <div className="mini-link-container">
                 <div className="title-price-container-mini">
                   <h3 className="card-name">{plant.plant_title}</h3>
@@ -47,7 +47,7 @@ export const PlantCardMini = ({ plants, position }) => {
             <Button
               className="hover-btn-add"
               btnText="add to cart"
-              ariaLabel="More info button"
+              ariaLabel="Add this product to cart"
               onClick={() => handleAddToCart(plant)}
             />
             <Snackbar

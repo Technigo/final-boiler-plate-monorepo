@@ -36,6 +36,7 @@ const AccordionItem = ({
                     to={link.url}
                     rel="noopener noreferrer"
                     onClick={() => onLinkClick(link.url)}
+                    ariaLabel={link.text}
                   >
                     {link.text}
                   </Link>
@@ -50,16 +51,18 @@ const AccordionItem = ({
                   {index > 0 && (
                     <Button
                       className={"accordion-btn"}
-                      type="button"
-                      btnText="Back"
+                      type={"button"}
+                      btnText={"Back"}
+                      ariaLabel={"Go to previous step"}
                       onClick={() => onNavigate("back")}
                     />
                   )}
                   {index < totalItems - 1 && (
                     <Button
                       className={"accordion-btn"}
-                      type="button"
-                      btnText="Next"
+                      type={"button"}
+                      btnText={"Next"}
+                      ariaLabel={"Go to next step"}
                       onClick={() => onNavigate("next")}
                     />
                   )}
