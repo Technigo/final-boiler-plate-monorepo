@@ -13,7 +13,6 @@
 }
 
 .h1 {
-    color: #1D1C25;
     justify-self: center;
     grid-column: span 2;
     padding-top: 20px;
@@ -66,7 +65,7 @@
     /*Macbook Air*/
     @media (min-width: 1285px) {
         .wrapper {
-            padding: 150px 0 0 0;
+            padding: 150px 0 150px 0;
         }
 
         .contactTextWrapper {
@@ -74,7 +73,7 @@
         }
 
         .h3 {
-            padding: 40px 10px 10px 10px;
+            padding: 75px 10px 10px 20px;
             margin-bottom: 8px;
         }
 

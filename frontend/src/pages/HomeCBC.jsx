@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import styles from './HomeCBC.module.css';
+import { NewsTicker } from './NewsTicker.jsx';
 import { Text } from '../UI/Typography';
 import { Link } from 'react-router-dom';
 import lottie from 'lottie-web';
@@ -9,7 +10,7 @@ export const HomeCBC = () => {
     const [isLoading, setIsLoading] = useState(true);
     const animationContainer = useRef(null);
     const featuredIds = ['659ffaa600633fc348dba096', '659ffb9c00633fc348dba0ba', '65a0a9464c154a29ccb2c897', '65a10c3688f0635f92631564', '659ff9f200633fc348dba08a', '659ff85400633fc348dba062'];
-    // 1. cosmopolitan 2. dornish delight 5. growing strong, 6. fire and blood
+
     useEffect(() => {
         setIsLoading(true);
         const anim = lottie.loadAnimation({
@@ -43,6 +44,9 @@ export const HomeCBC = () => {
                 <img src="/images/homeHeader-img.jpg" className={styles.headerImg} alt="6 pink cocktails" />
                 <div className={styles.logoLargeText}>CbC</div>
                 <div className={styles.logoSmallText}>CARL BERNER COCKTAILKLUBB</div>
+            </div>
+            <div className={styles.newsTick}>
+                <NewsTicker />
             </div>
             <div className={styles.wrapper}>
                 {isLoading && (
