@@ -25,6 +25,7 @@ img {
 // Responsive desktop
 @media (min-width: 1285px) {
   img {
+    padding-top:70px;
     width: 60px; 
   }
 }
