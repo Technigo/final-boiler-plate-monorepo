@@ -66,8 +66,8 @@ export const Register = () => {
                 {content.labelUsername}
               </label>
               <InputField
-                type="text"
-                name="username"
+                type={"text"}
+                name={"username"}
                 value={username}
                 placeholder={content.labelUsername}
                 onChange={(e) => setUsername(e.target.value)}

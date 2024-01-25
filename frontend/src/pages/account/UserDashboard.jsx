@@ -45,11 +45,11 @@ export const UserDashboard = () => {
           </ul>
         </div>
         <Button
-          className="logout-btn"
-          type="button"
+          className={"logout-btn"}
+          type={"button"}
           onClick={logout}
-          aria-label="To logout click on this button"
-          btnText="Logout"
+          ariaLabel={"To logout click on this button"}
+          btnText={"Logout"}
         />
       </div>
     </div>

@@ -49,6 +49,7 @@ export const CartPage = () => {
           className="clear-btn"
           onClick={handleClearCart}
           btnText="Clear Cart"
+          ariaLabel={"remove all items from cart"}
         />
         <div className="btn-wrapper-cart">
           <Link to="/plants/all-plants">
@@ -59,6 +60,7 @@ export const CartPage = () => {
               <Button
                 className="checkout-btn gradient-btn"
                 btnText="Proceed to checkout"
+                ariaLabel={"Proceed to checkout"}
               />
             </Link>
           )}

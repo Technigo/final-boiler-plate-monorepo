@@ -55,7 +55,7 @@ export const ProductPage = () => {
 
   return (
     <div className="product-page">
-      <Link to="/plants/all-plants" className="go-back">
+      <Link to="/plants/all-plants" className="go-back" aria-label="go back to all plants">
         <MdKeyboardArrowLeft className="go-back-icon" />
         Go back to all plants
       </Link>

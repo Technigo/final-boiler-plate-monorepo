@@ -39,7 +39,7 @@ export const CheckOutPage = () => {
   //This variable should change when we have an actual username
   let username = "Plant Friend";
 
-  const { cart, calculateTotalPrice } = cartStore();
+  const { cart, calculateTotalPrice, clearCart } = cartStore();
 
   useEffect(() => {
     calculateTotalPrice();
@@ -96,6 +96,7 @@ export const CheckOutPage = () => {
   const handlePayButtonClick = async (e) => {
     e.preventDefault();
     await sendEmail();
+    clearCart();
   };
 
   const accordionItems = [
@@ -110,11 +111,11 @@ export const CheckOutPage = () => {
                 This is not implemented yet, so please check out as a guest below with your email.
               <div className="login-wrapper">
                 <p>Already have an account?</p>
-                <Button className={"checkout-btn gradient-btn"} btnText={"Log in"} />
+                <Button className={"checkout-btn gradient-btn"} btnText={"Log in"} ariaLabel={"Go to login"}/>
               </div>
               <div className="login-wrapper">
                 <p>Create an account!</p>
-                <Button className={"checkout-btn gradient-btn"} btnText={"Register"} />
+                <Button className={"checkout-btn gradient-btn"} btnText={"Register"} ariaLabel={"Go to register"}/>
               </div>
             </div>
             <span 
@@ -126,14 +127,14 @@ export const CheckOutPage = () => {
               {show && (
                 <>
                   <InputField
-                    type="email"
-                    name="to_email"
-                    placeholder="your.email@email.com"
+                    type={"email"}
+                    name={"to_email"}
+                    placeholder={"your.email@email.com"}
                     onChange={(e) => setEmail(e.target.value)}
                     required
                     value={email}
-                    ariaLabel="Email input."
-                    labelTxt="Please put in your email"
+                    ariaLabel={"Email input."}
+                    labelTxt={"Please put in your email"}
                   />
                   <PersonalInfo />
                 </>
@@ -206,7 +207,7 @@ export const CheckOutPage = () => {
               <OrderSuccess />
               ) : ( 
                 <>
-                  <Link to="/cart" className="go-back">
+                  <Link to="/cart" className="go-back" aria-label="go back to cart">
                     <MdKeyboardArrowLeft className="go-back-icon" />
                     Go back to cart
                   </Link>
@@ -214,11 +215,11 @@ export const CheckOutPage = () => {
                   <div className={"checkout-form"}>
                     <Accordion items={accordionItems} showButtons={true} openFirstAccordion={true}/>
                     <div className="btn-container-checkout">
-                      <Link to="/plants/all-plants">
+                      <Link to="/plants/all-plants" aria-label="continue shopping">
                         <Button className="clear-btn checkout-btn" 
                           btnText="Continue shopping"/>
                       </Link>
-                      <Button className={"checkout-btn terracotta-btn"} type={"submit"} btnText={"Pay"} onClick={(e) => handlePayButtonClick(e)} />
+                      <Button className={"checkout-btn terracotta-btn"} type={"submit"} btnText={"Pay"} onClick={(e) => handlePayButtonClick(e)} ariaLabel={"Pay and finish"}/>
                     </div>
                     <Snackbar
                         anchorOrigin={{ vertical: "bottom", horizontal: "left" }}

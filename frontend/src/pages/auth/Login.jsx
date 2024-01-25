@@ -59,8 +59,8 @@ export const Login = () => {
                 {content.labelUsername}
               </label>
               <InputField
-                type="text"
-                name="username"
+                type={"text"}
+                name={"username"}
                 value={username}
                 placeholder={content.labelUsername}
                 onChange={(e) => setUsername(e.target.value)}
@@ -72,8 +72,8 @@ export const Login = () => {
                 {content.labelPassword}
               </label>
               <InputField
-                type="password"
-                name="password"
+                type={"password"}
+                name={"password"}
                 value={password}
                 placeholder={content.labelPassword}
                 onChange={(e) => setPassword(e.target.value)}
