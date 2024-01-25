@@ -14,7 +14,6 @@ import ArticlesFrontTablet from "../components/Startpage/ArticlesFrontTablet";
 import ArticlesFrontMobile from "../components/Startpage/ArticlesFrontMobile";
 import Footer from "../components/Footer";
 import FooterMobile from "../components/FooterMobile";
-import "../components/header.css";
 
 export const Startpage = () => {
 
