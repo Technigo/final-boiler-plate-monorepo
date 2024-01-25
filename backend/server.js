@@ -25,8 +25,8 @@ app.use(
     origin: [
       `http://localhost:5173`,
       "https://plantsby-holm-witting.netlify.app",
-      "https://plantsby-holm-witting.netlify.app/api/plants",
-      "https://plantsby-holm-witting.netlify.app/api/favourites",
+      "https://plants-holm-witting-backend.onrender.com/api/plants",
+      "https://plants-holm-witting-backend.onrender.com/api/favourites",
     ], // Allow access from this origin
     methods: ["GET", "POST", "PUT", "DELETE"], // Allow these methods
     credentials: true, // Allow cookies to be sent to the client
