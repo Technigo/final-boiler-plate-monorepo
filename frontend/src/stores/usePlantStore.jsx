@@ -17,23 +17,19 @@ export const plantStore = create((set, get) => ({
   fetchPlants: async (endpoint) => {
     try {
       set({ isLoading: true });
-      set({ isLoadingStartTime: Date.now() }); // Record the start time
       const response = await fetch(apiEnv + endpoint, {
         method: "GET",
       });
       if (response.ok) {
         const data = await response.json();
-        set({ plants: data });
+        set({ plants: data, isLoading: false });
       } else {
         console.error("Failed to fetch plants");
+        set({ isLoading: false });
       }
     } catch (error) {
       console.error(error);
-    } finally {
-      // Ensure the loader shows for at least 3 seconds
-      setTimeout(() => {
-        set({ isLoading: false });
-      }, 3000 - (Date.now() - get().isLoadingStartTime)); // Calculate remaining time
+      set({ isLoading: false });
     }
   },
   // adding to the endpont to use another backend route.

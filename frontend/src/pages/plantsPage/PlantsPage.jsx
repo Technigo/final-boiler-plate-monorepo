@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import { plantStore } from "../../stores/usePlantStore";
 import { Button } from "../../components/buttons/Button";
@@ -21,8 +21,6 @@ export const PlantsPage = () => {
   // Access the 'plants' and 'fetchPlants' functions from the 'plantStore'.
   const { plants, fetchPlantsByCategory, isLoading } = plantStore();
 
-  const [showLoader, setShowLoader] = useState(false);
-
   useEffect(() => {
     if (category) {
       fetchPlantsByCategory(category);
@@ -30,24 +28,6 @@ export const PlantsPage = () => {
       fetchPlantsByCategory(null);
     }
   }, [fetchPlantsByCategory, category]);
-
-  useEffect(() => {
-    // Set the flag to display the loader
-    const loadingTimer = setTimeout(() => {
-      setShowLoader(true);
-    }, 3000);
-
-    return () => {
-      clearTimeout(loadingTimer);
-    };
-  }, [plants]);
-
-  useEffect(() => {
-    // If plants are fetched within 3 seconds, cancel the loader display timer
-    if (plants.length > 0) {
-      setShowLoader(false);
-    }
-  }, [plants]);
 
   return (
     <>
@@ -77,7 +57,7 @@ export const PlantsPage = () => {
                 />
               </Link>
             </div>
-            {showLoader && isLoading ? (
+            {isLoading ? (
               <div className="animation-wrapper">
                 <PlantLoader className="loader-animation" />
                 <p className="p-body">
