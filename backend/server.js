@@ -22,7 +22,7 @@ const port = process.env.PORT;
 // MIDDLEWARES
 app.use(
   cors({
-    origin: "*", // Allow access from this origin
+    origin: "*", // Allows requests from any origin
     methods: ["GET", "POST", "PUT", "DELETE"], // Allow these methods
     credentials: true, // Allow cookies to be sent to the client
   })

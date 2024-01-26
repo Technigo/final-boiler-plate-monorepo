@@ -56,7 +56,7 @@ const accordionItems = [
 ];
 
 const content = {
-  logoUrl: "./big-logo-sand.svg",
+  logoUrl: "../../big-logo-sand.svg",
   logoAlt: "Plants by Holm and Witting logotype",
   copyright: "Copyright 2024 © Julia H & Vera W",
   bootcampP: "Technigo Bootcamp Final Project",
