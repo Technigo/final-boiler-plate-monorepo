@@ -32,7 +32,7 @@ export const plantStore = create((set, get) => ({
       set({ isLoading: false });
     }
   },
-  // adding to the endpont to use another backend route. 
+  // adding to the endpont to use another backend route.
   fetchPlantsByCategory: async (category) => {
     let endpoint;
     switch (category) {
