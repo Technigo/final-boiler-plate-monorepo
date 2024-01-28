@@ -1,0 +1,281 @@
+* {
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    list-style: none;
+    box-sizing: border-box;
+
+}
+
+.nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    background-color: #AA8497;
+    padding: 0 1rem;
+    height: 90px;
+}
+
+
+.navLinks {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    position: absolute;
+    top: 99%;
+    left: 0;
+    background-color: #AA8497;
+    box-sizing: border-box;
+    z-index: 20;
+}
+
+.LogoButtonWrapper {
+    padding-left: 5px;
+}
+
+.bar {
+    display: block;
+    width: 33px;
+    height: 3px;
+    background-color: #F6EDF1;
+    transition: all 0.3s ease;
+    border-radius: 13px;
+    display: block;
+    margin: 5px auto;
+    /* This centers the bars and ensures equal spacing */
+    transition: transform 0.2s, opacity 0.2s;
+    /* Smooth transitions for the transform and opacity changes */
+}
+
+
+.menuIcon {
+    position: relative;
+    width: 30px;
+    height: 20px;
+}
+
+
+.navLinks.active {
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+}
+
+.navLink {
+    color: #F6EDF1;
+    background-color: #AA8497;
+    padding: 20px;
+    text-decoration: overline;
+    z-index: 2;
+    font-family: 'Tenor Sans', sans-serif;
+    letter-spacing: 1px;
+    font-size: 15px;
+    line-height: 131%;
+    padding: 20px 18px;
+    display: block;
+
+}
+
+.navLink::after {
+    display: none;
+}
+
+.navLink:first-child {
+    padding-top: 50px;
+}
+
+.navLink:last-child {
+    padding-bottom: 67px;
+}
+
+/* X icon for closing navbar */
+.open .bar:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+}
+
+.open .bar:nth-child(2) {
+    opacity: 0;
+}
+
+
+
+.open .bar:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+}
+
+
+/* smaller tablets*/
+@media (min-width: 767px) {
+
+    .nav {
+        height: 130px;
+    }
+
+    .menuIcon {
+        padding-top: 0px;
+        padding-right: 40px;
+        overflow: visible;
+    }
+
+    .navLink {
+        top: 2vh;
+        left: 88%;
+        font-size: 18px;
+    }
+
+    .bar {
+        display: block;
+        width: 43px;
+        height: 4px;
+        margin: 7px auto;
+        background-color: #F6EDF1;
+        transition: all 0.3s ease;
+    }
+
+    .logo {
+        margin-top: 20px;
+    }
+
+    .LogoButtonWrapper {
+        padding-left: 25px;
+    }
+
+    /* X icon for closing navbar */
+    .open .bar:nth-child(1) {
+        transform: translateY(11px) rotate(45deg);
+    }
+
+    .open .bar:nth-child(2) {
+        opacity: 0;
+    }
+
+    .open .bar:nth-child(3) {
+        transform: translateY(-11px) rotate(-45deg);
+    }
+
+    .navLink:last-child {
+        padding-bottom: 77px;
+    }
+}
+
+/* iPad Pro 11" */
+@media (min-width: 820px) {
+    .nav {
+        height: 130px;
+    }
+
+    .menuIcon {
+        padding-top: 0px;
+        padding-right: 40px;
+        overflow: visible;
+    }
+
+    .navLink {
+        top: 2vh;
+        left: 88%;
+        font-size: 23px;
+    }
+
+    .bar {
+        display: block;
+        width: 43px;
+        height: 4px;
+        margin: 7px auto;
+        background-color: #F6EDF1;
+        transition: all 0.3s ease;
+    }
+
+    .logo {
+        margin-top: 20px;
+    }
+
+    .LogoButtonWrapper {
+        padding-left: 25px;
+    }
+
+    /* X icon for closing navbar */
+    .open .bar:nth-child(1) {
+        transform: translateY(11px) rotate(45deg);
+    }
+
+    .open .bar:nth-child(2) {
+        opacity: 0;
+    }
+
+    .open .bar:nth-child(3) {
+        transform: translateY(-11px) rotate(-45deg);
+    }
+
+    .navLink:last-child {
+        padding-bottom: 155px;
+    }
+}
+
+@media (min-width: 1285px) {
+    .nav {
+        height: 150px;
+    }
+
+    .menuIcon {
+        display: none;
+    }
+
+    .nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: relative;
+        background-color: #AA8497;
+        padding: 0 1rem;
+        height: 160px;
+        padding-right: 23px;
+    }
+
+    .navLinks {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        flex-direction: row;
+        width: auto;
+        top: 0;
+        left: 0;
+        background-color: transparent;
+    }
+
+    .navLink {
+        padding: 55px 18px 0 18px;
+        font-size: 28px;
+        color: #F6EDF1;
+    }
+
+    .LogoButtonWrapper {
+        padding-left: 25px;
+        padding-top: 20px;
+    }
+
+    .navLink:hover {
+        color: #55424b;
+    }
+
+    .navSvgBackground {
+        display: none;
+    }
+
+    .navLink.dropdown {
+        pointer-events: none;
+    }
+
+    .navLink:not(:last-of-type)::after {
+        display: none;
+    }
+
+    .navLink:first-child {
+        padding-top: 55px;
+    }
+
+    .navLink:last-child {
+        padding-bottom: 0px;
+    }
+}

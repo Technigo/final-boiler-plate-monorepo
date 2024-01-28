@@ -4,6 +4,8 @@ import {
   registerUserController,
   loginUserController,
 } from "../controllers/userController"; // Import controller functions for user registration and login
+import { authenticateUser } from "../middleware/authenticateUser"; // Import the authenticateUser middleware
+
 
 // Create an instance of the Express router
 const router = express.Router();

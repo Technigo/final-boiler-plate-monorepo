@@ -6,11 +6,13 @@ import bcrypt from "bcrypt";
 // jwt (JSON Web Tokens): We use jwt for authentication and authorization. It allows us to create and verify tokens that contain user identity information, such as user IDs or roles. These tokens are often sent with requests to secure routes and verify that a user has the necessary permissions to access certain resources. JWTs are stateless and efficient, making them a popular choice for secure communication between the client and server.
 import jwt from "jsonwebtoken";
 
-// Actual Functions here
+const generateToken = (id) => {
+  return jwt.sign({ id }, process.env.JWT_SECRET, {
+    expiresIn: '24h' // Token expires in 24 hours
+  });
+};
 
-// -----------------------
-// -----------------------
-
+// ? techigo code //
 // @desc    Register new user
 // @route   POST api/register
 // @access  Public
@@ -36,8 +38,7 @@ export const registerUserController = asyncHandler(async (req, res) => {
     if (existingUser) {
       res.status(400);
       throw new Error(
-        `User with ${
-          existingUser.username === username ? "username" : "email"
+        `User with ${existingUser.username === username ? "username" : "email"
         } already exists`
       );
     }
@@ -59,14 +60,17 @@ export const registerUserController = asyncHandler(async (req, res) => {
     // Description: Save the new user instance to the database
     await newUser.save();
 
-    // Respond with a success message, user details, and the JWT token
+    // Generate a JWT token for the new user
+    const token = generateToken(newUser._id);
+
+    // Respond with a success message, user details, and the token
     res.status(201).json({
       success: true,
       response: {
         username: newUser.username,
         email: newUser.email,
         id: newUser._id,
-        accessToken: newUser.accessToken,
+        token // Send the token to the user
       },
     });
   } catch (e) {
@@ -75,11 +79,7 @@ export const registerUserController = asyncHandler(async (req, res) => {
   }
 });
 
-// -----------------------
-// -----------------------
-// -----------------------
-// -----------------------
-// -----------------------
+
 
 // @desc    Login Existing User
 // @route   POST api/login
@@ -107,13 +107,16 @@ export const loginUserController = asyncHandler(async (req, res) => {
         .status(401)
         .json({ success: false, response: "Incorrect password" });
     }
-    // Respond with a success message, user details, and the JWT token
+    // Generate a JWT token for the user
+    const token = generateToken(user._id);
+
+    // Respond with a success message, user details, and the token
     res.status(200).json({
       success: true,
       response: {
         username: user.username,
         id: user._id,
-        accessToken: user.accessToken, //  token for the user using the acessToken generated from the model, // Use the generated token here
+        token //  token for the user using the acessToken generated from the model, // Use the generated token here
       },
     });
   } catch (e) {

@@ -1,0 +1,296 @@
+.wrapper {
+    justify-content: center;
+    /* horizontally */
+    align-items: center;
+    /*vertically */
+    margin: 0 auto;
+    padding: 0;
+}
+
+.searchContainer {
+    padding: 30px 0 0 20px;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.searchInput {
+    background-image: url('/images/magnifierglass_icon.png');
+    background-position: 5px 5px;
+    background-size: 18px 18px;
+    /* For adjusting the size of the icon */
+    background-repeat: no-repeat;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 140%;
+    letter-spacing: 0.6px;
+    font-family: 'Readex Pro', sans-serif;
+    color: #55424b;
+    background-color: #ffffff;
+    padding: 4px 3px;
+    border: 1px solid #ffffff;
+    width: 230px;
+    box-sizing: border-box;
+    text-indent: 25px;
+}
+
+.searchInput::placeholder {
+    color: #55424b;
+    font-weight: 500;
+}
+
+.searchInput:focus {
+    border-color: #55424b;
+    outline: none;
+}
+
+.searchInput:focus::placeholder {
+    color: transparent;
+}
+
+.h1 {
+    margin: 50px 0 20px 0;
+    padding: 45px 30px 0 30px;
+}
+
+.SbodyText,
+.SbodyTextTop,
+.h4 {
+    display: flex;
+    text-align: left;
+    width: 160px;
+}
+
+.SbodyTextTop {
+    min-height: 20px;
+}
+
+.SbodyTextTop {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+.h4 {
+    margin-top: 5px;
+    min-height: 40px;
+}
+
+.h3Load {
+    padding: 0 40px;
+}
+
+.cocktailImage {
+    width: 160px;
+}
+
+.lottieContainer {
+    width: 220px;
+    height: auto;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    overflow: hidden;
+    padding-top: 100px;
+}
+
+.gridContainer {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    padding: 5vw 20vh;
+    text-align: start;
+    justify-content: center;
+    /* horizontally */
+}
+
+.placeholder {
+    min-height: 500px;
+}
+
+.loadContainer {
+    min-height: 500px;
+}
+
+.loadMoreButtonContainer {
+    padding-bottom: 30px;
+}
+
+.icon {
+    width: 10px;
+    height: 12px;
+    vertical-align: middle;
+    margin-right: 2px;
+}
+
+.icon2 {
+    width: 10px;
+    height: 12px;
+    vertical-align: middle;
+    margin-right: 2px;
+    margin-left: 2px;
+}
+
+
+/* smaller tablets */
+@media (min-width: 767px) {
+    .placeholder {
+        min-height: 800px;
+    }
+
+    .searchContainer {
+        padding: 30px 0 0 70px;
+    }
+
+    .loadContainer {
+        min-height: 500px;
+    }
+
+    .h1 {
+        padding: 65px 30px 0 30px;
+    }
+
+    .SbodyText,
+    .SbodyTextTop,
+    .h4 {
+        width: 250px;
+    }
+
+    .SbodyTextTop {
+        min-height: 30px;
+    }
+
+    .cocktailImage {
+        width: 250px;
+    }
+
+    .gridContainer {
+        gap: 35px;
+    }
+
+    .icon {
+        width: 20px;
+        height: 20px;
+    }
+
+    .icon2 {
+        width: 20px;
+        height: 20px;
+    }
+}
+
+/* iPad Pro 11 */
+@media (min-width: 900px) {
+    .lottieContainer {
+        width: 520px;
+        padding-top: 150px;
+    }
+
+    .wrapper {
+        min-height: 70vh;
+    }
+
+    .searchContainer {
+        padding: 30px 0 0 30px;
+    }
+
+    .placeholder {
+        min-height: 900px;
+    }
+
+    .loadContainer {
+        min-height: 900px;
+    }
+
+    .cocktailImage {
+        width: 300px;
+    }
+
+    .gridContainer {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 35px;
+        padding: 5vw 20vh;
+        text-align: start;
+        justify-content: center;
+        /* horizontally */
+    }
+
+    .h1 {
+        padding: 85px 30px 5px 30px;
+    }
+
+    .h4 {
+        min-height: 60px;
+    }
+
+    .SbodyText,
+    .SbodyTextTop,
+    .h4 {
+        width: 300px;
+    }
+
+    .SbodyTextTop {
+        min-height: 35px;
+    }
+
+    .searchInput {
+        background-position: 7px 7px;
+        font-size: 18px;
+        letter-spacing: 0.8px;
+        width: 300px;
+    }
+
+    .searchInput:focus {
+        border-color: #5d4b3d;
+        outline: none;
+    }
+
+    .searchInput:focus::placeholder {
+        color: transparent;
+    }
+
+    .placeholder {
+        min-height: 1000px;
+    }
+
+    .icon {
+        width: 23px;
+        height: 23px;
+    }
+
+    .icon2 {
+        width: 20px;
+        height: 20px;
+    }
+}
+
+@media (min-width: 1028px) {
+    .searchContainer {
+        padding: 30px 0 0 90px;
+    }
+}
+
+/* Macbook Air*/
+@media (min-width: 1285px) {
+    .searchContainer {
+        padding: 30px 0 0 155px;
+    }
+
+    .SbodyText,
+    .SbodyTextTop,
+    .h4 {
+        width: 330px;
+    }
+
+    .h1 {
+        padding: 130px 0 0 0;
+    }
+
+    .cocktailImage {
+        width: 330px;
+    }
+
+    .loadContainer {
+        min-height: 1000px;
+    }
+}

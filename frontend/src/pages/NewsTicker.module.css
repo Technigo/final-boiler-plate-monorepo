@@ -1,0 +1,48 @@
+ @import url('https://fonts.cdnfonts.com/css/new-walt-disney-font');
+
+ .wrapper {
+     background-color: transparent;
+     overflow: hidden;
+     white-space: nowrap;
+ }
+
+ .ticker {
+     font-family: 'New Walt Disney Font', sans-serif;
+     display: inline-block;
+     font-size: 25px;
+     padding: 1px 0;
+     letter-spacing: 1px;
+     color: #14143c;
+     -webkit-font-smoothing: antialiased;
+     -moz-osx-font-smoothing: grayscale;
+     text-rendering: optimizeLegibility;
+     -webkit-font-smoothing: subpixel-antialiased;
+     position: relative;
+     animation: scroll-horizontal 20s linear infinite;
+     will-change: transform;
+ }
+
+ @keyframes scroll-horizontal {
+     0% {
+         transform: translateX(100%);
+     }
+
+     100% {
+         transform: translateX(-100%);
+     }
+ }
+
+ @media (min-width: 767px) and (max-width: 820px) {
+     .ticker {
+         font-size: 25px;
+         padding: 5px 0;
+         /* animation: scroll-horizontal 17s linear infinite; */
+
+     }
+ }
+
+ @media (min-width: 820px) {
+     .ticker {
+         font-size: 35px;
+     }
+ }

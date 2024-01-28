@@ -1,0 +1,25 @@
+.wrapper {
+    background-color: #AA8497;
+    padding: 20px 10px 20px 10px;
+    height: 80px;
+    position: relative;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+/* iPad Pro 11" */
+@media (min-width: 820px) {
+    .wrapper {
+        height: 100px;
+        padding: 30px 20px 20px 20px;
+    }
+}
+
+@media (min-width: 1285px) {
+    .wrapper {
+        height: 190px;
+        padding: 30px 20px 20px 20px;
+        margin-top: 50px;
+    }
+}

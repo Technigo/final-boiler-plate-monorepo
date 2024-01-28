@@ -1,0 +1,137 @@
+/* Applicable to small screens (smartphones) by default */
+.H1 {
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 130%;
+    letter-spacing: 1px;
+    font-family: 'Tenor Sans', sans-serif;
+    color: #55424b;
+}
+
+.H2 {
+    font-size: 13px;
+    /* Use: Inside recipes, chategory*/
+    font-weight: 300;
+    line-height: 130%;
+    letter-spacing: 1px;
+    text-decoration: underline;
+    font-family: 'Readex Pro', sans-serif;
+    color: #55424b;
+}
+
+.H3 {
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 104%;
+    letter-spacing: 1px;
+    font-family: 'Tenor Sans', sans-serif;
+    color: #55424b;
+}
+
+.H4 {
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 104%;
+    letter-spacing: 1px;
+    font-family: 'Tenor Sans', sans-serif;
+    color: #55424b;
+}
+
+.bodyText {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 140%;
+    letter-spacing: 0.6px;
+    font-family: 'Readex Pro', sans-serif;
+    color: #55424b;
+}
+
+.SbodyText {
+    font-size: 10px;
+    font-weight: 300;
+    line-height: 140%;
+    letter-spacing: 0.6px;
+    font-family: 'Readex Pro', sans-serif;
+    color: #55424b;
+}
+
+.XSbodyText {
+    font-size: 9px;
+    font-weight: 300;
+    line-height: 140%;
+    letter-spacing: 0.6px;
+    font-family: 'Readex Pro', sans-serif;
+    color: #55424b;
+}
+
+/* Tablet-sized devices (e.g., iPad) */
+@media (min-width: 768px) {
+    .H1 {
+        font-size: 30px;
+
+    }
+
+    .H2 {
+        font-size: 18px;
+    }
+
+    .H3 {
+        font-size: 24px;
+    }
+
+    .H4 {
+        font-size: 18px;
+    }
+
+    .bodyText {
+        font-size: 17px;
+    }
+
+    .SbodyText {
+        font-size: 16px;
+    }
+
+    .XSbodyText {
+        font-size: 13px;
+    }
+}
+
+/* Laptop and desktops */
+@media (min-width: 1024px) {
+    .H1 {
+        font-size: 33px;
+        /* Should add larger for desktop readability? */
+        letter-spacing: 1.3px;
+    }
+
+    .H2 {
+        font-size: 20px;
+        letter-spacing: 0.48px;
+
+    }
+
+    .H3 {
+        font-size: 24px;
+        letter-spacing: 1.3px;
+    }
+
+    .H4 {
+        font-size: 23px;
+    }
+
+
+    .bodyText {
+        font-size: 19px;
+        letter-spacing: 0.60px;
+    }
+
+    .SbodyText {
+        font-size: 20px;
+        font-weight: 300;
+        letter-spacing: 0.60px;
+    }
+
+    .XSbodyText {
+        font-size: 15px;
+    }
+}

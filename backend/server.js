@@ -1,30 +1,63 @@
-// Import necessary libraries and modules
-import express from "express"; // Import the Express.js framework
-import cors from "cors"; // Import the CORS middleware
-import dotenv from "dotenv"; // Import dotenv for environment variables
-dotenv.config(); // Load environment variables from the .env file
-import taskRoutes from "./routes/taskRoutes"; // Import custom task controlled-routes
-import userRoutes from "./routes/userRoutes"; // Import custom user routes
-import { connectDB } from "./config/db"; // Import database connection function (not used here)
+// Importing necessary libraries and modules
+import express from "express";
+import cors from "cors";
+import dotenv from "dotenv";
+import cloudinary from 'cloudinary';
+import fileUpload from 'express-fileupload';
 
-// Defines the port the app will run on. Defaults to 8080, but can be overridden
-const port = process.env.PORT; // Set the port number for the server
-const app = express(); // Create an instance of the Express application
+import userRoutes from "./routes/userRoutes";
+import adminRoutes from "./routes/adminRoutes";
+import cocktailRoutes from "./routes/cocktailRoutes";
 
-// Add middlewares to enable cors and json body parsing
-app.use(cors()); // Enable CORS (Cross-Origin Resource Sharing)
-app.use(express.json()); // Parse incoming JSON data
-app.use(express.urlencoded({ extended: false })); // Parse URL-encoded data
+// Import database connection functions
+import { connectAtlasDB } from "./config/db";
 
-// Use the routes for handling API requests
-// ROUTES - These routes USE controller functions ;)
-app.use(taskRoutes); // Use the task-controlled routes for task-related requests
-app.use(userRoutes); // Use the user-controlled routes for user-related requests
+dotenv.config(); // Load and parse environment variables from the .env file
 
-// Connection to the database through Mongoose
-connectDB();
-
-// Start the server and listen for incoming requests on the specified port
-app.listen(port, () => {
-  console.log(`Server running on http://localhost:${port}`); // Display a message when the server is successfully started
+// Configure Cloudinary
+cloudinary.config({
+  cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+  api_key: process.env.CLOUDINARY_API_KEY,
+  api_secret: process.env.CLOUDINARY_API_SECRET
 });
+
+// Retrieve the port number from environment variables or set default
+const port = process.env.PORT || 3000;
+
+// Create an Express application instance
+const app = express();
+
+// Middlewares setup
+app.use(cors());
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+
+// Add express-fileupload middleware
+app.use(fileUpload({
+  limits: { fileSize: 50 * 1024 * 1024 }, // Optional: Set file size limit
+  useTempFiles: true,
+  tempFileDir: '/tmp/' //store temporarily
+}));
+
+// Registering API routes with the Express application
+app.use('/', userRoutes);
+app.use('/admin', adminRoutes);
+app.use('/cocktails', cocktailRoutes);
+
+// Error handling middleware
+app.use(function (err, req, res, next) {
+  console.error(err.stack);
+  res.status(500).send('Something broke!');
+});
+
+// Connecting to Mongo DB Atlas Instance
+connectAtlasDB(); // Connects to MongoDB Atlas
+
+// Start the server and listen for incoming requests
+app.listen(port, () => {
+  console.log(`Server running on http://localhost:${port}`);
+});
+
+
+
+
