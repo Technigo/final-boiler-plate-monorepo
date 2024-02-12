@@ -64,7 +64,7 @@ export const Navigation = ({ closeMenu}) => {
       <Link to="/" aria-label="Go to home page" onClick={closeMenu}>
         <img
           className="menu-logo"
-          src="./big-logo-sand.svg"
+          src="../../big-logo-sand.svg"
           alt="Plants by Holm and Witting logotype"
         />
       </Link>

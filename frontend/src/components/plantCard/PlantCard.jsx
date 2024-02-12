@@ -53,7 +53,10 @@ export const PlantCard = ({ plants }) => {
                     />
                   </div>
                 </div>
-                <Link to={`/plants/${plant._id}`} aria-label="Go to product page">
+                <Link
+                  to={`/plants/${plant._id}`}
+                  aria-label="Go to product page"
+                >
                   <div className="title-price-container">
                     <h3 className="card-name">{plant.plant_title}</h3>
                     <span className="card-price">€{plant.price}</span>

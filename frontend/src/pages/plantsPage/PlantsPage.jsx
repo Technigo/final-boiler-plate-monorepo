@@ -7,7 +7,6 @@ import { Instagram } from "../homePage/sections/instagram/Instagram";
 import { PlantLoader } from "../../components/lottie/lottieComp";
 import "./PlantsPage.css";
 
-
 export const PlantsPage = () => {
   const allCategories = [
     "Shade-Loving",

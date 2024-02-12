@@ -64,7 +64,7 @@ export const Navbar = () => {
         <div className="logo-container">
           <Link to="/" aria-label="Go to home page">
             <img
-              src="./logo-sand.svg"
+              src="../../logo-sand.svg"
               alt="Plants by Holm and Witting logotype"
             />
           </Link>
@@ -102,7 +102,7 @@ export const Navbar = () => {
         <div className="logo-container">
           <Link to="/" aria-label="Go to home page">
             <img
-              src="./logo-sand.svg"
+              src="../../logo-sand.svg"
               alt="Plants by Holm and Witting logotype"
             />
           </Link>
