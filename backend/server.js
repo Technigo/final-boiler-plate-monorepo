@@ -22,12 +22,7 @@ const port = process.env.PORT;
 // MIDDLEWARES
 app.use(
   cors({
-    origin: [
-      `http://localhost:5173`,
-      "https://plantsby-holm-witting.netlify.app",
-      "https://plants-holm-witting-backend.onrender.com/api/plants",
-      "https://plants-holm-witting-backend.onrender.com/api/favourites",
-    ], // Allow access from this origin
+    origin: "*", // Allows requests from any origin
     methods: ["GET", "POST", "PUT", "DELETE"], // Allow these methods
     credentials: true, // Allow cookies to be sent to the client
   })
