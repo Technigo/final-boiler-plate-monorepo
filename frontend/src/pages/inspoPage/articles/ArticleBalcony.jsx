@@ -27,7 +27,7 @@ export const ArticleBalcony = () => {
 
   const balconyButtonCoordinates = [
     //Money Tree
-    { x: 35, y: 20, plantIndex: 3 },
+    { x: 35, y: 20, plantIndex: 1 },
     //Chinese Money Plant
     { x: 40, y: 80, plantIndex: 0 },
   ];
