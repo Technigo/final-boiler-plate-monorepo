@@ -1,0 +1,69 @@
+.banner-wrapper {
+  background-color: var(--spring);
+  font-family: var(--josefin);
+  color: var(--chalk);
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.banner-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.5rem;
+}
+
+.banner-icon {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.healty-plants-container,
+.packed-with-love-container,
+.climate-shipping-container,
+.care-advice-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  text-align: center;
+  letter-spacing: 1px;
+  font-size: 0.7rem;
+  line-height: 2rem;
+}
+
+/*---------- BREAKPOINTS ----------*/
+/* From mobile and for small devices */
+@media (min-width: 576px) {
+  .banner-container {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .banner-icon {
+    width: 2rem;
+    height: 2rem;
+  }
+}
+
+/* For medium devices */
+@media (min-width: 744px) {
+  .banner-container {
+    display: grid;
+    gap: 0.5rem;
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .healty-plants-container,
+  .packed-with-love-container,
+  .climate-shipping-container,
+  .care-advice-container {
+    font-size: 0.8rem;
+  }
+}
+
+/* For large devices */
+@media (min-width: 1024px) {
+}
+
+/* For extra large devices */
+@media (min-width: 1280px) {
+}

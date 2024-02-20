@@ -1,0 +1,187 @@
+header {
+  background-color: var(--forrest);
+  color: var(--sand);
+  font-family: var(--josefin);
+  padding: 1rem;
+  position: relative;
+  z-index: 4;
+}
+
+.cart-badge-container {
+  position: relative;
+}
+
+.cart-count {
+  position: absolute;
+  top: -0.7rem;
+  right: -0.7rem;
+  background-color: var(--terracotta);
+  border-radius: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 0.7rem;
+  width: 1.2rem;
+  height: 1.2rem;
+  font-family: var(--montserrat);
+  letter-spacing: 0;
+}
+
+/* NAVBAR STYLING */
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.nav-sections {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: 0.1875rem;
+}
+.nav-sections span {
+  color: var(--sand);
+}
+
+.close-icon,
+.menu-icon {
+  width: 1.5rem;
+  height: 1.5rem;
+  cursor: pointer;
+}
+
+.close-icon {
+  z-index: 1001;
+}
+
+.logo-container {
+  max-width: 300px;
+  width: 100%;
+}
+
+.heart-icon,
+.cart-icon,
+.search-icon,
+.user-icon {
+  width: 1rem;
+  height: 1rem;
+}
+
+.shop-menu {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+}
+
+/* HIDDEN MENU STYLING */
+
+.no-scroll {
+  overflow: hidden;
+}
+
+.overlay-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(2px);
+  z-index: 999;
+}
+
+.hidden-menu {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding: 1rem;
+  width: 270px;
+  height: 100vh;
+  background-color: var(--forrest);
+  overflow-y: auto;
+}
+
+.ul-title {
+  font-size: 1.3rem;
+}
+
+.menu-logo {
+  width: 10rem;
+}
+
+hr {
+  border-color: var(--sand);
+}
+
+ul {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/*---------- BREAKPOINTS ----------*/
+/* From mobile and for small devices */
+@media (min-width: 576px) {
+  header {
+    padding: 1rem 2rem;
+  }
+
+  .nav-sections {
+    gap: 1rem;
+  }
+
+  .close-icon,
+  .menu-icon {
+    width: 2rem;
+    height: 2rem;
+  }
+
+  .heart-icon,
+  .cart-icon,
+  .search-icon,
+  .user-icon {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+}
+
+/* For medium devices */
+@media (min-width: 744px) {
+  .heart-icon,
+  .cart-icon,
+  .search-icon,
+  .user-icon {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+
+  .cart-count {
+    top: -0.8rem;
+    right: -0.8rem;
+    font-size: 0.8rem;
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+}
+
+/* For large devices */
+@media (min-width: 1024px) {
+  header {
+    padding: 1rem 4rem;
+  }
+
+  .hidden-menu {
+    padding: 1.5rem 4rem;
+  }
+}
+
+/* For extra large devices */
+@media (min-width: 1280px) {
+}

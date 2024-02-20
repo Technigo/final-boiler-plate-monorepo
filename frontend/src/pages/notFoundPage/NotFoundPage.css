@@ -1,0 +1,12 @@
+.not-found {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+@media (min-width: 576px) {
+    .not-found {
+        max-width: 500px;
+
+    }
+}

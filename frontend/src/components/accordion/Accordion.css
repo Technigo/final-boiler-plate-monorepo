@@ -1,0 +1,98 @@
+/* FOOTER ACCORDION STYLE ????????? */
+.accordion {
+  max-width: 500px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.accordion-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: var(--josefin);
+  padding: 1rem;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.accordion-content {
+  font-family: var(--montserrat);
+  padding: 0.5rem 1rem 2rem;
+  line-height: 1.7;
+  font-size: 0.8rem;
+}
+
+.accordion-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  padding-top: 1rem;
+}
+
+/*---------- BREAKPOINTS ----------*/
+/* From mobile and for small devices */
+@media (min-width: 576px) {
+  .accordion-header {
+    font-size: 1.1rem;
+  }
+
+  .accordion-content {
+    font-size: 1rem;
+  }
+}
+
+/* For medium devices */
+@media (min-width: 744px) {
+}
+
+/* For large devices */
+@media (min-width: 1024px) {
+}
+
+/* For extra large devices */
+@media (min-width: 1280px) {
+}
+
+
+/* FOOTER ACCORDION STYLES */
+footer .accordion-item {
+  border-bottom: 1px solid var(--spring);
+}
+
+footer .accordion-header {
+  color: var(--sand);
+  text-transform: uppercase;
+}
+
+footer .accordion-content {
+  color: var(--chalk);
+}
+
+footer .accordion-content li {
+  color: var(--chalk);
+  transition: ease 0.4s;
+  width: fit-content;
+}
+
+.accordion-content li:hover {
+  color: var(--sand);
+}
+
+
+/* CHECKOUT ACCORDION STYLE */
+
+.checkout-section .accordion-item {
+  border-bottom: 1px solid var(--breeze);
+}
+
+.checkout-section .accordion-header {
+  color: var(--forrest);
+  text-transform: uppercase;
+}
+
+.checkout-section .accordion-content {
+  font-size: 1rem;
+  color: var(--forrest);
+}
+
+

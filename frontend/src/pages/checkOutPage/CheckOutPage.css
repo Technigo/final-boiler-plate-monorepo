@@ -1,0 +1,137 @@
+.checkout-section {
+  background-color: var(--chalk);
+}
+
+.checkout-page-wrapper {
+  padding: 1rem 1rem 3rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.checkout-page-wrapper .section-title {
+  font-family: var(--big-h-font);
+  font-size: 1.8rem;
+  color: var(--charcoal);
+  font-weight: 900;
+  letter-spacing: 0.1375rem;
+  text-align: center;
+  padding-top: 1rem;
+}
+
+.checkout-account-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  text-align: center;
+}
+
+.checkout-account-wrapper span {
+  font-weight: 600;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.login-wrapper {
+  margin-bottom: 1rem;
+}
+
+.login-wrapper p {
+  padding-bottom: 0.5rem;
+}
+
+.form-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  padding-top: 1rem;
+}
+
+.checkout-form {
+  padding: 1rem;
+}
+
+.delivery-icons-wrapper {
+  display: flex;
+  width: 100%;
+  gap: 3rem;
+  justify-content: center;
+  align-items: center;
+  padding: 0.5rem;
+}
+.accordion-step-container .packed-with-love-container {
+  color: var(--forrest);
+}
+
+.accordion-step-container .climate-shipping-container {
+  color: var(--forrest);
+}
+
+.payment-title-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.klarna-list .klarna-list-item {
+  color: var(--forrest);
+}
+
+.input-payment-small {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.order-info-item-wrapper {
+  display: flex;
+  justify-content: space-between;
+}
+
+.order-info-item-wrapper p {
+  padding: 0;
+}
+
+.btn-container-checkout {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem 1rem 0 1rem;
+  gap: 1rem; 
+}
+
+/* -------------- SUCCESS MESSAGE -------------- */
+
+.success-message {
+  max-width: 450px;
+  align-self: center;
+}
+
+.success-animation-wrapper {
+  margin: -5rem; 
+}
+
+section.success-message .about-link {
+  position: relative;
+}
+
+section.success-message .about-link::before {
+  content: '';
+  width: 0;
+  height: 1px;
+  border-radius: 2px;
+  background-color: var(--forrest);
+  position: absolute;
+  bottom: -.25rem;
+  left: 50%;
+  transition: width .3s, left .3s;
+}
+
+section.success-message .about-link:hover::before {
+  width: 100%;
+  left: 0;
+}

@@ -1,0 +1,35 @@
+.cart-page-section {
+  background-color: var(--chalk);
+}
+
+.cart-page-wrapper {
+  padding: 1rem 1rem 3rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.cart-list-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 100%;
+}
+
+.orderinfo-container {
+  width: 100%;
+}
+
+.clear-btn {
+  max-width: 200px;
+}
+
+.btn-wrapper-cart {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem; 
+}

@@ -1,6 +1,5 @@
 {
-  "name": "technigo-final-boiler-frontend",
-  "description": "Starter project to get up and running with your final quickly",
+  "name": "frontend",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -11,19 +10,30 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@emailjs/browser": "^3.12.1",
+    "@emotion/react": "^11.11.3",
+    "@emotion/styled": "^11.11.0",
+    "@mui/material": "^5.15.5",
+    "axios": "^1.6.5",
+    "dotenv": "^16.3.1",
+    "lottie-react": "^2.4.0",
     "react": "^18.2.0",
+    "react-cookie": "^7.0.1",
     "react-dom": "^18.2.0",
-    "react-router-dom": "^6.15.0",
-    "zustand": "^4.4.6"
+    "react-icons": "^5.0.1",
+    "react-responsive": "^9.0.2",
+    "react-router-dom": "^6.21.2",
+    "react-toastify": "^10.0.3",
+    "zustand": "^4.4.7"
   },
   "devDependencies": {
-    "@types/react": "^18.2.15",
-    "@types/react-dom": "^18.2.7",
-    "@vitejs/plugin-react": "^4.0.3",
-    "eslint": "^8.45.0",
-    "eslint-plugin-react": "^7.32.2",
+    "@types/react": "^18.2.43",
+    "@types/react-dom": "^18.2.17",
+    "@vitejs/plugin-react": "^4.2.1",
+    "eslint": "^8.55.0",
+    "eslint-plugin-react": "^7.33.2",
     "eslint-plugin-react-hooks": "^4.6.0",
-    "eslint-plugin-react-refresh": "^0.4.3",
-    "vite": "^4.4.5"
+    "eslint-plugin-react-refresh": "^0.4.5",
+    "vite": "^5.0.8"
   }
 }

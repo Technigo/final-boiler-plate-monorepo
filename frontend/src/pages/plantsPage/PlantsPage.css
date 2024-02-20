@@ -1,0 +1,72 @@
+.plants-page-wrapper {
+  background-color: var(--chalk);
+}
+
+.products-wrapper {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  max-width: 900px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.filtering-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 1rem 1rem 2rem;
+  gap: 1rem;
+}
+
+.options-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  column-gap: 1.5rem;
+  row-gap: 1rem;
+  font-size: 0.8rem;
+  color: var(--forrest);
+  font-family: var(--josefin);
+  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: 0.075rem;
+}
+
+/* LOADER */
+
+.animation-wrapper {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+/*---------- BREAKPOINTS ----------*/
+/* From mobile and for small devices */
+@media (min-width: 576px) {
+  .products-wrapper {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  /* LOADER */
+  .animation-wrapper {
+    width: 450px;
+    align-items: center; 
+  }
+}
+
+/* For medium devices */
+@media (min-width: 744px) {
+}
+
+/* For large devices */
+@media (min-width: 1024px) {
+  .products-wrapper {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+  }
+}
+
+/* For extra large devices */
+@media (min-width: 1280px) {
+}

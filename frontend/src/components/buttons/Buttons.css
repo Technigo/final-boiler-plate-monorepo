@@ -1,0 +1,243 @@
+button {
+  letter-spacing: 1px;
+  cursor: pointer;
+  border-radius: 10rem;
+}
+
+.gradient-btn {
+  background: linear-gradient(180deg, #eddcae -53.12%, #3f543f 100%);
+  color: var(--chalk);
+}
+
+.terracotta-btn {
+  font-family: var(--montserrat);
+  background-color: var(--terracotta);
+  color: var(--chalk);
+  text-transform: uppercase;
+}
+
+.clear-btn {
+  width: 100%;
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--spring);
+  color: var(--charcoal);
+  background-color: var(--chalk);
+  font-family: var(--josefin);
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+/**/
+.checkout-btn {
+  padding: 0.7rem 1.7rem;
+  font-weight: 600;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  font-family: var(--montserrat);
+  width: 13rem;
+}
+
+.add-to-cart-btn {
+  width: 100%;
+  padding: 0.8rem 1.6rem;
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.inspo-btn {
+  padding: 0.8rem 1.5rem;
+  font-weight: 600;
+  font-size: 0.8rem;
+}
+
+.all-plants-btn {
+  padding: 1.1rem 2.2rem;
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+/*---------- BREAKPOINTS ----------*/
+/* From mobile and for small devices */
+@media (min-width: 576px) {
+  .all-plants-btn {
+    font-size: 1.3rem;
+  }
+}
+
+/* For medium devices */
+@media (min-width: 670px) {
+}
+
+/* For medium devices */
+@media (min-width: 744px) {
+}
+
+/* For large devices */
+@media (min-width: 950px) {
+}
+
+/* For large devices */
+@media (min-width: 1024px) {
+  .all-plants-btn {
+    padding: 1.2rem 2.4rem;
+  }
+
+  .inspo-btn {
+    padding: 1.2rem 2.2rem;
+    font-size: 1.4rem;
+  }
+}
+
+/* For extra large devices */
+@media (min-width: 1100px) {
+}
+
+/* SPECIAL BUTTONS */
+/* LOG IN BUTTON */
+.login-btn {
+  font-family: var(--josefin);
+  margin-top: 1rem;
+  width: 100%;
+  padding: 0.75rem 0.625rem;
+  color: var(--chalk);
+  font-size: 1.5rem;
+  font-weight: 700;
+  transition: 0.5s;
+  background-size: 200% auto;
+  border-radius: 10rem;
+  background-image: linear-gradient(
+    to right,
+    #3f543f 0%,
+    #eddcae 51%,
+    #3f543f 100%
+  );
+}
+
+.login-btn:hover {
+  background-position: right center;
+}
+/* LOG IN BUTTON END */
+
+/* SIGN IN BUTTON END */
+.signup-btn {
+  font-family: var(--josefin);
+  margin-top: 1rem;
+  font-family: var(--montserrat);
+  width: 100%;
+  padding: 0.75rem 0.625rem;
+  background-color: #f3f3ead9;
+  backdrop-filter: blur(2px);
+  color: var(--forrest);
+  font-size: 1.25rem;
+  font-weight: 700;
+  transition: all 0.8s;
+  border-radius: 10rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.signup-btn::before {
+  content: "";
+  position: absolute;
+  height: 100%;
+  width: 0%;
+  top: 0;
+  left: -40px;
+  transform: skewX(45deg);
+  background-color: rgba(155, 169, 134, 0.4);
+  z-index: -1;
+  transition: all 0.8s;
+}
+
+.signup-btn:hover {
+  background-color: rgba(155, 169, 134, 0.4);
+  color: var(--chalk);
+}
+
+.signup-btn:hover::before {
+  width: 160%;
+}
+/* SIGN IN BUTTON END */
+
+/* LOGOUT BUTTON */
+.logout-btn {
+  padding: 0.5rem 1rem;
+  width: fit-content;
+  color: var(--chalk);
+  background-color: var(--forrest);
+  font-family: var(--montserrat);
+  font-size: 0.8rem;
+  font-weight: 500;
+  border-radius: 10rem;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease 0s;
+}
+
+.logout-btn:hover {
+  background-color: var(--terracotta);
+  box-shadow: 0px 15px 20px rgba(237, 220, 174, 0.4);
+  color: #fff;
+  transform: translateY(-3px);
+}
+
+.logout-btn:active {
+  transform: translateY(-1px);
+}
+/* LOGOUT BUTTON END */
+
+.accordion-btn {
+  font-family: var(--josefin);
+  width: 6rem;
+  text-align: center;
+  color: var(--charcoal);
+  background-color: var(--breeze);
+  padding: 0.5rem;
+  font-weight: 600;
+  font-size: 1rem;
+  border-radius: 10rem;
+  border: 2px solid transparent;
+  box-sizing: border-box;
+  transition: border-color 0.4s;
+}
+
+.accordion-btn:hover {
+  border: 2px solid var(--spring);
+}
+
+/* 
+.btn-primary {
+  width: 100%;
+  background-color: var(--spring);
+  color: var(--charcoal);
+  padding: 0.8rem 1.6rem;
+  font-weight: 600;
+  font-size: 1rem;
+  border-radius: 10rem;
+  border: 2px solid transparent; 
+  box-sizing: border-box; 
+  transition: border-color 0.3s;
+  text-transform: uppercase;
+}
+
+.btn-primary:hover {
+  border: solid 2px var(--forrest);
+}
+
+.btn-secondary {
+  width: 100%;
+  background-color: var(--terracotta);
+  color: var(--chalk);
+  padding: 0.8rem 1.6rem;
+  font-weight: 600;
+  font-size: 1rem;
+  border-radius: 10rem;
+  border: 2px solid transparent; 
+  box-sizing: border-box; 
+  transition: border-color 0.3s;
+}
+
+.btn-secondary:hover {
+  border: solid 2px var(--charcoal);
+}
+} */

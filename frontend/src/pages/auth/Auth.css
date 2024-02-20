@@ -1,0 +1,104 @@
+.auth-wrapper {
+  height: 100vh;
+  font-family: var(--montserrat);
+}
+
+.bg-wrapper {
+  position: relative;
+}
+
+.bg-img {
+  display: block;
+  object-fit: cover;
+  width: 100%;
+  height: 100vh;
+}
+
+.auth-wrapper .overlay {
+  position: absolute;
+  background: #00000066;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  inset: 0;
+  padding: 2.5rem;
+}
+
+.big-logo {
+  margin-bottom: 2rem;
+}
+
+.big-logo img {
+  width: 13rem;
+}
+
+.auth-wrapper form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.auth-wrapper .form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.auth-wrapper span {
+  color: var(--chalk);
+}
+
+.register-link-container {
+  display: flex;
+  flex-direction: column;
+  color: var(--chalk);
+  font-weight: 500;
+  margin-top: 1.6rem;
+}
+
+.app-li {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.error-message {
+  overflow-wrap: break-word;
+  color: var(--chalk);
+  text-align: center;
+  font-weight: 500;
+  background: var(--terracotta);
+  padding: 1rem;
+}
+
+
+.app-li a {
+  position: relative;
+}
+
+.app-li a::before {
+  content: '';
+  width: 0;
+  height: 1px;
+  border-radius: 2px;
+  background-color: var(--chalk);
+  position: absolute;
+  bottom: -.25rem;
+  left: 50%;
+  transition: width .3s, left .3s;
+}
+
+.app-li a:hover::before {
+  width: 100%;
+  left: 0;
+}
+
+.member-text {
+  color: var(--sand);
+  font-weight: 800;
+  margin-bottom: 2rem;
+  font-size: 1.3rem;
+  font-family: var(--big-h-font);
+}
