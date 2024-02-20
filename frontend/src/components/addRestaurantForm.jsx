@@ -131,7 +131,7 @@ const predefinedOccasions = [
 const predefinedMoods = [
   "Cozy",
   "Good lighting",
-  "Soft-spoken",
+  "Soft- spoken",
   "Bustling",
   "Intimate",
   "Casual",

@@ -60,7 +60,7 @@ const restaurantSchema = new mongoose.Schema({
     enum: [
       "Cozy",
       "Good lighting",
-      "Soft-spoken",
+      "Soft- spoken",
       "Bustling",
       "Intimate",
       "Casual",
