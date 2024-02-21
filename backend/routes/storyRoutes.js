@@ -4,8 +4,24 @@ import listEndpoints from "express-list-endpoints";
 import { mapStoryModel } from "../models/mapStoryModel";
 import { analyzeTextWithApiKey } from "../ApiComponents/contentAnalysis";
 import { translateTextWithApiKey } from "../ApiComponents/contentTranslate";
+import { connectDB } from "../config/db";
+
 // Create an instance of the Express router
 const router = express.Router();
+
+// Endpoint to check server status
+router.get("/server/status", async (req, res) => {
+  try {
+    // Attempt to connect to the database
+    await connectDB();
+    // If the database connection is successful, respond with status 200 (OK)
+    res.sendStatus(200);
+  } catch (error) {
+    // If an error occurs during the connection attempt, respond with status 500 (Internal Server Error)
+    console.error('Error checking server status:', error);
+    res.sendStatus(500);
+  }
+});
 
 router.get("/", (req, res) => {
   res.send(listEndpoints(router));
