@@ -13,6 +13,7 @@
   font-size: 18px;
   padding-top: 12vh;
   color: white;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
 }
 
 @media (min-width: 768px) {
@@ -23,7 +24,7 @@
   .quote {
     font-size: 24px;
     padding-top: 24vh;
-    color: white;
+  
   }
 }
 
@@ -35,6 +36,6 @@
   .quote {
     font-size: 42px;
     padding-top: 32vh;
-    color: white;
+  
   }
 }
