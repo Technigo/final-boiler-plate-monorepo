@@ -9,9 +9,9 @@ import { HeadingComponent } from "../components/Reusables/HeadingComponent";
 import { FooterComponent } from '../components/Common/FooterComponent';
 import { SubHeadingComponent } from '../components/Reusables/SubHeadingComponent';
 import { ParagraphComponent } from "../components/Reusables/ParagraphComponent";
-import { AnimatedLogo } from "../components/Common/AnimatedLogo";
+
 //import relevant media 
-import WhoAreWePhoto from "../assets/WhoAreWe/WhoAreWePhoto.webp";
+import WhoAreWePhoto from "../assets/WhoAreWe/whoAreWePhoto.webp";
 
 import family from "../assets/icons/family.png";
 import female from "../assets/icons/female.png";
