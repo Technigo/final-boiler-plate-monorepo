@@ -10,11 +10,10 @@ import { FooterComponent } from '../components/Common/FooterComponent';
 import { SubHeadingComponent } from '../components/Reusables/SubHeadingComponent';
 import { ParagraphComponent } from "../components/Reusables/ParagraphComponent";
 import { BtnComponent } from "../components/Reusables/BtnComonent";
-import { OurSurfLessonSlider } from "../components/Surflessons/OurSurfLessonSlider"
 import { PhotoComponent } from "../components/Reusables/PhotoComponent";
-
+import Slider from "../components/Reusables/slider"
 //Import relevant media
-import OurSurfLessonPhoto from "../assets/OurSurfLessonPhoto.webp";
+import OurSurfLessonPhoto from "../assets/OurSurfLessonPhoto.jpeg";
 import ssurfboardIcon from "../assets/icons/surfboardIcon.webp";
 import LeashIcon from "../assets/icons/leashIcon.webp";
 import rashGuardIcon from "../assets/icons/rashGuardIcon.webp";
@@ -53,7 +52,7 @@ export const SurfLessons = () => {
 
             <NavigationMenu />
 
-            <div className="h-3/6 md:h-5/6 lg:h-screen rounded-b-full" style={backgroundImageStyle}>
+            <div className="h-3/6 md:h-5/6 lg:h-screen" style={backgroundImageStyle}>
                 <HeadingComponent text="Our Surf Lessons" level={1} style={{}} />
             </div>
 
@@ -65,7 +64,7 @@ export const SurfLessons = () => {
 
                 <ParagraphComponent className="my-10 lg:my-14" text="Each lesson starts with 20-30 minute theory and warm-up on land. Here we will also talk oceansafety, conditions, technique, etiquette and practice our movements on land before heading out in the water. We then spend the rest of our time in the water catching and riding waves and improving your skills." />
 
-                <OurSurfLessonSlider />
+                <Slider />
 
                 <div className="lg:p-12">
                     <SubHeadingComponent text="All of our lessons include:" />

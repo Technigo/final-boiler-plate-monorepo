@@ -398,4 +398,3 @@ export const PostBookingComponent = () => {
         </div>
     );
 };
-

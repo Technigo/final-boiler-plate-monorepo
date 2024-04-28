@@ -1,13 +1,16 @@
 import { MyDatePicker } from '../Reusables/MyDatePicker';
 import { v4 as uuidv4 } from 'uuid';
-
+import { useState } from 'react';
 //import relevant components
 import { FormField } from '../Reusables/FormField';
 import { Checkbox } from '../Reusables/Checkbox';
 import { RadioButton } from '../Reusables/RadioButton';
 import { ParagraphComponent } from '../Reusables/ParagraphComponent';
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
+import useDateDisableStore from '../../stores/dateDisableStore';
 
-export const FormComponent = ({ form, index, setForms, minDate, errors, disabledDates }) => {
+export const FormComponent = ({ bookingId, form, index, setForms, errors, }) => {
     // Generate unique IDs for each form element
     const nameId = uuidv4();
     const ageId = uuidv4();
@@ -26,6 +29,24 @@ export const FormComponent = ({ form, index, setForms, minDate, errors, disabled
 
     // Calculate the total character count for newPost field
     const newPostCharacterCount = form.newPost.length;
+
+    const [minDate] = useState(new Date());
+    minDate.setDate(minDate.getDate() + 2); // Adding 2 days to current date
+
+    const handleDateChange = (date) => {
+        setForms((prevForms) =>
+            prevForms.map((f, i) => (i === index ? { ...f, date: date || null } : f))
+        );
+    };
+
+    const handleDisableDateClick = () => {
+        if (form.date) {
+            // Access the store and call the handleDisableDate function
+            useDateDisableStore.getState().handleDisableDate(bookingId, form.date);
+        } else {
+            console.error('Please select a date to disable.');
+        }
+    };
 
     return (
         <div key={index}>
@@ -179,6 +200,20 @@ export const FormComponent = ({ form, index, setForms, minDate, errors, disabled
             </div>
 
             {/* Form Date */}
+            <label htmlFor="current-date"> Current Date</label>
+            <DatePicker
+                id={dateId}
+                selected={form.date}
+                onChange={(date) =>
+                    setForms((prevForms) =>
+                        prevForms.map((f, i) => (i === index ? { ...f, date: date || null } : f))
+                    )
+                }
+
+                minDate={minDate}
+            />
+            <button onClick={handleDisableDateClick}>Disable Date</button>
+            {/*
             <MyDatePicker
                 label="Requested date?*"
                 id={dateId}
@@ -188,15 +223,15 @@ export const FormComponent = ({ form, index, setForms, minDate, errors, disabled
                         prevForms.map((f, i) => (i === index ? { ...f, date: date || null } : f))
                     )
                 }
-                minDate={minDate}
+
                 error={errors.date}
-                excludeDates={disabledDates}
-            />
+
+            />*/}
 
             {/* Checkbox Surf Level beginner */}
             <div className="mb-2">
                 <label >
-                    <ParagraphComponent className="mb-2 pl-0 text-s" text={`Have you surfed before? `} />
+                    <h2 className="mb-2 pl-0" text={`Have you surfed before? `} />
                 </label>
                 <RadioButton
                     id={beginnerId}
@@ -247,7 +282,7 @@ export const FormComponent = ({ form, index, setForms, minDate, errors, disabled
             <ParagraphComponent className="text-red-500">{errors.surfLevel}</ParagraphComponent>
 
             {/* Input textarea */}
-            <ParagraphComponent className="mb-2 text-s pl-0" text={`Anything else for Person ${index + 1}?`} />
+            <h2 className="mb-2 pl-0" text={`Anything else for Person ${index + 1}?`} />
 
             <textarea
                 id={textareaId}

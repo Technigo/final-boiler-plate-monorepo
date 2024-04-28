@@ -1,6 +1,5 @@
 import mongoose from "mongoose";
 
-// Define the Mongoose model for thoughts and its properties
 const bookingSchema = new mongoose.Schema({
     name: {
         type: String,
@@ -8,38 +7,31 @@ const bookingSchema = new mongoose.Schema({
         trim: true,
         minlength: 1,
     },
-
     age: {
         type: Number,
         required: true,
         min: 0,
     },
-
     weight: {
         type: Number,
         min: 0,
     },
-
     height: {
         type: Number,
         min: 0,
     },
-
     beginner: {
         type: Boolean,
         default: false,
     },
-
     intermediate: {
         type: Boolean,
         default: false,
     },
-
     advanced: {
         type: Boolean,
         default: false,
     },
-
     film: {
         type: Boolean,
         default: false,
@@ -59,7 +51,6 @@ const bookingSchema = new mongoose.Schema({
             validator: (value) => /^\+?\d{10,15}$/.test(value),
             message: "Invalid phone number format",
         }
-
     },
     email: {
         type: String,
@@ -75,10 +66,9 @@ const bookingSchema = new mongoose.Schema({
         maxlength: 140,
         trim: true,
     },
-
     date: {
         type: Date,
-        required: true,
+        required: false,
     },
     complete: {
         type: Boolean,
@@ -95,8 +85,8 @@ const bookingSchema = new mongoose.Schema({
     groupID: {
         type: String,
         default: null,
-
-    }, user: {
+    },
+    user: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "User",
     },
@@ -111,6 +101,7 @@ bookingSchema.statics.getBookings = async function () {
         throw new Error(`Error fetching bookings: ${error.message}`);
     }
 };
+
 const Booking = mongoose.model('Booking', bookingSchema);
 
-export default Booking; 
+export default Booking;

@@ -1,63 +1,121 @@
-//Import relevant library
 import { NavigationMenu } from "../components/Common/NavigationMenu";
 import { useEffect } from "react";
 import { Helmet } from 'react-helmet-async';
 import { Fade } from "react-awesome-reveal";
+import { useNavigate } from "react-router-dom";
 
 //Import relevant components
 import { HeadingComponent } from "../components/Reusables/HeadingComponent";
 import { FooterComponent } from '../components/Common/FooterComponent';
 import { SubHeadingComponent } from '../components/Reusables/SubHeadingComponent';
+import { PhotoComponent } from "../components/Reusables/PhotoComponent";
+import { ParagraphComponent } from "../components/Reusables/ParagraphComponent";
+import { BtnComponent } from "../components/Reusables/BtnComonent";
 
 //import relevant media
-import homePhoto from "../assets/homePhoto.webp";
-import HomeSurfing from "../assets/HomeSurfing.mp4"
+import home1 from "../assets/home1.jpg";
+import home2 from "../assets/home2.jpg";
+import OurSurfLessonPhoto from "../assets/OurSurfLessonPhoto1.webp";
+import VideoBackground from "../assets/backgroundFilm.mp4"
 
 export const Home = () => {
-    const backgroundImageStyle = {
-        backgroundImage: `url(${homePhoto})`,
-        backgroundPosition: 'center',
-        backgroundRepeat: 'no-repeat',
-        // Default backgroundSize for larger screens
-        backgroundSize: 'cover',
+    const navigate = useNavigate();
+
+    const handleWhoAreWenClick = () => {
+        // Navigate to the "WhoAreWe" page
+        navigate('/WhoAreWe');
+    };
+
+    const handleTripAdvisorClick = () => {
+        window.open('https://www.tripadvisor.se/Attraction_Review-g309247-d19787493-Reviews-Tuanis_Surf_School_CR-Playa_Samara_Province_of_Guanacaste.html', '_blank');
+    };
+
+    const handleSurfLessonClick = () => {
+        // Navigate to the "WhoAreWe" page
+        navigate('/SurfLessons');
     };
 
     useEffect(() => {
-        window.scrollTo(0, 0); // Scroll to the top of the page when the About component mounts
+        const script = document.createElement('script');
+        script.src = 'https://static.elfsight.com/platform/platform.js';
+        script.async = true;
+        script.defer = true;
+        document.body.appendChild(script);
+
+        return () => {
+            document.body.removeChild(script);
+        };
     }, []);
 
     return (
-        <div className="bg-backgroundPink">
-            {/* Set meta description dynamically */}
-            <Helmet>
-                <meta name="description" content="Welcome to Tuanis Surf School! Learn to surf and have fun with our experienced instructors." />
-            </Helmet>
-
+        <div className="h-auto bg-backgroundPink">
             <NavigationMenu />
 
-            <div className="h-3/6 md:h-5/6 lg:h-screen rounded-b-full" style={backgroundImageStyle}>
-                {/* Any content you want on top of the background image */}
-                <HeadingComponent text="Tuanis Surf School" level={1} style={{}} />
-            </div>
+            <div className="bg-backgroundPink relative h-fit">
+                {/* Set meta description dynamically */}
+                <Helmet>
+                    <meta name="description" content="Welcome to Tuanis Surf School! Learn to surf and have fun with our experienced instructors." />
+                </Helmet>
 
-            <Fade>
-                <div className="relative h-screen lg:h-full flex items-center md:justify-center rounded-t-full overflow-hidden">
+                {/* Background Video */}
+                <video autoPlay muted loop playsInline controls={false} className="object-cover w-full h-screen absolute top-0 left-0 z-0" style={{ filter: 'brightness(100%)' }}>
+                    <source src={VideoBackground} type="video/mp4" />
+                </video>
 
-                    {/* Video */}
-                    <video autoPlay muted loop playsInline controls={false} className="py-2 rounded-t-full object-cover w-screen h-full lg:w-4/6 lg:h-4/6">
-                        <source src={HomeSurfing} type="video/mp4" />
-                        Your browser does not support the video tag.
-                    </video>
+                {/* Heading */}
+                <div className="text-center h-screen">
+                    <HeadingComponent className="pb-0" text="Tuanis Surf School" level={1} style={{}} />
+                </div>
 
-                    {/* Text overlay */}
-                    <div className="absolute inset-0 flex flex-col items-center justify-center bg-gradient-to-b from-backgroundPink from-0% to-transparent to-100%">
-                        <SubHeadingComponent className="px-6 md:text-5xl font-josefin-sans text-amber-300 drop-shadow-[0_1.9px_1.9px_rgba(0,1,7,5.9)] lg:p-16" text="We believe that the most important part of surfing is to have fun. If you’re not having fun, you’re doing it wrong!" />
+                {/* Rolling text */}
+                <marquee behavior="scroll" scrollamount="7" className="font-bold text-2xl text-pink-500" direction="left">Samara Beach, Costa Rica</marquee>
+
+                <marquee behavior="scroll" scrollamount="5" className="font-bold text-2xl text-pink-500" direction="left">tuanissurfschool@gmail.com</marquee>
+
+                <marquee behavior="scroll" scrollamount="3" className="font-bold text-2xl text-pink-500" direction="left">+506 6140-7609</marquee>
+
+                <Fade>
+                    <div className="text-center bg-backgroundPink">
+                        <SubHeadingComponent className="px-6 md:text-5xl lg:p-16 text-pink-500" text="We believe that the most important part of surfing is to have fun. If you’re not having fun, you’re doing it wrong!" />
+
+                        <ParagraphComponent text="Tuanis Surf School is a small family owned business at Samara Beach founded
+                        by Sofie, who is passionated about sharing her love for surfing and the ocean.
+                        Our team of employees are all about the good life and we think that you are too. We are lucky enough to get guests from all over the world who come together to surf and enjoy our little piece of paradise. At Tuanis Surf School we have a great family vibe where you will instantly feel a sense of belonging." />
+                    </div>
+                </Fade>
+
+                <div className="my-36 mx-6">
+
+                    <div className="grid gap-2 md:grid-cols-1 lg:grid-cols-2 justify-center items-center">
+                        <PhotoComponent className="rounded-md" src={home1} alt="Home" />
+                        <div className="flex flex-col justify-center items-center">
+                            <SubHeadingComponent className="px-6 md:text-5xl font-josefin-sans lg:p-16 text-pink-500" text="Surf with us to enjoy a social atmosphere and have a great time while making memories for life." />
+                            <BtnComponent label="About us - who are we?" onClick={handleWhoAreWenClick} />
+                        </div>
                     </div>
 
-                </div>
-            </Fade>
+                    <div className="grid gap-2 md:grid-cols-1 lg:grid-cols-2 justify-center items-center">
+                        <div className="flex flex-col justify-center items-center">
+                            <SubHeadingComponent className="px-6 md:text-5xl font-josefin-sans lg:p-16 text-pink-500" text="if I had to take the trip again I would pick Tuanis surf school everytime!" />
+                            <BtnComponent label="Read our reviews on TripAdvisor" onClick={handleTripAdvisorClick} />
+                        </div>
+                        <PhotoComponent className="rounded-md" src={home2} alt="Home" />
+                    </div>
 
-            <FooterComponent />
+                    <div className="grid gap-2 md:grid-cols-1 lg:grid-cols-2">
+                        <PhotoComponent className="rounded-md" src={OurSurfLessonPhoto} alt="Home" />
+                        <div className="flex flex-col justify-center items-center mb-16">
+                            <SubHeadingComponent className="px-6 md:text-5xl font-josefin-sans lg:p-16 text-pink-500" text="WE OFFER SURF-LESSONS FOR ALL LEVELS AT: SAMARA BEACH" />
+                            <BtnComponent label="Read about our surf lessons" onClick={handleSurfLessonClick} />
+                        </div>
+                    </div>
+                </div>
+
+                <div className="elfsight-app-4b8aafd5-e789-4bb3-b1f8-d3045fba6253" data-elfsight-app-lazy></div>
+
+
+                <FooterComponent />
+            </div>
         </div>
     );
 };

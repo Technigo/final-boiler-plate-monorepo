@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 
 //import relevant media
-import logo from '../../assets/logo.webp';
+import logo from '../../assets/logo.png';
 import "../../../src/font.css";
 import '../../../src/logo.css';
 
@@ -100,7 +100,7 @@ export const NavigationMenu = () => {
                 </section>
 
                 {/* Desktop Menu */}
-                <ul className="desktop-menu hidden space-x-8 lg:flex">
+                <ul className="text-pink-500 desktop-menu hidden space-x-8 lg:flex">
                     <NavItem to="/" label="Home" />
                     <NavItem to="/WhoAreWe" label="Who Are We?" />
                     <NavItem to="/SurfLessons" label="Surf lessons" />
@@ -136,7 +136,7 @@ export const NavigationMenu = () => {
         const isCurrentPage = location.pathname === to;
 
         return (
-            <li className={`p-8 ${isCurrentPage ? 'bg-pink-500 bg-opacity-70 border-11 border-amber-300 rounded-full text-amber-300' : 'hover:bg-pink-500 hover:bg-opacity-70 hover:border-11 hover:rounded-full hover:text-amber-300'} transition-all duration-500`}>
+            <li className={`p-8 ${isCurrentPage ? 'text-pink-500 underline decoration-4' : 'hover:text-pink-600'} transition-all duration-500`}>
                 <Link to={to}>{label}</Link>
             </li>
         );

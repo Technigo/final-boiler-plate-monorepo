@@ -34,7 +34,7 @@ export const BookNow = () => {
 
             <NavigationMenu />
 
-            <div className="lg:h-screen rounded-b-full" style={backgroundImageStyle}>
+            <div className="lg:h-screen" style={backgroundImageStyle}>
                 <HeadingComponent text="Book Now"
                     level={1} style={{}} />
             </div>

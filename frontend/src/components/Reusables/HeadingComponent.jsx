@@ -1,5 +1,6 @@
 import "../../../src/font.css";
 import { Fade } from "react-awesome-reveal";
+
 /**
  * A flexible heading component that accepts text, level, className, and style props.
  * @param {Object} props - The component props.
@@ -15,9 +16,10 @@ export const HeadingComponent = ({ text, level, className, style }) => {
 
     // Render the heading element with the specified text, className, and style
     return (
-
         <Fade>
-            <HeadingTag className={`h-96 lg:auto rounded-b-full w-auto px-12 pb-44 font-moo-lah-lah text-amber-300 drop-shadow-[0_1.9px_1.9px_rgba(0,1,7,5.9)] pt-8 text-5xl lg:text-8xl text-center rounded-b-full pb-24 bg-gradient-to-b from-backgroundPink from-0% to-transparent to-50% lg:h-screen w-3/5 mx-auto ${className || ''}`} style={style}>{text}</HeadingTag>
+            <div className={`relative bg-teal-950/30 h-screen w-screen flex flex-col justify-center items-center ${className || ''}`} style={style}>
+                <HeadingTag className="font-moo-lah-lah text-pink-500 text-5xl lg:text-8xl text-center">{text}</HeadingTag>
+            </div>
         </Fade>
-    )
+    );
 };

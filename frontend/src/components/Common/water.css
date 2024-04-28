@@ -1,0 +1,46 @@
+.water {
+    height: 8em;
+    width: 100%;
+    text-align: center;
+    color: #fff;
+    padding-top: 1em;
+    background: #FFB1DD;
+    position: relative;
+    overflow: hidden;
+}
+
+.water::before {
+    content: "";
+    position: absolute;
+    bottom: 4em;
+    left: -13em;
+    height: 50em;
+    width: 50em;
+    background: #fff;
+    opacity: 0.4;
+    border-radius: 40%;
+    animation: waves 10s linear infinite;
+}
+
+.water::after {
+    content: "";
+    position: absolute;
+    bottom: -43em;
+    right: 0;
+    height: 50em;
+    width: 50em;
+    background: #FFD4EC;
+    opacity: 0.4;
+    border-radius: 40%;
+    animation: waves 10s linear infinite;
+}
+
+@keyframes waves {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}

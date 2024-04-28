@@ -8,8 +8,11 @@ import { BtnComponent } from '../components/Reusables/BtnComonent';
 import { useNavigate } from "react-router-dom";
 import { userStore } from "../stores/userStore";
 
+
 export const BookedDates = () => {
     const [aboutModalIsOpen, setAboutModalIsOpen] = useState(false);
+    const [selectedDate, setSelectedDate] = useState(null); // Added state for selected date
+
     const storeHandleLogout = userStore((state) => state.handleLogout);
 
     // Use the 'useNavigate' hook to programmatically navigate between routes.
@@ -37,7 +40,6 @@ export const BookedDates = () => {
         navigate("/"); // You can change this to the login route
     };
 
-
     const openAboutModal = () => {
         setAboutModalIsOpen(true);
     };
@@ -45,6 +47,7 @@ export const BookedDates = () => {
     const closeAboutModal = () => {
         setAboutModalIsOpen(false);
     };
+
     const aboutThisPageText = (
         <>
             Welcome to the Booking Overview Page!<br />
@@ -63,7 +66,6 @@ export const BookedDates = () => {
 
     return (
         <div>
-
             <BtnComponent className="mx-6 bg-gray-800 m-1 hover:bg-gray-600 text-white" onClick={() => openAboutModal()} label="About this page" />
 
             <ReusableModal
@@ -73,6 +75,7 @@ export const BookedDates = () => {
                 modalTitle="About This Page">
                 {aboutThisPageText}
             </ReusableModal>
+
 
             <div className="flex items-center justify-center p-4">
                 <BtnComponent className="m-6 bg-gray-800 hover:bg-gray-600 text-white" label="Logout" onClick={onLogoutClick} />
@@ -87,5 +90,4 @@ export const BookedDates = () => {
             <SortedByDate />
         </div>
     )
-
-}
+};

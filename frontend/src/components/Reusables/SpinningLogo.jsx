@@ -1,5 +1,5 @@
 import '../../../src/logo.css'
-import logo from '../../assets/logo.webp';
+import logo from '../../assets/logo.png';
 
 export const SpinningLogo = () => {
     const isLogoSpinning = true; // or false, depending on your logic

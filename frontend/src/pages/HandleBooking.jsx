@@ -67,6 +67,7 @@ export const HandledBooking = () => {
                 modalTitle="About This Page">
                 {aboutThisPageText}
             </ReusableModal>
+            
             <div className="flex items-center justify-center p-4">
                 <BtnComponent className="m-6 bg-gray-800 hover:bg-gray-600 text-white" label="Logout" onClick={onLogoutClick} />
             </div>
