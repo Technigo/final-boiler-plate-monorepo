@@ -384,7 +384,7 @@ export const PostBookingComponent = () => {
                         </div>
 
                         <ParagraphComponent className="text-sm m-0 pl-0" text="* if more than 10 people inquire tuanissurfachool@gmail.com" />
-                        <ParagraphComponent className="text-sm m-0 pl-0" text="* dates might be adjusted accoarding to weather conditions" />
+                        <ParagraphComponent className="text-sm m-0 pl-0" text="* Please note that dates are subject to change based on weather conditions and availability." />
                     </div>
                 </div>
             )}

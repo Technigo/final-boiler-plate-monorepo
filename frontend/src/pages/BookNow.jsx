@@ -54,10 +54,10 @@ export const BookNow = () => {
                 <div className="lg:h-screen justify-center items-center text-center pt-20">
                     <Fade>
                         <SubHeadingComponent className="px-6 md:text-5xl text-pink-500 pb-5" text="Book a session by getting in contact with us right away. Give us a call or text us on Whatsapp at" />
-                        <a className="px-6 text-3xl md:text-5xl lg:p-16 text-pink-500 text-center hover:text-fuchsia-900 transition duration-300 ease-in-out" href="tel:+50661407609">+50661407609</a>
+                        <a className="px-6 text-2xl md:text-5xl lg:p-16 text-pink-500 text-center hover:text-fuchsia-900 transition duration-300 ease-in-out" href="tel:+50661407609">+50661407609</a>
 
                         <SubHeadingComponent className="px-6 md:text-5xl pb-5 text-pink-500" text="or email us at" />
-                        <a className="px-6 text-3xl md:text-5xl lg:p-16 text-pink-500 text-center hover:text-fuchsia-900 transition duration-300 ease-in-out" href="mailto:tuanissurfschool@gmail.com">tuanissurfschool@gmail.com</a>
+                        <a className="px-6 text-2xl md:text-5xl lg:p-16 text-pink-500 text-center hover:text-fuchsia-900 transition duration-300 ease-in-out" href="mailto:tuanissurfschool@gmail.com">tuanissurfschool@gmail.com</a>
 
                     </Fade>
                     <Fade>
