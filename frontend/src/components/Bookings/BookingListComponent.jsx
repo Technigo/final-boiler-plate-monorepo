@@ -49,23 +49,13 @@ export const BookingListComponent = ({ fetchAllBookings, fetchUnHandledBookings 
                     return; // Skip invalid date
                 }
 
-                // Parse the booked date
-                const bookedDate = new Date(booking.date);
-                // Check if bookedDate is valid
-                if (!isValid(bookedDate)) {
-                    console.error('Invalid bookedDate value:', booking.date);
-                    return; // Skip invalid date
-                }
-
                 // Format createdAt date to 'yyyy-MM-dd HH:mm'
                 const formattedCreatedAt = format(createdAtDate, 'yyyy-MM-dd HH:mm', { useAdditionalDayOfYearTokens: true }) || 'N/A';
-                // Format booked date to 'yyyy-MM-dd'
-                const formattedBookedDate = format(bookedDate, 'yyyy-MM-dd', { useAdditionalDayOfYearTokens: true }) || 'N/A';
 
                 // Determine the group key (use 'individual' if no groupId)
                 const groupKey = booking.groupId || 'individual';
                 // Create a unique key combining date, hour, minute, booked date, and groupId
-                const timeKey = formattedCreatedAt + '_' + formattedBookedDate + '_' + groupKey;
+                const timeKey = formattedCreatedAt + '_' + groupKey;
 
                 // Initialize an array for the timeKey if it doesn't exist
                 if (!groupedBookings[timeKey]) {
@@ -127,7 +117,7 @@ export const BookingListComponent = ({ fetchAllBookings, fetchUnHandledBookings 
                         {bookingsInGroup.length > 1 ? 'Group' : 'Single'} booking created at{' '}
                         {format(new Date(timeKey.split('_')[0]), 'yyyy-MM-dd HH:mm')}
                         <br />
-                        requested date: {format(new Date(timeKey.split('_')[1]), 'yyyy-MM-dd')}
+
 
                         <BtnComponent
                             className="bg-gray-800 m-6 hover:bg-gray-600 text-white"
@@ -165,10 +155,8 @@ export const BookingListComponent = ({ fetchAllBookings, fetchUnHandledBookings 
                                                         {/* Email, phone, selected date */}
                                                         <ParagraphComponent className="py-0 pt-0 lg:py-0 lg:pt-2" text={`${booking.email}`} category="Email" />
                                                         <ParagraphComponent className="py-0 pt-0 lg:py-0 lg:pt-2" text={`${booking.phonenumber}`} category="Phone number" />
-                                                        <ParagraphComponent className="py-0 pt-0 lg:py-0 lg:pt-2" text={`Other message: ${booking.message}`} />
+                                                        <ParagraphComponent className="py-0 pt-0 lg:py-0 lg:pt-2" text={`Selected date: ${booking.message}`} />
 
-                                                        <ParagraphComponent className="py-0 pt-0 lg:py-0 lg:pt-2"
-                                                            text={`Selected Date: ${isValid(new Date(booking.date)) ? format(new Date(booking.date), 'yyyy-MM-dd') : 'Not specified'}`} />
 
                                                         {/* Surflevel, display only the true one) */}
                                                         {booking.beginner && <ParagraphComponent className="py-0 pt-0 lg:py-0 lg:pt-2" text="Beginner" category="Surf level" />}

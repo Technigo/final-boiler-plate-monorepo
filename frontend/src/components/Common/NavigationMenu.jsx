@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import { AnimatedLogo } from './AnimatedLogo';
 
 //import relevant media
-import logo from '../../assets/logo.png';
 import "../../../src/font.css";
 import '../../../src/logo.css';
 
@@ -10,50 +10,16 @@ export const NavigationMenu = () => {
     // State to manage mobile menu visibility
     const [isNavOpen, setIsNavOpen] = useState(false);
 
-    // State to manage logo spinning animation
-    const [isLogoSpinning, setIsLogoSpinning] = useState(false);
-
-    // State to store the last scroll position for detecting scroll direction
-    const [lastScrollY, setLastScrollY] = useState(0);
-
-    // Get current location using React Router's useLocation hook
-    const location = useLocation();
-
     // Toggle mobile menu visibility
     const handleToggleNav = () => {
         setIsNavOpen((prev) => !prev);
     };
 
-    // Handle scroll events to trigger logo spinning animation
-    useEffect(() => {
-        const handleScroll = () => {
-            const scrollY = window.scrollY;
-            const scrollThreshold = 100;
-
-            // Determine the scrolling direction
-            const scrollDirection = scrollY > lastScrollY ? 'down' : 'up';
-
-            // Adjust the condition based on your preference
-            setIsLogoSpinning(scrollY > scrollThreshold && scrollDirection === 'down');
-
-            // Update the last scroll position
-            setLastScrollY(scrollY);
-        };
-
-        // Add scroll event listener when the component mounts
-        window.addEventListener('scroll', handleScroll);
-
-        // Clean up the event listener when the component unmounts
-        return () => {
-            window.removeEventListener('scroll', handleScroll);
-        };
-    }, [lastScrollY]);
-
     return (
         <div className={`h-24 font-josefin-sans text-lg bg-customPink bg-opacity-70 flex items-center justify-between px-8 sticky top-0 z-10`}>
             {/* Logo */}
             <a href="/home">
-                <img className={`w-24 h-24 ${isLogoSpinning ? 'spin' : ''}`} src={logo} alt="logo" />
+                <AnimatedLogo />
             </a>
 
             {/* Navigation */}

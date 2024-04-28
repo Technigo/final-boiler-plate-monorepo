@@ -15,7 +15,7 @@ import { Fade } from "react-awesome-reveal";
 
 export const BtnComponent = ({ label, onClick, img, alt, href, target, className, ...rest }) => {
     // Default Tailwind CSS classes for styling the button
-    const defaultClasses = 'bg-customPink h-16 w-22 font-josefin-sans text-pink-500 font-bold py-2 px-4 rounded-md hover:bg-opacity-70 hover:-translate-y-1 hover:scale-110 hover:border-11 border-amber-300 hover:text-pink-600 hover:transition-all duration-500';
+    const defaultClasses = 'mt-5 bg-customPink h-16 w-22 font-josefin-sans text-pink-500 font-bold py-2 px-4 rounded-md hover:bg-opacity-70 hover:-translate-y-1 hover:scale-110 hover:border-11 border-amber-300 hover:text-pink-600 hover:transition-all duration-500';
 
     // Combine default and additional classes
     const combinedClasses = `${defaultClasses} ${className}`;

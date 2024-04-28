@@ -1,16 +1,13 @@
-import { MyDatePicker } from '../Reusables/MyDatePicker';
+//import { MyDatePicker } from '../Reusables/MyDatePicker';
 import { v4 as uuidv4 } from 'uuid';
-import { useState } from 'react';
+
 //import relevant components
 import { FormField } from '../Reusables/FormField';
 import { Checkbox } from '../Reusables/Checkbox';
 import { RadioButton } from '../Reusables/RadioButton';
 import { ParagraphComponent } from '../Reusables/ParagraphComponent';
-import DatePicker from 'react-datepicker';
-import 'react-datepicker/dist/react-datepicker.css';
-import useDateDisableStore from '../../stores/dateDisableStore';
 
-export const FormComponent = ({ bookingId, form, index, setForms, errors, }) => {
+export const FormComponent = ({ form, index, setForms, minDate, errors, disabledDates }) => {
     // Generate unique IDs for each form element
     const nameId = uuidv4();
     const ageId = uuidv4();
@@ -30,24 +27,6 @@ export const FormComponent = ({ bookingId, form, index, setForms, errors, }) => 
     // Calculate the total character count for newPost field
     const newPostCharacterCount = form.newPost.length;
 
-    const [minDate] = useState(new Date());
-    minDate.setDate(minDate.getDate() + 2); // Adding 2 days to current date
-
-    const handleDateChange = (date) => {
-        setForms((prevForms) =>
-            prevForms.map((f, i) => (i === index ? { ...f, date: date || null } : f))
-        );
-    };
-
-    const handleDisableDateClick = () => {
-        if (form.date) {
-            // Access the store and call the handleDisableDate function
-            useDateDisableStore.getState().handleDisableDate(bookingId, form.date);
-        } else {
-            console.error('Please select a date to disable.');
-        }
-    };
-
     return (
         <div key={index}>
 
@@ -56,7 +35,7 @@ export const FormComponent = ({ bookingId, form, index, setForms, errors, }) => 
                 label="Name"
                 id={nameId}
                 type="text"
-                placeholder={`Name for Person ${index + 1}`}
+                placeholder={`Name for Surfer ${index + 1}`}
                 value={form.name}
                 onChange={(e) =>
                     setForms((prevForms) =>
@@ -73,7 +52,7 @@ export const FormComponent = ({ bookingId, form, index, setForms, errors, }) => 
                 label="Age"
                 id={ageId}
                 type="number"
-                placeholder={`Age for Person ${index + 1}`}
+                placeholder={`Age for Surfer ${index + 1}`}
                 value={form.age}
                 onChange={(e) =>
                     setForms((prevForms) =>
@@ -91,7 +70,7 @@ export const FormComponent = ({ bookingId, form, index, setForms, errors, }) => 
                 label="Phone number"
                 id={phoneNumberId}
                 type="number"
-                placeholder={`Phone number for Person ${index + 1}`}
+                placeholder={`Phone number for Surfer ${index + 1}`}
                 value={form.phonenumber}
                 onChange={(e) =>
                     setForms((prevForms) =>
@@ -107,7 +86,7 @@ export const FormComponent = ({ bookingId, form, index, setForms, errors, }) => 
                 label="Email"
                 id={emailId}
                 type="email"
-                placeholder={`Email for Person ${index + 1}`}
+                placeholder={`Email for Surfer ${index + 1}`}
                 value={form.email}
                 onChange={(e) =>
                     setForms((prevForms) =>
@@ -123,7 +102,7 @@ export const FormComponent = ({ bookingId, form, index, setForms, errors, }) => 
                 label="Weight (KG)"
                 id={weightId}
                 type="number"
-                placeholder={`Weight for Person ${index + 1}`}
+                placeholder={`Weight for Surfer ${index + 1}`}
                 min={1}
                 value={form.weight}
                 onChange={(e) =>
@@ -140,7 +119,7 @@ export const FormComponent = ({ bookingId, form, index, setForms, errors, }) => 
                 label="Height (CM)"
                 id={heightId}
                 type="number"
-                placeholder={`Height for Person ${index + 1}`}
+                placeholder={`Height for Surfer ${index + 1}`}
                 min={1}
                 value={form.height}
                 onChange={(e) =>
@@ -154,8 +133,8 @@ export const FormComponent = ({ bookingId, form, index, setForms, errors, }) => 
 
             {/* Documentation checkboxes */}
             <div className="mb-2">
-                <label className="mr-2">
-                    Would you like any documentation?
+                <label>
+                    <ParagraphComponent className="mb-2 pl-0 text-base" text={` Would you like any documentation? `} />
                 </label>
 
                 {/* Checkbox Film */}
@@ -199,40 +178,29 @@ export const FormComponent = ({ bookingId, form, index, setForms, errors, }) => 
                 />
             </div>
 
-            {/* Form Date */}
-            <label htmlFor="current-date"> Current Date</label>
-            <DatePicker
-                id={dateId}
-                selected={form.date}
-                onChange={(date) =>
-                    setForms((prevForms) =>
-                        prevForms.map((f, i) => (i === index ? { ...f, date: date || null } : f))
-                    )
-                }
-
-                minDate={minDate}
-            />
-            <button onClick={handleDisableDateClick}>Disable Date</button>
-            {/*
-            <MyDatePicker
-                label="Requested date?*"
-                id={dateId}
-                selected={form.date}
-                onChange={(date) =>
-                    setForms((prevForms) =>
-                        prevForms.map((f, i) => (i === index ? { ...f, date: date || null } : f))
-                    )
-                }
-
-                error={errors.date}
-
-            />*/}
+            {/* Form Date 
+                <MyDatePicker
+                    label="Requested date?*"
+                    id={dateId}
+                    selected={form.date}
+                    onChange={(date) =>
+                        setForms((prevForms) =>
+                            prevForms.map((f, i) => (i === index ? { ...f, date: date || null } : f))
+                        )
+                    }
+                    minDate={minDate}
+                    error={errors.date}
+                    excludeDates={disabledDates}
+                />
+            */}
 
             {/* Checkbox Surf Level beginner */}
             <div className="mb-2">
-                <label >
-                    <h2 className="mb-2 pl-0" text={`Have you surfed before? `} />
+
+                <label>
+                    <ParagraphComponent className="mb-2 pl-0 text-base" text={` Have you surfed before?`} />
                 </label>
+
                 <RadioButton
                     id={beginnerId}
                     label="I'm a beginner"
@@ -282,14 +250,14 @@ export const FormComponent = ({ bookingId, form, index, setForms, errors, }) => 
             <ParagraphComponent className="text-red-500">{errors.surfLevel}</ParagraphComponent>
 
             {/* Input textarea */}
-            <h2 className="mb-2 pl-0" text={`Anything else for Person ${index + 1}?`} />
+            <ParagraphComponent className="mb-2 text-base pl-0" text={`Which period of time is Surfer ${index + 1} interested in taking classes?`} />
 
             <textarea
                 id={textareaId}
                 className="mb-0 p-2 w-full border rounded"
                 rows="3"
                 cols="50"
-                placeholder={`Person ${index + 1} is really allergic to tomatoes!`}
+                placeholder={`Surfer ${index + 1} would like to sign up for classes betweeen the 1-6 of may!`}
                 value={form.newPost}
                 onChange={(e) => {
                     const newValue = e.target.value;

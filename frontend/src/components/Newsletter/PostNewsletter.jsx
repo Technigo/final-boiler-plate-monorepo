@@ -25,7 +25,7 @@ export const PostNewsletter = () => {
                 <div className='w-auto lg:m-8 py-12 rounded-md border-4 border-customPink px-2 md:px-10'>
                     <div className='grid lg:grid-cols-1 text-left md:text-center'>
                         <div>
-                            <SubHeadingComponent text="Want to know the latest news about Tuanis Surf School?" />
+                            <SubHeadingComponent className='text-pink-500 md:text-5xl' text="Want to know the latest news about Tuanis Surf School?" />
                             <ParagraphComponent className="px-4 pb-4" text="Sign up for our newsletter and stay up to date." />
                         </div>
                         <div className='lg:my-4'>

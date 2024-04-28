@@ -12,7 +12,7 @@ import { PostNewsletter } from "../components/Newsletter/PostNewsletter";
 import { PhotoComponent } from "../components/Reusables/PhotoComponent";
 
 //import relevant media
-import ContactUsBackground from "../assets/ContactUs.webp";
+import ContactUsPhoto from "../assets/contactUs/ContactUsPhoto.webp";
 import phoneIcon from "../assets/icons/phoneIcon.webp";
 import emailIcon from "../assets/icons/emailIcon.webp";
 import instagramLogo from "../assets/icons/instagramLogo.webp";
@@ -26,7 +26,7 @@ export const ContactUs = () => {
     }, []);
 
     const backgroundImageStyle = {
-        backgroundImage: `url(${ContactUsBackground})`,
+        backgroundImage: `url(${ContactUsPhoto})`,
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat',
         // Default backgroundSize for larger screens
@@ -53,8 +53,8 @@ export const ContactUs = () => {
                 {/* Left column with contact info */}
                 <Fade>
                     <div className="lg:pr-8 lg:text-center border-y-4 border-customPink my-6 lg:border-x-4 border-customPink lg:border-y-0 h-auto md:m-4 lg:m-8 pb-4 rounded-md">
-                        <SubHeadingComponent className="lg:pt-12" text="Do you have questions?" />
-                        <SubHeadingComponent className="lg:pt-1 pb-4" text="Get in contact with us!" />
+                        <SubHeadingComponent className="lg:pt-12 md:text-5xl text-pink-500" text="Do you have questions?" />
+                        <SubHeadingComponent className="lg:pt-1 pb-4 text-pink-500 md:text-5xl" text="Get in contact with us!" />
 
                         <div className="md:p-4 lg:py-2 text-lg font-josefin-sans max-w-4xl mx-auto">
 

@@ -3,7 +3,7 @@ import { Fade } from "react-awesome-reveal";
 import { useRef } from 'react';
 import emailjs from '@emailjs/browser';
 import "react-datepicker/dist/react-datepicker.css";
-
+import { SubHeadingComponent } from "../Reusables/SubHeadingComponent";
 //import relevant components
 import { ParagraphComponent } from "../Reusables/ParagraphComponent";
 import { BtnComponent } from "../Reusables/BtnComonent";
@@ -16,7 +16,6 @@ import { SpinningLogo } from "../Reusables/SpinningLogo";
 import useBookingStore from "../../stores/bookingStore";
 
 export const PostBookingComponent = () => {
-
 
     // State Hooks for managing component state
     const [minDate, setMinDate] = useState(new Date());
@@ -181,12 +180,6 @@ export const PostBookingComponent = () => {
                 isValid = false;
             }
 
-            // Validate Date
-            if (!form.date) {
-                newErrors[index].date = "Date is required";
-                isValid = false;
-            }
-
             // Validate surf level
             if (!(form.beginner || form.intermediate || form.advanced)) {
                 newErrors[index].surfLevel = "Surf level is required";
@@ -330,11 +323,12 @@ export const PostBookingComponent = () => {
             ) : (
                 //render form
                 <div className="flex justify-center items-center h-auto m-4 text-s font-josefin-sans">
+
                     <div className="w-full max-w-md rounded-md border-4 border-customPink p-4 px-10 rounded">
                         <div className="mb-2">
 
                             <label htmlFor="numberOfPeople" className="mr-2">
-                                Number of People*
+                                Number of Surfers*
                             </label>
 
                             {/* select number of people */}

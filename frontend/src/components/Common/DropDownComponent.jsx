@@ -17,7 +17,6 @@ export const DropDownComponent = () => {
                     <option value="/Admin">All Bookings</option>
                     <option value="/HandledBooking">Accepted Bookings</option>
                     <option value="/UnHandledBooking">Unhandled Bookings</option>
-                    <option value="/BookedDates">Bookings by date</option>
                     <option value="/Newsletter">Newsletter</option>
                 </select>
             </div>

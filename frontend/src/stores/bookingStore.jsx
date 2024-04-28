@@ -45,7 +45,7 @@ const useBookingStore = create((set) => ({
                                 email: form.email,
                                 phonenumber: form.phonenumber,
                                 message: form.newPost,
-                                date: form.date.toISOString(),
+                                // date: form.date.toISOString(),
                                 beginner: form.beginner,
                                 intermediate: form.intermediate,
                                 advanced: form.advanced,

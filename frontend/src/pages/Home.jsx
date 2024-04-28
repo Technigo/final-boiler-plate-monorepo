@@ -13,12 +13,18 @@ import { ParagraphComponent } from "../components/Reusables/ParagraphComponent";
 import { BtnComponent } from "../components/Reusables/BtnComonent";
 
 //import relevant media
-import home1 from "../assets/home1.jpg";
-import home2 from "../assets/home2.jpg";
-import OurSurfLessonPhoto from "../assets/OurSurfLessonPhoto1.webp";
-import VideoBackground from "../assets/backgroundFilm.mp4"
+import home1 from "../assets/home/home1.webp";
+import home2 from "../assets/home/home2.webp";
+import OurSurfLessonPhoto from "../assets/surfLessons/OurSurfLessonPhoto1.webp";
+import VideoBackground from "../assets/home/backgroundFilm.mp4"
 
 export const Home = () => {
+
+    useEffect(() => {
+        console.log("Scrolling to the top");
+        window.scrollTo(0, 0);
+    }, []);
+
     const navigate = useNavigate();
 
     const handleWhoAreWenClick = () => {
@@ -48,7 +54,7 @@ export const Home = () => {
     }, []);
 
     return (
-        <div className="h-auto bg-backgroundPink">
+        <div className="h-auto bg-backgroundPink overflow-hidden">
             <NavigationMenu />
 
             <div className="bg-backgroundPink relative h-fit">
@@ -75,10 +81,10 @@ export const Home = () => {
                 <marquee behavior="scroll" scrollamount="3" className="font-bold text-2xl text-pink-500" direction="left">+506 6140-7609</marquee>
 
                 <Fade>
-                    <div className="text-center bg-backgroundPink">
+                    <div className="bg-backgroundPink mx-6 my-10 md:mx-10 lg:text-center">
                         <SubHeadingComponent className="px-6 md:text-5xl lg:p-16 text-pink-500" text="We believe that the most important part of surfing is to have fun. If you’re not having fun, you’re doing it wrong!" />
 
-                        <ParagraphComponent text="Tuanis Surf School is a small family owned business at Samara Beach founded
+                        <ParagraphComponent className="mt-10" text="Tuanis Surf School is a small family owned business at Samara Beach founded
                         by Sofie, who is passionated about sharing her love for surfing and the ocean.
                         Our team of employees are all about the good life and we think that you are too. We are lucky enough to get guests from all over the world who come together to surf and enjoy our little piece of paradise. At Tuanis Surf School we have a great family vibe where you will instantly feel a sense of belonging." />
                     </div>
@@ -86,7 +92,7 @@ export const Home = () => {
 
                 <div className="my-36 mx-6">
 
-                    <div className="grid gap-2 md:grid-cols-1 lg:grid-cols-2 justify-center items-center">
+                    <div className="mt-10 grid gap-2 md:grid-cols-1 lg:grid-cols-2 justify-center items-center">
                         <PhotoComponent className="rounded-md" src={home1} alt="Home" />
                         <div className="flex flex-col justify-center items-center">
                             <SubHeadingComponent className="px-6 md:text-5xl font-josefin-sans lg:p-16 text-pink-500" text="Surf with us to enjoy a social atmosphere and have a great time while making memories for life." />
@@ -94,15 +100,15 @@ export const Home = () => {
                         </div>
                     </div>
 
-                    <div className="grid gap-2 md:grid-cols-1 lg:grid-cols-2 justify-center items-center">
+                    <div className="mt-10 grid gap-2 md:grid-cols-1 lg:grid-cols-2 justify-center items-center">
                         <div className="flex flex-col justify-center items-center">
-                            <SubHeadingComponent className="px-6 md:text-5xl font-josefin-sans lg:p-16 text-pink-500" text="if I had to take the trip again I would pick Tuanis surf school everytime!" />
+                            <SubHeadingComponent className="px-6 md:text-5xl font-josefin-sans lg:p-16 text-pink-500" text='"...if I had to take the trip again I would pick Tuanis surf school everytime!"' />
                             <BtnComponent label="Read our reviews on TripAdvisor" onClick={handleTripAdvisorClick} />
                         </div>
-                        <PhotoComponent className="rounded-md" src={home2} alt="Home" />
+                        <PhotoComponent className="rounded-md mt-10" src={home2} alt="Home" />
                     </div>
 
-                    <div className="grid gap-2 md:grid-cols-1 lg:grid-cols-2">
+                    <div className="mt-10 grid gap-2 md:grid-cols-1 lg:grid-cols-2">
                         <PhotoComponent className="rounded-md" src={OurSurfLessonPhoto} alt="Home" />
                         <div className="flex flex-col justify-center items-center mb-16">
                             <SubHeadingComponent className="px-6 md:text-5xl font-josefin-sans lg:p-16 text-pink-500" text="WE OFFER SURF-LESSONS FOR ALL LEVELS AT: SAMARA BEACH" />
@@ -112,7 +118,6 @@ export const Home = () => {
                 </div>
 
                 <div className="elfsight-app-4b8aafd5-e789-4bb3-b1f8-d3045fba6253" data-elfsight-app-lazy></div>
-
 
                 <FooterComponent />
             </div>
