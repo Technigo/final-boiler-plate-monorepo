@@ -27,8 +27,8 @@ export const FooterComponent = () => {
 
                         <div className="items-center flex flex-col lg:flex-row md:container justify-center items-center">
 
-                            <ParagraphComponent className="text-pink-500 pt-0 lg:p-7 lg:mb-7" text="Phone: +506 6140-7609" />
-                            <ParagraphComponent className="text-pink-500 pb-0 pb-6 lg:p-7 lg:mb-7" text="Email: tuanissurfschool@gmail.com" />
+                            <ParagraphComponent className="text-pink-500 pt-7 lg:pt-0 lg:p-7 lg:mb-7" text="Phone: +506 6140-7609" />
+                            <ParagraphComponent className="text-pink-500 pb-10 lg:p-7 lg:mb-7" text="Email: tuanissurfschool@gmail.com" />
 
                         </div>
                     </div>

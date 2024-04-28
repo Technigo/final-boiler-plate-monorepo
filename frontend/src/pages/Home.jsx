@@ -19,12 +19,6 @@ import OurSurfLessonPhoto from "../assets/surfLessons/OurSurfLessonPhoto1.webp";
 import VideoBackground from "../assets/home/backgroundFilm.mp4"
 
 export const Home = () => {
-
-    useEffect(() => {
-        console.log("Scrolling to the top");
-        window.scrollTo(0, 0);
-    }, []);
-
     const navigate = useNavigate();
 
     const handleWhoAreWenClick = () => {
@@ -54,10 +48,10 @@ export const Home = () => {
     }, []);
 
     return (
-        <div className="h-auto bg-backgroundPink overflow-hidden">
+        <div className="h-auto bg-backgroundPink">
             <NavigationMenu />
 
-            <div className="bg-backgroundPink relative h-fit">
+            <div className="bg-backgroundPink relative h-fit overflow-hidden">
                 {/* Set meta description dynamically */}
                 <Helmet>
                     <meta name="description" content="Welcome to Tuanis Surf School! Learn to surf and have fun with our experienced instructors." />
@@ -118,6 +112,7 @@ export const Home = () => {
                 </div>
 
                 <div className="elfsight-app-4b8aafd5-e789-4bb3-b1f8-d3045fba6253" data-elfsight-app-lazy></div>
+
 
                 <FooterComponent />
             </div>

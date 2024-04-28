@@ -9,6 +9,14 @@
     overflow: hidden;
 }
 
+/* Adjust height for phones */
+@media screen and (max-width: 768px) {
+    .water {
+        height: 14em;
+        /* Change to 12em for phones */
+    }
+}
+
 .water::before {
     content: "";
     position: absolute;

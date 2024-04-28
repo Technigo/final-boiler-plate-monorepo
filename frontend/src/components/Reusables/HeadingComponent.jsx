@@ -18,7 +18,7 @@ export const HeadingComponent = ({ text, level, className, style }) => {
     return (
         <Fade>
             <div className={`relative bg-teal-950/30 h-screen w-screen flex flex-col justify-center items-center ${className || ''}`} style={style}>
-                <HeadingTag className="font-moo-lah-lah text-pink-500 text-5xl lg:text-8xl text-center">{text}</HeadingTag>
+                <HeadingTag className="font-moo-lah-lah text-pink-500 text-8xl text-center">{text}</HeadingTag>
             </div>
         </Fade>
     );
