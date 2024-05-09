@@ -43,10 +43,11 @@ export const ContactUs = () => {
 
             <NavigationMenu />
 
-            <div className="h-3/6 md:h-5/6 lg:h-screen" style={backgroundImageStyle}>
-                {/* Any content you want on top of the background image */}
-                <HeadingComponent text="Contact Us" level={1} style={{}} />
+            <div className="h-screen" style={backgroundImageStyle}>
+
             </div>
+            {/* Any content you want on top of the background image */}
+            <HeadingComponent text="Contact Us" level={1} style={{}} />
 
             <div className="mx-6 my-6 md:mx-10 rounded-md bg-custumPink lg:grid lg:grid-cols-2">
 

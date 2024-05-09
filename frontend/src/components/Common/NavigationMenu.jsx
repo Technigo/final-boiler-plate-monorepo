@@ -58,7 +58,7 @@ export const NavigationMenu = () => {
                         <ul className="flex flex-col items-center justify-between min-h-[250px]">
                             <NavItem to="/" label="Home" />
                             <NavItem to="/WhoAreWe" label="Who Are We?" />
-                            <NavItem to="/SurfLessons" label="Surf lessons" />
+                            <NavItem to="/SurfLessons" label="Surf Lessons" />
                             <NavItem to="/BookNow" label="Book Now" />
                             <NavItem to="/ContactUs" label="Contact Us" />
                         </ul>
@@ -69,7 +69,7 @@ export const NavigationMenu = () => {
                 <ul className="text-pink-500 desktop-menu hidden space-x-8 lg:flex">
                     <NavItem to="/" label="Home" />
                     <NavItem to="/WhoAreWe" label="Who Are We?" />
-                    <NavItem to="/SurfLessons" label="Surf lessons" />
+                    <NavItem to="/SurfLessons" label="Surf Lessons" />
                     <NavItem to="/BookNow" label="Book Now" />
                     <NavItem to="/ContactUs" label="Contact Us" />
                 </ul>

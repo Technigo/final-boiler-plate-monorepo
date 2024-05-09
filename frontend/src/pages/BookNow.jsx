@@ -38,9 +38,7 @@ export const BookNow = () => {
 
             <NavigationMenu />
 
-            <div className="lg:h-screen" style={backgroundImageStyle}>
-                <HeadingComponent text="Book Now"
-                    level={1} style={{}} />
+            <div className="h-screen" style={backgroundImageStyle}>
             </div>
 
             {/* Rolling text */}
@@ -50,8 +48,11 @@ export const BookNow = () => {
 
             <marquee behavior="scroll" scrollamount="3" className="font-bold text-2xl text-pink-500" direction="left">Female instructors!</marquee>
 
+            <HeadingComponent text="Book Now"
+                level={1} style={{}} />
+
             <Fade>
-                <div className="lg:h-screen justify-center items-center text-center pt-20">
+                <div className="lg:h-screen justify-center items-center text-center">
                     <Fade>
                         <SubHeadingComponent className="px-6 md:text-5xl text-pink-500 pb-5" text="Book a session by getting in contact with us right away. Give us a call or text us on Whatsapp at" />
                         <a className="px-6 text-2xl md:text-5xl lg:p-16 text-pink-500 text-center hover:text-fuchsia-900 transition duration-300 ease-in-out" href="tel:+50661407609">+50661407609</a>
