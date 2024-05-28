@@ -11,7 +11,7 @@
       "level": 1,
       "question": "Tiger",
       "right-answer": "tiger",
-      "wrong-answer": [ "björn", "hund", "katt"],
+      "wrong-answer": ["björn", "hund", "katt"],
       "category": "animals" 
     },
     {
