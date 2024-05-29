@@ -43,7 +43,7 @@ export const Question = () => {
     const rightAnswer = english[randomNumber].rightAnswer
     if (answer === rightAnswer) {
       setTimeout(() => setMessage(`✅ Rätt svar! Bra jobbat!`)(), 1000)
-      setTimeout(() => setScore(score + 1)(), 1000)
+      setTimeout(() => setScore(score + 1)(), 2000)
     } else {
       setTimeout(() => setMessage(`❌ Fel svar. Rätt svar var ${rightAnswer}.`)(), 1000)
     }
