@@ -3,281 +3,281 @@
     {
       "level": 1,
       "question": "Elephant",
-      "right-answer": "elefant",
-      "wrong-answer": ["lejon", "krokodil", "antilop"],
+      "rightAnswer": "elefant",
+      "wrongAnswer": ["lejon", "krokodil", "antilop"],
       "category": "animals"
     },
     { 
       "level": 1,
       "question": "Tiger",
-      "right-answer": "tiger",
-      "wrong-answer": ["björn", "hund", "katt"],
+      "rightAnswer": "tiger",
+      "wrongAnswer": ["björn", "hund", "katt"],
       "category": "animals" 
     },
     {
       "level": 1,
       "question": "Giraffe",
-      "right-answer": "giraff",
-      "wrong-answer": ["noshörning", "elefant", "apa"],
+      "rightAnswer": "giraff",
+      "wrongAnswer": ["noshörning", "elefant", "apa"],
       "category": "animals"
     },
     { 
       "level": 1,
       "question": "Monkey",
-      "right-answer": "apa",
-      "wrong-answer": ["elefant", "katt", "fågel"],
+      "rightAnswer": "apa",
+      "wrongAnswer": ["elefant", "katt", "fågel"],
       "category": "animals" 
     },
     { 
       "level": 1,
       "question": "Lion", 
-      "right-answer": "lejon",
-      "wrong-answer": [ "tiger", "elefant", "häst"],
+      "rightAnswer": "lejon",
+      "wrongAnswer": [ "tiger", "elefant", "häst"],
       "category": "animals" 
     },
     { 
       "level": 1,
       "question": "Zebra", 
-      "right-answer": "zebra", 
-      "wrong-answer": ["giraff", "elefant", "ko"],
+      "rightAnswer": "zebra", 
+      "wrongAnswer": ["giraff", "elefant", "ko"],
       "category": "animals" 
     },
     { 
       "level": 1,
       "question": "Dolphin",
-      "right-answer": "delfin",
-      "wrong-answer": [ "val", "haj", "fisk"],
+      "rightAnswer": "delfin",
+      "wrongAnswer": [ "val", "haj", "fisk"],
       "category": "animals" 
     },
     {
       "level": 1,
       "question": "Penguin",
-      "right-answer": "pingvin",
-      "wrong-answer": ["elefant", "papegoja", "fågel"],
+      "rightAnswer": "pingvin",
+      "wrongAnswer": ["elefant", "papegoja", "fågel"],
       "category": "animals"
     },
     {
       "level": 1,
       "question": "Kangaroo",
-      "right-answer": "känguru",
-      "wrong-answer": [ "koala", "elefant", "lejon"],
+      "rightAnswer": "känguru",
+      "wrongAnswer": [ "koala", "elefant", "lejon"],
       "category": "animals"
     },
     { 
       "level": 1,
       "question": "Eagle",
-      "right-answer": "örn", 
-      "wrong-answer": ["falk", "fladdermus", "fisk"],
+      "rightAnswer": "örn", 
+      "wrongAnswer": ["falk", "fladdermus", "fisk"],
       "category": "animals" 
     },
     { 
       "level": 1,
       "question": "Blue", 
-      "right-answer": "blå", 
-      "wrong-answer": ["gul", "röd", "grön"],
+      "rightAnswer": "blå", 
+      "wrongAnswer": ["gul", "röd", "grön"],
       "category": "colors" 
     },
     { 
       "level": 1,
       "question": "Green", 
-      "right-answer": "grön", 
-      "wrong-answer": ["blå", "rosa", "svart"],
+      "rightAnswer": "grön", 
+      "wrongAnswer": ["blå", "rosa", "svart"],
       "category": "colors" 
     },
     { 
       "level": 1,
       "question": "Red",
-      "right-answer": "röd", 
-      "wrong-answer": ["gul", "blå", "lila"],
+      "rightAnswer": "röd", 
+      "wrongAnswer": ["gul", "blå", "lila"],
       "category": "colors" 
     },
     { 
       "level": 1,
       "question": "Yellow",
-      "right-answer": "gul", 
-      "wrong-answer": ["blå", "röd", "vit"],
+      "rightAnswer": "gul", 
+      "wrongAnswer": ["blå", "röd", "vit"],
       "category": "colors" 
     },
     { 
       "level": 1,
       "question": "Purple",
-      "right-answer": "lila",
-      "wrong-answer": ["orange", "grön", "rosa"],
+      "rightAnswer": "lila",
+      "wrongAnswer": ["orange", "grön", "rosa"],
       "category": "colors" 
     },
     { 
       "level": 1,
       "question": "Orange", 
-      "right-answer": "orange", 
-      "wrong-answer": ["röd", "gul", "brun"],
+      "rightAnswer": "orange", 
+      "wrongAnswer": ["röd", "gul", "brun"],
       "category": "colors" 
     },
     { 
       "level": 1,
       "question": "Pink", 
-      "right-answer":"rosa", 
-      "wrong-answer": ["lila", "blå", "grön"],
+      "rightAnswer":"rosa", 
+      "wrongAnswer": ["lila", "blå", "grön"],
       "category": "colors" 
     },
     { 
       "level": 1,
       "question": "Brown", 
-      "right-answer": "brun", 
-      "wrong-answer": ["grön", "röd", "gul"],
+      "rightAnswer": "brun", 
+      "wrongAnswer": ["grön", "röd", "gul"],
       "category": "colors" 
     },
     { 
       "level": 1,
       "question": "Black", 
-      "right-answer": "svart", 
-      "wrong-answer": ["vit", "blå", "grå"],
+      "rightAnswer": "svart", 
+      "wrongAnswer": ["vit", "blå", "grå"],
       "category": "colors" 
     },
     { 
       "level": 1,
       "question": "White", 
-      "right-answer": "vit", 
-      "wrong-answer": ["svart", "brun", "grön"],
+      "rightAnswer": "vit", 
+      "wrongAnswer": ["svart", "brun", "grön"],
       "category": "colors" 
     },
     {
       "level": 1,
       "question": "Football",
-      "right-answer": "fotboll", 
-      "wrong-answer": ["hockey", "basket", "tennis"],
+      "rightAnswer": "fotboll", 
+      "wrongAnswer": ["hockey", "basket", "tennis"],
       "category": "sports"
     },
     {
       "level": 1,
       "question": "Basketball",
-      "right-answer": "basket", 
-      "wrong-answer": ["fotboll", "simning", "golf"],
+      "rightAnswer": "basket", 
+      "wrongAnswer": ["fotboll", "simning", "golf"],
       "category": "sports"
     },
     {
       "level": 1,
       "question": "Tennis",
-      "right-answer": "tennis", 
-      "wrong-answer": ["fotboll", "bordtennis", "volleyboll"],
+      "rightAnswer": "tennis", 
+      "wrongAnswer": ["fotboll", "bordtennis", "volleyboll"],
       "category": "sports"
     },
     {
       "level": 1,
       "question": "Swimming",
-      "right-answer": "simning", 
-      "wrong-answer": ["löpning", "cykling", "basket"],
+      "rightAnswer": "simning", 
+      "wrongAnswer": ["löpning", "cykling", "basket"],
       "category": "sports"
     },
     {
       "level": 1,
       "question": "Running",
-      "right-answer": "löpning", 
-      "wrong-answer": ["simning", "cykling", "basket"],
+      "rightAnswer": "löpning", 
+      "wrongAnswer": ["simning", "cykling", "basket"],
       "category": "sports"
     },
     {
       "level": 1,
       "question": "Cycling",
-      "right-answer": "cykling",
-      "wrong-answer": ["simning", "löpning", "fotboll"],
+      "rightAnswer": "cykling",
+      "wrongAnswer": ["simning", "löpning", "fotboll"],
       "category": "sports"
     },
     {
       "level": 1,
       "question": "Volleyball",
-      "right-answer": "volleyboll", 
-      "wrong-answer": ["fotboll", "basket", "tennis"],
+      "rightAnswer": "volleyboll", 
+      "wrongAnswer": ["fotboll", "basket", "tennis"],
       "category": "sports"
     },
     { 
       "level": 1,
       "question": "Golf", 
-      "right-answer": "golf", 
-      "wrong-answer": ["tennis", "fotboll", "basket"],
+      "rightAnswer": "golf", 
+      "wrongAnswer": ["tennis", "fotboll", "basket"],
       "category": "sports" 
     },
     {
       "level": 1,
       "question": "Hockey",
-      "right-answer": "ishockey", 
-      "wrong-answer": ["fotboll", "basket", "tennis"],
+      "rightAnswer": "ishockey", 
+      "wrongAnswer": ["fotboll", "basket", "tennis"],
       "category": "sports"
     },
     {
       "level": 1,
       "question": "Skiing",
-      "right-answer": "skidåkning", 
-      "wrong-answer": ["simning", "löpning", "cykling"],
+      "rightAnswer": "skidåkning", 
+      "wrongAnswer": ["simning", "löpning", "cykling"],
       "category": "sports"
     },
     {
       "level": 1,
       "question": "Doctor",
-      "right-answer": "läkare", 
-      "wrong-answer": ["lärare", "kock", "servitör"],
+      "rightAnswer": "läkare", 
+      "wrongAnswer": ["lärare", "kock", "servitör"],
       "category": "occupations"
     },
     {
       "level": 1,
       "question": "Teacher",
-      "right-answer": "lärare", 
-      "wrong-answer": ["läkare", "servitör", "kock"],
+      "rightAnswer": "lärare", 
+      "wrongAnswer": ["läkare", "servitör", "kock"],
       "category": "occupations"
     },
     {
       "level": 1,
       "question": "Engineer",
-      "right-answer": "ingenjör", 
-      "wrong-answer": ["läkare", "advokat", "tandläkare"],
+      "rightAnswer": "ingenjör", 
+      "wrongAnswer": ["läkare", "advokat", "tandläkare"],
       "category": "occupations"
     },
     { 
       "level": 1,
       "question": "Chef", 
-      "right-answer": "kock", 
-      "wrong-answer": ["läkare", "servitör", "lärare"],
+      "rightAnswer": "kock", 
+      "wrongAnswer": ["läkare", "servitör", "lärare"],
       "category": "occupations" 
     },
     { 
       "level": 1,
       "question": "Pilot", 
-      "right-answer": "pilot", 
-      "wrong-answer": ["läkare", "brandman", "polis"],
+      "rightAnswer": "pilot", 
+      "wrongAnswer": ["läkare", "brandman", "polis"],
       "category": "occupations" 
     },
     {
       "level": 1,
       "question": "Lawyer",
-      "right-answer": "advokat", 
-      "wrong-answer": ["läkare", "ingenjör", "tandläkare"],
+      "rightAnswer": "advokat", 
+      "wrongAnswer": ["läkare", "ingenjör", "tandläkare"],
       "category": "occupations"
     },
     {
       "level": 1,
       "question": "Nurse",
-      "right-answer": "sjuksköterska", 
-      "wrong-answer": ["läkare", "lärare", "kock"],
+      "rightAnswer": "sjuksköterska", 
+      "wrongAnswer": ["läkare", "lärare", "kock"],
       "category": "occupations"
     },
     {
       "level": 1,
       "question": "Artist",
-      "right-answer": "konstnär", 
-      "wrong-answer": ["läkare", "ingenjör", "advokat"],
+      "rightAnswer": "konstnär", 
+      "wrongAnswer": ["läkare", "ingenjör", "advokat"],
       "category": "occupations"
     },
     {
       "level": 1,
       "question": "Firefighter",
-      "right-answer": "brandman",
-      "wrong-answer": ["pilot", "läkare", "polis"],
+      "rightAnswer": "brandman",
+      "wrongAnswer": ["pilot", "läkare", "polis"],
       "category": "occupations"
     },
     {
       "level": 1,
       "question": "Police officer",
-      "right-answer": "polis",
-      "wrong-answer": ["läkare", "kock", "servitör"],
+      "rightAnswer": "polis",
+      "wrongAnswer": ["läkare", "kock", "servitör"],
       "category": "occupations"
     }
   ]
