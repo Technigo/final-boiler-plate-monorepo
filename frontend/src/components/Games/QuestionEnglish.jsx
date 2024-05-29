@@ -42,13 +42,13 @@ export const Question = () => {
   const handleChoice = (answer) => {
     const rightAnswer = english[randomNumber].rightAnswer
     if (answer === rightAnswer) {
-      setScore(score + 1)
-      setMessage("Det var rätt! Bra jobbat!")
+      setTimeout(() => setMessage(`✅ Rätt svar! Bra jobbat!`)(), 1000)
+      setTimeout(() => setScore(score + 1)(), 1000)
     } else {
-      setMessage(`Det var tyvärr fel svar. Rätt svar var ${rightAnswer}.`)
+      setTimeout(() => setMessage(`❌ Fel svar. Rätt svar var ${rightAnswer}.`)(), 1000)
     }
     setDisableButton(true)
-    setTimeout(() => generateQuestion(), 4000)
+    setTimeout(() => generateQuestion(), 5000)
   }
 
   return (
@@ -56,15 +56,16 @@ export const Question = () => {
       <Title>Vad betyder ordet?</Title>
       <QuestionCard>{english[randomNumber].question}</QuestionCard>
       <Answers>
+      {message && <Message>{message}</Message>}
         {answers.map((answer, index) => (
           <AnswerButton disabled={disableButton} key={index} value={answer} onClick={(event) => handleChoice(event.target.value)}>{answer}</AnswerButton>
         ))}
       </Answers>
-      {message && <Message>{message}</Message>}
       <Score>Du har {score} rätt hittills</Score>
     </div>
   )
 }
+
 
 const Title = styled.h2`
   margin: 0;
@@ -76,6 +77,7 @@ const QuestionCard = styled.div`
   color: white;
   padding: 20px;
   margin: 10px auto;
+  z-index: 1;
 `
 const Answers = styled.div`
   display: flex;
@@ -83,12 +85,14 @@ const Answers = styled.div`
   justify-content: center;
   flex-wrap: wrap;
   gap: 10px;
+  z-index: 1;
 `;
 
 const AnswerButton = styled.button`
   color: white;
   background-color: black;
   border: none;
+  z-index: 1;
 
   &:disabled {
     cursor: default;
@@ -96,12 +100,18 @@ const AnswerButton = styled.button`
   }
 `;
 
-const Message = styled.p`
-  color: red;
+
+const Message = styled.div`
+  color: black;
   display: flex;
+  position: absolute;
   justify-content: center;
   align-items: center;
+  margin: -80px auto 0 auto;
+  padding: 50px;
   background-color: white;
+  z-index: 2;
+  width: 100vh;
 `;
 
 const Score = styled.h3`
