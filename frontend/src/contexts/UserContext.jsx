@@ -108,4 +108,4 @@ export const UserProvider = ({ children }) => {
     </UserContext.Provider>
   );
 };
-export const useLogin = () => useContext(UserContext);
+export const useUser = () => useContext(UserContext);

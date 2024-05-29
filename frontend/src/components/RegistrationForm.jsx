@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useLogin } from "../contexts/UserContext";
+import { useUser } from "../contexts/UserContext";
 import { Button } from "./Button";
 import { useNavigate } from "react-router-dom";
 import { FormProvider, useForm } from "react-hook-form";
@@ -11,7 +11,7 @@ export const RegistrationForm = () => {
 
   // This method gives access to different form hooks
   const methods = useForm();
-  const { registerUser } = useLogin();
+  const { registerUser } = useUser();
   const [errorMessage, setErrorMessage] = useState("");
 
   // Destructes register, handleSubmit and errors from useForm

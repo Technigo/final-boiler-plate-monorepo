@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import styled, { css } from "styled-components";
-import { useLogin } from "../contexts/UserContext";
+import { useUser } from "../contexts/UserContext";
 
 export const Play = () => {
   const { authenticated, setAuthenticated } = useLogin();
