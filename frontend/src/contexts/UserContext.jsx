@@ -21,7 +21,7 @@ export const UserProvider = ({ children }) => {
       // Ensure this points to the correct backend URL
       const response = await fetch(
         //"http://localhost:8000/sessions",
-        "https://technigo-project-auth.onrender.com/sessions",
+        "https://technigo-final-project-pluggin.onrender.com/sessions",
         {
           method: "POST",
           headers: {
@@ -50,14 +50,13 @@ export const UserProvider = ({ children }) => {
     }
   };
 
-
   const signout = () => {
-    localStorage.removeItem("accessToken")
+    localStorage.removeItem("accessToken");
     setAuthenticated({
       auth: false,
-    })
+    });
     navigate("/login");
-  }
+  };
 
   // Function that sends userData to MongoDB to create a new user
   const registerUser = async (userData) => {
@@ -65,7 +64,7 @@ export const UserProvider = ({ children }) => {
       // Ensure this points to the correct backend URL
       const response = await fetch(
         //"http://localhost:8000/users",
-        "https://technigo-project-auth.onrender.com/users",
+        "https://technigo-final-project-pluggin.onrender.com/users",
         {
           method: "POST",
           headers: {
