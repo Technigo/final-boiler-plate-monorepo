@@ -1,0 +1,25 @@
+{
+  "swedish": [
+    {
+      "level": 1,
+      "question": "Jobba",
+      "rightAnswer": "arbeta",
+      "wrongAnswer": ["hoppa", "leka", "springa"],
+      "category": "verb"
+    },
+    {
+      "level": 1,
+      "question": "Löpa",
+      "rightAnswer": "springa",
+      "wrongAnswer": ["hoppa", "leka", "arbeta"],
+      "category": "verb"
+    },
+    {
+      "level": 1,
+      "question": "Skutta",
+      "rightAnswer": "hoppa",
+      "wrongAnswer": ["springa", "leka", "arbeta"],
+      "category": "verb"
+    }
+  ]
+}

@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Question } from "./Question.jsx";
+import { Question } from "./QuestionEnglish.jsx";
 
 export const English = () => {
   return (
