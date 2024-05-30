@@ -34,6 +34,10 @@ import express from "express";
 import mongoose from "mongoose";
 import bcrypt from "bcrypt-nodejs";
 import crypto from "crypto";
+import dotenv from "dotenv";
+
+// Load environment variables from the .env file
+dotenv.config();
 
 // Defining port and connecting to mongoose
 const port = process.env.PORT || 8000;
