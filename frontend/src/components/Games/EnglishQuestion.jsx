@@ -4,7 +4,7 @@ import { useScore } from "../../contexts/ScoreContext";
 import englishData from "../../../data/EnglishGameData.json";
 
 
-export const Question = () => {
+export const EnglishQuestion = () => {
   const { english } = englishData
   const { score, setScore } = useScore()
   const [randomNumber, setRandomNumber] = useState(4)

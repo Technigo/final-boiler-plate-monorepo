@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import swedishData from "../../../data/SwedishGameData.json"
 
-export const Question = () => {
+export const SwedishQuestion = () => {
   const { swedish } = swedishData
 
   const number = Math.floor(Math.random() * swedish.length);
