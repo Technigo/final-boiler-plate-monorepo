@@ -4,7 +4,7 @@ import styled, { css } from "styled-components";
 import { useUser } from "../contexts/UserContext";
 
 export const Play = () => {
-  const { authenticated, setAuthenticated } = useLogin();
+  const { authenticated, setAuthenticated } = useUser();
   const [message, setMessage] = useState("")
 
   const getContent = async () => {
