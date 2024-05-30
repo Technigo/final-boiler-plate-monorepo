@@ -1,26 +1,19 @@
 import { createContext, useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
-// import dotenv from "dotenv";
-
-// Load environment variables from .env file
-// dotenv.config();
 
 const UserContext = createContext();
 
 export const UserProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [authenticated, setAuthenticated] = useState({
-    accessToken: localStorage.getItem("accessToken"),
-    auth: false,
+    accessToken: localStorage.getItem("accessToken") || null,
+    auth: !!localStorage.getItem("accessToken"),
   });
   const navigate = useNavigate();
 
-  //Uses password and username or email to do a login-request
-  const login = async (loginData, accessToken) => {
+  const login = async (loginData) => {
     try {
-      // Ensure this points to the correct backend URL
       const response = await fetch(
-        //"http://localhost:8000/sessions",
         "https://technigo-final-project-pluggin.onrender.com/sessions",
         {
           method: "POST",
@@ -30,19 +23,18 @@ export const UserProvider = ({ children }) => {
           body: JSON.stringify(loginData),
         }
       );
-      //Not successful
+
       if (!response.ok) {
         console.log("Login failed");
         throw new Error("Failed to get user");
       }
-      //Successful
+
       const data = await response.json();
       console.log("Login success", data);
 
-      // Save accesstoken in local storage
       localStorage.setItem("accessToken", data.accessToken);
       setAuthenticated({
-        accessToken,
+        accessToken: data.accessToken,
         auth: true,
       });
     } catch (err) {
@@ -53,17 +45,15 @@ export const UserProvider = ({ children }) => {
   const signout = () => {
     localStorage.removeItem("accessToken");
     setAuthenticated({
+      accessToken: null,
       auth: false,
     });
     navigate("/login");
   };
 
-  // Function that sends userData to MongoDB to create a new user
   const registerUser = async (userData) => {
     try {
-      // Ensure this points to the correct backend URL
       const response = await fetch(
-        //"http://localhost:8000/users",
         "https://technigo-final-project-pluggin.onrender.com/users",
         {
           method: "POST",
@@ -73,6 +63,7 @@ export const UserProvider = ({ children }) => {
           body: JSON.stringify(userData),
         }
       );
+
       if (!response.ok) {
         throw new Error("Failed to register user");
       }
@@ -80,10 +71,9 @@ export const UserProvider = ({ children }) => {
       const data = await response.json();
       console.log("Registration success", data);
 
-      // Save accesstoken in local storage
       localStorage.setItem("accessToken", data.accessToken);
       setAuthenticated({
-        //accessToken: data.accessToken,
+        accessToken: data.accessToken,
         auth: true,
       });
     } catch (err) {
@@ -107,4 +97,5 @@ export const UserProvider = ({ children }) => {
     </UserContext.Provider>
   );
 };
+
 export const useUser = () => useContext(UserContext);
