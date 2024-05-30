@@ -1,11 +1,11 @@
 import styled from "styled-components";
-import { Question } from "./QuestionSwedish.jsx";
+import { SwedishQuestion } from "./SwedishQuestion.jsx";
 
 export const Swedish = () => {
   return (
     <>
-      <SwedishTitle>Let&apos;s play a Swedish game!</SwedishTitle>
-      <Question />
+      <SwedishTitle>Svenska</SwedishTitle>
+      <SwedishQuestion />
     </>
   )
 };
