@@ -51,10 +51,12 @@ const User = mongoose.model("User", {
 const authenticateUser = async (req, res, next) => {
   const accessToken = req.header("Authorization");
   if (!accessToken) {
-    return res.status(401).json({ error: "Unauthorized: Missing access token" });
+    return res
+      .status(401)
+      .json({ error: "Unauthorized: Missing access token" });
   }
 
-  const user = await User.findone({ accessToken })
+  const user = await User.findone({ accessToken });
   if (user) {
     console.log("User is found", user);
     req.user = user;
@@ -64,9 +66,16 @@ const authenticateUser = async (req, res, next) => {
   }
 };
 
-// Middlewares to enable cors and json body parsing
-app.use(cors());
+// Middleware to enable CORS and JSON body parsing
+app.use(
+  cors({
+    origin: "https://technigo-final-project-pluggin.netlify.app",
+    optionsSuccessStatus: 200,
+  })
+);
 app.use(express.json());
+
+// Middleware to check mongoose connection
 app.use((req, res, next) => {
   if (mongoose.connection.readyState === 1) {
     next();
@@ -127,7 +136,9 @@ app.post("/sessions", async (req, res) => {
     userByEmail &&
     bcrypt.compareSync(req.body.password, userByEmail.password)
   ) {
-    res.status(200).json({ userId: userByEmail._id, accessToken: userByEmail.accessToken });
+    res
+      .status(200)
+      .json({ userId: userByEmail._id, accessToken: userByEmail.accessToken });
   } else {
     res.status(404).json({ notFound: true });
   }
