@@ -5,7 +5,7 @@ import { useUser } from "../contexts/UserContext";
 
 export const Play = () => {
   const { authenticated, setAuthenticated } = useUser();
-  const [message, setMessage] = useState("")
+  const [message, setMessage] = useState("");
 
   const getContent = async () => {
     const accessToken = localStorage.getItem("accessToken");
@@ -13,7 +13,7 @@ export const Play = () => {
       // Ensure this points to the correct backend URL
       const response = await fetch(
         //"http://localhost:8000/games",
-        "https://technigo-project-auth.onrender.com/games",
+        "https://technigo-final-project-pluggin.onrender.com/games",
         {
           method: "GET",
           headers: {
@@ -32,7 +32,7 @@ export const Play = () => {
 
       const data = await response.json();
       console.log("Login success", data);
-      setMessage(data.message)
+      setMessage(data.message);
       setAuthenticated({
         auth: true,
       });
@@ -43,7 +43,7 @@ export const Play = () => {
 
   useEffect(() => {
     getContent();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   if (authenticated.auth) {
@@ -52,7 +52,7 @@ export const Play = () => {
         <PlayTitle>
           Welcome to Pluggin, Name. Ready to play some games?
         </PlayTitle>
-        {message && <SecretText>{message}</SecretText>}    
+        {message && <SecretText>{message}</SecretText>}
         <GamesCards>
           <Link to={`/play/math`}>
             <GameCard math>Play a math game!</GameCard>
@@ -163,4 +163,4 @@ const SecretText = styled.p`
   font-size: 14px;
   text-align: center;
   color: red;
-`
+`;

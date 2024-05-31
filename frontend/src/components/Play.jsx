@@ -5,19 +5,19 @@ import { useLogin } from "../contexts/UserContext";
 
 export const Play = () => {
   const { isLoggedIn, setIsLoggedIn } = useLogin();
-  let message = ""
+  let message = "";
 
   const getContent = async () => {
     const accessToken = localStorage.getItem("accessToken");
     try {
       // Ensure this points to the correct backend URL
       const response = await fetch(
-        "https://technigo-project-auth.onrender.com/games",
+        "https://technigo-final-project-pluggin.onrender.com/games",
         {
           method: "GET",
           headers: {
             "Content-Type": "application/json",
-            "Authorization": accessToken,
+            Authorization: accessToken,
           },
         }
       );
@@ -29,7 +29,7 @@ export const Play = () => {
 
       const data = await response.json();
       console.log("Login success", data);
-      message = data.message
+      message = data.message;
       setIsLoggedIn(true);
     } catch (err) {
       console.error("No user was found:", err);
@@ -46,7 +46,7 @@ export const Play = () => {
         <PlayTitle>
           Welcome to Pluggin, Name. Ready to play some games?
         </PlayTitle>
-        {message && <SecretText>{message}</SecretText>}    
+        {message && <SecretText>{message}</SecretText>}
         <GamesCards>
           <Link to={`/play/math`}>
             <GameCard math>Play a math game!</GameCard>
@@ -157,4 +157,4 @@ const SecretText = styled.p`
   font-size: 14px;
   text-align: center;
   color: red;
-`
+`;
