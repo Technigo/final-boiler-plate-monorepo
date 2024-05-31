@@ -4,9 +4,9 @@ import { useLogin } from "../contexts/UserContext";
 import signoutIcon from "/src/assets/signouticon.png";
 
 export const Header = () => {
-  const { authenticated, signout } = useLogin();
+  const { isLoggedIn, signout } = useLogin();
 
-  if (authenticated.auth) {
+  if (isLoggedIn) {
     return (
       <HeaderContainer>
         <LoggedIn className="loggedIn">

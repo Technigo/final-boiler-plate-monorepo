@@ -1,13 +1,7 @@
 import styled from "styled-components";
-import { EnglishQuestion } from "./EnglishQuestion.jsx";
 
 export const English = () => {
-  return (
-    <>
-      <EnglishTitle>Engelska</EnglishTitle>
-      <EnglishQuestion />
-    </>
-  )
+  return <EnglishTitle>Let's play an English game!</EnglishTitle>;
 };
 const EnglishTitle = styled.h2`
   color: black;

@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { useState } from "react";
-import { useUser } from "../contexts/UserContext";
+import { useLogin } from "../contexts/UserContext";
 import { Button } from "./Button";
 import { useNavigate } from "react-router-dom";
 
@@ -8,7 +8,7 @@ export const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
-  const { login } = useUser();
+  const { login } = useLogin();
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
