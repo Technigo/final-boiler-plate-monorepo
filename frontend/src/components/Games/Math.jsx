@@ -1,13 +1,16 @@
-import styled from "styled-components";
-import { useMath } from "../../contexts/MathContext";
-import { MathQuestion } from "./MathQuestion";
+import styled from "styled-components"
+import { useRef } from "react"
+import { useMath } from "../../contexts/MathContext"
+import { MathQuestion } from "./MathQuestion"
 
 export const Math = () => {
   const { setMathType, generateQuestion } = useMath()
+  const focusRef = useRef()
   
   const handleChoice = (type) => {
     setMathType(type)
     generateQuestion(type)
+    focusRef.current.focus()
   }
 
   return (
