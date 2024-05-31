@@ -2,73 +2,14 @@ import PropTypes from "prop-types"
 import styled, { css } from "styled-components"
 
 import { useState, useEffect } from "react"
-import { useScore } from "../../contexts/ScoreContext"
+import { useMath } from "../../contexts/MathContext"
 
 export const MathQuestion = () => {
-  const { mathType } = useScore()
-  const [question, setQuestion] = useState("")
-  const [correctAnswer, setCorrectAnswer] = useState()
+  const { mathType, question, correctAnswer, generateQuestion } = useMath()
+  
   const [message, setMessage] = useState("")
   const [answerInput, setAnswerInput] = useState("");
   const numPadNumbers = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-  
-  //Generates different questions depending on the type of mathematical operation
-  const generateAdditionQuestion = () => {
-    const a = Math.floor (Math.random() * 100) + 1
-    const b = Math.floor(Math.random() * 100) + 1
-    setCorrectAnswer(a+b)
-    setQuestion(`Vad är ${a}+${b}?`)
-  }
-
-  const generateSubtractionQuestion = () => {
-    const a = Math.floor (Math.random() * 100) + 1
-    const b = Math.floor(Math.random() * 100) + 1
-    if (a >= b) {
-      setCorrectAnswer(a-b)
-      setQuestion(`Vad är ${a}-${b}?`)
-    } else {
-      setCorrectAnswer(b-a)
-      setQuestion(`Vad är ${b}-${a}?`)
-    }
-  }
-
-  const generateMultiplicationQuestion = () => {
-    const a = Math.floor (Math.random() * 11)
-    const b = Math.floor(Math.random() * 11)
-    setCorrectAnswer(a*b)
-    setQuestion(`Vad är ${a}*${b}?`)
-  }
-  
-  const generateDivisionQuestion = () => {
-    const a = Math.floor (Math.random() * 10) + 1
-    const b = Math.floor(Math.random() * 11)
-    const c = a*b
-    setCorrectAnswer(c/a)
-    setQuestion(`Vad är ${c}/${a}?`)
-  }
-
-  //Decides which type of problem to generate based on prop from Math.jsx
-  const generateQuestion = () => {   
-    setMessage("") 
-    setAnswerInput("") 
-    switch (mathType) {
-      case "addition":
-        generateAdditionQuestion()
-        break;
-      case "subtraction":
-        generateSubtractionQuestion()
-        break;
-      case "multiplication":
-        generateMultiplicationQuestion()
-        break;
-      case "division":
-        generateDivisionQuestion()
-        break;
-      default:
-        generateAdditionQuestion()
-
-    }
-  }
   
   useEffect(() => {
     generateQuestion()
@@ -82,21 +23,25 @@ export const MathQuestion = () => {
     } else {
       setMessage(`❌ Fel svar. Rätt svar var ${correctAnswer}.`)
     }
-    setTimeout(() => generateQuestion(), 3000)
+    setTimeout(() => newQuestion(), 3000)
   }
 
   const handleNumPadClick = (number) => {
-    setAnswerInput((prev) => prev + number.toString());
-  };
+    setAnswerInput((prev) => prev + number.toString())
+  }
 
   const handleDeleteClick = () => {
     setAnswerInput("");
-  };
+  }
 
+  const newQuestion = () => {
+    setMessage("")
+    setAnswerInput("")
+    generateQuestion(mathType)
+  }
 
   return (
     <div> 
-      <MathTitle>Vad vill du öva på?</MathTitle>
       <QuestionCard>{question}</QuestionCard>
       <Answer onSubmit={(event) => checkAnswer(event)}>
         {message && <Message>{message}</Message>}
@@ -114,10 +59,6 @@ export const MathQuestion = () => {
     </div>
   )
 }
-
-const MathTitle = styled.h2`
-  color: black;
-`;
 
 const Answer = styled.form`
   display: flex;
