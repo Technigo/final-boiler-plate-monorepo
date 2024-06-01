@@ -24,7 +24,3 @@ package-lock.json
 *.sln
 *.sw?
 .env
-
-
-
-VITE_RENDER_API=http://localhost:3000
