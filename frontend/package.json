@@ -1,5 +1,6 @@
 {
-  "name": "frontend",
+  "name": "technigo-final-boiler-frontend",
+  "description": "Starter project to get up and running with your final quickly",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -10,13 +11,12 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "dotenv": "^16.4.5",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.51.5",
-    "react-router": "^6.23.1",
-    "react-router-dom": "^6.23.1",
-    "styled-components": "^6.1.11"
+    "react-router-dom": "^6.15.0",
+    "styled-components": "^6.1.11",
+    "zustand": "^4.4.6"
   },
   "devDependencies": {
     "@types/react": "^18.2.15",

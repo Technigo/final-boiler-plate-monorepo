@@ -13,12 +13,12 @@ export const Header = () => {
           <Link to={`/play`}>
             <Play>Play</Play>
           </Link>
-          <Link to={`/myprogress`}>
-            <MyProgress>My progress</MyProgress>
+          <Link to={`/progress`}>
+            <MyProgress>Min progress</MyProgress>
           </Link>
           <SignOut>
-          <SignOutText onClick={signout}>Sign out</SignOutText>
-          <SignOutIcon onClick={signout} src={signoutIcon}/> 
+            <SignOutText onClick={signout}>Logga ut</SignOutText>
+            <SignOutIcon onClick={signout} src={signoutIcon} />
           </SignOut>
         </LoggedIn>
       </HeaderContainer>
@@ -27,11 +27,11 @@ export const Header = () => {
     return (
       <HeaderContainer>
         <StartPage className="startPage">
-          <Link to={`/register`}>
-            <Register>Register here</Register>
+          <Link to={`/registering`}>
+            <Register>Registera dig</Register>
           </Link>
-          <Link to={`/login`}>
-            <Login>Log in</Login>
+          <Link to={`/logga-in`}>
+            <Login>Logga in</Login>
           </Link>
         </StartPage>
       </HeaderContainer>
@@ -40,7 +40,7 @@ export const Header = () => {
 };
 
 const HeaderContainer = styled.div`
-  background-color: var( --sunset);
+  background-color: var(--sunset);
   width: 100%;
   height: 30px;
   position: absolute;
@@ -61,28 +61,28 @@ const StartPage = styled.div`
 `;
 
 const Register = styled.p`
-  color: var( --ocean);
+  color: var(--ocean);
   cursor: pointer;
 
   &:hover {
-    color: var( --oceanhover);
+    color: var(--oceanhover);
   }
 
   &:active {
-    color: var( --oceanactive);
+    color: var(--oceanactive);
   }
 `;
 
 const Login = styled.p`
-   color: var( --ocean);
+  color: var(--ocean);
   cursor: pointer;
 
   &:hover {
-    color: var( --oceanhover);
+    color: var(--oceanhover);
   }
 
   &:active {
-    color: var( --oceanactive);
+    color: var(--oceanactive);
   }
 `;
 
@@ -93,32 +93,31 @@ const LoggedIn = styled.div`
   padding: 10px;
   width: 100vh;
   color: white;
-  
 `;
 
 const Play = styled.p`
-  color: var( --ocean);
+  color: var(--ocean);
   cursor: pointer;
 
   &:hover {
-    color: var( --oceanhover);
+    color: var(--oceanhover);
   }
 
   &:active {
-    color: var( --oceanactive);
+    color: var(--oceanactive);
   }
 `;
 
 const MyProgress = styled.p`
-  color: var( --ocean);
+  color: var(--ocean);
   cursor: pointer;
-  
-   &:hover {
-    color: var( --oceanhover);
+
+  &:hover {
+    color: var(--oceanhover);
   }
 
   &:active {
-    color: var( --oceanactive);
+    color: var(--oceanactive);
   }
 `;
 
@@ -128,18 +127,17 @@ const SignOut = styled.div`
   gap: 7px;
   cursor: pointer;
 
-   &:hover {
+  &:hover {
     opacity: 70%;
   }
 `;
 
 const SignOutText = styled.p`
-  color: var( --ocean);
+  color: var(--ocean);
   cursor: pointer;
 
-
   &:active {
-    color: var( --oceanactive);
+    color: var(--oceanactive);
   }
 `;
 
@@ -149,8 +147,4 @@ const SignOutIcon = styled.img`
   align-items: center;
   padding-top: 17px;
   opacity: 100%;
-  
-  
- 
 `;
-

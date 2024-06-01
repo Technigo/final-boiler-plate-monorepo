@@ -1,7 +1,7 @@
 {
-  "name": "project-auth-backend",
+  "name": "technigo-final-boiler-backend",
   "version": "1.0.0",
-  "description": "Starter project to get up and running with express quickly",
+  "description": "Starter project to get up and running with your final quickly",
   "scripts": {
     "start": "babel-node server.js",
     "dev": "nodemon server.js --exec babel-node"
@@ -12,14 +12,19 @@
     "@babel/core": "^7.17.9",
     "@babel/node": "^7.16.8",
     "@babel/preset-env": "^7.16.11",
+    "bcrypt": "^5.1.1",
     "bcrypt-nodejs": "^0.0.3",
     "cors": "^2.8.5",
+    "crypto": "^1.0.1",
+    "dotenv": "^16.3.1",
     "express": "^4.17.3",
-    "mongodb": "^6.6.2",
-    "mongoose": "^8.4.0",
-    "nodemon": "^3.0.1"
-  },
-  "devDependencies": {
-    "@types/bcrypt-nodejs": "^0.0.31"
+    "express-async-handler": "^1.2.0",
+    "express-list-endpoints": "^6.0.0",
+    "jsonwebtoken": "^9.0.2",
+    "mongodb": "^5.5.0",
+    "mongoose": "^8.0.0",
+    "nodemon": "^2.0.15",
+    "passport": "^0.7.0",
+    "passport-google-oauth20": "^2.0.0"
   }
 }

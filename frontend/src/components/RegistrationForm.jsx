@@ -49,18 +49,18 @@ export const RegistrationForm = () => {
     <RegistrationContainer>
       <FormProvider {...methods}>
         <Form onSubmit={handleSubmit(onSubmit)} noValidate>
-          {/* disables browser validation */}
-          <Heading>Register</Heading>
+          {/* inaktiverar webbläsarens validering */}
+          <Heading>Registrera dig</Heading>
           <label>
             <Input
               type="text"
-              placeholder="Username"
+              placeholder="Användarnamn"
               {...register("username", {
-                required: "Username is required",
+                required: "Användarnamn krävs.",
                 pattern: {
                   value: /^[a-zA-Z0-9_]+$/,
                   message:
-                    "Username can only contain letters, numbers, and underscores",
+                    "Användarnamn får endast innehålla bokstäver, siffror och understreck",
                 },
               })}
             />
@@ -71,12 +71,12 @@ export const RegistrationForm = () => {
           <label>
             <Input
               type="text"
-              placeholder="First Name"
+              placeholder="Förnamn"
               {...register("firstName", {
-                required: "First name is required",
+                required: "Förnamn krävs",
                 pattern: {
                   value: /^[a-zA-Z]+$/,
-                  message: "First name can only contain letters",
+                  message: "Förnamn får endast innehålla bokstäver",
                 },
               })}
             />
@@ -87,12 +87,12 @@ export const RegistrationForm = () => {
           <label>
             <Input
               type="text"
-              placeholder="Last Name"
+              placeholder="Efternamn"
               {...register("lastName", {
-                required: "Last name is required",
+                required: "Efternamn krävs",
                 pattern: {
                   value: /^[a-zA-Z]+$/,
-                  message: "Last name can only contain letters",
+                  message: "Efternamn får endast innehålla bokstäver",
                 },
               })}
             />
@@ -103,12 +103,12 @@ export const RegistrationForm = () => {
           <label>
             <Input
               type="text"
-              placeholder="Age"
+              placeholder="Ålder"
               {...register("age", {
-                required: "Age is required",
+                required: "Ålder krävs",
                 pattern: {
                   value: /^[0-9]+$/,
-                  message: "Age must be a number",
+                  message: "Ålder måste vara ett nummer",
                 },
               })}
             />
@@ -117,12 +117,12 @@ export const RegistrationForm = () => {
           <label>
             <Input
               type="email"
-              placeholder="Email"
+              placeholder="E-post"
               {...register("email", {
-                required: "Email is required",
+                required: "E-post krävs",
                 pattern: {
                   value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
-                  message: "Invalid email address",
+                  message: "Ogiltig e-postadress",
                 },
               })}
             />
@@ -133,18 +133,18 @@ export const RegistrationForm = () => {
           <label>
             <Input
               type="password"
-              placeholder="Password"
+              placeholder="Lösenord"
               {...register("password", {
-                required: "Password is required",
+                required: "Lösenord krävs",
                 minLength: {
                   value: 8,
-                  message: "Password must be at least 8 characters long",
+                  message: "Lösenordet måste vara minst 8 tecken långt",
                 },
                 pattern: {
                   value:
                     /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d@$!%*?&]{8,}$/,
                   message:
-                    "Password must contain at least one uppercase letter, one lowercase letter, and one number",
+                    "Lösenordet måste innehålla minst en stor bokstav, en liten bokstav och en siffra",
                 },
               })}
             />
@@ -155,9 +155,9 @@ export const RegistrationForm = () => {
           <label>
             <Input
               type="password"
-              placeholder="Confirm password"
+              placeholder="Bekräfta lösenord"
               {...register("confirmPassword", {
-                required: "Confirm password is required",
+                required: "Bekräfta lösenord krävs",
               })}
             />
             {errors.confirmPassword && (
@@ -165,7 +165,7 @@ export const RegistrationForm = () => {
             )}
           </label>
           <ErrorMessage>{errorMessage}</ErrorMessage>
-          <Button type="submit">Register</Button>
+          <Button type="submit">Registrera</Button>
         </Form>
       </FormProvider>
     </RegistrationContainer>

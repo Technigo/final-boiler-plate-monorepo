@@ -5,22 +5,20 @@ import { useLogin } from "../contexts/UserContext";
 
 export const Play = () => {
   const { isLoggedIn, setIsLoggedIn } = useLogin();
+  const renderUrl = import.meta.env.VITE_RENDER_API || "http://localhost:3000";
   let message = "";
 
   const getContent = async () => {
     const accessToken = localStorage.getItem("accessToken");
     try {
       // Ensure this points to the correct backend URL
-      const response = await fetch(
-        "https://technigo-final-project-pluggin.onrender.com/games",
-        {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${accessToken}`,
-          },
-        }
-      );
+      const response = await fetch(`${renderUrl}/games`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: accessToken,
+        },
+      });
       console.log(response);
       if (!response.ok) {
         setIsLoggedIn(false);
@@ -44,24 +42,24 @@ export const Play = () => {
     return (
       <PlayContainer>
         <PlayTitle>
-          Welcome to Pluggin, Name. Ready to play some games?
+          Välkommen till PluggIn, Sara. Redo att spela några spel?
         </PlayTitle>
         {message && <SecretText>{message}</SecretText>}
         <GamesCards>
-          <Link to={`/play/math`}>
-            <GameCard math>Play a math game!</GameCard>
+          <Link to={`/play/matte`}>
+            <GameCard math>Matte</GameCard>
           </Link>
-          <Link to={`/play/swedish`}>
-            <GameCard swedish>Play a Swedish game!</GameCard>
+          <Link to={`/play/svenska`}>
+            <GameCard swedish>Svenska</GameCard>
           </Link>
-          <Link to={`/play/english`}>
-            <GameCard english>Play an English game!</GameCard>
+          <Link to={`/play/engelska`}>
+            <GameCard english>Engelska</GameCard>
           </Link>
         </GamesCards>
       </PlayContainer>
     );
   } else {
-    return <Text>You need to log in!</Text>;
+    return <Text>Du måste logga in!</Text>;
   }
 };
 

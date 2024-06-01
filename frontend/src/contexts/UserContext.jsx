@@ -1,9 +1,5 @@
 import { createContext, useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
-// import dotenv from "dotenv";
-
-// Load environment variables from .env file
-// dotenv.config();
 
 const UserContext = createContext();
 
@@ -15,20 +11,18 @@ export const UserProvider = ({ children }) => {
     auth: false,
   });
   const navigate = useNavigate();
+  const renderUrl = import.meta.env.VITE_RENDER_API || "http://localhost:3000";
 
   const login = async (loginData, accessToken) => {
     try {
       // Ensure this points to the correct backend URL
-      const response = await fetch(
-        "https://technigo-final-project-pluggin.onrender.com/sessions",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(loginData),
-        }
-      );
+      const response = await fetch(`${renderUrl}/sessions`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(loginData),
+      });
       if (!response.ok) {
         console.log("Login failed");
         throw new Error("Failed to get user");
@@ -63,16 +57,13 @@ export const UserProvider = ({ children }) => {
   const registerUser = async (userData) => {
     try {
       // Ensure this points to the correct backend URL
-      const response = await fetch(
-        "https://technigo-final-project-pluggin.onrender.com/users",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(userData),
-        }
-      );
+      const response = await fetch(`${renderUrl}/users`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(userData),
+      });
       if (!response.ok) {
         throw new Error("Failed to register user");
       }
