@@ -70,6 +70,13 @@ export const UserProvider = ({ children }) => {
 
       const data = await response.json();
       console.log("Registration success", data);
+
+      localStorage.setItem("accessToken", data.accessToken);
+      setAuthenticated({
+        accessToken: data.accessToken,
+        auth: true,
+      });
+
       setIsLoggedIn(true);
     } catch (err) {
       console.error("Error registering new user:", err);
