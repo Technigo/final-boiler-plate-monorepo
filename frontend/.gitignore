@@ -17,13 +17,14 @@ package-lock.json
 .vscode/*
 !.vscode/extensions.json
 .idea
-.DS_Store
+*.DS_Store
 *.suo
 *.ntvs*
 *.njsproj
 *.sln
 *.sw?
-
-
-# Comment out later ;) 
 .env
+
+
+
+VITE_RENDER_API=http://localhost:3000
