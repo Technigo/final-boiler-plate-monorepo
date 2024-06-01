@@ -5,14 +5,14 @@ import { useLogin } from "../contexts/UserContext";
 
 export const Play = () => {
   const { isLoggedIn, setIsLoggedIn } = useLogin();
-  const renderUrl = import.meta.env.VITE_RENDER_API;
+  const apiUrl = import.meta.env.VITE_API_URL || "http://localhost:3000";
   let message = "";
 
   const getContent = async () => {
     const accessToken = localStorage.getItem("accessToken");
     try {
       // Ensure this points to the correct backend URL
-      const response = await fetch(`${renderUrl}/games`, {
+      const response = await fetch(`${apiUrl}/games`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",

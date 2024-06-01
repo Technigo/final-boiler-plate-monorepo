@@ -11,12 +11,12 @@ export const UserProvider = ({ children }) => {
     auth: false,
   });
   const navigate = useNavigate();
-  const renderUrl = import.meta.env.VITE_RENDER_API;
+  const apiUrl = import.meta.env.VITE_API_URL || "http://localhost:3000";
 
   const login = async (loginData, accessToken) => {
     try {
       // Ensure this points to the correct backend URL
-      const response = await fetch(`${renderUrl}/sessions`, {
+      const response = await fetch(`${apiUrl}/sessions`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -57,7 +57,7 @@ export const UserProvider = ({ children }) => {
   const registerUser = async (userData) => {
     try {
       // Ensure this points to the correct backend URL
-      const response = await fetch(`${renderUrl}/users`, {
+      const response = await fetch(`${apiUrl}/users`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
