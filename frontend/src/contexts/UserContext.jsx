@@ -11,7 +11,7 @@ export const UserProvider = ({ children }) => {
     auth: false,
   });
   const navigate = useNavigate();
-  const renderUrl = import.meta.env.VITE_RENDER_API || "http://localhost:3000";
+  const renderUrl = import.meta.env.VITE_RENDER_API;
 
   const login = async (loginData, accessToken) => {
     try {
