@@ -5,7 +5,7 @@ import { useLogin } from "../contexts/UserContext";
 
 export const Play = () => {
   const { isLoggedIn, setIsLoggedIn } = useLogin();
-  const renderUrl = import.meta.env.VITE_RENDER_API || "http://localhost:3000";
+  const renderUrl = import.meta.env.VITE_RENDER_API;
   let message = "";
 
   const getContent = async () => {
