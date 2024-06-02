@@ -4,14 +4,14 @@ import styled, { css } from "styled-components";
 import { useLogin } from "../contexts/UserContext";
 
 export const Play = () => {
-  const { isLoggedIn, setIsLoggedIn } = useLogin();
+  const { isLoggedIn, setIsLoggedIn, user } = useLogin();
   const apiUrl = import.meta.env.VITE_API_URL || "http://localhost:3000";
 
   let message = "";
 
   const getContent = async () => {
     const accessToken = localStorage.getItem("accessToken");
-    console.log(accessToken);
+
     try {
       // Ensure this points to the correct backend URL
       const response = await fetch(`${apiUrl}/games`, {
@@ -21,14 +21,14 @@ export const Play = () => {
           Authorization: accessToken,
         },
       });
-      console.log(response);
+
       if (!response.ok) {
         setIsLoggedIn(false);
         throw new Error("Failed to get user");
       }
 
       const data = await response.json();
-      console.log("Login success", data);
+      console.info("Login success", data);
       message = data.message;
       setIsLoggedIn(true);
     } catch (err) {
@@ -44,7 +44,7 @@ export const Play = () => {
     return (
       <PlayContainer>
         <PlayTitle>
-          Välkommen till PluggIn, Sara. Redo att spela några spel?
+          Välkommen till PluggIn, {user?.username}. Redo att spela några spel?
         </PlayTitle>
         {message && <SecretText>{message}</SecretText>}
         <GamesCards>
