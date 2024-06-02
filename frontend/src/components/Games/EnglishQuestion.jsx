@@ -1,75 +1,81 @@
 import styled from "styled-components";
-import { useState, useEffect } from "react"
+import { useState, useEffect } from "react";
 import { useScore } from "../../contexts/ScoreContext";
-import englishData from "../../../data/EnglishGameData.json";
-
+import englishData from "../../data/EnglishGameData.json";
 
 export const EnglishQuestion = () => {
-  const { english } = englishData
-  const { score, setScore } = useScore()
-  const [randomNumber, setRandomNumber] = useState(4)
-  const [message, setMessage] = useState("")
-  const [disableButton, setDisableButton] = useState(false)
+  const { english } = englishData;
+  const { score, setScore } = useScore();
+  const [randomNumber, setRandomNumber] = useState(4);
+  const [message, setMessage] = useState("");
+  const [disableButton, setDisableButton] = useState(false);
 
-  const answers = []
+  const answers = [];
 
   const generateAnswers = () => {
-    english[randomNumber].wrongAnswer.map((answer) => answers.push(answer))
-    answers.push(english[randomNumber].rightAnswer)
-    answers.sort()
+    english[randomNumber].wrongAnswer.map((answer) => answers.push(answer));
+    answers.push(english[randomNumber].rightAnswer);
+    answers.sort();
     /*for (let i = answers.length - 1; i > 0; i--) {
       let j = Math.floor(Math.random() * (i + 1));
       [answers[i], answers[j]] = [answers[j], answers[i]];
     } return answers*/
-  }
+  };
 
-  generateAnswers()
+  generateAnswers();
 
   const generateQuestion = () => {
-    setRandomNumber(Math.floor(Math.random() * english.length))
-    generateAnswers()
-    setDisableButton(false)
-    setMessage("")
-  }
-  
-  useEffect(() => {
-    generateQuestion()
-  }, [])
+    setRandomNumber(Math.floor(Math.random() * english.length));
+    generateAnswers();
+    setDisableButton(false);
+    setMessage("");
+  };
 
-  
-  
+  useEffect(() => {
+    generateQuestion();
+  }, []);
+
   //Takes users answer and compare it to right answer to generate right/wrong-message
   const handleChoice = (answer) => {
-    const rightAnswer = english[randomNumber].rightAnswer
+    const rightAnswer = english[randomNumber].rightAnswer;
     if (answer === rightAnswer) {
-      setTimeout(() => setMessage(`✅ Rätt svar! Bra jobbat!`)(), 1000)
-      setTimeout(() => setScore(score + 1)(), 2000)
+      setTimeout(() => setMessage(`✅ Rätt svar! Bra jobbat!`)(), 1000);
+      setTimeout(() => setScore(score + 1)(), 2000);
     } else {
-      setTimeout(() => setMessage(`❌ Fel svar. Rätt svar var ${rightAnswer}.`)(), 1000)
+      setTimeout(
+        () => setMessage(`❌ Fel svar. Rätt svar var ${rightAnswer}.`)(),
+        1000
+      );
     }
-    setDisableButton(true)
-    setTimeout(() => generateQuestion(), 5000)
-  }
+    setDisableButton(true);
+    setTimeout(() => generateQuestion(), 5000);
+  };
 
   return (
     <div>
       <Title>Vad betyder ordet?</Title>
       <QuestionCard>{english[randomNumber].question}</QuestionCard>
       <Answers>
-      {message && <Message>{message}</Message>}
+        {message && <Message>{message}</Message>}
         {answers.map((answer, index) => (
-          <AnswerButton disabled={disableButton} key={index} value={answer} onClick={(event) => handleChoice(event.target.value)}>{answer}</AnswerButton>
+          <AnswerButton
+            disabled={disableButton}
+            key={index}
+            value={answer}
+            onClick={(event) => handleChoice(event.target.value)}
+          >
+            {answer}
+          </AnswerButton>
         ))}
       </Answers>
       <Score>Du har {score} rätt hittills</Score>
     </div>
-  )
-}
-
+  );
+};
 
 const Title = styled.h2`
   margin: 0;
-`
+`;
 
 const QuestionCard = styled.div`
   width: 200px;
@@ -78,7 +84,7 @@ const QuestionCard = styled.div`
   padding: 20px;
   margin: 10px auto;
   z-index: 1;
-`
+`;
 const Answers = styled.div`
   display: flex;
   flex-direction: row;
@@ -99,7 +105,6 @@ const AnswerButton = styled.button`
     border: none;
   }
 `;
-
 
 const Message = styled.div`
   color: black;

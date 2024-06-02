@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import swedishData from "../../../data/SwedishGameData.json";
+import swedishData from "../../data/SwedishGameData.json";
 
 export const SwedishQuestion = () => {
   const { swedish } = swedishData;
