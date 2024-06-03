@@ -9,24 +9,25 @@ export const SwedishQuestion = () => {
   const [randomNumber, setRandomNumber] = useState(4);
   const [message, setMessage] = useState("");
   const [disableButton, setDisableButton] = useState(false);
+  const [answers, setAnswers] = useState([]);
 
-  const answers = [];
-
-  const generateAnswers = () => {
-    swedish[randomNumber].wrongAnswer.map((answer) => answers.push(answer));
-    answers.push(swedish[randomNumber].rightAnswer);
-    answers.sort();
-    /*for (let i = answers.length - 1; i > 0; i--) {
-      let j = Math.floor(Math.random() * (i + 1));
-      [answers[i], answers[j]] = [answers[j], answers[i]];
-    } return answers*/
+  const shuffleArray = (array) => {
+    for (let i = array.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]];
+    }
   };
 
-  generateAnswers();
+  const generateAnswers = (index) => {
+    const newAnswers = [...swedish[index].wrongAnswer, swedish[index].rightAnswer];
+    shuffleArray(newAnswers);
+    setAnswers(newAnswers);
+  };
 
   const generateQuestion = () => {
-    setRandomNumber(Math.floor(Math.random() * swedish.length));
-    generateAnswers();
+    const newRandomNumber = Math.floor(Math.random() * swedish.length);
+    setRandomNumber(newRandomNumber);
+    generateAnswers(newRandomNumber);
     setDisableButton(false);
     setMessage("");
   };
@@ -35,17 +36,13 @@ export const SwedishQuestion = () => {
     generateQuestion();
   }, []);
 
-  //Takes users answer and compare it to right answer to generate right/wrong-message
   const handleChoice = (answer) => {
     const rightAnswer = swedish[randomNumber].rightAnswer;
     if (answer === rightAnswer) {
-      setTimeout(() => setMessage(`✅ Rätt svar! Bra jobbat!`)(), 1000);
-      setTimeout(() => setScore(score + 1)(), 2000);
+      setTimeout(() => setMessage(`✅ Rätt svar! Bra jobbat!`), 1000);
+      setTimeout(() => setScore(score + 1), 2000);
     } else {
-      setTimeout(
-        () => setMessage(`❌ Fel svar. Rätt svar var ${rightAnswer}.`)(),
-        1000
-      );
+      setTimeout(() => setMessage(`❌ Fel svar. Rätt svar var ${rightAnswer}.`), 1000);
     }
     setDisableButton(true);
     setTimeout(() => generateQuestion(), 5000);
@@ -85,6 +82,7 @@ const QuestionCard = styled.div`
   margin: 10px auto;
   z-index: 1;
 `;
+
 const Answers = styled.div`
   display: flex;
   flex-direction: row;
@@ -122,4 +120,3 @@ const Message = styled.div`
 const Score = styled.h3`
   color: black;
 `;
-
