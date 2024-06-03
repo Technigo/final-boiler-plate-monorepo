@@ -48,7 +48,6 @@ export const Math = () => {
 
   return (
     <>
-      <MathTitle>Matte</MathTitle>
       <MathTitle>Vad vill du öva på?</MathTitle>
       <MathTypeButton
         value="addition"
@@ -87,4 +86,3 @@ const MathTypeButton = styled.button`
   color: white;
   background-color: black;
 `
-

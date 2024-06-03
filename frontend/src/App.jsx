@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes } from "react-router-dom";
 import routes from "./routes/routes";
+import { Header } from "./components/Header";
 import { UserProvider } from "./contexts/UserContext";
 import { ScoreProvider } from "./contexts/ScoreContext";
 import { MathProvider } from "./contexts/MathContext";
@@ -11,7 +12,8 @@ export const App = () => {
       <BrowserRouter>
         <UserProvider>
           <ScoreProvider>
-            <MathProvider>
+            <MathProvider> 
+              <Header />
               <main>
                 <Routes>{routes}</Routes>
               </main>

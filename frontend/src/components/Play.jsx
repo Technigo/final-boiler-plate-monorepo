@@ -1,41 +1,36 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import styled, { css } from "styled-components";
-import { useUser } from "../contexts/UserContext";
+import { useLogin } from "../contexts/UserContext";
 
 export const Play = () => {
-  const { authenticated, setAuthenticated } = useUser();
-  const [message, setMessage] = useState("")
+  const { isLoggedIn, setIsLoggedIn, user } = useLogin();
+  const apiUrl = import.meta.env.VITE_API_URL || "http://localhost:3000";
+
+  let message = "";
 
   const getContent = async () => {
     const accessToken = localStorage.getItem("accessToken");
+
     try {
       // Ensure this points to the correct backend URL
-      const response = await fetch(
-        //"http://localhost:8000/games",
-        "https://technigo-project-auth.onrender.com/games",
-        {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: accessToken,
-          },
-        }
-      );
-      console.log(response);
+      const response = await fetch(`${apiUrl}/games`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: accessToken,
+        },
+      });
+
       if (!response.ok) {
-        setAuthenticated({
-          auth: false,
-        });
+        setIsLoggedIn(false);
         throw new Error("Failed to get user");
       }
 
       const data = await response.json();
-      console.log("Login success", data);
-      setMessage(data.message)
-      setAuthenticated({
-        auth: true,
-      });
+      console.info("Login success", data);
+      message = data.message;
+      setIsLoggedIn(true);
     } catch (err) {
       console.error("No user was found:", err);
     }
@@ -43,31 +38,30 @@ export const Play = () => {
 
   useEffect(() => {
     getContent();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  if (authenticated.auth) {
+  if (isLoggedIn) {
     return (
       <PlayContainer>
         <PlayTitle>
-          Welcome to Pluggin, Name. Ready to play some games?
+          Välkommen till PluggIn, {user?.username}. Redo att spela några spel?
         </PlayTitle>
-        {message && <SecretText>{message}</SecretText>}    
+        {message && <SecretText>{message}</SecretText>}
         <GamesCards>
-          <Link to={`/play/math`}>
-            <GameCard math>Play a math game!</GameCard>
+          <Link to={`/play/matte`}>
+            <GameCard math>Matte</GameCard>
           </Link>
-          <Link to={`/play/swedish`}>
-            <GameCard swedish>Play a Swedish game!</GameCard>
+          <Link to={`/play/svenska`}>
+            <GameCard swedish>Svenska</GameCard>
           </Link>
-          <Link to={`/play/english`}>
-            <GameCard english>Play an English game!</GameCard>
+          <Link to={`/play/engelska`}>
+            <GameCard english>Engelska</GameCard>
           </Link>
         </GamesCards>
       </PlayContainer>
     );
   } else {
-    return <Text>You need to log in!</Text>;
+    return <Text>Du måste logga in!</Text>;
   }
 };
 
@@ -163,4 +157,4 @@ const SecretText = styled.p`
   font-size: 14px;
   text-align: center;
   color: red;
-`
+`;

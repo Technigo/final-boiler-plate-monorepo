@@ -1,42 +1,58 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const UserContext = createContext();
 
 export const UserProvider = ({ children }) => {
   const [user, setUser] = useState(null);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [authenticated, setAuthenticated] = useState({
-    accessToken: localStorage.getItem("accessToken") || null,
-    auth: !!localStorage.getItem("accessToken"),
+    accessToken: localStorage.getItem("accessToken"),
+    auth: false,
   });
   const navigate = useNavigate();
+  const apiUrl = import.meta.env.VITE_API_URL || "http://localhost:3000";
 
-  const login = async (loginData) => {
+  // Load username from localStorage
+  useEffect(() => {
+    const username = localStorage.getItem("username");
+    if (username) {
+      setUser({ username: username });
+    }
+  }, []);
+
+  const login = async (loginData, accessToken) => {
     try {
-      const response = await fetch(
-        "https://technigo-final-project-pluggin.onrender.com/sessions",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(loginData),
-        }
-      );
-
+      // Ensure this points to the correct backend URL
+      const response = await fetch(`${apiUrl}/sessions`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(loginData),
+      });
       if (!response.ok) {
-        console.log("Login failed");
+        console.info("Login failed");
         throw new Error("Failed to get user");
       }
 
       const data = await response.json();
-      console.log("Login success", data);
+      console.info("Login success", data);
 
+      // Save accesstoken and username in local storage
       localStorage.setItem("accessToken", data.accessToken);
+      localStorage.setItem("username", data.username);
       setAuthenticated({
-        accessToken: data.accessToken,
+        accessToken,
         auth: true,
       });
+
+      setUser({
+        username: data.username,
+      });
+
+      setIsLoggedIn(true);
+      navigate("/play");
     } catch (err) {
       console.error("No user was found:", err);
     }
@@ -44,38 +60,46 @@ export const UserProvider = ({ children }) => {
 
   const signout = () => {
     localStorage.removeItem("accessToken");
+    localStorage.removeItem("username");
+    setIsLoggedIn(false);
     setAuthenticated({
-      accessToken: null,
       auth: false,
     });
+
     navigate("/login");
   };
 
+  // Function that sends userData to MongoDB to create a new user
   const registerUser = async (userData) => {
     try {
-      const response = await fetch(
-        "https://technigo-final-project-pluggin.onrender.com/users",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(userData),
-        }
-      );
-
+      // Ensure this points to the correct backend URL
+      const response = await fetch(`${apiUrl}/users`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(userData),
+      });
       if (!response.ok) {
         throw new Error("Failed to register user");
       }
 
       const data = await response.json();
-      console.log("Registration success", data);
+      console.info("Registration success", data);
 
       localStorage.setItem("accessToken", data.accessToken);
+      localStorage.setItem("username", data.username);
       setAuthenticated({
         accessToken: data.accessToken,
         auth: true,
       });
+
+      setUser({
+        username: data.username,
+      });
+
+      setIsLoggedIn(true);
+      navigate("(play");
     } catch (err) {
       console.error("Error registering new user:", err);
     }
@@ -86,8 +110,9 @@ export const UserProvider = ({ children }) => {
       value={{
         user,
         setUser,
+        isLoggedIn,
+        setIsLoggedIn,
         authenticated,
-        setAuthenticated,
         login,
         signout,
         registerUser,
@@ -97,5 +122,4 @@ export const UserProvider = ({ children }) => {
     </UserContext.Provider>
   );
 };
-
-export const useUser = () => useContext(UserContext);
+export const useLogin = () => useContext(UserContext);

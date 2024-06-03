@@ -1,48 +1,50 @@
 // // Import necessary libraries and modules
-// import express from "express"; // Import the Express.js framework
-// import cors from "cors"; // Import the CORS middleware
-// import dotenv from "dotenv"; // Import dotenv for environment variables
-// dotenv.config(); // Load environment variables from the .env file
-// import taskRoutes from "./routes/taskRoutes"; // Import custom task controlled-routes
-// import userRoutes from "./routes/userRoutes"; // Import custom user routes
-// import { connectDB } from "./config/db"; // Import database connection function (not used here)
+// import express from "express" // Import the Express.js framework
+// import cors from "cors" // Import the CORS middleware
+// import dotenv from "dotenv" // Import dotenv for environment variables
+// dotenv.config() // Load environment variables from the .env file
+// import taskRoutes from "./routes/taskRoutes" // Import custom task controlled-routes
+// import userRoutes from "./routes/userRoutes" // Import custom user routes
+// import { connectDB } from "./config/db" // Import database connection function (not used here)
 
 // // Defines the port the app will run on. Defaults to 8080, but can be overridden
-// const port = process.env.PORT; // Set the port number for the server
-// const app = express(); // Create an instance of the Express application
+// const port = process.env.PORT // Set the port number for the server
+// const app = express() // Create an instance of the Express application
 
 // // Add middlewares to enable cors and json body parsing
-// app.use(cors()); // Enable CORS (Cross-Origin Resource Sharing)
-// app.use(express.json()); // Parse incoming JSON data
-// app.use(express.urlencoded({ extended: false })); // Parse URL-encoded data
+// app.use(cors()) // Enable CORS (Cross-Origin Resource Sharing)
+// app.use(express.json()) // Parse incoming JSON data
+// app.use(express.urlencoded({ extended: false })) // Parse URL-encoded data
 
 // // Use the routes for handling API requests
 // // ROUTES - These routes USE controller functions ;)
-// app.use(taskRoutes); // Use the task-controlled routes for task-related requests
-// app.use(userRoutes); // Use the user-controlled routes for user-related requests
+// app.use(taskRoutes) // Use the task-controlled routes for task-related requests
+// app.use(userRoutes) // Use the user-controlled routes for user-related requests
 
 // // Connection to the database through Mongoose
-// connectDB();
+// connectDB()
+
+// app.get("/", (req, res) => {
+//   res.send("Hello World!")
+// })
 
 // // Start the server and listen for incoming requests on the specified port
 // app.listen(port, () => {
-//   console.log(`Server running on http://localhost:${port}`); // Display a message when the server is successfully started
-// });
+//   console.log(`Server running on http://localhost:${port}`) // Display a message when the server is successfully started
+// })
 
 import cors from "cors";
 import express from "express";
 import mongoose from "mongoose";
 import bcrypt from "bcrypt-nodejs";
 import crypto from "crypto";
-import dotenv from "dotenv";
-
-// Load environment variables from the .env file
-dotenv.config();
+import dotenv from "dotenv"; // Import dotenv for environment variables
+dotenv.config(); // Load environment variables from the .env file
 
 // Defining port and connecting to mongoose
-const port = process.env.PORT || 8000;
+const port = process.env.PORT || 4000;
 const app = express();
-const mongoUrl = process.env.MONGO_URL || "mongodb://localhost/auth";
+const mongoUrl = process.env.MONGO_URL || "mongodb://localhost/pluggIn-users";
 
 console.log("Connecting to MongoDB at:", mongoUrl);
 mongoose.connect(mongoUrl);
@@ -117,7 +119,6 @@ app.get("/", (req, res) => {
   res.send("Hello friend!");
 });
 
-//User-endpoint for developing purpose
 app.get("/users", async (req, res) => {
   const allUsers = await User.find().exec();
   if (allUsers.length > 0) {

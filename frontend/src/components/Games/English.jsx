@@ -7,7 +7,7 @@ export const English = () => {
       <EnglishTitle>Engelska</EnglishTitle>
       <EnglishQuestion />
     </>
-  )
+  );
 };
 const EnglishTitle = styled.h2`
   color: black;

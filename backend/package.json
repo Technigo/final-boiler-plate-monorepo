@@ -22,7 +22,7 @@
     "express-list-endpoints": "^6.0.0",
     "jsonwebtoken": "^9.0.2",
     "mongodb": "^5.5.0",
-    "mongoose": "^7.2.1",
+    "mongoose": "^8.0.0",
     "nodemon": "^2.0.15",
     "passport": "^0.7.0",
     "passport-google-oauth20": "^2.0.0"

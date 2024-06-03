@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { useState } from "react";
-import { useUser } from "../contexts/UserContext";
+import { useLogin } from "../contexts/UserContext";
 import { Button } from "./Button";
 import { useNavigate } from "react-router-dom";
 
@@ -8,7 +8,7 @@ export const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
-  const { login } = useUser();
+  const { login } = useLogin();
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
@@ -24,12 +24,12 @@ export const Login = () => {
   return (
     <LoginContainer>
       <Form onSubmit={handleSubmit}>
-        <Heading>Login</Heading>
+        <Heading>Logga in</Heading>
         {error && <Error>{error}</Error>}
         <label className="username">
           <Input
             type="text"
-            placeholder="Username"
+            placeholder="Användarnamn"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
             required
@@ -38,14 +38,14 @@ export const Login = () => {
         <label className="password">
           <Input
             type="password"
-            placeholder="Password"
+            placeholder="Lösenord"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
           />
         </label>
         <Button type="submit" className="loginBtn">
-          Log in
+          Logga in
         </Button>
       </Form>
     </LoginContainer>
@@ -58,10 +58,9 @@ const LoginContainer = styled.div`
   height: fit-content;
   margin: 0 auto;
 
-    @media (min-width: 700px){
+  @media (min-width: 700px) {
     padding-top: 50px;
-    
-}
+  }
 `;
 
 const Heading = styled.h1`
@@ -77,10 +76,9 @@ const Form = styled.form`
   background-color: var(--teal);
   border-radius: 20px;
 
-    @media (min-width: 700px){
+  @media (min-width: 700px) {
     padding: 2rem 2.5rem;
-    
-}
+  }
 `;
 
 const Input = styled.input`
