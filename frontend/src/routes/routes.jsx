@@ -1,4 +1,5 @@
 import { Route } from "react-router-dom";
+
 import { Home } from "../pages/Home";
 import { RegistrationForm } from "../components/RegistrationForm";
 import { NotFound } from "../pages/NotFound";
@@ -22,7 +23,7 @@ const routes = (
     <Route path="/play/engelska" element={<English />} />
     <Route path="*" element={<NotFound />} />
   </>
-);
+)
 
 // Export the 'routes' variable as the default export of this module.
-export default routes;
+export default routes

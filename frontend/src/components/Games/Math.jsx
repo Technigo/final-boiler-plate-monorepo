@@ -1,17 +1,54 @@
-import styled from "styled-components";
-import { useScore } from "../../contexts/ScoreContext";
-import { MathQuestion } from "./MathQuestion";
+import styled from "styled-components"
+import { useRef } from "react"
+import { useMath } from "../../contexts/MathContext"
+import { MathQuestion } from "./MathQuestion"
 
 export const Math = () => {
-  const { setMathType } = useScore();
-
+  const { 
+    mathType, 
+    setMathType, 
+    question,
+    correctAnswer,
+    generateQuestion, 
+    savedQuestion, 
+    setSavedQuestion, 
+    savedAnswer,
+    setSavedAnswer
+  } = useMath()
+  const focusRef = useRef(null)
+  
   const handleChoice = (type) => {
-    setMathType(type);
-  };
+    setMathType(type)
+    generateQuestion(type)
+    if (focusRef.current) {
+      focusRef.current.focus()
+    }
+    switch (mathType) {
+      case "addition":
+        setSavedQuestion({ ...savedQuestion, addition: question })
+        setSavedAnswer({ ...savedAnswer, addition: correctAnswer });
+        break;
+      case "subtraction":
+        setSavedQuestion({ ...savedQuestion, subtraction: question })
+        setSavedAnswer({ ...savedAnswer, subtraction: correctAnswer });
+        break
+      case "multiplication":
+        setSavedQuestion({ ...savedQuestion, multiplication: question })
+        setSavedAnswer({ ...savedAnswer, multiplication: correctAnswer });
+        break
+      case "division":
+        setSavedQuestion({ ...savedQuestion, division: question })
+        setSavedAnswer({ ...savedAnswer, division: correctAnswer });
+        break;
+      default:
+        setSavedQuestion({ ...savedQuestion, addition: question })
+        setSavedAnswer({ ...savedAnswer, addition: correctAnswer });
+    }
+  }
 
   return (
     <>
-      <MathTitle>Matte</MathTitle>
+      <MathTitle>Vad vill du öva på?</MathTitle>
       <MathTypeButton
         value="addition"
         onClick={(event) => handleChoice(event.target.value)}
@@ -36,15 +73,16 @@ export const Math = () => {
       >
         ÷
       </MathTypeButton>
-      <MathQuestion />
+      <MathQuestion focusRef={focusRef}/>
     </>
-  );
-};
+  )
+}
+
 const MathTitle = styled.h2`
   color: black;
-`;
+`
 
 const MathTypeButton = styled.button`
   color: white;
   background-color: black;
-`;
+`

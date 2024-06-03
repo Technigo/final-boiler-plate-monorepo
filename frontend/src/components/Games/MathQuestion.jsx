@@ -2,129 +2,129 @@ import PropTypes from "prop-types"
 import styled, { css } from "styled-components"
 
 import { useState, useEffect } from "react"
-import { useScore } from "../../contexts/ScoreContext"
+import { useMath } from "../../contexts/MathContext"
 
-export const MathQuestion = () => {
-  const { mathType } = useScore()
-  const [question, setQuestion] = useState("")
-  const [correctAnswer, setCorrectAnswer] = useState()
+export const MathQuestion = ({ focusRef }) => {
+  const { 
+    mathType, 
+    question, 
+    correctAnswer, 
+    generateQuestion, 
+    mathScore, 
+    setMathScore,
+    savedQuestion,
+  } = useMath()
+
   const [message, setMessage] = useState("")
   const [answerInput, setAnswerInput] = useState("");
   const numPadNumbers = [1, 2, 3, 4, 5, 6, 7, 8, 9];
   
-  //Generates different questions depending on the type of mathematical operation
-  const generateAdditionQuestion = () => {
-    const a = Math.floor (Math.random() * 100) + 1
-    const b = Math.floor(Math.random() * 100) + 1
-    setCorrectAnswer(a+b)
-    setQuestion(`Vad är ${a}+${b}?`)
-  }
-
-  const generateSubtractionQuestion = () => {
-    const a = Math.floor (Math.random() * 100) + 1
-    const b = Math.floor(Math.random() * 100) + 1
-    if (a >= b) {
-      setCorrectAnswer(a-b)
-      setQuestion(`Vad är ${a}-${b}?`)
-    } else {
-      setCorrectAnswer(b-a)
-      setQuestion(`Vad är ${b}-${a}?`)
-    }
-  }
-
-  const generateMultiplicationQuestion = () => {
-    const a = Math.floor (Math.random() * 11)
-    const b = Math.floor(Math.random() * 11)
-    setCorrectAnswer(a*b)
-    setQuestion(`Vad är ${a}*${b}?`)
-  }
-  
-  const generateDivisionQuestion = () => {
-    const a = Math.floor (Math.random() * 10) + 1
-    const b = Math.floor(Math.random() * 11)
-    const c = a*b
-    setCorrectAnswer(c/a)
-    setQuestion(`Vad är ${c}/${a}?`)
-  }
-
-  //Decides which type of problem to generate based on prop from Math.jsx
-  const generateQuestion = () => {   
-    setMessage("") 
-    setAnswerInput("") 
-    switch (mathType) {
-      case "addition":
-        generateAdditionQuestion()
-        break;
-      case "subtraction":
-        generateSubtractionQuestion()
-        break;
-      case "multiplication":
-        generateMultiplicationQuestion()
-        break;
-      case "division":
-        generateDivisionQuestion()
-        break;
-      default:
-        generateAdditionQuestion()
-
-    }
-  }
-  
   useEffect(() => {
     generateQuestion()
+     if (focusRef.current) {
+       focusRef.current.focus()
+     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
+  //Checks if input matches correctAnswer and gives the user a message of "right/wrong"
+  //Then starts a new question
   const checkAnswer = (event) => {
     event.preventDefault()
-    console.log("Type", mathType)
     if (answerInput == correctAnswer){
       setMessage("✅ Rätt svar! Bra jobbat!")
+      //Updates the correct score
+      switch (mathType) {
+        case "addition":
+          setMathScore({ ...mathScore, addition: mathScore.addition +1 })
+          break;
+        case "subtraction":
+          setMathScore({ ...mathScore, subtraction: mathScore.subtraction +1 })
+          break;
+        case "multiplication":
+          setMathScore({ ...mathScore, multiplication: mathScore.multiplication +1 })
+          break;
+        case "division":
+          setMathScore({ ...mathScore, division: mathScore.division +1 })
+          break;
+        default:
+          setMathScore({ ...mathScore, addition: mathScore.addition +1 })
+      }
     } else {
       setMessage(`❌ Fel svar. Rätt svar var ${correctAnswer}.`)
     }
-    setTimeout(() => generateQuestion(), 3000)
+    setTimeout(() => newQuestion(), 2500)
+  }
+  //Resets message and input-field before generating new question
+  const newQuestion = () => {
+    setMessage("")
+    setAnswerInput("")
+    generateQuestion(mathType)
+    if (focusRef.current) {
+      focusRef.current.focus()
+    }
   }
 
+  //Puts users click on number-buttons into the inputfield
   const handleNumPadClick = (number) => {
-    setAnswerInput((prev) => prev + number.toString());
-  };
+    setAnswerInput((prev) => prev + number.toString())
+    if (focusRef.current) {
+      focusRef.current.focus();
+    }
+  }
 
   const handleDeleteClick = () => {
-    setAnswerInput("");
-  };
-
+    setAnswerInput("")
+    if (focusRef.current) {
+      focusRef.current.focus();
+    }
+  }
 
   return (
-    <div> 
-      <MathTitle>Vad vill du öva på?</MathTitle>
+    <div>
       <QuestionCard>{question}</QuestionCard>
       <Answer onSubmit={(event) => checkAnswer(event)}>
         {message && <Message>{message}</Message>}
-        <AnswerInput type="number" value={answerInput} onChange={(event) => setAnswerInput(event.target.value)}/>
+        <AnswerInput
+          ref={focusRef}
+          type="number"
+          value={answerInput}
+          onChange={(event) => setAnswerInput(event.target.value)}
+        />
         <AnswerBtn type="submit">SVARA</AnswerBtn>
       </Answer>
-      {/*<Score>Du har {score} rätt hittills</Score>*/}
+      <Score>Addition: Du har {mathScore.addition} rätt hittills!</Score>
+      <Score>Subtraktion: Du har {mathScore.subtraction} rätt hittills!</Score>
+      <Score>Multiplikation: Du har {mathScore.multiplication} rätt hittills!</Score>
+      <Score>Division: Du har {mathScore.division} rätt hittills!</Score>
       <NumPad>
         {numPadNumbers.map((number) => (
-          <NumPadBtn key={number} className="small" onClick={() => handleNumPadClick(number)}>{number}</NumPadBtn>
+          <NumPadBtn
+            key={number}
+            className="small"
+            onClick={() => handleNumPadClick(number)}
+          >
+            {number}
+          </NumPadBtn>
         ))}
-        <NumPadBtn key="0" className="big" onClick={() => handleNumPadClick(0)}>0</NumPadBtn>
-        <NumPadBtn className="delete" onClick={handleDeleteClick}>🗑️</NumPadBtn>
+        <NumPadBtn key="0" className="big" onClick={() => handleNumPadClick(0)}>
+          0
+        </NumPadBtn>
+        <NumPadBtn className="delete" onClick={handleDeleteClick}>
+          🗑️
+        </NumPadBtn>
       </NumPad>
+      <p>{savedQuestion.addition}</p>
     </div>
-  )
+  );
 }
-
-const MathTitle = styled.h2`
-  color: black;
-`;
 
 const Answer = styled.form`
   display: flex;
   flex-direction: row;
   justify-content: center;
   gap: 20px;
-`;
+`
 
 const AnswerInput = styled.input`
   color: black;
@@ -137,12 +137,12 @@ const AnswerInput = styled.input`
     -webkit-appearance: none; 
     margin: 0; 
   }
-`;
+`
 
 const AnswerBtn = styled.button`
   color: black;
   background-color: #6d6d6d;
-`;
+`
 
 const NumPad = styled.div`
   display: grid;
@@ -151,7 +151,7 @@ const NumPad = styled.div`
   gap: 10px;
   max-width: 270px;
   margin: 10px auto;
-`;
+`
 
 const NumPadBtn = styled.button`
   
@@ -172,8 +172,7 @@ const NumPadBtn = styled.button`
   grid-row: 4;
   width: 80px;
   `}
-`;
-
+`
 
 const QuestionCard = styled.div`
   width: 200px;
@@ -194,12 +193,12 @@ const Message = styled.div`
   background-color: white;
   z-index: 2;
   width: 100vh;
-`;
+`
 
-/*const Score = styled.h3`
+const Score = styled.h3`
   color: black;
-`;*/
+`
 
 MathQuestion.propTypes = {
-  type: PropTypes.string
+  focusRef: PropTypes.any
 }

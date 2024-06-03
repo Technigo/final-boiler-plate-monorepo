@@ -1,9 +1,10 @@
 import { BrowserRouter, Routes } from "react-router-dom";
 import routes from "./routes/routes";
-import "./App.css";
 import { Header } from "./components/Header";
 import { UserProvider } from "./contexts/UserContext";
 import { ScoreProvider } from "./contexts/ScoreContext";
+import { MathProvider } from "./contexts/MathContext";
+import "./App.css";
 
 export const App = () => {
   return (
@@ -11,11 +12,12 @@ export const App = () => {
       <BrowserRouter>
         <UserProvider>
           <ScoreProvider>
-            <Header />
-            <main>
-              {/* <Routes>{routes}</Routes> */}
-              <Routes>{routes}</Routes>
-            </main>
+            <MathProvider> 
+              <Header />
+              <main>
+                <Routes>{routes}</Routes>
+              </main>
+            </MathProvider>
           </ScoreProvider>
         </UserProvider>
       </BrowserRouter>
