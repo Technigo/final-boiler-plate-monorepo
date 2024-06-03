@@ -5,17 +5,41 @@ import { createContext, useContext, useState } from "react"
 const MathContext = createContext()
 
 export const MathProvider = ({ children }) => {
-  const [mathType, setMathType] = useState("");
-  const [question, setQuestion] = useState("");
-  const [correctAnswer, setCorrectAnswer] = useState();
+  const [mathType, setMathType] = useState("addition")
+  const [question, setQuestion] = useState("")
+  const [correctAnswer, setCorrectAnswer] = useState()
+  /*const [mathLevel, setMathLevel] = useState({
+    addition: 1,
+    subtraction: 1,
+    multiplication: 1,
+    division: 1,
+  })*/
+  const [mathScore, setMathScore] = useState({
+    addition: 0,
+    subtraction: 0,
+    multiplication: 0,
+    division: 0,
+  })
+  const [savedQuestion, setSavedQuestion] = useState({
+    addition: "",
+    subtraction: "",
+    multiplication: "",
+    division: "",
+  })
+  const [savedAnswer, setSavedAnswer] = useState({
+    addition: "",
+    subtraction: "",
+    multiplication: "",
+    division: "",
+  });
 
   //Generates different questions depending on the type of mathematical operation
   const generateAdditionQuestion = () => {
-    const a = Math.floor(Math.random() * 100) + 1;
-    const b = Math.floor(Math.random() * 100) + 1;
-    setCorrectAnswer(a + b);
-    setQuestion(`Vad är ${a}+${b}?`);
-  };
+    const a = Math.floor(Math.random() * 100) + 1
+    const b = Math.floor(Math.random() * 100) + 1
+    setCorrectAnswer(a + b)
+    setQuestion(`Vad är ${a}+${b}?`)
+  }
 
   const generateSubtractionQuestion = () => {
     const a = Math.floor(Math.random() * 100) + 1;
@@ -46,23 +70,36 @@ export const MathProvider = ({ children }) => {
 
   //Decides which type of problem to generate based on prop from Math.jsx
   const generateQuestion = (type) => {
-    switch (type) {
-      case "addition":
-        generateAdditionQuestion();
-        break;
-      case "subtraction":
-        generateSubtractionQuestion();
-        break;
-      case "multiplication":
-        generateMultiplicationQuestion();
-        break;
-      case "division":
-        generateDivisionQuestion();
-        break;
-      default:
-        generateAdditionQuestion();
+    if (type === "addition" && savedQuestion.addition) {
+      setQuestion(savedQuestion.addition)
+      setCorrectAnswer(savedAnswer.addition)
+      setSavedQuestion({ ...savedQuestion, addition: "" })
+      setSavedAnswer({ ...savedAnswer, addition: "" })
+    } else if (type === "subtraction" && savedQuestion.subtraction) {
+      setQuestion(savedQuestion.subtraction)
+      setCorrectAnswer(savedAnswer.subtraction)
+      setSavedQuestion({ ...savedQuestion, subtraction: "" });
+      setSavedAnswer({ ...savedAnswer, subtraction: "" });
+    } else {
+      switch (type) {
+        case "addition":
+          console.log("New addition")
+          generateAdditionQuestion();
+          break;
+        case "subtraction":
+          generateSubtractionQuestion();
+          break;
+        case "multiplication":
+          generateMultiplicationQuestion();
+          break;
+        case "division":
+          generateDivisionQuestion();
+          break;
+        default:
+          generateAdditionQuestion();
+      }
     }
-  };
+  }
 
   return (
     <MathContext.Provider
@@ -73,13 +110,19 @@ export const MathProvider = ({ children }) => {
         setQuestion,
         correctAnswer,
         setCorrectAnswer,
+        mathScore,
+        setMathScore,
+        savedQuestion,
+        setSavedQuestion,
+        savedAnswer,
+        setSavedAnswer,
         generateQuestion
       }}
     >
       {children}
     </MathContext.Provider>
-  );
-};
+  )
+}
 
 export const useMath = () => useContext(MathContext);
 

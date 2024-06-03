@@ -1,12 +1,19 @@
 import PropTypes from "prop-types"
 import styled, { css } from "styled-components"
 
-import { useState, useEffect, useRef } from "react"
+import { useState, useEffect } from "react"
 import { useMath } from "../../contexts/MathContext"
 
-export const MathQuestion = () => {
-  const { mathType, question, correctAnswer, generateQuestion } = useMath()
-  const focusRef = useRef()
+export const MathQuestion = ({ focusRef }) => {
+  const { 
+    mathType, 
+    question, 
+    correctAnswer, 
+    generateQuestion, 
+    mathScore, 
+    setMathScore,
+    savedQuestion,
+  } = useMath()
 
   const [message, setMessage] = useState("")
   const [answerInput, setAnswerInput] = useState("");
@@ -14,7 +21,9 @@ export const MathQuestion = () => {
   
   useEffect(() => {
     generateQuestion()
-    focusRef.current.focus()
+     if (focusRef.current) {
+       focusRef.current.focus()
+     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
@@ -24,31 +33,52 @@ export const MathQuestion = () => {
     event.preventDefault()
     if (answerInput == correctAnswer){
       setMessage("✅ Rätt svar! Bra jobbat!")
+      //Updates the correct score
+      switch (mathType) {
+        case "addition":
+          setMathScore({ ...mathScore, addition: mathScore.addition +1 })
+          break;
+        case "subtraction":
+          setMathScore({ ...mathScore, subtraction: mathScore.subtraction +1 })
+          break;
+        case "multiplication":
+          setMathScore({ ...mathScore, multiplication: mathScore.multiplication +1 })
+          break;
+        case "division":
+          setMathScore({ ...mathScore, division: mathScore.division +1 })
+          break;
+        default:
+          setMathScore({ ...mathScore, addition: mathScore.addition +1 })
+      }
     } else {
       setMessage(`❌ Fel svar. Rätt svar var ${correctAnswer}.`)
     }
-    setTimeout(() => newQuestion(), 3000)
+    setTimeout(() => newQuestion(), 2500)
   }
   //Resets message and input-field before generating new question
   const newQuestion = () => {
     setMessage("")
     setAnswerInput("")
     generateQuestion(mathType)
-    focusRef.current.focus()
+    if (focusRef.current) {
+      focusRef.current.focus()
+    }
   }
 
   //Puts users click on number-buttons into the inputfield
   const handleNumPadClick = (number) => {
     setAnswerInput((prev) => prev + number.toString())
-    focusRef.current.focus()
+    if (focusRef.current) {
+      focusRef.current.focus();
+    }
   }
 
   const handleDeleteClick = () => {
     setAnswerInput("")
-    focusRef.current.focus()
+    if (focusRef.current) {
+      focusRef.current.focus();
+    }
   }
-
-  
 
   return (
     <div>
@@ -63,7 +93,10 @@ export const MathQuestion = () => {
         />
         <AnswerBtn type="submit">SVARA</AnswerBtn>
       </Answer>
-      {/*<Score>Du har {score} rätt hittills</Score>*/}
+      <Score>Addition: Du har {mathScore.addition} rätt hittills!</Score>
+      <Score>Subtraktion: Du har {mathScore.subtraction} rätt hittills!</Score>
+      <Score>Multiplikation: Du har {mathScore.multiplication} rätt hittills!</Score>
+      <Score>Division: Du har {mathScore.division} rätt hittills!</Score>
       <NumPad>
         {numPadNumbers.map((number) => (
           <NumPadBtn
@@ -81,6 +114,7 @@ export const MathQuestion = () => {
           🗑️
         </NumPadBtn>
       </NumPad>
+      <p>{savedQuestion.addition}</p>
     </div>
   );
 }
@@ -90,7 +124,7 @@ const Answer = styled.form`
   flex-direction: row;
   justify-content: center;
   gap: 20px;
-`;
+`
 
 const AnswerInput = styled.input`
   color: black;
@@ -103,12 +137,12 @@ const AnswerInput = styled.input`
     -webkit-appearance: none; 
     margin: 0; 
   }
-`;
+`
 
 const AnswerBtn = styled.button`
   color: black;
   background-color: #6d6d6d;
-`;
+`
 
 const NumPad = styled.div`
   display: grid;
@@ -117,7 +151,7 @@ const NumPad = styled.div`
   gap: 10px;
   max-width: 270px;
   margin: 10px auto;
-`;
+`
 
 const NumPadBtn = styled.button`
   
@@ -138,8 +172,7 @@ const NumPadBtn = styled.button`
   grid-row: 4;
   width: 80px;
   `}
-`;
-
+`
 
 const QuestionCard = styled.div`
   width: 200px;
@@ -160,12 +193,12 @@ const Message = styled.div`
   background-color: white;
   z-index: 2;
   width: 100vh;
-`;
+`
 
-/*const Score = styled.h3`
+const Score = styled.h3`
   color: black;
-`;*/
+`
 
 MathQuestion.propTypes = {
-  type: PropTypes.string
+  focusRef: PropTypes.any
 }
