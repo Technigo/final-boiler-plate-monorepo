@@ -34,7 +34,12 @@ code {
 }
 
 body {
-  background-color: var(--vanilla);
+  background-color: white;
+}
+
+button {
+  font-family: "Itim", source-code-pro, Menlo, Monaco, Consolas,
+    "Courier New", monospace;
 }
 
 main {
