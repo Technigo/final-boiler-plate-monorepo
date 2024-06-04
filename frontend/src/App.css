@@ -1,8 +1,16 @@
+@import url("https://fonts.googleapis.com/css2?family=Itim&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 :root {
   margin: 0;
-  font-family: "Poppins", -apple-system, BlinkMacSystemFont, "Segoe UI",
-    "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
-    "Helvetica Neue", sans-serif;
+  font-family: "Itim", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
+    "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   --vanilla: #fef9ef;
@@ -32,8 +40,9 @@ body {
 main {
   width: 100vw;
   height: 100vh;
-  display: flex;
-  align-items: center;
+  padding-top: 60px;
+  min-height: 100vh;
+  min-width: 100vw;
 }
 
 /* Remove this code. Should be global and in a separate component folder */

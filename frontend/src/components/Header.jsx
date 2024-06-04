@@ -42,9 +42,9 @@ export const Header = () => {
 const HeaderContainer = styled.div`
   background-color: var(--sunset);
   width: 100%;
-  height: 30px;
+  height: 60px;
   position: absolute;
-  margin: -8px;
+  /* margin: -8px; */
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
@@ -145,6 +145,6 @@ const SignOutIcon = styled.img`
   width: 17px;
   height: 22px;
   align-items: center;
-  padding-top: 17px;
+  /* padding-top: 17px; */
   opacity: 100%;
 `;

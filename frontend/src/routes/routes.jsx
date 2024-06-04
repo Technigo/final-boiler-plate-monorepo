@@ -4,7 +4,7 @@ import { Home } from "../pages/Home";
 import { RegistrationForm } from "../components/RegistrationForm";
 import { NotFound } from "../pages/NotFound";
 import { Login } from "../components/Login";
-import { Progress } from "../components/MyProgress";
+import { Progress } from "../components/Progress/MyProgress";
 import { Play } from "../components/Play";
 import { Math } from "../components/Games/Math";
 import { Swedish } from "../components/Games/Swedish";

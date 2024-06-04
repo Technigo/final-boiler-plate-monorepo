@@ -46,7 +46,6 @@ const port = process.env.PORT || 4000;
 const app = express();
 const mongoUrl = process.env.MONGO_URL || "mongodb://localhost/pluggIn-users";
 
-console.log("Connecting to MongoDB at:", mongoUrl);
 mongoose.connect(mongoUrl);
 mongoose.Promise = Promise;
 
@@ -82,6 +81,20 @@ const User = mongoose.model("User", {
     type: String,
     default: () => crypto.randomBytes(128).toString("hex"),
   },
+  progress: {
+    math: {
+      level: { type: Number, default: 1 },
+      score: { type: Number, default: 0 },
+    },
+    swedish: {
+      level: { type: Number, default: 1 },
+      score: { type: Number, default: 0 },
+    },
+    english: {
+      level: { type: Number, default: 1 },
+      score: { type: Number, default: 0 },
+    },
+  },
 });
 
 //Authenticate user as middleware
@@ -95,7 +108,7 @@ const authenticateUser = async (req, res, next) => {
 
   const user = await User.findOne({ accessToken });
   if (user) {
-    console.log("User is found", user);
+    console.info("User is found", user);
     req.user = user;
     next();
   } else {
@@ -116,7 +129,7 @@ app.use((req, res, next) => {
 
 // Defining routes
 app.get("/", (req, res) => {
-  res.send("Hello friend!");
+  res.send("Hello 👋 This is server running for project PluggIn");
 });
 
 app.get("/users", async (req, res) => {
@@ -142,7 +155,11 @@ app.post("/users", async (req, res) => {
       password: bcrypt.hashSync(password, salt),
     });
     await user.save();
-    res.status(201).json({ id: user._id, accessToken: user.accessToken });
+    res.status(201).json({
+      id: user._id,
+      username: user.username,
+      accessToken: user.accessToken,
+    });
   } catch (error) {
     res
       .status(400)
@@ -152,23 +169,22 @@ app.post("/users", async (req, res) => {
 
 //Endpoint for login
 app.post("/sessions", async (req, res) => {
-  const userByUsername = await User.findOne({ username: req.body.username });
-  const userByEmail = await User.findOne({ email: req.body.email });
-  if (
-    userByUsername &&
-    bcrypt.compareSync(req.body.password, userByUsername.password)
-  ) {
+  const { username, email, password } = req.body;
+  // use this variable to store userInfo
+  let user;
+
+  if (username) {
+    user = await User.findOne({ username });
+  } else if (email) {
+    user = await User.findOne({ email });
+  }
+
+  if (user && bcrypt.compareSync(password, user.password)) {
     res.status(200).json({
-      userId: userByUsername._id,
-      accessToken: userByUsername.accessToken,
+      userId: user._id,
+      username: user.username,
+      accessToken: user.accessToken,
     });
-  } else if (
-    userByEmail &&
-    bcrypt.compareSync(req.body.password, userByEmail.password)
-  ) {
-    res
-      .status(200)
-      .json({ userId: userByEmail._id, accessToken: userByEmail.accessToken });
   } else {
     res.status(404).json({ notFound: true });
   }
@@ -183,5 +199,5 @@ app.get("/games", async (req, res) => {
 
 // Start the server
 app.listen(port, () => {
-  console.log(`Server running on http://localhost:${port}`);
+  console.info(`Server running on http://localhost:${port}`);
 });
