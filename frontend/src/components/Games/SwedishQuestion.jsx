@@ -76,18 +76,21 @@ export const SwedishQuestion = () => {
           transform: 'translate(-50%, -50%)',
           zIndex: 2,
         }}><Lottie animationData={Wrong} loop={false} /></div>)}
-      <Answers>
-        {answers.map((answer, index) => (
-          <AnswerButton
-            disabled={disableButton}
-            key={index}
-            value={answer}
-            onClick={(event) => handleChoice(event.target.value)}
-          >
-            {answer}
-          </AnswerButton>
-        ))}
-      </Answers>
+<Answers>
+  {answers.map((answer, index) => {
+    const capsAnswer = answer.charAt(0).toUpperCase() + answer.slice(1);
+    return (
+      <AnswerButton
+        disabled={disableButton}
+        key={index}
+        value={capsAnswer}
+        onClick={(event) => handleChoice(event.target.value)}
+      >
+        {capsAnswer}
+      </AnswerButton>
+    );
+  })}
+</Answers>
       <Score>Du har {score} rätt hittills</Score>
       {message && <Message>{message}</Message>}
     </>
