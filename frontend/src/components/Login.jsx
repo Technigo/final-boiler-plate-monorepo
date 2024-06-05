@@ -64,7 +64,7 @@ const LoginContainer = styled.div`
 `;
 
 const Heading = styled.h1`
-  color: var(--vanilla);
+  color: white;
   text-align: center;
   margin-top: 0;
 `;
@@ -73,7 +73,7 @@ const Form = styled.form`
   display: flex;
   flex-direction: column;
   padding: 2rem;
-  background-color: var(--teal);
+  background-color: var(--forest);
   border-radius: 20px;
 
   @media (min-width: 700px) {
@@ -85,7 +85,7 @@ const Input = styled.input`
   border-radius: 20px;
   padding: 10px 30px;
   border: none;
-  background-color: var(--vanilla);
+  background-color: white;
 `;
 
 const Error = styled.h3`

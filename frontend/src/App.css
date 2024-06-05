@@ -47,7 +47,6 @@ button {
 main {
   width: 100vw;
   height: 100vh;
-  padding-top: 60px;
   min-height: 100vh;
   min-width: 100vw;
 }

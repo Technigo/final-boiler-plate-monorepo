@@ -158,7 +158,7 @@ const QuestionCard = styled.div`
 
   @media (min-width: 700px) {
     width: 600px;
-    height: 230px;
+    height: 150px;
     font-size: 50px; 
   }
 `

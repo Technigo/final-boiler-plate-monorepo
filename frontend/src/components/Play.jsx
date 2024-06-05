@@ -68,7 +68,6 @@ export const Play = () => {
 const PlayContainer = styled.div`
   display: flex;
   flex-direction: column;
-  height: 100vh;
   justify-content: space-evenly;
   align-items: center;
   margin: 0 auto;
@@ -80,30 +79,46 @@ const PlayTitle = styled.h2`
   flex-wrap: wrap;
   flex-direction: column;
   text-align: center;
-  margin-top: 70px;
+  margin: 40px auto 20px;
+  width: 300px;
+
+   @media (min-width: 700px) {
+    width: 600px;
+  }
 `;
 
 const GamesCards = styled.div`
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-evenly;
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
-  width: 100%;
+  margin: 0 auto;
+
+   @media (min-width: 700px) {
+    flex-direction: row;
+  }
 `;
 
 const GameCard = styled.div`
   display: flex;
   flex-direction: column;
-  flex-wrap: wrap;
   justify-content: center;
   align-items: center;
   border-radius: 30px;
+  gap: 30px;
   width: 290px;
-  height: 220px;
-  margin: 20px;
-  color: var(--vanilla);
-  background-color: var(--teal);
-  font-size: 20px;
+  height: 130px;
+  margin: 20px auto;
+  color: white;
+  background-color: var(--forest);
+  font-size: 50px;
+
+  @media (min-width: 700px) {
+    max-width: 600px;
+    min-width: 200px;
+    height: 220px;
+    font-size: 60px;
+  }
 
   &:hover {
     transition: 0.2s ease;
@@ -112,40 +127,41 @@ const GameCard = styled.div`
   ${({ math }) =>
     math &&
     css`
-      box-shadow: 10px 10px var(--oceanactive);
+      box-shadow: 10px 10px var(--oceanshadow);
       background-color: var(--ocean);
 
       &:hover {
-        box-shadow: 15px 15px var(--oceanactive);
+        box-shadow: 15px 15px var(--oceanshadow);
       }
     `}
 
   ${({ swedish }) =>
     swedish &&
     css`
-      background-color: var(--raspberry);
-      box-shadow: 10px 10px var(--raspberryactive);
+      background-color: var(--sunset);
+      box-shadow: 10px 10px var(--sunsetshadow);
 
       &:hover {
-        box-shadow: 15px 15px var(--raspberryactive);
+        box-shadow: 15px 15px var(--sunsetshadow);
       }
     `}
 
   ${({ english }) =>
     english &&
     css`
-      background-color: var(--teal);
-      box-shadow: 10px 10px var(--tealactive);
+      background-color: var(--forest);
+      box-shadow: 10px 10px var(--forestshadow);
 
       &:hover {
-        box-shadow: 15px 15px var(--tealactive);
+        box-shadow: 15px 15px var(--forestshadow);
       }
     `}
 
-   @media (min-width: 900px) {
+   @media (min-width: 700px) {
     margin: 40px;
   }
 `;
+
 
 const Text = styled.p`
   font-size: 36px;
