@@ -89,14 +89,11 @@ export const MathQuestion = ({ focusRef }) => {
           ref={focusRef}
           type="number"
           value={answerInput}
+          placeholder="Skriv ditt svar här"
           onChange={(event) => setAnswerInput(event.target.value)}
         />
         <AnswerBtn type="submit">SVARA</AnswerBtn>
       </Answer>
-      <Score>Addition: Du har {mathScore.addition} rätt hittills!</Score>
-      <Score>Subtraktion: Du har {mathScore.subtraction} rätt hittills!</Score>
-      <Score>Multiplikation: Du har {mathScore.multiplication} rätt hittills!</Score>
-      <Score>Division: Du har {mathScore.division} rätt hittills!</Score>
       <NumPad>
         {numPadNumbers.map((number) => (
           <NumPadBtn
@@ -114,21 +111,75 @@ export const MathQuestion = ({ focusRef }) => {
           🗑️
         </NumPadBtn>
       </NumPad>
-      <p>{savedQuestion.addition}</p>
+       <Score>Addition: Du har {mathScore.addition} rätt hittills!</Score>
+      <Score>Subtraktion: Du har {mathScore.subtraction} rätt hittills!</Score>
+      <Score>Multiplikation: Du har {mathScore.multiplication} rätt hittills!</Score>
+      <Score>Division: Du har {mathScore.division} rätt hittills!</Score>
     </div>
   );
 }
+
+const QuestionCard = styled.div`
+  width: 300px;
+  height: 110px;
+  align-content: center;
+  font-size: 30px;
+  background-color: var( --ocean);
+  color: white;
+  padding: 20px;
+  margin: 10px auto;
+  z-index: 1;
+  border-radius: 20px;
+  text-align: center;
+
+  @media (min-width: 700px) {
+    width: 600px;
+    height: 230px;
+    font-size: 50px; 
+  }
+`
+const Message = styled.div`
+  color: black;
+  display: flex;
+  position: absolute;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  background-color: white;
+  z-index: 2;
+  font-size: 20px;
+  width: 240px;
+  height: 230px;
+  border-radius: 20px;
+
+   @media (min-width: 700px) {
+    width: 550px;
+    height: 230px;
+    font-size: 30px;
+  }
+`
 
 const Answer = styled.form`
   display: flex;
   flex-direction: row;
   justify-content: center;
-  gap: 20px;
+  gap: 8px;
+  align-items: center;
+
+   @media (min-width: 700px) {
+    gap: 20px;
+  }
 `
 
 const AnswerInput = styled.input`
-  color: black;
-  background-color: #afafaf;
+  color: #ffffff;
+  background-color: var( --oceanhover);
+  border-radius: 10px;
+  width: 200px;
+  height: 40px;
+  border: none;
+  padding: 20px;
+  font-family: "Itim";
   &::-webkit-inner-spin-button { 
     -webkit-appearance: none; 
     margin: 0; 
@@ -137,11 +188,37 @@ const AnswerInput = styled.input`
     -webkit-appearance: none; 
     margin: 0; 
   }
+
+   &::placeholder { 
+    color: #d1ecf1;
+  }
+
+     @media (min-width: 700px) {
+    width: 400px;
+    height: 50px;
+    font-size: 16px;
+  }
 `
 
 const AnswerBtn = styled.button`
-  color: black;
-  background-color: #6d6d6d;
+  color: white;
+  background-color: var( --oceanactive);
+  border-radius: 10px;
+  border: none;
+  width: 60px;
+  height: 40px;
+  cursor: pointer;
+  
+
+    @media (min-width: 700px) {
+    width: 70px;
+    height: 50px;
+    font-size: 16px;
+  }
+
+  &:hover {
+    background-color: var( --ocean);
+  }
 `
 
 const NumPad = styled.div`
@@ -172,27 +249,18 @@ const NumPadBtn = styled.button`
   grid-row: 4;
   width: 80px;
   `}
-`
 
-const QuestionCard = styled.div`
-  width: 200px;
-  background-color: green;
+  border-radius: 10px;
+  border: none;
+  background-color: var( --oceanactive);
   color: white;
-  padding: 20px;
-  margin: 10px auto;
-  z-index: 1;
-`
-const Message = styled.div`
-  color: black;
-  display: flex;
-  position: absolute;
-  justify-content: center;
-  align-items: center;
-  margin: -80px auto 0 auto;
-  padding: 50px;
-  background-color: white;
-  z-index: 2;
-  width: 100vh;
+  padding: 10px 20px;
+  font-size: 18px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: var( --ocean);
+  }
 `
 
 const Score = styled.h3`

@@ -49,11 +49,11 @@ export const SwedishQuestion = () => {
   };
 
   return (
-    <div>
+    <>
       <Title>Vad betyder ordet?</Title>
+      {message && <Message>{message}</Message>}
       <QuestionCard>{swedish[randomNumber].question}</QuestionCard>
       <Answers>
-        {message && <Message>{message}</Message>}
         {answers.map((answer, index) => (
           <AnswerButton
             disabled={disableButton}
@@ -66,7 +66,7 @@ export const SwedishQuestion = () => {
         ))}
       </Answers>
       <Score>Du har {score} rätt hittills</Score>
-    </div>
+    </>
   );
 };
 
@@ -74,35 +74,27 @@ const Title = styled.h2`
   margin: 0;
 `;
 
+
 const QuestionCard = styled.div`
-  width: 200px;
-  background-color: green;
+  width: 300px;
+  height: 110px;
+  align-content: center;
+  font-size: 40px;
+  background-color: var( --raspberry);
   color: white;
   padding: 20px;
   margin: 10px auto;
   z-index: 1;
-`;
+  border-radius: 20px;
 
-const Answers = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 10px;
-  z-index: 1;
-`;
-
-const AnswerButton = styled.button`
-  color: white;
-  background-color: black;
-  border: none;
-  z-index: 1;
-
-  &:disabled {
-    cursor: default;
-    border: none;
+  @media (min-width: 700px) {
+    width: 600px;
+    height: 230px;
+    font-size: 50px;
   }
+
 `;
+
 
 const Message = styled.div`
   color: black;
@@ -110,11 +102,69 @@ const Message = styled.div`
   position: absolute;
   justify-content: center;
   align-items: center;
-  margin: -80px auto 0 auto;
-  padding: 50px;
+  margin: 0 auto;
   background-color: white;
   z-index: 2;
-  width: 100vh;
+  font-size: 20px;
+  width: 240px;
+  height: 230px;
+  border-radius: 20px;
+
+   @media (min-width: 700px) {
+    width: 550px;
+    height: 230px;
+    font-size: 30px;
+  }
+`;
+
+const Answers = styled.div`
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 1fr;
+  margin: 10px auto;
+
+   @media (min-width: 700px) {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 580px;
+    margin: 20px auto;
+  }
+`;
+
+const AnswerButton = styled.button`
+  background-color: var( --raspberry);
+  color: white;
+  width: 270px;
+  margin: 10px auto;
+  padding: 10px 0;
+  z-index: 1;
+  border-radius: 15px;
+  border: none;
+  z-index: 1;
+  font-size: 20px;
+  padding: 15px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: var( --raspberryhover);
+  }
+
+  
+
+  &:disabled {
+    cursor: default;
+    border: none;
+
+    &:hover {
+    background-color: var( --raspberry);
+  }
+  }
+
+   @media (min-width: 700px) {
+    width: 270px;
+    padding: 20px;
+  }
+
 `;
 
 const Score = styled.h3`
