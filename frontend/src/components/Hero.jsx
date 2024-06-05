@@ -16,6 +16,9 @@ export const Hero = () => {
         </TextContainer>
         <HeroImageContainer>
           <HeroImage src={content.heroImgUrl} alt={content.heroImgAlt} />
+          <ImageCredit>
+          Image by <a href="https://www.freepik.com/free-vector/girl-read-books-white-background_24459547.htm#fromView=search&page=1&position=8&uuid=d0b52126-bf6c-4124-b7c2-4ad78d4bbe9c">brgfx on Freepik</a>
+          </ImageCredit>
         </HeroImageContainer>
     </HeroContainer>
   )
@@ -50,4 +53,10 @@ const HeroImageContainer = styled.div`
 const HeroImage = styled.img`
   width: 100%;
   height: auto;
+`;
+
+const ImageCredit = styled.p`
+  font-size: 0.7rem;
+  margin-top: 10px;
+  text-align: right;
 `;
