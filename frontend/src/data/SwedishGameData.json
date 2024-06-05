@@ -23,29 +23,29 @@
     },
     {
       "level": 1,
-      "question": "Skriva",
-      "rightAnswer": "notera",
+      "question": "Anteckna",
+      "rightAnswer": "skriva",
       "wrongAnswer": ["läsa", "måla", "rita"],
       "category": "verb"
     },
     {
       "level": 1,
-      "question": "Läsa",
-      "rightAnswer": "studera",
-      "wrongAnswer": ["skriva", "leka", "hoppa"],
+      "question": "Promenera",
+      "rightAnswer": "gå",
+      "wrongAnswer": ["simma", "sova", "köra"],
       "category": "verb"
     },
     {
       "level": 1,
-      "question": "Rita",
-      "rightAnswer": "teckna",
+      "question": "Teckna",
+      "rightAnswer": "rita",
       "wrongAnswer": ["måla", "klippa", "klistra"],
       "category": "verb"
     },
     {
       "level": 1,
-      "question": "Måla",
-      "rightAnswer": "färglägga",
+      "question": "Färglägga",
+      "rightAnswer": "måla",
       "wrongAnswer": ["rita", "klippa", "skriva"],
       "category": "verb"
     },
@@ -65,8 +65,8 @@
     },
     {
       "level": 1,
-      "question": "Bygga",
-      "rightAnswer": "konstruera",
+      "question": "Konstruera",
+      "rightAnswer": "bygga",
       "wrongAnswer": ["riva", "klippa", "leka"],
       "category": "verb"
     },
@@ -79,9 +79,9 @@
     },
     {
       "level": 1,
-      "question": "Spela",
-      "rightAnswer": "leka",
-      "wrongAnswer": ["arbeta", "skriva", "hoppa"],
+      "question": "Upptäcka",
+      "rightAnswer": "hitta",
+      "wrongAnswer": ["simma", "sova", "köra"],
       "category": "verb"
     },
     {
@@ -100,23 +100,23 @@
     },
     {
       "level": 1,
-      "question": "Äta",
-      "rightAnswer": "förtära",
+      "question": "Förtära",
+      "rightAnswer": "äta",
       "wrongAnswer": ["dricka", "sova", "leka"],
       "category": "verb"
     },
     {
       "level": 1,
-      "question": "Dricka",
-      "rightAnswer": "klunka",
+      "question": "Klunka",
+      "rightAnswer": "dricka",
       "wrongAnswer": ["äta", "sova", "hoppa"],
       "category": "verb"
     },
     {
       "level": 1,
-      "question": "Leka",
-      "rightAnswer": "bus",
-      "wrongAnswer": ["jobba", "hoppa", "skriva"],
+      "question": "Snyfta",
+      "rightAnswer": "gråta",
+      "wrongAnswer": ["simma", "sova", "köra"],
       "category": "verb"
     },
     {
@@ -128,9 +128,9 @@
     },
     {
       "level": 1,
-      "question": "Dans",
-      "rightAnswer": "dansa",
-      "wrongAnswer": ["sjunga", "hoppa", "leka"],
+      "question": "Kasta",
+      "rightAnswer": "slänga",
+      "wrongAnswer": ["skriva", "måla", "simma"],
       "category": "verb"
     },
     {
@@ -149,9 +149,9 @@
     },
     {
       "level": 1,
-      "question": "Docka",
-      "rightAnswer": "leksak",
-      "wrongAnswer": ["boll", "bil", "bok"],
+      "question": "Kofta",
+      "rightAnswer": "tröja",
+      "wrongAnswer": ["sko", "väska", "cykel"],
       "category": "noun"
     },
     {
@@ -163,57 +163,43 @@
     },
     {
       "level": 1,
-      "question": "Bok",
-      "rightAnswer": "roman",
+      "question": "Roman",
+      "rightAnswer": "bok",
       "wrongAnswer": ["bil", "boll", "docka"],
       "category": "noun"
     },
     {
       "level": 1,
-      "question": "Stol",
-      "rightAnswer": "säte",
-      "wrongAnswer": ["bord", "säng", "soffa"],
+      "question": "Skepp",
+      "rightAnswer": "båt",
+      "wrongAnswer": ["bil", "cykel", "väska"],
       "category": "noun"
     },
     {
       "level": 1,
-      "question": "Bord",
-      "rightAnswer": "yta",
-      "wrongAnswer": ["stol", "säng", "soffa"],
-      "category": "noun"
-    },
-    {
-      "level": 1,
-      "question": "Säng",
-      "rightAnswer": "bädd",
+      "question": "Bädd",
+      "rightAnswer": "säng",
       "wrongAnswer": ["stol", "bord", "soffa"],
       "category": "noun"
     },
     {
       "level": 1,
-      "question": "Soffa",
-      "rightAnswer": "divan",
-      "wrongAnswer": ["stol", "bord", "säng"],
-      "category": "noun"
-    },
-    {
-      "level": 1,
-      "question": "Skola",
-      "rightAnswer": "läroanstalt",
+      "question": "Läroanstalt",
+      "rightAnswer": "skola",
       "wrongAnswer": ["hem", "parken", "affär"],
       "category": "noun"
     },
     {
       "level": 1,
-      "question": "Hem",
-      "rightAnswer": "bostad",
-      "wrongAnswer": ["skola", "parken", "affär"],
+      "question": "Föda",
+      "rightAnswer": "mat",
+      "wrongAnswer": ["dryck", "penna", "boll"],
       "category": "noun"
     },
     {
       "level": 1,
-      "question": "Park",
-      "rightAnswer": "grönområde",
+      "question": "Grönområde",
+      "rightAnswer": "park",
       "wrongAnswer": ["hem", "skola", "affär"],
       "category": "noun"
     },
@@ -226,86 +212,72 @@
     },
     {
       "level": 1,
-      "question": "Hund",
-      "rightAnswer": "vovve",
+      "question": "Jycke",
+      "rightAnswer": "hund",
       "wrongAnswer": ["katt", "häst", "fågel"],
       "category": "noun"
     },
     {
       "level": 1,
-      "question": "Katt",
-      "rightAnswer": "misse",
-      "wrongAnswer": ["hund", "häst", "fågel"],
+      "question": "Vän",
+      "rightAnswer": "kompis",
+      "wrongAnswer": ["fiende", "hund", "bok"],
       "category": "noun"
     },
     {
       "level": 1,
-      "question": "Häst",
-      "rightAnswer": "springare",
+      "question": "Springare",
+      "rightAnswer": "häst",
       "wrongAnswer": ["katt", "hund", "fågel"],
       "category": "noun"
     },
     {
       "level": 1,
-      "question": "Fågel",
-      "rightAnswer": "pippi",
+      "question": "Blomma",
+      "rightAnswer": "växt",
+      "wrongAnswer": ["bil", "penna", "cykel"],
+      "category": "noun"
+    },
+    {
+      "level": 1,
+      "question": "Fjäderfä",
+      "rightAnswer": "fågel",
       "wrongAnswer": ["katt", "häst", "hund"],
       "category": "noun"
     },
     {
       "level": 1,
-      "question": "Röd",
-      "rightAnswer": "skär",
+      "question": "Skär",
+      "rightAnswer": "rosa",
       "wrongAnswer": ["blå", "gul", "grön"],
       "category": "adjective"
     },
     {
       "level": 1,
-      "question": "Blå",
-      "rightAnswer": "azur",
-      "wrongAnswer": ["röd", "gul", "grön"],
+      "question": "Vacker",
+      "rightAnswer": "fin",
+      "wrongAnswer": ["ful", "liten", "snabb"],
       "category": "adjective"
     },
     {
       "level": 1,
-      "question": "Gul",
-      "rightAnswer": "kanariegul",
-      "wrongAnswer": ["röd", "blå", "grön"],
-      "category": "adjective"
-    },
-    {
-      "level": 1,
-      "question": "Grön",
-      "rightAnswer": "lime",
-      "wrongAnswer": ["röd", "blå", "gul"],
-      "category": "adjective"
-    },
-    {
-      "level": 1,
-      "question": "Stor",
-      "rightAnswer": "jättelik",
+      "question": "Jättelik",
+      "rightAnswer": "stor",
       "wrongAnswer": ["liten", "smal", "tunn"],
       "category": "adjective"
     },
     {
       "level": 1,
-      "question": "Liten",
-      "rightAnswer": "pytteliten",
-      "wrongAnswer": ["stor", "bred", "hög"],
+      "question": "Kvick",
+      "rightAnswer": "snabb",
+      "wrongAnswer": ["långsam", "tråkig", "seg"],
       "category": "adjective"
     },
     {
       "level": 1,
-      "question": "Snabb",
-      "rightAnswer": "kvick",
-      "wrongAnswer": ["långsam", "trög", "seg"],
-      "category": "adjective"
-    },
-    {
-      "level": 1,
-      "question": "Långsam",
-      "rightAnswer": "saktfärdig",
-      "wrongAnswer": ["snabb", "kvick", "alert"],
+      "question": "Saktfärdig",
+      "rightAnswer": "långsam",
+      "wrongAnswer": ["snabb", "arg", "alert"],
       "category": "adjective"
     },
     {
@@ -338,8 +310,8 @@
     },
     {
       "level": 1,
-      "question": "Pigg",
-      "rightAnswer": "alert",
+      "question": "Alert",
+      "rightAnswer": "pigg",
       "wrongAnswer": ["trött", "glad", "arg"],
       "category": "adjective"
     },
@@ -359,6 +331,13 @@
     },
     {
       "level": 1,
+      "question": "Het",
+      "rightAnswer": "varm",
+      "wrongAnswer": ["kall", "glad", "stor"],
+      "category": "adjective"
+    },
+    {
+      "level": 1,
       "question": "Bred",
       "rightAnswer": "vid",
       "wrongAnswer": ["smal", "tunn", "hög"],
@@ -366,9 +345,9 @@
     },
     {
       "level": 1,
-      "question": "Smal",
-      "rightAnswer": "tunn",
-      "wrongAnswer": ["bred", "vid", "stor"],
+      "question": "Tunn",
+      "rightAnswer": "smal",
+      "wrongAnswer": ["bred", "rolig", "hög"],
       "category": "adjective"
     }
   ]
