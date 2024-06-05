@@ -2,6 +2,9 @@ import styled from "styled-components";
 import { useState, useEffect } from "react";
 import { useScore } from "../../contexts/ScoreContext";
 import swedishData from "../../data/SwedishGameData.json";
+import Lottie from "lottie-react";
+import Right from "../../assets/Right.json";
+import Wrong from "../../assets/Wrong.json";
 
 export const SwedishQuestion = () => {
   const { swedish } = swedishData;
@@ -10,6 +13,8 @@ export const SwedishQuestion = () => {
   const [message, setMessage] = useState("");
   const [disableButton, setDisableButton] = useState(false);
   const [answers, setAnswers] = useState([]);
+  const [rightLottie, setRightLottie] = useState(false);
+  const [wrongLottie, setWrongLottie] = useState(false);
 
   const shuffleArray = (array) => {
     for (let i = array.length - 1; i > 0; i--) {
@@ -39,10 +44,13 @@ export const SwedishQuestion = () => {
   const handleChoice = (answer) => {
     const rightAnswer = swedish[randomNumber].rightAnswer;
     if (answer === rightAnswer) {
-      setTimeout(() => setMessage(`✅ Rätt svar! Bra jobbat!`), 1000);
-      setTimeout(() => setScore(score + 1), 2000);
+      setTimeout(() => setRightLottie(true), 1000);
+      setTimeout(() => setScore(score + 1), 3000);
+      setTimeout(() => setRightLottie(false), 5000)
     } else {
-      setTimeout(() => setMessage(`❌ Fel svar. Rätt svar var ${rightAnswer}.`), 1000);
+      setTimeout(() => setWrongLottie(true), 1000);
+      setTimeout(() => setMessage(`Rätt svar var ${rightAnswer}.`), 3000);
+      setTimeout(() => setWrongLottie(false), 5000);
     }
     setDisableButton(true);
     setTimeout(() => generateQuestion(), 5000);
@@ -51,8 +59,23 @@ export const SwedishQuestion = () => {
   return (
     <>
       <Title>Vad betyder ordet?</Title>
-      {message && <Message>{message}</Message>}
       <QuestionCard>{swedish[randomNumber].question}</QuestionCard>
+      {rightLottie && (
+        <div style={{
+          position: 'absolute',
+          top: '50%',
+          left: '50%',
+          transform: 'translate(-50%, -50%)',
+          zIndex: 2,
+        }}><Lottie animationData={Right} loop={false} /></div>)}
+      {wrongLottie && (
+        <div style={{
+          position: 'absolute',
+          top: '50%',
+          left: '50%',
+          transform: 'translate(-50%, -50%)',
+          zIndex: 2,
+        }}><Lottie animationData={Wrong} loop={false} /></div>)}
       <Answers>
         {answers.map((answer, index) => (
           <AnswerButton
@@ -66,6 +89,7 @@ export const SwedishQuestion = () => {
         ))}
       </Answers>
       <Score>Du har {score} rätt hittills</Score>
+      {message && <Message>{message}</Message>}
     </>
   );
 };
@@ -80,7 +104,7 @@ const QuestionCard = styled.div`
   height: 110px;
   align-content: center;
   font-size: 40px;
-  background-color: var( --raspberry);
+  background-color: var( --sunset);
   color: white;
   padding: 20px;
   margin: 10px auto;
@@ -93,28 +117,6 @@ const QuestionCard = styled.div`
     font-size: 50px;
   }
 
-`;
-
-
-const Message = styled.div`
-  color: black;
-  display: flex;
-  position: absolute;
-  justify-content: center;
-  align-items: center;
-  margin: 0 auto;
-  background-color: white;
-  z-index: 2;
-  font-size: 20px;
-  width: 240px;
-  height: 230px;
-  border-radius: 20px;
-
-   @media (min-width: 700px) {
-    width: 550px;
-    height: 230px;
-    font-size: 30px;
-  }
 `;
 
 const Answers = styled.div`
@@ -132,7 +134,7 @@ const Answers = styled.div`
 `;
 
 const AnswerButton = styled.button`
-  background-color: var( --raspberry);
+  background-color: var( --sunset);
   color: white;
   width: 270px;
   margin: 10px auto;
@@ -144,19 +146,20 @@ const AnswerButton = styled.button`
   font-size: 20px;
   padding: 15px;
   cursor: pointer;
+  box-shadow: 4px 4px var(--sunsetshadow);
 
   &:hover {
-    background-color: var( --raspberryhover);
+    background-color: var( --sunsethover);
+    box-shadow: 6px 6px var(--sunsetshadow);
+    transition: 0.2s ease;
   }
-
-  
 
   &:disabled {
     cursor: default;
     border: none;
 
     &:hover {
-    background-color: var( --raspberry);
+    background-color: var( --sunset);
   }
   }
 
@@ -170,3 +173,5 @@ const AnswerButton = styled.button`
 const Score = styled.h3`
   color: black;
 `;
+
+

@@ -1,8 +1,10 @@
 import PropTypes from "prop-types"
 import styled, { css } from "styled-components"
-
 import { useState, useEffect } from "react"
 import { useMath } from "../../contexts/MathContext"
+import Lottie from "lottie-react";
+import Right from "../../assets/Right.json";
+import Wrong from "../../assets/Wrong.json";
 
 export const MathQuestion = ({ focusRef }) => {
   const { 
@@ -18,6 +20,9 @@ export const MathQuestion = ({ focusRef }) => {
   const [message, setMessage] = useState("")
   const [answerInput, setAnswerInput] = useState("");
   const numPadNumbers = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+  const [rightLottie, setRightLottie] = useState(false);
+  const [wrongLottie, setWrongLottie] = useState(false);
+
   
   useEffect(() => {
     generateQuestion()
@@ -32,7 +37,8 @@ export const MathQuestion = ({ focusRef }) => {
   const checkAnswer = (event) => {
     event.preventDefault()
     if (answerInput == correctAnswer){
-      setMessage("✅ Rätt svar! Bra jobbat!")
+      setTimeout(() => setRightLottie(true), 1000);
+      setTimeout(() => setRightLottie(false), 5000)
       //Updates the correct score
       switch (mathType) {
         case "addition":
@@ -51,9 +57,11 @@ export const MathQuestion = ({ focusRef }) => {
           setMathScore({ ...mathScore, addition: mathScore.addition +1 })
       }
     } else {
-      setMessage(`❌ Fel svar. Rätt svar var ${correctAnswer}.`)
+      setTimeout(() => setWrongLottie(true), 1000);
+      setTimeout(() => setMessage(`Rätt svar var ${correctAnswer}.`), 3000);
+      setTimeout(() => setWrongLottie(false), 5000);
     }
-    setTimeout(() => newQuestion(), 2500)
+    setTimeout(() => newQuestion(), 5000)
   }
   //Resets message and input-field before generating new question
   const newQuestion = () => {
@@ -83,8 +91,23 @@ export const MathQuestion = ({ focusRef }) => {
   return (
     <div>
       <QuestionCard>{question}</QuestionCard>
-      <Answer onSubmit={(event) => checkAnswer(event)}>
-        {message && <Message>{message}</Message>}
+      {rightLottie && (
+        <div style={{
+          position: 'absolute',
+          top: '50%',
+          left: '50%',
+          transform: 'translate(-50%, -50%)',
+          zIndex: 2,
+        }}><Lottie animationData={Right} loop={false} /></div>)}
+      {wrongLottie && (
+        <div style={{
+          position: 'absolute',
+          top: '50%',
+          left: '50%',
+          transform: 'translate(-50%, -50%)',
+          zIndex: 2,
+        }}><Lottie animationData={Wrong} loop={false} /></div>)}
+        <Answer onSubmit={(event) => checkAnswer(event)}>
         <AnswerInput
           ref={focusRef}
           type="number"
@@ -115,6 +138,7 @@ export const MathQuestion = ({ focusRef }) => {
       <Score>Subtraktion: Du har {mathScore.subtraction} rätt hittills!</Score>
       <Score>Multiplikation: Du har {mathScore.multiplication} rätt hittills!</Score>
       <Score>Division: Du har {mathScore.division} rätt hittills!</Score>
+       {message && <Message>{message}</Message>}
     </div>
   );
 }
@@ -138,27 +162,6 @@ const QuestionCard = styled.div`
     font-size: 50px; 
   }
 `
-const Message = styled.div`
-  color: black;
-  display: flex;
-  position: absolute;
-  justify-content: center;
-  align-items: center;
-  margin: 0 auto;
-  background-color: white;
-  z-index: 2;
-  font-size: 20px;
-  width: 240px;
-  height: 230px;
-  border-radius: 20px;
-
-   @media (min-width: 700px) {
-    width: 550px;
-    height: 230px;
-    font-size: 30px;
-  }
-`
-
 const Answer = styled.form`
   display: flex;
   flex-direction: row;
@@ -195,20 +198,21 @@ const AnswerInput = styled.input`
 
      @media (min-width: 700px) {
     width: 400px;
-    height: 50px;
+    height: 54px;
     font-size: 16px;
   }
 `
 
 const AnswerBtn = styled.button`
   color: white;
-  background-color: var( --oceanactive);
+  background-color: var( --ocean);
   border-radius: 10px;
   border: none;
   width: 60px;
   height: 40px;
+  margin-top: -4px;
   cursor: pointer;
-  
+  box-shadow: 4px 4px var(--oceanshadow);
 
     @media (min-width: 700px) {
     width: 70px;
@@ -217,7 +221,10 @@ const AnswerBtn = styled.button`
   }
 
   &:hover {
-    background-color: var( --ocean);
+    background-color: var( --oceanhover);
+    background-color: var( --oceanhover);
+    box-shadow: 6px 6px var(--oceanshadow);
+    transition: 0.2s ease;
   }
 `
 
@@ -252,20 +259,35 @@ const NumPadBtn = styled.button`
 
   border-radius: 10px;
   border: none;
-  background-color: var( --oceanactive);
+  background-color: var( --ocean);
   color: white;
   padding: 10px 20px;
   font-size: 18px;
   cursor: pointer;
+  box-shadow: 3px 3px var(--oceanshadow);
 
   &:hover {
-    background-color: var( --ocean);
+    background-color: var( --oceanhover);
+    box-shadow: 4px 4px var(--oceanshadow);
+    transition: 0.2s ease;
   }
 `
 
 const Score = styled.h3`
   color: black;
 `
+
+const Message = styled.div`
+  color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px auto;
+  background-color: white;
+  z-index: 2;
+  font-size: 20px;
+  border-radius: 20px;
+`;
 
 MathQuestion.propTypes = {
   focusRef: PropTypes.any
