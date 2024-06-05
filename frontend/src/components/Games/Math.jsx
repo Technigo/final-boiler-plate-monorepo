@@ -48,7 +48,6 @@ export const Math = () => {
 
   return (
     <>
-      <MathTitle>Vad vill du öva på?</MathTitle>
       <MathTypeButton
         value="addition"
         onClick={(event) => handleChoice(event.target.value)}
@@ -73,6 +72,7 @@ export const Math = () => {
       >
         ÷
       </MathTypeButton>
+      <MathTitle />
       <MathQuestion focusRef={focusRef}/>
     </>
   )

@@ -42,19 +42,19 @@ export const MathQuestion = ({ focusRef }) => {
       //Updates the correct score
       switch (mathType) {
         case "addition":
-          setMathScore({ ...mathScore, addition: mathScore.addition +1 })
+          setTimeout(() => setMathScore({ ...mathScore, addition: mathScore.addition +1 }), 3000)
           break;
         case "subtraction":
-          setMathScore({ ...mathScore, subtraction: mathScore.subtraction +1 })
+          setTimeout(() => setMathScore({ ...mathScore, subtraction: mathScore.subtraction +1 }), 3000)
           break;
         case "multiplication":
-          setMathScore({ ...mathScore, multiplication: mathScore.multiplication +1 })
+          setTimeout(() => setMathScore({ ...mathScore, multiplication: mathScore.multiplication +1 }), 3000)
           break;
         case "division":
-          setMathScore({ ...mathScore, division: mathScore.division +1 })
+          setTimeout(() => setMathScore({ ...mathScore, division: mathScore.division +1 }), 3000)
           break;
         default:
-          setMathScore({ ...mathScore, addition: mathScore.addition +1 })
+          setTimeout(() => setMathScore({ ...mathScore, addition: mathScore.addition +1 }), 3000)
       }
     } else {
       setTimeout(() => setWrongLottie(true), 1000);
@@ -90,6 +90,13 @@ export const MathQuestion = ({ focusRef }) => {
 
   return (
     <div>
+    <HeaderDiv>
+        <Title>Addera</Title>
+        <Progress>
+          <Level>Nivå 2</Level>
+          <Score>{mathScore.addition}/25⭐</Score>
+        </Progress>
+      </HeaderDiv>
       <QuestionCard>{question}</QuestionCard>
       {rightLottie && (
         <div style={{
@@ -134,14 +141,54 @@ export const MathQuestion = ({ focusRef }) => {
           🗑️
         </NumPadBtn>
       </NumPad>
-       <Score>Addition: Du har {mathScore.addition} rätt hittills!</Score>
+       {/* <Score>Addition: Du har {mathScore.addition} rätt hittills!</Score>
       <Score>Subtraktion: Du har {mathScore.subtraction} rätt hittills!</Score>
       <Score>Multiplikation: Du har {mathScore.multiplication} rätt hittills!</Score>
-      <Score>Division: Du har {mathScore.division} rätt hittills!</Score>
+      <Score>Division: Du har {mathScore.division} rätt hittills!</Score> */}
        {message && <Message>{message}</Message>}
     </div>
   );
 }
+
+const HeaderDiv = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin: 20px auto;
+  width: 300px;
+
+  @media (min-width: 700px) {
+    width: 600px;
+    margin: 25px auto;
+
+  }
+`;
+
+const Title = styled.h1`
+  margin: 0;
+  font-size: 26px;
+
+  @media (min-width: 700px) {
+    font-size: 36px;
+
+  }
+`;
+
+const Progress = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: right;
+  align-items: center;
+`;
+
+const Level = styled.h3`
+  color: black;
+`;
+
+const Score = styled.h3`
+  color: black;
+`;
 
 const QuestionCard = styled.div`
   width: 300px;
@@ -272,11 +319,6 @@ const NumPadBtn = styled.button`
     transition: 0.2s ease;
   }
 `
-
-const Score = styled.h3`
-  color: black;
-`
-
 const Message = styled.div`
   color: black;
   display: flex;

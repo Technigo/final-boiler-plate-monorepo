@@ -4,7 +4,7 @@ import { SwedishQuestion } from "./SwedishQuestion.jsx";
 export const Swedish = () => {
   return (
     <SwedishGame>
-      <SwedishTitle>Svenska</SwedishTitle>
+      <SwedishTitle />
       <SwedishQuestion />
     </SwedishGame>
   );
