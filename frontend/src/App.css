@@ -13,19 +13,21 @@
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  --vanilla: #fef9ef;
-  --ocean: #227c9d;
-  --oceanhover: #6fb3cc;
-  --oceanactive: #1a5f79;
-  --teal: #17c3b2;
-  --tealhover: #2fd5c5;
-  --tealactive: #119285;
-  --sunset: #ffcb77;
-  --sunsethover: #ffd798;
-  --sunsetactive: #c59d5d;
+  --ocean: #5189D3;
+  --oceanhover: #84b9ff;
+  --oceanshadow: #1A5F79;
+  --forest: #14C26E;
+  --foresthover: #41dd92;
+  --forestshadow: #00a857;
+  --sunset: #FF9A3D;
+  --sunsethover: #ffb26b;
+  --sunsetshadow: #fa7d08;
+  --daffodil: #FED363;
+  --daffodilhover: #ffde89;
+  --daffodilshadow: #fdc63b;
   --raspberry: #fe6d73;
   --raspberryhover: #ff9296;
-  --raspberryactive: #c15457;
+  --raspberryshadow: #d7494e;
 }
 
 code {
