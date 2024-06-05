@@ -59,11 +59,11 @@ export const SwedishQuestion = () => {
   return (
     <>
       <HeaderDiv>
-        <Title>Vad betyder ordet?</Title>
         <Progress>
           <Level>Nivå 2</Level>
-          <Score>{score}/25⭐</Score>
+          <Score>⭐{score}/25</Score>
         </Progress>
+        <Title>Hitta synonymen</Title>
       </HeaderDiv>
       <QuestionCard>{swedish[randomNumber].question}</QuestionCard>
       {rightLottie && (
@@ -104,34 +104,43 @@ export const SwedishQuestion = () => {
 
 const HeaderDiv = styled.div`
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  margin: 20px auto;
+  margin: 20px auto 10px;
   width: 300px;
+  gap: 10px;
 
   @media (min-width: 700px) {
+    flex-direction: row-reverse;
     width: 600px;
     margin: 25px auto;
-
+    padding: 0 30px;
   }
 `;
 
 const Title = styled.h1`
   margin: 0;
-  font-size: 26px;
+  font-size: 40px;
 
   @media (min-width: 700px) {
-    font-size: 36px;
+    font-size: 45px;
 
   }
 `;
 
 const Progress = styled.div`
   display: flex;
-  flex-direction: column;
-  justify-content: right;
+  flex-direction: row;
+  justify-content: space-between;
   align-items: center;
+  width: 200px;
+  gap: 10px;
+
+   @media (min-width: 700px) {
+    flex-direction: column;
+    width: 50px;
+  }
 `;
 
 const Level = styled.h3`
@@ -144,7 +153,7 @@ const Score = styled.h3`
 
 const QuestionCard = styled.div`
   width: 300px;
-  height: 110px;
+  height: 100px;
   align-content: center;
   font-size: 40px;
   background-color: var( --sunset);
@@ -156,7 +165,7 @@ const QuestionCard = styled.div`
 
   @media (min-width: 700px) {
     width: 600px;
-    height: 230px;
+    height: 210px;
     font-size: 50px;
   }
 
@@ -179,6 +188,7 @@ const AnswerButton = styled.button`
   background-color: var( --sunset);
   color: white;
   width: 270px;
+  height: 50px;
   margin: 10px auto;
   padding: 10px 0;
   z-index: 1;
@@ -207,6 +217,7 @@ const AnswerButton = styled.button`
 
    @media (min-width: 700px) {
     width: 270px;
+    height: 60px;
     padding: 20px;
   }
 `;
