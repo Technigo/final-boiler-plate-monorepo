@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { useLogin } from "../contexts/UserContext";
 import signoutIcon from "/src/assets/signouticon.png";
+import logo from "/src/assets/Logo-header.png";
 
 export const Header = () => {
   const { isLoggedIn, signout } = useLogin();
@@ -9,15 +10,16 @@ export const Header = () => {
   if (isLoggedIn) {
     return (
       <HeaderContainer>
+      <Logo src={logo}/>
         <LoggedIn className="loggedIn">
           <Link to={`/play`}>
-            <Play>Play</Play>
+            <Play>SPEL</Play>
           </Link>
           <Link to={`/progress`}>
-            <MyProgress>Min progress</MyProgress>
+            <MyProgress>MIN SIDA</MyProgress>
           </Link>
           <SignOut>
-            <SignOutText onClick={signout}>Logga ut</SignOutText>
+            <SignOutText onClick={signout}>LOGGA UT</SignOutText>
             <SignOutIcon onClick={signout} src={signoutIcon} />
           </SignOut>
         </LoggedIn>
@@ -42,15 +44,27 @@ export const Header = () => {
 const HeaderContainer = styled.div`
   background-color: var(--daffodil);
   width: 100%;
-  height: 60px;
-  position: absolute;
+  height: 80px;
+  position: relative;
   /* margin: -8px; */
   display: flex;
   flex-direction: row;
-  justify-content: space-evenly;
+  justify-content: space-between;
   align-items: center;
-  padding: 10px;
+  padding: 0 20px;
   font-weight: 500;
+
+    @media (min-width: 700px) {
+    height: 80px;
+    padding: 0 120px;
+  }
+`;
+
+const Logo = styled.img`
+  width: auto;
+  height: 55px;
+  margin-top: 5px;
+  align-items: center;
 `;
 
 const StartPage = styled.div`
@@ -89,8 +103,9 @@ const Login = styled.p`
 const LoggedIn = styled.div`
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
-  padding: 10px;
+  justify-content: right;
+  gap: 60px;
+  padding: 20px;
   width: 100vh;
   color: white;
 `;
