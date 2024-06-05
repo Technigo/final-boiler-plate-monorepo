@@ -1,81 +1,56 @@
 import styled from "styled-components"
-import { useRef } from "react"
-import { useMath } from "../../contexts/MathContext"
+import { useState, useRef } from "react"
+//import { useMath } from "../../contexts/MathContext"
 import { MathQuestion } from "./MathQuestion"
 
 export const Math = () => {
-  const { 
-    mathType, 
-    setMathType, 
-    question,
-    correctAnswer,
-    generateQuestion, 
-    savedQuestion, 
-    setSavedQuestion, 
-    savedAnswer,
-    setSavedAnswer
-  } = useMath()
+  //const { mathGame, generateQuestion } = useMath()
+  const [gameType, setGameType] = useState()
+  const [gameNumber, setGameNumber] = useState()
   const focusRef = useRef(null)
   
   const handleChoice = (type) => {
-    setMathType(type)
-    generateQuestion(type)
-    if (focusRef.current) {
-      focusRef.current.focus()
-    }
-    switch (mathType) {
-      case "addition":
-        setSavedQuestion({ ...savedQuestion, addition: question })
-        setSavedAnswer({ ...savedAnswer, addition: correctAnswer });
-        break;
-      case "subtraction":
-        setSavedQuestion({ ...savedQuestion, subtraction: question })
-        setSavedAnswer({ ...savedAnswer, subtraction: correctAnswer });
-        break
-      case "multiplication":
-        setSavedQuestion({ ...savedQuestion, multiplication: question })
-        setSavedAnswer({ ...savedAnswer, multiplication: correctAnswer });
-        break
-      case "division":
-        setSavedQuestion({ ...savedQuestion, division: question })
-        setSavedAnswer({ ...savedAnswer, division: correctAnswer });
-        break;
-      default:
-        setSavedQuestion({ ...savedQuestion, addition: question })
-        setSavedAnswer({ ...savedAnswer, addition: correctAnswer });
-    }
+    setGameType(type)
+    setGameNumber(type)
   }
 
+  if (gameType) {
+   return (
+      <>
+        <MathTitle />
+        <MathQuestion focusRef={focusRef} type={gameNumber}/>
+      </>
+    ) 
+  } else { 
   return (
     <>
       <MathTypeButton
-        value="addition"
+        value="0"
         onClick={(event) => handleChoice(event.target.value)}
       >
         +
       </MathTypeButton>
       <MathTypeButton
-        value="subtraction"
+        value="1"
         onClick={(event) => handleChoice(event.target.value)}
       >
         -
       </MathTypeButton>
       <MathTypeButton
-        value="multiplication"
+        value="2"
         onClick={(event) => handleChoice(event.target.value)}
       >
         *
       </MathTypeButton>
       <MathTypeButton
-        value="division"
+        value="3"
         onClick={(event) => handleChoice(event.target.value)}
       >
         ÷
       </MathTypeButton>
-      <MathTitle />
-      <MathQuestion focusRef={focusRef}/>
     </>
   )
+}
 }
 
 const MathTitle = styled.h2`
@@ -83,6 +58,8 @@ const MathTitle = styled.h2`
 `
 
 const MathTypeButton = styled.button`
+  height: 150px;
+  width: 150px;
   color: white;
   background-color: black;
 `

@@ -1,73 +1,59 @@
-import PropTypes from "prop-types"
-import styled, { css } from "styled-components"
-import { useState, useEffect } from "react"
-import { useMath } from "../../contexts/MathContext"
+import PropTypes from "prop-types";
+import styled, { css } from "styled-components";
+import { useState, useEffect } from "react";
+import { useMath } from "../../contexts/MathContext";
 import Lottie from "lottie-react";
 import Right from "../../assets/Right.json";
 import Wrong from "../../assets/Wrong.json";
 
-export const MathQuestion = ({ focusRef }) => {
-  const { 
-    mathType, 
-    question, 
-    correctAnswer, 
-    generateQuestion, 
-    mathScore, 
-    setMathScore,
-    savedQuestion,
-  } = useMath()
+export const MathQuestion = ({ focusRef, type }) => {
+  const { mathGame, setMathGame, generateQuestion } = useMath()
+  const currentScore = mathGame[Number(type)].score
 
   const [message, setMessage] = useState("")
-  const [answerInput, setAnswerInput] = useState("");
-  const numPadNumbers = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-  const [rightLottie, setRightLottie] = useState(false);
-  const [wrongLottie, setWrongLottie] = useState(false);
-
-  
+  const [answerInput, setAnswerInput] = useState("")
+  const numPadNumbers = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+  const [rightLottie, setRightLottie] = useState(false)
+  const [wrongLottie, setWrongLottie] = useState(false)
+ 
   useEffect(() => {
-    generateQuestion()
-     if (focusRef.current) {
-       focusRef.current.focus()
-     }
+    generateQuestion(Number(type))
+    if (focusRef.current) {
+      focusRef.current.focus()
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+  }, []);
 
   //Checks if input matches correctAnswer and gives the user a message of "right/wrong"
   //Then starts a new question
   const checkAnswer = (event) => {
-    event.preventDefault()
-    if (answerInput == correctAnswer){
+    event.preventDefault();
+    if (answerInput == mathGame[Number(type)].correctAnswer) {
       setTimeout(() => setRightLottie(true), 1000);
-      setTimeout(() => setRightLottie(false), 5000)
-      //Updates the correct score
-      switch (mathType) {
-        case "addition":
-          setTimeout(() => setMathScore({ ...mathScore, addition: mathScore.addition +1 }), 3000)
-          break;
-        case "subtraction":
-          setTimeout(() => setMathScore({ ...mathScore, subtraction: mathScore.subtraction +1 }), 3000)
-          break;
-        case "multiplication":
-          setTimeout(() => setMathScore({ ...mathScore, multiplication: mathScore.multiplication +1 }), 3000)
-          break;
-        case "division":
-          setTimeout(() => setMathScore({ ...mathScore, division: mathScore.division +1 }), 3000)
-          break;
-        default:
-          setTimeout(() => setMathScore({ ...mathScore, addition: mathScore.addition +1 }), 3000)
-      }
+      setTimeout(() => setRightLottie(false), 5000);
+
+      const newGame = [...mathGame]
+      newGame[Number(type)].score = currentScore + 1
+      setTimeout(() => setMathGame(newGame), 3000)
     } else {
       setTimeout(() => setWrongLottie(true), 1000);
-      setTimeout(() => setMessage(`Rätt svar var ${correctAnswer}.`), 3000);
-      setTimeout(() => setWrongLottie(false), 5000);
+      setTimeout(
+        () =>
+          setMessage(
+            `Rätt svar var ${mathGame[Number(type)].correctAnswer}.`
+          ),
+        3000
+      )
+      setTimeout(() => setWrongLottie(false), 5000)
     }
     setTimeout(() => newQuestion(), 5000)
   }
+
   //Resets message and input-field before generating new question
   const newQuestion = () => {
     setMessage("")
     setAnswerInput("")
-    generateQuestion(mathType)
+    generateQuestion(Number(type))
     if (focusRef.current) {
       focusRef.current.focus()
     }
@@ -77,44 +63,54 @@ export const MathQuestion = ({ focusRef }) => {
   const handleNumPadClick = (number) => {
     setAnswerInput((prev) => prev + number.toString())
     if (focusRef.current) {
-      focusRef.current.focus();
+      focusRef.current.focus()
     }
-  }
+  };
 
   const handleDeleteClick = () => {
     setAnswerInput("")
     if (focusRef.current) {
-      focusRef.current.focus();
+      focusRef.current.focus()
     }
   }
 
   return (
     <div>
-    <HeaderDiv>
-        <Title>Addera</Title>
+      <HeaderDiv>
+        <Title>{mathGame[Number(type)].mathType}</Title>
         <Progress>
-          <Level>Nivå 2</Level>
-          <Score>{mathScore.addition}/25⭐</Score>
+          <Level>Nivå {mathGame[Number(type)].level}</Level>
+          <Score>{currentScore}/25⭐</Score>
         </Progress>
       </HeaderDiv>
-      <QuestionCard>{question}</QuestionCard>
+      <QuestionCard>{mathGame[Number(type)].question}</QuestionCard>
       {rightLottie && (
-        <div style={{
-          position: 'absolute',
-          top: '50%',
-          left: '50%',
-          transform: 'translate(-50%, -50%)',
-          zIndex: 2,
-        }}><Lottie animationData={Right} loop={false} /></div>)}
+        <div
+          style={{
+            position: "absolute",
+            top: "50%",
+            left: "50%",
+            transform: "translate(-50%, -50%)",
+            zIndex: 2,
+          }}
+        >
+          <Lottie animationData={Right} loop={false} />
+        </div>
+      )}
       {wrongLottie && (
-        <div style={{
-          position: 'absolute',
-          top: '50%',
-          left: '50%',
-          transform: 'translate(-50%, -50%)',
-          zIndex: 2,
-        }}><Lottie animationData={Wrong} loop={false} /></div>)}
-        <Answer onSubmit={(event) => checkAnswer(event)}>
+        <div
+          style={{
+            position: "absolute",
+            top: "50%",
+            left: "50%",
+            transform: "translate(-50%, -50%)",
+            zIndex: 2,
+          }}
+        >
+          <Lottie animationData={Wrong} loop={false} />
+        </div>
+      )}
+      <Answer onSubmit={(event) => checkAnswer(event)}>
         <AnswerInput
           ref={focusRef}
           type="number"
@@ -141,11 +137,7 @@ export const MathQuestion = ({ focusRef }) => {
           🗑️
         </NumPadBtn>
       </NumPad>
-       {/* <Score>Addition: Du har {mathScore.addition} rätt hittills!</Score>
-      <Score>Subtraktion: Du har {mathScore.subtraction} rätt hittills!</Score>
-      <Score>Multiplikation: Du har {mathScore.multiplication} rätt hittills!</Score>
-      <Score>Division: Du har {mathScore.division} rätt hittills!</Score> */}
-       {message && <Message>{message}</Message>}
+      {message && <Message>{message}</Message>}
     </div>
   );
 }
@@ -161,7 +153,6 @@ const HeaderDiv = styled.div`
   @media (min-width: 700px) {
     width: 600px;
     margin: 25px auto;
-
   }
 `;
 
@@ -171,7 +162,6 @@ const Title = styled.h1`
 
   @media (min-width: 700px) {
     font-size: 36px;
-
   }
 `;
 
@@ -195,7 +185,7 @@ const QuestionCard = styled.div`
   height: 110px;
   align-content: center;
   font-size: 30px;
-  background-color: var( --ocean);
+  background-color: var(--ocean);
   color: white;
   padding: 20px;
   margin: 10px auto;
@@ -206,9 +196,9 @@ const QuestionCard = styled.div`
   @media (min-width: 700px) {
     width: 600px;
     height: 150px;
-    font-size: 50px; 
+    font-size: 50px;
   }
-`
+`;
 const Answer = styled.form`
   display: flex;
   flex-direction: row;
@@ -216,43 +206,43 @@ const Answer = styled.form`
   gap: 8px;
   align-items: center;
 
-   @media (min-width: 700px) {
+  @media (min-width: 700px) {
     gap: 20px;
   }
-`
+`;
 
 const AnswerInput = styled.input`
   color: #ffffff;
-  background-color: var( --oceanhover);
+  background-color: var(--oceanhover);
   border-radius: 10px;
   width: 200px;
   height: 40px;
   border: none;
   padding: 20px;
   font-family: "Itim";
-  &::-webkit-inner-spin-button { 
-    -webkit-appearance: none; 
-    margin: 0; 
-  } 
-  &::-webkit-outer-spin-button { 
-    -webkit-appearance: none; 
-    margin: 0; 
+  &::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+  &::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
   }
 
-   &::placeholder { 
+  &::placeholder {
     color: #d1ecf1;
   }
 
-     @media (min-width: 700px) {
+  @media (min-width: 700px) {
     width: 400px;
     height: 54px;
     font-size: 16px;
   }
-`
+`;
 
 const AnswerBtn = styled.button`
   color: white;
-  background-color: var( --ocean);
+  background-color: var(--ocean);
   border-radius: 10px;
   border: none;
   width: 60px;
@@ -261,19 +251,19 @@ const AnswerBtn = styled.button`
   cursor: pointer;
   box-shadow: 4px 4px var(--oceanshadow);
 
-    @media (min-width: 700px) {
+  @media (min-width: 700px) {
     width: 70px;
     height: 50px;
     font-size: 16px;
   }
 
   &:hover {
-    background-color: var( --oceanhover);
-    background-color: var( --oceanhover);
+    background-color: var(--oceanhover);
+    background-color: var(--oceanhover);
     box-shadow: 6px 6px var(--oceanshadow);
     transition: 0.2s ease;
   }
-`
+`;
 
 const NumPad = styled.div`
   display: grid;
@@ -282,31 +272,36 @@ const NumPad = styled.div`
   gap: 10px;
   max-width: 270px;
   margin: 10px auto;
-`
+`;
 
 const NumPadBtn = styled.button`
-  
-  ${props => props.className === 'small' && css`
-  grid-column: span 1;
-  grid-row: span 1;
-  width: 80px;
-  `}
-  
-  ${props => props.className === 'big' && css`
-  grid-column: span 2;
-  grid-row: 4;
-  width: 175px;
-  `}
+  ${(props) =>
+    props.className === "small" &&
+    css`
+      grid-column: span 1;
+      grid-row: span 1;
+      width: 80px;
+    `}
 
-  ${props => props.className === 'delete' && css`
-  grid-column: 3;
-  grid-row: 4;
-  width: 80px;
-  `}
+  ${(props) =>
+    props.className === "big" &&
+    css`
+      grid-column: span 2;
+      grid-row: 4;
+      width: 175px;
+    `}
+
+  ${(props) =>
+    props.className === "delete" &&
+    css`
+      grid-column: 3;
+      grid-row: 4;
+      width: 80px;
+    `}
 
   border-radius: 10px;
   border: none;
-  background-color: var( --ocean);
+  background-color: var(--ocean);
   color: white;
   padding: 10px 20px;
   font-size: 18px;
@@ -314,11 +309,11 @@ const NumPadBtn = styled.button`
   box-shadow: 3px 3px var(--oceanshadow);
 
   &:hover {
-    background-color: var( --oceanhover);
+    background-color: var(--oceanhover);
     box-shadow: 4px 4px var(--oceanshadow);
     transition: 0.2s ease;
   }
-`
+`;
 const Message = styled.div`
   color: black;
   display: flex;
@@ -332,5 +327,6 @@ const Message = styled.div`
 `;
 
 MathQuestion.propTypes = {
-  focusRef: PropTypes.any
-}
+  focusRef: PropTypes.any,
+  type: PropTypes.string,
+};
