@@ -44,7 +44,7 @@ export const Header = () => {
 const HeaderContainer = styled.div`
   background-color: var(--daffodil);
   width: 100%;
-  height: 80px;
+  height: 50px;
   position: relative;
   /* margin: -8px; */
   display: flex;
