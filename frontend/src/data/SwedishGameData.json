@@ -398,7 +398,7 @@
     "rightAnswer": "Sjukhus",
     "wrongAnswer": ["skola", "affär", "teater"],
     "category": "noun"
-  },
+  }
   ]
 }
 
