@@ -4,7 +4,7 @@ import { EnglishQuestion } from "./EnglishQuestion.jsx";
 export const English = () => {
   return (
     <EnglishGame>
-      <EnglishTitle>Engelska</EnglishTitle>
+      <EnglishTitle />
       <EnglishQuestion />
     </EnglishGame>
   );

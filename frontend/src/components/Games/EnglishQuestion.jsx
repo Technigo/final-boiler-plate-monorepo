@@ -58,7 +58,13 @@ export const EnglishQuestion = () => {
 
   return (
     <>
-      <Title>Vad betyder ordet?</Title>
+      <HeaderDiv>
+        <Title>Översätt</Title>
+        <Progress>
+            <Level>Nivå 2</Level>
+            <Score>{score}/25⭐</Score>
+          </Progress>
+      </HeaderDiv>
       <QuestionCard>{english[randomNumber].question}</QuestionCard>
             {rightLottie && (
         <div style={{
@@ -91,15 +97,51 @@ export const EnglishQuestion = () => {
     );
   })}
 </Answers>
-      <Score>Du har {score} rätt hittills</Score>
       {message && <Message>{message}</Message>}
     </>
   );
 };
 
+const HeaderDiv = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin: 20px auto;
+  width: 300px;
+
+  @media (min-width: 700px) {
+    width: 600px;
+    margin: 25px auto;
+
+  }
+`;
+
 const Title = styled.h2`
   margin: 0;
+  font-size: 26px;
+
+  @media (min-width: 700px) {
+    font-size: 36px;
+
+  }
 `;
+
+const Progress = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: right;
+  align-items: center;
+`;
+
+const Level = styled.h3`
+  color: black;
+`;
+
+const Score = styled.h3`
+  color: black;
+`;
+
 
 const QuestionCard = styled.div`
   width: 300px;
@@ -130,7 +172,6 @@ const Answers = styled.div`
     display: grid;
     grid-template-columns: 1fr 1fr;
     width: 580px;
-    margin: 20px auto;
   }
 `;
 
@@ -170,18 +211,14 @@ const AnswerButton = styled.button`
   }
 `;
 
-const Score = styled.h3`
-  color: black;
-`;
-
 const Message = styled.div`
   color: black;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 10px auto;
+  margin: 0 auto;
   background-color: white;
   z-index: 2;
-  font-size: 20px;
+  font-size: 25px;
   border-radius: 20px;
 `;
