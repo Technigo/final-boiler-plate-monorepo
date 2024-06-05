@@ -177,4 +177,16 @@ const Score = styled.h3`
   color: black;
 `;
 
+const Message = styled.div`
+  color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px auto;
+  background-color: white;
+  z-index: 2;
+  font-size: 20px;
+  border-radius: 20px;
+`;
+
 
