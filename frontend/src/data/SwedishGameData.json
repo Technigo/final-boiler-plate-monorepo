@@ -2,8 +2,8 @@
   "swedish": [
     {
       "level": 1,
-      "question": "Jobba",
-      "rightAnswer": "arbeta",
+      "question": "Arbeta",
+      "rightAnswer": "jobba",
       "wrongAnswer": ["hoppa", "leka", "springa"],
       "category": "verb"
     },
@@ -349,7 +349,56 @@
       "rightAnswer": "smal",
       "wrongAnswer": ["bred", "rolig", "hög"],
       "category": "adjective"
-    }
+    },
+      {
+    "level": 1,
+    "question": "Skrämd",
+    "rightAnswer": "rädd",
+    "wrongAnswer": ["modig", "glad", "trött"],
+    "category": "adjective"
+  },
+    {
+    "level": 1,
+    "question": "Lyssna",
+    "rightAnswer": "höra",
+    "wrongAnswer": ["tala", "skriva", "gå"],
+    "category": "verb"
+  },
+    {
+    "level": 1,
+    "question": "Ropa",
+    "rightAnswer": "skrika",
+    "wrongAnswer": ["viska", "sjunga", "skratta"],
+    "category": "verb"
+  },
+  {
+    "level": 1,
+    "question": "Frusen",
+    "rightAnswer": "kall",
+    "wrongAnswer": ["varm", "mjuk", "blöt"],
+    "category": "adjective"
+  },
+  {
+    "level": 1,
+    "question": "Sväva",
+    "rightAnswer": "flyga",
+    "wrongAnswer": ["gå", "simma", "köra"],
+    "category": "verb"
+  },
+  {
+    "level": 1,
+    "question": "Förmögen",
+    "rightAnswer": "rik",
+    "wrongAnswer": ["fattig", "snål", "svag"],
+    "category": "adjective"
+  },
+   {
+    "level": 1,
+    "question": "Lasarett",
+    "rightAnswer": "Sjukhus",
+    "wrongAnswer": ["skola", "affär", "teater"],
+    "category": "noun"
+  },
   ]
 }
 
