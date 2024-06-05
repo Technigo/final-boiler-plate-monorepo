@@ -83,7 +83,7 @@ export const EnglishQuestion = () => {
       <AnswerButton
         disabled={disableButton}
         key={index}
-        value={capsAnswer}
+        value={answer}
         onClick={(event) => handleChoice(event.target.value)}
       >
         {capsAnswer}
