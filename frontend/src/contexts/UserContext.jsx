@@ -66,7 +66,7 @@ export const UserProvider = ({ children }) => {
       auth: false,
     });
 
-    navigate("/login");
+    navigate("/logga-in");
   };
 
   // Function that sends userData to MongoDB to create a new user
