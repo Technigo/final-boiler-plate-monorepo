@@ -40,7 +40,7 @@ export const Header = () => {
 };
 
 const HeaderContainer = styled.div`
-  background-color: var(--sunset);
+  background-color: var(--daffodil);
   width: 100%;
   height: 60px;
   position: absolute;
