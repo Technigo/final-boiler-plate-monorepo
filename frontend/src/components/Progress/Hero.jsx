@@ -2,18 +2,21 @@ import styled from "styled-components";
 
 // Function that will calculate the total result and return %
 const calcTotalResult = (progress) => {
-  // Get all subjects from object
-  const subjects = Object.values(progress);
-  // Need to get totalScore and totalMaxScore to get the total result in percentage
-  const totalScore = subjects.reduce((acc, subject) => acc + subject.score, 0);
-  const totalMaxScore = subjects.reduce(
-    (acc, subject) => acc + subject.totalScore,
-    0
-  );
-  console.log(subjects);
-  console.log(totalMaxScore);
+  let totalScores = 0;
+  let totalMaxScores = 0;
 
-  return (totalScore / totalMaxScore) * 100;
+  // Loop through all the subjects in progress to get to each level of the object
+  Object.values(progress).forEach((subject) => {
+    // Loop through each level to add totalScore and score to each variabel 👆to sum the totals
+    subject.levels.forEach((level) => {
+      totalScores += level.score;
+      totalMaxScores += level.totalScore;
+    });
+  });
+
+  // Calc to total
+  const totalResultPercentage = (totalScores / totalMaxScores) * 100;
+  return totalResultPercentage.toFixed(0);
 };
 
 export const Hero = ({ user, progress }) => {
@@ -34,7 +37,7 @@ export const Hero = ({ user, progress }) => {
         <ProgressBox>
           <ProgressCircel>
             <ProgressScore>
-              <p>{totalResultPercentage.toFixed(2)}%</p>
+              <p>{totalResultPercentage}%</p>
             </ProgressScore>
           </ProgressCircel>
         </ProgressBox>
