@@ -12,4 +12,6 @@ const FooterContainer = styled.footer`
   padding: 20px;
   text-align: center;
   background-color: var(--daffodil);
+  width: 100%;
+  bottom: 0;
 `;
