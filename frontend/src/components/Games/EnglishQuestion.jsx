@@ -7,46 +7,62 @@ import Right from "../../assets/Right.json";
 import Wrong from "../../assets/Wrong.json";
 
 export const EnglishQuestion = () => {
+  //Object with title of game and score
+  const { englishGame, setEnglishGame } = useScore();
+  const currentScore = englishGame[0].score;
+
+  //Questions and answers from json-file
   const { english } = englishData;
-  const { score, setScore } = useScore();
+  //Number to choose a question and answers-options to present
   const [randomNumber, setRandomNumber] = useState(4);
+  const [answers, setAnswers] = useState([]);
+
+  //States to handle right/wrong answer
   const [message, setMessage] = useState("");
   const [disableButton, setDisableButton] = useState(false);
-    const [rightLottie, setRightLottie] = useState(false);
+  const [rightLottie, setRightLottie] = useState(false);
   const [wrongLottie, setWrongLottie] = useState(false);
 
-  const answers = [];
-
-  const generateAnswers = () => {
-    english[randomNumber].wrongAnswer.map((answer) => answers.push(answer));
-    answers.push(english[randomNumber].rightAnswer);
-    answers.sort();
-    /*for (let i = answers.length - 1; i > 0; i--) {
-      let j = Math.floor(Math.random() * (i + 1));
-      [answers[i], answers[j]] = [answers[j], answers[i]];
-    } return answers*/
+  //Shuffles array with both correct and wrong answers
+  const shuffleArray = (array) => {
+    for (let i = array.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]];
+    }
   };
 
-  generateAnswers();
+  //Puts corract and wrong answers in same array, shuffles them and sets them as options
+  const generateAnswers = (index) => {
+    const newAnswers = [
+      ...english[index].wrongAnswer,
+      english[index].rightAnswer,
+    ];
+    shuffleArray(newAnswers);
+    setAnswers(newAnswers);
+  };
 
   const generateQuestion = () => {
-    setRandomNumber(Math.floor(Math.random() * english.length));
-    generateAnswers();
+    const newRandomNumber = Math.floor(Math.random() * english.length);
+    setRandomNumber(newRandomNumber);
+    generateAnswers(newRandomNumber);
     setDisableButton(false);
     setMessage("");
   };
 
   useEffect(() => {
     generateQuestion();
-  }, []);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   //Takes users answer and compare it to right answer to generate right/wrong-message
   const handleChoice = (answer) => {
     const rightAnswer = english[randomNumber].rightAnswer;
     if (answer === rightAnswer) {
       setTimeout(() => setRightLottie(true), 1000);
-      setTimeout(() => setScore(score + 1), 3000);
-      setTimeout(() => setRightLottie(false), 5000)
+      const newGame = [...englishGame]
+      newGame[0].score = currentScore + 1;
+      setTimeout(() => setEnglishGame(newGame), 3000);
+      setTimeout(() => setRightLottie(false), 5000);
     } else {
       setTimeout(() => setWrongLottie(true), 1000);
       setTimeout(() => setMessage(`Rätt svar var ${rightAnswer}.`), 3000);
@@ -60,43 +76,53 @@ export const EnglishQuestion = () => {
     <>
       <HeaderDiv>
         <Progress>
-          <Level>Nivå 2</Level>
-          <Score>⭐{score}/25</Score>
+          <Level>Nivå {englishGame[0].level}</Level>
+          <Score>⭐{currentScore}/25</Score>
         </Progress>
         <Title>Översätt</Title>
       </HeaderDiv>
       <QuestionCard>{english[randomNumber].question}</QuestionCard>
-            {rightLottie && (
-        <div style={{
-          position: 'absolute',
-          top: '50%',
-          left: '50%',
-          transform: 'translate(-50%, -50%)',
-          zIndex: 2,
-        }}><Lottie animationData={Right} loop={false} /></div>)}
+      {rightLottie && (
+        <div
+          style={{
+            position: "absolute",
+            top: "50%",
+            left: "50%",
+            transform: "translate(-50%, -50%)",
+            zIndex: 2,
+          }}
+        >
+          <Lottie animationData={Right} loop={false} />
+        </div>
+      )}
       {wrongLottie && (
-        <div style={{
-          position: 'absolute',
-          top: '50%',
-          left: '50%',
-          transform: 'translate(-50%, -50%)',
-          zIndex: 2,
-        }}><Lottie animationData={Wrong} loop={false} /></div>)}
-       <Answers>
-  {answers.map((answer, index) => {
-    const capsAnswer = answer.charAt(0).toUpperCase() + answer.slice(1);
-    return (
-      <AnswerButton
-        disabled={disableButton}
-        key={index}
-        value={answer}
-        onClick={(event) => handleChoice(event.target.value)}
-      >
-        {capsAnswer}
-      </AnswerButton>
-    );
-  })}
-</Answers>
+        <div
+          style={{
+            position: "absolute",
+            top: "50%",
+            left: "50%",
+            transform: "translate(-50%, -50%)",
+            zIndex: 2,
+          }}
+        >
+          <Lottie animationData={Wrong} loop={false} />
+        </div>
+      )}
+      <Answers>
+        {answers.map((answer, index) => {
+          const capsAnswer = answer.charAt(0).toUpperCase() + answer.slice(1);
+          return (
+            <AnswerButton
+              disabled={disableButton}
+              key={index}
+              value={answer}
+              onClick={(event) => handleChoice(event.target.value)}
+            >
+              {capsAnswer}
+            </AnswerButton>
+          );
+        })}
+      </Answers>
       {message && <Message>{message}</Message>}
     </>
   );

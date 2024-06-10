@@ -7,33 +7,37 @@ const MathContext = createContext()
 export const MathProvider = ({ children }) => {
   const [mathGame, setMathGame] = useState([
     {
-      mathType: "Addera",
+      title: "Addera",
       question: "",
       correctAnswer: null,
       level: 1,
       score: 0,
+      levelScore: 20,
     },
     {
-      mathType: "Subtrahera",
+      title: "Subtrahera",
       question: "",
       correctAnswer: null,
       level: 1,
       score: 0,
+      levelScore: 20,
     },
     {
-      mathType: "Multiplicera",
+      title: "Multiplicera",
       question: "",
       correctAnswer: null,
       level: 1,
       score: 0,
+      levelScore: 20,
     },
     {
-      mathType: "Dividera",
+      title: "Dividera",
       question: "",
       correctAnswer: null,
       level: 1,
       score: 0,
-    }
+      levelScore: 20,
+    },
   ])
 
   //Generates different questions depending on the type of mathematical operation
