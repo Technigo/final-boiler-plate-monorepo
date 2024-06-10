@@ -1,9 +1,11 @@
 import styled from "styled-components";
+import { Button } from "./Button";
+import { Link } from 'react-router-dom';
 
 export const Hero = () => {
   const content = {
     heading: "Välkommen till PluggIn",
-    intro: "Sidan där du kan förbättra dina kunskaper i olika skolämnen.",
+    intro: "Sidan där du kan förbättra dina kunskaper i olika skolämnen. Registrera dig för att spara dina framsteg i spelen.",
     heroImgUrl: "./hero.png",
     heroImgAlt: "Barn studerar i soffa",
   };
@@ -19,6 +21,9 @@ export const Hero = () => {
       <TextContainer>
         <HeroHeading>{content.heading}</HeroHeading>
         <HeroIntro>{content.intro}</HeroIntro>
+        <Link to={`/registering`}>
+          <Button type="button">Registrera dig</Button>
+        </Link>
       </TextContainer>
     </HeroContainer>
   );
@@ -28,7 +33,6 @@ const HeroContainer = styled.section`
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 20px;
 
   @media (min-width: 700px) {
     flex-direction: row;
@@ -57,28 +61,31 @@ const HeroHeading = styled.h1`
 
 const HeroIntro = styled.p`
   font-size: 1rem;
+  max-width: 500px;
+  margin: 0 auto;
 
   @media (min-width: 700px) {
     font-size: 1.2rem;
+    margin: 0;
   }
 `;
 
 const HeroImageContainer = styled.div`
   width: 100%;
   text-align: center;
-  padding: 20px;
+  margin-bottom: 10px;
 
   @media (min-width: 700px) {
     flex: 1;
     padding: 20px;
     text-align: right;
+    margin-bottom: 0;
   }
 `;
 
 const HeroImage = styled.img`
-  width: 100%;
+  max-width: 400px;
   height: auto;
-  padding: 15px;
 `;
 
 const ImageCredit = styled.p`

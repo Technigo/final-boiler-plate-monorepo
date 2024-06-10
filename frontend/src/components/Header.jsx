@@ -10,7 +10,9 @@ export const Header = () => {
   if (isLoggedIn) {
     return (
       <HeaderContainer>
-      <Logo src={logo}/>
+        <Link to="/">
+          <Logo src={logo} />
+        </Link>
         <LoggedIn className="loggedIn">
           <Link to={`/play`}>
             <Play>SPEL</Play>
@@ -28,7 +30,13 @@ export const Header = () => {
   } else {
     return (
       <HeaderContainer>
+        <Link to="/">
+          <Logo src={logo} />
+        </Link>
         <StartPage className="startPage">
+          <Link to={`/play`}>
+            <Play>Spela</Play>
+          </Link>
           <Link to={`/registering`}>
             <Register>Registera dig</Register>
           </Link>
@@ -75,7 +83,7 @@ const StartPage = styled.div`
 `;
 
 const Register = styled.p`
-  color: var(--ocean);
+  color: #363636;
   cursor: pointer;
 
   &:hover {
@@ -88,7 +96,7 @@ const Register = styled.p`
 `;
 
 const Login = styled.p`
-  color: var(--ocean);
+  color: #363636;
   cursor: pointer;
 
   &:hover {
@@ -111,7 +119,7 @@ const LoggedIn = styled.div`
 `;
 
 const Play = styled.p`
-  color: var(--ocean);
+  color: #363636;
   cursor: pointer;
 
   &:hover {

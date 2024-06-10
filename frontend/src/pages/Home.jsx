@@ -65,8 +65,8 @@ const GameCard = styled.div`
   @media (min-width: 1025px) {
     max-width: 600px;
     min-width: 200px;
-    height: 220px;
-    font-size: 60px;
+    height: 100px;
+    font-size: 50px;
   }
 
   &:hover {
