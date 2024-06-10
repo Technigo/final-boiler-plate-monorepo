@@ -56,11 +56,11 @@ const GameCard = styled.div`
   border-radius: 30px;
   gap: 30px;
   width: 290px;
-  height: 130px;
+  height: 90px;
   margin: 20px auto;
   color: white;
   background-color: var(--forest);
-  font-size: 50px;
+  font-size: 40px;
 
   @media (min-width: 1025px) {
     max-width: 600px;

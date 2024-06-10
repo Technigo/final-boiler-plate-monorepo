@@ -75,6 +75,10 @@ const HeroImageContainer = styled.div`
   text-align: center;
   margin-bottom: 10px;
 
+  @media (max-width: 699px) {
+    display: none;
+  }
+
   @media (min-width: 700px) {
     flex: 1;
     padding: 20px;

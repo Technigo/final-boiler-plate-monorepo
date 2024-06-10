@@ -1,68 +1,72 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { useLogin } from "../contexts/UserContext";
-import signoutIcon from "/src/assets/signouticon.png";
 import logo from "/src/assets/Logo-header.png";
+import { useState } from "react";
+import { FaBars, FaTimes } from "react-icons/fa";
+import { FiLogOut } from "react-icons/fi";
 
 export const Header = () => {
   const { isLoggedIn, signout } = useLogin();
+  const [hamburgerOpen, setHamburgerOpen] = useState(false);
 
-  if (isLoggedIn) {
-    return (
-      <HeaderContainer>
-        <Link to="/">
-          <Logo src={logo} />
-        </Link>
-        <LoggedIn className="loggedIn">
-          <Link to={`/play`}>
-            <Play>Spela</Play>
-          </Link>
-          <Link to={`/progress`}>
-            <MyProgress>Min sida</MyProgress>
-          </Link>
-          <SignOut>
-            <SignOutText onClick={signout}>Logga ut</SignOutText>
-            <SignOutIcon onClick={signout} src={signoutIcon} />
-          </SignOut>
-        </LoggedIn>
-      </HeaderContainer>
-    );
-  } else {
-    return (
-      <HeaderContainer>
-        <Link to="/">
-          <Logo src={logo} />
-        </Link>
-        <StartPage className="startPage">
-          <Link to={`/play`}>
-            <Play>Spela</Play>
-          </Link>
-          <Link to={`/registering`}>
-            <Register>Registera dig</Register>
-          </Link>
-          <Link to={`/logga-in`}>
-            <Login>Logga in</Login>
-          </Link>
-        </StartPage>
-      </HeaderContainer>
-    );
-  }
+  const toggleHamburger = () => {
+    setHamburgerOpen(!hamburgerOpen);
+  };
+
+  return (
+    <HeaderContainer>
+      <Link to="/">
+        <Logo src={logo} />
+      </Link>
+      <MenuIcon onClick={toggleHamburger}>
+        {hamburgerOpen ? <FaTimes /> : <FaBars />}
+      </MenuIcon>
+      <NavMenu open={hamburgerOpen}>
+        {isLoggedIn ? (
+          <LoggedIn>
+            <Link to="/play" onClick={toggleHamburger}>
+              <Play>Spela</Play>
+            </Link>
+            <Link to="/progress" onClick={toggleHamburger}>
+              <MyProgress>Min sida</MyProgress>
+            </Link>
+            <SignOut onClick={signout}>
+              <SignOutText>Logga ut</SignOutText>
+              <SignOutIcon />
+            </SignOut>
+          </LoggedIn>
+        ) : (
+          <StartPage>
+            <Link to="/play" onClick={toggleHamburger}>
+              <Play>Spela</Play>
+            </Link>
+            <Link to="/registering" onClick={toggleHamburger}>
+              <Register>Registera dig</Register>
+            </Link>
+            <Link to="/logga-in" onClick={toggleHamburger}>
+              <Login>Logga in</Login>
+            </Link>
+          </StartPage>
+        )}
+      </NavMenu>
+    </HeaderContainer>
+  );
 };
 
 const HeaderContainer = styled.div`
   background-color: var(--daffodil);
   width: 100%;
-  height: 50px;
+  height: 60px;
   position: relative;
-  /* margin: -8px; */
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  padding: 0 20px;
+  padding: 15px;
   font-weight: 500;
 
-    @media (min-width: 700px) {
+  @media (min-width: 700px) {
     height: 80px;
     padding: 0 120px;
   }
@@ -75,11 +79,59 @@ const Logo = styled.img`
   align-items: center;
 `;
 
+const MenuIcon = styled.div`
+  display: flex;
+  cursor: pointer;
+  font-size: 24px;
+  color: #363636;
+
+  @media (min-width: 700px) {
+    display: none;
+  }
+`;
+
+const NavMenu = styled.div`
+  display: ${({ open }) => (open ? "flex" : "none")};
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+  top: 50px;
+  right: 0;
+  background-color: var(--daffodil);
+  width: 100%;
+  padding: 20px;
+
+  @media (min-width: 700px) {
+    display: flex;
+    flex-direction: row;
+    position: static;
+    width: auto;
+    padding: 0;
+  }
+`;
+
+const LoggedIn = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+
+  @media (min-width: 700px) {
+    flex-direction: row;
+    gap: 60px;
+  }
+`;
+
 const StartPage = styled.div`
   display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
-  width: 100vh;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+
+  @media (min-width: 700px) {
+    flex-direction: row;
+    gap: 60px;
+  }
 `;
 
 const Register = styled.p`
@@ -106,16 +158,6 @@ const Login = styled.p`
   &:active {
     color: var(--oceanactive);
   }
-`;
-
-const LoggedIn = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: right;
-  gap: 60px;
-  padding: 20px;
-  width: 100vh;
-  color: white;
 `;
 
 const Play = styled.p`
@@ -151,7 +193,7 @@ const SignOut = styled.div`
   cursor: pointer;
 
   &:hover {
-    opacity: 70%;
+    color: var(--oceanhover);
   }
 `;
 
@@ -164,10 +206,9 @@ const SignOutText = styled.p`
   }
 `;
 
-const SignOutIcon = styled.img`
-  width: 17px;
-  height: 22px;
+const SignOutIcon = styled(FiLogOut)`
+  font-size: 22px;
+  color: #363636;
   align-items: center;
-  /* padding-top: 17px; */
-  opacity: 100%;
+  cursor: pointer;
 `;
