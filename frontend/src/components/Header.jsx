@@ -15,13 +15,13 @@ export const Header = () => {
         </Link>
         <LoggedIn className="loggedIn">
           <Link to={`/play`}>
-            <Play>SPEL</Play>
+            <Play>Spela</Play>
           </Link>
           <Link to={`/progress`}>
-            <MyProgress>MIN SIDA</MyProgress>
+            <MyProgress>Min sida</MyProgress>
           </Link>
           <SignOut>
-            <SignOutText onClick={signout}>LOGGA UT</SignOutText>
+            <SignOutText onClick={signout}>Logga ut</SignOutText>
             <SignOutIcon onClick={signout} src={signoutIcon} />
           </SignOut>
         </LoggedIn>
@@ -132,7 +132,7 @@ const Play = styled.p`
 `;
 
 const MyProgress = styled.p`
-  color: var(--ocean);
+  color: #363636;
   cursor: pointer;
 
   &:hover {
@@ -156,7 +156,7 @@ const SignOut = styled.div`
 `;
 
 const SignOutText = styled.p`
-  color: var(--ocean);
+  color: #363636;
   cursor: pointer;
 
   &:active {
