@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import logo from "/src/assets/Logo.png";
 import linkedin from "/src/assets/linkedin.png"
+import portfolio from "/src/assets/portfolio.png"
 import github from "/src/assets/github.png"
 
 export const OmOss = () => {
@@ -14,10 +15,13 @@ export const OmOss = () => {
             <Person>Erika Wernbro</Person>
             <City>Kalmar</City>
             <LinksDiv>
-                <LinkedIn href="https://www.linkedin.com/in/frida-forser/">
+                <LinkedIn href="https://www.linkedin.com/in/erika-wernbro/">
                     <LinkedInIcon src={linkedin} alt="linkedinlogo" width="25"/>
                 </LinkedIn>
-                <GitHub href="https://github.com/fridaforser">
+                <Portfolio href="https://tejpex.com/">
+                    <PortfolioIcon src={portfolio} alt="portfoliologo" width="45"/>
+                </Portfolio>
+                <GitHub href="https://github.com/Tejpex">
                     <GitHubIcon src={github} alt="githublogo" width="25"/>
                 </GitHub>
             </LinksDiv>
@@ -27,10 +31,13 @@ export const OmOss = () => {
             <Person>Pernilla Sterner</Person>
             <City>Stockholm</City>
             <LinksDiv>
-                <LinkedIn href="https://www.linkedin.com/in/frida-forser/">
+                <LinkedIn href="https://www.linkedin.com/in/pernilla-sterner/">
                     <LinkedInIcon src={linkedin} alt="linkedinlogo" width="25"/>
                 </LinkedIn>
-                <GitHub href="https://github.com/fridaforser">
+                <Portfolio href="https://pernillasterner.netlify.app/">
+                    <PortfolioIcon src={portfolio} alt="portfoliologo" width="45"/>
+                </Portfolio>
+                <GitHub href="https://github.com/pernillasterner">
                     <GitHubIcon src={github} alt="githublogo" width="25"/>
                 </GitHub>
             </LinksDiv>
@@ -38,7 +45,7 @@ export const OmOss = () => {
         <PersonDiv>
             <PersonImg src={logo} width="150" alt="Frida-Forser"/>
             <Person>Frida Forser</Person>
-            <City>Strängnäs/Stockholm</City>
+            <City>Stockholm</City>
             <LinksDiv>
                 <LinkedIn href="https://www.linkedin.com/in/frida-forser/">
                     <LinkedInIcon src={linkedin} alt="linkedinlogo" width="25"/>
@@ -53,10 +60,7 @@ export const OmOss = () => {
             <Person>Katarina Sjölin</Person>
             <City>Malmö</City>
             <LinksDiv>
-                <LinkedIn href="https://www.linkedin.com/in/frida-forser/">
-                    <LinkedInIcon src={linkedin} alt="linkedinlogo" width="25"/>
-                </LinkedIn>
-                <GitHub href="https://github.com/fridaforser">
+                <GitHub href="https://github.com/katsjolin">
                     <GitHubIcon src={github} alt="githublogo" width="25"/>
                 </GitHub>
             </LinksDiv>
@@ -80,13 +84,24 @@ const AboutContainer = styled.div`
 
 const AboutTitle = styled.h1`
     margin: 20px;
+    font-size: 50px;
+
+    @media (min-width: 500px) AND (max-width: 800px){
+    padding: 25px 0 0;
+    }
+
+    @media (min-width: 800px) {
+    padding: 30px 0 0;
+    font-size: 60px;
+}
 `;
 
 const Description = styled.h3`
     margin: 0 0 30px;
 
-     @media (min-width: 700px) {
-    margin: 0 0 60px;
+
+    @media (min-width: 800px) {
+    margin: 0 0 70px;
   }
 
 `;
@@ -108,7 +123,7 @@ const PeopleDiv = styled.div`
 `;
 
 const PersonDiv = styled.div`
-    padding: 10px 0;
+    padding: 20px 0;
 
     @media (min-width: 500px) AND (max-width: 800px){
     padding: 20px 0;
@@ -146,9 +161,21 @@ const LinkedInIcon = styled.img`
     cursor: pointer;
 `;
 
+const Portfolio = styled.a`
+`;
+
+const PortfolioIcon = styled.img`
+    cursor: pointer;
+`;
+
 const GitHub = styled.a`
 `;
 
 const GitHubIcon = styled.img`
     cursor: pointer;
 `;
+
+
+ 
+
+
