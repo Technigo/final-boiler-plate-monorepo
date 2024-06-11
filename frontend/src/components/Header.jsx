@@ -192,19 +192,23 @@ const SignOut = styled.div`
   justify-content: center;
   gap: 7px;
   cursor: pointer;
+
+  &:hover {
+    ${SignOutText}, ${SignOutIcon} {
+      color: var(--oceanhover);
+    }
+  }
+
+  &:active {
+    ${SignOutText}, ${SignOutIcon} {
+      color: var(--oceanactive);
+    }
+  }
 `;
 
 const SignOutText = styled.p`
   color: #363636;
   cursor: pointer;
-  
-  &:hover {
-    color: var(--oceanhover);
-  }
-
-  &:active {
-    color: var(--oceanactive);
-  }
 `;
 
 const SignOutIcon = styled(FiLogOut)`
@@ -212,12 +216,4 @@ const SignOutIcon = styled(FiLogOut)`
   color: #363636;
   align-items: center;
   cursor: pointer;
-
-  &:hover {
-    color: var(--oceanhover);
-  }
-
-  &:active {
-    color: var(--oceanactive);
-  }
 `;
