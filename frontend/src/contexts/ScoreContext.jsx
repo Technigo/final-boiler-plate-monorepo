@@ -14,7 +14,7 @@ export const ScoreProvider = ({ children }) => {
       score: 0,
       levelScore: 20,
     },
-  ]);
+  ])
   const [englishGame, setEnglishGame] = useState([
     {
       title: "Översätt",
@@ -22,20 +22,19 @@ export const ScoreProvider = ({ children }) => {
       score: 0,
       levelScore: 20,
     },
-  ]);
+  ])
 
   const { english } = englishData;
   const { swedish } = swedishData;
-
-  const [randomNumber, setRandomNumber] = useState(4)
-  const [dataset, setDataset] = useState(english.filter((question) => question.level === 1))
+  
+  const [dataset, setDataset] = useState([])
+  const [question, setQuestion] = useState("")
   const [rightAnswer, setRightAnswer] = useState("")
-
-  //Number to choose a question and answers-options to present
   const [answers, setAnswers] = useState([]);
 
-  //States to handle right/wrong answer
-  const [message, setMessage] = useState("");
+  //Message with feedback to user after each choice
+  const [message, setMessage] = useState("")
+  //Disables buttons when feedback is given
   const [disableButton, setDisableButton] = useState(false)
 
   //Shuffles array with both correct and wrong answers
@@ -44,34 +43,53 @@ export const ScoreProvider = ({ children }) => {
       const j = Math.floor(Math.random() * (i + 1));
       [array[i], array[j]] = [array[j], array[i]];
     }
-  };
+  }
 
-  //Puts corract and wrong answers in same array, shuffles them and sets them as options
-  const generateAnswers = (index) => {
-    //console.log(dataset)
+  //Puts corract and wrong answers in same array and sets them as options
+  const generateAnswers = (index, list) => {
     const newAnswers = [
-      ...dataset[index].wrongAnswer,
-      dataset[index].rightAnswer,
-    ];
-    setRandomNumber(dataset[index].question)
-    setRightAnswer(dataset[index].rightAnswer)
+      ...list[index].wrongAnswer,
+      list[index].rightAnswer,
+    ]
+    setQuestion(list[index].question)
+    setRightAnswer(list[index].rightAnswer)
     shuffleArray(newAnswers);
     setAnswers(newAnswers);
   }
 
-  const generateQuestion = () => {
-    if (englishGame[0].score >= 5) {
-      const newGame = [...englishGame]
-      newGame[0].level = englishGame[0].level + 1
-      newGame[0].score = 0
-      setEnglishGame(newGame)
+  //Sets the basics before generating a question
+  const generateQuestion = (language) => {
+    let game = ""
+    let list = []
+    let setGame = null
+
+    //Sets which datasets to use depending on language
+    if (language === "english") {
+      game = englishGame
+      list = english
+      setGame = setEnglishGame
     }
-    const newList = english.filter((question) => question.level === englishGame[0].level)
+    if (language === "swedish") {
+      game = swedishGame
+      list = swedish
+      setGame = setSwedishGame
+    }
+
+    //Checks the score and handles level-change
+    if (game[0].score >= 5) {
+      const newGame = [...game]
+      newGame[0].level = game[0].level + 1
+      newGame[0].score = 0
+      setGame(newGame)
+    }
+
+    //Filters the dataset depending on level
+    const newList = list.filter((question) => question.level === game[0].level)
     setDataset(newList)
-    const newRandomNumber = Math.floor(Math.random() * newList.length);
-    generateAnswers(newRandomNumber);
-    setDisableButton(false);
-    setMessage("");
+    const newRandomNumber = Math.floor(Math.random() * newList.length)
+    generateAnswers(newRandomNumber, newList)
+    setDisableButton(false)
+    setMessage("")
   }
 
   return (
@@ -83,8 +101,8 @@ export const ScoreProvider = ({ children }) => {
         setEnglishGame,
         english,
         swedish,
-        randomNumber,
-        setRandomNumber,
+        question,
+        setQuestion,
         shuffleArray,
         answers,
         setAnswers,
@@ -94,7 +112,8 @@ export const ScoreProvider = ({ children }) => {
         disableButton,
         setDisableButton,
         generateQuestion,
-        rightAnswer
+        rightAnswer,
+        dataset
       }}
     >
       {children}

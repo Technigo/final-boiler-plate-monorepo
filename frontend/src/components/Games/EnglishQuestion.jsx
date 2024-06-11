@@ -7,11 +7,10 @@ import Right from "../../assets/Right.json"
 import Wrong from "../../assets/Wrong.json"
 
 export const EnglishQuestion = ({ type }) => {
-  //Object with title of game and score
   const {
     englishGame,
     setEnglishGame,
-    randomNumber,
+    question,
     answers,
     message,
     setMessage,
@@ -23,20 +22,20 @@ export const EnglishQuestion = ({ type }) => {
   const currentScore = englishGame[Number(type)].score
 
   //States to handle right/wrong answer
-  const [rightLottie, setRightLottie] = useState(false);
-  const [wrongLottie, setWrongLottie] = useState(false);
+  const [rightLottie, setRightLottie] = useState(false)
+  const [wrongLottie, setWrongLottie] = useState(false)
 
   useEffect(() => {
-    generateQuestion();
+    generateQuestion("english")
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [])
 
   //Takes users answer and compare it to right answer to generate right/wrong-message
   const handleChoice = (answer) => {
     if (answer === rightAnswer) {
       setTimeout(() => setRightLottie(true), 1000);
       const newGame = [...englishGame];
-      newGame[0].score = currentScore + 1;
+      newGame[Number(type)].score = currentScore + 1;
       setTimeout(() => setEnglishGame(newGame), 3000);
       setTimeout(() => setRightLottie(false), 5000);
     } else {
@@ -45,7 +44,7 @@ export const EnglishQuestion = ({ type }) => {
       setTimeout(() => setWrongLottie(false), 5000);
     }
     setDisableButton(true);
-    setTimeout(() => generateQuestion(), 5000);
+    setTimeout(() => generateQuestion("english"), 5000);
   }
 
   return (
@@ -57,7 +56,7 @@ export const EnglishQuestion = ({ type }) => {
         </Progress>
         <Title>Översätt</Title>
       </HeaderDiv>
-      <QuestionCard>{randomNumber}</QuestionCard>
+      <QuestionCard>{question}</QuestionCard>
       {rightLottie && (
         <div
           style={{

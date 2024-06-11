@@ -7,39 +7,31 @@ import Right from "../../assets/Right.json"
 import Wrong from "../../assets/Wrong.json"
 
 export const SwedishQuestion = ({ type }) => {
-  const { swedishGame, setSwedishGame, swedish, randomNumber, setRandomNumber, shuffleArray } = useScore();
+  const {
+    swedishGame,
+    setSwedishGame,
+    question,
+    answers,
+    message,
+    setMessage,
+    disableButton,
+    setDisableButton,
+    generateQuestion,
+    rightAnswer,
+  } = useScore();
   const currentScore = swedishGame[Number(type)].score;
-  const [message, setMessage] = useState("");
-  const [disableButton, setDisableButton] = useState(false);
-  const [answers, setAnswers] = useState([]);
-  const [rightLottie, setRightLottie] = useState(false);
-  const [wrongLottie, setWrongLottie] = useState(false)
-  
-  //Puts corract and wrong answers in same array, shuffles them and sets them as options
-  const generateAnswers = (index) => {
-    const newAnswers = [
-      ...swedish[index].wrongAnswer,
-      swedish[index].rightAnswer,
-    ]
-    shuffleArray(newAnswers)
-    setAnswers(newAnswers)
-  };
 
-  const generateQuestion = () => {
-    const newRandomNumber = Math.floor(Math.random() * swedish.length);
-    setRandomNumber(newRandomNumber);
-    generateAnswers(newRandomNumber);
-    setDisableButton(false);
-    setMessage("");
-  };
+  //States to handle right/wrong answer
+  const [rightLottie, setRightLottie] = useState(false);
+  const [wrongLottie, setWrongLottie] = useState(false);
 
   useEffect(() => {
-    generateQuestion();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+    generateQuestion("swedish")
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
+  //Takes users answer and compare it to right answer to generate right/wrong-message
   const handleChoice = (answer) => {
-    const rightAnswer = swedish[randomNumber].rightAnswer;
     if (answer === rightAnswer) {
       setTimeout(() => setRightLottie(true), 1000);
       const newGame = [...swedishGame];
@@ -52,7 +44,7 @@ export const SwedishQuestion = ({ type }) => {
       setTimeout(() => setWrongLottie(false), 5000);
     }
     setDisableButton(true);
-    setTimeout(() => generateQuestion(), 5000);
+    setTimeout(() => generateQuestion("swedish"), 5000);
   }
 
   return (
@@ -64,7 +56,7 @@ export const SwedishQuestion = ({ type }) => {
         </Progress>
         <Title>Hitta synonymen</Title>
       </HeaderDiv>
-      <QuestionCard>{swedish[randomNumber].question}</QuestionCard>
+      <QuestionCard>{question}</QuestionCard>
       {rightLottie && (
         <div
           style={{
