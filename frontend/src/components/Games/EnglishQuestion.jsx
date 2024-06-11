@@ -35,7 +35,7 @@ export const EnglishQuestion = ({ type }) => {
     if (answer === rightAnswer) {
       setTimeout(() => setRightLottie(true), 1000);
       const newGame = [...englishGame];
-      newGame[Number(type)].score = currentScore + 1;
+      setTimeout(() => newGame[Number(type)].score = currentScore + 1, 3000);
       setTimeout(() => setEnglishGame(newGame), 3000);
       setTimeout(() => setRightLottie(false), 5000);
     } else {
@@ -139,7 +139,7 @@ const Progress = styled.div`
 
   @media (min-width: 700px) {
     flex-direction: column;
-    width: 50px;
+    width: 60px;
   }
 `;
 
