@@ -77,7 +77,7 @@ export const MathQuestion = ({ focusRef, type }) => {
   return (
     <div>
       <HeaderDiv>
-        <Title>{mathGame[Number(type)].mathType}</Title>
+        <Title>{mathGame[Number(type)].title}</Title>
         <Progress>
           <Level>Nivå {mathGame[Number(type)].level}</Level>
           <Score>{currentScore}/25⭐</Score>
@@ -263,7 +263,7 @@ const AnswerBtn = styled.button`
     box-shadow: 6px 6px var(--oceanshadow);
     transition: 0.2s ease;
   }
-`;
+`
 
 const NumPad = styled.div`
   display: grid;

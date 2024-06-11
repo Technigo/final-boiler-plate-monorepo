@@ -1,102 +1,103 @@
-import styled from "styled-components";
-import { useState, useEffect } from "react";
-import { useScore } from "../../contexts/ScoreContext";
-import englishData from "../../data/EnglishGameData.json";
-import Lottie from "lottie-react";
-import Right from "../../assets/Right.json";
-import Wrong from "../../assets/Wrong.json";
+import PropTypes from "prop-types"
+import styled from "styled-components"
+import { useState, useEffect } from "react"
+import { useScore } from "../../contexts/ScoreContext"
+import Lottie from "lottie-react"
+import Right from "../../assets/Right.json"
+import Wrong from "../../assets/Wrong.json"
 
-export const EnglishQuestion = () => {
-  const { english } = englishData;
-  const { score, setScore } = useScore();
-  const [randomNumber, setRandomNumber] = useState(4);
-  const [message, setMessage] = useState("");
-  const [disableButton, setDisableButton] = useState(false);
-    const [rightLottie, setRightLottie] = useState(false);
-  const [wrongLottie, setWrongLottie] = useState(false);
+export const EnglishQuestion = ({ type }) => {
+  const {
+    englishGame,
+    setEnglishGame,
+    question,
+    answers,
+    message,
+    setMessage,
+    disableButton,
+    setDisableButton,
+    generateQuestion,
+    rightAnswer
+  } = useScore()
+  const currentScore = englishGame[Number(type)].score
 
-  const answers = [];
-
-  const generateAnswers = () => {
-    english[randomNumber].wrongAnswer.map((answer) => answers.push(answer));
-    answers.push(english[randomNumber].rightAnswer);
-    answers.sort();
-    /*for (let i = answers.length - 1; i > 0; i--) {
-      let j = Math.floor(Math.random() * (i + 1));
-      [answers[i], answers[j]] = [answers[j], answers[i]];
-    } return answers*/
-  };
-
-  generateAnswers();
-
-  const generateQuestion = () => {
-    setRandomNumber(Math.floor(Math.random() * english.length));
-    generateAnswers();
-    setDisableButton(false);
-    setMessage("");
-  };
+  //States to handle right/wrong answer
+  const [rightLottie, setRightLottie] = useState(false)
+  const [wrongLottie, setWrongLottie] = useState(false)
 
   useEffect(() => {
-    generateQuestion();
-  }, []);
+    generateQuestion("english")
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   //Takes users answer and compare it to right answer to generate right/wrong-message
   const handleChoice = (answer) => {
-    const rightAnswer = english[randomNumber].rightAnswer;
     if (answer === rightAnswer) {
       setTimeout(() => setRightLottie(true), 1000);
-      setTimeout(() => setScore(score + 1), 3000);
-      setTimeout(() => setRightLottie(false), 5000)
+      const newGame = [...englishGame];
+      newGame[Number(type)].score = currentScore + 1;
+      setTimeout(() => setEnglishGame(newGame), 3000);
+      setTimeout(() => setRightLottie(false), 5000);
     } else {
       setTimeout(() => setWrongLottie(true), 1000);
       setTimeout(() => setMessage(`Rätt svar var ${rightAnswer}.`), 3000);
       setTimeout(() => setWrongLottie(false), 5000);
     }
     setDisableButton(true);
-    setTimeout(() => generateQuestion(), 5000);
-  };
+    setTimeout(() => generateQuestion("english"), 5000);
+  }
 
   return (
     <>
       <HeaderDiv>
         <Progress>
-          <Level>Nivå 2</Level>
-          <Score>⭐{score}/25</Score>
+          <Level>Nivå {englishGame[Number(type)].level}</Level>
+          <Score>⭐{currentScore}/25</Score>
         </Progress>
         <Title>Översätt</Title>
       </HeaderDiv>
-      <QuestionCard>{english[randomNumber].question}</QuestionCard>
-            {rightLottie && (
-        <div style={{
-          position: 'absolute',
-          top: '50%',
-          left: '50%',
-          transform: 'translate(-50%, -50%)',
-          zIndex: 2,
-        }}><Lottie animationData={Right} loop={false} /></div>)}
+      <QuestionCard>{question}</QuestionCard>
+      {rightLottie && (
+        <div
+          style={{
+            position: "absolute",
+            top: "50%",
+            left: "50%",
+            transform: "translate(-50%, -50%)",
+            zIndex: 2,
+          }}
+        >
+          <Lottie animationData={Right} loop={false} />
+        </div>
+      )}
       {wrongLottie && (
-        <div style={{
-          position: 'absolute',
-          top: '50%',
-          left: '50%',
-          transform: 'translate(-50%, -50%)',
-          zIndex: 2,
-        }}><Lottie animationData={Wrong} loop={false} /></div>)}
-       <Answers>
-  {answers.map((answer, index) => {
-    const capsAnswer = answer.charAt(0).toUpperCase() + answer.slice(1);
-    return (
-      <AnswerButton
-        disabled={disableButton}
-        key={index}
-        value={answer}
-        onClick={(event) => handleChoice(event.target.value)}
-      >
-        {capsAnswer}
-      </AnswerButton>
-    );
-  })}
-</Answers>
+        <div
+          style={{
+            position: "absolute",
+            top: "50%",
+            left: "50%",
+            transform: "translate(-50%, -50%)",
+            zIndex: 2,
+          }}
+        >
+          <Lottie animationData={Wrong} loop={false} />
+        </div>
+      )}
+      <Answers>
+        {answers.map((answer, index) => {
+          const capsAnswer = answer.charAt(0).toUpperCase() + answer.slice(1);
+          return (
+            <AnswerButton
+              disabled={disableButton}
+              key={index}
+              value={answer}
+              onClick={(event) => handleChoice(event.target.value)}
+            >
+              {capsAnswer}
+            </AnswerButton>
+          );
+        })}
+      </Answers>
       {message && <Message>{message}</Message>}
     </>
   );
@@ -125,7 +126,6 @@ const Title = styled.h2`
 
   @media (min-width: 700px) {
     font-size: 45px;
-
   }
 `;
 
@@ -137,7 +137,7 @@ const Progress = styled.div`
   width: 200px;
   gap: 10px;
 
-   @media (min-width: 700px) {
+  @media (min-width: 700px) {
     flex-direction: column;
     width: 50px;
   }
@@ -151,13 +151,12 @@ const Score = styled.h3`
   color: black;
 `;
 
-
 const QuestionCard = styled.div`
   width: 300px;
   height: 100px;
   align-content: center;
   font-size: 40px;
-  background-color: var( --forest);
+  background-color: var(--forest);
   color: white;
   padding: 20px;
   margin: 10px auto;
@@ -177,7 +176,7 @@ const Answers = styled.div`
   grid-template-rows: 1fr 1fr;
   margin: 10px auto;
 
-   @media (min-width: 700px) {
+  @media (min-width: 700px) {
     display: grid;
     grid-template-columns: 1fr 1fr;
     width: 580px;
@@ -185,7 +184,7 @@ const Answers = styled.div`
 `;
 
 const AnswerButton = styled.button`
-  background-color: var( --forest);
+  background-color: var(--forest);
   color: white;
   width: 270px;
   height: 50px;
@@ -201,7 +200,7 @@ const AnswerButton = styled.button`
   box-shadow: 4px 4px var(--forestshadow);
 
   &:hover {
-    background-color: var( --foresthover);
+    background-color: var(--foresthover);
     box-shadow: 6px 6px var(--forestshadow);
     transition: 0.2s ease;
   }
@@ -211,11 +210,11 @@ const AnswerButton = styled.button`
     border: none;
 
     &:hover {
-    background-color: var( --forest);
-  }
+      background-color: var(--forest);
+    }
   }
 
-   @media (min-width: 700px) {
+  @media (min-width: 700px) {
     width: 270px;
     height: 60px;
     padding: 20px;
@@ -232,4 +231,9 @@ const Message = styled.div`
   z-index: 2;
   font-size: 25px;
   border-radius: 20px;
-`;
+`
+
+EnglishQuestion.propTypes = {
+  focusRef: PropTypes.any,
+  type: PropTypes.string,
+}
