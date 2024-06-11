@@ -1,6 +1,7 @@
 import styled from "styled-components"
 import { useState } from "react"
-import { SwedishQuestion } from "./SwedishQuestion.jsx"
+//import { SwedishQuestion } from "./SwedishQuestion.jsx"
+import { LanguageQuestion } from "./LanguageQuestion.jsx"
 
 export const Swedish = () => {
   const [gameTypeNumber, setGameTypeNumber] = useState()
@@ -13,9 +14,9 @@ export const Swedish = () => {
     return (
       <SwedishGame>
         <SwedishTitle />
-        <SwedishQuestion type={gameTypeNumber}/>
+        <LanguageQuestion type={gameTypeNumber} language="swedish"/>
       </SwedishGame>
-    ); 
+    )
   } else { 
     return (
       <SwedishGame>

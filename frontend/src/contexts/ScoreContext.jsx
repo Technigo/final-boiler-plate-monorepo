@@ -7,6 +7,7 @@ import swedishData from "../data/SwedishGameData.json"
 const ScoreContext = createContext();
 
 export const ScoreProvider = ({ children }) => {
+  //Object for swedish-game
   const [swedishGame, setSwedishGame] = useState([
     {
       title: "Hitta synonymen",
@@ -14,7 +15,8 @@ export const ScoreProvider = ({ children }) => {
       score: 0,
       levelScore: 20,
     },
-  ])
+  ]);
+  //Object for english-game
   const [englishGame, setEnglishGame] = useState([
     {
       title: "Översätt",
@@ -22,20 +24,19 @@ export const ScoreProvider = ({ children }) => {
       score: 0,
       levelScore: 20,
     },
-  ])
+  ]);
 
   const { english } = englishData;
   const { swedish } = swedishData;
-  
-  const [dataset, setDataset] = useState([])
-  const [question, setQuestion] = useState("")
-  const [rightAnswer, setRightAnswer] = useState("")
+
+  const [question, setQuestion] = useState("");
+  const [rightAnswer, setRightAnswer] = useState("");
   const [answers, setAnswers] = useState([]);
 
   //Message with feedback to user after each choice
-  const [message, setMessage] = useState("")
+  const [message, setMessage] = useState("");
   //Disables buttons when feedback is given
-  const [disableButton, setDisableButton] = useState(false)
+  const [disableButton, setDisableButton] = useState(false);
 
   //Shuffles array with both correct and wrong answers
   const shuffleArray = (array) => {
@@ -43,54 +44,50 @@ export const ScoreProvider = ({ children }) => {
       const j = Math.floor(Math.random() * (i + 1));
       [array[i], array[j]] = [array[j], array[i]];
     }
-  }
+  };
 
   //Puts corract and wrong answers in same array and sets them as options
   const generateAnswers = (index, list) => {
-    const newAnswers = [
-      ...list[index].wrongAnswer,
-      list[index].rightAnswer,
-    ]
-    setQuestion(list[index].question)
-    setRightAnswer(list[index].rightAnswer)
+    const newAnswers = [...list[index].wrongAnswer, list[index].rightAnswer];
+    setQuestion(list[index].question);
+    setRightAnswer(list[index].rightAnswer);
     shuffleArray(newAnswers);
     setAnswers(newAnswers);
-  }
+  };
 
   //Sets the basics before generating a question
   const generateQuestion = (language) => {
-    let game = ""
-    let list = []
-    let setGame = null
+    let game = "";
+    let list = [];
+    let setGame = null;
 
     //Sets which datasets to use depending on language
     if (language === "english") {
-      game = englishGame
-      list = english
-      setGame = setEnglishGame
+      game = englishGame;
+      list = english;
+      setGame = setEnglishGame;
     }
     if (language === "swedish") {
-      game = swedishGame
-      list = swedish
-      setGame = setSwedishGame
+      game = swedishGame;
+      list = swedish;
+      setGame = setSwedishGame;
     }
 
     //Checks the score and handles level-change
     if (game[0].score >= 5) {
-      const newGame = [...game]
-      newGame[0].level = game[0].level + 1
-      newGame[0].score = 0
-      setGame(newGame)
+      const newGame = [...game];
+      newGame[0].level = game[0].level + 1;
+      newGame[0].score = 0;
+      setGame(newGame);
     }
 
     //Filters the dataset depending on level
-    const newList = list.filter((question) => question.level === game[0].level)
-    setDataset(newList)
-    const newRandomNumber = Math.floor(Math.random() * newList.length)
-    generateAnswers(newRandomNumber, newList)
-    setDisableButton(false)
-    setMessage("")
-  }
+    const newList = list.filter((question) => question.level === game[0].level);
+    const newRandomNumber = Math.floor(Math.random() * newList.length);
+    generateAnswers(newRandomNumber, newList);
+    setDisableButton(false);
+    setMessage("");
+  };
 
   return (
     <ScoreContext.Provider
@@ -99,21 +96,14 @@ export const ScoreProvider = ({ children }) => {
         setSwedishGame,
         englishGame,
         setEnglishGame,
-        english,
-        swedish,
         question,
-        setQuestion,
-        shuffleArray,
         answers,
-        setAnswers,
-        generateAnswers,
         message,
         setMessage,
         disableButton,
         setDisableButton,
         generateQuestion,
         rightAnswer,
-        dataset
       }}
     >
       {children}

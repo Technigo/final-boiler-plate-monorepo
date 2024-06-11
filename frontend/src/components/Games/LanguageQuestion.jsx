@@ -6,8 +6,10 @@ import Lottie from "lottie-react"
 import Right from "../../assets/Right.json"
 import Wrong from "../../assets/Wrong.json"
 
-export const SwedishQuestion = ({ type }) => {
+export const LanguageQuestion = ({ type, language }) => {
   const {
+    englishGame,
+    setEnglishGame,
     swedishGame,
     setSwedishGame,
     question,
@@ -17,44 +19,49 @@ export const SwedishQuestion = ({ type }) => {
     disableButton,
     setDisableButton,
     generateQuestion,
-    rightAnswer
-  } = useScore();
-  const currentScore = swedishGame[Number(type)].score;
+    rightAnswer,
+  } = useScore()
+
+  const game = (language === "swedish" ? swedishGame : englishGame)
+  const setGame = (language === "swedish" ? setSwedishGame : setEnglishGame)
+  const currentScore = game[Number(type)].score
 
   //States to handle right/wrong answer
-  const [rightLottie, setRightLottie] = useState(false);
-  const [wrongLottie, setWrongLottie] = useState(false);
+  const [rightLottie, setRightLottie] = useState(false)
+  const [wrongLottie, setWrongLottie] = useState(false)
 
   useEffect(() => {
-    generateQuestion("swedish")
+    generateQuestion(language)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   //Takes users answer and compare it to right answer to generate right/wrong-message
   const handleChoice = (answer) => {
     if (answer === rightAnswer) {
-      setTimeout(() => setRightLottie(true), 1000);
-      const newGame = [...swedishGame];
-      setTimeout(() => newGame[Number(type)].score = currentScore + 1, 3000);
-      setTimeout(() => setSwedishGame(newGame), 3000);
-      setTimeout(() => setRightLottie(false), 5000);
+      setTimeout(() => setRightLottie(true), 1000)
+      const newGame = [...game]
+      setTimeout(() => newGame[Number(type)].score = currentScore + 1, 3000)
+      setTimeout(() => setGame(newGame), 3000)
+      setTimeout(() => setRightLottie(false), 5000)
     } else {
-      setTimeout(() => setWrongLottie(true), 1000);
-      setTimeout(() => setMessage(`Rätt svar var ${rightAnswer}.`), 3000);
-      setTimeout(() => setWrongLottie(false), 5000);
+      setTimeout(() => setWrongLottie(true), 1000)
+      setTimeout(() => setMessage(`Rätt svar var ${rightAnswer}.`), 3000)
+      setTimeout(() => setWrongLottie(false), 5000)
     }
     setDisableButton(true);
-    setTimeout(() => generateQuestion("swedish"), 5000);
+    setTimeout(() => generateQuestion(language), 5000);
   }
 
   return (
     <>
       <HeaderDiv>
         <Progress>
-          <Level>Nivå {swedishGame[Number(type)].level}</Level>
-          <Score>⭐{currentScore}/25</Score>
+          <Level>Nivå {game[Number(type)].level}</Level>
+          <Score>
+            ⭐{currentScore}/{game[Number(type)].levelScore}
+          </Score>
         </Progress>
-        <Title>Hitta synonymen</Title>
+        <Title>{game[Number(type)].title}</Title>
       </HeaderDiv>
       <QuestionCard>{question}</QuestionCard>
       {rightLottie && (
@@ -233,7 +240,7 @@ const Message = styled.div`
   border-radius: 20px;
 `;
 
-SwedishQuestion.propTypes = {
-  focusRef: PropTypes.any,
+LanguageQuestion.propTypes = {
   type: PropTypes.string,
+  language: PropTypes.string
 }
