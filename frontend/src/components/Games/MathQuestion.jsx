@@ -33,7 +33,7 @@ export const MathQuestion = ({ focusRef, type }) => {
       setTimeout(() => setRightLottie(false), 5000);
 
       const newGame = [...mathGame]
-      newGame[Number(type)].score = currentScore + 1
+      setTimeout(() => newGame[Number(type)].score = currentScore + 1, 3000);
       setTimeout(() => setMathGame(newGame), 3000)
     } else {
       setTimeout(() => setWrongLottie(true), 1000);
@@ -77,11 +77,11 @@ export const MathQuestion = ({ focusRef, type }) => {
   return (
     <div>
       <HeaderDiv>
-        <Title>{mathGame[Number(type)].title}</Title>
         <Progress>
           <Level>Nivå {mathGame[Number(type)].level}</Level>
           <Score>{currentScore}/25⭐</Score>
         </Progress>
+        <Title>{mathGame[Number(type)].title}</Title>
       </HeaderDiv>
       <QuestionCard>{mathGame[Number(type)].question}</QuestionCard>
       {rightLottie && (
@@ -144,32 +144,42 @@ export const MathQuestion = ({ focusRef, type }) => {
 
 const HeaderDiv = styled.div`
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  margin: 20px auto;
+  margin: 20px auto 10px;
   width: 300px;
+  gap: 10px;
 
   @media (min-width: 700px) {
+    flex-direction: row-reverse;
     width: 600px;
     margin: 25px auto;
+    padding: 0 30px;
   }
 `;
 
 const Title = styled.h1`
   margin: 0;
-  font-size: 26px;
+  font-size: 40px;
 
   @media (min-width: 700px) {
-    font-size: 36px;
+    font-size: 45px;
   }
 `;
 
 const Progress = styled.div`
   display: flex;
-  flex-direction: column;
-  justify-content: right;
+  flex-direction: row;
+  justify-content: space-between;
   align-items: center;
+  width: 200px;
+  gap: 10px;
+
+  @media (min-width: 700px) {
+    flex-direction: column;
+    width: 60px;
+  }
 `;
 
 const Level = styled.h3`
@@ -182,7 +192,7 @@ const Score = styled.h3`
 
 const QuestionCard = styled.div`
   width: 300px;
-  height: 110px;
+  height: 100px;
   align-content: center;
   font-size: 30px;
   background-color: var(--ocean);
