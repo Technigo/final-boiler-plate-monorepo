@@ -192,18 +192,6 @@ const SignOut = styled.div`
   justify-content: center;
   gap: 7px;
   cursor: pointer;
-
-  &:hover {
-    ${SignOutText}, ${SignOutIcon} {
-      color: var(--oceanhover);
-    }
-  }
-
-  &:active {
-    ${SignOutText}, ${SignOutIcon} {
-      color: var(--oceanactive);
-    }
-  }
 `;
 
 const SignOutText = styled.p`
