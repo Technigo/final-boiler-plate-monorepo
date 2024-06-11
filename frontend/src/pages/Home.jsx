@@ -10,17 +10,20 @@ export const Home = () => {
   return (
     <HomeContainer>
       <Hero />
-      <GamesCards>
-        <Link to={`/play/matte`}>
-          <GameCard math>Matte</GameCard>
-        </Link>
-        <Link to={`/play/svenska`}>
-          <GameCard swedish>Svenska</GameCard>
-        </Link>
-        <Link to={`/play/engelska`}>
-          <GameCard english>Engelska</GameCard>
-        </Link>
-      </GamesCards>
+      <ContentWrapper>
+      <Heading>VÄLJ ÄMNE</Heading>
+        <GamesCards>
+          <Link to={`/play/matte`}>
+            <GameCard math>Matte</GameCard>
+          </Link>
+          <Link to={`/play/svenska`}>
+            <GameCard swedish>Svenska</GameCard>
+          </Link>
+          <Link to={`/play/engelska`}>
+            <GameCard english>Engelska</GameCard>
+          </Link>
+        </GamesCards>
+      </ContentWrapper>
       <Footer />
     </HomeContainer>
   );
@@ -35,13 +38,29 @@ const HomeContainer = styled.div`
   background-image: linear-gradient(to bottom, lightblue, lightgreen);
 `;
 
+const ContentWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
+const Heading = styled.h2`
+  font-size: 32px;
+  color: #363636;
+  margin-top: 30px;
+
+  @media (min-width: 1025px) {
+    align-self: start;
+    margin-left: 50px;
+  }
+`;
+
 const GamesCards = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   margin: 0 auto;
-  padding: 20px;
 
    @media (min-width: 1025px) {
     flex-direction: row;

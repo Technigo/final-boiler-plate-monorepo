@@ -43,6 +43,7 @@ const HeroContainer = styled.section`
 const TextContainer = styled.div`
   padding: 20px;
   text-align: center;
+  margin-top: 20px;
 
   @media (min-width: 700px) {
     flex: 1;

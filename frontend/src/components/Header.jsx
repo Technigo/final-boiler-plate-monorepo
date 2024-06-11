@@ -95,13 +95,14 @@ const NavMenu = styled.div`
   flex-direction: column;
   align-items: center;
   position: absolute;
-  top: 50px;
+  top: 60px;
   right: 0;
-  background-color: var(--daffodil);
-  width: 100%;
+  background-color: var(--daffodilhover);
+  width: 50%;
   padding: 20px;
 
   @media (min-width: 700px) {
+    background-color: var(--daffodil);
     display: flex;
     flex-direction: row;
     position: static;
@@ -191,15 +192,15 @@ const SignOut = styled.div`
   justify-content: center;
   gap: 7px;
   cursor: pointer;
-
-  &:hover {
-    color: var(--oceanhover);
-  }
 `;
 
 const SignOutText = styled.p`
   color: #363636;
   cursor: pointer;
+  
+  &:hover {
+    color: var(--oceanhover);
+  }
 
   &:active {
     color: var(--oceanactive);
@@ -211,4 +212,12 @@ const SignOutIcon = styled(FiLogOut)`
   color: #363636;
   align-items: center;
   cursor: pointer;
+
+  &:hover {
+    color: var(--oceanhover);
+  }
+
+  &:active {
+    color: var(--oceanactive);
+  }
 `;
