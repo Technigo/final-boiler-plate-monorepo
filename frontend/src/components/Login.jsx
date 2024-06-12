@@ -15,7 +15,7 @@ export const Login = () => {
     e.preventDefault();
     try {
       await login({ username, password });
-      navigate("/play");
+      navigate("/spela");
     } catch (error) {
       setError("Invalid username or password");
     }

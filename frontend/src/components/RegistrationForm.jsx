@@ -39,7 +39,7 @@ export const RegistrationForm = () => {
       await registerUser(data);
 
       // Redirect to login page
-      navigate("/play");
+      navigate("/spela");
     } catch (err) {
       console.error("Error registration user", err);
     }
