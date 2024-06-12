@@ -15,8 +15,13 @@ const translateSubject = (subject) => {
   }
 };
 
-export const LevelProgressBar = ({ progress }) => {
-  const subjects = Object.keys(progress);
+export const LevelProgressBar = ({ progress, selectedSubject }) => {
+  if (!progress) {
+    return null;
+  }
+
+  // Remove '_id' from subjects, else it will display in the score list
+  const subjects = Object.keys(progress).filter((subject) => subject !== "_id");
 
   return (
     <LevelContainer>
@@ -34,7 +39,7 @@ export const LevelProgressBar = ({ progress }) => {
                     </p>
                     <ProgressBar>
                       <ProgressForSubjects
-                        className={`crl-${subject}`}
+                        className={`crl-${selectedSubject}`}
                         style={{
                           width: `${(level.score / level.levelScore) * 100}%`,
                         }}
@@ -61,7 +66,7 @@ export const LevelProgressBar = ({ progress }) => {
                                   </p>
                                   <ProgressBar>
                                     <ProgressForSubjects
-                                      className={`crl-${subject}`}
+                                      className={`crl-${selectedSubject}`}
                                       style={{
                                         width: `${
                                           (level.score / level.levelScore) * 100
@@ -76,12 +81,12 @@ export const LevelProgressBar = ({ progress }) => {
                             return (
                               <LevelProgress key={index}>
                                 <p>
-                                  Nivå: {level.level} - {level.score} /{" "}
+                                  Nivå: {level.level} - {level.score} /
                                   {level.levelScore}
                                 </p>
                                 <ProgressBar>
                                   <ProgressForSubjects
-                                    className={`crl-${subject}`}
+                                    className={`crl-${selectedSubject}`}
                                     style={{
                                       width: `${
                                         (level.score / level.levelScore) * 100
