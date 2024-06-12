@@ -9,6 +9,7 @@ export const Play = () => {
 
   let message = "";
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const getContent = async () => {
     const accessToken = localStorage.getItem("accessToken");
 
@@ -38,31 +39,35 @@ export const Play = () => {
 
   useEffect(() => {
     getContent();
-  }, []);
+  }, [getContent]);
 
-  if (isLoggedIn) {
-    return (
-      <PlayContainer>
-        <PlayTitle>
-          Välkommen till PluggIn, {user?.username}. Redo att spela några spel?
-        </PlayTitle>
-        {message && <SecretText>{message}</SecretText>}
-        <GamesCards>
-          <Link to={`/play/matte`}>
-            <GameCard math>Matte</GameCard>
-          </Link>
-          <Link to={`/play/svenska`}>
-            <GameCard swedish>Svenska</GameCard>
-          </Link>
-          <Link to={`/play/engelska`}>
-            <GameCard english>Engelska</GameCard>
-          </Link>
-        </GamesCards>
-      </PlayContainer>
-    );
-  } else {
-    return <Text>Du måste logga in!</Text>;
-  }
+  return (
+    <PlayContainer>
+      <PlayTitle>
+        {isLoggedIn ? (
+          <>
+            Välkommen till PluggIn, {user?.username}. Redo att spela några spel?
+          </>
+        ) : (
+          <>
+            Du är inte inloggad. Dina framsteg kommer inte att sparas.
+          </>
+        )}
+      </PlayTitle>
+      {isLoggedIn && message && <SecretText>{message}</SecretText>}
+      <GamesCards>
+        <Link to={`/spela/matte`}>
+          <GameCard math>Matte</GameCard>
+        </Link>
+        <Link to={`/spela/svenska`}>
+          <GameCard swedish>Svenska</GameCard>
+        </Link>
+        <Link to={`/spela/engelska`}>
+          <GameCard english>Engelska</GameCard>
+        </Link>
+      </GamesCards>
+    </PlayContainer>
+  );
 };
 
 const PlayContainer = styled.div`
@@ -160,13 +165,6 @@ const GameCard = styled.div`
    @media (min-width: 700px) {
     margin: 40px;
   }
-`;
-
-
-const Text = styled.p`
-  font-size: 36px;
-  text-align: center;
-  width: 100vw;
 `;
 
 const SecretText = styled.p`
