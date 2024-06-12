@@ -57,6 +57,7 @@ const LoginContainer = styled.div`
   max-width: fit-content;
   height: fit-content;
   margin: 0 auto;
+  padding-top: 80px;
 
   @media (min-width: 700px) {
     padding-top: 50px;
