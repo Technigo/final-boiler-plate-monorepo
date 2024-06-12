@@ -6,7 +6,7 @@ import Lottie from "lottie-react"
 import Right from "../../assets/Right.json"
 import Wrong from "../../assets/Wrong.json"
 
-export const LanguageQuestion = ({ type, language }) => {
+export const LanguageQuestion = ({ type, language, color }) => {
   const {
     englishGame,
     setEnglishGame,
@@ -63,7 +63,7 @@ export const LanguageQuestion = ({ type, language }) => {
         </Progress>
         <Title>{game[Number(type)].title}</Title>
       </HeaderDiv>
-      <QuestionCard>{question}</QuestionCard>
+      <QuestionCard color={color}>{question}</QuestionCard>
       {rightLottie && (
         <div
           style={{
@@ -99,6 +99,7 @@ export const LanguageQuestion = ({ type, language }) => {
               key={index}
               value={answer}
               onClick={(event) => handleChoice(event.target.value)}
+              color={color}
             >
               {capsAnswer}
             </AnswerButton>
@@ -163,7 +164,10 @@ const QuestionCard = styled.div`
   height: 100px;
   align-content: center;
   font-size: 40px;
-  background-color: var(--sunset);
+  background-color: ${(props) =>
+      props.color === "sunset"
+        ? "var(--sunset)"
+        : "var(--forest)"};
   color: white;
   padding: 20px;
   margin: 10px auto;
@@ -191,7 +195,8 @@ const Answers = styled.div`
 `;
 
 const AnswerButton = styled.button`
-  background-color: var(--sunset);
+  background-color: ${(props) =>
+    props.color === "sunset" ? "var(--sunset)" : "var(--forest)"};
   color: white;
   width: 270px;
   height: 50px;
@@ -204,11 +209,18 @@ const AnswerButton = styled.button`
   font-size: 20px;
   padding: 15px;
   cursor: pointer;
-  box-shadow: 4px 4px var(--sunsetshadow);
+  box-shadow: 4px 4px
+    ${(props) =>
+      props.color === "sunset" ? "var(--sunsetshadow)" : "var(--forestshadow)"};
 
   &:hover {
-    background-color: var(--sunsethover);
-    box-shadow: 6px 6px var(--sunsetshadow);
+    background-color: ${(props) =>
+      props.color === "sunset" ? "var(--sunsethover)" : "var(--foresthover)"};
+    box-shadow: 6px 6px
+      ${(props) =>
+        props.color === "sunset"
+          ? "var(--sunsetshadow)"
+          : "var(--forestshadow)"};
     transition: 0.2s ease;
   }
 
@@ -217,7 +229,10 @@ const AnswerButton = styled.button`
     border: none;
 
     &:hover {
-      background-color: var(--sunset);
+      background-color: ${(props) =>
+          props.color === "sunset"
+            ? "var(--sunset)"
+            : "var(--forest)"};
     }
   }
 
@@ -242,5 +257,6 @@ const Message = styled.div`
 
 LanguageQuestion.propTypes = {
   type: PropTypes.string,
-  language: PropTypes.string
+  language: PropTypes.string,
+  color: PropTypes.string,
 }

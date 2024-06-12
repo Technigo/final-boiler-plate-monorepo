@@ -1,6 +1,6 @@
 import styled from "styled-components"
 import { useState } from "react"
-import { EnglishQuestion } from "./EnglishQuestion.jsx"
+import { LanguageQuestion } from "./LanguageQuestion.jsx"
 
 export const English = () => {
   const [gameTypeNumber, setGameTypeNumber] = useState()
@@ -13,9 +13,13 @@ export const English = () => {
     return (
       <EnglishGame>
         <EnglishTitle />
-        <EnglishQuestion type={gameTypeNumber}/>
+        <LanguageQuestion
+          type={gameTypeNumber}
+          language="english"
+          color="forest"
+        />
       </EnglishGame>
-    );
+    )
   } else {
     return (
       <EnglishGame>
