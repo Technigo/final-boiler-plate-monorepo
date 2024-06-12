@@ -42,12 +42,25 @@ export const MathProvider = ({ children }) => {
 
   //Generates different questions depending on the type of mathematical operation
   const generateAdditionQuestion = () => {
-    const a = Math.floor(Math.random() * 100) + 1
-    const b = Math.floor(Math.random() * 100) + 1
+    let a = 0
+    let b = 0
+
+    //Setting different numbers depending on level
+    if (mathGame[0].level === 1) {
+      a = Math.floor(Math.random() * 20) + 1
+      b = Math.floor(Math.random() * 20) + 1
+    } else if (mathGame[0].level === 2) {
+      a = Math.floor(Math.random() * 50) + 1;
+      b = Math.floor(Math.random() * 50) + 1;
+    } else {
+      a = Math.floor(Math.random() * 100) + 1;
+      b = Math.floor(Math.random() * 100) + 1;
+    }
+
+    //Using numbers to create question and answer
     const newGame = [...mathGame]
     newGame[0].question = `Vad är ${a}+${b}?`
     newGame[0].correctAnswer = a + b
-
     setMathGame(newGame)
   }
 
