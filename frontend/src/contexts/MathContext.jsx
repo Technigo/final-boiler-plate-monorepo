@@ -65,18 +65,32 @@ export const MathProvider = ({ children }) => {
   }
 
   const generateSubtractionQuestion = () => {
-    const a = Math.floor(Math.random() * 100) + 1
-    const b = Math.floor(Math.random() * 100) + 1
-    if (a >= b) {
-      const newGame = [...mathGame]
-      newGame[1].question = `Vad är ${a}-${b}?`
-      newGame[1].correctAnswer = a - b
+    let a = 0
+    let b = 0
 
-      setMathGame(newGame)
+    //Setting different numbers depending on level
+    if (mathGame[1].level === 1) {
+      a = Math.floor(Math.random() * 20) + 1;
+      b = Math.floor(Math.random() * 20) + 1;
+    } else if (mathGame[1].level === 2) {
+      a = Math.floor(Math.random() * 50) + 1;
+      b = Math.floor(Math.random() * 50) + 1;
     } else {
-      const newGame = [...mathGame]
-      newGame[1].question = `Vad är ${b}-${a}?`
-      newGame[1].correctAnswer = b - a
+      a = Math.floor(Math.random() * 100) + 1;
+      b = Math.floor(Math.random() * 100) + 1;
+    }
+
+    //Using numbers to create question and answer
+    if (a >= b) {
+      const newGame = [...mathGame];
+      newGame[1].question = `Vad är ${a}-${b}?`;
+      newGame[1].correctAnswer = a - b;
+
+      setMathGame(newGame);
+    } else {
+      const newGame = [...mathGame];
+      newGame[1].question = `Vad är ${b}-${a}?`;
+      newGame[1].correctAnswer = b - a;
 
       setMathGame(newGame);
     }
