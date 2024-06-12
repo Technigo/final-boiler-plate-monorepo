@@ -5,13 +5,26 @@ import logo from "/src/assets/Logo-header.png";
 import { useState } from "react";
 import { FaBars, FaTimes } from "react-icons/fa";
 import { FiLogOut } from "react-icons/fi";
+import { SlideInPanel } from "./SlideInPanel";
+import { RegistrationForm } from "./RegistrationForm";
+import { Login } from "./Login";
 
 export const Header = () => {
   const { isLoggedIn, signout } = useLogin();
   const [hamburgerOpen, setHamburgerOpen] = useState(false);
+  const [panelOpen, setPanelOpen] = useState({ register: false, login: false });
 
   const toggleHamburger = () => {
     setHamburgerOpen(!hamburgerOpen);
+  };
+
+  const openPanel = (type) => {
+    setPanelOpen({ ...panelOpen, [type]: true });
+    setHamburgerOpen(false);
+  };
+
+  const closePanel = () => {
+    setPanelOpen({ register: false, login: false });
   };
 
   return (
@@ -41,15 +54,28 @@ export const Header = () => {
             <Link to="/spela" onClick={toggleHamburger}>
               <Play>Spela</Play>
             </Link>
-            <Link to="/registering" onClick={toggleHamburger}>
-              <Register>Registera dig</Register>
-            </Link>
-            <Link to="/logga-in" onClick={toggleHamburger}>
-              <Login>Logga in</Login>
-            </Link>
+            <StyledButton onClick={() => openPanel("register")}>
+              Registrera dig
+            </StyledButton>
+            <StyledButton onClick={() => openPanel("login")}>
+              Logga in
+            </StyledButton>
           </StartPage>
         )}
       </NavMenu>
+
+      <SlideInPanel isOpen={panelOpen.register} onClose={closePanel}>
+        <SlidingPanelContent>
+          <RegistrationForm />
+        </SlidingPanelContent>
+      </SlideInPanel>
+
+      <SlideInPanel isOpen={panelOpen.login} onClose={closePanel}>
+        <SlidingPanelContent>
+          <Login />
+        </SlidingPanelContent>
+      </SlideInPanel>
+
     </HeaderContainer>
   );
 };
@@ -65,6 +91,7 @@ const HeaderContainer = styled.div`
   align-items: center;
   padding: 15px;
   font-weight: 500;
+  z-index: 10;
 
   @media (min-width: 700px) {
     height: 80px;
@@ -134,7 +161,7 @@ const StartPage = styled.div`
     gap: 60px;
   }
 `;
-
+/*
 const Register = styled.p`
   color: #363636;
   cursor: pointer;
@@ -159,7 +186,7 @@ const Login = styled.p`
   &:active {
     color: var(--oceanactive);
   }
-`;
+`;*/
 
 const Play = styled.p`
   color: #363636;
@@ -213,3 +240,28 @@ const SignOutIcon = styled(FiLogOut)`
   align-items: center;
   cursor: pointer;
 `;
+
+const SlidingPanelContent = styled.div`
+  padding: 0 20px;
+`;
+
+const StyledButton = styled.button`
+  background-color: transparent;
+  border: none;
+  color: inherit;
+  cursor: pointer;
+  text-decoration: none;
+  font-size: inherit;
+
+  color: #363636;
+  cursor: pointer;
+
+  &:hover {
+    color: var(--oceanhover);
+  }
+
+  &:active {
+    color: var(--oceanactive);
+  }
+`;
+
