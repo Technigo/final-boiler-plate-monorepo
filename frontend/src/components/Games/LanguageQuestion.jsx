@@ -52,63 +52,69 @@ export const LanguageQuestion = ({ type, language, color }) => {
     setTimeout(() => generateQuestion(language), 5000);
   }
 
-  return (
-    <>
-      <HeaderDiv>
-        <Progress>
-          <Level>Nivå {game[Number(type)].level}</Level>
-          <Score>
-            ⭐{currentScore}/{game[Number(type)].levelScore}
-          </Score>
-        </Progress>
-        <Title>{game[Number(type)].title}</Title>
-      </HeaderDiv>
-      <QuestionCard color={color}>{question}</QuestionCard>
-      {rightLottie && (
-        <div
-          style={{
-            position: "absolute",
-            top: "50%",
-            left: "50%",
-            transform: "translate(-50%, -50%)",
-            zIndex: 2,
-          }}
-        >
-          <Lottie animationData={Right} loop={false} />
-        </div>
-      )}
-      {wrongLottie && (
-        <div
-          style={{
-            position: "absolute",
-            top: "50%",
-            left: "50%",
-            transform: "translate(-50%, -50%)",
-            zIndex: 2,
-          }}
-        >
-          <Lottie animationData={Wrong} loop={false} />
-        </div>
-      )}
-      <Answers>
-        {answers.map((answer, index) => {
-          const capsAnswer = answer.charAt(0).toUpperCase() + answer.slice(1);
-          return (
-            <AnswerButton
-              disabled={disableButton}
-              key={index}
-              value={answer}
-              onClick={(event) => handleChoice(event.target.value)}
-              color={color}
-            >
-              {capsAnswer}
-            </AnswerButton>
-          );
-        })}
-      </Answers>
-      {message && <Message>{message}</Message>}
-    </>
-  );
+  if (game[Number(type)].level < 4) {
+    return (
+      <>
+        <HeaderDiv>
+          <Progress>
+            <Level>Nivå {game[Number(type)].level}</Level>
+            <Score>
+              ⭐{currentScore}/{game[Number(type)].levelScore}
+            </Score>
+          </Progress>
+          <Title>{game[Number(type)].title}</Title>
+        </HeaderDiv>
+        <QuestionCard color={color}>{question}</QuestionCard>
+        {rightLottie && (
+          <div
+            style={{
+              position: "absolute",
+              top: "50%",
+              left: "50%",
+              transform: "translate(-50%, -50%)",
+              zIndex: 2,
+            }}
+          >
+            <Lottie animationData={Right} loop={false} />
+          </div>
+        )}
+        {wrongLottie && (
+          <div
+            style={{
+              position: "absolute",
+              top: "50%",
+              left: "50%",
+              transform: "translate(-50%, -50%)",
+              zIndex: 2,
+            }}
+          >
+            <Lottie animationData={Wrong} loop={false} />
+          </div>
+        )}
+        <Answers>
+          {answers.map((answer, index) => {
+            const capsAnswer = answer.charAt(0).toUpperCase() + answer.slice(1)
+            return (
+              <AnswerButton
+                disabled={disableButton}
+                key={index}
+                value={answer}
+                onClick={(event) => handleChoice(event.target.value)}
+                color={color}
+              >
+                {capsAnswer}
+              </AnswerButton>
+            )
+          })}
+        </Answers>
+        {message && <Message>{message}</Message>}
+      </>
+    )
+  } else {
+    return (
+      <Title>Du har klarat alla nivåer! Grattis!</Title>
+    )
+  }
 }
 
 const HeaderDiv = styled.div`
