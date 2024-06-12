@@ -52,7 +52,7 @@ export const UserProvider = ({ children }) => {
       });
 
       setIsLoggedIn(true);
-      navigate("/play");
+      navigate("/spela");
     } catch (err) {
       console.error("No user was found:", err);
     }
@@ -99,7 +99,7 @@ export const UserProvider = ({ children }) => {
       });
 
       setIsLoggedIn(true);
-      navigate("(play");
+      navigate("/spela");
     } catch (err) {
       console.error("Error registering new user:", err);
     }
