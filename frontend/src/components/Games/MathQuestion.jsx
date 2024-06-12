@@ -74,72 +74,84 @@ export const MathQuestion = ({ focusRef, type }) => {
     }
   }
 
-  return (
-    <div>
-      <HeaderDiv>
-        <Progress>
-          <Level>Nivå {mathGame[Number(type)].level}</Level>
-          <Score>{currentScore}/25⭐</Score>
-        </Progress>
-        <Title>{mathGame[Number(type)].title}</Title>
-      </HeaderDiv>
-      <QuestionCard>{mathGame[Number(type)].question}</QuestionCard>
-      {rightLottie && (
-        <div
-          style={{
-            position: "absolute",
-            top: "50%",
-            left: "50%",
-            transform: "translate(-50%, -50%)",
-            zIndex: 2,
-          }}
-        >
-          <Lottie animationData={Right} loop={false} />
-        </div>
-      )}
-      {wrongLottie && (
-        <div
-          style={{
-            position: "absolute",
-            top: "50%",
-            left: "50%",
-            transform: "translate(-50%, -50%)",
-            zIndex: 2,
-          }}
-        >
-          <Lottie animationData={Wrong} loop={false} />
-        </div>
-      )}
-      <Answer onSubmit={(event) => checkAnswer(event)}>
-        <AnswerInput
-          ref={focusRef}
-          type="number"
-          value={answerInput}
-          placeholder="Skriv ditt svar här"
-          onChange={(event) => setAnswerInput(event.target.value)}
-        />
-        <AnswerBtn type="submit">SVARA</AnswerBtn>
-      </Answer>
-      <NumPad>
-        {numPadNumbers.map((number) => (
-          <NumPadBtn
-            key={number}
-            className="small"
-            onClick={() => handleNumPadClick(number)}
+  if (mathGame[Number(type)].level < 4) {
+    return (
+      <div>
+        <HeaderDiv>
+          <Progress>
+            <Level>Nivå {mathGame[Number(type)].level}</Level>
+            <Score>
+              {currentScore}/{mathGame[Number(type)].levelScore}⭐
+            </Score>
+          </Progress>
+          <Title>{mathGame[Number(type)].title}</Title>
+        </HeaderDiv>
+        <QuestionCard>{mathGame[Number(type)].question}</QuestionCard>
+        {rightLottie && (
+          <div
+            style={{
+              position: "absolute",
+              top: "50%",
+              left: "50%",
+              transform: "translate(-50%, -50%)",
+              zIndex: 2,
+            }}
           >
-            {number}
+            <Lottie animationData={Right} loop={false} />
+          </div>
+        )}
+        {wrongLottie && (
+          <div
+            style={{
+              position: "absolute",
+              top: "50%",
+              left: "50%",
+              transform: "translate(-50%, -50%)",
+              zIndex: 2,
+            }}
+          >
+            <Lottie animationData={Wrong} loop={false} />
+          </div>
+        )}
+        <Answer onSubmit={(event) => checkAnswer(event)}>
+          <AnswerInput
+            ref={focusRef}
+            type="number"
+            value={answerInput}
+            placeholder="Skriv ditt svar här"
+            onChange={(event) => setAnswerInput(event.target.value)}
+          />
+          <AnswerBtn type="submit">SVARA</AnswerBtn>
+        </Answer>
+        <NumPad>
+          {numPadNumbers.map((number) => (
+            <NumPadBtn
+              key={number}
+              className="small"
+              onClick={() => handleNumPadClick(number)}
+            >
+              {number}
+            </NumPadBtn>
+          ))}
+          <NumPadBtn
+            key="0"
+            className="big"
+            onClick={() => handleNumPadClick(0)}
+          >
+            0
           </NumPadBtn>
-        ))}
-        <NumPadBtn key="0" className="big" onClick={() => handleNumPadClick(0)}>
-          0
-        </NumPadBtn>
-        <NumPadBtn className="delete" onClick={handleDeleteClick}>
-          🗑️
-        </NumPadBtn>
-      </NumPad>
-      {message && <Message>{message}</Message>}
-    </div>
-  );
+          <NumPadBtn className="delete" onClick={handleDeleteClick}>
+            🗑️
+          </NumPadBtn>
+        </NumPad>
+        {message && <Message>{message}</Message>}
+      </div>
+    )
+  } else {
+    return (
+      <Title>Du har klarat alla nivåer! Grattis!</Title>
+    )
+  }
 }
 
 const HeaderDiv = styled.div`
