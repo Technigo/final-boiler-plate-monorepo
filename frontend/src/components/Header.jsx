@@ -242,7 +242,7 @@ const SignOutIcon = styled(FiLogOut)`
 `;
 
 const SlidingPanelContent = styled.div`
-  padding: 0 20px;
+  padding: 10px 20px;
 `;
 
 const StyledButton = styled.button`

@@ -18,6 +18,7 @@ const PanelContainer = styled.div`
   background: white;
   transition: right 0.3s ease-in-out;
   z-index: 9;
+  overflow-y: auto;
 
   @media (min-width: 700px) {
     width: 400px;
