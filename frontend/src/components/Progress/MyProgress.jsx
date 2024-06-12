@@ -2,38 +2,13 @@ import styled from "styled-components";
 import { useLogin } from "./../../contexts/UserContext";
 import { Hero } from "./Hero";
 import { LevelProgressBar } from "./LevelProgressBar";
-
-const progress = {
-  math: {
-    addition: {
-      levels: [
-        { level: 1, score: 20, levelScore: 20 },
-        { level: 2, score: 7, levelScore: 20 },
-      ],
-    },
-    multiplication: {
-      levels: [
-        { level: 1, score: 20, levelScore: 20 },
-        { level: 2, score: 7, levelScore: 20 },
-      ],
-    },
-  },
-  swedish: {
-    levels: [
-      { level: 1, score: 20, levelScore: 20 },
-      { level: 2, score: 20, levelScore: 20 },
-      { level: 3, score: 16, levelScore: 20 },
-    ],
-  },
-  english: {
-    levels: [{ level: 1, score: 10, levelScore: 20 }],
-  },
-};
+import { useScore } from "../../contexts/ScoreContext";
 
 export const Progress = () => {
   const { user } = useLogin();
-  const { math, swedish, english } = progress;
+  const { progress } = useScore();
 
+  console.log(progress);
   return (
     <ProgressContainer>
       <Hero user={user} />
@@ -46,7 +21,7 @@ export const Progress = () => {
                 <p>Nivå: {math.addition.levels.length}</p>
                 <p>{calcSubjectResult(math).toFixed(0)}%</p>
               </ProgressScore>
-            </ProgressCircel>
+            </ProgressCircel>a
           </ProgressBox>
         </div> */}
       {/* <div className="progress__subject swedish">
@@ -72,7 +47,7 @@ export const Progress = () => {
           </ProgressBox>
         </div>
       </ProgressWrapper> */}
-      <LevelProgressBar progress={progress} />
+      <LevelProgressBar progress={progress.progress} />
     </ProgressContainer>
   );
 };

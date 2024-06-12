@@ -42,7 +42,7 @@ export const LevelProgressBar = ({ progress }) => {
                     </ProgressBar>
                   </LevelProgress>
                 ))
-              : // Get the key of each
+              : // Handle subjects with subcategories
                 Object.keys(progress[subject]).map((subcategory) => {
                   let subcategoryHeader = false;
                   return progress[subject][subcategory].levels

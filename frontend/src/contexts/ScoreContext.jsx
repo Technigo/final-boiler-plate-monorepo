@@ -1,12 +1,18 @@
 /* eslint-disable react-refresh/only-export-components */
-import PropTypes from "prop-types"
-import { createContext, useContext, useState } from "react"
-import englishData from "../data/EnglishGameData.json"
-import swedishData from "../data/SwedishGameData.json"
+import PropTypes from "prop-types";
+import { createContext, useContext, useState, useEffect } from "react";
+import englishData from "../data/EnglishGameData.json";
+import swedishData from "../data/SwedishGameData.json";
 
 const ScoreContext = createContext();
 
 export const ScoreProvider = ({ children }) => {
+  const [authenticated, setAuthenticated] = useState({
+    accessToken: localStorage.getItem("accessToken"),
+    auth: false,
+  });
+  const apiUrl = import.meta.env.VITE_API_URL || "http://localhost:3000";
+
   //Object for swedish-game
   const [swedishGame, setSwedishGame] = useState([
     {
@@ -30,10 +36,12 @@ export const ScoreProvider = ({ children }) => {
   const { english } = englishData
   const { swedish } = swedishData
 
-  //Variables to handle which question and answers to show
-  const [question, setQuestion] = useState("")
-  const [rightAnswer, setRightAnswer] = useState("")
-  const [answers, setAnswers] = useState([])
+
+  const [question, setQuestion] = useState("");
+  const [rightAnswer, setRightAnswer] = useState("");
+  const [answers, setAnswers] = useState([]);
+  const [progress, setProgress] = useState(null);
+
 
   //Message with feedback to user after each choice
   const [message, setMessage] = useState("")
@@ -100,6 +108,35 @@ export const ScoreProvider = ({ children }) => {
     setMessage("")
   }
 
+  const registerAnswer = async (answerData) => {
+    console.log(answerData);
+  };
+
+  // Fetching progress data from db
+  const fetchProgress = async () => {
+    try {
+      const response = await fetch(`${apiUrl}/progress`, {
+        headers: {
+          Authorization: authenticated.accessToken,
+        },
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to fetch progress");
+      }
+
+      const data = await response.json();
+      setProgress(data.progress);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  useEffect(() => {
+    fetchProgress();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   return (
     <ScoreContext.Provider
       value={{
@@ -115,16 +152,19 @@ export const ScoreProvider = ({ children }) => {
         setDisableButton,
         generateQuestion,
         rightAnswer,
+        registerAnswer,
+        progress,
         celebrateLottie
       }}
     >
       {children}
     </ScoreContext.Provider>
-  )
-}
+  );
+};
 
-export const useScore = () => useContext(ScoreContext)
+
+export const useScore = () => useContext(ScoreContext);
 
 ScoreProvider.propTypes = {
   children: PropTypes.any,
-}
+};

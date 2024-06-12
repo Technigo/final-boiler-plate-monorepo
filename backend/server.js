@@ -49,8 +49,41 @@ const mongoUrl = process.env.MONGO_URL || "mongodb://localhost/pluggIn-users";
 mongoose.connect(mongoUrl);
 mongoose.Promise = Promise;
 
+const levelSchema = new mongoose.Schema({
+  level: { type: Number, default: 1 },
+  score: { type: Number, default: 0 },
+  levelScore: { type: Number, default: 20 },
+});
+
+const mathSchema = new mongoose.Schema({
+  addition: {
+    levels: [levelSchema],
+  },
+  multiplication: {
+    levels: [levelSchema],
+  },
+  subtraction: {
+    levels: [levelSchema],
+  },
+  division: {
+    levels: [levelSchema],
+  },
+});
+
+const swedishSchema = new mongoose.Schema({
+  synonyms: {
+    levels: [levelSchema],
+  },
+});
+
+const englishSchema = new mongoose.Schema({
+  translate: {
+    levels: [levelSchema],
+  },
+});
+
 // Defining schema for a User
-const User = mongoose.model("User", {
+const userSchema = new mongoose.Schema({
   username: {
     type: String,
     unique: true,
@@ -82,20 +115,15 @@ const User = mongoose.model("User", {
     default: () => crypto.randomBytes(128).toString("hex"),
   },
   progress: {
-    math: {
-      level: { type: Number, default: 1 },
-      score: { type: Number, default: 0 },
-    },
-    swedish: {
-      level: { type: Number, default: 1 },
-      score: { type: Number, default: 0 },
-    },
-    english: {
-      level: { type: Number, default: 1 },
-      score: { type: Number, default: 0 },
-    },
+    math: mathSchema,
+    swedish: swedishSchema,
+    english: englishSchema,
   },
 });
+
+const User = mongoose.model("User", userSchema);
+
+module.exports = User;
 
 //Authenticate user as middleware
 const authenticateUser = async (req, res, next) => {
@@ -153,6 +181,16 @@ app.post("/users", async (req, res) => {
       age,
       email,
       password: bcrypt.hashSync(password, salt),
+      progress: {
+        math: {
+          addition: { levels: [{}, {}, {}, {}] },
+          multiplication: { levels: [{}, {}, {}, {}] },
+          subtraction: { levels: [{}, {}, {}, {}] },
+          division: { levels: [{}, {}, {}, {}] },
+        },
+        swedish: { synonyms: { levels: [{}, {}, {}, {}] } },
+        english: { translate: { levels: [{}, {}, {}, {}] } },
+      },
     });
     await user.save();
     res.status(201).json({
@@ -195,6 +233,44 @@ app.get("/games", async (req, res) => {
   res
     .status(200)
     .json({ message: "Secret message only for logged in users to see!" });
+});
+
+// Endpoint for updating users progress
+// app.post("/progress", authenticateUser, async (req, res) => {
+//   try {
+//     const user = req.user;
+//     if (!user) {
+//       return res.status(404).json({ message: "User not found." });
+//     }
+
+//     const progress = user.progress;
+//     res.status(200).json({ progress });
+//   } catch (error) {
+//     console.error(error);
+//     res.status(500).json({ message: "Failed to fetch progress." });
+//   }
+// });
+
+app.get("/progress", authenticateUser, async (req, res) => {
+  try {
+    const user = req.user; // get user
+
+    if (!user) {
+      return res.status(404).json({ message: "User not found." });
+    }
+
+    // Get progress from user with current user_id
+    const progress = await User.findById(user._id, "progress");
+
+    if (!progress) {
+      return res.status(404).json({ message: "Progress not found." });
+    }
+
+    res.status(200).json({ progress });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Failed to fetch progress" });
+  }
 });
 
 // Start the server
