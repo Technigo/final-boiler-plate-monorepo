@@ -3,6 +3,8 @@ import { Hero } from "../components/Hero";
 import { Link } from "react-router-dom";
 import styled, { css } from "styled-components";
 import { Footer } from "../components/Footer";
+import HeaderImg from "/src/assets/testheader.jpg";
+import HeaderImgTabl from "/src/assets/testheader2.jpg";
 
 // Define the 'Home' functional component.
 export const Home = () => {
@@ -35,7 +37,22 @@ const HomeContainer = styled.div`
   justify-content: space-evenly;
   align-items: center;
   margin: 0 auto;
-  background-image: linear-gradient(to bottom, lightblue, lightgreen);
+  background-image: none;
+  background-size: cover;
+  
+  background-position: top;
+  background-repeat: no-repeat;
+
+  @media (min-width: 500px) AND (max-width: 1025px){
+    background-image: url(${HeaderImgTabl});
+    height: 90vh;s
+    }
+
+  @media (min-width: 1025px) {
+    background-image: url(${HeaderImg});
+    background-size: cover;
+    background-position: center;
+  }
 `;
 
 const ContentWrapper = styled.div`
@@ -45,13 +62,23 @@ const ContentWrapper = styled.div`
 `;
 
 const Heading = styled.h2`
-  font-size: 32px;
+  font-size: 27px;
   color: #363636;
-  margin-top: 30px;
+  margin-top: -3px;
+  z-index: 2;
+
+  @media (min-width: 500px) AND (max-width: 700px){
+    margin-top: 10px;
+    }
+
+  @media (min-width: 700px) AND (max-width: 1025px){
+    margin-top: -10px;
+    }
 
   @media (min-width: 1025px) {
-    align-self: start;
-    margin-left: 50px;
+    font-size: 40px;
+
+    margin: 25px auto;
   }
 `;
 
@@ -61,9 +88,17 @@ const GamesCards = styled.div`
   justify-content: center;
   align-items: center;
   margin: 0 auto;
+  padding-bottom: 17px;
+  
 
+  @media (min-width: 500px) AND (max-width: 1025px){
+    margin: 0 auto 200px;
+    padding-bottom: 30px;
+  }
+ 
    @media (min-width: 1025px) {
     flex-direction: row;
+    gap: 40px;
   }
 `;
 
@@ -73,16 +108,30 @@ const GameCard = styled.div`
   justify-content: center;
   align-items: center;
   border-radius: 30px;
-  gap: 30px;
   width: 290px;
+  height: 80px;
+  margin: 12px auto;
+  color: white;
+  background-color: var(--forest);
+  font-size: 30px;
+
+  @media (min-width: 400px) AND (max-width: 700px){
   height: 90px;
   margin: 20px auto;
   color: white;
-  background-color: var(--forest);
   font-size: 40px;
+  }
+
+
+@media (min-width: 700px) AND (max-width: 1025px){
+  height: 90px;
+  margin: 20px auto;
+  color: white;
+  font-size: 40px;
+  }
 
   @media (min-width: 1025px) {
-    max-width: 600px;
+    width: 250px;
     min-width: 200px;
     height: 100px;
     font-size: 50px;
@@ -125,7 +174,4 @@ const GameCard = styled.div`
       }
     `}
 
-   @media (min-width: 700px) {
-    margin: 40px;
-  }
 `;
