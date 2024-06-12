@@ -74,11 +74,13 @@ export const ScoreProvider = ({ children }) => {
     }
 
     //Checks the score and handles level-change
-    if (game[0].score >= 5) {
+    //use next line for testing/demoing (only three questions before level-change)
+    //if (game[0].score >= 3) {
+    if (game[0].score >= game[0].levelScore) {
       const newGame = [...game];
-      newGame[0].level = game[0].level + 1;
-      newGame[0].score = 0;
-      setGame(newGame);
+      newGame[0].level = game[0].level + 1
+      newGame[0].score = 0
+      setGame(newGame)
     }
 
     //Filters the dataset depending on level

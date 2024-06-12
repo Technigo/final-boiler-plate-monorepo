@@ -33,7 +33,7 @@ export const MathQuestion = ({ focusRef, type }) => {
       setTimeout(() => setRightLottie(false), 5000);
 
       const newGame = [...mathGame]
-      setTimeout(() => newGame[Number(type)].score = currentScore + 1, 3000);
+      setTimeout(() => (newGame[Number(type)].score = currentScore + 1), 3000)      
       setTimeout(() => setMathGame(newGame), 3000)
     } else {
       setTimeout(() => setWrongLottie(true), 1000);
