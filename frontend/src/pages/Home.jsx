@@ -13,13 +13,13 @@ export const Home = () => {
       <ContentWrapper>
       <Heading>VÄLJ ÄMNE</Heading>
         <GamesCards>
-          <Link to={`/play/matte`}>
+          <Link to={`/spela/matte`}>
             <GameCard math>Matte</GameCard>
           </Link>
-          <Link to={`/play/svenska`}>
+          <Link to={`/spela/svenska`}>
             <GameCard swedish>Svenska</GameCard>
           </Link>
-          <Link to={`/play/engelska`}>
+          <Link to={`/spela/engelska`}>
             <GameCard english>Engelska</GameCard>
           </Link>
         </GamesCards>

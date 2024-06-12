@@ -25,7 +25,7 @@ export const Header = () => {
       <NavMenu open={hamburgerOpen}>
         {isLoggedIn ? (
           <LoggedIn>
-            <Link to="/play" onClick={toggleHamburger}>
+            <Link to="/spela" onClick={toggleHamburger}>
               <Play>Spela</Play>
             </Link>
             <Link to="/progress" onClick={toggleHamburger}>
@@ -38,7 +38,7 @@ export const Header = () => {
           </LoggedIn>
         ) : (
           <StartPage>
-            <Link to="/play" onClick={toggleHamburger}>
+            <Link to="/spela" onClick={toggleHamburger}>
               <Play>Spela</Play>
             </Link>
             <Link to="/registering" onClick={toggleHamburger}>
@@ -197,6 +197,14 @@ const SignOut = styled.div`
 const SignOutText = styled.p`
   color: #363636;
   cursor: pointer;
+
+  &:hover {
+    color: var(--oceanhover);
+  }
+
+  &:active {
+    color: var(--oceanactive);
+  }
 `;
 
 const SignOutIcon = styled(FiLogOut)`

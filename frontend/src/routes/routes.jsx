@@ -18,10 +18,10 @@ const routes = (
     <Route path="/registering" element={<RegistrationForm />} />
     <Route path="/logga-in" element={<Login />} />
     <Route path="/progress" element={<Progress />} />
-    <Route path="/play" element={<Play />} />
-    <Route path="/play/matte" element={<Math />} />
-    <Route path="/play/svenska" element={<Swedish />} />
-    <Route path="/play/engelska" element={<English />} />
+    <Route path="/spela" element={<Play />} />
+    <Route path="/spela/matte" element={<Math />} />
+    <Route path="/spela/svenska" element={<Swedish />} />
+    <Route path="/spela/engelska" element={<English />} />
     <Route path="/om-oss" element={<OmOss />} />
     <Route path="*" element={<NotFound />} />
   </>
