@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const WelcomeText = () => {
   // Define text content for the heading and subheading.
   const text = {
-    heading: "Välkommen till PluggIn",
+    heading: "Välkommen till Pluggin'",
     intro: "Sidan där du kan förbättra dina kunskaper i olika skolämnen.",
   };
   return (
