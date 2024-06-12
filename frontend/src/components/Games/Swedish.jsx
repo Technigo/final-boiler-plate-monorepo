@@ -1,4 +1,6 @@
 import styled from "styled-components"
+import { IoArrowBackCircleOutline } from "react-icons/io5"
+import { Link } from "react-router-dom"
 import { useState } from "react"
 import { LanguageQuestion } from "./LanguageQuestion.jsx"
 
@@ -12,21 +14,30 @@ export const Swedish = () => {
   if (gameTypeNumber) {
     return (
       <SwedishGame>
-        <SwedishTitle />
-        <LanguageQuestion type={gameTypeNumber} language="swedish" color="sunset"/>
+        <BackButton onClick={() => setGameTypeNumber(null)}>
+          <BackIcon />
+        </BackButton>
+        <LanguageQuestion
+          type={gameTypeNumber}
+          language="swedish"
+          color="sunset"
+        />
       </SwedishGame>
-    )
+    );
   } else { 
     return (
       <SwedishGame>
-        <SwedishTitle />
+        <Link to="/spela">
+          <BackIcon />
+        </Link>
+        <SwedishTitle>VÄLJ SPEL</SwedishTitle>
         <GameTypeButton
           value="0"
           onClick={(event) => handleChoice(event.target.value)}
         >
           Synonymer
         </GameTypeButton>
-      </SwedishGame>   
+      </SwedishGame>
     )
   }
 }
@@ -38,6 +49,18 @@ const SwedishGame = styled.div`
   align-items: center;
   text-align: center;
   margin: 0 auto;
+`
+
+const BackButton = styled.button`
+  background: none;
+  border: none;
+  height: 30px;
+`
+
+const BackIcon = styled(IoArrowBackCircleOutline)`
+  font-size: 40px;
+  color: #000000;
+  cursor: pointer;
 `
 
 const SwedishTitle = styled.h2`

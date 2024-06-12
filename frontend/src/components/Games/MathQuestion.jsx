@@ -1,10 +1,10 @@
-import PropTypes from "prop-types";
-import styled, { css } from "styled-components";
-import { useState, useEffect } from "react";
-import { useMath } from "../../contexts/MathContext";
-import Lottie from "lottie-react";
-import Right from "../../assets/Right.json";
-import Wrong from "../../assets/Wrong.json";
+import PropTypes from "prop-types"
+import styled, { css } from "styled-components"
+import { useState, useEffect } from "react"
+import { useMath } from "../../contexts/MathContext"
+import Lottie from "lottie-react"
+import Right from "../../assets/Right.json"
+import Wrong from "../../assets/Wrong.json"
 
 export const MathQuestion = ({ focusRef, type }) => {
   const { mathGame, setMathGame, generateQuestion } = useMath()
