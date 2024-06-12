@@ -92,6 +92,8 @@ const HeaderContainer = styled.div`
   padding: 15px;
   font-weight: 500;
   z-index: 10;
+  position: sticky;
+  top: 0;
 
   @media (min-width: 700px) {
     height: 80px;
