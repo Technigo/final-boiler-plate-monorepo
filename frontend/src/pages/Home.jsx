@@ -56,7 +56,6 @@ const ContentWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-bottom: 30px;
 `
 
 const Heading = styled.h2`
