@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { useLogin } from "./../../contexts/UserContext";
-import heroImgUrl from "/src/assets/ProgressHeader.jpg";
+import heroImgUrl from "/src/assets/ProgressHeaderWeb.jpg";
+import heroImgUrlTabl from "/src/assets/ProgressHeaderTablet.jpg";
 
 export const Hero = () => {
   const { user } = useLogin();
@@ -39,10 +40,21 @@ const HeroContainer = styled.div`
   justify-content: center;
   padding: 60px 30px;
   min-height: 400px;
-  background-image: url(${heroImgUrl});
+  background-image: none;
   background-size: cover;
-  /* background-position: center center; */
+  background-position-x: center;
+  background-position-y: top;
+  background-repeat: no-repeat;
   height: auto;
+
+  @media (min-width: 500px) AND (max-width: 1025px) {
+    background-image: url(${heroImgUrlTabl});
+    
+  }
+
+  @media (min-width: 1025px) {
+    background-image: url(${heroImgUrl});  
+  }
 `;
 
 const HeroTitle = styled.h1`
