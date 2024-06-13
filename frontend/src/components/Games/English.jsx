@@ -82,8 +82,10 @@ export const English = () => {
               </ButtonSign>
             </ButtonTextDiv>
             <ProgressDiv>
-            <p>Nivå {englishGame[0].level}</p>
-            <p>{englishGame[0].score}/{englishGame[0].levelScore}</p>
+              <p>Nivå {englishGame[0].level}</p>
+              <p>
+                {englishGame[0].score}/{englishGame[0].levelScore}
+              </p>
             </ProgressDiv>
           </GameTypeButton>
         </Choices>
@@ -122,7 +124,7 @@ const TitleDiv = styled.div`
   display: flex;
   justify-content: flex-start;
   position: relative;
-  right:20px;
+  right: 20px;
 
   @media (min-width: 700px) {
     width: 540px;
@@ -241,7 +243,7 @@ const ProgressDiv = styled.div`
   width: 200px;
   height: 20px;
   font-size: 15px;
-  
+
   @media (min-width: 700px) {
     width: 220px;
     height: 20px;
@@ -255,7 +257,7 @@ const ButtonTextDiv = styled.div`
   align-items: center;
   width: 200px;
   height: 20px;
-  
+
   @media (min-width: 700px) {
     width: 220px;
     height: 20px;

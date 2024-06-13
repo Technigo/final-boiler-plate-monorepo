@@ -108,7 +108,6 @@ export const Math = () => {
             value="3"
             onClick={(event) => handleChoice(event.target.value)}
           >
-            
             <ButtonTextDiv>
               <ButtonTitle>Division</ButtonTitle>
               <ButtonSign>÷</ButtonSign>
@@ -154,7 +153,7 @@ const TitleDiv = styled.div`
   display: flex;
   justify-content: flex-start;
   position: relative;
-  right:20px;
+  right: 20px;
 
   @media (min-width: 700px) {
     width: 540px;
@@ -272,7 +271,7 @@ const ProgressDiv = styled.div`
   width: 200px;
   height: 20px;
   font-size: 15px;
-  
+
   @media (min-width: 700px) {
     width: 220px;
     height: 20px;
@@ -287,7 +286,6 @@ const ButtonTextDiv = styled.div`
   width: 200px;
   height: 20px;
 
-  
   @media (min-width: 700px) {
     width: 220px;
     height: 20px;

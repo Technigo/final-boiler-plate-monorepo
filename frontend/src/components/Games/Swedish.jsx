@@ -75,17 +75,18 @@ export const Swedish = () => {
             value="0"
             onClick={(event) => handleChoice(event.target.value)}
           >
-            
             <ButtonTextDiv>
               <ButtonTitle>Synonymer</ButtonTitle>
               <ButtonSign>
                 <LiaReadme />
               </ButtonSign>
             </ButtonTextDiv>
-              <ProgressDiv>
+            <ProgressDiv>
               <p>Nivå {swedishGame[0].level}</p>
-              <p>{swedishGame[0].score}/{swedishGame[0].levelScore}</p>
-              </ProgressDiv>
+              <p>
+                {swedishGame[0].score}/{swedishGame[0].levelScore}
+              </p>
+            </ProgressDiv>
           </GameTypeButton>
         </Choices>
       </SwedishGameSite>
@@ -124,15 +125,13 @@ const TitleDiv = styled.div`
   justify-content: flex-start;
   align-items: center;
   position: relative;
-  right:20px;
+  right: 20px;
 
   @media (min-width: 700px) {
     width: 540px;
     gap: 30px;
     position: relative;
     right: 130px;
-    
-    
   }
 `
 
@@ -244,7 +243,7 @@ const ProgressDiv = styled.div`
   width: 200px;
   height: 20px;
   font-size: 15px;
-  
+
   @media (min-width: 700px) {
     width: 220px;
     height: 20px;
@@ -258,7 +257,7 @@ const ButtonTextDiv = styled.div`
   align-items: center;
   width: 200px;
   height: 20px;
-  
+
   @media (min-width: 700px) {
     width: 220px;
     height: 20px;
