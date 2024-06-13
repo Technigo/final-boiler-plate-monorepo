@@ -3,6 +3,11 @@ import logo from "/src/assets/Logo.png";
 import linkedin from "/src/assets/linkedin.png"
 import portfolio from "/src/assets/portfolio.png"
 import github from "/src/assets/github.png"
+import frida from "/src/assets/FridaForser.png"
+import erika from "/src/assets/ErikaWernbro.png"
+import pernilla from "/src/assets/PernillaSterner.png"
+import katarina from "/src/assets/KatarinaSjolin.png"
+
 
 export const OmOss = () => {
     return (
@@ -11,7 +16,7 @@ export const OmOss = () => {
       <Description>Teamet bakom Pluggin'</Description>
       <PeopleDiv>
         <PersonDiv>
-            <PersonImg src={logo} width="150" alt="Erika-Wernbro"/>
+            <PersonImg src={erika} width="150" alt="Erika-Wernbro"/>
             <Person>Erika Wernbro</Person>
             <City>Kalmar</City>
             <LinksDiv>
@@ -27,7 +32,7 @@ export const OmOss = () => {
             </LinksDiv>
         </PersonDiv>
         <PersonDiv>
-            <PersonImg src={logo} width="150" alt="Pernilla-Sterner"/>
+            <PersonImg src={pernilla} width="150" alt="Pernilla-Sterner"/>
             <Person>Pernilla Sterner</Person>
             <City>Stockholm</City>
             <LinksDiv>
@@ -43,7 +48,7 @@ export const OmOss = () => {
             </LinksDiv>
         </PersonDiv>
         <PersonDiv>
-            <PersonImg src={logo} width="150" alt="Frida-Forser"/>
+            <PersonImg src={frida} width="150" alt="Frida-Forser"/>
             <Person>Frida Forser</Person>
             <City>Stockholm</City>
             <LinksDiv>
@@ -56,7 +61,7 @@ export const OmOss = () => {
             </LinksDiv>
         </PersonDiv>
         <PersonDiv>
-            <PersonImg src={logo} width="150" alt="Katarina-Sjölin"/>
+            <PersonImg src={katarina} width="150" alt="Katarina-Sjölin"/>
             <Person>Katarina Sjölin</Person>
             <City>Malmö</City>
             <LinksDiv>
