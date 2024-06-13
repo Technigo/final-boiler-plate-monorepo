@@ -1,8 +1,12 @@
-import styled from "styled-components"
-import { Button } from "./Button"
-import { Link } from "react-router-dom"
+import { useState } from 'react'
+import styled from 'styled-components'
+import { RegistrationForm } from './RegistrationForm'
+import { SlideInPanel } from './SlideInPanel'
+import { Button } from './Button'
 
 export const Hero = () => {
+  const [isPanelOpen, setIsPanelOpen] = useState(false)
+
   const content = {
     heading: "Välkommen till Pluggin'",
     intro:
@@ -11,15 +15,24 @@ export const Hero = () => {
     heroImgAlt: "Barn studerar i soffa",
   }
 
+  const openPanel = () => {
+    setIsPanelOpen(true)
+  };
+
+  const closePanel = () => {
+    setIsPanelOpen(false)
+  };
+
   return (
     <HeroContainer>
       <TextContainer>
         <HeroHeading>{content.heading}</HeroHeading>
         <HeroIntro>{content.intro}</HeroIntro>
-        <Link to={`/registering`}>
-          <Button type="button">Registrera dig</Button>
-        </Link>
+        <Button onClick={openPanel}>Registrera dig</Button>
       </TextContainer>
+      <SlideInPanel isOpen={isPanelOpen} onClose={closePanel} panelType="register">
+        <RegistrationForm />
+      </SlideInPanel>
     </HeroContainer>
   )
 }
