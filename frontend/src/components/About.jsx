@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import logo from "/src/assets/Logo.png";
 import linkedin from "/src/assets/linkedin.png"
 import portfolio from "/src/assets/portfolio.png"
 import github from "/src/assets/github.png"

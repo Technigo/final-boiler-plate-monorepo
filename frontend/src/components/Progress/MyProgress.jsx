@@ -20,7 +20,7 @@ export const Progress = () => {
 
   return (
     <ProgressContainer>
-      {/* <Hero user={user} /> */}
+      <Hero user={user} /> 
       <GamesCards>
         <GameCard math onClick={() => handleProgressButton("math")}>
           Matte
