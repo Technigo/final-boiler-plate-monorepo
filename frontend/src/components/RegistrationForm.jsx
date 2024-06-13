@@ -185,6 +185,7 @@ const RegistrationContainer = styled.div`
 `
 
 const Heading = styled.h1`
+  font-size: 2rem;
   color: white;
   text-align: center;
   margin-top: 0;

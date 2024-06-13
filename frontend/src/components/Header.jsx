@@ -12,19 +12,21 @@ import { Login } from "./Login"
 export const Header = () => {
   const { isLoggedIn, signout } = useLogin()
   const [hamburgerOpen, setHamburgerOpen] = useState(false)
-  const [panelOpen, setPanelOpen] = useState({ register: false, login: false })
+  const [isPanelOpen, setIsPanelOpen] = useState(false)
+  const [panelType, setPanelType] = useState(null)
 
   const toggleHamburger = () => {
     setHamburgerOpen(!hamburgerOpen)
   }
 
   const openPanel = (type) => {
-    setPanelOpen({ ...panelOpen, [type]: true })
-    setHamburgerOpen(false)
+    setPanelType(type)
+    setIsPanelOpen(true)
   }
 
   const closePanel = () => {
-    setPanelOpen({ register: false, login: false })
+    setIsPanelOpen(false)
+    setPanelType(null)
   }
 
   return (
@@ -64,17 +66,11 @@ export const Header = () => {
         )}
       </NavMenu>
 
-      <SlideInPanel isOpen={panelOpen.register} onClose={closePanel}>
-        <SlidingPanelContent>
-          <RegistrationForm />
-        </SlidingPanelContent>
+      <SlideInPanel isOpen={isPanelOpen} onClose={closePanel} panelType={panelType}>
+        {panelType === "register" && <RegistrationForm />}
+        {panelType === "login" && <Login />}
       </SlideInPanel>
 
-      <SlideInPanel isOpen={panelOpen.login} onClose={closePanel}>
-        <SlidingPanelContent>
-          <Login />
-        </SlidingPanelContent>
-      </SlideInPanel>
     </HeaderContainer>
   )
 }
@@ -162,32 +158,6 @@ const StartPage = styled.div`
     gap: 60px;
   }
 `
-/*
-const Register = styled.p`
-  color: #363636;
-  cursor: pointer;
-
-  &:hover {
-    color: var(--oceanhover);
-  }
-
-  &:active {
-    color: var(--oceanactive);
-  }
-`;
-
-const Login = styled.p`
-  color: #363636;
-  cursor: pointer;
-
-  &:hover {
-    color: var(--oceanhover);
-  }
-
-  &:active {
-    color: var(--oceanactive);
-  }
-`;*/
 
 const Play = styled.p`
   color: #363636;
@@ -240,10 +210,6 @@ const SignOutIcon = styled(FiLogOut)`
   color: #363636;
   align-items: center;
   cursor: pointer;
-`
-
-const SlidingPanelContent = styled.div`
-  padding: 10px 20px;
 `
 
 const StyledButton = styled.button`
