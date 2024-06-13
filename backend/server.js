@@ -209,6 +209,7 @@ app.post("/sessions", async (req, res) => {
     res.status(200).json({
       userId: user._id,
       username: user.username,
+      firstName: user.firstName,
       accessToken: user.accessToken,
     });
   } else {
@@ -227,8 +228,6 @@ app.get("/games", async (req, res) => {
 app.post("/progress", authenticateUser, async (req, res) => {
   const { subject, subcategory, level, score } = req.body;
   const userId = req.user._id; // Get user id
-
-  console.log("Incoming data:", req.body);
 
   try {
     // Find user by using id

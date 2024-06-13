@@ -15,9 +15,9 @@ export const UserProvider = ({ children }) => {
 
   // Load username from localStorage
   useEffect(() => {
-    const username = localStorage.getItem("username");
-    if (username) {
-      setUser({ username: username });
+    const firstName = localStorage.getItem("firstName");
+    if (firstName) {
+      setUser({ firstName: firstName });
     }
   }, []);
 
@@ -41,14 +41,14 @@ export const UserProvider = ({ children }) => {
 
       // Save accesstoken and username in local storage
       localStorage.setItem("accessToken", data.accessToken);
-      localStorage.setItem("username", data.username);
+      localStorage.setItem("firstName", data.firstName);
       setAuthenticated({
         accessToken,
         auth: true,
       });
 
       setUser({
-        username: data.username,
+        firstName: data.firstName,
       });
 
       setIsLoggedIn(true);
@@ -60,7 +60,7 @@ export const UserProvider = ({ children }) => {
 
   const signout = () => {
     localStorage.removeItem("accessToken");
-    localStorage.removeItem("username");
+    localStorage.removeItem("firstName");
     setIsLoggedIn(false);
     setAuthenticated({
       auth: false,

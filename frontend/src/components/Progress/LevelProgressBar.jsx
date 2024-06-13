@@ -1,18 +1,14 @@
 import styled from "styled-components";
 import PropTypes from "prop-types";
+import translations from "./translations.json";
 
-// Function that will translate subject titles
+// User json file to translate subjects and subcategories
 const translateSubject = (subject) => {
-  switch (subject) {
-    case "math":
-      return "Matte";
-    case "swedish":
-      return "Svenska";
-    case "english":
-      return "Engelska";
-    default:
-      return subject;
-  }
+  return translations.subjects[subject] || subject;
+};
+
+const translateSubcategory = (subcategory) => {
+  return translations.subcategories[subcategory] || subcategory;
 };
 
 export const LevelProgressBar = ({ progress, selectedSubject }) => {
@@ -22,85 +18,29 @@ export const LevelProgressBar = ({ progress, selectedSubject }) => {
 
   // Remove '_id' from subjects, else it will display in the score list
   const subjects = Object.keys(progress).filter((subject) => subject !== "_id");
-
+  console.log(progress);
   return (
     <LevelContainer>
-      {/* Mapping through all subjects */}
-      {subjects.map((subject) => (
+      <h1>{translateSubject(selectedSubject).toUpperCase()}</h1>
+      {subjects.map(([subject, data]) => (
         <div key={subject}>
-          <h1>{translateSubject(subject)}</h1>
+          <h2>{translateSubcategory(subject)}</h2>
           <LevelWrapper>
-            {/* Show levels if the subject has direct levels and no subcategories */}
-            {progress[subject].levels
-              ? progress[subject].levels.map((level, index) => (
-                  <LevelProgress key={index}>
-                    <p>
-                      Nivå: {level.level} - {level.score} / {level.levelScore}
-                    </p>
-                    <ProgressBar>
-                      <ProgressForSubjects
-                        className={`crl-${selectedSubject}`}
-                        style={{
-                          width: `${(level.score / level.levelScore) * 100}%`,
-                        }}
-                      ></ProgressForSubjects>
-                    </ProgressBar>
-                  </LevelProgress>
-                ))
-              : // Handle subjects with subcategories
-                Object.keys(progress[subject]).map((subcategory) => {
-                  let subcategoryHeader = false;
-                  return progress[subject][subcategory].levels
-                    ? progress[subject][subcategory].levels.map(
-                        (level, index) => {
-                          // Show subcategoryHeader = Matte only once
-                          if (!subcategoryHeader) {
-                            subcategoryHeader = true;
-                            return (
-                              <>
-                                <h2 key={subcategory}>{subcategory}</h2>
-                                <LevelProgress key={index}>
-                                  <p>
-                                    Nivå: {level.level} - {level.score} /{" "}
-                                    {level.levelScore}
-                                  </p>
-                                  <ProgressBar>
-                                    <ProgressForSubjects
-                                      className={`crl-${selectedSubject}`}
-                                      style={{
-                                        width: `${
-                                          (level.score / level.levelScore) * 100
-                                        }%`,
-                                      }}
-                                    ></ProgressForSubjects>
-                                  </ProgressBar>
-                                </LevelProgress>
-                              </>
-                            );
-                          } else {
-                            return (
-                              <LevelProgress key={index}>
-                                <p>
-                                  Nivå: {level.level} - {level.score} /
-                                  {level.levelScore}
-                                </p>
-                                <ProgressBar>
-                                  <ProgressForSubjects
-                                    className={`crl-${selectedSubject}`}
-                                    style={{
-                                      width: `${
-                                        (level.score / level.levelScore) * 100
-                                      }%`,
-                                    }}
-                                  ></ProgressForSubjects>
-                                </ProgressBar>
-                              </LevelProgress>
-                            );
-                          }
-                        }
-                      )
-                    : null;
-                })}
+            {data.levels.map((level, index) => (
+              <LevelProgress key={index}>
+                <p>
+                  Nivå: {level.level} - {level.score} / {level.levelScore}
+                </p>
+                <ProgressBar>
+                  <ProgressForSubjects
+                    className={`crl-${selectedSubject}`}
+                    style={{
+                      width: `${(level.score / level.levelScore) * 100}%`,
+                    }}
+                  ></ProgressForSubjects>
+                </ProgressBar>
+              </LevelProgress>
+            ))}
           </LevelWrapper>
         </div>
       ))}

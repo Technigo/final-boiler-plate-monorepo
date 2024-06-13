@@ -127,7 +127,7 @@ export const ScoreProvider = ({ children }) => {
           score,
         }),
       });
-      console.log(response);
+
       if (!response.ok) {
         throw new Error("Failed to save progress");
       }
@@ -153,7 +153,6 @@ export const ScoreProvider = ({ children }) => {
       }
 
       const data = await response.json();
-      console.log("Fetched progress data:", data);
       setProgress(data.progress);
     } catch (error) {
       console.error(error);
@@ -166,10 +165,6 @@ export const ScoreProvider = ({ children }) => {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [authenticated.accessToken]);
-
-  useEffect(() => {
-    console.log("Progress state updated:", progress);
-  }, [progress]);
 
   return (
     <ScoreContext.Provider

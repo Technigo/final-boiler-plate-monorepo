@@ -1,26 +1,48 @@
 import styled from "styled-components";
+import { useLogin } from "./../../contexts/UserContext";
+import heroImgUrl from "/src/assets/ProgressHeader.jpg";
 
-export const Hero = ({ user }) => {
+export const Hero = () => {
+  const { user } = useLogin();
+
+  const content = {
+    heroTitle: `Hej ${user?.firstName} 👋`,
+    intro:
+      "Sidan där du kan förbättra dina kunskaper i olika skolämnen. Registrera dig för att spara dina framsteg i spelen.",
+    heroImgUrl: "./ProgressHeader.png",
+    heroImgAlt: "Barn studerar i soffa",
+  };
+
   return (
     <HeroContainer>
       <HeroLeft>
-        <HeroTitle>Välkommen {user?.username} 👋</HeroTitle>
+        <HeroTitle>{content.heroTitle}</HeroTitle>
         <p>
-          Här hittar du alla dina resultat från uppgifterna! Till höger har du
-          en totalt resultat medans nedanför resultat för varje ämne.
+          När du spelar spel och gör uppgifter här, sparas dina framsteg så att
+          du kan se hur mycket du har lärt dig och blivit bättre på.
         </p>
+        <p>
+          Nedanför kan du se hur det har gått för dig i varje ämne, som matte,
+          svenska och engelska.
+        </p>
+        <p>Ha kul och fortsätt lära dig nya saker varje dag! 🎓📚</p>
       </HeroLeft>
-      <HeroRight>
+      {/* <HeroRight>
         <ProgressBox></ProgressBox>
-      </HeroRight>
+      </HeroRight> */}
     </HeroContainer>
   );
 };
 
 const HeroContainer = styled.div`
   display: flex;
+  justify-content: center;
   padding: 60px 30px;
   min-height: 400px;
+  background-image: url(${heroImgUrl});
+  background-size: cover;
+  /* background-position: center center; */
+  height: auto;
 `;
 
 const HeroTitle = styled.h1`

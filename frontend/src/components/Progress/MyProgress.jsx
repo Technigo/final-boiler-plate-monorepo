@@ -1,12 +1,10 @@
 import styled, { css } from "styled-components";
 import { useState } from "react";
-import { useLogin } from "./../../contexts/UserContext";
 import { LevelProgressBar } from "./LevelProgressBar";
 import { useScore } from "../../contexts/ScoreContext";
 import { Hero } from "./Hero";
 
 export const Progress = () => {
-  const { user } = useLogin();
   const { progress } = useScore();
   const [selectedSubject, setSelectedSubject] = useState(null);
 
@@ -20,7 +18,7 @@ export const Progress = () => {
 
   return (
     <ProgressContainer>
-      {/* <Hero user={user} /> */}
+      <Hero />
       <GamesCards>
         <GameCard math onClick={() => handleProgressButton("math")}>
           Matte
@@ -76,7 +74,7 @@ const GameCard = styled.div`
   @media (min-width: 700px) {
     max-width: 600px;
     min-width: 200px;
-    height: 220px;
+    height: 120px;
     font-size: 60px;
   }
 

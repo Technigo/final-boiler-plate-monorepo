@@ -1,11 +1,12 @@
 import styled from "styled-components";
 import { Button } from "./Button";
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
 export const Hero = () => {
   const content = {
     heading: "Välkommen till Pluggin'",
-    intro: "Sidan där du kan förbättra dina kunskaper i olika skolämnen. Registrera dig för att spara dina framsteg i spelen.",
+    intro:
+      "Sidan där du kan förbättra dina kunskaper i olika skolämnen. Registrera dig för att spara dina framsteg i spelen.",
     heroImgUrl: "./hero.png",
     heroImgAlt: "Barn studerar i soffa",
   };
@@ -66,5 +67,3 @@ const HeroIntro = styled.p`
     font-size: 1.2rem;
   }
 `;
-
-

@@ -1,0 +1,15 @@
+{
+  "subjects": {
+    "math": "matte",
+    "swedish": "svenska",
+    "english": "engelska"
+  },
+  "subcategories": {
+    "addition": "addition",
+    "multiplication": "multiplikation",
+    "subtraction": "subtraktion",
+    "division": "division",
+    "synonyms": "synonymer",
+    "translate": "översättning"
+  }
+}
