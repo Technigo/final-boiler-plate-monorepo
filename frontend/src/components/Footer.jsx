@@ -21,7 +21,7 @@ const FooterContainer = styled.div`
   width: 100%;
   display: flex;
   flex-direction: row;
-  position: relative;
+  position: fixed;
   bottom: 0;
   margin: auto;
   justify-content: center;
@@ -29,7 +29,7 @@ const FooterContainer = styled.div`
 
     @media (min-width: 1025px) {
     padding: 20px 30px;
-    position: absolute;
+    position: fixed;
   
   }
 `;

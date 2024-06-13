@@ -39,19 +39,22 @@ const HomeContainer = styled.div`
   margin: 0 auto;
   background-image: none;
   background-size: cover;
-  
-  background-position: top;
+  background-position-x: center;
+  background-position-y: top;
   background-repeat: no-repeat;
+  height: 90vh;
+
 
   @media (min-width: 500px) AND (max-width: 1025px){
     background-image: url(${HeaderImgTabl});
-    height: 90vh;s
+    
     }
 
   @media (min-width: 1025px) {
     background-image: url(${HeaderImg});
     background-size: cover;
     background-position: center;
+    height: auto;
   }
 `;
 
