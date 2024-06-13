@@ -1,15 +1,15 @@
-import styled from "styled-components"
-import { IoArrowBackCircleOutline } from "react-icons/io5"
-import { Link } from "react-router-dom"
-import { useState } from "react"
-import { LanguageQuestion } from "./LanguageQuestion.jsx"
+import styled from "styled-components";
+import { IoArrowBackCircleOutline } from "react-icons/io5";
+import { Link } from "react-router-dom";
+import { useState } from "react";
+import { LanguageQuestion } from "./LanguageQuestion.jsx";
 
 export const English = () => {
-  const [gameTypeNumber, setGameTypeNumber] = useState()
+  const [gameTypeNumber, setGameTypeNumber] = useState();
 
   const handleChoice = (type) => {
-    setGameTypeNumber(type)
-  }
+    setGameTypeNumber(type);
+  };
 
   if (gameTypeNumber) {
     return (
@@ -21,6 +21,7 @@ export const English = () => {
           type={gameTypeNumber}
           language="english"
           color="forest"
+          subcategory="translate"
         />
       </EnglishGame>
     );
@@ -40,7 +41,7 @@ export const English = () => {
       </EnglishGame>
     );
   }
-}
+};
 
 const EnglishGame = styled.div`
   display: flex;
@@ -49,23 +50,23 @@ const EnglishGame = styled.div`
   align-items: center;
   text-align: center;
   margin: 0 auto;
-`
+`;
 
 const BackButton = styled.button`
   background: none;
   border: none;
   height: 30px;
-`
+`;
 
 const BackIcon = styled(IoArrowBackCircleOutline)`
   font-size: 40px;
   color: #000000;
   cursor: pointer;
-`
+`;
 
 const EnglishTitle = styled.h2`
   color: black;
-`
+`;
 
 const GameTypeButton = styled.button`
   background-color: var(--forest);
@@ -103,4 +104,4 @@ const GameTypeButton = styled.button`
     height: 60px;
     padding: 20px;
   }
-`
+`;

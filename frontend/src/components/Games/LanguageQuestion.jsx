@@ -1,13 +1,15 @@
-import PropTypes from "prop-types"
-import styled from "styled-components"
-import { useState, useEffect } from "react"
-import { useScore } from "../../contexts/ScoreContext"
-import Lottie from "lottie-react"
-import Right from "../../assets/Right.json"
-import Wrong from "../../assets/Wrong.json"
-import Celebrate from "../../assets/Celebrate.json"
+import PropTypes from "prop-types";
+import styled from "styled-components";
+import { useState, useEffect } from "react";
+import { useScore } from "../../contexts/ScoreContext";
+import Lottie from "lottie-react";
+import Right from "../../assets/Right.json";
+import Wrong from "../../assets/Wrong.json";
+import Celebrate from "../../assets/Celebrate.json";
 
-export const LanguageQuestion = ({ type, language, color }) => {
+
+export const LanguageQuestion = ({ type, language, color, subcategory }) => {
+
   const {
     englishGame,
     setEnglishGame,
@@ -21,20 +23,17 @@ export const LanguageQuestion = ({ type, language, color }) => {
     setDisableButton,
     generateQuestion,
     rightAnswer,
-    celebrateLottie
-  } = useScore()
-
+    celebrateLottie,
+  } = useScore();
 
   const game = language === "swedish" ? swedishGame : englishGame;
   const setGame = language === "swedish" ? setSwedishGame : setEnglishGame;
   const currentScore = game[Number(type)].score;
   const { registerAnswer } = useScore();
 
-
   //Animations to display right/wrong answer and level-change
-  const [rightLottie, setRightLottie] = useState(false)
-  const [wrongLottie, setWrongLottie] = useState(false)
-
+  const [rightLottie, setRightLottie] = useState(false);
+  const [wrongLottie, setWrongLottie] = useState(false);
 
   //Start by generating a question
   useEffect(() => {
@@ -44,8 +43,6 @@ export const LanguageQuestion = ({ type, language, color }) => {
 
   //Takes users answer and compare it to right answer to generate right/wrong-message
   const handleChoice = async (answer) => {
-    console.log(answer);
-    console.log(language);
     if (answer === rightAnswer) {
       setTimeout(() => setRightLottie(true), 1000);
       const newGame = [...game];
@@ -57,8 +54,10 @@ export const LanguageQuestion = ({ type, language, color }) => {
       try {
         await registerAnswer({
           answer,
-          language,
-          level: game[Number(type)].level,
+          subject: language,
+          level: newGame[type].level,
+          subcategory: subcategory,
+          score: currentScore + 1,
         });
       } catch (err) {
         console.error("Error registration answer", err);

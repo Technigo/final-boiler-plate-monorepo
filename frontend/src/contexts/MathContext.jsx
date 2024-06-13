@@ -1,8 +1,8 @@
 /* eslint-disable react-refresh/only-export-components */
-import PropTypes from "prop-types"
-import { createContext, useContext, useState } from "react"
+import PropTypes from "prop-types";
+import { createContext, useContext, useState } from "react";
 
-const MathContext = createContext()
+const MathContext = createContext();
 
 export const MathProvider = ({ children }) => {
   const [mathGame, setMathGame] = useState([
@@ -13,6 +13,7 @@ export const MathProvider = ({ children }) => {
       level: 1,
       score: 0,
       levelScore: 20,
+      subcategory: "addition",
     },
     {
       title: "Subtrahera",
@@ -21,6 +22,7 @@ export const MathProvider = ({ children }) => {
       level: 1,
       score: 0,
       levelScore: 20,
+      subcategory: "subtraction",
     },
     {
       title: "Multiplicera",
@@ -29,6 +31,7 @@ export const MathProvider = ({ children }) => {
       level: 1,
       score: 0,
       levelScore: 20,
+      subcategory: "multiplication",
     },
     {
       title: "Dividera",
@@ -37,6 +40,7 @@ export const MathProvider = ({ children }) => {
       level: 1,
       score: 0,
       levelScore: 20,
+      subcategory: "division",
     },
   ]);
 
@@ -189,11 +193,11 @@ export const MathProvider = ({ children }) => {
     >
       {children}
     </MathContext.Provider>
-  )
-}
+  );
+};
 
 export const useMath = () => useContext(MathContext);
 
 MathProvider.propTypes = {
   children: PropTypes.any,
-}
+};

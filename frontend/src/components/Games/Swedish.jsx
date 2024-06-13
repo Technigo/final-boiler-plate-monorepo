@@ -1,15 +1,15 @@
-import styled from "styled-components"
-import { IoArrowBackCircleOutline } from "react-icons/io5"
-import { Link } from "react-router-dom"
-import { useState } from "react"
-import { LanguageQuestion } from "./LanguageQuestion.jsx"
+import styled from "styled-components";
+import { IoArrowBackCircleOutline } from "react-icons/io5";
+import { Link } from "react-router-dom";
+import { useState } from "react";
+import { LanguageQuestion } from "./LanguageQuestion.jsx";
 
 export const Swedish = () => {
-  const [gameTypeNumber, setGameTypeNumber] = useState()
+  const [gameTypeNumber, setGameTypeNumber] = useState();
 
   const handleChoice = (type) => {
     setGameTypeNumber(type);
-  }
+  };
 
   if (gameTypeNumber) {
     return (
@@ -21,10 +21,11 @@ export const Swedish = () => {
           type={gameTypeNumber}
           language="swedish"
           color="sunset"
+          subcategory="synonyms"
         />
       </SwedishGame>
     );
-  } else { 
+  } else {
     return (
       <SwedishGame>
         <Link to="/spela">
@@ -38,9 +39,9 @@ export const Swedish = () => {
           Synonymer
         </GameTypeButton>
       </SwedishGame>
-    )
+    );
   }
-}
+};
 
 const SwedishGame = styled.div`
   display: flex;
@@ -49,23 +50,23 @@ const SwedishGame = styled.div`
   align-items: center;
   text-align: center;
   margin: 0 auto;
-`
+`;
 
 const BackButton = styled.button`
   background: none;
   border: none;
   height: 30px;
-`
+`;
 
 const BackIcon = styled(IoArrowBackCircleOutline)`
   font-size: 40px;
   color: #000000;
   cursor: pointer;
-`
+`;
 
 const SwedishTitle = styled.h2`
   color: black;
-`
+`;
 
 const GameTypeButton = styled.button`
   background-color: var(--sunset);
@@ -103,4 +104,4 @@ const GameTypeButton = styled.button`
     height: 60px;
     padding: 20px;
   }
-`
+`;

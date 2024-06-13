@@ -55,30 +55,22 @@ const levelSchema = new mongoose.Schema({
   levelScore: { type: Number, default: 20 },
 });
 
-const mathSchema = new mongoose.Schema({
-  addition: {
-    levels: [levelSchema],
-  },
-  multiplication: {
-    levels: [levelSchema],
-  },
-  subtraction: {
-    levels: [levelSchema],
-  },
-  division: {
-    levels: [levelSchema],
-  },
+const subcategorySchema = new mongoose.Schema({
+  levels: [levelSchema],
 });
 
-const swedishSchema = new mongoose.Schema({
-  synonyms: {
-    levels: [levelSchema],
+const progressSchema = new mongoose.Schema({
+  math: {
+    addition: subcategorySchema,
+    multiplication: subcategorySchema,
+    subtraction: subcategorySchema,
+    division: subcategorySchema,
   },
-});
-
-const englishSchema = new mongoose.Schema({
-  translate: {
-    levels: [levelSchema],
+  swedish: {
+    synonyms: subcategorySchema,
+  },
+  english: {
+    translate: subcategorySchema,
   },
 });
 
@@ -114,11 +106,7 @@ const userSchema = new mongoose.Schema({
     type: String,
     default: () => crypto.randomBytes(128).toString("hex"),
   },
-  progress: {
-    math: mathSchema,
-    swedish: swedishSchema,
-    english: englishSchema,
-  },
+  progress: progressSchema,
 });
 
 const User = mongoose.model("User", userSchema);
@@ -235,22 +223,34 @@ app.get("/games", async (req, res) => {
     .json({ message: "Secret message only for logged in users to see!" });
 });
 
-// Endpoint for updating users progress
-// app.post("/progress", authenticateUser, async (req, res) => {
-//   try {
-//     const user = req.user;
-//     if (!user) {
-//       return res.status(404).json({ message: "User not found." });
-//     }
+// Route for storing progress
+app.post("/progress", authenticateUser, async (req, res) => {
+  const { subject, subcategory, level, score } = req.body;
+  const userId = req.user._id; // Get user id
 
-//     const progress = user.progress;
-//     res.status(200).json({ progress });
-//   } catch (error) {
-//     console.error(error);
-//     res.status(500).json({ message: "Failed to fetch progress." });
-//   }
-// });
+  console.log("Incoming data:", req.body);
 
+  try {
+    // Find user by using id
+    const user = await User.findById(userId);
+
+    if (!user) {
+      return res.status(404).json({ error: "User not found" });
+    }
+
+    // Update progress for the current subject / subcategory
+    user.progress[subject][subcategory].levels[level - 1].score += 1;
+
+    // Save updates to db
+    await user.save();
+
+    res.status(201).json({ message: "Progress updated successfully" });
+  } catch (err) {
+    res.status(500).json({ error: "Failed to update progress" });
+  }
+});
+
+// Route to get progress from db
 app.get("/progress", authenticateUser, async (req, res) => {
   try {
     const user = req.user; // get user
