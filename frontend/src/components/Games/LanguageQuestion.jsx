@@ -40,11 +40,11 @@ export const LanguageQuestion = ({ type, language, color, subcategory }) => {
   //Takes users answer and compare it to right answer to generate right/wrong-message
   const handleChoice = async (answer) => {
     if (answer === rightAnswer) {
-      setTimeout(() => setRightLottie(true), 1000)
+      setTimeout(() => setRightLottie(true), 500)
       const newGame = [...game]
       setTimeout(() => (newGame[Number(type)].score = currentScore + 1), 3000)
       setTimeout(() => setGame(newGame), 3000)
-      setTimeout(() => setRightLottie(false), 5000)
+      setTimeout(() => setRightLottie(false), 4600)
 
       // Send answer to backend
       try {
@@ -59,12 +59,12 @@ export const LanguageQuestion = ({ type, language, color, subcategory }) => {
         console.error("Error registration answer", err)
       }
     } else {
-      setTimeout(() => setWrongLottie(true), 1000)
-      setTimeout(() => setMessage(`Rätt svar var ${rightAnswer}.`), 3000)
-      setTimeout(() => setWrongLottie(false), 5000)
+      setTimeout(() => setWrongLottie(true), 500)
+      setTimeout(() => setMessage(`Rätt svar var ${rightAnswer}.`), 2500)
+      setTimeout(() => setWrongLottie(false), 4600)
     }
     setDisableButton(true)
-    setTimeout(() => generateQuestion(language), 5000)
+    setTimeout(() => generateQuestion(language), 4500)
   }
 
   if (game[Number(type)].level < 4) {
