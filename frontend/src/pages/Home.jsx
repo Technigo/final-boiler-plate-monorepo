@@ -1,10 +1,10 @@
 // Import necessary dependencies and components.
-import { Hero } from "../components/Hero";
-import { Link } from "react-router-dom";
-import styled, { css } from "styled-components";
-import { Footer } from "../components/Footer";
-import HeaderImg from "/src/assets/testheader.jpg";
-import HeaderImgTabl from "/src/assets/testheader2.jpg";
+import { Hero } from "../components/Hero"
+import { Link } from "react-router-dom"
+import styled, { css } from "styled-components"
+import { Footer } from "../components/Footer"
+import HeaderImg from "/src/assets/HeaderWeb.jpg"
+import HeaderImgTabl from "/src/assets/HeaderTablet.jpg"
 
 // Define the 'Home' functional component.
 export const Home = () => {
@@ -13,7 +13,7 @@ export const Home = () => {
     <HomeContainer>
       <Hero />
       <ContentWrapper>
-      <Heading>VÄLJ ÄMNE</Heading>
+        <Heading>VÄLJ ÄMNE</Heading>
         <GamesCards>
           <Link to={`/spela/matte`}>
             <GameCard math>Matte</GameCard>
@@ -28,8 +28,8 @@ export const Home = () => {
       </ContentWrapper>
       <Footer />
     </HomeContainer>
-  );
-};
+  )
+}
 
 const HomeContainer = styled.div`
   display: flex;
@@ -44,11 +44,9 @@ const HomeContainer = styled.div`
   background-repeat: no-repeat;
   height: 90vh;
 
-
-  @media (min-width: 500px) AND (max-width: 1025px){
+  @media (min-width: 500px) AND (max-width: 1025px) {
     background-image: url(${HeaderImgTabl});
-    
-    }
+  }
 
   @media (min-width: 1025px) {
     background-image: url(${HeaderImg});
@@ -56,13 +54,13 @@ const HomeContainer = styled.div`
     background-position: center;
     height: auto;
   }
-`;
+`
 
 const ContentWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-`;
+`
 
 const Heading = styled.h2`
   font-size: 27px;
@@ -70,40 +68,39 @@ const Heading = styled.h2`
   margin-top: -3px;
   z-index: 2;
 
-  @media (min-width: 500px) AND (max-width: 700px){
+  @media (min-width: 500px) AND (max-width: 700px) {
     margin-top: 10px;
-    }
+  }
 
-  @media (min-width: 700px) AND (max-width: 1025px){
+  @media (min-width: 700px) AND (max-width: 1025px) {
     margin-top: -10px;
-    }
+  }
 
   @media (min-width: 1025px) {
     font-size: 40px;
 
     margin: 25px auto;
   }
-`;
+`
 
 const GamesCards = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin: 0 auto;
+  margin: 0 auto 20px;
   padding-bottom: 17px;
-  
 
-  @media (min-width: 500px) AND (max-width: 1025px){
-    margin: 0 auto 200px;
+  @media (min-width: 500px) AND (max-width: 1025px) {
+    margin: 0 auto 100px;
     padding-bottom: 30px;
   }
- 
-   @media (min-width: 1025px) {
+
+  @media (min-width: 1025px) {
     flex-direction: row;
     gap: 40px;
   }
-`;
+`
 
 const GameCard = styled.div`
   display: flex;
@@ -118,19 +115,18 @@ const GameCard = styled.div`
   background-color: var(--forest);
   font-size: 30px;
 
-  @media (min-width: 400px) AND (max-width: 700px){
-  height: 90px;
-  margin: 20px auto;
-  color: white;
-  font-size: 40px;
+  @media (min-width: 400px) AND (max-width: 700px) {
+    height: 90px;
+    margin: 20px auto;
+    color: white;
+    font-size: 40px;
   }
 
-
-@media (min-width: 700px) AND (max-width: 1025px){
-  height: 90px;
-  margin: 20px auto;
-  color: white;
-  font-size: 40px;
+  @media (min-width: 700px) AND (max-width: 1025px) {
+    height: 90px;
+    margin: 20px auto;
+    color: white;
+    font-size: 40px;
   }
 
   @media (min-width: 1025px) {
@@ -176,5 +172,4 @@ const GameCard = styled.div`
         box-shadow: 15px 15px var(--forestshadow);
       }
     `}
-
-`;
+`

@@ -58,6 +58,10 @@ const About = styled.div`
   color: black;
   font-size: 15px;
 
+  &:hover {
+    color: var(--oceanhover);
+  }
+
   @media (min-width: 1025px) {
     font-size: 17px;
   
