@@ -75,14 +75,17 @@ export const Swedish = () => {
             value="0"
             onClick={(event) => handleChoice(event.target.value)}
           >
-            Nivå {swedishGame[0].level}
+            
             <ButtonTextDiv>
               <ButtonTitle>Synonymer</ButtonTitle>
               <ButtonSign>
                 <LiaReadme />
               </ButtonSign>
             </ButtonTextDiv>
-            {swedishGame[0].score}/{swedishGame[0].levelScore}
+              <ProgressDiv>
+              <p>Nivå {swedishGame[0].level}</p>
+              <p>{swedishGame[0].score}/{swedishGame[0].levelScore}</p>
+              </ProgressDiv>
           </GameTypeButton>
         </Choices>
       </SwedishGameSite>
@@ -199,9 +202,9 @@ const GameTypeButton = styled.button`
   color: white;
   font-size: 18px;
   width: 270px;
-  height: 60px;
+  height: 70px;
   margin: 10px auto;
-  padding: 10px 0;
+  padding: 20px 0;
   border-radius: 15px;
   border: none;
   cursor: pointer;
@@ -210,7 +213,7 @@ const GameTypeButton = styled.button`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 20px;
+  gap: 8px;
 
   &:hover {
     background-color: var(--sunsethover);
@@ -230,26 +233,54 @@ const GameTypeButton = styled.button`
   @media (min-width: 700px) {
     width: 270px;
     height: 120px;
-    padding: 10px 20px;
+    padding: 30px 20px;
+    gap: 20px;
+  }
+`
+const ProgressDiv = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 200px;
+  height: 20px;
+  font-size: 15px;
+  
+  @media (min-width: 700px) {
+    width: 220px;
+    height: 20px;
+    font-size: 20px;
   }
 `
 
 const ButtonTextDiv = styled.div`
   display: flex;
-  flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  width: 220px;
+  width: 200px;
   height: 20px;
+  
+  @media (min-width: 700px) {
+    width: 220px;
+    height: 20px;
+    margin: 10px auto;
+  }
 `
 
 const ButtonTitle = styled.p`
-  font-size: 30px;
-  text-align: center;
+  font-size: 20px;
+
+  @media (min-width: 700px) {
+    font-size: 30px;
+  }
 `
 
 const ButtonSign = styled.p`
-  font-size: 50px;
+  font-size: 33px;
+  position: relative;
   display: flex;
   align-items: center;
+
+  @media (min-width: 700px) {
+    font-size: 50px;
+  }
 `
