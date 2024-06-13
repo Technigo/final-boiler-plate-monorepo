@@ -227,7 +227,7 @@ const GameTypeButton = styled.button`
     height: 120px;
     padding: 10px 20px;
   }
-`;
+`
 
 const ButtonTextDiv = styled.div`
   display: flex;

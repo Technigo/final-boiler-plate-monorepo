@@ -1,31 +1,31 @@
-import { Link } from "react-router-dom";
-import styled from "styled-components";
-import { useLogin } from "../contexts/UserContext";
-import logo from "/src/assets/Logo-header.png";
-import { useState } from "react";
-import { FaBars, FaTimes } from "react-icons/fa";
-import { FiLogOut } from "react-icons/fi";
-import { SlideInPanel } from "./SlideInPanel";
-import { RegistrationForm } from "./RegistrationForm";
-import { Login } from "./Login";
+import { Link } from "react-router-dom"
+import styled from "styled-components"
+import { useLogin } from "../contexts/UserContext"
+import logo from "/src/assets/pluggin-logo.png"
+import { useState } from "react"
+import { FaBars, FaTimes } from "react-icons/fa"
+import { FiLogOut } from "react-icons/fi"
+import { SlideInPanel } from "./SlideInPanel"
+import { RegistrationForm } from "./RegistrationForm"
+import { Login } from "./Login"
 
 export const Header = () => {
-  const { isLoggedIn, signout } = useLogin();
-  const [hamburgerOpen, setHamburgerOpen] = useState(false);
-  const [panelOpen, setPanelOpen] = useState({ register: false, login: false });
+  const { isLoggedIn, signout } = useLogin()
+  const [hamburgerOpen, setHamburgerOpen] = useState(false)
+  const [panelOpen, setPanelOpen] = useState({ register: false, login: false })
 
   const toggleHamburger = () => {
-    setHamburgerOpen(!hamburgerOpen);
-  };
+    setHamburgerOpen(!hamburgerOpen)
+  }
 
   const openPanel = (type) => {
-    setPanelOpen({ ...panelOpen, [type]: true });
-    setHamburgerOpen(false);
-  };
+    setPanelOpen({ ...panelOpen, [type]: true })
+    setHamburgerOpen(false)
+  }
 
   const closePanel = () => {
-    setPanelOpen({ register: false, login: false });
-  };
+    setPanelOpen({ register: false, login: false })
+  }
 
   return (
     <HeaderContainer>
@@ -75,10 +75,9 @@ export const Header = () => {
           <Login />
         </SlidingPanelContent>
       </SlideInPanel>
-
     </HeaderContainer>
-  );
-};
+  )
+}
 
 const HeaderContainer = styled.div`
   background-color: var(--daffodil);
@@ -99,14 +98,14 @@ const HeaderContainer = styled.div`
     height: 80px;
     padding: 0 120px;
   }
-`;
+`
 
 const Logo = styled.img`
   width: auto;
   height: 55px;
   margin-top: 5px;
   align-items: center;
-`;
+`
 
 const MenuIcon = styled.div`
   display: flex;
@@ -117,7 +116,7 @@ const MenuIcon = styled.div`
   @media (min-width: 700px) {
     display: none;
   }
-`;
+`
 
 const NavMenu = styled.div`
   display: ${({ open }) => (open ? "flex" : "none")};
@@ -138,7 +137,7 @@ const NavMenu = styled.div`
     width: auto;
     padding: 0;
   }
-`;
+`
 
 const LoggedIn = styled.div`
   display: flex;
@@ -150,7 +149,7 @@ const LoggedIn = styled.div`
     flex-direction: row;
     gap: 60px;
   }
-`;
+`
 
 const StartPage = styled.div`
   display: flex;
@@ -162,7 +161,7 @@ const StartPage = styled.div`
     flex-direction: row;
     gap: 60px;
   }
-`;
+`
 /*
 const Register = styled.p`
   color: #363636;
@@ -201,7 +200,7 @@ const Play = styled.p`
   &:active {
     color: var(--oceanactive);
   }
-`;
+`
 
 const MyProgress = styled.p`
   color: #363636;
@@ -214,14 +213,14 @@ const MyProgress = styled.p`
   &:active {
     color: var(--oceanactive);
   }
-`;
+`
 
 const SignOut = styled.div`
   display: flex;
   justify-content: center;
   gap: 7px;
   cursor: pointer;
-`;
+`
 
 const SignOutText = styled.p`
   color: #363636;
@@ -234,18 +233,18 @@ const SignOutText = styled.p`
   &:active {
     color: var(--oceanactive);
   }
-`;
+`
 
 const SignOutIcon = styled(FiLogOut)`
   font-size: 22px;
   color: #363636;
   align-items: center;
   cursor: pointer;
-`;
+`
 
 const SlidingPanelContent = styled.div`
   padding: 10px 20px;
-`;
+`
 
 const StyledButton = styled.button`
   background-color: transparent;
@@ -265,5 +264,4 @@ const StyledButton = styled.button`
   &:active {
     color: var(--oceanactive);
   }
-`;
-
+`

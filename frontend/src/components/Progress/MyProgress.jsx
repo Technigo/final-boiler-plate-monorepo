@@ -1,20 +1,20 @@
-import styled, { css } from "styled-components";
-import { useState } from "react";
-import { LevelProgressBar } from "./LevelProgressBar";
-import { useScore } from "../../contexts/ScoreContext";
-import { Hero } from "./Hero";
+import styled, { css } from "styled-components"
+import { useState } from "react"
+import { LevelProgressBar } from "./LevelProgressBar"
+import { useScore } from "../../contexts/ScoreContext"
+import { Hero } from "./Hero"
 
 export const Progress = () => {
-  const { progress } = useScore();
-  const [selectedSubject, setSelectedSubject] = useState(null);
-  console.log(progress);
+  const { progress } = useScore()
+  const [selectedSubject, setSelectedSubject] = useState(null)
+  console.log(progress)
   if (!progress) {
-    return <div>Loading...</div>;
+    return <div>Loading...</div>
   }
 
   const handleProgressButton = (subject) => {
-    setSelectedSubject(subject);
-  };
+    setSelectedSubject(subject)
+  }
 
   return (
     <ProgressContainer>
@@ -38,12 +38,12 @@ export const Progress = () => {
         />
       )}
     </ProgressContainer>
-  );
-};
+  )
+}
 
 const ProgressContainer = styled.div`
   margin: 0 auto;
-`;
+`
 
 const GamesCards = styled.div`
   display: flex;
@@ -54,8 +54,9 @@ const GamesCards = styled.div`
 
   @media (min-width: 700px) {
     flex-direction: row;
+    margin: -60px auto 0;
   }
-`;
+`
 
 const GameCard = styled.div`
   display: flex;
@@ -63,19 +64,32 @@ const GameCard = styled.div`
   justify-content: center;
   align-items: center;
   border-radius: 30px;
-  gap: 30px;
   width: 290px;
-  height: 130px;
-  margin: 20px auto;
+  height: 80px;
+  margin: 12px auto;
   color: white;
   background-color: var(--forest);
-  font-size: 50px;
+  font-size: 30px;
 
-  @media (min-width: 700px) {
-    max-width: 600px;
+  @media (min-width: 400px) AND (max-width: 700px) {
+    height: 90px;
+    margin: 20px auto;
+    color: white;
+    font-size: 40px;
+  }
+
+  @media (min-width: 700px) AND (max-width: 1025px) {
+    height: 90px;
+    margin: 20px auto;
+    color: white;
+    font-size: 40px;
+  }
+
+  @media (min-width: 1025px) {
+    width: 250px;
     min-width: 200px;
-    height: 120px;
-    font-size: 60px;
+    height: 100px;
+    font-size: 50px;
   }
 
   &:hover {
@@ -118,4 +132,4 @@ const GameCard = styled.div`
    @media (min-width: 700px) {
     margin: 40px;
   }
-`;
+`

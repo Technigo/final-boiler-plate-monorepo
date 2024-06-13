@@ -11,7 +11,7 @@ export const Math = () => {
   const { mathGame, celebrateLottie } = useMath()
   const [gameTypeNumber, setGameTypeNumber] = useState()
   const focusRef = useRef(null)
-  
+
   const handleChoice = (type) => {
     setGameTypeNumber(type)
   }
@@ -30,7 +30,13 @@ export const Math = () => {
                 animationData={Celebrate}
                 loop={false}
                 autoplay
-                style={{ width: 150, height: 150, position: "absolute", left: 568, top: -50}}
+                style={{
+                  width: 150,
+                  height: 150,
+                  position: "absolute",
+                  left: 568,
+                  top: -50,
+                }}
               />
             )}
           </TitleDiv>
@@ -45,7 +51,7 @@ export const Math = () => {
         <MathQuestion focusRef={focusRef} type={gameTypeNumber} />
       </MathGameSite>
     )
-  } else { 
+  } else {
     return (
       <MathGameSite>
         <HeaderDiv>
@@ -158,7 +164,7 @@ const BackIcon = styled(IoArrowBackCircleOutline)`
   font-size: 40px;
   color: #000000;
   cursor: pointer;
-  
+
   @media (min-width: 700px) {
     font-size: 60px;
   }
@@ -257,8 +263,9 @@ const ButtonTextDiv = styled.div`
 
 const ButtonTitle = styled.p`
   font-size: 30px;
-  text-align: center;
 `
+
+
 
 const ButtonSign = styled.p`
   font-size: 50px;

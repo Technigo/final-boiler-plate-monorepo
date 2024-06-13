@@ -1,34 +1,34 @@
-import styled from "styled-components";
-import { useEffect, useRef } from "react";
+import styled from "styled-components"
+import { useEffect, useRef } from "react"
 
 export const SlideInPanel = ({ isOpen, onClose, children }) => {
-    const panelRef = useRef();
-  
-    useEffect(() => {
-      const handleClickOutside = (event) => {
-        if (panelRef.current && !panelRef.current.contains(event.target)) {
-          onClose();
-        }
-      };
-  
-      if (isOpen) {
-        document.addEventListener("mousedown", handleClickOutside);
-      } else {
-        document.removeEventListener("mousedown", handleClickOutside);
+  const panelRef = useRef()
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (panelRef.current && !panelRef.current.contains(event.target)) {
+        onClose()
       }
-  
-      return () => {
-        document.removeEventListener("mousedown", handleClickOutside);
-      };
-    }, [isOpen, onClose]);
-  
-    return (
-      <PanelContainer ref={panelRef} isOpen={isOpen}>
-        <CloseButton onClick={onClose}>×</CloseButton>
-        {children}
-      </PanelContainer>
-    );
-};
+    }
+
+    if (isOpen) {
+      document.addEventListener("mousedown", handleClickOutside)
+    } else {
+      document.removeEventListener("mousedown", handleClickOutside)
+    }
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside)
+    }
+  }, [isOpen, onClose])
+
+  return (
+    <PanelContainer ref={panelRef} isOpen={isOpen}>
+      <CloseButton onClick={onClose}>×</CloseButton>
+      {children}
+    </PanelContainer>
+  )
+}
 
 const PanelContainer = styled.div`
   position: fixed;
@@ -41,13 +41,12 @@ const PanelContainer = styled.div`
   height: calc(100% - 60px);
   right: ${({ isOpen }) => (isOpen ? "0" : "-100%")};
 
-
   @media (min-width: 700px) {
     width: 400px;
     top: 80px;
     height: calc(100% - 80px);
   }
-`;
+`
 
 const CloseButton = styled.div`
   font-size: 30px;
@@ -55,5 +54,4 @@ const CloseButton = styled.div`
   position: absolute;
   top: 10px;
   left: 10px;
-`;
-
+`
