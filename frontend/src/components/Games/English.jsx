@@ -101,7 +101,7 @@ const EnglishGameSite = styled.div`
 
 const HeaderDiv = styled.div`
   display: flex;
-  flex-direction: column;
+  flex-direction: column-reverse;
   justify-content: space-between;
   align-items: center;
   margin: 20px auto 10px;
@@ -119,12 +119,14 @@ const HeaderDiv = styled.div`
 const TitleDiv = styled.div`
   display: flex;
   justify-content: flex-start;
-  gap: 30px;
   position: relative;
-  right: 130px;
+  right:20px;
 
   @media (min-width: 700px) {
     width: 540px;
+    gap: 30px;
+    position: relative;
+    right: 130px;
   }
 `
 
@@ -244,4 +246,6 @@ const ButtonTitle = styled.p`
 
 const ButtonSign = styled.p`
   font-size: 50px;
+  display: flex;
+  align-items: center;
 `

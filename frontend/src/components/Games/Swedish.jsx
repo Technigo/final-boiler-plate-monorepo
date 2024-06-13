@@ -101,7 +101,7 @@ const SwedishGameSite = styled.div`
 
 const HeaderDiv = styled.div`
   display: flex;
-  flex-direction: column;
+  flex-direction: column-reverse;
   justify-content: space-between;
   align-items: center;
   margin: 20px auto 10px;
@@ -119,12 +119,17 @@ const HeaderDiv = styled.div`
 const TitleDiv = styled.div`
   display: flex;
   justify-content: flex-start;
-  gap: 30px;
+  align-items: center;
   position: relative;
-  right: 130px;
+  right:20px;
 
   @media (min-width: 700px) {
     width: 540px;
+    gap: 30px;
+    position: relative;
+    right: 130px;
+    
+    
   }
 `
 
@@ -147,7 +152,7 @@ const BackIcon = styled(IoArrowBackCircleOutline)`
 
 const Title = styled.h1`
   margin: 0;
-  font-size: 40px;
+  font-size: 30px;
 
   @media (min-width: 700px) {
     font-size: 45px;
@@ -231,6 +236,7 @@ const GameTypeButton = styled.button`
 
 const ButtonTextDiv = styled.div`
   display: flex;
+  flex-direction: row;
   justify-content: space-between;
   align-items: center;
   width: 220px;
@@ -244,4 +250,6 @@ const ButtonTitle = styled.p`
 
 const ButtonSign = styled.p`
   font-size: 50px;
+  display: flex;
+  align-items: center;
 `
