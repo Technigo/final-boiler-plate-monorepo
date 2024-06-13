@@ -153,7 +153,7 @@ const BackIcon = styled(IoArrowBackCircleOutline)`
 
 const Title = styled.h1`
   margin: 0;
-  font-size: 40px;
+  font-size: 35px;
 
   @media (min-width: 700px) {
     font-size: 45px;
