@@ -1,8 +1,6 @@
 import styled from "styled-components";
 import { Button } from "./Button";
 import { Link } from 'react-router-dom';
-import Header from "/src/assets/testheader.jpg";
-import Header2 from "/src/assets/testheader2.jpg";
 
 export const Hero = () => {
   const content = {
