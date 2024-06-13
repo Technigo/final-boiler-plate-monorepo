@@ -39,10 +39,9 @@ const HomeContainer = styled.div`
   margin: 0 auto;
   background-image: none;
   background-size: cover;
-  background-position-x: center;
-  background-position-y: top;
+  background-position: center;
   background-repeat: no-repeat;
-  height: 90vh;
+  height: auto;
 
   @media (min-width: 500px) AND (max-width: 1025px) {
     background-image: url(${HeaderImgTabl});
@@ -50,9 +49,6 @@ const HomeContainer = styled.div`
 
   @media (min-width: 1025px) {
     background-image: url(${HeaderImg});
-    background-size: cover;
-    background-position: center;
-    height: auto;
   }
 `
 
