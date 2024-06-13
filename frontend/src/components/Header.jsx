@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { useLogin } from "../contexts/UserContext";
-import logo from "/src/assets/Logo-header.png";
+import logo from "/src/assets/pluggin-logo.png";
 import { useState } from "react";
 import { FaBars, FaTimes } from "react-icons/fa";
 import { FiLogOut } from "react-icons/fi";
