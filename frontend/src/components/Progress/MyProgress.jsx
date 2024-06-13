@@ -1,20 +1,20 @@
-import styled, { css } from "styled-components"
-import { useState } from "react"
-import { LevelProgressBar } from "./LevelProgressBar"
-import { useScore } from "../../contexts/ScoreContext"
-import { Hero } from "./Hero"
+import styled, { css } from "styled-components";
+import { useState } from "react";
+import { LevelProgressBar } from "./LevelProgressBar";
+import { useScore } from "../../contexts/ScoreContext";
+import { Hero } from "./Hero";
 
 export const Progress = () => {
   const { progress } = useScore();
   const [selectedSubject, setSelectedSubject] = useState(null);
 
   if (!progress) {
-    return <div>Loading...</div>
+    return <div>Loading...</div>;
   }
 
   const handleProgressButton = (subject) => {
-    setSelectedSubject(subject)
-  }
+    setSelectedSubject(subject);
+  };
 
   return (
     <ProgressContainer>
@@ -39,12 +39,12 @@ export const Progress = () => {
         />
       )}
     </ProgressContainer>
-  )
-}
+  );
+};
 
 const ProgressContainer = styled.div`
   margin: 0 auto;
-`
+`;
 
 const GamesH2 = styled.h2`
   text-align: center;
@@ -62,9 +62,9 @@ const GamesCards = styled.div`
 
   @media (min-width: 700px) {
     flex-direction: row;
-    margin: -60px auto 0;
+    /* margin: -60px auto 0; */
   }
-`
+`;
 
 const GameCard = styled.div`
   display: flex;
@@ -140,4 +140,4 @@ const GameCard = styled.div`
    @media (min-width: 700px) {
     margin: 40px;
   }
-`
+`;

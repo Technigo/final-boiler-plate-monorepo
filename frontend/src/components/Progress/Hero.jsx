@@ -1,19 +1,16 @@
-import styled from "styled-components"
-import { useLogin } from "./../../contexts/UserContext"
-import heroImgUrl from "/src/assets/ProgressHeaderWeb.jpg"
-import heroImgUrlTabl from "/src/assets/ProgressHeaderTablet.jpg"
+import styled from "styled-components";
+import { useLogin } from "./../../contexts/UserContext";
+import heroImgUrl from "/src/assets/ProgressHeaderWeb.jpg";
+import heroImgUrlTabl from "/src/assets/ProgressHeaderTablet.jpg";
 
 export const Hero = () => {
-
   const { user } = useLogin();
 
   const content = {
     heroTitle: `Hej ${user?.firstName} 👋`,
     intro:
       "Sidan där du kan förbättra dina kunskaper i olika skolämnen. Registrera dig för att spara dina framsteg i spelen.",
-  }
- 
-
+  };
 
   return (
     <HeroContainer>
@@ -26,8 +23,8 @@ export const Hero = () => {
         <HeroP>Ha kul och fortsätt lära dig nya saker varje dag! 🎓📚</HeroP>
       </HeroLeft>
     </HeroContainer>
-  )
-}
+  );
+};
 
 const HeroContainer = styled.div`
   display: flex;
@@ -49,10 +46,9 @@ const HeroContainer = styled.div`
   @media (min-width: 1025px) {
     background-image: url(${heroImgUrl});
   }
-`
+`;
 
 const HeroTitle = styled.h1`
-
   margin-bottom: 20px;
   text-align: center;
 
@@ -70,13 +66,6 @@ const HeroP = styled.p`
 `;
 
 const HeroLeft = styled.div`
-  width: 50%;
+  /* width: 50%; */
+  max-width: 400px;
 `;
-=======
-  margin: 10px 0;
-`
-
-const HeroLeft = styled.div`
-  width: 50%;
-`
-

@@ -1,24 +1,23 @@
-import styled from "styled-components"
-import PropTypes from "prop-types"
-import translations from "./translations.json"
+import styled from "styled-components";
+import PropTypes from "prop-types";
+import translations from "./translations.json";
 
 // User json file to translate subjects and subcategories
 const translateSubject = (subject) => {
-  return translations.subjects[subject] || subject
-}
+  return translations.subjects[subject] || subject;
+};
 
 const translateSubcategory = (subcategory) => {
-  return translations.subcategories[subcategory] || subcategory
-}
+  return translations.subcategories[subcategory] || subcategory;
+};
 
 export const LevelProgressBar = ({ progress, selectedSubject }) => {
   if (!progress) {
-    return null
+    return null;
   }
 
   // Remove '_id' from subjects, else it will display in the score list
   const subjects = Object.keys(progress).filter((subject) => subject !== "_id");
-
 
   return (
     <LevelContainer>
@@ -50,18 +49,18 @@ export const LevelProgressBar = ({ progress, selectedSubject }) => {
                     ></ProgressForSubjects>
                   </ProgressBar>
                 </LevelProgress>
-              )
+              );
             })}
           </LevelWrapper>
         </div>
       ))}
     </LevelContainer>
-  )
-}
+  );
+};
 
 LevelProgressBar.propTypes = {
   progress: PropTypes.object.isRequired,
-}
+};
 
 const LevelProgressH1 = styled.h1`
   margin-bottom: 10px;
@@ -82,7 +81,6 @@ const LevelProgress = styled.div`
   margin: 10px 0;
 `;
 
-
 const ProgressBar = styled.div`
   border-radius: 30px;
   margin: 5px 0;
@@ -94,4 +92,3 @@ const ProgressForSubjects = styled.div`
   height: 100%;
   border-radius: 30px;
 `;
-
