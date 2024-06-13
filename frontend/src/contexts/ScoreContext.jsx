@@ -154,8 +154,9 @@ export const ScoreProvider = ({ children }) => {
 
       const data = await response.json()
 
-      setProgress(data.progress)
-      console.log(progress)
+
+      setProgress(data.progress);
+
     } catch (error) {
       console.error(error)
     }

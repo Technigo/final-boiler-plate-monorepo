@@ -17,21 +17,29 @@ export const LevelProgressBar = ({ progress, selectedSubject }) => {
   }
 
   // Remove '_id' from subjects, else it will display in the score list
-  const subjects = Object.keys(progress).filter((subject) => subject !== "_id")
-  console.log(progress)
+  const subjects = Object.keys(progress).filter((subject) => subject !== "_id");
+
+
   return (
     <LevelContainer>
-      <h1>{translateSubject(selectedSubject).toUpperCase()}</h1>
+      <LevelProgressH1>
+        {translateSubject(selectedSubject).toUpperCase()}
+      </LevelProgressH1>
       {subjects.map((subject) => (
         <div key={subject}>
           <h2>{translateSubcategory(subject)}</h2>
           <LevelWrapper>
             {progress[subject].levels.map((level, index) => {
-              // console.log(progress); // Add console log here
+              const isMaxScore = level.score === level.levelScore;
               return (
                 <LevelProgress key={index}>
                   <p>
                     Nivå: {level.level} - {level.score} / {level.levelScore}
+                    {isMaxScore && (
+                      <span role="img" aria-label="trophy">
+                        🏆
+                      </span>
+                    )}
                   </p>
                   <ProgressBar>
                     <ProgressForSubjects
@@ -55,26 +63,35 @@ LevelProgressBar.propTypes = {
   progress: PropTypes.object.isRequired,
 }
 
+const LevelProgressH1 = styled.h1`
+  margin-bottom: 10px;
+`;
+
 const LevelContainer = styled.div`
   padding: 30px;
-  background-color: #f1f1f1;
-`
+  max-width: 1200px;
+  margin: 0 auto;
+`;
 
 const LevelWrapper = styled.div`
-  padding: 20px 0;
-`
+  margin-top: 10px;
+  margin-bottom: 20px;
+`;
 
 const LevelProgress = styled.div`
-  padding: 0 20px;
-`
+  margin: 10px 0;
+`;
+
 
 const ProgressBar = styled.div`
   border-radius: 30px;
   margin: 5px 0;
   background-color: lightgray;
-  height: 10px;
-`
+  height: 15px;
+`;
 
 const ProgressForSubjects = styled.div`
   height: 100%;
-`
+  border-radius: 30px;
+`;
+
