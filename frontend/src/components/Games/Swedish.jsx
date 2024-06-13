@@ -124,7 +124,7 @@ const BackButton = styled.button`
   background: none;
   border: none;
   height: 30px;
-`;
+`
 
 const BackIcon = styled(IoArrowBackCircleOutline)`
   font-size: 40px;
@@ -212,4 +212,4 @@ const GameTypeButton = styled.button`
     height: 60px;
     padding: 20px;
   }
-`;
+`

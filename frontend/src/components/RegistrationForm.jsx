@@ -1,49 +1,49 @@
-import { useState } from "react";
-import { useLogin } from "../contexts/UserContext";
-import { Button } from "./Button";
-import { useNavigate } from "react-router-dom";
-import { FormProvider, useForm } from "react-hook-form";
+import { useState } from "react"
+import { useLogin } from "../contexts/UserContext"
+import { Button } from "./Button"
+import { useNavigate } from "react-router-dom"
+import { FormProvider, useForm } from "react-hook-form"
 
-import styled from "styled-components";
+import styled from "styled-components"
 
 export const RegistrationForm = () => {
   // Set starting point for handling user data
 
   // This method gives access to different form hooks
-  const methods = useForm();
-  const { registerUser } = useLogin();
-  const [errorMessage, setErrorMessage] = useState("");
+  const methods = useForm()
+  const { registerUser } = useLogin()
+  const [errorMessage, setErrorMessage] = useState("")
 
   // Destructes register, handleSubmit and errors from useForm
   const {
     register, // validation and tracking
     handleSubmit, // function that will run when the form is submitted
     formState: { errors }, // object with validation errors for each input field
-  } = methods;
+  } = methods
 
-  const navigate = useNavigate();
+  const navigate = useNavigate()
 
   // Send the request to /users with the updated form data
   const onSubmit = async (data) => {
-    const { password, confirmPassword } = data;
+    const { password, confirmPassword } = data
 
     // Check if password is correct
     if (password !== confirmPassword) {
       // Add error message and return;
-      setErrorMessage("The passwords are not identical");
-      return;
+      setErrorMessage("The passwords are not identical")
+      return
     }
 
     // Send code to backend -> do some stuff using try and catch
     try {
-      await registerUser(data);
+      await registerUser(data)
 
       // Redirect to login page
-      navigate("/spela");
+      navigate("/spela")
     } catch (err) {
-      console.error("Error registration user", err);
+      console.error("Error registration user", err)
     }
-  };
+  }
 
   return (
     <RegistrationContainer>
@@ -169,8 +169,8 @@ export const RegistrationForm = () => {
         </Form>
       </FormProvider>
     </RegistrationContainer>
-  );
-};
+  )
+}
 
 const RegistrationContainer = styled.div`
   border-radius: 20px;
@@ -182,13 +182,13 @@ const RegistrationContainer = styled.div`
   @media (min-width: 700px) {
     padding-top: 50px;
   }
-`;
+`
 
 const Heading = styled.h1`
   color: white;
   text-align: center;
   margin-top: 0;
-`;
+`
 
 const Form = styled.form`
   display: flex;
@@ -200,16 +200,16 @@ const Form = styled.form`
   @media (min-width: 700px) {
     padding: 2rem 2.5rem;
   }
-`;
+`
 
 const Input = styled.input`
   border-radius: 20px;
   padding: 10px 30px;
   border: none;
   background-color: white;
-`;
+`
 
 const ErrorMessage = styled.div`
   color: #fff;
   font-size: 13px;
-`;
+`
