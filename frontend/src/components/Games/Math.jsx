@@ -265,8 +265,6 @@ const ButtonTitle = styled.p`
   font-size: 30px;
 `
 
-
-
 const ButtonSign = styled.p`
   font-size: 50px;
   position: relative;
