@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from "styled-components"
 
 export const Button = styled.button`
   background-color: var(--raspberry);
@@ -22,8 +22,6 @@ export const Button = styled.button`
   &:active {
     background-color: var(--raspberryactive);
   }
-`;
+`
 
-export default Button;
-
-
+export default Button

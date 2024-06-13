@@ -1,13 +1,12 @@
-import PropTypes from "prop-types";
-import styled from "styled-components";
-import { useState, useEffect } from "react";
-import { useScore } from "../../contexts/ScoreContext";
-import Lottie from "lottie-react";
+import PropTypes from "prop-types"
+import styled from "styled-components"
+import { useState, useEffect } from "react"
+import { useScore } from "../../contexts/ScoreContext"
+import Lottie from "lottie-react"
 import Right from "../../assets/Right.json"
 import Wrong from "../../assets/Wrong.json"
 
 export const LanguageQuestion = ({ type, language, color, subcategory }) => {
-
   const {
     englishGame,
     setEnglishGame,
@@ -20,32 +19,32 @@ export const LanguageQuestion = ({ type, language, color, subcategory }) => {
     disableButton,
     setDisableButton,
     generateQuestion,
-    rightAnswer
+    rightAnswer,
   } = useScore()
 
-  const game = language === "swedish" ? swedishGame : englishGame;
-  const setGame = language === "swedish" ? setSwedishGame : setEnglishGame;
-  const currentScore = game[Number(type)].score;
-  const { registerAnswer } = useScore();
+  const game = language === "swedish" ? swedishGame : englishGame
+  const setGame = language === "swedish" ? setSwedishGame : setEnglishGame
+  const currentScore = game[Number(type)].score
+  const { registerAnswer } = useScore()
 
   //Animations to display right/wrong answer and level-change
-  const [rightLottie, setRightLottie] = useState(false);
-  const [wrongLottie, setWrongLottie] = useState(false);
+  const [rightLottie, setRightLottie] = useState(false)
+  const [wrongLottie, setWrongLottie] = useState(false)
 
   //Start by generating a question
   useEffect(() => {
-    generateQuestion(language);
+    generateQuestion(language)
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [])
 
   //Takes users answer and compare it to right answer to generate right/wrong-message
   const handleChoice = async (answer) => {
     if (answer === rightAnswer) {
-      setTimeout(() => setRightLottie(true), 1000);
-      const newGame = [...game];
-      setTimeout(() => (newGame[Number(type)].score = currentScore + 1), 3000);
-      setTimeout(() => setGame(newGame), 3000);
-      setTimeout(() => setRightLottie(false), 5000);
+      setTimeout(() => setRightLottie(true), 1000)
+      const newGame = [...game]
+      setTimeout(() => (newGame[Number(type)].score = currentScore + 1), 3000)
+      setTimeout(() => setGame(newGame), 3000)
+      setTimeout(() => setRightLottie(false), 5000)
 
       // Send answer to backend
       try {
@@ -55,18 +54,18 @@ export const LanguageQuestion = ({ type, language, color, subcategory }) => {
           level: newGame[type].level,
           subcategory: subcategory,
           score: currentScore + 1,
-        });
+        })
       } catch (err) {
-        console.error("Error registration answer", err);
+        console.error("Error registration answer", err)
       }
     } else {
-      setTimeout(() => setWrongLottie(true), 1000);
-      setTimeout(() => setMessage(`Rätt svar var ${rightAnswer}.`), 3000);
-      setTimeout(() => setWrongLottie(false), 5000);
+      setTimeout(() => setWrongLottie(true), 1000)
+      setTimeout(() => setMessage(`Rätt svar var ${rightAnswer}.`), 3000)
+      setTimeout(() => setWrongLottie(false), 5000)
     }
-    setDisableButton(true);
-    setTimeout(() => generateQuestion(language), 5000);
-  };
+    setDisableButton(true)
+    setTimeout(() => generateQuestion(language), 5000)
+  }
 
   if (game[Number(type)].level < 4) {
     return (
@@ -100,7 +99,7 @@ export const LanguageQuestion = ({ type, language, color, subcategory }) => {
         )}
         <Answers>
           {answers.map((answer, index) => {
-            const capsAnswer = answer.charAt(0).toUpperCase() + answer.slice(1);
+            const capsAnswer = answer.charAt(0).toUpperCase() + answer.slice(1)
             return (
               <AnswerButton
                 disabled={disableButton}
@@ -111,7 +110,7 @@ export const LanguageQuestion = ({ type, language, color, subcategory }) => {
               >
                 {capsAnswer}
               </AnswerButton>
-            );
+            )
           })}
         </Answers>
         {message && <Message>{message}</Message>}
@@ -149,7 +148,7 @@ const QuestionCard = styled.div`
     height: 210px;
     font-size: 50px;
   }
-`;
+`
 
 const Answers = styled.div`
   display: grid;
@@ -162,7 +161,7 @@ const Answers = styled.div`
     grid-template-columns: 1fr 1fr;
     width: 580px;
   }
-`;
+`
 
 const AnswerButton = styled.button`
   background-color: ${(props) =>
@@ -209,7 +208,7 @@ const AnswerButton = styled.button`
     height: 60px;
     padding: 20px;
   }
-`;
+`
 
 const Message = styled.div`
   color: black;
@@ -221,7 +220,7 @@ const Message = styled.div`
   z-index: 2;
   font-size: 25px;
   border-radius: 20px;
-`;
+`
 
 LanguageQuestion.propTypes = {
   type: PropTypes.string,

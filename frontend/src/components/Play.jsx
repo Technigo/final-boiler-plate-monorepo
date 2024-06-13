@@ -1,17 +1,17 @@
-import { useEffect } from "react";
-import { Link } from "react-router-dom";
-import styled, { css } from "styled-components";
-import { useLogin } from "../contexts/UserContext";
+import { useEffect } from "react"
+import { Link } from "react-router-dom"
+import styled, { css } from "styled-components"
+import { useLogin } from "../contexts/UserContext"
 
 export const Play = () => {
-  const { isLoggedIn, setIsLoggedIn, user } = useLogin();
-  const apiUrl = import.meta.env.VITE_API_URL || "http://localhost:3000";
+  const { isLoggedIn, setIsLoggedIn, user } = useLogin()
+  const apiUrl = import.meta.env.VITE_API_URL || "http://localhost:3000"
 
-  let message = "";
+  let message = ""
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const getContent = async () => {
-    const accessToken = localStorage.getItem("accessToken");
+    const accessToken = localStorage.getItem("accessToken")
 
     try {
       // Ensure this points to the correct backend URL
@@ -21,25 +21,25 @@ export const Play = () => {
           "Content-Type": "application/json",
           Authorization: accessToken,
         },
-      });
+      })
 
       if (!response.ok) {
-        setIsLoggedIn(false);
-        throw new Error("Failed to get user");
+        setIsLoggedIn(false)
+        throw new Error("Failed to get user")
       }
 
-      const data = await response.json();
-      console.info("Login success", data);
-      message = data.message;
-      setIsLoggedIn(true);
+      const data = await response.json()
+      console.info("Login success", data)
+      message = data.message
+      setIsLoggedIn(true)
     } catch (err) {
-      console.error("No user was found:", err);
+      console.error("No user was found:", err)
     }
-  };
+  }
 
   useEffect(() => {
-    getContent();
-  }, [getContent]);
+    getContent()
+  }, [getContent])
 
   return (
     <PlayContainer>
@@ -66,8 +66,8 @@ export const Play = () => {
         </Link>
       </GamesCards>
     </PlayContainer>
-  );
-};
+  )
+}
 
 const PlayContainer = styled.div`
   display: flex;
@@ -75,7 +75,7 @@ const PlayContainer = styled.div`
   justify-content: space-evenly;
   align-items: center;
   margin: 0 auto;
-`;
+`
 
 const PlayTitle = styled.h2`
   color: black;
@@ -89,7 +89,7 @@ const PlayTitle = styled.h2`
   @media (min-width: 700px) {
     width: 600px;
   }
-`;
+`
 
 const GamesCards = styled.div`
   display: flex;
@@ -101,7 +101,7 @@ const GamesCards = styled.div`
   @media (min-width: 700px) {
     flex-direction: row;
   }
-`;
+`
 
 const GameCard = styled.div`
   display: flex;
@@ -164,10 +164,10 @@ const GameCard = styled.div`
    @media (min-width: 700px) {
     margin: 40px;
   }
-`;
+`
 
 const SecretText = styled.p`
   font-size: 14px;
   text-align: center;
   color: red;
-`;
+`

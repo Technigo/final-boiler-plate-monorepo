@@ -1,6 +1,6 @@
-import styled from "styled-components";
-import { Button } from "./Button";
-import { Link } from "react-router-dom";
+import styled from "styled-components"
+import { Button } from "./Button"
+import { Link } from "react-router-dom"
 
 export const Hero = () => {
   const content = {
@@ -9,7 +9,7 @@ export const Hero = () => {
       "Sidan där du kan förbättra dina kunskaper i olika skolämnen. Registrera dig för att spara dina framsteg i spelen.",
     heroImgUrl: "./hero.png",
     heroImgAlt: "Barn studerar i soffa",
-  };
+  }
 
   return (
     <HeroContainer>
@@ -21,8 +21,8 @@ export const Hero = () => {
         </Link>
       </TextContainer>
     </HeroContainer>
-  );
-};
+  )
+}
 
 const HeroContainer = styled.section`
   display: flex;
@@ -35,7 +35,7 @@ const HeroContainer = styled.section`
     justify-content: space-between;
     min-height: 310px;
   }
-`;
+`
 
 const TextContainer = styled.div`
   padding: 15px;
@@ -47,7 +47,7 @@ const TextContainer = styled.div`
     margin-top: 40px;
     padding: 20px;
   }
-`;
+`
 
 const HeroHeading = styled.h1`
   font-size: 2rem;
@@ -56,7 +56,7 @@ const HeroHeading = styled.h1`
   @media (min-width: 700px) {
     font-size: 2.5rem;
   }
-`;
+`
 
 const HeroIntro = styled.p`
   font-size: 1rem;
@@ -66,4 +66,4 @@ const HeroIntro = styled.p`
   @media (min-width: 700px) {
     font-size: 1.2rem;
   }
-`;
+`

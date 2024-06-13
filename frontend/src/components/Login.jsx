@@ -1,25 +1,25 @@
-import styled from "styled-components";
-import { useState } from "react";
-import { useLogin } from "../contexts/UserContext";
-import { Button } from "./Button";
-import { useNavigate } from "react-router-dom";
+import styled from "styled-components"
+import { useState } from "react"
+import { useLogin } from "../contexts/UserContext"
+import { Button } from "./Button"
+import { useNavigate } from "react-router-dom"
 
 export const Login = () => {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
-  const { login } = useLogin();
-  const navigate = useNavigate();
+  const [username, setUsername] = useState("")
+  const [password, setPassword] = useState("")
+  const [error, setError] = useState("")
+  const { login } = useLogin()
+  const navigate = useNavigate()
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
+    e.preventDefault()
     try {
-      await login({ username, password });
-      navigate("/spela");
+      await login({ username, password })
+      navigate("/spela")
     } catch (error) {
-      setError("Invalid username or password");
+      setError("Invalid username or password")
     }
-  };
+  }
 
   return (
     <LoginContainer>
@@ -49,8 +49,8 @@ export const Login = () => {
         </Button>
       </Form>
     </LoginContainer>
-  );
-};
+  )
+}
 
 const LoginContainer = styled.div`
   border-radius: 20px;
@@ -62,13 +62,13 @@ const LoginContainer = styled.div`
   @media (min-width: 700px) {
     padding-top: 50px;
   }
-`;
+`
 
 const Heading = styled.h1`
   color: white;
   text-align: center;
   margin-top: 0;
-`;
+`
 
 const Form = styled.form`
   display: flex;
@@ -80,15 +80,15 @@ const Form = styled.form`
   @media (min-width: 700px) {
     padding: 2rem 2.5rem;
   }
-`;
+`
 
 const Input = styled.input`
   border-radius: 20px;
   padding: 10px 30px;
   border: none;
   background-color: white;
-`;
+`
 
 const Error = styled.h3`
   color: black;
-`;
+`
