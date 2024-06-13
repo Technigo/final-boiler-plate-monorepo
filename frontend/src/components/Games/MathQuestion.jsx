@@ -5,10 +5,9 @@ import { useMath } from "../../contexts/MathContext"
 import Lottie from "lottie-react"
 import Right from "../../assets/Right.json"
 import Wrong from "../../assets/Wrong.json"
-import Celebrate from "../../assets/Celebrate.json"
 
 export const MathQuestion = ({ focusRef, type }) => {
-  const { mathGame, setMathGame, generateQuestion, celebrateLottie } =
+  const { mathGame, setMathGame, generateQuestion } =
     useMath()
   const currentScore = mathGame[Number(type)].score
 
@@ -79,33 +78,6 @@ export const MathQuestion = ({ focusRef, type }) => {
   if (mathGame[Number(type)].level < 4) {
     return (
       <div>
-        <HeaderDiv>
-          <Progress>
-            <Level>Nivå {mathGame[Number(type)].level}</Level>
-            <Score>
-              {currentScore}/{mathGame[Number(type)].levelScore}⭐
-            </Score>
-          </Progress>
-          {celebrateLottie && (
-            <div
-              style={{
-                position: "absolute",
-                top: "20%",
-                left: "67%",
-                transform: "translate(-50%, -50%)",
-                zIndex: 2,
-              }}
-            >
-              <Lottie
-                animationData={Celebrate}
-                loop={false}
-                autoplay
-                style={{ width: 200, height: 200 }}
-              />
-            </div>
-          )}
-          <Title>{mathGame[Number(type)].title}</Title>
-        </HeaderDiv>
         <QuestionCard>{mathGame[Number(type)].question}</QuestionCard>
         {rightLottie && (
           <div
@@ -166,30 +138,13 @@ export const MathQuestion = ({ focusRef, type }) => {
         </NumPad>
         {message && <Message>{message}</Message>}
       </div>
-    );
+    )
   } else {
     return (
       <Title>Du har klarat alla nivåer! Grattis!</Title>
     )
   }
 }
-
-const HeaderDiv = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  margin: 20px auto 10px;
-  width: 300px;
-  gap: 10px;
-
-  @media (min-width: 700px) {
-    flex-direction: row-reverse;
-    width: 600px;
-    margin: 25px auto;
-    padding: 0 30px;
-  }
-`;
 
 const Title = styled.h1`
   margin: 0;
@@ -198,29 +153,7 @@ const Title = styled.h1`
   @media (min-width: 700px) {
     font-size: 45px;
   }
-`;
-
-const Progress = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  width: 200px;
-  gap: 10px;
-
-  @media (min-width: 700px) {
-    flex-direction: column;
-    width: 60px;
-  }
-`;
-
-const Level = styled.h3`
-  color: black;
-`;
-
-const Score = styled.h3`
-  color: black;
-`;
+`
 
 const QuestionCard = styled.div`
   width: 300px;
