@@ -7,7 +7,7 @@ import { Hero } from "./Hero";
 export const Progress = () => {
   const { progress } = useScore();
   const [selectedSubject, setSelectedSubject] = useState(null);
-
+  console.log(progress);
   if (!progress) {
     return <div>Loading...</div>;
   }

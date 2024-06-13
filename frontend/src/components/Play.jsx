@@ -46,12 +46,11 @@ export const Play = () => {
       <PlayTitle>
         {isLoggedIn ? (
           <>
-            Välkommen till PluggIn, {user?.username}. Redo att spela några spel?
+            Välkommen till PluggIn, {user?.firstName}. Redo att spela några
+            spel?
           </>
         ) : (
-          <>
-            Du är inte inloggad. Dina framsteg kommer inte att sparas.
-          </>
+          <>Du är inte inloggad. Dina framsteg kommer inte att sparas.</>
         )}
       </PlayTitle>
       {isLoggedIn && message && <SecretText>{message}</SecretText>}
@@ -87,7 +86,7 @@ const PlayTitle = styled.h2`
   margin: 40px auto 20px;
   width: 300px;
 
-   @media (min-width: 700px) {
+  @media (min-width: 700px) {
     width: 600px;
   }
 `;
@@ -99,7 +98,7 @@ const GamesCards = styled.div`
   align-items: center;
   margin: 0 auto;
 
-   @media (min-width: 700px) {
+  @media (min-width: 700px) {
     flex-direction: row;
   }
 `;

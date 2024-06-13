@@ -88,14 +88,14 @@ export const UserProvider = ({ children }) => {
       console.info("Registration success", data);
 
       localStorage.setItem("accessToken", data.accessToken);
-      localStorage.setItem("username", data.username);
+      localStorage.setItem("firstName", data.firstName);
       setAuthenticated({
         accessToken: data.accessToken,
         auth: true,
       });
 
       setUser({
-        username: data.username,
+        firstName: data.firstName,
       });
 
       setIsLoggedIn(true);

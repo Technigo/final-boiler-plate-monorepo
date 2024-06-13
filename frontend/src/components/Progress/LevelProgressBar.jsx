@@ -22,25 +22,28 @@ export const LevelProgressBar = ({ progress, selectedSubject }) => {
   return (
     <LevelContainer>
       <h1>{translateSubject(selectedSubject).toUpperCase()}</h1>
-      {subjects.map(([subject, data]) => (
+      {subjects.map((subject) => (
         <div key={subject}>
           <h2>{translateSubcategory(subject)}</h2>
           <LevelWrapper>
-            {data.levels.map((level, index) => (
-              <LevelProgress key={index}>
-                <p>
-                  Nivå: {level.level} - {level.score} / {level.levelScore}
-                </p>
-                <ProgressBar>
-                  <ProgressForSubjects
-                    className={`crl-${selectedSubject}`}
-                    style={{
-                      width: `${(level.score / level.levelScore) * 100}%`,
-                    }}
-                  ></ProgressForSubjects>
-                </ProgressBar>
-              </LevelProgress>
-            ))}
+            {progress[subject].levels.map((level, index) => {
+              // console.log(progress); // Add console log here
+              return (
+                <LevelProgress key={index}>
+                  <p>
+                    Nivå: {level.level} - {level.score} / {level.levelScore}
+                  </p>
+                  <ProgressBar>
+                    <ProgressForSubjects
+                      className={`crl-${selectedSubject}`}
+                      style={{
+                        width: `${(level.score / level.levelScore) * 100}%`,
+                      }}
+                    ></ProgressForSubjects>
+                  </ProgressBar>
+                </LevelProgress>
+              );
+            })}
           </LevelWrapper>
         </div>
       ))}

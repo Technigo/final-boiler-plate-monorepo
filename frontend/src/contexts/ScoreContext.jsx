@@ -133,7 +133,7 @@ export const ScoreProvider = ({ children }) => {
       }
 
       const data = await response.json();
-      console.log("Progress saved:", data);
+      fetchProgress();
     } catch (error) {
       console.error("Error:", error);
     }
@@ -153,7 +153,9 @@ export const ScoreProvider = ({ children }) => {
       }
 
       const data = await response.json();
+
       setProgress(data.progress);
+      console.log(progress);
     } catch (error) {
       console.error(error);
     }

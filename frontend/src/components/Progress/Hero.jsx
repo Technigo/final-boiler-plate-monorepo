@@ -4,7 +4,7 @@ import heroImgUrl from "/src/assets/ProgressHeader.jpg";
 
 export const Hero = () => {
   const { user } = useLogin();
-
+  console.log(user);
   const content = {
     heroTitle: `Hej ${user?.firstName} 👋`,
     intro:

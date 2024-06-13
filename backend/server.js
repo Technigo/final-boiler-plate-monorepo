@@ -40,6 +40,8 @@ import bcrypt from "bcrypt-nodejs";
 import crypto from "crypto";
 import dotenv from "dotenv"; // Import dotenv for environment variables
 dotenv.config(); // Load environment variables from the .env file
+import englishData from "../frontend/src/data/EnglishGameData.json";
+import swedishData from "../frontend/src/data/SwedishGameData.json";
 
 // Defining port and connecting to mongoose
 const port = process.env.PORT || 4000;
@@ -157,6 +159,16 @@ app.get("/users", async (req, res) => {
   }
 });
 
+const createLevels = (questions) => {
+  const uniqueLevels = [...new Set(questions.map((q) => q.level))];
+  const levels = uniqueLevels.map((level) => ({
+    level: level,
+    score: 0,
+    levelScore: 20,
+  }));
+  return levels;
+};
+
 //Create user with username, password etc.
 app.post("/users", async (req, res) => {
   try {
@@ -176,14 +188,31 @@ app.post("/users", async (req, res) => {
           subtraction: { levels: [{}, {}, {}, {}] },
           division: { levels: [{}, {}, {}, {}] },
         },
-        swedish: { synonyms: { levels: [{}, {}, {}, {}] } },
-        english: { translate: { levels: [{}, {}, {}, {}] } },
+        swedish: {
+          synonyms: {
+            levels: [
+              { level: 1, score: 0, levelScore: 20 },
+              { level: 2, score: 0, levelScore: 20 },
+              { level: 3, score: 0, levelScore: 20 },
+            ],
+          },
+        },
+        english: {
+          translate: {
+            levels: [
+              { level: 1, score: 0, levelScore: 20 },
+              { level: 2, score: 0, levelScore: 20 },
+              { level: 3, score: 0, levelScore: 20 },
+            ],
+          },
+        },
       },
     });
     await user.save();
     res.status(201).json({
       id: user._id,
       username: user.username,
+      firstName: user.firstName,
       accessToken: user.accessToken,
     });
   } catch (error) {
@@ -238,6 +267,7 @@ app.post("/progress", authenticateUser, async (req, res) => {
     }
 
     // Update progress for the current subject / subcategory
+    user.progress[subject][subcategory].levels[level - 1].score += 1;
     user.progress[subject][subcategory].levels[level - 1].score += 1;
 
     // Save updates to db
