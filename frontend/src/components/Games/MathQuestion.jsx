@@ -29,8 +29,8 @@ export const MathQuestion = ({ focusRef, type }) => {
   const checkAnswer = (event) => {
     event.preventDefault()
     if (answerInput == mathGame[Number(type)].correctAnswer) {
-      setTimeout(() => setRightLottie(true), 1000)
-      setTimeout(() => setRightLottie(false), 5000)
+      setTimeout(() => setRightLottie(true), 500)
+      setTimeout(() => setRightLottie(false), 4600)
 
       const newGame = [...mathGame]
       setTimeout(() => (newGame[Number(type)].score = currentScore + 1), 3000)
@@ -40,11 +40,11 @@ export const MathQuestion = ({ focusRef, type }) => {
       setTimeout(
         () =>
           setMessage(`Rätt svar var ${mathGame[Number(type)].correctAnswer}.`),
-        3000
+        2500
       )
-      setTimeout(() => setWrongLottie(false), 5000)
+      setTimeout(() => setWrongLottie(false), 4600)
     }
-    setTimeout(() => newQuestion(), 5000)
+    setTimeout(() => newQuestion(), 4500)
   }
 
   //Resets message and input-field before generating new question
@@ -290,10 +290,7 @@ const Message = styled.div`
   justify-content: center;
   align-items: center;
   margin: 10px auto;
-  background-color: white;
-  z-index: 2;
-  font-size: 20px;
-  border-radius: 20px;
+  font-size: 18px;
 `
 
 MathQuestion.propTypes = {
