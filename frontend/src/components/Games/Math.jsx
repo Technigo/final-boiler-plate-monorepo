@@ -63,63 +63,59 @@ export const Math = () => {
             value="0"
             onClick={(event) => handleChoice(event.target.value)}
           >
+            Nivå {mathGame[0].level}
             <ButtonTextDiv>
-              <ButtonText>Nivå {mathGame[0].level}</ButtonText>
               <ButtonTitle>Addition</ButtonTitle>
-              <ButtonText>
-                {mathGame[0].score}/{mathGame[0].levelScore}
-              </ButtonText>
+              <ButtonSign>+</ButtonSign>
             </ButtonTextDiv>
-            <ButtonSign>+</ButtonSign>
+            {mathGame[0].score}/{mathGame[0].levelScore}
           </GameTypeButton>
           <GameTypeButton
             value="1"
             onClick={(event) => handleChoice(event.target.value)}
           >
+            Nivå {mathGame[1].level}
             <ButtonTextDiv>
-              <ButtonText>Nivå {mathGame[1].level}</ButtonText>
               <ButtonTitle>Subtraktion</ButtonTitle>
-              <ButtonText>
-                {mathGame[1].score}/{mathGame[1].levelScore}
-              </ButtonText>
+              <ButtonSign>-</ButtonSign>
             </ButtonTextDiv>
-            <ButtonSign>-</ButtonSign>
+            {mathGame[1].score}/{mathGame[1].levelScore}
           </GameTypeButton>
           <GameTypeButton
             value="2"
             onClick={(event) => handleChoice(event.target.value)}
           >
+            Nivå {mathGame[2].level}
             <ButtonTextDiv>
-              <ButtonText>Nivå {mathGame[2].level}</ButtonText>
               <ButtonTitle>Multiplikation</ButtonTitle>
-              <ButtonText>
-                {mathGame[2].score}/{mathGame[2].levelScore}
-              </ButtonText>
+              <MultiplySign>*</MultiplySign>
             </ButtonTextDiv>
-            <ButtonSign>*</ButtonSign>
+            {mathGame[2].score}/{mathGame[2].levelScore}
           </GameTypeButton>
           <GameTypeButton
             value="3"
             onClick={(event) => handleChoice(event.target.value)}
           >
+            Nivå {mathGame[3].level}
             <ButtonTextDiv>
-              <ButtonText>Nivå {mathGame[3].level}</ButtonText>
               <ButtonTitle>Division</ButtonTitle>
-              <ButtonText>
-                {mathGame[3].score}/{mathGame[3].levelScore}
-              </ButtonText>
+              <ButtonSign>÷</ButtonSign>
             </ButtonTextDiv>
-            <ButtonSign>÷</ButtonSign>
+            {mathGame[3].score}/{mathGame[3].levelScore}
           </GameTypeButton>
         </Choices>
       </MathGameSite>
-    );
+    )
   }
 }
 
 const MathGameSite = styled.div`
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin: 0 auto;
 `
 
 const HeaderDiv = styled.div`
@@ -151,15 +147,6 @@ const TitleDiv = styled.div`
   }
 `
 
-const Title = styled.h1`
-  margin: 0;
-  font-size: 40px;
-
-  @media (min-width: 700px) {
-    font-size: 45px;
-  }
-`
-
 const BackButton = styled.button`
   background: none;
   border: none;
@@ -176,6 +163,15 @@ const BackIcon = styled(IoArrowBackCircleOutline)`
     font-size: 60px;
   }
 `
+
+const Title = styled.h1`
+  margin: 0;
+  font-size: 40px;
+
+  @media (min-width: 700px) {
+    font-size: 45px;
+  }
+`
 const Progress = styled.div`
   display: flex;
   flex-direction: row;
@@ -188,7 +184,7 @@ const Progress = styled.div`
     flex-direction: column;
     width: 60px;
   }
-`;
+`
 
 const Level = styled.h3`
   color: black;
@@ -214,20 +210,20 @@ const Choices = styled.div`
 const GameTypeButton = styled.button`
   background-color: var(--ocean);
   color: white;
+  font-size: 18px;
   width: 270px;
   height: 60px;
   margin: 10px auto;
   padding: 10px 0;
-  z-index: 1;
   border-radius: 15px;
   border: none;
-  font-size: 20px;
-  padding: 15px;
   cursor: pointer;
   box-shadow: 4px 4px var(--oceanshadow);
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
+  gap: 20px;
 
   &:hover {
     background-color: var(--oceanhover);
@@ -253,22 +249,25 @@ const GameTypeButton = styled.button`
 
 const ButtonTextDiv = styled.div`
   display: flex;
-  flex-direction: column;
   justify-content: space-between;
-  gap: 5px;
-  width: 200px;
-  height: 100px;
+  align-items: center;
+  width: 220px;
+  height: 20px;
 `
 
 const ButtonTitle = styled.p`
   font-size: 30px;
-`
-
-const ButtonText = styled.p`
-  font-size: 18px;
-  margin: 0;  
+  text-align: center;
 `
 
 const ButtonSign = styled.p`
   font-size: 50px;
+  position: relative;
+  bottom: 7px;
+`
+
+const MultiplySign = styled.p`
+  font-size: 50px;
+  position: relative;
+  bottom: -3px;
 `

@@ -1,5 +1,6 @@
 import styled from "styled-components"
 import { IoArrowBackCircleOutline } from "react-icons/io5"
+import { PiTranslate } from "react-icons/pi"
 import Lottie from "lottie-react"
 import { Link } from "react-router-dom"
 import { useState } from "react"
@@ -74,7 +75,14 @@ export const English = () => {
             value="0"
             onClick={(event) => handleChoice(event.target.value)}
           >
-            Översätt
+            Nivå {englishGame[0].level}
+            <ButtonTextDiv>
+              <ButtonTitle>Översätt</ButtonTitle>
+              <ButtonSign>
+                <PiTranslate />
+              </ButtonSign>
+            </ButtonTextDiv>
+            {englishGame[0].score}/{englishGame[0].levelScore}
           </GameTypeButton>
         </Choices>
       </EnglishGameSite>
@@ -101,9 +109,9 @@ const HeaderDiv = styled.div`
   gap: 10px;
 
   @media (min-width: 700px) {
-    flex-direction: row-reverse;
+    flex-direction: row;
     width: 600px;
-    margin: 25px auto;
+    margin: 35px auto 25px;
     padding: 0 30px;
   }
 `
@@ -123,13 +131,18 @@ const TitleDiv = styled.div`
 const BackButton = styled.button`
   background: none;
   border: none;
-  height: 30px;
-`;
+  height: 60px;
+  padding: 0 20px;
+`
 
 const BackIcon = styled(IoArrowBackCircleOutline)`
   font-size: 40px;
   color: #000000;
   cursor: pointer;
+
+  @media (min-width: 700px) {
+    font-size: 60px;
+  }
 `
 
 const Title = styled.h1`
@@ -179,18 +192,20 @@ const Choices = styled.div`
 const GameTypeButton = styled.button`
   background-color: var(--forest);
   color: white;
+  font-size: 18px;
   width: 270px;
-  height: 50px;
+  height: 60px;
   margin: 10px auto;
   padding: 10px 0;
-  z-index: 1;
   border-radius: 15px;
   border: none;
-  z-index: 1;
-  font-size: 20px;
-  padding: 15px;
   cursor: pointer;
   box-shadow: 4px 4px var(--forestshadow);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
 
   &:hover {
     background-color: var(--foresthover);
@@ -209,7 +224,24 @@ const GameTypeButton = styled.button`
 
   @media (min-width: 700px) {
     width: 270px;
-    height: 60px;
-    padding: 20px;
+    height: 120px;
+    padding: 10px 20px;
   }
+`
+
+const ButtonTextDiv = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 220px;
+  height: 20px;
+`
+
+const ButtonTitle = styled.p`
+  font-size: 30px;
+  text-align: center;
+`
+
+const ButtonSign = styled.p`
+  font-size: 50px;
 `
