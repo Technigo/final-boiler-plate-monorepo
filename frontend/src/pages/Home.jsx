@@ -3,8 +3,8 @@ import { Hero } from "../components/Hero";
 import { Link } from "react-router-dom";
 import styled, { css } from "styled-components";
 import { Footer } from "../components/Footer";
-import HeaderImg from "/src/assets/testheader.jpg";
-import HeaderImgTabl from "/src/assets/testheader2.jpg";
+import HeaderImg from "/src/assets/HeaderWeb.jpg";
+import HeaderImgTabl from "/src/assets/HeaderTablet.jpg";
 
 // Define the 'Home' functional component.
 export const Home = () => {
