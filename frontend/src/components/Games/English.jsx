@@ -123,6 +123,7 @@ const HeaderDiv = styled.div`
 const TitleDiv = styled.div`
   display: flex;
   justify-content: flex-start;
+  align-items: center;
   position: relative;
   right: 20px;
 
