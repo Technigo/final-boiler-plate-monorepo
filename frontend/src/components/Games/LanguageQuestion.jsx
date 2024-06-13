@@ -3,10 +3,8 @@ import styled from "styled-components";
 import { useState, useEffect } from "react";
 import { useScore } from "../../contexts/ScoreContext";
 import Lottie from "lottie-react";
-import Right from "../../assets/Right.json";
-import Wrong from "../../assets/Wrong.json";
-import Celebrate from "../../assets/Celebrate.json";
-
+import Right from "../../assets/Right.json"
+import Wrong from "../../assets/Wrong.json"
 
 export const LanguageQuestion = ({ type, language, color, subcategory }) => {
 
@@ -22,9 +20,8 @@ export const LanguageQuestion = ({ type, language, color, subcategory }) => {
     disableButton,
     setDisableButton,
     generateQuestion,
-    rightAnswer,
-    celebrateLottie,
-  } = useScore();
+    rightAnswer
+  } = useScore()
 
   const game = language === "swedish" ? swedishGame : englishGame;
   const setGame = language === "swedish" ? setSwedishGame : setEnglishGame;
@@ -73,34 +70,7 @@ export const LanguageQuestion = ({ type, language, color, subcategory }) => {
 
   if (game[Number(type)].level < 4) {
     return (
-      <>
-        <HeaderDiv>
-          <Progress>
-            <Level>Nivå {game[Number(type)].level}</Level>
-            <Score>
-              ⭐{currentScore}/{game[Number(type)].levelScore}
-            </Score>
-          </Progress>
-          {celebrateLottie && (
-            <div
-              style={{
-                position: "absolute",
-                top: "20%",
-                left: "67%",
-                transform: "translate(-50%, -50%)",
-                zIndex: 2,
-              }}
-            >
-              <Lottie
-                animationData={Celebrate}
-                loop={false}
-                autoplay
-                style={{ width: 200, height: 200 }}
-              />
-            </div>
-          )}
-          <Title>{game[Number(type)].title}</Title>
-        </HeaderDiv>
+      <div>
         <QuestionCard color={color}>{question}</QuestionCard>
         {rightLottie && (
           <div
@@ -145,29 +115,12 @@ export const LanguageQuestion = ({ type, language, color, subcategory }) => {
           })}
         </Answers>
         {message && <Message>{message}</Message>}
-      </>
-    );
+      </div>
+    )
   } else {
-    return <Title>Du har klarat alla nivåer! Grattis!</Title>;
+    return <Title>Du har klarat alla nivåer! Grattis!</Title>
   }
-};
-
-const HeaderDiv = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  margin: 20px auto 10px;
-  width: 300px;
-  gap: 10px;
-
-  @media (min-width: 700px) {
-    flex-direction: row-reverse;
-    width: 600px;
-    margin: 25px auto;
-    padding: 0 30px;
-  }
-`;
+}
 
 const Title = styled.h1`
   margin: 0;
@@ -176,29 +129,7 @@ const Title = styled.h1`
   @media (min-width: 700px) {
     font-size: 45px;
   }
-`;
-
-const Progress = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  width: 200px;
-  gap: 10px;
-
-  @media (min-width: 700px) {
-    flex-direction: column;
-    width: 60px;
-  }
-`;
-
-const Level = styled.h3`
-  color: black;
-`;
-
-const Score = styled.h3`
-  color: black;
-`;
+`
 
 const QuestionCard = styled.div`
   width: 300px;
@@ -296,4 +227,5 @@ LanguageQuestion.propTypes = {
   type: PropTypes.string,
   language: PropTypes.string,
   color: PropTypes.string,
-};
+  subcategory: PropTypes.string,
+}

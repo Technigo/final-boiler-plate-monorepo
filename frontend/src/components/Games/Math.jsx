@@ -37,7 +37,8 @@ export const Math = () => {
           <Progress>
             <Level>Nivå {mathGame[Number(gameTypeNumber)].level}</Level>
             <Score>
-              {mathGame[Number(gameTypeNumber)].score}/{mathGame[Number(gameTypeNumber)].levelScore}⭐
+              ⭐{mathGame[Number(gameTypeNumber)].score}/
+              {mathGame[Number(gameTypeNumber)].levelScore}
             </Score>
           </Progress>
         </HeaderDiv>
@@ -58,7 +59,7 @@ export const Math = () => {
           </TitleDiv>
         </HeaderDiv>
         <Choices>
-          <MathTypeButton
+          <GameTypeButton
             value="0"
             onClick={(event) => handleChoice(event.target.value)}
           >
@@ -70,8 +71,8 @@ export const Math = () => {
               </ButtonText>
             </ButtonTextDiv>
             <ButtonSign>+</ButtonSign>
-          </MathTypeButton>
-          <MathTypeButton
+          </GameTypeButton>
+          <GameTypeButton
             value="1"
             onClick={(event) => handleChoice(event.target.value)}
           >
@@ -83,8 +84,8 @@ export const Math = () => {
               </ButtonText>
             </ButtonTextDiv>
             <ButtonSign>-</ButtonSign>
-          </MathTypeButton>
-          <MathTypeButton
+          </GameTypeButton>
+          <GameTypeButton
             value="2"
             onClick={(event) => handleChoice(event.target.value)}
           >
@@ -96,8 +97,8 @@ export const Math = () => {
               </ButtonText>
             </ButtonTextDiv>
             <ButtonSign>*</ButtonSign>
-          </MathTypeButton>
-          <MathTypeButton
+          </GameTypeButton>
+          <GameTypeButton
             value="3"
             onClick={(event) => handleChoice(event.target.value)}
           >
@@ -109,7 +110,7 @@ export const Math = () => {
               </ButtonText>
             </ButtonTextDiv>
             <ButtonSign>÷</ButtonSign>
-          </MathTypeButton>
+          </GameTypeButton>
         </Choices>
       </MathGameSite>
     );
@@ -210,7 +211,7 @@ const Choices = styled.div`
   }
 `
 
-const MathTypeButton = styled.button`
+const GameTypeButton = styled.button`
   background-color: var(--ocean);
   color: white;
   width: 270px;
