@@ -40,11 +40,10 @@ export const Math = () => {
               {mathGame[Number(gameTypeNumber)].score}/{mathGame[Number(gameTypeNumber)].levelScore}⭐
             </Score>
           </Progress>
-          
         </HeaderDiv>
         <MathQuestion focusRef={focusRef} type={gameTypeNumber} />
       </MathGameSite>
-    );
+    )
   } else { 
     return (
       <MathGameSite>
@@ -63,49 +62,57 @@ export const Math = () => {
             value="0"
             onClick={(event) => handleChoice(event.target.value)}
           >
-            <ButtonText>Nivå {mathGame[0].level}</ButtonText>
-            <ButtonText>Addition</ButtonText>
-            <ButtonText>
-              {mathGame[0].score}/{mathGame[0].levelScore}
-            </ButtonText>
-            +
+            <ButtonTextDiv>
+              <ButtonText>Nivå {mathGame[0].level}</ButtonText>
+              <ButtonTitle>Addition</ButtonTitle>
+              <ButtonText>
+                {mathGame[0].score}/{mathGame[0].levelScore}
+              </ButtonText>
+            </ButtonTextDiv>
+            <ButtonSign>+</ButtonSign>
           </MathTypeButton>
           <MathTypeButton
             value="1"
             onClick={(event) => handleChoice(event.target.value)}
           >
-            <ButtonText>Nivå {mathGame[1].level}</ButtonText>
-            <ButtonText>Subtraktion</ButtonText>
-            <ButtonText>
-              {mathGame[1].score}/{mathGame[1].levelScore}
-            </ButtonText>
-            -
+            <ButtonTextDiv>
+              <ButtonText>Nivå {mathGame[1].level}</ButtonText>
+              <ButtonTitle>Subtraktion</ButtonTitle>
+              <ButtonText>
+                {mathGame[1].score}/{mathGame[1].levelScore}
+              </ButtonText>
+            </ButtonTextDiv>
+            <ButtonSign>-</ButtonSign>
           </MathTypeButton>
           <MathTypeButton
             value="2"
             onClick={(event) => handleChoice(event.target.value)}
           >
-            <ButtonText>Nivå {mathGame[2].level}</ButtonText>
-            <ButtonText>Multiplikation</ButtonText>
-            <ButtonText>
-              {mathGame[2].score}/{mathGame[2].levelScore}
-            </ButtonText>
-            *
+            <ButtonTextDiv>
+              <ButtonText>Nivå {mathGame[2].level}</ButtonText>
+              <ButtonTitle>Multiplikation</ButtonTitle>
+              <ButtonText>
+                {mathGame[2].score}/{mathGame[2].levelScore}
+              </ButtonText>
+            </ButtonTextDiv>
+            <ButtonSign>*</ButtonSign>
           </MathTypeButton>
           <MathTypeButton
             value="3"
             onClick={(event) => handleChoice(event.target.value)}
           >
-            <ButtonText>Nivå {mathGame[3].level}</ButtonText>
-            <ButtonText>Division</ButtonText>
-            <ButtonText>
-              {mathGame[3].score}/{mathGame[3].levelScore}
-            </ButtonText>
-            ÷
+            <ButtonTextDiv>
+              <ButtonText>Nivå {mathGame[3].level}</ButtonText>
+              <ButtonTitle>Division</ButtonTitle>
+              <ButtonText>
+                {mathGame[3].score}/{mathGame[3].levelScore}
+              </ButtonText>
+            </ButtonTextDiv>
+            <ButtonSign>÷</ButtonSign>
           </MathTypeButton>
         </Choices>
       </MathGameSite>
-    )
+    );
   }
 }
 
@@ -207,19 +214,19 @@ const MathTypeButton = styled.button`
   background-color: var(--ocean);
   color: white;
   width: 270px;
-  height: 50px;
+  height: 60px;
   margin: 10px auto;
   padding: 10px 0;
   z-index: 1;
   border-radius: 15px;
   border: none;
-  z-index: 1;
   font-size: 20px;
   padding: 15px;
   cursor: pointer;
   box-shadow: 4px 4px var(--oceanshadow);
   display: flex;
-  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
 
   &:hover {
     background-color: var(--oceanhover);
@@ -238,12 +245,29 @@ const MathTypeButton = styled.button`
 
   @media (min-width: 700px) {
     width: 270px;
-    height: 100px;
-    padding: 20px;
+    height: 120px;
+    padding: 10px 20px;
   }
-`;
+`
+
+const ButtonTextDiv = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 5px;
+  width: 200px;
+  height: 100px;
+`
+
+const ButtonTitle = styled.p`
+  font-size: 30px;
+`
 
 const ButtonText = styled.p`
-  font-size: 20px;
+  font-size: 18px;
   margin: 0;  
+`
+
+const ButtonSign = styled.p`
+  font-size: 50px;
 `
