@@ -5,9 +5,11 @@ import { useMath } from "../../contexts/MathContext"
 import Lottie from "lottie-react"
 import Right from "../../assets/Right.json"
 import Wrong from "../../assets/Wrong.json"
+import Celebrate from "../../assets/Celebrate.json"
 
 export const MathQuestion = ({ focusRef, type }) => {
-  const { mathGame, setMathGame, generateQuestion } = useMath()
+  const { mathGame, setMathGame, generateQuestion, celebrateLottie } =
+    useMath()
   const currentScore = mathGame[Number(type)].score
 
   const [message, setMessage] = useState("")
@@ -84,6 +86,24 @@ export const MathQuestion = ({ focusRef, type }) => {
               {currentScore}/{mathGame[Number(type)].levelScore}⭐
             </Score>
           </Progress>
+          {celebrateLottie && (
+            <div
+              style={{
+                position: "absolute",
+                top: "20%",
+                left: "67%",
+                transform: "translate(-50%, -50%)",
+                zIndex: 2,
+              }}
+            >
+              <Lottie
+                animationData={Celebrate}
+                loop={false}
+                autoplay
+                style={{ width: 200, height: 200 }}
+              />
+            </div>
+          )}
           <Title>{mathGame[Number(type)].title}</Title>
         </HeaderDiv>
         <QuestionCard>{mathGame[Number(type)].question}</QuestionCard>
@@ -146,7 +166,7 @@ export const MathQuestion = ({ focusRef, type }) => {
         </NumPad>
         {message && <Message>{message}</Message>}
       </div>
-    )
+    );
   } else {
     return (
       <Title>Du har klarat alla nivåer! Grattis!</Title>
