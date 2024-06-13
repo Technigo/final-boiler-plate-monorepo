@@ -36,7 +36,7 @@ export const MathQuestion = ({ focusRef, type }) => {
       setTimeout(() => (newGame[Number(type)].score = currentScore + 1), 3000)
       setTimeout(() => setMathGame(newGame), 3000)
     } else {
-      setTimeout(() => setWrongLottie(true), 1000)
+      setTimeout(() => setWrongLottie(true), 500)
       setTimeout(
         () =>
           setMessage(`Rätt svar var ${mathGame[Number(type)].correctAnswer}.`),
