@@ -30,10 +30,8 @@ const HeroContainer = styled.div`
   display: flex;
   justify-content: center;
   padding: 60px 30px;
-  min-height: 400px;
   background-image: none;
   background-size: cover;
-
   background-position-x: center;
   background-position-y: top;
   background-repeat: no-repeat;
@@ -41,10 +39,12 @@ const HeroContainer = styled.div`
 
   @media (min-width: 500px) AND (max-width: 1025px) {
     background-image: url(${heroImgUrlTabl});
+    min-height: 200px;
   }
 
   @media (min-width: 1025px) {
     background-image: url(${heroImgUrl});
+    min-height: 400px;
   }
 `;
 

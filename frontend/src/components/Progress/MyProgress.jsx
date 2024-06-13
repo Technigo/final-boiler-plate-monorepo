@@ -48,8 +48,13 @@ const ProgressContainer = styled.div`
 
 const GamesH2 = styled.h2`
   text-align: center;
+  margin: -20px auto 0;
+  
   @media (min-width: 1025px) {
     font-size: 35px;
+    @media (min-width: 1025px) {
+      margin: -50px auto 0;
+  }
   }
 `;
 
@@ -62,7 +67,6 @@ const GamesCards = styled.div`
 
   @media (min-width: 700px) {
     flex-direction: row;
-    /* margin: -60px auto 0; */
   }
 `;
 
