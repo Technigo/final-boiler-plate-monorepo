@@ -156,7 +156,7 @@ export const MathProvider = ({ children }) => {
   const generateQuestion = (type) => {
     //use next line for testing/demoing (only three questions before level-change)
     if (mathGame[type].score >= 3) {
-      //if (mathGame[type].score >= mathGame[type].levelScore) {
+    //if (mathGame[type].score >= mathGame[type].levelScore) {
       setCelebrateLottie(true)
       const newGame = [...mathGame]
       newGame[type].level = mathGame[type].level + 1

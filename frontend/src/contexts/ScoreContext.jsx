@@ -88,8 +88,8 @@ export const ScoreProvider = ({ children }) => {
 
     //Checks the score and handles level-change
     //use next line for testing/demoing (only three questions before level-change)
-    //if (game[0].score >= 3) {
-    if (game[0].score >= game[0].levelScore) {
+    if (game[0].score >= 3) {
+    //if (game[0].score >= game[0].levelScore) {
       setCelebrateLottie(true)
       const newGame = [...game]
       newGame[0].level = game[0].level + 1
