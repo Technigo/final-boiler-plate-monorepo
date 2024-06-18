@@ -11,7 +11,7 @@ export const OmOss = () => {
   return (
     <AboutContainer>
       <AboutTitle>Om oss</AboutTitle>
-      <Description>Teamet bakom Pluggin'</Description>
+      <Description>Teamet bakom Pluggin&apos;</Description>
       <PeopleDiv>
         <PersonDiv>
           <PersonImg src={erika} width="150" alt="Erika-Wernbro" />

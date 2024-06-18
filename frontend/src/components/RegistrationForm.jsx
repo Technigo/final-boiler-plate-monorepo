@@ -58,7 +58,7 @@ export const RegistrationForm = () => {
               {...register("username", {
                 required: "Användarnamn krävs.",
                 pattern: {
-                  value: /^[a-zA-Z0-9_]+$/,
+                  value: /^[a-öA-Ö0-9_]+$/,
                   message:
                     "Användarnamn får endast innehålla bokstäver, siffror och understreck",
                 },
@@ -75,7 +75,7 @@ export const RegistrationForm = () => {
               {...register("firstName", {
                 required: "Förnamn krävs",
                 pattern: {
-                  value: /^[a-zA-Z]+$/,
+                  value: /^[a-öA-Ö]+$/,
                   message: "Förnamn får endast innehålla bokstäver",
                 },
               })}
@@ -91,7 +91,7 @@ export const RegistrationForm = () => {
               {...register("lastName", {
                 required: "Efternamn krävs",
                 pattern: {
-                  value: /^[a-zA-Z]+$/,
+                  value: /^[a-öA-Ö]+$/,
                   message: "Efternamn får endast innehålla bokstäver",
                 },
               })}
@@ -142,7 +142,7 @@ export const RegistrationForm = () => {
                 },
                 pattern: {
                   value:
-                    /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d@$!%*?&]{8,}$/,
+                    /^(?=.*[a-ö])(?=.*[A-Ö])(?=.*\d)[a-öA-Ö\d@$!%*?&]{8,}$/,
                   message:
                     "Lösenordet måste innehålla minst en stor bokstav, en liten bokstav och en siffra",
                 },

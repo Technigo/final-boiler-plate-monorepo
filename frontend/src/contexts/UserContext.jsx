@@ -1,3 +1,5 @@
+/* eslint-disable react-refresh/only-export-components */
+import PropTypes from "prop-types"
 import { createContext, useContext, useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
 
@@ -66,7 +68,7 @@ export const UserProvider = ({ children }) => {
       auth: false,
     })
 
-    navigate("/logga-in")
+    navigate("/")
   }
 
   // Function that sends userData to MongoDB to create a new user
@@ -123,3 +125,7 @@ export const UserProvider = ({ children }) => {
   )
 }
 export const useLogin = () => useContext(UserContext)
+
+UserProvider.propTypes = {
+  children: PropTypes.any,
+}

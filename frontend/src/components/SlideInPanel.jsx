@@ -1,5 +1,6 @@
-import { useEffect, useRef } from 'react'
-import styled from 'styled-components'
+import PropTypes from "prop-types"
+import { useEffect, useRef } from "react"
+import styled from "styled-components"
 
 export const SlideInPanel = ({ isOpen, onClose, children, panelType }) => {
   const panelRef = useRef()
@@ -19,11 +20,11 @@ export const SlideInPanel = ({ isOpen, onClose, children, panelType }) => {
 
     return () => {
       document.removeEventListener("mousedown", handleClickOutside)
-    };
+    }
   }, [isOpen, onClose])
 
   return (
-    <PanelContainer ref={panelRef} isOpen={isOpen} panelType={panelType}>
+    <PanelContainer ref={panelRef} $isOpen={isOpen} $panelType={panelType}>
       <CloseButton onClick={onClose}>×</CloseButton>
       {children}
     </PanelContainer>
@@ -34,12 +35,13 @@ const PanelContainer = styled.div`
   position: fixed;
   top: 60px;
   width: 100%;
-  background: ${({ panelType }) => (panelType === "register" ? "var(--ocean)" : "var(--forest)")};
+  background: ${({ $panelType }) =>
+    $panelType === "register" ? "var(--ocean)" : "var(--forest)"};
   transition: right 0.8s ease-in-out;
   z-index: 9;
   overflow-y: auto;
   height: calc(100% - 60px);
-  right: ${({ isOpen }) => (isOpen ? "0" : "-100%")};
+  right: ${({ $isOpen }) => ($isOpen ? "0" : "-100%")};
 
   @media (min-width: 1025px) {
     width: 400px;
@@ -61,3 +63,10 @@ const CloseButton = styled.div`
   top: 10px;
   left: 20px;
 `
+
+SlideInPanel.propTypes = {
+  isOpen: PropTypes.bool,
+  onClose: PropTypes.func,
+  panelType: PropTypes.string,
+  children: PropTypes.any,
+}

@@ -56,13 +56,13 @@ export const Play = () => {
       {isLoggedIn && message && <SecretText>{message}</SecretText>}
       <GamesCards>
         <Link to={`/spela/matte`}>
-          <GameCard math>Matte</GameCard>
+          <GameCard $math>Matte</GameCard>
         </Link>
         <Link to={`/spela/svenska`}>
-          <GameCard swedish>Svenska</GameCard>
+          <GameCard $swedish>Svenska</GameCard>
         </Link>
         <Link to={`/spela/engelska`}>
-          <GameCard english>Engelska</GameCard>
+          <GameCard $english>Engelska</GameCard>
         </Link>
       </GamesCards>
     </PlayContainer>
@@ -128,8 +128,8 @@ const GameCard = styled.div`
     transition: 0.2s ease;
   }
 
-  ${({ math }) =>
-    math &&
+  ${({ $math }) =>
+    $math &&
     css`
       box-shadow: 10px 10px var(--oceanshadow);
       background-color: var(--ocean);
@@ -139,8 +139,8 @@ const GameCard = styled.div`
       }
     `}
 
-  ${({ swedish }) =>
-    swedish &&
+  ${({ $swedish }) =>
+    $swedish &&
     css`
       background-color: var(--sunset);
       box-shadow: 10px 10px var(--sunsetshadow);
@@ -150,8 +150,8 @@ const GameCard = styled.div`
       }
     `}
 
-  ${({ english }) =>
-    english &&
+  ${({ $english }) =>
+    $english &&
     css`
       background-color: var(--forest);
       box-shadow: 10px 10px var(--forestshadow);

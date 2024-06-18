@@ -1,19 +1,19 @@
-import styled from "styled-components";
-import PropTypes from "prop-types";
-import translations from "./translations.json";
+import PropTypes from "prop-types"
+import styled from "styled-components"
+import translations from "./translations.json"
 
-// User json file to translate subjects and subcategories
+// Use json file to translate subjects and subcategories
 const translateSubject = (subject) => {
   return translations.subjects[subject] || subject;
-};
+}
 
 const translateSubcategory = (subcategory) => {
   return translations.subcategories[subcategory] || subcategory;
-};
+}
 
 export const LevelProgressBar = ({ progress, selectedSubject }) => {
   if (!progress) {
-    return null;
+    return null
   }
 
   // Remove '_id' from subjects, else it will display in the score list
@@ -58,13 +58,9 @@ export const LevelProgressBar = ({ progress, selectedSubject }) => {
   )
 }
 
-LevelProgressBar.propTypes = {
-  progress: PropTypes.object.isRequired,
-};
-
 const LevelProgressH1 = styled.h1`
   margin-bottom: 10px;
-`;
+`
 
 const LevelContainer = styled.div`
   padding: 30px;
@@ -91,4 +87,9 @@ const ProgressBar = styled.div`
 const ProgressForSubjects = styled.div`
   height: 100%;
   border-radius: 30px;
-`;
+`
+
+LevelProgressBar.propTypes = {
+  progress: PropTypes.object.isRequired,
+  selectedSubject: PropTypes.string,
+}

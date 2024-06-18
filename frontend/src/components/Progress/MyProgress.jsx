@@ -1,20 +1,20 @@
-import styled, { css } from "styled-components";
+import styled, { css } from "styled-components"
 import { useState } from "react";
-import { LevelProgressBar } from "./LevelProgressBar";
-import { useScore } from "../../contexts/ScoreContext";
-import { Hero } from "./Hero";
+import { LevelProgressBar } from "./LevelProgressBar"
+import { useScore } from "../../contexts/ScoreContext"
+import { Hero } from "./Hero"
 
 export const Progress = () => {
-  const { progress } = useScore();
-  const [selectedSubject, setSelectedSubject] = useState(null);
+  const { progress } = useScore()
+  const [selectedSubject, setSelectedSubject] = useState(null)
 
   if (!progress) {
-    return <div>Loading...</div>;
+    return <div>Loading...</div>
   }
 
   const handleProgressButton = (subject) => {
-    setSelectedSubject(subject);
-  };
+    setSelectedSubject(subject)
+  }
 
   return (
     <ProgressContainer>

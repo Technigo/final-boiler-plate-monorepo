@@ -70,7 +70,7 @@ export const LanguageQuestion = ({ type, language, color, subcategory }) => {
   if (game[Number(type)].level < 4) {
     return (
       <div>
-        <QuestionCard color={color}>{question}</QuestionCard>
+        <QuestionCard $color={color}>{question}</QuestionCard>
         {rightLottie && (
           <div
             style={{
@@ -106,7 +106,7 @@ export const LanguageQuestion = ({ type, language, color, subcategory }) => {
                 key={index}
                 value={answer}
                 onClick={(event) => handleChoice(event.target.value)}
-                color={color}
+                $color={color}
               >
                 {capsAnswer}
               </AnswerButton>
@@ -136,7 +136,7 @@ const QuestionCard = styled.div`
   align-content: center;
   font-size: 40px;
   background-color: ${(props) =>
-    props.color === "sunset" ? "var(--sunset)" : "var(--forest)"};
+    props.$color === "sunset" ? "var(--sunset)" : "var(--forest)"};
   color: white;
   padding: 20px;
   margin: 10px auto;
@@ -165,7 +165,7 @@ const Answers = styled.div`
 
 const AnswerButton = styled.button`
   background-color: ${(props) =>
-    props.color === "sunset" ? "var(--sunset)" : "var(--forest)"};
+    props.$color === "sunset" ? "var(--sunset)" : "var(--forest)"};
   color: white;
   width: 270px;
   height: 50px;
