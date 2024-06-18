@@ -147,10 +147,34 @@ app.post("/users", async (req, res) => {
       password: bcrypt.hashSync(password, salt),
       progress: {
         math: {
-          addition: { levels: [{}, {}, {}, {}] },
-          multiplication: { levels: [{}, {}, {}, {}] },
-          subtraction: { levels: [{}, {}, {}, {}] },
-          division: { levels: [{}, {}, {}, {}] },
+          addition: {
+            levels: [
+              { level: 1, score: 0, levelScore: 20 },
+              { level: 2, score: 0, levelScore: 20 },
+              { level: 3, score: 0, levelScore: 20 },
+            ],
+          },
+          subtraction: {
+            levels: [
+              { level: 1, score: 0, levelScore: 20 },
+              { level: 2, score: 0, levelScore: 20 },
+              { level: 3, score: 0, levelScore: 20 },
+            ],
+          },
+          multiplication: {
+            levels: [
+              { level: 1, score: 0, levelScore: 20 },
+              { level: 2, score: 0, levelScore: 20 },
+              { level: 3, score: 0, levelScore: 20 },
+            ],
+          },
+          division: {
+            levels: [
+              { level: 1, score: 0, levelScore: 20 },
+              { level: 2, score: 0, levelScore: 20 },
+              { level: 3, score: 0, levelScore: 20 },
+            ],
+          },
         },
         swedish: {
           synonyms: {
