@@ -39,12 +39,12 @@ export const Progress = () => {
         />
       )}
     </ProgressContainer>
-  );
-};
+  )
+}
 
 const ProgressContainer = styled.div`
   margin: 0 auto;
-`;
+`
 
 const GamesH2 = styled.h2`
   text-align: center;
@@ -56,7 +56,7 @@ const GamesH2 = styled.h2`
       margin: -50px auto 0;
   }
   }
-`;
+`
 
 const GamesCards = styled.div`
   display: flex;
@@ -68,7 +68,7 @@ const GamesCards = styled.div`
   @media (min-width: 700px) {
     flex-direction: row;
   }
-`;
+`
 
 const GameCard = styled.div`
   display: flex;
@@ -144,4 +144,4 @@ const GameCard = styled.div`
    @media (min-width: 700px) {
     margin: 40px;
   }
-`;
+`

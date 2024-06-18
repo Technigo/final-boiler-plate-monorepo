@@ -1,7 +1,7 @@
 // Import necessary dependencies and components.
-import { Hero } from "../components/Hero"
-import { Link } from "react-router-dom"
 import styled, { css } from "styled-components"
+import { Link } from "react-router-dom"
+import { Hero } from "../components/Hero"
 import { Footer } from "../components/Footer"
 import HeaderImg from "/src/assets/HeaderWeb.jpg"
 import HeaderImgTabl from "/src/assets/HeaderTablet.jpg"
@@ -10,24 +10,26 @@ import HeaderImgTabl from "/src/assets/HeaderTablet.jpg"
 export const Home = () => {
   // Render the component content.
   return (
-    <HomeContainer>
-      <Hero />
-      <ContentWrapper>
-        <Heading>VÄLJ ÄMNE</Heading>
-        <GamesCards>
-          <Link to={`/spela/matte`}>
-            <GameCard math>Matte</GameCard>
-          </Link>
-          <Link to={`/spela/svenska`}>
-            <GameCard swedish>Svenska</GameCard>
-          </Link>
-          <Link to={`/spela/engelska`}>
-            <GameCard english>Engelska</GameCard>
-          </Link>
-        </GamesCards>
-      </ContentWrapper>
+    <>
+      <HomeContainer>
+        <Hero />
+        <ContentWrapper>
+          <Heading>VÄLJ ÄMNE</Heading>
+          <GamesCards>
+            <Link to={`/spela/matte`}>
+              <GameCard math>Matte</GameCard>
+            </Link>
+            <Link to={`/spela/svenska`}>
+              <GameCard swedish>Svenska</GameCard>
+            </Link>
+            <Link to={`/spela/engelska`}>
+              <GameCard english>Engelska</GameCard>
+            </Link>
+          </GamesCards>
+        </ContentWrapper>  
+      </HomeContainer>
       <Footer />
-    </HomeContainer>
+    </>
   )
 }
 
@@ -42,6 +44,7 @@ const HomeContainer = styled.div`
   background-position: center;
   background-repeat: no-repeat;
   height: auto;
+  margin-bottom: 50px;
 
   @media (min-width: 500px) AND (max-width: 1025px) {
     background-image: url(${HeaderImgTabl});

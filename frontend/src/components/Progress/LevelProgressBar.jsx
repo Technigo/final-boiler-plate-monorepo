@@ -49,14 +49,14 @@ export const LevelProgressBar = ({ progress, selectedSubject }) => {
                     ></ProgressForSubjects>
                   </ProgressBar>
                 </LevelProgress>
-              );
+              )
             })}
           </LevelWrapper>
         </div>
       ))}
     </LevelContainer>
-  );
-};
+  )
+}
 
 LevelProgressBar.propTypes = {
   progress: PropTypes.object.isRequired,

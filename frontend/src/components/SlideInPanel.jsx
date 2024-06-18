@@ -27,8 +27,8 @@ export const SlideInPanel = ({ isOpen, onClose, children, panelType }) => {
       <CloseButton onClick={onClose}>×</CloseButton>
       {children}
     </PanelContainer>
-  );
-};
+  )
+}
 
 const PanelContainer = styled.div`
   position: fixed;

@@ -232,13 +232,6 @@ app.post("/sessions", async (req, res) => {
   }
 })
 
-app.get("/games", authenticateUser)
-app.get("/games", async (req, res) => {
-  res
-    .status(200)
-    .json({ message: "Secret message only for logged in users to see!" })
-})
-
 // Route for storing progress
 app.post("/progress", authenticateUser, async (req, res) => {
   const { subject, subcategory, level, score } = req.body
