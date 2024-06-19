@@ -1,17 +1,16 @@
+import styled from "styled-components"
+import Lottie from "lottie-react"
+import { FormProvider, useForm } from "react-hook-form"
+import { useNavigate } from "react-router-dom"
 import { useState } from "react"
 import { useLogin } from "../contexts/UserContext"
 import { Button } from "./Button"
-import { useNavigate } from "react-router-dom"
-import { FormProvider, useForm } from "react-hook-form"
-
-import styled from "styled-components"
+import Loading from "../assets/Loading.json"
 
 export const RegistrationForm = () => {
-  // Set starting point for handling user data
-
   // This method gives access to different form hooks
   const methods = useForm()
-  const { registerUser } = useLogin()
+  const { registerUser, loading } = useLogin()
   const [errorMessage, setErrorMessage] = useState("")
 
   // Destructes register, handleSubmit and errors from useForm
@@ -168,6 +167,17 @@ export const RegistrationForm = () => {
           <Button type="submit">Registrera</Button>
         </Form>
       </FormProvider>
+      {loading && (
+        <Lottie
+          animationData={Loading}
+          loop={true}
+          autoplay
+          style={{
+            width: 150,
+            height: 150,
+          }}
+        />
+      )}
     </RegistrationContainer>
   )
 }

@@ -246,7 +246,7 @@ app.post("/progress", authenticateUser, async (req, res) => {
     }
 
     // Update progress for the current subject / subcategory
-    user.progress[subject][subcategory].levels[level - 1].score += 1;
+    user.progress[subject][subcategory].levels[level - 1].score += 1
 
 
     // Save updates to db

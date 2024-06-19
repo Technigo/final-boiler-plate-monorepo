@@ -1,59 +1,22 @@
-import { useEffect } from "react"
-import { Link } from "react-router-dom"
 import styled, { css } from "styled-components"
+import { Link } from "react-router-dom"
 import { useLogin } from "../contexts/UserContext"
 
 export const Play = () => {
-  const { isLoggedIn, setIsLoggedIn, user } = useLogin()
-  const apiUrl = import.meta.env.VITE_API_URL || "http://localhost:3000"
-
-  let message = ""
-
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  const getContent = async () => {
-    const accessToken = localStorage.getItem("accessToken")
-
-    try {
-      // Ensure this points to the correct backend URL
-      const response = await fetch(`${apiUrl}/games`, {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: accessToken,
-        },
-      })
-
-      if (!response.ok) {
-        setIsLoggedIn(false)
-        throw new Error("Failed to get user")
-      }
-
-      const data = await response.json()
-      console.info("Login success", data)
-      message = data.message
-      setIsLoggedIn(true)
-    } catch (err) {
-      console.error("No user was found:", err)
-    }
-  }
-
-  useEffect(() => {
-    getContent()
-  }, [getContent])
+  const { isLoggedIn, user } = useLogin()
 
   return (
     <PlayContainer>
       <PlayTitle>
         {isLoggedIn ? (
           <>
-            Välkommen till PluggIn, {user?.firstName}. Redo att spela några
+            Välkommen till PluggIn, {user.firstName}. Redo att spela några
             spel?
           </>
         ) : (
           <>Du är inte inloggad. Dina framsteg kommer inte att sparas.</>
         )}
       </PlayTitle>
-      {isLoggedIn && message && <SecretText>{message}</SecretText>}
       <GamesCards>
         <Link to={`/spela/matte`}>
           <GameCard $math>Matte</GameCard>
@@ -164,10 +127,4 @@ const GameCard = styled.div`
    @media (min-width: 700px) {
     margin: 40px;
   }
-`
-
-const SecretText = styled.p`
-  font-size: 14px;
-  text-align: center;
-  color: red;
 `

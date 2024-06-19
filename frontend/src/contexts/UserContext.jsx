@@ -12,8 +12,11 @@ export const UserProvider = ({ children }) => {
     accessToken: localStorage.getItem("accessToken"),
     auth: false,
   })
+  const [loading, setLoading] = useState(false)
+  const [isPanelOpen, setIsPanelOpen] = useState(false)
+
   const navigate = useNavigate()
-  const apiUrl = import.meta.env.VITE_API_URL || "http://localhost:3000"
+  const apiUrl = import.meta.env.VITE_API_URL || "http://localhost:4000"
 
   // Load username from localStorage
   useEffect(() => {
@@ -24,6 +27,7 @@ export const UserProvider = ({ children }) => {
   }, [])
 
   const login = async (loginData, accessToken) => {
+    setLoading(true)
     try {
       // Ensure this points to the correct backend URL
       const response = await fetch(`${apiUrl}/sessions`, {
@@ -54,7 +58,9 @@ export const UserProvider = ({ children }) => {
       })
 
       setIsLoggedIn(true)
+      setLoading(false)
       navigate("/spela")
+      setIsPanelOpen(false)
     } catch (err) {
       console.error("No user was found:", err)
     }
@@ -67,12 +73,12 @@ export const UserProvider = ({ children }) => {
     setAuthenticated({
       auth: false,
     })
-
     navigate("/")
   }
 
   // Function that sends userData to MongoDB to create a new user
   const registerUser = async (userData) => {
+    setLoading(true)
     try {
       // Ensure this points to the correct backend URL
       const response = await fetch(`${apiUrl}/users`, {
@@ -101,7 +107,9 @@ export const UserProvider = ({ children }) => {
       })
 
       setIsLoggedIn(true)
+      setLoading(false)
       navigate("/spela")
+      setIsPanelOpen(false)
     } catch (err) {
       console.error("Error registering new user:", err)
     }
@@ -118,6 +126,10 @@ export const UserProvider = ({ children }) => {
         login,
         signout,
         registerUser,
+        loading,
+        apiUrl,
+        isPanelOpen,
+        setIsPanelOpen
       }}
     >
       {children}

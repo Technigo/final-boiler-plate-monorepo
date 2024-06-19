@@ -180,14 +180,14 @@ const AnswerButton = styled.button`
   cursor: pointer;
   box-shadow: 4px 4px
     ${(props) =>
-      props.color === "sunset" ? "var(--sunsetshadow)" : "var(--forestshadow)"};
+      props.$color === "sunset" ? "var(--sunsetshadow)" : "var(--forestshadow)"};
 
   &:hover {
     background-color: ${(props) =>
-      props.color === "sunset" ? "var(--sunsethover)" : "var(--foresthover)"};
+      props.$color === "sunset" ? "var(--sunsethover)" : "var(--foresthover)"};
     box-shadow: 6px 6px
       ${(props) =>
-        props.color === "sunset"
+        props.$color === "sunset"
           ? "var(--sunsetshadow)"
           : "var(--forestshadow)"};
     transition: 0.2s ease;
@@ -199,7 +199,7 @@ const AnswerButton = styled.button`
 
     &:hover {
       background-color: ${(props) =>
-        props.color === "sunset" ? "var(--sunset)" : "var(--forest)"};
+        props.$color === "sunset" ? "var(--sunset)" : "var(--forest)"};
     }
   }
 

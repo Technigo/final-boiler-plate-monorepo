@@ -1,18 +1,21 @@
 import styled from "styled-components"
+import Lottie from "lottie-react"
+import { useNavigate } from "react-router-dom"
 import { useState } from "react"
 import { useLogin } from "../contexts/UserContext"
 import { Button } from "./Button"
-import { useNavigate } from "react-router-dom"
+import Loading from "../assets/Loading.json"
+
 
 export const Login = () => {
   const [username, setUsername] = useState("")
   const [password, setPassword] = useState("")
   const [error, setError] = useState("")
-  const { login } = useLogin()
+  const { login, loading } = useLogin()
   const navigate = useNavigate()
 
-  const handleSubmit = async (e) => {
-    e.preventDefault()
+  const handleSubmit = async (event) => {
+    event.preventDefault()
     try {
       await login({ username, password })
       navigate("/spela")
@@ -48,6 +51,21 @@ export const Login = () => {
           Logga in
         </Button>
       </Form>
+      {loading && (
+        <Lottie
+          animationData={Loading}
+          loop={true}
+          autoplay
+          style={{
+            width: 300,
+            height: 300,
+            zIndex: 2,
+            position: "absolute",
+            right: 10,
+            bottom: 1,           
+          }}
+        />
+      )}
     </LoginContainer>
   )
 }
@@ -58,6 +76,7 @@ const LoginContainer = styled.div`
   height: fit-content;
   margin: 0 auto;
   padding-top: 80px;
+  position: relative;
 
   @media (min-width: 700px) {
     padding-top: 50px;

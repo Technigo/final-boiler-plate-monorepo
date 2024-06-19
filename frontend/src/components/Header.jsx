@@ -10,9 +10,9 @@ import { RegistrationForm } from "./RegistrationForm"
 import { Login } from "./Login"
 
 export const Header = () => {
-  const { isLoggedIn, signout } = useLogin()
+  const { isLoggedIn, signout, isPanelOpen, setIsPanelOpen } = useLogin()
   const [hamburgerOpen, setHamburgerOpen] = useState(false)
-  const [isPanelOpen, setIsPanelOpen] = useState(false)
+  
   const [panelType, setPanelType] = useState(null)
 
   const toggleHamburger = () => {
