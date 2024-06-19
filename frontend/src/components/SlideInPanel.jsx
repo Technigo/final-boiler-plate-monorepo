@@ -1,9 +1,10 @@
 import PropTypes from "prop-types"
-import { useEffect, useRef } from "react"
+import { useEffect, useRef, useState } from "react"
 import styled from "styled-components"
 
 export const SlideInPanel = ({ isOpen, onClose, children, panelType }) => {
   const panelRef = useRef()
+  const [currentPanelType, setCurrentPanelType] = useState(panelType)
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -23,10 +24,16 @@ export const SlideInPanel = ({ isOpen, onClose, children, panelType }) => {
     }
   }, [isOpen, onClose])
 
+  useEffect(() => {
+    if (isOpen) {
+      setCurrentPanelType(panelType)
+    }
+  }, [isOpen, panelType])
+
   return (
-    <PanelContainer ref={panelRef} $isOpen={isOpen} $panelType={panelType}>
+    <PanelContainer ref={panelRef} $isOpen={isOpen} $panelType={currentPanelType}>
       <CloseButton onClick={onClose}>×</CloseButton>
-      {children}
+        {children}
     </PanelContainer>
   )
 }
@@ -37,7 +44,7 @@ const PanelContainer = styled.div`
   width: 100%;
   background: ${({ $panelType }) =>
     $panelType === "register" ? "var(--ocean)" : "var(--forest)"};
-  transition: right 0.8s ease-in-out;
+  transition: right 0.4s ease-in-out;
   z-index: 9;
   overflow-y: auto;
   height: calc(100% - 60px);
