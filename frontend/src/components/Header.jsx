@@ -22,6 +22,7 @@ export const Header = () => {
   const openPanel = (type) => {
     setPanelType(type)
     setIsPanelOpen(true)
+    setHamburgerOpen(false)
   }
 
   const closePanel = () => {
