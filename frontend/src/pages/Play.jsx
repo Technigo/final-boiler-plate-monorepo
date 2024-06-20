@@ -1,10 +1,23 @@
 import styled, { css } from "styled-components"
 import { Link } from "react-router-dom"
-import { useLogin } from "../contexts/UserContext"
+import { useEffect } from "react"
+import { useUser } from "../contexts/UserContext"
 import { Footer } from "../components/Footer"
 
 export const Play = () => {
-  const { isLoggedIn, user } = useLogin()
+  const { isLoggedIn, setIsLoggedIn, user, setUser } = useUser()
+
+  useEffect(() => {
+    const firstName = localStorage.getItem("firstName")
+    if (firstName) {
+      setUser({ firstName: firstName })
+    }
+    const accessToken = localStorage.getItem("accessToken")
+    if (accessToken) {
+      setIsLoggedIn(true)
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   return (
     <>

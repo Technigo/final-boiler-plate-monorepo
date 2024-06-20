@@ -1,17 +1,15 @@
 /* eslint-disable react-refresh/only-export-components */
 import PropTypes from "prop-types"
-import { createContext, useContext, useState, useEffect } from "react"
+import { createContext, useContext, useState } from "react"
 import englishData from "../data/EnglishGameData.json"
 import swedishData from "../data/SwedishGameData.json"
 
 const ScoreContext = createContext()
 
 export const ScoreProvider = ({ children }) => {
-  const [authenticated, setAuthenticated] = useState({
-    accessToken: localStorage.getItem("accessToken"),
-    auth: false,
-  })
-  const apiUrl = import.meta.env.VITE_API_URL || "http://localhost:3000"
+  const accessToken = localStorage.getItem("accessToken")
+
+  const apiUrl = import.meta.env.VITE_API_URL || "http://localhost:4000"
 
   //Object for swedish-game
   const [swedishGame, setSwedishGame] = useState([
@@ -106,7 +104,7 @@ export const ScoreProvider = ({ children }) => {
     setMessage("")
   }
 
-  const registerAnswer = async ({
+  /*const registerAnswer = async ({
     answer,
     subject,
     level,
@@ -137,26 +135,26 @@ export const ScoreProvider = ({ children }) => {
     } catch (error) {
       console.error("Error:", error)
     }
-  }
+  }*/
 
   // Fetching progress data from db
   const fetchProgress = async () => {
+    console.log("Trying to fetch")
     try {
       const response = await fetch(`${apiUrl}/progress`, {
         headers: {
-          Authorization: authenticated.accessToken,
+          Authorization: accessToken,
         },
       })
 
       if (!response.ok) {
+        console.log("Could not fetch")
         throw new Error("Failed to fetch progress")
       }
 
       const data = await response.json()
-
-
-      setProgress(data.progress);
-
+      setProgress(data.progress)
+      console.log(data.progress)
     } catch (error) {
       console.error(error)
     }
@@ -184,9 +182,9 @@ export const ScoreProvider = ({ children }) => {
         setDisableButton,
         generateQuestion,
         rightAnswer,
-        registerAnswer,
         progress,
         celebrateLottie,
+        fetchProgress
       }}
     >
       {children}

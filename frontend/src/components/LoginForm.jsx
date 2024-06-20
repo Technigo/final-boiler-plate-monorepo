@@ -2,7 +2,7 @@ import styled from "styled-components"
 import Lottie from "lottie-react"
 import { useNavigate } from "react-router-dom"
 import { useState } from "react"
-import { useLogin } from "../contexts/UserContext"
+import { useUser } from "../contexts/UserContext"
 import { Button } from "./Button"
 import Loading from "../assets/Loading.json"
 
@@ -11,7 +11,7 @@ export const Login = () => {
   const [username, setUsername] = useState("")
   const [password, setPassword] = useState("")
   const [error, setError] = useState("")
-  const { login, loading } = useLogin()
+  const { login, loading } = useUser()
   const navigate = useNavigate()
 
   const handleSubmit = async (event) => {

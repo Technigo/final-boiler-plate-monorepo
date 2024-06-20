@@ -10,18 +10,16 @@ export const Hero = () => {
   const content = {
     heading: "Välkommen till Pluggin'",
     intro:
-      "Sidan där du kan förbättra dina kunskaper i olika skolämnen. Registrera dig för att spara dina framsteg i spelen.",
-    heroImgUrl: "./hero.png",
-    heroImgAlt: "Barn studerar i soffa",
+      "Sidan där du kan förbättra dina kunskaper i olika skolämnen. Registrera dig för att spara dina framsteg i spelen."
   }
 
   const openPanel = () => {
     setIsPanelOpen(true)
-  };
+  }
 
   const closePanel = () => {
     setIsPanelOpen(false)
-  };
+  }
 
   return (
     <HeroContainer>

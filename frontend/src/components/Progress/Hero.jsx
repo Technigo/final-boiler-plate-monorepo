@@ -1,10 +1,10 @@
 import styled from "styled-components"
-import { useLogin } from "./../../contexts/UserContext"
+import { useUser } from "./../../contexts/UserContext"
 import heroImgUrl from "/src/assets/ProgressHeaderWeb.jpg"
 import heroImgUrlTabl from "/src/assets/ProgressHeaderTablet.jpg"
 
 export const Hero = () => {
-  const { user } = useLogin()
+  const { user } = useUser()
 
   const content = {
     heroTitle: `Hej ${user?.firstName} 👋`,

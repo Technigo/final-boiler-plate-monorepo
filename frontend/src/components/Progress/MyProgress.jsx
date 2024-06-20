@@ -5,7 +5,7 @@ import { useScore } from "../../contexts/ScoreContext"
 import { Hero } from "./Hero"
 
 export const Progress = () => {
-  const { progress } = useScore()
+  const { progress, fetchProgress } = useScore()
   const [selectedSubject, setSelectedSubject] = useState(null)
 
   if (!progress) {
@@ -13,6 +13,7 @@ export const Progress = () => {
   }
 
   const handleProgressButton = (subject) => {
+    fetchProgress()
     setSelectedSubject(subject)
   }
 
@@ -21,18 +22,17 @@ export const Progress = () => {
       <Hero />
       <GamesH2>VÄLJ ETT ÄMNE FÖR ATT SE DINA RESULTAT</GamesH2>
       <GamesCards>
-        <GameCard math onClick={() => handleProgressButton("math")}>
+        <GameCard $math onClick={() => handleProgressButton("math")}>
           Matte
         </GameCard>
-        <GameCard swedish onClick={() => handleProgressButton("swedish")}>
+        <GameCard $swedish onClick={() => handleProgressButton("swedish")}>
           Svenska
         </GameCard>
-        <GameCard english onClick={() => handleProgressButton("english")}>
+        <GameCard $english onClick={() => handleProgressButton("english")}>
           Engelska
         </GameCard>
       </GamesCards>
-
-      {selectedSubject && progress.progress[selectedSubject] && (
+      {selectedSubject && progress.progress && (
         <LevelProgressBar
           progress={progress.progress[selectedSubject]}
           selectedSubject={selectedSubject}
@@ -108,8 +108,8 @@ const GameCard = styled.div`
     transition: 0.2s ease;
   }
 
-  ${({ math }) =>
-    math &&
+  ${({ $math }) =>
+    $math &&
     css`
       box-shadow: 10px 10px var(--oceanshadow);
       background-color: var(--ocean);
@@ -119,8 +119,8 @@ const GameCard = styled.div`
       }
     `}
 
-  ${({ swedish }) =>
-    swedish &&
+  ${({ $swedish }) =>
+    $swedish &&
     css`
       background-color: var(--sunset);
       box-shadow: 10px 10px var(--sunsetshadow);
@@ -130,8 +130,8 @@ const GameCard = styled.div`
       }
     `}
 
-  ${({ english }) =>
-    english &&
+  ${({ $english }) =>
+    $english &&
     css`
       background-color: var(--forest);
       box-shadow: 10px 10px var(--forestshadow);

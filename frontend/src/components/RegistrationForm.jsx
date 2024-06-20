@@ -3,14 +3,14 @@ import Lottie from "lottie-react"
 import { FormProvider, useForm } from "react-hook-form"
 import { useNavigate } from "react-router-dom"
 import { useState } from "react"
-import { useLogin } from "../contexts/UserContext"
+import { useUser } from "../contexts/UserContext"
 import { Button } from "./Button"
 import Loading from "../assets/Loading.json"
 
 export const RegistrationForm = () => {
   // This method gives access to different form hooks
   const methods = useForm()
-  const { registerUser, loading } = useLogin()
+  const { registerUser, loading } = useUser()
   const [errorMessage, setErrorMessage] = useState("")
 
   // Destructes register, handleSubmit and errors from useForm

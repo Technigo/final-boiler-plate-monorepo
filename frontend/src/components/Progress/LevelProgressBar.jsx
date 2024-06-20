@@ -4,11 +4,11 @@ import translations from "./translations.json"
 
 // Use json file to translate subjects and subcategories
 const translateSubject = (subject) => {
-  return translations.subjects[subject] || subject;
+  return translations.subjects[subject] || subject
 }
 
 const translateSubcategory = (subcategory) => {
-  return translations.subcategories[subcategory] || subcategory;
+  return translations.subcategories[subcategory] || subcategory
 }
 
 export const LevelProgressBar = ({ progress, selectedSubject }) => {
@@ -26,10 +26,15 @@ export const LevelProgressBar = ({ progress, selectedSubject }) => {
       </LevelProgressH1>
       {subjects.map((subject) => (
         <div key={subject}>
-          <h2>{translateSubcategory(subject)}</h2>
+          <h2>
+            {translateSubcategory(subject).replace(
+              translateSubcategory(subject).charAt(0),
+              translateSubcategory(subject).charAt(0).toUpperCase()
+            )}
+          </h2>
           <LevelWrapper>
             {progress[subject].levels.map((level, index) => {
-              const isMaxScore = level.score === level.levelScore;
+              const isMaxScore = level.score === level.levelScore
               return (
                 <LevelProgress key={index}>
                   <p>

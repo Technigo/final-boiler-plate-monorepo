@@ -5,8 +5,6 @@ import bcrypt from "bcrypt-nodejs"
 import crypto from "crypto"
 import dotenv from "dotenv" // Import dotenv for environment variables
 dotenv.config() // Load environment variables from the .env file
-import englishData from "../frontend/src/data/EnglishGameData.json"
-import swedishData from "../frontend/src/data/SwedishGameData.json"
 
 
 // Defining port and connecting to mongoose
@@ -259,6 +257,8 @@ app.post("/progress", authenticateUser, async (req, res) => {
 })
 
 // Route to get progress from db
+//app.get("/games", authenticateUser);
+//app.get("/games", async (req, res) => {
 app.get("/progress", authenticateUser, async (req, res) => {
   try {
     const user = req.user // get user
