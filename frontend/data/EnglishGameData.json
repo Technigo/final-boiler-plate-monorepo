@@ -7,12 +7,12 @@
       "wrongAnswer": ["lejon", "krokodil", "antilop"],
       "category": "animals"
     },
-    { 
+    {
       "level": 1,
       "question": "Tiger",
       "rightAnswer": "tiger",
       "wrongAnswer": ["björn", "hund", "katt"],
-      "category": "animals" 
+      "category": "animals"
     },
     {
       "level": 1,
@@ -21,157 +21,157 @@
       "wrongAnswer": ["noshörning", "elefant", "apa"],
       "category": "animals"
     },
-    { 
-      "level": 1,
+    {
+      "level": 2,
       "question": "Monkey",
       "rightAnswer": "apa",
       "wrongAnswer": ["elefant", "katt", "fågel"],
-      "category": "animals" 
+      "category": "animals"
     },
-    { 
-      "level": 1,
-      "question": "Lion", 
+    {
+      "level": 2,
+      "question": "Lion",
       "rightAnswer": "lejon",
-      "wrongAnswer": [ "tiger", "elefant", "häst"],
-      "category": "animals" 
-    },
-    { 
-      "level": 1,
-      "question": "Zebra", 
-      "rightAnswer": "zebra", 
-      "wrongAnswer": ["giraff", "elefant", "ko"],
-      "category": "animals" 
-    },
-    { 
-      "level": 1,
-      "question": "Dolphin",
-      "rightAnswer": "delfin",
-      "wrongAnswer": [ "val", "haj", "fisk"],
-      "category": "animals" 
+      "wrongAnswer": ["tiger", "elefant", "häst"],
+      "category": "animals"
     },
     {
       "level": 1,
+      "question": "Zebra",
+      "rightAnswer": "zebra",
+      "wrongAnswer": ["giraff", "elefant", "ko"],
+      "category": "animals"
+    },
+    {
+      "level": 3,
+      "question": "Dolphin",
+      "rightAnswer": "delfin",
+      "wrongAnswer": ["val", "haj", "fisk"],
+      "category": "animals"
+    },
+    {
+      "level": 3,
       "question": "Penguin",
       "rightAnswer": "pingvin",
       "wrongAnswer": ["elefant", "papegoja", "fågel"],
       "category": "animals"
     },
     {
-      "level": 1,
+      "level": 2,
       "question": "Kangaroo",
       "rightAnswer": "känguru",
-      "wrongAnswer": [ "koala", "elefant", "lejon"],
+      "wrongAnswer": ["koala", "elefant", "lejon"],
       "category": "animals"
     },
-    { 
-      "level": 1,
+    {
+      "level": 3,
       "question": "Eagle",
-      "rightAnswer": "örn", 
+      "rightAnswer": "örn",
       "wrongAnswer": ["falk", "fladdermus", "fisk"],
-      "category": "animals" 
+      "category": "animals"
     },
-    { 
+    {
       "level": 1,
-      "question": "Blue", 
-      "rightAnswer": "blå", 
+      "question": "Blue",
+      "rightAnswer": "blå",
       "wrongAnswer": ["gul", "röd", "grön"],
-      "category": "colors" 
+      "category": "colors"
     },
-    { 
+    {
       "level": 1,
-      "question": "Green", 
-      "rightAnswer": "grön", 
+      "question": "Green",
+      "rightAnswer": "grön",
       "wrongAnswer": ["blå", "rosa", "svart"],
-      "category": "colors" 
+      "category": "colors"
     },
-    { 
+    {
       "level": 1,
       "question": "Red",
-      "rightAnswer": "röd", 
+      "rightAnswer": "röd",
       "wrongAnswer": ["gul", "blå", "lila"],
-      "category": "colors" 
+      "category": "colors"
     },
-    { 
-      "level": 1,
+    {
+      "level": 2,
       "question": "Yellow",
-      "rightAnswer": "gul", 
+      "rightAnswer": "gul",
       "wrongAnswer": ["blå", "röd", "vit"],
-      "category": "colors" 
+      "category": "colors"
     },
-    { 
-      "level": 1,
+    {
+      "level": 2,
       "question": "Purple",
       "rightAnswer": "lila",
       "wrongAnswer": ["orange", "grön", "rosa"],
-      "category": "colors" 
+      "category": "colors"
     },
-    { 
+    {
       "level": 1,
-      "question": "Orange", 
-      "rightAnswer": "orange", 
+      "question": "Orange",
+      "rightAnswer": "orange",
       "wrongAnswer": ["röd", "gul", "brun"],
-      "category": "colors" 
+      "category": "colors"
     },
-    { 
-      "level": 1,
-      "question": "Pink", 
-      "rightAnswer":"rosa", 
+    {
+      "level": 2,
+      "question": "Pink",
+      "rightAnswer": "rosa",
       "wrongAnswer": ["lila", "blå", "grön"],
-      "category": "colors" 
+      "category": "colors"
     },
-    { 
+    {
       "level": 1,
-      "question": "Brown", 
-      "rightAnswer": "brun", 
+      "question": "Brown",
+      "rightAnswer": "brun",
       "wrongAnswer": ["grön", "röd", "gul"],
-      "category": "colors" 
+      "category": "colors"
     },
-    { 
+    {
       "level": 1,
-      "question": "Black", 
-      "rightAnswer": "svart", 
+      "question": "Black",
+      "rightAnswer": "svart",
       "wrongAnswer": ["vit", "blå", "grå"],
-      "category": "colors" 
+      "category": "colors"
     },
-    { 
+    {
       "level": 1,
-      "question": "White", 
-      "rightAnswer": "vit", 
+      "question": "White",
+      "rightAnswer": "vit",
       "wrongAnswer": ["svart", "brun", "grön"],
-      "category": "colors" 
+      "category": "colors"
     },
     {
       "level": 1,
       "question": "Football",
-      "rightAnswer": "fotboll", 
+      "rightAnswer": "fotboll",
       "wrongAnswer": ["hockey", "basket", "tennis"],
       "category": "sports"
     },
     {
       "level": 1,
       "question": "Basketball",
-      "rightAnswer": "basket", 
+      "rightAnswer": "basket",
       "wrongAnswer": ["fotboll", "simning", "golf"],
       "category": "sports"
     },
     {
       "level": 1,
       "question": "Tennis",
-      "rightAnswer": "tennis", 
+      "rightAnswer": "tennis",
       "wrongAnswer": ["fotboll", "bordtennis", "volleyboll"],
       "category": "sports"
     },
     {
-      "level": 1,
+      "level": 2,
       "question": "Swimming",
-      "rightAnswer": "simning", 
+      "rightAnswer": "simning",
       "wrongAnswer": ["löpning", "cykling", "basket"],
       "category": "sports"
     },
     {
-      "level": 1,
+      "level": 2,
       "question": "Running",
-      "rightAnswer": "löpning", 
+      "rightAnswer": "löpning",
       "wrongAnswer": ["simning", "cykling", "basket"],
       "category": "sports"
     },
@@ -185,100 +185,450 @@
     {
       "level": 1,
       "question": "Volleyball",
-      "rightAnswer": "volleyboll", 
+      "rightAnswer": "volleyboll",
       "wrongAnswer": ["fotboll", "basket", "tennis"],
       "category": "sports"
     },
-    { 
+    {
       "level": 1,
-      "question": "Golf", 
-      "rightAnswer": "golf", 
+      "question": "Golf",
+      "rightAnswer": "golf",
       "wrongAnswer": ["tennis", "fotboll", "basket"],
-      "category": "sports" 
+      "category": "sports"
     },
     {
       "level": 1,
       "question": "Hockey",
-      "rightAnswer": "ishockey", 
+      "rightAnswer": "ishockey",
       "wrongAnswer": ["fotboll", "basket", "tennis"],
       "category": "sports"
     },
     {
-      "level": 1,
+      "level": 2,
       "question": "Skiing",
-      "rightAnswer": "skidåkning", 
+      "rightAnswer": "skidåkning",
       "wrongAnswer": ["simning", "löpning", "cykling"],
       "category": "sports"
     },
     {
-      "level": 1,
+      "level": 2,
       "question": "Doctor",
-      "rightAnswer": "läkare", 
+      "rightAnswer": "läkare",
       "wrongAnswer": ["lärare", "kock", "servitör"],
       "category": "occupations"
     },
     {
       "level": 1,
       "question": "Teacher",
-      "rightAnswer": "lärare", 
+      "rightAnswer": "lärare",
       "wrongAnswer": ["läkare", "servitör", "kock"],
       "category": "occupations"
     },
     {
-      "level": 1,
+      "level": 3,
       "question": "Engineer",
-      "rightAnswer": "ingenjör", 
+      "rightAnswer": "ingenjör",
       "wrongAnswer": ["läkare", "advokat", "tandläkare"],
       "category": "occupations"
     },
-    { 
-      "level": 1,
-      "question": "Chef", 
-      "rightAnswer": "kock", 
+    {
+      "level": 3,
+      "question": "Chef",
+      "rightAnswer": "kock",
       "wrongAnswer": ["läkare", "servitör", "lärare"],
-      "category": "occupations" 
-    },
-    { 
-      "level": 1,
-      "question": "Pilot", 
-      "rightAnswer": "pilot", 
-      "wrongAnswer": ["läkare", "brandman", "polis"],
-      "category": "occupations" 
+      "category": "occupations"
     },
     {
       "level": 1,
+      "question": "Pilot",
+      "rightAnswer": "pilot",
+      "wrongAnswer": ["läkare", "brandman", "polis"],
+      "category": "occupations"
+    },
+    {
+      "level": 3,
       "question": "Lawyer",
-      "rightAnswer": "advokat", 
+      "rightAnswer": "advokat",
       "wrongAnswer": ["läkare", "ingenjör", "tandläkare"],
       "category": "occupations"
     },
     {
-      "level": 1,
+      "level": 2,
       "question": "Nurse",
-      "rightAnswer": "sjuksköterska", 
+      "rightAnswer": "sjuksköterska",
       "wrongAnswer": ["läkare", "lärare", "kock"],
       "category": "occupations"
     },
     {
-      "level": 1,
+      "level": 3,
       "question": "Artist",
-      "rightAnswer": "konstnär", 
+      "rightAnswer": "konstnär",
       "wrongAnswer": ["läkare", "ingenjör", "advokat"],
       "category": "occupations"
     },
     {
-      "level": 1,
+      "level": 2,
       "question": "Firefighter",
       "rightAnswer": "brandman",
       "wrongAnswer": ["pilot", "läkare", "polis"],
       "category": "occupations"
     },
     {
-      "level": 1,
+      "level": 2,
       "question": "Police officer",
       "rightAnswer": "polis",
       "wrongAnswer": ["läkare", "kock", "servitör"],
       "category": "occupations"
+    },
+    {
+      "level": 3,
+      "question": "Skirt",
+      "rightAnswer": "kjol",
+      "wrongAnswer": ["skjorta", "sko", "klänning"],
+      "category": "clothing"
+    },
+    {
+      "level": 1,
+      "question": "Shoe",
+      "rightAnswer": "sko",
+      "wrongAnswer": ["hatt", "väska", "scarf"],
+      "category": "clothing"
+    },
+    {
+      "level": 3,
+      "question": "Trousers",
+      "rightAnswer": "byxor",
+      "wrongAnswer": ["skor", "vantar", "tröja"],
+      "category": "clothing"
+    },
+    {
+      "level": 2,
+      "question": "Dress",
+      "rightAnswer": "klänning",
+      "wrongAnswer": ["tröja", "byxor", "kjol"],
+      "category": "clothing"
+    },
+    {
+      "level": 3,
+      "question": "Bag",
+      "rightAnswer": "väska",
+      "wrongAnswer": ["hatt", "sko", "kofta"],
+      "category": "clothing"
+    },
+    {
+      "level": 3,
+      "question": "Boots",
+      "rightAnswer": "stövlar",
+      "wrongAnswer": ["byxor", "sandaler", "tröja"],
+      "category": "clothing"
+    },
+    {
+      "level": 3,
+      "question": "Coat",
+      "rightAnswer": "kappa",
+      "wrongAnswer": ["kostym", "väst", "klänning"],
+      "category": "clothing"
+    },
+    {
+      "level": 3,
+      "question": "Suit",
+      "rightAnswer": "kostym",
+      "wrongAnswer": ["kappa", "skjorta", "kjol"],
+      "category": "clothing"
+    },
+    {
+      "level": 2,
+      "question": "Apple",
+      "rightAnswer": "äpple",
+      "wrongAnswer": ["päron", "banan", "apelsin"],
+      "category": "food"
+    },
+    {
+      "level": 2,
+      "question": "Pear",
+      "rightAnswer": "päron",
+      "wrongAnswer": ["äpple", "vindruva", "apelsin"],
+      "category": "food"
+    },
+    {
+      "level": 2,
+      "question": "Orange",
+      "rightAnswer": "apelsin",
+      "wrongAnswer": ["äpple", "melon", "citron"],
+      "category": "food"
+    },
+    {
+      "level": 2,
+      "question": "Lemon",
+      "rightAnswer": "citron",
+      "wrongAnswer": ["apelsin", "äpple", "melon"],
+      "category": "food"
+    },
+    {
+      "level": 2,
+      "question": "Cucumber",
+      "rightAnswer": "gurka",
+      "wrongAnswer": ["tomat", "citron", "morot"],
+      "category": "food"
+    },
+    {
+      "level": 2,
+      "question": "Carrot",
+      "rightAnswer": "morot",
+      "wrongAnswer": ["citron", "gurka", "tomat"],
+      "category": "food"
+    },
+    {
+      "level": 1,
+      "question": "Potato",
+      "rightAnswer": "potatis",
+      "wrongAnswer": ["tomat", "päron", "morot"],
+      "category": "food"
+    },
+    {
+      "level": 1,
+      "question": "Tomato",
+      "rightAnswer": "tomat",
+      "wrongAnswer": ["morot", "potatis", "paprika"],
+      "category": "food"
+    },
+    {
+      "level": 3,
+      "question": "Lettuce",
+      "rightAnswer": "sallad",
+      "wrongAnswer": ["lök", "morot", "paprika"],
+      "category": "food"
+    },
+    {
+      "level": 3,
+      "question": "Onion",
+      "rightAnswer": "lök",
+      "wrongAnswer": ["gurka", "tomat", "blomkål"],
+      "category": "food"
+    },
+    {
+      "level": 3,
+      "question": "Garlic",
+      "rightAnswer": "vitlök",
+      "wrongAnswer": ["grönkål", "sparris", "paprika"],
+      "category": "food"
+    },
+    {
+      "level": 3,
+      "question": "Asparagus",
+      "rightAnswer": "sparris",
+      "wrongAnswer": ["paprika", "majs", "tomat"],
+      "category": "food"
+    },
+    {
+      "level": 3,
+      "question": "Corn",
+      "rightAnswer": "majs",
+      "wrongAnswer": ["kål", "lök", "morot"],
+      "category": "food"
+    },
+    {
+      "level": 2,
+      "question": "Sandwich",
+      "rightAnswer": "smörgås",
+      "wrongAnswer": ["hamburgare", "sallad", "korv"],
+      "category": "food"
+    },
+    {
+      "level": 3,
+      "question": "Mushroom",
+      "rightAnswer": "svamp",
+      "wrongAnswer": ["morot", "sparris", "lök"],
+      "category": "food"
+    },
+    {
+      "level": 3,
+      "question": "Sausage",
+      "rightAnswer": "korv",
+      "wrongAnswer": ["sås", "sallad", "smörgås"],
+      "category": "food"
+    },
+    {
+      "level": 3,
+      "question": "Coffee",
+      "rightAnswer": "kaffe",
+      "wrongAnswer": ["te", "läsk", "mjölk"],
+      "category": "food"
+    },
+    {
+      "level": 3,
+      "question": "Soda",
+      "rightAnswer": "läsk",
+      "wrongAnswer": ["mjölk", "kaffe", "saft"],
+      "category": "food"
+    },
+    {
+      "level": 3,
+      "question": "Milk",
+      "rightAnswer": "mjölk",
+      "wrongAnswer": ["saft", "läsk", "grädde"],
+      "category": "food"
+    },
+    {
+      "level": 3,
+      "question": "Cream",
+      "rightAnswer": "grädde",
+      "wrongAnswer": ["mjölk", "yoghurt", "juice"],
+      "category": "food"
+    },
+    {
+      "level": 3,
+      "question": "Sugar",
+      "rightAnswer": "socker",
+      "wrongAnswer": ["salt", "peppar", "mjöl"],
+      "category": "food"
+    },
+    {
+      "level": 3,
+      "question": "Pen",
+      "rightAnswer": "penna",
+      "wrongAnswer": ["krita", "suddgummi", "pensel"],
+      "category": "objects"
+    },
+    {
+      "level": 3,
+      "question": "Crayon",
+      "rightAnswer": "krita",
+      "wrongAnswer": ["penna", "pensel", "suddgummi"],
+      "category": "objects"
+    },
+    {
+      "level": 3,
+      "question": "Eraser",
+      "rightAnswer": "suddgummi",
+      "wrongAnswer": ["penna", "pensel", "linjal"],
+      "category": "objects"
+    },
+    {
+      "level": 3,
+      "question": "Ruler",
+      "rightAnswer": "linjal",
+      "wrongAnswer": ["suddgummi", "penna", "krita"],
+      "category": "objects"
+    },
+    {
+      "level": 1,
+      "question": "Paper",
+      "rightAnswer": "papper",
+      "wrongAnswer": ["penna", "pensel", "bok"],
+      "category": "objects"
+    },
+    {
+      "level": 3,
+      "question": "Table",
+      "rightAnswer": "bord",
+      "wrongAnswer": ["stol", "soffa", "hylla"],
+      "category": "objects"
+    },
+    {
+      "level": 3,
+      "question": "Couch",
+      "rightAnswer": "soffa",
+      "wrongAnswer": ["stol", "bord", "hylla"],
+      "category": "objects"
+    },
+    {
+      "level": 3,
+      "question": "Chair",
+      "rightAnswer": "stol",
+      "wrongAnswer": ["hylla", "bord", "soffa"],
+      "category": "objects"
+    },
+    {
+      "level": 3,
+      "question": "Shelf",
+      "rightAnswer": "hylla",
+      "wrongAnswer": ["stol", "soffa", "bord"],
+      "category": "objects"
+    },
+    {
+      "level": 2,
+      "question": "Airplane",
+      "rightAnswer": "flygplan",
+      "wrongAnswer": ["bil", "tåg", "båt"],
+      "category": "objects"
+    },
+    {
+      "level": 2,
+      "question": "Car",
+      "rightAnswer": "bil",
+      "wrongAnswer": ["flygplan", "tåg", "båt"],
+      "category": "objects"
+    },
+    {
+      "level": 2,
+      "question": "Train",
+      "rightAnswer": "tåg",
+      "wrongAnswer": ["flygplan", "båt", "bil"],
+      "category": "objects"
+    },
+    {
+      "level": 2,
+      "question": "Boat",
+      "rightAnswer": "båt",
+      "wrongAnswer": ["flygplan", "bil", "tåg"],
+      "category": "objects"
+    },
+    {
+      "level": 2,
+      "question": "House",
+      "rightAnswer": "hus",
+      "wrongAnswer": ["skola", "kyrka", "sjukhus"],
+      "category": "objects"
+    },
+    {
+      "level": 2,
+      "question": "School",
+      "rightAnswer": "skola",
+      "wrongAnswer": ["kyrka", "sjukhus", "hus"],
+      "category": "objects"
+    },
+    {
+      "level": 2,
+      "question": "Church",
+      "rightAnswer": "kyrka",
+      "wrongAnswer": ["sjukhus", "hus", "skola"],
+      "category": "objects"
+    },
+    {
+      "level": 2,
+      "question": "Hospital",
+      "rightAnswer": "Sjukhus",
+      "wrongAnswer": ["hus", "skola", "kyrka"],
+      "category": "objects"
+    },
+    {
+      "level": 2,
+      "question": "Summer",
+      "rightAnswer": "sommar",
+      "wrongAnswer": ["vår", "höst", "vinter"],
+      "category": "seasons"
+    },
+    {
+      "level": 2,
+      "question": "Winter",
+      "rightAnswer": "vinter",
+      "wrongAnswer": ["sommar", "vår", "höst"],
+      "category": "seasons"
+    },
+    {
+      "level": 2,
+      "question": "Spring",
+      "rightAnswer": "vår",
+      "wrongAnswer": ["sommar", "höst", "vinter"],
+      "category": "seasons"
+    },
+    {
+      "level": 3,
+      "question": "Autumn",
+      "rightAnswer": "höst",
+      "wrongAnswer": ["vinter", "sommar", "vår"],
+      "category": "seasons"
     }
   ]
 }
