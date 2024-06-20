@@ -1,4 +1,5 @@
 import styled from "styled-components"
+import { Footer } from "./Footer"
 import linkedin from "/src/assets/linkedin.png"
 import portfolio from "/src/assets/portfolio.png"
 import github from "/src/assets/github.png"
@@ -9,67 +10,70 @@ import katarina from "/src/assets/KatarinaSjolin.png"
 
 export const OmOss = () => {
   return (
-    <AboutContainer>
-      <AboutTitle>Om oss</AboutTitle>
-      <Description>Teamet bakom Pluggin&apos;</Description>
-      <PeopleDiv>
-        <PersonDiv>
-          <PersonImg src={erika} width="150" alt="Erika-Wernbro" />
-          <Person>Erika Wernbro</Person>
-          <City>Kalmar</City>
-          <LinksDiv>
-            <LinkedIn href="https://www.linkedin.com/in/erika-wernbro/">
-              <LinkedInIcon src={linkedin} alt="linkedinlogo" width="25" />
-            </LinkedIn>
-            <Portfolio href="https://tejpex.com/">
-              <PortfolioIcon src={portfolio} alt="portfoliologo" width="45" />
-            </Portfolio>
-            <GitHub href="https://github.com/Tejpex">
-              <GitHubIcon src={github} alt="githublogo" width="25" />
-            </GitHub>
-          </LinksDiv>
-        </PersonDiv>
-        <PersonDiv>
-          <PersonImg src={pernilla} width="150" alt="Pernilla-Sterner" />
-          <Person>Pernilla Sterner</Person>
-          <City>Stockholm</City>
-          <LinksDiv>
-            <LinkedIn href="https://www.linkedin.com/in/pernilla-sterner/">
-              <LinkedInIcon src={linkedin} alt="linkedinlogo" width="25" />
-            </LinkedIn>
-            <Portfolio href="https://pernillasterner.netlify.app/">
-              <PortfolioIcon src={portfolio} alt="portfoliologo" width="45" />
-            </Portfolio>
-            <GitHub href="https://github.com/pernillasterner">
-              <GitHubIcon src={github} alt="githublogo" width="25" />
-            </GitHub>
-          </LinksDiv>
-        </PersonDiv>
-        <PersonDiv>
-          <PersonImg src={frida} width="150" alt="Frida-Forser" />
-          <Person>Frida Forser</Person>
-          <City>Stockholm</City>
-          <LinksDiv>
-            <LinkedIn href="https://www.linkedin.com/in/frida-forser/">
-              <LinkedInIcon src={linkedin} alt="linkedinlogo" width="25" />
-            </LinkedIn>
-            <GitHub href="https://github.com/fridaforser">
-              <GitHubIcon src={github} alt="githublogo" width="25" />
-            </GitHub>
-          </LinksDiv>
-        </PersonDiv>
-        <PersonDiv>
-          <PersonImg src={katarina} width="150" alt="Katarina-Sjölin" />
-          <Person>Katarina Sjölin</Person>
-          <City>Malmö</City>
-          <LinksDiv>
-            <GitHub href="https://github.com/katsjolin">
-              <GitHubIcon src={github} alt="githublogo" width="25" />
-            </GitHub>
-          </LinksDiv>
-        </PersonDiv>
-      </PeopleDiv>
-    </AboutContainer>
+    <>
+      <AboutContainer>
+        <AboutTitle>Om oss</AboutTitle>
+        <Description>Teamet bakom Pluggin&apos;</Description>
+        <PeopleDiv>
+          <PersonDiv>
+            <PersonImg src={erika} width="150" alt="Erika-Wernbro" />
+            <Person>Erika Wernbro</Person>
+            <City>Kalmar</City>
+            <LinksDiv>
+              <LinkedIn href="https://www.linkedin.com/in/erika-wernbro/">
+                <LinkedInIcon src={linkedin} alt="linkedinlogo" width="25" />
+              </LinkedIn>
+              <Portfolio href="https://tejpex.com/">
+                <PortfolioIcon src={portfolio} alt="portfoliologo" width="45" />
+              </Portfolio>
+              <GitHub href="https://github.com/Tejpex">
+                <GitHubIcon src={github} alt="githublogo" width="25" />
+              </GitHub>
+            </LinksDiv>
+          </PersonDiv>
+          <PersonDiv>
+            <PersonImg src={pernilla} width="150" alt="Pernilla-Sterner" />
+            <Person>Pernilla Sterner</Person>
+            <City>Stockholm</City>
+            <LinksDiv>
+              <LinkedIn href="https://www.linkedin.com/in/pernilla-sterner/">
+                <LinkedInIcon src={linkedin} alt="linkedinlogo" width="25" />
+              </LinkedIn>
+              <Portfolio href="https://pernillasterner.netlify.app/">
+                <PortfolioIcon src={portfolio} alt="portfoliologo" width="45" />
+              </Portfolio>
+              <GitHub href="https://github.com/pernillasterner">
+                <GitHubIcon src={github} alt="githublogo" width="25" />
+              </GitHub>
+            </LinksDiv>
+          </PersonDiv>
+          <PersonDiv>
+            <PersonImg src={frida} width="150" alt="Frida-Forser" />
+            <Person>Frida Forser</Person>
+            <City>Stockholm</City>
+            <LinksDiv>
+              <LinkedIn href="https://www.linkedin.com/in/frida-forser/">
+                <LinkedInIcon src={linkedin} alt="linkedinlogo" width="25" />
+              </LinkedIn>
+              <GitHub href="https://github.com/fridaforser">
+                <GitHubIcon src={github} alt="githublogo" width="25" />
+              </GitHub>
+            </LinksDiv>
+          </PersonDiv>
+          <PersonDiv>
+            <PersonImg src={katarina} width="150" alt="Katarina-Sjölin" />
+            <Person>Katarina Sjölin</Person>
+            <City>Malmö</City>
+            <LinksDiv>
+              <GitHub href="https://github.com/katsjolin">
+                <GitHubIcon src={github} alt="githublogo" width="25" />
+              </GitHub>
+            </LinksDiv>
+          </PersonDiv>
+        </PeopleDiv>
+      </AboutContainer>
+      <Footer />
+    </>
   )
 }
 
@@ -99,9 +103,12 @@ const AboutTitle = styled.h1`
   }
 `
 
-const Description = styled.h3`
+const Description = styled.h2`
   margin: 0 0 30px;
-
+  font-size: 1.17em;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  
   @media (min-width: 800px) {
     margin: 0 0 70px;
   }

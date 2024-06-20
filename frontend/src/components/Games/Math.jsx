@@ -5,6 +5,7 @@ import { Link } from "react-router-dom"
 import { useState, useRef } from "react"
 import { useMath } from "../../contexts/MathContext"
 import { MathQuestion } from "./MathQuestion"
+import { Footer } from "../Footer"
 import Celebrate from "../../assets/Celebrate.json"
 
 export const Math = () => {
@@ -53,72 +54,75 @@ export const Math = () => {
     )
   } else {
     return (
-      <MathGameSite>
-        <HeaderDiv>
-          <TitleDiv>
-            <BackButton>
-              <Link to="/spela">
-                <BackIcon />
-              </Link>
-            </BackButton>
-            <Title>VÄLJ SPEL</Title>
-          </TitleDiv>
-        </HeaderDiv>
-        <Choices>
-          <GameTypeButton
-            value="0"
-            onClick={(event) => handleChoice(event.target.value)}
-          >
-            <ButtonTextDiv>
-              <ButtonTitle>Addition</ButtonTitle>
-              <ButtonSign>+</ButtonSign>
-            </ButtonTextDiv>
-            <ProgressDiv>
-              <p>Nivå {mathGame[0].level}</p>
-              {mathGame[0].score}/{mathGame[0].levelScore}
-            </ProgressDiv>
-          </GameTypeButton>
-          <GameTypeButton
-            value="1"
-            onClick={(event) => handleChoice(event.target.value)}
-          >
-            <ButtonTextDiv>
-              <ButtonTitle>Subtraktion</ButtonTitle>
-              <ButtonSign>-</ButtonSign>
-            </ButtonTextDiv>
-            <ProgressDiv>
-              <p>Nivå {mathGame[1].level}</p>
-              {mathGame[1].score}/{mathGame[1].levelScore}
-            </ProgressDiv>
-          </GameTypeButton>
-          <GameTypeButton
-            value="2"
-            onClick={(event) => handleChoice(event.target.value)}
-          >
-            <ButtonTextDiv>
-              <ButtonTitle>Multiplikation</ButtonTitle>
-              <MultiplySign>*</MultiplySign>
-            </ButtonTextDiv>
-            <ProgressDiv>
-              <p>Nivå {mathGame[2].level}</p>
-              {mathGame[2].score}/{mathGame[2].levelScore}
-            </ProgressDiv>
-          </GameTypeButton>
-          <GameTypeButton
-            value="3"
-            onClick={(event) => handleChoice(event.target.value)}
-          >
-            <ButtonTextDiv>
-              <ButtonTitle>Division</ButtonTitle>
-              <ButtonSign>÷</ButtonSign>
-            </ButtonTextDiv>
-            <ProgressDiv>
-              <p>Nivå {mathGame[3].level}</p>
-              {mathGame[3].score}/{mathGame[3].levelScore}
-            </ProgressDiv>
-          </GameTypeButton>
-        </Choices>
-      </MathGameSite>
+      <>
+        <MathGameSite>
+          <HeaderDiv>
+            <TitleDiv>
+              <BackButton>
+                <Link to="/spela">
+                  <BackIcon />
+                </Link>
+              </BackButton>
+              <Title>VÄLJ SPEL</Title>
+            </TitleDiv>
+          </HeaderDiv>
+          <Choices>
+            <GameTypeButton
+              value="0"
+              onClick={(event) => handleChoice(event.target.value)}
+            >
+              <ButtonTextDiv>
+                <ButtonTitle>Addition</ButtonTitle>
+                <ButtonSign>+</ButtonSign>
+              </ButtonTextDiv>
+              <ProgressDiv>
+                <p>Nivå {mathGame[0].level}</p>
+                {mathGame[0].score}/{mathGame[0].levelScore}
+              </ProgressDiv>
+            </GameTypeButton>
+            <GameTypeButton
+              value="1"
+              onClick={(event) => handleChoice(event.target.value)}
+            >
+              <ButtonTextDiv>
+                <ButtonTitle>Subtraktion</ButtonTitle>
+                <ButtonSign>-</ButtonSign>
+              </ButtonTextDiv>
+              <ProgressDiv>
+                <p>Nivå {mathGame[1].level}</p>
+                {mathGame[1].score}/{mathGame[1].levelScore}
+              </ProgressDiv>
+            </GameTypeButton>
+            <GameTypeButton
+              value="2"
+              onClick={(event) => handleChoice(event.target.value)}
+            >
+              <ButtonTextDiv>
+                <ButtonTitle>Multiplikation</ButtonTitle>
+                <MultiplySign>*</MultiplySign>
+              </ButtonTextDiv>
+              <ProgressDiv>
+                <p>Nivå {mathGame[2].level}</p>
+                {mathGame[2].score}/{mathGame[2].levelScore}
+              </ProgressDiv>
+            </GameTypeButton>
+            <GameTypeButton
+              value="3"
+              onClick={(event) => handleChoice(event.target.value)}
+            >
+              <ButtonTextDiv>
+                <ButtonTitle>Division</ButtonTitle>
+                <ButtonSign>÷</ButtonSign>
+              </ButtonTextDiv>
+              <ProgressDiv>
+                <p>Nivå {mathGame[3].level}</p>
+                {mathGame[3].score}/{mathGame[3].levelScore}
+              </ProgressDiv>
+            </GameTypeButton>
+          </Choices>
+        </MathGameSite>
+        <Footer />
+      </>
     )
   }
 }

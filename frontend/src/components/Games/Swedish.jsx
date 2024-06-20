@@ -6,6 +6,7 @@ import { Link } from "react-router-dom"
 import { useState } from "react"
 import { useScore } from "../../contexts/ScoreContext.jsx"
 import { LanguageQuestion } from "./LanguageQuestion.jsx"
+import { Footer } from "../Footer"
 import Celebrate from "../../assets/Celebrate.json"
 
 export const Swedish = () => {
@@ -59,37 +60,40 @@ export const Swedish = () => {
     )
   } else {
     return (
-      <SwedishGameSite>
-        <HeaderDiv>
-          <TitleDiv>
-            <BackButton>
-              <Link to="/spela">
-                <BackIcon />
-              </Link>
-            </BackButton>
-            <Title>VÄLJ SPEL</Title>
-          </TitleDiv>
-        </HeaderDiv>
-        <Choices>
-          <GameTypeButton
-            value="0"
-            onClick={(event) => handleChoice(event.target.value)}
-          >
-            <ButtonTextDiv>
-              <ButtonTitle>Synonymer</ButtonTitle>
-              <ButtonSign>
-                <LiaReadme />
-              </ButtonSign>
-            </ButtonTextDiv>
-            <ProgressDiv>
-              <p>Nivå {swedishGame[0].level}</p>
-              <p>
-                {swedishGame[0].score}/{swedishGame[0].levelScore}
-              </p>
-            </ProgressDiv>
-          </GameTypeButton>
-        </Choices>
-      </SwedishGameSite>
+      <>
+        <SwedishGameSite>
+          <HeaderDiv>
+            <TitleDiv>
+              <BackButton>
+                <Link to="/spela">
+                  <BackIcon />
+                </Link>
+              </BackButton>
+              <Title>VÄLJ SPEL</Title>
+            </TitleDiv>
+          </HeaderDiv>
+          <Choices>
+            <GameTypeButton
+              value="0"
+              onClick={(event) => handleChoice(event.target.value)}
+            >
+              <ButtonTextDiv>
+                <ButtonTitle>Synonymer</ButtonTitle>
+                <ButtonSign>
+                  <LiaReadme />
+                </ButtonSign>
+              </ButtonTextDiv>
+              <ProgressDiv>
+                <p>Nivå {swedishGame[0].level}</p>
+                <p>
+                  {swedishGame[0].score}/{swedishGame[0].levelScore}
+                </p>
+              </ProgressDiv>
+            </GameTypeButton>
+          </Choices>
+        </SwedishGameSite>
+        <Footer />
+      </>
     )
   }
 }

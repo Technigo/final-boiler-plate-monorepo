@@ -162,12 +162,12 @@ export const ScoreProvider = ({ children }) => {
     }
   }
 
-  useEffect(() => {
+ /* useEffect(() => {
     if (authenticated.accessToken) {
       fetchProgress()
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [authenticated.accessToken])
+  }, [authenticated.accessToken])*/
 
   return (
     <ScoreContext.Provider

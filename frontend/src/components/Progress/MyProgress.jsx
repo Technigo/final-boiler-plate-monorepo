@@ -1,5 +1,5 @@
 import styled, { css } from "styled-components"
-import { useState } from "react";
+import { useState } from "react"
 import { LevelProgressBar } from "./LevelProgressBar"
 import { useScore } from "../../contexts/ScoreContext"
 import { Hero } from "./Hero"

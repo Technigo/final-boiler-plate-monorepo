@@ -1,34 +1,38 @@
 import styled, { css } from "styled-components"
 import { Link } from "react-router-dom"
 import { useLogin } from "../contexts/UserContext"
+import { Footer } from "../components/Footer"
 
 export const Play = () => {
   const { isLoggedIn, user } = useLogin()
 
   return (
-    <PlayContainer>
-      <PlayTitle>
-        {isLoggedIn ? (
-          <>
-            Välkommen till PluggIn, {user.firstName}. Redo att spela några
-            spel?
-          </>
-        ) : (
-          <>Du är inte inloggad. Dina framsteg kommer inte att sparas.</>
-        )}
-      </PlayTitle>
-      <GamesCards>
-        <Link to={`/spela/matte`}>
-          <GameCard $math>Matte</GameCard>
-        </Link>
-        <Link to={`/spela/svenska`}>
-          <GameCard $swedish>Svenska</GameCard>
-        </Link>
-        <Link to={`/spela/engelska`}>
-          <GameCard $english>Engelska</GameCard>
-        </Link>
-      </GamesCards>
-    </PlayContainer>
+    <>
+      <PlayContainer>
+        <PlayTitle>
+          {isLoggedIn ? (
+            <>
+              Välkommen till PluggIn, {user.firstName}. Redo att spela några
+              spel?
+            </>
+          ) : (
+            <>Du är inte inloggad. <br /> Dina framsteg kommer inte att sparas.</>
+          )}
+        </PlayTitle>
+        <GamesCards>
+          <Link to={`/spela/matte`}>
+            <GameCard $math>Matte</GameCard>
+          </Link>
+          <Link to={`/spela/svenska`}>
+            <GameCard $swedish>Svenska</GameCard>
+          </Link>
+          <Link to={`/spela/engelska`}>
+            <GameCard $english>Engelska</GameCard>
+          </Link>
+        </GamesCards>
+      </PlayContainer>
+      <Footer />
+    </>
   )
 }
 
