@@ -1,13 +1,13 @@
-import { Link } from "react-router-dom"
 import styled from "styled-components"
-import { useLogin } from "../contexts/UserContext"
-import logo from "/src/assets/pluggin-logo.png"
+import { Link } from "react-router-dom"
 import { useState } from "react"
 import { FaBars, FaTimes } from "react-icons/fa"
 import { FiLogOut } from "react-icons/fi"
+import { useLogin } from "../contexts/UserContext"
 import { SlideInPanel } from "./SlideInPanel"
 import { RegistrationForm } from "./RegistrationForm"
 import { Login } from "./Login"
+import logo from "/src/assets/pluggin-logo.png"
 
 export const Header = () => {
   const { isLoggedIn, signout, isPanelOpen, setIsPanelOpen } = useLogin()
@@ -33,7 +33,7 @@ export const Header = () => {
   return (
     <HeaderContainer>
       <Link to="/">
-        <Logo src={logo} />
+        <Logo src={logo} alt="Logo for Pluggin'"/>
       </Link>
       <MenuIcon onClick={toggleHamburger}>
         {hamburgerOpen ? <FaTimes /> : <FaBars />}
