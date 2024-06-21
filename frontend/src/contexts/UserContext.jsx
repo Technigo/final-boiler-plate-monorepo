@@ -68,6 +68,12 @@ export const UserProvider = ({ children }) => {
   const signout = () => {
     localStorage.removeItem("accessToken")
     localStorage.removeItem("firstName")
+    localStorage.removeItem("progress-english-translate-level-1-score")
+    localStorage.removeItem("progress-english-translate-level-2-score")
+    localStorage.removeItem("progress-english-translate-level-3-score")
+    localStorage.removeItem("progress-swedish-synonyms-level-1-score")
+    localStorage.removeItem("progress-swedish-synonyms-level-2-score")
+    localStorage.removeItem("progress-swedish-synonyms-level-3-score")
     setIsLoggedIn(false)
     setAuthenticated({
       auth: false,
