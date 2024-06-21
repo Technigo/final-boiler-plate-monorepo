@@ -1,11 +1,12 @@
 import styled, { css } from "styled-components"
 import { useState } from "react"
-import { LevelProgressBar } from "./LevelProgressBar"
 import { useScore } from "../../contexts/ScoreContext"
+import { LevelProgressBar } from "./LevelProgressBar"
+import { LoadingAnimation } from "../LoadingAnimation"
 import { Hero } from "./Hero"
 
 export const Progress = () => {
-  const { progress, fetchProgress } = useScore()
+  const { progress, fetchProgress, loading } = useScore()
   const [selectedSubject, setSelectedSubject] = useState(null)
 
   if (!progress) {
@@ -32,6 +33,11 @@ export const Progress = () => {
           Engelska
         </GameCard>
       </GamesCards>
+      {loading && (
+        <LoadDiv>
+          <LoadingAnimation />
+        </LoadDiv>
+      )}
       {selectedSubject && progress.progress && (
         <LevelProgressBar
           progress={progress.progress[selectedSubject]}
@@ -144,4 +150,10 @@ const GameCard = styled.div`
    @media (min-width: 700px) {
     margin: 40px;
   }
+`
+
+const LoadDiv = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `

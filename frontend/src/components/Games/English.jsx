@@ -3,15 +3,25 @@ import { IoArrowBackCircleOutline } from "react-icons/io5"
 import { PiTranslate } from "react-icons/pi"
 import Lottie from "lottie-react"
 import { Link } from "react-router-dom"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { useScore } from "../../contexts/ScoreContext.jsx"
+import { useUser } from "../../contexts/UserContext.jsx"
 import { LanguageQuestion } from "./LanguageQuestion.jsx"
 import { Footer } from "../Footer"
 import Celebrate from "../../assets/Celebrate.json"
 
 export const English = () => {
-  const { englishGame, celebrateLottie } = useScore()
+  const { englishGame, celebrateLottie, showProgress} = useScore()
+  const { isLoggedIn} = useUser()
   const [gameTypeNumber, setGameTypeNumber] = useState()
+
+  //Start by checking for progress
+  useEffect(() => {
+    if (isLoggedIn) { 
+      showProgress()
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   const handleChoice = (type) => {
     setGameTypeNumber(type)

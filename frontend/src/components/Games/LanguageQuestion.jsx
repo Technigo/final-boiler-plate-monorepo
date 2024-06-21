@@ -49,7 +49,6 @@ export const LanguageQuestion = ({ type, language, color, subcategory }) => {
       // Send answer to backend
       try {
         await registerAnswer({
-          answer,
           subject: language,
           level: newGame[type].level,
           subcategory: subcategory,

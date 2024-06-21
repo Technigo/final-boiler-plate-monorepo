@@ -43,7 +43,6 @@ export const UserProvider = ({ children }) => {
       }
 
       const data = await response.json()
-      console.info("Login success", data)
 
       // Save accesstoken and username in local storage
       localStorage.setItem("accessToken", data.accessToken)

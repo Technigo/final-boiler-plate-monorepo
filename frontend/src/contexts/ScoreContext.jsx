@@ -7,9 +7,10 @@ import swedishData from "../data/SwedishGameData.json"
 const ScoreContext = createContext()
 
 export const ScoreProvider = ({ children }) => {
+  //Variables for handling connection to backend
   const accessToken = localStorage.getItem("accessToken")
-
   const apiUrl = import.meta.env.VITE_API_URL || "http://localhost:4000"
+  const [loading, setLoading] = useState(false)
 
   //Object for swedish-game
   const [swedishGame, setSwedishGame] = useState([
@@ -87,7 +88,7 @@ export const ScoreProvider = ({ children }) => {
     //Checks the score and handles level-change
     //use next line for testing/demoing (only three questions before level-change)
     if (game[0].score >= 3) {
-    //if (game[0].score >= game[0].levelScore) {
+      //if (game[0].score >= game[0].levelScore) {
       setCelebrateLottie(true)
       const newGame = [...game]
       newGame[0].level = game[0].level + 1
@@ -104,8 +105,7 @@ export const ScoreProvider = ({ children }) => {
     setMessage("")
   }
 
-  /*const registerAnswer = async ({
-    answer,
+  const registerAnswer = async ({
     subject,
     level,
     subcategory,
@@ -116,7 +116,7 @@ export const ScoreProvider = ({ children }) => {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          Authorization: authenticated.accessToken,
+          Authorization: accessToken,
         },
         body: JSON.stringify({
           subject,
@@ -132,14 +132,15 @@ export const ScoreProvider = ({ children }) => {
 
       const data = await response.json()
       fetchProgress()
+      console.log(data)
     } catch (error) {
       console.error("Error:", error)
     }
-  }*/
+  }
 
   // Fetching progress data from db
   const fetchProgress = async () => {
-    console.log("Trying to fetch")
+    setLoading(true)
     try {
       const response = await fetch(`${apiUrl}/progress`, {
         headers: {
@@ -154,18 +155,68 @@ export const ScoreProvider = ({ children }) => {
 
       const data = await response.json()
       setProgress(data.progress)
-      console.log(data.progress)
+      localStorage.setItem(
+        "progress-english-translate-level-1-score",
+        data.progress.progress.english.translate.levels[0].score
+      )
+      localStorage.setItem(
+        "progress-english-translate-level-2-score",
+        data.progress.progress.english.translate.levels[1].score
+      )
+      localStorage.setItem(
+        "progress-english-translate-level-3-score",
+        data.progress.progress.english.translate.levels[2].score
+      )
+      localStorage.setItem(
+        "progress-swedish-synonyms-level-1-score",
+        data.progress.progress.swedish.synonyms.levels[0].score
+      )
+      localStorage.setItem(
+        "progress-swedish-synonyms-level-2-score",
+        data.progress.progress.swedish.synonyms.levels[1].score
+      )
+      localStorage.setItem(
+        "progress-swedish-synonyms-level-3-score",
+        data.progress.progress.swedish.synonyms.levels[2].score
+      )
+      setLoading(false)
     } catch (error) {
       console.error(error)
     }
   }
 
- /* useEffect(() => {
-    if (authenticated.accessToken) {
-      fetchProgress()
+  const showProgress = () => {
+    const scoreOne = localStorage.getItem(
+      "progress-english-translate-level-1-score"
+    )
+    const scoreTwo = localStorage.getItem(
+      "progress-english-translate-level-2-score"
+    )
+    const scoreThree = localStorage.getItem(
+      "progress-english-translate-level-3-score"
+    )
+    const levelScore = 3
+
+    if (scoreOne < levelScore) {
+      console.log("nivå 1")
+      const newGame = [...englishGame]
+      newGame[0].level = 1
+      newGame[0].score = scoreOne
+      setEnglishGame(newGame)
+    } else if (scoreTwo < levelScore) {
+      console.log("nivå 2")
+      const newGame = [...englishGame]
+      newGame[0].level = 2
+      newGame[0].score = scoreTwo
+      setEnglishGame(newGame)
+    } else if (scoreThree < levelScore) {
+      console.log("nivå 3")
+      const newGame = [...englishGame]
+      newGame[0].level = 3
+      newGame[0].score = scoreThree
+      setEnglishGame(newGame)
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [authenticated.accessToken])*/
+  }
 
   return (
     <ScoreContext.Provider
@@ -184,7 +235,10 @@ export const ScoreProvider = ({ children }) => {
         rightAnswer,
         progress,
         celebrateLottie,
-        fetchProgress
+        fetchProgress,
+        showProgress,
+        loading,
+        registerAnswer
       }}
     >
       {children}

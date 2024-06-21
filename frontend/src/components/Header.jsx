@@ -1,19 +1,34 @@
 import styled from "styled-components"
 import { Link } from "react-router-dom"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { FaBars, FaTimes } from "react-icons/fa"
 import { FiLogOut } from "react-icons/fi"
 import { useUser } from "../contexts/UserContext"
+import { useScore } from "../contexts/ScoreContext"
 import { SlideInPanel } from "./SlideInPanel"
 import { RegistrationForm } from "./RegistrationForm"
 import { Login } from "./LoginForm"
 import logo from "/src/assets/pluggin-logo.png"
 
 export const Header = () => {
-  const { isLoggedIn, signout, isPanelOpen, setIsPanelOpen } = useUser()
+  const { isLoggedIn, setIsLoggedIn, signout, setUser, isPanelOpen, setIsPanelOpen } = useUser()
+  const { fetchProgress } = useScore()
   const [hamburgerOpen, setHamburgerOpen] = useState(false)
   
   const [panelType, setPanelType] = useState(null)
+
+  useEffect(() => {
+    const firstName = localStorage.getItem("firstName")
+    if (firstName) {
+      setUser({ firstName: firstName })
+    }
+    const accessToken = localStorage.getItem("accessToken")
+    if (accessToken) {
+      setIsLoggedIn(true)
+      fetchProgress()
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   const toggleHamburger = () => {
     setHamburgerOpen(!hamburgerOpen)

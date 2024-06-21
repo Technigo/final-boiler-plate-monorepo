@@ -173,8 +173,12 @@ export const RegistrationForm = () => {
           loop={true}
           autoplay
           style={{
-            width: 150,
-            height: 150,
+            width: 300,
+            height: 300,
+            zIndex: 2,
+            position: "absolute",
+            right: 10,
+            bottom: 1,          
           }}
         />
       )}
