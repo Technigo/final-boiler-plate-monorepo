@@ -72,32 +72,6 @@ export const LanguageQuestion = ({ type, language, color, subcategory }) => {
     return (
       <div>
         <QuestionCard $color={color}>{question}</QuestionCard>
-        {rightLottie && (
-          <div
-            style={{
-              position: "absolute",
-              top: "50%",
-              left: "50%",
-              transform: "translate(-50%, -50%)",
-              zIndex: 2,
-            }}
-          >
-            <Lottie animationData={Right} loop={false} />
-          </div>
-        )}
-        {wrongLottie && (
-          <div
-            style={{
-              position: "absolute",
-              top: "50%",
-              left: "50%",
-              transform: "translate(-50%, -50%)",
-              zIndex: 2,
-            }}
-          >
-            <Lottie animationData={Wrong} loop={false} />
-          </div>
-        )}
         <Answers>
           {answers.map((answer, index) => {
             const capsAnswer = answer.charAt(0).toUpperCase() + answer.slice(1)
@@ -113,6 +87,16 @@ export const LanguageQuestion = ({ type, language, color, subcategory }) => {
               </AnswerButton>
             )
           })}
+          {rightLottie && (
+            <FeedbackLottie>
+              <Lottie animationData={Right} loop={false} />
+            </FeedbackLottie>
+          )}
+          {wrongLottie && (
+            <FeedbackLottie>
+              <Lottie animationData={Wrong} loop={false} />
+            </FeedbackLottie>
+          )}
         </Answers>
         {message && <Message>{message}</Message>}
       </div>
@@ -156,6 +140,7 @@ const Answers = styled.div`
   grid-template-columns: 1fr;
   grid-template-rows: 1fr 1fr;
   margin: 10px auto;
+  position: relative;
 
   @media (min-width: 700px) {
     display: grid;
@@ -221,6 +206,18 @@ const Message = styled.div`
   z-index: 2;
   font-size: 25px;
   border-radius: 20px;
+`
+
+const FeedbackLottie = styled.div`
+  position: absolute;
+  top: 20%;
+  left: 30%;
+  transform: translate(-20%, -20%);
+  z-index: 2;
+
+  @media (min-width: 700px) {
+    top: -100%;
+  }
 `
 
 LanguageQuestion.propTypes = {
