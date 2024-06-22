@@ -1,76 +1,91 @@
-import PropTypes from "prop-types"
-import styled, { css } from "styled-components"
-import { useState, useEffect } from "react"
-import { useMath } from "../../contexts/MathContext"
-import Lottie from "lottie-react"
-import Right from "../../assets/Right.json"
-import Wrong from "../../assets/Wrong.json"
+import PropTypes from "prop-types";
+import styled, { css } from "styled-components";
+import { useState, useEffect } from "react";
+import { useMath } from "../../contexts/MathContext";
+import Lottie from "lottie-react";
+import Right from "../../assets/Right.json";
+import Wrong from "../../assets/Wrong.json";
+import { useScore } from "../../contexts/ScoreContext";
 
 export const MathQuestion = ({ focusRef, type }) => {
-  const { mathGame, setMathGame, generateQuestion } = useMath()
-  const currentScore = mathGame[Number(type)].score
+  const { mathGame, setMathGame, generateQuestion } = useMath();
+  const { registerAnswer } = useScore();
+  const currentScore = mathGame[Number(type)].score;
 
-  const [message, setMessage] = useState("")
-  const [answerInput, setAnswerInput] = useState("")
-  const numPadNumbers = [1, 2, 3, 4, 5, 6, 7, 8, 9]
-  const [rightLottie, setRightLottie] = useState(false)
-  const [wrongLottie, setWrongLottie] = useState(false)
+  const [message, setMessage] = useState("");
+  const [answerInput, setAnswerInput] = useState("");
+  const numPadNumbers = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+  const [rightLottie, setRightLottie] = useState(false);
+  const [wrongLottie, setWrongLottie] = useState(false);
+  const subcategory = mathGame[Number(type)].subcategory;
 
   useEffect(() => {
-    generateQuestion(Number(type))
+    generateQuestion(Number(type));
     if (focusRef.current) {
-      focusRef.current.focus()
+      focusRef.current.focus();
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+  }, []);
 
   //Checks if input matches correctAnswer and gives the user a message of "right/wrong"
   //Then starts a new question
-  const checkAnswer = (event) => {
-    event.preventDefault()
+  const checkAnswer = async (event) => {
+    event.preventDefault();
     if (answerInput == mathGame[Number(type)].correctAnswer) {
-      setTimeout(() => setRightLottie(true), 500)
-      setTimeout(() => setRightLottie(false), 4600)
+      setTimeout(() => setRightLottie(true), 500);
+      setTimeout(() => setRightLottie(false), 4600);
 
-      const newGame = [...mathGame]
-      setTimeout(() => (newGame[Number(type)].score = currentScore + 1), 3000)
-      setTimeout(() => setMathGame(newGame), 3000)
+      const newGame = [...mathGame];
+      setTimeout(() => (newGame[Number(type)].score = currentScore + 1), 3000);
+      setTimeout(() => setMathGame(newGame), 3000);
+
+      // Send answer to backend
+      try {
+        await registerAnswer({
+          subject: "math",
+          level: newGame[type].level,
+          subcategory: subcategory,
+          score: currentScore + 1,
+        });
+      } catch (err) {
+        console.error("Error registration answer", err);
+      }
     } else {
-      setTimeout(() => setWrongLottie(true), 500)
+      setTimeout(() => setWrongLottie(true), 500);
       setTimeout(
         () =>
           setMessage(`Rätt svar var ${mathGame[Number(type)].correctAnswer}.`),
         2500
-      )
-      setTimeout(() => setWrongLottie(false), 4600)
+      );
+      setTimeout(() => setWrongLottie(false), 4600);
     }
-    setTimeout(() => newQuestion(), 4500)
-  }
+    setTimeout(() => newQuestion(), 4500);
+  };
 
   //Resets message and input-field before generating new question
   const newQuestion = () => {
-    setMessage("")
-    setAnswerInput("")
-    generateQuestion(Number(type))
+    setMessage("");
+    setAnswerInput("");
+    generateQuestion(Number(type));
     if (focusRef.current) {
-      focusRef.current.focus()
+      focusRef.current.focus();
     }
-  }
+  };
 
   //Puts users click on number-buttons into the inputfield
   const handleNumPadClick = (number) => {
-    setAnswerInput((prev) => prev + number.toString())
+    setAnswerInput((prev) => prev + number.toString());
     if (focusRef.current) {
-      focusRef.current.focus()
+      focusRef.current.focus();
     }
-  }
+  };
 
   const handleDeleteClick = () => {
-    setAnswerInput("")
+    setAnswerInput("");
     if (focusRef.current) {
-      focusRef.current.focus()
+      focusRef.current.focus();
     }
-  }
+  };
 
   if (mathGame[Number(type)].level < 4) {
     return (
@@ -135,11 +150,11 @@ export const MathQuestion = ({ focusRef, type }) => {
         </NumPad>
         {message && <Message>{message}</Message>}
       </div>
-    )
+    );
   } else {
-    return <Title>Du har klarat alla nivåer! Grattis!</Title>
+    return <Title>Du har klarat alla nivåer! Grattis!</Title>;
   }
-}
+};
 
 const Title = styled.h1`
   margin: 0;
@@ -148,7 +163,7 @@ const Title = styled.h1`
   @media (min-width: 700px) {
     font-size: 45px;
   }
-`
+`;
 
 const QuestionCard = styled.div`
   width: 300px;
@@ -168,7 +183,7 @@ const QuestionCard = styled.div`
     height: 150px;
     font-size: 50px;
   }
-`
+`;
 const Answer = styled.form`
   display: flex;
   flex-direction: row;
@@ -179,7 +194,7 @@ const Answer = styled.form`
   @media (min-width: 700px) {
     gap: 20px;
   }
-`
+`;
 
 const AnswerInput = styled.input`
   color: #ffffff;
@@ -208,7 +223,7 @@ const AnswerInput = styled.input`
     height: 54px;
     font-size: 16px;
   }
-`
+`;
 
 const AnswerBtn = styled.button`
   color: white;
@@ -233,7 +248,7 @@ const AnswerBtn = styled.button`
     box-shadow: 6px 6px var(--oceanshadow);
     transition: 0.2s ease;
   }
-`
+`;
 
 const NumPad = styled.div`
   display: grid;
@@ -242,7 +257,7 @@ const NumPad = styled.div`
   gap: 10px;
   max-width: 270px;
   margin: 10px auto;
-`
+`;
 
 const NumPadBtn = styled.button`
   ${(props) =>
@@ -283,7 +298,7 @@ const NumPadBtn = styled.button`
     box-shadow: 4px 4px var(--oceanshadow);
     transition: 0.2s ease;
   }
-`
+`;
 const Message = styled.div`
   color: black;
   display: flex;
@@ -291,9 +306,9 @@ const Message = styled.div`
   align-items: center;
   margin: 10px auto;
   font-size: 18px;
-`
+`;
 
 MathQuestion.propTypes = {
   focusRef: PropTypes.any,
   type: PropTypes.string,
-}
+};
