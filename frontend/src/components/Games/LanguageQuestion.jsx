@@ -47,16 +47,18 @@ export const LanguageQuestion = ({ type, language, color, subcategory }) => {
       setTimeout(() => setRightLottie(false), 4600)
 
       // Send answer to backend
-      try {
-        await registerAnswer({
-          subject: language,
-          level: newGame[type].level,
-          subcategory: subcategory,
-          score: currentScore + 1,
-        })
-      } catch (err) {
-        console.error("Error registration answer", err)
-      }
+      setTimeout( async () => {
+        try {
+          await registerAnswer({
+            subject: language,
+            level: newGame[type].level,
+            subcategory: subcategory,
+            score: currentScore + 1,
+          })
+        } catch (err) {
+          console.error("Error registration answer", err)
+        }
+      }, 3000)
     } else {
       setTimeout(() => setWrongLottie(true), 500)
       setTimeout(() => setMessage(`Rätt svar var ${rightAnswer}.`), 2500)
