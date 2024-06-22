@@ -91,32 +91,6 @@ export const MathQuestion = ({ focusRef, type }) => {
     return (
       <div>
         <QuestionCard>{mathGame[Number(type)].question}</QuestionCard>
-        {rightLottie && (
-          <div
-            style={{
-              position: "absolute",
-              top: "50%",
-              left: "50%",
-              transform: "translate(-50%, -50%)",
-              zIndex: 2,
-            }}
-          >
-            <Lottie animationData={Right} loop={false} />
-          </div>
-        )}
-        {wrongLottie && (
-          <div
-            style={{
-              position: "absolute",
-              top: "50%",
-              left: "50%",
-              transform: "translate(-50%, -50%)",
-              zIndex: 2,
-            }}
-          >
-            <Lottie animationData={Wrong} loop={false} />
-          </div>
-        )}
         <Answer onSubmit={(event) => checkAnswer(event)}>
           <AnswerInput
             ref={focusRef}
@@ -126,6 +100,16 @@ export const MathQuestion = ({ focusRef, type }) => {
             onChange={(event) => setAnswerInput(event.target.value)}
           />
           <AnswerBtn type="submit">SVARA</AnswerBtn>
+          {rightLottie && (
+            <FeedbackLottie>
+              <Lottie animationData={Right} loop={false} />
+            </FeedbackLottie>
+          )}
+          {wrongLottie && (
+            <FeedbackLottie>
+              <Lottie animationData={Wrong} loop={false} />
+            </FeedbackLottie>
+          )}
         </Answer>
         <NumPad>
           {numPadNumbers.map((number) => (
@@ -150,11 +134,11 @@ export const MathQuestion = ({ focusRef, type }) => {
         </NumPad>
         {message && <Message>{message}</Message>}
       </div>
-    );
+    )
   } else {
     return <Title>Du har klarat alla nivåer! Grattis!</Title>;
   }
-};
+}
 
 const Title = styled.h1`
   margin: 0;
@@ -163,7 +147,7 @@ const Title = styled.h1`
   @media (min-width: 700px) {
     font-size: 45px;
   }
-`;
+`
 
 const QuestionCard = styled.div`
   width: 300px;
@@ -183,18 +167,20 @@ const QuestionCard = styled.div`
     height: 150px;
     font-size: 50px;
   }
-`;
+`
+
 const Answer = styled.form`
   display: flex;
   flex-direction: row;
   justify-content: center;
   gap: 8px;
   align-items: center;
+  position: relative;
 
   @media (min-width: 700px) {
     gap: 20px;
   }
-`;
+`
 
 const AnswerInput = styled.input`
   color: #ffffff;
@@ -223,7 +209,7 @@ const AnswerInput = styled.input`
     height: 54px;
     font-size: 16px;
   }
-`;
+`
 
 const AnswerBtn = styled.button`
   color: white;
@@ -248,7 +234,7 @@ const AnswerBtn = styled.button`
     box-shadow: 6px 6px var(--oceanshadow);
     transition: 0.2s ease;
   }
-`;
+`
 
 const NumPad = styled.div`
   display: grid;
@@ -257,7 +243,7 @@ const NumPad = styled.div`
   gap: 10px;
   max-width: 270px;
   margin: 10px auto;
-`;
+`
 
 const NumPadBtn = styled.button`
   ${(props) =>
@@ -298,7 +284,8 @@ const NumPadBtn = styled.button`
     box-shadow: 4px 4px var(--oceanshadow);
     transition: 0.2s ease;
   }
-`;
+`
+
 const Message = styled.div`
   color: black;
   display: flex;
@@ -306,9 +293,21 @@ const Message = styled.div`
   align-items: center;
   margin: 10px auto;
   font-size: 18px;
-`;
+`
+
+const FeedbackLottie = styled.div`
+  position: absolute;
+  top: 20%;
+  left: 30%;
+  transform: translate(-20%, -20%);
+  z-index: 2;
+
+  @media (min-width: 700px) {
+    top: -100%;
+  }
+`
 
 MathQuestion.propTypes = {
   focusRef: PropTypes.any,
   type: PropTypes.string,
-};
+}
