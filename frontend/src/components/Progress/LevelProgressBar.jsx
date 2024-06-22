@@ -1,19 +1,19 @@
-import PropTypes from "prop-types"
-import styled from "styled-components"
-import translations from "./translations.json"
+import PropTypes from "prop-types";
+import styled from "styled-components";
+import translations from "./translations.json";
 
 // Use json file to translate subjects and subcategories
 const translateSubject = (subject) => {
-  return translations.subjects[subject] || subject
-}
+  return translations.subjects[subject] || subject;
+};
 
 const translateSubcategory = (subcategory) => {
-  return translations.subcategories[subcategory] || subcategory
-}
+  return translations.subcategories[subcategory] || subcategory;
+};
 
 export const LevelProgressBar = ({ progress, selectedSubject }) => {
   if (!progress) {
-    return null
+    return null;
   }
 
   // Remove '_id' from subjects, else it will display in the score list
@@ -34,7 +34,7 @@ export const LevelProgressBar = ({ progress, selectedSubject }) => {
           </h2>
           <LevelWrapper>
             {progress[subject].levels.map((level, index) => {
-              const isMaxScore = level.score === level.levelScore
+              const isMaxScore = level.score === level.levelScore;
               return (
                 <LevelProgress key={index}>
                   <p>
@@ -54,18 +54,18 @@ export const LevelProgressBar = ({ progress, selectedSubject }) => {
                     ></ProgressForSubjects>
                   </ProgressBar>
                 </LevelProgress>
-              )
+              );
             })}
           </LevelWrapper>
         </div>
       ))}
     </LevelContainer>
-  )
-}
+  );
+};
 
 const LevelProgressH1 = styled.h1`
   margin-bottom: 10px;
-`
+`;
 
 const LevelContainer = styled.div`
   padding: 30px;
@@ -92,9 +92,22 @@ const ProgressBar = styled.div`
 const ProgressForSubjects = styled.div`
   height: 100%;
   border-radius: 30px;
-`
+
+  background-color: ${({ className }) => {
+    switch (className) {
+      case "crl-swedish":
+        return "var(--sunsetshadow)";
+      case "crl-math":
+        return "var(--oceanshadow)";
+      case "crl-english":
+        return "var(--forest)";
+      default:
+        return "gray";
+    }
+  }};
+`;
 
 LevelProgressBar.propTypes = {
   progress: PropTypes.object.isRequired,
   selectedSubject: PropTypes.string,
-}
+};
