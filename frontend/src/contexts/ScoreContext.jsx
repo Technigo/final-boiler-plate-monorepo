@@ -87,8 +87,8 @@ export const ScoreProvider = ({ children }) => {
 
     //Checks the score and handles level-change
     //use next line for testing/demoing (only three questions before level-change)
-    if (game[0].score >= 3) {
-      //if (game[0].score >= game[0].levelScore) {
+    //if (game[0].score >= 3) {
+    if (game[0].score >= game[0].levelScore) {
       setCelebrateLottie(true)
       const newGame = [...game]
       newGame[0].level = game[0].level + 1
@@ -155,66 +155,71 @@ export const ScoreProvider = ({ children }) => {
 
       const data = await response.json()
       setProgress(data.progress)
-      localStorage.setItem(
-        "progress-english-translate-level-1-score",
-        data.progress.progress.english.translate.levels[0].score
-      )
-      localStorage.setItem(
-        "progress-english-translate-level-2-score",
-        data.progress.progress.english.translate.levels[1].score
-      )
-      localStorage.setItem(
-        "progress-english-translate-level-3-score",
-        data.progress.progress.english.translate.levels[2].score
-      )
-      localStorage.setItem(
-        "progress-swedish-synonyms-level-1-score",
-        data.progress.progress.swedish.synonyms.levels[0].score
-      )
-      localStorage.setItem(
-        "progress-swedish-synonyms-level-2-score",
-        data.progress.progress.swedish.synonyms.levels[1].score
-      )
-      localStorage.setItem(
-        "progress-swedish-synonyms-level-3-score",
-        data.progress.progress.swedish.synonyms.levels[2].score
-      )
+      const scoreOneEnglishTranslate = data.progress.progress.english.translate.levels[0].score
+      const scoreTwoEnglishTranslate = data.progress.progress.english.translate.levels[1].score
+      const scoreThreeEnglishTranslate = data.progress.progress.english.translate.levels[2].score
+
+      const scoreOneSwedishSynonyms = data.progress.progress.swedish.synonyms.levels[0].score
+      const scoreTwoSwedishSynonyms = data.progress.progress.swedish.synonyms.levels[1].score
+      const scoreThreeSwedishSynonyms = data.progress.progress.swedish.synonyms.levels[2].score
+
+      const levelScore = 20
+
+      if (scoreOneEnglishTranslate < levelScore) {
+        console.log("Engelska nivå 1")
+        const newGame = [...englishGame]
+        newGame[0].level = 1
+        newGame[0].score = scoreOneEnglishTranslate
+        setEnglishGame(newGame)
+      } else if (scoreTwoEnglishTranslate < levelScore) {
+        console.log("Engelska nivå 2")
+        const newGame = [...englishGame]
+        newGame[0].level = 2
+        newGame[0].score = scoreTwoEnglishTranslate
+        setEnglishGame(newGame)
+      } else if (scoreThreeEnglishTranslate < levelScore) {
+        console.log("Engelska nivå 3")
+        const newGame = [...englishGame]
+        newGame[0].level = 3
+        newGame[0].score = scoreThreeEnglishTranslate
+        setEnglishGame(newGame)
+      } else {
+        console.log("Engelska nivå Klar")
+        const newGame = [...englishGame]
+        newGame[0].level = 3
+        newGame[0].score = levelScore
+        setEnglishGame(newGame)
+      }
+
+      if (scoreOneSwedishSynonyms < levelScore) {
+        console.log("Svenska nivå 1")
+        const newGame = [...swedishGame]
+        newGame[0].level = 1
+        newGame[0].score = scoreOneSwedishSynonyms
+        setSwedishGame(newGame)
+      } else if (scoreTwoSwedishSynonyms < levelScore) {
+        console.log("Svenska nivå 2")
+        const newGame = [...swedishGame]
+        newGame[0].level = 2
+        newGame[0].score = scoreTwoSwedishSynonyms
+        setSwedishGame(newGame)
+      } else if (scoreThreeSwedishSynonyms < levelScore) {
+        console.log("Svenska nivå 3")
+        const newGame = [...swedishGame]
+        newGame[0].level = 3
+        newGame[0].score = scoreThreeSwedishSynonyms
+        setSwedishGame(newGame)
+      } else {
+        console.log("Svenska nivå Klar")
+        const newGame = [...swedishGame]
+        newGame[0].level = 3
+        newGame[0].score = levelScore
+        setSwedishGame(newGame)
+      }     
+      
       setLoading(false)
     } catch (error) {
       console.error(error)
-    }
-  }
-
-  const showProgress = () => {
-    const scoreOne = localStorage.getItem(
-      "progress-english-translate-level-1-score"
-    )
-    const scoreTwo = localStorage.getItem(
-      "progress-english-translate-level-2-score"
-    )
-    const scoreThree = localStorage.getItem(
-      "progress-english-translate-level-3-score"
-    )
-    const levelScore = 3
-
-    if (scoreOne < levelScore) {
-      console.log("nivå 1")
-      const newGame = [...englishGame]
-      newGame[0].level = 1
-      newGame[0].score = scoreOne
-      setEnglishGame(newGame)
-    } else if (scoreTwo < levelScore) {
-      console.log("nivå 2")
-      const newGame = [...englishGame]
-      newGame[0].level = 2
-      newGame[0].score = scoreTwo
-      setEnglishGame(newGame)
-    } else if (scoreThree < levelScore) {
-      console.log("nivå 3")
-      const newGame = [...englishGame]
-      newGame[0].level = 3
-      newGame[0].score = scoreThree
-      setEnglishGame(newGame)
     }
   }
 
@@ -236,7 +241,6 @@ export const ScoreProvider = ({ children }) => {
         progress,
         celebrateLottie,
         fetchProgress,
-        showProgress,
         loading,
         registerAnswer
       }}
