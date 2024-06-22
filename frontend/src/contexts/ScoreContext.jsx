@@ -166,25 +166,21 @@ export const ScoreProvider = ({ children }) => {
       const levelScore = 20
 
       if (scoreOneEnglishTranslate < levelScore) {
-        console.log("Engelska nivå 1")
         const newGame = [...englishGame]
         newGame[0].level = 1
         newGame[0].score = scoreOneEnglishTranslate
         setEnglishGame(newGame)
       } else if (scoreTwoEnglishTranslate < levelScore) {
-        console.log("Engelska nivå 2")
         const newGame = [...englishGame]
         newGame[0].level = 2
         newGame[0].score = scoreTwoEnglishTranslate
         setEnglishGame(newGame)
       } else if (scoreThreeEnglishTranslate < levelScore) {
-        console.log("Engelska nivå 3")
         const newGame = [...englishGame]
         newGame[0].level = 3
         newGame[0].score = scoreThreeEnglishTranslate
         setEnglishGame(newGame)
       } else {
-        console.log("Engelska nivå Klar")
         const newGame = [...englishGame]
         newGame[0].level = 3
         newGame[0].score = levelScore
@@ -192,25 +188,21 @@ export const ScoreProvider = ({ children }) => {
       }
 
       if (scoreOneSwedishSynonyms < levelScore) {
-        console.log("Svenska nivå 1")
         const newGame = [...swedishGame]
         newGame[0].level = 1
         newGame[0].score = scoreOneSwedishSynonyms
         setSwedishGame(newGame)
       } else if (scoreTwoSwedishSynonyms < levelScore) {
-        console.log("Svenska nivå 2")
         const newGame = [...swedishGame]
         newGame[0].level = 2
         newGame[0].score = scoreTwoSwedishSynonyms
         setSwedishGame(newGame)
       } else if (scoreThreeSwedishSynonyms < levelScore) {
-        console.log("Svenska nivå 3")
         const newGame = [...swedishGame]
         newGame[0].level = 3
         newGame[0].score = scoreThreeSwedishSynonyms
         setSwedishGame(newGame)
       } else {
-        console.log("Svenska nivå Klar")
         const newGame = [...swedishGame]
         newGame[0].level = 3
         newGame[0].score = levelScore
